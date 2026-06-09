@@ -1,0 +1,11 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(python3 -c \"import json,sys; data=json.load\\(sys.stdin\\); questions=data.get\\('questions',[]\\); print\\(f'Total: {len\\(questions\\)}'\\); verified=[q for q in questions if q.get\\('verificationStatus'\\)=='verified']; print\\(f'Verified: {len\\(verified\\)}'\\); [print\\(f'  {q[\\\\\"moduleId\\\\\"]} - {q.get\\(\\\\\"primaryTopicName\\\\\",\\\\\"\\\\\"\\)} - tags:{q.get\\(\\\\\"tags\\\\\",[]\\)}'\\) for q in verified]\")",
+      "Bash(python3 -c ':*)",
+      "Bash(where python3:*)",
+      "Bash(where python:*)",
+      "Bash(python3 -c ' *)"
+    ]
+  }
+}
