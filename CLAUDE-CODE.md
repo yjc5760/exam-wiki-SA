@@ -19,6 +19,7 @@
 | [REINDEX](#reindex) | `reindex` | 掃描 solutions/，修正 hasSolution 不一致 |
 | [ADD-CONCEPT](#add-concept) | `add concept [概念名]` | 新增概念到 concepts.json |
 | [ADD-METHOD](#add-method) | `add method [方法名]` | 新增解題方法論頁面 |
+| [REFRESH-DASHBOARD](#refresh-dashboard) | `更新儀表板資料` | 從 question_index.json 重新生成 dashboard-data.js |
 
 ### 📊 備考分析類
 
@@ -205,6 +206,26 @@ solutions/ 已有解析但未驗證：[列出題號]
 2. 建立 raw/solutions/methods/[method_id]/[method_id].md
 3. 建立 wiki/methods/[method_id].md
 4. 在 wiki/log.md 追加紀錄
+```
+
+---
+
+## REFRESH-DASHBOARD
+
+**觸發語句：** `更新儀表板資料`（Cowork 直接執行）
+
+**用途：** `dashboard.html`（資料夾根目錄的離線儀表板）讀取 `dashboard-data.js` 顯示題庫。當 `question_index.json` 變動（新增題目、改標籤）後，需重新生成快照。
+
+**執行步驟：**
+```
+1. 讀取 raw/json/question_index.json 全部條目
+2. 轉換為精簡陣列格式寫入 dashboard-data.js：
+   [moduleId, primaryTopicId縮寫(去RC-前綴), secondaryTopicIds縮寫, designMethod, viz檔名前綴陣列, tags]
+   - viz 前綴：掃描 raw/solutions/RC-XXXX-N/ 下 *-viz.html，
+     取檔名中 moduleId 與 -viz.html 之間的字段（如 pm、section）
+3. 同步更新 RC_TOPICS / RC_UNITS 對照表（若命題大綱變動）
+4. 在 wiki/log.md 追加紀錄
+注意：dashboard.html 本身不需改動；僅當需求變更時才修改 UI。
 ```
 
 ---

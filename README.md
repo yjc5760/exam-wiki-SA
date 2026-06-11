@@ -27,6 +27,7 @@
 
 | 我想找... | 去哪找 |
 |----------|-------|
+| **視覺化瀏覽整個知識庫** | **雙擊 `dashboard.html`**（題庫搜尋篩選、考點統計、進度追蹤、指令速查） |
 | 特定題目的解析 | `raw/solutions/RC-YYYY-N/RC-YYYY-N.md` |
 | wiki 題目頁（含標籤/考點） | `wiki/problems/RC-YYYY-N.md` |
 | 依年份瀏覽所有題目 | `wiki/by-year.md` |

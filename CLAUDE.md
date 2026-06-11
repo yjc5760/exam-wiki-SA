@@ -37,7 +37,7 @@ Cowork 讀取 CLAUDE.md + 考卷 PDF + question_index.json
 | 環境 | 負責什麼 |
 |------|---------|
 | **你（使用者）** | PDF 題目附圖截圖（fig-N.png）、chart/eqn/hand 補充截圖、人工驗算後通知 Cowork 更新 verificationStatus |
-| **Cowork** | 解題（SOLVE，**一次一題**）、存檔（.md + viz.html）、更新 question_index.json、**所有 wiki 操作指令**（ingest / compile-all / lint / status / reindex / add-concept / add-method / frequency / analyze / predict / study / find / related / unverified / query，共 15 個，詳見 CLAUDE-CODE.md）、直接維護 wiki/diagnosis/ · wiki/failure-modes/ · wiki/materials/ · wiki/code-ref/ · wiki/queries/ |
+| **Cowork** | 解題（SOLVE，**一次一題**）、存檔（.md + viz.html）、更新 question_index.json、**所有 wiki 操作指令**（ingest / compile-all / lint / status / reindex / add-concept / add-method / refresh-dashboard / frequency / analyze / predict / study / find / related / unverified / query，共 16 個，詳見 CLAUDE-CODE.md）、直接維護 wiki/diagnosis/ · wiki/failure-modes/ · wiki/materials/ · wiki/code-ref/ · wiki/queries/ |
 
 ---
 
@@ -182,3 +182,4 @@ Wiki 導航依七層知識架構組織（前三層由 Cowork 透過 compile-all/
 | 2026-06-04 | 從三層架構（User/Cowork/Claude Code）改為兩層（User/Cowork） | 知識庫全程在 Cowork 運行，無獨立 Claude Code 終端機環境 |
 | 2026-06-04 | Cowork 指令由 4 個擴充至 15 個（新增備考分析類、查詢快捷類、題庫維護類） | 增強備考分析與知識查詢功能 |
 | 2026-06-08 | 修正 concepts.json classification 格式（RC-N → RC-UN-n）；修正 CLAUDE-SPEC.md §6 殘留 SS 類別代碼；更新 檔案架構索引表.md 快照數字；澄清 wiki/traps/ 補充目錄定位 | 知識庫 review 後修正 |
+| 2026-06-11 | 新增 dashboard.html + dashboard-data.js（離線儀表板：題庫篩選/統計/進度追蹤/指令速查）；指令由 15 個擴充至 16 個（新增 refresh-dashboard）；補完 lint SKIP 項掃描（hasViz/hasHandwritten/圖說均一致） | 建立使用者視覺化入口，提升知識庫易用性 |
