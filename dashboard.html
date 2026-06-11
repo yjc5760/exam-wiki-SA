@@ -533,7 +533,20 @@
       return;}
     let text;
     try{const f=await readFileByPath(relPath);text=await f.text();}
-    catch(e){rBody.innerHTML=`<div class="rmsg">讀取失敗：${esc(relPath)}<br><div class="small">${esc(e.message||String(e))}</div></div>`;return;}
+    catch(e){
+      rBody.innerHTML=`<div class="rmsg">讀取失敗：${esc(relPath)}<br><div class="small">${esc(e.message||String(e))}</div><br>
+      <div class="small" style="color:var(--warn)">可能是資料夾位置已變更或瀏覽器授權失效。請點擊下方按鈕清除快取後重試。</div>
+      <button id="btnResetHandle">重新選擇資料夾</button></div>`;
+      document.getElementById('btnResetHandle').addEventListener('click', () => {
+        const r=indexedDB.open(IDB,1);
+        r.onsuccess=()=>{
+          r.result.transaction('kv','readwrite').objectStore('kv').delete('dir');
+          dirHandle=null;
+          rBody.innerHTML='<div class="rmsg">已清除快取！<br>請關閉此視窗，並重新點擊「📄 完整解析」來重新選擇資料夾。</div>';
+        };
+      });
+      return;
+    }
     await waitKatex(4000);
     mathHint.style.display=(window.katex)?'none':'inline-block';
     const today=new Date().toISOString().slice(0,10);
