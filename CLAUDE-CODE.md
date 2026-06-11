@@ -223,7 +223,7 @@ solutions/ 已有解析但未驗證：[列出題號]
    [moduleId, primaryTopicId縮寫(去RC-前綴), secondaryTopicIds縮寫, designMethod, viz檔名前綴陣列, tags]
    - viz 前綴：掃描 raw/solutions/RC-XXXX-N/ 下 *-viz.html，
      取檔名中 moduleId 與 -viz.html 之間的字段（如 pm、section）
-3. 同步更新 RC_TOPICS / RC_UNITS 對照表（若命題大綱變動）
+3. 讀取 `raw/json/syllabus_taxonomy.json`，提取出 `subject.id === "RC"` 的分類樹，並自動轉換成 `window.RC_TOPICS` 與 `window.RC_UNITS` 寫入 `dashboard-data.js` 中。
 4. 在 wiki/log.md 追加紀錄
 注意：dashboard.html 本身不需改動；僅當需求變更時才修改 UI。
 ```

@@ -1,5 +1,6 @@
 // exam-wiki-RC 儀表板資料檔
-// 由 question_index.json 生成（2026-06-11）。索引更新後，對 Cowork 說「更新儀表板資料」即可重新生成。
+// 由 question_index.json 與 syllabus_taxonomy.json 生成。索引或命題大綱更新後，對 Cowork 說「更新儀表板資料」即可重新生成。
+// 註：window.RC_TOPICS 與 window.RC_UNITS 皆由 REFRESH-DASHBOARD 指令動態由 syllabus_taxonomy.json 擷取。
 // 格式：[moduleId, primaryTopicId(縮寫), secondaryTopicIds, designMethod, viz檔名前綴陣列, tags]
 window.RC_TOPICS = {
   "U1-1": "RC 梁彎矩強度分析與設計",

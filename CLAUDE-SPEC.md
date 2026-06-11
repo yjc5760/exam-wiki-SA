@@ -332,43 +332,11 @@ RC-YYYY-N-[內容碼]-viz.html
 | `designMethod` | 設計法 | `"USD"` / `"WSD"` / `"概念題"` / `"混合"` |
 | `tags` | 自由標籤（核心考點，3–8 個） | `["扭矩強度","Aoh","閉合箍筋"]` |
 
-### 命題大綱分類對照（依官方命題大綱，93年3月公告）
+### 命題大綱分類對照
 
+> **最新鮮的官方考點分類，請直接查閱：`raw/json/syllabus_taxonomy.json` 中 `id: "RC"` 的段落。**
+> 所有 `primaryTopicId` 與主分類名稱，一律以該檔案為唯一準則。
 > topicId 格式：`RC-UN-n`（U=單元號，n=子項號）
-
-#### 第一單元（RC-U1）
-
-| topicId | 命題大綱子項 |
-|---------|------------|
-| RC-U1-1 | RC 梁彎矩強度分析與設計 |
-| RC-U1-2 | RC 柱強度分析與設計 |
-| RC-U1-3 | 細長柱 |
-| RC-U1-4 | 柱設計圖之應用 |
-
-#### 第二單元（RC-U2）
-
-| topicId | 命題大綱子項 |
-|---------|------------|
-| RC-U2-1 | RC 剪力強度分析與設計 |
-| RC-U2-2 | RC 扭力強度設計 |
-| RC-U2-3 | 鋼筋錨定長度與斷點計算 |
-
-#### 第三單元（RC-U3）
-
-| topicId | 命題大綱子項 |
-|---------|------------|
-| RC-U3-1 | 梁工作性要求（含撓度、裂縫） |
-| RC-U3-2 | 樓版與基腳設計 |
-| RC-U3-3 | 韌性要求與耐震設計 |
-
-#### 第四單元（RC-U4）
-
-| topicId | 命題大綱子項 |
-|---------|------------|
-| RC-U4-1 | 預力梁斷面應力分析 |
-| RC-U4-2 | 預力量與偏心量設計 |
-| RC-U4-3 | 預力損失 |
-| RC-U4-4 | 預力梁剪力分析與設計 |
 
 ### 標準標籤詞彙
 
@@ -397,8 +365,8 @@ RC-YYYY-N-[內容碼]-viz.html
 | `moduleId` | `RC-YYYY-N` | 題目唯一識別碼 |
 | `year` | 整數（西元年，如 `2015`） | 西元年 |
 | `rocYear` | 整數（民國年，如 `104`） | 民國年 |
-| `primaryTopicId` | 見第 8 節對照表（`RC-UN-n`） | 命題大綱主分類，唯一 |
-| `primaryTopicName` | 見第 8 節對照表 | 主分類名稱（直接引用命題大綱子項） |
+| `primaryTopicId` | `raw/json/syllabus_taxonomy.json` 中的 `id` | 命題大綱主分類，唯一 |
+| `primaryTopicName` | `raw/json/syllabus_taxonomy.json` 中的 `name` | 主分類名稱（直接引用命題大綱子項） |
 | `secondaryTopicIds` | `[]` 或 `["RC-UN-n"]` | 跨子項時填入，可多個 |
 | `designMethod` | `USD` / `WSD` / `概念題` / `混合` | 設計方法 |
 | `verificationStatus` | `verified` / `unverified` / `needs-review` | 驗證狀態 |
