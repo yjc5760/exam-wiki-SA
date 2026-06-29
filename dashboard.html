@@ -135,6 +135,7 @@
     <button data-p="charts">📊 考點統計</button>
     <button data-p="nav">🗺️ 知識庫導覽</button>
     <button data-p="cmd">⌨️ 指令速查</button>
+    <button data-p="exams">📑 歷年考卷</button>
   </nav>
 
   <!-- 題庫瀏覽 -->
@@ -197,6 +198,15 @@
         <tr><td>查詢知識</td><td>直接對 Cowork 提問，結果會存入 wiki/queries/</td></tr>
         <tr><td>更新本儀表板</td><td>索引變動後，對 Cowork 說 <code>更新儀表板資料</code>（重新生成 dashboard-data.js）</td></tr>
       </table>
+    </div>
+  </section>
+
+  <!-- 歷年考卷 -->
+  <section class="panel" id="p-exams">
+    <div class="card">
+      <h2>原始考卷 PDF（2002–2025）</h2>
+      <p style="font-size:.85rem;color:var(--muted);margin-bottom:10px">點擊在新分頁開啟原始考卷。</p>
+      <div class="navgrid" id="examList"></div>
     </div>
   </section>
 
@@ -377,7 +387,16 @@
     if(nc&&nc.dataset.md)openMd(nc.dataset.md,nc.dataset.t||nc.dataset.md);
   });
 
-  renderStats();render();renderCharts();
+  // ---- 歷年考卷 ----
+  function renderExams(){
+    const years=[...new Set(Q.map(q=>q.year))].sort((a,b)=>b-a);
+    document.getElementById('examList').innerHTML=years.map(y=>{
+      const n=Q.filter(q=>q.year===y).length;
+      return `<a class="navcard" href="${encodeURI('raw/exams/RC-'+y+'_鋼筋混凝土設計與預力.pdf')}" target="_blank">
+        <b>📄 ${y} 年考卷</b><p>民國 ${y-1911} 年｜已收錄 ${n} 題解析</p></a>`;}).join('');
+  }
+
+  renderStats();render();renderCharts();renderExams();
 
   /* ================= 解析閱讀器 ================= */
   const overlay=document.getElementById('overlay'),reader=document.getElementById('reader'),
