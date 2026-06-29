@@ -320,7 +320,7 @@ RC-U4（預力）：XX%
 ③ 考題清單（互動篩選）
   - 篩選按鈕（全部 + 各子項）
   - 每題顯示：題號/年度、題型摘要、關鍵 tags（前5個）、解析/互動圖/驗證狀態 icon
-  - 【重要】點擊題號或標題時，必須以 `<a href="../index.html#md=wiki/problems/RC-XXXX-N.md&t=RC-XXXX-N" target="_blank">` 格式連結至 markdown 渲染器，確保公式能透過 KaTeX 呈現。
+  - 【重要】點擊題號或標題時，必須以 `<a href="../index.html#md=raw/solutions/RC-XXXX-N/RC-XXXX-N.md&t=RC-XXXX-N" target="_blank">` 格式連結至 markdown 渲染器，確保公式能透過 KaTeX 呈現，且相對路徑的附圖（png）與補充檔（pdf）皆可正常載入。
 
 ④ 核心公式速查（KaTeX 渲染）
   - 每個子項一張公式卡，含主要計算公式與注意事項

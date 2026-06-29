@@ -893,9 +893,9 @@ function renderList(){
     const diffLabel=['','★','★★','★★★','★★★★'];
     const diffColor=['','var(--green)','var(--blue)','var(--orange)','var(--red)'];
     el.innerHTML=`
-      <div class="pid ${p.type}"><a href="../index.html#md=wiki/problems/${p.id}.md&t=${p.id}" target="_blank" style="color:inherit;text-decoration:none">${p.id}</a><br><span style="font-size:10px;opacity:.7">${p.year}</span></div>
+      <div class="pid ${p.type}"><a href="../index.html#md=raw/solutions/${p.id}/${p.id}.md&t=${p.id}" target="_blank" style="color:inherit;text-decoration:none">${p.id}</a><br><span style="font-size:10px;opacity:.7">${p.year}</span></div>
       <div class="pb">
-        <div class="pt"><a href="../index.html#md=wiki/problems/${p.id}.md&t=${p.id}" target="_blank" style="color:inherit;text-decoration:none">${p.title}</a></div>
+        <div class="pt"><a href="../index.html#md=raw/solutions/${p.id}/${p.id}.md&t=${p.id}" target="_blank" style="color:inherit;text-decoration:none">${p.title}</a></div>
         <div class="tags">${p.tags.slice(0,5).map(t=>`<span class="tag">${t}</span>`).join('')}</div>
         <div style="display:flex;gap:8px;margin-top:5px;align-items:center;flex-wrap:wrap">
           ${p.sol?'<span class="pill pill-sol">✅ 解析</span>':''}
