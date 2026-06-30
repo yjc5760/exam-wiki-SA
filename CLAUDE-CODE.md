@@ -426,3 +426,4 @@ RC-2018-4：後拉法預力梁
 | 2026-05-29 | 初版：設計為 Claude Code 終端機指令 | 原始三層架構設計 |
 | 2026-06-04 | 全面改寫：所有指令改由 Cowork 直接執行 | 知識庫全程在 Cowork 運行，無獨立終端機環境 |
 | 2026-06-04 | 新增 REINDEX、ADD-CONCEPT、ADD-METHOD、FREQUENCY、ANALYZE、PREDICT、STUDY、FIND、RELATED、UNVERIFIED 共 10 個指令 | 擴充備考分析與查詢快捷功能 |
+| 2026-06-30 | 更新 STUDY 指令規格：考題連結必須指向 `raw/solutions/` 原始檔 | 確保 index.html#md 渲染引擎能正確讀取相對路徑的圖片與 PDF 附檔 |

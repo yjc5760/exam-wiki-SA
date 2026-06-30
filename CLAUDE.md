@@ -185,3 +185,4 @@ Wiki 導航依七層知識架構組織（前三層由 Cowork 透過 compile-all/
 | 2026-06-08 | 修正 concepts.json classification 格式（RC-N → RC-UN-n）；修正 CLAUDE-SPEC.md §6 殘留 SS 類別代碼；更新 檔案架構索引表.md 快照數字；澄清 wiki/traps/ 補充目錄定位 | 知識庫 review 後修正 |
 | 2026-06-11 | 新增 dashboard.html + dashboard-data.js（離線儀表板：題庫篩選/統計/進度追蹤/指令速查）；指令由 15 個擴充至 16 個（新增 refresh-dashboard）；補完 lint SKIP 項掃描（hasViz/hasHandwritten/圖說均一致） | 建立使用者視覺化入口，提升知識庫易用性 |
 | 2026-06-26 | study 指令輸出目錄從 wiki/queries/ 改為 study/；新增子項層級（study RC-UN-n）深度複習格式（七區塊：命題分析/截面圖解/解題流程/公式/考題清單/陷阱/互動計算） | 講義與複習頁集中在 study/ 管理，wiki/queries/ 保留純查詢結果 |
+| 2026-06-30 | 修正 study 指令產生的考題連結路徑，改為直接連結至 `raw/solutions/` 下的原始 md 檔 | 解決透過 index.html#md 渲染器預覽時，相對路徑附圖與 PDF 補充資料無法載入的 bug |
