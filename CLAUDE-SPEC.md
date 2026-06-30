@@ -81,7 +81,21 @@ RC-2024_鋼筋混凝土設計與預力.pdf
 raw/solutions/RC-YYYY-N/
 ```
 
-每道題目一個資料夾，名稱即 moduleId。方法論另建：
+每道題目一個資料夾，名稱即 moduleId。資料夾內允許的檔案類型：
+
+| 類型 | 命名格式 | 說明 | 誰負責 |
+|------|---------|------|:------:|
+| 解析主檔 | `RC-YYYY-N.md` | 解題文字內容（唯一必要） | Cowork |
+| 題目附圖 | `RC-YYYY-N-fig-N.png` | 題目原始圖 | 使用者 |
+| 設計圖表 | `RC-YYYY-N-chart-N.png` | P-M 互制圖等 | 使用者 |
+| 參考公式 | `RC-YYYY-N-eqn-N.png` | 題目給的公式截圖 | 使用者 |
+| 手寫補充 | `RC-YYYY-N-hand-N.png` | 手寫推導截圖 | 使用者 |
+| 互動圖 | `RC-YYYY-N-[內容碼]-viz.html` | 互動計算圖 | Cowork |
+| 補充筆記 | `*.pdf`（任意檔名） | 補充講義、手寫筆記掃描等 | 使用者 |
+
+> **補充筆記 PDF：** 使用者可將任意 `.pdf` 放入此資料夾，命名無強制規範。`dashboard.html` 題庫瀏覽的「📎 掃描補充 PDF」按鈕會即時掃描並顯示連結；PDF 資訊不需寫入 `dashboard-data.js`。
+
+方法論另建：
 
 ```
 raw/solutions/methods/[method-id]/

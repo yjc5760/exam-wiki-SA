@@ -223,10 +223,20 @@ solutions/ 已有解析但未驗證：[列出題號]
    [moduleId, primaryTopicId縮寫(去RC-前綴), secondaryTopicIds縮寫, designMethod, viz檔名前綴陣列, tags]
    - viz 前綴：掃描 raw/solutions/RC-XXXX-N/ 下 *-viz.html，
      取檔名中 moduleId 與 -viz.html 之間的字段（如 pm、section）
+   - ⚠ PDF 補充筆記（*.pdf）不納入 dashboard-data.js；
+     dashboard.html 透過「📎 掃描補充 PDF」按鈕以 File System Access API 即時掃描
 3. 讀取 `raw/json/syllabus_taxonomy.json`，提取出 `subject.id === "RC"` 的分類樹，並自動轉換成 `window.RC_TOPICS` 與 `window.RC_UNITS` 寫入 `dashboard-data.js` 中。
 4. 在 wiki/log.md 追加紀錄
 注意：dashboard.html 本身不需改動；僅當需求變更時才修改 UI。
 ```
+
+**補充說明：補充筆記 PDF**
+- 使用者可將任意 `.pdf` 檔案放入 `raw/solutions/RC-YYYY-N/` 資料夾
+- dashboard.html 題庫瀏覽頁有工具列按鈕「📎 掃描補充 PDF」
+  - 首次點擊：觸發 File System Access API 授權視窗，選取專案根目錄後自動掃描
+  - 有 PDF 的題目卡片會出現「📎 補充筆記 PDF」按鈕；無 PDF 者不顯示
+  - 掃描結果快取於頁面記憶體，重新授權後可重新掃描（按鈕文字顯示找到的 PDF 題目數）
+- REFRESH-DASHBOARD 不需掃描 PDF，無需更新 dashboard-data.js
 
 ---
 

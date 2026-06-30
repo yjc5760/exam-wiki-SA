@@ -44,6 +44,12 @@
   .links{margin-top:8px;display:flex;flex-wrap:wrap;gap:8px}
   .links a,.links button.openmd{font-size:.83rem;text-decoration:none;color:var(--accent);border:1px solid var(--accent);border-radius:6px;padding:3px 10px;background:#fff;cursor:pointer;font-family:inherit}
   .links a:hover,.links button.openmd:hover{background:var(--accent);color:#fff}
+  .links button.openpdf{font-size:.83rem;color:#b45309;border:1px solid #b45309;border-radius:6px;padding:3px 10px;background:#fff;cursor:pointer;font-family:inherit}
+  .links button.openpdf:hover{background:#b45309;color:#fff}
+  .pdf-drop{position:absolute;background:#fff;border:1px solid var(--line);border-radius:8px;padding:4px 0;z-index:200;box-shadow:0 4px 16px rgba(0,0,0,.15);min-width:220px;left:0;top:calc(100% + 4px)}
+  .pdf-drop button{display:block;width:100%;text-align:left;padding:6px 14px;border:none;background:none;cursor:pointer;font-size:.82rem;font-family:inherit;white-space:nowrap}
+  .pdf-drop button:hover{background:#f1f5f9}
+  .pdf-drop .no-pdf{padding:7px 14px;font-size:.82rem;color:var(--muted)}
   .prog{margin-left:auto;cursor:pointer;user-select:none;font-size:.8rem;border-radius:6px;padding:3px 10px;border:1px dashed var(--muted);color:var(--muted)}
   .prog.s1{border:1px solid #059669;color:#059669;background:#ecfdf5}
   .prog.s2{border:1px solid #dc2626;color:#dc2626;background:#fef2f2}
@@ -151,6 +157,7 @@
         <option value="0">⬜ 未練習</option><option value="1">✅ 已練習</option><option value="2">🔁 需複習</option></select>
       <select id="fViz"><option value="">互動圖（全部）</option><option value="1">有互動圖</option></select>
       <select id="sort"><option value="desc">新→舊</option><option value="asc">舊→新</option></select>
+      <button id="btnScanPdf" style="padding:8px 14px;border:1px solid #b45309;border-radius:8px;background:#fff;color:#b45309;font-size:.9rem;font-family:inherit;cursor:pointer;white-space:nowrap" title="授權讀取資料夾，自動掃描各題補充 PDF（首次或重新整理後需點一次）">📎 掃描補充 PDF</button>
       <div class="hint">「📄 完整解析」在站內閱讀器開啟（Markdown＋LaTeX 渲染；首次使用需選擇一次知識庫資料夾）。點題卡右上角循環標記進度，點標籤快速搜尋。</div>
     </div>
     <div class="qlist" id="list"></div>
@@ -318,7 +325,7 @@
       const pTxt=p===1?'✅ 已練習':p===2?'🔁 需複習':'⬜ 未練習';
       const vizLinks=q.viz.map(v=>`<a href="raw/solutions/${q.id}/${q.id}-${v}-viz.html" target="_blank">🎛️ ${v} 互動圖</a>`).join('');
       const secTxt=q.sec.length?`｜副：${q.sec.map(s=>TOPICS[s]||s).join('、')}`:'';
-      return `<div class="qcard" style="border-left:4px solid ${UCOLOR[u]}">
+      return `<div class="qcard" data-qid="${q.id}" style="border-left:4px solid ${UCOLOR[u]}">
         <div class="qhead">
           <span class="qid">${q.id}</span><span class="roc">民國 ${q.roc} 年 第 ${q.num} 題</span>
           <span class="badge" style="background:${UCOLOR[u]}">${q.topic}</span>
@@ -328,10 +335,11 @@
         </div>
         <div class="topic">${TOPICS[q.topic]}${secTxt}</div>
         <div class="tags">${q.tags.map(t=>`<span class="tag" data-t="${t}">${t}</span>`).join('')}</div>
-        <div class="links">
+        <div class="links" style="position:relative">
           <button class="openmd" data-md="raw/solutions/${q.id}/${q.id}.md" data-t="${q.id} 完整解析">📄 完整解析</button>
           ${vizLinks}
         </div></div>`;}).join('');
+    setTimeout(injectPdfButtons,0);
   }
   document.getElementById('list').addEventListener('click',e=>{
     const pr=e.target.closest('.prog');
@@ -339,7 +347,9 @@
     const tg=e.target.closest('.tag');
     if(tg){qIn.value=tg.dataset.t;render();return;}
     const om=e.target.closest('.openmd');
-    if(om){openMd(om.dataset.md,om.dataset.t);}
+    if(om){openMd(om.dataset.md,om.dataset.t);return;}
+    const op=e.target.closest('.openpdf');
+    if(op){openPdfs(op.dataset.id,op);}
   });
   [qIn,fYear,fUnit,fTopic,fMethod,fProg,fViz,sortSel].forEach(el=>el.addEventListener('input',render));
 
@@ -397,6 +407,25 @@
   }
 
   renderStats();render();renderCharts();renderExams();
+  // 靜默恢復上次的資料夾授權 → 成功後 ensureDir 內部會觸發 injectPdfButtons
+  ensureDir(false);
+
+  // 工具列「掃描補充 PDF」按鈕
+  document.getElementById('btnScanPdf').addEventListener('click', async () => {
+    const btn = document.getElementById('btnScanPdf');
+    btn.textContent = '⏳ 掃描中…'; btn.disabled = true;
+    const h = await ensureDir(true);
+    if (h) {
+      // 清除快取，重新掃描所有可見卡片
+      Object.keys(pdfCache).forEach(k => delete pdfCache[k]);
+      await injectPdfButtons();
+      const count = Object.values(pdfCache).filter(v => v.length > 0).length;
+      btn.textContent = `📎 已找到 ${count} 題有 PDF`;
+    } else {
+      btn.textContent = '📎 掃描補充 PDF';
+    }
+    btn.disabled = false;
+  });
 
   /* ================= 解析閱讀器 ================= */
   const overlay=document.getElementById('overlay'),reader=document.getElementById('reader'),
@@ -453,12 +482,12 @@
     let h=await idbGet();
     if(h){let p=await h.queryPermission({mode:'read'});
       if(p==='prompt'&&interactive)p=await h.requestPermission({mode:'read'});
-      if(p==='granted'){dirHandle=h;return h;}}
+      if(p==='granted'){dirHandle=h;setTimeout(injectPdfButtons,0);return h;}}
     if(!interactive)return null;
     try{h=await showDirectoryPicker({mode:'read'});}catch(e){return null;}
     try{await h.getDirectoryHandle('raw');}catch(e){
       alert('選擇的資料夾內找不到 raw/，請選擇 exam-wiki-RC 資料夾本身。');return null;}
-    dirHandle=h;await idbSet(h);return h;
+    dirHandle=h;await idbSet(h);setTimeout(injectPdfButtons,0);return h;
   }
   async function readFileByPath(relPath){
     const parts=relPath.split('/').filter(Boolean);
@@ -589,6 +618,87 @@
       openMd(stack.join('/'),a.textContent);}));
   }
   window.openMd=openMd;
+
+  /* ================= 補充筆記 PDF ================= */
+  const pdfCache={}; // qId → string[]（已掃描）| undefined（未掃描）
+
+  async function listDir(relPath){
+    const parts=relPath.split('/').filter(Boolean);
+    let d=dirHandle;
+    for(const p of parts) d=await d.getDirectoryHandle(p);
+    const files=[];
+    for await(const [name] of d.entries()) files.push(name);
+    return files;
+  }
+
+  async function openPdfFile(relPath){
+    try{
+      const f=await readFileByPath(relPath);
+      const u=URL.createObjectURL(f);
+      window.open(u,'_blank');
+      setTimeout(()=>URL.revokeObjectURL(u),120000);
+    }catch(e){alert('無法開啟 PDF：'+e.message);}
+  }
+
+  function closePdfDrops(){ document.querySelectorAll('.pdf-drop').forEach(d=>d.remove()); }
+
+  function showPdfDrop(btn, pdfs, qId){
+    closePdfDrops();
+    const wrap=btn.closest('.links');
+    if(!wrap) return;
+    const drop=document.createElement('div');
+    drop.className='pdf-drop';
+    pdfs.forEach(name=>{
+      const b=document.createElement('button');
+      b.textContent='📄 '+name;
+      b.addEventListener('click',()=>{ openPdfFile('raw/solutions/'+qId+'/'+name); closePdfDrops(); });
+      drop.appendChild(b);
+    });
+    const btnRect=btn.getBoundingClientRect(), wrapRect=wrap.getBoundingClientRect();
+    drop.style.left=(btnRect.left-wrapRect.left)+'px';
+    wrap.appendChild(drop);
+    function outside(e){ if(!drop.contains(e.target)&&e.target!==btn){closePdfDrops();document.removeEventListener('click',outside,true);} }
+    setTimeout(()=>document.addEventListener('click',outside,true),0);
+  }
+
+  // 掃描所有可見卡片並注入 PDF 按鈕（只對有 PDF 的卡片）
+  async function injectPdfButtons(){
+    if(!dirHandle) return;
+    const cards=document.querySelectorAll('.qcard[data-qid]');
+    await Promise.all([...cards].map(async card=>{
+      const qId=card.dataset.qid;
+      // 已快取：直接根據結果決定要不要注入
+      if(pdfCache[qId]!==undefined){
+        if(pdfCache[qId].length) _addPdfBtn(card,qId);
+        return;
+      }
+      // 未快取：掃描
+      try{
+        const files=await listDir('raw/solutions/'+qId);
+        const pdfs=files.filter(f=>/\.pdf$/i.test(f)).sort();
+        pdfCache[qId]=pdfs;
+        if(pdfs.length) _addPdfBtn(card,qId);
+      }catch(e){ pdfCache[qId]=[]; }
+    }));
+  }
+
+  function _addPdfBtn(card,qId){
+    const links=card.querySelector('.links');
+    if(!links||links.querySelector('.openpdf')) return;
+    const btn=document.createElement('button');
+    btn.className='openpdf';
+    btn.dataset.id=qId;
+    btn.textContent='📎 補充筆記 PDF';
+    links.appendChild(btn);
+  }
+
+  // 點擊已注入的 PDF 按鈕（此時 pdfCache[qId] 一定有值）
+  async function openPdfs(qId, btn){
+    const pdfs=pdfCache[qId]||[];
+    if(!pdfs.length) return;
+    if(pdfs.length===1){ openPdfFile('raw/solutions/'+qId+'/'+pdfs[0]); return; }
+    showPdfDrop(btn, pdfs, qId);
+  }
 })();
 </script>
 </body>
