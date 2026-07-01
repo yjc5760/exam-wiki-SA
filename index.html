@@ -607,6 +607,16 @@
   }
   window.openMd=openMd;
 
+  /* ================= Hash 深度連結（study 頁考題連結） ================= */
+  // 支援 index.html#md=raw/solutions/RC-YYYY-N/RC-YYYY-N.md&t=RC-YYYY-N
+  (function handleHashLink(){
+    const h=location.hash;
+    if(!h.startsWith('#md='))return;
+    const p=new URLSearchParams(h.slice(1));
+    const mdPath=p.get('md'), title=p.get('t')||mdPath;
+    if(mdPath)openMd(mdPath,title);
+  })();
+
   /* ================= 補充筆記 PDF ================= */
   // PDF 檔名清單由 dashboard-data.js（q.pdf，REFRESH-DASHBOARD 指令掃描寫入）提供，
   // 不再於前端即時掃描資料夾，因此按鈕在 render() 時即已依資料直接顯示。
