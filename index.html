@@ -441,7 +441,7 @@
   }
   function mdToHtml(src){
     const stash=[];
-    const keep=h=>{stash.push(h);return ''+(stash.length-1)+'';};
+    const keep=h=>{stash.push(h);return '\x03'+(stash.length-1)+'\x03';};
     // 1. 圍欄程式碼
     src=src.replace(/```([\s\S]*?)```/g,(m,c)=>keep(`<pre>${esc(c.replace(/^\w*\n/,''))}</pre>`));
     // 2. display math
@@ -471,11 +471,11 @@
     const flushP=()=>{if(para.length){out.push(`<p>${para.map(inline).join('<br>')}</p>`);para=[];}};
     const flushL=()=>{if(listStack){out.push(listStack==='ul'?'</ul>':'</ol>');listStack=null;}};
     function inline(s){
-      s=s.replace(/\\([#*_{}$\\])/g,(m,c)=>''+c.charCodeAt(0)+'');
+      s=s.replace(/\\([#*_{}$\\])/g,(m,c)=>' \x02'+c.charCodeAt(0)+'\x02 ');
       s=esc(s);
       s=s.replace(/\*\*([^*]+)\*\*/g,'<strong>$1</strong>');
       s=s.replace(/(^|[^*])\*([^*\n]+)\*(?!\*)/g,'$1<em>$2</em>');
-      s=s.replace(/(\d+)/g,(m,c)=>String.fromCharCode(+c));
+      s=s.replace(/\x02(\d+)\x02/g,(m,c)=>String.fromCharCode(+c));
       return s;}
     while(i<lines.length){
       const ln=lines[i];
@@ -502,7 +502,7 @@
     }
     flushP();flushL();
     let html=out.join('\n');
-    html=html.replace(/(\d+)/g,(m,n)=>stash[+n]);
+    html=html.replace(/\x03(\d+)\x03/g,(m,n)=>stash[+n]);
     return html;
   }
 
