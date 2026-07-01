@@ -437,3 +437,4 @@ RC-2018-4：後拉法預力梁
 | 2026-06-04 | 新增 REINDEX、ADD-CONCEPT、ADD-METHOD、FREQUENCY、ANALYZE、PREDICT、STUDY、FIND、RELATED、UNVERIFIED 共 10 個指令 | 擴充備考分析與查詢快捷功能 |
 | 2026-06-30 | 更新 STUDY 指令規格：考題連結必須指向 `raw/solutions/` 原始檔 | 確保 index.html#md 渲染引擎能正確讀取相對路徑的圖片與 PDF 附檔 |
 | 2026-07-02 | index.html 實作雙軌讀取機制，非本機環境下改用原生 fetch 取代 File System Access API 讀取資源 | 提升 GitHub Pages 線上版儀表板操作流暢度，免除多餘的資料夾授權提示 |
+| 2026-07-02 | 實作 index.html 前端的 Hash 深度連結（#md=）邏輯，正式支援 study 頁面考題點擊跳轉功能 | 補齊前端功能，完全對齊 STUDY 指令的連結規格 |
