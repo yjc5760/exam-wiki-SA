@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>exam-wiki-RC 知識庫儀表板 — 鋼筋混凝土設計與預力</title>
+<title>exam-wiki-RC 知識庫 — 鋼筋混凝土設計與預力</title>
 <style>
   :root{
     --bg:#f5f6f8; --card:#ffffff; --ink:#1f2937; --muted:#6b7280; --line:#e5e7eb;
@@ -44,12 +44,6 @@
   .links{margin-top:8px;display:flex;flex-wrap:wrap;gap:8px}
   .links a,.links button.openmd{font-size:.83rem;text-decoration:none;color:var(--accent);border:1px solid var(--accent);border-radius:6px;padding:3px 10px;background:#fff;cursor:pointer;font-family:inherit}
   .links a:hover,.links button.openmd:hover{background:var(--accent);color:#fff}
-  .links button.openpdf{font-size:.83rem;color:#b45309;border:1px solid #b45309;border-radius:6px;padding:3px 10px;background:#fff;cursor:pointer;font-family:inherit}
-  .links button.openpdf:hover{background:#b45309;color:#fff}
-  .pdf-drop{position:absolute;background:#fff;border:1px solid var(--line);border-radius:8px;padding:4px 0;z-index:200;box-shadow:0 4px 16px rgba(0,0,0,.15);min-width:220px;left:0;top:calc(100% + 4px)}
-  .pdf-drop button{display:block;width:100%;text-align:left;padding:6px 14px;border:none;background:none;cursor:pointer;font-size:.82rem;font-family:inherit;white-space:nowrap}
-  .pdf-drop button:hover{background:#f1f5f9}
-  .pdf-drop .no-pdf{padding:7px 14px;font-size:.82rem;color:var(--muted)}
   .prog{margin-left:auto;cursor:pointer;user-select:none;font-size:.8rem;border-radius:6px;padding:3px 10px;border:1px dashed var(--muted);color:var(--muted)}
   .prog.s1{border:1px solid #059669;color:#059669;background:#ecfdf5}
   .prog.s2{border:1px solid #dc2626;color:#dc2626;background:#fef2f2}
@@ -106,7 +100,6 @@
   #readerBody .md .texsrc{background:#fef9c3;border-radius:4px;padding:1px 6px;font-size:.85em}
   #readerBody .md a{color:var(--accent)}
   .rmsg{padding:26px;text-align:center;color:var(--muted)}
-  .rmsg button{margin-top:12px;background:var(--accent);color:#fff;border:none;border-radius:8px;padding:10px 22px;font-size:1rem;cursor:pointer;font-family:inherit}
   .rmsg .small{font-size:.8rem;margin-top:10px}
   #mathHint{display:none;font-size:.75rem;color:#b45309;background:#fef3c7;border-radius:6px;padding:2px 10px}
   #printHeader{display:none}
@@ -157,18 +150,21 @@
         <option value="0">⬜ 未練習</option><option value="1">✅ 已練習</option><option value="2">🔁 需複習</option></select>
       <select id="fViz"><option value="">互動圖（全部）</option><option value="1">有互動圖</option></select>
       <select id="sort"><option value="desc">新→舊</option><option value="asc">舊→新</option></select>
-      <div class="hint">「📄 完整解析」在站內閱讀器開啟（Markdown＋LaTeX 渲染；首次使用需選擇一次知識庫資料夾）。點題卡右上角循環標記進度，點標籤快速搜尋。有「📎 補充筆記 PDF」的題目會直接顯示按鈕（點擊時同樣需授權讀取資料夾）。</div>
+      <div class="hint">「📄 完整解析」在站內閱讀器開啟（Markdown＋LaTeX 渲染）。點題卡右上角循環標記進度（記錄存於本機瀏覽器），點標籤快速搜尋。</div>
     </div>
     <div class="qlist" id="list"></div>
   </section>
 
-  <!-- 考點統計（frequency 指令查詢結果） -->
+  <!-- 考點統計 -->
   <section class="panel" id="p-charts">
-    <p style="font-size:.82rem;color:var(--muted);margin-bottom:12px">本頁內容對應 <code style="background:#eef2f7;padding:1px 6px;border-radius:4px">frequency</code> 指令輸出格式，資料隨 <code style="background:#eef2f7;padding:1px 6px;border-radius:4px">dashboard-data.js</code> 更新自動重新計算。</p>
-    <div class="card"><h2>🔥 高頻考點 Top 10（主＋副考點次數）</h2><div id="chartFreqTop"></div></div>
     <div class="grid2">
-      <div class="card"><h2>各單元命題比例</h2><div id="chartUnit"></div></div>
-      <div class="card"><h2 id="recentTitle">近 5 年考點走向</h2><div id="recent"></div></div>
+      <div class="card"><h2>四單元命題比例（主考點）</h2><div id="chartUnit"></div></div>
+      <div class="card"><h2>設計法分布</h2><div id="chartMethod"></div></div>
+    </div>
+    <div class="card"><h2>各考點出題次數（含副考點，依頻率排序）</h2><div id="chartTopic"></div></div>
+    <div class="grid2">
+      <div class="card"><h2>近 5 年考點走向（2021–2025）</h2><div id="recent"></div></div>
+      <div class="card"><h2>高頻標籤 Top 20</h2><div class="tags" id="topTags"></div></div>
     </div>
   </section>
 
@@ -191,25 +187,6 @@
         <button class="navcard" data-md="wiki/queries/題庫缺口報告-2026-06-07.md" data-t="題庫缺口報告"><b>🕳️ 題庫缺口報告</b><p>尚未覆蓋的考點與待補項目</p></button>
         <button class="navcard" data-md="README.md" data-t="README"><b>🚀 README</b><p>知識庫冷啟動導覽與工作流程</p></button>
       </div>
-    </div>
-    <div class="card">
-      <h2>核心工作流程</h2>
-      <table class="cmd">
-        <tr><th>想做什麼</th><th>怎麼做</th></tr>
-        <tr><td>解一套新考卷</td><td>對 Cowork 說 <code>解析 XXXX 年考卷</code> → 依提醒截圖 → 說 <code>截圖完成，請開始解題</code>（一次解一題）</td></tr>
-        <tr><td>驗算後入庫</td><td>人工驗算 → 說 <code>將 RC-XXXX-N 的 verificationStatus 改為 verified</code> → 說 <code>ingest RC-XXXX-N</code></td></tr>
-        <tr><td>查詢知識</td><td>直接對 Cowork 提問，結果會存入 wiki/queries/</td></tr>
-        <tr><td>更新本儀表板</td><td>索引變動後，對 Cowork 說 <code>更新儀表板資料</code>（重新生成 dashboard-data.js）</td></tr>
-      </table>
-    </div>
-  </section>
-
-  <!-- 歷年考卷 -->
-  <section class="panel" id="p-exams">
-    <div class="card">
-      <h2>原始考卷 PDF（2002–2025）</h2>
-      <p style="font-size:.85rem;color:var(--muted);margin-bottom:10px">點擊在新分頁開啟原始考卷。</p>
-      <div class="navgrid" id="examList"></div>
     </div>
   </section>
 
@@ -251,7 +228,16 @@
     </div>
   </section>
 
-  <footer>exam-wiki-RC 儀表板｜資料來源：raw/json/question_index.json（dashboard-data.js 快照）｜索引更新後請對 Cowork 說「更新儀表板資料」</footer>
+  <!-- 歷年考卷 -->
+  <section class="panel" id="p-exams">
+    <div class="card">
+      <h2>原始考卷 PDF（2002–2025）</h2>
+      <p style="font-size:.85rem;color:var(--muted);margin-bottom:10px">點擊在新分頁開啟原始考卷。</p>
+      <div class="navgrid" id="examList"></div>
+    </div>
+  </section>
+
+  <footer>exam-wiki-RC 知識庫｜結構工程技師高考第三科：鋼筋混凝土設計與預力｜靜態網站（GitHub Pages）</footer>
 </div>
 
 <!-- 解析閱讀器 -->
@@ -271,7 +257,7 @@
 <script>
 (function(){
   if(!window.RC_QUESTIONS){document.getElementById('list').innerHTML='<div class="empty">找不到 dashboard-data.js，請確認檔案與本頁在同一資料夾。</div>';return;}
-  const Q = RC_QUESTIONS.map(r=>({id:r[0],year:+r[0].split('-')[1],num:+r[0].split('-')[2],roc:+r[0].split('-')[1]-1911,topic:r[1],sec:r[2],method:r[3],viz:r[4],tags:r[5],pdf:r[6]||[]}));
+  const Q = RC_QUESTIONS.map(r=>({id:r[0],year:+r[0].split('-')[1],num:+r[0].split('-')[2],roc:+r[0].split('-')[1]-1911,topic:r[1],sec:r[2],method:r[3],viz:r[4],tags:r[5]}));
   const TOPICS=RC_TOPICS, UNITS=RC_UNITS;
   const UCOLOR={U1:'var(--u1)',U2:'var(--u2)',U3:'var(--u3)',U4:'var(--u4)'};
   const unitOf=t=>t.split('-')[0];
@@ -321,8 +307,7 @@
       const pTxt=p===1?'✅ 已練習':p===2?'🔁 需複習':'⬜ 未練習';
       const vizLinks=q.viz.map(v=>`<a href="raw/solutions/${q.id}/${q.id}-${v}-viz.html" target="_blank">🎛️ ${v} 互動圖</a>`).join('');
       const secTxt=q.sec.length?`｜副：${q.sec.map(s=>TOPICS[s]||s).join('、')}`:'';
-      const pdfBtn=q.pdf.length?`<button class="openpdf" data-id="${q.id}">📎 補充筆記 PDF${q.pdf.length>1?`（${q.pdf.length}）`:''}</button>`:'';
-      return `<div class="qcard" data-qid="${q.id}" style="border-left:4px solid ${UCOLOR[u]}">
+      return `<div class="qcard" style="border-left:4px solid ${UCOLOR[u]}">
         <div class="qhead">
           <span class="qid">${q.id}</span><span class="roc">民國 ${q.roc} 年 第 ${q.num} 題</span>
           <span class="badge" style="background:${UCOLOR[u]}">${q.topic}</span>
@@ -332,10 +317,9 @@
         </div>
         <div class="topic">${TOPICS[q.topic]}${secTxt}</div>
         <div class="tags">${q.tags.map(t=>`<span class="tag" data-t="${t}">${t}</span>`).join('')}</div>
-        <div class="links" style="position:relative">
+        <div class="links">
           <button class="openmd" data-md="raw/solutions/${q.id}/${q.id}.md" data-t="${q.id} 完整解析">📄 完整解析</button>
           ${vizLinks}
-          ${pdfBtn}
         </div></div>`;}).join('');
   }
   document.getElementById('list').addEventListener('click',e=>{
@@ -344,9 +328,7 @@
     const tg=e.target.closest('.tag');
     if(tg){qIn.value=tg.dataset.t;render();return;}
     const om=e.target.closest('.openmd');
-    if(om){openMd(om.dataset.md,om.dataset.t);return;}
-    const op=e.target.closest('.openpdf');
-    if(op){openPdfs(op.dataset.id,op);}
+    if(om){openMd(om.dataset.md,om.dataset.t);}
   });
   [qIn,fYear,fUnit,fTopic,fMethod,fProg,fViz,sortSel].forEach(el=>el.addEventListener('input',render));
 
@@ -354,41 +336,42 @@
   function bar(label,count,max,color){
     return `<div class="chartrow"><div class="lbl">${label}</div>
       <div class="bar" style="width:${count/max*55}%;background:${color}"></div><div class="cnt">${count}</div></div>`;}
-  // ---- frequency 指令：各考點（主＋副）出題次數統計 ----
-  function computeTopicFreq(){
-    const tc={};Q.forEach(q=>{tc[q.topic]=tc[q.topic]||{p:0,s:0};tc[q.topic].p++;
-      q.sec.forEach(s=>{tc[s]=tc[s]||{p:0,s:0};tc[s].s++})});
-    return Object.entries(tc).map(([t,c])=>({t,p:c.p,s:c.s,total:c.p+c.s}))
-      .sort((a,b)=>b.total-a.total||b.p-a.p);
-  }
   function renderCharts(){
-    // 【高頻考點 Top 10】
-    const top10=computeTopicFreq().slice(0,10);
-    const tmax=top10.length?top10[0].total:1;
-    document.getElementById('chartFreqTop').innerHTML=top10.map((e,idx)=>
-      bar(`<b>${idx+1}.</b> <span class="unitchip" style="background:${UCOLOR[unitOf(e.t)]}"></span>${e.t}｜${TOPICS[e.t]||e.t}（主 ${e.p}＋副 ${e.s}）`,e.total,tmax,UCOLOR[unitOf(e.t)])
-    ).join('');
-
-    // 【各單元命題比例】（依主考點）
     const uc={};Q.forEach(q=>{const u=unitOf(q.topic);uc[u]=(uc[u]||0)+1});
     const umax=Math.max(...Object.values(uc));
     document.getElementById('chartUnit').innerHTML=Object.entries(UNITS)
       .map(([u,n])=>bar(`<span class="unitchip" style="background:${UCOLOR[u]}"></span>${n}（${(uc[u]/Q.length*100).toFixed(0)}%）`,uc[u]||0,umax,UCOLOR[u])).join('');
-
-    // 【近5年趨勢】（依實際收錄年份動態取最近 5 年）
-    const yearsDesc=[...new Set(Q.map(q=>q.year))].sort((a,b)=>b-a);
-    const recentYears=yearsDesc.slice(0,5);
-    const recentSet=new Set(recentYears);
-    if(recentYears.length){
-      document.getElementById('recentTitle').textContent=
-        `近 ${recentYears.length} 年考點走向（${Math.min(...recentYears)}–${Math.max(...recentYears)}）`;
-    }
-    const recent=Q.filter(q=>recentSet.has(q.year)).sort((a,b)=>b.year-a.year||a.num-b.num);
+    const mc={};Q.forEach(q=>mc[q.method]=(mc[q.method]||0)+1);
+    const mmax=Math.max(...Object.values(mc));
+    document.getElementById('chartMethod').innerHTML=Object.entries(mc).sort((a,b)=>b[1]-a[1])
+      .map(([m,c])=>bar(`${m}（${(c/Q.length*100).toFixed(0)}%）`,c,mmax,'#64748b')).join('');
+    const tc={};Q.forEach(q=>{tc[q.topic]=tc[q.topic]||{p:0,s:0};tc[q.topic].p++;
+      q.sec.forEach(s=>{tc[s]=tc[s]||{p:0,s:0};tc[s].s++})});
+    const entries=Object.entries(tc).sort((a,b)=>(b[1].p+b[1].s)-(a[1].p+a[1].s));
+    const tmax=entries[0][1].p+entries[0][1].s;
+    document.getElementById('chartTopic').innerHTML=entries
+      .map(([t,c])=>bar(`<span class="unitchip" style="background:${UCOLOR[unitOf(t)]}"></span>${t}｜${TOPICS[t]||t}（主 ${c.p}＋副 ${c.s}）`,c.p+c.s,tmax,UCOLOR[unitOf(t)])).join('');
+    const recent=Q.filter(q=>q.year>=2021).sort((a,b)=>b.year-a.year||a.num-b.num);
     let html='',yr=0;
     recent.forEach(q=>{if(q.year!==yr){yr=q.year;html+=`<div style="margin-top:8px;font-weight:700">${yr}（民國 ${yr-1911}）</div>`;}
-      const secTxt=q.sec.length?`（副：${q.sec.map(s=>TOPICS[s]||s).join('、')}）`:'';
-      html+=`<div style="font-size:.85rem;margin-left:8px"><span class="unitchip" style="background:${UCOLOR[unitOf(q.topic)]}"></span>第${q.num}題：${TOPICS[q.topic]}${secTxt}</div>`;});
+      html+=`<div style="font-size:.85rem;margin-left:8px"><span class="unitchip" style="background:${UCOLOR[unitOf(q.topic)]}"></span>第${q.num}題：${TOPICS[q.topic]}</div>`;});
     document.getElementById('recent').innerHTML=html;
+    const tagc={};Q.forEach(q=>q.tags.forEach(t=>tagc[t]=(tagc[t]||0)+1));
+    document.getElementById('topTags').innerHTML=Object.entries(tagc).sort((a,b)=>b[1]-a[1]).slice(0,20)
+      .map(([t,c])=>`<span class="tag" data-t="${t}" style="font-size:${(0.76+Math.min(c,8)*0.05).toFixed(2)}rem">${t} ×${c}</span>`).join('');
+    document.getElementById('topTags').addEventListener('click',e=>{
+      const tg=e.target.closest('.tag');if(!tg)return;
+      qIn.value=tg.dataset.t;
+      document.querySelector('nav.tabs button[data-p=browse]').click();render();});
+  }
+
+  // ---- 歷年考卷 ----
+  function renderExams(){
+    const years=[...new Set(Q.map(q=>q.year))].sort((a,b)=>b-a);
+    document.getElementById('examList').innerHTML=years.map(y=>{
+      const n=Q.filter(q=>q.year===y).length;
+      return `<a class="navcard" href="${encodeURI('raw/exams/RC-'+y+'_鋼筋混凝土設計與預力.pdf')}" target="_blank">
+        <b>📄 ${y} 年考卷</b><p>民國 ${y-1911} 年｜已收錄 ${n} 題解析</p></a>`;}).join('');
   }
 
   // ---- 分頁 ----
@@ -402,31 +385,19 @@
     if(nc&&nc.dataset.md)openMd(nc.dataset.md,nc.dataset.t||nc.dataset.md);
   });
 
-  // ---- 歷年考卷 ----
-  function renderExams(){
-    const years=[...new Set(Q.map(q=>q.year))].sort((a,b)=>b-a);
-    document.getElementById('examList').innerHTML=years.map(y=>{
-      const n=Q.filter(q=>q.year===y).length;
-      return `<a class="navcard" href="${encodeURI('raw/exams/RC-'+y+'_鋼筋混凝土設計與預力.pdf')}" target="_blank">
-        <b>📄 ${y} 年考卷</b><p>民國 ${y-1911} 年｜已收錄 ${n} 題解析</p></a>`;}).join('');
-  }
-
   renderStats();render();renderCharts();renderExams();
-  // 靜默恢復上次的資料夾授權（供「完整解析」與「補充筆記 PDF」按鈕使用，無需另外掃描）
-  ensureDir(false);
 
-  /* ================= 解析閱讀器 ================= */
+  /* ================= 解析閱讀器（GitHub Pages 版：fetch 讀取） ================= */
   const overlay=document.getElementById('overlay'),reader=document.getElementById('reader'),
         rBody=document.getElementById('readerBody'),rTitle=document.getElementById('readerTitle'),
         mathHint=document.getElementById('mathHint');
   let currentPath='';
-  let blobUrls=[];
-  function closeReader(){overlay.classList.remove('on');reader.classList.remove('on');
-    blobUrls.forEach(u=>URL.revokeObjectURL(u));blobUrls=[];rBody.innerHTML='';}
+  function closeReader(){overlay.classList.remove('on');reader.classList.remove('on');rBody.innerHTML='';
+    if(location.hash)history.replaceState(null,'',location.pathname+location.search);}
   document.getElementById('btnClose').addEventListener('click',closeReader);
   overlay.addEventListener('click',closeReader);
   document.addEventListener('keydown',e=>{if(e.key==='Escape')closeReader();});
-  document.getElementById('btnRawOpen').addEventListener('click',()=>{if(currentPath)window.open(currentPath,'_blank');});
+  document.getElementById('btnRawOpen').addEventListener('click',()=>{if(currentPath)window.open(encodeURI(currentPath),'_blank');});
   document.getElementById('btnPdf').addEventListener('click',()=>{
     if(!rBody.querySelector('.md')){alert('內容尚未載入完成，請稍候再匯出。');return;}
     const oldTitle=document.title;
@@ -452,37 +423,14 @@
     const t0=Date.now();
     (function chk(){if(katexState!=='loading'||Date.now()-t0>ms)return res();setTimeout(chk,100);})();});}
 
-  // ---- File System Access：資料夾授權 ----
-  const IDB='rcwiki-fs';let dirHandle=null;
-  function idbGet(){return new Promise(res=>{const r=indexedDB.open(IDB,1);
-    r.onupgradeneeded=()=>r.result.createObjectStore('kv');
-    r.onerror=()=>res(null);
-    r.onsuccess=()=>{const tx=r.result.transaction('kv','readonly').objectStore('kv').get('dir');
-      tx.onsuccess=()=>res(tx.result||null);tx.onerror=()=>res(null);};});}
-  function idbSet(h){return new Promise(res=>{const r=indexedDB.open(IDB,1);
-    r.onupgradeneeded=()=>r.result.createObjectStore('kv');
-    r.onerror=()=>res();
-    r.onsuccess=()=>{const tx=r.result.transaction('kv','readwrite').objectStore('kv').put(h,'dir');
-      tx.onsuccess=()=>res();tx.onerror=()=>res();};});}
-  async function ensureDir(interactive){
-    if(dirHandle)return dirHandle;
-    if(!window.showDirectoryPicker)return null;
-    let h=await idbGet();
-    if(h){let p=await h.queryPermission({mode:'read'});
-      if(p==='prompt'&&interactive)p=await h.requestPermission({mode:'read'});
-      if(p==='granted'){dirHandle=h;return h;}}
-    if(!interactive)return null;
-    try{h=await showDirectoryPicker({mode:'read'});}catch(e){return null;}
-    try{await h.getDirectoryHandle('raw');}catch(e){
-      alert('選擇的資料夾內找不到 raw/，請選擇 exam-wiki-RC 資料夾本身。');return null;}
-    dirHandle=h;await idbSet(h);return h;
-  }
-  async function readFileByPath(relPath){
-    const parts=relPath.split('/').filter(Boolean);
-    let d=dirHandle;
-    for(let i=0;i<parts.length-1;i++)d=await d.getDirectoryHandle(parts[i]);
-    const fh=await d.getFileHandle(parts[parts.length-1]);
-    return await fh.getFile();
+  // ---- 路徑解析（相對於 .md 所在資料夾；@root/ 表示網站根） ----
+  function resolvePath(baseDir,p){
+    p=p.split('#')[0];
+    try{p=decodeURIComponent(p);}catch(e){}
+    if(p.indexOf('@root/')===0)return p.slice(6);
+    const stack=baseDir?baseDir.split('/'):[];
+    p.split('/').forEach(seg=>{if(seg==='..')stack.pop();else if(seg&&seg!=='.')stack.push(seg);});
+    return stack.join('/');
   }
 
   // ---- Markdown + LaTeX 渲染 ----
@@ -493,7 +441,7 @@
   }
   function mdToHtml(src){
     const stash=[];
-    const keep=(html)=>{stash.push(html);return `${stash.length-1}`;};
+    const keep=h=>{stash.push(h);return '\x03'+(stash.length-1)+'\x03';};
     // 1. 圍欄程式碼
     src=src.replace(/```([\s\S]*?)```/g,(m,c)=>keep(`<pre>${esc(c.replace(/^\w*\n/,''))}</pre>`));
     // 2. display math
@@ -502,23 +450,32 @@
     src=src.replace(/\$([^$\n]+?)\$/g,(m,t)=>keep(renderTex(t.trim(),false)));
     // 4. 行內 code
     src=src.replace(/`([^`\n]+?)`/g,(m,c)=>keep(`<code class="inline">${esc(c)}</code>`));
-    // 5. 圖片（路徑稍後解析）
+    // 5. wikilink：[[RC-YYYY-N]] → 題目頁；其他（如 [[RC-U1-2]]）→ 標示文字
+    src=src.replace(/\[\[([^\]\n]+?)\]\]/g,(m,id)=>{
+      id=id.trim();
+      if(/^RC-\d{4}-\d+$/.test(id))return keep(`<a href="#" data-mdlink="@root/wiki/problems/${id}.md">${esc(id)}</a>`);
+      return keep(`<code class="inline">${esc(id)}</code>`);
+    });
+    // 6. 圖片（路徑於載入後解析）
     src=src.replace(/!\[([^\]]*)\]\(([^)]+)\)/g,(m,alt,p)=>keep(`<img alt="${esc(alt)}" data-mdsrc="${esc(p)}">`));
-    // 6. 連結
+    // 7. 連結
     src=src.replace(/\[([^\]]+)\]\(([^)]+)\)/g,(m,txt,p)=>{
+      if(/^https?:|^mailto:/i.test(p))return keep(`<a href="${esc(p)}" target="_blank">${esc(txt)}</a>`);
+      if(/^#/.test(p))return keep(`<a href="${esc(p)}">${esc(txt)}</a>`);
+      if(/\/$/.test(p))return keep(`<a href="#" data-mdlink="${esc(p)}index.md">${esc(txt)}</a>`);
       if(/\.md($|#)/i.test(p))return keep(`<a href="#" data-mdlink="${esc(p)}">${esc(txt)}</a>`);
-      return keep(`<a href="${esc(p)}" target="_blank">${esc(txt)}</a>`);});
+      return keep(`<a href="#" data-rel="${esc(p)}">${esc(txt)}</a>`);});
     // 逐行區塊解析
     const lines=src.split('\n');const out=[];
     let i=0,listStack=null,para=[];
     const flushP=()=>{if(para.length){out.push(`<p>${para.map(inline).join('<br>')}</p>`);para=[];}};
     const flushL=()=>{if(listStack){out.push(listStack==='ul'?'</ul>':'</ol>');listStack=null;}};
     function inline(s){
-      s=s.replace(/\\([#*_{}$\\])/g,(m,c)=>''+c.charCodeAt(0)+'');
+      s=s.replace(/\\([#*_{}$\\])/g,(m,c)=>' \x02'+c.charCodeAt(0)+'\x02 ');
       s=esc(s);
       s=s.replace(/\*\*([^*]+)\*\*/g,'<strong>$1</strong>');
       s=s.replace(/(^|[^*])\*([^*\n]+)\*(?!\*)/g,'$1<em>$2</em>');
-      s=s.replace(/(\d+)/g,(m,c)=>String.fromCharCode(+c));
+      s=s.replace(/\x02(\d+)\x02/g,(m,c)=>String.fromCharCode(+c));
       return s;}
     while(i<lines.length){
       const ln=lines[i];
@@ -545,42 +502,25 @@
     }
     flushP();flushL();
     let html=out.join('\n');
-    html=html.replace(/(\d+)/g,(m,n)=>stash[+n]);
+    html=html.replace(/\x03(\d+)\x03/g,(m,n)=>stash[+n]);
     return html;
   }
 
-  async function openMd(relPath,title){
+  async function openMd(relPath,title,updateHash){
+    if(updateHash===undefined)updateHash=true;
     currentPath=relPath;
     rTitle.textContent=title||relPath;
     overlay.classList.add('on');reader.classList.add('on');
     rBody.innerHTML='<div class="rmsg">讀取中…</div>';
-    if(!window.showDirectoryPicker){
-      rBody.innerHTML=`<div class="rmsg">此瀏覽器不支援資料夾讀取（File System Access API）。<br>
-        建議使用 Edge 或 Chrome 開啟本儀表板。<br>
-        <div class="small"><a href="${relPath}" target="_blank">改以純文字開啟原始檔 →</a></div></div>`;return;}
-    let h=await ensureDir(false);
-    if(!h){
-      rBody.innerHTML=`<div class="rmsg">首次使用站內閱讀器，請授權讀取知識庫資料夾<br>（選擇 <b>exam-wiki-RC</b> 資料夾，僅需一次）<br>
-        <button id="btnPick">📂 選擇資料夾</button>
-        <div class="small">瀏覽器安全限制：本機網頁需經您同意才能讀取檔案。</div></div>`;
-      document.getElementById('btnPick').addEventListener('click',async()=>{
-        h=await ensureDir(true);
-        if(h)openMd(relPath,title);});
-      return;}
     let text;
-    try{const f=await readFileByPath(relPath);text=await f.text();}
-    catch(e){
-      rBody.innerHTML=`<div class="rmsg">讀取失敗：${esc(relPath)}<br><div class="small">${esc(e.message||String(e))}</div><br>
-      <div class="small" style="color:var(--warn)">可能是資料夾位置已變更或瀏覽器授權失效。請點擊下方按鈕清除快取後重試。</div>
-      <button id="btnResetHandle">重新選擇資料夾</button></div>`;
-      document.getElementById('btnResetHandle').addEventListener('click', () => {
-        const r=indexedDB.open(IDB,1);
-        r.onsuccess=()=>{
-          r.result.transaction('kv','readwrite').objectStore('kv').delete('dir');
-          dirHandle=null;
-          rBody.innerHTML='<div class="rmsg">已清除快取！<br>請關閉此視窗，並重新點擊「📄 完整解析」來重新選擇資料夾。</div>';
-        };
-      });
+    try{
+      const res=await fetch(encodeURI(relPath));
+      if(!res.ok)throw new Error('HTTP '+res.status);
+      text=await res.text();
+    }catch(e){
+      rBody.innerHTML=`<div class="rmsg">讀取失敗：${esc(relPath)}<br>
+        <div class="small">${esc(e.message||String(e))}</div>
+        <div class="small">此檔案可能尚未上傳至網站，或路徑已變更。</div></div>`;
       return;
     }
     await waitKatex(4000);
@@ -588,71 +528,34 @@
     const today=new Date().toISOString().slice(0,10);
     rBody.innerHTML=`<div id="printHeader">${esc(title||relPath)}<div class="src">exam-wiki-RC 知識庫 ｜ ${esc(relPath)} ｜ 匯出日期 ${today}</div></div><div class="md">${mdToHtml(text)}</div>`;
     rBody.scrollTop=0;
-    // 解析圖片（相對於 .md 所在資料夾）
     const baseDir=relPath.split('/').slice(0,-1).join('/');
-    rBody.querySelectorAll('img[data-mdsrc]').forEach(async img=>{
+    // 圖片：相對路徑 → 網站 URL
+    rBody.querySelectorAll('img[data-mdsrc]').forEach(img=>{
       const p=img.dataset.mdsrc;
       if(/^https?:/.test(p)){img.src=p;return;}
-      try{const f=await readFileByPath(baseDir?baseDir+'/'+decodeURIComponent(p):decodeURIComponent(p));
-        const u=URL.createObjectURL(f);blobUrls.push(u);img.src=u;}
-      catch(e){img.alt='（找不到圖片：'+p+'）';img.style.minHeight='40px';}
+      img.src=encodeURI(resolvePath(baseDir,p));
+      img.onerror=()=>{img.alt='（找不到圖片：'+p+'）';img.style.minHeight='40px';};
+    });
+    // 其他檔案連結（viz.html、png…）：解析後在新分頁開啟
+    rBody.querySelectorAll('a[data-rel]').forEach(a=>{
+      a.href=encodeURI(resolvePath(baseDir,a.dataset.rel));
+      a.target='_blank';
     });
     // .md 內部連結 → 閱讀器內開啟
     rBody.querySelectorAll('a[data-mdlink]').forEach(a=>a.addEventListener('click',ev=>{
       ev.preventDefault();
-      let p=decodeURIComponent(a.dataset.mdlink.split('#')[0]);
-      const stack=baseDir?baseDir.split('/'):[];
-      p.split('/').forEach(seg=>{if(seg==='..')stack.pop();else if(seg!=='.')stack.push(seg);});
-      openMd(stack.join('/'),a.textContent);}));
+      openMd(resolvePath(baseDir,a.dataset.mdlink),a.textContent);
+    }));
+    if(updateHash)history.replaceState(null,'','#md='+encodeURIComponent(relPath)+'&t='+encodeURIComponent(title||relPath));
   }
   window.openMd=openMd;
 
-  /* ================= 補充筆記 PDF ================= */
-  // PDF 檔名清單由 dashboard-data.js（q.pdf，REFRESH-DASHBOARD 指令掃描寫入）提供，
-  // 不再於前端即時掃描資料夾，因此按鈕在 render() 時即已依資料直接顯示。
-
-  async function openPdfFile(relPath){
-    try{
-      const f=await readFileByPath(relPath);
-      const u=URL.createObjectURL(f);
-      window.open(u,'_blank');
-      setTimeout(()=>URL.revokeObjectURL(u),120000);
-    }catch(e){alert('無法開啟 PDF：'+e.message);}
-  }
-
-  function closePdfDrops(){ document.querySelectorAll('.pdf-drop').forEach(d=>d.remove()); }
-
-  function showPdfDrop(btn, pdfs, qId){
-    closePdfDrops();
-    const wrap=btn.closest('.links');
-    if(!wrap) return;
-    const drop=document.createElement('div');
-    drop.className='pdf-drop';
-    pdfs.forEach(name=>{
-      const b=document.createElement('button');
-      b.textContent='📄 '+name;
-      b.addEventListener('click',()=>{ openPdfFile('raw/solutions/'+qId+'/'+name); closePdfDrops(); });
-      drop.appendChild(b);
-    });
-    const btnRect=btn.getBoundingClientRect(), wrapRect=wrap.getBoundingClientRect();
-    drop.style.left=(btnRect.left-wrapRect.left)+'px';
-    wrap.appendChild(drop);
-    function outside(e){ if(!drop.contains(e.target)&&e.target!==btn){closePdfDrops();document.removeEventListener('click',outside,true);} }
-    setTimeout(()=>document.addEventListener('click',outside,true),0);
-  }
-
-  // 點擊「📎 補充筆記 PDF」按鈕：pdf 清單直接取自 Q（dashboard-data.js 靜態資料）
-  async function openPdfs(qId, btn){
-    const q=Q.find(x=>x.id===qId);
-    const pdfs=q?q.pdf:[];
-    if(!pdfs.length) return;
-    if(!dirHandle){
-      const h=await ensureDir(true);
-      if(!h) return;
-    }
-    if(pdfs.length===1){ openPdfFile('raw/solutions/'+qId+'/'+pdfs[0]); return; }
-    showPdfDrop(btn, pdfs, qId);
-  }
+  // ---- 深層連結：index.html#md=wiki/index.md&t=標題 ----
+  (function(){
+    const m=location.hash.match(/^#md=([^&]+)(?:&t=(.*))?$/);
+    if(m){let t='';try{t=m[2]?decodeURIComponent(m[2]):'';}catch(e){}
+      try{openMd(decodeURIComponent(m[1]),t,false);}catch(e){}}
+  })();
 })();
 </script>
 </body>
