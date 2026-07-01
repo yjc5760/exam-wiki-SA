@@ -157,22 +157,18 @@
         <option value="0">⬜ 未練習</option><option value="1">✅ 已練習</option><option value="2">🔁 需複習</option></select>
       <select id="fViz"><option value="">互動圖（全部）</option><option value="1">有互動圖</option></select>
       <select id="sort"><option value="desc">新→舊</option><option value="asc">舊→新</option></select>
-      <button id="btnScanPdf" style="padding:8px 14px;border:1px solid #b45309;border-radius:8px;background:#fff;color:#b45309;font-size:.9rem;font-family:inherit;cursor:pointer;white-space:nowrap" title="授權讀取資料夾，自動掃描各題補充 PDF（首次或重新整理後需點一次）">📎 掃描補充 PDF</button>
-      <div class="hint">「📄 完整解析」在站內閱讀器開啟（Markdown＋LaTeX 渲染；首次使用需選擇一次知識庫資料夾）。點題卡右上角循環標記進度，點標籤快速搜尋。</div>
+      <div class="hint">「📄 完整解析」在站內閱讀器開啟（Markdown＋LaTeX 渲染；首次使用需選擇一次知識庫資料夾）。點題卡右上角循環標記進度，點標籤快速搜尋。有「📎 補充筆記 PDF」的題目會直接顯示按鈕（點擊時同樣需授權讀取資料夾）。</div>
     </div>
     <div class="qlist" id="list"></div>
   </section>
 
-  <!-- 考點統計 -->
+  <!-- 考點統計（frequency 指令查詢結果） -->
   <section class="panel" id="p-charts">
+    <p style="font-size:.82rem;color:var(--muted);margin-bottom:12px">本頁內容對應 <code style="background:#eef2f7;padding:1px 6px;border-radius:4px">frequency</code> 指令輸出格式，資料隨 <code style="background:#eef2f7;padding:1px 6px;border-radius:4px">dashboard-data.js</code> 更新自動重新計算。</p>
+    <div class="card"><h2>🔥 高頻考點 Top 10（主＋副考點次數）</h2><div id="chartFreqTop"></div></div>
     <div class="grid2">
-      <div class="card"><h2>四單元命題比例（主考點）</h2><div id="chartUnit"></div></div>
-      <div class="card"><h2>設計法分布</h2><div id="chartMethod"></div></div>
-    </div>
-    <div class="card"><h2>各考點出題次數（含副考點，依頻率排序）</h2><div id="chartTopic"></div></div>
-    <div class="grid2">
-      <div class="card"><h2>近 5 年考點走向（2021–2025）</h2><div id="recent"></div></div>
-      <div class="card"><h2>高頻標籤 Top 20</h2><div class="tags" id="topTags"></div></div>
+      <div class="card"><h2>各單元命題比例</h2><div id="chartUnit"></div></div>
+      <div class="card"><h2 id="recentTitle">近 5 年考點走向</h2><div id="recent"></div></div>
     </div>
   </section>
 
@@ -275,7 +271,7 @@
 <script>
 (function(){
   if(!window.RC_QUESTIONS){document.getElementById('list').innerHTML='<div class="empty">找不到 dashboard-data.js，請確認檔案與本頁在同一資料夾。</div>';return;}
-  const Q = RC_QUESTIONS.map(r=>({id:r[0],year:+r[0].split('-')[1],num:+r[0].split('-')[2],roc:+r[0].split('-')[1]-1911,topic:r[1],sec:r[2],method:r[3],viz:r[4],tags:r[5]}));
+  const Q = RC_QUESTIONS.map(r=>({id:r[0],year:+r[0].split('-')[1],num:+r[0].split('-')[2],roc:+r[0].split('-')[1]-1911,topic:r[1],sec:r[2],method:r[3],viz:r[4],tags:r[5],pdf:r[6]||[]}));
   const TOPICS=RC_TOPICS, UNITS=RC_UNITS;
   const UCOLOR={U1:'var(--u1)',U2:'var(--u2)',U3:'var(--u3)',U4:'var(--u4)'};
   const unitOf=t=>t.split('-')[0];
@@ -325,6 +321,7 @@
       const pTxt=p===1?'✅ 已練習':p===2?'🔁 需複習':'⬜ 未練習';
       const vizLinks=q.viz.map(v=>`<a href="raw/solutions/${q.id}/${q.id}-${v}-viz.html" target="_blank">🎛️ ${v} 互動圖</a>`).join('');
       const secTxt=q.sec.length?`｜副：${q.sec.map(s=>TOPICS[s]||s).join('、')}`:'';
+      const pdfBtn=q.pdf.length?`<button class="openpdf" data-id="${q.id}">📎 補充筆記 PDF${q.pdf.length>1?`（${q.pdf.length}）`:''}</button>`:'';
       return `<div class="qcard" data-qid="${q.id}" style="border-left:4px solid ${UCOLOR[u]}">
         <div class="qhead">
           <span class="qid">${q.id}</span><span class="roc">民國 ${q.roc} 年 第 ${q.num} 題</span>
@@ -338,8 +335,8 @@
         <div class="links" style="position:relative">
           <button class="openmd" data-md="raw/solutions/${q.id}/${q.id}.md" data-t="${q.id} 完整解析">📄 完整解析</button>
           ${vizLinks}
+          ${pdfBtn}
         </div></div>`;}).join('');
-    setTimeout(injectPdfButtons,0);
   }
   document.getElementById('list').addEventListener('click',e=>{
     const pr=e.target.closest('.prog');
@@ -357,33 +354,41 @@
   function bar(label,count,max,color){
     return `<div class="chartrow"><div class="lbl">${label}</div>
       <div class="bar" style="width:${count/max*55}%;background:${color}"></div><div class="cnt">${count}</div></div>`;}
+  // ---- frequency 指令：各考點（主＋副）出題次數統計 ----
+  function computeTopicFreq(){
+    const tc={};Q.forEach(q=>{tc[q.topic]=tc[q.topic]||{p:0,s:0};tc[q.topic].p++;
+      q.sec.forEach(s=>{tc[s]=tc[s]||{p:0,s:0};tc[s].s++})});
+    return Object.entries(tc).map(([t,c])=>({t,p:c.p,s:c.s,total:c.p+c.s}))
+      .sort((a,b)=>b.total-a.total||b.p-a.p);
+  }
   function renderCharts(){
+    // 【高頻考點 Top 10】
+    const top10=computeTopicFreq().slice(0,10);
+    const tmax=top10.length?top10[0].total:1;
+    document.getElementById('chartFreqTop').innerHTML=top10.map((e,idx)=>
+      bar(`<b>${idx+1}.</b> <span class="unitchip" style="background:${UCOLOR[unitOf(e.t)]}"></span>${e.t}｜${TOPICS[e.t]||e.t}（主 ${e.p}＋副 ${e.s}）`,e.total,tmax,UCOLOR[unitOf(e.t)])
+    ).join('');
+
+    // 【各單元命題比例】（依主考點）
     const uc={};Q.forEach(q=>{const u=unitOf(q.topic);uc[u]=(uc[u]||0)+1});
     const umax=Math.max(...Object.values(uc));
     document.getElementById('chartUnit').innerHTML=Object.entries(UNITS)
       .map(([u,n])=>bar(`<span class="unitchip" style="background:${UCOLOR[u]}"></span>${n}（${(uc[u]/Q.length*100).toFixed(0)}%）`,uc[u]||0,umax,UCOLOR[u])).join('');
-    const mc={};Q.forEach(q=>mc[q.method]=(mc[q.method]||0)+1);
-    const mmax=Math.max(...Object.values(mc));
-    document.getElementById('chartMethod').innerHTML=Object.entries(mc).sort((a,b)=>b[1]-a[1])
-      .map(([m,c])=>bar(`${m}（${(c/Q.length*100).toFixed(0)}%）`,c,mmax,'#64748b')).join('');
-    const tc={};Q.forEach(q=>{tc[q.topic]=tc[q.topic]||{p:0,s:0};tc[q.topic].p++;
-      q.sec.forEach(s=>{tc[s]=tc[s]||{p:0,s:0};tc[s].s++})});
-    const entries=Object.entries(tc).sort((a,b)=>(b[1].p+b[1].s)-(a[1].p+a[1].s));
-    const tmax=entries[0][1].p+entries[0][1].s;
-    document.getElementById('chartTopic').innerHTML=entries
-      .map(([t,c])=>bar(`<span class="unitchip" style="background:${UCOLOR[unitOf(t)]}"></span>${t}｜${TOPICS[t]||t}（主 ${c.p}＋副 ${c.s}）`,c.p+c.s,tmax,UCOLOR[unitOf(t)])).join('');
-    const recent=Q.filter(q=>q.year>=2021).sort((a,b)=>b.year-a.year||a.num-b.num);
+
+    // 【近5年趨勢】（依實際收錄年份動態取最近 5 年）
+    const yearsDesc=[...new Set(Q.map(q=>q.year))].sort((a,b)=>b-a);
+    const recentYears=yearsDesc.slice(0,5);
+    const recentSet=new Set(recentYears);
+    if(recentYears.length){
+      document.getElementById('recentTitle').textContent=
+        `近 ${recentYears.length} 年考點走向（${Math.min(...recentYears)}–${Math.max(...recentYears)}）`;
+    }
+    const recent=Q.filter(q=>recentSet.has(q.year)).sort((a,b)=>b.year-a.year||a.num-b.num);
     let html='',yr=0;
     recent.forEach(q=>{if(q.year!==yr){yr=q.year;html+=`<div style="margin-top:8px;font-weight:700">${yr}（民國 ${yr-1911}）</div>`;}
-      html+=`<div style="font-size:.85rem;margin-left:8px"><span class="unitchip" style="background:${UCOLOR[unitOf(q.topic)]}"></span>第${q.num}題：${TOPICS[q.topic]}</div>`;});
+      const secTxt=q.sec.length?`（副：${q.sec.map(s=>TOPICS[s]||s).join('、')}）`:'';
+      html+=`<div style="font-size:.85rem;margin-left:8px"><span class="unitchip" style="background:${UCOLOR[unitOf(q.topic)]}"></span>第${q.num}題：${TOPICS[q.topic]}${secTxt}</div>`;});
     document.getElementById('recent').innerHTML=html;
-    const tagc={};Q.forEach(q=>q.tags.forEach(t=>tagc[t]=(tagc[t]||0)+1));
-    document.getElementById('topTags').innerHTML=Object.entries(tagc).sort((a,b)=>b[1]-a[1]).slice(0,20)
-      .map(([t,c])=>`<span class="tag" data-t="${t}" style="font-size:${(0.76+Math.min(c,8)*0.05).toFixed(2)}rem">${t} ×${c}</span>`).join('');
-    document.getElementById('topTags').addEventListener('click',e=>{
-      const tg=e.target.closest('.tag');if(!tg)return;
-      qIn.value=tg.dataset.t;
-      document.querySelector('nav.tabs button[data-p=browse]').click();render();});
   }
 
   // ---- 分頁 ----
@@ -407,25 +412,8 @@
   }
 
   renderStats();render();renderCharts();renderExams();
-  // 靜默恢復上次的資料夾授權 → 成功後 ensureDir 內部會觸發 injectPdfButtons
+  // 靜默恢復上次的資料夾授權（供「完整解析」與「補充筆記 PDF」按鈕使用，無需另外掃描）
   ensureDir(false);
-
-  // 工具列「掃描補充 PDF」按鈕
-  document.getElementById('btnScanPdf').addEventListener('click', async () => {
-    const btn = document.getElementById('btnScanPdf');
-    btn.textContent = '⏳ 掃描中…'; btn.disabled = true;
-    const h = await ensureDir(true);
-    if (h) {
-      // 清除快取，重新掃描所有可見卡片
-      Object.keys(pdfCache).forEach(k => delete pdfCache[k]);
-      await injectPdfButtons();
-      const count = Object.values(pdfCache).filter(v => v.length > 0).length;
-      btn.textContent = `📎 已找到 ${count} 題有 PDF`;
-    } else {
-      btn.textContent = '📎 掃描補充 PDF';
-    }
-    btn.disabled = false;
-  });
 
   /* ================= 解析閱讀器 ================= */
   const overlay=document.getElementById('overlay'),reader=document.getElementById('reader'),
@@ -482,12 +470,12 @@
     let h=await idbGet();
     if(h){let p=await h.queryPermission({mode:'read'});
       if(p==='prompt'&&interactive)p=await h.requestPermission({mode:'read'});
-      if(p==='granted'){dirHandle=h;setTimeout(injectPdfButtons,0);return h;}}
+      if(p==='granted'){dirHandle=h;return h;}}
     if(!interactive)return null;
     try{h=await showDirectoryPicker({mode:'read'});}catch(e){return null;}
     try{await h.getDirectoryHandle('raw');}catch(e){
       alert('選擇的資料夾內找不到 raw/，請選擇 exam-wiki-RC 資料夾本身。');return null;}
-    dirHandle=h;await idbSet(h);setTimeout(injectPdfButtons,0);return h;
+    dirHandle=h;await idbSet(h);return h;
   }
   async function readFileByPath(relPath){
     const parts=relPath.split('/').filter(Boolean);
@@ -620,16 +608,8 @@
   window.openMd=openMd;
 
   /* ================= 補充筆記 PDF ================= */
-  const pdfCache={}; // qId → string[]（已掃描）| undefined（未掃描）
-
-  async function listDir(relPath){
-    const parts=relPath.split('/').filter(Boolean);
-    let d=dirHandle;
-    for(const p of parts) d=await d.getDirectoryHandle(p);
-    const files=[];
-    for await(const [name] of d.entries()) files.push(name);
-    return files;
-  }
+  // PDF 檔名清單由 dashboard-data.js（q.pdf，REFRESH-DASHBOARD 指令掃描寫入）提供，
+  // 不再於前端即時掃描資料夾，因此按鈕在 render() 時即已依資料直接顯示。
 
   async function openPdfFile(relPath){
     try{
@@ -661,41 +641,15 @@
     setTimeout(()=>document.addEventListener('click',outside,true),0);
   }
 
-  // 掃描所有可見卡片並注入 PDF 按鈕（只對有 PDF 的卡片）
-  async function injectPdfButtons(){
-    if(!dirHandle) return;
-    const cards=document.querySelectorAll('.qcard[data-qid]');
-    await Promise.all([...cards].map(async card=>{
-      const qId=card.dataset.qid;
-      // 已快取：直接根據結果決定要不要注入
-      if(pdfCache[qId]!==undefined){
-        if(pdfCache[qId].length) _addPdfBtn(card,qId);
-        return;
-      }
-      // 未快取：掃描
-      try{
-        const files=await listDir('raw/solutions/'+qId);
-        const pdfs=files.filter(f=>/\.pdf$/i.test(f)).sort();
-        pdfCache[qId]=pdfs;
-        if(pdfs.length) _addPdfBtn(card,qId);
-      }catch(e){ pdfCache[qId]=[]; }
-    }));
-  }
-
-  function _addPdfBtn(card,qId){
-    const links=card.querySelector('.links');
-    if(!links||links.querySelector('.openpdf')) return;
-    const btn=document.createElement('button');
-    btn.className='openpdf';
-    btn.dataset.id=qId;
-    btn.textContent='📎 補充筆記 PDF';
-    links.appendChild(btn);
-  }
-
-  // 點擊已注入的 PDF 按鈕（此時 pdfCache[qId] 一定有值）
+  // 點擊「📎 補充筆記 PDF」按鈕：pdf 清單直接取自 Q（dashboard-data.js 靜態資料）
   async function openPdfs(qId, btn){
-    const pdfs=pdfCache[qId]||[];
+    const q=Q.find(x=>x.id===qId);
+    const pdfs=q?q.pdf:[];
     if(!pdfs.length) return;
+    if(!dirHandle){
+      const h=await ensureDir(true);
+      if(!h) return;
+    }
     if(pdfs.length===1){ openPdfFile('raw/solutions/'+qId+'/'+pdfs[0]); return; }
     showPdfDrop(btn, pdfs, qId);
   }
