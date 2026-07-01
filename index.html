@@ -412,8 +412,8 @@
   }
 
   renderStats();render();renderCharts();renderExams();
-  // 靜默恢復上次的資料夾授權（供「完整解析」與「補充筆記 PDF」按鈕使用，無需另外掃描）
-  ensureDir(false);
+  // 靜默恢復上次的資料夾授權（僅限本機環境）
+  if(location.protocol === 'file:') ensureDir(false);
 
   /* ================= 解析閱讀器 ================= */
   const overlay=document.getElementById('overlay'),reader=document.getElementById('reader'),
@@ -554,33 +554,46 @@
     rTitle.textContent=title||relPath;
     overlay.classList.add('on');reader.classList.add('on');
     rBody.innerHTML='<div class="rmsg">讀取中…</div>';
-    if(!window.showDirectoryPicker){
+    const isLocal = location.protocol === 'file:';
+    if(isLocal && !window.showDirectoryPicker){
       rBody.innerHTML=`<div class="rmsg">此瀏覽器不支援資料夾讀取（File System Access API）。<br>
         建議使用 Edge 或 Chrome 開啟本儀表板。<br>
         <div class="small"><a href="${relPath}" target="_blank">改以純文字開啟原始檔 →</a></div></div>`;return;}
-    let h=await ensureDir(false);
-    if(!h){
-      rBody.innerHTML=`<div class="rmsg">首次使用站內閱讀器，請授權讀取知識庫資料夾<br>（選擇 <b>exam-wiki-RC</b> 資料夾，僅需一次）<br>
-        <button id="btnPick">📂 選擇資料夾</button>
-        <div class="small">瀏覽器安全限制：本機網頁需經您同意才能讀取檔案。</div></div>`;
-      document.getElementById('btnPick').addEventListener('click',async()=>{
-        h=await ensureDir(true);
-        if(h)openMd(relPath,title);});
-      return;}
+    if(isLocal){
+      let h=await ensureDir(false);
+      if(!h){
+        rBody.innerHTML=`<div class="rmsg">首次使用站內閱讀器，請授權讀取知識庫資料夾<br>（選擇 <b>exam-wiki-RC</b> 資料夾，僅需一次）<br>
+          <button id="btnPick">📂 選擇資料夾</button>
+          <div class="small">瀏覽器安全限制：本機網頁需經您同意才能讀取檔案。</div></div>`;
+        document.getElementById('btnPick').addEventListener('click',async()=>{
+          h=await ensureDir(true);
+          if(h)openMd(relPath,title);});
+        return;}
+    }
     let text;
-    try{const f=await readFileByPath(relPath);text=await f.text();}
+    try{
+      if(!isLocal){
+        const res = await fetch(relPath);
+        if(!res.ok) throw new Error(`HTTP ${res.status} ${res.statusText}`);
+        text = await res.text();
+      }else{
+        const f=await readFileByPath(relPath);text=await f.text();
+      }
+    }
     catch(e){
       rBody.innerHTML=`<div class="rmsg">讀取失敗：${esc(relPath)}<br><div class="small">${esc(e.message||String(e))}</div><br>
-      <div class="small" style="color:var(--warn)">可能是資料夾位置已變更或瀏覽器授權失效。請點擊下方按鈕清除快取後重試。</div>
-      <button id="btnResetHandle">重新選擇資料夾</button></div>`;
-      document.getElementById('btnResetHandle').addEventListener('click', () => {
-        const r=indexedDB.open(IDB,1);
-        r.onsuccess=()=>{
-          r.result.transaction('kv','readwrite').objectStore('kv').delete('dir');
-          dirHandle=null;
-          rBody.innerHTML='<div class="rmsg">已清除快取！<br>請關閉此視窗，並重新點擊「📄 完整解析」來重新選擇資料夾。</div>';
-        };
-      });
+      ${isLocal ? `<div class="small" style="color:var(--warn)">可能是資料夾位置已變更或瀏覽器授權失效。請點擊下方按鈕清除快取後重試。</div>
+      <button id="btnResetHandle">重新選擇資料夾</button>` : ''}</div>`;
+      if(isLocal){
+        document.getElementById('btnResetHandle').addEventListener('click', () => {
+          const r=indexedDB.open(IDB,1);
+          r.onsuccess=()=>{
+            r.result.transaction('kv','readwrite').objectStore('kv').delete('dir');
+            dirHandle=null;
+            rBody.innerHTML='<div class="rmsg">已清除快取！<br>請關閉此視窗，並重新點擊「📄 完整解析」來重新選擇資料夾。</div>';
+          };
+        });
+      }
       return;
     }
     await waitKatex(4000);
@@ -593,8 +606,15 @@
     rBody.querySelectorAll('img[data-mdsrc]').forEach(async img=>{
       const p=img.dataset.mdsrc;
       if(/^https?:/.test(p)){img.src=p;return;}
-      try{const f=await readFileByPath(baseDir?baseDir+'/'+decodeURIComponent(p):decodeURIComponent(p));
-        const u=URL.createObjectURL(f);blobUrls.push(u);img.src=u;}
+      try{
+        const imgRelPath = baseDir?baseDir+'/'+decodeURIComponent(p):decodeURIComponent(p);
+        if(!isLocal){
+          img.src = imgRelPath;
+        }else{
+          const f=await readFileByPath(imgRelPath);
+          const u=URL.createObjectURL(f);blobUrls.push(u);img.src=u;
+        }
+      }
       catch(e){img.alt='（找不到圖片：'+p+'）';img.style.minHeight='40px';}
     });
     // .md 內部連結 → 閱讀器內開啟
@@ -623,10 +643,14 @@
 
   async function openPdfFile(relPath){
     try{
-      const f=await readFileByPath(relPath);
-      const u=URL.createObjectURL(f);
-      window.open(u,'_blank');
-      setTimeout(()=>URL.revokeObjectURL(u),120000);
+      if(location.protocol !== 'file:'){
+        window.open(relPath, '_blank');
+      }else{
+        const f=await readFileByPath(relPath);
+        const u=URL.createObjectURL(f);
+        window.open(u,'_blank');
+        setTimeout(()=>URL.revokeObjectURL(u),120000);
+      }
     }catch(e){alert('無法開啟 PDF：'+e.message);}
   }
 
@@ -656,7 +680,7 @@
     const q=Q.find(x=>x.id===qId);
     const pdfs=q?q.pdf:[];
     if(!pdfs.length) return;
-    if(!dirHandle){
+    if(location.protocol === 'file:' && !dirHandle){
       const h=await ensureDir(true);
       if(!h) return;
     }
