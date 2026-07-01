@@ -1,4 +1,4 @@
-# exam-wiki-RC — 操作指令手冊（Runbook）
+﻿# exam-wiki-RC — 操作指令手冊（Runbook）
 
 > **適用環境：** Cowork（直接在對話中說出指令即可）
 > **不適用：** 此檔案不需要 Claude Code 終端機；Cowork 承接所有指令
@@ -214,7 +214,7 @@ solutions/ 已有解析但未驗證：[列出題號]
 
 **觸發語句：** `更新儀表板資料`（Cowork 直接執行）
 
-**用途：** `dashboard.html`（資料夾根目錄的離線儀表板）讀取 `dashboard-data.js` 顯示題庫。當 `question_index.json` 變動（新增題目、改標籤）後，需重新生成快照。
+**用途：** `index.html`（資料夾根目錄的離線儀表板）讀取 `dashboard-data.js` 顯示題庫。當 `question_index.json` 變動（新增題目、改標籤）後，需重新生成快照。
 
 **執行步驟：**
 ```
@@ -227,13 +227,13 @@ solutions/ 已有解析但未驗證：[列出題號]
      無 PDF 的題目寫入空陣列 []
 3. 讀取 `raw/json/syllabus_taxonomy.json`，提取出 `subject.id === "RC"` 的分類樹，並自動轉換成 `window.RC_TOPICS` 與 `window.RC_UNITS` 寫入 `dashboard-data.js` 中。
 4. 在 wiki/log.md 追加紀錄
-注意：dashboard.html 本身不需改動；僅當需求變更時才修改 UI。
+注意：index.html 本身不需改動；僅當需求變更時才修改 UI。
 ```
 
 **補充說明：補充筆記 PDF**
 - 使用者可將任意 `.pdf` 檔案放入 `raw/solutions/RC-YYYY-N/` 資料夾，命名無強制規範
 - PDF 檔名清單由 REFRESH-DASHBOARD 指令掃描並寫入 dashboard-data.js（q.pdf 欄位），不再於前端即時掃描資料夾
-- dashboard.html 題庫瀏覽頁會依 dashboard-data.js 資料，對有 PDF 的題目卡片直接顯示「📎 補充筆記 PDF」按鈕（多筆時顯示筆數，點擊可選取要開啟的檔案）；無 PDF 者不顯示
+- index.html 題庫瀏覽頁會依 dashboard-data.js 資料，對有 PDF 的題目卡片直接顯示「📎 補充筆記 PDF」按鈕（多筆時顯示筆數，點擊可選取要開啟的檔案）；無 PDF 者不顯示
 - 點擊按鈕仍需透過 File System Access API 授權讀取知識庫資料夾（與「📄 完整解析」共用同一次授權），但不需要另外的「掃描」步驟
 - 使用者新增或移除 PDF 後，需對 Cowork 說「更新儀表板資料」才會反映在按鈕上
 
@@ -436,3 +436,4 @@ RC-2018-4：後拉法預力梁
 | 2026-06-04 | 全面改寫：所有指令改由 Cowork 直接執行 | 知識庫全程在 Cowork 運行，無獨立終端機環境 |
 | 2026-06-04 | 新增 REINDEX、ADD-CONCEPT、ADD-METHOD、FREQUENCY、ANALYZE、PREDICT、STUDY、FIND、RELATED、UNVERIFIED 共 10 個指令 | 擴充備考分析與查詢快捷功能 |
 | 2026-06-30 | 更新 STUDY 指令規格：考題連結必須指向 `raw/solutions/` 原始檔 | 確保 index.html#md 渲染引擎能正確讀取相對路徑的圖片與 PDF 附檔 |
+

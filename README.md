@@ -1,4 +1,4 @@
-# exam-wiki-RC — 鋼筋混凝土設計與預力考古題知識庫
+﻿# exam-wiki-RC — 鋼筋混凝土設計與預力考古題知識庫
 
 **科目：** 專門職業及技術人員高等考試結構工程技師 — 第三科：鋼筋混凝土設計與預力
 **收錄範圍：** 2002–2025 年（民國 91–114 年）
@@ -27,7 +27,7 @@
 
 | 我想找... | 去哪找 |
 |----------|-------|
-| **視覺化瀏覽整個知識庫** | **雙擊 `dashboard.html`**（題庫搜尋篩選、考點統計、進度追蹤、指令速查） |
+| **視覺化瀏覽整個知識庫** | **雙擊 `index.html`**（題庫搜尋篩選、考點統計、進度追蹤、指令速查） |
 | 特定題目的解析 | `raw/solutions/RC-YYYY-N/RC-YYYY-N.md` |
 | 子項深度複習講義 | `study/study-RC-UN-n.html`（說 `study RC-UN-n` 生成） |
 | wiki 題目頁（含標籤/考點） | `wiki/problems/RC-YYYY-N.md` |
@@ -48,7 +48,7 @@ exam-wiki-RC/
 ├── CLAUDE-SOLVE.md    ← Cowork 解題 Skill（流程層）
 ├── CLAUDE-CODE.md     ← 所有 Cowork 指令 Runbook（16個指令）
 ├── CLAUDE-SPEC.md     ← 所有格式/命名規範（規格層）
-├── dashboard.html     ← 離線儀表板（題庫篩選/統計/進度追蹤/指令速查）
+├── index.html     ← 離線儀表板（題庫篩選/統計/進度追蹤/指令速查）
 ├── dashboard-data.js  ← 儀表板快照（更新儀表板資料 指令重新生成）
 │
 ├── study/             ← 讀書講義（study 指令輸出的 HTML 複習頁）
@@ -93,3 +93,4 @@ exam-wiki-RC/
 - ingest 前確認 `verificationStatus = "verified"`
 
 > 完整規則見 **CLAUDE-SPEC.md**
+

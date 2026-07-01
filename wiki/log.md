@@ -1,4 +1,4 @@
-# Wiki 操作紀錄
+﻿# Wiki 操作紀錄
 
 > append-only，請勿刪除已有紀錄
 
@@ -145,7 +145,7 @@
   - 操作者：Cowork
 
 - **[DASHBOARD]** 建立知識庫儀表板（新增使用者入口）
-  - 新建 dashboard.html（離線單檔，雙擊即用）：題庫瀏覽（年份/單元/考點/設計法/標籤/關鍵字篩選）、考點統計圖、近5年走向、高頻標籤、讀書進度追蹤（localStorage）、七層架構導覽、16 指令速查
+  - 新建 index.html（離線單檔，雙擊即用）：題庫瀏覽（年份/單元/考點/設計法/標籤/關鍵字篩選）、考點統計圖、近5年走向、高頻標籤、讀書進度追蹤（localStorage）、七層架構導覽、16 指令速查
   - 新建 dashboard-data.js（question_index.json 快照，100 題）
   - 新增指令 REFRESH-DASHBOARD（觸發語句「更新儀表板資料」），登錄於 CLAUDE-CODE.md
   - 操作者：Cowork
@@ -189,7 +189,7 @@
 
 - **[DASHBOARD-v4]** 考點統計頁籤改為 frequency 指令格式；補充筆記 PDF 改為靜態資料驅動
   - 「考點統計」頁籤重寫為 frequency 指令輸出格式：高頻考點 Top10（主＋副）、各單元命題比例、近5年趨勢動態列表；移除原「設計法分布」與「高頻標籤 Top20」兩張卡片
-  - dashboard-data.js 資料格式新增第 7 個欄位 pdf（補充筆記檔名陣列）；dashboard.html 移除「📎 掃描補充 PDF」按鈕與前端即時掃描機制（injectPdfButtons/pdfCache/listDir），改為依靜態資料直接顯示「📎 補充筆記 PDF」按鈕
+  - dashboard-data.js 資料格式新增第 7 個欄位 pdf（補充筆記檔名陣列）；index.html 移除「📎 掃描補充 PDF」按鈕與前端即時掃描機制（injectPdfButtons/pdfCache/listDir），改為依靜態資料直接顯示「📎 補充筆記 PDF」按鈕
   - 同步更新 CLAUDE-CODE.md（REFRESH-DASHBOARD 規格）、CLAUDE-SPEC.md（補充筆記 PDF 說明）、CLAUDE.md（CHANGELOG）
   - 操作者：Cowork
 
@@ -199,3 +199,4 @@
   - 掃描 raw/solutions/RC-*/*.pdf：新發現 RC-2023-1 資料夾下 2 個補充 PDF（RC-2023-1.pdf、RC-2023-1_補充.pdf），已寫入 dashboard-data.js pdf 欄位；其餘 99 題維持 []
   - 核對 raw/json/syllabus_taxonomy.json（RC 分類樹）：window.RC_TOPICS／window.RC_UNITS 內容一致，無需更動
   - 操作者：Cowork
+
