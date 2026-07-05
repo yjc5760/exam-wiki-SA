@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <title>SA-2020-1 變形與彎矩圖 (BMD)</title>
+    <style>
+        body { font-family: sans-serif; display: flex; flex-direction: column; align-items: center; padding: 20px; background-color: #f5f5f5; }
+        .container { background: white; padding: 20px; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); margin-bottom: 20px; }
+        canvas { border: 1px solid #ccc; background: #fafafa; }
+        .title { text-align: center; margin-bottom: 10px; font-weight: bold; font-size: 1.2em; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="title">變形示意圖 (位移已放大)</div>
+        <canvas id="defCanvas" width="600" height="300"></canvas>
+    </div>
+    <div class="container">
+        <div class="title">彎矩圖 (BMD)</div>
+        <canvas id="bmdCanvas" width="600" height="300"></canvas>
+    </div>
+    <script>
+        const nodes = {
+            a: {x: 100, y: 100},
+            b: {x: 300, y: 100},
+            c: {x: 500, y: 250},
+            mid: {x: 400, y: 175}
+        };
+
+        function drawSupport(ctx, x, y, type) {
+            ctx.beginPath();
+            if (type === 'fixed') {
+                ctx.moveTo(x, y-20); ctx.lineTo(x, y+20);
+                for(let i=-20; i<=20; i+=10) { ctx.moveTo(x, y+i); ctx.lineTo(x-10, y+i+10); }
+            } else if (type === 'roller-wall') {
+                ctx.arc(x+10, y, 6, 0, Math.PI*2);
+                ctx.moveTo(x+16, y-20); ctx.lineTo(x+16, y+20);
+                for(let i=-20; i<=20; i+=10) { ctx.moveTo(x+16, y+i); ctx.lineTo(x+26, y+i+10); }
+            }
+            ctx.stroke();
+        }
+
+        // Deflection Canvas
+        const ctxD = document.getElementById('defCanvas').getContext('2d');
+        ctxD.strokeStyle = '#aaa'; ctxD.setLineDash([5,5]); ctxD.lineWidth = 2;
+        ctxD.beginPath(); ctxD.moveTo(nodes.a.x, nodes.a.y); ctxD.lineTo(nodes.b.x, nodes.b.y); ctxD.lineTo(nodes.c.x, nodes.c.y); ctxD.stroke();
+        
+        const delta = 40; // visual amplification
+        const b_def = {x: nodes.b.x, y: nodes.b.y + delta};
+        const c_def = {x: nodes.c.x, y: nodes.c.y + delta};
+
+        ctxD.strokeStyle = '#0055aa'; ctxD.setLineDash([]); ctxD.lineWidth = 3;
+        ctxD.beginPath(); ctxD.moveTo(nodes.a.x, nodes.a.y);
+        ctxD.quadraticCurveTo(nodes.a.x + 100, nodes.a.y, b_def.x, b_def.y);
+        ctxD.lineTo(c_def.x, c_def.y);
+        ctxD.stroke();
+
+        ctxD.fillStyle = '#d32f2f'; ctxD.font = '14px Arial';
+        ctxD.fillText("a", nodes.a.x-15, nodes.a.y-10);
+        ctxD.fillText("b", b_def.x-10, b_def.y+20);
+        ctxD.fillText("c", c_def.x-10, c_def.y+20);
+        drawSupport(ctxD, nodes.a.x, nodes.a.y, 'fixed');
+        drawSupport(ctxD, c_def.x, c_def.y, 'roller-wall');
+
+        // BMD Canvas
+        const ctxB = document.getElementById('bmdCanvas').getContext('2d');
+        ctxB.strokeStyle = '#000'; ctxB.lineWidth = 2;
+        ctxB.beginPath(); ctxB.moveTo(nodes.a.x, nodes.a.y); ctxB.lineTo(nodes.b.x, nodes.b.y); ctxB.lineTo(nodes.c.x, nodes.c.y); ctxB.stroke();
+
+        const moments = { a: -191, b: -81, mid: -108.5, c: 0 };
+        const scale = 0.4;
+        
+        // normal vectors
+        const n_ab = {x: 0, y: -1}; // up
+        const n_bc = {x: 0.6, y: 0.8}; // up-right perpendicular to bc
+
+        const a_m = {x: nodes.a.x + n_ab.x * moments.a * scale, y: nodes.a.y + n_ab.y * moments.a * scale};
+        const b_m1 = {x: nodes.b.x + n_ab.x * moments.b * scale, y: nodes.b.y + n_ab.y * moments.b * scale};
+        const b_m2 = {x: nodes.b.x + n_bc.x * moments.b * scale, y: nodes.b.y + n_bc.y * moments.b * scale};
+        const mid_m = {x: nodes.mid.x + n_bc.x * moments.mid * scale, y: nodes.mid.y + n_bc.y * moments.mid * scale};
+        const c_m = {x: nodes.c.x, y: nodes.c.y};
+
+        ctxB.fillStyle = 'rgba(255, 0, 0, 0.2)';
+        ctxB.beginPath();
+        ctxB.moveTo(nodes.a.x, nodes.a.y); ctxB.lineTo(a_m.x, a_m.y); ctxB.lineTo(b_m1.x, b_m1.y); ctxB.lineTo(nodes.b.x, nodes.b.y);
+        ctxB.fill(); ctxB.stroke();
+
+        ctxB.beginPath();
+        ctxB.moveTo(nodes.b.x, nodes.b.y); ctxB.lineTo(b_m2.x, b_m2.y); ctxB.lineTo(mid_m.x, mid_m.y); ctxB.lineTo(c_m.x, c_m.y); ctxB.lineTo(nodes.c.x, nodes.c.y);
+        ctxB.fill(); ctxB.stroke();
+
+        ctxB.fillStyle = '#000';
+        ctxB.fillText("-191", a_m.x, a_m.y - 10);
+        ctxB.fillText("-81", b_m1.x, b_m1.y - 10);
+        ctxB.fillText("-108.5", mid_m.x+10, mid_m.y);
+        ctxB.fillText("0", c_m.x+10, c_m.y);
+    </script>
+</body>
+</html>

@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<title>SA-2025-2 影響線視覺化</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Segoe UI', sans-serif; background: #f5f5f7; color: #1d1d1f; }
+  header {
+    background: #1a3a5c; color: white; padding: 14px 22px;
+    display: flex; align-items: center; gap: 12px;
+  }
+  header .tag { font-size: 11px; background: rgba(255,255,255,0.2); padding: 2px 8px; border-radius: 10px; }
+  header h1 { font-size: 17px; font-weight: 600; }
+  header .sub { font-size: 12px; opacity: 0.8; margin-top: 2px; }
+  .container { max-width: 1000px; margin: 0 auto; padding: 20px 14px; }
+  .card {
+    background: white; border-radius: 10px; padding: 16px 20px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.07); margin-bottom: 16px;
+  }
+  .card h2 { font-size: 13px; font-weight: 700; color: #1a3a5c; margin-bottom: 12px; }
+  svg { display: block; width: 100%; }
+  .il-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+  .il-card { background: white; border-radius: 10px; padding: 12px 16px; box-shadow: 0 2px 6px rgba(0,0,0,0.07); }
+  .il-card h3 { font-size: 12px; font-weight: 700; color: #1a3a5c; margin-bottom: 8px; }
+  table { width: 100%; border-collapse: collapse; font-size: 12px; }
+  th { background: #e8f0fe; color: #1a3a5c; padding: 6px 8px; text-align: center; font-size: 11px; }
+  td { padding: 5px 8px; border: 1px solid #e0e4ea; text-align: center; }
+  .pos { color: #0a5c0a; font-weight: 600; }
+  .neg { color: #c00; font-weight: 600; }
+  .zero { color: #888; }
+  footer { text-align: center; padding: 16px; font-size: 11px; color: #888; }
+</style>
+</head>
+<body>
+
+<header>
+  <div>
+    <div style="display:flex;gap:8px;margin-bottom:5px">
+      <span class="tag">SA-2025-2</span>
+      <span class="tag">SA-U1-3 影響線</span>
+      <span class="tag">25分</span>
+    </div>
+    <h1>靜定梁（含內鉸接）五條影響線圖</h1>
+    <div class="sub">A(固定端)–B(鉸)–C(滾)–D(鉸)–E(滾)–F(自由端）｜2+4+4+4+4 m</div>
+  </div>
+</header>
+
+<div class="container">
+
+  <!-- Beam diagram -->
+  <div class="card">
+    <h2>① 梁幾何與支承條件（座標：A=0, B=2, C=6, D=10, E=14, F=18 m）</h2>
+    <svg viewBox="0 0 860 110" height="110">
+      <!-- beam line -->
+      <line x1="60" y1="55" x2="800" y2="55" stroke="#1a3a5c" stroke-width="5"/>
+      <!-- x positions scaled: x_pixel = 60 + x*41.1 -->
+      <!-- A=60, B=142, C=306, D=471, E=635, F=800 -->
+
+      <!-- Fixed support at A (x=60) -->
+      <rect x="30" y="42" width="30" height="26" fill="#ddd" stroke="#555" stroke-width="1.5"/>
+      <line x1="30" y1="40" x2="30" y2="72" stroke="#555" stroke-width="2.5"/>
+      <text x="60" y="82" text-anchor="middle" font-size="13" font-weight="bold" fill="#c00">A</text>
+      <text x="60" y="96" text-anchor="middle" font-size="10" fill="#555">固定端</text>
+
+      <!-- Roller at C (x=306) -->
+      <polygon points="306,55 294,75 318,75" fill="white" stroke="#555" stroke-width="1.5"/>
+      <line x1="284" y1="75" x2="328" y2="75" stroke="#555" stroke-width="2"/>
+      <text x="306" y="89" text-anchor="middle" font-size="13" font-weight="bold" fill="#0060c0">C</text>
+      <text x="306" y="102" text-anchor="middle" font-size="10" fill="#555">滾支承</text>
+
+      <!-- Roller at E (x=635) -->
+      <polygon points="635,55 623,75 647,75" fill="white" stroke="#555" stroke-width="1.5"/>
+      <line x1="613" y1="75" x2="657" y2="75" stroke="#555" stroke-width="2"/>
+      <text x="635" y="89" text-anchor="middle" font-size="13" font-weight="bold" fill="#0060c0">E</text>
+      <text x="635" y="102" text-anchor="middle" font-size="10" fill="#555">滾支承</text>
+
+      <!-- Internal hinge at B (x=142) -->
+      <circle cx="142" cy="55" r="6" fill="white" stroke="#e07020" stroke-width="2.5"/>
+      <text x="142" y="38" text-anchor="middle" font-size="13" font-weight="bold" fill="#e07020">B</text>
+      <text x="142" y="26" text-anchor="middle" font-size="10" fill="#e07020">內鉸</text>
+
+      <!-- Internal hinge at D (x=471) -->
+      <circle cx="471" cy="55" r="6" fill="white" stroke="#e07020" stroke-width="2.5"/>
+      <text x="471" y="38" text-anchor="middle" font-size="13" font-weight="bold" fill="#e07020">D</text>
+      <text x="471" y="26" text-anchor="middle" font-size="10" fill="#e07020">內鉸</text>
+
+      <!-- Free end at F (x=800) -->
+      <text x="800" y="38" text-anchor="middle" font-size="13" font-weight="bold" fill="#333">F</text>
+      <text x="800" y="26" text-anchor="middle" font-size="10" fill="#555">自由端</text>
+
+      <!-- Span dimensions -->
+      <line x1="60" y1="6" x2="142" y2="6" stroke="#aaa" stroke-width="1"/>
+      <text x="101" y="18" text-anchor="middle" font-size="10" fill="#777">2m</text>
+      <line x1="142" y1="6" x2="306" y2="6" stroke="#aaa" stroke-width="1"/>
+      <text x="224" y="18" text-anchor="middle" font-size="10" fill="#777">4m</text>
+      <line x1="306" y1="6" x2="471" y2="6" stroke="#aaa" stroke-width="1"/>
+      <text x="388" y="18" text-anchor="middle" font-size="10" fill="#777">4m</text>
+      <line x1="471" y1="6" x2="635" y2="6" stroke="#aaa" stroke-width="1"/>
+      <text x="553" y="18" text-anchor="middle" font-size="10" fill="#777">4m</text>
+      <line x1="635" y1="6" x2="800" y2="6" stroke="#aaa" stroke-width="1"/>
+      <text x="717" y="18" text-anchor="middle" font-size="10" fill="#777">4m</text>
+    </svg>
+  </div>
+
+  <!-- Influence lines grid -->
+  <div class="il-grid">
+
+    <!-- IL_RA -->
+    <div class="il-card">
+      <h3>② IL<sub>RA</sub>（A點垂直反力）</h3>
+      <svg viewBox="0 0 430 160" height="160">
+        <!-- axes -->
+        <line x1="30" y1="80" x2="420" y2="80" stroke="#bbb" stroke-width="1"/>
+        <line x1="30" y1="15" x2="30" y2="145" stroke="#bbb" stroke-width="1"/>
+        <!-- zero line label -->
+        <text x="22" y="84" text-anchor="end" font-size="10" fill="#888">0</text>
+        <text x="22" y="44" text-anchor="end" font-size="10" fill="#0a5c0a">+1</text>
+        <text x="22" y="124" text-anchor="end" font-size="10" fill="#c00">-1</text>
+        <!-- x positions: A=30, B=71, C=153, D=235, E=318, F=400 (scale: 1m=41px offset+30) -->
+        <!-- A(0)=30, B(2)=112, C(6)=276, D(10)=440→scale down -->
+        <!-- actual scale: 390px for 18m = 21.67px/m -->
+        <!-- A=30, B=73, C=160, D=247, E=334, F=421→too wide, use 370px/18m=20.6px/m -->
+        <!-- A=30, B=71, C=153, D=235, E=317, F=399 -->
+        <!-- y: 0→80, +1→40, -1→120 (scale 40px per unit) -->
+        <!-- IL_RA: A(1)=40, B(1)=40, C(0)=80, D(-1)=120, E(0)=80, F(1)=40 -->
+        <polyline points="30,40 71,40 153,80 235,120 317,80 399,40"
+          fill="rgba(26,58,92,0.12)" stroke="#1a3a5c" stroke-width="2.5" fill-rule="evenodd"/>
+        <!-- zero fill below -->
+        <polygon points="30,80 30,40 71,40 153,80 235,120 317,80 399,40 399,80"
+          fill="rgba(26,58,92,0.08)" stroke="none"/>
+        <!-- point labels -->
+        <circle cx="30" cy="40" r="3.5" fill="#1a3a5c"/>
+        <circle cx="71" cy="40" r="3.5" fill="#1a3a5c"/>
+        <circle cx="153" cy="80" r="3.5" fill="#888"/>
+        <circle cx="235" cy="120" r="3.5" fill="#c00"/>
+        <circle cx="317" cy="80" r="3.5" fill="#888"/>
+        <circle cx="399" cy="40" r="3.5" fill="#1a3a5c"/>
+        <!-- value labels -->
+        <text x="30" y="33" text-anchor="middle" font-size="10" fill="#0a5c0a">+1</text>
+        <text x="71" y="33" text-anchor="middle" font-size="10" fill="#0a5c0a">+1</text>
+        <text x="153" y="74" text-anchor="middle" font-size="10" fill="#888">0</text>
+        <text x="235" y="132" text-anchor="middle" font-size="10" fill="#c00">-1</text>
+        <text x="317" y="74" text-anchor="middle" font-size="10" fill="#888">0</text>
+        <text x="399" y="33" text-anchor="middle" font-size="10" fill="#0a5c0a">+1</text>
+        <!-- x-axis labels -->
+        <text x="30" y="152" text-anchor="middle" font-size="10" fill="#555">A</text>
+        <text x="71" y="152" text-anchor="middle" font-size="10" fill="#e07020">B</text>
+        <text x="153" y="152" text-anchor="middle" font-size="10" fill="#0060c0">C</text>
+        <text x="235" y="152" text-anchor="middle" font-size="10" fill="#e07020">D</text>
+        <text x="317" y="152" text-anchor="middle" font-size="10" fill="#0060c0">E</text>
+        <text x="399" y="152" text-anchor="middle" font-size="10" fill="#333">F</text>
+      </svg>
+    </div>
+
+    <!-- IL_RC -->
+    <div class="il-card">
+      <h3>③ IL<sub>RC</sub>（C點滾支承反力）</h3>
+      <svg viewBox="0 0 430 185" height="185">
+        <!-- axes -->
+        <line x1="30" y1="90" x2="420" y2="90" stroke="#bbb" stroke-width="1"/>
+        <line x1="30" y1="15" x2="30" y2="175" stroke="#bbb" stroke-width="1"/>
+        <text x="22" y="94" text-anchor="end" font-size="10" fill="#888">0</text>
+        <text x="22" y="54" text-anchor="end" font-size="10" fill="#0a5c0a">+1</text>
+        <text x="22" y="14" text-anchor="end" font-size="10" fill="#0a5c0a">+2</text>
+        <text x="22" y="134" text-anchor="end" font-size="10" fill="#c00">-1</text>
+        <text x="22" y="174" text-anchor="end" font-size="10" fill="#c00">-2</text>
+        <!-- y: 0→90, +1→50, +2→10, -1→130, -2→170 (40px/unit) -->
+        <!-- IL_RC: A(0)=90, B(0)=90, C(1)=50, D(2)=10, E(0)=90, F(-2)=170 -->
+        <polygon points="30,90 71,90 153,50 235,10 317,90 399,170 399,90 317,90 235,90 153,90 71,90 30,90"
+          fill="rgba(0,96,192,0.08)" stroke="none"/>
+        <polyline points="30,90 71,90 153,50 235,10 317,90 399,170"
+          fill="none" stroke="#0060c0" stroke-width="2.5"/>
+        <circle cx="30" cy="90" r="3.5" fill="#888"/>
+        <circle cx="71" cy="90" r="3.5" fill="#888"/>
+        <circle cx="153" cy="50" r="3.5" fill="#0060c0"/>
+        <circle cx="235" cy="10" r="3.5" fill="#0060c0"/>
+        <circle cx="317" cy="90" r="3.5" fill="#888"/>
+        <circle cx="399" cy="170" r="3.5" fill="#c00"/>
+        <text x="153" y="42" text-anchor="middle" font-size="10" fill="#0a5c0a">+1</text>
+        <text x="235" y="22" text-anchor="middle" font-size="10" fill="#0a5c0a">+2</text>
+        <text x="399" y="163" text-anchor="middle" font-size="10" fill="#c00">-2</text>
+        <text x="30" y="170" text-anchor="middle" font-size="10" fill="#555">A</text>
+        <text x="71" y="170" text-anchor="middle" font-size="10" fill="#e07020">B</text>
+        <text x="153" y="170" text-anchor="middle" font-size="10" fill="#0060c0">C</text>
+        <text x="235" y="170" text-anchor="middle" font-size="10" fill="#e07020">D</text>
+        <text x="317" y="170" text-anchor="middle" font-size="10" fill="#0060c0">E</text>
+        <text x="399" y="170" text-anchor="middle" font-size="10" fill="#333">F</text>
+        <!-- zero line dashed -->
+        <line x1="30" y1="90" x2="420" y2="90" stroke="#ddd" stroke-width="1" stroke-dasharray="3,2"/>
+      </svg>
+    </div>
+
+    <!-- IL_RE -->
+    <div class="il-card">
+      <h3>④ IL<sub>RE</sub>（E點滾支承反力）</h3>
+      <svg viewBox="0 0 430 155" height="155">
+        <line x1="30" y1="100" x2="420" y2="100" stroke="#bbb" stroke-width="1"/>
+        <line x1="30" y1="15" x2="30" y2="145" stroke="#bbb" stroke-width="1"/>
+        <text x="22" y="104" text-anchor="end" font-size="10" fill="#888">0</text>
+        <text x="22" y="64" text-anchor="end" font-size="10" fill="#0a5c0a">+1</text>
+        <text x="22" y="24" text-anchor="end" font-size="10" fill="#0a5c0a">+2</text>
+        <!-- IL_RE: A(0)=100, B(0)=100, C(0)=100, D(0)=100, E(1)=60, F(2)=20 -->
+        <polygon points="30,100 235,100 317,60 399,20 399,100 317,100 235,100 30,100"
+          fill="rgba(0,128,0,0.08)" stroke="none"/>
+        <polyline points="30,100 235,100 317,60 399,20"
+          fill="none" stroke="#008000" stroke-width="2.5"/>
+        <circle cx="235" cy="100" r="3.5" fill="#888"/>
+        <circle cx="317" cy="60" r="3.5" fill="#008000"/>
+        <circle cx="399" cy="20" r="3.5" fill="#008000"/>
+        <text x="317" y="52" text-anchor="middle" font-size="10" fill="#0a5c0a">+1</text>
+        <text x="399" y="13" text-anchor="middle" font-size="10" fill="#0a5c0a">+2</text>
+        <text x="30" y="142" text-anchor="middle" font-size="10" fill="#555">A</text>
+        <text x="71" y="142" text-anchor="middle" font-size="10" fill="#e07020">B</text>
+        <text x="153" y="142" text-anchor="middle" font-size="10" fill="#0060c0">C</text>
+        <text x="235" y="142" text-anchor="middle" font-size="10" fill="#e07020">D</text>
+        <text x="317" y="142" text-anchor="middle" font-size="10" fill="#0060c0">E</text>
+        <text x="399" y="142" text-anchor="middle" font-size="10" fill="#333">F</text>
+      </svg>
+    </div>
+
+    <!-- IL_MA -->
+    <div class="il-card">
+      <h3>⑤ IL<sub>MA</sub>（A端固定彎矩，單位 m）</h3>
+      <svg viewBox="0 0 430 185" height="185">
+        <line x1="30" y1="90" x2="420" y2="90" stroke="#bbb" stroke-width="1"/>
+        <line x1="30" y1="15" x2="30" y2="175" stroke="#bbb" stroke-width="1"/>
+        <text x="22" y="94" text-anchor="end" font-size="10" fill="#888">0</text>
+        <text x="22" y="54" text-anchor="end" font-size="10" fill="#0a5c0a">+2</text>
+        <text x="22" y="134" text-anchor="end" font-size="10" fill="#c00">-2</text>
+        <!-- y: 0→90, +2→50, -2→130 (20px per unit) -->
+        <!-- IL_MA: A(0)=90, B(2)=50, C(0)=90, D(-2)=130, E(0)=90, F(2)=50 -->
+        <polygon points="30,90 71,50 153,90 235,130 317,90 399,50 399,90 317,90 235,90 153,90 71,90 30,90"
+          fill="rgba(160,0,160,0.08)" stroke="none"/>
+        <polyline points="30,90 71,50 153,90 235,130 317,90 399,50"
+          fill="none" stroke="#800080" stroke-width="2.5"/>
+        <circle cx="30" cy="90" r="3.5" fill="#888"/>
+        <circle cx="71" cy="50" r="3.5" fill="#800080"/>
+        <circle cx="153" cy="90" r="3.5" fill="#888"/>
+        <circle cx="235" cy="130" r="3.5" fill="#c00"/>
+        <circle cx="317" cy="90" r="3.5" fill="#888"/>
+        <circle cx="399" cy="50" r="3.5" fill="#800080"/>
+        <text x="71" y="42" text-anchor="middle" font-size="10" fill="#0a5c0a">+2</text>
+        <text x="235" y="142" text-anchor="middle" font-size="10" fill="#c00">-2</text>
+        <text x="399" y="42" text-anchor="middle" font-size="10" fill="#0a5c0a">+2</text>
+        <text x="30" y="170" text-anchor="middle" font-size="10" fill="#555">A</text>
+        <text x="71" y="170" text-anchor="middle" font-size="10" fill="#e07020">B</text>
+        <text x="153" y="170" text-anchor="middle" font-size="10" fill="#0060c0">C</text>
+        <text x="235" y="170" text-anchor="middle" font-size="10" fill="#e07020">D</text>
+        <text x="317" y="170" text-anchor="middle" font-size="10" fill="#0060c0">E</text>
+        <text x="399" y="170" text-anchor="middle" font-size="10" fill="#333">F</text>
+        <line x1="30" y1="90" x2="420" y2="90" stroke="#ddd" stroke-width="1" stroke-dasharray="3,2"/>
+      </svg>
+    </div>
+
+  </div>
+
+  <!-- VF full width -->
+  <div class="il-card" style="margin-top:14px">
+    <h3>⑥ IL<sub>VF</sub>（F點剪力 — 自由端，恆為零）</h3>
+    <svg viewBox="0 0 860 80" height="80">
+      <line x1="30" y1="40" x2="820" y2="40" stroke="#bbb" stroke-width="1"/>
+      <text x="20" y="44" text-anchor="end" font-size="10" fill="#888">0</text>
+      <!-- zero line (the IL itself) -->
+      <line x1="30" y1="40" x2="800" y2="40" stroke="#999" stroke-width="2.5" stroke-dasharray="6,3"/>
+      <text x="415" y="30" text-anchor="middle" font-size="12" fill="#888">V_F = 0 （自由端剪力恆等於零）</text>
+      <!-- point markers -->
+      <circle cx="30" cy="40" r="3.5" fill="#888"/>
+      <circle cx="71" cy="40" r="3.5" fill="#e07020"/>
+      <circle cx="153" cy="40" r="3.5" fill="#0060c0"/>
+      <circle cx="235" cy="40" r="3.5" fill="#e07020"/>
+      <circle cx="317" cy="40" r="3.5" fill="#0060c0"/>
+      <circle cx="399" cy="40" r="3.5" fill="#888"/>
+      <!-- x labels (scaled to full 860 width: 1m = (800-30)/18 = 42.8px/m) -->
+      <!-- A=30, B=30+2*42.8=116, C=30+6*42.8=287, D=30+10*42.8=458, E=30+14*42.8=629, F=30+18*42.8=800 -->
+      <text x="30" y="65" text-anchor="middle" font-size="11" fill="#555">A(0)</text>
+      <text x="116" y="65" text-anchor="middle" font-size="11" fill="#e07020">B(2m)</text>
+      <text x="287" y="65" text-anchor="middle" font-size="11" fill="#0060c0">C(6m)</text>
+      <text x="458" y="65" text-anchor="middle" font-size="11" fill="#e07020">D(10m)</text>
+      <text x="629" y="65" text-anchor="middle" font-size="11" fill="#0060c0">E(14m)</text>
+      <text x="800" y="65" text-anchor="middle" font-size="11" fill="#333">F(18m)</text>
+    </svg>
+  </div>
+
+  <!-- Ordinate table -->
+  <div class="card" style="margin-top:14px">
+    <h2>⑦ 影響線縱距彙整表（單位：kN/kN 或 m）</h2>
+    <table>
+      <tr>
+        <th>量</th>
+        <th>A (x=0)</th><th>B (x=2)</th><th>C (x=6)</th>
+        <th>D (x=10)</th><th>E (x=14)</th><th>F (x=18)</th>
+      </tr>
+      <tr>
+        <th>IL<sub>RA</sub></th>
+        <td class="pos">+1</td><td class="pos">+1</td><td class="zero">0</td>
+        <td class="neg">−1</td><td class="zero">0</td><td class="pos">+1</td>
+      </tr>
+      <tr>
+        <th>IL<sub>RC</sub></th>
+        <td class="zero">0</td><td class="zero">0</td><td class="pos">+1</td>
+        <td class="pos">+2</td><td class="zero">0</td><td class="neg">−2</td>
+      </tr>
+      <tr>
+        <th>IL<sub>RE</sub></th>
+        <td class="zero">0</td><td class="zero">0</td><td class="zero">0</td>
+        <td class="zero">0</td><td class="pos">+1</td><td class="pos">+2</td>
+      </tr>
+      <tr>
+        <th>IL<sub>MA</sub> (m)</th>
+        <td class="zero">0</td><td class="pos">+2</td><td class="zero">0</td>
+        <td class="neg">−2</td><td class="zero">0</td><td class="pos">+2</td>
+      </tr>
+      <tr>
+        <th>IL<sub>VF</sub></th>
+        <td class="zero">0</td><td class="zero">0</td><td class="zero">0</td>
+        <td class="zero">0</td><td class="zero">0</td><td class="zero">0</td>
+      </tr>
+    </table>
+    <div style="margin-top:10px;font-size:11px;color:#666;line-height:1.7">
+      <b>驗算：</b>任意位置 x，RA + RC + RE = 1（垂直平衡）✓ ｜ MA + 6RC + 14RE = x（對A取矩）✓<br>
+      <b>峰值 RC=2 at D：</b>槓桿效應 — D(x=10)之載重對C(x=6)之力矩 = 4m，對A之力矩 = 10m，故 RC 超過 1 ✓<br>
+      <b>VF=0 恆成立：</b>F 為自由端，無右側反力，剪力必然為零 ✓
+    </div>
+  </div>
+
+</div>
+<footer>SA-2025-2 · 靜定梁影響線（含內鉸接）· exam-wiki-SA · 解析日期 2026-07-02</footer>
+</body>
+</html>

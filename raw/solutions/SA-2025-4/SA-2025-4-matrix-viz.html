@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <title>SA-2025-4 自由度示意圖</title>
+    <style>
+        body { margin: 0; padding: 0; background: #fff; font-family: sans-serif; display: flex; justify-content: center; }
+        canvas { border: 1px solid #ddd; max-width: 100%; }
+    </style>
+</head>
+<body>
+<canvas id="viz" width="580" height="400"></canvas>
+<script>
+    const canvas = document.getElementById('viz');
+    const ctx = canvas.getContext('2d');
+
+    // 參數設定
+    const originX = 150;
+    const originY = 100;
+    const L = 150; // Isometric length
+
+    // Isometric projection function
+    function iso(x, y, z) {
+        // x goes bottom-left, y goes bottom-right, z goes up
+        // Based on angle 30 degrees
+        const cx = originX - x * Math.cos(Math.PI/6) + y * Math.cos(Math.PI/6);
+        const cy = originY + x * Math.sin(Math.PI/6) + y * Math.sin(Math.PI/6) - z;
+        return {x: cx, y: cy};
+    }
+
+    // Nodes
+    const a = iso(L, 0, 0); // Fixed
+    const b = iso(0, 0, 0); // Joint
+    const c = iso(0, L, 0); // Joint
+    const d = iso(L, L, 0); // Fixed
+
+    // Draw members
+    ctx.lineWidth = 4;
+    ctx.strokeStyle = '#333';
+    
+    // ab
+    ctx.beginPath();
+    ctx.moveTo(a.x, a.y);
+    ctx.lineTo(b.x, b.y);
+    ctx.stroke();
+    
+    // bc
+    ctx.beginPath();
+    ctx.moveTo(b.x, b.y);
+    ctx.lineTo(c.x, c.y);
+    ctx.stroke();
+
+    // cd
+    ctx.beginPath();
+    ctx.moveTo(c.x, c.y);
+    ctx.lineTo(d.x, d.y);
+    ctx.stroke();
+
+    // Draw nodes
+    function drawNode(pt, color, label) {
+        ctx.beginPath();
+        ctx.arc(pt.x, pt.y, 6, 0, Math.PI*2);
+        ctx.fillStyle = color;
+        ctx.fill();
+        ctx.stroke();
+        
+        ctx.fillStyle = '#000';
+        ctx.font = '16px Arial';
+        ctx.fillText(label, pt.x - 20, pt.y - 10);
+    }
+    drawNode(a, '#f55', 'a(固定)');
+    drawNode(b, '#55f', 'b');
+    drawNode(c, '#55f', 'c');
+    drawNode(d, '#f55', 'd(固定)');
+
+    // Draw uniform load on bc
+    ctx.lineWidth = 2;
+    ctx.strokeStyle = 'rgba(255, 0, 0, 0.5)';
+    ctx.fillStyle = 'rgba(255, 0, 0, 0.5)';
+    for(let i=0.1; i<=0.9; i+=0.1) {
+        const pt = iso(0, L*i, 0);
+        const ptz = iso(0, L*i, 30);
+        
+        ctx.beginPath();
+        ctx.moveTo(ptz.x, ptz.y);
+        ctx.lineTo(pt.x, pt.y);
+        ctx.stroke();
+        
+        // Arrow head
+        ctx.beginPath();
+        ctx.moveTo(pt.x, pt.y);
+        ctx.lineTo(pt.x - 4, pt.y - 6);
+        ctx.lineTo(pt.x + 4, pt.y - 6);
+        ctx.fill();
+    }
+    
+    const midBc = iso(0, L/2, 40);
+    ctx.fillStyle = 'red';
+    ctx.fillText('均布載重 ω', midBc.x + 10, midBc.y);
+
+    // Draw DOFs at b
+    ctx.strokeStyle = '#0a0';
+    ctx.fillStyle = '#0a0';
+    // w_b
+    const wb = iso(0, 0, -40);
+    ctx.beginPath();
+    ctx.moveTo(b.x, b.y);
+    ctx.lineTo(wb.x, wb.y);
+    ctx.stroke();
+    ctx.fillText('wb', wb.x, wb.y + 15);
+
+    // theta_xb
+    const txb = iso(-40, 0, 0);
+    ctx.beginPath();
+    ctx.moveTo(b.x, b.y);
+    ctx.lineTo(txb.x, txb.y);
+    ctx.stroke();
+    ctx.fillText('θxb', txb.x - 25, txb.y);
+
+    // theta_yb
+    const tyb = iso(0, -40, 0);
+    ctx.beginPath();
+    ctx.moveTo(b.x, b.y);
+    ctx.lineTo(tyb.x, tyb.y);
+    ctx.stroke();
+    ctx.fillText('θyb', tyb.x + 5, tyb.y);
+
+    // Legend
+    ctx.fillStyle = '#000';
+    ctx.font = '14px sans-serif';
+    ctx.fillText('綠色箭頭代表節點 b 的三個獨立自由度 (w, θx, θy)', 20, 360);
+    ctx.fillText('利用對稱性可得： wc = wb, θxc = -θxb, θyc = θyb', 20, 380);
+
+</script>
+</body>
+</html>

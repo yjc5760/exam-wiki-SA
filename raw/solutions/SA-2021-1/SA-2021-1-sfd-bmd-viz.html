@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <title>SA-2021-1 彎矩圖 (BMD)</title>
+    <style>
+        body { font-family: sans-serif; display: flex; justify-content: center; padding: 20px; background-color: #f5f5f5; }
+        .container { background: white; padding: 20px; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
+        canvas { border: 1px solid #ccc; background: #fafafa; }
+        .title { text-align: center; margin-bottom: 10px; font-weight: bold; font-size: 1.2em; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="title">梁桿件彎矩圖 (BMD)</div>
+        <canvas id="bmdCanvas" width="580" height="300"></canvas>
+    </div>
+    <script>
+        const canvas = document.getElementById('bmdCanvas');
+        const ctx = canvas.getContext('2d');
+        
+        // 畫布設定
+        const width = canvas.width;
+        const height = canvas.height;
+        const padding = 40;
+        
+        // 節點座標 (相對 x)
+        const L_total = 10;
+        const x_scale = (width - 2 * padding) / L_total;
+        
+        const nodes = [
+            { id: 'a', x: 0, M: 0 },
+            { id: '2m', x: 2, M: 32.82 },
+            { id: 'b', x: 4, M: -6.35 },
+            { id: 'c', x: 8, M: 0 },
+            { id: 'd', x: 10, M: 3.18 }
+        ];
+        
+        // M 的縮放
+        const y_zero = height / 2; // 0 彎矩的 y 軸位置
+
+        function getX(x) { return padding + x * x_scale; }
+        // 結構學慣例：正彎矩(下緣受拉)畫在下方，負彎矩畫在上方
+        function getY(M) { return y_zero + M * 2.5; } 
+
+        // 畫軸線
+        ctx.beginPath();
+        ctx.moveTo(getX(0), y_zero);
+        ctx.lineTo(getX(10), y_zero);
+        ctx.strokeStyle = '#333';
+        ctx.lineWidth = 2;
+        ctx.stroke();
+
+        // 畫彎矩圖填充
+        ctx.beginPath();
+        ctx.moveTo(getX(nodes[0].x), y_zero);
+        for(let i=0; i<nodes.length; i++) {
+            ctx.lineTo(getX(nodes[i].x), getY(nodes[i].M));
+        }
+        ctx.lineTo(getX(10), y_zero);
+        ctx.fillStyle = 'rgba(0, 150, 255, 0.2)';
+        ctx.fill();
+        
+        // 畫彎矩圖邊線
+        ctx.beginPath();
+        ctx.moveTo(getX(nodes[0].x), getY(nodes[0].M));
+        for(let i=1; i<nodes.length; i++) {
+            ctx.lineTo(getX(nodes[i].x), getY(nodes[i].M));
+        }
+        ctx.strokeStyle = '#0055aa';
+        ctx.lineWidth = 2;
+        ctx.stroke();
+
+        // 標示數值
+        ctx.font = '14px Arial';
+        ctx.textAlign = 'center';
+        
+        nodes.forEach(node => {
+            let px = getX(node.x);
+            let py = getY(node.M);
+            
+            // 畫節點圓圈
+            ctx.beginPath();
+            ctx.arc(px, py, 4, 0, Math.PI*2);
+            ctx.fillStyle = '#d32f2f';
+            ctx.fill();
+            
+            // 標示文字
+            ctx.fillStyle = '#000';
+            if (node.M > 0) {
+                ctx.fillText(`+${node.M.toFixed(2)}`, px, py + 20); // 正彎矩字寫下面
+            } else if (node.M < 0) {
+                ctx.fillText(`${node.M.toFixed(2)}`, px, py - 10); // 負彎矩字寫上面
+            } else {
+                ctx.fillText(`0`, px, py - 10);
+            }
+            
+            // 畫虛線連到軸線
+            ctx.beginPath();
+            ctx.moveTo(px, y_zero);
+            ctx.lineTo(px, py);
+            ctx.strokeStyle = '#aaa';
+            ctx.setLineDash([4, 4]);
+            ctx.stroke();
+            ctx.setLineDash([]);
+            
+            // 標示位置代號
+            ctx.fillText(node.id, px, y_zero + 20);
+        });
+
+        // 說明文字
+        ctx.textAlign = 'left';
+        ctx.fillText("單位: kN-m (畫法約定: 彎矩畫於受拉側，正彎矩下緣受拉畫於軸線下方)", padding, 30);
+    </script>
+</body>
+</html>

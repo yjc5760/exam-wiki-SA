@@ -1,2495 +1,618 @@
 {
-  "description": "RC 科目考題總索引。科目：鋼筋混凝土設計與預力（第三科）。verificationStatus 和 tags 是主要人工維護欄位。",
-  "tagSystem": {
-    "primaryTopicId": "命題大綱主分類（RC-UN-n，依官方命題大綱四單元）",
-    "secondaryTopicIds": "命題大綱副分類（跨子項時使用）",
-    "designMethod": "USD / WSD / 概念題 / 混合",
-    "tags": "自由標籤（3-8個，見 CLAUDE-SPEC.md §8）"
-  },
-  "questions": [
-    {
-      "moduleId": "RC-2015-1",
-      "year": 2015,
-      "rocYear": 104,
-      "questionNumber": 1,
-      "primaryTopicId": "RC-U1-2",
-      "primaryTopicName": "RC 柱強度分析與設計",
-      "secondaryTopicIds": [],
-      "designMethod": "USD",
-      "verificationStatus": "verified",
-      "hasSolution": true,
-      "hasViz": true,
-      "hasHandwritten": false,
-      "tags": [
-        "方形柱",
-        "P-M互制",
-        "平衡點",
-        "最大彎矩",
-        "對稱配筋",
-        "雙排鋼筋",
-        "壓力控制過渡區"
-      ]
-    },
-    {
-      "moduleId": "RC-2015-2",
-      "year": 2015,
-      "rocYear": 104,
-      "questionNumber": 2,
-      "primaryTopicId": "RC-U1-1",
-      "primaryTopicName": "RC 梁彎矩強度分析與設計",
-      "secondaryTopicIds": [],
-      "designMethod": "USD",
-      "verificationStatus": "verified",
-      "hasSolution": true,
-      "hasViz": false,
-      "hasHandwritten": false,
-      "tags": [
-        "雙筋梁",
-        "最大設計彎矩",
-        "曲率韌性",
-        "εt=0.004限制",
-        "最小配筋率",
-        "φu/φy",
-        "轉換斷面法",
-        "壓力鋼筋未降伏（韌性計算）"
-      ]
-    },
-    {
-      "moduleId": "RC-2015-3",
-      "year": 2015,
-      "rocYear": 104,
-      "questionNumber": 3,
-      "primaryTopicId": "RC-U1-1",
-      "primaryTopicName": "RC 梁彎矩強度分析與設計",
-      "secondaryTopicIds": [],
-      "designMethod": "USD",
-      "verificationStatus": "verified",
-      "hasSolution": true,
-      "hasViz": false,
-      "hasHandwritten": false,
-      "tags": [
-        "T型梁",
-        "負彎矩",
-        "雙筋梁",
-        "腹板矩形等效",
-        "壓縮區在腹板",
-        "εt=0.004限制",
-        "分步設計法"
-      ]
-    },
-    {
-      "moduleId": "RC-2015-4",
-      "year": 2015,
-      "rocYear": 104,
-      "questionNumber": 4,
-      "primaryTopicId": "RC-U4-2",
-      "primaryTopicName": "預力量與偏心量設計",
-      "secondaryTopicIds": [
-        "RC-U4-1"
-      ],
-      "designMethod": "WSD",
-      "verificationStatus": "verified",
-      "hasSolution": true,
-      "hasViz": false,
-      "hasHandwritten": false,
-      "tags": [
-        "後拉法",
-        "拋物線腱",
-        "端部無偏心",
-        "四控制條件",
-        "容許應力設計",
-        "最大活載重",
-        "簡支預力梁",
-        "核心距"
-      ]
-    },
-    {
-      "moduleId": "RC-2016-4",
-      "year": 2016,
-      "rocYear": 105,
-      "questionNumber": 4,
-      "primaryTopicId": "RC-U4-3",
-      "primaryTopicName": "預力損失",
-      "secondaryTopicIds": [
-        "RC-U4-1"
-      ],
-      "designMethod": "WSD",
-      "verificationStatus": "verified",
-      "hasSolution": true,
-      "hasViz": false,
-      "hasHandwritten": false,
-      "tags": [
-        "先拉法",
-        "彈性縮短損失",
-        "初施預力",
-        "斷面應力分析",
-        "裂縫判斷",
-        "壓應力檢核",
-        "矩形斷面",
-        "n值計算"
-      ]
-    },
-    {
-      "moduleId": "RC-2016-2",
-      "year": 2016,
-      "rocYear": 105,
-      "questionNumber": 2,
-      "primaryTopicId": "RC-U3-3",
-      "primaryTopicName": "韌性要求與耐震設計",
-      "secondaryTopicIds": [
-        "RC-U2-1"
-      ],
-      "designMethod": "USD",
-      "verificationStatus": "verified",
-      "hasSolution": true,
-      "hasViz": false,
-      "hasHandwritten": false,
-      "tags": [
-        "特殊矩形框架梁",
-        "塑性鉸區",
-        "可能彎矩強度Mpr",
-        "密箍區間距",
-        "耐震箍筋設計",
-        "Vc判斷",
-        "強度設計剪力Ve"
-      ]
-    },
-    {
-      "moduleId": "RC-2016-1",
-      "year": 2016,
-      "rocYear": 105,
-      "questionNumber": 1,
-      "primaryTopicId": "RC-U1-1",
-      "primaryTopicName": "RC 梁彎矩強度分析與設計",
-      "secondaryTopicIds": [
-        "RC-U3-3"
-      ],
-      "designMethod": "USD",
-      "verificationStatus": "verified",
-      "hasSolution": true,
-      "hasViz": false,
-      "hasHandwritten": false,
-      "tags": [
-        "兩端固定梁",
-        "地震彎矩組合",
-        "雙曲度彎矩",
-        "固端彎矩",
-        "頂底筋設計",
-        "單筋矩形梁",
-        "ACI載重組合"
-      ]
-    },
-    {
-      "moduleId": "RC-2018-1",
-      "year": 2018,
-      "rocYear": 107,
-      "questionNumber": 1,
-      "primaryTopicId": "RC-U2-2",
-      "primaryTopicName": "RC 扭力強度設計",
-      "secondaryTopicIds": [
-        "RC-U2-1"
-      ],
-      "designMethod": "USD",
-      "verificationStatus": "verified",
-      "hasSolution": true,
-      "hasViz": false,
-      "hasHandwritten": false,
-      "tags": [
-        "矩形梁",
-        "扭矩剪力組合",
-        "空間桁架類比",
-        "塑性理念",
-        "閉合箍筋",
-        "poh/8最大間距",
-        "Aoh計算",
-        "縱向扭力筋"
-      ]
-    },
-    {
-      "moduleId": "RC-2018-2",
-      "year": 2018,
-      "rocYear": 107,
-      "questionNumber": 2,
-      "primaryTopicId": "RC-U3-3",
-      "primaryTopicName": "韌性要求與耐震設計",
-      "secondaryTopicIds": [
-        "RC-U1-2"
-      ],
-      "designMethod": "USD",
-      "verificationStatus": "verified",
-      "hasSolution": true,
-      "hasViz": false,
-      "hasHandwritten": false,
-      "tags": [
-        "角柱接頭",
-        "接頭剪力",
-        "梁柱接頭",
-        "拉力控制",
-        "剪力強度檢核",
-        "γ係數",
-        "Whitney應力塊",
-        "耐震設計"
-      ]
-    },
-    {
-      "moduleId": "RC-2018-3",
-      "year": 2018,
-      "rocYear": 107,
-      "questionNumber": 3,
-      "primaryTopicId": "RC-U3-1",
-      "primaryTopicName": "梁工作性要求（含撓度、裂縫）",
-      "secondaryTopicIds": [],
-      "designMethod": "USD",
-      "verificationStatus": "verified",
-      "hasSolution": true,
-      "hasViz": false,
-      "hasHandwritten": false,
-      "tags": [
-        "T形梁",
-        "負彎矩",
-        "裂縫控制",
-        "主筋分布寬度",
-        "拉力翼板",
-        "側面縱向表層鋼筋",
-        "ln/10限制",
-        "skin reinforcement"
-      ]
-    },
-    {
-      "moduleId": "RC-2018-4",
-      "year": 2018,
-      "rocYear": 107,
-      "questionNumber": 4,
-      "primaryTopicId": "RC-U4-1",
-      "primaryTopicName": "預力梁斷面應力分析",
-      "secondaryTopicIds": [
-        "RC-U4-3"
-      ],
-      "designMethod": "WSD",
-      "verificationStatus": "verified",
-      "hasSolution": true,
-      "hasViz": false,
-      "hasHandwritten": false,
-      "tags": [
-        "後拉法",
-        "有黏結腱",
-        "開裂彎矩",
-        "極限彎矩",
-        "fps公式選擇",
-        "β1折減",
-        "鋼鍵拉斷檢核",
-        "Whitney應力塊"
-      ]
-    },
-    {
-      "moduleId": "RC-2019-4",
-      "year": 2019,
-      "rocYear": 108,
-      "questionNumber": 4,
-      "primaryTopicId": "RC-U4-3",
-      "primaryTopicName": "預力損失",
-      "secondaryTopicIds": [
-        "RC-U4-1"
-      ],
-      "designMethod": "WSD",
-      "verificationStatus": "verified",
-      "hasSolution": true,
-      "hasViz": false,
-      "hasHandwritten": false,
-      "tags": [
-        "後拉法",
-        "摩擦損失",
-        "拋物線腱",
-        "雙腱施拉",
-        "矢高計算",
-        "角度改變量",
-        "起始預力",
-        "非張拉端"
-      ]
-    },
-    {
-      "moduleId": "RC-2019-3",
-      "year": 2019,
-      "rocYear": 108,
-      "questionNumber": 3,
-      "primaryTopicId": "RC-U3-3",
-      "primaryTopicName": "韌性要求與耐震設計",
-      "secondaryTopicIds": [
-        "RC-U3-2"
-      ],
-      "designMethod": "USD",
-      "verificationStatus": "verified",
-      "hasSolution": true,
-      "hasViz": false,
-      "hasHandwritten": false,
-      "tags": [
-        "橫膈版",
-        "地震剪力",
-        "抗剪鋼筋",
-        "雙向版",
-        "ρt計算",
-        "撓曲控制間距",
-        "最終設計比較",
-        "SD280"
-      ]
-    },
-    {
-      "moduleId": "RC-2019-2",
-      "year": 2019,
-      "rocYear": 108,
-      "questionNumber": 2,
-      "primaryTopicId": "RC-U1-2",
-      "primaryTopicName": "RC 柱強度分析與設計",
-      "secondaryTopicIds": [],
-      "designMethod": "USD",
-      "verificationStatus": "verified",
-      "hasSolution": true,
-      "hasViz": true,
-      "hasHandwritten": false,
-      "tags": [
-        "矩形柱",
-        "P-M互制",
-        "壓力控制斷面",
-        "拉力鋼筋未降伏",
-        "二次方程求中性軸",
-        "每側5-#8",
-        "偏心受壓"
-      ]
-    },
-    {
-      "moduleId": "RC-2019-1",
-      "year": 2019,
-      "rocYear": 108,
-      "questionNumber": 1,
-      "primaryTopicId": "RC-U1-1",
-      "primaryTopicName": "RC 梁彎矩強度分析與設計",
-      "secondaryTopicIds": [],
-      "designMethod": "USD",
-      "verificationStatus": "verified",
-      "hasSolution": true,
-      "hasViz": false,
-      "hasHandwritten": false,
-      "tags": [
-        "單筋梁",
-        "過渡區φ值",
-        "Whitney應力塊",
-        "矩形斷面",
-        "二次方程求As",
-        "應變相容",
-        "φ=0.65~0.9"
-      ]
-    },
-    {
-      "moduleId": "RC-2021-1",
-      "year": 2021,
-      "rocYear": 110,
-      "questionNumber": 1,
-      "primaryTopicId": "RC-U1-1",
-      "primaryTopicName": "RC 梁彎矩強度分析與設計",
-      "secondaryTopicIds": [
-        "RC-U2-1"
-      ],
-      "designMethod": "USD",
-      "verificationStatus": "verified",
-      "hasSolution": true,
-      "hasViz": false,
-      "hasHandwritten": false,
-      "tags": [
-        "T形梁",
-        "最小撓曲鋼筋",
-        "中性軸在翼板",
-        "剪力設計",
-        "最大肋筋間距",
-        "D10肋筋",
-        "Vc簡化公式",
-        "臨界斷面"
-      ]
-    },
-    {
-      "moduleId": "RC-2021-2",
-      "year": 2021,
-      "rocYear": 110,
-      "questionNumber": 2,
-      "primaryTopicId": "RC-U1-2",
-      "primaryTopicName": "RC 柱強度分析與設計",
-      "secondaryTopicIds": [],
-      "designMethod": "USD",
-      "verificationStatus": "verified",
-      "hasSolution": true,
-      "hasViz": true,
-      "hasHandwritten": false,
-      "tags": [
-        "偏心距求解",
-        "P-M互制",
-        "中性軸已知逆推",
-        "壓縮區鋼筋淨力",
-        "大偏心",
-        "拉力控制",
-        "3+2+3配筋"
-      ]
-    },
-    {
-      "moduleId": "RC-2021-3",
-      "year": 2021,
-      "rocYear": 110,
-      "questionNumber": 3,
-      "primaryTopicId": "RC-U3-2",
-      "primaryTopicName": "樓版與基腳設計",
-      "secondaryTopicIds": [],
-      "designMethod": "USD",
-      "verificationStatus": "verified",
-      "hasSolution": true,
-      "hasViz": false,
-      "hasHandwritten": false,
-      "tags": [
-        "樁帽設計",
-        "偏心載重",
-        "基樁軸力",
-        "最大偏心距",
-        "剛性樁帽",
-        "雙向剪力",
-        "角隅基樁穿孔",
-        "壓力控制"
-      ]
-    },
-    {
-      "moduleId": "RC-2021-4",
-      "year": 2021,
-      "rocYear": 110,
-      "questionNumber": 4,
-      "primaryTopicId": "RC-U4-1",
-      "primaryTopicName": "預力梁斷面應力分析",
-      "secondaryTopicIds": [],
-      "designMethod": "概念題",
-      "verificationStatus": "verified",
-      "hasSolution": true,
-      "hasViz": false,
-      "hasHandwritten": false,
-      "tags": [
-        "預力T型梁",
-        "組合斷面",
-        "有效翼板寬",
-        "容許應力設計",
-        "最大活載重",
-        "底纖維拉力控制",
-        "後拉法",
-        "服務載重分析"
-      ]
-    },
-    {
-      "moduleId": "RC-2022-1",
-      "year": 2022,
-      "rocYear": 111,
-      "questionNumber": 1,
-      "primaryTopicId": "RC-U1-1",
-      "primaryTopicName": "RC 梁彎矩強度分析與設計",
-      "secondaryTopicIds": [],
-      "designMethod": "USD",
-      "verificationStatus": "verified",
-      "hasSolution": true,
-      "hasViz": false,
-      "hasHandwritten": false,
-      "tags": [
-        "雙筋梁",
-        "壓力筋未降伏",
-        "有效深度",
-        "Whitney應力塊",
-        "φMn",
-        "拉力控制",
-        "雙層拉力筋",
-        "二次方程"
-      ]
-    },
-    {
-      "moduleId": "RC-2022-2",
-      "year": 2022,
-      "rocYear": 111,
-      "questionNumber": 2,
-      "primaryTopicId": "RC-U1-1",
-      "primaryTopicName": "RC 梁彎矩強度分析與設計",
-      "secondaryTopicIds": [],
-      "designMethod": "USD",
-      "verificationStatus": "verified",
-      "hasSolution": true,
-      "hasViz": false,
-      "hasHandwritten": false,
-      "tags": [
-        "梁設計",
-        "最經濟材料",
-        "D25",
-        "四組合比較",
-        "fy影響",
-        "f'c影響",
-        "鋼筋用量評論",
-        "低配筋率"
-      ]
-    },
-    {
-      "moduleId": "RC-2022-3",
-      "year": 2022,
-      "rocYear": 111,
-      "questionNumber": 3,
-      "primaryTopicId": "RC-U4-4",
-      "primaryTopicName": "預力梁剪力分析與設計",
-      "secondaryTopicIds": [
-        "RC-U2-1"
-      ],
-      "designMethod": "USD",
-      "verificationStatus": "verified",
-      "hasSolution": true,
-      "hasViz": false,
-      "hasHandwritten": false,
-      "tags": [
-        "預力梁",
-        "腹剪裂縫",
-        "Vcw",
-        "PCI形梁",
-        "垂直地震力",
-        "肋筋間距",
-        "fpc",
-        "有效深度dp"
-      ]
-    },
-    {
-      "moduleId": "RC-2022-4",
-      "year": 2022,
-      "rocYear": 111,
-      "questionNumber": 4,
-      "primaryTopicId": "RC-U3-3",
-      "primaryTopicName": "韌性要求與耐震設計",
-      "secondaryTopicIds": [
-        "RC-U1-2"
-      ],
-      "designMethod": "概念題",
-      "verificationStatus": "verified",
-      "hasSolution": true,
-      "hasViz": false,
-      "hasHandwritten": false,
-      "tags": [
-        "曲率韌性",
-        "轉角韌性",
-        "位移韌性",
-        "彎矩塑鉸",
-        "線性內插",
-        "塑鉸長度Lp",
-        "公路橋梁耐震規範",
-        "單曲率柱"
-      ]
-    },
-    {
-      "moduleId": "RC-2023-1",
-      "year": 2023,
-      "rocYear": 112,
-      "questionNumber": 1,
-      "primaryTopicId": "RC-U1-1",
-      "primaryTopicName": "RC 梁彎矩強度分析與設計",
-      "secondaryTopicIds": [],
-      "designMethod": "USD",
-      "verificationStatus": "verified",
-      "hasSolution": true,
-      "hasViz": true,
-      "hasHandwritten": false,
-      "tags": [
-        "曲率延展比",
-        "降伏曲率",
-        "極限曲率",
-        "中性軸",
-        "轉換斷面法",
-        "Whitney應力塊",
-        "延性設計"
-      ]
-    },
-    {
-      "moduleId": "RC-2023-2",
-      "year": 2023,
-      "rocYear": 112,
-      "questionNumber": 2,
-      "primaryTopicId": "RC-U1-1",
-      "primaryTopicName": "RC 梁彎矩強度分析與設計",
-      "secondaryTopicIds": [],
-      "designMethod": "USD",
-      "verificationStatus": "verified",
-      "hasSolution": true,
-      "hasViz": false,
-      "hasHandwritten": false,
-      "tags": [
-        "T形梁",
-        "雙筋梁",
-        "壓力鋼筋未降伏",
-        "應變相容",
-        "雙排配筋",
-        "有效深度計算",
-        "Whitney應力塊",
-        "翼板內中性軸"
-      ]
-    },
-    {
-      "moduleId": "RC-2023-3",
-      "year": 2023,
-      "rocYear": 112,
-      "questionNumber": 3,
-      "primaryTopicId": "RC-U2-1",
-      "primaryTopicName": "RC 剪力強度分析與設計",
-      "secondaryTopicIds": [
-        "RC-U2-2"
-      ],
-      "designMethod": "USD",
-      "verificationStatus": "verified",
-      "hasSolution": true,
-      "hasViz": false,
-      "hasHandwritten": false,
-      "tags": [
-        "懸臂梁",
-        "臨界斷面",
-        "扭力忽略門檻",
-        "偏心載重",
-        "Acp",
-        "pcp",
-        "φTcr",
-        "剪力需求"
-      ]
-    },
-    {
-      "moduleId": "RC-2023-4",
-      "year": 2023,
-      "rocYear": 112,
-      "questionNumber": 4,
-      "primaryTopicId": "RC-U4-1",
-      "primaryTopicName": "預力梁斷面應力分析",
-      "secondaryTopicIds": [],
-      "designMethod": "USD",
-      "verificationStatus": "verified",
-      "hasSolution": true,
-      "hasViz": false,
-      "hasHandwritten": false,
-      "tags": [
-        "後拉法",
-        "無握裹鋼絞線",
-        "fps公式",
-        "L/dp比值",
-        "單向版",
-        "有效預力",
-        "撓曲強度",
-        "β₁折減"
-      ]
-    },
-    {
-      "moduleId": "RC-2024-1",
-      "year": 2024,
-      "rocYear": 113,
-      "questionNumber": 1,
-      "primaryTopicId": "RC-U1-1",
-      "primaryTopicName": "RC 梁彎矩強度分析與設計",
-      "secondaryTopicIds": [],
-      "designMethod": "USD",
-      "verificationStatus": "verified",
-      "hasSolution": true,
-      "hasViz": false,
-      "hasHandwritten": false,
-      "tags": [
-        "T形梁",
-        "最大鋼筋量",
-        "最小鋼筋量",
-        "平衡鋼筋量",
-        "Whitney應力塊",
-        "β1係數",
-        "延性控制",
-        "高強度鋼筋"
-      ]
-    },
-    {
-      "moduleId": "RC-2024-2",
-      "year": 2024,
-      "rocYear": 113,
-      "questionNumber": 2,
-      "primaryTopicId": "RC-U1-1",
-      "primaryTopicName": "RC 梁彎矩強度分析與設計",
-      "secondaryTopicIds": [],
-      "designMethod": "USD",
-      "verificationStatus": "verified",
-      "hasSolution": true,
-      "hasViz": false,
-      "hasHandwritten": false,
-      "tags": [
-        "雙筋梁",
-        "壓力鋼筋未降伏",
-        "應變相容",
-        "懸臂梁",
-        "因數化均佈載重",
-        "標稱彎矩強度",
-        "二次方程求中性軸"
-      ]
-    },
-    {
-      "moduleId": "RC-2024-3",
-      "year": 2024,
-      "rocYear": 113,
-      "questionNumber": 3,
-      "primaryTopicId": "RC-U1-2",
-      "primaryTopicName": "RC 柱強度分析與設計",
-      "secondaryTopicIds": [],
-      "designMethod": "USD",
-      "verificationStatus": "verified",
-      "hasSolution": true,
-      "hasViz": true,
-      "hasHandwritten": false,
-      "tags": [
-        "方形柱",
-        "P-M互制",
-        "拉力鋼筋應變為零",
-        "應變相容",
-        "壓力鋼筋未降伏",
-        "軸力彎矩組合",
-        "壓力控制區"
-      ]
-    },
-    {
-      "moduleId": "RC-2024-4",
-      "year": 2024,
-      "rocYear": 113,
-      "questionNumber": 4,
-      "primaryTopicId": "RC-U4-2",
-      "primaryTopicName": "預力量與偏心量設計",
-      "secondaryTopicIds": [
-        "RC-U4-1"
-      ],
-      "designMethod": "WSD",
-      "verificationStatus": "verified",
-      "hasSolution": true,
-      "hasViz": false,
-      "hasHandwritten": false,
-      "tags": [
-        "等效載重法",
-        "拋物線腱",
-        "次彎矩",
-        "C線",
-        "壓力線",
-        "超靜定預力梁",
-        "一致腱",
-        "propped cantilever"
-      ]
-    },
-    {
-      "moduleId": "RC-2025-1",
-      "year": 2025,
-      "rocYear": 114,
-      "questionNumber": 1,
-      "primaryTopicId": "RC-U3-2",
-      "primaryTopicName": "樓版與基腳設計",
-      "secondaryTopicIds": [],
-      "designMethod": "USD",
-      "verificationStatus": "verified",
-      "hasSolution": true,
-      "hasViz": false,
-      "hasHandwritten": false,
-      "tags": [
-        "獨立基腳",
-        "穿孔剪力",
-        "彎矩強度",
-        "雙向剪力",
-        "基腳設計",
-        "衝剪"
-      ]
-    },
-    {
-      "moduleId": "RC-2025-2",
-      "year": 2025,
-      "rocYear": 114,
-      "questionNumber": 2,
-      "primaryTopicId": "RC-U3-3",
-      "primaryTopicName": "韌性要求與耐震設計",
-      "secondaryTopicIds": [
-        "RC-U2-1"
-      ],
-      "designMethod": "USD",
-      "verificationStatus": "verified",
-      "hasSolution": true,
-      "hasViz": false,
-      "hasHandwritten": false,
-      "tags": [
-        "耐震梁",
-        "特殊矩形框架梁",
-        "可能彎矩強度Mpr",
-        "Vc=0條件",
-        "密箍區",
-        "剪力筋設計",
-        "閉合箍筋"
-      ]
-    },
-    {
-      "moduleId": "RC-2025-3",
-      "year": 2025,
-      "rocYear": 114,
-      "questionNumber": 3,
-      "primaryTopicId": "RC-U2-2",
-      "primaryTopicName": "RC 扭力強度設計",
-      "secondaryTopicIds": [],
-      "designMethod": "USD",
-      "verificationStatus": "verified",
-      "hasSolution": true,
-      "hasViz": false,
-      "hasHandwritten": false,
-      "tags": [
-        "扭矩強度",
-        "空間桁架類比",
-        "Tn",
-        "閉合箍筋",
-        "縱向鋼筋驗核",
-        "Aoh",
-        "矩形梁扭力"
-      ]
-    },
-    {
-      "moduleId": "RC-2025-4",
-      "year": 2025,
-      "rocYear": 114,
-      "questionNumber": 4,
-      "primaryTopicId": "RC-U4-2",
-      "primaryTopicName": "預力量與偏心量設計",
-      "secondaryTopicIds": [
-        "RC-U4-1"
-      ],
-      "designMethod": "WSD",
-      "verificationStatus": "verified",
-      "hasSolution": true,
-      "hasViz": false,
-      "hasHandwritten": false,
-      "tags": [
-        "偏心距限制",
-        "傳遞階段",
-        "使用階段",
-        "簡支預力梁",
-        "核心距",
-        "容許應力",
-        "四控制條件"
-      ]
-    },
-    {
-      "moduleId": "RC-2020-1",
-      "year": 2020,
-      "rocYear": 109,
-      "questionNumber": 1,
-      "primaryTopicId": "RC-U1-1",
-      "primaryTopicName": "RC 梁彎矩強度分析與設計",
-      "secondaryTopicIds": [],
-      "designMethod": "USD",
-      "verificationStatus": "verified",
-      "hasSolution": true,
-      "hasViz": false,
-      "hasHandwritten": false,
-      "tags": [
-        "T形梁",
-        "有效翼板寬",
-        "中性軸在翼板",
-        "最少鋼筋量",
-        "Whitney應力塊",
-        "正彎矩設計"
-      ]
-    },
-    {
-      "moduleId": "RC-2020-2",
-      "year": 2020,
-      "rocYear": 109,
-      "questionNumber": 2,
-      "primaryTopicId": "RC-U2-1",
-      "primaryTopicName": "RC 剪力強度分析與設計",
-      "secondaryTopicIds": [],
-      "designMethod": "USD",
-      "verificationStatus": "verified",
-      "hasSolution": true,
-      "hasViz": false,
-      "hasHandwritten": false,
-      "tags": [
-        "倒T型梁",
-        "臨界斷面",
-        "d偏移規則",
-        "最大肋筋間距",
-        "最大設計剪力",
-        "Vc簡化公式"
-      ]
-    },
-    {
-      "moduleId": "RC-2020-3",
-      "year": 2020,
-      "rocYear": 109,
-      "questionNumber": 3,
-      "primaryTopicId": "RC-U3-2",
-      "primaryTopicName": "樓版與基腳設計",
-      "secondaryTopicIds": [],
-      "designMethod": "USD",
-      "verificationStatus": "verified",
-      "hasSolution": true,
-      "hasViz": false,
-      "hasHandwritten": false,
-      "tags": [
-        "無梁版",
-        "穿孔剪力",
-        "雙向剪力",
-        "內柱",
-        "剪力鋼筋設計",
-        "三公式控制"
-      ]
-    },
-    {
-      "moduleId": "RC-2020-4",
-      "year": 2020,
-      "rocYear": 109,
-      "questionNumber": 4,
-      "primaryTopicId": "RC-U4-2",
-      "primaryTopicName": "預力量與偏心量設計",
-      "secondaryTopicIds": [
-        "RC-U4-1"
-      ],
-      "designMethod": "WSD",
-      "verificationStatus": "verified",
-      "hasSolution": true,
-      "hasViz": false,
-      "hasHandwritten": false,
-      "tags": [
-        "預力連續梁",
-        "一致腱",
-        "二次彎矩",
-        "等效載重法",
-        "均勻軸壓條件",
-        "偏心量設計",
-        "C線"
-      ]
-    },
-    {
-      "moduleId": "RC-2014-1",
-      "year": 2014,
-      "rocYear": 103,
-      "questionNumber": 1,
-      "primaryTopicId": "RC-U1-1",
-      "primaryTopicName": "RC 梁彎矩強度分析與設計",
-      "secondaryTopicIds": [],
-      "designMethod": "USD",
-      "verificationStatus": "verified",
-      "hasSolution": true,
-      "hasViz": false,
-      "hasHandwritten": false,
-      "tags": [
-        "單筋矩形梁",
-        "過筋梁",
-        "應變相容",
-        "壓力控制斷面",
-        "組合斷面加寬",
-        "雙f'c複合斷面",
-        "Whitney應力塊",
-        "β₁係數"
-      ]
-    },
-    {
-      "moduleId": "RC-2014-2",
-      "year": 2014,
-      "rocYear": 103,
-      "questionNumber": 2,
-      "primaryTopicId": "RC-U1-1",
-      "primaryTopicName": "RC 梁彎矩強度分析與設計",
-      "secondaryTopicIds": [
-        "RC-U3-1"
-      ],
-      "designMethod": "USD",
-      "verificationStatus": "verified",
-      "hasSolution": true,
-      "hasViz": true,
-      "hasHandwritten": false,
-      "tags": [
-        "彎矩曲率分析",
-        "開裂彎矩",
-        "比例限度應變",
-        "曲率韌性",
-        "轉換斷面法",
-        "三階段分析",
-        "Whitney應力塊",
-        "曲率延展比"
-      ]
-    },
-    {
-      "moduleId": "RC-2014-3",
-      "year": 2014,
-      "rocYear": 103,
-      "questionNumber": 3,
-      "primaryTopicId": "RC-U2-1",
-      "primaryTopicName": "RC 剪力強度分析與設計",
-      "secondaryTopicIds": [],
-      "designMethod": "USD",
-      "verificationStatus": "verified",
-      "hasSolution": true,
-      "hasViz": false,
-      "hasHandwritten": false,
-      "tags": [
-        "臨界斷面",
-        "Vc最大混凝土剪力強度",
-        "軸力影響",
-        "等效彎矩Mm",
-        "詳細公式",
-        "軸壓梁",
-        "軸拉梁",
-        "Mm為負取上限"
-      ]
-    },
-    {
-      "moduleId": "RC-2014-4",
-      "year": 2014,
-      "rocYear": 103,
-      "questionNumber": 4,
-      "primaryTopicId": "RC-U4-1",
-      "primaryTopicName": "預力梁斷面應力分析",
-      "secondaryTopicIds": [],
-      "designMethod": "WSD",
-      "verificationStatus": "verified",
-      "hasSolution": true,
-      "hasViz": true,
-      "hasHandwritten": false,
-      "tags": [
-        "預力梁斷面應力",
-        "兩階段分析",
-        "施加預力階段",
-        "服務載重階段",
-        "對稱I形斷面",
-        "容許應力檢核",
-        "底纖維拉應力超限",
-        "WSD彈性法"
-      ]
-    },
-    {
-      "moduleId": "RC-2013-1",
-      "year": 2013,
-      "rocYear": 102,
-      "questionNumber": 1,
-      "primaryTopicId": "RC-U3-2",
-      "primaryTopicName": "樓版與基腳設計",
-      "secondaryTopicIds": [],
-      "designMethod": "USD",
-      "verificationStatus": "verified",
-      "hasSolution": true,
-      "hasViz": false,
-      "hasHandwritten": false,
-      "tags": [
-        "單向版",
-        "多跨連續版",
-        "最小版厚",
-        "ACI彎矩係數法",
-        "溫度收縮鋼筋",
-        "外支承負彎矩",
-        "撓度控制",
-        "版厚設計"
-      ]
-    },
-    {
-      "moduleId": "RC-2013-2",
-      "year": 2013,
-      "rocYear": 102,
-      "questionNumber": 2,
-      "primaryTopicId": "RC-U3-3",
-      "primaryTopicName": "韌性要求與耐震設計",
-      "secondaryTopicIds": [
-        "RC-U1-2"
-      ],
-      "designMethod": "USD",
-      "verificationStatus": "verified",
-      "hasSolution": true,
-      "hasViz": false,
-      "hasHandwritten": false,
-      "tags": [
-        "特殊矩形柱",
-        "耐震圍束箍筋",
-        "密箍區",
-        "Ash公式",
-        "D13箍筋",
-        "crossties繫筋",
-        "方形柱",
-        "16根D32"
-      ]
-    },
-    {
-      "moduleId": "RC-2013-3",
-      "year": 2013,
-      "rocYear": 102,
-      "questionNumber": 3,
-      "primaryTopicId": "RC-U2-2",
-      "primaryTopicName": "RC 扭力強度設計",
-      "secondaryTopicIds": [],
-      "designMethod": "USD",
-      "verificationStatus": "verified",
-      "hasSolution": true,
-      "hasViz": false,
-      "hasHandwritten": false,
-      "tags": [
-        "扭矩強度",
-        "閉合箍筋",
-        "空間桁架類比",
-        "Ao計算",
-        "ph最大間距",
-        "縱向扭力筋Al",
-        "斷面壓碎驗算",
-        "D10箍筋"
-      ]
-    },
-    {
-      "moduleId": "RC-2012-1",
-      "year": 2012,
-      "rocYear": 101,
-      "questionNumber": 1,
-      "primaryTopicId": "RC-U4-1",
-      "primaryTopicName": "預力梁斷面應力分析",
-      "secondaryTopicIds": [],
-      "designMethod": "WSD",
-      "verificationStatus": "verified",
-      "hasSolution": true,
-      "hasViz": false,
-      "hasHandwritten": false,
-      "tags": [
-        "先拉法",
-        "有黏結腱",
-        "懸臂梁",
-        "初始階段應力",
-        "偏心方向判斷",
-        "容許應力檢核",
-        "底纖維拉應力超限",
-        "補救措施"
-      ]
-    },
-    {
-      "moduleId": "RC-2012-2",
-      "year": 2012,
-      "rocYear": 101,
-      "questionNumber": 2,
-      "primaryTopicId": "RC-U3-3",
-      "primaryTopicName": "韌性要求與耐震設計",
-      "secondaryTopicIds": [
-        "RC-U1-1"
-      ],
-      "designMethod": "USD",
-      "verificationStatus": "verified",
-      "hasSolution": true,
-      "hasViz": false,
-      "hasHandwritten": false,
-      "tags": [
-        "耐震梁",
-        "特殊矩形框架梁",
-        "可能彎矩強度Mpr",
-        "地震彎矩",
-        "梁端強度",
-        "強柱弱梁",
-        "1.25fy"
-      ]
-    },
-    {
-      "moduleId": "RC-2012-3",
-      "year": 2012,
-      "rocYear": 101,
-      "questionNumber": 3,
-      "primaryTopicId": "RC-U3-3",
-      "primaryTopicName": "韌性要求與耐震設計",
-      "secondaryTopicIds": [
-        "RC-U2-1"
-      ],
-      "designMethod": "USD",
-      "verificationStatus": "verified",
-      "hasSolution": true,
-      "hasViz": false,
-      "hasHandwritten": false,
-      "tags": [
-        "強柱弱梁",
-        "塑鉸機構",
-        "柱塑鉸區",
-        "柱地震設計剪力",
-        "圍束箍筋",
-        "Ash",
-        "特殊矩形框架柱",
-        "耐震箍筋設計",
-        "Vc=0條件",
-        "lo"
-      ]
-    },
-    {
-      "moduleId": "RC-2012-4",
-      "year": 2012,
-      "rocYear": 101,
-      "questionNumber": 4,
-      "primaryTopicId": "RC-U3-3",
-      "primaryTopicName": "韌性要求與耐震設計",
-      "secondaryTopicIds": [
-        "RC-U1-2"
-      ],
-      "designMethod": "USD",
-      "verificationStatus": "verified",
-      "hasSolution": true,
-      "hasViz": false,
-      "hasHandwritten": false,
-      "tags": [
-        "梁柱外接頭",
-        "接頭剪力",
-        "角隅邊柱",
-        "外接頭",
-        "Vjh",
-        "Aj接頭有效面積",
-        "3.2係數",
-        "強柱弱梁",
-        "特殊矩形框架接頭"
-      ]
-    },
-    {
-      "moduleId": "RC-2009-4",
-      "year": 2009,
-      "rocYear": 98,
-      "questionNumber": 4,
-      "primaryTopicId": "RC-U4-1",
-      "primaryTopicName": "預力梁斷面應力分析",
-      "secondaryTopicIds": [
-        "RC-U3-1"
-      ],
-      "designMethod": "混合",
-      "verificationStatus": "verified",
-      "hasSolution": true,
-      "hasViz": false,
-      "hasHandwritten": false,
-      "tags": [
-        "預力RC拉力桿",
-        "混合斷面",
-        "裂縫寬度wmax",
-        "張力硬化",
-        "有效預力",
-        "去壓載重",
-        "15φ預力棒",
-        "D29鋼筋",
-        "Scanlon-Murray",
-        "預力棒降伏"
-      ]
-    },
-    {
-      "moduleId": "RC-2009-3",
-      "year": 2009,
-      "rocYear": 98,
-      "questionNumber": 3,
-      "primaryTopicId": "RC-U2-1",
-      "primaryTopicName": "RC 剪力強度分析與設計",
-      "secondaryTopicIds": [],
-      "designMethod": "USD",
-      "verificationStatus": "verified",
-      "hasSolution": true,
-      "hasViz": false,
-      "hasHandwritten": false,
-      "tags": [
-        "壓拉桿模式",
-        "STM",
-        "深梁",
-        "兩點載重",
-        "拉力桿",
-        "CCT節點",
-        "CCC節點",
-        "瓶形壓桿",
-        "βs係數",
-        "βn係數",
-        "破壞模式",
-        "節點承壓"
-      ]
-    },
-    {
-      "moduleId": "RC-2009-2",
-      "year": 2009,
-      "rocYear": 98,
-      "questionNumber": 2,
-      "primaryTopicId": "RC-U3-1",
-      "primaryTopicName": "梁工作性要求（含撓度、裂縫）",
-      "secondaryTopicIds": [],
-      "designMethod": "USD",
-      "verificationStatus": "verified",
-      "hasSolution": true,
-      "hasViz": false,
-      "hasHandwritten": false,
-      "tags": [
-        "懸臂梁",
-        "即時撓度",
-        "降伏彎矩",
-        "裂縫斷面慣性矩Icr",
-        "開裂彎矩Mcr",
-        "轉換斷面法",
-        "曲率積分",
-        "雙段EI法",
-        "kd中性軸"
-      ]
-    },
-    {
-      "moduleId": "RC-2009-1",
-      "year": 2009,
-      "rocYear": 98,
-      "questionNumber": 1,
-      "primaryTopicId": "RC-U3-3",
-      "primaryTopicName": "韌性要求與耐震設計",
-      "secondaryTopicIds": [],
-      "designMethod": "概念題",
-      "verificationStatus": "verified",
-      "hasSolution": true,
-      "hasViz": false,
-      "hasHandwritten": false,
-      "tags": [
-        "耐震柱",
-        "橫向鋼筋",
-        "密箍區lo",
-        "圍束箍筋",
-        "Ash公式",
-        "Vc=0條件",
-        "Nu小於0.05Agfc",
-        "Mpr設計剪力",
-        "特殊矩形框架柱"
-      ]
-    },
-    {
-      "moduleId": "RC-2010-4",
-      "year": 2010,
-      "rocYear": 99,
-      "questionNumber": 4,
-      "primaryTopicId": "RC-U4-2",
-      "primaryTopicName": "預力量與偏心量設計",
-      "secondaryTopicIds": [
-        "RC-U4-1"
-      ],
-      "designMethod": "WSD",
-      "verificationStatus": "verified",
-      "hasSolution": true,
-      "hasViz": false,
-      "hasHandwritten": false,
-      "tags": [
-        "簡支預力梁",
-        "偏心距限制",
-        "四控制條件",
-        "曲線型鋼腱",
-        "直線型鋼腱",
-        "等效載重法",
-        "傳遞階段",
-        "使用階段",
-        "容許應力設計",
-        "矩形斷面"
-      ]
-    },
-    {
-      "moduleId": "RC-2010-3",
-      "year": 2010,
-      "rocYear": 99,
-      "questionNumber": 3,
-      "primaryTopicId": "RC-U2-1",
-      "primaryTopicName": "RC 剪力強度分析與設計",
-      "secondaryTopicIds": [],
-      "designMethod": "USD",
-      "verificationStatus": "verified",
-      "hasSolution": true,
-      "hasViz": false,
-      "hasHandwritten": false,
-      "tags": [
-        "軸力影響",
-        "剪力開裂強度",
-        "裂縫形態",
-        "簡化式Vc",
-        "軸壓修正係數140",
-        "軸拉修正係數35",
-        "三種軸力比較",
-        "φVc計算"
-      ]
-    },
-    {
-      "moduleId": "RC-2010-2",
-      "year": 2010,
-      "rocYear": 99,
-      "questionNumber": 2,
-      "primaryTopicId": "RC-U3-3",
-      "primaryTopicName": "韌性要求與耐震設計",
-      "secondaryTopicIds": [
-        "RC-U2-3"
-      ],
-      "designMethod": "概念題",
-      "verificationStatus": "verified",
-      "hasSolution": true,
-      "hasViz": false,
-      "hasHandwritten": false,
-      "tags": [
-        "耐震柱",
-        "縱向搭接",
-        "Class B搭接",
-        "拉力搭接",
-        "搭接位置中段1/2",
-        "50%面積限制",
-        "橫向鋼筋",
-        "D29搭接",
-        "ld計算",
-        "Ktr圍束"
-      ]
-    },
-    {
-      "moduleId": "RC-2010-1",
-      "year": 2010,
-      "rocYear": 99,
-      "questionNumber": 1,
-      "primaryTopicId": "RC-U1-2",
-      "primaryTopicName": "RC 柱強度分析與設計",
-      "secondaryTopicIds": [],
-      "designMethod": "USD",
-      "verificationStatus": "verified",
-      "hasSolution": true,
-      "hasViz": true,
-      "hasHandwritten": false,
-      "tags": [
-        "圓形螺旋柱",
-        "降伏軸力",
-        "極限軸力",
-        "螺旋筋圍束",
-        "f'cc圍束強度",
-        "fL側向壓力",
-        "ρs最小值",
-        "Pu≥Py檢核",
-        "12根主筋"
-      ]
-    },
-    {
-      "moduleId": "RC-2011-5",
-      "year": 2011,
-      "rocYear": 100,
-      "questionNumber": 5,
-      "primaryTopicId": "RC-U4-1",
-      "primaryTopicName": "預力梁斷面應力分析",
-      "secondaryTopicIds": [
-        "RC-U4-3"
-      ],
-      "designMethod": "WSD",
-      "verificationStatus": "verified",
-      "hasSolution": true,
-      "hasViz": false,
-      "hasHandwritten": false,
-      "tags": [
-        "後拉法",
-        "有黏結腱",
-        "合成斷面",
-        "三斷面分析",
-        "淨斷面",
-        "變換斷面",
-        "鋼腱應力",
-        "上下緣應力",
-        "施預力階段",
-        "全載重階段",
-        "n值相容性"
-      ]
-    },
-    {
-      "moduleId": "RC-2011-4",
-      "year": 2011,
-      "rocYear": 100,
-      "questionNumber": 4,
-      "primaryTopicId": "RC-U2-2",
-      "primaryTopicName": "RC 扭力強度設計",
-      "secondaryTopicIds": [
-        "RC-U2-1"
-      ],
-      "designMethod": "USD",
-      "verificationStatus": "verified",
-      "hasSolution": true,
-      "hasViz": false,
-      "hasHandwritten": false,
-      "tags": [
-        "矩形梁",
-        "開裂扭矩",
-        "扭矩剪力組合",
-        "斷面適當性檢核",
-        "空間桁架類比",
-        "Aoh計算",
-        "閉合箍筋",
-        "Tu=Tcr條件"
-      ]
-    },
-    {
-      "moduleId": "RC-2011-3",
-      "year": 2011,
-      "rocYear": 100,
-      "questionNumber": 3,
-      "primaryTopicId": "RC-U1-2",
-      "primaryTopicName": "RC 柱強度分析與設計",
-      "secondaryTopicIds": [],
-      "designMethod": "USD",
-      "verificationStatus": "verified",
-      "hasSolution": true,
-      "hasViz": true,
-      "hasHandwritten": false,
-      "tags": [
-        "矩形柱",
-        "P-M互制",
-        "三排配筋",
-        "中排鋼筋在形心",
-        "過渡區φ值",
-        "斷面韌性容量",
-        "柱曲率延展比",
-        "彈性中性軸",
-        "載重係數γ"
-      ]
-    },
-    {
-      "moduleId": "RC-2011-2",
-      "year": 2011,
-      "rocYear": 100,
-      "questionNumber": 2,
-      "primaryTopicId": "RC-U1-1",
-      "primaryTopicName": "RC 梁彎矩強度分析與設計",
-      "secondaryTopicIds": [],
-      "designMethod": "USD",
-      "verificationStatus": "verified",
-      "hasSolution": true,
-      "hasViz": false,
-      "hasHandwritten": false,
-      "tags": [
-        "T形梁",
-        "平衡鋼筋量",
-        "NA在腹板",
-        "過渡區φ值",
-        "斷面韌性容量",
-        "曲率延展比",
-        "降伏曲率",
-        "極限曲率",
-        "As=0.9Asb"
-      ]
-    },
-    {
-      "moduleId": "RC-2011-1",
-      "year": 2011,
-      "rocYear": 100,
-      "questionNumber": 1,
-      "primaryTopicId": "RC-U1-2",
-      "primaryTopicName": "RC 柱強度分析與設計",
-      "secondaryTopicIds": [],
-      "designMethod": "概念題",
-      "verificationStatus": "verified",
-      "hasSolution": true,
-      "hasViz": true,
-      "hasHandwritten": false,
-      "tags": [
-        "P-M互制圖",
-        "求算步驟",
-        "平衡點",
-        "應變相容",
-        "φ值分區",
-        "純軸壓",
-        "純彎",
-        "壓力控制"
-      ]
-    },
-    {
-      "moduleId": "RC-2006-4",
-      "year": 2006,
-      "rocYear": 95,
-      "questionNumber": 4,
-      "primaryTopicId": "RC-U4-1",
-      "primaryTopicName": "預力梁斷面應力分析",
-      "secondaryTopicIds": [
-        "RC-U4-2"
-      ],
-      "designMethod": "WSD",
-      "verificationStatus": "verified",
-      "hasSolution": true,
-      "hasViz": false,
-      "hasHandwritten": false,
-      "tags": [
-        "後拉法",
-        "組合T型斷面",
-        "兩階段應力疊加",
-        "非組合梁承受DL",
-        "組合梁承受LL",
-        "上緣壓力",
-        "下緣拉力",
-        "不同f'c轉換"
-      ]
-    },
-    {
-      "moduleId": "RC-2006-3",
-      "year": 2006,
-      "rocYear": 95,
-      "questionNumber": 3,
-      "primaryTopicId": "RC-U3-1",
-      "primaryTopicName": "梁工作性要求（含撓度、裂縫）",
-      "secondaryTopicIds": [],
-      "designMethod": "USD",
-      "verificationStatus": "verified",
-      "hasSolution": true,
-      "hasViz": false,
-      "hasHandwritten": false,
-      "tags": [
-        "簡支梁",
-        "即時撓度增量",
-        "有效慣性矩Ie",
-        "開裂彎矩Mcr",
-        "轉換斷面法",
-        "集中活載重",
-        "忽略壓力筋"
-      ]
-    },
-    {
-      "moduleId": "RC-2006-2",
-      "year": 2006,
-      "rocYear": 95,
-      "questionNumber": 2,
-      "primaryTopicId": "RC-U1-3",
-      "primaryTopicName": "細長柱",
-      "secondaryTopicIds": [
-        "RC-U1-2"
-      ],
-      "designMethod": "USD",
-      "verificationStatus": "verified",
-      "hasSolution": true,
-      "hasViz": false,
-      "hasHandwritten": false,
-      "tags": [
-        "無側移柱",
-        "彎矩放大法",
-        "細長柱",
-        "Cm係數",
-        "單曲率",
-        "δns放大係數",
-        "臨界挫屈載重Pc"
-      ]
-    },
-    {
-      "moduleId": "RC-2006-1",
-      "year": 2006,
-      "rocYear": 95,
-      "questionNumber": 1,
-      "primaryTopicId": "RC-U2-1",
-      "primaryTopicName": "RC 剪力強度分析與設計",
-      "secondaryTopicIds": [
-        "RC-U1-1"
-      ],
-      "designMethod": "USD",
-      "verificationStatus": "verified",
-      "hasSolution": true,
-      "hasViz": false,
-      "hasHandwritten": false,
-      "tags": [
-        "懸臂梁",
-        "雙筋梁",
-        "壓力鋼筋未降伏",
-        "剪力設計",
-        "最大箍筋間距",
-        "撓曲強度控制設計剪力",
-        "#3箍筋"
-      ]
-    },
-    {
-      "moduleId": "RC-2007-4",
-      "year": 2007,
-      "rocYear": 96,
-      "questionNumber": 4,
-      "primaryTopicId": "RC-U4-1",
-      "primaryTopicName": "預力梁斷面應力分析",
-      "secondaryTopicIds": [
-        "RC-U4-2"
-      ],
-      "designMethod": "WSD",
-      "verificationStatus": "verified",
-      "hasSolution": true,
-      "hasViz": false,
-      "hasHandwritten": false,
-      "tags": [
-        "I形橋梁",
-        "組合T型斷面",
-        "兩階段應力疊加",
-        "底纖維拉力控制",
-        "集中活載重",
-        "不同f'c轉換",
-        "容許應力設計",
-        "內梁"
-      ]
-    },
-    {
-      "moduleId": "RC-2007-3",
-      "year": 2007,
-      "rocYear": 96,
-      "questionNumber": 3,
-      "primaryTopicId": "RC-U3-2",
-      "primaryTopicName": "樓版與基腳設計",
-      "secondaryTopicIds": [],
-      "designMethod": "USD",
-      "verificationStatus": "verified",
-      "hasSolution": true,
-      "hasViz": false,
-      "hasHandwritten": false,
-      "tags": [
-        "獨立基腳",
-        "正方形基腳",
-        "因數化土壓",
-        "彎矩檢核",
-        "單向剪力",
-        "穿孔剪力",
-        "雙向剪力",
-        "安全餘裕"
-      ]
-    },
-    {
-      "moduleId": "RC-2007-2",
-      "year": 2007,
-      "rocYear": 96,
-      "questionNumber": 2,
-      "primaryTopicId": "RC-U3-1",
-      "primaryTopicName": "梁工作性要求（含撓度、裂縫）",
-      "secondaryTopicIds": [],
-      "designMethod": "USD",
-      "verificationStatus": "verified",
-      "hasSolution": true,
-      "hasViz": false,
-      "hasHandwritten": false,
-      "tags": [
-        "雙筋梁",
-        "即時撓度",
-        "長期撓度",
-        "有效慣性矩Ie",
-        "開裂彎矩Mcr",
-        "λ長期修正係數",
-        "五小題撓度",
-        "20%持續活載重"
-      ]
-    },
-    {
-      "moduleId": "RC-2007-1",
-      "year": 2007,
-      "rocYear": 96,
-      "questionNumber": 1,
-      "primaryTopicId": "RC-U1-1",
-      "primaryTopicName": "RC 梁彎矩強度分析與設計",
-      "secondaryTopicIds": [],
-      "designMethod": "USD",
-      "verificationStatus": "verified",
-      "hasSolution": true,
-      "hasViz": false,
-      "hasHandwritten": false,
-      "tags": [
-        "T形梁設計",
-        "有效翼板寬",
-        "中性軸在翼板",
-        "D29鋼筋",
-        "兩排配筋",
-        "最小最大間距",
-        "單筋梁"
-      ]
-    },
-    {
-      "moduleId": "RC-2008-4",
-      "year": 2008,
-      "rocYear": 97,
-      "questionNumber": 4,
-      "primaryTopicId": "RC-U4-1",
-      "primaryTopicName": "預力梁斷面應力分析",
-      "secondaryTopicIds": [
-        "RC-U4-2"
-      ],
-      "designMethod": "WSD",
-      "verificationStatus": "verified",
-      "hasSolution": true,
-      "hasViz": false,
-      "hasHandwritten": false,
-      "tags": [
-        "後拉法",
-        "組合T型斷面",
-        "兩階段應力疊加",
-        "非組合梁承受DL",
-        "組合梁承受LL",
-        "底纖維拉力控制",
-        "容許應力設計",
-        "不同f'c轉換"
-      ]
-    },
-    {
-      "moduleId": "RC-2008-3",
-      "year": 2008,
-      "rocYear": 97,
-      "questionNumber": 3,
-      "primaryTopicId": "RC-U2-2",
-      "primaryTopicName": "RC 扭力強度設計",
-      "secondaryTopicIds": [],
-      "designMethod": "USD",
-      "verificationStatus": "verified",
-      "hasSolution": true,
-      "hasViz": false,
-      "hasHandwritten": false,
-      "tags": [
-        "矩形梁",
-        "純扭矩",
-        "斷面適當性",
-        "空間桁架類比",
-        "閉合箍筋",
-        "Aoh計算",
-        "poh最大間距",
-        "縱向扭力筋"
-      ]
-    },
-    {
-      "moduleId": "RC-2008-2",
-      "year": 2008,
-      "rocYear": 97,
-      "questionNumber": 2,
-      "primaryTopicId": "RC-U1-2",
-      "primaryTopicName": "RC 柱強度分析與設計",
-      "secondaryTopicIds": [],
-      "designMethod": "USD",
-      "verificationStatus": "verified",
-      "hasSolution": true,
-      "hasViz": true,
-      "hasHandwritten": false,
-      "tags": [
-        "方形柱",
-        "P-M互制",
-        "拉力鋼筋應變為零",
-        "應變相容",
-        "中排鋼筋在壓力區",
-        "三排配筋",
-        "壓力控制",
-        "偏心受壓"
-      ]
-    },
-    {
-      "moduleId": "RC-2008-1",
-      "year": 2008,
-      "rocYear": 97,
-      "questionNumber": 1,
-      "primaryTopicId": "RC-U3-1",
-      "primaryTopicName": "梁工作性要求（含撓度、裂縫）",
-      "secondaryTopicIds": [],
-      "designMethod": "USD",
-      "verificationStatus": "verified",
-      "hasSolution": true,
-      "hasViz": false,
-      "hasHandwritten": false,
-      "tags": [
-        "懸臂梁",
-        "雙筋梁",
-        "長期撓度",
-        "有效慣性矩Ie",
-        "開裂彎矩Mcr",
-        "λ長期修正係數",
-        "轉換斷面法"
-      ]
-    },
-    {
-      "moduleId": "RC-2013-4",
-      "year": 2013,
-      "rocYear": 102,
-      "questionNumber": 4,
-      "primaryTopicId": "RC-U4-1",
-      "primaryTopicName": "預力梁斷面應力分析",
-      "secondaryTopicIds": [],
-      "designMethod": "混合",
-      "verificationStatus": "verified",
-      "hasSolution": true,
-      "hasViz": false,
-      "hasHandwritten": false,
-      "tags": [
-        "先拉法",
-        "有黏結腱",
-        "開裂彎矩",
-        "鋼腱極限應變",
-        "fps公式",
-        "矩形斷面",
-        "Whitney應力塊",
-        "β₁折減",
-        "應變相容"
-      ]
-    },
-    {
-      "moduleId": "RC-2005-1",
-      "year": 2005,
-      "rocYear": 94,
-      "questionNumber": 1,
-      "primaryTopicId": "RC-U1-2",
-      "primaryTopicName": "RC 柱強度分析與設計",
-      "secondaryTopicIds": [],
-      "designMethod": "USD",
-      "verificationStatus": "verified",
-      "hasSolution": true,
-      "hasViz": true,
-      "hasHandwritten": false,
-      "tags": [
-        "矩形柱",
-        "P-M互制",
-        "曲率延展比",
-        "壓縮區鋼筋未降伏",
-        "彎矩曲率",
-        "8-#8對稱配筋",
-        "偏心受壓",
-        "三排配筋"
-      ]
-    },
-    {
-      "moduleId": "RC-2005-2",
-      "year": 2005,
-      "rocYear": 94,
-      "questionNumber": 2,
-      "primaryTopicId": "RC-U1-1",
-      "primaryTopicName": "RC 梁彎矩強度分析與設計",
-      "secondaryTopicIds": [],
-      "designMethod": "USD",
-      "verificationStatus": "verified",
-      "hasSolution": true,
-      "hasViz": false,
-      "hasHandwritten": false,
-      "tags": [
-        "T形梁",
-        "最大拉力筋量",
-        "0.75ρb",
-        "T型梁平衡鋼筋",
-        "NA在翼板",
-        "活載重反推",
-        "設計彎矩",
-        "ACI載重組合"
-      ]
-    },
-    {
-      "moduleId": "RC-2005-3",
-      "year": 2005,
-      "rocYear": 94,
-      "questionNumber": 3,
-      "primaryTopicId": "RC-U3-3",
-      "primaryTopicName": "韌性要求與耐震設計",
-      "secondaryTopicIds": [
-        "RC-U1-1"
-      ],
-      "designMethod": "USD",
-      "verificationStatus": "verified",
-      "hasSolution": true,
-      "hasViz": false,
-      "hasHandwritten": false,
-      "tags": [
-        "角柱接頭",
-        "接頭剪力",
-        "梁柱接頭",
-        "外接頭",
-        "Vjh",
-        "γ係數3.2",
-        "Aj接頭有效面積",
-        "column_shear反推",
-        "Whitney應力塊"
-      ]
-    },
-    {
-      "moduleId": "RC-2005-4",
-      "year": 2005,
-      "rocYear": 94,
-      "questionNumber": 4,
-      "primaryTopicId": "RC-U3-1",
-      "primaryTopicName": "梁工作性要求（含撓度、裂縫）",
-      "secondaryTopicIds": [],
-      "designMethod": "概念題",
-      "verificationStatus": "verified",
-      "hasSolution": true,
-      "hasViz": false,
-      "hasHandwritten": false,
-      "tags": [
-        "潛變",
-        "潛變係數Cc",
-        "長期變形",
-        "彈性縮短",
-        "軸向變形",
-        "混凝土時間相依行為",
-        "純壓柱變形",
-        "Ec計算"
-      ]
-    },
-    {
-      "moduleId": "RC-2005-5",
-      "year": 2005,
-      "rocYear": 94,
-      "questionNumber": 5,
-      "primaryTopicId": "RC-U4-3",
-      "primaryTopicName": "預力損失",
-      "secondaryTopicIds": [
-        "RC-U4-2"
-      ],
-      "designMethod": "概念題",
-      "verificationStatus": "verified",
-      "hasSolution": true,
-      "hasViz": false,
-      "hasHandwritten": false,
-      "tags": [
-        "直線型鋼腱",
-        "曲線型鋼腱",
-        "等效載重法",
-        "載重能力比較",
-        "摩擦損失",
-        "非預期彎曲係數K",
-        "Wobble",
-        "角度變化α",
-        "後拉法"
-      ]
-    },
-    {
-      "moduleId": "RC-2004-1",
-      "year": 2004,
-      "rocYear": 93,
-      "questionNumber": 1,
-      "primaryTopicId": "RC-U3-3",
-      "primaryTopicName": "韌性要求與耐震設計",
-      "secondaryTopicIds": [],
-      "designMethod": "概念題",
-      "verificationStatus": "verified",
-      "hasSolution": true,
-      "hasViz": false,
-      "hasHandwritten": false,
-      "tags": [
-        "混凝土品質判定",
-        "圓柱試體",
-        "統計驗收",
-        "耐震搭接",
-        "受撓搭接",
-        "橫向鋼筋間距",
-        "Class B搭接",
-        "ACI規範"
-      ]
-    },
-    {
-      "moduleId": "RC-2004-2",
-      "year": 2004,
-      "rocYear": 93,
-      "questionNumber": 2,
-      "primaryTopicId": "RC-U1-1",
-      "primaryTopicName": "RC 梁彎矩強度分析與設計",
-      "secondaryTopicIds": [],
-      "designMethod": "USD",
-      "verificationStatus": "verified",
-      "hasSolution": true,
-      "hasViz": false,
-      "hasHandwritten": false,
-      "tags": [
-        "外伸梁",
-        "懸臂梁",
-        "D點跨中彎矩",
-        "單筋梁",
-        "Whitney應力塊",
-        "D32鋼筋",
-        "雙排配筋",
-        "過渡區φ值",
-        "ACI載重組合"
-      ]
-    },
-    {
-      "moduleId": "RC-2004-3",
-      "year": 2004,
-      "rocYear": 93,
-      "questionNumber": 3,
-      "primaryTopicId": "RC-U3-3",
-      "primaryTopicName": "韌性要求與耐震設計",
-      "secondaryTopicIds": [
-        "RC-U1-2"
-      ],
-      "designMethod": "USD",
-      "verificationStatus": "verified",
-      "hasSolution": true,
-      "hasViz": false,
-      "hasHandwritten": false,
-      "tags": [
-        "耐震柱",
-        "Ash公式",
-        "圍束箍筋",
-        "繫筋",
-        "密箍區間距",
-        "特殊矩形框架柱",
-        "D13箍筋",
-        "8-D25"
-      ]
-    },
-    {
-      "moduleId": "RC-2004-4",
-      "year": 2004,
-      "rocYear": 93,
-      "questionNumber": 4,
-      "primaryTopicId": "RC-U1-2",
-      "primaryTopicName": "RC 柱強度分析與設計",
-      "secondaryTopicIds": [
-        "RC-U1-3"
-      ],
-      "designMethod": "USD",
-      "verificationStatus": "verified",
-      "hasSolution": true,
-      "hasViz": true,
-      "hasHandwritten": false,
-      "tags": [
-        "雙軸彎矩",
-        "細長柱",
-        "彎矩放大法",
-        "δns放大係數",
-        "無側移構架",
-        "ACI載重組合",
-        "雙曲度",
-        "M1M2比值",
-        "迴轉半徑"
-      ]
-    },
-    {
-      "moduleId": "RC-2004-5",
-      "year": 2004,
-      "rocYear": 93,
-      "questionNumber": 5,
-      "primaryTopicId": "RC-U4-1",
-      "primaryTopicName": "預力梁斷面應力分析",
-      "secondaryTopicIds": [
-        "RC-U4-3"
-      ],
-      "designMethod": "混合",
-      "verificationStatus": "verified",
-      "hasSolution": true,
-      "hasViz": false,
-      "hasHandwritten": false,
-      "tags": [
-        "先拉法",
-        "有黏結腱",
-        "開裂彎矩Mcr",
-        "fps公式",
-        "Whitney應力塊",
-        "β₁折減",
-        "矩形斷面",
-        "有效預力",
-        "ωp延性驗核"
-      ]
-    },
-    {
-      "moduleId": "RC-2003-1",
-      "year": 2003,
-      "rocYear": 92,
-      "questionNumber": 1,
-      "primaryTopicId": "RC-U4-1",
-      "primaryTopicName": "預力梁斷面應力分析",
-      "secondaryTopicIds": [],
-      "designMethod": "混合",
-      "verificationStatus": "verified",
-      "hasSolution": true,
-      "hasViz": false,
-      "hasHandwritten": false,
-      "tags": [
-        "部分預力梁",
-        "應變相容法",
-        "非預力鋼絞線",
-        "雙線性應力應變",
-        "標稱彎矩強度",
-        "fps精確法",
-        "β₁折減"
-      ]
-    },
-    {
-      "moduleId": "RC-2003-2",
-      "year": 2003,
-      "rocYear": 92,
-      "questionNumber": 2,
-      "primaryTopicId": "RC-U2-3",
-      "primaryTopicName": "鋼筋錨定長度與斷點計算",
-      "secondaryTopicIds": [
-        "RC-U3-3"
-      ],
-      "designMethod": "USD",
-      "verificationStatus": "verified",
-      "hasSolution": true,
-      "hasViz": false,
-      "hasHandwritten": false,
-      "tags": [
-        "耐震柱",
-        "搭接長度",
-        "詳細計算法",
-        "c值計算",
-        "Ktr橫向鋼筋指標",
-        "Class B搭接",
-        "中段1/2限制",
-        "方形柱16-#9"
-      ]
-    },
-    {
-      "moduleId": "RC-2003-3",
-      "year": 2003,
-      "rocYear": 92,
-      "questionNumber": 3,
-      "primaryTopicId": "RC-U3-3",
-      "primaryTopicName": "韌性要求與耐震設計",
-      "secondaryTopicIds": [
-        "RC-U2-1"
-      ],
-      "designMethod": "USD",
-      "verificationStatus": "verified",
-      "hasSolution": true,
-      "hasViz": false,
-      "hasHandwritten": false,
-      "tags": [
-        "梁柱接頭",
-        "內部接頭",
-        "水平剪力Vjh",
-        "有效接頭寬度bj",
-        "接頭剪力強度",
-        "γ係數",
-        "T_top+T_bot-Vcol",
-        "中間層內跨"
-      ]
-    },
-    {
-      "moduleId": "RC-2003-4",
-      "year": 2003,
-      "rocYear": 92,
-      "questionNumber": 4,
-      "primaryTopicId": "RC-U3-3",
-      "primaryTopicName": "韌性要求與耐震設計",
-      "secondaryTopicIds": [
-        "RC-U2-1"
-      ],
-      "designMethod": "USD",
-      "verificationStatus": "verified",
-      "hasSolution": true,
-      "hasViz": false,
-      "hasHandwritten": false,
-      "tags": [
-        "剪力牆",
-        "邊界構材",
-        "水平剪力筋",
-        "垂直剪力筋",
-        "覆沒力矩",
-        "αc係數",
-        "φ=0.6",
-        "單層配筋",
-        "彎鉤錨定",
-        "兩層樓高"
-      ]
-    },
-    {
-      "moduleId": "RC-2002-1",
-      "year": 2002,
-      "rocYear": 91,
-      "questionNumber": 1,
-      "primaryTopicId": "RC-U3-2",
-      "primaryTopicName": "樓版與基腳設計",
-      "secondaryTopicIds": [],
-      "designMethod": "概念題",
-      "verificationStatus": "verified",
-      "hasSolution": true,
-      "hasViz": false,
-      "hasHandwritten": false,
-      "tags": [
-        "雙向版",
-        "角隅配筋",
-        "邊梁",
-        "角隅翹起效應",
-        "ℓn/5延伸範圍",
-        "上下層均配筋",
-        "概念繪圖",
-        "ACI 13.3.6"
-      ]
-    },
-    {
-      "moduleId": "RC-2002-2",
-      "year": 2002,
-      "rocYear": 91,
-      "questionNumber": 2,
-      "primaryTopicId": "RC-U1-2",
-      "primaryTopicName": "RC 柱強度分析與設計",
-      "secondaryTopicIds": [],
-      "designMethod": "USD",
-      "verificationStatus": "verified",
-      "hasSolution": true,
-      "hasViz": true,
-      "hasHandwritten": false,
-      "tags": [
-        "偏心受壓",
-        "P-M互制",
-        "6-#9",
-        "e=10cm",
-        "壓力控制",
-        "中排鋼筋力矩臂為零",
-        "應變相容",
-        "壓力筋降伏邊界"
-      ]
-    },
-    {
-      "moduleId": "RC-2002-3",
-      "year": 2002,
-      "rocYear": 91,
-      "questionNumber": 3,
-      "primaryTopicId": "RC-U2-2",
-      "primaryTopicName": "RC 扭力強度設計",
-      "secondaryTopicIds": [],
-      "designMethod": "USD",
-      "verificationStatus": "verified",
-      "hasSolution": true,
-      "hasViz": false,
-      "hasHandwritten": false,
-      "tags": [
-        "扭力忽略門檻",
-        "偏心均佈載重",
-        "最大偏心量e",
-        "單端拘束一端自由",
-        "Tu=tu×L",
-        "x²y舊版公式",
-        "e_max=8.31cm",
-        "ACI 318-89"
-      ]
-    },
-    {
-      "moduleId": "RC-2002-4",
-      "year": 2002,
-      "rocYear": 91,
-      "questionNumber": 4,
-      "primaryTopicId": "RC-U1-1",
-      "primaryTopicName": "RC 梁彎矩強度分析與設計",
-      "secondaryTopicIds": [],
-      "designMethod": "USD",
-      "verificationStatus": "verified",
-      "hasSolution": true,
-      "hasViz": false,
-      "hasHandwritten": false,
-      "tags": [
-        "雙筋梁",
-        "壓力筋恰好降伏邊界",
-        "β₁=0.80高強混凝土",
-        "應變相容",
-        "Whitney應力塊",
-        "Mn=108.2tf·m",
-        "Cs扣0.85f'c",
-        "延性驗核"
-      ]
-    },
-    {
-      "moduleId": "RC-2002-5",
-      "year": 2002,
-      "rocYear": 91,
-      "questionNumber": 5,
-      "primaryTopicId": "RC-U4-3",
-      "primaryTopicName": "預力損失",
-      "secondaryTopicIds": [],
-      "designMethod": "WSD",
-      "verificationStatus": "verified",
-      "hasSolution": true,
-      "hasViz": false,
-      "hasHandwritten": false,
-      "tags": [
-        "後拉法",
-        "摩擦損失",
-        "連續梁",
-        "兩端張拉",
-        "α=L/R圓弧法",
-        "直線段不增角變",
-        "AE損失19.2%",
-        "各點應力0.940~0.808"
-      ]
-    },
-    {
-      "moduleId": "RC-2016-3",
-      "year": 2016,
-      "rocYear": 105,
-      "questionNumber": 3,
-      "primaryTopicId": "RC-U1-3",
-      "primaryTopicName": "細長柱",
-      "secondaryTopicIds": [
-        "RC-U1-2"
-      ],
-      "designMethod": "USD",
-      "verificationStatus": "verified",
-      "hasSolution": true,
-      "hasViz": false,
-      "hasHandwritten": false,
-      "tags": [
-        "細長柱",
-        "無側移構架",
-        "放大彎矩法",
-        "Cm係數",
-        "雙曲度",
-        "臨界載重Pc",
-        "δns計算"
-      ]
-    },
-    {
-      "moduleId": "RC-2017-1",
-      "year": 2017,
-      "rocYear": 106,
-      "questionNumber": 1,
-      "primaryTopicId": "RC-U1-2",
-      "primaryTopicName": "RC 柱強度分析與設計",
-      "secondaryTopicIds": [],
-      "designMethod": "USD",
-      "verificationStatus": "verified",
-      "hasSolution": true,
-      "hasViz": true,
-      "hasHandwritten": false,
-      "tags": [
-        "加大柱",
-        "組合截面",
-        "軸壓強度",
-        "雙折線應力應變",
-        "最大可用軸力",
-        "締箍柱",
-        "新舊混凝土"
-      ]
-    },
-    {
-      "moduleId": "RC-2017-2",
-      "year": 2017,
-      "rocYear": 106,
-      "questionNumber": 2,
-      "primaryTopicId": "RC-U2-1",
-      "primaryTopicName": "RC 剪力強度分析與設計",
-      "secondaryTopicIds": [
-        "RC-U1-2"
-      ],
-      "designMethod": "USD",
-      "verificationStatus": "verified",
-      "hasSolution": true,
-      "hasViz": false,
-      "hasHandwritten": false,
-      "tags": [
-        "加大柱",
-        "介面剪力",
-        "摩擦剪力法",
-        "植筋設計",
-        "新舊混凝土結合",
-        "Shear Friction",
-        "粗糙面"
-      ]
-    },
-    {
-      "moduleId": "RC-2017-3",
-      "year": 2017,
-      "rocYear": 106,
-      "questionNumber": 3,
-      "primaryTopicId": "RC-U3-2",
-      "primaryTopicName": "樓版與基腳設計",
-      "secondaryTopicIds": [],
-      "designMethod": "USD",
-      "verificationStatus": "verified",
-      "hasSolution": true,
-      "hasViz": false,
-      "hasHandwritten": false,
-      "tags": [
-        "方形基腳",
-        "底版鋼筋設計",
-        "穿孔剪力",
-        "單向剪力",
-        "地基承載力驗核",
-        "倒置懸臂梁",
-        "淨因數土壓力"
-      ]
-    },
-    {
-      "moduleId": "RC-2017-4",
-      "year": 2017,
-      "rocYear": 106,
-      "questionNumber": 4,
-      "primaryTopicId": "RC-U4-3",
-      "primaryTopicName": "預力損失",
-      "secondaryTopicIds": [
-        "RC-U4-1"
-      ],
-      "designMethod": "WSD",
-      "verificationStatus": "verified",
-      "hasSolution": true,
-      "hasViz": false,
-      "hasHandwritten": false,
-      "tags": [
-        "論述題",
-        "先拉法",
-        "後拉法",
-        "即時損失",
-        "時間相關損失",
-        "摩擦損失",
-        "彈性縮短",
-        "潛變",
-        "乾縮",
-        "鬆弛"
-      ]
-    }
-  ]
+    "description":  "SA ç§‘ç›®è€ƒé¡Œç¸½ç´¢å¼•ã€‚ç§‘ç›®ï¼šçµæ§‹å­¸ï¼ˆç¬¬ä¸€ç§‘ï¼‰ã€‚verificationStatus å’Œ tags æ˜¯ä¸»è¦äººå·¥ç¶­è­·æ¬„ä½ã€‚",
+    "tagSystem":  {
+                      "primaryTopicId":  "å‘½é¡Œå¤§ç¶±ä¸»åˆ†é¡žï¼ˆSA-UN-nï¼Œä¾å®˜æ–¹å‘½é¡Œå¤§ç¶±ä¸‰å–®å…ƒï¼‰",
+                      "secondaryTopicIds":  "å‘½é¡Œå¤§ç¶±å‰¯åˆ†é¡žï¼ˆè·¨å­é …æ™‚ä½¿ç”¨ï¼‰",
+                      "tags":  "è‡ªç”±æ¨™ç±¤ï¼ˆ3-8å€‹ï¼Œè¦‹ CLAUDE-SPEC.md Â§8ï¼‰"
+                  },
+    "questions":  [
+                      {
+                          "moduleId":  "SA-2019-4",
+                          "year":  2019,
+                          "rocYear":  108,
+                          "questionNumber":  4,
+                          "primaryTopicId":  "SA-U4-1",
+                          "primaryTopicName":  "矩陣位移法",
+                          "secondaryTopicIds":  [],
+                          "verificationStatus":  "unverified",
+                          "hasSolution":  true,
+                          "hasViz":  false,
+                          "hasHandwritten":  false,
+                          "tags":  [
+                                       "勁度矩陣",
+                                       "半剛性接頭",
+                                       "旋轉彈簧",
+                                       "節點載重向量"
+                                   ]
+                      },
+                      {
+                          "moduleId":  "SA-2019-3",
+                          "year":  2019,
+                          "rocYear":  108,
+                          "questionNumber":  3,
+                          "primaryTopicId":  "SA-U2-2",
+                          "primaryTopicName":  "傾角變位法",
+                          "secondaryTopicIds":  [],
+                          "verificationStatus":  "unverified",
+                          "hasSolution":  true,
+                          "hasViz":  false,
+                          "hasHandwritten":  false,
+                          "tags":  [
+                                       "傾角變位法",
+                                       "連續梁",
+                                       "支承沉陷",
+                                       "對稱性"
+                                   ]
+                      },
+                      {
+                          "moduleId":  "SA-2019-2",
+                          "year":  2019,
+                          "rocYear":  108,
+                          "questionNumber":  2,
+                          "primaryTopicId":  "SA-U3-2",
+                          "primaryTopicName":  "建築結構系統分析",
+                          "secondaryTopicIds":  [],
+                          "verificationStatus":  "unverified",
+                          "hasSolution":  true,
+                          "hasViz":  false,
+                          "hasHandwritten":  false,
+                          "tags":  [
+                                       "范倫迪爾桁架",
+                                       "近似分析",
+                                       "反曲點",
+                                       "彎矩圖",
+                                       "軸力圖"
+                                   ]
+                      },
+                      {
+                          "moduleId":  "SA-2019-1",
+                          "year":  2019,
+                          "rocYear":  108,
+                          "questionNumber":  1,
+                          "primaryTopicId":  "SA-U2-1",
+                          "primaryTopicName":  "靜不定結構最小功法",
+                          "secondaryTopicIds":  [
+                                                    "SA-U1-1"
+                                                ],
+                          "verificationStatus":  "unverified",
+                          "hasSolution":  true,
+                          "hasViz":  false,
+                          "hasHandwritten":  false,
+                          "tags":  [
+                                       "靜不定桁架",
+                                       "最小功法",
+                                       "破壞機構",
+                                       "挫曲",
+                                       "極限載重"
+                                   ]
+                      },
+                      {
+                          "moduleId":  "SA-2022-4",
+                          "year":  2022,
+                          "rocYear":  111,
+                          "questionNumber":  4,
+                          "primaryTopicId":  "SA-U2",
+                          "primaryTopicName":  "éœä¸å®šçµæ§‹èˆ‡ä½ç§»",
+                          "secondaryTopicIds":  [
+                                                    "SA-U2-4"
+                                                ],
+                          "verificationStatus":  "unverified",
+                          "hasSolution":  true,
+                          "hasViz":  false,
+                          "hasHandwritten":  false,
+                          "tags":  [
+                                       "å‰ªåŠ›æ£Ÿæž¶",
+                                       "å‰›æ€§æ¨“æ¿",
+                                       "å´ç§»å‰›åº¦",
+                                       "ä¸è¦å‰‡æ§‹æž¶",
+                                       "æŒ‘é«˜æŸ±"
+                                   ]
+                      },
+                      {
+                          "moduleId":  "SA-2022-3",
+                          "year":  2022,
+                          "rocYear":  111,
+                          "questionNumber":  3,
+                          "primaryTopicId":  "SA-U1",
+                          "primaryTopicName":  "éœå®šçµæ§‹åˆ†æž",
+                          "secondaryTopicIds":  [
+                                                    "SA-U1-3"
+                                                ],
+                          "verificationStatus":  "unverified",
+                          "hasSolution":  true,
+                          "hasViz":  false,
+                          "hasHandwritten":  false,
+                          "tags":  [
+                                       "å½±éŸ¿ç·š",
+                                       "æ¡æž¶",
+                                       "ç´°é•·æ‹‰æ¡¿",
+                                       "å…§éƒ¨é‰¸",
+                                       "ç§»å‹•è¼‰é‡"
+                                   ]
+                      },
+                      {
+                          "moduleId":  "SA-2022-2",
+                          "year":  2022,
+                          "rocYear":  111,
+                          "questionNumber":  2,
+                          "primaryTopicId":  "SA-U2",
+                          "primaryTopicName":  "éœä¸å®šçµæ§‹èˆ‡ä½ç§»",
+                          "secondaryTopicIds":  [
+                                                    "SA-U2-3"
+                                                ],
+                          "verificationStatus":  "unverified",
+                          "hasSolution":  true,
+                          "hasViz":  false,
+                          "hasHandwritten":  false,
+                          "tags":  [
+                                       "å‚¾è§’è®Šä½æ³•",
+                                       "æœ‰å´ç§»å‰›æž¶",
+                                       "å´ç§»æ–¹ç¨‹å¼",
+                                       "ä¿®æ­£å›ºç«¯å½ŽçŸ©",
+                                       "ç–ŠåŠ æ³•"
+                                   ]
+                      },
+                      {
+                          "moduleId":  "SA-2022-1",
+                          "year":  2022,
+                          "rocYear":  111,
+                          "questionNumber":  1,
+                          "primaryTopicId":  "SA-U2",
+                          "primaryTopicName":  "éœä¸å®šçµæ§‹èˆ‡ä½ç§»",
+                          "secondaryTopicIds":  [
+                                                    "SA-U2-1"
+                                                ],
+                          "verificationStatus":  "unverified",
+                          "hasSolution":  true,
+                          "hasViz":  false,
+                          "hasHandwritten":  false,
+                          "tags":  [
+                                       "å½ŽçŸ©åœ–åæ±‚",
+                                       "å½ˆç°§",
+                                       "å…±è»›æ¢æ³•",
+                                       "æ”¯æ‰¿æ²‰é™·",
+                                       "é‰¸æŽ¥é»ž"
+                                   ]
+                      },
+                      {
+                          "moduleId":  "SA-2023-4",
+                          "year":  2023,
+                          "rocYear":  112,
+                          "questionNumber":  4,
+                          "primaryTopicId":  "SA-U5",
+                          "primaryTopicName":  "è¿‘ä»£çµæ§‹ç³»çµ±åˆ†æž",
+                          "secondaryTopicIds":  [
+                                                    "SA-U5-1"
+                                                ],
+                          "verificationStatus":  "unverified",
+                          "hasSolution":  true,
+                          "hasViz":  false,
+                          "hasHandwritten":  false,
+                          "tags":  [
+                                       "åå¿ƒæ–œæ’æ§‹æž¶",
+                                       "EBF",
+                                       "å‰›æ€§å€åŸŸ",
+                                       "é€£æ¢æ—‹è½‰è§’",
+                                       "æ©Ÿæ§‹åˆ†æž",
+                                       "å´å‘å‹åº¦åˆ†é…"
+                                   ]
+                      },
+                      {
+                          "moduleId":  "SA-2023-3",
+                          "year":  2023,
+                          "rocYear":  112,
+                          "questionNumber":  3,
+                          "primaryTopicId":  "SA-U3",
+                          "primaryTopicName":  "å‚¾è§’è®Šä½æ³•",
+                          "secondaryTopicIds":  [
+                                                    "SA-U3-1"
+                                                ],
+                          "verificationStatus":  "unverified",
+                          "hasSolution":  true,
+                          "hasViz":  false,
+                          "hasHandwritten":  false,
+                          "tags":  [
+                                       "å¹³é¢å‰›æž¶",
+                                       "ç„¡å´ç§»",
+                                       "å‚¾è§’è®Šä½æ³•",
+                                       "é‰¸ç«¯ä¿®æ­£",
+                                       "æ•´é«”å¹³è¡¡"
+                                   ]
+                      },
+                      {
+                          "moduleId":  "SA-2023-2",
+                          "year":  2023,
+                          "rocYear":  112,
+                          "questionNumber":  2,
+                          "primaryTopicId":  "SA-U2-2",
+                          "primaryTopicName":  "éœä¸å®šçµæ§‹è«§åˆè®Šä½",
+                          "secondaryTopicIds":  [
+                                                    "SA-U1-1"
+                                                ],
+                          "verificationStatus":  "unverified",
+                          "hasSolution":  true,
+                          "hasViz":  false,
+                          "hasHandwritten":  false,
+                          "tags":  [
+                                       "éœä¸å®šæ¡æž¶",
+                                       "è«§åˆè®Šä½æ³•",
+                                       "å¤šé¤˜åŠ›",
+                                       "ç¯€é»žæ³•",
+                                       "å–®ä½åŠ›æ³•"
+                                   ]
+                      },
+                      {
+                          "moduleId":  "SA-2023-1",
+                          "year":  2023,
+                          "rocYear":  112,
+                          "questionNumber":  1,
+                          "primaryTopicId":  "SA-U1-2",
+                          "primaryTopicName":  "éœå®šçµæ§‹åˆ†æž",
+                          "secondaryTopicIds":  [
+                                                    "SA-U2"
+                                                ],
+                          "verificationStatus":  "unverified",
+                          "hasSolution":  true,
+                          "hasViz":  false,
+                          "hasHandwritten":  false,
+                          "tags":  [
+                                       "éœå®šå‰›æž¶",
+                                       "æ”¯æ‰¿æ²‰é™·",
+                                       "å‰›é«”ä½ç§»",
+                                       "å–®ä½åŠ›æ³•",
+                                       "ç–ŠåŠ åŽŸç†"
+                                   ]
+                      },
+                      {
+                          "moduleId":  "SA-2025-1",
+                          "year":  2025,
+                          "rocYear":  114,
+                          "questionNumber":  1,
+                          "primaryTopicId":  "SA-U2-4",
+                          "primaryTopicName":  "éœä¸å®šçµæ§‹ä¹‹çŸ©é™£åˆ†æžæ³•",
+                          "secondaryTopicIds":  [
+
+                                                ],
+                          "verificationStatus":  "unverified",
+                          "hasSolution":  true,
+                          "hasViz":  true,
+                          "hasHandwritten":  false,
+                          "tags":  [
+                                       "çŸ©é™£å‹åº¦æ³•",
+                                       "å´å‘å‹åº¦",
+                                       "é–€åž‹å‰›æ§‹æž¶",
+                                       "å›ºå®šç«¯",
+                                       "éœæ…‹å‡ç¸®",
+                                       "å¿½ç•¥è»¸å‘è®Šå½¢"
+                                   ]
+                      },
+                      {
+                          "moduleId":  "SA-2025-2",
+                          "year":  2025,
+                          "rocYear":  114,
+                          "questionNumber":  2,
+                          "primaryTopicId":  "SA-U1-3",
+                          "primaryTopicName":  "éœå®šåŠéœä¸å®šçµæ§‹å½±éŸ¿ç·š",
+                          "secondaryTopicIds":  [
+
+                                                ],
+                          "verificationStatus":  "unverified",
+                          "hasSolution":  true,
+                          "hasViz":  true,
+                          "hasHandwritten":  false,
+                          "tags":  [
+                                       "å½±éŸ¿ç·š",
+                                       "éœå®šæ¢",
+                                       "å…§é‰¸æŽ¥",
+                                       "å›ºå®šç«¯",
+                                       "æ‡¸è‡‚æ®µ",
+                                       "æ»¾æ”¯æ‰¿"
+                                   ]
+                      },
+                      {
+                          "moduleId":  "SA-2025-3",
+                          "year":  2025,
+                          "rocYear":  114,
+                          "questionNumber":  3,
+                          "primaryTopicId":  "SA-U2-3",
+                          "primaryTopicName":  "éœä¸å®šçµæ§‹ä¹‹å‚¾è§’è®Šä½æ³•",
+                          "secondaryTopicIds":  [
+
+                                                ],
+                          "verificationStatus":  "unverified",
+                          "hasSolution":  true,
+                          "hasViz":  false,
+                          "hasHandwritten":  false,
+                          "tags":  [
+                                       "å‚¾è§’è®Šä½æ³•",
+                                       "éžå‡å‹»æ–·é¢",
+                                       "å‹åº¦ä¿‚æ•¸",
+                                       "å‚³éžä¿‚æ•¸",
+                                       "å›ºç«¯å½ŽçŸ©",
+                                       "å…±è»›æ¨‘"
+                                   ]
+                      },
+                      {
+                          "moduleId":  "SA-2025-4",
+                          "year":  2025,
+                          "rocYear":  114,
+                          "questionNumber":  4,
+                          "primaryTopicId":  "SA-U2-4",
+                          "primaryTopicName":  "éœä¸å®šçµæ§‹ä¹‹çŸ©é™£åˆ†æžæ³•",
+                          "secondaryTopicIds":  [
+                                                    "SA-U2-3"
+                                                ],
+                          "verificationStatus":  "unverified",
+                          "hasSolution":  true,
+                          "hasViz":  true,
+                          "hasHandwritten":  false,
+                          "tags":  [
+                                       "çŸ©é™£ä½ç§»æ³•",
+                                       "æ•´é«”å‹åº¦çŸ©é™£",
+                                       "è‡ªç”±åº¦",
+                                       "æ ¼åºŠçµæ§‹",
+                                       "å¯¦å¿ƒåœ“æ¡¿",
+                                       "å°ç¨±æ€§åˆ©ç”¨"
+                                   ]
+                      },
+                      {
+                          "moduleId":  "SA-2024-1",
+                          "year":  2024,
+                          "rocYear":  113,
+                          "questionNumber":  1,
+                          "primaryTopicId":  "SA-U1-2",
+                          "primaryTopicName":  "éœå®šçµæ§‹åˆ†æž",
+                          "secondaryTopicIds":  [
+
+                                                ],
+                          "verificationStatus":  "unverified",
+                          "hasSolution":  true,
+                          "hasViz":  false,
+                          "hasHandwritten":  false,
+                          "tags":  [
+                                       "éœå®šæ¢",
+                                       "å…§éƒ¨é‰¸",
+                                       "æœ€å¤§ä½ç§»",
+                                       "å…±è»›æ¢æ³•",
+                                       "æ‡¸è‡‚æ¢"
+                                   ]
+                      },
+                      {
+                          "moduleId":  "SA-2024-2",
+                          "year":  2024,
+                          "rocYear":  113,
+                          "questionNumber":  2,
+                          "primaryTopicId":  "SA-U2",
+                          "primaryTopicName":  "çµæ§‹è®Šä½åˆ†æž",
+                          "secondaryTopicIds":  [
+                                                    "SA-U1"
+                                                ],
+                          "verificationStatus":  "unverified",
+                          "hasSolution":  true,
+                          "hasViz":  false,
+                          "hasHandwritten":  false,
+                          "tags":  [
+                                       "éœå®šæ¡æž¶",
+                                       "è£½é€ èª¤å·®",
+                                       "æº«åº¦è®ŠåŒ–",
+                                       "æ”¯æ‰¿æ²‰é™·",
+                                       "å¤šé¤˜è³‡è¨Šé™·é˜±"
+                                   ]
+                      },
+                      {
+                          "moduleId":  "SA-2024-3",
+                          "year":  2024,
+                          "rocYear":  113,
+                          "questionNumber":  3,
+                          "primaryTopicId":  "SA-U2",
+                          "primaryTopicName":  "éœä¸å®šçµæ§‹åˆ†æž",
+                          "secondaryTopicIds":  [
+                                                    "SA-U2-3"
+                                                ],
+                          "verificationStatus":  "unverified",
+                          "hasSolution":  true,
+                          "hasViz":  false,
+                          "hasHandwritten":  false,
+                          "tags":  [
+                                       "å‚¾è§’è®Šä½æ³•",
+                                       "é–€åž‹å‰›æ§‹æž¶",
+                                       "å°ç¨±æ€§",
+                                       "æ¥µå€¼æ¯”ä¾‹"
+                                   ]
+                      },
+                      {
+                          "moduleId":  "SA-2024-4",
+                          "year":  2024,
+                          "rocYear":  113,
+                          "questionNumber":  4,
+                          "primaryTopicId":  "SA-U2-3",
+                          "primaryTopicName":  "éœä¸å®šçµæ§‹ä¹‹å‚¾è§’è®Šä½æ³•",
+                          "secondaryTopicIds":  [
+
+                                                ],
+                          "verificationStatus":  "unverified",
+                          "hasSolution":  true,
+                          "hasViz":  false,
+                          "hasHandwritten":  false,
+                          "tags":  [
+                                       "å‚¾è§’è®Šä½æ³•",
+                                       "å‰›æž¶",
+                                       "å´ç§»",
+                                       "é›†ä¸­åŠ›",
+                                       "åå°ç¨±",
+                                       "éžå‡å‹»æ–·é¢"
+                                   ]
+                      },
+                      {
+                          "year":  2021,
+                          "moduleId":  "SA-2021-1",
+                          "primaryTopicName":  "靜不定結構之傾角變位法",
+                          "questionNumber":  1,
+                          "rocYear":  110,
+                          "hasViz":  true,
+                          "hasHandwritten":  false,
+                          "verificationStatus":  "unverified",
+                          "hasSolution":  true,
+                          "tags":  [
+                                       "傾角變位法",
+                                       "彈簧支承",
+                                       "內部鉸",
+                                       "剛度等效",
+                                       "連續梁"
+                                   ],
+                          "primaryTopicId":  "SA-U2-3",
+                          "secondaryTopicIds":  [
+
+                                                ]
+                      },
+                      {
+                          "year":  2021,
+                          "moduleId":  "SA-2021-2",
+                          "primaryTopicName":  "靜不定結構之傾角變位法",
+                          "questionNumber":  2,
+                          "rocYear":  110,
+                          "hasViz":  true,
+                          "hasHandwritten":  false,
+                          "verificationStatus":  "unverified",
+                          "hasSolution":  true,
+                          "tags":  [
+                                       "傾角變位法",
+                                       "有側移剛架",
+                                       "對稱結構",
+                                       "反對稱載重",
+                                       "連桿效應"
+                                   ],
+                          "primaryTopicId":  "SA-U2-3",
+                          "secondaryTopicIds":  [
+
+                                                ]
+                      },
+                      {
+                          "year":  2021,
+                          "moduleId":  "SA-2021-3",
+                          "primaryTopicName":  "影響線與最大力",
+                          "questionNumber":  3,
+                          "rocYear":  110,
+                          "hasViz":  true,
+                          "hasHandwritten":  false,
+                          "verificationStatus":  "unverified",
+                          "hasSolution":  true,
+                          "tags":  [
+                                       "影響線",
+                                       "靜不定桁架",
+                                       "單位力法",
+                                       "柔軟度法",
+                                       "Müller-Breslau"
+                                   ],
+                          "primaryTopicId":  "SA-U3-2",
+                          "secondaryTopicIds":  [
+                                                    "SA-U2-1"
+                                                ]
+                      },
+                      {
+                          "year":  2021,
+                          "moduleId":  "SA-2021-4",
+                          "primaryTopicName":  "剛性樓板與側力分配",
+                          "questionNumber":  4,
+                          "rocYear":  110,
+                          "hasViz":  true,
+                          "hasHandwritten":  false,
+                          "verificationStatus":  "unverified",
+                          "hasSolution":  true,
+                          "tags":  [
+                                       "剛性樓板",
+                                       "平移與扭轉",
+                                       "剛心位置",
+                                       "扭轉勁度",
+                                       "柱剪力分配"
+                                   ],
+                          "primaryTopicId":  "SA-U5-1",
+                          "secondaryTopicIds":  [
+
+                                                ]
+                      },
+                      {
+                          "year":  2020,
+                          "moduleId":  "SA-2020-1",
+                          "primaryTopicName":  "傾角變位法",
+                          "questionNumber":  1,
+                          "rocYear":  109,
+                          "hasViz":  true,
+                          "hasHandwritten":  false,
+                          "verificationStatus":  "unverified",
+                          "hasSolution":  true,
+                          "tags":  [
+                                       "傾角變位法",
+                                       "無軸向變形",
+                                       "垂直滾支承",
+                                       "靜不定剛架"
+                                   ],
+                          "primaryTopicId":  "SA-U2-3",
+                          "secondaryTopicIds":  [
+
+                                                ]
+                      },
+                      {
+                          "year":  2020,
+                          "moduleId":  "SA-2020-2",
+                          "primaryTopicName":  "傾角變位法",
+                          "questionNumber":  2,
+                          "rocYear":  109,
+                          "hasViz":  true,
+                          "hasHandwritten":  false,
+                          "verificationStatus":  "unverified",
+                          "hasSolution":  true,
+                          "tags":  [
+                                       "傾角變位法",
+                                       "對稱性",
+                                       "剛架分析"
+                                   ],
+                          "primaryTopicId":  "SA-U2-3",
+                          "secondaryTopicIds":  [
+
+                                                ]
+                      },
+                      {
+                          "year":  2020,
+                          "moduleId":  "SA-2020-3",
+                          "primaryTopicName":  "靜不定結構影響線",
+                          "questionNumber":  3,
+                          "rocYear":  109,
+                          "hasViz":  true,
+                          "hasHandwritten":  false,
+                          "verificationStatus":  "unverified",
+                          "hasSolution":  true,
+                          "tags":  [
+                                       "影響線",
+                                       "靜不定結構",
+                                       "Müller-Breslau原理",
+                                       "柔度法",
+                                       "Maxwell-Betti定理"
+                                   ],
+                          "primaryTopicId":  "SA-U3-2",
+                          "secondaryTopicIds":  [
+
+                                                ]
+                      },
+                      {
+                          "year":  2020,
+                          "moduleId":  "SA-2020-4",
+                          "primaryTopicName":  "側力分配與剛性樓板",
+                          "questionNumber":  4,
+                          "rocYear":  109,
+                          "hasViz":  true,
+                          "hasHandwritten":  false,
+                          "verificationStatus":  "unverified",
+                          "hasSolution":  true,
+                          "tags":  [
+                                       "剛架與剪力牆互制",
+                                       "矩陣分析",
+                                       "剪力建築"
+                                   ],
+                          "primaryTopicId":  "SA-U5-1",
+                          "secondaryTopicIds":  [
+
+                                                ]
+                      }
+                  ]
 }

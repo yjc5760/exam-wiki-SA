@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <title>SA-2020-4 剛架與剪力牆互制</title>
+    <style>
+        body { font-family: sans-serif; display: flex; flex-direction: column; align-items: center; padding: 20px; background-color: #f5f5f5; }
+        .container { background: white; padding: 20px; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); margin-bottom: 20px; }
+        canvas { border: 1px solid #ccc; background: #fafafa; }
+        .title { text-align: center; margin-bottom: 10px; font-weight: bold; font-size: 1.2em; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="title">結構位移與側力分配 (位移放大 10000 倍)</div>
+        <canvas id="vizCanvas" width="700" height="450"></canvas>
+    </div>
+    <script>
+        const canvas = document.getElementById('vizCanvas');
+        const ctx = canvas.getContext('2d');
+        
+        // 放大係數與位移
+        const scale = 10000;
+        const d1 = 0.002 * scale; // 20px
+        const d2 = 0.001 * scale; // 10px
+
+        // 基本坐標 (未變形)
+        const frameX1 = 150, frameX2 = 300;
+        const wallX1 = 400, wallX2 = 480;
+        const y0 = 350, y1 = 200, y2 = 50; // 0, 1F, 2F
+
+        // 畫地表
+        ctx.beginPath();
+        ctx.moveTo(100, y0); ctx.lineTo(550, y0);
+        for(let x=100; x<=540; x+=10) { ctx.moveTo(x, y0); ctx.lineTo(x-10, y0+10); }
+        ctx.strokeStyle = '#333'; ctx.lineWidth = 2; ctx.stroke();
+
+        // 畫原始結構 (淺色虛線)
+        ctx.strokeStyle = '#ccc'; ctx.setLineDash([5,5]); ctx.lineWidth = 2;
+        ctx.beginPath();
+        // 剛架
+        ctx.moveTo(frameX1, y0); ctx.lineTo(frameX1, y2);
+        ctx.moveTo(frameX2, y0); ctx.lineTo(frameX2, y2);
+        ctx.moveTo(frameX1, y1); ctx.lineTo(frameX2, y1);
+        ctx.moveTo(frameX1, y2); ctx.lineTo(frameX2, y2);
+        // 連桿
+        ctx.moveTo(frameX2, y1); ctx.lineTo(wallX1, y1);
+        ctx.moveTo(frameX2, y2); ctx.lineTo(wallX1, y2);
+        // 剪力牆
+        ctx.rect(wallX1, y2, wallX2-wallX1, y0-y2);
+        ctx.stroke();
+
+        // 畫變形後結構 (實線)
+        ctx.setLineDash([]);
+        
+        // 剪力牆 (變形後) - 使用曲線近似
+        ctx.fillStyle = 'rgba(158, 158, 158, 0.4)';
+        ctx.strokeStyle = '#616161';
+        ctx.beginPath();
+        ctx.moveTo(wallX1, y0);
+        ctx.bezierCurveTo(wallX1, y0-50, wallX1+d2, y1+50, wallX1+d2, y1); // 1F
+        ctx.bezierCurveTo(wallX1+d2, y1-50, wallX1+d1, y2+50, wallX1+d1, y2); // 2F
+        ctx.lineTo(wallX2+d1, y2);
+        ctx.bezierCurveTo(wallX2+d1, y2+50, wallX2+d2, y1-50, wallX2+d2, y1);
+        ctx.bezierCurveTo(wallX2+d2, y1+50, wallX2, y0-50, wallX2, y0);
+        ctx.closePath();
+        ctx.fill(); ctx.stroke();
+
+        // 剛架 (變形後) - 剛性梁，柱呈 S 型
+        ctx.strokeStyle = '#1976d2'; ctx.lineWidth = 4;
+        ctx.beginPath();
+        // 1F 柱
+        ctx.moveTo(frameX1, y0); ctx.bezierCurveTo(frameX1, y0-50, frameX1+d2, y1+50, frameX1+d2, y1);
+        ctx.moveTo(frameX2, y0); ctx.bezierCurveTo(frameX2, y0-50, frameX2+d2, y1+50, frameX2+d2, y1);
+        // 2F 柱
+        ctx.moveTo(frameX1+d2, y1); ctx.bezierCurveTo(frameX1+d2, y1-50, frameX1+d1, y2+50, frameX1+d1, y2);
+        ctx.moveTo(frameX2+d2, y1); ctx.bezierCurveTo(frameX2+d2, y1-50, frameX2+d1, y2+50, frameX2+d1, y2);
+        ctx.stroke();
+        
+        // 剛性梁 (變形後)
+        ctx.strokeStyle = '#d32f2f'; ctx.lineWidth = 5;
+        ctx.beginPath();
+        ctx.moveTo(frameX1+d2, y1); ctx.lineTo(frameX2+d2, y1);
+        ctx.moveTo(frameX1+d1, y2); ctx.lineTo(frameX2+d1, y2);
+        ctx.stroke();
+
+        // 連桿 (變形後)
+        ctx.strokeStyle = '#388e3c'; ctx.lineWidth = 4;
+        ctx.beginPath();
+        ctx.moveTo(frameX2+d1, y2); ctx.lineTo(wallX1+d1, y2); // top link
+        ctx.moveTo(frameX2+d2, y1); ctx.lineTo(wallX1+d2, y1); // bot link
+        ctx.stroke();
+
+        // 畫連桿的力
+        ctx.fillStyle = '#000'; ctx.font = '16px Arial';
+        ctx.fillText("N = 0", (frameX2+wallX1)/2 - 10, y2 - 10);
+        ctx.fillText("N = 60 kN", (frameX2+wallX1)/2 - 20, y1 - 10);
+
+        // 畫外力箭頭
+        ctx.fillStyle = '#d32f2f'; ctx.strokeStyle = '#d32f2f'; ctx.lineWidth = 2;
+        function drawArrow(x, y, text) {
+            ctx.beginPath();
+            ctx.moveTo(x-60, y); ctx.lineTo(x-10, y);
+            ctx.moveTo(x-20, y-5); ctx.lineTo(x-10, y); ctx.lineTo(x-20, y+5);
+            ctx.stroke();
+            ctx.fillText(text, x-65, y-10);
+        }
+        drawArrow(frameX1+d1, y2, "60 kN");
+        drawArrow(frameX1+d2, y1, "60 kN");
+
+        // 畫反力 (基底剪力分配)
+        ctx.fillStyle = '#1976d2'; ctx.strokeStyle = '#1976d2';
+        // 剛架基底
+        ctx.beginPath();
+        ctx.moveTo(frameX1+10, y0+30); ctx.lineTo(frameX1-30, y0+30);
+        ctx.moveTo(frameX1-20, y0+25); ctx.lineTo(frameX1-30, y0+30); ctx.lineTo(frameX1-20, y0+35);
+        ctx.moveTo(frameX2+10, y0+30); ctx.lineTo(frameX2-30, y0+30);
+        ctx.moveTo(frameX2-20, y0+25); ctx.lineTo(frameX2-30, y0+30); ctx.lineTo(frameX2-20, y0+35);
+        ctx.stroke();
+        ctx.fillText("30 kN", frameX1-30, y0+50);
+        ctx.fillText("30 kN", frameX2-30, y0+50);
+
+        // 牆基底
+        ctx.fillStyle = '#616161'; ctx.strokeStyle = '#616161';
+        ctx.beginPath();
+        ctx.moveTo(wallX1+40, y0+30); ctx.lineTo(wallX1-20, y0+30);
+        ctx.moveTo(wallX1-10, y0+25); ctx.lineTo(wallX1-20, y0+30); ctx.lineTo(wallX1-10, y0+35);
+        ctx.stroke();
+        ctx.fillText("60 kN", wallX1, y0+50);
+
+    </script>
+</body>
+</html>

@@ -1,18 +1,18 @@
-# 結構工程技師考試知識庫 — 鋼筋混凝土設計與預力（RC）
+# 結構工程技師考試知識庫 — 結構學（SA）
 
-> 科目代碼：RC｜資料夾：`exam-wiki-RC`｜其他科目另建獨立資料庫
+> 科目代碼：SA｜資料夾：`exam-wiki-SA`｜其他科目另建獨立資料庫
 
 ## 專案說明
 
-本資料庫專門收錄「專門職業及技術人員高等考試結構工程技師」**第三科：鋼筋混凝土設計與預力**的考古題解析知識庫。
+本資料庫專門收錄「專門職業及技術人員高等考試結構工程技師」**第一科：結構學**的考古題解析知識庫。
 
-- **科目代碼：** RC（Reinforced Concrete Design and Prestress）
-- **題目編號格式：** RC-YYYY-N（如 RC-2015-1）
-- **其他科目：** 各自建立獨立資料庫（exam-wiki-SS、exam-wiki-SM 等）
+- **科目代碼：** SA（Structural Analysis）
+- **題目編號格式：** SA-YYYY-N（如 SA-2015-1）
+- **其他科目：** 各自建立獨立資料庫（exam-wiki-SS、exam-wiki-RC、exam-wiki-SM 等）
 
 **核心工作流程：**
 ```
-在 Cowork 開啟 exam-wiki-RC/ 資料夾（Project）
+在 Cowork 開啟 exam-wiki-SA/ 資料夾（Project）
     ↓
 說：「解析 XXXX 年考卷」
 Cowork 讀取 CLAUDE.md + 考卷 PDF + question_index.json
@@ -27,7 +27,7 @@ Cowork 讀取 CLAUDE.md + 考卷 PDF + question_index.json
 你加入補充截圖（chart/eqn/hand）
 請 Cowork 更新 question_index.json（tags、verified）
     ↓
-說：「ingest RC-XXXX-N」→ Cowork 直接執行，wiki 自動更新
+說：「ingest SA-XXXX-N」→ Cowork 直接執行，wiki 自動更新
 ```
 
 ---
@@ -44,7 +44,7 @@ Cowork 讀取 CLAUDE.md + 考卷 PDF + question_index.json
 ## 單向資料流
 
 ```
-raw/solutions/RC-XXXX-N/RC-XXXX-N.md  ──→  wiki/problems/      （Cowork: ingest）
+raw/solutions/SA-XXXX-N/SA-XXXX-N.md  ──→  wiki/problems/      （Cowork: ingest）
 raw/json/concepts.json                 ──→  wiki/concepts/      （Cowork: compile-all）
 raw/solutions/methods/                 ──→  wiki/methods/       （Cowork: compile-all）
 Cowork 查詢結果                        ──→  wiki/queries/       （Cowork 直接存入）
@@ -64,25 +64,25 @@ wiki/queries/、study/（study 輸出）及四個跨層知識目錄：由 Cowork
 ## 資料夾結構
 
 ```
-exam-wiki-RC/
+exam-wiki-SA/
 ├── README.md                        ← 冷啟動快速導覽
 ├── CLAUDE.md                        ← 本檔（身份層：分工、資料流、重要規則）
 ├── CLAUDE-SOLVE.md                  ← Cowork 解題 Skill
 ├── CLAUDE-CODE.md                   ← Claude Code 操作指令（Runbook）
 ├── CLAUDE-SPEC.md                   ← 規格驗證層（格式、命名、完成標準）
 │
-├── study/                           ← 讀書筆記、講義、study 指令 HTML 輸出（study-RC-UN.html / study-RC-UN-n.html）
+├── study/                           ← 讀書筆記、講義、study 指令 HTML 輸出（study-SA-UN.html / study-SA-UN-n.html）
 │
 ├── raw/                             ← 所有原始資料（唯讀，絕對不可修改）
-│   ├── exams/                       ← 原始考卷 PDF（命名：RC-YYYY_鋼筋混凝土設計與預力.pdf）
+│   ├── exams/                       ← 原始考卷 PDF（命名：SA-YYYY_結構學.pdf）
 │   ├── json/
 │   │   ├── concepts.json            ← 概念定義（供 compile-all）
 │   │   └── question_index.json      ← ⭐ 題目總索引（唯一需要人工維護的 JSON）
 │   └── solutions/                   ← AI 解析 + 補充截圖（每題一個資料夾）
-│       ├── RC-YYYY-N/
-│       │   ├── RC-YYYY-N.md
-│       │   ├── RC-YYYY-N-fig-1.png
-│       │   ├── RC-YYYY-N-[內容碼]-viz.html
+│       ├── SA-YYYY-N/
+│       │   ├── SA-YYYY-N.md
+│       │   ├── SA-YYYY-N-fig-1.png
+│       │   ├── SA-YYYY-N-[內容碼]-viz.html
 │       │   └── *.pdf                    ← 補充筆記（選用，命名無限制）
 │       └── methods/                 ← 解題方法論
 │
@@ -94,12 +94,12 @@ exam-wiki-RC/
     ├── methods/                     ← 方法論頁       ← Cowork (compile-all)
     ├── traps/                       ← 陷阱頁         ← Cowork (compile-all)（補充目錄，非七層架構核心）
     ├── problems/                    ← 題目頁         ← Cowork (ingest)
-    ├── philosophy/                  ← 設計哲學頁     ← Cowork (compile-all)
+    ├── philosophy/                  ← 分析哲學頁     ← Cowork (compile-all)
     ├── queries/                     ← 查詢結果頁     ← Cowork (直接存入)
     ├── diagnosis/                   ← 題型診斷層     ← Cowork (直接存入)
     ├── failure-modes/               ← 失敗模式層     ← Cowork (直接存入)
-    ├── materials/                   ← 材料行為層     ← Cowork (直接存入)
-    └── code-ref/                    ← 規範條文對應層 ← Cowork (直接存入)
+    ├── materials/                   ← 材料特性層     ← Cowork (直接存入)
+    └── code-ref/                    ← 公式來源對應層 ← Cowork (直接存入)
 ```
 
 ---
@@ -110,56 +110,47 @@ Wiki 導航依七層知識架構組織（前三層由 Cowork 透過 compile-all/
 
 | 層 | 目錄 | 維護者 | 內容 |
 |----|------|:------:|------|
-| Layer 1 | `concepts/` + `problems/` | Cowork (ingest/compile) | 核心構件設計（梁/柱/板/基礎/預力） |
-| Layer 2 | `philosophy/` | Cowork (compile-all) | 設計哲學與實務（強度折減/韌性/耐震） |
-| Layer 3 | `methods/` | Cowork (compile-all) | 解題方法論（P-M互制/等效側力法/損失計算） |
+| Layer 1 | `concepts/` + `problems/` | Cowork (ingest/compile) | 核心分析（靜定/靜不定結構、影響線） |
+| Layer 2 | `philosophy/` | Cowork (compile-all) | 分析哲學（力法/位移法/矩陣法思維） |
+| Layer 3 | `methods/` | Cowork (compile-all) | 解題方法論（彎矩分配法/傾角變位法/最小功法/矩陣分析） |
 | Layer 4 | `diagnosis/` | Cowork (直接存入) | 題型診斷決策樹 |
-| Layer 5 | `failure-modes/` | Cowork (直接存入) | 失敗模式（彎曲/剪力/壓碎/撓度/裂縫） |
-| Layer 6 | `materials/` | Cowork (直接存入) | 材料行為（混凝土應力應變/鋼筋降伏/潛變收縮） |
-| Layer 7 | `code-ref/` | Cowork (直接存入) | 規範條文對應（ACI 318/CNS 1480/耐震規範） |
+| Layer 5 | `failure-modes/` | Cowork (直接存入) | 常見錯誤模式（符號錯誤/邊界條件/自由度判定） |
+| Layer 6 | `materials/` | Cowork (直接存入) | 材料特性補充（彈性模數、慣性矩計算） |
+| Layer 7 | `code-ref/` | Cowork (直接存入) | 公式來源對應（結構學教材/考試常用公式） |
 
 > **補充目錄 `wiki/traps/`：** 不屬於七層架構，由 compile-all 從題目解析萃取陷阱頁面，與 concepts/ 並列為輔助導航。
 
 ---
 
-## 命題大綱分類（依官方命題大綱，93年3月公告）
+## 命題大綱分類（依官方命題大綱）
 
-> topicId 格式：`RC-UN-n`，U = 單元號，n = 子項號。
+> topicId 格式：`SA-UN-n`，U = 單元號，n = 子項號。
 > `primaryTopicId` 填最主要考點；跨子項時用 `secondaryTopicIds` 列出。
 
-### 第一單元（RC-U1）
+### 第一單元（SA-U1）
 
 | topicId | 命題大綱子項 |
 |---------|------------|
-| RC-U1-1 | RC 梁彎矩強度分析與設計 |
-| RC-U1-2 | RC 柱強度分析與設計 |
-| RC-U1-3 | 細長柱 |
-| RC-U1-4 | 柱設計圖之應用 |
+| SA-U1-1 | 靜不定度與穩定性之判斷 |
+| SA-U1-2 | 靜定結構之分析 |
+| SA-U1-3 | 靜定及靜不定結構影響線 |
 
-### 第二單元（RC-U2）
-
-| topicId | 命題大綱子項 |
-|---------|------------|
-| RC-U2-1 | RC 剪力強度分析與設計 |
-| RC-U2-2 | RC 扭力強度設計 |
-| RC-U2-3 | 鋼筋錨定長度與斷點計算 |
-
-### 第三單元（RC-U3）
+### 第二單元（SA-U2）
 
 | topicId | 命題大綱子項 |
 |---------|------------|
-| RC-U3-1 | 梁工作性要求（含撓度、裂縫） |
-| RC-U3-2 | 樓版與基腳設計 |
-| RC-U3-3 | 韌性要求與耐震設計 |
+| SA-U2-1 | 靜不定結構最小功法 |
+| SA-U2-2 | 靜不定結構諧合變位 |
+| SA-U2-3 | 靜不定結構之傾角變位法 |
+| SA-U2-4 | 靜不定結構之矩陣分析法 |
+| SA-U2-5 | 彎矩分配法 |
 
-### 第四單元（RC-U4）
+### 第三單元（SA-U3）
 
 | topicId | 命題大綱子項 |
 |---------|------------|
-| RC-U4-1 | 預力梁斷面應力分析 |
-| RC-U4-2 | 預力量與偏心量設計 |
-| RC-U4-3 | 預力損失 |
-| RC-U4-4 | 預力梁剪力分析與設計 |
+| SA-U3-1 | 建築結構系統之使用 |
+| SA-U3-2 | 建築結構系統分析 |
 
 ---
 
@@ -180,15 +171,4 @@ Wiki 導航依七層知識架構組織（前三層由 Cowork 透過 compile-all/
 
 | 日期 | 變更 | 原因 |
 |------|------|------|
-| 2026-05-29 | 從 exam-wiki-SS 克隆，全面改寫為 RC 科目 | 建立鋼筋混凝土設計與預力獨立知識庫 |
-| 2026-06-04 | 從三層架構（User/Cowork/Claude Code）改為兩層（User/Cowork） | 知識庫全程在 Cowork 運行，無獨立 Claude Code 終端機環境 |
-| 2026-06-04 | Cowork 指令由 4 個擴充至 15 個（新增備考分析類、查詢快捷類、題庫維護類） | 增強備考分析與知識查詢功能 |
-| 2026-06-08 | 修正 concepts.json classification 格式（RC-N → RC-UN-n）；修正 CLAUDE-SPEC.md §6 殘留 SS 類別代碼；更新 檔案架構索引表.md 快照數字；澄清 wiki/traps/ 補充目錄定位 | 知識庫 review 後修正 |
-| 2026-06-11 | 新增 index.html + dashboard-data.js（離線儀表板：題庫篩選/統計/進度追蹤/指令速查）；指令由 15 個擴充至 16 個（新增 refresh-dashboard）；補完 lint SKIP 項掃描（hasViz/hasHandwritten/圖說均一致） | 建立使用者視覺化入口，提升知識庫易用性 |
-| 2026-06-26 | study 指令輸出目錄從 wiki/queries/ 改為 study/；新增子項層級（study RC-UN-n）深度複習格式（七區塊：命題分析/截面圖解/解題流程/公式/考題清單/陷阱/互動計算） | 講義與複習頁集中在 study/ 管理，wiki/queries/ 保留純查詢結果 |
-| 2026-06-30 | 修正 study 指令產生的考題連結路徑，改為直接連結至 `raw/solutions/` 下的原始 md 檔 | 解決透過 index.html#md 渲染器預覽時，相對路徑附圖與 PDF 補充資料無法載入的 bug |
-| 2026-06-30 | index.html 題庫瀏覽新增「📎 補充筆記 PDF」按鈕與「📎 掃描補充 PDF」工具列按鈕；使用者可將任意 .pdf 放入 `raw/solutions/RC-YYYY-N/`，dashboard 透過 File System Access API 即時掃描顯示（不修改 dashboard-data.js）；更新 CLAUDE-CODE.md、CLAUDE-SPEC.md、CLAUDE.md 補充規範 | 支援每題補充筆記 PDF 快速存取 |
-| 2026-07-01 | index.html「考點統計」頁籤改為呈現 frequency 指令輸出格式（高頻考點 Top10、各單元命題比例、近5年趨勢動態計算），移除原設計法分布與高頻標籤 Top20 兩張卡片 | 對齊 CLAUDE-CODE.md FREQUENCY 指令規格，避免統計呈現重複 |
-| 2026-07-01 | dashboard-data.js 每題新增 pdf 補充筆記檔名陣列欄位（由 REFRESH-DASHBOARD 掃描 raw/solutions/RC-YYYY-N/ 下 *.pdf 寫入）；index.html 移除「📎 掃描補充 PDF」工具列按鈕與前端即時掃描機制（injectPdfButtons/pdfCache/listDir），改為依 dashboard-data.js 靜態資料直接顯示「📎 補充筆記 PDF」按鈕；同步更新 CLAUDE-CODE.md、CLAUDE-SPEC.md | 使用者自行放入補充 PDF 後無需手動點擊掃描按鈕，題卡即可自動顯示 PDF 連結 |
-| 2026-07-02 | index.html 實作「線上/單機雙軌讀取」機制，線上環境（GitHub Pages 等非 file:/// 環境）自動使用 fetch 與相對路徑讀取 md、pdf 及圖片，免除資料夾授權提示 | 提升線上版儀表板的使用體驗，使其運作如同一般靜態網站 |
-| 2026-07-02 | 實作 index.html 前端的 Hash 深度連結（#md=）邏輯，正式支援 study 頁面考題點擊跳轉功能 | 補齊前端功能，完全對齊 CLAUDE-CODE.md 中 STUDY 指令的連結規格 |
+| 2026-07-02 | 從 exam-wiki-RC 克隆，全面改寫為 SA 科目 | 建立結構學獨立知識庫 |

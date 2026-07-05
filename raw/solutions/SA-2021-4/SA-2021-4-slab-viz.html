@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <title>SA-2021-4 剛性樓板變形示意圖</title>
+    <style>
+        body { font-family: sans-serif; display: flex; justify-content: center; padding: 20px; background-color: #f5f5f5; }
+        .container { background: white; padding: 20px; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
+        canvas { border: 1px solid #ccc; background: #fafafa; }
+        .title { text-align: center; margin-bottom: 10px; font-weight: bold; font-size: 1.2em; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="title">剛性樓板平移與扭轉變形 (位移已放大 100 倍)</div>
+        <canvas id="slabCanvas" width="600" height="400"></canvas>
+    </div>
+    <script>
+        const canvas = document.getElementById('slabCanvas');
+        const ctx = canvas.getContext('2d');
+        const width = canvas.width;
+        const height = canvas.height;
+        
+        const cx = width / 2;
+        const cy = height / 2;
+        const scale = 40; 
+        const dispScale = 100; 
+        
+        const nodes = [
+            { id: 'C3', x: -3, y: 2 },
+            { id: 'C4', x: 3, y: 2 },
+            { id: 'C2', x: 3, y: -2 },
+            { id: 'C1', x: -3, y: -2 }
+        ];
+
+        const cr = { x: 2, y: 0 };
+        
+        const dx_r = 0;
+        const dy_r = 0.0072;
+        const theta = -0.0016; 
+
+        const deformedNodes = nodes.map(n => {
+            let u = dx_r - theta * (n.y - cr.y);
+            let v = dy_r + theta * (n.x - cr.x);
+            return {
+                id: n.id,
+                x: n.x + u * dispScale,
+                y: n.y + v * dispScale
+            };
+        });
+
+        function getPx(x) { return cx + x * scale; }
+        function getPy(y) { return cy - y * scale; }
+
+        ctx.beginPath();
+        ctx.moveTo(getPx(nodes[0].x), getPy(nodes[0].y));
+        for(let i=1; i<nodes.length; i++) ctx.lineTo(getPx(nodes[i].x), getPy(nodes[i].y));
+        ctx.closePath();
+        ctx.strokeStyle = '#aaa';
+        ctx.setLineDash([5, 5]);
+        ctx.lineWidth = 2;
+        ctx.stroke();
+
+        ctx.beginPath();
+        ctx.moveTo(getPx(deformedNodes[0].x), getPy(deformedNodes[0].y));
+        for(let i=1; i<deformedNodes.length; i++) ctx.lineTo(getPx(deformedNodes[i].x), getPy(deformedNodes[i].y));
+        ctx.closePath();
+        ctx.fillStyle = 'rgba(0, 150, 255, 0.1)';
+        ctx.fill();
+        ctx.strokeStyle = '#0055aa';
+        ctx.setLineDash([]);
+        ctx.lineWidth = 2;
+        ctx.stroke();
+
+        ctx.font = '14px Arial';
+        ctx.textAlign = 'center';
+        
+        deformedNodes.forEach((n, i) => {
+            let px = getPx(n.x);
+            let py = getPy(n.y);
+            
+            ctx.beginPath();
+            ctx.arc(px, py, 6, 0, Math.PI*2);
+            ctx.fillStyle = '#000';
+            ctx.fill();
+            
+            ctx.fillStyle = '#000';
+            let xOffset = n.x < 0 ? -20 : 20;
+            let yOffset = n.y < 0 ? 20 : -10;
+            ctx.fillText(n.id + "'", px + xOffset, py + yOffset);
+        });
+
+        let crPx = getPx(cr.x);
+        let crPy = getPy(cr.y);
+        ctx.beginPath();
+        ctx.arc(crPx, crPy, 6, 0, Math.PI*2);
+        ctx.fillStyle = '#d32f2f';
+        ctx.fill();
+        ctx.fillText("CR", crPx + 20, crPy + 5);
+
+        ctx.textAlign = 'left';
+        ctx.fillStyle = '#666';
+        ctx.fillText("虛線：原始位置", 20, 30);
+        ctx.fillStyle = '#0055aa';
+        ctx.fillText("實線：變形後位置 (位移放大 100倍)", 20, 50);
+        ctx.fillStyle = '#d32f2f';
+        ctx.fillText("紅點：剛心 (CR)", 20, 70);
+    </script>
+</body>
+</html>

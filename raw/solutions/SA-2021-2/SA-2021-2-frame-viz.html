@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <title>SA-2021-2 彎矩圖 (BMD)</title>
+    <style>
+        body { font-family: sans-serif; display: flex; justify-content: center; padding: 20px; background-color: #f5f5f5; }
+        .container { background: white; padding: 20px; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
+        canvas { border: 1px solid #ccc; background: #fafafa; }
+        .title { text-align: center; margin-bottom: 10px; font-weight: bold; font-size: 1.2em; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="title">梁桿件 abef 彎矩圖 (BMD)</div>
+        <canvas id="bmdCanvas" width="580" height="300"></canvas>
+    </div>
+    <script>
+        const canvas = document.getElementById('bmdCanvas');
+        const ctx = canvas.getContext('2d');
+        
+        const width = canvas.width;
+        const height = canvas.height;
+        const padding = 40;
+        
+        const L_total = 12;
+        const x_scale = (width - 2 * padding) / L_total;
+        
+        const nodes = [
+            { id: 'a', x: 0, M1: 0, M2: 0 },
+            { id: 'b', x: 3, M1: 18, M2: -18 },
+            { id: 'e', x: 9, M1: 18, M2: -18 },
+            { id: 'f', x: 12, M1: 0, M2: 0 }
+        ];
+        
+        const y_zero = height / 2; 
+
+        function getX(x) { return padding + x * x_scale; }
+        function getY(M) { return y_zero + M * 4; } 
+
+        ctx.beginPath();
+        ctx.moveTo(getX(0), y_zero);
+        ctx.lineTo(getX(12), y_zero);
+        ctx.strokeStyle = '#333';
+        ctx.lineWidth = 2;
+        ctx.stroke();
+
+        ctx.beginPath();
+        ctx.moveTo(getX(nodes[0].x), y_zero);
+        ctx.lineTo(getX(nodes[1].x), getY(nodes[1].M1));
+        ctx.lineTo(getX(nodes[1].x), getY(nodes[1].M2));
+        ctx.lineTo(getX(nodes[2].x), getY(nodes[2].M1));
+        ctx.lineTo(getX(nodes[2].x), getY(nodes[2].M2));
+        ctx.lineTo(getX(nodes[3].x), y_zero);
+        
+        ctx.fillStyle = 'rgba(0, 150, 255, 0.2)';
+        ctx.fill();
+        ctx.strokeStyle = '#0055aa';
+        ctx.lineWidth = 2;
+        ctx.stroke();
+
+        ctx.font = '14px Arial';
+        ctx.textAlign = 'center';
+        
+        nodes.forEach(node => {
+            let px = getX(node.x);
+            
+            ctx.beginPath();
+            ctx.arc(px, y_zero, 4, 0, Math.PI*2);
+            ctx.fillStyle = '#d32f2f';
+            ctx.fill();
+            
+            ctx.fillStyle = '#000';
+            ctx.fillText(node.id, px, y_zero + 20);
+
+            if (node.id === 'b' || node.id === 'e') {
+                // 微調文字位置避免重疊
+                ctx.fillText(`+18`, px - 15, getY(18) + 15);
+                ctx.fillText(`-18`, px + 15, getY(-18) - 5);
+                
+                // 畫不連續點的垂直虛線
+                ctx.beginPath();
+                ctx.moveTo(px, getY(18));
+                ctx.lineTo(px, getY(-18));
+                ctx.strokeStyle = '#aaa';
+                ctx.setLineDash([4, 4]);
+                ctx.stroke();
+                ctx.setLineDash([]);
+            }
+        });
+
+        ctx.textAlign = 'left';
+        ctx.fillText("單位: kN-m (畫法約定: 正彎矩下緣受拉畫於軸線下方)", padding, 30);
+    </script>
+</body>
+</html>

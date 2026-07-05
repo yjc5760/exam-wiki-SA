@@ -1,7 +1,7 @@
-# exam-wiki-RC — 規格與驗證層（Spec）
+# exam-wiki-SA — 規格與驗證層（Spec）
 
 > **用途：** 所有格式規範、命名規則、完成標準的唯一依據。
-> **適用對象：** Cowork（SOLVE 解題時參照）、Claude Code（ingest/compile 時參照）、使用者（補圖截圖時參照）
+> **適用對象：** Cowork（SOLVE 解題時參照）、使用者（補圖截圖時參照）
 
 ---
 
@@ -29,12 +29,12 @@
 ## 1　題目編號（moduleId）
 
 ```
-RC-YYYY-N
+SA-YYYY-N
 ```
 
 | 欄位 | 說明 | 規則 |
 |------|------|------|
-| `RC` | 科目代碼（Reinforced Concrete） | 固定，大寫 |
+| `SA` | 科目代碼（Structural Analysis） | 固定，大寫 |
 | `YYYY` | 西元年 | 4 位數，如 `2015` |
 | `N` | 該年第幾題 | 阿拉伯數字，無前導零，如 `1`、`2`、`3`、`4`、`5` |
 
@@ -42,11 +42,11 @@ RC-YYYY-N
 
 | moduleId | 說明 |
 |----------|------|
-| `RC-2015-1` | 2015 年第 1 題 |
-| `RC-2006-5` | 2006 年第 5 題 |
-| `RC-2025-4` | 2025 年第 4 題 |
+| `SA-2015-1` | 2015 年第 1 題 |
+| `SA-2006-4` | 2006 年第 4 題 |
+| `SA-2025-4` | 2025 年第 4 題 |
 
-> 年份用西元（不用民國）。題號從 `1` 起算，無前導零（不可寫成 `RC-2015-01`）。
+> 年份用西元（不用民國）。題號從 `1` 起算，無前導零（不可寫成 `SA-2015-01`）。
 
 ---
 
@@ -54,23 +54,23 @@ RC-YYYY-N
 ## 2　考卷 PDF 命名（`raw/exams/`）
 
 ```
-RC-YYYY_鋼筋混凝土設計與預力.pdf
+SA-YYYY_結構學.pdf
 ```
 
 | 欄位 | 說明 |
 |------|------|
-| `RC-YYYY` | 科目代碼 + 西元年，底線 `_` 隔開後半 |
-| `鋼筋混凝土設計與預力` | 固定字串，科目全名 |
+| `SA-YYYY` | 科目代碼 + 西元年，底線 `_` 隔開後半 |
+| `結構學` | 固定字串，科目全名 |
 | `.pdf` | 副檔名，小寫 |
 
 **範例：**
 ```
-RC-2015_鋼筋混凝土設計與預力.pdf
-RC-2024_鋼筋混凝土設計與預力.pdf
+SA-2015_結構學.pdf
+SA-2024_結構學.pdf
 命題大綱.pdf              ← 命題大綱（不含年份）
 ```
 
-> 檔名開頭必須是 `RC-YYYY`，Cowork 的 SOLVE 指令依此定位考卷。
+> 檔名開頭必須是 `SA-YYYY`，Cowork 的 SOLVE 指令依此定位考卷。
 
 ---
 
@@ -78,19 +78,19 @@ RC-2024_鋼筋混凝土設計與預力.pdf
 ## 3　解析資料夾（`raw/solutions/`）
 
 ```
-raw/solutions/RC-YYYY-N/
+raw/solutions/SA-YYYY-N/
 ```
 
 每道題目一個資料夾，名稱即 moduleId。資料夾內允許的檔案類型：
 
 | 類型 | 命名格式 | 說明 | 誰負責 |
 |------|---------|------|:------:|
-| 解析主檔 | `RC-YYYY-N.md` | 解題文字內容（唯一必要） | Cowork |
-| 題目附圖 | `RC-YYYY-N-fig-N.png` | 題目原始圖 | 使用者 |
-| 設計圖表 | `RC-YYYY-N-chart-N.png` | P-M 互制圖等 | 使用者 |
-| 參考公式 | `RC-YYYY-N-eqn-N.png` | 題目給的公式截圖 | 使用者 |
-| 手寫補充 | `RC-YYYY-N-hand-N.png` | 手寫推導截圖 | 使用者 |
-| 互動圖 | `RC-YYYY-N-[內容碼]-viz.html` | 互動計算圖 | Cowork |
+| 解析主檔 | `SA-YYYY-N.md` | 解題文字內容（唯一必要） | Cowork |
+| 題目附圖 | `SA-YYYY-N-fig-N.png` | 題目原始圖 | 使用者 |
+| 設計圖表 | `SA-YYYY-N-chart-N.png` | 彎矩圖截圖、影響線圖等 | 使用者 |
+| 參考公式 | `SA-YYYY-N-eqn-N.png` | 題目給的公式截圖 | 使用者 |
+| 手寫補充 | `SA-YYYY-N-hand-N.png` | 手寫推導截圖 | 使用者 |
+| 互動圖 | `SA-YYYY-N-[內容碼]-viz.html` | 互動計算圖 | Cowork |
 | 補充筆記 | `*.pdf`（任意檔名） | 補充講義、手寫筆記掃描等 | 使用者 |
 
 > **補充筆記 PDF：** 使用者可將任意 `.pdf` 放入此資料夾，命名無強制規範。Cowork 執行 `更新儀表板資料`（REFRESH-DASHBOARD）時會掃描並將檔名寫入 `dashboard-data.js`（q.pdf 欄位）；`index.html` 題庫瀏覽頁依此資料直接顯示「📎 補充筆記 PDF」按鈕。線上環境點擊將直接開啟 PDF；本機環境下則會要求資料夾讀取授權。新增或移除 PDF 後須重新執行 `更新儀表板資料` 才會反映。
@@ -109,37 +109,36 @@ raw/solutions/methods/[method-id]/
 ### 4.1 開頭標籤區塊（每份解析必須包含）
 
 ```markdown
-### 考題編號：RC-YYYY-N
+### 考題編號：SA-YYYY-N
 
-**主分類：** `RC-X` 分類名稱
-**副分類：** `RC-X` 分類名稱（無副分類則省略）
-**設計法：** USD強度設計法 / WSD工作應力法 / 概念題 / 混合
+**主分類：** `SA-X` 分類名稱
+**副分類：** `SA-X` 分類名稱（無副分類則省略）
+**分析法：** 傾角變位法 / 彎矩分配法 / 最小功法 / 矩陣法 / 靜定分析 / 影響線 / 混合
 **標籤：** `標籤1` `標籤2` `標籤3` ...
 ```
 
 ### 4.2 數學公式（強制 LaTeX）
 
-- 行內：`` $f'_c = 280 \text{ kgf/cm}^2$ ``
-- 獨立：`$$M_u = 1.2M_D + 1.6M_L$$`
-- **禁止純文字公式**（不可寫 fc'=280 kgf/cm²）
+- 行內：`` $M_{AB} = \frac{2EI}{L}(2\theta_A + \theta_B - 3\psi) + M_{FAB}$ ``
+- 獨立：`$$\delta_{ij} = \int \frac{m_i \cdot m_j}{EI} dx$$`
+- **禁止純文字公式**（不可寫 MAB = 2EI/L(2θA + θB - 3ψ) + MFAB）
 
 ### 4.3 圖片引用規範（雙重保險原則）
 
 每張圖片在 .md 中必須包含 **alt text + 圖說** 兩部分：
 
 ```markdown
-![精確描述圖片工程內容的 alt text](RC-YYYY-N-fig-1.png)
+![精確描述圖片工程內容的 alt text](SA-YYYY-N-fig-1.png)
 
 *圖說：關鍵數值、條件、結論的完整文字化說明。*
 ```
 
 | 圖片類型 | Alt Text 要求 | 圖說要求 |
 |---------|-------------|---------|
-| `fig`（題目附圖） | 結構型式、斷面尺寸、載重位置、配筋資訊 | 關鍵幾何數值、支撐條件、f'c/fy 值 |
-| `chart`（設計圖表） | 圖表類型、座標軸範圍 | P-M 互制圖控制點座標、設計結論 |
+| `fig`（題目附圖） | 結構型式、幾何尺寸、支撐條件、載重位置 | 關鍵幾何數值、EI 值、跨度、支撐類型 |
+| `chart`（設計圖表） | 圖表類型（彎矩圖/剪力圖/影響線） | 關鍵數值、極值位置、正負號約定 |
 | `eqn`（參考公式） | 公式類型與數量 | **所有公式完整以 LaTeX 文字化**（最重要） |
 | `hand`（手寫補充） | 方法名稱與推導目標 | 步驟摘要、關鍵中間結果、最終公式 |
-| `section`（斷面圖） | 斷面型式、主要尺寸、配筋位置 | 鋼筋號數、間距、保護層厚度 |
 
 <a id="4-4-vha"></a>
 ### 4.4 變數層次分析（Variable Hierarchy Analysis）
@@ -156,15 +155,15 @@ raw/solutions/methods/[method-id]/
 > 複習提示：第一次解題後，在每個卡住的知識點旁標記 `⚠`；第二次複習時只看有 `⚠` 的項目。
 
 ### 最終目標
-`[最終求解目標，如：計算最大正彎矩強度 φMn → 驗算 φMn ≥ Mu]`
+`[最終求解目標，如：求各桿端彎矩 → 繪製 BMD]`
 
 ### 本題關鍵公式（依計算順序）
 
 > $\boxed{\cdot}$ = 需由前步驟推導，非題目直接給定的變數
 
-$$\text{Step 1: } a = \frac{A_s f_y}{0.85 f'_c b}$$
+$$\text{Step 1: } M_{FAB} = -\frac{wL^2}{12}$$
 
-$$\text{Step 2: } \phi M_n = \phi A_s f_y \!\left(d - \frac{\boxed{a}}{2}\right) \geq M_u$$
+$$\text{Step 2: } M_{AB} = \frac{2EI}{L}(2\theta_A + \theta_B - 3\psi) + \boxed{M_{FAB}}$$
 
 `[依題型替換為實際公式鏈，保留 \boxed{} 標記推導變數]`
 
@@ -173,34 +172,34 @@ _看到題目就能讀出的數字，不需要任何公式。_
 
 | 符號 | 數值 | 說明 |
 |------|------|------|
-| $f'_c$ | 280 kgf/cm² | 混凝土抗壓強度 |
-| $f_y$ | 4200 kgf/cm² | 鋼筋降伏強度 |
+| $E$ | 200 GPa | 彈性模數 |
+| $I$ | 3×10⁻⁴ m⁴ | 慣性矩 |
+| $L$ | 6 m | 跨度 |
 | ... | ... | ... |
 
 ### L2：需知識點推導
 _需要知道公式名稱與適用條件，套入 L1 即可算出。_
 
-**Step 1：[步驟名稱]**
+**Step 1：固端彎矩計算**
 
 | 符號 | 公式/來源 | 卡關? |
 |------|----------|:-----:|
-| $\beta_1$ | $f'_c \leq 280$ → $\beta_1=0.85$；每增加 70 減 0.05 | |
-| $\rho_b$ | $0.85\beta_1 f'_c/f_y \cdot 6120/(6120+f_y)$ | |
+| $M_{FAB}$ | 均布 $w$：$-wL^2/12$；集中 $P$（中點）：$-PL/8$ | |
+| $M_{FBA}$ | 均布 $w$：$+wL^2/12$；集中 $P$（中點）：$+PL/8$ | |
 
-**Step 2：[步驟名稱]**
+**Step 2：分配因子計算**
 
 | 符號 | 公式/來源 | 卡關? |
 |------|----------|:-----:|
-| $a$ | $A_s f_y / (0.85 f'_c b)$ | |
-| $M_n$ | $A_s f_y (d - a/2)$ | |
+| $DF$ | $(EI/L)_{ij} / \Sigma(EI/L)$（固端遠端） | |
 
 ### L3：深層知識（不懂就卡住）
 _L2 中某些公式本身需要背景概念才能正確應用的知識點。_
 
 | 知識點 | 說明 | 卡關? |
 |--------|------|:-----:|
-| β1 隨 f'c 變化規則 | 為何 f'c > 280 時 β1 需折減？ | |
-| 延性破壞條件 | 為何 ρmax = 0.75ρb 才能保證延性？ | |
+| 遠端鉸接的剛度折減 | 遠端鉸接時剛度取 3EI/L，且傳遞因子=0 | |
+| 側移與無側移判斷 | 節點有水平位移 → 需列側移方程 ψ≠0 | |
 ```
 
 #### 層次定義
@@ -219,18 +218,17 @@ _L2 中某些公式本身需要背景概念才能正確應用的知識點。_
 ### 格式
 
 ```
-RC-YYYY-N-[類型碼]-[序號].png
+SA-YYYY-N-[類型碼]-[序號].png
 ```
 
 ### 類型碼對照表
 
 | 類型碼 | 內容 | 誰負責 | 範例 |
 |--------|------|:------:|------|
-| `fig` | 題目附圖（結構示意、幾何圖、配筋圖） | 使用者 | `RC-2015-1-fig-1.png` |
-| `chart` | 設計圖表（P-M 互制圖截圖、應力分布圖） | 使用者 | `RC-2015-1-chart-1.png` |
-| `eqn` | 題目提供的參考公式截圖 | 使用者 | `RC-2015-1-eqn-1.png` |
-| `hand` | 手寫補充推導 | 使用者 | `RC-2015-1-hand-1.png` |
-| `section` | 斷面示意圖（幾何與配筋） | 使用者 | `RC-2015-1-section-1.png` |
+| `fig` | 題目附圖（結構示意、幾何圖、支撐條件） | 使用者 | `SA-2015-1-fig-1.png` |
+| `chart` | 設計圖表（彎矩圖截圖、影響線截圖） | 使用者 | `SA-2015-1-chart-1.png` |
+| `eqn` | 題目提供的參考公式截圖 | 使用者 | `SA-2015-1-eqn-1.png` |
+| `hand` | 手寫補充推導 | 使用者 | `SA-2015-1-hand-1.png` |
 
 ### 命名規則
 
@@ -248,19 +246,20 @@ RC-YYYY-N-[類型碼]-[序號].png
 ### 格式
 
 ```
-RC-YYYY-N-[內容碼]-viz.html
+SA-YYYY-N-[內容碼]-viz.html
 ```
 
 ### 內容碼對照表
 
 | 內容碼 | 說明 | 觸發條件 | 範例 |
 |--------|------|---------|------|
-| `pm` | P-M 互制圖 | 柱設計題目（RC-U1-2, RC-U1-4） | `RC-2015-1-pm-viz.html` |
-| `sfd-bmd` | 剪力圖 + 彎矩圖 | 題目要求繪製剪力/彎矩圖 | `RC-2015-2-sfd-bmd-viz.html` |
-| `stress-strain` | 混凝土應力-應變曲線 | 材料行為相關題目 | `RC-2020-1-stress-strain-viz.html` |
-| `section` | 斷面幾何示意（互動版） | 組合斷面計算題目 | `RC-2015-3-section-viz.html` |
-| `prestress` | 預力分布圖（沿跨度） | 預力混凝土題目（RC-U4） | `RC-2018-2-prestress-viz.html` |
-| `loss` | 預力損失疊加圖 | 預力損失計算題目（RC-U4-3） | `RC-2019-1-loss-viz.html` |
+| `sfd-bmd` | 剪力圖 + 彎矩圖 | 題目要求繪製 SFD/BMD | `SA-2015-2-sfd-bmd-viz.html` |
+| `influence-line` | 影響線圖 | 影響線題目（SA-U1-3） | `SA-2015-3-influence-line-viz.html` |
+| `moment-dist` | 彎矩分配迭代過程 | 彎矩分配法題目（SA-U2-5） | `SA-2016-2-moment-dist-viz.html` |
+| `slope-deflect` | 傾角變位結果圖 | 傾角變位法題目（SA-U2-3） | `SA-2017-1-slope-deflect-viz.html` |
+| `frame` | 剛架幾何與內力示意 | 剛架分析題目 | `SA-2018-3-frame-viz.html` |
+| `truss` | 桁架幾何與桿力示意 | 桁架分析題目（SA-U1-2） | `SA-2019-1-truss-viz.html` |
+| `matrix` | 勁度矩陣與自由度示意 | 矩陣分析題目（SA-U2-4） | `SA-2020-2-matrix-viz.html` |
 
 ### HTML 規格要求
 
@@ -268,7 +267,7 @@ RC-YYYY-N-[內容碼]-viz.html
 |------|------|
 | 寬度 | 580px |
 | 繪圖技術 | Canvas 或 SVG，不依賴外部函式庫 |
-| 必須標注 | 關鍵數值、座標軸單位、控制點名稱 |
+| 必須標注 | 關鍵數值、座標軸單位、各節點彎矩值 |
 | 執行方式 | 直接瀏覽器開啟，無需伺服器 |
 
 ---
@@ -276,16 +275,16 @@ RC-YYYY-N-[內容碼]-viz.html
 <a id="7-wiki-templates"></a>
 ## 7　Wiki 頁面格式模板
 
-### 7.1 題目頁：`wiki/problems/RC-YYYY-N.md`
+### 7.1 題目頁：`wiki/problems/SA-YYYY-N.md`
 
 ```markdown
-# RC-YYYY-N — [一行核心摘要]
+# SA-YYYY-N — [一行核心摘要]
 
-**來源：** 結構工程技師高考 · 鋼筋混凝土設計與預力 · 第N題
+**來源：** 結構工程技師高考 · 結構學 · 第N題
 **考年：** [year]（民國[year-1911]年）
 **主分類：** [[topicId]] [topicName]
 **副分類：** [[secondaryTopicId]]（無則省略）
-**設計法：** USD強度設計法 / WSD工作應力法 / 概念題
+**分析法：** 傾角變位法 / 彎矩分配法 / 最小功法 / 矩陣法 / 靜定分析
 **標籤：** `標籤1` `標籤2` `標籤3`
 **驗證狀態：** ✅ verified
 
@@ -303,14 +302,14 @@ RC-YYYY-N-[內容碼]-viz.html
 
 ### 7.2 概念頁：`wiki/concepts/[CONCEPT-ID].md`
 
-概念 ID 規則：全大寫英文 + 連字號分隔（如 `BALANCED-REINFORCEMENT-RATIO`）
+概念 ID 規則：全大寫英文 + 連字號分隔（如 `MOMENT-DISTRIBUTION-FACTOR`）
 
 ```markdown
 # [概念名稱]
 
 **概念 ID：** [id]
-**知識分類：** [RC-X]
-**規範來源：** [ACI 318 chapter / CNS 1480]
+**知識分類：** [SA-X]
+**公式來源：** [教材章節 / 考試常用公式]
 
 ## 定義
 ## 前置概念
@@ -324,12 +323,12 @@ RC-YYYY-N-[內容碼]-viz.html
 
 | 目錄 | 命名格式 | 範例 |
 |------|---------|------|
-| `wiki/problems/` | `RC-YYYY-N.md` | `RC-2015-1.md` |
-| `wiki/concepts/` | `全大寫-連字號.md` | `BALANCED-REINFORCEMENT-RATIO.md` |
-| `wiki/traps/` | `全大寫-連字號.md` | `T-BEAM-EFFECTIVE-WIDTH.md` |
-| `wiki/methods/` | `全小寫-連字號.md` | `pm-interaction-diagram.md` |
-| `wiki/queries/` | `主題-YYYY-MM-DD.md` | `預力損失陷阱-2026-05-29.md` |
-| `wiki/philosophy/` | `全小寫-連字號.md` | `usd-beam-flexure.md` |
+| `wiki/problems/` | `SA-YYYY-N.md` | `SA-2015-1.md` |
+| `wiki/concepts/` | `全大寫-連字號.md` | `MOMENT-DISTRIBUTION-FACTOR.md` |
+| `wiki/traps/` | `全大寫-連字號.md` | `SWAY-FRAME-DETECTION.md` |
+| `wiki/methods/` | `全小寫-連字號.md` | `moment-distribution-method.md` |
+| `wiki/queries/` | `主題-YYYY-MM-DD.md` | `傾角變位法陷阱-2026-07-02.md` |
+| `wiki/philosophy/` | `全小寫-連字號.md` | `force-method-vs-displacement-method.md` |
 
 ---
 
@@ -340,32 +339,31 @@ RC-YYYY-N-[內容碼]-viz.html
 
 | 欄位 | 說明 | 範例 |
 |------|------|------|
-| `primaryTopicId` | 命題大綱主分類（唯一） | `"RC-U2-2"` |
-| `primaryTopicName` | 主分類名稱（直接引用命題大綱子項名稱） | `"RC 扭力強度設計"` |
-| `secondaryTopicIds` | 命題大綱副分類（跨子項時用） | `["RC-U2-1"]` |
-| `designMethod` | 設計法 | `"USD"` / `"WSD"` / `"概念題"` / `"混合"` |
-| `tags` | 自由標籤（核心考點，3–8 個） | `["扭矩強度","Aoh","閉合箍筋"]` |
+| `primaryTopicId` | 命題大綱主分類（唯一） | `"SA-U2-5"` |
+| `primaryTopicName` | 主分類名稱（直接引用命題大綱子項名稱） | `"彎矩分配法"` |
+| `secondaryTopicIds` | 命題大綱副分類（跨子項時用） | `["SA-U2-3"]` |
+| `tags` | 自由標籤（核心考點，3–8 個） | `["彎矩分配法","分配因子","側移框架","FEM"]` |
 
 ### 命題大綱分類對照
 
-> **最新鮮的官方考點分類，請直接查閱：`raw/json/syllabus_taxonomy.json` 中 `id: "RC"` 的段落。**
+> **最新鮮的官方考點分類，請直接查閱：`raw/json/syllabus_taxonomy.json` 中 `id: "SA"` 的段落。**
 > 所有 `primaryTopicId` 與主分類名稱，一律以該檔案為唯一準則。
-> topicId 格式：`RC-UN-n`（U=單元號，n=子項號）
+> topicId 格式：`SA-UN-n`（U=單元號，n=子項號）
 
 ### 標準標籤詞彙
 
 | 類別 | 標準標籤 |
 |------|---------|
-| **設計法** | USD強度設計法、WSD工作應力法、概念題 |
-| **梁彎曲** | 單筋矩形梁、雙筋梁、T形梁、有效翼板寬、Whitney應力塊、延性破壞、平衡鋼筋比、最大鋼筋比、最小鋼筋比 |
-| **梁剪力** | 臨界斷面、Vc混凝土剪力強度、Vs腹筋剪力強度、最大間距限制、最小腹筋量 |
-| **撓度裂縫** | 有效慣性矩、開裂彎矩Mcr、長期撓度修正、允許撓度、裂縫寬度控制 |
-| **柱** | 短柱、長柱效應、P-M互制圖、放大彎矩法、無側移構架、有側移構架、螺旋柱、箍筋柱 |
-| **板** | 單向版、雙向版、直接設計法、等效框架法、柱帶、中間帶、衝剪 |
-| **基礎** | 獨立基腳、聯合基腳、彎矩設計、衝剪驗算、單向剪力 |
-| **預力** | 先拉法、後拉法、彈性縮短損失、摩擦損失、錨定滑動損失、潛變損失、收縮損失、鬆弛損失、有效預力、使用性驗算 |
-| **耐震** | 韌性構架、特殊矩形梁、特殊矩形柱、強柱弱梁、圍束箍筋、密箍區、接頭設計 |
-| **材料** | 混凝土抗壓強度、鋼筋降伏強度、彈性模數、潛變係數、收縮應變、β1係數 |
+| **靜定分析** | 靜定結構、靜定梁、靜定桁架、靜定拱、三鉸拱、節點法、截面法、SFD、BMD |
+| **靜不定度** | 靜不定度計算、內部靜不定、外部靜不定、幾何穩定性、幾何不穩定 |
+| **影響線** | 影響線、Müller-Breslau原理、靜定影響線、靜不定影響線、最大效應 |
+| **最小功法** | 最小功法、卡式定理、虛功原理、補餘能量、柔度矩陣 |
+| **諧合變位** | 諧合變位、三彎矩方程、柔度法、多餘力、釋放束制 |
+| **傾角變位法** | 傾角變位法、固端彎矩、FEM、節點平衡、側移、層剪力方程 |
+| **矩陣法** | 矩陣位移法、勁度矩陣、自由度、整體勁度矩陣、座標轉換 |
+| **彎矩分配法** | 彎矩分配法、分配因子、傳遞因子、不平衡彎矩、無側移框架、有側移框架 |
+| **建築結構系統** | 結構系統、側力抵抗系統、剪力牆、框架系統、靜力分析模型 |
+| **計算技巧** | 對稱性利用、反對稱載重、EI相同簡化、單位力法、疊加原理 |
 
 ---
 
@@ -376,13 +374,12 @@ RC-YYYY-N-[內容碼]-viz.html
 
 | 欄位 | 允許值 | 說明 |
 |------|--------|------|
-| `moduleId` | `RC-YYYY-N` | 題目唯一識別碼 |
+| `moduleId` | `SA-YYYY-N` | 題目唯一識別碼 |
 | `year` | 整數（西元年，如 `2015`） | 西元年 |
 | `rocYear` | 整數（民國年，如 `104`） | 民國年 |
 | `primaryTopicId` | `raw/json/syllabus_taxonomy.json` 中的 `id` | 命題大綱主分類，唯一 |
 | `primaryTopicName` | `raw/json/syllabus_taxonomy.json` 中的 `name` | 主分類名稱（直接引用命題大綱子項） |
-| `secondaryTopicIds` | `[]` 或 `["RC-UN-n"]` | 跨子項時填入，可多個 |
-| `designMethod` | `USD` / `WSD` / `概念題` / `混合` | 設計方法 |
+| `secondaryTopicIds` | `[]` 或 `["SA-UN-n"]` | 跨子項時填入，可多個 |
 | `verificationStatus` | `verified` / `unverified` / `needs-review` | 驗證狀態 |
 | `hasSolution` | `true` / `false` | 是否已有解析 `.md` |
 | `hasViz` | `true` / `false` | 是否有互動圖 |
@@ -405,8 +402,8 @@ RC-YYYY-N-[內容碼]-viz.html
 
 | 項目 | 檢查方式 |
 |------|---------|
-| `raw/solutions/RC-YYYY-N/RC-YYYY-N.md` 存在 | 檔案系統確認 |
-| 開頭標籤區塊完整（編號、主分類、設計法、標籤） | 讀取 .md 前 20 行 |
+| `raw/solutions/SA-YYYY-N/SA-YYYY-N.md` 存在 | 檔案系統確認 |
+| 開頭標籤區塊完整（編號、主分類、分析法、標籤） | 讀取 .md 前 20 行 |
 | 所有獨立公式使用 LaTeX `$$...$$` | grep `\$\$` |
 | 每張 PNG 圖片有對應 `*圖說：*` | grep `圖說：` |
 | `question_index.json` 中 `hasSolution: true` | JSON 確認 |
@@ -416,7 +413,7 @@ RC-YYYY-N-[內容碼]-viz.html
 
 | 項目 | 檢查方式 |
 |------|---------|
-| `wiki/problems/RC-YYYY-N.md` 存在且有完整標籤 | 檔案系統確認 |
+| `wiki/problems/SA-YYYY-N.md` 存在且有完整標籤 | 檔案系統確認 |
 | `wiki/index.md` 在對應分類下有此題連結 | grep moduleId |
 | `wiki/by-year.md` 在對應年份有此題 | grep moduleId |
 | `wiki/log.md` 有 ingest 紀錄 | grep moduleId |
@@ -428,15 +425,13 @@ RC-YYYY-N-[內容碼]-viz.html
 
 | 類別 | ❌ 錯誤 | ✅ 正確 | 原因 |
 |------|--------|--------|------|
-| moduleId | `RC-104-1` | `RC-2015-1` | 年份用民國而非西元 |
-| moduleId | `RC-2015-01` | `RC-2015-1` | 題號有前導零 |
-| moduleId | `rc-2015-1` | `RC-2015-1` | 科目代碼小寫 |
-| 考卷 PDF | `RC-2015鋼筋混凝土設計與預力.pdf` | `RC-2015_鋼筋混凝土設計與預力.pdf` | 年份後缺底線 |
-| PNG | `RC-2015-1-fig1.png` | `RC-2015-1-fig-1.png` | 類型碼與序號間缺連字號 |
-| PNG | `RC-2015-1-eqn.png` | `RC-2015-1-eqn-1.png` | 缺序號（單張也要寫 `-1`） |
-| viz HTML | `RC-2015-1-pm.html` | `RC-2015-1-pm-viz.html` | 缺 `-viz` 後綴 |
-| designMethod | `usd` | `USD` | 設計法值大寫 |
-| tags | `T梁` | `T形梁` | 標籤應含完整中文說明 |
-| 公式 | `fc'=280 kgf/cm²` | `$f'_c = 280 \text{ kgf/cm}^2$` | 禁止純文字公式 |
+| moduleId | `SA-104-1` | `SA-2015-1` | 年份用民國而非西元 |
+| moduleId | `SA-2015-01` | `SA-2015-1` | 題號有前導零 |
+| moduleId | `sa-2015-1` | `SA-2015-1` | 科目代碼小寫 |
+| 考卷 PDF | `SA-2015結構學.pdf` | `SA-2015_結構學.pdf` | 年份後缺底線 |
+| PNG | `SA-2015-1-fig1.png` | `SA-2015-1-fig-1.png` | 類型碼與序號間缺連字號 |
+| PNG | `SA-2015-1-eqn.png` | `SA-2015-1-eqn-1.png` | 缺序號（單張也要寫 `-1`） |
+| viz HTML | `SA-2015-1-sfd-bmd.html` | `SA-2015-1-sfd-bmd-viz.html` | 缺 `-viz` 後綴 |
+| tags | `彎矩分配` | `彎矩分配法` | 標籤應含完整中文說明 |
+| 公式 | `MAB = 2EI/L(2θA + θB)` | `$M_{AB} = \frac{2EI}{L}(2\theta_A + \theta_B)$` | 禁止純文字公式 |
 | verificationStatus | `Verified` | `verified` | 狀態值全小寫 |
-

@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>exam-wiki-RC 知識庫儀表板 — 鋼筋混凝土設計與預力</title>
+<title>exam-wiki-SA 知識庫儀表板 — 結構學</title>
 <style>
   :root{
     --bg:#f5f6f8; --card:#ffffff; --ink:#1f2937; --muted:#6b7280; --line:#e5e7eb;
@@ -130,8 +130,8 @@
 <body>
 <div class="wrap">
   <header>
-    <h1>📚 鋼筋混凝土設計與預力 — 考古題知識庫</h1>
-    <span class="sub">結構工程技師高考第三科｜exam-wiki-RC</span>
+    <h1>📚 結構學 — 考古題知識庫</h1>
+    <span class="sub">結構工程技師高考第一科｜exam-wiki-SA</span>
   </header>
 
   <div class="stats" id="stats"></div>
@@ -197,7 +197,7 @@
       <table class="cmd">
         <tr><th>想做什麼</th><th>怎麼做</th></tr>
         <tr><td>解一套新考卷</td><td>對 Cowork 說 <code>解析 XXXX 年考卷</code> → 依提醒截圖 → 說 <code>截圖完成，請開始解題</code>（一次解一題）</td></tr>
-        <tr><td>驗算後入庫</td><td>人工驗算 → 說 <code>將 RC-XXXX-N 的 verificationStatus 改為 verified</code> → 說 <code>ingest RC-XXXX-N</code></td></tr>
+        <tr><td>驗算後入庫</td><td>人工驗算 → 說 <code>將 SA-XXXX-N 的 verificationStatus 改為 verified</code> → 說 <code>ingest SA-XXXX-N</code></td></tr>
         <tr><td>查詢知識</td><td>直接對 Cowork 提問，結果會存入 wiki/queries/</td></tr>
         <tr><td>更新本儀表板</td><td>索引變動後，對 Cowork 說 <code>更新儀表板資料</code>（重新生成 dashboard-data.js）</td></tr>
       </table>
@@ -219,7 +219,7 @@
       <h2>📦 wiki 編譯與維護</h2>
       <table class="cmd">
         <tr><th>觸發語句</th><th>用途</th></tr>
-        <tr><td><code>ingest RC-XXXX-N</code></td><td>將一道已驗證（verified）題目寫入 wiki，同步更新 index 與 by-year</td></tr>
+        <tr><td><code>ingest SA-XXXX-N</code></td><td>將一道已驗證（verified）題目寫入 wiki，同步更新 index 與 by-year</td></tr>
         <tr><td><code>compile all</code></td><td>從 raw/ 重建整個 wiki（concepts、methods、problems、index）</td></tr>
         <tr><td><code>lint wiki</code></td><td>16 項健檢：斷鏈、孤頁、概念缺口、圖說缺漏、數量一致性…</td></tr>
         <tr><td><code>status</code></td><td>驗證進度統計、各狀態題目清單、常見標籤排行</td></tr>
@@ -236,7 +236,7 @@
         <tr><td><code>frequency</code></td><td>統計各考點歷年出現次數與單元比例</td></tr>
         <tr><td><code>analyze YYYY</code></td><td>分析某年考卷的考點分布、難度與歷年異同</td></tr>
         <tr><td><code>predict</code></td><td>依近 3/5/10 年趨勢推測下次考試最可能考點</td></tr>
-        <tr><td><code>study RC-UN</code></td><td>彙整某單元所有題目與重點（如 <code>study RC-U4</code>）</td></tr>
+        <tr><td><code>study SA-UN</code></td><td>彙整某單元所有題目與重點（如 <code>study SA-U2</code>）</td></tr>
       </table>
     </div>
     <div class="card">
@@ -244,14 +244,14 @@
       <table class="cmd">
         <tr><th>觸發語句</th><th>用途</th></tr>
         <tr><td><code>find [關鍵字]</code></td><td>快速搜尋含某關鍵字的題目</td></tr>
-        <tr><td><code>related RC-XXXX-N</code></td><td>找出考點相似的其他題目</td></tr>
+        <tr><td><code>related SA-XXXX-N</code></td><td>找出考點相似的其他題目</td></tr>
         <tr><td><code>unverified</code></td><td>列出有解析但尚未驗證的題目</td></tr>
         <tr><td>直接提問</td><td>自由查詢知識庫，結果存入 wiki/queries/</td></tr>
       </table>
     </div>
   </section>
 
-  <footer>exam-wiki-RC 儀表板｜資料來源：raw/json/question_index.json（dashboard-data.js 快照）｜索引更新後請對 Cowork 說「更新儀表板資料」</footer>
+  <footer>exam-wiki-SA 儀表板｜資料來源：raw/json/question_index.json（dashboard-data.js 快照）｜索引更新後請對 Cowork 說「更新儀表板資料」</footer>
 </div>
 
 <!-- 解析閱讀器 -->
@@ -270,9 +270,9 @@
 <script src="dashboard-data.js"></script>
 <script>
 (function(){
-  if(!window.RC_QUESTIONS){document.getElementById('list').innerHTML='<div class="empty">找不到 dashboard-data.js，請確認檔案與本頁在同一資料夾。</div>';return;}
-  const Q = RC_QUESTIONS.map(r=>({id:r[0],year:+r[0].split('-')[1],num:+r[0].split('-')[2],roc:+r[0].split('-')[1]-1911,topic:r[1],sec:r[2],method:r[3],viz:r[4],tags:r[5],pdf:r[6]||[]}));
-  const TOPICS=RC_TOPICS, UNITS=RC_UNITS;
+  if(!window.SA_QUESTIONS){document.getElementById('list').innerHTML='<div class="empty">找不到 dashboard-data.js，請確認檔案與本頁在同一資料夾。</div>';return;}
+  const Q = SA_QUESTIONS.map(r=>({id:r[0],year:+r[0].split('-')[1],num:+r[0].split('-')[2],roc:+r[0].split('-')[1]-1911,topic:r[1],sec:r[2],viz:r[3],tags:r[4],pdf:r[5]||[]}));
+  const TOPICS=SA_TOPICS, UNITS=SA_UNITS;
   const UCOLOR={U1:'var(--u1)',U2:'var(--u2)',U3:'var(--u3)',U4:'var(--u4)'};
   const unitOf=t=>t.split('-')[0];
   const PKEY='rcwiki-progress';
@@ -407,7 +407,7 @@
     const years=[...new Set(Q.map(q=>q.year))].sort((a,b)=>b-a);
     document.getElementById('examList').innerHTML=years.map(y=>{
       const n=Q.filter(q=>q.year===y).length;
-      return `<a class="navcard" href="${encodeURI('raw/exams/RC-'+y+'_鋼筋混凝土設計與預力.pdf')}" target="_blank">
+      return `<a class="navcard" href="${encodeURI('raw/exams/SA-'+y+'_結構學.pdf')}" target="_blank">
         <b>📄 ${y} 年考卷</b><p>民國 ${y-1911} 年｜已收錄 ${n} 題解析</p></a>`;}).join('');
   }
 
@@ -474,7 +474,7 @@
     if(!interactive)return null;
     try{h=await showDirectoryPicker({mode:'read'});}catch(e){return null;}
     try{await h.getDirectoryHandle('raw');}catch(e){
-      alert('選擇的資料夾內找不到 raw/，請選擇 exam-wiki-RC 資料夾本身。');return null;}
+      alert('選擇的資料夾內找不到 raw/，請選擇 exam-wiki-SA 資料夾本身。');return null;}
     dirHandle=h;await idbSet(h);return h;
   }
   async function readFileByPath(relPath){
@@ -562,7 +562,7 @@
     if(isLocal){
       let h=await ensureDir(false);
       if(!h){
-        rBody.innerHTML=`<div class="rmsg">首次使用站內閱讀器，請授權讀取知識庫資料夾<br>（選擇 <b>exam-wiki-RC</b> 資料夾，僅需一次）<br>
+        rBody.innerHTML=`<div class="rmsg">首次使用站內閱讀器，請授權讀取知識庫資料夾<br>（選擇 <b>exam-wiki-SA</b> 資料夾，僅需一次）<br>
           <button id="btnPick">📂 選擇資料夾</button>
           <div class="small">瀏覽器安全限制：本機網頁需經您同意才能讀取檔案。</div></div>`;
         document.getElementById('btnPick').addEventListener('click',async()=>{
@@ -599,7 +599,7 @@
     await waitKatex(4000);
     mathHint.style.display=(window.katex)?'none':'inline-block';
     const today=new Date().toISOString().slice(0,10);
-    rBody.innerHTML=`<div id="printHeader">${esc(title||relPath)}<div class="src">exam-wiki-RC 知識庫 ｜ ${esc(relPath)} ｜ 匯出日期 ${today}</div></div><div class="md">${mdToHtml(text)}</div>`;
+    rBody.innerHTML=`<div id="printHeader">${esc(title||relPath)}<div class="src">exam-wiki-SA 知識庫 ｜ ${esc(relPath)} ｜ 匯出日期 ${today}</div></div><div class="md">${mdToHtml(text)}</div>`;
     rBody.scrollTop=0;
     // 解析圖片（相對於 .md 所在資料夾）
     const baseDir=relPath.split('/').slice(0,-1).join('/');
@@ -628,7 +628,7 @@
   window.openMd=openMd;
 
   /* ================= Hash 深度連結（study 頁考題連結） ================= */
-  // 支援 index.html#md=raw/solutions/RC-YYYY-N/RC-YYYY-N.md&t=RC-YYYY-N
+  // 支援 index.html#md=raw/solutions/SA-YYYY-N/SA-YYYY-N.md&t=SA-YYYY-N
   (function handleHashLink(){
     const h=location.hash;
     if(!h.startsWith('#md='))return;
