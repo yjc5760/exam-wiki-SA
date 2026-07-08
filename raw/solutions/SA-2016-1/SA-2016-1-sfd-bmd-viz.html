@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<title>SA-2016-1 BMD — 靜定剛架</title>
+<style>
+  body { font-family: 'Segoe UI', sans-serif; background: #1a1a2e; color: #eee; margin: 0; padding: 16px; }
+  h2 { text-align: center; color: #e94560; font-size: 16px; margin-bottom: 4px; }
+  p.sub { text-align: center; color: #aaa; font-size: 12px; margin-bottom: 12px; }
+  canvas { display: block; margin: 0 auto; background: #16213e; border-radius: 8px; }
+  .legend { display: flex; gap: 20px; justify-content: center; margin-top: 10px; font-size: 12px; }
+  .dot { width: 12px; height: 12px; border-radius: 50%; display: inline-block; margin-right: 4px; vertical-align: middle; }
+</style>
+</head>
+<body>
+<h2>SA-2016-1 彎矩圖（BMD）</h2>
+<p class="sub">靜定剛架 ABCDE｜EI = 常數｜50 kN 水平力作用於 D</p>
+<canvas id="c" width="580" height="480"></canvas>
+<div class="legend">
+  <span><span class="dot" style="background:#4fc3f7"></span>結構</span>
+  <span><span class="dot" style="background:#ef5350"></span>BMD（彎矩圖）</span>
+  <span><span class="dot" style="background:#ffb300"></span>反力</span>
+</div>
+<script>
+const cv = document.getElementById('c');
+const ctx = cv.getContext('2d');
+const W = 580, H = 480;
+
+// 比例：1m = 80px；原點在畫布 (100, 380)
+const sc = 80;
+const ox = 120, oy = 360;
+
+function px(x) { return ox + x * sc; }
+function py(y) { return oy - y * sc; }
+
+// 節點
+const A = [0,0], B = [0,2], C = [2,2], D = [4,2], E = [4,0];
+const nodes = { A, B, C, D, E };
+
+// 繪製結構
+ctx.strokeStyle = '#4fc3f7';
+ctx.lineWidth = 3;
+ctx.beginPath();
+// AB
+ctx.moveTo(px(A[0]), py(A[1]));
+ctx.lineTo(px(B[0]), py(B[1]));
+// BC
+ctx.lineTo(px(C[0]), py(C[1]));
+// CD
+ctx.lineTo(px(D[0]), py(D[1]));
+// DE
+ctx.lineTo(px(E[0]), py(E[1]));
+ctx.stroke();
+
+// 內鉸 C
+ctx.beginPath();
+ctx.arc(px(C[0]), py(C[1]), 5, 0, 2*Math.PI);
+ctx.fillStyle = '#fff';
+ctx.fill();
+ctx.strokeStyle = '#4fc3f7';
+ctx.lineWidth = 2;
+ctx.stroke();
+
+// 節點標籤
+ctx.font = 'bold 13px Segoe UI';
+ctx.fillStyle = '#4fc3f7';
+ctx.fillText('B', px(B[0])-18, py(B[1])+5);
+ctx.fillText('C', px(C[0])-5, py(C[1])-10);
+ctx.fillText('D', px(D[0])+8, py(D[1])+5);
+ctx.fillStyle = '#ffb300';
+ctx.fillText('A', px(A[0])-18, py(A[1])+15);
+ctx.fillText('E', px(E[0])+8, py(E[1])+15);
+
+// 支承符號
+function drawHinge(x, y) {
+  ctx.strokeStyle = '#ffb300';
+  ctx.lineWidth = 2;
+  ctx.beginPath();
+  ctx.moveTo(px(x), py(y));
+  ctx.lineTo(px(x)-12, py(y)+16);
+  ctx.lineTo(px(x)+12, py(y)+16);
+  ctx.closePath();
+  ctx.stroke();
+  ctx.beginPath();
+  ctx.moveTo(px(x)-14, py(y)+18);
+  ctx.lineTo(px(x)+14, py(y)+18);
+  ctx.stroke();
+}
+drawHinge(A[0], A[1]);
+drawHinge(E[0], E[1]);
+
+// 載重 50 kN →
+ctx.strokeStyle = '#ef5350';
+ctx.lineWidth = 2.5;
+ctx.beginPath();
+ctx.moveTo(px(D[0])+8, py(D[1]));
+ctx.lineTo(px(D[0])+45, py(D[1]));
+ctx.stroke();
+ctx.beginPath();
+ctx.moveTo(px(D[0])+45, py(D[1]));
+ctx.lineTo(px(D[0])+35, py(D[1])-7);
+ctx.lineTo(px(D[0])+35, py(D[1])+7);
+ctx.closePath();
+ctx.fillStyle = '#ef5350';
+ctx.fill();
+ctx.font = '12px Segoe UI';
+ctx.fillStyle = '#ef5350';
+ctx.fillText('50 kN', px(D[0])+50, py(D[1])+4);
+
+// BMD 填充（彎矩畫在受拉側，量值=50kN·m，比例=15px/kN·m）
+const MS = 15; // px per kN·m
+
+ctx.globalAlpha = 0.35;
+ctx.fillStyle = '#ef5350';
+
+// AB 柱：B 端 50kN·m，A 端 0，受拉側在左側（BMD 向左畫）
+ctx.beginPath();
+ctx.moveTo(px(A[0]), py(A[1]));           // A
+ctx.lineTo(px(A[0]), py(B[1]));           // B（結構線）
+ctx.lineTo(px(B[0])-50*MS/sc*sc, py(B[1])); // B 向左 50
+ctx.lineTo(px(A[0]), py(A[1]));           // A（0 點）
+ctx.closePath();
+ctx.fill();
+
+// DE 柱：D 端 50kN·m，E 端 0，受拉側在右側（BMD 向右畫）
+ctx.beginPath();
+ctx.moveTo(px(E[0]), py(E[1]));           // E
+ctx.lineTo(px(D[0]), py(D[1]));           // D
+ctx.lineTo(px(D[0])+50*MS/sc*sc, py(D[1])); // D 向右 50
+ctx.lineTo(px(E[0]), py(E[1]));           // E
+ctx.closePath();
+ctx.fill();
+
+// BC 梁：B 端 50kN·m，C 端 0，受拉側在上側（BMD 向上畫）
+ctx.beginPath();
+ctx.moveTo(px(B[0]), py(B[1]));
+ctx.lineTo(px(C[0]), py(C[1]));           // C（0）
+ctx.lineTo(px(C[0]), py(C[1])+0);
+ctx.lineTo(px(B[0]), py(B[1])-50*MS/sc*sc); // B 向上 50
+ctx.closePath();
+ctx.fill();
+
+// CD 梁：C 端 0，D 端 50kN·m，受拉側在下側（BMD 向下畫）
+ctx.beginPath();
+ctx.moveTo(px(C[0]), py(C[1]));           // C（0）
+ctx.lineTo(px(D[0]), py(D[1]));           // D
+ctx.lineTo(px(D[0]), py(D[1])+50*MS/sc*sc); // D 向下 50
+ctx.lineTo(px(C[0]), py(C[1]));
+ctx.closePath();
+ctx.fill();
+
+ctx.globalAlpha = 1.0;
+
+// BMD 輪廓線
+ctx.strokeStyle = '#ef5350';
+ctx.lineWidth = 2;
+// AB
+ctx.beginPath();
+ctx.moveTo(px(A[0]), py(A[1]));
+ctx.lineTo(px(A[0])-50*MS/sc*sc, py(B[1]));
+ctx.stroke();
+// DE
+ctx.beginPath();
+ctx.moveTo(px(E[0]), py(E[1]));
+ctx.lineTo(px(D[0])+50*MS/sc*sc, py(D[1]));
+ctx.stroke();
+// BC
+ctx.beginPath();
+ctx.moveTo(px(B[0])-50*MS/sc*sc, py(B[1]));
+ctx.lineTo(px(C[0]), py(C[1])-0);
+ctx.stroke();
+// CD
+ctx.beginPath();
+ctx.moveTo(px(C[0]), py(C[1])+0);
+ctx.lineTo(px(D[0])+50*MS/sc*sc, py(D[1]));
+ctx.stroke();
+
+// 彎矩值標籤
+ctx.font = 'bold 12px Segoe UI';
+ctx.fillStyle = '#ffee58';
+ctx.fillText('50 kN·m', px(B[0])-95, py(B[1])+5);
+ctx.fillText('50 kN·m', px(D[0])+40, py(D[1])-10);
+ctx.fillText('50 kN·m', px(B[0])+10, py(B[1])-28);
+ctx.fillText('50 kN·m', px(D[0])-5, py(D[1])+40);
+
+// 反力標示
+ctx.font = '11px Segoe UI';
+ctx.fillStyle = '#ffb300';
+ctx.fillText('Ax=25kN←', px(A[0])-85, py(A[1])-5);
+ctx.fillText('Ay=25kN↑', px(A[0])-85, py(A[1])+12);
+ctx.fillText('Ex=25kN←', px(E[0])+10, py(E[1])-5);
+ctx.fillText('Ey=25kN↓', px(E[0])+10, py(E[1])+12);
+
+// 尺寸標注
+ctx.strokeStyle = '#888';
+ctx.lineWidth = 1;
+ctx.setLineDash([4,4]);
+ctx.beginPath();
+ctx.moveTo(px(0), py(-0.5));
+ctx.lineTo(px(4), py(-0.5));
+ctx.stroke();
+ctx.setLineDash([]);
+ctx.font = '11px Segoe UI';
+ctx.fillStyle = '#aaa';
+ctx.fillText('2 m', px(0.8), py(-0.6)+14);
+ctx.fillText('2 m', px(2.8), py(-0.6)+14);
+
+ctx.beginPath();
+ctx.moveTo(px(-0.5), py(0));
+ctx.lineTo(px(-0.5), py(2));
+ctx.stroke();
+ctx.fillText('2 m', px(-0.5)-38, py(1)+4);
+
+// 標題
+ctx.font = 'bold 11px Segoe UI';
+ctx.fillStyle = '#90caf9';
+ctx.fillText('C 點內鉸：MC=0', px(C[0])+8, py(C[1])-10);
+</script>
+</body>
+</html>

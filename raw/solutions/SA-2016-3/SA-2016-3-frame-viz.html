@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<title>SA-2016-3 虛功原理圖形積分</title>
+<style>
+  body { font-family: 'Segoe UI', sans-serif; background: #1a1a2e; color: #eee; margin: 0; padding: 16px; }
+  h2 { text-align: center; color: #e94560; font-size: 16px; margin-bottom: 4px; }
+  p.sub { text-align: center; color: #aaa; font-size: 12px; margin-bottom: 20px; }
+  canvas { display: block; margin: 0 auto; background: #16213e; border-radius: 8px; }
+  .legend { display: flex; gap: 20px; justify-content: center; margin-top: 15px; font-size: 12px; }
+  .dot { width: 12px; height: 12px; border-radius: 50%; display: inline-block; margin-right: 4px; vertical-align: middle; }
+</style>
+</head>
+<body>
+<h2>SA-2016-3 圖形積分視覺化 (CD 桿)</h2>
+<p class="sub">利用單位力法，僅計算 CD 桿的虛功積分即可得解</p>
+<canvas id="c" width="700" height="400"></canvas>
+<div class="legend">
+  <span><span class="dot" style="background:#4fc3f7"></span>物理桿件 (CD)</span>
+  <span><span class="dot" style="background:#ef5350"></span>真實彎矩 M 圖 (正：左側受拉)</span>
+  <span><span class="dot" style="background:#ab47bc"></span>虛彎矩 m 圖 (正：左側受拉)</span>
+</div>
+<script>
+const cv = document.getElementById('c');
+const ctx = cv.getContext('2d');
+
+// 繪圖區塊設定
+const L = 300; // 桿件長度 (20m -> 300px)
+const y0 = 50; // 頂端 C 的 y 座標
+const x_col = 100; // CD 桿 x 座標
+const x_M = 350; // M圖基準線 x 座標
+const x_m = 550; // m圖基準線 x 座標
+
+function px(x) { return x; }
+function py(y) { return y; }
+
+// 1. 繪製物理桿件 CD
+ctx.strokeStyle = '#4fc3f7';
+ctx.lineWidth = 4;
+ctx.beginPath();
+ctx.moveTo(x_col, y0);
+ctx.lineTo(x_col, y0 + L);
+ctx.stroke();
+
+// 節點標示
+ctx.font = 'bold 16px Segoe UI';
+ctx.fillStyle = '#4fc3f7';
+ctx.fillText('C', x_col - 20, y0 + 5);
+ctx.fillText('D', x_col - 20, y0 + L + 5);
+
+// D 端固定支承符號
+ctx.strokeStyle = '#ffb300';
+ctx.lineWidth = 2;
+ctx.beginPath();
+ctx.moveTo(x_col - 15, y0 + L);
+ctx.lineTo(x_col + 15, y0 + L);
+for(let i=-10; i<=10; i+=5) {
+  ctx.moveTo(x_col + i, y0 + L);
+  ctx.lineTo(x_col + i - 5, y0 + L + 10);
+}
+ctx.stroke();
+
+// 真實端彎矩 (以圓弧箭頭表示)
+ctx.strokeStyle = '#ef5350';
+ctx.lineWidth = 2;
+// C 端逆時針 25.3
+ctx.beginPath();
+ctx.arc(x_col, y0, 20, Math.PI, 1.5*Math.PI, true);
+ctx.stroke();
+// 箭頭
+ctx.beginPath();
+ctx.moveTo(x_col, y0 - 20);
+ctx.lineTo(x_col - 8, y0 - 15);
+ctx.lineTo(x_col + 3, y0 - 25);
+ctx.stroke();
+ctx.fillStyle = '#ef5350';
+ctx.font = '14px Segoe UI';
+ctx.fillText('25.3', x_col + 10, y0 - 10);
+
+// D 端逆時針 17.0
+ctx.beginPath();
+ctx.arc(x_col, y0 + L, 20, Math.PI, 1.5*Math.PI, true);
+ctx.stroke();
+// 箭頭
+ctx.beginPath();
+ctx.moveTo(x_col, y0 + L - 20);
+ctx.lineTo(x_col - 8, y0 + L - 15);
+ctx.lineTo(x_col + 3, y0 + L - 25);
+ctx.stroke();
+ctx.fillText('17.0', x_col + 10, y0 + L - 10);
+
+// 虛擬單位力
+ctx.strokeStyle = '#ab47bc';
+ctx.lineWidth = 3;
+ctx.beginPath();
+ctx.moveTo(x_col, y0);
+ctx.lineTo(x_col + 40, y0);
+ctx.stroke();
+ctx.beginPath();
+ctx.moveTo(x_col + 40, y0);
+ctx.lineTo(x_col + 30, y0 - 5);
+ctx.lineTo(x_col + 30, y0 + 5);
+ctx.closePath();
+ctx.fillStyle = '#ab47bc';
+ctx.fill();
+ctx.font = 'bold 14px Segoe UI';
+ctx.fillText("P'=1", x_col + 45, y0 + 5);
+
+
+// 2. 繪製真實彎矩 M 圖 (正值在左側)
+ctx.strokeStyle = '#666';
+ctx.lineWidth = 1;
+ctx.setLineDash([5,5]);
+ctx.beginPath();
+ctx.moveTo(x_M, y0);
+ctx.lineTo(x_M, y0 + L);
+ctx.stroke();
+ctx.setLineDash([]);
+
+const scale_M = 3; // 放大比例
+ctx.strokeStyle = '#ef5350';
+ctx.fillStyle = 'rgba(239, 83, 80, 0.2)';
+ctx.lineWidth = 2;
+
+// M(y) = 25.3 (top), -17.0 (bot)
+let M_t = 25.3, M_b = -17.0;
+ctx.beginPath();
+ctx.moveTo(x_M, y0);
+ctx.lineTo(x_M - M_t * scale_M, y0);
+ctx.lineTo(x_M - M_b * scale_M, y0 + L);
+ctx.lineTo(x_M, y0 + L);
+ctx.closePath();
+ctx.fill();
+ctx.stroke();
+
+ctx.fillStyle = '#ffee58';
+ctx.fillText('25.3', x_M - M_t * scale_M - 35, y0 + 5);
+ctx.fillText('-17.0', x_M - M_b * scale_M + 5, y0 + L + 5);
+ctx.font = '12px Segoe UI';
+ctx.fillStyle = '#aaa';
+ctx.fillText('M 圖', x_M - 15, y0 - 15);
+
+// 3. 繪製虛彎矩 m 圖 (正值在左側)
+ctx.strokeStyle = '#666';
+ctx.setLineDash([5,5]);
+ctx.beginPath();
+ctx.moveTo(x_m, y0);
+ctx.lineTo(x_m, y0 + L);
+ctx.stroke();
+ctx.setLineDash([]);
+
+const scale_m = 4; 
+ctx.strokeStyle = '#ab47bc';
+ctx.fillStyle = 'rgba(171, 71, 188, 0.2)';
+ctx.lineWidth = 2;
+
+// m(y) = 0 (top), -20 (bot)
+let m_t = 0, m_b = -20;
+ctx.beginPath();
+ctx.moveTo(x_m, y0);
+ctx.lineTo(x_m - m_t * scale_m, y0);
+ctx.lineTo(x_m - m_b * scale_m, y0 + L);
+ctx.lineTo(x_m, y0 + L);
+ctx.closePath();
+ctx.fill();
+ctx.stroke();
+
+ctx.fillStyle = '#ffee58';
+ctx.font = '14px Segoe UI';
+ctx.fillText('0', x_m - m_t * scale_m + 5, y0 + 5);
+ctx.fillText('-20', x_m - m_b * scale_m + 5, y0 + L + 5);
+ctx.font = '12px Segoe UI';
+ctx.fillStyle = '#aaa';
+ctx.fillText('m 圖', x_m - 15, y0 - 15);
+
+// Simpson 圖形積分公式文字
+ctx.font = '14px Segoe UI';
+ctx.fillStyle = '#fff';
+ctx.fillText('∫ M m dy = (L/6) [ Mt·mt + 4 Mm·mm + Mb·mb ]', 150, 360);
+ctx.fillStyle = '#4fc3f7';
+ctx.fillText('ΔCx = (20/6EI) [ 25.3(0) + 4(4.15)(-10) + (-17.0)(-20) ] = 580 / EI', 150, 385);
+
+</script>
+</body>
+</html>

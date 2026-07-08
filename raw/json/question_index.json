@@ -1,618 +1,911 @@
 {
-    "description":  "SA ç§‘ç›®è€ƒé¡Œç¸½ç´¢å¼•ã€‚ç§‘ç›®ï¼šçµæ§‹å­¸ï¼ˆç¬¬ä¸€ç§‘ï¼‰ã€‚verificationStatus å’Œ tags æ˜¯ä¸»è¦äººå·¥ç¶­è­·æ¬„ä½ã€‚",
-    "tagSystem":  {
-                      "primaryTopicId":  "å‘½é¡Œå¤§ç¶±ä¸»åˆ†é¡žï¼ˆSA-UN-nï¼Œä¾å®˜æ–¹å‘½é¡Œå¤§ç¶±ä¸‰å–®å…ƒï¼‰",
-                      "secondaryTopicIds":  "å‘½é¡Œå¤§ç¶±å‰¯åˆ†é¡žï¼ˆè·¨å­é …æ™‚ä½¿ç”¨ï¼‰",
-                      "tags":  "è‡ªç”±æ¨™ç±¤ï¼ˆ3-8å€‹ï¼Œè¦‹ CLAUDE-SPEC.md Â§8ï¼‰"
-                  },
-    "questions":  [
-                      {
-                          "moduleId":  "SA-2019-4",
-                          "year":  2019,
-                          "rocYear":  108,
-                          "questionNumber":  4,
-                          "primaryTopicId":  "SA-U4-1",
-                          "primaryTopicName":  "矩陣位移法",
-                          "secondaryTopicIds":  [],
-                          "verificationStatus":  "unverified",
-                          "hasSolution":  true,
-                          "hasViz":  false,
-                          "hasHandwritten":  false,
-                          "tags":  [
-                                       "勁度矩陣",
-                                       "半剛性接頭",
-                                       "旋轉彈簧",
-                                       "節點載重向量"
-                                   ]
-                      },
-                      {
-                          "moduleId":  "SA-2019-3",
-                          "year":  2019,
-                          "rocYear":  108,
-                          "questionNumber":  3,
-                          "primaryTopicId":  "SA-U2-2",
-                          "primaryTopicName":  "傾角變位法",
-                          "secondaryTopicIds":  [],
-                          "verificationStatus":  "unverified",
-                          "hasSolution":  true,
-                          "hasViz":  false,
-                          "hasHandwritten":  false,
-                          "tags":  [
-                                       "傾角變位法",
-                                       "連續梁",
-                                       "支承沉陷",
-                                       "對稱性"
-                                   ]
-                      },
-                      {
-                          "moduleId":  "SA-2019-2",
-                          "year":  2019,
-                          "rocYear":  108,
-                          "questionNumber":  2,
-                          "primaryTopicId":  "SA-U3-2",
-                          "primaryTopicName":  "建築結構系統分析",
-                          "secondaryTopicIds":  [],
-                          "verificationStatus":  "unverified",
-                          "hasSolution":  true,
-                          "hasViz":  false,
-                          "hasHandwritten":  false,
-                          "tags":  [
-                                       "范倫迪爾桁架",
-                                       "近似分析",
-                                       "反曲點",
-                                       "彎矩圖",
-                                       "軸力圖"
-                                   ]
-                      },
-                      {
-                          "moduleId":  "SA-2019-1",
-                          "year":  2019,
-                          "rocYear":  108,
-                          "questionNumber":  1,
-                          "primaryTopicId":  "SA-U2-1",
-                          "primaryTopicName":  "靜不定結構最小功法",
-                          "secondaryTopicIds":  [
-                                                    "SA-U1-1"
-                                                ],
-                          "verificationStatus":  "unverified",
-                          "hasSolution":  true,
-                          "hasViz":  false,
-                          "hasHandwritten":  false,
-                          "tags":  [
-                                       "靜不定桁架",
-                                       "最小功法",
-                                       "破壞機構",
-                                       "挫曲",
-                                       "極限載重"
-                                   ]
-                      },
-                      {
-                          "moduleId":  "SA-2022-4",
-                          "year":  2022,
-                          "rocYear":  111,
-                          "questionNumber":  4,
-                          "primaryTopicId":  "SA-U2",
-                          "primaryTopicName":  "éœä¸å®šçµæ§‹èˆ‡ä½ç§»",
-                          "secondaryTopicIds":  [
-                                                    "SA-U2-4"
-                                                ],
-                          "verificationStatus":  "unverified",
-                          "hasSolution":  true,
-                          "hasViz":  false,
-                          "hasHandwritten":  false,
-                          "tags":  [
-                                       "å‰ªåŠ›æ£Ÿæž¶",
-                                       "å‰›æ€§æ¨“æ¿",
-                                       "å´ç§»å‰›åº¦",
-                                       "ä¸è¦å‰‡æ§‹æž¶",
-                                       "æŒ‘é«˜æŸ±"
-                                   ]
-                      },
-                      {
-                          "moduleId":  "SA-2022-3",
-                          "year":  2022,
-                          "rocYear":  111,
-                          "questionNumber":  3,
-                          "primaryTopicId":  "SA-U1",
-                          "primaryTopicName":  "éœå®šçµæ§‹åˆ†æž",
-                          "secondaryTopicIds":  [
-                                                    "SA-U1-3"
-                                                ],
-                          "verificationStatus":  "unverified",
-                          "hasSolution":  true,
-                          "hasViz":  false,
-                          "hasHandwritten":  false,
-                          "tags":  [
-                                       "å½±éŸ¿ç·š",
-                                       "æ¡æž¶",
-                                       "ç´°é•·æ‹‰æ¡¿",
-                                       "å…§éƒ¨é‰¸",
-                                       "ç§»å‹•è¼‰é‡"
-                                   ]
-                      },
-                      {
-                          "moduleId":  "SA-2022-2",
-                          "year":  2022,
-                          "rocYear":  111,
-                          "questionNumber":  2,
-                          "primaryTopicId":  "SA-U2",
-                          "primaryTopicName":  "éœä¸å®šçµæ§‹èˆ‡ä½ç§»",
-                          "secondaryTopicIds":  [
-                                                    "SA-U2-3"
-                                                ],
-                          "verificationStatus":  "unverified",
-                          "hasSolution":  true,
-                          "hasViz":  false,
-                          "hasHandwritten":  false,
-                          "tags":  [
-                                       "å‚¾è§’è®Šä½æ³•",
-                                       "æœ‰å´ç§»å‰›æž¶",
-                                       "å´ç§»æ–¹ç¨‹å¼",
-                                       "ä¿®æ­£å›ºç«¯å½ŽçŸ©",
-                                       "ç–ŠåŠ æ³•"
-                                   ]
-                      },
-                      {
-                          "moduleId":  "SA-2022-1",
-                          "year":  2022,
-                          "rocYear":  111,
-                          "questionNumber":  1,
-                          "primaryTopicId":  "SA-U2",
-                          "primaryTopicName":  "éœä¸å®šçµæ§‹èˆ‡ä½ç§»",
-                          "secondaryTopicIds":  [
-                                                    "SA-U2-1"
-                                                ],
-                          "verificationStatus":  "unverified",
-                          "hasSolution":  true,
-                          "hasViz":  false,
-                          "hasHandwritten":  false,
-                          "tags":  [
-                                       "å½ŽçŸ©åœ–åæ±‚",
-                                       "å½ˆç°§",
-                                       "å…±è»›æ¢æ³•",
-                                       "æ”¯æ‰¿æ²‰é™·",
-                                       "é‰¸æŽ¥é»ž"
-                                   ]
-                      },
-                      {
-                          "moduleId":  "SA-2023-4",
-                          "year":  2023,
-                          "rocYear":  112,
-                          "questionNumber":  4,
-                          "primaryTopicId":  "SA-U5",
-                          "primaryTopicName":  "è¿‘ä»£çµæ§‹ç³»çµ±åˆ†æž",
-                          "secondaryTopicIds":  [
-                                                    "SA-U5-1"
-                                                ],
-                          "verificationStatus":  "unverified",
-                          "hasSolution":  true,
-                          "hasViz":  false,
-                          "hasHandwritten":  false,
-                          "tags":  [
-                                       "åå¿ƒæ–œæ’æ§‹æž¶",
-                                       "EBF",
-                                       "å‰›æ€§å€åŸŸ",
-                                       "é€£æ¢æ—‹è½‰è§’",
-                                       "æ©Ÿæ§‹åˆ†æž",
-                                       "å´å‘å‹åº¦åˆ†é…"
-                                   ]
-                      },
-                      {
-                          "moduleId":  "SA-2023-3",
-                          "year":  2023,
-                          "rocYear":  112,
-                          "questionNumber":  3,
-                          "primaryTopicId":  "SA-U3",
-                          "primaryTopicName":  "å‚¾è§’è®Šä½æ³•",
-                          "secondaryTopicIds":  [
-                                                    "SA-U3-1"
-                                                ],
-                          "verificationStatus":  "unverified",
-                          "hasSolution":  true,
-                          "hasViz":  false,
-                          "hasHandwritten":  false,
-                          "tags":  [
-                                       "å¹³é¢å‰›æž¶",
-                                       "ç„¡å´ç§»",
-                                       "å‚¾è§’è®Šä½æ³•",
-                                       "é‰¸ç«¯ä¿®æ­£",
-                                       "æ•´é«”å¹³è¡¡"
-                                   ]
-                      },
-                      {
-                          "moduleId":  "SA-2023-2",
-                          "year":  2023,
-                          "rocYear":  112,
-                          "questionNumber":  2,
-                          "primaryTopicId":  "SA-U2-2",
-                          "primaryTopicName":  "éœä¸å®šçµæ§‹è«§åˆè®Šä½",
-                          "secondaryTopicIds":  [
-                                                    "SA-U1-1"
-                                                ],
-                          "verificationStatus":  "unverified",
-                          "hasSolution":  true,
-                          "hasViz":  false,
-                          "hasHandwritten":  false,
-                          "tags":  [
-                                       "éœä¸å®šæ¡æž¶",
-                                       "è«§åˆè®Šä½æ³•",
-                                       "å¤šé¤˜åŠ›",
-                                       "ç¯€é»žæ³•",
-                                       "å–®ä½åŠ›æ³•"
-                                   ]
-                      },
-                      {
-                          "moduleId":  "SA-2023-1",
-                          "year":  2023,
-                          "rocYear":  112,
-                          "questionNumber":  1,
-                          "primaryTopicId":  "SA-U1-2",
-                          "primaryTopicName":  "éœå®šçµæ§‹åˆ†æž",
-                          "secondaryTopicIds":  [
-                                                    "SA-U2"
-                                                ],
-                          "verificationStatus":  "unverified",
-                          "hasSolution":  true,
-                          "hasViz":  false,
-                          "hasHandwritten":  false,
-                          "tags":  [
-                                       "éœå®šå‰›æž¶",
-                                       "æ”¯æ‰¿æ²‰é™·",
-                                       "å‰›é«”ä½ç§»",
-                                       "å–®ä½åŠ›æ³•",
-                                       "ç–ŠåŠ åŽŸç†"
-                                   ]
-                      },
-                      {
-                          "moduleId":  "SA-2025-1",
-                          "year":  2025,
-                          "rocYear":  114,
-                          "questionNumber":  1,
-                          "primaryTopicId":  "SA-U2-4",
-                          "primaryTopicName":  "éœä¸å®šçµæ§‹ä¹‹çŸ©é™£åˆ†æžæ³•",
-                          "secondaryTopicIds":  [
-
-                                                ],
-                          "verificationStatus":  "unverified",
-                          "hasSolution":  true,
-                          "hasViz":  true,
-                          "hasHandwritten":  false,
-                          "tags":  [
-                                       "çŸ©é™£å‹åº¦æ³•",
-                                       "å´å‘å‹åº¦",
-                                       "é–€åž‹å‰›æ§‹æž¶",
-                                       "å›ºå®šç«¯",
-                                       "éœæ…‹å‡ç¸®",
-                                       "å¿½ç•¥è»¸å‘è®Šå½¢"
-                                   ]
-                      },
-                      {
-                          "moduleId":  "SA-2025-2",
-                          "year":  2025,
-                          "rocYear":  114,
-                          "questionNumber":  2,
-                          "primaryTopicId":  "SA-U1-3",
-                          "primaryTopicName":  "éœå®šåŠéœä¸å®šçµæ§‹å½±éŸ¿ç·š",
-                          "secondaryTopicIds":  [
-
-                                                ],
-                          "verificationStatus":  "unverified",
-                          "hasSolution":  true,
-                          "hasViz":  true,
-                          "hasHandwritten":  false,
-                          "tags":  [
-                                       "å½±éŸ¿ç·š",
-                                       "éœå®šæ¢",
-                                       "å…§é‰¸æŽ¥",
-                                       "å›ºå®šç«¯",
-                                       "æ‡¸è‡‚æ®µ",
-                                       "æ»¾æ”¯æ‰¿"
-                                   ]
-                      },
-                      {
-                          "moduleId":  "SA-2025-3",
-                          "year":  2025,
-                          "rocYear":  114,
-                          "questionNumber":  3,
-                          "primaryTopicId":  "SA-U2-3",
-                          "primaryTopicName":  "éœä¸å®šçµæ§‹ä¹‹å‚¾è§’è®Šä½æ³•",
-                          "secondaryTopicIds":  [
-
-                                                ],
-                          "verificationStatus":  "unverified",
-                          "hasSolution":  true,
-                          "hasViz":  false,
-                          "hasHandwritten":  false,
-                          "tags":  [
-                                       "å‚¾è§’è®Šä½æ³•",
-                                       "éžå‡å‹»æ–·é¢",
-                                       "å‹åº¦ä¿‚æ•¸",
-                                       "å‚³éžä¿‚æ•¸",
-                                       "å›ºç«¯å½ŽçŸ©",
-                                       "å…±è»›æ¨‘"
-                                   ]
-                      },
-                      {
-                          "moduleId":  "SA-2025-4",
-                          "year":  2025,
-                          "rocYear":  114,
-                          "questionNumber":  4,
-                          "primaryTopicId":  "SA-U2-4",
-                          "primaryTopicName":  "éœä¸å®šçµæ§‹ä¹‹çŸ©é™£åˆ†æžæ³•",
-                          "secondaryTopicIds":  [
-                                                    "SA-U2-3"
-                                                ],
-                          "verificationStatus":  "unverified",
-                          "hasSolution":  true,
-                          "hasViz":  true,
-                          "hasHandwritten":  false,
-                          "tags":  [
-                                       "çŸ©é™£ä½ç§»æ³•",
-                                       "æ•´é«”å‹åº¦çŸ©é™£",
-                                       "è‡ªç”±åº¦",
-                                       "æ ¼åºŠçµæ§‹",
-                                       "å¯¦å¿ƒåœ“æ¡¿",
-                                       "å°ç¨±æ€§åˆ©ç”¨"
-                                   ]
-                      },
-                      {
-                          "moduleId":  "SA-2024-1",
-                          "year":  2024,
-                          "rocYear":  113,
-                          "questionNumber":  1,
-                          "primaryTopicId":  "SA-U1-2",
-                          "primaryTopicName":  "éœå®šçµæ§‹åˆ†æž",
-                          "secondaryTopicIds":  [
-
-                                                ],
-                          "verificationStatus":  "unverified",
-                          "hasSolution":  true,
-                          "hasViz":  false,
-                          "hasHandwritten":  false,
-                          "tags":  [
-                                       "éœå®šæ¢",
-                                       "å…§éƒ¨é‰¸",
-                                       "æœ€å¤§ä½ç§»",
-                                       "å…±è»›æ¢æ³•",
-                                       "æ‡¸è‡‚æ¢"
-                                   ]
-                      },
-                      {
-                          "moduleId":  "SA-2024-2",
-                          "year":  2024,
-                          "rocYear":  113,
-                          "questionNumber":  2,
-                          "primaryTopicId":  "SA-U2",
-                          "primaryTopicName":  "çµæ§‹è®Šä½åˆ†æž",
-                          "secondaryTopicIds":  [
-                                                    "SA-U1"
-                                                ],
-                          "verificationStatus":  "unverified",
-                          "hasSolution":  true,
-                          "hasViz":  false,
-                          "hasHandwritten":  false,
-                          "tags":  [
-                                       "éœå®šæ¡æž¶",
-                                       "è£½é€ èª¤å·®",
-                                       "æº«åº¦è®ŠåŒ–",
-                                       "æ”¯æ‰¿æ²‰é™·",
-                                       "å¤šé¤˜è³‡è¨Šé™·é˜±"
-                                   ]
-                      },
-                      {
-                          "moduleId":  "SA-2024-3",
-                          "year":  2024,
-                          "rocYear":  113,
-                          "questionNumber":  3,
-                          "primaryTopicId":  "SA-U2",
-                          "primaryTopicName":  "éœä¸å®šçµæ§‹åˆ†æž",
-                          "secondaryTopicIds":  [
-                                                    "SA-U2-3"
-                                                ],
-                          "verificationStatus":  "unverified",
-                          "hasSolution":  true,
-                          "hasViz":  false,
-                          "hasHandwritten":  false,
-                          "tags":  [
-                                       "å‚¾è§’è®Šä½æ³•",
-                                       "é–€åž‹å‰›æ§‹æž¶",
-                                       "å°ç¨±æ€§",
-                                       "æ¥µå€¼æ¯”ä¾‹"
-                                   ]
-                      },
-                      {
-                          "moduleId":  "SA-2024-4",
-                          "year":  2024,
-                          "rocYear":  113,
-                          "questionNumber":  4,
-                          "primaryTopicId":  "SA-U2-3",
-                          "primaryTopicName":  "éœä¸å®šçµæ§‹ä¹‹å‚¾è§’è®Šä½æ³•",
-                          "secondaryTopicIds":  [
-
-                                                ],
-                          "verificationStatus":  "unverified",
-                          "hasSolution":  true,
-                          "hasViz":  false,
-                          "hasHandwritten":  false,
-                          "tags":  [
-                                       "å‚¾è§’è®Šä½æ³•",
-                                       "å‰›æž¶",
-                                       "å´ç§»",
-                                       "é›†ä¸­åŠ›",
-                                       "åå°ç¨±",
-                                       "éžå‡å‹»æ–·é¢"
-                                   ]
-                      },
-                      {
-                          "year":  2021,
-                          "moduleId":  "SA-2021-1",
-                          "primaryTopicName":  "靜不定結構之傾角變位法",
-                          "questionNumber":  1,
-                          "rocYear":  110,
-                          "hasViz":  true,
-                          "hasHandwritten":  false,
-                          "verificationStatus":  "unverified",
-                          "hasSolution":  true,
-                          "tags":  [
-                                       "傾角變位法",
-                                       "彈簧支承",
-                                       "內部鉸",
-                                       "剛度等效",
-                                       "連續梁"
-                                   ],
-                          "primaryTopicId":  "SA-U2-3",
-                          "secondaryTopicIds":  [
-
-                                                ]
-                      },
-                      {
-                          "year":  2021,
-                          "moduleId":  "SA-2021-2",
-                          "primaryTopicName":  "靜不定結構之傾角變位法",
-                          "questionNumber":  2,
-                          "rocYear":  110,
-                          "hasViz":  true,
-                          "hasHandwritten":  false,
-                          "verificationStatus":  "unverified",
-                          "hasSolution":  true,
-                          "tags":  [
-                                       "傾角變位法",
-                                       "有側移剛架",
-                                       "對稱結構",
-                                       "反對稱載重",
-                                       "連桿效應"
-                                   ],
-                          "primaryTopicId":  "SA-U2-3",
-                          "secondaryTopicIds":  [
-
-                                                ]
-                      },
-                      {
-                          "year":  2021,
-                          "moduleId":  "SA-2021-3",
-                          "primaryTopicName":  "影響線與最大力",
-                          "questionNumber":  3,
-                          "rocYear":  110,
-                          "hasViz":  true,
-                          "hasHandwritten":  false,
-                          "verificationStatus":  "unverified",
-                          "hasSolution":  true,
-                          "tags":  [
-                                       "影響線",
-                                       "靜不定桁架",
-                                       "單位力法",
-                                       "柔軟度法",
-                                       "Müller-Breslau"
-                                   ],
-                          "primaryTopicId":  "SA-U3-2",
-                          "secondaryTopicIds":  [
-                                                    "SA-U2-1"
-                                                ]
-                      },
-                      {
-                          "year":  2021,
-                          "moduleId":  "SA-2021-4",
-                          "primaryTopicName":  "剛性樓板與側力分配",
-                          "questionNumber":  4,
-                          "rocYear":  110,
-                          "hasViz":  true,
-                          "hasHandwritten":  false,
-                          "verificationStatus":  "unverified",
-                          "hasSolution":  true,
-                          "tags":  [
-                                       "剛性樓板",
-                                       "平移與扭轉",
-                                       "剛心位置",
-                                       "扭轉勁度",
-                                       "柱剪力分配"
-                                   ],
-                          "primaryTopicId":  "SA-U5-1",
-                          "secondaryTopicIds":  [
-
-                                                ]
-                      },
-                      {
-                          "year":  2020,
-                          "moduleId":  "SA-2020-1",
-                          "primaryTopicName":  "傾角變位法",
-                          "questionNumber":  1,
-                          "rocYear":  109,
-                          "hasViz":  true,
-                          "hasHandwritten":  false,
-                          "verificationStatus":  "unverified",
-                          "hasSolution":  true,
-                          "tags":  [
-                                       "傾角變位法",
-                                       "無軸向變形",
-                                       "垂直滾支承",
-                                       "靜不定剛架"
-                                   ],
-                          "primaryTopicId":  "SA-U2-3",
-                          "secondaryTopicIds":  [
-
-                                                ]
-                      },
-                      {
-                          "year":  2020,
-                          "moduleId":  "SA-2020-2",
-                          "primaryTopicName":  "傾角變位法",
-                          "questionNumber":  2,
-                          "rocYear":  109,
-                          "hasViz":  true,
-                          "hasHandwritten":  false,
-                          "verificationStatus":  "unverified",
-                          "hasSolution":  true,
-                          "tags":  [
-                                       "傾角變位法",
-                                       "對稱性",
-                                       "剛架分析"
-                                   ],
-                          "primaryTopicId":  "SA-U2-3",
-                          "secondaryTopicIds":  [
-
-                                                ]
-                      },
-                      {
-                          "year":  2020,
-                          "moduleId":  "SA-2020-3",
-                          "primaryTopicName":  "靜不定結構影響線",
-                          "questionNumber":  3,
-                          "rocYear":  109,
-                          "hasViz":  true,
-                          "hasHandwritten":  false,
-                          "verificationStatus":  "unverified",
-                          "hasSolution":  true,
-                          "tags":  [
-                                       "影響線",
-                                       "靜不定結構",
-                                       "Müller-Breslau原理",
-                                       "柔度法",
-                                       "Maxwell-Betti定理"
-                                   ],
-                          "primaryTopicId":  "SA-U3-2",
-                          "secondaryTopicIds":  [
-
-                                                ]
-                      },
-                      {
-                          "year":  2020,
-                          "moduleId":  "SA-2020-4",
-                          "primaryTopicName":  "側力分配與剛性樓板",
-                          "questionNumber":  4,
-                          "rocYear":  109,
-                          "hasViz":  true,
-                          "hasHandwritten":  false,
-                          "verificationStatus":  "unverified",
-                          "hasSolution":  true,
-                          "tags":  [
-                                       "剛架與剪力牆互制",
-                                       "矩陣分析",
-                                       "剪力建築"
-                                   ],
-                          "primaryTopicId":  "SA-U5-1",
-                          "secondaryTopicIds":  [
-
-                                                ]
-                      }
-                  ]
+    "description": "SA ç§‘ç›®è€ƒé¡Œç¸½ç´¢å¼•ã€‚ç§‘ç›®ï¼šçµæ§‹å­¸ï¼ˆç¬¬ä¸€ç§‘ï¼‰ã€‚verificationStatus å’Œ tags æ˜¯ä¸»è¦äººå·¥ç¶­è­·æ¬„ä½ã€‚",
+    "tagSystem": {
+        "primaryTopicId": "å‘½é¡Œå¤§ç¶±ä¸»åˆ†é¡žï¼ˆSA-UN-nï¼Œä¾å®˜æ–¹å‘½é¡Œå¤§ç¶±ä¸‰å–®å…ƒï¼‰",
+        "secondaryTopicIds": "å‘½é¡Œå¤§ç¶±å‰¯åˆ†é¡žï¼ˆè·¨å­é …æ™‚ä½¿ç”¨ï¼‰",
+        "tags": "è‡ªç”±æ¨™ç±¤ï¼ˆ3-8å€‹ï¼Œè¦‹ CLAUDE-SPEC.md Â§8ï¼‰"
+    },
+    "questions": [
+        {
+            "moduleId": "SA-2025-1",
+            "year": 2025,
+            "rocYear": 114,
+            "questionNumber": 1,
+            "primaryTopicId": "SA-U2-4",
+            "primaryTopicName": "éœä¸å®šçµæ§‹ä¹‹çŸ©é™£åˆ†æžæ³•",
+            "secondaryTopicIds": [],
+            "verificationStatus": "unverified",
+            "hasSolution": true,
+            "hasViz": true,
+            "hasHandwritten": false,
+            "tags": [
+                "çŸ©é™£å‹åº¦æ³•",
+                "å´å‘å‹åº¦",
+                "é–€åž‹å‰›æ§‹æž¶",
+                "å›ºå®šç«¯",
+                "éœæ…‹å‡ç¸®",
+                "å¿½ç•¥è»¸å‘è®Šå½¢"
+            ]
+        },
+        {
+            "moduleId": "SA-2025-2",
+            "year": 2025,
+            "rocYear": 114,
+            "questionNumber": 2,
+            "primaryTopicId": "SA-U1-3",
+            "primaryTopicName": "éœå®šåŠéœä¸å®šçµæ§‹å½±éŸ¿ç·š",
+            "secondaryTopicIds": [],
+            "verificationStatus": "unverified",
+            "hasSolution": true,
+            "hasViz": true,
+            "hasHandwritten": false,
+            "tags": [
+                "å½±éŸ¿ç·š",
+                "éœå®šæ¢",
+                "å…§é‰¸æŽ¥",
+                "å›ºå®šç«¯",
+                "æ‡¸è‡‚æ®µ",
+                "æ»¾æ”¯æ‰¿"
+            ]
+        },
+        {
+            "moduleId": "SA-2025-3",
+            "year": 2025,
+            "rocYear": 114,
+            "questionNumber": 3,
+            "primaryTopicId": "SA-U2-3",
+            "primaryTopicName": "éœä¸å®šçµæ§‹ä¹‹å‚¾è§’è®Šä½æ³•",
+            "secondaryTopicIds": [],
+            "verificationStatus": "unverified",
+            "hasSolution": true,
+            "hasViz": false,
+            "hasHandwritten": false,
+            "tags": [
+                "å‚¾è§’è®Šä½æ³•",
+                "éžå‡å‹»æ–·é¢",
+                "å‹åº¦ä¿‚æ•¸",
+                "å‚³éžä¿‚æ•¸",
+                "å›ºç«¯å½ŽçŸ©",
+                "å…±è»›æ¨‘"
+            ]
+        },
+        {
+            "moduleId": "SA-2025-4",
+            "year": 2025,
+            "rocYear": 114,
+            "questionNumber": 4,
+            "primaryTopicId": "SA-U2-4",
+            "primaryTopicName": "éœä¸å®šçµæ§‹ä¹‹çŸ©é™£åˆ†æžæ³•",
+            "secondaryTopicIds": [
+                "SA-U2-3"
+            ],
+            "verificationStatus": "unverified",
+            "hasSolution": true,
+            "hasViz": true,
+            "hasHandwritten": false,
+            "tags": [
+                "çŸ©é™£ä½ç§»æ³•",
+                "æ•´é«”å‹åº¦çŸ©é™£",
+                "è‡ªç”±åº¦",
+                "æ ¼åºŠçµæ§‹",
+                "å¯¦å¿ƒåœ“æ¡¿",
+                "å°ç¨±æ€§åˆ©ç”¨"
+            ]
+        },
+        {
+            "moduleId": "SA-2024-1",
+            "year": 2024,
+            "rocYear": 113,
+            "questionNumber": 1,
+            "primaryTopicId": "SA-U1-2",
+            "primaryTopicName": "éœå®šçµæ§‹åˆ†æž",
+            "secondaryTopicIds": [],
+            "verificationStatus": "unverified",
+            "hasSolution": true,
+            "hasViz": false,
+            "hasHandwritten": false,
+            "tags": [
+                "éœå®šæ¢",
+                "å…§éƒ¨é‰¸",
+                "æœ€å¤§ä½ç§»",
+                "å…±è»›æ¢æ³•",
+                "æ‡¸è‡‚æ¢"
+            ]
+        },
+        {
+            "moduleId": "SA-2024-2",
+            "year": 2024,
+            "rocYear": 113,
+            "questionNumber": 2,
+            "primaryTopicId": "SA-U2",
+            "primaryTopicName": "çµæ§‹è®Šä½åˆ†æž",
+            "secondaryTopicIds": [
+                "SA-U1"
+            ],
+            "verificationStatus": "unverified",
+            "hasSolution": true,
+            "hasViz": false,
+            "hasHandwritten": false,
+            "tags": [
+                "éœå®šæ¡æž¶",
+                "è£½é€ èª¤å·®",
+                "æº«åº¦è®ŠåŒ–",
+                "æ”¯æ‰¿æ²‰é™·",
+                "å¤šé¤˜è³‡è¨Šé™·é˜±"
+            ]
+        },
+        {
+            "moduleId": "SA-2024-3",
+            "year": 2024,
+            "rocYear": 113,
+            "questionNumber": 3,
+            "primaryTopicId": "SA-U2",
+            "primaryTopicName": "éœä¸å®šçµæ§‹åˆ†æž",
+            "secondaryTopicIds": [
+                "SA-U2-3"
+            ],
+            "verificationStatus": "unverified",
+            "hasSolution": true,
+            "hasViz": false,
+            "hasHandwritten": false,
+            "tags": [
+                "å‚¾è§’è®Šä½æ³•",
+                "é–€åž‹å‰›æ§‹æž¶",
+                "å°ç¨±æ€§",
+                "æ¥µå€¼æ¯”ä¾‹"
+            ]
+        },
+        {
+            "moduleId": "SA-2024-4",
+            "year": 2024,
+            "rocYear": 113,
+            "questionNumber": 4,
+            "primaryTopicId": "SA-U2-3",
+            "primaryTopicName": "éœä¸å®šçµæ§‹ä¹‹å‚¾è§’è®Šä½æ³•",
+            "secondaryTopicIds": [],
+            "verificationStatus": "unverified",
+            "hasSolution": true,
+            "hasViz": false,
+            "hasHandwritten": false,
+            "tags": [
+                "å‚¾è§’è®Šä½æ³•",
+                "å‰›æž¶",
+                "å´ç§»",
+                "é›†ä¸­åŠ›",
+                "åå°ç¨±",
+                "éžå‡å‹»æ–·é¢"
+            ]
+        },
+        {
+            "moduleId": "SA-2023-1",
+            "year": 2023,
+            "rocYear": 112,
+            "questionNumber": 1,
+            "primaryTopicId": "SA-U1-2",
+            "primaryTopicName": "éœå®šçµæ§‹åˆ†æž",
+            "secondaryTopicIds": [
+                "SA-U2"
+            ],
+            "verificationStatus": "unverified",
+            "hasSolution": true,
+            "hasViz": false,
+            "hasHandwritten": false,
+            "tags": [
+                "éœå®šå‰›æž¶",
+                "æ”¯æ‰¿æ²‰é™·",
+                "å‰›é«”ä½ç§»",
+                "å–®ä½åŠ›æ³•",
+                "ç–ŠåŠ åŽŸç†"
+            ]
+        },
+        {
+            "moduleId": "SA-2023-2",
+            "year": 2023,
+            "rocYear": 112,
+            "questionNumber": 2,
+            "primaryTopicId": "SA-U2-2",
+            "primaryTopicName": "éœä¸å®šçµæ§‹è«§åˆè®Šä½",
+            "secondaryTopicIds": [
+                "SA-U1-1"
+            ],
+            "verificationStatus": "unverified",
+            "hasSolution": true,
+            "hasViz": false,
+            "hasHandwritten": false,
+            "tags": [
+                "éœä¸å®šæ¡æž¶",
+                "è«§åˆè®Šä½æ³•",
+                "å¤šé¤˜åŠ›",
+                "ç¯€é»žæ³•",
+                "å–®ä½åŠ›æ³•"
+            ]
+        },
+        {
+            "moduleId": "SA-2023-3",
+            "year": 2023,
+            "rocYear": 112,
+            "questionNumber": 3,
+            "primaryTopicId": "SA-U3",
+            "primaryTopicName": "å‚¾è§’è®Šä½æ³•",
+            "secondaryTopicIds": [
+                "SA-U3-1"
+            ],
+            "verificationStatus": "unverified",
+            "hasSolution": true,
+            "hasViz": false,
+            "hasHandwritten": false,
+            "tags": [
+                "å¹³é¢å‰›æž¶",
+                "ç„¡å´ç§»",
+                "å‚¾è§’è®Šä½æ³•",
+                "é‰¸ç«¯ä¿®æ­£",
+                "æ•´é«”å¹³è¡¡"
+            ]
+        },
+        {
+            "moduleId": "SA-2023-4",
+            "year": 2023,
+            "rocYear": 112,
+            "questionNumber": 4,
+            "primaryTopicId": "SA-U5",
+            "primaryTopicName": "è¿‘ä»£çµæ§‹ç³»çµ±åˆ†æž",
+            "secondaryTopicIds": [
+                "SA-U5-1"
+            ],
+            "verificationStatus": "unverified",
+            "hasSolution": true,
+            "hasViz": false,
+            "hasHandwritten": false,
+            "tags": [
+                "åå¿ƒæ–œæ’æ§‹æž¶",
+                "EBF",
+                "å‰›æ€§å€åŸŸ",
+                "é€£æ¢æ—‹è½‰è§’",
+                "æ©Ÿæ§‹åˆ†æž",
+                "å´å‘å‹åº¦åˆ†é…"
+            ]
+        },
+        {
+            "moduleId": "SA-2022-1",
+            "year": 2022,
+            "rocYear": 111,
+            "questionNumber": 1,
+            "primaryTopicId": "SA-U2",
+            "primaryTopicName": "éœä¸å®šçµæ§‹èˆ‡ä½ç§»",
+            "secondaryTopicIds": [
+                "SA-U2-1"
+            ],
+            "verificationStatus": "unverified",
+            "hasSolution": true,
+            "hasViz": false,
+            "hasHandwritten": false,
+            "tags": [
+                "å½ŽçŸ©åœ–åæ±‚",
+                "å½ˆç°§",
+                "å…±è»›æ¢æ³•",
+                "æ”¯æ‰¿æ²‰é™·",
+                "é‰¸æŽ¥é»ž"
+            ]
+        },
+        {
+            "moduleId": "SA-2022-2",
+            "year": 2022,
+            "rocYear": 111,
+            "questionNumber": 2,
+            "primaryTopicId": "SA-U2",
+            "primaryTopicName": "éœä¸å®šçµæ§‹èˆ‡ä½ç§»",
+            "secondaryTopicIds": [
+                "SA-U2-3"
+            ],
+            "verificationStatus": "unverified",
+            "hasSolution": true,
+            "hasViz": false,
+            "hasHandwritten": false,
+            "tags": [
+                "å‚¾è§’è®Šä½æ³•",
+                "æœ‰å´ç§»å‰›æž¶",
+                "å´ç§»æ–¹ç¨‹å¼",
+                "ä¿®æ­£å›ºç«¯å½ŽçŸ©",
+                "ç–ŠåŠ æ³•"
+            ]
+        },
+        {
+            "moduleId": "SA-2022-3",
+            "year": 2022,
+            "rocYear": 111,
+            "questionNumber": 3,
+            "primaryTopicId": "SA-U1",
+            "primaryTopicName": "éœå®šçµæ§‹åˆ†æž",
+            "secondaryTopicIds": [
+                "SA-U1-3"
+            ],
+            "verificationStatus": "unverified",
+            "hasSolution": true,
+            "hasViz": false,
+            "hasHandwritten": false,
+            "tags": [
+                "å½±éŸ¿ç·š",
+                "æ¡æž¶",
+                "ç´°é•·æ‹‰æ¡¿",
+                "å…§éƒ¨é‰¸",
+                "ç§»å‹•è¼‰é‡"
+            ]
+        },
+        {
+            "moduleId": "SA-2022-4",
+            "year": 2022,
+            "rocYear": 111,
+            "questionNumber": 4,
+            "primaryTopicId": "SA-U2",
+            "primaryTopicName": "éœä¸å®šçµæ§‹èˆ‡ä½ç§»",
+            "secondaryTopicIds": [
+                "SA-U2-4"
+            ],
+            "verificationStatus": "unverified",
+            "hasSolution": true,
+            "hasViz": false,
+            "hasHandwritten": false,
+            "tags": [
+                "å‰ªåŠ›æ£Ÿæž¶",
+                "å‰›æ€§æ¨“æ¿",
+                "å´ç§»å‰›åº¦",
+                "ä¸è¦å‰‡æ§‹æž¶",
+                "æŒ‘é«˜æŸ±"
+            ]
+        },
+        {
+            "year": 2021,
+            "moduleId": "SA-2021-1",
+            "primaryTopicName": "靜不定結構之傾角變位法",
+            "questionNumber": 1,
+            "rocYear": 110,
+            "hasViz": true,
+            "hasHandwritten": false,
+            "verificationStatus": "unverified",
+            "hasSolution": true,
+            "tags": [
+                "傾角變位法",
+                "彈簧支承",
+                "內部鉸",
+                "剛度等效",
+                "連續梁"
+            ],
+            "primaryTopicId": "SA-U2-3",
+            "secondaryTopicIds": []
+        },
+        {
+            "year": 2021,
+            "moduleId": "SA-2021-2",
+            "primaryTopicName": "靜不定結構之傾角變位法",
+            "questionNumber": 2,
+            "rocYear": 110,
+            "hasViz": true,
+            "hasHandwritten": false,
+            "verificationStatus": "unverified",
+            "hasSolution": true,
+            "tags": [
+                "傾角變位法",
+                "有側移剛架",
+                "對稱結構",
+                "反對稱載重",
+                "連桿效應"
+            ],
+            "primaryTopicId": "SA-U2-3",
+            "secondaryTopicIds": []
+        },
+        {
+            "year": 2021,
+            "moduleId": "SA-2021-3",
+            "primaryTopicName": "影響線與最大力",
+            "questionNumber": 3,
+            "rocYear": 110,
+            "hasViz": true,
+            "hasHandwritten": false,
+            "verificationStatus": "unverified",
+            "hasSolution": true,
+            "tags": [
+                "影響線",
+                "靜不定桁架",
+                "單位力法",
+                "柔軟度法",
+                "Müller-Breslau"
+            ],
+            "primaryTopicId": "SA-U3-2",
+            "secondaryTopicIds": [
+                "SA-U2-1"
+            ]
+        },
+        {
+            "year": 2021,
+            "moduleId": "SA-2021-4",
+            "primaryTopicName": "剛性樓板與側力分配",
+            "questionNumber": 4,
+            "rocYear": 110,
+            "hasViz": true,
+            "hasHandwritten": false,
+            "verificationStatus": "unverified",
+            "hasSolution": true,
+            "tags": [
+                "剛性樓板",
+                "平移與扭轉",
+                "剛心位置",
+                "扭轉勁度",
+                "柱剪力分配"
+            ],
+            "primaryTopicId": "SA-U5-1",
+            "secondaryTopicIds": []
+        },
+        {
+            "year": 2020,
+            "moduleId": "SA-2020-1",
+            "primaryTopicName": "傾角變位法",
+            "questionNumber": 1,
+            "rocYear": 109,
+            "hasViz": true,
+            "hasHandwritten": false,
+            "verificationStatus": "unverified",
+            "hasSolution": true,
+            "tags": [
+                "傾角變位法",
+                "無軸向變形",
+                "垂直滾支承",
+                "靜不定剛架"
+            ],
+            "primaryTopicId": "SA-U2-3",
+            "secondaryTopicIds": []
+        },
+        {
+            "year": 2020,
+            "moduleId": "SA-2020-2",
+            "primaryTopicName": "傾角變位法",
+            "questionNumber": 2,
+            "rocYear": 109,
+            "hasViz": true,
+            "hasHandwritten": false,
+            "verificationStatus": "unverified",
+            "hasSolution": true,
+            "tags": [
+                "傾角變位法",
+                "對稱性",
+                "剛架分析"
+            ],
+            "primaryTopicId": "SA-U2-3",
+            "secondaryTopicIds": []
+        },
+        {
+            "year": 2020,
+            "moduleId": "SA-2020-3",
+            "primaryTopicName": "靜不定結構影響線",
+            "questionNumber": 3,
+            "rocYear": 109,
+            "hasViz": true,
+            "hasHandwritten": false,
+            "verificationStatus": "unverified",
+            "hasSolution": true,
+            "tags": [
+                "影響線",
+                "靜不定結構",
+                "Müller-Breslau原理",
+                "柔度法",
+                "Maxwell-Betti定理"
+            ],
+            "primaryTopicId": "SA-U3-2",
+            "secondaryTopicIds": []
+        },
+        {
+            "year": 2020,
+            "moduleId": "SA-2020-4",
+            "primaryTopicName": "側力分配與剛性樓板",
+            "questionNumber": 4,
+            "rocYear": 109,
+            "hasViz": true,
+            "hasHandwritten": false,
+            "verificationStatus": "unverified",
+            "hasSolution": true,
+            "tags": [
+                "剛架與剪力牆互制",
+                "矩陣分析",
+                "剪力建築"
+            ],
+            "primaryTopicId": "SA-U5-1",
+            "secondaryTopicIds": []
+        },
+        {
+            "moduleId": "SA-2019-1",
+            "year": 2019,
+            "rocYear": 108,
+            "questionNumber": 1,
+            "primaryTopicId": "SA-U2-1",
+            "primaryTopicName": "靜不定結構最小功法",
+            "secondaryTopicIds": [
+                "SA-U1-1"
+            ],
+            "verificationStatus": "unverified",
+            "hasSolution": true,
+            "hasViz": false,
+            "hasHandwritten": false,
+            "tags": [
+                "靜不定桁架",
+                "最小功法",
+                "破壞機構",
+                "挫曲",
+                "極限載重"
+            ]
+        },
+        {
+            "moduleId": "SA-2019-2",
+            "year": 2019,
+            "rocYear": 108,
+            "questionNumber": 2,
+            "primaryTopicId": "SA-U3-2",
+            "primaryTopicName": "建築結構系統分析",
+            "secondaryTopicIds": [],
+            "verificationStatus": "unverified",
+            "hasSolution": true,
+            "hasViz": false,
+            "hasHandwritten": false,
+            "tags": [
+                "范倫迪爾桁架",
+                "近似分析",
+                "反曲點",
+                "彎矩圖",
+                "軸力圖"
+            ]
+        },
+        {
+            "moduleId": "SA-2019-3",
+            "year": 2019,
+            "rocYear": 108,
+            "questionNumber": 3,
+            "primaryTopicId": "SA-U2-2",
+            "primaryTopicName": "傾角變位法",
+            "secondaryTopicIds": [],
+            "verificationStatus": "unverified",
+            "hasSolution": true,
+            "hasViz": false,
+            "hasHandwritten": false,
+            "tags": [
+                "傾角變位法",
+                "連續梁",
+                "支承沉陷",
+                "對稱性"
+            ]
+        },
+        {
+            "moduleId": "SA-2019-4",
+            "year": 2019,
+            "rocYear": 108,
+            "questionNumber": 4,
+            "primaryTopicId": "SA-U4-1",
+            "primaryTopicName": "矩陣位移法",
+            "secondaryTopicIds": [],
+            "verificationStatus": "unverified",
+            "hasSolution": true,
+            "hasViz": false,
+            "hasHandwritten": false,
+            "tags": [
+                "勁度矩陣",
+                "半剛性接頭",
+                "旋轉彈簧",
+                "節點載重向量"
+            ]
+        },
+        {
+            "moduleId": "SA-2018-1",
+            "year": 2018,
+            "rocYear": 107,
+            "questionNumber": 1,
+            "primaryTopicId": "SA-U3-2",
+            "primaryTopicName": "建築結構系統分析",
+            "secondaryTopicIds": [],
+            "verificationStatus": "unverified",
+            "hasSolution": true,
+            "hasViz": false,
+            "hasHandwritten": false,
+            "tags": [
+                "剛架與剪力牆互制",
+                "變形模態",
+                "剪力型與彎曲型",
+                "水平力分配"
+            ]
+        },
+        {
+            "moduleId": "SA-2018-2",
+            "year": 2018,
+            "rocYear": 107,
+            "questionNumber": 2,
+            "primaryTopicId": "SA-U2-4",
+            "primaryTopicName": "靜不定結構之矩陣分析法",
+            "secondaryTopicIds": [],
+            "verificationStatus": "unverified",
+            "hasSolution": true,
+            "hasViz": false,
+            "hasHandwritten": false,
+            "tags": [
+                "直接勁度法",
+                "勁度矩陣",
+                "節點外力向量",
+                "彎矩圖",
+                "Z型構架"
+            ]
+        },
+        {
+            "moduleId": "SA-2018-3",
+            "year": 2018,
+            "rocYear": 107,
+            "questionNumber": 3,
+            "primaryTopicId": "SA-U3-4",
+            "primaryTopicName": "結構系統定性分析與能量法",
+            "secondaryTopicIds": [],
+            "verificationStatus": "unverified",
+            "hasSolution": true,
+            "hasViz": false,
+            "hasHandwritten": false,
+            "tags": [
+                "最小功法",
+                "靜不定結構",
+                "纜索無壓力",
+                "彎矩圖"
+            ]
+        },
+        {
+            "moduleId": "SA-2018-4",
+            "year": 2018,
+            "rocYear": 107,
+            "questionNumber": 4,
+            "primaryTopicId": "SA-U4",
+            "primaryTopicName": "影響線分析",
+            "secondaryTopicIds": [],
+            "verificationStatus": "unverified",
+            "hasSolution": true,
+            "hasViz": false,
+            "hasHandwritten": false,
+            "tags": [
+                "影響線",
+                "靜不定結構",
+                "馬克士威-貝提定理",
+                "對稱性",
+                "剛架位移"
+            ]
+        },
+        {
+            "moduleId": "SA-2017-1",
+            "year": 2017,
+            "rocYear": 106,
+            "questionNumber": 1,
+            "primaryTopicId": "SA-U1-2",
+            "primaryTopicName": "靜定桁架分析",
+            "secondaryTopicIds": [
+                "SA-U1-5"
+            ],
+            "verificationStatus": "unverified",
+            "hasSolution": true,
+            "hasViz": false,
+            "hasHandwritten": false,
+            "tags": [
+                "靜定桁架",
+                "節點法",
+                "零桿判斷",
+                "虛功法",
+                "水平位移"
+            ]
+        },
+        {
+            "moduleId": "SA-2017-2",
+            "year": 2017,
+            "rocYear": 106,
+            "questionNumber": 2,
+            "primaryTopicId": "SA-U2-1",
+            "primaryTopicName": "靜不定結構分析—力法",
+            "secondaryTopicIds": [],
+            "verificationStatus": "unverified",
+            "hasSolution": true,
+            "hasViz": false,
+            "hasHandwritten": false,
+            "tags": [
+                "最小功法",
+                "卡氏定理",
+                "內鉸條件",
+                "固定端彎矩",
+                "靜不定梁"
+            ]
+        },
+        {
+            "moduleId": "SA-2017-3",
+            "year": 2017,
+            "rocYear": 106,
+            "questionNumber": 3,
+            "primaryTopicId": "SA-U2-3",
+            "primaryTopicName": "靜不定結構分析—位移法",
+            "secondaryTopicIds": [],
+            "verificationStatus": "unverified",
+            "hasSolution": true,
+            "hasViz": false,
+            "hasHandwritten": false,
+            "tags": [
+                "傾角變位法",
+                "門型剛架",
+                "側移",
+                "層剪力方程",
+                "節點轉角"
+            ]
+        },
+        {
+            "moduleId": "SA-2017-4",
+            "year": 2017,
+            "rocYear": 106,
+            "questionNumber": 4,
+            "primaryTopicId": "SA-U4-1",
+            "primaryTopicName": "抗側力系統設計概念",
+            "secondaryTopicIds": [],
+            "verificationStatus": "unverified",
+            "hasSolution": true,
+            "hasViz": false,
+            "hasHandwritten": false,
+            "tags": [
+                "剪力牆",
+                "平面配置",
+                "偏心",
+                "扭矩",
+                "水平載重傳遞"
+            ]
+        },
+        {
+            "moduleId": "SA-2016-1",
+            "year": 2016,
+            "rocYear": 105,
+            "questionNumber": 1,
+            "primaryTopicId": "SA-U1-2",
+            "primaryTopicName": "靜定結構分析",
+            "secondaryTopicIds": [],
+            "verificationStatus": "unverified",
+            "hasSolution": true,
+            "hasViz": true,
+            "hasHandwritten": false,
+            "tags": [
+                "靜定剛架",
+                "內鉸",
+                "彎矩圖",
+                "節點平衡"
+            ]
+        },
+        {
+            "moduleId": "SA-2016-2",
+            "year": 2016,
+            "rocYear": 105,
+            "questionNumber": 2,
+            "primaryTopicId": "SA-U1-3",
+            "primaryTopicName": "靜定及靜不定結構影響線",
+            "secondaryTopicIds": [
+                "SA-U2-3"
+            ],
+            "verificationStatus": "unverified",
+            "hasSolution": true,
+            "hasViz": true,
+            "hasHandwritten": false,
+            "tags": [
+                "影響線",
+                "靜不定剛架",
+                "Müller-Breslau原理",
+                "有側移剛架",
+                "移動載重"
+            ]
+        },
+        {
+            "moduleId": "SA-2016-3",
+            "year": 2016,
+            "rocYear": 105,
+            "questionNumber": 3,
+            "primaryTopicId": "SA-U2-1",
+            "primaryTopicName": "靜不定結構最小功法",
+            "secondaryTopicIds": [
+                "SA-U2-2"
+            ],
+            "verificationStatus": "unverified",
+            "hasSolution": true,
+            "hasViz": true,
+            "hasHandwritten": false,
+            "tags": [
+                "虛功法",
+                "單位力法",
+                "側移變位",
+                "基本結構選取",
+                "圖形積分法"
+            ]
+        },
+        {
+            "moduleId": "SA-2016-4",
+            "year": 2016,
+            "rocYear": 105,
+            "questionNumber": 4,
+            "primaryTopicId": "SA-U1-1",
+            "primaryTopicName": "桁架分析",
+            "secondaryTopicIds": [
+                "SA-U1-1-1"
+            ],
+            "verificationStatus": "unverified",
+            "hasSolution": true,
+            "hasViz": false,
+            "hasHandwritten": false,
+            "tags": [
+                "零力桿件",
+                "桁架",
+                "節點平衡"
+            ]
+        },
+        {
+            "moduleId": "SA-2014-1",
+            "year": 2014,
+            "rocYear": 103,
+            "questionNumber": 1,
+            "primaryTopicId": "SA-U1-2",
+            "primaryTopicName": "靜定結構之分析",
+            "secondaryTopicIds": [
+                "SA-U1-3"
+            ],
+            "verificationStatus": "unverified",
+            "hasSolution": false,
+            "hasViz": false,
+            "hasHandwritten": false,
+            "tags": [
+                "靜定桁架",
+                "影響線",
+                "最大軸力"
+            ]
+        },
+        {
+            "moduleId": "SA-2014-2",
+            "year": 2014,
+            "rocYear": 103,
+            "questionNumber": 2,
+            "primaryTopicId": "SA-U2-2",
+            "primaryTopicName": "靜不定結構諧合變位",
+            "secondaryTopicIds": [],
+            "verificationStatus": "unverified",
+            "hasSolution": false,
+            "hasViz": false,
+            "hasHandwritten": false,
+            "tags": [
+                "諧合變位法",
+                "複合結構",
+                "最大彎矩"
+            ]
+        },
+        {
+            "moduleId": "SA-2014-3",
+            "year": 2014,
+            "rocYear": 103,
+            "questionNumber": 3,
+            "primaryTopicId": "SA-U2-3",
+            "primaryTopicName": "靜不定結構之傾角變位法",
+            "secondaryTopicIds": [],
+            "verificationStatus": "unverified",
+            "hasSolution": false,
+            "hasViz": false,
+            "hasHandwritten": false,
+            "tags": [
+                "傾角變位法",
+                "剛架結構",
+                "節點彎矩"
+            ]
+        },
+        {
+            "moduleId": "SA-2014-4",
+            "year": 2014,
+            "rocYear": 103,
+            "questionNumber": 4,
+            "primaryTopicId": "SA-U2-1",
+            "primaryTopicName": "靜不定結構最小功法",
+            "secondaryTopicIds": [],
+            "verificationStatus": "unverified",
+            "hasSolution": false,
+            "hasViz": false,
+            "hasHandwritten": false,
+            "tags": [
+                "最小功法",
+                "剛架",
+                "轉角計算"
+            ]
+        }
+    ]
 }

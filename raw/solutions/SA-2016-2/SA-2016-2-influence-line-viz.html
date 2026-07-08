@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<title>SA-2016-2 影響線 (Influence Line)</title>
+<style>
+  body { font-family: 'Segoe UI', sans-serif; background: #1a1a2e; color: #eee; margin: 0; padding: 16px; }
+  h2 { text-align: center; color: #e94560; font-size: 16px; margin-bottom: 4px; }
+  p.sub { text-align: center; color: #aaa; font-size: 12px; margin-bottom: 12px; }
+  canvas { display: block; margin: 0 auto; background: #16213e; border-radius: 8px; }
+  .legend { display: flex; gap: 20px; justify-content: center; margin-top: 10px; font-size: 12px; }
+  .dot { width: 12px; height: 12px; border-radius: 50%; display: inline-block; margin-right: 4px; vertical-align: middle; }
+</style>
+</head>
+<body>
+<h2>SA-2016-2 影響線：C 點垂直反力 (Vc)</h2>
+<p class="sub">影響線方程式： Vc(x) = (6L²x + 3Lx² - x³) / 8L³</p>
+<canvas id="c" width="580" height="480"></canvas>
+<div class="legend">
+  <span><span class="dot" style="background:#4fc3f7"></span>剛架結構</span>
+  <span><span class="dot" style="background:#ef5350"></span>Vc 影響線</span>
+</div>
+<script>
+const cv = document.getElementById('c');
+const ctx = cv.getContext('2d');
+const W = 580, H = 480;
+
+// 比例設定
+const L = 200; // 繪圖長度
+const ox = 190, oy = 250; // B點座標
+
+function px(x) { return ox + x; }
+function py(y) { return oy + y; } // 向下為正
+
+// 節點
+const A = [0, L], B = [0, 0], C = [L, 0];
+
+// 繪製剛架結構
+ctx.strokeStyle = '#4fc3f7';
+ctx.lineWidth = 3;
+ctx.beginPath();
+ctx.moveTo(px(A[0]), py(A[1])); // A
+ctx.lineTo(px(B[0]), py(B[1])); // B
+ctx.lineTo(px(C[0]), py(C[1])); // C
+ctx.stroke();
+
+// 節點標籤
+ctx.font = 'bold 14px Segoe UI';
+ctx.fillStyle = '#4fc3f7';
+ctx.fillText('B (x=0)', px(B[0])-25, py(B[1])-15);
+ctx.fillText('C (x=L)', px(C[0])-15, py(C[1])-15);
+ctx.fillText('A', px(A[0])-20, py(A[1])+10);
+
+// A 點固定支承
+ctx.strokeStyle = '#ffb300';
+ctx.lineWidth = 2;
+ctx.beginPath();
+ctx.moveTo(px(A[0])-15, py(A[1]));
+ctx.lineTo(px(A[0])+15, py(A[1]));
+for(let i=-10; i<=10; i+=5) {
+  ctx.moveTo(px(A[0])+i, py(A[1]));
+  ctx.lineTo(px(A[0])+i-5, py(A[1])+8);
+}
+ctx.stroke();
+
+// C 點滾支承
+ctx.beginPath();
+ctx.arc(px(C[0]), py(C[1])+8, 6, 0, Math.PI*2);
+ctx.stroke();
+ctx.beginPath();
+ctx.moveTo(px(C[0])-15, py(C[1])+14);
+ctx.lineTo(px(C[0])+15, py(C[1])+14);
+for(let i=-10; i<=10; i+=5) {
+  ctx.moveTo(px(C[0])+i, py(C[1])+14);
+  ctx.lineTo(px(C[0])+i-5, py(C[1])+22);
+}
+ctx.stroke();
+
+// 繪製影響線 IL_Vc(x)
+// Vc(x) = (6L^2*x + 3L*x^2 - x^3) / 8L^3
+// x 從 0 到 L
+const ilScale = 150; // 影響線高程比例：1 = 150px
+ctx.strokeStyle = '#ef5350';
+ctx.lineWidth = 2.5;
+ctx.beginPath();
+ctx.moveTo(px(0), py(0)); // 在 B 點 Vc = 0
+for (let i = 0; i <= L; i++) {
+  let r = i / L; // x/L
+  let val = (6*r + 3*r*r - r*r*r) / 8;
+  ctx.lineTo(px(i), py(0) - val * ilScale);
+}
+ctx.stroke();
+
+// 影響線陰影區域
+ctx.fillStyle = 'rgba(239, 83, 80, 0.2)';
+ctx.beginPath();
+ctx.moveTo(px(0), py(0));
+for (let i = 0; i <= L; i++) {
+  let r = i / L;
+  let val = (6*r + 3*r*r - r*r*r) / 8;
+  ctx.lineTo(px(i), py(0) - val * ilScale);
+}
+ctx.lineTo(px(L), py(0));
+ctx.closePath();
+ctx.fill();
+
+// 標示極值 (C點, 1.0)
+ctx.fillStyle = '#ffee58';
+ctx.beginPath();
+ctx.arc(px(L), py(0) - 1.0 * ilScale, 4, 0, Math.PI*2);
+ctx.fill();
+ctx.fillText('1.0', px(L)+10, py(0) - 1.0 * ilScale);
+
+// 標示中點值 (L/2, 29/64 ≈ 0.453)
+let r = 0.5;
+let midVal = (6*r + 3*r*r - r*r*r) / 8;
+ctx.beginPath();
+ctx.arc(px(L/2), py(0) - midVal * ilScale, 4, 0, Math.PI*2);
+ctx.fill();
+ctx.fillText('0.453', px(L/2)-15, py(0) - midVal * ilScale - 10);
+
+// 繪製虛線基準線
+ctx.strokeStyle = '#666';
+ctx.setLineDash([5, 5]);
+ctx.beginPath();
+ctx.moveTo(px(0), py(0));
+ctx.lineTo(px(L), py(0));
+ctx.stroke();
+ctx.setLineDash([]);
+</script>
+</body>
+</html>
