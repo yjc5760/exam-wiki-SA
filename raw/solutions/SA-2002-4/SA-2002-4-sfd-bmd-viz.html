@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<title>SA-2002-4 彎矩圖 (BMD)</title>
+<style>
+  body { font-family: "Microsoft JhengHei", sans-serif; margin: 0; padding: 10px; background: #fafafa; }
+  .wrap { width: 580px; margin: 0 auto; background: #fff; border: 1px solid #ddd; border-radius: 8px; padding: 12px; box-sizing: border-box; }
+  h3 { margin: 4px 0 10px; font-size: 15px; color: #222; }
+  canvas { display: block; margin: 0 auto; background: #fff; }
+  .legend { font-size: 12px; color: #555; margin-top: 8px; line-height: 1.6; }
+  table { width: 100%; border-collapse: collapse; font-size: 12px; margin-top: 8px; }
+  td, th { border: 1px solid #ddd; padding: 3px 6px; text-align: center; }
+  th { background: #f0f0f0; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h3>SA-2002-4 — 剛架彎矩圖 (BMD)｜傾角變位法（沿桿件路徑 A→B→C→D 展開）</h3>
+  <canvas id="c" width="556" height="300"></canvas>
+  <div class="legend">
+    彎矩以桿端「順時針為正」之傾角變位法慣例標示；圖中以展開路徑（A→B→C→D，每段 6m）呈現彎矩沿桿件之直線變化（因無構件載重，FEM=0，故各桿彎矩皆為直線）。
+  </div>
+  <table>
+    <tr><th>節點</th><th>A</th><th>B(柱AB端)</th><th>B(梁端)</th><th>C(梁端)</th><th>C(柱端)</th><th>D</th></tr>
+    <tr><td>M (kN-m)</td><td>-21.0</td><td>-18.0</td><td>+18.0</td><td>+18.0</td><td>-18.0</td><td>-21.0</td></tr>
+  </table>
+</div>
+<script>
+const cv = document.getElementById('c'); const ctx = cv.getContext('2d');
+const W=556, H=300, marginL=50, marginR=20, marginT=30, marginB=40;
+const plotW = W-marginL-marginR, plotH = H-marginT-marginB;
+
+// 展開路徑：AB(0-6), BC(6-12), CD(12-18)  單位 m
+const totalLen = 18;
+// 節點 (位置, 彎矩值)：分段線性
+const pts = [
+  {x:0, m:-21, label:'A'},
+  {x:6, m:-18, label:'B(柱)'},
+  {x:6, m:18,  label:'B(梁)'},
+  {x:12, m:18, label:'C(梁)'},
+  {x:12, m:-18, label:'C(柱)'},
+  {x:18, m:-21, label:'D'}
+];
+const maxM = 25;
+function px(x){ return marginL + x/totalLen*plotW; }
+function py(m){ return marginT + plotH/2 - m/maxM*(plotH/2-10); }
+
+// 軸線
+ctx.strokeStyle = '#999'; ctx.lineWidth=1;
+ctx.beginPath(); ctx.moveTo(marginL, py(0)); ctx.lineTo(W-marginR, py(0)); ctx.stroke();
+// 桿件分段標線
+ctx.strokeStyle = '#ccc';
+[0,6,12,18].forEach(x=>{ ctx.beginPath(); ctx.moveTo(px(x), marginT); ctx.lineTo(px(x), H-marginB); ctx.stroke(); });
+
+ctx.font = '11px sans-serif'; ctx.fillStyle = '#333';
+ctx.fillText('AB柱', px(3)-14, H-marginB+16);
+ctx.fillText('BC梁', px(9)-14, H-marginB+16);
+ctx.fillText('CD柱', px(15)-14, H-marginB+16);
+
+// 畫彎矩折線（分三段各自線性連接）
+function seg(p1,p2,color){
+  ctx.strokeStyle=color; ctx.fillStyle=color.replace('1)','0.15)');
+  ctx.lineWidth=2;
+  ctx.beginPath();
+  ctx.moveTo(px(p1.x), py(0));
+  ctx.lineTo(px(p1.x), py(p1.m));
+  ctx.lineTo(px(p2.x), py(p2.m));
+  ctx.lineTo(px(p2.x), py(0));
+  ctx.closePath();
+  ctx.globalAlpha=0.2; ctx.fill(); ctx.globalAlpha=1; ctx.stroke();
+}
+seg(pts[0], pts[1], 'rgba(0,102,204,1)');
+seg(pts[2], pts[3], 'rgba(0,102,204,1)');
+seg(pts[4], pts[5], 'rgba(0,102,204,1)');
+
+// 標數值
+ctx.fillStyle = '#0066cc'; ctx.font='11px sans-serif';
+pts.forEach(p=>{
+  ctx.fillText(p.m.toFixed(1), px(p.x)-10, py(p.m) + (p.m<0? 14:-6));
+});
+ctx.fillStyle='#333';
+ctx.fillText('彎矩 M (kN-m)', 8, marginT-8);
+ctx.fillText('展開路徑座標 (m)', W/2-40, H-8);
+</script>
+</body>
+</html>

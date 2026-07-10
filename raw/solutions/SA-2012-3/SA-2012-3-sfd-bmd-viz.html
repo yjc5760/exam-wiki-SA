@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SA-2012-3 剪力與彎矩圖</title>
+    <style>
+        :root {
+            --bg-color: #0f172a;
+            --panel-bg: rgba(30, 41, 59, 0.7);
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            --accent-sfd: #38bdf8;
+            --accent-bmd: #fb7185;
+            --accent-frame: #cbd5e1;
+            --border-color: rgba(255, 255, 255, 0.1);
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            overflow: hidden;
+            background-image: 
+                radial-gradient(circle at 15% 50%, rgba(56, 189, 248, 0.05), transparent 25%),
+                radial-gradient(circle at 85% 30%, rgba(251, 113, 133, 0.05), transparent 25%);
+        }
+
+        .container {
+            width: 100%;
+            max-width: 800px;
+            background: var(--panel-bg);
+            backdrop-filter: blur(12px);
+            border: 1px solid var(--border-color);
+            border-radius: 24px;
+            padding: 2rem;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .header {
+            text-align: center;
+        }
+
+        .header h1 {
+            margin: 0;
+            font-size: 1.5rem;
+            font-weight: 600;
+            letter-spacing: 0.05em;
+        }
+
+        .header p {
+            margin: 0.5rem 0 0 0;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        .controls {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            background: rgba(0,0,0,0.2);
+            padding: 0.5rem;
+            border-radius: 99px;
+            width: fit-content;
+            margin: 0 auto;
+        }
+
+        button {
+            background: transparent;
+            border: none;
+            color: var(--text-muted);
+            padding: 0.5rem 1.5rem;
+            border-radius: 99px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        button:hover {
+            color: var(--text-main);
+            background: rgba(255,255,255,0.05);
+        }
+
+        button.active {
+            background: var(--text-main);
+            color: var(--bg-color);
+            box-shadow: 0 4px 12px rgba(255,255,255,0.2);
+        }
+
+        .svg-container {
+            width: 100%;
+            aspect-ratio: 4/3;
+            position: relative;
+            background: rgba(0,0,0,0.2);
+            border-radius: 16px;
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+        }
+
+        svg {
+            width: 100%;
+            height: 100%;
+            display: block;
+        }
+
+        /* SVG Elements Transitions */
+        .diagram-group {
+            transition: opacity 0.5s ease;
+        }
+
+        .hidden {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .frame-line {
+            stroke: var(--accent-frame);
+            stroke-width: 4;
+            stroke-linecap: round;
+        }
+
+        .node {
+            fill: var(--bg-color);
+            stroke: var(--accent-frame);
+            stroke-width: 3;
+        }
+
+        .load-arrow {
+            fill: #fbbf24;
+            stroke: #fbbf24;
+            stroke-width: 2;
+        }
+
+        /* SFD Styles */
+        .sfd-fill {
+            fill: var(--accent-sfd);
+            fill-opacity: 0.2;
+            stroke: var(--accent-sfd);
+            stroke-width: 2;
+            stroke-linejoin: round;
+        }
+        
+        .sfd-text {
+            fill: var(--accent-sfd);
+            font-size: 14px;
+            font-weight: 600;
+            text-anchor: middle;
+        }
+
+        /* BMD Styles */
+        .bmd-fill {
+            fill: var(--accent-bmd);
+            fill-opacity: 0.2;
+            stroke: var(--accent-bmd);
+            stroke-width: 2;
+            stroke-linejoin: round;
+        }
+
+        .bmd-text {
+            fill: var(--accent-bmd);
+            font-size: 14px;
+            font-weight: 600;
+            text-anchor: middle;
+        }
+
+        .label {
+            fill: var(--text-muted);
+            font-size: 16px;
+            font-weight: 600;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="header">
+            <h1>對稱剛架系統分析 (SA-2012-3)</h1>
+            <p>傾角變位法 / 彎矩分配法</p>
+        </div>
+
+        <div class="controls">
+            <button class="active" onclick="setView('frame')">結構配置</button>
+            <button onclick="setView('sfd')">剪力圖 (SFD)</button>
+            <button onclick="setView('bmd')">彎矩圖 (BMD)</button>
+        </div>
+
+        <div class="svg-container">
+            <svg viewBox="0 0 800 600">
+                <defs>
+                    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+                        <path d="M 40 0 L 0 0 0 40" fill="none" stroke="rgba(255,255,255,0.03)" stroke-width="1"/>
+                    </pattern>
+                </defs>
+                <rect width="100%" height="100%" fill="url(#grid)" />
+
+                <!-- Nodes Coordinates: e(200, 250), h(600, 250), a(200, 450), d(600, 450) -->
+                <!-- f(300, 250), g(500, 250), b(300, 450), c(500, 450) -->
+
+                <!-- ================= FRAME GROUP ================= -->
+                <g id="group-frame" class="diagram-group">
+                    <!-- Beams and Columns -->
+                    <line x1="200" y1="250" x2="600" y2="250" class="frame-line" />
+                    <line x1="200" y1="450" x2="600" y2="450" class="frame-line" />
+                    <line x1="200" y1="250" x2="200" y2="450" class="frame-line" />
+                    <line x1="600" y1="250" x2="600" y2="450" class="frame-line" />
+                    
+                    <!-- Supports -->
+                    <!-- b: Pin -->
+                    <polygon points="300,450 290,470 310,470" fill="none" stroke="var(--accent-frame)" stroke-width="3"/>
+                    <line x1="280" y1="470" x2="320" y2="470" stroke="var(--accent-frame)" stroke-width="3"/>
+                    <path d="M 280 470 L 270 480 M 300 470 L 290 480 M 320 470 L 310 480" stroke="var(--accent-frame)" stroke-width="2" fill="none"/>
+                    
+                    <!-- c: Roller -->
+                    <circle cx="500" cy="460" r="10" fill="none" stroke="var(--accent-frame)" stroke-width="3"/>
+                    <line x1="480" y1="470" x2="520" y2="470" stroke="var(--accent-frame)" stroke-width="3"/>
+
+                    <!-- Nodes -->
+                    <circle cx="200" cy="250" r="5" class="node" />
+                    <circle cx="300" cy="250" r="5" class="node" />
+                    <circle cx="500" cy="250" r="5" class="node" />
+                    <circle cx="600" cy="250" r="5" class="node" />
+                    <circle cx="200" cy="450" r="5" class="node" />
+                    <circle cx="300" cy="450" r="5" class="node" />
+                    <circle cx="500" cy="450" r="5" class="node" />
+                    <circle cx="600" cy="450" r="5" class="node" />
+
+                    <!-- Labels -->
+                    <text x="180" y="240" class="label">e</text>
+                    <text x="295" y="240" class="label">f</text>
+                    <text x="495" y="240" class="label">g</text>
+                    <text x="610" y="240" class="label">h</text>
+                    <text x="180" y="470" class="label">a</text>
+                    <text x="280" y="490" class="label">b</text>
+                    <text x="510" y="490" class="label">c</text>
+                    <text x="610" y="470" class="label">d</text>
+
+                    <!-- Loads -->
+                    <!-- f: P -->
+                    <line x1="300" y1="180" x2="300" y2="240" class="load-arrow" />
+                    <polygon points="300,240 295,225 305,225" class="load-arrow" />
+                    <text x="300" y="170" fill="#fbbf24" font-weight="bold" font-size="16px" text-anchor="middle">P</text>
+                    
+                    <!-- g: P -->
+                    <line x1="500" y1="180" x2="500" y2="240" class="load-arrow" />
+                    <polygon points="500,240 495,225 505,225" class="load-arrow" />
+                    <text x="500" y="170" fill="#fbbf24" font-weight="bold" font-size="16px" text-anchor="middle">P</text>
+                </g>
+
+                <!-- ================= SFD GROUP ================= -->
+                <!-- SFD scale: 1 P = 50 px -->
+                <g id="group-sfd" class="diagram-group hidden">
+                    <line x1="200" y1="250" x2="600" y2="250" stroke="rgba(255,255,255,0.1)" stroke-width="2" />
+                    <line x1="200" y1="450" x2="600" y2="450" stroke="rgba(255,255,255,0.1)" stroke-width="2" />
+                    <line x1="200" y1="250" x2="200" y2="450" stroke="rgba(255,255,255,0.1)" stroke-width="2" />
+                    <line x1="600" y1="250" x2="600" y2="450" stroke="rgba(255,255,255,0.1)" stroke-width="2" />
+
+                    <!-- Top beam SFD: e to f (+P), g to h (-P) -->
+                    <path d="M 200 250 L 200 200 L 300 200 L 300 250 Z" class="sfd-fill" />
+                    <text x="250" y="190" class="sfd-text">P</text>
+                    
+                    <path d="M 500 250 L 500 300 L 600 300 L 600 250 Z" class="sfd-fill" />
+                    <text x="550" y="320" class="sfd-text">-P</text>
+
+                    <!-- Bottom beam SFD: a to b (-P), c to d (+P) -->
+                    <path d="M 200 450 L 200 500 L 300 500 L 300 450 Z" class="sfd-fill" />
+                    <text x="250" y="520" class="sfd-text">-P</text>
+                    
+                    <path d="M 500 450 L 500 400 L 600 400 L 600 450 Z" class="sfd-fill" />
+                    <text x="550" y="390" class="sfd-text">P</text>
+
+                    <!-- Columns have zero shear, no diagram drawn -->
+                </g>
+
+                <!-- ================= BMD GROUP ================= -->
+                <!-- BMD scale: 0.5 PL = 50 px -->
+                <g id="group-bmd" class="diagram-group hidden">
+                    <line x1="200" y1="250" x2="600" y2="250" stroke="rgba(255,255,255,0.1)" stroke-width="2" />
+                    <line x1="200" y1="450" x2="600" y2="450" stroke="rgba(255,255,255,0.1)" stroke-width="2" />
+                    <line x1="200" y1="250" x2="200" y2="450" stroke="rgba(255,255,255,0.1)" stroke-width="2" />
+                    <line x1="600" y1="250" x2="600" y2="450" stroke="rgba(255,255,255,0.1)" stroke-width="2" />
+
+                    <!-- Top beam BMD: e(-0.5PL), f(+0.5PL), g(+0.5PL), h(-0.5PL) -->
+                    <path d="M 200 250 L 200 200 L 300 300 L 500 300 L 600 200 L 600 250 L 200 250 Z" class="bmd-fill" />
+                    <text x="200" y="190" class="bmd-text">-0.5PL</text>
+                    <text x="400" y="320" class="bmd-text">0.5PL</text>
+                    <text x="600" y="190" class="bmd-text">-0.5PL</text>
+
+                    <!-- Bottom beam BMD: a(+0.5PL), b(-0.5PL), c(-0.5PL), d(+0.5PL) -->
+                    <path d="M 200 450 L 200 500 L 300 400 L 500 400 L 600 500 L 600 450 L 200 450 Z" class="bmd-fill" />
+                    <text x="200" y="520" class="bmd-text">0.5PL</text>
+                    <text x="400" y="390" class="bmd-text">-0.5PL</text>
+                    <text x="600" y="520" class="bmd-text">0.5PL</text>
+
+                    <!-- Left column BMD: Constant 0.5PL (tension left) -->
+                    <path d="M 200 250 L 150 250 L 150 450 L 200 450 Z" class="bmd-fill" />
+                    <text x="125" y="350" class="bmd-text">0.5PL</text>
+
+                    <!-- Right column BMD: Constant 0.5PL (tension right) -->
+                    <path d="M 600 250 L 650 250 L 650 450 L 600 450 Z" class="bmd-fill" />
+                    <text x="675" y="350" class="bmd-text">0.5PL</text>
+
+                    <!-- Nodes overlay -->
+                    <circle cx="200" cy="250" r="3" fill="var(--bg-color)" stroke="rgba(255,255,255,0.3)" stroke-width="2"/>
+                    <circle cx="300" cy="250" r="3" fill="var(--bg-color)" stroke="rgba(255,255,255,0.3)" stroke-width="2"/>
+                    <circle cx="500" cy="250" r="3" fill="var(--bg-color)" stroke="rgba(255,255,255,0.3)" stroke-width="2"/>
+                    <circle cx="600" cy="250" r="3" fill="var(--bg-color)" stroke="rgba(255,255,255,0.3)" stroke-width="2"/>
+                    <circle cx="200" cy="450" r="3" fill="var(--bg-color)" stroke="rgba(255,255,255,0.3)" stroke-width="2"/>
+                    <circle cx="300" cy="450" r="3" fill="var(--bg-color)" stroke="rgba(255,255,255,0.3)" stroke-width="2"/>
+                    <circle cx="500" cy="450" r="3" fill="var(--bg-color)" stroke="rgba(255,255,255,0.3)" stroke-width="2"/>
+                    <circle cx="600" cy="450" r="3" fill="var(--bg-color)" stroke="rgba(255,255,255,0.3)" stroke-width="2"/>
+                </g>
+
+            </svg>
+        </div>
+    </div>
+
+    <script>
+        function setView(viewId) {
+            document.querySelectorAll('.controls button').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            event.target.classList.add('active');
+            document.querySelectorAll('.diagram-group').forEach(grp => {
+                grp.classList.add('hidden');
+            });
+            document.getElementById('group-' + viewId).classList.remove('hidden');
+        }
+    </script>
+</body>
+</html>

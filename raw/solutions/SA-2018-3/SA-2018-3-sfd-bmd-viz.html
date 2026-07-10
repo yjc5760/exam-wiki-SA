@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SA-2018-3 剪力與彎矩圖</title>
+    <style>
+        :root {
+            --bg-color: #0f172a;
+            --panel-bg: rgba(30, 41, 59, 0.7);
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            --accent-sfd: #38bdf8;
+            --accent-bmd: #fb7185;
+            --accent-frame: #cbd5e1;
+            --border-color: rgba(255, 255, 255, 0.1);
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            overflow: hidden;
+            background-image: 
+                radial-gradient(circle at 15% 50%, rgba(56, 189, 248, 0.05), transparent 25%),
+                radial-gradient(circle at 85% 30%, rgba(251, 113, 133, 0.05), transparent 25%);
+        }
+
+        .container {
+            width: 100%;
+            max-width: 800px;
+            background: var(--panel-bg);
+            backdrop-filter: blur(12px);
+            border: 1px solid var(--border-color);
+            border-radius: 24px;
+            padding: 2rem;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .header {
+            text-align: center;
+        }
+
+        .header h1 {
+            margin: 0;
+            font-size: 1.5rem;
+            font-weight: 600;
+            letter-spacing: 0.05em;
+        }
+
+        .header p {
+            margin: 0.5rem 0 0 0;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        .controls {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            background: rgba(0,0,0,0.2);
+            padding: 0.5rem;
+            border-radius: 99px;
+            width: fit-content;
+            margin: 0 auto;
+        }
+
+        button {
+            background: transparent;
+            border: none;
+            color: var(--text-muted);
+            padding: 0.5rem 1.5rem;
+            border-radius: 99px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        button:hover {
+            color: var(--text-main);
+            background: rgba(255,255,255,0.05);
+        }
+
+        button.active {
+            background: var(--text-main);
+            color: var(--bg-color);
+            box-shadow: 0 4px 12px rgba(255,255,255,0.2);
+        }
+
+        .svg-container {
+            width: 100%;
+            aspect-ratio: 4/3;
+            position: relative;
+            background: rgba(0,0,0,0.2);
+            border-radius: 16px;
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+        }
+
+        svg {
+            width: 100%;
+            height: 100%;
+            display: block;
+        }
+
+        /* SVG Elements Transitions */
+        .diagram-group {
+            transition: opacity 0.5s ease;
+        }
+
+        .hidden {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .frame-line {
+            stroke: var(--accent-frame);
+            stroke-width: 4;
+            stroke-linecap: round;
+        }
+
+        .dashed-line {
+            stroke: var(--accent-frame);
+            stroke-width: 2;
+            stroke-dasharray: 6 6;
+        }
+
+        .node {
+            fill: var(--bg-color);
+            stroke: var(--accent-frame);
+            stroke-width: 3;
+        }
+
+        .load-arrow {
+            fill: #fbbf24;
+            stroke: #fbbf24;
+            stroke-width: 2;
+        }
+
+        /* SFD Styles */
+        .sfd-fill {
+            fill: var(--accent-sfd);
+            fill-opacity: 0.2;
+            stroke: var(--accent-sfd);
+            stroke-width: 2;
+            stroke-linejoin: round;
+        }
+        
+        .sfd-text {
+            fill: var(--accent-sfd);
+            font-size: 14px;
+            font-weight: 600;
+            text-anchor: middle;
+        }
+
+        /* BMD Styles */
+        .bmd-fill {
+            fill: var(--accent-bmd);
+            fill-opacity: 0.2;
+            stroke: var(--accent-bmd);
+            stroke-width: 2;
+            stroke-linejoin: round;
+        }
+
+        .bmd-text {
+            fill: var(--accent-bmd);
+            font-size: 14px;
+            font-weight: 600;
+            text-anchor: middle;
+        }
+
+        .label {
+            fill: var(--text-muted);
+            font-size: 16px;
+            font-weight: 600;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="header">
+            <h1>結構系統定性分析與能量法 (SA-2018-3)</h1>
+            <p>最小功法 / 靜不定結構 / 纜索無壓力</p>
+        </div>
+
+        <div class="controls">
+            <button class="active" onclick="setView('frame')">結構配置</button>
+            <button onclick="setView('sfd')">剪力圖 (SFD)</button>
+            <button onclick="setView('bmd')">彎矩圖 (BMD)</button>
+        </div>
+
+        <div class="svg-container">
+            <svg viewBox="0 0 800 600">
+                <!-- Base Grid -->
+                <defs>
+                    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+                        <path d="M 40 0 L 0 0 0 40" fill="none" stroke="rgba(255,255,255,0.03)" stroke-width="1"/>
+                    </pattern>
+                </defs>
+                <rect width="100%" height="100%" fill="url(#grid)" />
+
+                <!-- ================= FRAME GROUP ================= -->
+                <g id="group-frame" class="diagram-group">
+                    <!-- Members -->
+                    <line x1="100" y1="300" x2="700" y2="300" class="frame-line" /> <!-- Beam ABCD -->
+                    <line x1="500" y1="300" x2="500" y2="500" class="frame-line" /> <!-- Column CG -->
+                    <line x1="300" y1="300" x2="300" y2="500" class="frame-line" /> <!-- Cable BF (tension) -->
+                    <line x1="100" y1="300" x2="100" y2="500" class="dashed-line" /> <!-- Cable AE (slack) -->
+                    
+                    <!-- Supports -->
+                    <!-- G: Fixed -->
+                    <path d="M 470 500 L 530 500 M 475 510 L 465 500 M 495 510 L 485 500 M 515 510 L 505 500 M 535 510 L 525 500" stroke="var(--accent-frame)" stroke-width="3" fill="none"/>
+                    <!-- Anchor E, F -->
+                    <path d="M 70 500 L 130 500 M 75 510 L 65 500 M 95 510 L 85 500 M 115 510 L 105 500 M 135 510 L 125 500" stroke="var(--accent-frame)" stroke-width="3" fill="none"/>
+                    <path d="M 270 500 L 330 500 M 275 510 L 265 500 M 295 510 L 285 500 M 315 510 L 305 500 M 335 510 L 325 500" stroke="var(--accent-frame)" stroke-width="3" fill="none"/>
+
+                    <!-- Nodes -->
+                    <circle cx="100" cy="300" r="6" class="node" /> <!-- A -->
+                    <circle cx="300" cy="300" r="6" class="node" /> <!-- B -->
+                    <circle cx="500" cy="300" r="6" class="node" /> <!-- C -->
+                    <circle cx="700" cy="300" r="6" class="node" /> <!-- D -->
+
+                    <!-- Labels -->
+                    <text x="80" y="280" class="label">A</text>
+                    <text x="280" y="280" class="label">B</text>
+                    <text x="480" y="280" class="label">C</text>
+                    <text x="680" y="280" class="label">D</text>
+                    <text x="520" y="490" class="label">G</text>
+                    <text x="120" y="490" class="label">E (Slack)</text>
+                    <text x="320" y="490" class="label">F</text>
+
+                    <!-- Load at D -->
+                    <line x1="700" y1="230" x2="700" y2="290" class="load-arrow" />
+                    <polygon points="700,290 693,275 707,275" class="load-arrow" />
+                    <text x="715" y="250" fill="#fbbf24" font-weight="bold" font-size="14px">100 kN</text>
+                </g>
+
+                <!-- ================= SFD GROUP ================= -->
+                <g id="group-sfd" class="diagram-group hidden">
+                    <!-- Base Frame (Faded) -->
+                    <line x1="100" y1="300" x2="700" y2="300" stroke="rgba(255,255,255,0.1)" stroke-width="2" />
+                    <line x1="500" y1="300" x2="500" y2="500" stroke="rgba(255,255,255,0.1)" stroke-width="2" />
+
+                    <!-- SFD BC: -70.75 -->
+                    <path d="M 300 300 L 300 340 L 500 340 L 500 300 Z" class="sfd-fill" />
+                    <text x="400" y="360" class="sfd-text">-70.75 kN</text>
+
+                    <!-- SFD CD: 100 -->
+                    <path d="M 500 300 L 500 240 L 700 240 L 700 300 Z" class="sfd-fill" />
+                    <text x="600" y="230" class="sfd-text">100.0 kN</text>
+
+                    <!-- Nodes overlay -->
+                    <circle cx="100" cy="300" r="4" fill="var(--bg-color)" stroke="rgba(255,255,255,0.3)" stroke-width="2"/>
+                    <circle cx="300" cy="300" r="4" fill="var(--bg-color)" stroke="rgba(255,255,255,0.3)" stroke-width="2"/>
+                    <circle cx="500" cy="300" r="4" fill="var(--bg-color)" stroke="rgba(255,255,255,0.3)" stroke-width="2"/>
+                    <circle cx="700" cy="300" r="4" fill="var(--bg-color)" stroke="rgba(255,255,255,0.3)" stroke-width="2"/>
+                </g>
+
+                <!-- ================= BMD GROUP ================= -->
+                <g id="group-bmd" class="diagram-group hidden">
+                    <!-- Base Frame (Faded) -->
+                    <line x1="100" y1="300" x2="700" y2="300" stroke="rgba(255,255,255,0.1)" stroke-width="2" />
+                    <line x1="500" y1="300" x2="500" y2="500" stroke="rgba(255,255,255,0.1)" stroke-width="2" />
+
+                    <!-- BMD BC: 0 to -353.77 (top) -->
+                    <path d="M 300 300 L 500 150 L 500 300 Z" class="bmd-fill" />
+                    <text x="440" y="210" class="bmd-text">-353.77</text>
+
+                    <!-- BMD CD: -500 to 0 (top) -->
+                    <path d="M 500 300 L 500 80 L 700 300 Z" class="bmd-fill" />
+                    <text x="560" y="180" class="bmd-text">-500.0</text>
+                    
+                    <!-- BMD CG: 146.23 (right) -->
+                    <path d="M 500 300 L 540 300 L 540 500 L 500 500 Z" class="bmd-fill" />
+                    <text x="560" y="400" class="bmd-text">146.23</text>
+
+                    <!-- Nodes overlay -->
+                    <circle cx="100" cy="300" r="4" fill="var(--bg-color)" stroke="rgba(255,255,255,0.3)" stroke-width="2"/>
+                    <circle cx="300" cy="300" r="4" fill="var(--bg-color)" stroke="rgba(255,255,255,0.3)" stroke-width="2"/>
+                    <circle cx="500" cy="300" r="4" fill="var(--bg-color)" stroke="rgba(255,255,255,0.3)" stroke-width="2"/>
+                    <circle cx="700" cy="300" r="4" fill="var(--bg-color)" stroke="rgba(255,255,255,0.3)" stroke-width="2"/>
+                    <circle cx="500" cy="500" r="4" fill="var(--bg-color)" stroke="rgba(255,255,255,0.3)" stroke-width="2"/>
+                </g>
+
+            </svg>
+        </div>
+    </div>
+
+    <script>
+        function setView(viewId) {
+            document.querySelectorAll('.controls button').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            event.target.classList.add('active');
+
+            document.querySelectorAll('.diagram-group').forEach(grp => {
+                grp.classList.add('hidden');
+            });
+
+            document.getElementById('group-' + viewId).classList.remove('hidden');
+        }
+    </script>
+</body>
+</html>

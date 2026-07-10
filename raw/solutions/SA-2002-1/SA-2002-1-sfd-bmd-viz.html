@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<title>SA-2002-1 剪力圖與彎矩圖</title>
+<style>
+  body { font-family: "Microsoft JhengHei", sans-serif; margin: 0; padding: 10px; background: #fafafa; }
+  .wrap { width: 580px; margin: 0 auto; background: #fff; border: 1px solid #ddd; border-radius: 8px; padding: 12px; box-sizing: border-box; }
+  h3 { margin: 4px 0 8px; font-size: 15px; color: #222; }
+  canvas { display: block; margin: 6px auto; background: #fff; }
+  .legend { font-size: 12px; color: #555; margin-top: 6px; line-height: 1.6; }
+  table { width: 100%; border-collapse: collapse; font-size: 11px; margin-top: 8px; }
+  td, th { border: 1px solid #ddd; padding: 2px 4px; text-align: center; }
+  th { background: #f0f0f0; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h3>SA-2002-1 — 靜定剛架 SFD / BMD（沿桿件路徑 A→B→C→D→E→F→G→H 展開）</h3>
+  <div class="legend">路徑總長 14m：A-B-C 為左柱（各 2m），C-D-E-F 為橫梁（2m+1m+3m），F-G-H 為右柱（各 2m）。F 點為內鉸。</div>
+  <canvas id="cM" width="556" height="220"></canvas>
+  <canvas id="cV" width="556" height="180"></canvas>
+  <table>
+    <tr><th>位置</th><th>A</th><th>B⁻/B⁺</th><th>C</th><th>D</th><th>E</th><th>F(梁側)</th><th>F(柱側)</th><th>G</th><th>H</th></tr>
+    <tr><td>M (kN-m)</td><td>0</td><td>20/26</td><td>46</td><td>42.67</td><td>39</td><td>4</td><td>4</td><td>4</td><td>0</td></tr>
+    <tr><td>V (kN)</td><td>-10</td><td>-10</td><td>1/3</td><td>-11/3</td><td>-11/3→-35/3</td><td>-35/3</td><td>0</td><td>0→-4</td><td>-4</td></tr>
+  </table>
+</div>
+<script>
+function buildChart(canvasId, segments, yLabel, color){
+  const cv = document.getElementById(canvasId); const ctx = cv.getContext('2d');
+  const W = cv.width, H = cv.height, marginL=45, marginR=15, marginT=20, marginB=28;
+  const plotW = W-marginL-marginR, plotH = H-marginT-marginB;
+  const totalLen = segments[segments.length-1].x1;
+  let maxAbs = 1;
+  segments.forEach(s=>{ for(let i=0;i<=20;i++){ const v=s.f(i/20*(s.x1-s.x0)); if(Math.abs(v)>maxAbs) maxAbs=Math.abs(v); } });
+  maxAbs *= 1.15;
+  function px(x){ return marginL + x/totalLen*plotW; }
+  function py(v){ return marginT + plotH/2 - v/maxAbs*(plotH/2-8); }
+  ctx.clearRect(0,0,W,H);
+  ctx.strokeStyle='#999'; ctx.lineWidth=1;
+  ctx.beginPath(); ctx.moveTo(marginL,py(0)); ctx.lineTo(W-marginR,py(0)); ctx.stroke();
+  // member boundary ticks
+  const bounds = [0,2,4,6,7,10,12,14];
+  ctx.strokeStyle='#ddd';
+  bounds.forEach(b=>{ ctx.beginPath(); ctx.moveTo(px(b),marginT); ctx.lineTo(px(b),H-marginB); ctx.stroke(); });
+  ctx.font='10px sans-serif'; ctx.fillStyle='#333';
+  const names=['A','B','C','D','E','F','G','H'];
+  bounds.forEach((b,i)=>{ ctx.fillText(names[i], px(b)-3, H-marginB+12); });
+
+  ctx.strokeStyle=color; ctx.fillStyle=color; ctx.lineWidth=2;
+  segments.forEach(s=>{
+    ctx.beginPath();
+    for(let i=0;i<=20;i++){
+      const lx = i/20*(s.x1-s.x0);
+      const x = px(s.x0+lx), y = py(s.f(lx));
+      if(i===0) ctx.moveTo(x,y); else ctx.lineTo(x,y);
+    }
+    ctx.stroke();
+  });
+  ctx.fillStyle='#333'; ctx.font='11px sans-serif';
+  ctx.fillText(yLabel, 6, marginT-6);
+}
+
+// M(x) 分段函式（受拉側正負依既有解析標示，此處統一以數值正負表示，正=下/內側受拉視解析標示）
+const Msegs = [
+  {x0:0, x1:2, f:(y)=> 10*y},                         // A-B: 0 -> 20
+  {x0:2, x1:4, f:(y)=> 26 + 10*y},                     // B-C: 26 -> 46 (含跳躍)
+  {x0:4, x1:6, f:(x)=> 46 + (1/3)*x - x*x},            // C-D
+  {x0:6, x1:7, f:(x)=> 42.667 - (11/3)*x},             // D-E (linear, local x 0~1)
+  {x0:7, x1:10, f:(x)=> 39 - (35/3)*x},                // E-F (linear, local x 0~3)
+  {x0:10, x1:12, f:()=> 4},                            // F-G (right col, upper half, M const = 4)
+  {x0:12, x1:14, f:(y)=> 4*(2-y) - (2-y)*(2-y)}        // G-H (right col, lower half, ->0 at H)
+];
+buildChart('cM', Msegs, 'M (kN-m)', '#0066cc');
+
+const Vsegs = [
+  {x0:0, x1:4, f:()=> -10},                            // A-B-C
+  {x0:4, x1:6, f:(x)=> 1/3 - 2*x},                     // C-D
+  {x0:6, x1:7, f:()=> -11/3},                          // D-E
+  {x0:7, x1:10, f:()=> -35/3},                         // E-F
+  {x0:10, x1:12, f:()=> 0},                            // F-G (right col, upper half, V=0)
+  {x0:12, x1:14, f:(y)=> -2*y}                         // G-H (right col, lower half, ->-4 at H)
+];
+buildChart('cV', Vsegs, 'V (kN)', '#cc6600');
+</script>
+</body>
+</html>

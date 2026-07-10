@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<title>SA-2006-3 彎矩圖 (BMD)</title>
+<style>
+  body { font-family: "Microsoft JhengHei", sans-serif; margin: 0; padding: 10px; background: #fafafa; }
+  .wrap { width: 580px; margin: 0 auto; background: #fff; border: 1px solid #ddd; border-radius: 8px; padding: 12px; box-sizing: border-box; }
+  h3 { margin: 4px 0 8px; font-size: 15px; color: #222; }
+  canvas { display: block; margin: 6px auto; background: #fff; }
+  .legend { font-size: 12px; color: #555; margin-top: 6px; line-height: 1.6; }
+  table { width: 100%; border-collapse: collapse; font-size: 11px; margin-top: 8px; }
+  td, th { border: 1px solid #ddd; padding: 2px 4px; text-align: center; }
+  th { background: #f0f0f0; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h3>SA-2006-3 — 五跨連續梁彎矩圖 (BMD)｜彎矩分配法（對稱結構）</h3>
+  <div class="legend">
+    跨度 6-8-4-8-6 m，A 端受 +5 kN-m 外加彎矩，F 端受 -5 kN-m（皆使梁下緣受拉），BC、DE 跨受 1.2 kN/m 均布載重，結構對稱於 CD 跨中點。
+  </div>
+  <canvas id="cM" width="556" height="260"></canvas>
+  <table>
+    <tr><th>A</th><th>B</th><th>BC最大(x=4.16m)</th><th>C</th><th>D</th><th>DE最大(x=3.84m)</th><th>E</th><th>F</th></tr>
+    <tr><td>+5.00</td><td>-5.43</td><td>+4.93</td><td>-3.93</td><td>-3.93</td><td>+4.93</td><td>-5.43</td><td>+5.00</td></tr>
+  </table>
+</div>
+<script>
+const cv = document.getElementById('cM'); const ctx = cv.getContext('2d');
+const W=556, H=260, marginL=45, marginR=15, marginT=20, marginB=28;
+const plotW=W-marginL-marginR, plotH=H-marginT-marginB;
+const bounds=[0,6,14,18,26,32]; const names=['A','B','C','D','E','F'];
+const totalLen=32;
+const M = {A:5.00, B:-5.43, C:-3.93, D:-3.93, E:-5.43, F:5.00};
+const w = 1.2;
+
+const segs = [
+  {x0:0,x1:6, f:(x)=> M.A + (M.B-M.A)*(x/6)},                              // AB, no load
+  {x0:6,x1:14, f:(x)=> M.B + (M.C-M.B)*(x/8) + 0.5*w*x*(8-x)},              // BC, UDL
+  {x0:14,x1:18, f:()=> M.C},                                                 // CD, constant
+  {x0:18,x1:26, f:(x)=> M.D + (M.E-M.D)*(x/8) + 0.5*w*x*(8-x)},             // DE, UDL
+  {x0:26,x1:32, f:(x)=> M.E + (M.F-M.E)*(x/6)}                              // EF, no load
+];
+
+let maxAbs=1;
+segs.forEach(s=>{ for(let i=0;i<=40;i++){ const v=s.f(i/40*(s.x1-s.x0)); if(Math.abs(v)>maxAbs) maxAbs=Math.abs(v); } });
+maxAbs*=1.2;
+function px(x){ return marginL + x/totalLen*plotW; }
+function py(v){ return marginT + plotH/2 - v/maxAbs*(plotH/2-10); }
+
+ctx.strokeStyle='#999'; ctx.lineWidth=1;
+ctx.beginPath(); ctx.moveTo(marginL,py(0)); ctx.lineTo(W-marginR,py(0)); ctx.stroke();
+ctx.strokeStyle='#ddd';
+bounds.forEach(b=>{ ctx.beginPath(); ctx.moveTo(px(b),marginT); ctx.lineTo(px(b),H-marginB); ctx.stroke(); });
+ctx.font='10px sans-serif'; ctx.fillStyle='#333';
+bounds.forEach((b,i)=>{ ctx.fillText(names[i], px(b)-3, H-marginB+14); });
+
+ctx.strokeStyle='#0066cc'; ctx.lineWidth=2;
+segs.forEach(s=>{
+  ctx.beginPath();
+  ctx.moveTo(px(s.x0), py(0));
+  for(let i=0;i<=40;i++){
+    const lx=i/40*(s.x1-s.x0);
+    ctx.lineTo(px(s.x0+lx), py(s.f(lx)));
+  }
+  ctx.lineTo(px(s.x1), py(0));
+  ctx.closePath();
+  ctx.globalAlpha=0.15; ctx.fillStyle='#0066cc'; ctx.fill(); ctx.globalAlpha=1;
+  ctx.stroke();
+});
+
+ctx.fillStyle='#0066cc'; ctx.font='11px sans-serif';
+const labels=[[0,5.00],[6,-5.43],[18,-3.93],[26,-5.43],[32,5.00]];
+labels.forEach(p=>{ ctx.fillText(p[1].toFixed(2), px(p[0])-14, py(p[1])+(p[1]<0?14:-6)); });
+ctx.fillText('+4.93', px(10.16)-14, py(4.93)-8);
+ctx.fillText('+4.93', px(21.84)-14, py(4.93)-8);
+ctx.fillStyle='#333';
+ctx.fillText('M (kN-m)（下緣受拉為正）', 6, marginT-6);
+</script>
+</body>
+</html>

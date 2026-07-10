@@ -1,23 +1,19 @@
-# 設計哲學層（Layer 2）
+# 分析哲學索引（Layer 2）
 
-> **用途：** 每頁回答一個「為什麼」，而非「怎麼算」。公式與步驟見 [CLAUDE-SOLVE.md](../../CLAUDE-SOLVE.md)。
-> **格式說明：** 每頁包含核心問題、測驗能力、歷屆典型考題連結。
+> 本目錄收錄結構學靜不定分析的三大思維方式，說明「為何選這個方法」而非「如何算」（方法論細節見 `wiki/methods/`）。
 
----
+| 思維 | 未知量 | 對應方法論 | 適合場景 |
+|------|--------|-----------|---------|
+| [力法思維](force-method-philosophy.md) | 多餘力 | [[minimum-work-method]]、[[compatibility-method]] | 靜不定度低（1–3個多餘力） |
+| [位移法思維](displacement-method-philosophy.md) | 節點位移 | [[slope-deflection-method]]、[[moment-distribution-method]] | 自由度少，側移剛架 |
+| [矩陣法思維](matrix-method-philosophy.md) | 節點位移（系統化） | [[matrix-displacement-method]] | 自由度多、不規則、需電腦化 |
 
-## 頁面索引
+## 選擇思維的第一個問題
 
-| 頁面 | 核心問題（一句） |
-|------|----------------|
-| [USD 梁彎曲](usd-beam-flexure.md) | φ 值為何不固定，而要看 εt 決定？ |
-| [T 形梁設計](t-beam-design.md) | 有效翼板寬為何不是全寬？ |
-| [RC 剪力設計](usd-shear.md) | 臨界斷面為何是距支承面 d 處，而非支承面？ |
-| [柱 P-M 互制](usd-column-pm.md) | 壓力控制區加軸力為何反而讓彎矩容量增加？ |
-| [長柱效應](slender-column.md) | 短柱用 Pu、Mu 直接設計，長柱為何要放大彎矩？ |
-| [使用性驗算（撓度/裂縫）](deflection-crack.md) | 滿足強度後，為何還要驗算撓度和裂縫？ |
-| [預力混凝土](prestress-philosophy.md) | 預力的本質是「把混凝土弱點變優點」——如何理解？ |
-| [耐震設計（能力設計法）](seismic-philosophy.md) | 為何不直接計算地震力，而是「設計結構在哪裡壞」？ |
+拿到一道靜不定結構題，第一步不是選公式，而是問：**未知量該用「力」還是「位移」來描述比較少？**
 
----
+- 多餘力少 → 力法思維（[[force-method-philosophy]]）
+- 自由度少 → 位移法思維（[[displacement-method-philosophy]]）
+- 自由度多且不規則 → 矩陣法思維（[[matrix-method-philosophy]]）
 
-> **提示：** 這層不重複 CLAUDE-SOLVE.md 的公式，而是補充「考官想測驗什麼能力」以及「這個哲學在歷屆考題中如何出現」。備考時可先讀這層定位考點，再去 problems/ 練題。
+三種思維求出的答案必然一致，差別只在計算量與是否好手算，因此也常被用來互相驗算。

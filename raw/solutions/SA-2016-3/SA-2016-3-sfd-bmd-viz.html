@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SA-2016-3 剪力與彎矩圖</title>
+    <style>
+        :root {
+            --bg-color: #0f172a;
+            --panel-bg: rgba(30, 41, 59, 0.7);
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            --accent-sfd: #38bdf8;
+            --accent-bmd: #fb7185;
+            --accent-frame: #cbd5e1;
+            --border-color: rgba(255, 255, 255, 0.1);
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            overflow: hidden;
+            background-image: 
+                radial-gradient(circle at 15% 50%, rgba(56, 189, 248, 0.05), transparent 25%),
+                radial-gradient(circle at 85% 30%, rgba(251, 113, 133, 0.05), transparent 25%);
+        }
+
+        .container {
+            width: 100%;
+            max-width: 800px;
+            background: var(--panel-bg);
+            backdrop-filter: blur(12px);
+            border: 1px solid var(--border-color);
+            border-radius: 24px;
+            padding: 2rem;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .header {
+            text-align: center;
+        }
+
+        .header h1 {
+            margin: 0;
+            font-size: 1.5rem;
+            font-weight: 600;
+            letter-spacing: 0.05em;
+        }
+
+        .header p {
+            margin: 0.5rem 0 0 0;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        .controls {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            background: rgba(0,0,0,0.2);
+            padding: 0.5rem;
+            border-radius: 99px;
+            width: fit-content;
+            margin: 0 auto;
+        }
+
+        button {
+            background: transparent;
+            border: none;
+            color: var(--text-muted);
+            padding: 0.5rem 1.5rem;
+            border-radius: 99px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        button:hover {
+            color: var(--text-main);
+            background: rgba(255,255,255,0.05);
+        }
+
+        button.active {
+            background: var(--text-main);
+            color: var(--bg-color);
+            box-shadow: 0 4px 12px rgba(255,255,255,0.2);
+        }
+
+        .svg-container {
+            width: 100%;
+            aspect-ratio: 4/3;
+            position: relative;
+            background: rgba(0,0,0,0.2);
+            border-radius: 16px;
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+        }
+
+        svg {
+            width: 100%;
+            height: 100%;
+            display: block;
+        }
+
+        .diagram-group {
+            transition: opacity 0.5s ease;
+        }
+
+        .hidden {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .frame-line {
+            stroke: var(--accent-frame);
+            stroke-width: 4;
+            stroke-linecap: round;
+        }
+
+        .node {
+            fill: var(--bg-color);
+            stroke: var(--accent-frame);
+            stroke-width: 3;
+        }
+
+        .load-arrow {
+            fill: #fbbf24;
+            stroke: #fbbf24;
+            stroke-width: 2;
+        }
+
+        .sfd-fill {
+            fill: var(--accent-sfd);
+            fill-opacity: 0.2;
+            stroke: var(--accent-sfd);
+            stroke-width: 2;
+            stroke-linejoin: round;
+        }
+        
+        .sfd-text {
+            fill: var(--accent-sfd);
+            font-size: 14px;
+            font-weight: 600;
+            text-anchor: middle;
+        }
+
+        .bmd-fill {
+            fill: var(--accent-bmd);
+            fill-opacity: 0.2;
+            stroke: var(--accent-bmd);
+            stroke-width: 2;
+            stroke-linejoin: round;
+        }
+
+        .bmd-text {
+            fill: var(--accent-bmd);
+            font-size: 14px;
+            font-weight: 600;
+            text-anchor: middle;
+        }
+
+        .label {
+            fill: var(--text-muted);
+            font-size: 16px;
+            font-weight: 600;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>SA-2016-3 剪力與彎矩圖</h1>
+            <p>單位力法 / 圖形積分法</p>
+        </div>
+
+        <div class="controls">
+            <button class="active" onclick="setView('frame')">結構配置</button>
+            <button onclick="setView('sfd')">剪力圖 (SFD)</button>
+            <button onclick="setView('bmd')">彎矩圖 (BMD)</button>
+        </div>
+
+        <div class="svg-container">
+            <svg viewBox="0 0 800 600">
+                <defs>
+                    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+                        <path d="M 40 0 L 0 0 0 40" fill="none" stroke="rgba(255,255,255,0.03)" stroke-width="1"/>
+                    </pattern>
+                </defs>
+                <rect width="100%" height="100%" fill="url(#grid)" />
+
+                <!-- ================= FRAME GROUP ================= -->
+                <g id="group-frame" class="diagram-group">
+                    <!-- Members -->
+                    <!-- B=(300, 150), C=(480, 150), D=(480, 450), A=(170, 225) -->
+                    <line x1="170" y1="225" x2="300" y2="150" class="frame-line" /> <!-- AB -->
+                    <line x1="300" y1="150" x2="480" y2="150" class="frame-line" /> <!-- BC -->
+                    <line x1="480" y1="150" x2="480" y2="450" class="frame-line" /> <!-- CD -->
+                    
+                    <!-- Supports -->
+                    <!-- A: Fixed -->
+                    <path d="M 160 210 L 150 225 L 160 240 M 150 205 L 140 215 M 155 212 L 145 222 M 165 228 L 155 238 M 170 236 L 160 246" stroke="var(--accent-frame)" stroke-width="3" fill="none"/>
+                    <!-- D: Fixed -->
+                    <path d="M 450 450 L 510 450 M 455 460 L 445 450 M 475 460 L 465 450 M 495 460 L 485 450 M 515 460 L 505 450" stroke="var(--accent-frame)" stroke-width="3" fill="none"/>
+
+                    <!-- Nodes -->
+                    <circle cx="170" cy="225" r="6" class="node" /> <!-- A -->
+                    <circle cx="300" cy="150" r="6" class="node" /> <!-- B -->
+                    <circle cx="480" cy="150" r="6" class="node" /> <!-- C -->
+                    <circle cx="480" cy="450" r="6" class="node" /> <!-- D -->
+
+                    <!-- Labels -->
+                    <text x="150" y="215" class="label">A</text>
+                    <text x="290" y="130" class="label">B</text>
+                    <text x="490" y="130" class="label">C</text>
+                    <text x="500" y="460" class="label">D</text>
+
+                    <!-- Load on BC -->
+                    <line x1="300" y1="110" x2="480" y2="110" stroke="#fbbf24" stroke-width="2" />
+                    <!-- Load arrows -->
+                    <line x1="300" y1="110" x2="300" y2="140" class="load-arrow" /> <polygon points="300,145 295,135 305,135" class="load-arrow" />
+                    <line x1="360" y1="110" x2="360" y2="140" class="load-arrow" /> <polygon points="360,145 355,135 365,135" class="load-arrow" />
+                    <line x1="420" y1="110" x2="420" y2="140" class="load-arrow" /> <polygon points="420,145 415,135 425,135" class="load-arrow" />
+                    <line x1="480" y1="110" x2="480" y2="140" class="load-arrow" /> <polygon points="480,145 475,135 485,135" class="load-arrow" />
+                    <text x="390" y="100" fill="#fbbf24" font-weight="bold" font-size="14px" text-anchor="middle">2 kN/m</text>
+                </g>
+
+                <!-- ================= SFD GROUP ================= -->
+                <g id="group-sfd" class="diagram-group hidden">
+                    <!-- Base Frame (Faded) -->
+                    <line x1="170" y1="225" x2="300" y2="150" stroke="rgba(255,255,255,0.1)" stroke-width="2" />
+                    <line x1="300" y1="150" x2="480" y2="150" stroke="rgba(255,255,255,0.1)" stroke-width="2" />
+                    <line x1="480" y1="150" x2="480" y2="450" stroke="rgba(255,255,255,0.1)" stroke-width="2" />
+
+                    <!-- Placeholder for SFD -->
+                    <text x="400" y="300" class="sfd-text" font-size="16px">剪力圖資訊未完全提供</text>
+
+                    <!-- Nodes overlay -->
+                    <circle cx="170" cy="225" r="4" fill="var(--bg-color)" stroke="rgba(255,255,255,0.3)" stroke-width="2"/>
+                    <circle cx="300" cy="150" r="4" fill="var(--bg-color)" stroke="rgba(255,255,255,0.3)" stroke-width="2"/>
+                    <circle cx="480" cy="150" r="4" fill="var(--bg-color)" stroke="rgba(255,255,255,0.3)" stroke-width="2"/>
+                    <circle cx="480" cy="450" r="4" fill="var(--bg-color)" stroke="rgba(255,255,255,0.3)" stroke-width="2"/>
+                </g>
+
+                <!-- ================= BMD GROUP ================= -->
+                <g id="group-bmd" class="diagram-group hidden">
+                    <!-- Base Frame (Faded) -->
+                    <line x1="170" y1="225" x2="300" y2="150" stroke="rgba(255,255,255,0.1)" stroke-width="2" />
+                    <line x1="300" y1="150" x2="480" y2="150" stroke="rgba(255,255,255,0.1)" stroke-width="2" />
+                    <line x1="480" y1="150" x2="480" y2="450" stroke="rgba(255,255,255,0.1)" stroke-width="2" />
+
+                    <!-- BMD -->
+                    <!-- AB: MA=-23.2, MB=-5.63. -->
+                    <path d="M 170 225 L 146.8 184.8 L 288.7 130.4 L 300 150 Z" class="bmd-fill" />
+                    <text x="140" y="200" class="bmd-text">-23.2</text>
+
+                    <!-- BC: MB=5.63, MC=-25.3 -->
+                    <path d="M 300 150 L 300 161.26 Q 390 190 480 99.4 L 480 150 Z" class="bmd-fill" />
+                    <text x="310" y="175" class="bmd-text">5.63</text>
+                    <text x="470" y="90" class="bmd-text">-25.3</text>
+
+                    <!-- CD: MC=25.3, MD=-17.0 -->
+                    <path d="M 480 150 L 429.4 150 L 514 450 L 480 450 Z" class="bmd-fill" />
+                    <text x="410" y="150" class="bmd-text">25.3</text>
+                    <text x="530" y="450" class="bmd-text">-17.0</text>
+
+                    <!-- Nodes overlay -->
+                    <circle cx="170" cy="225" r="4" fill="var(--bg-color)" stroke="rgba(255,255,255,0.3)" stroke-width="2"/>
+                    <circle cx="300" cy="150" r="4" fill="var(--bg-color)" stroke="rgba(255,255,255,0.3)" stroke-width="2"/>
+                    <circle cx="480" cy="150" r="4" fill="var(--bg-color)" stroke="rgba(255,255,255,0.3)" stroke-width="2"/>
+                    <circle cx="480" cy="450" r="4" fill="var(--bg-color)" stroke="rgba(255,255,255,0.3)" stroke-width="2"/>
+                </g>
+
+            </svg>
+        </div>
+    </div>
+
+    <script>
+        function setView(viewId) {
+            // Update buttons
+            document.querySelectorAll('.controls button').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            event.target.classList.add('active');
+
+            // Hide all groups
+            document.querySelectorAll('.diagram-group').forEach(grp => {
+                grp.classList.add('hidden');
+            });
+
+            // Show selected group
+            document.getElementById('group-' + viewId).classList.remove('hidden');
+        }
+    </script>
+</body>
+</html>

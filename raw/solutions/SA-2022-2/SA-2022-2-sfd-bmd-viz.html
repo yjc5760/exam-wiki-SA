@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SA-2022-2 剪力與彎矩圖</title>
+    <style>
+        :root {
+            --bg-color: #0f172a;
+            --panel-bg: rgba(30, 41, 59, 0.7);
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            --accent-sfd: #38bdf8;
+            --accent-bmd: #fb7185;
+            --accent-frame: #cbd5e1;
+            --border-color: rgba(255, 255, 255, 0.1);
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            overflow: hidden;
+            background-image: 
+                radial-gradient(circle at 15% 50%, rgba(56, 189, 248, 0.05), transparent 25%),
+                radial-gradient(circle at 85% 30%, rgba(251, 113, 133, 0.05), transparent 25%);
+        }
+
+        .container {
+            width: 100%;
+            max-width: 800px;
+            background: var(--panel-bg);
+            backdrop-filter: blur(12px);
+            border: 1px solid var(--border-color);
+            border-radius: 24px;
+            padding: 2rem;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .header {
+            text-align: center;
+        }
+
+        .header h1 {
+            margin: 0;
+            font-size: 1.5rem;
+            font-weight: 600;
+            letter-spacing: 0.05em;
+        }
+
+        .header p {
+            margin: 0.5rem 0 0 0;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        .controls {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            background: rgba(0,0,0,0.2);
+            padding: 0.5rem;
+            border-radius: 99px;
+            width: fit-content;
+            margin: 0 auto;
+        }
+
+        button {
+            background: transparent;
+            border: none;
+            color: var(--text-muted);
+            padding: 0.5rem 1.5rem;
+            border-radius: 99px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        button:hover {
+            color: var(--text-main);
+            background: rgba(255,255,255,0.05);
+        }
+
+        button.active {
+            background: var(--text-main);
+            color: var(--bg-color);
+            box-shadow: 0 4px 12px rgba(255,255,255,0.2);
+        }
+
+        .svg-container {
+            width: 100%;
+            aspect-ratio: 4/3;
+            position: relative;
+            background: rgba(0,0,0,0.2);
+            border-radius: 16px;
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+        }
+
+        svg {
+            width: 100%;
+            height: 100%;
+            display: block;
+        }
+
+        .diagram-group {
+            transition: opacity 0.5s ease;
+        }
+
+        .hidden {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .frame-line {
+            stroke: var(--accent-frame);
+            stroke-width: 4;
+            stroke-linecap: round;
+        }
+
+        .node {
+            fill: var(--bg-color);
+            stroke: var(--accent-frame);
+            stroke-width: 3;
+        }
+
+        .load-arrow {
+            fill: #fbbf24;
+            stroke: #fbbf24;
+            stroke-width: 2;
+        }
+
+        .sfd-fill {
+            fill: var(--accent-sfd);
+            fill-opacity: 0.2;
+            stroke: var(--accent-sfd);
+            stroke-width: 2;
+            stroke-linejoin: round;
+        }
+        
+        .sfd-text {
+            fill: var(--accent-sfd);
+            font-size: 14px;
+            font-weight: 600;
+            text-anchor: middle;
+        }
+
+        .bmd-fill {
+            fill: var(--accent-bmd);
+            fill-opacity: 0.2;
+            stroke: var(--accent-bmd);
+            stroke-width: 2;
+            stroke-linejoin: round;
+        }
+
+        .bmd-text {
+            fill: var(--accent-bmd);
+            font-size: 14px;
+            font-weight: 600;
+            text-anchor: middle;
+        }
+
+        .label {
+            fill: var(--text-muted);
+            font-size: 16px;
+            font-weight: 600;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="header">
+            <h1>剛架系統分析 (SA-2022-2)</h1>
+            <p>傾角變位法 / 有側移階梯型剛架</p>
+        </div>
+
+        <div class="controls">
+            <button class="active" onclick="setView('frame')">結構配置</button>
+            <button onclick="setView('sfd')">剪力圖 (SFD)</button>
+            <button onclick="setView('bmd')">彎矩圖 (BMD)</button>
+        </div>
+
+        <div class="svg-container">
+            <svg viewBox="0 0 800 600">
+                <defs>
+                    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+                        <path d="M 40 0 L 0 0 0 40" fill="none" stroke="rgba(255,255,255,0.03)" stroke-width="1"/>
+                    </pattern>
+                </defs>
+                <rect width="100%" height="100%" fill="url(#grid)" />
+
+                <!-- ================= FRAME GROUP ================= -->
+                <g id="group-frame" class="diagram-group">
+                    <!-- Members: a(250,480), c(250,280), d(450,280), e(450,80) -->
+                    <line x1="250" y1="480" x2="250" y2="280" class="frame-line" /> <!-- a-c -->
+                    <line x1="250" y1="280" x2="450" y2="280" class="frame-line" /> <!-- c-d -->
+                    <line x1="450" y1="280" x2="450" y2="80" class="frame-line" /> <!-- d-e -->
+                    
+                    <!-- Supports -->
+                    <!-- a: Hinge (Bottom) -->
+                    <path d="M 250 480 L 240 495 L 260 495 Z" stroke="var(--accent-frame)" stroke-width="2" fill="none"/>
+                    <line x1="230" y1="495" x2="270" y2="495" class="frame-line" />
+                    <!-- e: Hinge (Top) -->
+                    <path d="M 450 80 L 440 65 L 460 65 Z" stroke="var(--accent-frame)" stroke-width="2" fill="none"/>
+                    <line x1="430" y1="65" x2="470" y2="65" class="frame-line" />
+
+                    <!-- Nodes -->
+                    <circle cx="250" cy="480" r="4" class="node" /> <!-- a -->
+                    <circle cx="250" cy="280" r="4" class="node" /> <!-- c -->
+                    <circle cx="450" cy="280" r="4" class="node" /> <!-- d -->
+                    <circle cx="450" cy="80" r="4" class="node" /> <!-- e -->
+
+                    <!-- Labels -->
+                    <text x="220" y="490" class="label">a</text>
+                    <text x="220" y="270" class="label">c</text>
+                    <text x="470" y="295" class="label">d</text>
+                    <text x="470" y="75" class="label">e</text>
+                    <text x="220" y="385" class="label">b</text>
+
+                    <!-- Loads -->
+                    <line x1="170" y1="380" x2="240" y2="380" class="load-arrow" />
+                    <polygon points="240,380 225,373 225,387" class="load-arrow" />
+                    <text x="145" y="385" fill="#fbbf24" font-weight="bold" font-size="14px">30 kN</text>
+
+                    <line x1="370" y1="180" x2="440" y2="180" class="load-arrow" />
+                    <polygon points="440,180 425,173 425,187" class="load-arrow" />
+                    <text x="345" y="185" fill="#fbbf24" font-weight="bold" font-size="14px">30 kN</text>
+                </g>
+
+                <!-- ================= SFD GROUP ================= -->
+                <g id="group-sfd" class="diagram-group hidden">
+                    <line x1="250" y1="480" x2="250" y2="280" stroke="rgba(255,255,255,0.1)" stroke-width="2" />
+                    <line x1="250" y1="280" x2="450" y2="280" stroke="rgba(255,255,255,0.1)" stroke-width="2" />
+                    <line x1="450" y1="280" x2="450" y2="80" stroke="rgba(255,255,255,0.1)" stroke-width="2" />
+
+                    <!-- SFD a-c -->
+                    <path d="M 250 480 L 220 480 L 220 380 L 250 380 Z" class="sfd-fill" />
+                    <text x="200" y="435" class="sfd-text" transform="rotate(-90, 200, 435)">30 kN</text>
+
+                    <!-- SFD d-e -->
+                    <path d="M 450 80 L 420 80 L 420 180 L 450 180 Z" class="sfd-fill" />
+                    <text x="400" y="135" class="sfd-text" transform="rotate(-90, 400, 135)">30 kN</text>
+                    
+                    <text x="350" y="270" class="sfd-text">0</text>
+                </g>
+
+                <!-- ================= BMD GROUP ================= -->
+                <g id="group-bmd" class="diagram-group hidden">
+                    <line x1="250" y1="480" x2="250" y2="280" stroke="rgba(255,255,255,0.1)" stroke-width="2" />
+                    <line x1="250" y1="280" x2="450" y2="280" stroke="rgba(255,255,255,0.1)" stroke-width="2" />
+                    <line x1="450" y1="280" x2="450" y2="80" stroke="rgba(255,255,255,0.1)" stroke-width="2" />
+
+                    <!-- BMD c-d (60 kN-m constant on tension side/top) -->
+                    <path d="M 250 280 L 250 220 L 450 220 L 450 280 Z" class="bmd-fill" />
+                    <text x="350" y="245" class="bmd-text">60 kN-m</text>
+
+                    <!-- BMD a-c -->
+                    <!-- a is 0. b is 60 (right). c is -60 (left). -->
+                    <path d="M 250 480 L 310 380 L 250 380 Z" class="bmd-fill" />
+                    <path d="M 250 380 L 190 280 L 250 280 Z" class="bmd-fill" />
+                    <text x="325" y="385" class="bmd-text">60</text>
+                    <text x="165" y="285" class="bmd-text">-60</text>
+
+                    <!-- BMD d-e -->
+                    <!-- e is 0. mid is 60 (right). d is 60 (right). -->
+                    <path d="M 450 80 L 510 180 L 510 280 L 450 280 Z" class="bmd-fill" />
+                    <text x="530" y="185" class="bmd-text">60</text>
+                    <text x="530" y="285" class="bmd-text">60</text>
+                </g>
+
+            </svg>
+        </div>
+    </div>
+
+    <script>
+        function setView(viewId) {
+            document.querySelectorAll('.controls button').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            event.target.classList.add('active');
+
+            document.querySelectorAll('.diagram-group').forEach(grp => {
+                grp.classList.add('hidden');
+            });
+
+            document.getElementById('group-' + viewId).classList.remove('hidden');
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SA-2021-2 彎矩圖</title>
+    <style>
+        :root {
+            --bg-color: #0f172a;
+            --panel-bg: rgba(30, 41, 59, 0.7);
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            --accent-bmd: #fb7185;
+            --accent-frame: #cbd5e1;
+            --border-color: rgba(255, 255, 255, 0.1);
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            overflow: hidden;
+            background-image: 
+                radial-gradient(circle at 15% 50%, rgba(56, 189, 248, 0.05), transparent 25%),
+                radial-gradient(circle at 85% 30%, rgba(251, 113, 133, 0.05), transparent 25%);
+        }
+
+        .container {
+            width: 100%;
+            max-width: 800px;
+            background: var(--panel-bg);
+            backdrop-filter: blur(12px);
+            border: 1px solid var(--border-color);
+            border-radius: 24px;
+            padding: 2rem;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .header {
+            text-align: center;
+        }
+
+        .header h1 {
+            margin: 0;
+            font-size: 1.5rem;
+            font-weight: 600;
+            letter-spacing: 0.05em;
+        }
+
+        .header p {
+            margin: 0.5rem 0 0 0;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        .controls {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            background: rgba(0,0,0,0.2);
+            padding: 0.5rem;
+            border-radius: 99px;
+            width: fit-content;
+            margin: 0 auto;
+        }
+
+        button {
+            background: transparent;
+            border: none;
+            color: var(--text-muted);
+            padding: 0.5rem 1.5rem;
+            border-radius: 99px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        button:hover {
+            color: var(--text-main);
+            background: rgba(255,255,255,0.05);
+        }
+
+        button.active {
+            background: var(--text-main);
+            color: var(--bg-color);
+            box-shadow: 0 4px 12px rgba(255,255,255,0.2);
+        }
+
+        .svg-container {
+            width: 100%;
+            aspect-ratio: 4/3;
+            position: relative;
+            background: rgba(0,0,0,0.2);
+            border-radius: 16px;
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+        }
+
+        svg {
+            width: 100%;
+            height: 100%;
+            display: block;
+        }
+
+        /* SVG Elements Transitions */
+        .diagram-group {
+            transition: opacity 0.5s ease;
+        }
+
+        .hidden {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .frame-line {
+            stroke: var(--accent-frame);
+            stroke-width: 4;
+            stroke-linecap: round;
+        }
+
+        .node {
+            fill: var(--bg-color);
+            stroke: var(--accent-frame);
+            stroke-width: 3;
+        }
+
+        .load-arrow {
+            fill: #fbbf24;
+            stroke: #fbbf24;
+            stroke-width: 2;
+        }
+
+        /* BMD Styles */
+        .bmd-fill {
+            fill: var(--accent-bmd);
+            fill-opacity: 0.2;
+            stroke: var(--accent-bmd);
+            stroke-width: 2;
+            stroke-linejoin: round;
+        }
+
+        .bmd-text {
+            fill: var(--accent-bmd);
+            font-size: 14px;
+            font-weight: 600;
+            text-anchor: middle;
+        }
+
+        .label {
+            fill: var(--text-muted);
+            font-size: 16px;
+            font-weight: 600;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="header">
+            <h1>靜不定結構與位移 (SA-2021-2)</h1>
+            <p>傾角變位法 / 有側移剛架 / 對稱結構</p>
+        </div>
+
+        <div class="controls">
+            <button class="active" onclick="setView('frame')">結構配置</button>
+            <button onclick="setView('bmd')">彎矩圖 (BMD)</button>
+        </div>
+
+        <div class="svg-container">
+            <svg viewBox="0 0 800 600">
+                <!-- Base Grid -->
+                <defs>
+                    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+                        <path d="M 40 0 L 0 0 0 40" fill="none" stroke="rgba(255,255,255,0.03)" stroke-width="1"/>
+                    </pattern>
+                </defs>
+                <rect width="100%" height="100%" fill="url(#grid)" />
+
+                <!-- ================= FRAME GROUP ================= -->
+                <!-- a(160,200), b(280,200), e(520,200), f(640,200) -->
+                <!-- c(280,320), d(520,320) -->
+                <g id="group-frame" class="diagram-group">
+                    <!-- Members -->
+                    <line x1="160" y1="200" x2="640" y2="200" class="frame-line" /> <!-- Beam a-f -->
+                    <line x1="280" y1="200" x2="280" y2="320" class="frame-line" /> <!-- Column bc -->
+                    <line x1="520" y1="200" x2="520" y2="320" class="frame-line" /> <!-- Column ed -->
+                    <line x1="280" y1="320" x2="520" y2="320" stroke="var(--accent-frame)" stroke-width="2" /> <!-- Tie rod c-d -->
+                    
+                    <!-- Supports -->
+                    <!-- a: Roller -->
+                    <circle cx="160" cy="210" r="10" fill="none" stroke="var(--accent-frame)" stroke-width="3"/>
+                    <line x1="140" y1="220" x2="180" y2="220" stroke="var(--accent-frame)" stroke-width="3" />
+                    <!-- f: Roller -->
+                    <circle cx="640" cy="210" r="10" fill="none" stroke="var(--accent-frame)" stroke-width="3"/>
+                    <line x1="620" y1="220" x2="660" y2="220" stroke="var(--accent-frame)" stroke-width="3" />
+                    <!-- c: Hinge -->
+                    <polygon points="280,320 270,340 290,340" fill="none" stroke="var(--accent-frame)" stroke-width="3" />
+                    <line x1="260" y1="340" x2="300" y2="340" stroke="var(--accent-frame)" stroke-width="3" />
+                    <!-- d: Roller -->
+                    <circle cx="520" cy="330" r="10" fill="none" stroke="var(--accent-frame)" stroke-width="3"/>
+                    <line x1="500" y1="340" x2="540" y2="340" stroke="var(--accent-frame)" stroke-width="3" />
+
+                    <!-- Nodes -->
+                    <circle cx="160" cy="200" r="6" class="node" /> <!-- a -->
+                    <circle cx="280" cy="200" r="6" class="node" /> <!-- b -->
+                    <circle cx="520" cy="200" r="6" class="node" /> <!-- e -->
+                    <circle cx="640" cy="200" r="6" class="node" /> <!-- f -->
+                    <circle cx="280" cy="320" r="6" class="node" /> <!-- c -->
+                    <circle cx="520" cy="320" r="6" class="node" /> <!-- d -->
+
+                    <!-- Labels -->
+                    <text x="155" y="180" class="label">a</text>
+                    <text x="275" y="180" class="label">b</text>
+                    <text x="515" y="180" class="label">e</text>
+                    <text x="635" y="180" class="label">f</text>
+                    <text x="260" y="315" class="label">c</text>
+                    <text x="540" y="315" class="label">d</text>
+                    <text x="400" y="310" fill="var(--text-muted)" font-size="12px" text-anchor="middle">Tie rod</text>
+
+                    <!-- Load at f (Right 24 kN) -->
+                    <line x1="640" y1="200" x2="690" y2="200" class="load-arrow" />
+                    <polygon points="690,200 680,195 680,205" class="load-arrow" />
+                    <text x="670" y="185" fill="#fbbf24" font-weight="bold" font-size="14px">24 kN</text>
+                </g>
+
+                <!-- ================= BMD GROUP ================= -->
+                <!-- Beam BMD: ab +18(bottom), be -18(top) to +18(bottom), ef -18(top) to 0 -->
+                <!-- Col BMD: bc 36(left), ed 36(left) -->
+                <g id="group-bmd" class="diagram-group hidden">
+                    <!-- Base Frame (Faded) -->
+                    <line x1="160" y1="200" x2="640" y2="200" stroke="rgba(255,255,255,0.1)" stroke-width="2" />
+                    <line x1="280" y1="200" x2="280" y2="320" stroke="rgba(255,255,255,0.1)" stroke-width="2" />
+                    <line x1="520" y1="200" x2="520" y2="320" stroke="rgba(255,255,255,0.1)" stroke-width="2" />
+
+                    <!-- Beam ab -->
+                    <path d="M 160 200 L 280 236 L 280 200 Z" class="bmd-fill" />
+                    <text x="250" y="250" class="bmd-text">+18</text>
+                    
+                    <!-- Beam be -->
+                    <path d="M 280 200 L 280 164 L 520 236 L 520 200 Z" class="bmd-fill" />
+                    <text x="310" y="155" class="bmd-text">-18</text>
+                    <text x="490" y="250" class="bmd-text">+18</text>
+                    
+                    <!-- Beam ef -->
+                    <path d="M 520 200 L 520 164 L 640 200 Z" class="bmd-fill" />
+                    <text x="550" y="155" class="bmd-text">-18</text>
+
+                    <!-- Column bc (tension left) -->
+                    <path d="M 280 200 L 244 200 L 280 320 Z" class="bmd-fill" />
+                    <text x="230" y="250" class="bmd-text">36</text>
+                    
+                    <!-- Column ed (tension left) -->
+                    <path d="M 520 200 L 484 200 L 520 320 Z" class="bmd-fill" />
+                    <text x="470" y="250" class="bmd-text">36</text>
+                </g>
+
+            </svg>
+        </div>
+    </div>
+
+    <script>
+        function setView(viewId) {
+            document.querySelectorAll('.controls button').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            event.target.classList.add('active');
+
+            document.querySelectorAll('.diagram-group').forEach(grp => {
+                grp.classList.add('hidden');
+            });
+
+            document.getElementById('group-' + viewId).classList.remove('hidden');
+        }
+    </script>
+</body>
+</html>

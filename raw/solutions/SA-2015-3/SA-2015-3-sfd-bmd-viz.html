@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<title>SA-2015-3 梁 B~F 彎矩圖 (BMD)</title>
+<style>
+  body { font-family: "Microsoft JhengHei", sans-serif; margin: 0; padding: 10px; background: #fafafa; }
+  .wrap { width: 580px; margin: 0 auto; background: #fff; border: 1px solid #ddd; border-radius: 8px; padding: 12px; box-sizing: border-box; }
+  h3 { margin: 4px 0 8px; font-size: 15px; color: #222; }
+  canvas { display: block; margin: 6px auto; background: #fff; }
+  .legend { font-size: 12px; color: #555; margin-top: 6px; line-height: 1.6; }
+  table { width: 100%; border-collapse: collapse; font-size: 11px; margin-top: 8px; }
+  td, th { border: 1px solid #ddd; padding: 2px 4px; text-align: center; }
+  th { background: #f0f0f0; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h3>SA-2015-3 — 梁 B–C–D–E–F 彎矩圖 (BMD)｜傾角變位法（對稱剛架）</h3>
+  <div class="legend">
+    BC=1m、CD=3m、DE=3m、EF=1m，全段承受 4 kN/m 均布載重；C、E 為內部鉸（M=0）。結構對稱於中心柱 GD，BMD 亦左右對稱。負值＝上緣受拉。
+  </div>
+  <canvas id="cM" width="556" height="240"></canvas>
+  <table>
+    <tr><th>B</th><th>C（鉸）</th><th>D</th><th>E（鉸）</th><th>F</th></tr>
+    <tr><td>-5.68</td><td>0</td><td>-6.97</td><td>0</td><td>-5.68</td></tr>
+  </table>
+</div>
+<script>
+const cv = document.getElementById('cM'); const ctx = cv.getContext('2d');
+const W=556, H=240, marginL=45, marginR=15, marginT=20, marginB=28;
+const plotW=W-marginL-marginR, plotH=H-marginT-marginB;
+const bounds=[0,1,4,7,8]; const names=['B','C','D','E','F'];
+const totalLen=8;
+const w=4;
+const Mb=-5.68, Mc=0, Md=-6.97, Me=0, Mf=-5.68;
+
+const segs=[
+  {x0:0,x1:1, f:(x)=> Mb + (Mc-Mb)*(x/1) + 0.5*w*x*(1-x)},
+  {x0:1,x1:4, f:(x)=> Mc + (Md-Mc)*(x/3) + 0.5*w*x*(3-x)},
+  {x0:4,x1:7, f:(x)=> Md + (Me-Md)*(x/3) + 0.5*w*x*(3-x)},
+  {x0:7,x1:8, f:(x)=> Me + (Mf-Me)*(x/1) + 0.5*w*x*(1-x)}
+];
+
+let maxAbs=1;
+segs.forEach(s=>{ for(let i=0;i<=30;i++){ const v=s.f(i/30*(s.x1-s.x0)); if(Math.abs(v)>maxAbs) maxAbs=Math.abs(v); } });
+maxAbs*=1.2;
+function px(x){ return marginL + x/totalLen*plotW; }
+function py(v){ return marginT + plotH/2 - v/maxAbs*(plotH/2-10); }
+
+ctx.strokeStyle='#999'; ctx.lineWidth=1;
+ctx.beginPath(); ctx.moveTo(marginL,py(0)); ctx.lineTo(W-marginR,py(0)); ctx.stroke();
+ctx.strokeStyle='#ddd';
+bounds.forEach(b=>{ ctx.beginPath(); ctx.moveTo(px(b),marginT); ctx.lineTo(px(b),H-marginB); ctx.stroke(); });
+ctx.font='10px sans-serif'; ctx.fillStyle='#333';
+bounds.forEach((b,i)=>{ ctx.fillText(names[i], px(b)-3, H-marginB+14); });
+
+ctx.strokeStyle='#0066cc'; ctx.lineWidth=2;
+segs.forEach(s=>{
+  ctx.beginPath();
+  ctx.moveTo(px(s.x0), py(0));
+  for(let i=0;i<=30;i++){
+    const lx=i/30*(s.x1-s.x0);
+    ctx.lineTo(px(s.x0+lx), py(s.f(lx)));
+  }
+  ctx.lineTo(px(s.x1), py(0));
+  ctx.closePath();
+  ctx.globalAlpha=0.15; ctx.fillStyle='#0066cc'; ctx.fill(); ctx.globalAlpha=1;
+  ctx.stroke();
+});
+
+ctx.fillStyle='#0066cc'; ctx.font='11px sans-serif';
+[[0,Mb],[1,Mc],[4,Md],[7,Me],[8,Mf]].forEach(p=>{
+  ctx.fillText(p[1].toFixed(2), px(p[0])-12, py(p[1])+(p[1]<0?14:-6));
+});
+ctx.fillStyle='#333';
+ctx.fillText('M (kN-m)（上緣受拉為負）', 6, marginT-6);
+</script>
+</body>
+</html>

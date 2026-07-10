@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SA-2019-2 彎矩與軸力圖</title>
+    <style>
+        :root {
+            --bg-color: #0f172a;
+            --panel-bg: rgba(30, 41, 59, 0.7);
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            --accent-sfd: #38bdf8;
+            --accent-bmd: #fb7185;
+            --accent-frame: #cbd5e1;
+            --border-color: rgba(255, 255, 255, 0.1);
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            overflow: hidden;
+            background-image: 
+                radial-gradient(circle at 15% 50%, rgba(56, 189, 248, 0.05), transparent 25%),
+                radial-gradient(circle at 85% 30%, rgba(251, 113, 133, 0.05), transparent 25%);
+        }
+
+        .container {
+            width: 100%;
+            max-width: 800px;
+            background: var(--panel-bg);
+            backdrop-filter: blur(12px);
+            border: 1px solid var(--border-color);
+            border-radius: 24px;
+            padding: 2rem;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .header {
+            text-align: center;
+        }
+
+        .header h1 {
+            margin: 0;
+            font-size: 1.5rem;
+            font-weight: 600;
+            letter-spacing: 0.05em;
+        }
+
+        .header p {
+            margin: 0.5rem 0 0 0;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        .controls {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            background: rgba(0,0,0,0.2);
+            padding: 0.5rem;
+            border-radius: 99px;
+            width: fit-content;
+            margin: 0 auto;
+        }
+
+        button {
+            background: transparent;
+            border: none;
+            color: var(--text-muted);
+            padding: 0.5rem 1.5rem;
+            border-radius: 99px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        button:hover {
+            color: var(--text-main);
+            background: rgba(255,255,255,0.05);
+        }
+
+        button.active {
+            background: var(--text-main);
+            color: var(--bg-color);
+            box-shadow: 0 4px 12px rgba(255,255,255,0.2);
+        }
+
+        .svg-container {
+            width: 100%;
+            aspect-ratio: 4/3;
+            position: relative;
+            background: rgba(0,0,0,0.2);
+            border-radius: 16px;
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+        }
+
+        svg {
+            width: 100%;
+            height: 100%;
+            display: block;
+        }
+
+        /* SVG Elements Transitions */
+        .diagram-group {
+            transition: opacity 0.5s ease;
+        }
+
+        .hidden {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .frame-line {
+            stroke: var(--accent-frame);
+            stroke-width: 4;
+            stroke-linecap: round;
+        }
+
+        .node {
+            fill: var(--bg-color);
+            stroke: var(--accent-frame);
+            stroke-width: 3;
+        }
+
+        .load-arrow {
+            fill: #fbbf24;
+            stroke: #fbbf24;
+            stroke-width: 2;
+        }
+
+        /* AFD Styles (reusing SFD colors) */
+        .sfd-fill {
+            fill: var(--accent-sfd);
+            fill-opacity: 0.2;
+            stroke: var(--accent-sfd);
+            stroke-width: 2;
+            stroke-linejoin: round;
+        }
+        
+        .sfd-text {
+            fill: var(--accent-sfd);
+            font-size: 14px;
+            font-weight: 600;
+            text-anchor: middle;
+        }
+
+        /* BMD Styles */
+        .bmd-fill {
+            fill: var(--accent-bmd);
+            fill-opacity: 0.2;
+            stroke: var(--accent-bmd);
+            stroke-width: 2;
+            stroke-linejoin: round;
+        }
+
+        .bmd-text {
+            fill: var(--accent-bmd);
+            font-size: 14px;
+            font-weight: 600;
+            text-anchor: middle;
+        }
+
+        .label {
+            fill: var(--text-muted);
+            font-size: 16px;
+            font-weight: 600;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="header">
+            <h1>建築結構系統分析 (SA-2019-2)</h1>
+            <p>范倫迪爾桁架 / 近似分析 / 反曲點法</p>
+        </div>
+
+        <div class="controls">
+            <button class="active" onclick="setView('frame')">結構配置</button>
+            <button onclick="setView('sfd')">軸力圖 (AFD)</button>
+            <button onclick="setView('bmd')">彎矩圖 (BMD)</button>
+        </div>
+
+        <div class="svg-container">
+            <svg viewBox="0 0 800 600">
+                <!-- Base Grid -->
+                <defs>
+                    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+                        <path d="M 40 0 L 0 0 0 40" fill="none" stroke="rgba(255,255,255,0.03)" stroke-width="1"/>
+                    </pattern>
+                </defs>
+                <rect width="100%" height="100%" fill="url(#grid)" />
+
+                <!-- ================= FRAME GROUP ================= -->
+                <!-- A:100,450 to E:700,450. F:100,225 to J:700,225 -->
+                <g id="group-frame" class="diagram-group">
+                    <!-- Top Chord -->
+                    <line x1="100" y1="225" x2="700" y2="225" class="frame-line" />
+                    <!-- Bottom Chord -->
+                    <line x1="100" y1="450" x2="700" y2="450" class="frame-line" />
+                    <!-- Verticals -->
+                    <line x1="100" y1="225" x2="100" y2="450" class="frame-line" />
+                    <line x1="250" y1="225" x2="250" y2="450" class="frame-line" />
+                    <line x1="400" y1="225" x2="400" y2="450" class="frame-line" />
+                    <line x1="550" y1="225" x2="550" y2="450" class="frame-line" />
+                    <line x1="700" y1="225" x2="700" y2="450" class="frame-line" />
+                    
+                    <!-- Supports -->
+                    <!-- A: Hinge -->
+                    <polygon points="100,450 90,470 110,470" fill="none" stroke="var(--accent-frame)" stroke-width="3" />
+                    <line x1="80" y1="470" x2="120" y2="470" stroke="var(--accent-frame)" stroke-width="3" />
+                    <!-- E: Roller -->
+                    <circle cx="700" cy="460" r="10" fill="none" stroke="var(--accent-frame)" stroke-width="3"/>
+                    <line x1="680" y1="470" x2="720" y2="470" stroke="var(--accent-frame)" stroke-width="3" />
+
+                    <!-- Nodes Bottom -->
+                    <circle cx="100" cy="450" r="6" class="node" /> <!-- A -->
+                    <circle cx="250" cy="450" r="6" class="node" /> <!-- B -->
+                    <circle cx="400" cy="450" r="6" class="node" /> <!-- C -->
+                    <circle cx="550" cy="450" r="6" class="node" /> <!-- D -->
+                    <circle cx="700" cy="450" r="6" class="node" /> <!-- E -->
+                    <!-- Nodes Top -->
+                    <circle cx="100" cy="225" r="6" class="node" /> <!-- F -->
+                    <circle cx="250" cy="225" r="6" class="node" /> <!-- G -->
+                    <circle cx="400" cy="225" r="6" class="node" /> <!-- H -->
+                    <circle cx="550" cy="225" r="6" class="node" /> <!-- I -->
+                    <circle cx="700" cy="225" r="6" class="node" /> <!-- J -->
+
+                    <!-- Labels -->
+                    <text x="80" y="440" class="label">A</text>
+                    <text x="230" y="440" class="label">B</text>
+                    <text x="380" y="440" class="label">C</text>
+                    <text x="530" y="440" class="label">D</text>
+                    <text x="715" y="440" class="label">E</text>
+                    <text x="80" y="215" class="label">F</text>
+                    <text x="230" y="215" class="label">G</text>
+                    <text x="380" y="215" class="label">H</text>
+                    <text x="530" y="215" class="label">I</text>
+                    <text x="715" y="215" class="label">J</text>
+
+                    <!-- Loads at B, C, D -->
+                    <!-- B -->
+                    <line x1="250" y1="165" x2="250" y2="215" class="load-arrow" />
+                    <polygon points="250,215 245,205 255,205" class="load-arrow" />
+                    <text x="250" y="155" fill="#fbbf24" font-weight="bold" font-size="14px" text-anchor="middle">100 kN</text>
+                    <!-- C -->
+                    <line x1="400" y1="165" x2="400" y2="215" class="load-arrow" />
+                    <polygon points="400,215 395,205 405,205" class="load-arrow" />
+                    <text x="400" y="155" fill="#fbbf24" font-weight="bold" font-size="14px" text-anchor="middle">100 kN</text>
+                    <!-- D -->
+                    <line x1="550" y1="165" x2="550" y2="215" class="load-arrow" />
+                    <polygon points="550,215 545,205 555,205" class="load-arrow" />
+                    <text x="550" y="155" fill="#fbbf24" font-weight="bold" font-size="14px" text-anchor="middle">100 kN</text>
+                </g>
+
+                <!-- ================= AFD GROUP ================= -->
+                <!-- Top chord: -50, -116.67, -116.67, -50. Bottom chord: +50, +116.67, +116.67, +50 -->
+                <!-- Verticals: FA -75, GB +50, HC +50, ID +50, JE -75 -->
+                <!-- Compression: draw above/left, Tension: draw below/right -->
+                <g id="group-sfd" class="diagram-group hidden">
+                    <!-- Base Frame (Faded) -->
+                    <line x1="100" y1="225" x2="700" y2="225" stroke="rgba(255,255,255,0.1)" stroke-width="2" />
+                    <line x1="100" y1="450" x2="700" y2="450" stroke="rgba(255,255,255,0.1)" stroke-width="2" />
+                    <line x1="100" y1="225" x2="100" y2="450" stroke="rgba(255,255,255,0.1)" stroke-width="2" />
+                    <line x1="250" y1="225" x2="250" y2="450" stroke="rgba(255,255,255,0.1)" stroke-width="2" />
+                    <line x1="400" y1="225" x2="400" y2="450" stroke="rgba(255,255,255,0.1)" stroke-width="2" />
+                    <line x1="550" y1="225" x2="550" y2="450" stroke="rgba(255,255,255,0.1)" stroke-width="2" />
+                    <line x1="700" y1="225" x2="700" y2="450" stroke="rgba(255,255,255,0.1)" stroke-width="2" />
+
+                    <!-- Top Chord (C, up) -->
+                    <path d="M 100 225 L 100 205 L 250 205 L 250 225 Z" class="sfd-fill" />
+                    <text x="175" y="195" class="sfd-text">-50</text>
+                    <path d="M 250 225 L 250 180 L 400 180 L 400 225 Z" class="sfd-fill" />
+                    <text x="325" y="170" class="sfd-text">-116.67</text>
+                    <path d="M 400 225 L 400 180 L 550 180 L 550 225 Z" class="sfd-fill" />
+                    <text x="475" y="170" class="sfd-text">-116.67</text>
+                    <path d="M 550 225 L 550 205 L 700 205 L 700 225 Z" class="sfd-fill" />
+                    <text x="625" y="195" class="sfd-text">-50</text>
+
+                    <!-- Bottom Chord (T, down) -->
+                    <path d="M 100 450 L 100 470 L 250 470 L 250 450 Z" class="sfd-fill" />
+                    <text x="175" y="490" class="sfd-text">+50</text>
+                    <path d="M 250 450 L 250 496 L 400 496 L 400 450 Z" class="sfd-fill" />
+                    <text x="325" y="515" class="sfd-text">+116.67</text>
+                    <path d="M 400 450 L 400 496 L 550 496 L 550 450 Z" class="sfd-fill" />
+                    <text x="475" y="515" class="sfd-text">+116.67</text>
+                    <path d="M 550 450 L 550 470 L 700 470 L 700 450 Z" class="sfd-fill" />
+                    <text x="625" y="490" class="sfd-text">+50</text>
+
+                    <!-- Verticals -->
+                    <!-- FA: -75 (C, left) -->
+                    <path d="M 100 225 L 70 225 L 70 450 L 100 450 Z" class="sfd-fill" />
+                    <text x="50" y="340" class="sfd-text">-75</text>
+                    <!-- GB: +50 (T, right) -->
+                    <path d="M 250 225 L 270 225 L 270 450 L 250 450 Z" class="sfd-fill" />
+                    <text x="290" y="340" class="sfd-text">+50</text>
+                    <!-- HC: +50 (T, right) -->
+                    <path d="M 400 225 L 420 225 L 420 450 L 400 450 Z" class="sfd-fill" />
+                    <text x="440" y="340" class="sfd-text">+50</text>
+                    <!-- ID: +50 (T, right) -->
+                    <path d="M 550 225 L 570 225 L 570 450 L 550 450 Z" class="sfd-fill" />
+                    <text x="590" y="340" class="sfd-text">+50</text>
+                    <!-- JE: -75 (C, left, but wait... let's just draw left) -->
+                    <path d="M 700 225 L 670 225 L 670 450 L 700 450 Z" class="sfd-fill" />
+                    <text x="650" y="340" class="sfd-text">-75</text>
+                </g>
+
+                <!-- ================= BMD GROUP ================= -->
+                <!-- Draw bowties. 
+                FG, AB, IJ, DE: 150 (h=30)
+                GH, BC, HI, CD: 50 (h=10)
+                FA, JE: 150 (h=30)
+                GB, ID: 200 (h=40)
+                HC: 0 
+                -->
+                <g id="group-bmd" class="diagram-group hidden">
+                    <!-- Base Frame (Faded) -->
+                    <line x1="100" y1="225" x2="700" y2="225" stroke="rgba(255,255,255,0.1)" stroke-width="2" />
+                    <line x1="100" y1="450" x2="700" y2="450" stroke="rgba(255,255,255,0.1)" stroke-width="2" />
+                    <line x1="100" y1="225" x2="100" y2="450" stroke="rgba(255,255,255,0.1)" stroke-width="2" />
+                    <line x1="250" y1="225" x2="250" y2="450" stroke="rgba(255,255,255,0.1)" stroke-width="2" />
+                    <line x1="400" y1="225" x2="400" y2="450" stroke="rgba(255,255,255,0.1)" stroke-width="2" />
+                    <line x1="550" y1="225" x2="550" y2="450" stroke="rgba(255,255,255,0.1)" stroke-width="2" />
+                    <line x1="700" y1="225" x2="700" y2="450" stroke="rgba(255,255,255,0.1)" stroke-width="2" />
+
+                    <!-- Top Chord -->
+                    <!-- FG (100 to 250, mid 175) h=30 -->
+                    <path d="M 100 225 L 100 195 L 175 225 Z" class="bmd-fill" />
+                    <path d="M 175 225 L 250 255 L 250 225 Z" class="bmd-fill" />
+                    <text x="120" y="190" class="bmd-text">150</text>
+                    <!-- GH (250 to 400, mid 325) h=10 -->
+                    <path d="M 250 225 L 250 215 L 325 225 Z" class="bmd-fill" />
+                    <path d="M 325 225 L 400 235 L 400 225 Z" class="bmd-fill" />
+                    <text x="270" y="210" class="bmd-text">50</text>
+                    <!-- HI (400 to 550, mid 475) h=10 -->
+                    <path d="M 400 225 L 400 215 L 475 225 Z" class="bmd-fill" />
+                    <path d="M 475 225 L 550 235 L 550 225 Z" class="bmd-fill" />
+                    <text x="420" y="210" class="bmd-text">50</text>
+                    <!-- IJ (550 to 700, mid 625) h=30 -->
+                    <path d="M 550 225 L 550 195 L 625 225 Z" class="bmd-fill" />
+                    <path d="M 625 225 L 700 255 L 700 225 Z" class="bmd-fill" />
+                    <text x="570" y="190" class="bmd-text">150</text>
+
+                    <!-- Bottom Chord (same as Top) -->
+                    <!-- AB -->
+                    <path d="M 100 450 L 100 420 L 175 450 Z" class="bmd-fill" />
+                    <path d="M 175 450 L 250 480 L 250 450 Z" class="bmd-fill" />
+                    <!-- BC -->
+                    <path d="M 250 450 L 250 440 L 325 450 Z" class="bmd-fill" />
+                    <path d="M 325 450 L 400 460 L 400 450 Z" class="bmd-fill" />
+                    <!-- CD -->
+                    <path d="M 400 450 L 400 440 L 475 450 Z" class="bmd-fill" />
+                    <path d="M 475 450 L 550 460 L 550 450 Z" class="bmd-fill" />
+                    <!-- DE -->
+                    <path d="M 550 450 L 550 420 L 625 450 Z" class="bmd-fill" />
+                    <path d="M 625 450 L 700 480 L 700 450 Z" class="bmd-fill" />
+
+                    <!-- Verticals (225 to 450, mid 337.5) -->
+                    <!-- FA: 150 (h=30) -->
+                    <path d="M 100 225 L 70 225 L 100 337.5 Z" class="bmd-fill" />
+                    <path d="M 100 337.5 L 130 450 L 100 450 Z" class="bmd-fill" />
+                    <text x="50" y="240" class="bmd-text">150</text>
+                    <!-- GB: 200 (h=40) -->
+                    <path d="M 250 225 L 210 225 L 250 337.5 Z" class="bmd-fill" />
+                    <path d="M 250 337.5 L 290 450 L 250 450 Z" class="bmd-fill" />
+                    <text x="200" y="240" class="bmd-text">200</text>
+                    <!-- HC: 0 (No fill) -->
+                    <!-- ID: 200 (h=40) -->
+                    <path d="M 550 225 L 510 225 L 550 337.5 Z" class="bmd-fill" />
+                    <path d="M 550 337.5 L 590 450 L 550 450 Z" class="bmd-fill" />
+                    <text x="500" y="240" class="bmd-text">200</text>
+                    <!-- JE: 150 (h=30) -->
+                    <path d="M 700 225 L 670 225 L 700 337.5 Z" class="bmd-fill" />
+                    <path d="M 700 337.5 L 730 450 L 700 450 Z" class="bmd-fill" />
+                    <text x="660" y="240" class="bmd-text">150</text>
+                </g>
+
+            </svg>
+        </div>
+    </div>
+
+    <script>
+        function setView(viewId) {
+            document.querySelectorAll('.controls button').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            event.target.classList.add('active');
+
+            document.querySelectorAll('.diagram-group').forEach(grp => {
+                grp.classList.add('hidden');
+            });
+
+            document.getElementById('group-' + viewId).classList.remove('hidden');
+        }
+    </script>
+</body>
+</html>

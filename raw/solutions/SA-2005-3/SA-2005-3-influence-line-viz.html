@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<title>SA-2005-3 D點彎矩影響線</title>
+<style>
+  body { font-family: "Microsoft JhengHei", sans-serif; margin: 0; padding: 10px; background: #fafafa; }
+  .wrap { width: 580px; margin: 0 auto; background: #fff; border: 1px solid #ddd; border-radius: 8px; padding: 12px; box-sizing: border-box; }
+  h3 { margin: 4px 0 8px; font-size: 15px; color: #222; }
+  canvas { display: block; margin: 6px auto; background: #fff; }
+  .legend { font-size: 12px; color: #555; margin-top: 6px; line-height: 1.6; }
+  table { width: 100%; border-collapse: collapse; font-size: 11px; margin-top: 8px; }
+  td, th { border: 1px solid #ddd; padding: 2px 4px; text-align: center; }
+  th { background: #f0f0f0; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h3>SA-2005-3 — BC 跨中點 D 之彎矩影響線（三彎矩方程式）</h3>
+  <div class="legend">
+    兩跨連續梁 A-B-C，各跨 10m，D 為 BC 跨中點。下圖為單位載重 P=1 移動至各點時 M<sub>D</sub> 的精確值（每 2.5m 一點，依三彎矩方程式逐點計算，非曲線擬合）。
+  </div>
+  <canvas id="c" width="556" height="260"></canvas>
+  <table>
+    <tr><th>x (m)</th><td>0</td><td>2.5</td><td>5.0</td><td>7.5</td><td>10</td><td>12.5</td><td>15</td><td>17.5</td><td>20</td></tr>
+    <tr><th>M<sub>D</sub></th><td>0</td><td>-0.293</td><td>-0.469</td><td>-0.410</td><td>0</td><td>0.840</td><td>2.031</td><td>0.957</td><td>0</td></tr>
+  </table>
+</div>
+<script>
+const pts = [
+  {x:0,y:0},{x:2.5,y:-0.293},{x:5,y:-0.469},{x:7.5,y:-0.410},{x:10,y:0},
+  {x:12.5,y:0.840},{x:15,y:2.031},{x:17.5,y:0.957},{x:20,y:0}
+];
+const cv=document.getElementById('c'); const ctx=cv.getContext('2d');
+const W=556,H=260, marginL=45, marginR=15, marginT=20, marginB=32;
+const plotW=W-marginL-marginR, plotH=H-marginT-marginB;
+const totalLen=20, maxAbs=2.4;
+function px(x){ return marginL + x/totalLen*plotW; }
+function py(v){ return marginT + plotH*0.35 - v/maxAbs*(plotH*0.6); }
+
+ctx.strokeStyle='#999'; ctx.lineWidth=1;
+ctx.beginPath(); ctx.moveTo(marginL,py(0)); ctx.lineTo(W-marginR,py(0)); ctx.stroke();
+ctx.strokeStyle='#ddd';
+[0,10,20].forEach(b=>{ ctx.beginPath(); ctx.moveTo(px(b),marginT); ctx.lineTo(px(b),H-marginB); ctx.stroke(); });
+ctx.font='11px sans-serif'; ctx.fillStyle='#333';
+ctx.fillText('A', px(0)-3, H-marginB+14);
+ctx.fillText('B', px(10)-3, H-marginB+14);
+ctx.fillText('C', px(20)-3, H-marginB+14);
+ctx.fillText('D (BC跨中)', px(15)-20, H-marginB+28);
+
+ctx.strokeStyle='#0066cc'; ctx.fillStyle='rgba(0,102,204,0.15)'; ctx.lineWidth=2;
+ctx.beginPath();
+ctx.moveTo(px(pts[0].x), py(0));
+pts.forEach(p=> ctx.lineTo(px(p.x), py(p.y)));
+ctx.lineTo(px(pts[pts.length-1].x), py(0));
+ctx.closePath();
+ctx.globalAlpha=0.15; ctx.fill(); ctx.globalAlpha=1;
+ctx.beginPath();
+pts.forEach((p,i)=>{ if(i===0) ctx.moveTo(px(p.x),py(p.y)); else ctx.lineTo(px(p.x),py(p.y)); });
+ctx.stroke();
+
+ctx.fillStyle='#0066cc';
+pts.forEach(p=>{
+  ctx.beginPath(); ctx.arc(px(p.x),py(p.y),2.5,0,7); ctx.fill();
+});
+ctx.font='10px sans-serif';
+pts.forEach(p=>{ ctx.fillText(p.y.toFixed(3), px(p.x)-14, py(p.y)+(p.y<0?13:-6)); });
+
+ctx.fillStyle='#333'; ctx.font='11px sans-serif';
+ctx.fillText('影響線縱座標 M_D (per unit load)', 6, marginT-6);
+</script>
+</body>
+</html>

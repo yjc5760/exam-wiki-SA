@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="zh-Hant">
 <head>
 <meta charset="UTF-8">
@@ -267,7 +267,7 @@
   <div id="readerBody"></div>
 </div>
 
-<script src="dashboard-data.js"></script>
+<script src="dashboard-data.js" charset="utf-8"></script>
 <script>
 (function(){
   if(!window.SA_QUESTIONS){document.getElementById('list').innerHTML='<div class="empty">找不到 dashboard-data.js，請確認檔案與本頁在同一資料夾。</div>';return;}
@@ -326,11 +326,11 @@
         <div class="qhead">
           <span class="qid">${q.id}</span><span class="roc">民國 ${q.roc} 年 第 ${q.num} 題</span>
           <span class="badge" style="background:${UCOLOR[u]}">${q.topic}</span>
-          <span class="badge method">${q.method}</span>
+          ${q.method ? `<span class="badge method">${q.method}</span>` : ""}
           ${q.viz.length?'<span class="badge viz">互動圖</span>':''}
           <span class="prog s${p}" data-id="${q.id}">${pTxt}</span>
         </div>
-        <div class="topic">${TOPICS[q.topic]}${secTxt}</div>
+        <div class="topic">${TOPICS[q.topic] || q.topic}${secTxt}</div>
         <div class="tags">${q.tags.map(t=>`<span class="tag" data-t="${t}">${t}</span>`).join('')}</div>
         <div class="links" style="position:relative">
           <button class="openmd" data-md="raw/solutions/${q.id}/${q.id}.md" data-t="${q.id} 完整解析">📄 完整解析</button>
@@ -387,7 +387,7 @@
     let html='',yr=0;
     recent.forEach(q=>{if(q.year!==yr){yr=q.year;html+=`<div style="margin-top:8px;font-weight:700">${yr}（民國 ${yr-1911}）</div>`;}
       const secTxt=q.sec.length?`（副：${q.sec.map(s=>TOPICS[s]||s).join('、')}）`:'';
-      html+=`<div style="font-size:.85rem;margin-left:8px"><span class="unitchip" style="background:${UCOLOR[unitOf(q.topic)]}"></span>第${q.num}題：${TOPICS[q.topic]}${secTxt}</div>`;});
+      html+=`<div style="font-size:.85rem;margin-left:8px"><span class="unitchip" style="background:${UCOLOR[unitOf(q.topic)]}"></span>第${q.num}題：${TOPICS[q.topic] || q.topic}${secTxt}</div>`;});
     document.getElementById('recent').innerHTML=html;
   }
 

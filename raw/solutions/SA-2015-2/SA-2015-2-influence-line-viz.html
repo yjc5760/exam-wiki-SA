@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<title>SA-2015-2 F點剪力影響線</title>
+<style>
+  body { font-family: "Microsoft JhengHei", sans-serif; margin: 0; padding: 10px; background: #fafafa; }
+  .wrap { width: 580px; margin: 0 auto; background: #fff; border: 1px solid #ddd; border-radius: 8px; padding: 12px; box-sizing: border-box; }
+  h3 { margin: 4px 0 8px; font-size: 15px; color: #222; }
+  canvas { display: block; margin: 6px auto; background: #fff; }
+  .legend { font-size: 12px; color: #555; margin-top: 6px; line-height: 1.6; }
+  table { width: 100%; border-collapse: collapse; font-size: 11px; margin-top: 8px; }
+  td, th { border: 1px solid #ddd; padding: 2px 4px; text-align: center; }
+  th { background: #f0f0f0; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h3>SA-2015-2 — F 點剪力影響線（Müller-Breslau + 共軛梁法）</h3>
+  <div class="legend">
+    梁 A-F-B-C-D-E（AF=FB=15m，BC=CD=10m，DE=30m），C 為內部鉸。本題僅計算並驗證 3 個關鍵值：F 點左側、F 點右側（因 F 處剪力釋放而不連續）、及 C 點之影響線縱座標；其餘位置之精確曲線原解未提供逐點數據，故不在此虛構插值，僅標示已驗證之三點與結構示意。
+  </div>
+  <canvas id="c" width="556" height="240"></canvas>
+  <table>
+    <tr><th>位置</th><th>F 左側</th><th>F 右側</th><th>C</th></tr>
+    <tr><td>影響線值</td><td>+0.617 (79/128)</td><td>-0.383 (-49/128)</td><td>-0.167 (-1/6)</td></tr>
+  </table>
+</div>
+<script>
+const cv=document.getElementById('c'); const ctx=cv.getContext('2d');
+const W=556,H=240, marginL=45, marginR=15, marginT=20, marginB=32;
+const plotW=W-marginL-marginR, plotH=H-marginT-marginB;
+const bounds=[0,15,30,40,50,80]; const names=['A','F','B','C','D','E'];
+const totalLen=80;
+function px(x){ return marginL + x/totalLen*plotW; }
+function py(v){ return marginT + plotH*0.4 - v/1.0*(plotH*0.45); }
+
+ctx.strokeStyle='#999'; ctx.lineWidth=1;
+ctx.beginPath(); ctx.moveTo(marginL,py(0)); ctx.lineTo(W-marginR,py(0)); ctx.stroke();
+ctx.strokeStyle='#ddd';
+bounds.forEach(b=>{ ctx.beginPath(); ctx.moveTo(px(b),marginT); ctx.lineTo(px(b),H-marginB); ctx.stroke(); });
+ctx.font='11px sans-serif'; ctx.fillStyle='#333';
+bounds.forEach((b,i)=>{ ctx.fillText(names[i], px(b)-3, H-marginB+14); });
+ctx.fillText('(內部鉸)', px(40)-16, H-marginB+28);
+
+// 已驗證的三點：F左、F右（不連續跳躍）、C
+ctx.strokeStyle='#0066cc'; ctx.lineWidth=2;
+ctx.setLineDash([4,3]);
+ctx.beginPath(); ctx.moveTo(px(0),py(0)); ctx.lineTo(px(15),py(0.617)); ctx.stroke();
+ctx.beginPath(); ctx.moveTo(px(15),py(-0.383)); ctx.lineTo(px(40),py(-0.167)); ctx.stroke();
+ctx.setLineDash([]);
+// F 點跳躍虛線
+ctx.strokeStyle='#999';
+ctx.beginPath(); ctx.moveTo(px(15),py(0.617)); ctx.lineTo(px(15),py(-0.383)); ctx.stroke();
+
+ctx.fillStyle='#0066cc';
+[[15,0.617],[15,-0.383],[40,-0.167],[0,0]].forEach(p=>{
+  ctx.beginPath(); ctx.arc(px(p[0]),py(p[1]),3,0,7); ctx.fill();
+});
+ctx.font='11px sans-serif';
+ctx.fillText('+0.617', px(15)+6, py(0.617)-4);
+ctx.fillText('-0.383', px(15)+6, py(-0.383)+12);
+ctx.fillText('-0.167', px(40)+6, py(-0.167)+12);
+
+ctx.fillStyle='#333'; ctx.font='10px sans-serif';
+ctx.fillText('虛線僅連接已驗證之三個關鍵點，非完整曲線擬合', 6, H-6);
+ctx.fillText('剪力影響線縱座標（per unit load）', 6, marginT-6);
+</script>
+</body>
+</html>

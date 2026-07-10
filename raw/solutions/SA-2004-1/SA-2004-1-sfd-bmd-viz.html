@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<title>SA-2004-1 剪力圖與彎矩圖</title>
+<style>
+  body { font-family: "Microsoft JhengHei", sans-serif; margin: 0; padding: 10px; background: #fafafa; }
+  .wrap { width: 580px; margin: 0 auto; background: #fff; border: 1px solid #ddd; border-radius: 8px; padding: 12px; box-sizing: border-box; }
+  h3 { margin: 4px 0 8px; font-size: 15px; color: #222; }
+  canvas { display: block; margin: 6px auto; background: #fff; }
+  .legend { font-size: 12px; color: #555; margin-top: 6px; line-height: 1.6; }
+  table { width: 100%; border-collapse: collapse; font-size: 11px; margin-top: 8px; }
+  td, th { border: 1px solid #ddd; padding: 2px 4px; text-align: center; }
+  th { background: #f0f0f0; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h3>SA-2004-1 — 靜定剛架 SFD / BMD（沿路徑 A→B→C→D 展開）</h3>
+  <div class="legend">A 固定端，柱 AB=4m；B 為內鉸；梁 BC=4m（C 為滾支承）、CD 外伸段=2m。柱受中點水平力 4t，梁受 2 t/m 均布載重。最大正彎矩發生於梁上 x=1.5m 處（距 B）。</div>
+  <canvas id="cM" width="556" height="220"></canvas>
+  <canvas id="cV" width="556" height="180"></canvas>
+  <table>
+    <tr><th>位置</th><th>A</th><th>受力點(y=2)</th><th>B</th><th>x=1.5(最大)</th><th>C⁻</th><th>C⁺</th><th>D</th></tr>
+    <tr><td>M (t-m)</td><td>8</td><td>0</td><td>0</td><td>2.25</td><td>-4</td><td>-4</td><td>0</td></tr>
+    <tr><td>V (t)</td><td>4</td><td>4→0</td><td>3</td><td>0</td><td>-5</td><td>+4</td><td>0</td></tr>
+  </table>
+</div>
+<script>
+function buildChart(canvasId, segments, bounds, names, yLabel, color){
+  const cv = document.getElementById(canvasId); const ctx = cv.getContext('2d');
+  const W = cv.width, H = cv.height, marginL=45, marginR=15, marginT=20, marginB=28;
+  const plotW = W-marginL-marginR, plotH = H-marginT-marginB;
+  const totalLen = bounds[bounds.length-1];
+  let maxAbs = 1;
+  segments.forEach(s=>{ for(let i=0;i<=20;i++){ const v=s.f(i/20*(s.x1-s.x0)); if(Math.abs(v)>maxAbs) maxAbs=Math.abs(v); } });
+  maxAbs *= 1.2;
+  function px(x){ return marginL + x/totalLen*plotW; }
+  function py(v){ return marginT + plotH/2 - v/maxAbs*(plotH/2-8); }
+  ctx.clearRect(0,0,W,H);
+  ctx.strokeStyle='#999'; ctx.lineWidth=1;
+  ctx.beginPath(); ctx.moveTo(marginL,py(0)); ctx.lineTo(W-marginR,py(0)); ctx.stroke();
+  ctx.strokeStyle='#ddd';
+  bounds.forEach(b=>{ ctx.beginPath(); ctx.moveTo(px(b),marginT); ctx.lineTo(px(b),H-marginB); ctx.stroke(); });
+  ctx.font='10px sans-serif'; ctx.fillStyle='#333';
+  bounds.forEach((b,i)=>{ ctx.fillText(names[i], px(b)-4, H-marginB+12); });
+
+  ctx.strokeStyle=color; ctx.lineWidth=2;
+  segments.forEach(s=>{
+    ctx.beginPath();
+    for(let i=0;i<=20;i++){
+      const lx = i/20*(s.x1-s.x0);
+      const x = px(s.x0+lx), y = py(s.f(lx));
+      if(i===0) ctx.moveTo(x,y); else ctx.lineTo(x,y);
+    }
+    ctx.stroke();
+  });
+  ctx.fillStyle='#333'; ctx.font='11px sans-serif';
+  ctx.fillText(yLabel, 6, marginT-6);
+}
+
+const bounds = [0,2,4,8,10];
+const names = ['A','受力點','B','C','D'];
+
+// M(x): 柱 A(y=0)->受力點(y=2)->B(y=4)，梁 B(x=0,абс4)->C(абс8)->D(абс10)
+const Msegs = [
+  {x0:0, x1:2, f:(y)=> 8 - 4*y},          // A -> 受力點
+  {x0:2, x1:4, f:()=> 0},                 // 受力點 -> B (皆為0)
+  {x0:4, x1:8, f:(x)=> 3*x - x*x},        // B -> C (梁 BC段, x local 0~4)
+  {x0:8, x1:10, f:(u)=> -(2-u)*(2-u)}     // C -> D (梁 CD外伸段, u local 0~2, 距C)
+];
+buildChart('cM', Msegs, bounds, names, 'M (t-m)', '#0066cc');
+
+const Vsegs = [
+  {x0:0, x1:2, f:()=> 4},
+  {x0:2, x1:4, f:()=> 0},
+  {x0:4, x1:8, f:(x)=> 3 - 2*x},
+  {x0:8, x1:10, f:(u)=> 4 - 2*u}
+];
+buildChart('cV', Vsegs, bounds, names, 'V (t)', '#cc6600');
+</script>
+</body>
+</html>

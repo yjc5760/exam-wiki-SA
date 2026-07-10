@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<title>SA-2003-1 彎矩圖 (BMD)</title>
+<style>
+  body { font-family: "Microsoft JhengHei", sans-serif; margin: 0; padding: 10px; background: #fafafa; }
+  .wrap { width: 580px; margin: 0 auto; background: #fff; border: 1px solid #ddd; border-radius: 8px; padding: 12px; box-sizing: border-box; }
+  h3 { margin: 4px 0 8px; font-size: 15px; color: #222; }
+  canvas { display: block; margin: 6px auto; background: #fff; }
+  .legend { font-size: 12px; color: #555; margin-top: 6px; line-height: 1.6; }
+  table { width: 100%; border-collapse: collapse; font-size: 11px; margin-top: 8px; }
+  td, th { border: 1px solid #ddd; padding: 2px 4px; text-align: center; }
+  th { background: #f0f0f0; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h3>SA-2003-1 — 三跨連續梁彎矩圖 (BMD)｜彎矩分配法</h3>
+  <div class="legend">
+    三跨各 30 ft：AB（跨中 8k）、BC（1 k/ft 均布 + 兩個 10ft 處 3k）、CD（跨中 8k，對稱於 AB）。
+    圖中已將彎矩分配法之桿端彎矩（順時針為正）轉換為標準 BMD 慣例（下緣受拉為正＝sagging），並疊加簡支梁彎矩繪出全跨變化。
+  </div>
+  <canvas id="cM" width="556" height="260"></canvas>
+  <table>
+    <tr><th>位置</th><th>A</th><th>AB跨中(x=15)</th><th>B</th><th>BC跨中(x=15)</th><th>C</th><th>CD跨中(x=15)</th><th>D</th></tr>
+    <tr><td>M (k-ft)</td><td>-8.33</td><td>+19.17</td><td>-73.33</td><td>+69.17</td><td>-73.33</td><td>+19.17</td><td>-8.33</td></tr>
+  </table>
+</div>
+<script>
+const cv = document.getElementById('cM'); const ctx = cv.getContext('2d');
+const W=556, H=260, marginL=45, marginR=15, marginT=20, marginB=28;
+const plotW=W-marginL-marginR, plotH=H-marginT-marginB;
+const bounds=[0,30,60,90]; const names=['A','B','C','D'];
+const totalLen=90;
+
+// 端點彎矩（BMD慣例, sagging positive）
+const BM = {A:-8.33, B:-73.33, C:-73.33, D:-8.33};
+
+function Msimple_AB(x){ // P=8k at midspan, L=30
+  return x<=15 ? 4*x : 4*(30-x);
+}
+function Msimple_CD(x){ return Msimple_AB(x); } // symmetric to AB
+function Msimple_BC(x){
+  const udl = 0.5*1*x*(30-x);
+  let pl;
+  if(x<=10) pl = 3*x;
+  else if(x<=20) pl = 30;
+  else pl = 30 - 3*(x-20);
+  return udl+pl;
+}
+
+const segs = [
+  {x0:0,x1:30, f:(x)=> BM.A + (BM.B-BM.A)*(x/30) + Msimple_AB(x)},
+  {x0:30,x1:60, f:(x)=> BM.B + (BM.C-BM.B)*(x/30) + Msimple_BC(x)},
+  {x0:60,x1:90, f:(x)=> BM.C + (BM.D-BM.C)*(x/30) + Msimple_CD(x)}
+];
+
+let maxAbs=1;
+segs.forEach(s=>{ for(let i=0;i<=40;i++){ const v=s.f(i/40*30); if(Math.abs(v)>maxAbs) maxAbs=Math.abs(v); } });
+maxAbs*=1.15;
+function px(x){ return marginL + x/totalLen*plotW; }
+function py(v){ return marginT + plotH/2 - v/maxAbs*(plotH/2-10); }
+
+ctx.strokeStyle='#999'; ctx.lineWidth=1;
+ctx.beginPath(); ctx.moveTo(marginL,py(0)); ctx.lineTo(W-marginR,py(0)); ctx.stroke();
+ctx.strokeStyle='#ddd';
+bounds.forEach(b=>{ ctx.beginPath(); ctx.moveTo(px(b),marginT); ctx.lineTo(px(b),H-marginB); ctx.stroke(); });
+ctx.font='10px sans-serif'; ctx.fillStyle='#333';
+bounds.forEach((b,i)=>{ ctx.fillText(names[i], px(b)-3, H-marginB+14); });
+ctx.fillText('30ft', px(15)-10, H-marginB+14);
+ctx.fillText('30ft', px(45)-10, H-marginB+14);
+ctx.fillText('30ft', px(75)-10, H-marginB+14);
+
+ctx.strokeStyle='#0066cc'; ctx.fillStyle='rgba(0,102,204,0.15)'; ctx.lineWidth=2;
+segs.forEach(s=>{
+  ctx.beginPath();
+  ctx.moveTo(px(s.x0), py(0));
+  for(let i=0;i<=40;i++){
+    const lx=i/40*(s.x1-s.x0);
+    ctx.lineTo(px(s.x0+lx), py(s.f(lx)));
+  }
+  ctx.lineTo(px(s.x1), py(0));
+  ctx.closePath();
+  ctx.globalAlpha=0.15; ctx.fill(); ctx.globalAlpha=1;
+  ctx.stroke();
+});
+
+// 標示關鍵值
+ctx.fillStyle='#0066cc'; ctx.font='11px sans-serif';
+[[0,BM.A],[30,BM.B],[60,BM.C],[90,BM.D]].forEach(p=>{
+  ctx.fillText(p[1].toFixed(2), px(p[0])-14, py(p[1])-6);
+});
+[[15,19.17],[45,69.17],[75,19.17]].forEach(p=>{
+  ctx.fillText('+'+p[1].toFixed(2), px(p[0])-14, py(p[1])-8);
+});
+ctx.fillStyle='#333';
+ctx.fillText('M (k-ft)（sagging 正，下緣受拉為正）', 6, marginT-6);
+</script>
+</body>
+</html>

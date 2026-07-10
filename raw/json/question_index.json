@@ -1,1390 +1,1989 @@
 {
-    "description": "SA ç§‘ç›®è€ƒé¡Œç¸½ç´¢å¼•ã€‚ç§‘ç›®ï¼šçµæ§‹å­¸ï¼ˆç¬¬ä¸€ç§‘ï¼‰ã€‚verificationStatus å’Œ tags æ˜¯ä¸»è¦äººå·¥ç¶­è­·æ¬„ä½ã€‚",
-    "tagSystem": {
-        "primaryTopicId": "å‘½é¡Œå¤§ç¶±ä¸»åˆ†é¡žï¼ˆSA-UN-nï¼Œä¾å®˜æ–¹å‘½é¡Œå¤§ç¶±ä¸‰å–®å…ƒï¼‰",
-        "secondaryTopicIds": "å‘½é¡Œå¤§ç¶±å‰¯åˆ†é¡žï¼ˆè·¨å­é …æ™‚ä½¿ç”¨ï¼‰",
-        "tags": "è‡ªç”±æ¨™ç±¤ï¼ˆ3-8å€‹ï¼Œè¦‹ CLAUDE-SPEC.md Â§8ï¼‰"
+  "description": "SA 科目考題總索引。科目：結構學（第一科）。verificationStatus 和 tags 是主要人工維護欄位。",
+  "tagSystem": {
+    "primaryTopicId": "å‘½é¡Œå¤§ç¶±ä¸»åˆ†é¡žï¼ˆSA-UN-nï¼Œä¾å®˜æ–¹å‘½é¡Œå¤§ç¶±ä¸‰å–®å…ƒï¼‰",
+    "secondaryTopicIds": "å‘½é¡Œå¤§ç¶±å‰¯åˆ†é¡žï¼ˆè·¨å­é …æ™‚ä½¿ç”¨ï¼‰",
+    "tags": "è‡ªç”±æ¨™ç±¤ï¼ˆ3-8å€‹ï¼Œè¦‹ CLAUDE-SPEC.md Â§8ï¼‰"
+  },
+  "questions": [
+    {
+      "moduleId": "SA-2025-1",
+      "year": 2025,
+      "rocYear": 114,
+      "questionNumber": 1,
+      "primaryTopicId": "SA-U2-4",
+      "primaryTopicName": "靜不定結構之矩陣分析法",
+      "secondaryTopicIds": [],
+      "verificationStatus": "verified",
+      "hasSolution": true,
+      "hasViz": true,
+      "hasHandwritten": false,
+      "tags": [
+        "矩陣勁度法",
+        "側向勁度",
+        "門型剛構架",
+        "固定端",
+        "靜態凝縮",
+        "忽略軸向變形"
+      ]
     },
-    "questions": [
-        {
-            "moduleId": "SA-2025-1",
-            "year": 2025,
-            "rocYear": 114,
-            "questionNumber": 1,
-            "primaryTopicId": "SA-U2-4",
-            "primaryTopicName": "éœä¸å®šçµæ§‹ä¹‹çŸ©é™£åˆ†æžæ³•",
-            "secondaryTopicIds": [],
-            "verificationStatus": "unverified",
-            "hasSolution": true,
-            "hasViz": true,
-            "hasHandwritten": false,
-            "tags": [
-                "çŸ©é™£å‹åº¦æ³•",
-                "å´å‘å‹åº¦",
-                "é–€åž‹å‰›æ§‹æž¶",
-                "å›ºå®šç«¯",
-                "éœæ…‹å‡ç¸®",
-                "å¿½ç•¥è»¸å‘è®Šå½¢"
-            ]
-        },
-        {
-            "moduleId": "SA-2025-2",
-            "year": 2025,
-            "rocYear": 114,
-            "questionNumber": 2,
-            "primaryTopicId": "SA-U1-3",
-            "primaryTopicName": "éœå®šåŠéœä¸å®šçµæ§‹å½±éŸ¿ç·š",
-            "secondaryTopicIds": [],
-            "verificationStatus": "unverified",
-            "hasSolution": true,
-            "hasViz": true,
-            "hasHandwritten": false,
-            "tags": [
-                "å½±éŸ¿ç·š",
-                "éœå®šæ¢",
-                "å…§é‰¸æŽ¥",
-                "å›ºå®šç«¯",
-                "æ‡¸è‡‚æ®µ",
-                "æ»¾æ”¯æ‰¿"
-            ]
-        },
-        {
-            "moduleId": "SA-2025-3",
-            "year": 2025,
-            "rocYear": 114,
-            "questionNumber": 3,
-            "primaryTopicId": "SA-U2-3",
-            "primaryTopicName": "éœä¸å®šçµæ§‹ä¹‹å‚¾è§’è®Šä½æ³•",
-            "secondaryTopicIds": [],
-            "verificationStatus": "unverified",
-            "hasSolution": true,
-            "hasViz": false,
-            "hasHandwritten": false,
-            "tags": [
-                "å‚¾è§’è®Šä½æ³•",
-                "éžå‡å‹»æ–·é¢",
-                "å‹åº¦ä¿‚æ•¸",
-                "å‚³éžä¿‚æ•¸",
-                "å›ºç«¯å½ŽçŸ©",
-                "å…±è»›æ¨‘"
-            ]
-        },
-        {
-            "moduleId": "SA-2025-4",
-            "year": 2025,
-            "rocYear": 114,
-            "questionNumber": 4,
-            "primaryTopicId": "SA-U2-4",
-            "primaryTopicName": "éœä¸å®šçµæ§‹ä¹‹çŸ©é™£åˆ†æžæ³•",
-            "secondaryTopicIds": [
-                "SA-U2-3"
-            ],
-            "verificationStatus": "unverified",
-            "hasSolution": true,
-            "hasViz": true,
-            "hasHandwritten": false,
-            "tags": [
-                "çŸ©é™£ä½ç§»æ³•",
-                "æ•´é«”å‹åº¦çŸ©é™£",
-                "è‡ªç”±åº¦",
-                "æ ¼åºŠçµæ§‹",
-                "å¯¦å¿ƒåœ“æ¡¿",
-                "å°ç¨±æ€§åˆ©ç”¨"
-            ]
-        },
-        {
-            "moduleId": "SA-2024-1",
-            "year": 2024,
-            "rocYear": 113,
-            "questionNumber": 1,
-            "primaryTopicId": "SA-U1-2",
-            "primaryTopicName": "éœå®šçµæ§‹åˆ†æž",
-            "secondaryTopicIds": [],
-            "verificationStatus": "unverified",
-            "hasSolution": true,
-            "hasViz": false,
-            "hasHandwritten": false,
-            "tags": [
-                "éœå®šæ¢",
-                "å…§éƒ¨é‰¸",
-                "æœ€å¤§ä½ç§»",
-                "å…±è»›æ¢æ³•",
-                "æ‡¸è‡‚æ¢"
-            ]
-        },
-        {
-            "moduleId": "SA-2024-2",
-            "year": 2024,
-            "rocYear": 113,
-            "questionNumber": 2,
-            "primaryTopicId": "SA-U2",
-            "primaryTopicName": "çµæ§‹è®Šä½åˆ†æž",
-            "secondaryTopicIds": [
-                "SA-U1"
-            ],
-            "verificationStatus": "unverified",
-            "hasSolution": true,
-            "hasViz": false,
-            "hasHandwritten": false,
-            "tags": [
-                "éœå®šæ¡æž¶",
-                "è£½é€ èª¤å·®",
-                "æº«åº¦è®ŠåŒ–",
-                "æ”¯æ‰¿æ²‰é™·",
-                "å¤šé¤˜è³‡è¨Šé™·é˜±"
-            ]
-        },
-        {
-            "moduleId": "SA-2024-3",
-            "year": 2024,
-            "rocYear": 113,
-            "questionNumber": 3,
-            "primaryTopicId": "SA-U2",
-            "primaryTopicName": "éœä¸å®šçµæ§‹åˆ†æž",
-            "secondaryTopicIds": [
-                "SA-U2-3"
-            ],
-            "verificationStatus": "unverified",
-            "hasSolution": true,
-            "hasViz": false,
-            "hasHandwritten": false,
-            "tags": [
-                "å‚¾è§’è®Šä½æ³•",
-                "é–€åž‹å‰›æ§‹æž¶",
-                "å°ç¨±æ€§",
-                "æ¥µå€¼æ¯”ä¾‹"
-            ]
-        },
-        {
-            "moduleId": "SA-2024-4",
-            "year": 2024,
-            "rocYear": 113,
-            "questionNumber": 4,
-            "primaryTopicId": "SA-U2-3",
-            "primaryTopicName": "éœä¸å®šçµæ§‹ä¹‹å‚¾è§’è®Šä½æ³•",
-            "secondaryTopicIds": [],
-            "verificationStatus": "unverified",
-            "hasSolution": true,
-            "hasViz": false,
-            "hasHandwritten": false,
-            "tags": [
-                "å‚¾è§’è®Šä½æ³•",
-                "å‰›æž¶",
-                "å´ç§»",
-                "é›†ä¸­åŠ›",
-                "åå°ç¨±",
-                "éžå‡å‹»æ–·é¢"
-            ]
-        },
-        {
-            "moduleId": "SA-2023-1",
-            "year": 2023,
-            "rocYear": 112,
-            "questionNumber": 1,
-            "primaryTopicId": "SA-U1-2",
-            "primaryTopicName": "éœå®šçµæ§‹åˆ†æž",
-            "secondaryTopicIds": [
-                "SA-U2"
-            ],
-            "verificationStatus": "unverified",
-            "hasSolution": true,
-            "hasViz": false,
-            "hasHandwritten": false,
-            "tags": [
-                "éœå®šå‰›æž¶",
-                "æ”¯æ‰¿æ²‰é™·",
-                "å‰›é«”ä½ç§»",
-                "å–®ä½åŠ›æ³•",
-                "ç–ŠåŠ åŽŸç†"
-            ]
-        },
-        {
-            "moduleId": "SA-2023-2",
-            "year": 2023,
-            "rocYear": 112,
-            "questionNumber": 2,
-            "primaryTopicId": "SA-U2-2",
-            "primaryTopicName": "éœä¸å®šçµæ§‹è«§åˆè®Šä½",
-            "secondaryTopicIds": [
-                "SA-U1-1"
-            ],
-            "verificationStatus": "unverified",
-            "hasSolution": true,
-            "hasViz": false,
-            "hasHandwritten": false,
-            "tags": [
-                "éœä¸å®šæ¡æž¶",
-                "è«§åˆè®Šä½æ³•",
-                "å¤šé¤˜åŠ›",
-                "ç¯€é»žæ³•",
-                "å–®ä½åŠ›æ³•"
-            ]
-        },
-        {
-            "moduleId": "SA-2023-3",
-            "year": 2023,
-            "rocYear": 112,
-            "questionNumber": 3,
-            "primaryTopicId": "SA-U3",
-            "primaryTopicName": "å‚¾è§’è®Šä½æ³•",
-            "secondaryTopicIds": [
-                "SA-U3-1"
-            ],
-            "verificationStatus": "unverified",
-            "hasSolution": true,
-            "hasViz": false,
-            "hasHandwritten": false,
-            "tags": [
-                "å¹³é¢å‰›æž¶",
-                "ç„¡å´ç§»",
-                "å‚¾è§’è®Šä½æ³•",
-                "é‰¸ç«¯ä¿®æ­£",
-                "æ•´é«”å¹³è¡¡"
-            ]
-        },
-        {
-            "moduleId": "SA-2023-4",
-            "year": 2023,
-            "rocYear": 112,
-            "questionNumber": 4,
-            "primaryTopicId": "SA-U5",
-            "primaryTopicName": "è¿‘ä»£çµæ§‹ç³»çµ±åˆ†æž",
-            "secondaryTopicIds": [
-                "SA-U5-1"
-            ],
-            "verificationStatus": "unverified",
-            "hasSolution": true,
-            "hasViz": false,
-            "hasHandwritten": false,
-            "tags": [
-                "åå¿ƒæ–œæ’æ§‹æž¶",
-                "EBF",
-                "å‰›æ€§å€åŸŸ",
-                "é€£æ¢æ—‹è½‰è§’",
-                "æ©Ÿæ§‹åˆ†æž",
-                "å´å‘å‹åº¦åˆ†é…"
-            ]
-        },
-        {
-            "moduleId": "SA-2022-1",
-            "year": 2022,
-            "rocYear": 111,
-            "questionNumber": 1,
-            "primaryTopicId": "SA-U2",
-            "primaryTopicName": "éœä¸å®šçµæ§‹èˆ‡ä½ç§»",
-            "secondaryTopicIds": [
-                "SA-U2-1"
-            ],
-            "verificationStatus": "unverified",
-            "hasSolution": true,
-            "hasViz": false,
-            "hasHandwritten": false,
-            "tags": [
-                "å½ŽçŸ©åœ–åæ±‚",
-                "å½ˆç°§",
-                "å…±è»›æ¢æ³•",
-                "æ”¯æ‰¿æ²‰é™·",
-                "é‰¸æŽ¥é»ž"
-            ]
-        },
-        {
-            "moduleId": "SA-2022-2",
-            "year": 2022,
-            "rocYear": 111,
-            "questionNumber": 2,
-            "primaryTopicId": "SA-U2",
-            "primaryTopicName": "éœä¸å®šçµæ§‹èˆ‡ä½ç§»",
-            "secondaryTopicIds": [
-                "SA-U2-3"
-            ],
-            "verificationStatus": "unverified",
-            "hasSolution": true,
-            "hasViz": false,
-            "hasHandwritten": false,
-            "tags": [
-                "å‚¾è§’è®Šä½æ³•",
-                "æœ‰å´ç§»å‰›æž¶",
-                "å´ç§»æ–¹ç¨‹å¼",
-                "ä¿®æ­£å›ºç«¯å½ŽçŸ©",
-                "ç–ŠåŠ æ³•"
-            ]
-        },
-        {
-            "moduleId": "SA-2022-3",
-            "year": 2022,
-            "rocYear": 111,
-            "questionNumber": 3,
-            "primaryTopicId": "SA-U1",
-            "primaryTopicName": "éœå®šçµæ§‹åˆ†æž",
-            "secondaryTopicIds": [
-                "SA-U1-3"
-            ],
-            "verificationStatus": "unverified",
-            "hasSolution": true,
-            "hasViz": false,
-            "hasHandwritten": false,
-            "tags": [
-                "å½±éŸ¿ç·š",
-                "æ¡æž¶",
-                "ç´°é•·æ‹‰æ¡¿",
-                "å…§éƒ¨é‰¸",
-                "ç§»å‹•è¼‰é‡"
-            ]
-        },
-        {
-            "moduleId": "SA-2022-4",
-            "year": 2022,
-            "rocYear": 111,
-            "questionNumber": 4,
-            "primaryTopicId": "SA-U2",
-            "primaryTopicName": "éœä¸å®šçµæ§‹èˆ‡ä½ç§»",
-            "secondaryTopicIds": [
-                "SA-U2-4"
-            ],
-            "verificationStatus": "unverified",
-            "hasSolution": true,
-            "hasViz": false,
-            "hasHandwritten": false,
-            "tags": [
-                "å‰ªåŠ›æ£Ÿæž¶",
-                "å‰›æ€§æ¨“æ¿",
-                "å´ç§»å‰›åº¦",
-                "ä¸è¦å‰‡æ§‹æž¶",
-                "æŒ‘é«˜æŸ±"
-            ]
-        },
-        {
-            "year": 2021,
-            "moduleId": "SA-2021-1",
-            "primaryTopicName": "靜不定結構之傾角變位法",
-            "questionNumber": 1,
-            "rocYear": 110,
-            "hasViz": true,
-            "hasHandwritten": false,
-            "verificationStatus": "unverified",
-            "hasSolution": true,
-            "tags": [
-                "傾角變位法",
-                "彈簧支承",
-                "內部鉸",
-                "剛度等效",
-                "連續梁"
-            ],
-            "primaryTopicId": "SA-U2-3",
-            "secondaryTopicIds": []
-        },
-        {
-            "year": 2021,
-            "moduleId": "SA-2021-2",
-            "primaryTopicName": "靜不定結構之傾角變位法",
-            "questionNumber": 2,
-            "rocYear": 110,
-            "hasViz": true,
-            "hasHandwritten": false,
-            "verificationStatus": "unverified",
-            "hasSolution": true,
-            "tags": [
-                "傾角變位法",
-                "有側移剛架",
-                "對稱結構",
-                "反對稱載重",
-                "連桿效應"
-            ],
-            "primaryTopicId": "SA-U2-3",
-            "secondaryTopicIds": []
-        },
-        {
-            "year": 2021,
-            "moduleId": "SA-2021-3",
-            "primaryTopicName": "影響線與最大力",
-            "questionNumber": 3,
-            "rocYear": 110,
-            "hasViz": true,
-            "hasHandwritten": false,
-            "verificationStatus": "unverified",
-            "hasSolution": true,
-            "tags": [
-                "影響線",
-                "靜不定桁架",
-                "單位力法",
-                "柔軟度法",
-                "Müller-Breslau"
-            ],
-            "primaryTopicId": "SA-U3-2",
-            "secondaryTopicIds": [
-                "SA-U2-1"
-            ]
-        },
-        {
-            "year": 2021,
-            "moduleId": "SA-2021-4",
-            "primaryTopicName": "剛性樓板與側力分配",
-            "questionNumber": 4,
-            "rocYear": 110,
-            "hasViz": true,
-            "hasHandwritten": false,
-            "verificationStatus": "unverified",
-            "hasSolution": true,
-            "tags": [
-                "剛性樓板",
-                "平移與扭轉",
-                "剛心位置",
-                "扭轉勁度",
-                "柱剪力分配"
-            ],
-            "primaryTopicId": "SA-U5-1",
-            "secondaryTopicIds": []
-        },
-        {
-            "year": 2020,
-            "moduleId": "SA-2020-1",
-            "primaryTopicName": "傾角變位法",
-            "questionNumber": 1,
-            "rocYear": 109,
-            "hasViz": true,
-            "hasHandwritten": false,
-            "verificationStatus": "unverified",
-            "hasSolution": true,
-            "tags": [
-                "傾角變位法",
-                "無軸向變形",
-                "垂直滾支承",
-                "靜不定剛架"
-            ],
-            "primaryTopicId": "SA-U2-3",
-            "secondaryTopicIds": []
-        },
-        {
-            "year": 2020,
-            "moduleId": "SA-2020-2",
-            "primaryTopicName": "傾角變位法",
-            "questionNumber": 2,
-            "rocYear": 109,
-            "hasViz": true,
-            "hasHandwritten": false,
-            "verificationStatus": "unverified",
-            "hasSolution": true,
-            "tags": [
-                "傾角變位法",
-                "對稱性",
-                "剛架分析"
-            ],
-            "primaryTopicId": "SA-U2-3",
-            "secondaryTopicIds": []
-        },
-        {
-            "year": 2020,
-            "moduleId": "SA-2020-3",
-            "primaryTopicName": "靜不定結構影響線",
-            "questionNumber": 3,
-            "rocYear": 109,
-            "hasViz": true,
-            "hasHandwritten": false,
-            "verificationStatus": "unverified",
-            "hasSolution": true,
-            "tags": [
-                "影響線",
-                "靜不定結構",
-                "Müller-Breslau原理",
-                "柔度法",
-                "Maxwell-Betti定理"
-            ],
-            "primaryTopicId": "SA-U3-2",
-            "secondaryTopicIds": []
-        },
-        {
-            "year": 2020,
-            "moduleId": "SA-2020-4",
-            "primaryTopicName": "側力分配與剛性樓板",
-            "questionNumber": 4,
-            "rocYear": 109,
-            "hasViz": true,
-            "hasHandwritten": false,
-            "verificationStatus": "unverified",
-            "hasSolution": true,
-            "tags": [
-                "剛架與剪力牆互制",
-                "矩陣分析",
-                "剪力建築"
-            ],
-            "primaryTopicId": "SA-U5-1",
-            "secondaryTopicIds": []
-        },
-        {
-            "moduleId": "SA-2019-1",
-            "year": 2019,
-            "rocYear": 108,
-            "questionNumber": 1,
-            "primaryTopicId": "SA-U2-1",
-            "primaryTopicName": "靜不定結構最小功法",
-            "secondaryTopicIds": [
-                "SA-U1-1"
-            ],
-            "verificationStatus": "unverified",
-            "hasSolution": true,
-            "hasViz": false,
-            "hasHandwritten": false,
-            "tags": [
-                "靜不定桁架",
-                "最小功法",
-                "破壞機構",
-                "挫曲",
-                "極限載重"
-            ]
-        },
-        {
-            "moduleId": "SA-2019-2",
-            "year": 2019,
-            "rocYear": 108,
-            "questionNumber": 2,
-            "primaryTopicId": "SA-U3-2",
-            "primaryTopicName": "建築結構系統分析",
-            "secondaryTopicIds": [],
-            "verificationStatus": "unverified",
-            "hasSolution": true,
-            "hasViz": false,
-            "hasHandwritten": false,
-            "tags": [
-                "范倫迪爾桁架",
-                "近似分析",
-                "反曲點",
-                "彎矩圖",
-                "軸力圖"
-            ]
-        },
-        {
-            "moduleId": "SA-2019-3",
-            "year": 2019,
-            "rocYear": 108,
-            "questionNumber": 3,
-            "primaryTopicId": "SA-U2-2",
-            "primaryTopicName": "傾角變位法",
-            "secondaryTopicIds": [],
-            "verificationStatus": "unverified",
-            "hasSolution": true,
-            "hasViz": false,
-            "hasHandwritten": false,
-            "tags": [
-                "傾角變位法",
-                "連續梁",
-                "支承沉陷",
-                "對稱性"
-            ]
-        },
-        {
-            "moduleId": "SA-2019-4",
-            "year": 2019,
-            "rocYear": 108,
-            "questionNumber": 4,
-            "primaryTopicId": "SA-U4-1",
-            "primaryTopicName": "矩陣位移法",
-            "secondaryTopicIds": [],
-            "verificationStatus": "unverified",
-            "hasSolution": true,
-            "hasViz": false,
-            "hasHandwritten": false,
-            "tags": [
-                "勁度矩陣",
-                "半剛性接頭",
-                "旋轉彈簧",
-                "節點載重向量"
-            ]
-        },
-        {
-            "moduleId": "SA-2018-1",
-            "year": 2018,
-            "rocYear": 107,
-            "questionNumber": 1,
-            "primaryTopicId": "SA-U3-2",
-            "primaryTopicName": "建築結構系統分析",
-            "secondaryTopicIds": [],
-            "verificationStatus": "unverified",
-            "hasSolution": true,
-            "hasViz": false,
-            "hasHandwritten": false,
-            "tags": [
-                "剛架與剪力牆互制",
-                "變形模態",
-                "剪力型與彎曲型",
-                "水平力分配"
-            ]
-        },
-        {
-            "moduleId": "SA-2018-2",
-            "year": 2018,
-            "rocYear": 107,
-            "questionNumber": 2,
-            "primaryTopicId": "SA-U2-4",
-            "primaryTopicName": "靜不定結構之矩陣分析法",
-            "secondaryTopicIds": [],
-            "verificationStatus": "unverified",
-            "hasSolution": true,
-            "hasViz": false,
-            "hasHandwritten": false,
-            "tags": [
-                "直接勁度法",
-                "勁度矩陣",
-                "節點外力向量",
-                "彎矩圖",
-                "Z型構架"
-            ]
-        },
-        {
-            "moduleId": "SA-2018-3",
-            "year": 2018,
-            "rocYear": 107,
-            "questionNumber": 3,
-            "primaryTopicId": "SA-U3-4",
-            "primaryTopicName": "結構系統定性分析與能量法",
-            "secondaryTopicIds": [],
-            "verificationStatus": "unverified",
-            "hasSolution": true,
-            "hasViz": false,
-            "hasHandwritten": false,
-            "tags": [
-                "最小功法",
-                "靜不定結構",
-                "纜索無壓力",
-                "彎矩圖"
-            ]
-        },
-        {
-            "moduleId": "SA-2018-4",
-            "year": 2018,
-            "rocYear": 107,
-            "questionNumber": 4,
-            "primaryTopicId": "SA-U4",
-            "primaryTopicName": "影響線分析",
-            "secondaryTopicIds": [],
-            "verificationStatus": "unverified",
-            "hasSolution": true,
-            "hasViz": false,
-            "hasHandwritten": false,
-            "tags": [
-                "影響線",
-                "靜不定結構",
-                "馬克士威-貝提定理",
-                "對稱性",
-                "剛架位移"
-            ]
-        },
-        {
-            "moduleId": "SA-2017-1",
-            "year": 2017,
-            "rocYear": 106,
-            "questionNumber": 1,
-            "primaryTopicId": "SA-U1-2",
-            "primaryTopicName": "靜定桁架分析",
-            "secondaryTopicIds": [
-                "SA-U1-5"
-            ],
-            "verificationStatus": "unverified",
-            "hasSolution": true,
-            "hasViz": false,
-            "hasHandwritten": false,
-            "tags": [
-                "靜定桁架",
-                "節點法",
-                "零桿判斷",
-                "虛功法",
-                "水平位移"
-            ]
-        },
-        {
-            "moduleId": "SA-2017-2",
-            "year": 2017,
-            "rocYear": 106,
-            "questionNumber": 2,
-            "primaryTopicId": "SA-U2-1",
-            "primaryTopicName": "靜不定結構分析—力法",
-            "secondaryTopicIds": [],
-            "verificationStatus": "unverified",
-            "hasSolution": true,
-            "hasViz": false,
-            "hasHandwritten": false,
-            "tags": [
-                "最小功法",
-                "卡氏定理",
-                "內鉸條件",
-                "固定端彎矩",
-                "靜不定梁"
-            ]
-        },
-        {
-            "moduleId": "SA-2017-3",
-            "year": 2017,
-            "rocYear": 106,
-            "questionNumber": 3,
-            "primaryTopicId": "SA-U2-3",
-            "primaryTopicName": "靜不定結構分析—位移法",
-            "secondaryTopicIds": [],
-            "verificationStatus": "unverified",
-            "hasSolution": true,
-            "hasViz": false,
-            "hasHandwritten": false,
-            "tags": [
-                "傾角變位法",
-                "門型剛架",
-                "側移",
-                "層剪力方程",
-                "節點轉角"
-            ]
-        },
-        {
-            "moduleId": "SA-2017-4",
-            "year": 2017,
-            "rocYear": 106,
-            "questionNumber": 4,
-            "primaryTopicId": "SA-U4-1",
-            "primaryTopicName": "抗側力系統設計概念",
-            "secondaryTopicIds": [],
-            "verificationStatus": "unverified",
-            "hasSolution": true,
-            "hasViz": false,
-            "hasHandwritten": false,
-            "tags": [
-                "剪力牆",
-                "平面配置",
-                "偏心",
-                "扭矩",
-                "水平載重傳遞"
-            ]
-        },
-        {
-            "moduleId": "SA-2016-1",
-            "year": 2016,
-            "rocYear": 105,
-            "questionNumber": 1,
-            "primaryTopicId": "SA-U1-2",
-            "primaryTopicName": "靜定結構分析",
-            "secondaryTopicIds": [],
-            "verificationStatus": "unverified",
-            "hasSolution": true,
-            "hasViz": true,
-            "hasHandwritten": false,
-            "tags": [
-                "靜定剛架",
-                "內鉸",
-                "彎矩圖",
-                "節點平衡"
-            ]
-        },
-        {
-            "moduleId": "SA-2016-2",
-            "year": 2016,
-            "rocYear": 105,
-            "questionNumber": 2,
-            "primaryTopicId": "SA-U1-3",
-            "primaryTopicName": "靜定及靜不定結構影響線",
-            "secondaryTopicIds": [
-                "SA-U2-3"
-            ],
-            "verificationStatus": "unverified",
-            "hasSolution": true,
-            "hasViz": true,
-            "hasHandwritten": false,
-            "tags": [
-                "影響線",
-                "靜不定剛架",
-                "Müller-Breslau原理",
-                "有側移剛架",
-                "移動載重"
-            ]
-        },
-        {
-            "moduleId": "SA-2016-3",
-            "year": 2016,
-            "rocYear": 105,
-            "questionNumber": 3,
-            "primaryTopicId": "SA-U2-1",
-            "primaryTopicName": "靜不定結構最小功法",
-            "secondaryTopicIds": [
-                "SA-U2-2"
-            ],
-            "verificationStatus": "unverified",
-            "hasSolution": true,
-            "hasViz": true,
-            "hasHandwritten": false,
-            "tags": [
-                "虛功法",
-                "單位力法",
-                "側移變位",
-                "基本結構選取",
-                "圖形積分法"
-            ]
-        },
-        {
-            "moduleId": "SA-2016-4",
-            "year": 2016,
-            "rocYear": 105,
-            "questionNumber": 4,
-            "primaryTopicId": "SA-U1-1",
-            "primaryTopicName": "桁架分析",
-            "secondaryTopicIds": [
-                "SA-U1-1-1"
-            ],
-            "verificationStatus": "unverified",
-            "hasSolution": true,
-            "hasViz": false,
-            "hasHandwritten": false,
-            "tags": [
-                "零力桿件",
-                "桁架",
-                "節點平衡"
-            ]
-        },
-        {
-            "moduleId": "SA-2014-1",
-            "year": 2014,
-            "rocYear": 103,
-            "questionNumber": 1,
-            "primaryTopicId": "SA-U1-2",
-            "primaryTopicName": "靜定結構之分析",
-            "secondaryTopicIds": [
-                "SA-U1-3"
-            ],
-            "verificationStatus": "unverified",
-            "hasSolution": true,
-            "hasViz": false,
-            "hasHandwritten": false,
-            "tags": [
-                "靜定桁架",
-                "影響線",
-                "最大軸力"
-            ]
-        },
-        {
-            "moduleId": "SA-2014-2",
-            "year": 2014,
-            "rocYear": 103,
-            "questionNumber": 2,
-            "primaryTopicId": "SA-U2-2",
-            "primaryTopicName": "靜不定結構諧合變位",
-            "secondaryTopicIds": [],
-            "verificationStatus": "unverified",
-            "hasSolution": true,
-            "hasViz": false,
-            "hasHandwritten": false,
-            "tags": [
-                "諧合變位法",
-                "複合結構",
-                "最大彎矩"
-            ]
-        },
-        {
-            "moduleId": "SA-2014-3",
-            "year": 2014,
-            "rocYear": 103,
-            "questionNumber": 3,
-            "primaryTopicId": "SA-U2-3",
-            "primaryTopicName": "靜不定結構之傾角變位法",
-            "secondaryTopicIds": [],
-            "verificationStatus": "unverified",
-            "hasSolution": true,
-            "hasViz": false,
-            "hasHandwritten": false,
-            "tags": [
-                "傾角變位法",
-                "剛架結構",
-                "節點彎矩"
-            ]
-        },
-        {
-            "moduleId": "SA-2014-4",
-            "year": 2014,
-            "rocYear": 103,
-            "questionNumber": 4,
-            "primaryTopicId": "SA-U2-1",
-            "primaryTopicName": "靜不定結構最小功法",
-            "secondaryTopicIds": [],
-            "verificationStatus": "unverified",
-            "hasSolution": true,
-            "hasViz": false,
-            "hasHandwritten": false,
-            "tags": [
-                "最小功法",
-                "剛架",
-                "轉角計算"
-            ]
-        },
-        {
-            "moduleId": "SA-2012-1",
-            "year": 2012,
-            "rocYear": 101,
-            "questionNumber": 1,
-            "primaryTopicId": "SA-U1-2",
-            "primaryTopicName": "靜定結構分析",
-            "secondaryTopicIds": [
-                "SA-U2-1"
-            ],
-            "verificationStatus": "unverified",
-            "hasSolution": true,
-            "hasViz": false,
-            "hasHandwritten": false,
-            "tags": [
-                "靜定梁",
-                "內鉸",
-                "彎矩圖",
-                "位移與轉角",
-                "反曲點"
-            ]
-        },
-        {
-            "moduleId": "SA-2012-2",
-            "year": 2012,
-            "rocYear": 101,
-            "questionNumber": 2,
-            "primaryTopicId": "SA-U2-1",
-            "primaryTopicName": "靜不定結構之能量法",
-            "secondaryTopicIds": [],
-            "verificationStatus": "unverified",
-            "hasSolution": true,
-            "hasViz": false,
-            "hasHandwritten": false,
-            "tags": [
-                "最小功法",
-                "靜不定桁架",
-                "彈簧支承",
-                "內力計算",
-                "應變能"
-            ]
-        },
-        {
-            "moduleId": "SA-2012-3",
-            "year": 2012,
-            "rocYear": 101,
-            "questionNumber": 3,
-            "primaryTopicId": "SA-U2-3",
-            "primaryTopicName": "靜不定結構之傾角變位法",
-            "secondaryTopicIds": [],
-            "verificationStatus": "unverified",
-            "hasSolution": true,
-            "hasViz": false,
-            "hasHandwritten": false,
-            "tags": [
-                "剛架",
-                "鉸支承",
-                "滾支承",
-                "彎矩圖",
-                "變形曲線"
-            ]
-        },
-        {
-            "moduleId": "SA-2012-4",
-            "year": 2012,
-            "rocYear": 101,
-            "questionNumber": 4,
-            "primaryTopicId": "SA-U4-1",
-            "primaryTopicName": "直接勁度法",
-            "secondaryTopicIds": [],
-            "verificationStatus": "unverified",
-            "hasSolution": true,
-            "hasViz": false,
-            "hasHandwritten": false,
-            "tags": [
-                "勁度矩陣",
-                "剛架",
-                "結點彎矩",
-                "自由度",
-                "無窮大剛度"
-            ]
-        },
-        {
-            "moduleId": "SA-2008-1",
-            "year": 2008,
-            "rocYear": 97,
-            "questionNumber": 1,
-            "primaryTopicId": "SA-U1-1",
-            "primaryTopicName": "桁架結構分析",
-            "secondaryTopicIds": [
-                "SA-U1-3",
-                "SA-U1-5"
-            ],
-            "verificationStatus": "unverified",
-            "hasSolution": true,
-            "hasViz": false,
-            "hasHandwritten": false,
-            "tags": [
-                "靜不定桁架",
-                "單位力法",
-                "支承反力",
-                "內力計算"
-            ]
-        },
-        {
-            "moduleId": "SA-2008-2",
-            "year": 2008,
-            "rocYear": 97,
-            "questionNumber": 2,
-            "primaryTopicId": "SA-U3-1",
-            "primaryTopicName": "傾角變位法",
-            "secondaryTopicIds": [
-                "SA-U3-3"
-            ],
-            "verificationStatus": "unverified",
-            "hasSolution": true,
-            "hasViz": false,
-            "hasHandwritten": false,
-            "tags": [
-                "連續梁",
-                "傾角變位法",
-                "彎矩圖",
-                "剪力圖"
-            ]
-        },
-        {
-            "moduleId": "SA-2008-3",
-            "year": 2008,
-            "rocYear": 97,
-            "questionNumber": 3,
-            "primaryTopicId": "SA-U1-2",
-            "primaryTopicName": "能量法",
-            "secondaryTopicIds": [
-                "SA-U1-2"
-            ],
-            "verificationStatus": "unverified",
-            "hasSolution": true,
-            "hasViz": false,
-            "hasHandwritten": false,
-            "tags": [
-                "最小功法",
-                "剛架",
-                "均佈載重",
-                "彎矩圖"
-            ]
-        },
-        {
-            "moduleId": "SA-2008-4",
-            "year": 2008,
-            "rocYear": 97,
-            "questionNumber": 4,
-            "primaryTopicId": "SA-U4-1",
-            "primaryTopicName": "直接勁度法",
-            "secondaryTopicIds": [
-                "SA-U4-1"
-            ],
-            "verificationStatus": "unverified",
-            "hasSolution": true,
-            "hasViz": false,
-            "hasHandwritten": false,
-            "tags": [
-                "矩陣直接勁度法",
-                "剛架",
-                "均佈載重",
-                "彎矩圖"
-            ]
-        },
-        {
-            "moduleId": "SA-2007-1",
-            "year": 2007,
-            "rocYear": 96,
-            "questionNumber": 1,
-            "primaryTopicId": "SA-U1-1",
-            "primaryTopicName": "桁架結構分析",
-            "secondaryTopicIds": [
-                "SA-U1-3"
-            ],
-            "verificationStatus": "unverified",
-            "hasSolution": true,
-            "hasViz": false,
-            "hasHandwritten": false,
-            "tags": [
-                "靜不定桁架",
-                "內力計算",
-                "支承反力"
-            ]
-        },
-        {
-            "moduleId": "SA-2007-2",
-            "year": 2007,
-            "rocYear": 96,
-            "questionNumber": 2,
-            "primaryTopicId": "SA-U4-1",
-            "primaryTopicName": "剛架分析",
-            "secondaryTopicIds": [],
-            "verificationStatus": "unverified",
-            "hasSolution": true,
-            "hasViz": false,
-            "hasHandwritten": false,
-            "tags": [
-                "剛架",
-                "結點彎矩"
-            ]
-        },
-        {
-            "moduleId": "SA-2007-3",
-            "year": 2007,
-            "rocYear": 96,
-            "questionNumber": 3,
-            "primaryTopicId": "SA-U7-1",
-            "primaryTopicName": "影響線與移動載重",
-            "secondaryTopicIds": [],
-            "verificationStatus": "unverified",
-            "hasSolution": true,
-            "hasViz": false,
-            "hasHandwritten": false,
-            "tags": [
-                "移動載重",
-                "卡車載重",
-                "最大反力",
-                "桁架內力"
-            ]
-        },
-        {
-            "moduleId": "SA-2007-4",
-            "year": 2007,
-            "rocYear": 96,
-            "questionNumber": 4,
-            "primaryTopicId": "SA-U3-1",
-            "primaryTopicName": "傾角變位法",
-            "secondaryTopicIds": [
-                "SA-U3-3"
-            ],
-            "verificationStatus": "unverified",
-            "hasSolution": true,
-            "hasViz": false,
-            "hasHandwritten": false,
-            "tags": [
-                "剛架",
-                "傾角變位法",
-                "剪力圖",
-                "彎矩圖"
-            ]
-        },
-        {
-            "moduleId": "SA-2013-1",
-            "year": 102,
-            "questionIndex": 1,
-            "topicId": "SA-U1-2",
-            "secondaryTopicIds": [],
-            "tags": [
-                "桁架",
-                "內力分析"
-            ],
-            "hasSolution": true,
-            "hasViz": false,
-            "verificationStatus": "unverified",
-            "difficulty": 3
-        },
-        {
-            "moduleId": "SA-2013-2",
-            "year": 102,
-            "questionIndex": 2,
-            "topicId": "SA-U2-1",
-            "secondaryTopicIds": [],
-            "tags": [
-                "卡氏定理",
-                "靜不定剛架",
-                "反力",
-                "轉角"
-            ],
-            "hasSolution": true,
-            "hasViz": false,
-            "verificationStatus": "unverified",
-            "difficulty": 4
-        },
-        {
-            "moduleId": "SA-2013-3",
-            "year": 102,
-            "questionIndex": 3,
-            "topicId": "SA-U2-3",
-            "secondaryTopicIds": [],
-            "tags": [
-                "傾角變位法",
-                "剛架",
-                "鉸接",
-                "剪力圖",
-                "彎矩圖"
-            ],
-            "hasSolution": true,
-            "hasViz": false,
-            "verificationStatus": "unverified",
-            "difficulty": 4
-        },
-        {
-            "moduleId": "SA-2013-4",
-            "year": 102,
-            "questionIndex": 4,
-            "topicId": "SA-U4-1",
-            "secondaryTopicIds": [],
-            "tags": [
-                "直接勁度法",
-                "桁架",
-                "勁度矩陣"
-            ],
-            "hasSolution": true,
-            "hasViz": false,
-            "verificationStatus": "unverified",
-            "difficulty": 4
-        },
-        {
-            "moduleId": "SA-2011-1",
-            "examYear": "2011",
-            "examName": "100年 高等考試 結構工程技師",
-            "questionNumber": "1",
-            "questionType": "calculation",
-            "topicCategories": [
-                "SA-U2-2"
-            ],
-            "subCategories": [
-                "SA-U2-3"
-            ],
-            "tags": [
-                "靜不定桁架",
-                "溫度變化",
-                "支承沉陷",
-                "製造誤差",
-                "最小功法",
-                "柔度矩陣法"
-            ],
-            "hasSolution": true,
-            "difficulty": 4
-        },
-        {
-            "moduleId": "SA-2011-2",
-            "examYear": "2011",
-            "examName": "100年 高等考試 結構工程技師",
-            "questionNumber": "2",
-            "questionType": "calculation",
-            "topicCategories": [
-                "SA-U3-1"
-            ],
-            "subCategories": [
-                "SA-U3-2"
-            ],
-            "tags": [
-                "剛架",
-                "傾角變位法",
-                "彎矩圖"
-            ],
-            "hasSolution": true,
-            "difficulty": 4
-        },
-        {
-            "moduleId": "SA-2011-3",
-            "examYear": "2011",
-            "examName": "100年 高等考試 結構工程技師",
-            "questionNumber": "3",
-            "questionType": "calculation",
-            "topicCategories": [
-                "SA-U1-3"
-            ],
-            "subCategories": [
-                "SA-U1-3"
-            ],
-            "tags": [
-                "連續梁",
-                "Müller-Breslau",
-                "影響線",
-                "最大彎矩"
-            ],
-            "hasSolution": true,
-            "difficulty": 4
-        },
-        {
-            "moduleId": "SA-2011-4",
-            "examYear": "2011",
-            "examName": "100年 高等考試 結構工程技師",
-            "questionNumber": "4",
-            "questionType": "calculation",
-            "topicCategories": [
-                "SA-U4-1"
-            ],
-            "subCategories": [
-                "SA-U4-2"
-            ],
-            "tags": [
-                "桁架",
-                "直接勁度法",
-                "製造誤差",
-                "內力"
-            ],
-            "hasSolution": true,
-            "difficulty": 4
-        },
-        {
-            "moduleId": "SA-2010-1",
-            "year": 2010,
-            "questionNumber": 1,
-            "mainCategory": "待分類",
-            "subCategory": "待分類",
-            "analysisMethod": "待分類",
-            "hasSolution": true,
-            "verificationStatus": "unverified"
-        },
-        {
-            "moduleId": "SA-2010-2",
-            "year": 2010,
-            "questionNumber": 2,
-            "mainCategory": "待分類",
-            "subCategory": "待分類",
-            "analysisMethod": "待分類",
-            "hasSolution": true,
-            "verificationStatus": "unverified"
-        },
-        {
-            "moduleId": "SA-2010-3",
-            "year": 2010,
-            "questionNumber": 3,
-            "mainCategory": "待分類",
-            "subCategory": "待分類",
-            "analysisMethod": "待分類",
-            "hasSolution": true,
-            "verificationStatus": "unverified"
-        },
-        {
-            "moduleId": "SA-2010-4",
-            "year": 2010,
-            "questionNumber": 4,
-            "mainCategory": "待分類",
-            "subCategory": "待分類",
-            "analysisMethod": "待分類",
-            "hasSolution": true,
-            "verificationStatus": "unverified"
-        },
-        {
-            "moduleId": "SA-2009-1",
-            "year": "2009",
-            "questionId": "1",
-            "title": "桁架結構支承沉陷反力計算",
-            "mainCategory": "SA-U1-1",
-            "subCategory": "SA-U1-2",
-            "method": "傾角撓度法或直接勁度法或力法",
-            "hasSolution": true,
-            "verificationStatus": "unverified"
-        },
-        {
-            "moduleId": "SA-2009-2",
-            "year": "2009",
-            "questionId": "2",
-            "title": "樑與連桿組合系統變位分析",
-            "mainCategory": "SA-U2-1",
-            "subCategory": "SA-U2-2",
-            "method": "單位力法 (Unit Load Method)",
-            "hasSolution": true,
-            "verificationStatus": "unverified"
-        },
-        {
-            "moduleId": "SA-2009-3",
-            "year": "2009",
-            "questionId": "3",
-            "title": "pi型剛架總體水平勁度與彎矩圖",
-            "mainCategory": "SA-U3-1",
-            "subCategory": "SA-U3-2",
-            "method": "傾角撓度法 (Slope-Deflection Method)",
-            "hasSolution": true,
-            "verificationStatus": "unverified"
-        },
-        {
-            "moduleId": "SA-2009-4",
-            "year": "2009",
-            "questionId": "4",
-            "title": "桁架結構直接勁度法分析",
-            "mainCategory": "SA-U4-1",
-            "subCategory": "SA-U4-2",
-            "method": "直接勁度法 (Direct Stiffness Method)",
-            "hasSolution": true,
-            "verificationStatus": "unverified"
-        }
-    ]
+    {
+      "moduleId": "SA-2025-2",
+      "year": 2025,
+      "rocYear": 114,
+      "questionNumber": 2,
+      "primaryTopicId": "SA-U1-3",
+      "primaryTopicName": "靜定及靜不定結構影響線",
+      "secondaryTopicIds": [],
+      "verificationStatus": "verified",
+      "hasSolution": true,
+      "hasViz": true,
+      "hasHandwritten": false,
+      "tags": [
+        "影響線",
+        "靜定梁",
+        "內鉸接",
+        "固定端",
+        "懸臂段",
+        "滾支承"
+      ]
+    },
+    {
+      "moduleId": "SA-2025-3",
+      "year": 2025,
+      "rocYear": 114,
+      "questionNumber": 3,
+      "primaryTopicId": "SA-U2-3",
+      "primaryTopicName": "靜不定結構之傾角變位法",
+      "secondaryTopicIds": [],
+      "verificationStatus": "verified",
+      "hasSolution": true,
+      "hasViz": false,
+      "hasHandwritten": false,
+      "tags": [
+        "傾角變位法",
+        "非均勻斷面",
+        "勁度係數",
+        "傳遞係數",
+        "固端彎矩",
+        "共軛樑"
+      ]
+    },
+    {
+      "moduleId": "SA-2025-4",
+      "year": 2025,
+      "rocYear": 114,
+      "questionNumber": 4,
+      "primaryTopicId": "SA-U2-4",
+      "primaryTopicName": "靜不定結構之矩陣分析法",
+      "secondaryTopicIds": [],
+      "verificationStatus": "verified",
+      "hasSolution": true,
+      "hasViz": true,
+      "hasHandwritten": false,
+      "tags": [
+        "矩陣位移法",
+        "整體勁度矩陣",
+        "自由度",
+        "格床結構",
+        "實心圓桿",
+        "對稱性利用"
+      ]
+    },
+    {
+      "moduleId": "SA-2024-1",
+      "year": 2024,
+      "rocYear": 113,
+      "questionNumber": 1,
+      "primaryTopicId": "SA-U1-2",
+      "primaryTopicName": "靜定結構之分析",
+      "secondaryTopicIds": [],
+      "verificationStatus": "verified",
+      "hasSolution": true,
+      "hasViz": false,
+      "hasHandwritten": false,
+      "tags": [
+        "靜定梁",
+        "內部鉸",
+        "最大位移",
+        "共軛梁法",
+        "懸臂梁"
+      ]
+    },
+    {
+      "moduleId": "SA-2024-2",
+      "year": 2024,
+      "rocYear": 113,
+      "questionNumber": 2,
+      "primaryTopicId": "SA-U1-2",
+      "primaryTopicName": "靜定結構之分析",
+      "secondaryTopicIds": [],
+      "verificationStatus": "verified",
+      "hasSolution": true,
+      "hasViz": false,
+      "hasHandwritten": false,
+      "tags": [
+        "靜定桁架",
+        "製造誤差",
+        "溫度變化",
+        "支承沉陷",
+        "多餘資訊陷阱"
+      ]
+    },
+    {
+      "moduleId": "SA-2024-3",
+      "year": 2024,
+      "rocYear": 113,
+      "questionNumber": 3,
+      "primaryTopicId": "SA-U2-3",
+      "primaryTopicName": "靜不定結構之傾角變位法",
+      "secondaryTopicIds": [],
+      "verificationStatus": "verified",
+      "hasSolution": true,
+      "hasViz": false,
+      "hasHandwritten": false,
+      "tags": [
+        "傾角變位法",
+        "門型剛構架",
+        "對稱性",
+        "極值比例"
+      ]
+    },
+    {
+      "moduleId": "SA-2024-4",
+      "year": 2024,
+      "rocYear": 113,
+      "questionNumber": 4,
+      "primaryTopicId": "SA-U2-3",
+      "primaryTopicName": "靜不定結構之傾角變位法",
+      "secondaryTopicIds": [],
+      "verificationStatus": "verified",
+      "hasSolution": true,
+      "hasViz": false,
+      "hasHandwritten": false,
+      "tags": [
+        "傾角變位法",
+        "剛架",
+        "側移",
+        "集中力",
+        "反對稱",
+        "非均勻斷面"
+      ]
+    },
+    {
+      "moduleId": "SA-2023-1",
+      "year": 2023,
+      "rocYear": 112,
+      "questionNumber": 1,
+      "primaryTopicId": "SA-U1-2",
+      "primaryTopicName": "靜定結構之分析",
+      "secondaryTopicIds": [],
+      "verificationStatus": "verified",
+      "hasSolution": true,
+      "hasViz": false,
+      "hasHandwritten": false,
+      "tags": [
+        "靜定剛架",
+        "支承沉陷",
+        "剛體位移",
+        "單位力法",
+        "疊加原理"
+      ]
+    },
+    {
+      "moduleId": "SA-2023-2",
+      "year": 2023,
+      "rocYear": 112,
+      "questionNumber": 2,
+      "primaryTopicId": "SA-U2-2",
+      "primaryTopicName": "靜不定結構諧合變位",
+      "secondaryTopicIds": [
+        "SA-U1-1"
+      ],
+      "verificationStatus": "verified",
+      "hasSolution": true,
+      "hasViz": false,
+      "hasHandwritten": false,
+      "tags": [
+        "靜不定桁架",
+        "諧合變位法",
+        "多餘力",
+        "節點法",
+        "單位力法"
+      ]
+    },
+    {
+      "moduleId": "SA-2023-3",
+      "year": 2023,
+      "rocYear": 112,
+      "questionNumber": 3,
+      "primaryTopicId": "SA-U3-1",
+      "primaryTopicName": "建築結構系統之使用",
+      "secondaryTopicIds": [],
+      "verificationStatus": "verified",
+      "hasSolution": true,
+      "hasViz": false,
+      "hasHandwritten": false,
+      "tags": [
+        "平面剛架",
+        "無側移",
+        "傾角變位法",
+        "鉸端修正",
+        "整體平衡"
+      ]
+    },
+    {
+      "moduleId": "SA-2023-4",
+      "year": 2023,
+      "rocYear": 112,
+      "questionNumber": 4,
+      "primaryTopicId": "SA-U3-2",
+      "primaryTopicName": "建築結構系統分析",
+      "secondaryTopicIds": [],
+      "verificationStatus": "verified",
+      "hasSolution": true,
+      "hasViz": false,
+      "hasHandwritten": false,
+      "tags": [
+        "偏心斜撐構架",
+        "EBF",
+        "剛性區域",
+        "連梁旋轉角",
+        "層剪力",
+        "層間位移"
+      ]
+    },
+    {
+      "moduleId": "SA-2022-1",
+      "year": 2022,
+      "rocYear": 111,
+      "questionNumber": 1,
+      "primaryTopicId": "SA-U2-1",
+      "primaryTopicName": "靜不定結構最小功法",
+      "secondaryTopicIds": [],
+      "verificationStatus": "verified",
+      "hasSolution": true,
+      "hasViz": false,
+      "hasHandwritten": false,
+      "tags": [
+        "彎矩圖反求",
+        "彈簧",
+        "共軛梁法",
+        "支承沉陷",
+        "鉸接點"
+      ]
+    },
+    {
+      "moduleId": "SA-2022-2",
+      "year": 2022,
+      "rocYear": 111,
+      "questionNumber": 2,
+      "primaryTopicId": "SA-U2-3",
+      "primaryTopicName": "靜不定結構之傾角變位法",
+      "secondaryTopicIds": [],
+      "verificationStatus": "verified",
+      "hasSolution": true,
+      "hasViz": false,
+      "hasHandwritten": false,
+      "tags": [
+        "傾角變位法",
+        "有側移剛架",
+        "側移方程式",
+        "修正固端彎矩",
+        "疊加法"
+      ]
+    },
+    {
+      "moduleId": "SA-2022-3",
+      "year": 2022,
+      "rocYear": 111,
+      "questionNumber": 3,
+      "primaryTopicId": "SA-U1-3",
+      "primaryTopicName": "靜定及靜不定結構影響線",
+      "secondaryTopicIds": [],
+      "verificationStatus": "verified",
+      "hasSolution": true,
+      "hasViz": false,
+      "hasHandwritten": false,
+      "tags": [
+        "影響線",
+        "桁架",
+        "細長拉桿",
+        "內部鉸",
+        "移動載重"
+      ]
+    },
+    {
+      "moduleId": "SA-2022-4",
+      "year": 2022,
+      "rocYear": 111,
+      "questionNumber": 4,
+      "primaryTopicId": "SA-U2-4",
+      "primaryTopicName": "靜不定結構之矩陣分析法",
+      "secondaryTopicIds": [],
+      "verificationStatus": "verified",
+      "hasSolution": true,
+      "hasViz": false,
+      "hasHandwritten": false,
+      "tags": [
+        "剪力棟架",
+        "剛性樓板",
+        "側移剛度",
+        "不規則構架",
+        "挑高柱"
+      ]
+    },
+    {
+      "year": 2021,
+      "moduleId": "SA-2021-1",
+      "primaryTopicName": "靜不定結構之傾角變位法",
+      "questionNumber": 1,
+      "rocYear": 110,
+      "hasViz": true,
+      "hasHandwritten": false,
+      "verificationStatus": "verified",
+      "hasSolution": true,
+      "tags": [
+        "傾角變位法",
+        "彈簧支承",
+        "內部鉸",
+        "連續梁",
+        "沈陷"
+      ],
+      "primaryTopicId": "SA-U2-3",
+      "secondaryTopicIds": []
+    },
+    {
+      "year": 2021,
+      "moduleId": "SA-2021-2",
+      "primaryTopicName": "靜不定結構之傾角變位法",
+      "questionNumber": 2,
+      "rocYear": 110,
+      "hasViz": true,
+      "hasHandwritten": false,
+      "verificationStatus": "verified",
+      "hasSolution": true,
+      "tags": [
+        "傾角變位法",
+        "有側移剛架",
+        "對稱結構",
+        "反對稱載重",
+        "連桿效應"
+      ],
+      "primaryTopicId": "SA-U2-3",
+      "secondaryTopicIds": []
+    },
+    {
+      "year": 2021,
+      "moduleId": "SA-2021-3",
+      "primaryTopicName": "建築結構系統分析",
+      "questionNumber": 3,
+      "rocYear": 110,
+      "hasViz": true,
+      "hasHandwritten": false,
+      "verificationStatus": "verified",
+      "hasSolution": true,
+      "tags": [
+        "影響線",
+        "靜不定桁架",
+        "單位力法",
+        "柔軟度法",
+        "Müller-Breslau"
+      ],
+      "primaryTopicId": "SA-U3-2",
+      "secondaryTopicIds": []
+    },
+    {
+      "year": 2021,
+      "moduleId": "SA-2021-4",
+      "primaryTopicName": "建築結構系統分析",
+      "questionNumber": 4,
+      "rocYear": 110,
+      "hasViz": true,
+      "hasHandwritten": false,
+      "verificationStatus": "verified",
+      "hasSolution": true,
+      "tags": [
+        "剛性樓板",
+        "平移與扭轉",
+        "剛心位置",
+        "扭轉勁度",
+        "柱剪力分配"
+      ],
+      "primaryTopicId": "SA-U3-2",
+      "secondaryTopicIds": []
+    },
+    {
+      "year": 2020,
+      "moduleId": "SA-2020-1",
+      "primaryTopicName": "靜不定結構之傾角變位法",
+      "questionNumber": 1,
+      "rocYear": 109,
+      "hasViz": true,
+      "hasHandwritten": false,
+      "verificationStatus": "verified",
+      "hasSolution": true,
+      "tags": [
+        "傾角變位法",
+        "無軸向變形",
+        "垂直滾支承",
+        "側移方程式"
+      ],
+      "primaryTopicId": "SA-U2-3",
+      "secondaryTopicIds": []
+    },
+    {
+      "year": 2020,
+      "moduleId": "SA-2020-2",
+      "primaryTopicName": "靜不定結構之傾角變位法",
+      "questionNumber": 2,
+      "rocYear": 109,
+      "hasViz": true,
+      "hasHandwritten": false,
+      "verificationStatus": "verified",
+      "hasSolution": true,
+      "tags": [
+        "傾角變位法",
+        "對稱性",
+        "剛架分析",
+        "降維分析"
+      ],
+      "primaryTopicId": "SA-U2-3",
+      "secondaryTopicIds": []
+    },
+    {
+      "year": 2020,
+      "moduleId": "SA-2020-3",
+      "primaryTopicName": "建築結構系統分析",
+      "questionNumber": 3,
+      "rocYear": 109,
+      "hasViz": true,
+      "hasHandwritten": false,
+      "verificationStatus": "verified",
+      "hasSolution": true,
+      "tags": [
+        "影響線",
+        "靜不定結構",
+        "最大值",
+        "反力影響線"
+      ],
+      "primaryTopicId": "SA-U3-2",
+      "secondaryTopicIds": []
+    },
+    {
+      "year": 2020,
+      "moduleId": "SA-2020-4",
+      "primaryTopicName": "建築結構系統分析",
+      "questionNumber": 4,
+      "rocYear": 109,
+      "hasViz": true,
+      "hasHandwritten": false,
+      "verificationStatus": "verified",
+      "hasSolution": true,
+      "tags": [
+        "剛架與剪力牆互制",
+        "矩陣分析",
+        "剪力建築"
+      ],
+      "primaryTopicId": "SA-U3-2",
+      "secondaryTopicIds": []
+    },
+    {
+      "moduleId": "SA-2019-1",
+      "year": 2019,
+      "rocYear": 108,
+      "questionNumber": 1,
+      "primaryTopicId": "SA-U2-1",
+      "primaryTopicName": "靜不定結構最小功法",
+      "secondaryTopicIds": [
+        "SA-U1-1"
+      ],
+      "verificationStatus": "verified",
+      "hasSolution": true,
+      "hasViz": false,
+      "hasHandwritten": false,
+      "tags": [
+        "靜不定桁架",
+        "最小功法",
+        "破壞機構",
+        "挫曲",
+        "極限載重"
+      ]
+    },
+    {
+      "moduleId": "SA-2019-2",
+      "year": 2019,
+      "rocYear": 108,
+      "questionNumber": 2,
+      "primaryTopicId": "SA-U3-2",
+      "primaryTopicName": "建築結構系統分析",
+      "secondaryTopicIds": [],
+      "verificationStatus": "verified",
+      "hasSolution": true,
+      "hasViz": false,
+      "hasHandwritten": false,
+      "tags": [
+        "范倫迪爾桁架",
+        "近似分析",
+        "反曲點",
+        "彎矩圖",
+        "軸力圖"
+      ]
+    },
+    {
+      "moduleId": "SA-2019-3",
+      "year": 2019,
+      "rocYear": 108,
+      "questionNumber": 3,
+      "primaryTopicId": "SA-U2-2",
+      "primaryTopicName": "靜不定結構諧合變位",
+      "secondaryTopicIds": [],
+      "verificationStatus": "verified",
+      "hasSolution": true,
+      "hasViz": false,
+      "hasHandwritten": false,
+      "tags": [
+        "傾角變位法",
+        "連續梁",
+        "支承沉陷",
+        "對稱性"
+      ]
+    },
+    {
+      "moduleId": "SA-2019-4",
+      "year": 2019,
+      "rocYear": 108,
+      "questionNumber": 4,
+      "primaryTopicId": "SA-U2-4",
+      "primaryTopicName": "靜不定結構之矩陣分析法",
+      "secondaryTopicIds": [],
+      "verificationStatus": "verified",
+      "hasSolution": true,
+      "hasViz": false,
+      "hasHandwritten": false,
+      "tags": [
+        "勁度矩陣",
+        "半剛性接頭",
+        "旋轉彈簧",
+        "節點載重向量"
+      ]
+    },
+    {
+      "moduleId": "SA-2018-1",
+      "year": 2018,
+      "rocYear": 107,
+      "questionNumber": 1,
+      "primaryTopicId": "SA-U3-2",
+      "primaryTopicName": "建築結構系統分析",
+      "secondaryTopicIds": [],
+      "verificationStatus": "verified",
+      "hasSolution": true,
+      "hasViz": false,
+      "hasHandwritten": false,
+      "tags": [
+        "剛架與剪力牆互制",
+        "變形模態",
+        "剪力型與彎曲型",
+        "水平力分配"
+      ]
+    },
+    {
+      "moduleId": "SA-2018-2",
+      "year": 2018,
+      "rocYear": 107,
+      "questionNumber": 2,
+      "primaryTopicId": "SA-U2-4",
+      "primaryTopicName": "靜不定結構之矩陣分析法",
+      "secondaryTopicIds": [],
+      "verificationStatus": "verified",
+      "hasSolution": true,
+      "hasViz": false,
+      "hasHandwritten": false,
+      "tags": [
+        "直接勁度法",
+        "勁度矩陣",
+        "節點外力向量",
+        "彎矩圖"
+      ]
+    },
+    {
+      "moduleId": "SA-2018-3",
+      "year": 2018,
+      "rocYear": 107,
+      "questionNumber": 3,
+      "primaryTopicId": "SA-U2-1",
+      "primaryTopicName": "靜不定結構最小功法",
+      "secondaryTopicIds": [],
+      "verificationStatus": "verified",
+      "hasSolution": true,
+      "hasViz": false,
+      "hasHandwritten": false,
+      "tags": [
+        "最小功法",
+        "靜不定結構",
+        "纜索無壓力",
+        "彎矩圖"
+      ]
+    },
+    {
+      "moduleId": "SA-2018-4",
+      "year": 2018,
+      "rocYear": 107,
+      "questionNumber": 4,
+      "primaryTopicId": "SA-U1-3",
+      "primaryTopicName": "靜定及靜不定結構影響線",
+      "secondaryTopicIds": [],
+      "verificationStatus": "verified",
+      "hasSolution": true,
+      "hasViz": false,
+      "hasHandwritten": false,
+      "tags": [
+        "影響線",
+        "靜不定結構",
+        "對稱性",
+        "剛架位移"
+      ]
+    },
+    {
+      "moduleId": "SA-2017-1",
+      "year": 2017,
+      "rocYear": 106,
+      "questionNumber": 1,
+      "primaryTopicId": "SA-U1-2",
+      "primaryTopicName": "靜定結構之分析",
+      "secondaryTopicIds": [],
+      "verificationStatus": "verified",
+      "hasSolution": true,
+      "hasViz": false,
+      "hasHandwritten": false,
+      "tags": [
+        "靜定桁架",
+        "節點法",
+        "零桿判斷",
+        "虛功法",
+        "水平位移"
+      ]
+    },
+    {
+      "moduleId": "SA-2017-2",
+      "year": 2017,
+      "rocYear": 106,
+      "questionNumber": 2,
+      "primaryTopicId": "SA-U2-1",
+      "primaryTopicName": "靜不定結構最小功法",
+      "secondaryTopicIds": [],
+      "verificationStatus": "verified",
+      "hasSolution": true,
+      "hasViz": false,
+      "hasHandwritten": false,
+      "tags": [
+        "最小功法",
+        "卡氏定理",
+        "內鉸條件",
+        "固定端彎矩",
+        "靜不定梁"
+      ]
+    },
+    {
+      "moduleId": "SA-2017-3",
+      "year": 2017,
+      "rocYear": 106,
+      "questionNumber": 3,
+      "primaryTopicId": "SA-U2-3",
+      "primaryTopicName": "靜不定結構之傾角變位法",
+      "secondaryTopicIds": [],
+      "verificationStatus": "verified",
+      "hasSolution": true,
+      "hasViz": false,
+      "hasHandwritten": false,
+      "tags": [
+        "傾角變位法",
+        "門型剛架",
+        "側移",
+        "層剪力方程",
+        "固定端彎矩",
+        "節點轉角"
+      ]
+    },
+    {
+      "moduleId": "SA-2017-4",
+      "year": 2017,
+      "rocYear": 106,
+      "questionNumber": 4,
+      "primaryTopicId": "SA-U3-1",
+      "primaryTopicName": "建築結構系統之使用",
+      "secondaryTopicIds": [],
+      "verificationStatus": "verified",
+      "hasSolution": true,
+      "hasViz": false,
+      "hasHandwritten": false,
+      "tags": [
+        "剪力牆",
+        "平面配置",
+        "偏心",
+        "扭矩",
+        "水平載重傳遞",
+        "建築結構系統"
+      ]
+    },
+    {
+      "moduleId": "SA-2016-1",
+      "year": 2016,
+      "rocYear": 105,
+      "questionNumber": 1,
+      "primaryTopicId": "SA-U1-2",
+      "primaryTopicName": "靜定結構之分析",
+      "secondaryTopicIds": [
+        "SA-U1-1"
+      ],
+      "verificationStatus": "verified",
+      "hasSolution": true,
+      "hasViz": true,
+      "hasHandwritten": false,
+      "tags": [
+        "靜定剛架",
+        "內鉸",
+        "靜力平衡",
+        "BMD",
+        "水平載重"
+      ]
+    },
+    {
+      "moduleId": "SA-2016-2",
+      "year": 2016,
+      "rocYear": 105,
+      "questionNumber": 2,
+      "primaryTopicId": "SA-U1-3",
+      "primaryTopicName": "靜定及靜不定結構影響線",
+      "secondaryTopicIds": [
+        "SA-U2-3"
+      ],
+      "verificationStatus": "verified",
+      "hasSolution": true,
+      "hasViz": true,
+      "hasHandwritten": false,
+      "tags": [
+        "影響線",
+        "靜不定剛架",
+        "Müller-Breslau原理",
+        "有側移剛架",
+        "移動載重"
+      ]
+    },
+    {
+      "moduleId": "SA-2016-3",
+      "year": 2016,
+      "rocYear": 105,
+      "questionNumber": 3,
+      "primaryTopicId": "SA-U2-1",
+      "primaryTopicName": "靜不定結構最小功法",
+      "secondaryTopicIds": [
+        "SA-U2-2"
+      ],
+      "verificationStatus": "verified",
+      "hasSolution": true,
+      "hasViz": true,
+      "hasHandwritten": false,
+      "tags": [
+        "虛功法",
+        "單位力法",
+        "側移變位",
+        "基本結構選取",
+        "圖形積分法"
+      ]
+    },
+    {
+      "moduleId": "SA-2016-4",
+      "year": 2016,
+      "rocYear": 105,
+      "questionNumber": 4,
+      "primaryTopicId": "SA-U1-2",
+      "primaryTopicName": "靜定結構之分析",
+      "secondaryTopicIds": [],
+      "verificationStatus": "verified",
+      "hasSolution": true,
+      "hasViz": false,
+      "hasHandwritten": false,
+      "tags": [
+        "零力桿件",
+        "桁架",
+        "節點平衡"
+      ]
+    },
+    {
+      "moduleId": "SA-2015-1",
+      "year": 2015,
+      "rocYear": 104,
+      "questionNumber": 1,
+      "primaryTopicId": "SA-U1-2",
+      "primaryTopicName": "靜定結構之分析",
+      "secondaryTopicIds": [],
+      "verificationStatus": "verified",
+      "hasSolution": true,
+      "hasViz": false,
+      "hasHandwritten": false,
+      "tags": [
+        "靜定桁架",
+        "單位力法",
+        "製造誤差",
+        "支承沉陷",
+        "垂直位移"
+      ]
+    },
+    {
+      "moduleId": "SA-2015-2",
+      "year": 2015,
+      "rocYear": 104,
+      "questionNumber": 2,
+      "primaryTopicId": "SA-U1-3",
+      "primaryTopicName": "靜定及靜不定結構影響線",
+      "secondaryTopicIds": [
+        "SA-U2-1"
+      ],
+      "verificationStatus": "verified",
+      "hasSolution": true,
+      "hasViz": false,
+      "hasHandwritten": false,
+      "tags": [
+        "影響線",
+        "共軛梁法",
+        "Müller-Breslau",
+        "靜不定連續梁",
+        "內部鉸"
+      ]
+    },
+    {
+      "moduleId": "SA-2015-3",
+      "year": 2015,
+      "rocYear": 104,
+      "questionNumber": 3,
+      "primaryTopicId": "SA-U3-1",
+      "primaryTopicName": "建築結構系統之使用",
+      "secondaryTopicIds": [],
+      "verificationStatus": "verified",
+      "hasSolution": true,
+      "hasViz": false,
+      "hasHandwritten": false,
+      "tags": [
+        "對稱剛架",
+        "傾角變位法",
+        "內部鉸",
+        "相對位移"
+      ]
+    },
+    {
+      "moduleId": "SA-2015-4",
+      "year": 2015,
+      "rocYear": 104,
+      "questionNumber": 4,
+      "primaryTopicId": "SA-U2-4",
+      "primaryTopicName": "靜不定結構之矩陣分析法",
+      "secondaryTopicIds": [],
+      "verificationStatus": "verified",
+      "hasSolution": true,
+      "hasViz": false,
+      "hasHandwritten": false,
+      "tags": [
+        "矩陣位移法",
+        "彈簧接頭",
+        "自由度判定",
+        "固端彎矩",
+        "無軸向變形"
+      ]
+    },
+    {
+      "moduleId": "SA-2014-1",
+      "year": 2014,
+      "rocYear": 103,
+      "questionNumber": 1,
+      "primaryTopicId": "SA-U1-2",
+      "primaryTopicName": "靜定結構之分析",
+      "secondaryTopicIds": [
+        "SA-U1-3"
+      ],
+      "verificationStatus": "verified",
+      "hasSolution": true,
+      "hasViz": false,
+      "hasHandwritten": false,
+      "tags": [
+        "靜定桁架",
+        "截面法",
+        "影響線",
+        "最大軸力"
+      ]
+    },
+    {
+      "moduleId": "SA-2014-2",
+      "year": 2014,
+      "rocYear": 103,
+      "questionNumber": 2,
+      "primaryTopicId": "SA-U2-2",
+      "primaryTopicName": "靜不定結構諧合變位",
+      "secondaryTopicIds": [
+        "SA-U2-1"
+      ],
+      "verificationStatus": "verified",
+      "hasSolution": true,
+      "hasViz": false,
+      "hasHandwritten": false,
+      "tags": [
+        "諧合變位法",
+        "複合結構",
+        "最大彎矩",
+        "彈性變形"
+      ]
+    },
+    {
+      "moduleId": "SA-2014-3",
+      "year": 2014,
+      "rocYear": 103,
+      "questionNumber": 3,
+      "primaryTopicId": "SA-U2-3",
+      "primaryTopicName": "靜不定結構之傾角變位法",
+      "secondaryTopicIds": [
+        "SA-U3-2"
+      ],
+      "verificationStatus": "verified",
+      "hasSolution": true,
+      "hasViz": false,
+      "hasHandwritten": false,
+      "tags": [
+        "傾角變位法",
+        "有側移剛架",
+        "虛功法",
+        "斜桿側移"
+      ]
+    },
+    {
+      "moduleId": "SA-2014-4",
+      "year": 2014,
+      "rocYear": 103,
+      "questionNumber": 4,
+      "primaryTopicId": "SA-U2-1",
+      "primaryTopicName": "靜不定結構最小功法",
+      "secondaryTopicIds": [],
+      "verificationStatus": "verified",
+      "hasSolution": true,
+      "hasViz": false,
+      "hasHandwritten": false,
+      "tags": [
+        "最小功法",
+        "卡氏第二定理",
+        "靜不定結構",
+        "多餘資訊陷阱",
+        "剛架"
+      ]
+    },
+    {
+      "moduleId": "SA-2012-1",
+      "year": 2012,
+      "rocYear": 101,
+      "questionNumber": 1,
+      "primaryTopicId": "SA-U1-2",
+      "primaryTopicName": "靜定結構之分析",
+      "secondaryTopicIds": [
+        "SA-U2-1"
+      ],
+      "verificationStatus": "verified",
+      "hasSolution": true,
+      "hasViz": false,
+      "hasHandwritten": false,
+      "tags": [
+        "靜定梁",
+        "內鉸",
+        "彎矩圖",
+        "位移與轉角",
+        "反曲點",
+        "共軛梁法"
+      ]
+    },
+    {
+      "moduleId": "SA-2012-2",
+      "year": 2012,
+      "rocYear": 101,
+      "questionNumber": 2,
+      "primaryTopicId": "SA-U2-2",
+      "primaryTopicName": "靜不定結構諧合變位",
+      "secondaryTopicIds": [
+        "SA-U2-3"
+      ],
+      "verificationStatus": "verified",
+      "hasSolution": true,
+      "hasViz": false,
+      "hasHandwritten": false,
+      "tags": [
+        "靜不定桁架",
+        "最小功法",
+        "彈性支承",
+        "彈簧"
+      ]
+    },
+    {
+      "moduleId": "SA-2012-3",
+      "year": 2012,
+      "rocYear": 101,
+      "questionNumber": 3,
+      "primaryTopicId": "SA-U3-1",
+      "primaryTopicName": "建築結構系統之使用",
+      "secondaryTopicIds": [
+        "SA-U3-2"
+      ],
+      "verificationStatus": "verified",
+      "hasSolution": true,
+      "hasViz": false,
+      "hasHandwritten": false,
+      "tags": [
+        "對稱剛架",
+        "傾角變位法",
+        "彎矩圖",
+        "變形曲線",
+        "懸臂變位"
+      ]
+    },
+    {
+      "moduleId": "SA-2012-4",
+      "year": 2012,
+      "rocYear": 101,
+      "questionNumber": 4,
+      "primaryTopicId": "SA-U2-4",
+      "primaryTopicName": "靜不定結構之矩陣分析法",
+      "secondaryTopicIds": [
+        "SA-U2-3"
+      ],
+      "verificationStatus": "verified",
+      "hasSolution": true,
+      "hasViz": false,
+      "hasHandwritten": false,
+      "tags": [
+        "直接勁度法",
+        "勁度矩陣",
+        "剛性桿件",
+        "內部約束"
+      ]
+    },
+    {
+      "moduleId": "SA-2010-1",
+      "year": 2010,
+      "questionNumber": 1,
+      "mainCategory": "待分類",
+      "subCategory": "待分類",
+      "analysisMethod": "待分類",
+      "hasSolution": true,
+      "verificationStatus": "verified",
+      "tags": [
+        "零力桿件",
+        "節點法",
+        "斷面法",
+        "靜定桁架"
+      ],
+      "rocYear": 99,
+      "primaryTopicId": "SA-U1-1",
+      "primaryTopicName": "靜不定度與穩定性之判斷",
+      "secondaryTopicIds": [
+        "SA-U1-2"
+      ]
+    },
+    {
+      "moduleId": "SA-2010-2",
+      "year": 2010,
+      "questionNumber": 2,
+      "mainCategory": "待分類",
+      "subCategory": "待分類",
+      "analysisMethod": "待分類",
+      "hasSolution": true,
+      "verificationStatus": "verified",
+      "tags": [
+        "傾角撓度法",
+        "剛架",
+        "側移",
+        "固端彎矩",
+        "剪力方程式"
+      ],
+      "rocYear": 99,
+      "primaryTopicId": "SA-U3-1",
+      "primaryTopicName": "建築結構系統之使用",
+      "secondaryTopicIds": [
+        "SA-U3-2"
+      ]
+    },
+    {
+      "moduleId": "SA-2010-3",
+      "year": 2010,
+      "questionNumber": 3,
+      "mainCategory": "待分類",
+      "subCategory": "待分類",
+      "analysisMethod": "待分類",
+      "hasSolution": true,
+      "verificationStatus": "verified",
+      "tags": [
+        "傾角撓度法",
+        "側移",
+        "非正交剛架",
+        "虛功法",
+        "剛架"
+      ],
+      "rocYear": 99,
+      "primaryTopicId": "SA-U3-1",
+      "primaryTopicName": "建築結構系統之使用",
+      "secondaryTopicIds": [
+        "SA-U3-2"
+      ]
+    },
+    {
+      "moduleId": "SA-2010-4",
+      "year": 2010,
+      "questionNumber": 4,
+      "mainCategory": "待分類",
+      "subCategory": "待分類",
+      "analysisMethod": "待分類",
+      "hasSolution": true,
+      "verificationStatus": "verified",
+      "tags": [
+        "直接勁度法",
+        "桁架",
+        "節點變位",
+        "勁度矩陣"
+      ],
+      "rocYear": 99,
+      "primaryTopicId": "SA-U2-4",
+      "primaryTopicName": "靜不定結構之矩陣分析法",
+      "secondaryTopicIds": []
+    },
+    {
+      "moduleId": "SA-2009-1",
+      "year": 2009,
+      "questionId": "1",
+      "title": "桁架結構支承沉陷反力計算",
+      "mainCategory": "SA-U1-1",
+      "subCategory": "SA-U1-2",
+      "method": "傾角撓度法或直接勁度法或力法",
+      "hasSolution": true,
+      "verificationStatus": "verified",
+      "tags": [
+        "靜不定桁架",
+        "支承沉陷",
+        "柔度法"
+      ],
+      "rocYear": 98,
+      "primaryTopicId": "SA-U1-1",
+      "primaryTopicName": "靜不定度與穩定性之判斷",
+      "secondaryTopicIds": [
+        "SA-U1-2"
+      ],
+      "questionNumber": 1
+    },
+    {
+      "moduleId": "SA-2009-2",
+      "year": 2009,
+      "questionId": "2",
+      "title": "樑與連桿組合系統變位分析",
+      "mainCategory": "SA-U2-1",
+      "subCategory": "SA-U2-2",
+      "method": "單位力法 (Unit Load Method)",
+      "hasSolution": true,
+      "verificationStatus": "verified",
+      "tags": [
+        "靜不定",
+        "梁柱系統",
+        "均布載重"
+      ],
+      "rocYear": 98,
+      "primaryTopicId": "SA-U1-1",
+      "primaryTopicName": "靜不定度與穩定性之判斷",
+      "secondaryTopicIds": [
+        "SA-U1-3"
+      ],
+      "questionNumber": 2
+    },
+    {
+      "moduleId": "SA-2009-3",
+      "year": 2009,
+      "questionId": "3",
+      "title": "pi型剛架總體水平勁度與彎矩圖",
+      "mainCategory": "SA-U3-1",
+      "subCategory": "SA-U3-2",
+      "method": "傾角撓度法 (Slope-Deflection Method)",
+      "hasSolution": true,
+      "verificationStatus": "verified",
+      "tags": [
+        "側移剛架",
+        "水平勁度",
+        "對稱性"
+      ],
+      "rocYear": 98,
+      "primaryTopicId": "SA-U1-1",
+      "primaryTopicName": "靜不定度與穩定性之判斷",
+      "secondaryTopicIds": [
+        "SA-U2-3"
+      ],
+      "questionNumber": 3
+    },
+    {
+      "moduleId": "SA-2009-4",
+      "year": 2009,
+      "questionId": "4",
+      "title": "桁架結構直接勁度法分析",
+      "mainCategory": "SA-U4-1",
+      "subCategory": "SA-U4-2",
+      "method": "直接勁度法 (Direct Stiffness Method)",
+      "hasSolution": true,
+      "verificationStatus": "verified",
+      "tags": [
+        "直接勁度法",
+        "桁架",
+        "位移求解",
+        "內力計算"
+      ],
+      "rocYear": 98,
+      "primaryTopicId": "SA-U1-1",
+      "primaryTopicName": "靜不定度與穩定性之判斷",
+      "secondaryTopicIds": [
+        "SA-U2-4"
+      ],
+      "questionNumber": 4
+    },
+    {
+      "moduleId": "SA-2008-1",
+      "year": 2008,
+      "rocYear": 97,
+      "questionNumber": 1,
+      "primaryTopicId": "SA-U1-1",
+      "primaryTopicName": "靜不定度與穩定性之判斷",
+      "secondaryTopicIds": [],
+      "verificationStatus": "verified",
+      "hasSolution": true,
+      "hasViz": false,
+      "hasHandwritten": false,
+      "tags": [
+        "靜不定桁架",
+        "單位力法",
+        "支承反力",
+        "內力計算"
+      ]
+    },
+    {
+      "moduleId": "SA-2008-2",
+      "year": 2008,
+      "rocYear": 97,
+      "questionNumber": 2,
+      "primaryTopicId": "SA-U3-1",
+      "primaryTopicName": "建築結構系統之使用",
+      "secondaryTopicIds": [],
+      "verificationStatus": "verified",
+      "hasSolution": true,
+      "hasViz": false,
+      "hasHandwritten": false,
+      "tags": [
+        "連續梁",
+        "傾角變位法",
+        "彎矩圖",
+        "剪力圖"
+      ]
+    },
+    {
+      "moduleId": "SA-2008-3",
+      "year": 2008,
+      "rocYear": 97,
+      "questionNumber": 3,
+      "primaryTopicId": "SA-U1-2",
+      "primaryTopicName": "靜定結構之分析",
+      "secondaryTopicIds": [],
+      "verificationStatus": "verified",
+      "hasSolution": true,
+      "hasViz": false,
+      "hasHandwritten": false,
+      "tags": [
+        "最小功法",
+        "剛架",
+        "均佈載重",
+        "彎矩圖"
+      ]
+    },
+    {
+      "moduleId": "SA-2008-4",
+      "year": 2008,
+      "rocYear": 97,
+      "questionNumber": 4,
+      "primaryTopicId": "SA-U2-4",
+      "primaryTopicName": "靜不定結構之矩陣分析法",
+      "secondaryTopicIds": [],
+      "verificationStatus": "verified",
+      "hasSolution": true,
+      "hasViz": false,
+      "hasHandwritten": false,
+      "tags": [
+        "矩陣直接勁度法",
+        "剛架",
+        "均佈載重",
+        "彎矩圖"
+      ]
+    },
+    {
+      "moduleId": "SA-2007-1",
+      "year": 2007,
+      "rocYear": 96,
+      "questionNumber": 1,
+      "primaryTopicId": "SA-U1-1",
+      "primaryTopicName": "靜不定度與穩定性之判斷",
+      "secondaryTopicIds": [
+        "SA-U1-2"
+      ],
+      "verificationStatus": "verified",
+      "hasSolution": true,
+      "hasViz": false,
+      "hasHandwritten": false,
+      "tags": [
+        "靜不定桁架",
+        "單位力法",
+        "柔度矩陣法",
+        "相容方程式"
+      ]
+    },
+    {
+      "moduleId": "SA-2007-2",
+      "year": 2007,
+      "rocYear": 96,
+      "questionNumber": 2,
+      "primaryTopicId": "SA-U2-1",
+      "primaryTopicName": "靜不定結構最小功法",
+      "secondaryTopicIds": [
+        "SA-U2-4"
+      ],
+      "verificationStatus": "verified",
+      "hasSolution": true,
+      "hasViz": false,
+      "hasHandwritten": false,
+      "tags": [
+        "無側移剛架",
+        "修正傾角撓度法",
+        "固端彎矩"
+      ]
+    },
+    {
+      "moduleId": "SA-2007-3",
+      "year": 2007,
+      "rocYear": 96,
+      "questionNumber": 3,
+      "primaryTopicId": "SA-U1-1",
+      "primaryTopicName": "靜不定度與穩定性之判斷",
+      "secondaryTopicIds": [
+        "SA-U1-3"
+      ],
+      "verificationStatus": "verified",
+      "hasSolution": true,
+      "hasViz": false,
+      "hasHandwritten": false,
+      "tags": [
+        "三鉸拱桁架",
+        "移動載重",
+        "極值分析",
+        "卡車載重"
+      ]
+    },
+    {
+      "moduleId": "SA-2007-4",
+      "year": 2007,
+      "rocYear": 96,
+      "questionNumber": 4,
+      "primaryTopicId": "SA-U2-1",
+      "primaryTopicName": "靜不定結構最小功法",
+      "secondaryTopicIds": [
+        "SA-U2-4"
+      ],
+      "verificationStatus": "verified",
+      "hasSolution": true,
+      "hasViz": false,
+      "hasHandwritten": false,
+      "tags": [
+        "有側移剛架",
+        "虛功原理",
+        "側移方程式"
+      ]
+    },
+    {
+      "moduleId": "SA-2006-1",
+      "year": 2006,
+      "rocYear": 95,
+      "questionNumber": 1,
+      "primaryTopicId": "SA-U2-1",
+      "primaryTopicName": "靜不定結構最小功法",
+      "secondaryTopicIds": [],
+      "verificationStatus": "verified",
+      "hasSolution": true,
+      "hasViz": false,
+      "hasHandwritten": false,
+      "tags": [
+        "桁架與樑混合結構",
+        "靜不定",
+        "虛功原理",
+        "最小功法",
+        "參數解"
+      ]
+    },
+    {
+      "moduleId": "SA-2006-2",
+      "year": 2006,
+      "rocYear": 95,
+      "questionNumber": 2,
+      "primaryTopicId": "SA-U2-2",
+      "primaryTopicName": "靜不定結構諧合變位",
+      "secondaryTopicIds": [],
+      "verificationStatus": "verified",
+      "hasSolution": true,
+      "hasViz": false,
+      "hasHandwritten": false,
+      "tags": [
+        "靜不定結構",
+        "複合結構",
+        "連桿",
+        "虛功原理",
+        "彈性支承"
+      ]
+    },
+    {
+      "moduleId": "SA-2006-3",
+      "year": 2006,
+      "rocYear": 95,
+      "questionNumber": 3,
+      "primaryTopicId": "SA-U2-5",
+      "primaryTopicName": "彎矩分配法",
+      "secondaryTopicIds": [],
+      "verificationStatus": "verified",
+      "hasSolution": true,
+      "hasViz": false,
+      "hasHandwritten": false,
+      "tags": [
+        "對稱結構",
+        "彎矩分配法",
+        "有效勁度",
+        "鉸支承外加彎矩"
+      ]
+    },
+    {
+      "moduleId": "SA-2006-4",
+      "year": 2006,
+      "rocYear": 95,
+      "questionNumber": 4,
+      "primaryTopicId": "SA-U2-3",
+      "primaryTopicName": "靜不定結構之傾角變位法",
+      "secondaryTopicIds": [],
+      "verificationStatus": "verified",
+      "hasSolution": true,
+      "hasViz": false,
+      "hasHandwritten": false,
+      "tags": [
+        "傾角變位法",
+        "剪力房屋",
+        "剛性梁",
+        "剛性矮牆"
+      ]
+    },
+    {
+      "moduleId": "SA-2005-1",
+      "year": 2005,
+      "rocYear": 94,
+      "questionNumber": 1,
+      "primaryTopicId": "SA-U2-1",
+      "primaryTopicName": "靜不定結構最小功法",
+      "secondaryTopicIds": [],
+      "verificationStatus": "verified",
+      "hasSolution": true,
+      "hasViz": false,
+      "hasHandwritten": false,
+      "tags": [
+        "最小功法",
+        "靜不定剛架",
+        "彎矩函數"
+      ]
+    },
+    {
+      "moduleId": "SA-2005-2",
+      "year": 2005,
+      "rocYear": 94,
+      "questionNumber": 2,
+      "primaryTopicId": "SA-U2-3",
+      "primaryTopicName": "靜不定結構之傾角變位法",
+      "secondaryTopicIds": [],
+      "verificationStatus": "verified",
+      "hasSolution": true,
+      "hasViz": false,
+      "hasHandwritten": false,
+      "tags": [
+        "剛架分析",
+        "側移",
+        "傾角變位法",
+        "剪力方程式"
+      ]
+    },
+    {
+      "moduleId": "SA-2005-3",
+      "year": 2005,
+      "rocYear": 94,
+      "questionNumber": 3,
+      "primaryTopicId": "SA-U1-3",
+      "primaryTopicName": "靜定及靜不定結構影響線",
+      "secondaryTopicIds": [],
+      "verificationStatus": "verified",
+      "hasSolution": true,
+      "hasViz": false,
+      "hasHandwritten": false,
+      "tags": [
+        "影響線",
+        "連續梁",
+        "三彎矩方程式",
+        "Müller-Breslau原理"
+      ]
+    },
+    {
+      "moduleId": "SA-2005-4",
+      "year": 2005,
+      "rocYear": 94,
+      "questionNumber": 4,
+      "primaryTopicId": "SA-U2-1",
+      "primaryTopicName": "靜不定結構最小功法",
+      "secondaryTopicIds": [],
+      "verificationStatus": "verified",
+      "hasSolution": true,
+      "hasViz": false,
+      "hasHandwritten": false,
+      "tags": [
+        "靜不定桁架",
+        "單位力法",
+        "柔度矩陣法",
+        "桁架應力"
+      ]
+    },
+    {
+      "moduleId": "SA-2004-1",
+      "year": 2004,
+      "rocYear": 93,
+      "questionNumber": 1,
+      "primaryTopicId": "SA-U1-2",
+      "primaryTopicName": "靜定結構之分析",
+      "secondaryTopicIds": [],
+      "verificationStatus": "verified",
+      "hasSolution": true,
+      "hasViz": false,
+      "hasHandwritten": false,
+      "tags": [
+        "靜定剛架",
+        "剪力圖",
+        "彎矩圖",
+        "內部鉸"
+      ]
+    },
+    {
+      "moduleId": "SA-2004-2",
+      "year": 2004,
+      "rocYear": 93,
+      "questionNumber": 2,
+      "primaryTopicId": "SA-U1-3",
+      "primaryTopicName": "靜定及靜不定結構影響線",
+      "secondaryTopicIds": [],
+      "verificationStatus": "verified",
+      "hasSolution": true,
+      "hasViz": false,
+      "hasHandwritten": false,
+      "tags": [
+        "桁架",
+        "影響線",
+        "移動載重",
+        "最大內力"
+      ]
+    },
+    {
+      "moduleId": "SA-2004-3",
+      "year": 2004,
+      "rocYear": 93,
+      "questionNumber": 3,
+      "primaryTopicId": "SA-U1-2",
+      "primaryTopicName": "靜定結構之分析",
+      "secondaryTopicIds": [],
+      "verificationStatus": "verified",
+      "hasSolution": true,
+      "hasViz": false,
+      "hasHandwritten": false,
+      "tags": [
+        "內部鉸",
+        "彈簧支承",
+        "剛體位移",
+        "懸臂梁",
+        "複合梁"
+      ]
+    },
+    {
+      "moduleId": "SA-2004-4",
+      "year": 2004,
+      "rocYear": 93,
+      "questionNumber": 4,
+      "primaryTopicId": "SA-U2-4",
+      "primaryTopicName": "靜不定結構之矩陣分析法",
+      "secondaryTopicIds": [],
+      "verificationStatus": "verified",
+      "hasSolution": true,
+      "hasViz": false,
+      "hasHandwritten": false,
+      "tags": [
+        "矩陣位移法",
+        "彈簧支承",
+        "修正式勁度矩陣",
+        "非節點載重"
+      ]
+    },
+    {
+      "moduleId": "SA-2003-1",
+      "year": 2003,
+      "rocYear": 92,
+      "questionNumber": 1,
+      "primaryTopicId": "SA-U2-5",
+      "primaryTopicName": "彎矩分配法",
+      "secondaryTopicIds": [],
+      "verificationStatus": "verified",
+      "hasSolution": true,
+      "hasViz": false,
+      "hasHandwritten": false,
+      "tags": [
+        "對稱結構",
+        "對稱修正勁度",
+        "固端彎矩疊加"
+      ]
+    },
+    {
+      "moduleId": "SA-2003-2",
+      "year": 2003,
+      "rocYear": 92,
+      "questionNumber": 2,
+      "primaryTopicId": "SA-U1-2",
+      "primaryTopicName": "靜定結構之分析",
+      "secondaryTopicIds": [],
+      "verificationStatus": "verified",
+      "hasSolution": true,
+      "hasViz": false,
+      "hasHandwritten": false,
+      "tags": [
+        "靜定結構",
+        "複合結構",
+        "剛性梁",
+        "位移計算",
+        "單位力法"
+      ]
+    },
+    {
+      "moduleId": "SA-2003-3",
+      "year": 2003,
+      "rocYear": 92,
+      "questionNumber": 3,
+      "primaryTopicId": "SA-U1-2",
+      "primaryTopicName": "靜定結構之分析",
+      "secondaryTopicIds": [],
+      "verificationStatus": "verified",
+      "hasSolution": true,
+      "hasViz": false,
+      "hasHandwritten": false,
+      "tags": [
+        "桁架分析",
+        "K型桁架",
+        "截面法",
+        "節點法"
+      ]
+    },
+    {
+      "moduleId": "SA-2003-4",
+      "year": 2003,
+      "rocYear": 92,
+      "questionNumber": 4,
+      "primaryTopicId": "SA-U1-3",
+      "primaryTopicName": "靜定及靜不定結構影響線",
+      "secondaryTopicIds": [
+        "SA-U2-2"
+      ],
+      "verificationStatus": "verified",
+      "hasSolution": true,
+      "hasViz": false,
+      "hasHandwritten": false,
+      "tags": [
+        "靜不定影響線",
+        "Müller-Breslau",
+        "柔度法",
+        "彎矩影響線",
+        "剪力影響線"
+      ]
+    },
+    {
+      "moduleId": "SA-2002-1",
+      "year": 2002,
+      "rocYear": 91,
+      "questionNumber": 1,
+      "primaryTopicId": "SA-U1-2",
+      "primaryTopicName": "靜定結構之分析",
+      "secondaryTopicIds": [],
+      "verificationStatus": "verified",
+      "hasSolution": true,
+      "hasViz": false,
+      "hasHandwritten": false,
+      "tags": [
+        "靜定剛架",
+        "內鉸",
+        "集中力矩",
+        "剪力彎矩圖"
+      ]
+    },
+    {
+      "moduleId": "SA-2002-2",
+      "year": 2002,
+      "rocYear": 91,
+      "questionNumber": 2,
+      "primaryTopicId": "SA-U1-2",
+      "primaryTopicName": "靜定結構之分析",
+      "secondaryTopicIds": [],
+      "verificationStatus": "verified",
+      "hasSolution": true,
+      "hasViz": false,
+      "hasHandwritten": false,
+      "tags": [
+        "桁架分析",
+        "截面法",
+        "節點法",
+        "繫索桁架"
+      ]
+    },
+    {
+      "moduleId": "SA-2002-3",
+      "year": 2002,
+      "rocYear": 91,
+      "questionNumber": 3,
+      "primaryTopicId": "SA-U2-2",
+      "primaryTopicName": "靜不定結構諧合變位",
+      "secondaryTopicIds": [],
+      "verificationStatus": "verified",
+      "hasSolution": true,
+      "hasViz": false,
+      "hasHandwritten": false,
+      "tags": [
+        "靜不定結構",
+        "諧合變位法",
+        "勁度法",
+        "複合結構"
+      ]
+    },
+    {
+      "moduleId": "SA-2002-4",
+      "year": 2002,
+      "rocYear": 91,
+      "questionNumber": 4,
+      "primaryTopicId": "SA-U2-3",
+      "primaryTopicName": "靜不定結構之傾角變位法",
+      "secondaryTopicIds": [],
+      "verificationStatus": "verified",
+      "hasSolution": true,
+      "hasViz": false,
+      "hasHandwritten": false,
+      "tags": [
+        "傾角變位法",
+        "有側移剛架",
+        "反對稱變形"
+      ]
+    },
+    {
+      "moduleId": "SA-2013-1",
+      "year": 2013,
+      "questionIndex": 1,
+      "topicId": "SA-U1-2",
+      "secondaryTopicIds": [
+        "SA-U1-3"
+      ],
+      "tags": [
+        "桁架",
+        "三鉸拱",
+        "靜定",
+        "零力桿",
+        "隱藏條件"
+      ],
+      "hasSolution": true,
+      "hasViz": false,
+      "verificationStatus": "verified",
+      "difficulty": 3,
+      "rocYear": 102,
+      "primaryTopicId": "SA-U1-2",
+      "primaryTopicName": "靜定結構之分析",
+      "questionNumber": 1
+    },
+    {
+      "moduleId": "SA-2013-2",
+      "year": 2013,
+      "questionIndex": 2,
+      "topicId": "SA-U2-1",
+      "secondaryTopicIds": [],
+      "tags": [
+        "卡氏定理",
+        "靜不定剛架",
+        "反力",
+        "轉角"
+      ],
+      "hasSolution": true,
+      "hasViz": false,
+      "verificationStatus": "verified",
+      "difficulty": 4,
+      "rocYear": 102,
+      "primaryTopicId": "SA-U2-1",
+      "primaryTopicName": "靜不定結構最小功法",
+      "questionNumber": 2
+    },
+    {
+      "moduleId": "SA-2013-3",
+      "year": 2013,
+      "questionIndex": 3,
+      "topicId": "SA-U2-3",
+      "secondaryTopicIds": [],
+      "tags": [
+        "傾角變位法",
+        "側移剛架",
+        "斜桿",
+        "半剛接",
+        "符號慣例"
+      ],
+      "hasSolution": true,
+      "hasViz": false,
+      "verificationStatus": "verified",
+      "difficulty": 4,
+      "rocYear": 102,
+      "primaryTopicId": "SA-U3-1",
+      "primaryTopicName": "建築結構系統之使用",
+      "questionNumber": 3
+    },
+    {
+      "moduleId": "SA-2013-4",
+      "year": 2013,
+      "questionIndex": 4,
+      "topicId": "SA-U4-1",
+      "secondaryTopicIds": [],
+      "tags": [
+        "直接勁度法",
+        "桁架",
+        "勁度矩陣",
+        "節點位移",
+        "內力"
+      ],
+      "hasSolution": true,
+      "hasViz": false,
+      "verificationStatus": "verified",
+      "difficulty": 4,
+      "rocYear": 102,
+      "primaryTopicId": "SA-U2-4",
+      "primaryTopicName": "靜不定結構之矩陣分析法",
+      "questionNumber": 4
+    },
+    {
+      "moduleId": "SA-2011-1",
+      "examYear": "2011",
+      "examName": "100年 高等考試 結構工程技師",
+      "questionNumber": 1,
+      "questionType": "calculation",
+      "topicCategories": [
+        "SA-U2-2"
+      ],
+      "subCategories": [
+        "SA-U2-3"
+      ],
+      "tags": [
+        "靜不定桁架",
+        "溫度變化",
+        "製造誤差",
+        "支承位移"
+      ],
+      "hasSolution": true,
+      "difficulty": 4,
+      "verificationStatus": "verified",
+      "year": 2011,
+      "rocYear": 100,
+      "primaryTopicId": "SA-U2-2",
+      "primaryTopicName": "靜不定結構諧合變位",
+      "secondaryTopicIds": [
+        "SA-U2-3"
+      ]
+    },
+    {
+      "moduleId": "SA-2011-2",
+      "examYear": "2011",
+      "examName": "100年 高等考試 結構工程技師",
+      "questionNumber": 2,
+      "questionType": "calculation",
+      "topicCategories": [
+        "SA-U3-1"
+      ],
+      "subCategories": [
+        "SA-U3-2"
+      ],
+      "tags": [
+        "傾角變位法",
+        "有側移剛架",
+        "修正固端彎矩",
+        "剪力平衡"
+      ],
+      "hasSolution": true,
+      "difficulty": 4,
+      "verificationStatus": "verified",
+      "year": 2011,
+      "rocYear": 100,
+      "primaryTopicId": "SA-U3-1",
+      "primaryTopicName": "建築結構系統之使用",
+      "secondaryTopicIds": [
+        "SA-U3-2"
+      ]
+    },
+    {
+      "moduleId": "SA-2011-3",
+      "examYear": "2011",
+      "examName": "100年 高等考試 結構工程技師",
+      "questionNumber": 3,
+      "questionType": "calculation",
+      "topicCategories": [
+        "SA-U1-3"
+      ],
+      "subCategories": [
+        "SA-U1-3"
+      ],
+      "tags": [
+        "穆勒法",
+        "連續梁",
+        "影響線",
+        "最大彎矩"
+      ],
+      "hasSolution": true,
+      "difficulty": 4,
+      "verificationStatus": "verified",
+      "year": 2011,
+      "rocYear": 100,
+      "primaryTopicId": "SA-U1-3",
+      "primaryTopicName": "靜定及靜不定結構影響線",
+      "secondaryTopicIds": []
+    },
+    {
+      "moduleId": "SA-2011-4",
+      "examYear": "2011",
+      "examName": "100年 高等考試 結構工程技師",
+      "questionNumber": 4,
+      "questionType": "calculation",
+      "topicCategories": [
+        "SA-U4-1"
+      ],
+      "subCategories": [
+        "SA-U4-2"
+      ],
+      "tags": [
+        "矩陣勁度法",
+        "桁架",
+        "製造誤差",
+        "等效節點載重"
+      ],
+      "hasSolution": true,
+      "difficulty": 4,
+      "verificationStatus": "verified",
+      "year": 2011,
+      "rocYear": 100,
+      "primaryTopicId": "SA-U2-4",
+      "primaryTopicName": "靜不定結構之矩陣分析法",
+      "secondaryTopicIds": []
+    }
+  ]
 }
