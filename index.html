@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="zh-Hant">
 <head>
 <meta charset="UTF-8">
@@ -319,7 +319,7 @@
     el.innerHTML=list.map(q=>{
       const u=unitOf(q.topic), p=prog[q.id]||0;
       const pTxt=p===1?'✅ 已練習':p===2?'🔁 需複習':'⬜ 未練習';
-      const vizLinks=q.viz.map(v=>`<a href="raw/solutions/${q.id}/${q.id}-${v}-viz.html" target="_blank">🎛️ ${v} 互動圖</a>`).join('');
+      const vizLinks=q.viz.map(v=>`<a href="raw/solutions/${q.id}/${v}" target="_blank">🎛️ 互動圖</a>`).join('');
       const secTxt=q.sec.length?`｜副：${q.sec.map(s=>TOPICS[s]||s).join('、')}`:'';
       const pdfBtn=q.pdf.length?`<button class="openpdf" data-id="${q.id}">📎 補充筆記 PDF${q.pdf.length>1?`（${q.pdf.length}）`:''}</button>`:'';
       return `<div class="qcard" data-qid="${q.id}" style="border-left:4px solid ${UCOLOR[u]}">
