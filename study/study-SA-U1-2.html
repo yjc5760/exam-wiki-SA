@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>SA-U1-2 靜定結構之分析｜深度複習</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
+ onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'\\(',right:'\\)',display:false}]})"></script>
+<style>
+:root{--bg:#f6f7fb;--card:#fff;--ink:#1e293b;--mut:#64748b;--line:#e2e8f0;--acc:#2563eb}
+*{box-sizing:border-box}
+body{margin:0;font-family:'Segoe UI','Microsoft JhengHei','Noto Sans TC',sans-serif;background:var(--bg);color:var(--ink);line-height:1.65}
+.wrap{max-width:1100px;margin:0 auto;padding:24px 20px 80px}
+header.hero{background:linear-gradient(135deg,#1e3a8a,#2563eb);color:#fff;border-radius:16px;padding:28px 32px;margin-bottom:28px}
+header.hero .bc{font-size:13px;opacity:.85;margin-bottom:6px}
+header.hero .bc a{color:#bfdbfe;text-decoration:none}
+header.hero h1{margin:0;font-size:26px}
+header.hero p{margin:8px 0 0;opacity:.9;font-size:14px}
+h2.sec{font-size:20px;margin:44px 0 16px;padding-left:12px;border-left:5px solid var(--acc)}
+h2.sec small{font-weight:400;font-size:13px;color:var(--mut);margin-left:10px}
+.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:14px}
+.kpi{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:16px 18px}
+.kpi .v{font-size:28px;font-weight:700;color:var(--acc)}
+.kpi .l{font-size:13px;color:var(--mut)}
+.typecards{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:14px;margin-top:18px}
+.tcard{background:var(--card);border:1px solid var(--line);border-left:6px solid #888;border-radius:12px;padding:14px 16px;cursor:pointer;transition:.15s}
+.tcard:hover{transform:translateY(-2px);box-shadow:0 4px 14px rgba(0,0,0,.08)}
+.tcard b{font-size:15px}
+.tcard .n{font-size:22px;font-weight:700;float:right}
+.tcard p{margin:6px 0 0;font-size:12.5px;color:var(--mut)}
+.charts{display:grid;grid-template-columns:2fr 1fr;gap:18px;margin-top:20px}
+@media(max-width:820px){.charts{grid-template-columns:1fr}}
+.chartbox{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:16px}
+.chartbox h4{margin:0 0 10px;font-size:14px;color:var(--mut)}
+.chartbox canvas{width:100%;height:auto;display:block}
+.legend{font-size:12.5px;color:var(--mut);margin-top:8px}
+.legend i{display:inline-block;width:11px;height:11px;border-radius:3px;margin:0 5px 0 12px;vertical-align:-1px}
+.svgbox{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:18px;overflow-x:auto}
+.svgbox+.svgbox{margin-top:16px}
+.svgbox h4{margin:0 0 8px;font-size:15px}
+.svgbox .cap{font-size:12.5px;color:var(--mut);margin-top:8px}
+.fgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(330px,1fr));gap:16px}
+.fcard{background:var(--card);border:1px solid var(--line);border-top:5px solid #888;border-radius:12px;padding:16px 18px;overflow-x:auto}
+.fcard h4{margin:0 0 10px;font-size:15px}
+.fcard .note{font-size:12.5px;color:var(--mut);background:#f1f5f9;border-radius:8px;padding:8px 10px;margin-top:10px}
+.fbtns{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:16px}
+.fbtn{border:1px solid var(--line);background:var(--card);border-radius:20px;padding:6px 16px;font-size:13.5px;cursor:pointer}
+.fbtn.on{background:var(--acc);border-color:var(--acc);color:#fff}
+.qitem{background:var(--card);border:1px solid var(--line);border-left:6px solid #888;border-radius:10px;padding:12px 16px;margin-bottom:10px;display:flex;gap:14px;align-items:flex-start}
+.qitem .yr{min-width:76px;text-align:center;background:#f1f5f9;border-radius:8px;padding:6px 4px;font-size:11.5px;color:var(--mut)}
+.qitem .yr b{display:block;font-size:15px;color:var(--ink)}
+.qitem .bd{flex:1}
+.qitem a.tt{font-weight:600;color:#1d4ed8;text-decoration:none;font-size:15px}
+.qitem a.tt:hover{text-decoration:underline}
+.badge{display:inline-block;font-size:11px;color:#fff;border-radius:10px;padding:2px 9px;margin-left:8px;vertical-align:1px}
+.tags{margin-top:5px;font-size:12px;color:var(--mut)}
+.tags span{background:#eef2ff;color:#4338ca;border-radius:8px;padding:1px 8px;margin-right:6px;display:inline-block;margin-top:3px}
+.icons{white-space:nowrap;font-size:13px;color:var(--mut);padding-top:2px}
+.trap{background:var(--card);border:1px solid var(--line);border-left:6px solid #888;border-radius:10px;padding:12px 16px;margin-bottom:10px}
+.trap b{font-size:14.5px}
+.trap p{margin:5px 0 0;font-size:13.5px;color:#475569}
+.trap .src{font-size:12px;color:#94a3b8}
+.calc{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:20px}
+.calc .row{display:flex;flex-wrap:wrap;gap:16px;align-items:flex-end;margin-bottom:14px}
+.calc label{font-size:13px;color:var(--mut);display:block;margin-bottom:3px}
+.calc input,.calc select{padding:6px 10px;border:1px solid var(--line);border-radius:8px;font-size:14px;width:120px}
+.calc button{background:var(--acc);color:#fff;border:0;border-radius:8px;padding:9px 24px;font-size:14px;cursor:pointer}
+.calc .out{background:#f1f5f9;border-radius:10px;padding:12px 16px;margin:12px 0;font-size:14px}
+.calc canvas{width:100%;height:auto;display:block;border:1px solid var(--line);border-radius:10px;margin-top:8px}
+footer{margin-top:60px;font-size:12px;color:var(--mut);text-align:center}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header class="hero">
+  <div class="bc"><a href="../index.html" target="_blank">⌂ SA 結構學題庫儀表板</a> ／ SA-U1 第一單元 ／ SA-U1-2</div>
+  <h1>SA-U1-2　靜定結構之分析</h1>
+  <p>全科出題王：桁架節點法／截面法、內鉸複合梁與剛架 SFD/BMD、單位力法與共軛梁位移計算</p>
+</header>
+
+<h2 class="sec">① 命題分析<small>資料來源：question_index.json（2002–2025，全科 96 題）</small></h2>
+<div class="kpis"><div class="kpi"><div class="v">17 題</div><div class="l">主考點題數（2002–2025）</div></div><div class="kpi"><div class="v">17.7%</div><div class="l">佔全科 96 題比例</div></div><div class="kpi"><div class="v">No.1</div><div class="l">全部 10 個子項排名</div></div><div class="kpi"><div class="v">33%</div><div class="l">近 6 年出題率（2/6 年）</div></div></div>
+<div class="typecards"><div class="tcard" style="border-left-color:#2563eb" onclick="jumpFilter('truss')"><span class="n" style="color:#2563eb">8</span><b>靜定桁架</b><p>節點法、截面法、零桿判斷；製造誤差／溫度／沉陷之單位力法位移</p></div><div class="tcard" style="border-left-color:#dc2626" onclick="jumpFilter('frame')"><span class="n" style="color:#dc2626">5</span><b>靜定剛架</b><p>內部鉸剛架反力、SFD/BMD 繪製、支承沉陷剛體位移</p></div><div class="tcard" style="border-left-color:#d97706" onclick="jumpFilter('beam')"><span class="n" style="color:#d97706">3</span><b>靜定梁</b><p>複合梁內鉸分析、共軛梁法求轉角與最大位移</p></div><div class="tcard" style="border-left-color:#059669" onclick="jumpFilter('comp')"><span class="n" style="color:#059669">1</span><b>複合結構</b><p>剛性梁＋二力桿混合系統之位移計算</p></div></div>
+<div class="charts">
+  <div class="chartbox"><h4>年度出題分布（依題型堆疊）</h4><canvas id="yearChart"></canvas></div>
+  <div class="chartbox"><h4>題型比例</h4><canvas id="pieChart"></canvas><div class="legend" id="pieLegend"></div></div>
+</div>
+
+<h2 class="sec">② 結構示意圖解</h2>
+
+<div class="svgbox"><h4>本子項三大結構型態</h4>
+<svg viewBox="0 0 980 240" xmlns="http://www.w3.org/2000/svg"><defs><marker id="ah" markerWidth="9" markerHeight="9" refX="7" refY="4" orient="auto"><path d="M0,0L8,4L0,8z" fill="#64748b"/></marker></defs>
+<!-- 複合梁 -->
+<text x="150" y="26" font-size="14" font-weight="bold" fill="#d97706">靜定複合梁（含內部鉸）</text>
+<line x1="40" y1="110" x2="300" y2="110" stroke="#334155" stroke-width="3"/>
+<path d="M40,110 l-11,17 h22 z" fill="#fff" stroke="#334155" stroke-width="2"/><line x1="24" y1="127" x2="56" y2="127" stroke="#334155" stroke-width="2"/><path d="M160,110 l-11,14 h22 z" fill="#fff" stroke="#334155" stroke-width="2"/><circle cx="154" cy="128" r="3.5" fill="none" stroke="#334155" stroke-width="1.6"/><circle cx="166" cy="128" r="3.5" fill="none" stroke="#334155" stroke-width="1.6"/><line x1="144" y1="132" x2="176" y2="132" stroke="#334155" stroke-width="2"/><circle cx="230" cy="110" r="5" fill="#fff" stroke="#dc2626" stroke-width="2"/><path d="M300,110 l-11,14 h22 z" fill="#fff" stroke="#334155" stroke-width="2"/><circle cx="294" cy="128" r="3.5" fill="none" stroke="#334155" stroke-width="1.6"/><circle cx="306" cy="128" r="3.5" fill="none" stroke="#334155" stroke-width="1.6"/><line x1="284" y1="132" x2="316" y2="132" stroke="#334155" stroke-width="2"/>
+<line x1="100" y1="70" x2="100" y2="102" stroke="#dc2626" stroke-width="2"/><path d="M100,106 l-5,-9 h10 z" fill="#dc2626"/><text x="107" y="76" font-size="13" fill="#dc2626">P</text>
+<text x="226" y="94" font-size="12" fill="#dc2626">內鉸 M=0</text>
+<text x="40" y="150" font-size="12" fill="#64748b">A</text><text x="158" y="152" font-size="12" fill="#64748b">B</text><text x="298" y="152" font-size="12" fill="#64748b">C</text>
+<!-- 桁架 -->
+<text x="480" y="26" font-size="14" font-weight="bold" fill="#2563eb">靜定桁架</text>
+<g stroke="#2563eb" stroke-width="2.5" fill="none">
+<line x1="380" y1="130" x2="640" y2="130"/><line x1="380" y1="130" x2="445" y2="70"/>
+<line x1="445" y1="70" x2="510" y2="130"/><line x1="445" y1="70" x2="575" y2="70"/>
+<line x1="510" y1="130" x2="575" y2="70"/><line x1="575" y1="70" x2="640" y2="130"/>
+</g>
+<circle cx="380" cy="130" r="4" fill="#1e3a8a"/><circle cx="510" cy="130" r="4" fill="#1e3a8a"/><circle cx="640" cy="130" r="4" fill="#1e3a8a"/>
+<circle cx="445" cy="70" r="4" fill="#1e3a8a"/><circle cx="575" cy="70" r="4" fill="#1e3a8a"/>
+<path d="M380,134 l-11,17 h22 z" fill="#fff" stroke="#334155" stroke-width="2"/><line x1="364" y1="151" x2="396" y2="151" stroke="#334155" stroke-width="2"/><path d="M640,134 l-11,14 h22 z" fill="#fff" stroke="#334155" stroke-width="2"/><circle cx="634" cy="152" r="3.5" fill="none" stroke="#334155" stroke-width="1.6"/><circle cx="646" cy="152" r="3.5" fill="none" stroke="#334155" stroke-width="1.6"/><line x1="624" y1="156" x2="656" y2="156" stroke="#334155" stroke-width="2"/>
+<line x1="510" y1="92" x2="510" y2="122" stroke="#dc2626" stroke-width="2"/><path d="M510,126 l-5,-9 h10 z" fill="#dc2626"/><text x="517" y="98" font-size="13" fill="#dc2626">P</text>
+<text x="452" y="105" font-size="11.5" fill="#64748b">m+r=2j → 靜定</text>
+<!-- 剛架 -->
+<text x="800" y="26" font-size="14" font-weight="bold" fill="#dc2626">靜定剛架（三鉸式）</text>
+<g stroke="#dc2626" stroke-width="3" fill="none">
+<line x1="740" y1="190" x2="740" y2="80"/><line x1="740" y1="80" x2="920" y2="80"/><line x1="920" y1="80" x2="920" y2="190"/>
+</g>
+<circle cx="830" cy="80" r="5" fill="#fff" stroke="#dc2626" stroke-width="2"/>
+<path d="M740,190 l-11,17 h22 z" fill="#fff" stroke="#334155" stroke-width="2"/><line x1="724" y1="207" x2="756" y2="207" stroke="#334155" stroke-width="2"/><path d="M920,190 l-11,17 h22 z" fill="#fff" stroke="#334155" stroke-width="2"/><line x1="904" y1="207" x2="936" y2="207" stroke="#334155" stroke-width="2"/>
+<line x1="690" y1="100" x2="736" y2="100" stroke="#64748b" stroke-width="1.6" marker-end="url(#ah)"/><text x="700" y="92" font-size="12" fill="#d97706">H</text>
+<text x="826" y="64" font-size="12" fill="#dc2626">頂鉸</text>
+</svg>
+<div class="cap">圖說：靜定結構三大題型——複合梁靠「內鉸條件 M=0」補足方程式；桁架以 m+r=2j 判別後用節點法／截面法；三鉸剛架以頂鉸條件解四個反力分量。</div></div>
+
+
+<h2 class="sec">③ 解題流程圖</h2>
+<div class="svgbox"><svg viewBox="0 0 960 470" xmlns="http://www.w3.org/2000/svg"><defs><marker id="ah" markerWidth="9" markerHeight="9" refX="7" refY="4" orient="auto"><path d="M0,0L8,4L0,8z" fill="#64748b"/></marker></defs>
+<rect x="390" y="10" width="180" height="44" rx="8" fill="#eff6ff" stroke="#2563eb" stroke-width="1.5"/><text x="480.0" y="37.0" text-anchor="middle" font-size="13" fill="#1e293b">靜定結構題目</text>
+<polygon points="480,81.0 590.0,110 480,139.0 370.0,110" fill="#fef3c7" stroke="#d97706" stroke-width="1.5"/><text x="480" y="107.5" text-anchor="middle" font-size="12.5" fill="#1e293b">判別：桁架？</text><text x="480" y="122.5" text-anchor="middle" font-size="12.5" fill="#1e293b">梁／剛架？</text>
+<line x1="480" y1="54" x2="480" y2="81" stroke="#64748b" stroke-width="1.6" marker-end="url(#ah)"/>
+<rect x="60" y="180" width="240" height="72" rx="8" fill="#dbeafe" stroke="#2563eb" stroke-width="1.5"/><text x="180.0" y="205.0" text-anchor="middle" font-size="13" fill="#1e293b">桁架</text><text x="180.0" y="221.0" text-anchor="middle" font-size="13" fill="#1e293b">① 先找零桿（兩桿共點無外載）</text><text x="180.0" y="237.0" text-anchor="middle" font-size="13" fill="#1e293b">② 節點法 / 截面法</text>
+<rect x="360" y="180" width="240" height="72" rx="8" fill="#fee2e2" stroke="#dc2626" stroke-width="1.5"/><text x="480.0" y="205.0" text-anchor="middle" font-size="13" fill="#1e293b">梁／剛架</text><text x="480.0" y="221.0" text-anchor="middle" font-size="13" fill="#1e293b">① 整體平衡求反力</text><text x="480.0" y="237.0" text-anchor="middle" font-size="13" fill="#1e293b">② 內鉸條件 M=0 補方程</text>
+<rect x="660" y="180" width="240" height="72" rx="8" fill="#d1fae5" stroke="#059669" stroke-width="1.5"/><text x="780.0" y="205.0" text-anchor="middle" font-size="13" fill="#1e293b">複合結構</text><text x="780.0" y="221.0" text-anchor="middle" font-size="13" fill="#1e293b">剛性構件＋二力桿</text><text x="780.0" y="237.0" text-anchor="middle" font-size="13" fill="#1e293b">逐件拆解平衡</text>
+<line x1="400" y1="125" x2="220" y2="180" stroke="#64748b" stroke-width="1.6" marker-end="url(#ah)"/>
+<line x1="480" y1="139" x2="480" y2="180" stroke="#64748b" stroke-width="1.6" marker-end="url(#ah)"/>
+<line x1="560" y1="125" x2="740" y2="180" stroke="#64748b" stroke-width="1.6" marker-end="url(#ah)"/>
+<polygon points="480,281.0 600.0,310 480,339.0 360.0,310" fill="#fef3c7" stroke="#d97706" stroke-width="1.5"/><text x="480" y="315.0" text-anchor="middle" font-size="12.5" fill="#1e293b">要求位移／轉角？</text>
+<line x1="180" y1="252" x2="420" y2="296" stroke="#64748b" stroke-width="1.6" marker-end="url(#ah)"/>
+<line x1="480" y1="252" x2="480" y2="281" stroke="#64748b" stroke-width="1.6" marker-end="url(#ah)"/>
+<line x1="780" y1="252" x2="540" y2="296" stroke="#64748b" stroke-width="1.6" marker-end="url(#ah)"/>
+<rect x="80" y="390" width="240" height="64" rx="8" fill="#f1f5f9" stroke="#64748b" stroke-width="1.5"/><text x="200.0" y="411.0" text-anchor="middle" font-size="13" fill="#1e293b">否 → 繪 SFD / BMD</text><text x="200.0" y="427.0" text-anchor="middle" font-size="13" fill="#1e293b">分段切斷面；集中力矩處</text><text x="200.0" y="443.0" text-anchor="middle" font-size="13" fill="#1e293b">BMD 跳躍</text>
+<rect x="390" y="390" width="250" height="64" rx="8" fill="#ede9fe" stroke="#7c3aed" stroke-width="1.5"/><text x="515.0" y="411.0" text-anchor="middle" font-size="13" fill="#1e293b">單位力法</text><text x="515.0" y="427.0" text-anchor="middle" font-size="13" fill="#1e293b">桁架 Δ=Σ nNL/AE</text><text x="515.0" y="443.0" text-anchor="middle" font-size="13" fill="#1e293b">梁剛架 Δ=∫ mM/EI dx</text>
+<rect x="690" y="390" width="230" height="64" rx="8" fill="#ffedd5" stroke="#d97706" stroke-width="1.5"/><text x="805.0" y="411.0" text-anchor="middle" font-size="13" fill="#1e293b">共軛梁法</text><text x="805.0" y="427.0" text-anchor="middle" font-size="13" fill="#1e293b">V̄=θ、M̄=Δ</text><text x="805.0" y="443.0" text-anchor="middle" font-size="13" fill="#1e293b">支承需轉換</text>
+<line x1="390" y1="335" x2="240" y2="390" stroke="#64748b" stroke-width="1.6" marker-end="url(#ah)"/><text x="300" y="360" font-size="12" fill="#d97706">否</text>
+<line x1="480" y1="339" x2="500" y2="390" stroke="#64748b" stroke-width="1.6" marker-end="url(#ah)"/><text x="495" y="368" font-size="12" fill="#d97706">是</text>
+<line x1="580" y1="330" x2="750" y2="390" stroke="#64748b" stroke-width="1.6" marker-end="url(#ah)"/><text x="680" y="352" font-size="12" fill="#d97706">是</text>
+</svg></div>
+
+<h2 class="sec">④ 核心公式速查</h2>
+<div class="fgrid"><div class="fcard" style="border-top-color:#2563eb"><h4>桁架：判別式與零桿判則</h4><p>靜定判別：$$m + r = 2j$$（m 桿數、r 反力數、j 節點數）</p>
+<p>零桿判則：兩桿共節點、不共線且節點無外力 → 兩桿皆零桿；三桿共節點其中兩桿共線且無外力 → 第三桿為零桿。</p>
+<p>節點法：\(\sum F_x = 0,\ \sum F_y = 0\)；截面法：切桿 ≤ 3，取力矩中心消未知。</p><div class="note">⚠ 先掃零桿再解，可大幅減少計算量（SA-2016-4、SA-2017-1）。</div></div><div class="fcard" style="border-top-color:#dc2626"><h4>梁／剛架：靜定度與內鉸條件</h4><p>剛架靜定度：$$i = (3m + r) - (3j + c)$$（c＝內鉸等條件方程數；i=0 為靜定）</p>
+<p>內部鉸條件：\(M_{\text{鉸}} = 0\)（對鉸一側取矩）。</p>
+<p>集中力矩 \(M_0\) 作用點：SFD 不變、BMD 跳躍 \(M_0\)。</p><div class="note">⚠ 鉸在多桿交會節點時，僅「連鉸那端的桿端彎矩」為零，非節點所有桿。</div></div><div class="fcard" style="border-top-color:#d97706"><h4>位移計算：單位力法／共軛梁法</h4><p>桁架：$$\Delta = \sum \frac{nNL}{EA} + \sum n(\alpha \Delta T\, L + \Delta L_{\text{製造}})$$</p>
+<p>梁／剛架：$$\Delta = \int \frac{mM}{EI}\,dx$$</p>
+<p>共軛梁：\(\bar V = \theta,\ \bar M = \Delta\)；支承轉換：固定端↔自由端、內鉸↔內滾。</p><div class="note">⚠ 靜定結構受溫度／製造誤差／沉陷：不生內力，只生位移（N=0，僅幾何項）。</div></div><div class="fcard" style="border-top-color:#059669"><h4>支承沉陷：剛體位移與疊加</h4><p>靜定結構支承沉陷 → 各段作剛體轉動，位移按幾何比例分配：$$\delta(x) = \delta_A + \frac{x}{L}(\delta_B - \delta_A)$$</p>
+<p>內鉸兩側可各自轉動，以鉸為折點畫剛體位移圖。</p><div class="note">⚠ 沉陷位移與載重位移可直接疊加（SA-2023-1）。</div></div></div>
+
+<h2 class="sec" id="qlist">⑤ 考題清單<small>點題號開啟完整解析（KaTeX 渲染）</small></h2>
+<div class="fbtns">
+  <button class="fbtn on" data-key="all" onclick="setFilter('all',this)">全部（17）</button>
+<button class="fbtn" data-key="truss" onclick="setFilter('truss',this)">靜定桁架</button><button class="fbtn" data-key="frame" onclick="setFilter('frame',this)">靜定剛架</button><button class="fbtn" data-key="beam" onclick="setFilter('beam',this)">靜定梁</button><button class="fbtn" data-key="comp" onclick="setFilter('comp',this)">複合結構</button>
+</div>
+<div id="qwrap"><div class="qitem" data-type="beam" style="border-left-color:#d97706"><div class="yr"><b>2024</b>民國 113</div><div class="bd"><a class="tt" href="../index.html#md=raw/solutions/SA-2024-1/SA-2024-1.md&t=SA-2024-1" target="_blank">SA-2024-1｜靜定梁內部鉸：最大位移（共軛梁法）</a><span class="badge" style="background:#d97706">靜定梁</span><div class="tags"><span>靜定梁</span><span>內部鉸</span><span>最大位移</span><span>共軛梁法</span><span>懸臂梁</span></div></div><div class="icons">📄 ✅</div></div><div class="qitem" data-type="truss" style="border-left-color:#2563eb"><div class="yr"><b>2024</b>民國 113</div><div class="bd"><a class="tt" href="../index.html#md=raw/solutions/SA-2024-2/SA-2024-2.md&t=SA-2024-2" target="_blank">SA-2024-2｜桁架製造誤差／溫度／沉陷：多餘資訊陷阱</a><span class="badge" style="background:#2563eb">靜定桁架</span><div class="tags"><span>靜定桁架</span><span>製造誤差</span><span>溫度變化</span><span>支承沉陷</span><span>多餘資訊陷阱</span></div></div><div class="icons">📄 ✅</div></div><div class="qitem" data-type="frame" style="border-left-color:#dc2626"><div class="yr"><b>2023</b>民國 112</div><div class="bd"><a class="tt" href="../index.html#md=raw/solutions/SA-2023-1/SA-2023-1.md&t=SA-2023-1" target="_blank">SA-2023-1｜靜定剛架支承沉陷：剛體位移與疊加</a><span class="badge" style="background:#dc2626">靜定剛架</span><div class="tags"><span>靜定剛架</span><span>支承沉陷</span><span>剛體位移</span><span>單位力法</span><span>疊加原理</span></div></div><div class="icons">📄 ✅</div></div><div class="qitem" data-type="truss" style="border-left-color:#2563eb"><div class="yr"><b>2017</b>民國 106</div><div class="bd"><a class="tt" href="../index.html#md=raw/solutions/SA-2017-1/SA-2017-1.md&t=SA-2017-1" target="_blank">SA-2017-1｜靜定桁架：零桿判斷＋虛功法水平位移</a><span class="badge" style="background:#2563eb">靜定桁架</span><div class="tags"><span>靜定桁架</span><span>節點法</span><span>零桿判斷</span><span>虛功法</span><span>水平位移</span></div></div><div class="icons">📄 ✅</div></div><div class="qitem" data-type="frame" style="border-left-color:#dc2626"><div class="yr"><b>2016</b>民國 105</div><div class="bd"><a class="tt" href="../index.html#md=raw/solutions/SA-2016-1/SA-2016-1.md&t=SA-2016-1" target="_blank">SA-2016-1｜靜定剛架水平載重：BMD</a><span class="badge" style="background:#dc2626">靜定剛架</span><div class="tags"><span>靜定剛架</span><span>內鉸</span><span>靜力平衡</span><span>BMD</span><span>水平載重</span></div></div><div class="icons">📄 ✅ 🎬</div></div><div class="qitem" data-type="truss" style="border-left-color:#2563eb"><div class="yr"><b>2016</b>民國 105</div><div class="bd"><a class="tt" href="../index.html#md=raw/solutions/SA-2016-4/SA-2016-4.md&t=SA-2016-4" target="_blank">SA-2016-4｜零力桿件判斷：節點平衡</a><span class="badge" style="background:#2563eb">靜定桁架</span><div class="tags"><span>零力桿件</span><span>桁架</span><span>節點平衡</span></div></div><div class="icons">📄 ✅</div></div><div class="qitem" data-type="truss" style="border-left-color:#2563eb"><div class="yr"><b>2015</b>民國 104</div><div class="bd"><a class="tt" href="../index.html#md=raw/solutions/SA-2015-1/SA-2015-1.md&t=SA-2015-1" target="_blank">SA-2015-1｜桁架製造誤差與支承沉陷：單位力法位移</a><span class="badge" style="background:#2563eb">靜定桁架</span><div class="tags"><span>靜定桁架</span><span>單位力法</span><span>製造誤差</span><span>支承沉陷</span><span>垂直位移</span></div></div><div class="icons">📄 ✅</div></div><div class="qitem" data-type="truss" style="border-left-color:#2563eb"><div class="yr"><b>2014</b>民國 103</div><div class="bd"><a class="tt" href="../index.html#md=raw/solutions/SA-2014-1/SA-2014-1.md&t=SA-2014-1" target="_blank">SA-2014-1｜靜定桁架截面法：影響線與最大軸力</a><span class="badge" style="background:#2563eb">靜定桁架</span><div class="tags"><span>靜定桁架</span><span>截面法</span><span>影響線</span><span>最大軸力</span></div></div><div class="icons">📄 ✅</div></div><div class="qitem" data-type="truss" style="border-left-color:#2563eb"><div class="yr"><b>2013</b>民國 102</div><div class="bd"><a class="tt" href="../index.html#md=raw/solutions/SA-2013-1/SA-2013-1.md&t=SA-2013-1" target="_blank">SA-2013-1｜桁架＋三鉸拱複合：零力桿與隱藏條件</a><span class="badge" style="background:#2563eb">靜定桁架</span><div class="tags"><span>桁架</span><span>三鉸拱</span><span>靜定</span><span>零力桿</span><span>隱藏條件</span></div></div><div class="icons">📄 ✅</div></div><div class="qitem" data-type="beam" style="border-left-color:#d97706"><div class="yr"><b>2012</b>民國 101</div><div class="bd"><a class="tt" href="../index.html#md=raw/solutions/SA-2012-1/SA-2012-1.md&t=SA-2012-1" target="_blank">SA-2012-1｜靜定梁含內鉸：BMD、轉角與位移（共軛梁法）</a><span class="badge" style="background:#d97706">靜定梁</span><div class="tags"><span>靜定梁</span><span>內鉸</span><span>彎矩圖</span><span>位移與轉角</span><span>共軛梁法</span></div></div><div class="icons">📄 ✅</div></div><div class="qitem" data-type="frame" style="border-left-color:#dc2626"><div class="yr"><b>2008</b>民國 97</div><div class="bd"><a class="tt" href="../index.html#md=raw/solutions/SA-2008-3/SA-2008-3.md&t=SA-2008-3" target="_blank">SA-2008-3｜靜定剛架均佈載重：彎矩圖</a><span class="badge" style="background:#dc2626">靜定剛架</span><div class="tags"><span>最小功法</span><span>剛架</span><span>均佈載重</span><span>彎矩圖</span></div></div><div class="icons">📄 ✅</div></div><div class="qitem" data-type="frame" style="border-left-color:#dc2626"><div class="yr"><b>2004</b>民國 93</div><div class="bd"><a class="tt" href="../index.html#md=raw/solutions/SA-2004-1/SA-2004-1.md&t=SA-2004-1" target="_blank">SA-2004-1｜靜定剛架含內部鉸：SFD/BMD 繪製</a><span class="badge" style="background:#dc2626">靜定剛架</span><div class="tags"><span>靜定剛架</span><span>剪力圖</span><span>彎矩圖</span><span>內部鉸</span></div></div><div class="icons">📄 ✅</div></div><div class="qitem" data-type="beam" style="border-left-color:#d97706"><div class="yr"><b>2004</b>民國 93</div><div class="bd"><a class="tt" href="../index.html#md=raw/solutions/SA-2004-3/SA-2004-3.md&t=SA-2004-3" target="_blank">SA-2004-3｜內部鉸＋彈簧支承複合梁：剛體位移</a><span class="badge" style="background:#d97706">靜定梁</span><div class="tags"><span>內部鉸</span><span>彈簧支承</span><span>剛體位移</span><span>懸臂梁</span><span>複合梁</span></div></div><div class="icons">📄 ✅</div></div><div class="qitem" data-type="comp" style="border-left-color:#059669"><div class="yr"><b>2003</b>民國 92</div><div class="bd"><a class="tt" href="../index.html#md=raw/solutions/SA-2003-2/SA-2003-2.md&t=SA-2003-2" target="_blank">SA-2003-2｜複合結構（剛性梁＋桿件）：單位力法位移</a><span class="badge" style="background:#059669">複合結構</span><div class="tags"><span>靜定結構</span><span>複合結構</span><span>剛性梁</span><span>位移計算</span><span>單位力法</span></div></div><div class="icons">📄 ✅</div></div><div class="qitem" data-type="truss" style="border-left-color:#2563eb"><div class="yr"><b>2003</b>民國 92</div><div class="bd"><a class="tt" href="../index.html#md=raw/solutions/SA-2003-3/SA-2003-3.md&t=SA-2003-3" target="_blank">SA-2003-3｜K 型桁架：截面法與節點法</a><span class="badge" style="background:#2563eb">靜定桁架</span><div class="tags"><span>桁架分析</span><span>K型桁架</span><span>截面法</span><span>節點法</span></div></div><div class="icons">📄 ✅</div></div><div class="qitem" data-type="frame" style="border-left-color:#dc2626"><div class="yr"><b>2002</b>民國 91</div><div class="bd"><a class="tt" href="../index.html#md=raw/solutions/SA-2002-1/SA-2002-1.md&t=SA-2002-1" target="_blank">SA-2002-1｜靜定剛架含內鉸：集中力矩下之剪力彎矩圖</a><span class="badge" style="background:#dc2626">靜定剛架</span><div class="tags"><span>靜定剛架</span><span>內鉸</span><span>集中力矩</span><span>剪力彎矩圖</span></div></div><div class="icons">📄 ✅</div></div><div class="qitem" data-type="truss" style="border-left-color:#2563eb"><div class="yr"><b>2002</b>民國 91</div><div class="bd"><a class="tt" href="../index.html#md=raw/solutions/SA-2002-2/SA-2002-2.md&t=SA-2002-2" target="_blank">SA-2002-2｜繫索桁架：截面法與節點法求桿力</a><span class="badge" style="background:#2563eb">靜定桁架</span><div class="tags"><span>桁架分析</span><span>截面法</span><span>節點法</span><span>繫索桁架</span></div></div><div class="icons">📄 ✅</div></div></div>
+
+<h2 class="sec">⑥ 高頻陷阱<small>由考古題解析歸納</small></h2>
+<div class="trap" style="border-left-color:#dc2626"><b>1. 內鉸「彎矩為零」位置誤用</b><p>內鉸位在節點上時，只有「接鉸的那一桿端」M=0；其他桿端彎矩可不為零。取矩時務必只取鉸一側的自由體。 <span class="src">（SA-2002-1、SA-2004-1）</span></p></div><div class="trap" style="border-left-color:#2563eb"><b>2. 零桿判斷漏看節點外力</b><p>零桿判則只適用於「節點無外力、無支承反力」；載重節點或支承節點上的桿不能直接判零。 <span class="src">（SA-2016-4、SA-2017-1）</span></p></div><div class="trap" style="border-left-color:#2563eb"><b>3. 誤把製造誤差／溫度／沉陷解成內力</b><p>靜定結構之製造誤差、溫變、支承沉陷不產生內力，只產生位移。直接以 Δ=Σn(αΔTL+ΔL) 之幾何項計算即可。 <span class="src">（SA-2015-1、SA-2024-2）</span></p></div><div class="trap" style="border-left-color:#2563eb"><b>4. 多餘資訊陷阱</b><p>題目給的 EA、EI 等參數未必用得到——靜定＋純幾何位移題常故意多給，先判斷再取用。 <span class="src">（SA-2024-2）</span></p></div><div class="trap" style="border-left-color:#d97706"><b>5. 共軛梁支承轉換錯誤</b><p>固定端↔自由端、簡支端不變、內鉸↔內滾支承。轉換錯一個，θ 與 Δ 全錯。 <span class="src">（SA-2012-1、SA-2024-1）</span></p></div><div class="trap" style="border-left-color:#059669"><b>6. 沉陷剛體位移幾何比例算錯</b><p>以內鉸為折點分段畫直線位移圖，按相似三角形內插；彈簧支承處位移=F/k 需與幾何相容。 <span class="src">（SA-2023-1、SA-2004-3）</span></p></div><div class="trap" style="border-left-color:#2563eb"><b>7. 截面法切桿超過三根</b><p>一刀切超過 3 根未知桿就解不出；改選切面，或先用節點法／零桿降未知數，並善用「取矩點」讓多桿通過同一點。 <span class="src">（SA-2003-3）</span></p></div><div class="trap" style="border-left-color:#dc2626"><b>8. BMD 畫在受壓側／受拉側混亂</b><p>剛架 BMD 建議固定畫在受拉側並全卷一致；節點處各桿端彎矩需滿足節點力矩平衡。 <span class="src">（SA-2016-1、SA-2008-3）</span></p></div>
+
+<h2 class="sec">⑦ 互動計算器</h2>
+<div class="calc">
+<h4 style="margin-top:0">簡支梁 SFD / BMD 計算器</h4>
+<p style="font-size:13px;color:#64748b;margin:4px 0 14px">輸入跨度與載重，即時繪出剪力圖與彎矩圖（靜定分析的基本功）。</p>
+<div class="row">
+  <div><label>跨度 L (m)</label><input id="cL" type="number" value="8" step="0.5" min="1"></div>
+  <div><label>載重型式</label><select id="cType"><option value="pt">集中載重 P</option><option value="udl">全跨均佈 w</option></select></div>
+  <div><label>P (kN) 或 w (kN/m)</label><input id="cP" type="number" value="40" step="1"></div>
+  <div><label>P 距左端 a (m)</label><input id="cA" type="number" value="3" step="0.5" min="0"></div>
+  <div><button onclick="calc()">計算</button></div>
+</div>
+<div class="out" id="calcOut">—</div>
+<canvas id="calcCv"></canvas>
+</div>
+
+<footer>exam-wiki-SA ｜ study SA-U1-2 ｜ 生成日期 2026-07-10 ｜ 解析內容以 raw/solutions/ 為準</footer>
+</div>
+<script>
+const QTYPES=[{"key": "truss", "label": "靜定桁架", "color": "#2563eb"}, {"key": "frame", "label": "靜定剛架", "color": "#dc2626"}, {"key": "beam", "label": "靜定梁", "color": "#d97706"}, {"key": "comp", "label": "複合結構", "color": "#059669"}];
+const QUESTIONS=[{"year": 2002, "type": "frame"}, {"year": 2002, "type": "truss"}, {"year": 2003, "type": "comp"}, {"year": 2003, "type": "truss"}, {"year": 2004, "type": "frame"}, {"year": 2004, "type": "beam"}, {"year": 2008, "type": "frame"}, {"year": 2012, "type": "beam"}, {"year": 2013, "type": "truss"}, {"year": 2014, "type": "truss"}, {"year": 2015, "type": "truss"}, {"year": 2016, "type": "frame"}, {"year": 2016, "type": "truss"}, {"year": 2017, "type": "truss"}, {"year": 2023, "type": "frame"}, {"year": 2024, "type": "beam"}, {"year": 2024, "type": "truss"}];
+
+function drawCharts(){
+  const cv=document.getElementById('yearChart'),ctx=cv.getContext('2d');
+  const years=[];for(let y=2002;y<=2025;y++)years.push(y);
+  const W=cv.width=960,H=cv.height=300,padL=34,padB=44,padT=14;
+  const counts=years.map(y=>QTYPES.map(t=>QUESTIONS.filter(q=>q.year===y&&q.type===t.key).length));
+  const maxC=Math.max(2,...counts.map(c=>c.reduce((a,b)=>a+b,0)));
+  const bw=(W-padL-10)/years.length;
+  ctx.font='12px sans-serif';
+  for(let i=0;i<=maxC;i++){const y=H-padB-(H-padB-padT)*i/maxC;
+    ctx.strokeStyle='#e2e8f0';ctx.beginPath();ctx.moveTo(padL,y);ctx.lineTo(W-6,y);ctx.stroke();
+    ctx.fillStyle='#94a3b8';ctx.fillText(i,12,y+4);}
+  years.forEach((y,i)=>{let acc=0;
+    QTYPES.forEach((t,k)=>{const c=counts[i][k];if(c){const h=(H-padB-padT)*c/maxC;
+      ctx.fillStyle=t.color;ctx.fillRect(padL+i*bw+3,H-padB-acc-h,bw-6,h);acc+=h;}});
+    ctx.fillStyle='#64748b';ctx.save();ctx.translate(padL+i*bw+bw/2+4,H-padB+12);
+    ctx.rotate(-Math.PI/3);ctx.textAlign='right';ctx.fillText(String(y),0,0);ctx.restore();});
+  const pv=document.getElementById('pieChart'),pctx=pv.getContext('2d');
+  const PW=pv.width=320,PH=pv.height=260,tot=QUESTIONS.length;let a0=-Math.PI/2;
+  QTYPES.forEach(t=>{const n=QUESTIONS.filter(q=>q.type===t.key).length;if(!n)return;
+    const a1=a0+2*Math.PI*n/tot;
+    pctx.beginPath();pctx.moveTo(PW/2,PH/2);pctx.arc(PW/2,PH/2,95,a0,a1);pctx.closePath();
+    pctx.fillStyle=t.color;pctx.fill();pctx.strokeStyle='#fff';pctx.lineWidth=2;pctx.stroke();
+    const am=(a0+a1)/2;pctx.fillStyle='#fff';pctx.font='bold 13px sans-serif';pctx.textAlign='center';
+    pctx.fillText(n,PW/2+Math.cos(am)*62,PH/2+Math.sin(am)*62+4);a0=a1;});
+  const lg=document.getElementById('pieLegend');
+  lg.innerHTML=QTYPES.map(t=>{const n=QUESTIONS.filter(q=>q.type===t.key).length;
+    return '<i style="background:'+t.color+'"></i>'+t.label+' '+n+'題';}).join('');
+}
+function setFilter(key,btn){
+  document.querySelectorAll('.fbtn').forEach(b=>b.classList.remove('on'));
+  if(!btn)btn=document.querySelector('.fbtn[data-key="'+key+'"]');
+  if(btn)btn.classList.add('on');
+  document.querySelectorAll('.qitem').forEach(el=>{
+    el.style.display=(key==='all'||el.dataset.type===key)?'flex':'none';});
+}
+function jumpFilter(key){
+  setFilter(key,null);
+  document.getElementById('qlist').scrollIntoView({behavior:'smooth'});
+}
+document.addEventListener('DOMContentLoaded',drawCharts);
+
+
+function calc(){
+  const L=+document.getElementById('cL').value,
+        type=document.getElementById('cType').value,
+        P=+document.getElementById('cP').value;
+  let a=Math.min(Math.max(+document.getElementById('cA').value,0),L);
+  const N=241,xs=[],V=[],M=[];
+  let RA,RB,out;
+  if(type==='pt'){RA=P*(L-a)/L;RB=P*a/L;
+    out='R<sub>A</sub> = '+RA.toFixed(2)+' kN，R<sub>B</sub> = '+RB.toFixed(2)+
+        ' kN，M<sub>max</sub> = '+(RA*a).toFixed(2)+' kN·m（x = '+a.toFixed(2)+' m 載重點下）';
+  }else{RA=RB=P*L/2;
+    out='R<sub>A</sub> = R<sub>B</sub> = '+RA.toFixed(2)+' kN，M<sub>max</sub> = wL²/8 = '+
+        (P*L*L/8).toFixed(2)+' kN·m（跨中）';}
+  for(let i=0;i<N;i++){const x=L*i/(N-1);xs.push(x);
+    if(type==='pt'){V.push(x<a?RA:RA-P);M.push(x<a?RA*x:RA*x-P*(x-a));}
+    else{V.push(RA-P*x);M.push(RA*x-P*x*x/2);}}
+  document.getElementById('calcOut').innerHTML=out;
+  drawVM(xs,V,M,L);
+}
+function drawVM(xs,V,M,L){
+  const cv=document.getElementById('calcCv'),ctx=cv.getContext('2d');
+  const W=cv.width=960,H=cv.height=430;ctx.clearRect(0,0,W,H);
+  ctx.font='12px sans-serif';
+  const panels=[{d:V,y0:60,h:150,c:'#2563eb',lb:'SFD (kN)'},{d:M,y0:250,h:150,c:'#dc2626',lb:'BMD (kN·m)'}];
+  panels.forEach(p=>{
+    const mx=Math.max(...p.d.map(Math.abs),1e-6),base=p.y0+p.h/2,sc=(p.h/2-14)/mx;
+    ctx.strokeStyle='#94a3b8';ctx.beginPath();ctx.moveTo(50,base);ctx.lineTo(W-30,base);ctx.stroke();
+    ctx.fillStyle='#334155';ctx.fillText(p.lb,50,p.y0-6);
+    ctx.beginPath();ctx.moveTo(50,base);
+    p.d.forEach((v,i)=>ctx.lineTo(50+(W-80)*xs[i]/L,base-v*sc));
+    ctx.lineTo(W-30,base);ctx.closePath();
+    ctx.fillStyle=p.c+'22';ctx.fill();ctx.strokeStyle=p.c;ctx.lineWidth=2;ctx.stroke();ctx.lineWidth=1;
+    const vmax=Math.max(...p.d),vmin=Math.min(...p.d);
+    ctx.fillStyle=p.c;
+    ctx.fillText('max '+vmax.toFixed(1),W-120,p.y0+8);
+    ctx.fillText('min '+vmin.toFixed(1),W-120,p.y0+22);
+  });
+  ctx.fillStyle='#64748b';ctx.fillText('0',44,H-16);ctx.fillText('L = '+L+' m',W-90,H-16);
+}
+document.addEventListener('DOMContentLoaded',calc);
+
+</script>
+</body>
+</html>

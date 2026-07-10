@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>SA-U2-4 靜不定結構之矩陣分析法｜深度複習</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
+ onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'\\(',right:'\\)',display:false}]})"></script>
+<style>
+:root{--bg:#f6f7fb;--card:#fff;--ink:#1e293b;--mut:#64748b;--line:#e2e8f0;--acc:#2563eb}
+*{box-sizing:border-box}
+body{margin:0;font-family:'Segoe UI','Microsoft JhengHei','Noto Sans TC',sans-serif;background:var(--bg);color:var(--ink);line-height:1.65}
+.wrap{max-width:1100px;margin:0 auto;padding:24px 20px 80px}
+header.hero{background:linear-gradient(135deg,#1e3a8a,#2563eb);color:#fff;border-radius:16px;padding:28px 32px;margin-bottom:28px}
+header.hero .bc{font-size:13px;opacity:.85;margin-bottom:6px}
+header.hero .bc a{color:#bfdbfe;text-decoration:none}
+header.hero h1{margin:0;font-size:26px}
+header.hero p{margin:8px 0 0;opacity:.9;font-size:14px}
+h2.sec{font-size:20px;margin:44px 0 16px;padding-left:12px;border-left:5px solid var(--acc)}
+h2.sec small{font-weight:400;font-size:13px;color:var(--mut);margin-left:10px}
+.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:14px}
+.kpi{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:16px 18px}
+.kpi .v{font-size:28px;font-weight:700;color:var(--acc)}
+.kpi .l{font-size:13px;color:var(--mut)}
+.typecards{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:14px;margin-top:18px}
+.tcard{background:var(--card);border:1px solid var(--line);border-left:6px solid #888;border-radius:12px;padding:14px 16px;cursor:pointer;transition:.15s}
+.tcard:hover{transform:translateY(-2px);box-shadow:0 4px 14px rgba(0,0,0,.08)}
+.tcard b{font-size:15px}
+.tcard .n{font-size:22px;font-weight:700;float:right}
+.tcard p{margin:6px 0 0;font-size:12.5px;color:var(--mut)}
+.charts{display:grid;grid-template-columns:2fr 1fr;gap:18px;margin-top:20px}
+@media(max-width:820px){.charts{grid-template-columns:1fr}}
+.chartbox{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:16px}
+.chartbox h4{margin:0 0 10px;font-size:14px;color:var(--mut)}
+.chartbox canvas{width:100%;height:auto;display:block}
+.legend{font-size:12.5px;color:var(--mut);margin-top:8px}
+.legend i{display:inline-block;width:11px;height:11px;border-radius:3px;margin:0 5px 0 12px;vertical-align:-1px}
+.svgbox{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:18px;overflow-x:auto}
+.svgbox+.svgbox{margin-top:16px}
+.svgbox h4{margin:0 0 8px;font-size:15px}
+.svgbox .cap{font-size:12.5px;color:var(--mut);margin-top:8px}
+.fgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(330px,1fr));gap:16px}
+.fcard{background:var(--card);border:1px solid var(--line);border-top:5px solid #888;border-radius:12px;padding:16px 18px;overflow-x:auto}
+.fcard h4{margin:0 0 10px;font-size:15px}
+.fcard .note{font-size:12.5px;color:var(--mut);background:#f1f5f9;border-radius:8px;padding:8px 10px;margin-top:10px}
+.fbtns{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:16px}
+.fbtn{border:1px solid var(--line);background:var(--card);border-radius:20px;padding:6px 16px;font-size:13.5px;cursor:pointer}
+.fbtn.on{background:var(--acc);border-color:var(--acc);color:#fff}
+.qitem{background:var(--card);border:1px solid var(--line);border-left:6px solid #888;border-radius:10px;padding:12px 16px;margin-bottom:10px;display:flex;gap:14px;align-items:flex-start}
+.qitem .yr{min-width:76px;text-align:center;background:#f1f5f9;border-radius:8px;padding:6px 4px;font-size:11.5px;color:var(--mut)}
+.qitem .yr b{display:block;font-size:15px;color:var(--ink)}
+.qitem .bd{flex:1}
+.qitem a.tt{font-weight:600;color:#1d4ed8;text-decoration:none;font-size:15px}
+.qitem a.tt:hover{text-decoration:underline}
+.badge{display:inline-block;font-size:11px;color:#fff;border-radius:10px;padding:2px 9px;margin-left:8px;vertical-align:1px}
+.tags{margin-top:5px;font-size:12px;color:var(--mut)}
+.tags span{background:#eef2ff;color:#4338ca;border-radius:8px;padding:1px 8px;margin-right:6px;display:inline-block;margin-top:3px}
+.icons{white-space:nowrap;font-size:13px;color:var(--mut);padding-top:2px}
+.trap{background:var(--card);border:1px solid var(--line);border-left:6px solid #888;border-radius:10px;padding:12px 16px;margin-bottom:10px}
+.trap b{font-size:14.5px}
+.trap p{margin:5px 0 0;font-size:13.5px;color:#475569}
+.trap .src{font-size:12px;color:#94a3b8}
+.calc{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:20px}
+.calc .row{display:flex;flex-wrap:wrap;gap:16px;align-items:flex-end;margin-bottom:14px}
+.calc label{font-size:13px;color:var(--mut);display:block;margin-bottom:3px}
+.calc input,.calc select{padding:6px 10px;border:1px solid var(--line);border-radius:8px;font-size:14px;width:120px}
+.calc button{background:var(--acc);color:#fff;border:0;border-radius:8px;padding:9px 24px;font-size:14px;cursor:pointer}
+.calc .out{background:#f1f5f9;border-radius:10px;padding:12px 16px;margin:12px 0;font-size:14px}
+.calc canvas{width:100%;height:auto;display:block;border:1px solid var(--line);border-radius:10px;margin-top:8px}
+footer{margin-top:60px;font-size:12px;color:var(--mut);text-align:center}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header class="hero">
+  <div class="bc"><a href="../index.html" target="_blank">⌂ SA 結構學題庫儀表板</a> ／ SA-U2 第二單元 ／ SA-U2-4</div>
+  <h1>SA-U2-4　靜不定結構之矩陣分析法</h1>
+  <p>直接勁度法完整流程：自由度判定、元素勁度與座標轉換、等效節點載重、靜態凝縮與剪力構架</p>
+</header>
+
+<h2 class="sec">① 命題分析<small>資料來源：question_index.json（2002–2025，全科 96 題）</small></h2>
+<div class="kpis"><div class="kpi"><div class="v">12 題</div><div class="l">主考點題數（2002–2025）</div></div><div class="kpi"><div class="v">12.5%</div><div class="l">佔全科 96 題比例</div></div><div class="kpi"><div class="v">No.3（並列）</div><div class="l">全部 10 個子項排名</div></div><div class="kpi"><div class="v">33%</div><div class="l">近 6 年出題率（2/6 年）</div></div></div>
+<div class="typecards"><div class="tcard" style="border-left-color:#dc2626" onclick="jumpFilter('beamframe')"><span class="n" style="color:#dc2626">6</span><b>梁與剛架矩陣位移法</b><p>4×4 梁元素、等效節點載重、彈簧／半剛性接頭、剛性桿件約束</p></div><div class="tcard" style="border-left-color:#2563eb" onclick="jumpFilter('truss')"><span class="n" style="color:#2563eb">3</span><b>桁架直接勁度法</b><p>座標轉換、節點位移與桿力、製造誤差等效載重</p></div><div class="tcard" style="border-left-color:#d97706" onclick="jumpFilter('lateral')"><span class="n" style="color:#d97706">2</span><b>側向勁度與剪力構架</b><p>12EI/h³ 與 3EI/h³、靜態凝縮、不規則構架挑高柱</p></div><div class="tcard" style="border-left-color:#059669" onclick="jumpFilter('grid')"><span class="n" style="color:#059669">1</span><b>格床／空間結構</b><p>格子梁自由度（含扭轉）、整體勁度矩陣、對稱性利用</p></div></div>
+<div class="charts">
+  <div class="chartbox"><h4>年度出題分布（依題型堆疊）</h4><canvas id="yearChart"></canvas></div>
+  <div class="chartbox"><h4>題型比例</h4><canvas id="pieChart"></canvas><div class="legend" id="pieLegend"></div></div>
+</div>
+
+<h2 class="sec">② 結構示意圖解</h2>
+
+<div class="svgbox"><h4>矩陣位移法：元素自由度與整體組裝</h4>
+<svg viewBox="0 0 980 270" xmlns="http://www.w3.org/2000/svg"><defs><marker id="ah" markerWidth="9" markerHeight="9" refX="7" refY="4" orient="auto"><path d="M0,0L8,4L0,8z" fill="#64748b"/></marker></defs>
+<!-- beam element -->
+<text x="120" y="24" font-size="14" font-weight="bold" fill="#dc2626">梁元素（4 DOF）</text>
+<line x1="60" y1="120" x2="300" y2="120" stroke="#dc2626" stroke-width="3.5"/>
+<circle cx="60" cy="120" r="5" fill="#7f1d1d"/><circle cx="300" cy="120" r="5" fill="#7f1d1d"/>
+<line x1="60" y1="95" x2="60" y2="60" stroke="#64748b" stroke-width="1.6" marker-end="url(#ah)"/><text x="44" y="80" font-size="12" fill="#d97706">v₁</text>
+<line x1="300" y1="95" x2="300" y2="60" stroke="#64748b" stroke-width="1.6" marker-end="url(#ah)"/><text x="308" y="80" font-size="12" fill="#d97706">v₂</text>
+<path d="M85,100 A22,22 0 1,1 64,116" fill="none" stroke="#2563eb" stroke-width="1.8" marker-end="url(#ah)"/>
+<path d="M325,100 A22,22 0 1,1 304,116" fill="none" stroke="#2563eb" stroke-width="1.8" marker-end="url(#ah)"/>
+<text x="92" y="88" font-size="12.5" fill="#2563eb">θ₁</text><text x="332" y="88" font-size="12.5" fill="#2563eb">θ₂</text>
+<text x="130" y="150" font-size="12" fill="#64748b">EI、L</text>
+<text x="60" y="190" font-size="12.5" fill="#334155">k：4×4（12,6L…）；忽略軸向 → 每節點 v、θ</text>
+<!-- truss element -->
+<text x="480" y="24" font-size="14" font-weight="bold" fill="#2563eb">桁架元素（整體座標）</text>
+<line x1="420" y1="180" x2="620" y2="80" stroke="#2563eb" stroke-width="3.5"/>
+<circle cx="420" cy="180" r="5" fill="#1e3a8a"/><circle cx="620" cy="80" r="5" fill="#1e3a8a"/>
+<line x1="420" y1="180" x2="470" y2="180" stroke="#64748b" stroke-width="1.6" marker-end="url(#ah)"/><text x="462" y="196" font-size="12" fill="#d97706">u₁</text>
+<line x1="420" y1="180" x2="420" y2="132" stroke="#64748b" stroke-width="1.6" marker-end="url(#ah)"/><text x="400" y="150" font-size="12" fill="#d97706">v₁</text>
+<line x1="420" y1="180" x2="530" y2="180" stroke="#94a3b8" stroke-width="1" stroke-dasharray="4 3"/>
+<path d="M492,180 A36,36 0 0,0 484,162" fill="none" stroke="#d97706" stroke-width="1.6" marker-end="url(#ah)"/>
+<text x="500" y="168" font-size="12.5" fill="#d97706">φ（c=cosφ, s=sinφ）</text>
+<text x="420" y="230" font-size="12.5" fill="#334155">k = (EA/L)·[c², cs; …]（4×4）</text>
+<!-- shear frame -->
+<text x="800" y="24" font-size="14" font-weight="bold" fill="#d97706">剪力構架（側移 DOF）</text>
+<line x1="720" y1="90" x2="950" y2="90" stroke="#334155" stroke-width="6"/>
+<g stroke="#d97706" stroke-width="3" fill="none">
+<line x1="740" y1="200" x2="740" y2="90"/><line x1="835" y1="200" x2="835" y2="90"/><line x1="930" y1="200" x2="930" y2="90"/>
+</g>
+<line x1="715" y1="200" x2="765" y2="200" stroke="#334155" stroke-width="2.5"/><line x1="721" y1="200" x2="712" y2="209" stroke="#334155" stroke-width="1.4"/><line x1="731" y1="200" x2="722" y2="209" stroke="#334155" stroke-width="1.4"/><line x1="741" y1="200" x2="732" y2="209" stroke="#334155" stroke-width="1.4"/><line x1="751" y1="200" x2="742" y2="209" stroke="#334155" stroke-width="1.4"/><line x1="761" y1="200" x2="752" y2="209" stroke="#334155" stroke-width="1.4"/><line x1="810" y1="200" x2="860" y2="200" stroke="#334155" stroke-width="2.5"/><line x1="816" y1="200" x2="807" y2="209" stroke="#334155" stroke-width="1.4"/><line x1="826" y1="200" x2="817" y2="209" stroke="#334155" stroke-width="1.4"/><line x1="836" y1="200" x2="827" y2="209" stroke="#334155" stroke-width="1.4"/><line x1="846" y1="200" x2="837" y2="209" stroke="#334155" stroke-width="1.4"/><line x1="856" y1="200" x2="847" y2="209" stroke="#334155" stroke-width="1.4"/><line x1="905" y1="200" x2="955" y2="200" stroke="#334155" stroke-width="2.5"/><line x1="911" y1="200" x2="902" y2="209" stroke="#334155" stroke-width="1.4"/><line x1="921" y1="200" x2="912" y2="209" stroke="#334155" stroke-width="1.4"/><line x1="931" y1="200" x2="922" y2="209" stroke="#334155" stroke-width="1.4"/><line x1="941" y1="200" x2="932" y2="209" stroke="#334155" stroke-width="1.4"/><line x1="951" y1="200" x2="942" y2="209" stroke="#334155" stroke-width="1.4"/>
+<line x1="672" y1="90" x2="716" y2="90" stroke="#64748b" stroke-width="1.6" marker-end="url(#ah)"/><text x="680" y="82" font-size="12" fill="#d97706">P</text>
+<text x="720" y="240" font-size="12.5" fill="#334155">剛性樓板：k = Σ 12EI/h³（柱高不同時各自代入）</text>
+</svg>
+<div class="cap">圖說：先定自由度（含忽略軸向變形之簡化），元素勁度依變形模式建立，經座標轉換後對號入座組裝整體勁度矩陣 K。</div></div>
+
+
+<h2 class="sec">③ 解題流程圖</h2>
+<div class="svgbox"><svg viewBox="0 0 960 520" xmlns="http://www.w3.org/2000/svg"><defs><marker id="ah" markerWidth="9" markerHeight="9" refX="7" refY="4" orient="auto"><path d="M0,0L8,4L0,8z" fill="#64748b"/></marker></defs>
+<rect x="370" y="10" width="220" height="44" rx="8" fill="#eff6ff" stroke="#2563eb" stroke-width="1.5"/><text x="480.0" y="37.0" text-anchor="middle" font-size="13" fill="#1e293b">矩陣分析法題目</text>
+<rect x="320" y="86" width="320" height="58" rx="8" fill="#fef3c7" stroke="#d97706" stroke-width="1.5"/><text x="480.0" y="112.0" text-anchor="middle" font-size="13" fill="#1e293b">① 編號自由度（未束制位移）</text><text x="480.0" y="128.0" text-anchor="middle" font-size="13" fill="#1e293b">忽略軸向變形／剛性構件 → DOF 減少</text>
+<line x1="480" y1="54" x2="480" y2="86" stroke="#64748b" stroke-width="1.6" marker-end="url(#ah)"/>
+<rect x="320" y="178" width="320" height="58" rx="8" fill="#dbeafe" stroke="#2563eb" stroke-width="1.5"/><text x="480.0" y="204.0" text-anchor="middle" font-size="13" fill="#1e293b">② 元素勁度矩陣 k</text><text x="480.0" y="220.0" text-anchor="middle" font-size="13" fill="#1e293b">梁 4×4 ／ 桁架 (EA/L)T ／ 彈簧 k</text>
+<line x1="480" y1="144" x2="480" y2="178" stroke="#64748b" stroke-width="1.6" marker-end="url(#ah)"/>
+<rect x="320" y="270" width="320" height="58" rx="8" fill="#fee2e2" stroke="#dc2626" stroke-width="1.5"/><text x="480.0" y="296.0" text-anchor="middle" font-size="13" fill="#1e293b">③ 組裝 K；載重向量 F</text><text x="480.0" y="312.0" text-anchor="middle" font-size="13" fill="#1e293b">非節點載重 → F = −(固端力)</text>
+<line x1="480" y1="236" x2="480" y2="270" stroke="#64748b" stroke-width="1.6" marker-end="url(#ah)"/>
+<polygon points="480,361.0 610.0,392 480,423.0 350.0,392" fill="#fef3c7" stroke="#d97706" stroke-width="1.5"/><text x="480" y="389.5" text-anchor="middle" font-size="12.5" fill="#1e293b">需要凝縮？</text><text x="480" y="404.5" text-anchor="middle" font-size="12.5" fill="#1e293b">（只求側移勁度）</text>
+<line x1="480" y1="328" x2="480" y2="361" stroke="#64748b" stroke-width="1.6" marker-end="url(#ah)"/>
+<rect x="90" y="462" width="320" height="52" rx="8" fill="#ede9fe" stroke="#7c3aed" stroke-width="1.5"/><text x="250.0" y="493.0" text-anchor="middle" font-size="13" fill="#1e293b">是：K* = K_dd − K_dr K_rr⁻¹ K_rd</text>
+<rect x="540" y="462" width="340" height="52" rx="8" fill="#d1fae5" stroke="#059669" stroke-width="1.5"/><text x="710.0" y="493.0" text-anchor="middle" font-size="13" fill="#1e293b">否：解 KD=F → 桿端力 f = kd + 固端力</text>
+<line x1="390" y1="410" x2="260" y2="462" stroke="#64748b" stroke-width="1.6" marker-end="url(#ah)"/><text x="320" y="432" font-size="12" fill="#d97706">是</text>
+<line x1="570" y1="410" x2="690" y2="462" stroke="#64748b" stroke-width="1.6" marker-end="url(#ah)"/><text x="640" y="430" font-size="12" fill="#d97706">否</text>
+</svg></div>
+
+<h2 class="sec">④ 核心公式速查</h2>
+<div class="fgrid"><div class="fcard" style="border-top-color:#dc2626"><h4>梁元素勁度矩陣（v₁ θ₁ v₂ θ₂）</h4><p>$$k = \frac{EI}{L^3}\begin{bmatrix} 12 & 6L & -12 & 6L\\ 6L & 4L^2 & -6L & 2L^2\\ -12 & -6L & 12 & -6L\\ 6L & 2L^2 & -6L & 4L^2 \end{bmatrix}$$</p>
+<p>桿端力：\(f = k\,d + f^{fix}\)（固端力向量）。</p><div class="note">⚠ 只取轉角自由度時退化為 [4EI/L, 2EI/L; 2EI/L, 4EI/L]。</div></div><div class="fcard" style="border-top-color:#2563eb"><h4>桁架元素（整體座標）與等效節點載重</h4><p>$$k = \frac{EA}{L}\begin{bmatrix} c^2 & cs & -c^2 & -cs\\ cs & s^2 & -cs & -s^2\\ -c^2 & -cs & c^2 & cs\\ -cs & -s^2 & cs & s^2 \end{bmatrix},\quad c=\cos\varphi,\ s=\sin\varphi$$</p>
+<p>製造誤差／溫度：等效節點力 \(F_0 = \dfrac{EA}{L}\Delta L\)（沿桿軸向外推）。</p><div class="note">⚠ 桿力 N = (EA/L)[(u₂−u₁)c + (v₂−v₁)s] − EAΔL/L（有初始誤差時）。</div></div><div class="fcard" style="border-top-color:#d97706"><h4>柱側向勁度與靜態凝縮</h4><p>$$k_{\text{柱}} = \frac{12EI}{h^3}\ (\text{雙端固定}) \qquad k_{\text{柱}} = \frac{3EI}{h^3}\ (\text{一端鉸})$$</p>
+<p>靜態凝縮（保留 d、凝縮 r）：$$K^* = K_{dd} - K_{dr}K_{rr}^{-1}K_{rd}$$</p><div class="note">⚠ 梁非剛性時 12EI/h³ 高估側向勁度，須凝縮轉角自由度（SA-2025-1）。</div></div><div class="fcard" style="border-top-color:#dc2626"><h4>整體方程與特殊接頭</h4><p>$$K\,D = F - F^{fix}$$（非節點載重以「負固端力」化為等效節點載重）</p>
+<p>半剛性（旋轉彈簧 \(k_\theta\)）接頭：元素與彈簧串聯修正勁度；彈簧支承：對角項直接加 \(k\)。</p><div class="note">⚠ 剛性樓板／剛性桿件＝內部約束：以約束方程消去相依自由度（SA-2012-4、SA-2022-4）。</div></div></div>
+
+<h2 class="sec" id="qlist">⑤ 考題清單<small>點題號開啟完整解析（KaTeX 渲染）</small></h2>
+<div class="fbtns">
+  <button class="fbtn on" data-key="all" onclick="setFilter('all',this)">全部（12）</button>
+<button class="fbtn" data-key="beamframe" onclick="setFilter('beamframe',this)">梁與剛架矩陣位移法</button><button class="fbtn" data-key="truss" onclick="setFilter('truss',this)">桁架直接勁度法</button><button class="fbtn" data-key="lateral" onclick="setFilter('lateral',this)">側向勁度與剪力構架</button><button class="fbtn" data-key="grid" onclick="setFilter('grid',this)">格床／空間結構</button>
+</div>
+<div id="qwrap"><div class="qitem" data-type="lateral" style="border-left-color:#d97706"><div class="yr"><b>2025</b>民國 114</div><div class="bd"><a class="tt" href="../index.html#md=raw/solutions/SA-2025-1/SA-2025-1.md&t=SA-2025-1" target="_blank">SA-2025-1｜門型剛構架側向勁度：靜態凝縮</a><span class="badge" style="background:#d97706">側向勁度與剪力構架</span><div class="tags"><span>矩陣勁度法</span><span>側向勁度</span><span>門型剛構架</span><span>靜態凝縮</span><span>忽略軸向變形</span></div></div><div class="icons">📄 ✅ 🎬</div></div><div class="qitem" data-type="grid" style="border-left-color:#059669"><div class="yr"><b>2025</b>民國 114</div><div class="bd"><a class="tt" href="../index.html#md=raw/solutions/SA-2025-4/SA-2025-4.md&t=SA-2025-4" target="_blank">SA-2025-4｜格床結構整體勁度矩陣：對稱性利用</a><span class="badge" style="background:#059669">格床／空間結構</span><div class="tags"><span>矩陣位移法</span><span>整體勁度矩陣</span><span>自由度</span><span>格床結構</span><span>對稱性利用</span></div></div><div class="icons">📄 ✅ 🎬</div></div><div class="qitem" data-type="lateral" style="border-left-color:#d97706"><div class="yr"><b>2022</b>民國 111</div><div class="bd"><a class="tt" href="../index.html#md=raw/solutions/SA-2022-4/SA-2022-4.md&t=SA-2022-4" target="_blank">SA-2022-4｜不規則剪力構架：剛性樓板側移剛度（挑高柱）</a><span class="badge" style="background:#d97706">側向勁度與剪力構架</span><div class="tags"><span>剪力棟架</span><span>剛性樓板</span><span>側移剛度</span><span>不規則構架</span><span>挑高柱</span></div></div><div class="icons">📄 ✅</div></div><div class="qitem" data-type="beamframe" style="border-left-color:#dc2626"><div class="yr"><b>2019</b>民國 108</div><div class="bd"><a class="tt" href="../index.html#md=raw/solutions/SA-2019-4/SA-2019-4.md&t=SA-2019-4" target="_blank">SA-2019-4｜半剛性接頭（旋轉彈簧）勁度矩陣</a><span class="badge" style="background:#dc2626">梁與剛架矩陣位移法</span><div class="tags"><span>勁度矩陣</span><span>半剛性接頭</span><span>旋轉彈簧</span><span>節點載重向量</span></div></div><div class="icons">📄 ✅</div></div><div class="qitem" data-type="beamframe" style="border-left-color:#dc2626"><div class="yr"><b>2018</b>民國 107</div><div class="bd"><a class="tt" href="../index.html#md=raw/solutions/SA-2018-2/SA-2018-2.md&t=SA-2018-2" target="_blank">SA-2018-2｜直接勁度法：節點外力向量與彎矩圖</a><span class="badge" style="background:#dc2626">梁與剛架矩陣位移法</span><div class="tags"><span>直接勁度法</span><span>勁度矩陣</span><span>節點外力向量</span><span>彎矩圖</span></div></div><div class="icons">📄 ✅</div></div><div class="qitem" data-type="beamframe" style="border-left-color:#dc2626"><div class="yr"><b>2015</b>民國 104</div><div class="bd"><a class="tt" href="../index.html#md=raw/solutions/SA-2015-4/SA-2015-4.md&t=SA-2015-4" target="_blank">SA-2015-4｜彈簧接頭矩陣位移法：自由度判定</a><span class="badge" style="background:#dc2626">梁與剛架矩陣位移法</span><div class="tags"><span>矩陣位移法</span><span>彈簧接頭</span><span>自由度判定</span><span>固端彎矩</span><span>無軸向變形</span></div></div><div class="icons">📄 ✅</div></div><div class="qitem" data-type="truss" style="border-left-color:#2563eb"><div class="yr"><b>2013</b>民國 102</div><div class="bd"><a class="tt" href="../index.html#md=raw/solutions/SA-2013-4/SA-2013-4.md&t=SA-2013-4" target="_blank">SA-2013-4｜桁架勁度矩陣：節點位移與內力</a><span class="badge" style="background:#2563eb">桁架直接勁度法</span><div class="tags"><span>直接勁度法</span><span>桁架</span><span>勁度矩陣</span><span>節點位移</span><span>內力</span></div></div><div class="icons">📄 ✅</div></div><div class="qitem" data-type="beamframe" style="border-left-color:#dc2626"><div class="yr"><b>2012</b>民國 101</div><div class="bd"><a class="tt" href="../index.html#md=raw/solutions/SA-2012-4/SA-2012-4.md&t=SA-2012-4" target="_blank">SA-2012-4｜剛性桿件內部約束：勁度矩陣處理</a><span class="badge" style="background:#dc2626">梁與剛架矩陣位移法</span><div class="tags"><span>直接勁度法</span><span>勁度矩陣</span><span>剛性桿件</span><span>內部約束</span></div></div><div class="icons">📄 ✅</div></div><div class="qitem" data-type="truss" style="border-left-color:#2563eb"><div class="yr"><b>2011</b>民國 100</div><div class="bd"><a class="tt" href="../index.html#md=raw/solutions/SA-2011-4/SA-2011-4.md&t=SA-2011-4" target="_blank">SA-2011-4｜桁架製造誤差：等效節點載重</a><span class="badge" style="background:#2563eb">桁架直接勁度法</span><div class="tags"><span>矩陣勁度法</span><span>桁架</span><span>製造誤差</span><span>等效節點載重</span></div></div><div class="icons">📄 ✅</div></div><div class="qitem" data-type="truss" style="border-left-color:#2563eb"><div class="yr"><b>2010</b>民國 99</div><div class="bd"><a class="tt" href="../index.html#md=raw/solutions/SA-2010-4/SA-2010-4.md&t=SA-2010-4" target="_blank">SA-2010-4｜桁架直接勁度法：節點變位</a><span class="badge" style="background:#2563eb">桁架直接勁度法</span><div class="tags"><span>直接勁度法</span><span>桁架</span><span>節點變位</span><span>勁度矩陣</span></div></div><div class="icons">📄 ✅</div></div><div class="qitem" data-type="beamframe" style="border-left-color:#dc2626"><div class="yr"><b>2008</b>民國 97</div><div class="bd"><a class="tt" href="../index.html#md=raw/solutions/SA-2008-4/SA-2008-4.md&t=SA-2008-4" target="_blank">SA-2008-4｜剛架直接勁度法：均佈載重與彎矩圖</a><span class="badge" style="background:#dc2626">梁與剛架矩陣位移法</span><div class="tags"><span>矩陣直接勁度法</span><span>剛架</span><span>均佈載重</span><span>彎矩圖</span></div></div><div class="icons">📄 ✅</div></div><div class="qitem" data-type="beamframe" style="border-left-color:#dc2626"><div class="yr"><b>2004</b>民國 93</div><div class="bd"><a class="tt" href="../index.html#md=raw/solutions/SA-2004-4/SA-2004-4.md&t=SA-2004-4" target="_blank">SA-2004-4｜彈簧支承矩陣位移法：修正勁度矩陣＋非節點載重</a><span class="badge" style="background:#dc2626">梁與剛架矩陣位移法</span><div class="tags"><span>矩陣位移法</span><span>彈簧支承</span><span>修正式勁度矩陣</span><span>非節點載重</span></div></div><div class="icons">📄 ✅</div></div></div>
+
+<h2 class="sec">⑥ 高頻陷阱<small>由考古題解析歸納</small></h2>
+<div class="trap" style="border-left-color:#dc2626"><b>1. 自由度數錯</b><p>忽略軸向變形時同層節點水平位移相同、梁兩端垂直位移互相牽制；彈簧接頭則「多」一個獨立轉角。先畫變形模式再數 DOF。 <span class="src">（SA-2015-4）</span></p></div><div class="trap" style="border-left-color:#2563eb"><b>2. 座標轉換角度方向錯</b><p>φ 一律從整體 X 軸逆時針量到桿軸（由 i 端指向 j 端）；c、s 符號錯一個，整條 k 就錯。 <span class="src">（SA-2010-4、SA-2013-4）</span></p></div><div class="trap" style="border-left-color:#dc2626"><b>3. 等效節點載重符號相反</b><p>F_eq = −(固端力向量)：把固端反力「反向」加在節點上。忘記變號是矩陣法最常見錯誤。 <span class="src">（SA-2004-4、SA-2008-4）</span></p></div><div class="trap" style="border-left-color:#2563eb"><b>4. 製造誤差的等效載重</b><p>桿過長 ΔL>0 相當於在兩端沿桿軸向外推 EAΔL/L；最後算桿力時要再扣回初始項。 <span class="src">（SA-2011-4）</span></p></div><div class="trap" style="border-left-color:#dc2626"><b>5. 半剛性接頭勁度修正</b><p>旋轉彈簧與桿端「串聯」：柔度相加 1/k_eq = 1/kθ + L/4EI（非直接加勁度）。 <span class="src">（SA-2019-4）</span></p></div><div class="trap" style="border-left-color:#d97706"><b>6. 凝縮公式用錯方向</b><p>K* = K_dd − K_dr K_rr⁻¹ K_rd：保留想求的（側移）、凝縮不施力的（轉角）。分塊搞反答案全錯。 <span class="src">（SA-2025-1）</span></p></div><div class="trap" style="border-left-color:#d97706"><b>7. 挑高柱勁度用同一個 h</b><p>不規則構架各柱高不同：k_i = 12EI_i/h_i³ 逐柱計算再相加；剛性樓板只保證位移相同，不保證勁度相同。 <span class="src">（SA-2022-4）</span></p></div><div class="trap" style="border-left-color:#059669"><b>8. 格床（格子梁）自由度取錯</b><p>格床節點自由度為 w（垂直位移）＋兩向轉角，元素含扭轉勁度 GJ/L；別套平面剛架矩陣。善用對稱性減半。 <span class="src">（SA-2025-4）</span></p></div>
+
+<h2 class="sec">⑦ 互動計算器</h2>
+<div class="calc">
+<h4 style="margin-top:0">單層構架側向勁度計算器</h4>
+<p style="font-size:13px;color:#64748b;margin:4px 0 14px">剛性梁假設下之單層剪力構架：K = Σk<sub>柱</sub>，Δ = P/K，並比較柱底固定／鉸接的差異。</p>
+<div class="row">
+  <div><label>柱數 n</label><input id="cN" type="number" value="2" min="1" max="6" step="1"></div>
+  <div><label>柱高 h (m)</label><input id="cH" type="number" value="4" step="0.5" min="1"></div>
+  <div><label>EI (kN·m²)</label><input id="cEI" type="number" value="40000" step="1000"></div>
+  <div><label>柱底條件</label><select id="cBase"><option value="fix">固定（12EI/h³）</option><option value="pin">鉸接（3EI/h³）</option></select></div>
+  <div><label>水平力 P (kN)</label><input id="cP" type="number" value="100" step="10"></div>
+  <div><button onclick="calc()">計算</button></div>
+</div>
+<div class="out" id="calcOut">—</div>
+<canvas id="calcCv"></canvas>
+</div>
+
+<footer>exam-wiki-SA ｜ study SA-U2-4 ｜ 生成日期 2026-07-10 ｜ 解析內容以 raw/solutions/ 為準</footer>
+</div>
+<script>
+const QTYPES=[{"key": "beamframe", "label": "梁與剛架矩陣位移法", "color": "#dc2626"}, {"key": "truss", "label": "桁架直接勁度法", "color": "#2563eb"}, {"key": "lateral", "label": "側向勁度與剪力構架", "color": "#d97706"}, {"key": "grid", "label": "格床／空間結構", "color": "#059669"}];
+const QUESTIONS=[{"year": 2004, "type": "beamframe"}, {"year": 2008, "type": "beamframe"}, {"year": 2010, "type": "truss"}, {"year": 2011, "type": "truss"}, {"year": 2012, "type": "beamframe"}, {"year": 2013, "type": "truss"}, {"year": 2015, "type": "beamframe"}, {"year": 2018, "type": "beamframe"}, {"year": 2019, "type": "beamframe"}, {"year": 2022, "type": "lateral"}, {"year": 2025, "type": "lateral"}, {"year": 2025, "type": "grid"}];
+
+function drawCharts(){
+  const cv=document.getElementById('yearChart'),ctx=cv.getContext('2d');
+  const years=[];for(let y=2002;y<=2025;y++)years.push(y);
+  const W=cv.width=960,H=cv.height=300,padL=34,padB=44,padT=14;
+  const counts=years.map(y=>QTYPES.map(t=>QUESTIONS.filter(q=>q.year===y&&q.type===t.key).length));
+  const maxC=Math.max(2,...counts.map(c=>c.reduce((a,b)=>a+b,0)));
+  const bw=(W-padL-10)/years.length;
+  ctx.font='12px sans-serif';
+  for(let i=0;i<=maxC;i++){const y=H-padB-(H-padB-padT)*i/maxC;
+    ctx.strokeStyle='#e2e8f0';ctx.beginPath();ctx.moveTo(padL,y);ctx.lineTo(W-6,y);ctx.stroke();
+    ctx.fillStyle='#94a3b8';ctx.fillText(i,12,y+4);}
+  years.forEach((y,i)=>{let acc=0;
+    QTYPES.forEach((t,k)=>{const c=counts[i][k];if(c){const h=(H-padB-padT)*c/maxC;
+      ctx.fillStyle=t.color;ctx.fillRect(padL+i*bw+3,H-padB-acc-h,bw-6,h);acc+=h;}});
+    ctx.fillStyle='#64748b';ctx.save();ctx.translate(padL+i*bw+bw/2+4,H-padB+12);
+    ctx.rotate(-Math.PI/3);ctx.textAlign='right';ctx.fillText(String(y),0,0);ctx.restore();});
+  const pv=document.getElementById('pieChart'),pctx=pv.getContext('2d');
+  const PW=pv.width=320,PH=pv.height=260,tot=QUESTIONS.length;let a0=-Math.PI/2;
+  QTYPES.forEach(t=>{const n=QUESTIONS.filter(q=>q.type===t.key).length;if(!n)return;
+    const a1=a0+2*Math.PI*n/tot;
+    pctx.beginPath();pctx.moveTo(PW/2,PH/2);pctx.arc(PW/2,PH/2,95,a0,a1);pctx.closePath();
+    pctx.fillStyle=t.color;pctx.fill();pctx.strokeStyle='#fff';pctx.lineWidth=2;pctx.stroke();
+    const am=(a0+a1)/2;pctx.fillStyle='#fff';pctx.font='bold 13px sans-serif';pctx.textAlign='center';
+    pctx.fillText(n,PW/2+Math.cos(am)*62,PH/2+Math.sin(am)*62+4);a0=a1;});
+  const lg=document.getElementById('pieLegend');
+  lg.innerHTML=QTYPES.map(t=>{const n=QUESTIONS.filter(q=>q.type===t.key).length;
+    return '<i style="background:'+t.color+'"></i>'+t.label+' '+n+'題';}).join('');
+}
+function setFilter(key,btn){
+  document.querySelectorAll('.fbtn').forEach(b=>b.classList.remove('on'));
+  if(!btn)btn=document.querySelector('.fbtn[data-key="'+key+'"]');
+  if(btn)btn.classList.add('on');
+  document.querySelectorAll('.qitem').forEach(el=>{
+    el.style.display=(key==='all'||el.dataset.type===key)?'flex':'none';});
+}
+function jumpFilter(key){
+  setFilter(key,null);
+  document.getElementById('qlist').scrollIntoView({behavior:'smooth'});
+}
+document.addEventListener('DOMContentLoaded',drawCharts);
+
+
+function calc(){
+  const n=Math.round(+document.getElementById('cN').value),
+        h=+document.getElementById('cH').value,
+        EI=+document.getElementById('cEI').value,
+        base=document.getElementById('cBase').value,
+        P=+document.getElementById('cP').value;
+  const kc=(base==='fix'?12:3)*EI/Math.pow(h,3), K=n*kc, D=P/K, V=P/n;
+  const Mtop=(base==='fix'?6:3)*EI*D/(h*h), Mbot=(base==='fix'?Mtop:0);
+  document.getElementById('calcOut').innerHTML=
+   'k<sub>柱</sub> = '+(base==='fix'?'12':'3')+'EI/h³ = '+kc.toFixed(1)+' kN/m　→　K = '+K.toFixed(1)+
+   ' kN/m<br>Δ = P/K = '+(D*1000).toFixed(2)+' mm，每柱剪力 V = '+V.toFixed(1)+
+   ' kN，柱頂彎矩 = '+Mtop.toFixed(1)+' kN·m，柱底彎矩 = '+Mbot.toFixed(1)+' kN·m'+
+   '<br><span style="color:#64748b">對照：柱底改'+(base==='fix'?'鉸接':'固定')+'時 K = '+
+   ((base==='fix'?3:12)*EI/Math.pow(h,3)*n).toFixed(1)+' kN/m（'+(base==='fix'?'降為 1/4':'增為 4 倍')+'）</span>';
+  const cv=document.getElementById('calcCv'),ctx=cv.getContext('2d');
+  const W=cv.width=960,H=cv.height=300;ctx.clearRect(0,0,W,H);
+  ctx.font='12px sans-serif';
+  const x0=140,gap=Math.min(180,(W-360)/Math.max(n-1,1)),yTop=70,yBot=240;
+  const dpx=Math.min(46,D*4000+10);
+  ctx.strokeStyle='#334155';ctx.lineWidth=6;ctx.beginPath();
+  ctx.moveTo(x0+dpx-30,yTop);ctx.lineTo(x0+(n-1)*gap+dpx+30,yTop);ctx.stroke();ctx.lineWidth=1;
+  for(let i=0;i<n;i++){const xb=x0+i*gap;
+    ctx.strokeStyle='#cbd5e1';ctx.setLineDash([5,4]);ctx.beginPath();
+    ctx.moveTo(xb,yBot);ctx.lineTo(xb,yTop);ctx.stroke();ctx.setLineDash([]);
+    ctx.strokeStyle='#d97706';ctx.lineWidth=3.5;ctx.beginPath();ctx.moveTo(xb,yBot);
+    if(base==='fix')ctx.bezierCurveTo(xb+dpx*0.1,yBot-(yBot-yTop)*0.4,xb+dpx*0.9,yBot-(yBot-yTop)*0.6,xb+dpx,yTop);
+    else ctx.bezierCurveTo(xb+dpx*0.5,yBot-(yBot-yTop)*0.35,xb+dpx*0.9,yBot-(yBot-yTop)*0.7,xb+dpx,yTop);
+    ctx.stroke();ctx.lineWidth=1;
+    ctx.strokeStyle='#334155';ctx.lineWidth=2;
+    ctx.beginPath();ctx.moveTo(xb-16,yBot);ctx.lineTo(xb+16,yBot);ctx.stroke();ctx.lineWidth=1;
+    if(base==='pin'){ctx.beginPath();ctx.arc(xb,yBot-4,5,0,7);ctx.strokeStyle='#334155';ctx.stroke();}
+  }
+  ctx.strokeStyle='#dc2626';ctx.lineWidth=2;ctx.beginPath();
+  ctx.moveTo(x0+dpx-100,yTop);ctx.lineTo(x0+dpx-40,yTop);ctx.stroke();
+  ctx.beginPath();ctx.moveTo(x0+dpx-40,yTop);ctx.lineTo(x0+dpx-52,yTop-5);ctx.moveTo(x0+dpx-40,yTop);
+  ctx.lineTo(x0+dpx-52,yTop+5);ctx.stroke();ctx.lineWidth=1;
+  ctx.fillStyle='#dc2626';ctx.fillText('P = '+P+' kN',x0+dpx-110,yTop-12);
+  ctx.fillStyle='#2563eb';ctx.fillText('Δ = '+(D*1000).toFixed(2)+' mm',x0+(n-1)*gap+dpx+40,yTop+6);
+  ctx.fillStyle='#64748b';ctx.fillText('變形示意（放大顯示）',40,H-14);
+}
+document.addEventListener('DOMContentLoaded',calc);
+
+</script>
+</body>
+</html>

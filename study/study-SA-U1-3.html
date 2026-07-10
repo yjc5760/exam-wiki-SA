@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>SA-U1-3 靜定及靜不定結構影響線｜深度複習</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
+ onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'\\(',right:'\\)',display:false}]})"></script>
+<style>
+:root{--bg:#f6f7fb;--card:#fff;--ink:#1e293b;--mut:#64748b;--line:#e2e8f0;--acc:#2563eb}
+*{box-sizing:border-box}
+body{margin:0;font-family:'Segoe UI','Microsoft JhengHei','Noto Sans TC',sans-serif;background:var(--bg);color:var(--ink);line-height:1.65}
+.wrap{max-width:1100px;margin:0 auto;padding:24px 20px 80px}
+header.hero{background:linear-gradient(135deg,#1e3a8a,#2563eb);color:#fff;border-radius:16px;padding:28px 32px;margin-bottom:28px}
+header.hero .bc{font-size:13px;opacity:.85;margin-bottom:6px}
+header.hero .bc a{color:#bfdbfe;text-decoration:none}
+header.hero h1{margin:0;font-size:26px}
+header.hero p{margin:8px 0 0;opacity:.9;font-size:14px}
+h2.sec{font-size:20px;margin:44px 0 16px;padding-left:12px;border-left:5px solid var(--acc)}
+h2.sec small{font-weight:400;font-size:13px;color:var(--mut);margin-left:10px}
+.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:14px}
+.kpi{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:16px 18px}
+.kpi .v{font-size:28px;font-weight:700;color:var(--acc)}
+.kpi .l{font-size:13px;color:var(--mut)}
+.typecards{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:14px;margin-top:18px}
+.tcard{background:var(--card);border:1px solid var(--line);border-left:6px solid #888;border-radius:12px;padding:14px 16px;cursor:pointer;transition:.15s}
+.tcard:hover{transform:translateY(-2px);box-shadow:0 4px 14px rgba(0,0,0,.08)}
+.tcard b{font-size:15px}
+.tcard .n{font-size:22px;font-weight:700;float:right}
+.tcard p{margin:6px 0 0;font-size:12.5px;color:var(--mut)}
+.charts{display:grid;grid-template-columns:2fr 1fr;gap:18px;margin-top:20px}
+@media(max-width:820px){.charts{grid-template-columns:1fr}}
+.chartbox{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:16px}
+.chartbox h4{margin:0 0 10px;font-size:14px;color:var(--mut)}
+.chartbox canvas{width:100%;height:auto;display:block}
+.legend{font-size:12.5px;color:var(--mut);margin-top:8px}
+.legend i{display:inline-block;width:11px;height:11px;border-radius:3px;margin:0 5px 0 12px;vertical-align:-1px}
+.svgbox{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:18px;overflow-x:auto}
+.svgbox+.svgbox{margin-top:16px}
+.svgbox h4{margin:0 0 8px;font-size:15px}
+.svgbox .cap{font-size:12.5px;color:var(--mut);margin-top:8px}
+.fgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(330px,1fr));gap:16px}
+.fcard{background:var(--card);border:1px solid var(--line);border-top:5px solid #888;border-radius:12px;padding:16px 18px;overflow-x:auto}
+.fcard h4{margin:0 0 10px;font-size:15px}
+.fcard .note{font-size:12.5px;color:var(--mut);background:#f1f5f9;border-radius:8px;padding:8px 10px;margin-top:10px}
+.fbtns{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:16px}
+.fbtn{border:1px solid var(--line);background:var(--card);border-radius:20px;padding:6px 16px;font-size:13.5px;cursor:pointer}
+.fbtn.on{background:var(--acc);border-color:var(--acc);color:#fff}
+.qitem{background:var(--card);border:1px solid var(--line);border-left:6px solid #888;border-radius:10px;padding:12px 16px;margin-bottom:10px;display:flex;gap:14px;align-items:flex-start}
+.qitem .yr{min-width:76px;text-align:center;background:#f1f5f9;border-radius:8px;padding:6px 4px;font-size:11.5px;color:var(--mut)}
+.qitem .yr b{display:block;font-size:15px;color:var(--ink)}
+.qitem .bd{flex:1}
+.qitem a.tt{font-weight:600;color:#1d4ed8;text-decoration:none;font-size:15px}
+.qitem a.tt:hover{text-decoration:underline}
+.badge{display:inline-block;font-size:11px;color:#fff;border-radius:10px;padding:2px 9px;margin-left:8px;vertical-align:1px}
+.tags{margin-top:5px;font-size:12px;color:var(--mut)}
+.tags span{background:#eef2ff;color:#4338ca;border-radius:8px;padding:1px 8px;margin-right:6px;display:inline-block;margin-top:3px}
+.icons{white-space:nowrap;font-size:13px;color:var(--mut);padding-top:2px}
+.trap{background:var(--card);border:1px solid var(--line);border-left:6px solid #888;border-radius:10px;padding:12px 16px;margin-bottom:10px}
+.trap b{font-size:14.5px}
+.trap p{margin:5px 0 0;font-size:13.5px;color:#475569}
+.trap .src{font-size:12px;color:#94a3b8}
+.calc{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:20px}
+.calc .row{display:flex;flex-wrap:wrap;gap:16px;align-items:flex-end;margin-bottom:14px}
+.calc label{font-size:13px;color:var(--mut);display:block;margin-bottom:3px}
+.calc input,.calc select{padding:6px 10px;border:1px solid var(--line);border-radius:8px;font-size:14px;width:120px}
+.calc button{background:var(--acc);color:#fff;border:0;border-radius:8px;padding:9px 24px;font-size:14px;cursor:pointer}
+.calc .out{background:#f1f5f9;border-radius:10px;padding:12px 16px;margin:12px 0;font-size:14px}
+.calc canvas{width:100%;height:auto;display:block;border:1px solid var(--line);border-radius:10px;margin-top:8px}
+footer{margin-top:60px;font-size:12px;color:var(--mut);text-align:center}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header class="hero">
+  <div class="bc"><a href="../index.html" target="_blank">⌂ SA 結構學題庫儀表板</a> ／ SA-U1 第一單元 ／ SA-U1-3</div>
+  <h1>SA-U1-3　靜定及靜不定結構影響線</h1>
+  <p>Müller-Breslau 原理為核心：靜定折線、靜不定曲線；桁架節點傳遞與移動載重最大效應</p>
+</header>
+
+<h2 class="sec">① 命題分析<small>資料來源：question_index.json（2002–2025，全科 96 題）</small></h2>
+<div class="kpis"><div class="kpi"><div class="v">9 題</div><div class="l">主考點題數（2002–2025）</div></div><div class="kpi"><div class="v">9.4%</div><div class="l">佔全科 96 題比例</div></div><div class="kpi"><div class="v">No.5</div><div class="l">全部 10 個子項排名</div></div><div class="kpi"><div class="v">33%</div><div class="l">近 6 年出題率（2/6 年）</div></div></div>
+<div class="typecards"><div class="tcard" style="border-left-color:#7c3aed" onclick="jumpFilter('indet')"><span class="n" style="color:#7c3aed">6</span><b>靜不定影響線</b><p>Müller-Breslau＋柔度法、三彎矩方程式、連續梁與剛架之曲線影響線</p></div><div class="tcard" style="border-left-color:#2563eb" onclick="jumpFilter('trussIL')"><span class="n" style="color:#2563eb">2</span><b>桁架影響線</b><p>節點載重傳遞、線性內插、移動載重最大桿力</p></div><div class="tcard" style="border-left-color:#d97706" onclick="jumpFilter('statb')"><span class="n" style="color:#d97706">1</span><b>靜定梁影響線</b><p>固定端＋內鉸＋懸臂的折線影響線、剛體位移幾何</p></div></div>
+<div class="charts">
+  <div class="chartbox"><h4>年度出題分布（依題型堆疊）</h4><canvas id="yearChart"></canvas></div>
+  <div class="chartbox"><h4>題型比例</h4><canvas id="pieChart"></canvas><div class="legend" id="pieLegend"></div></div>
+</div>
+
+<h2 class="sec">② 結構示意圖解</h2>
+
+<div class="svgbox"><h4>Müller-Breslau 原理：釋放束制 → 單位變位圖即影響線</h4>
+<svg viewBox="0 0 980 250" xmlns="http://www.w3.org/2000/svg"><defs><marker id="ah" markerWidth="9" markerHeight="9" refX="7" refY="4" orient="auto"><path d="M0,0L8,4L0,8z" fill="#64748b"/></marker></defs>
+<!-- 反力影響線 -->
+<text x="130" y="24" font-size="14" font-weight="bold" fill="#2563eb">反力 R<tspan font-size="10" dy="3">B</tspan><tspan dy="-3"> 影響線</tspan></text>
+<line x1="40" y1="80" x2="300" y2="80" stroke="#334155" stroke-width="3"/>
+<path d="M40,80 l-11,17 h22 z" fill="#fff" stroke="#334155" stroke-width="2"/><line x1="24" y1="97" x2="56" y2="97" stroke="#334155" stroke-width="2"/><path d="M170,80 l-11,14 h22 z" fill="#fff" stroke="#334155" stroke-width="2"/><circle cx="164" cy="98" r="3.5" fill="none" stroke="#334155" stroke-width="1.6"/><circle cx="176" cy="98" r="3.5" fill="none" stroke="#334155" stroke-width="1.6"/><line x1="154" y1="102" x2="186" y2="102" stroke="#334155" stroke-width="2"/><path d="M300,80 l-11,14 h22 z" fill="#fff" stroke="#334155" stroke-width="2"/><circle cx="294" cy="98" r="3.5" fill="none" stroke="#334155" stroke-width="1.6"/><circle cx="306" cy="98" r="3.5" fill="none" stroke="#334155" stroke-width="1.6"/><line x1="284" y1="102" x2="316" y2="102" stroke="#334155" stroke-width="2"/>
+<text x="166" y="122" font-size="11" fill="#dc2626">移除支承，給 δ=1</text>
+<path d="M40,190 L170,150 L300,196" fill="none" stroke="#2563eb" stroke-width="2.5"/>
+<line x1="40" y1="190" x2="300" y2="190" stroke="#94a3b8" stroke-width="1" stroke-dasharray="4 3"/>
+<text x="150" y="143" font-size="12" fill="#2563eb">1.0</text>
+<!-- 剪力影響線 -->
+<text x="470" y="24" font-size="14" font-weight="bold" fill="#d97706">剪力 V<tspan font-size="10" dy="3">c</tspan><tspan dy="-3"> 影響線</tspan></text>
+<line x1="380" y1="80" x2="640" y2="80" stroke="#334155" stroke-width="3"/>
+<path d="M380,80 l-11,17 h22 z" fill="#fff" stroke="#334155" stroke-width="2"/><line x1="364" y1="97" x2="396" y2="97" stroke="#334155" stroke-width="2"/><path d="M640,80 l-11,14 h22 z" fill="#fff" stroke="#334155" stroke-width="2"/><circle cx="634" cy="98" r="3.5" fill="none" stroke="#334155" stroke-width="1.6"/><circle cx="646" cy="98" r="3.5" fill="none" stroke="#334155" stroke-width="1.6"/><line x1="624" y1="102" x2="656" y2="102" stroke="#334155" stroke-width="2"/>
+<line x1="500" y1="68" x2="500" y2="92" stroke="#d97706" stroke-width="2"/>
+<text x="493" y="60" font-size="12" fill="#d97706">c</text>
+<path d="M380,190 L500,212 M500,168 L640,190" fill="none" stroke="#d97706" stroke-width="2.5"/>
+<line x1="380" y1="190" x2="640" y2="190" stroke="#94a3b8" stroke-width="1" stroke-dasharray="4 3"/>
+<line x1="500" y1="168" x2="500" y2="212" stroke="#d97706" stroke-width="1.4" stroke-dasharray="3 2"/>
+<text x="506" y="182" font-size="11.5" fill="#d97706">跳躍=1，兩側斜率平行</text>
+<!-- 彎矩影響線 -->
+<text x="810" y="24" font-size="14" font-weight="bold" fill="#7c3aed">彎矩 M<tspan font-size="10" dy="3">c</tspan><tspan dy="-3"> 影響線</tspan></text>
+<line x1="720" y1="80" x2="960" y2="80" stroke="#334155" stroke-width="3"/>
+<path d="M720,80 l-11,17 h22 z" fill="#fff" stroke="#334155" stroke-width="2"/><line x1="704" y1="97" x2="736" y2="97" stroke="#334155" stroke-width="2"/><path d="M960,80 l-11,14 h22 z" fill="#fff" stroke="#334155" stroke-width="2"/><circle cx="954" cy="98" r="3.5" fill="none" stroke="#334155" stroke-width="1.6"/><circle cx="966" cy="98" r="3.5" fill="none" stroke="#334155" stroke-width="1.6"/><line x1="944" y1="102" x2="976" y2="102" stroke="#334155" stroke-width="2"/>
+<circle cx="830" cy="80" r="5" fill="#fff" stroke="#dc2626" stroke-width="2"/>
+<text x="812" y="64" font-size="11.5" fill="#7c3aed">插入鉸，給 Δθ=1</text>
+<path d="M720,196 L830,158 L960,196" fill="none" stroke="#7c3aed" stroke-width="2.5"/>
+<line x1="720" y1="196" x2="960" y2="196" stroke="#94a3b8" stroke-width="1" stroke-dasharray="4 3"/>
+<text x="812" y="150" font-size="12" fill="#7c3aed">ab/L</text>
+</svg>
+<div class="cap">圖說：三種束制的釋放方式——反力：移除支承（單位平移）；剪力：切開（單位相對錯動、斜率平行）；彎矩：插鉸（單位相對轉角）。<b>靜定結構影響線恆為折線；靜不定為曲線。</b></div></div>
+
+
+<h2 class="sec">③ 解題流程圖</h2>
+<div class="svgbox"><svg viewBox="0 0 960 480" xmlns="http://www.w3.org/2000/svg"><defs><marker id="ah" markerWidth="9" markerHeight="9" refX="7" refY="4" orient="auto"><path d="M0,0L8,4L0,8z" fill="#64748b"/></marker></defs>
+<rect x="380" y="10" width="200" height="44" rx="8" fill="#eff6ff" stroke="#2563eb" stroke-width="1.5"/><text x="480.0" y="37.0" text-anchor="middle" font-size="13" fill="#1e293b">影響線題目</text>
+<polygon points="480,81.0 595.0,110 480,139.0 365.0,110" fill="#fef3c7" stroke="#d97706" stroke-width="1.5"/><text x="480" y="115.0" text-anchor="middle" font-size="12.5" fill="#1e293b">結構靜定？</text>
+<line x1="480" y1="54" x2="480" y2="81" stroke="#64748b" stroke-width="1.6" marker-end="url(#ah)"/>
+<rect x="80" y="190" width="300" height="76" rx="8" fill="#dbeafe" stroke="#2563eb" stroke-width="1.5"/><text x="230.0" y="217.0" text-anchor="middle" font-size="13" fill="#1e293b">靜定 → Müller-Breslau 折線</text><text x="230.0" y="233.0" text-anchor="middle" font-size="13" fill="#1e293b">釋放束制 → 剛體位移圖</text><text x="230.0" y="249.0" text-anchor="middle" font-size="13" fill="#1e293b">縱標由幾何比例（相似三角形）</text>
+<rect x="560" y="190" width="320" height="76" rx="8" fill="#ede9fe" stroke="#7c3aed" stroke-width="1.5"/><text x="720.0" y="217.0" text-anchor="middle" font-size="13" fill="#1e293b">靜不定 → 曲線影響線</text><text x="720.0" y="233.0" text-anchor="middle" font-size="13" fill="#1e293b">柔度法 η(x)=δ(x)/δ₁₁</text><text x="720.0" y="249.0" text-anchor="middle" font-size="13" fill="#1e293b">或三彎矩方程式逐點解</text>
+<line x1="400" y1="128" x2="240" y2="190" stroke="#64748b" stroke-width="1.6" marker-end="url(#ah)"/><text x="320" y="158" font-size="12" fill="#d97706">是</text>
+<line x1="560" y1="128" x2="700" y2="190" stroke="#64748b" stroke-width="1.6" marker-end="url(#ah)"/><text x="640" y="155" font-size="12" fill="#d97706">否</text>
+<polygon points="480,301.0 595.0,330 480,359.0 365.0,330" fill="#fef3c7" stroke="#d97706" stroke-width="1.5"/><text x="480" y="335.0" text-anchor="middle" font-size="12.5" fill="#1e293b">桁架？（節點傳遞）</text>
+<line x1="240" y1="266" x2="420" y2="310" stroke="#64748b" stroke-width="1.6" marker-end="url(#ah)"/>
+<line x1="700" y1="266" x2="545" y2="310" stroke="#64748b" stroke-width="1.6" marker-end="url(#ah)"/>
+<rect x="90" y="410" width="320" height="58" rx="8" fill="#dbeafe" stroke="#2563eb" stroke-width="1.5"/><text x="250.0" y="436.0" text-anchor="middle" font-size="13" fill="#1e293b">縱標僅節點間線性內插</text><text x="250.0" y="452.0" text-anchor="middle" font-size="13" fill="#1e293b">逐節點放單位載重求桿力</text>
+<rect x="540" y="410" width="340" height="58" rx="8" fill="#fee2e2" stroke="#dc2626" stroke-width="1.5"/><text x="710.0" y="436.0" text-anchor="middle" font-size="13" fill="#1e293b">最大效應：集中載重放最大縱標</text><text x="710.0" y="452.0" text-anchor="middle" font-size="13" fill="#1e293b">均佈載重佈滿同號區（面積×w）</text>
+<line x1="400" y1="352" x2="260" y2="410" stroke="#64748b" stroke-width="1.6" marker-end="url(#ah)"/><text x="330" y="380" font-size="12" fill="#d97706">是</text>
+<line x1="560" y1="352" x2="690" y2="410" stroke="#64748b" stroke-width="1.6" marker-end="url(#ah)"/><text x="650" y="375" font-size="12" fill="#d97706">否→直接取極值</text>
+</svg></div>
+
+<h2 class="sec">④ 核心公式速查</h2>
+<div class="fgrid"><div class="fcard" style="border-top-color:#7c3aed"><h4>Müller-Breslau 原理</h4><p>某量值之影響線 = 釋放該束制、沿其正方向給單位變位後之撓曲（位移）圖：$$\eta(x) = \frac{\delta(x)}{\delta_{11}}$$</p>
+<p>反力→移除支承；剪力→切開給單位錯動（兩側斜率相同）；彎矩→插入鉸給單位相對轉角。</p><div class="note">⚠ 靜定：折線（剛體運動）；靜不定：曲線（彈性變形），常配合共軛梁求 δ(x)。</div></div><div class="fcard" style="border-top-color:#d97706"><h4>靜定簡支梁影響線縱標</h4><p>$$R_A:\ \eta = 1-\frac{x}{L} \qquad R_B:\ \eta = \frac{x}{L}$$</p>
+<p>斷面 C（距 A 為 a、距 B 為 b）：$$V_C:\ \eta = -\frac{x}{L}\ (x<a),\quad \eta = 1-\frac{x}{L}\ (x>a)$$ $$M_C:\ \eta_{max} = \frac{ab}{L}\ (\text{載重在 C 點})$$</p><div class="note">⚠ 含內鉸／懸臂段：以鉸為折點作剛體轉動，縱標按幾何比例內插（SA-2025-2）。</div></div><div class="fcard" style="border-top-color:#2563eb"><h4>桁架影響線與最大內力</h4><p>載重沿下（上）弦節點傳遞：縱標只在<b>節點</b>處精確，節點間直線內插。</p>
+<p>最大效應：$$S_{max} = \sum P_i\,\eta_i + w \int_{\eta>0} \eta\,dx$$</p>
+<p>集中載重放在最大縱標處；移動均佈載重僅佈滿同號區域。</p><div class="note">⚠ 細長拉桿（僅能受拉）：影響線負區時該桿退出，結構系統改變（SA-2022-3）。</div></div><div class="fcard" style="border-top-color:#7c3aed"><h4>三彎矩方程式（連續梁）</h4><p>$$M_{n-1}L_n + 2M_n(L_n+L_{n+1}) + M_{n+1}L_{n+1} = -\frac{6A_n\bar a_n}{L_n} - \frac{6A_{n+1}\bar b_{n+1}}{L_{n+1}}$$</p>
+<p>單位移動載重逐位置解支承彎矩，即得該彎矩之影響線縱標。</p><div class="note">⚠ 固定端以「EI=∞ 之虛跨」處理；EI 不同跨時用 L/I 加權。</div></div></div>
+
+<h2 class="sec" id="qlist">⑤ 考題清單<small>點題號開啟完整解析（KaTeX 渲染）</small></h2>
+<div class="fbtns">
+  <button class="fbtn on" data-key="all" onclick="setFilter('all',this)">全部（9）</button>
+<button class="fbtn" data-key="indet" onclick="setFilter('indet',this)">靜不定影響線</button><button class="fbtn" data-key="trussIL" onclick="setFilter('trussIL',this)">桁架影響線</button><button class="fbtn" data-key="statb" onclick="setFilter('statb',this)">靜定梁影響線</button>
+</div>
+<div id="qwrap"><div class="qitem" data-type="statb" style="border-left-color:#d97706"><div class="yr"><b>2025</b>民國 114</div><div class="bd"><a class="tt" href="../index.html#md=raw/solutions/SA-2025-2/SA-2025-2.md&t=SA-2025-2" target="_blank">SA-2025-2｜靜定梁（固定端＋內鉸＋懸臂）影響線</a><span class="badge" style="background:#d97706">靜定梁影響線</span><div class="tags"><span>影響線</span><span>靜定梁</span><span>內鉸接</span><span>固定端</span><span>懸臂段</span></div></div><div class="icons">📄 ✅ 🎬</div></div><div class="qitem" data-type="trussIL" style="border-left-color:#2563eb"><div class="yr"><b>2022</b>民國 111</div><div class="bd"><a class="tt" href="../index.html#md=raw/solutions/SA-2022-3/SA-2022-3.md&t=SA-2022-3" target="_blank">SA-2022-3｜桁架（細長拉桿＋內鉸）移動載重分析</a><span class="badge" style="background:#2563eb">桁架影響線</span><div class="tags"><span>影響線</span><span>桁架</span><span>細長拉桿</span><span>內部鉸</span><span>移動載重</span></div></div><div class="icons">📄 ✅</div></div><div class="qitem" data-type="indet" style="border-left-color:#7c3aed"><div class="yr"><b>2018</b>民國 107</div><div class="bd"><a class="tt" href="../index.html#md=raw/solutions/SA-2018-4/SA-2018-4.md&t=SA-2018-4" target="_blank">SA-2018-4｜靜不定結構影響線：對稱性利用</a><span class="badge" style="background:#7c3aed">靜不定影響線</span><div class="tags"><span>影響線</span><span>靜不定結構</span><span>對稱性</span><span>剛架位移</span></div></div><div class="icons">📄 ✅</div></div><div class="qitem" data-type="indet" style="border-left-color:#7c3aed"><div class="yr"><b>2016</b>民國 105</div><div class="bd"><a class="tt" href="../index.html#md=raw/solutions/SA-2016-2/SA-2016-2.md&t=SA-2016-2" target="_blank">SA-2016-2｜靜不定有側移剛架影響線</a><span class="badge" style="background:#7c3aed">靜不定影響線</span><div class="tags"><span>影響線</span><span>靜不定剛架</span><span>Müller-Breslau原理</span><span>有側移剛架</span><span>移動載重</span></div></div><div class="icons">📄 ✅ 🎬</div></div><div class="qitem" data-type="indet" style="border-left-color:#7c3aed"><div class="yr"><b>2015</b>民國 104</div><div class="bd"><a class="tt" href="../index.html#md=raw/solutions/SA-2015-2/SA-2015-2.md&t=SA-2015-2" target="_blank">SA-2015-2｜靜不定連續梁含內鉸：Müller-Breslau＋共軛梁</a><span class="badge" style="background:#7c3aed">靜不定影響線</span><div class="tags"><span>影響線</span><span>共軛梁法</span><span>Müller-Breslau</span><span>靜不定連續梁</span><span>內部鉸</span></div></div><div class="icons">📄 ✅</div></div><div class="qitem" data-type="indet" style="border-left-color:#7c3aed"><div class="yr"><b>2011</b>民國 100</div><div class="bd"><a class="tt" href="../index.html#md=raw/solutions/SA-2011-3/SA-2011-3.md&t=SA-2011-3" target="_blank">SA-2011-3｜連續梁影響線（穆勒法）：最大彎矩</a><span class="badge" style="background:#7c3aed">靜不定影響線</span><div class="tags"><span>穆勒法</span><span>連續梁</span><span>影響線</span><span>最大彎矩</span></div></div><div class="icons">📄 ✅</div></div><div class="qitem" data-type="indet" style="border-left-color:#7c3aed"><div class="yr"><b>2005</b>民國 94</div><div class="bd"><a class="tt" href="../index.html#md=raw/solutions/SA-2005-3/SA-2005-3.md&t=SA-2005-3" target="_blank">SA-2005-3｜連續梁影響線：三彎矩方程式</a><span class="badge" style="background:#7c3aed">靜不定影響線</span><div class="tags"><span>影響線</span><span>連續梁</span><span>三彎矩方程式</span><span>Müller-Breslau原理</span></div></div><div class="icons">📄 ✅</div></div><div class="qitem" data-type="trussIL" style="border-left-color:#2563eb"><div class="yr"><b>2004</b>民國 93</div><div class="bd"><a class="tt" href="../index.html#md=raw/solutions/SA-2004-2/SA-2004-2.md&t=SA-2004-2" target="_blank">SA-2004-2｜桁架影響線與移動載重最大內力</a><span class="badge" style="background:#2563eb">桁架影響線</span><div class="tags"><span>桁架</span><span>影響線</span><span>移動載重</span><span>最大內力</span></div></div><div class="icons">📄 ✅</div></div><div class="qitem" data-type="indet" style="border-left-color:#7c3aed"><div class="yr"><b>2003</b>民國 92</div><div class="bd"><a class="tt" href="../index.html#md=raw/solutions/SA-2003-4/SA-2003-4.md&t=SA-2003-4" target="_blank">SA-2003-4｜靜不定梁影響線：柔度法求彎矩／剪力影響線</a><span class="badge" style="background:#7c3aed">靜不定影響線</span><div class="tags"><span>靜不定影響線</span><span>Müller-Breslau</span><span>柔度法</span><span>彎矩影響線</span><span>剪力影響線</span></div></div><div class="icons">📄 ✅</div></div></div>
+
+<h2 class="sec">⑥ 高頻陷阱<small>由考古題解析歸納</small></h2>
+<div class="trap" style="border-left-color:#7c3aed"><b>1. 釋放束制的種類弄錯</b><p>求哪個量就釋放哪個束制：反力→拔支承、剪力→切開錯動、彎矩→插鉸轉角。釋放錯誤整條影響線形狀就錯。 <span class="src">（SA-2003-4）</span></p></div><div class="trap" style="border-left-color:#7c3aed"><b>2. 靜定畫成曲線、靜不定畫成直線</b><p>靜定結構釋放一個束制後成機構→剛體位移→折線；靜不定釋放後仍是彈性體→曲線。判斷錯就直接失分。 <span class="src">（SA-2015-2）</span></p></div><div class="trap" style="border-left-color:#d97706"><b>3. 剪力影響線兩側斜率不平行</b><p>切開處兩側需保持相同斜率（無相對轉角），跳躍量恰為 1；含內鉸時折點在鉸處另計。 <span class="src">（SA-2025-2）</span></p></div><div class="trap" style="border-left-color:#2563eb"><b>4. 桁架縱標在節點間亂畫</b><p>載重由樓板梁傳至節點，影響線在節點間必為直線；先算節點縱標再連線，不可直接套梁公式。 <span class="src">（SA-2004-2、SA-2022-3）</span></p></div><div class="trap" style="border-left-color:#7c3aed"><b>5. 移動均佈載重全跨佈滿</b><p>求最大正效應只佈同號（正）區域；全跨佈滿會低估。負效應同理佈負區。 <span class="src">（SA-2011-3）</span></p></div><div class="trap" style="border-left-color:#d97706"><b>6. 內鉸／懸臂段縱標比例算錯</b><p>以鉸為折點的剛體轉動：用相似三角形按距離比內插縱標，懸臂端縱標常超過 1。 <span class="src">（SA-2025-2）</span></p></div><div class="trap" style="border-left-color:#7c3aed"><b>7. 固定端連續梁用三彎矩未加虛跨</b><p>三彎矩方程式僅適用簡支節點；固定端須加 L→0（或 EI→∞）虛跨，否則少一條方程。 <span class="src">（SA-2005-3）</span></p></div><div class="trap" style="border-left-color:#7c3aed"><b>8. 忽略對稱性白做一倍工</b><p>對稱結構的影響線具對稱／反對稱性，解半邊即可鏡射；剛架影響線尤其省時。 <span class="src">（SA-2018-4）</span></p></div>
+
+<h2 class="sec">⑦ 互動計算器</h2>
+<div class="calc">
+<h4 style="margin-top:0">簡支梁影響線計算器</h4>
+<p style="font-size:13px;color:#64748b;margin:4px 0 14px">輸入跨度與斷面位置，繪出 R<sub>A</sub>、V<sub>c</sub>、M<sub>c</sub> 影響線並計算移動載重最大效應。</p>
+<div class="row">
+  <div><label>跨度 L (m)</label><input id="cL" type="number" value="10" step="0.5" min="1"></div>
+  <div><label>斷面位置 c（距左端 m）</label><input id="cC" type="number" value="4" step="0.5" min="0"></div>
+  <div><label>移動集中載重 P (kN)</label><input id="cP" type="number" value="50" step="1"></div>
+  <div><label>移動均佈載重 w (kN/m)</label><input id="cW" type="number" value="10" step="1"></div>
+  <div><button onclick="calc()">計算</button></div>
+</div>
+<div class="out" id="calcOut">—</div>
+<canvas id="calcCv"></canvas>
+</div>
+
+<footer>exam-wiki-SA ｜ study SA-U1-3 ｜ 生成日期 2026-07-10 ｜ 解析內容以 raw/solutions/ 為準</footer>
+</div>
+<script>
+const QTYPES=[{"key": "indet", "label": "靜不定影響線", "color": "#7c3aed"}, {"key": "trussIL", "label": "桁架影響線", "color": "#2563eb"}, {"key": "statb", "label": "靜定梁影響線", "color": "#d97706"}];
+const QUESTIONS=[{"year": 2003, "type": "indet"}, {"year": 2004, "type": "trussIL"}, {"year": 2005, "type": "indet"}, {"year": 2011, "type": "indet"}, {"year": 2015, "type": "indet"}, {"year": 2016, "type": "indet"}, {"year": 2018, "type": "indet"}, {"year": 2022, "type": "trussIL"}, {"year": 2025, "type": "statb"}];
+
+function drawCharts(){
+  const cv=document.getElementById('yearChart'),ctx=cv.getContext('2d');
+  const years=[];for(let y=2002;y<=2025;y++)years.push(y);
+  const W=cv.width=960,H=cv.height=300,padL=34,padB=44,padT=14;
+  const counts=years.map(y=>QTYPES.map(t=>QUESTIONS.filter(q=>q.year===y&&q.type===t.key).length));
+  const maxC=Math.max(2,...counts.map(c=>c.reduce((a,b)=>a+b,0)));
+  const bw=(W-padL-10)/years.length;
+  ctx.font='12px sans-serif';
+  for(let i=0;i<=maxC;i++){const y=H-padB-(H-padB-padT)*i/maxC;
+    ctx.strokeStyle='#e2e8f0';ctx.beginPath();ctx.moveTo(padL,y);ctx.lineTo(W-6,y);ctx.stroke();
+    ctx.fillStyle='#94a3b8';ctx.fillText(i,12,y+4);}
+  years.forEach((y,i)=>{let acc=0;
+    QTYPES.forEach((t,k)=>{const c=counts[i][k];if(c){const h=(H-padB-padT)*c/maxC;
+      ctx.fillStyle=t.color;ctx.fillRect(padL+i*bw+3,H-padB-acc-h,bw-6,h);acc+=h;}});
+    ctx.fillStyle='#64748b';ctx.save();ctx.translate(padL+i*bw+bw/2+4,H-padB+12);
+    ctx.rotate(-Math.PI/3);ctx.textAlign='right';ctx.fillText(String(y),0,0);ctx.restore();});
+  const pv=document.getElementById('pieChart'),pctx=pv.getContext('2d');
+  const PW=pv.width=320,PH=pv.height=260,tot=QUESTIONS.length;let a0=-Math.PI/2;
+  QTYPES.forEach(t=>{const n=QUESTIONS.filter(q=>q.type===t.key).length;if(!n)return;
+    const a1=a0+2*Math.PI*n/tot;
+    pctx.beginPath();pctx.moveTo(PW/2,PH/2);pctx.arc(PW/2,PH/2,95,a0,a1);pctx.closePath();
+    pctx.fillStyle=t.color;pctx.fill();pctx.strokeStyle='#fff';pctx.lineWidth=2;pctx.stroke();
+    const am=(a0+a1)/2;pctx.fillStyle='#fff';pctx.font='bold 13px sans-serif';pctx.textAlign='center';
+    pctx.fillText(n,PW/2+Math.cos(am)*62,PH/2+Math.sin(am)*62+4);a0=a1;});
+  const lg=document.getElementById('pieLegend');
+  lg.innerHTML=QTYPES.map(t=>{const n=QUESTIONS.filter(q=>q.type===t.key).length;
+    return '<i style="background:'+t.color+'"></i>'+t.label+' '+n+'題';}).join('');
+}
+function setFilter(key,btn){
+  document.querySelectorAll('.fbtn').forEach(b=>b.classList.remove('on'));
+  if(!btn)btn=document.querySelector('.fbtn[data-key="'+key+'"]');
+  if(btn)btn.classList.add('on');
+  document.querySelectorAll('.qitem').forEach(el=>{
+    el.style.display=(key==='all'||el.dataset.type===key)?'flex':'none';});
+}
+function jumpFilter(key){
+  setFilter(key,null);
+  document.getElementById('qlist').scrollIntoView({behavior:'smooth'});
+}
+document.addEventListener('DOMContentLoaded',drawCharts);
+
+
+function calc(){
+  const L=+document.getElementById('cL').value,
+        P=+document.getElementById('cP').value,
+        w=+document.getElementById('cW').value;
+  let c=Math.min(Math.max(+document.getElementById('cC').value,0.01),L-0.01);
+  const a=c,b=L-c;
+  const mcMax=a*b/L, vcPos=b/L, vcNeg=-a/L;
+  const aMposV=b*b/(2*L), aMnegV=-a*a/(2*L), aM=a*b/2;
+  const out=
+   'M<sub>c</sub> 最大縱標 = ab/L = '+mcMax.toFixed(3)+' m → 最大彎矩 = P·η + w·A = '+
+   (P*mcMax+w*aM).toFixed(1)+' kN·m<br>'+
+   'V<sub>c</sub> 縱標：+'+vcPos.toFixed(3)+' / '+vcNeg.toFixed(3)+
+   ' → 最大正剪力 = '+(P*vcPos+w*aMposV).toFixed(1)+' kN，最大負剪力 = '+
+   (P*vcNeg+w*aMnegV).toFixed(1)+' kN<br>'+
+   'R<sub>A</sub> 最大 = '+(P*1+w*L/2).toFixed(1)+' kN（P 在 A 點、w 佈滿全跨）';
+  document.getElementById('calcOut').innerHTML=out;
+  const cv=document.getElementById('calcCv'),ctx=cv.getContext('2d');
+  const W=cv.width=960,H=cv.height=520;ctx.clearRect(0,0,W,H);
+  ctx.font='12px sans-serif';
+  const X=x=>60+(W-110)*x/L;
+  const panels=[
+   {lb:'R_A 影響線',y0:40,h:120,col:'#2563eb',pts:[[0,1],[L,0]]},
+   {lb:'V_c 影響線（跳躍=1）',y0:200,h:130,col:'#d97706',pts:[[0,0],[c,vcNeg],null,[c,vcPos],[L,0]]},
+   {lb:'M_c 影響線（峰值 ab/L）',y0:370,h:130,col:'#7c3aed',pts:[[0,0],[c,mcMax],[L,0]]}];
+  panels.forEach(p=>{
+    const vals=p.pts.filter(q=>q).map(q=>Math.abs(q[1]));
+    const mx=Math.max(...vals,1e-6),base=p.y0+p.h/2,sc=(p.h/2-16)/mx;
+    ctx.strokeStyle='#94a3b8';ctx.beginPath();ctx.moveTo(X(0),base);ctx.lineTo(X(L),base);ctx.stroke();
+    ctx.fillStyle='#334155';ctx.fillText(p.lb,60,p.y0-4);
+    ctx.strokeStyle=p.col;ctx.lineWidth=2.4;ctx.beginPath();let pen=false;
+    p.pts.forEach(q=>{if(!q){pen=false;return;}
+      const px=X(q[0]),py=base-q[1]*sc;
+      if(!pen){ctx.moveTo(px,py);pen=true;}else ctx.lineTo(px,py);});
+    ctx.stroke();ctx.lineWidth=1;
+    ctx.fillStyle=p.col;
+    p.pts.forEach(q=>{if(q&&Math.abs(q[1])>1e-9)
+      ctx.fillText(q[1].toFixed(2),X(q[0])+4,base-q[1]*sc-4);});
+    ctx.strokeStyle='#cbd5e1';ctx.setLineDash([3,3]);ctx.beginPath();
+    ctx.moveTo(X(c),p.y0);ctx.lineTo(X(c),p.y0+p.h);ctx.stroke();ctx.setLineDash([]);
+  });
+  ctx.fillStyle='#64748b';
+  ctx.fillText('A (0)',X(0)-8,H-6);ctx.fillText('c = '+c+' m',X(c)-16,H-6);ctx.fillText('B ('+L+' m)',X(L)-20,H-6);
+}
+document.addEventListener('DOMContentLoaded',calc);
+
+</script>
+</body>
+</html>
