@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="zh-Hant"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SA-2006-4 — 題目解析</title>
+<link rel="stylesheet" href="../assets/katex/katex.min.css">
+<script defer src="../assets/katex/katex.min.js"></script>
+<script defer src="../assets/katex/auto-render.min.js"
+  onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},
+  {left:'$',right:'$',display:false},{left:'\\(',right:'\\)',display:false}],throwOnError:false});"></script>
+<style>
+:root{--ac:#1565c0;--bg:#f7f9fb;--card:#fff;--ink:#263238;--mut:#607d8b;--bd:#dfe6ea}
+*{box-sizing:border-box}
+body{margin:0;font-family:"Microsoft JhengHei","Noto Sans TC",-apple-system,sans-serif;
+  background:var(--bg);color:var(--ink);line-height:1.75;font-size:15.5px}
+header{background:linear-gradient(135deg,#0d47a1,#1976d2 60%,#42a5f5);color:#fff;padding:22px 26px}
+header h1{margin:0;font-size:1.15em}
+header .back{display:inline-block;margin-top:10px;font-size:.82em;color:#fff;background:rgba(255,255,255,.18);
+  padding:4px 12px;border-radius:14px;text-decoration:none}
+main{max-width:880px;margin:0 auto;padding:26px 22px 70px}
+h1,h2,h3{color:#0d47a1} h2{font-size:1.2em;border-left:6px solid var(--ac);padding-left:12px;margin:34px 0 14px}
+table{width:100%;border-collapse:collapse;margin:14px 0;font-size:.92em;background:#fff}
+th,td{border:1px solid var(--bd);padding:7px 10px;text-align:left;vertical-align:top}
+th{background:#eceff1;font-weight:600} tbody tr:nth-child(even){background:#fafcfd}
+code{background:#eceff1;padding:1px 5px;border-radius:4px;font-size:.92em}
+img{max-width:100%;display:block;margin:14px auto;border:1px solid var(--bd);border-radius:8px}
+.katex-display{margin:12px 0!important;overflow-x:auto;overflow-y:hidden}
+footer{text-align:center;color:var(--mut);font-size:.8em;padding:22px;border-top:1px solid var(--bd)}
+</style></head><body>
+<header><h1>SA-2006-4 題目解析</h1><a class="back" href="javascript:history.back()">← 返回講義</a></header>
+<main><h1>考題編號：SA-2006-4</h1>
+<p><strong>主分類：</strong> <code>SA-U2-3</code> 結構分析<br />
+<strong>副分類：</strong> 無<br />
+<strong>分析法：</strong> 傾角變位法<br />
+<strong>標籤：</strong> <code>傾角變位法</code> <code>剪力房屋</code> <code>剛性梁</code> <code>剛性矮牆</code></p>
+<hr />
+<h2>1. 原始題目重述 (Problem Restatement)</h2>
+<p>如圖示，一建物結構受 $100\text{ kN}$ 之水平橫力。假設該建物之 AE 構件為剛性梁（慣性矩 $I = \infty$），HJLM 構件為剛性矮牆（慣性矩 $I = \infty$）。各柱之彈性模數（E 值）與慣性矩（I 值）均為常數。試以傾角變位法（slope-deflection method）計算長柱 AF 與短柱 EL 二者柱底彎矩之比值，以及二者柱底剪力之比值。不計構件之自重。（25 分）</p>
+<p><img alt="SA-2006-4 題目附圖：包含剛性梁與剛性矮牆之剛架結構受側向力" src="../../raw/solutions/SA-2006-4/SA-2006-4-fig-1.png" /></p>
+<p><em>圖說：結構總長 $20\text{ m}$，分為 4 跨各 $5\text{ m}$。頂部為剛性梁 AE。底部左側兩跨為平地，柱 AF、BG 高度為 $3\text{ m}$；右側兩跨有高度 $1\text{ m}$ 之剛性矮牆 HJLM，因此其上的柱 CJ、DK、EL 高度為 $2\text{ m}$。A 點受水平向右 $100\text{ kN}$ 外力。</em></p>
+<h2>2. 考題核心精神與出題者意圖 (Core Concepts &amp; Examiner's Intent)</h2>
+<p>本題主要測驗考生對於<strong>傾角變位法</strong>在特殊邊界條件（剛性構件）下之應用。<br />
+出題者意圖包含：</p>
+<ol>
+<li><strong>剛性構件的物理意義轉譯</strong>：剛性梁（$I = \infty$）代表其上各節點不發生轉角（$\theta = 0$）；剛性矮牆代表其上之節點（J, K, L）視同固定端（無轉角、無位移）。</li>
+<li><strong>剪力房屋（Shear Building）模型</strong>：在忽略柱軸向變形的前提下，結構僅產生單一自由度的側向平移（$\Delta$）。</li>
+<li><strong>側移、彎矩與剪力的關係</strong>：能熟練地將側移量 $\Delta$ 代入傾角變位方程式求出桿端彎矩，並利用柱之平衡求出對應的樓層剪力。</li>
+</ol>
+<h2>3. 解題戰略地圖與陷阱分析 (Strategic Roadmap &amp; Trap Analysis)</h2>
+<p><strong>作戰計畫：</strong></p>
+<ol>
+<li><strong>確立邊界條件</strong>：由剛性梁可知 $\theta_A = \theta_B = \theta_C = \theta_D = \theta_E = 0$；由剛性矮牆及固定基礎可知 $\theta_F = \theta_G = \theta_J = \theta_K = \theta_L = 0$。</li>
+<li><strong>假設變位</strong>：設剛性梁發生向右之側向平移 $\Delta$。</li>
+<li><strong>建立傾角變位方程式</strong>：分別對長柱（AF, BG，長 $3\text{ m}$）與短柱（CJ, DK, EL，長 $2\text{ m}$）列出桿端彎矩。</li>
+<li><strong>求出剪力</strong>：利用柱之自由體圖，由桿端彎矩求出各柱之剪力。</li>
+<li><strong>計算比值</strong>：直接將長柱與短柱的柱底彎矩及剪力相除，求得比值。亦可利用層剪力方程式 $\sum H = 0$ 解出 $\Delta$，進一步求得真實內力。</li>
+</ol>
+<p><strong>陷阱分析：</strong></p>
+<ul>
+<li><strong>陷阱 1：高度誤判</strong>：左側長柱高度為 $2+1 = 3\text{ m}$，右側短柱高度為 $2\text{ m}$，若看圖不仔細容易代錯長度。</li>
+<li><strong>陷阱 2：符號約定混淆</strong>：傾角變位法中順時針為正，側移角 $\psi = \Delta / L$。向右側移時，$\psi > 0$，因此固定端彎矩為負值（逆時針），計算比值時應取絕對值或保留相同符號。</li>
+</ul>
+<h2>3.5 變數層次分析 (Variable Hierarchy Analysis)</h2>
+<h3>最終目標</h3>
+<p><code>求出長柱 AF 與短柱 EL 的柱底彎矩比值與剪力比值</code></p>
+<h3>本題關鍵公式（依計算順序）</h3>
+<p>$$ M_{ij} = \frac{2EI}{L} \left( 2\theta_i + \theta_j - 3\frac{\Delta}{L} \right) $$<br />
+<em>(傾角變位法基本式)</em></p>
+<p>$$ \boxed{M_{bottom}} = -\frac{6EI\Delta}{L^2} $$<br />
+<em>(兩端無轉角時之柱底彎矩)</em></p>
+<p>$$ V = \frac{|M_{top} + \boxed{M_{bottom}}|}{L} = \frac{12EI\Delta}{L^3} $$<br />
+<em>(柱剪力)</em></p>
+<h3>L1：題目直接給定</h3>
+<ul>
+<li><strong>符號 ∣ 數值 ∣ 說明</strong></li>
+<li>$L_1$ ∣ $3\text{ m}$ ∣ 長柱（AF, BG）長度</li>
+<li>$L_2$ ∣ $2\text{ m}$ ∣ 短柱（CJ, DK, EL）長度</li>
+<li>$\theta_{top}$ ∣ $0$ ∣ 剛性梁限制頂端節點轉角</li>
+<li>$\theta_{bot}$ ∣ $0$ ∣ 基礎與剛性矮牆為固定端</li>
+</ul>
+<h3>L2：需知識點推導</h3>
+<ul>
+<li><strong>符號 ∣ 公式／來源 ∣ 卡關?</strong></li>
+<li>$M_{FA}$ ∣ $M_{FA} = -\frac{6EI\Delta}{L_1^2}$ ∣ </li>
+<li>$M_{LE}$ ∣ $M_{LE} = -\frac{6EI\Delta}{L_2^2}$ ∣ </li>
+<li>$V_{AF}$ ∣ $V_{AF} = \frac{12EI\Delta}{L_1^3}$ ∣ </li>
+<li>$V_{EL}$ ∣ $V_{EL} = \frac{12EI\Delta}{L_2^3}$ ∣ </li>
+</ul>
+<h3>L3：深層知識（不懂就卡住）</h3>
+<ul>
+<li><strong>知識點 ∣ 說明 ∣ 卡關?</strong></li>
+<li>剪力房屋特性 ∣ 當橫梁剛度無限大且忽略柱軸向變形時，所有柱頂具有相同的側向位移 $\Delta$ 且無轉角。 ∣ </li>
+</ul>
+<h2>4. 步驟化詳細計算過程 (Step-by-Step Detailed Calculation)</h2>
+<p><strong>Step 1：確認結構邊界條件與變位自由度</strong><br />
+因為頂部 AE 構件為剛性梁（$I = \infty$），且不計柱之軸向變形，故頂部各節點不發生轉角，且具有相同之側向位移量 $\Delta$：<br />
+$$ \theta_A = \theta_B = \theta_C = \theta_D = \theta_E = 0 $$<br />
+底部 F, G 為固定端；J, K, L 固定於剛性矮牆（$I = \infty$）上，故亦為固定端：<br />
+$$ \theta_F = \theta_G = \theta_J = \theta_K = \theta_L = 0 $$</p>
+<p><strong>Step 2：建立傾角變位方程式</strong><br />
+設剛架向右側移 $\Delta$。各柱之 EI 值均為常數。<br />
+對於長柱 AF（$L_1 = 3\text{ m}$）：<br />
+$$ M_{AF} = \frac{2EI}{3} \left( 2\theta_A + \theta_F - 3\frac{\Delta}{3} \right) = \frac{2EI}{3} \left( - \frac{3\Delta}{3} \right) = -\frac{2}{3}EI\Delta $$<br />
+$$ M_{FA} = \frac{2EI}{3} \left( 2\theta_F + \theta_A - 3\frac{\Delta}{3} \right) = -\frac{2}{3}EI\Delta $$</p>
+<p>對於短柱 EL（$L_2 = 2\text{ m}$）：<br />
+$$ M_{EL} = \frac{2EI}{2} \left( 2\theta_E + \theta_L - 3\frac{\Delta}{2} \right) = EI \left( - \frac{3\Delta}{2} \right) = -\frac{3}{2}EI\Delta $$<br />
+$$ M_{LE} = \frac{2EI}{2} \left( 2\theta_L + \theta_E - 3\frac{\Delta}{2} \right) = -\frac{3}{2}EI\Delta $$</p>
+<p><strong>Step 3：計算柱之剪力</strong><br />
+取柱為自由體，由力矩平衡 $\sum M = 0$ 可得柱剪力 $V = -(M_{top} + M_{bottom}) / L$（定義向左之抵抗剪力為正）：<br />
+對於長柱 AF：<br />
+$$ V_{AF} = -\frac{M_{AF} + M_{FA}}{3} = -\frac{-\frac{2}{3}EI\Delta - \frac{2}{3}EI\Delta}{3} = \frac{4}{9}EI\Delta $$<br />
+對於短柱 EL：<br />
+$$ V_{EL} = -\frac{M_{EL} + M_{LE}}{2} = -\frac{-\frac{3}{2}EI\Delta - \frac{3}{2}EI\Delta}{2} = \frac{3}{2}EI\Delta $$</p>
+<p><strong>Step 4：計算彎矩與剪力之比值</strong></p>
+<ol>
+<li>
+<p><strong>柱底彎矩比值</strong>（長柱 AF 對短柱 EL）：<br />
+$$ \frac{M_{FA}}{M_{LE}} = \frac{-\frac{2}{3}EI\Delta}{-\frac{3}{2}EI\Delta} = \frac{2/3}{3/2} = \frac{4}{9} $$<br />
+因此，比值為 $\boxed{\frac{4}{9}}$。</p>
+</li>
+<li>
+<p><strong>柱底剪力比值</strong>（長柱 AF 對短柱 EL）：<br />
+$$ \frac{V_{AF}}{V_{EL}} = \frac{\frac{4}{9}EI\Delta}{\frac{3}{2}EI\Delta} = \frac{4/9}{3/2} = \frac{8}{27} $$<br />
+因此，比值為 $\boxed{\frac{8}{27}}$。</p>
+</li>
+</ol>
+<p><em>(註：本題雖給定外力 $100\text{ kN}$，但計算比值時 $\Delta$ 會被消去，故無需解出 $\Delta$。)</em></p>
+<p><strong>【補充計算】求解真實內力（驗證用）</strong><br />
+全結構之層剪力平衡方程式：<br />
+$$ \sum H = 0 \implies V_{AF} + V_{BG} + V_{CJ} + V_{DK} + V_{EL} = 100\text{ kN} $$<br />
+其中長柱有 2 根（AF, BG），短柱有 3 根（CJ, DK, EL）：<br />
+$$ 2 \left( \frac{4}{9}EI\Delta \right) + 3 \left( \frac{3}{2}EI\Delta \right) = 100 $$<br />
+$$ \left( \frac{8}{9} + \frac{9}{2} \right) EI\Delta = 100 \implies \frac{97}{18} EI\Delta = 100 \implies EI\Delta = \frac{1800}{97}\text{ kN-m}^2 $$<br />
+代回可得真實值：</p>
+<ul>
+<li>$M_{FA} = -\frac{2}{3} \times \frac{1800}{97} = -12.37\text{ kN-m}$</li>
+<li>$M_{LE} = -\frac{3}{2} \times \frac{1800}{97} = -27.84\text{ kN-m}$</li>
+<li>$V_{AF} = \frac{4}{9} \times \frac{1800}{97} = 8.25\text{ kN}$</li>
+<li>$V_{EL} = \frac{3}{2} \times \frac{1800}{97} = 27.84\text{ kN}$<br />
+可再次驗證比例：<br />
+$M_{FA} / M_{LE} = 12.37 / 27.84 = 4/9$<br />
+$V_{AF} / V_{EL} = 8.25 / 27.84 = 8/27$</li>
+</ul>
+<h2>5. 關鍵爭議點與進階探討 (Critical Issues &amp; Advanced Discussion)</h2>
+<ul>
+<li>
+<p><strong>橫向剛度（Lateral Stiffness）與柱高的關係</strong>：<br />
+  在兩端皆為固定端（無轉角）的條件下，柱之側向勁度（Lateral Stiffness）與其長度的三次方成反比（$k \propto 1/L^3$），而柱端彎矩與其長度的二次方成反比（$M \propto 1/L^2$）。<br />
+  本題中，短柱與長柱之長度比為 $2:3$。</p>
+</li>
+<li>
+<p>彎矩比 = $(2/3)^{-2} = (3/2)^2 = 9/4$（即短柱是長柱的 $9/4$ 倍，長柱對短柱則為 $4/9$）。</p>
+</li>
+<li>
+<p>剪力比 = $(2/3)^{-3} = (3/2)^3 = 27/8$（即短柱是長柱的 $27/8$ 倍，長柱對短柱則為 $8/27$）。<br />
+  這說明了在側向力作用下，結構中的<strong>短柱效應（Short Column Effect）</strong>會使其吸收極大比例的剪力，極易發生剪力破壞，為耐震設計之大忌。本題的剛性矮牆即是造成短柱效應的典型非結構構件。</p>
+</li>
+<li>
+<p><strong>外力 $100\text{ kN}$ 的作用</strong>：<br />
+  這是一個干擾資訊，當題目僅要求計算「比值」時，其結果僅與結構幾何與勁度分布有關，與外力大小無關。</p>
+</li>
+</ul></main>
+<footer>來源：raw/solutions/SA-2006-4/SA-2006-4.md（知識庫解題內容唯一正本；本頁僅為渲染顯示）</footer>
+</body></html>

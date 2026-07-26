@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="zh-Hant"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SA-2021-1 — 題目解析</title>
+<link rel="stylesheet" href="../assets/katex/katex.min.css">
+<script defer src="../assets/katex/katex.min.js"></script>
+<script defer src="../assets/katex/auto-render.min.js"
+  onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},
+  {left:'$',right:'$',display:false},{left:'\\(',right:'\\)',display:false}],throwOnError:false});"></script>
+<style>
+:root{--ac:#1565c0;--bg:#f7f9fb;--card:#fff;--ink:#263238;--mut:#607d8b;--bd:#dfe6ea}
+*{box-sizing:border-box}
+body{margin:0;font-family:"Microsoft JhengHei","Noto Sans TC",-apple-system,sans-serif;
+  background:var(--bg);color:var(--ink);line-height:1.75;font-size:15.5px}
+header{background:linear-gradient(135deg,#0d47a1,#1976d2 60%,#42a5f5);color:#fff;padding:22px 26px}
+header h1{margin:0;font-size:1.15em}
+header .back{display:inline-block;margin-top:10px;font-size:.82em;color:#fff;background:rgba(255,255,255,.18);
+  padding:4px 12px;border-radius:14px;text-decoration:none}
+main{max-width:880px;margin:0 auto;padding:26px 22px 70px}
+h1,h2,h3{color:#0d47a1} h2{font-size:1.2em;border-left:6px solid var(--ac);padding-left:12px;margin:34px 0 14px}
+table{width:100%;border-collapse:collapse;margin:14px 0;font-size:.92em;background:#fff}
+th,td{border:1px solid var(--bd);padding:7px 10px;text-align:left;vertical-align:top}
+th{background:#eceff1;font-weight:600} tbody tr:nth-child(even){background:#fafcfd}
+code{background:#eceff1;padding:1px 5px;border-radius:4px;font-size:.92em}
+img{max-width:100%;display:block;margin:14px auto;border:1px solid var(--bd);border-radius:8px}
+.katex-display{margin:12px 0!important;overflow-x:auto;overflow-y:hidden}
+footer{text-align:center;color:var(--mut);font-size:.8em;padding:22px;border-top:1px solid var(--bd)}
+</style></head><body>
+<header><h1>SA-2021-1 題目解析</h1><a class="back" href="javascript:history.back()">← 返回講義</a></header>
+<main><h3>考題編號：SA-2021-1</h3>
+<p><strong>主分類：</strong> <code>SA-U2-3</code> 靜不定結構與位移<br />
+<strong>副分類：</strong> 無<br />
+<strong>分析法：</strong> 傾角變位法<br />
+<strong>標籤：</strong> <code>傾角變位法</code> <code>彈簧支承</code> <code>內部鉸</code> <code>連續梁</code> <code>沈陷</code></p>
+<hr />
+<h2>1. 原始題目重述 (Problem Restatement)</h2>
+<p>如圖所示之一維梁結構，總長度 10 m。</p>
+<ul>
+<li>$a$ 點為滾支承（$x = 0$）</li>
+<li>$b$ 點下方有彈簧支承，彈簧係數 $k = 15000 \text{ kN/m}$（$x = 4\text{ m}$）</li>
+<li>$c$ 點為內部鉸接（$x = 8\text{ m}$）</li>
+<li>$d$ 點為固定端（$x = 10\text{ m}$）</li>
+<li>載重：在 $a, b$ 中點（$x = 2\text{ m}$）有向下集中載重 $36\text{ kN}$；在 $b$ 點（$x = 4\text{ m}$）有向下集中載重 $36\text{ kN}$。</li>
+<li>斷面性質：$EI = 10000 \text{ kN-m}^2$。</li>
+</ul>
+<p>求梁桿件的彎矩圖 (BMD)、$b$ 點轉角 $\theta_b$ 及 $b$ 點垂直位移 $\Delta_b$。</p>
+<p><img alt="SA-2021-1 題目附圖：連續梁帶彈簧支承與內部鉸" src="../../raw/solutions/SA-2021-1/SA-2021-1-fig-1.png" /></p>
+<p><em>圖說：連續梁 $a-b-c-d$，跨距分別為 4m、4m、2m。$a$ 滾支承，$b$ 彈簧 $k$ 與 36kN 載重，$c$ 內部鉸，$d$ 固定端。$ab$ 中點有一 36kN 載重。</em></p>
+<h2>2. 考題核心精神與出題者意圖 (Core Concepts &amp; Examiner's Intent)</h2>
+<p>本題測驗考生處理「混合複雜邊界條件」的能力，結合了彈簧支承（柔性支承）與內部鉸接。出題者的核心意圖在於：</p>
+<ol>
+<li><strong>等效剛度簡化</strong>：能否看出右側懸臂段 $cd$ 可等效為 $c$ 點的彈簧支承。</li>
+<li><strong>對稱跨距的奇妙性質</strong>：$ab$ 與 $bc$ 跨距相同，且兩端 $a, c$ 皆無彎矩，這會使得 $b$ 點的內力剪力相互抵銷，讓 $\Delta_b$ 能夠直接由垂直平衡求出，大幅降低解聯立方程式的複雜度。</li>
+</ol>
+<h2>3. 解題戰略地圖與陷阱分析 (Strategic Roadmap &amp; Trap Analysis)</h2>
+<p><strong>解題策略：</strong></p>
+<ol>
+<li><strong>右段簡化</strong>：先單獨分析 $cd$ 段，將其對 $c$ 點的支撐效果轉化為等效彈簧常數 $k_c$。</li>
+<li><strong>傾角變位法</strong>：對 $a-b-c$ 段列出傾角變位方程式。因 $a, c$ 彎矩為零，直接使用修正版傾角變位公式（鉸端修正）。</li>
+<li><strong>節點平衡</strong>：<br />
+   - $b$ 點彎矩平衡（求 $\theta_b$ 與 $\Delta_c$ 關係）<br />
+   - $b$ 點垂直力平衡（可獨立求出 $\Delta_b$）<br />
+   - $c$ 點垂直力平衡（求 $\Delta_c$ 與 $M_{bc}$ 關係）</li>
+<li><strong>解聯立並繪圖</strong>：求出所有未知變位後，代回求端彎矩並繪製 BMD。</li>
+</ol>
+<p><strong>陷阱分析：</strong></p>
+<ul>
+<li><strong>陷阱 1：忽略 $b$ 點的雙重載重效果</strong>：$b$ 點除了有彈簧，還有一個直接作用在節點上的 36 kN 外力，列垂直平衡時極易遺漏。</li>
+<li><strong>陷阱 2：變位正負號混淆</strong>：同時存在 $\Delta_b$ 與 $\Delta_c$，在計算弦旋轉角 $\psi$ 時，若未統一符號約定（如統一向下為正），極易在方程式中寫反。</li>
+</ul>
+<h2>3.5 變數層次分析 (Variable Hierarchy Analysis)</h2>
+<blockquote>
+<p>複習提示：第一次解題後，在每個卡住的知識點旁標記 <code>⚠</code>；第二次複習時只看有 <code>⚠</code> 的項目。</p>
+</blockquote>
+<h3>最終目標</h3>
+<p><code>求出 b 點位移與轉角，並解出各桿端彎矩以繪製 BMD</code></p>
+<h3>本題關鍵公式（依計算順序）</h3>
+<p>$$\text{Step 1: } k_c = \frac{3EI}{L_{cd}^3}$$</p>
+<p>$$\text{Step 2: } M_{Fba}^{mod} = M_{Fba} - \frac{1}{2} M_{Fab}$$</p>
+<p>$$\text{Step 3: } M_{ba} = \frac{3EI}{L_{ab}} \left( \theta_b - \frac{\Delta_b}{L_{ab}} \right) + \boxed{M_{Fba}^{mod}}$$</p>
+<p>$$\text{Step 4: } \sum F_{yb} = 0 \Rightarrow V_{ba} + V_{bc} + P_b = k_b \Delta_b$$</p>
+<h3>L1：題目直接給定</h3>
+<p><em>看到題目就能讀出的數字，不需要任何公式。</em></p>
+<table>
+<thead>
+<tr>
+<th>符號</th>
+<th>數值</th>
+<th>說明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>$EI$</td>
+<td>10000 kN-m²</td>
+<td>梁抗彎剛度</td>
+</tr>
+<tr>
+<td>$k_b$</td>
+<td>15000 kN/m</td>
+<td>$b$ 點彈簧常數</td>
+</tr>
+<tr>
+<td>$L_{ab}, L_{bc}$</td>
+<td>4 m, 4 m</td>
+<td>$ab$ 與 $bc$ 桿長</td>
+</tr>
+</tbody>
+</table>
+<h3>L2：需知識點推導</h3>
+<p><em>需要知道公式名稱與適用條件，套入 L1 即可算出。</em></p>
+<p><strong>Step 1：懸臂等效剛度</strong></p>
+<table>
+<thead>
+<tr>
+<th>符號</th>
+<th>公式/來源</th>
+<th style="text-align: center;">卡關?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>$k_c$</td>
+<td>$3EI / L_{cd}^3$ (懸臂梁端點受力變位公式倒數)</td>
+<td style="text-align: center;"></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Step 2：固端彎矩與修正</strong></p>
+<table>
+<thead>
+<tr>
+<th>符號</th>
+<th>公式/來源</th>
+<th style="text-align: center;">卡關?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>$M_{Fba}^{mod}$</td>
+<td>$(+PL/8) - 0.5(-PL/8) = 3PL/16$</td>
+<td style="text-align: center;"></td>
+</tr>
+</tbody>
+</table>
+<h3>L3：深層知識（不懂就卡住）</h3>
+<p><em>L2 中某些公式本身需要背景概念才能正確應用的知識點。</em></p>
+<table>
+<thead>
+<tr>
+<th>知識點</th>
+<th>說明</th>
+<th style="text-align: center;">卡關?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>連續梁中間支承反力性質</td>
+<td>當相鄰兩跨長度相同且外端皆為鉸接時，節點不平衡彎矩產生的剪力會完全抵銷。</td>
+<td style="text-align: center;"></td>
+</tr>
+<tr>
+<td>弦旋轉角 $\psi$ 的相對性</td>
+<td>$\psi_{bc} = (\Delta_c - \Delta_b) / L_{bc}$，需嚴格遵守幾何相對位移關係。</td>
+<td style="text-align: center;"></td>
+</tr>
+</tbody>
+</table>
+<h2>4. 步驟化詳細計算過程 (Step-by-Step Detailed Calculation)</h2>
+<blockquote>
+<p>📊 互動圖：<code>SA-2021-1-sfd-bmd-viz.html</code></p>
+</blockquote>
+<p><strong>Step 1：處理右側懸臂段 $cd$</strong><br />
+$c-d$ 為長度 $L_{cd}=2\text{ m}$ 的桿件，$d$ 端固定。$c$ 點受垂直向下力 $V_c$ 時的位移為 $\Delta_c = \frac{V_c L_{cd}^3}{3EI}$。<br />
+將其視為 $c$ 點的等效彈簧支承，其彈簧常數為：<br />
+$$k_c = \frac{3EI}{L_{cd}^3} = \frac{3(10000)}{2^3} = 3750 \text{ kN/m}$$</p>
+<p><strong>Step 2：計算固端彎矩 (FEM)</strong><br />
+對 $a-b$ 桿件，中點受集中載重 $P = 36\text{ kN}$，因 $a$ 為鉸支承，採用修正固端彎矩：<br />
+$$M_{Fba}^{mod} = M_{Fba} - \frac{1}{2} M_{Fab} = \frac{PL}{8} - \frac{1}{2}\left(-\frac{PL}{8}\right) = \frac{3PL}{16}$$<br />
+$$M_{Fba}^{mod} = \frac{3(36)(4)}{16} = 27 \text{ kN-m}$$<br />
+$b-c$ 桿件無跨中載重，故 $M_{Fbc}^{mod} = 0$。</p>
+<p><strong>Step 3：列傾角變位方程式</strong><br />
+設向下位移 $\Delta$ 為正，順時針轉角為正。<br />
+對於 $a-b$ 桿件（$a$ 鉸接，修正版）：<br />
+$$M_{ba} = \frac{3EI}{L_{ab}} (\theta_b - \psi_{ab}) + M_{Fba}^{mod} = \frac{3(10000)}{4} \left( \theta_b - \frac{\Delta_b}{4} \right) + 27 = 7500 \theta_b - 1875 \Delta_b + 27$$<br />
+對於 $b-c$ 桿件（$c$ 鉸接，修正版）：<br />
+$$M_{bc} = \frac{3EI}{L_{bc}} (\theta_b - \psi_{bc}) = \frac{3(10000)}{4} \left( \theta_b - \frac{\Delta_c - \Delta_b}{4} \right) = 7500 \theta_b - 1875 \Delta_c + 1875 \Delta_b$$</p>
+<p><strong>Step 4：節點 $b$ 垂直力平衡（求解 $\Delta_b$）</strong><br />
+節點 $b$ 的向下總力包含：外力 36 kN，以及來自 $ab$、$bc$ 桿件施加的剪力。<br />
+桿件對節點的向下作用力，等於單純梁反力加上兩端彎矩造成的剪力修正：<br />
+$$V_{b\text{向下}} = \left( \frac{36}{2} - \frac{M_{ba}}{4} \right) + \left( 0 - \frac{M_{bc}}{4} \right) = 18 - \frac{M_{ba} + M_{bc}}{4}$$<br />
+因節點 $b$ 無外加力矩，彎矩平衡 $\sum M_b = 0 \Rightarrow M_{ba} + M_{bc} = 0$。<br />
+故桿件對節點 $b$ 的向下總力正好等於單純梁反力 $18\text{ kN}$。<br />
+總向下力與彈簧力平衡：<br />
+$$18 + 36 = k_b \Delta_b \Rightarrow 54 = 15000 \Delta_b \Rightarrow \boxed{\Delta_b = 0.0036 \text{ m} = 3.6 \text{ mm (向下)}}$$</p>
+<p><strong>Step 5：節點 $c$ 垂直力平衡（求解 $\Delta_c$ 與 $M_{bc}$ 關係）</strong><br />
+桿件 $bc$ 對節點 $c$ 的向下作用力為：<br />
+$$V_{c\text{向下}} = 0 + \frac{M_{bc}}{4}$$<br />
+此力由 $c$ 點等效彈簧支撐平衡：<br />
+$$k_c \Delta_c = \frac{M_{bc}}{4} \Rightarrow 3750 \Delta_c = \frac{M_{bc}}{4} \Rightarrow M_{bc} = 15000 \Delta_c$$</p>
+<p><strong>Step 6：解聯立方程式（求解 $\theta_b, \Delta_c$）</strong><br />
+將 $\Delta_b = 0.0036$ 代入 $M_{bc}$ 方程式：<br />
+$$M_{bc} = 7500 \theta_b - 1875 \Delta_c + 1875(0.0036) = 7500 \theta_b - 1875 \Delta_c + 6.75$$<br />
+代入 $M_{bc} = 15000 \Delta_c$：<br />
+$$7500 \theta_b - 16875 \Delta_c + 6.75 = 0 \quad \text{--- (式1)}$$<br />
+再利用節點彎矩平衡 $M_{ba} + M_{bc} = 0$：<br />
+$$(7500 \theta_b - 1875(0.0036) + 27) + 15000 \Delta_c = 0 \Rightarrow 7500 \theta_b + 15000 \Delta_c + 20.25 = 0 \quad \text{--- (式2)}$$<br />
+(式2) 減 (式1)：<br />
+$$31875 \Delta_c + 13.5 = 0 \Rightarrow \Delta_c = -\frac{13.5}{31875} = -\frac{9}{21250} \text{ m} \approx -0.424 \text{ mm (向上)}$$<br />
+代回 (式2) 求 $\theta_b$：<br />
+$$7500 \theta_b = -20.25 - 15000 \left( -\frac{9}{21250} \right) = -20.25 + 6.353 = -13.897$$<br />
+$$\boxed{\theta_b = -\frac{63}{34000} \text{ rad} \approx -0.00185 \text{ rad (逆時針)}}$$</p>
+<p><strong>Step 7：計算桿端彎矩與繪圖</strong><br />
+代回求桿端彎矩：<br />
+$$M_{bc} = 15000 \left( -\frac{9}{21250} \right) = -\frac{108}{17} \text{ kN-m} \approx -6.35 \text{ kN-m}$$<br />
+$$M_{ba} = -M_{bc} = \frac{108}{17} \text{ kN-m} \approx 6.35 \text{ kN-m}$$<br />
+$ab$ 跨中彎矩（距 $a$ 點 2m 處）：<br />
+$$R_a = 18 - \frac{M_{ba}}{4} = 18 - \frac{27}{17} = \frac{279}{17} \text{ kN}$$<br />
+$$M_{mid} = R_a \times 2 = \frac{558}{17} \text{ kN-m} \approx 32.82 \text{ kN-m}$$<br />
+$d$ 點彎矩：$c$ 點受向上力 $V_c = 27/17\text{ kN}$，產生 $d$ 點彎矩（下緣受拉，為正彎矩）：<br />
+$$M_d = \frac{27}{17} \times 2 = \frac{54}{17} \text{ kN-m} \approx 3.18 \text{ kN-m}$$</p>
+<h2>5. 關鍵爭議點與進階探討 (Critical Issues &amp; Advanced Discussion)</h2>
+<ol>
+<li><strong>獨立解耦的位移</strong>：本題 $b$ 點的位移之所以能獨立求解，前提是相鄰兩跨長度相等（$L_{ab} = L_{bc} = 4\text{m}$），且兩外側端點彎矩為零（鉸接）。若長度不等，則 $M_{ba}/L_{ab}$ 與 $M_{bc}/L_{bc}$ 無法完全抵銷，$\Delta_b$ 將會與 $\theta_b$ 產生耦合，必須解三元一次聯立方程式。這考驗考生對力學平衡深層本質的直覺。</li>
+<li><strong>正負號與物理意義的驗證</strong>：計算得出 $\Delta_c$ 為負值（向上），這在直覺上是合理的。因為 $ab$ 段受載向下變形，帶動 $b$ 點下沉；但 $bc$ 段無載重，為了維持 $b$ 點的轉角與變形諧合，這根「蹺蹺板」的右端 $c$ 點勢必會被向上翹起，導致 $cd$ 懸臂梁承受向上拉力。</li>
+</ol></main>
+<footer>來源：raw/solutions/SA-2021-1/SA-2021-1.md（知識庫解題內容唯一正本；本頁僅為渲染顯示）</footer>
+</body></html>

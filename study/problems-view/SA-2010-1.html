@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="zh-Hant"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SA-2010-1 — 題目解析</title>
+<link rel="stylesheet" href="../assets/katex/katex.min.css">
+<script defer src="../assets/katex/katex.min.js"></script>
+<script defer src="../assets/katex/auto-render.min.js"
+  onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},
+  {left:'$',right:'$',display:false},{left:'\\(',right:'\\)',display:false}],throwOnError:false});"></script>
+<style>
+:root{--ac:#1565c0;--bg:#f7f9fb;--card:#fff;--ink:#263238;--mut:#607d8b;--bd:#dfe6ea}
+*{box-sizing:border-box}
+body{margin:0;font-family:"Microsoft JhengHei","Noto Sans TC",-apple-system,sans-serif;
+  background:var(--bg);color:var(--ink);line-height:1.75;font-size:15.5px}
+header{background:linear-gradient(135deg,#0d47a1,#1976d2 60%,#42a5f5);color:#fff;padding:22px 26px}
+header h1{margin:0;font-size:1.15em}
+header .back{display:inline-block;margin-top:10px;font-size:.82em;color:#fff;background:rgba(255,255,255,.18);
+  padding:4px 12px;border-radius:14px;text-decoration:none}
+main{max-width:880px;margin:0 auto;padding:26px 22px 70px}
+h1,h2,h3{color:#0d47a1} h2{font-size:1.2em;border-left:6px solid var(--ac);padding-left:12px;margin:34px 0 14px}
+table{width:100%;border-collapse:collapse;margin:14px 0;font-size:.92em;background:#fff}
+th,td{border:1px solid var(--bd);padding:7px 10px;text-align:left;vertical-align:top}
+th{background:#eceff1;font-weight:600} tbody tr:nth-child(even){background:#fafcfd}
+code{background:#eceff1;padding:1px 5px;border-radius:4px;font-size:.92em}
+img{max-width:100%;display:block;margin:14px auto;border:1px solid var(--bd);border-radius:8px}
+.katex-display{margin:12px 0!important;overflow-x:auto;overflow-y:hidden}
+footer{text-align:center;color:var(--mut);font-size:.8em;padding:22px;border-top:1px solid var(--bd)}
+</style></head><body>
+<header><h1>SA-2010-1 題目解析</h1><a class="back" href="javascript:history.back()">← 返回講義</a></header>
+<main><h1>考題編號：SA-2010-1</h1>
+<p><strong>主分類：</strong> <code>SA-U1-1</code> 靜定桁架分析<br />
+<strong>副分類：</strong> <code>SA-U1-2</code> 節點法與斷面法<br />
+<strong>分析法：</strong> 節點法 (Method of Joints) / 斷面法 (Method of Sections)<br />
+<strong>標籤：</strong> <code>零力桿件</code>, <code>節點法</code>, <code>斷面法</code>, <code>靜定桁架</code></p>
+<hr />
+<h2>1. 原始題目重述 (Problem Restatement)</h2>
+<p>如圖所示之靜定桁架（truss）結構，包含節點 A 至 H。幾何尺寸為水平方向每格 $2\text{ m}$，垂直方向每格 $2\text{ m}$。在支承條件方面，支承點 B 為滾支承（roller），且其支承面為垂直牆面；而支承點 G 則為鉸支承（hinge）。當 H 點承受一垂直向下的集中載重 $P = 30\text{ kN}$ 時，請計算 AC、BF 與 DE 三根桿件之軸力。（20 分）</p>
+<p><em>(註：本結構 G 點位於左下方，B 點位於右側垂直牆面，H 點位於下方承載外力。詳細幾何配置請參考原卷圖示。)</em></p>
+<div style="background:#fff3e0;border-left:5px solid #ef6c00;padding:10px 14px;border-radius:0 8px 8px 0;font-size:.9em;color:#e65100">原始 .md 未內嵌附圖，以下為同資料夾之題目附圖（顯示層補上，未修改 raw/）</div><img src="../../raw/solutions/SA-2010-1/SA-2010-1-fig-1.png" alt="SA-2010-1 題目附圖"><h2>2. 考題核心精神與出題者意圖 (Core Concepts &amp; Examiner's Intent)</h2>
+<p>本題的核心精神在於測驗考生處理<strong>靜定桁架分析的破局能力</strong>，具體而言，即「零力桿件（Zero-Force Members）判斷」與「選擇最適解題法（節點法 vs. 斷面法）」的綜合應用。</p>
+<p>出題者刻意畫出看似複雜的多節點桁架結構，意圖嚇退考生或誘使考生從不恰當的節點開始解聯立方程式。然而，只要考生具備清晰的靜力學觀念，從邊界條件（支承反力）著手，並敏銳地找出零力桿件，即可迅速化繁為簡，如庖丁解牛般切入要害。此題為典型的「防守型」題目，只要不誤判反力方向並合理選用斷面法，即可穩拿滿分。</p>
+<h2>3. 解題戰略地圖與陷阱分析 (Strategic Roadmap &amp; Trap Analysis)</h2>
+<p><strong>解題戰略地圖：</strong></p>
+<ol>
+<li><strong>全域平衡（Global Equilibrium）</strong>：將桁架視為一剛體，對 G 點取力矩平衡，求出 B 點的水平反力；接著利用水平與垂直力平衡求出 G 點反力。</li>
+<li><strong>零力桿件掃蕩（Zero-Force Member Identification）</strong>：從受力單純的節點（如 G 點、C 點、A 點）出發，透過節點法快速辨識出零力桿件（如 CG、AC、AB、AE），大幅簡化結構。</li>
+<li><strong>混合戰術求解（Mixed Method Application）</strong>：<br />
+   - 桿件 <strong>AC</strong>：透過 C 點的節點平衡即可直接確認為零力桿。<br />
+   - 桿件 <strong>BF</strong>：從簡化後的 B 點使用節點法直接求解。<br />
+   - 桿件 <strong>DE</strong>：切一垂直斷面貫穿結構，取左半自由體對 H 點取力矩平衡，即可使用斷面法秒殺。</li>
+</ol>
+<p><strong>陷阱分析與應對策略：</strong></p>
+<ul>
+<li>💥 <strong>陷阱 1：支承反力方向誤判（致命陷阱）</strong>。B 點為滾支承，且滾軸靠在「垂直牆面」上。這意味著 B 點只能提供<strong>水平向</strong>的反力（$B_x$）。若依慣性將 B 點視為提供垂直反力，將導致全盤皆錯。<strong>應對：</strong> 仔細觀察滾支承的接觸面法線方向。</li>
+<li>💥 <strong>陷阱 2：陷入盲目節點運算的泥沼</strong>。未先進行整體反力分析或不尋找零力桿件，直接從內部複雜節點列聯立方程式，不僅耗時極大且容易發生計算錯誤。<strong>應對：</strong> 謹記「先外力，後內力；先找零，再切斷」的桁架分析不二法門。</li>
+<li>💥 <strong>陷阱 3：斷面法力矩中心的選擇</strong>。求解 DE 桿時，若使用斷面法但選錯力矩中心，會讓其他未知桿件的力也進入方程式。<strong>應對：</strong> 選擇使最多未知力通過的交點（H 點）作為力矩中心，即可單獨解出 $F_{DE}$。</li>
+</ul>
+<h2>3.5 變數層次分析 (Variable Hierarchy Analysis)</h2>
+<h3>最終目標</h3>
+<p><code>運用整體平衡、節點法與斷面法，求出靜定桁架中 AC、BF 與 DE 三根桿件之軸力大小與拉壓性質。</code></p>
+<h3>本題關鍵公式（依計算順序）</h3>
+<p>Step 1：整體結構取力矩平衡求滾支承反力<br />
+$$ \sum M_G = 0 \implies B_x \cdot L_y - P \cdot L_x = 0 $$<br />
+Step 2：整體結構取水平/垂直力平衡求鉸支承反力<br />
+$$ \sum F_x = 0, \sum F_y = 0 \implies \boxed{G_x}, \boxed{G_y} $$<br />
+Step 3：使用節點法 (Method of Joints) 尋找零力桿與求出局部桿件力<br />
+$$ \sum F_x = 0, \sum F_y = 0 \text{ (應用於各節點)} $$<br />
+Step 4：使用斷面法 (Method of Sections) 建立包含目標桿件的力矩平衡<br />
+$$ \sum M_H = 0 \implies -\boxed{G_y} \cdot L_{G_y} - F_{DE} \cdot L_{DE} = 0 $$</p>
+<h3>L1：題目直接給定</h3>
+<table>
+<thead>
+<tr>
+<th>符號</th>
+<th>數值</th>
+<th>說明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>$P$</td>
+<td>$30\text{ kN}$</td>
+<td>作用於 H 點之垂直向下載重</td>
+</tr>
+<tr>
+<td>$\Delta x$</td>
+<td>$2\text{ m}$</td>
+<td>結構水平向每格尺寸</td>
+</tr>
+<tr>
+<td>$\Delta y$</td>
+<td>$2\text{ m}$</td>
+<td>結構垂直向每格尺寸</td>
+</tr>
+</tbody>
+</table>
+<h3>L2：需知識點推導</h3>
+<p><strong>整體反力分析</strong><br />
+| 符號 | 公式／來源 | 卡關? |<br />
+|---|---|---|<br />
+| $B_x$ | 滾支承於垂直牆面之反力，由 $\sum M_G = 0$ 求得 | |<br />
+| $G_x$ | 鉸支承之水平反力，由 $\sum F_x = 0$ 求得 | |<br />
+| $G_y$ | 鉸支承之垂直反力，由 $\sum F_y = 0$ 求得 | |</p>
+<p><strong>內力分析 (節點法與斷面法)</strong><br />
+| 符號 | 公式／來源 | 卡關? |<br />
+|---|---|---|<br />
+| $F_{AC}$ | 觀察節點 C 之 $\sum F_y = 0$ (需先知 $F_{CG}$) | |<br />
+| $F_{BF}$ | 觀察節點 B 之 $\sum F_y = 0$ (需先解節點 A) | |<br />
+| $F_{DE}$ | 取垂直斷面切斷 D 點周邊，對 H 點取 $\sum M_H = 0$ | |</p>
+<h3>L3：深層知識（不懂就卡住）</h3>
+<table>
+<thead>
+<tr>
+<th>知識點</th>
+<th>說明</th>
+<th>卡關?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>滾支承反力方向</strong></td>
+<td>滾支承的反力必垂直於接觸面，若接觸面為垂直牆，則反力為水平向。</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>零力桿件判斷法則</strong></td>
+<td>若一節點僅有兩非共線桿件且無外力，則兩桿皆為零力桿；若有三桿件，其中兩根共線且無外力，則第三根為零力桿。</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>斷面法力矩中心選擇</strong></td>
+<td>斷面法取力矩時，力矩中心可選在自由體外的任意點。選在未知內力作用線的交會點可大幅消去未知數。</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h2>4. 步驟化詳細計算過程 (Step-by-Step Detailed Calculation)</h2>
+<h3>步驟 1：計算支承反力 (Global Equilibrium)</h3>
+<p>由圖可知，各節點座標為（設 G 為原點）：</p>
+<ul>
+<li>$G(0,0)$，鉸支承，有 $G_x, G_y$ 兩反力分量。</li>
+<li>$B(6,4)$，滾支承於垂直牆面，僅有水平反力 $B_x$。</li>
+<li>外力：$H(4,0)$ 處有垂直向下之載重 $P = 30\text{ kN}$。</li>
+</ul>
+<p>對全結構取 G 點力矩平衡（逆時針為正）：<br />
+$$ \sum M_G = 0 \implies B_x \times 4\text{ m} - 30\text{ kN} \times 4\text{ m} = 0 \implies B_x = 30\text{ kN} \text{ (向左, }\leftarrow\text{)} $$<br />
+水平力平衡：<br />
+$$ \sum F_x = 0 \implies G_x - B_x = 0 \implies G_x = 30\text{ kN} \text{ (向右, }\rightarrow\text{)} $$<br />
+垂直力平衡：<br />
+$$ \sum F_y = 0 \implies G_y - 30 = 0 \implies G_y = 30\text{ kN} \text{ (向上, }\uparrow\text{)} $$</p>
+<h3>步驟 2：計算桿件 AC 軸力 (節點法判斷零力桿)</h3>
+<p><strong>分析節點 G</strong>：<br />
+G 點連接 CG (垂直) 與 DG (斜向，仰角 $45^\circ$) 兩桿件，並受反力 $G_x, G_y$。<br />
+$$ \sum F_x = 0 \implies G_x + F_{DG} \cos 45^\circ = 0 \implies 30 + F_{DG} \frac{1}{\sqrt{2}} = 0 \implies F_{DG} = -30\sqrt{2}\text{ kN} $$<br />
+$$ \sum F_y = 0 \implies G_y + F_{CG} + F_{DG} \sin 45^\circ = 0 \implies 30 + F_{CG} + (-30\sqrt{2})\frac{1}{\sqrt{2}} = 0 $$<br />
+$$ 30 + F_{CG} - 30 = 0 \implies F_{CG} = 0 $$</p>
+<p><strong>分析節點 C</strong>：<br />
+C 點連接 AC (斜向 $45^\circ$)、CD (水平) 與 CG (垂直)。<br />
+因無外力作用且 $F_{CG} = 0$，對 C 點取垂直向力平衡：<br />
+$$ \sum F_y = 0 \implies F_{AC} \sin 45^\circ - F_{CG} = 0 \implies F_{AC} \sin 45^\circ = 0 $$<br />
+故得：<br />
+$$ \boxed{F_{AC} = 0} $$</p>
+<h3>步驟 3：計算桿件 BF 軸力 (節點法)</h3>
+<p>首先，確認節點 A 的狀態：<br />
+<strong>分析節點 A</strong>：<br />
+因前步已求出 $F_{AC} = 0$，A 點僅剩 AB (水平) 與 AE (斜向，俯角 $45^\circ$)。節點 A 無外力。<br />
+$$ \sum F_y = 0 \implies -F_{AE} \sin 45^\circ = 0 \implies F_{AE} = 0 $$<br />
+$$ \sum F_x = 0 \implies F_{AB} + F_{AE} \cos 45^\circ = 0 \implies F_{AB} = 0 $$<br />
+<em>(推論：桿件 AB 與 AE 亦為零力桿)</em></p>
+<p><strong>分析節點 B</strong>：<br />
+B 點連接 AB、BE (斜向，俯角 $45^\circ$) 與 BF (垂直)，且承受外加反力 $B_x = 30\text{ kN} (\leftarrow)$。<br />
+代入已知的 $F_{AB} = 0$：<br />
+$$ \sum F_x = 0 \implies -B_x - F_{AB} - F_{BE} \cos 45^\circ = 0 \implies -30 - 0 - F_{BE} \frac{1}{\sqrt{2}} = 0 \implies F_{BE} = -30\sqrt{2}\text{ kN} $$<br />
+$$ \sum F_y = 0 \implies -F_{BF} - F_{BE} \sin 45^\circ = 0 \implies F_{BF} = -(-30\sqrt{2})\frac{1}{\sqrt{2}} = 30\text{ kN} $$<br />
+故得：<br />
+$$ \boxed{F_{BF} = 30\text{ kN} \text{ (拉力, T)}} $$</p>
+<h3>步驟 4：計算桿件 DE 軸力 (斷面法)</h3>
+<p>切一垂直斷面，切斷 <strong>AB、AE、DE、DH、GH</strong> 五根桿件，取左半自由體 (包含節點 G, C, A, D)。<br />
+（註：GH 共線通過 H 點，對 H 點不產生力矩；且前述已求得 $F_{AB}=0, F_{AE}=0$）。</p>
+<p><strong>對 H 點取力矩平衡</strong>：<br />
+左半自由體受到的外力僅有 G 點反力 $G_x = 30, G_y = 30$。<br />
+斷面上的未知內力中，僅 $F_{DE}$ 對 H 點有力矩貢獻 ($F_{AB}, F_{AE}$ 皆為零，$F_{DH}, F_{GH}$ 作用線均通過 H 點)。<br />
+$$ \sum M_H = 0 \text{ (逆時針為正)} $$<br />
+$$ -G_y \times 4\text{ m} + G_x \times 0 - F_{DE} \times 2\text{ m} = 0 $$<br />
+$$ -30 \times 4 - 2 F_{DE} = 0 \implies -120 = 2 F_{DE} \implies F_{DE} = -60\text{ kN} $$<br />
+故得：<br />
+$$ \boxed{F_{DE} = 60\text{ kN} \text{ (壓力, C)}} $$</p>
+<h2>5. 關鍵爭議點與進階探討 (Critical Issues &amp; Advanced Discussion)</h2>
+<ul>
+<li><strong>圖示符號的解讀與機構陷阱</strong>：在部分古老的考卷中，支承的圖示可能較為潦草。若滾支承 B 的圖示沒有畫出明確的垂直牆面，考生可能會誤以為是放在某個橫樑上的垂直支承。<strong>考場應對</strong>：根據桁架的穩定性與受力合理性，若 B 也是垂直支承，則整體結構在水平方向無束制，將產生水平不穩定（幾何不穩定/機構）。因此，合理推斷並假設 B 為承受牆面水平推力的滾支承，是最符合靜定結構邏輯的唯一解讀。</li>
+<li><strong>解題方法的靈活切換</strong>：本題完美示範了「節點法」與「斷面法」在實戰中不可偏廢。對於靠近支承或邊界、幾何關係單純的桿件（如 AC、BF），節點法最為直觀且能快速剝除冗餘桿件；而對於深入結構內部、周邊桿件繁多的桿件（如 DE），若純用節點法需層層遞進計算多個節點，極易累積計算錯誤，此時「一刀切開取力矩」的斷面法就是最佳武器。</li>
+<li><strong>進階觀念 - 零力桿的物理意義與實務價值</strong>：雖然零力桿（如本題中的 AC、AB、AE、CG）在給定的單一載重（30kN）下不受力，但在實務工程中，這些桿件不能被隨意拆除。它們提供了結構的挫曲束制（bracing against buckling）、承受可能改變位置或方向的活載重（Live Loads）、抵抗側向風力或地震力，並且增加了整體結構的靜不定度與冗餘度（Redundancy），防止單一桿件破壞引發連續倒塌。</li>
+</ul></main>
+<footer>來源：raw/solutions/SA-2010-1/SA-2010-1.md（知識庫解題內容唯一正本；本頁僅為渲染顯示）</footer>
+</body></html>

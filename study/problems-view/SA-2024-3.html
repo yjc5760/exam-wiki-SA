@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="zh-Hant"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SA-2024-3 — 題目解析</title>
+<link rel="stylesheet" href="../assets/katex/katex.min.css">
+<script defer src="../assets/katex/katex.min.js"></script>
+<script defer src="../assets/katex/auto-render.min.js"
+  onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},
+  {left:'$',right:'$',display:false},{left:'\\(',right:'\\)',display:false}],throwOnError:false});"></script>
+<style>
+:root{--ac:#1565c0;--bg:#f7f9fb;--card:#fff;--ink:#263238;--mut:#607d8b;--bd:#dfe6ea}
+*{box-sizing:border-box}
+body{margin:0;font-family:"Microsoft JhengHei","Noto Sans TC",-apple-system,sans-serif;
+  background:var(--bg);color:var(--ink);line-height:1.75;font-size:15.5px}
+header{background:linear-gradient(135deg,#0d47a1,#1976d2 60%,#42a5f5);color:#fff;padding:22px 26px}
+header h1{margin:0;font-size:1.15em}
+header .back{display:inline-block;margin-top:10px;font-size:.82em;color:#fff;background:rgba(255,255,255,.18);
+  padding:4px 12px;border-radius:14px;text-decoration:none}
+main{max-width:880px;margin:0 auto;padding:26px 22px 70px}
+h1,h2,h3{color:#0d47a1} h2{font-size:1.2em;border-left:6px solid var(--ac);padding-left:12px;margin:34px 0 14px}
+table{width:100%;border-collapse:collapse;margin:14px 0;font-size:.92em;background:#fff}
+th,td{border:1px solid var(--bd);padding:7px 10px;text-align:left;vertical-align:top}
+th{background:#eceff1;font-weight:600} tbody tr:nth-child(even){background:#fafcfd}
+code{background:#eceff1;padding:1px 5px;border-radius:4px;font-size:.92em}
+img{max-width:100%;display:block;margin:14px auto;border:1px solid var(--bd);border-radius:8px}
+.katex-display{margin:12px 0!important;overflow-x:auto;overflow-y:hidden}
+footer{text-align:center;color:var(--mut);font-size:.8em;padding:22px;border-top:1px solid var(--bd)}
+</style></head><body>
+<header><h1>SA-2024-3 題目解析</h1><a class="back" href="javascript:history.back()">← 返回講義</a></header>
+<main><h1>考題編號：SA-2024-3</h1>
+<p><strong>主分類：</strong> <code>SA-U2-3</code> 靜不定結構分析<br />
+<strong>副分類：</strong> 無<br />
+<strong>分析法：</strong> 傾角變位法<br />
+<strong>標籤：</strong> <code>傾角變位法</code>, <code>門型剛構架</code>, <code>對稱性</code>, <code>極值比例</code></p>
+<hr />
+<h2>1. 原始題目重述 (Problem Restatement)</h2>
+<p>如圖三所示之門型構架，梁與柱之斷面 EI 皆相同，但梁長大於柱長，也就是 $L_b / L > 1$。已知兩根柱最大彎矩的數值大小與梁最大彎矩的數值大小其比為 2：1，試求此時 $L_b / L = ?$ 本題限以傾角變位法作答，分析時可忽略軸向變形。（25 分）</p>
+<p><img alt="SA-2024-3 題目附圖：承受側向載重的門型剛構架" src="../../raw/solutions/SA-2024-3/SA-2024-3-fig-1.png" /></p>
+<p><em>圖說：對稱門型剛構架，柱 AB 與 CD 長度為 L，梁 BC 長度為 Lb。底部 A 與 D 均為固定端。節點 B 承受向右之水平力 P。</em></p>
+<h2>2. 考題核心精神與出題者意圖 (Core Concepts &amp; Examiner's Intent)</h2>
+<p>本題是相當經典的「反向工程」題型。有別於傳統題目給定所有幾何尺寸求內力，本題是給定<strong>內力比例條件</strong>要求反推<strong>幾何參數</strong>。<br />
+出題者旨在測驗考生：</p>
+<ol>
+<li><strong>反對稱變形條件</strong>：能否利用對稱結構受反對稱載重的特性，直接判定 $\theta_B = \theta_C$，大幅減少未知數。</li>
+<li><strong>傾角變位法的代數操作</strong>：在不具體代入數值的情況下，以符號推導出各端點彎矩的表示式。</li>
+<li><strong>彎矩極值的邏輯判斷</strong>：必須透過代數比較 $|M_{AB}|$ 與 $|M_{BA}|$ 的大小，自行判斷柱的最大彎矩是發生在柱頂還是柱底，進而套用題目給定的比例條件。</li>
+</ol>
+<h2>3. 解題戰略地圖與陷阱分析 (Strategic Roadmap &amp; Trap Analysis)</h2>
+<ol>
+<li><strong>設定未知數與變形條件</strong>：<br />
+   - 令 $k = L_b / L$。<br />
+   - 因為結構對稱、載重反對稱，變形亦呈反對稱，故 $\theta_B = \theta_C = \theta$。<br />
+   - 側移角 $\psi_{AB} = \psi_{CD} = \psi$。</li>
+<li><strong>建立傾角變位方程式</strong>：寫出 $M_{AB}$、$M_{BA}$ 與 $M_{BC}$ 關於 $\theta$ 與 $\psi$ 的函數。</li>
+<li><strong>節點平衡與代換</strong>：利用 $\Sigma M_B = 0$，找出 $\theta$ 與 $\psi$ 的比例關係，並代回彎矩方程式中，使所有彎矩皆表示為 $\psi$ 的倍數。</li>
+<li><strong>極值判斷與求解</strong>：<br />
+   - 梁無跨中載重，最大彎矩必在端點 $|M_{BC}|$。<br />
+   - 柱無跨中載重，需比較 $|M_{AB}|$ 與 $|M_{BA}|$。利用題目給定 $k > 1$ 判斷出 $|M_{AB}| > |M_{BA}|$。<br />
+   - 依據 $|M_{AB}| / |M_{BC}| = 2$，解出 $k$。</li>
+<li><strong>陷阱分析</strong>：<br />
+   - 未判斷 $|M_{AB}|$ 與 $|M_{BA}|$ 孰大孰小，若誤用 $|M_{BA}|$ 計算，會發現 $|M_{BA}| = |M_{BC}|$，永遠比例為 1:1，無法解出答案而卡住。<br />
+   - 忘記 $\theta_B = \theta_C$ 雖不會算錯，但會多花一倍時間解聯立方程式。</li>
+</ol>
+<h2>3.5 變數層次分析 (Variable Hierarchy Analysis)</h2>
+<h3>最終目標</h3>
+<p>以傾角變位法導出柱與梁最大彎矩的代數式，並透過其比例為 2，反求 $k = L_b/L$。</p>
+<h3>本題關鍵公式（依計算順序）</h3>
+<p>$$ M_{ij} = \frac{2EI}{L} (2\theta_i + \theta_j - 3\psi) + FEM_{ij} \quad \text{(傾角變位法基本式)} $$<br />
+$$ \Sigma M_B = M_{BA} + M_{BC} = 0 \quad \text{(節點平衡)} $$<br />
+$$ \theta_B = \theta_C \quad \text{(反對稱變形條件)} $$<br />
+$$ \frac{|M_{col,max}|}{|M_{beam,max}|} = 2 \quad \text{(題設條件)} $$</p>
+<h3>L1：題目直接給定</h3>
+<table>
+<thead>
+<tr>
+<th>符號</th>
+<th>數值</th>
+<th>說明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>$K_c$</td>
+<td>$EI/L$</td>
+<td>柱線剛度</td>
+</tr>
+<tr>
+<td>$K_b$</td>
+<td>$EI/L_b$</td>
+<td>梁線剛度</td>
+</tr>
+<tr>
+<td>$\theta_A, \theta_D$</td>
+<td>$0$</td>
+<td>固定端邊界條件</td>
+</tr>
+<tr>
+<td>$FEM_{ij}$</td>
+<td>$0$</td>
+<td>桿件上無載重</td>
+</tr>
+</tbody>
+</table>
+<h3>L2：需知識點推導</h3>
+<table>
+<thead>
+<tr>
+<th>符號</th>
+<th>公式／來源</th>
+<th>卡關?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>$M_{AB}, M_{BA}, M_{BC}$</td>
+<td>傾角變位方程式</td>
+<td></td>
+</tr>
+<tr>
+<td>$\theta$ 與 $\psi$ 關係</td>
+<td>節點 B 彎矩平衡方程式</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h3>L3：深層知識（不懂就卡住）</h3>
+<table>
+<thead>
+<tr>
+<th>知識點</th>
+<th>說明</th>
+<th>卡關?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>極值判斷</td>
+<td>必須知道證明 $|M_{AB}| > |M_{BA}|$ 才能確定柱的最大彎矩位置，進而列出正確的等式。</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h2>4. 步驟化詳細計算過程 (Step-by-Step Detailed Calculation)</h2>
+<h3>Step 1: 參數設定與變形條件</h3>
+<p>令比值 $k = \frac{L_b}{L}$。<br />
+柱之線剛度 $K_c = \frac{EI}{L}$，梁之線剛度 $K_b = \frac{EI}{L_b} = \frac{EI}{kL} = \frac{K_c}{k}$。<br />
+因結構幾何對稱、受力為側向反對稱載重，故產生反對稱變形：<br />
+節點旋轉角：$\theta_B = \theta_C = \theta$<br />
+柱側移角：$\psi_{AB} = \psi_{CD} = \psi$<br />
+梁側移角：$\psi_{BC} = 0$<br />
+邊界條件：$\theta_A = \theta_D = 0$</p>
+<h3>Step 2: 建立傾角變位方程式</h3>
+<p>$$ M_{AB} = 2K_c (\theta_B - 3\psi) = 2K_c (\theta - 3\psi) $$<br />
+$$ M_{BA} = 2K_c (2\theta_B - 3\psi) = 2K_c (2\theta - 3\psi) $$<br />
+$$ M_{BC} = 2K_b (2\theta_B + \theta_C) = 2\left(\frac{K_c}{k}\right) (3\theta) = \frac{6K_c}{k}\theta $$</p>
+<h3>Step 3: 節點平衡與代換</h3>
+<p>於節點 B 取力矩平衡：<br />
+$$ \Sigma M_B = 0 \implies M_{BA} + M_{BC} = 0 $$<br />
+$$ 2K_c (2\theta - 3\psi) + \frac{6K_c}{k}\theta = 0 $$<br />
+消去 $2K_c$：<br />
+$$ 2\theta - 3\psi + \frac{3}{k}\theta = 0 $$<br />
+$$ \left(2 + \frac{3}{k}\right)\theta = 3\psi \implies \left(\frac{2k+3}{k}\right)\theta = 3\psi $$<br />
+$$ \theta = \frac{3k}{2k+3}\psi $$</p>
+<h3>Step 4: 找出各端點彎矩的相對大小</h3>
+<p>將 $\theta$ 關係式代回彎矩方程式中：<br />
+$$ M_{BC} = \frac{6K_c}{k} \left( \frac{3k}{2k+3}\psi \right) = \frac{18K_c}{2k+3}\psi $$<br />
+梁 BC 無跨中載重，彎矩圖呈直線，故梁的最大彎矩為端點彎矩：<br />
+$$ |M_{beam,max}| = |M_{BC}| = \frac{18K_c}{2k+3}|\psi| $$</p>
+<p>由 $\Sigma M_B = 0$ 知 $M_{BA} = -M_{BC}$：<br />
+$$ |M_{BA}| = \frac{18K_c}{2k+3}|\psi| $$</p>
+<p>計算柱底彎矩 $M_{AB}$：<br />
+$$ M_{AB} = 2K_c \left( \frac{3k}{2k+3}\psi - 3\psi \right) = 2K_c \left( \frac{3k - 3(2k+3)}{2k+3} \right)\psi = 2K_c \left( \frac{-3k - 9}{2k+3} \right)\psi = -\frac{6(k+3)K_c}{2k+3}\psi $$<br />
+$$ |M_{AB}| = \frac{6(k+3)K_c}{2k+3}|\psi| $$</p>
+<h3>Step 5: 判斷極值並求解 $k$</h3>
+<p>柱 AB 無跨中載重，最大彎矩必定在兩端（A點或B點）之中。<br />
+比較 $|M_{AB}|$ 與 $|M_{BA}|$：<br />
+因為題目已知 $L_b / L > 1$，即 $k > 1$。<br />
+$|M_{AB}|$ 分子常數部分：$6(k+3) > 6(1+3) = 24$<br />
+$|M_{BA}|$ 分子常數部分：$18$<br />
+顯然 $6(k+3) > 18$，故 $|M_{AB}| > |M_{BA}|$，柱的最大彎矩發生在柱底。<br />
+$$ |M_{col,max}| = |M_{AB}| = \frac{6(k+3)K_c}{2k+3}|\psi| $$</p>
+<p>依據題目給定條件「兩根柱最大彎矩與梁最大彎矩大小其比為 2：1」：<br />
+$$ \frac{|M_{col,max}|}{|M_{beam,max}|} = 2 $$<br />
+$$ \frac{\frac{6(k+3)K_c}{2k+3}|\psi|}{\frac{18K_c}{2k+3}|\psi|} = 2 $$<br />
+$$ \frac{6(k+3)}{18} = 2 $$<br />
+$$ \frac{k+3}{3} = 2 \implies k+3 = 6 \implies k = 3 $$<br />
+$$ \boxed{\frac{L_b}{L} = 3} $$</p>
+<h2>5. 關鍵爭議點與進階探討 (Critical Issues &amp; Advanced Discussion)</h2>
+<ul>
+<li><strong>固定端與鉸支承的影響</strong>：若本題的柱底 (A、D) 為鉸支承，則 $M_{AB} = 0$，柱的最大彎矩必然是 $M_{BA}$。但在節點平衡下 $|M_{BA}| = |M_{BC}|$，會導致柱與梁的最大彎矩比值恆為 1:1，不可能滿足題目 2:1 的條件。因此，透過代數邏輯也能反證底端必須是固定端。</li>
+<li><strong>對稱性的強大威力</strong>：處理此類具有對稱幾何配置的剛構架時，若能第一眼看出側向載重會引發反對稱變形 ($\theta_B = \theta_C$)，將原本兩個旋轉自由度降為一個，計算時間至少能節省一半以上，是考場上搶分的關鍵技巧。</li>
+</ul></main>
+<footer>來源：raw/solutions/SA-2024-3/SA-2024-3.md（知識庫解題內容唯一正本；本頁僅為渲染顯示）</footer>
+</body></html>

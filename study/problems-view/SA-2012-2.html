@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="zh-Hant"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SA-2012-2 — 題目解析</title>
+<link rel="stylesheet" href="../assets/katex/katex.min.css">
+<script defer src="../assets/katex/katex.min.js"></script>
+<script defer src="../assets/katex/auto-render.min.js"
+  onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},
+  {left:'$',right:'$',display:false},{left:'\\(',right:'\\)',display:false}],throwOnError:false});"></script>
+<style>
+:root{--ac:#1565c0;--bg:#f7f9fb;--card:#fff;--ink:#263238;--mut:#607d8b;--bd:#dfe6ea}
+*{box-sizing:border-box}
+body{margin:0;font-family:"Microsoft JhengHei","Noto Sans TC",-apple-system,sans-serif;
+  background:var(--bg);color:var(--ink);line-height:1.75;font-size:15.5px}
+header{background:linear-gradient(135deg,#0d47a1,#1976d2 60%,#42a5f5);color:#fff;padding:22px 26px}
+header h1{margin:0;font-size:1.15em}
+header .back{display:inline-block;margin-top:10px;font-size:.82em;color:#fff;background:rgba(255,255,255,.18);
+  padding:4px 12px;border-radius:14px;text-decoration:none}
+main{max-width:880px;margin:0 auto;padding:26px 22px 70px}
+h1,h2,h3{color:#0d47a1} h2{font-size:1.2em;border-left:6px solid var(--ac);padding-left:12px;margin:34px 0 14px}
+table{width:100%;border-collapse:collapse;margin:14px 0;font-size:.92em;background:#fff}
+th,td{border:1px solid var(--bd);padding:7px 10px;text-align:left;vertical-align:top}
+th{background:#eceff1;font-weight:600} tbody tr:nth-child(even){background:#fafcfd}
+code{background:#eceff1;padding:1px 5px;border-radius:4px;font-size:.92em}
+img{max-width:100%;display:block;margin:14px auto;border:1px solid var(--bd);border-radius:8px}
+.katex-display{margin:12px 0!important;overflow-x:auto;overflow-y:hidden}
+footer{text-align:center;color:var(--mut);font-size:.8em;padding:22px;border-top:1px solid var(--bd)}
+</style></head><body>
+<header><h1>SA-2012-2 題目解析</h1><a class="back" href="javascript:history.back()">← 返回講義</a></header>
+<main><h1>考題編號：SA-2012-2</h1>
+<p><strong>主分類：</strong> <code>SA-U2-2</code> 靜不定結構分析<br />
+<strong>副分類：</strong> <code>SA-U2-3</code><br />
+<strong>分析法：</strong> 最小功法<br />
+<strong>標籤：</strong> <code>靜不定桁架</code> <code>最小功法</code> <code>彈性支承</code> <code>彈簧</code></p>
+<hr />
+<h2>1. 原始題目重述 (Problem Restatement)</h2>
+<p>如圖二所示桁架，a 點為鉸接，c 點為滾支承，b 點有軸向線彈性彈簧。若每根桿件的 $EA$ 值皆為 $10,000\text{ kN}$，線彈性彈簧之勁度 $K_s$ 為 $2,500\text{ kN/m}$。試以<strong>最小功法</strong>計算各桿件內力（若以其他方法計算，不予以計分）。（25 分）</p>
+<p><img alt="SA-2012-2 題目附圖：桁架包含五根桿件及彈性支承彈簧，承受節點載重" src="../../raw/solutions/SA-2012-2/SA-2012-2-fig-1.png" /></p>
+<p><em>圖說：底邊長 8m 的三角形桁架，a(0,0)、b(4,0)、c(8,0)、d(4,4)。a 為鉸接支承，c 為滾支承，b 點下方連接一垂直彈簧。d 點承受水平向右 20 kN 及垂直向下 40 kN 之載重。</em></p>
+<h2>2. 考題核心精神與出題者意圖 (Core Concepts &amp; Examiner's Intent)</h2>
+<p>本題旨在測驗考生對於<strong>最小功法（卡氏第二定理）</strong>在處理「包含柔性支承（彈簧）」之靜不定桁架時的應用能力與幾何相容概念。</p>
+<ol>
+<li><strong>靜不定度判定</strong>：外反力有 $A_x, A_y, C_y$ 及彈簧反力 $X$ 共四個，平面平衡方程式僅有三個，故為外靜不定一度。</li>
+<li><strong>贅力選擇與能量項建構</strong>：要求考生將彈簧反力（或某一桿件內力）視為贅力 (Redundant Force)。</li>
+<li><strong>系統總應變能考驗</strong>：最核心的測驗點在於「總應變能 $U$」必須包含<strong>桁架桿件應變能</strong>與<strong>彈簧應變能</strong>。對總應變能偏微分等於零（最小功），隱含了桁架節點位移與彈簧變形量一致的物理幾何相容條件。</li>
+</ol>
+<h2>3. 解題戰略地圖與陷阱分析 (Strategic Roadmap &amp; Trap Analysis)</h2>
+<p><strong>解題策略：</strong></p>
+<ol>
+<li><strong>設定贅力</strong>：選擇 b 點彈簧對桁架向上的推力 $X$ 作為贅力，將原結構退化為靜定基本結構。</li>
+<li><strong>靜力平衡求解</strong>：利用整體靜力平衡求出外部支承反力 $A_x, A_y, C_y$，再利用節點法，將所有桁架桿件內力 $F_i$ 以常數與 $X$ 的函數表示：$F_i = A_i + B_i X$。</li>
+<li><strong>建立最小功方程式</strong>：依據最小功法，總應變能對贅力 $X$ 偏微分為零（$\frac{\partial U}{\partial X} = 0$）。</li>
+<li><strong>表格化計算與解方程式</strong>：藉由列表整理 $F_i$、$L_i$ 及 $\frac{\partial F_i}{\partial X}$，算出偏微分項之總和，解出 $X$ 並回代求得各桿真實內力。</li>
+</ol>
+<p><strong>陷阱分析與應對：</strong></p>
+<ul>
+<li><strong>忽略彈簧應變能 (致命陷阱)</strong>：若只對桁架桿件算應變能，並令 $\partial U_{truss} / \partial X = 0$，這代表 b 點「完全不發生位移」（視同剛性支承），這將導致完全錯誤的結果。<strong>彈簧的應變能 $X^2 / 2K_s$ 的偏微分項絕對不能漏掉</strong>。</li>
+<li><strong>單位錯亂與計算繁瑣</strong>：本題 $EA = 10,000\text{ kN}$，彈簧 $K_s = 2,500\text{ kN/m}$。單位雖已統一不需轉換，但在組合方程式時，若不先將 $EA/K_s$ 比例關係化簡，直接帶入 10000 算容易出錯。建議直接以符號推導，最後再把 $\frac{EA}{K_s} = 4\text{ m}$ 代入。</li>
+<li><strong>斜桿長度誤判</strong>：極易誤將斜桿 $ad, cd$ 的長度當成 4m，實際上幾何關係為 $4\sqrt{2}\text{ m}$。需特別小心。</li>
+</ul>
+<h2>3.5 變數層次分析 (Variable Hierarchy Analysis)</h2>
+<h3>最終目標</h3>
+<p><code>利用最小功法（卡氏第二定理），求解彈簧贅力，進而推算桁架各桿件之真實內力。</code></p>
+<h3>本題關鍵公式（依計算順序）</h3>
+<p><strong>Step 1: 定義系統總應變能</strong><br />
+$$ U = \sum \frac{F_i^2 L_i}{2EA} + \frac{X^2}{2K_s} $$<br />
+<em>(包含桁架桿件應變能與彈簧應變能)</em></p>
+<p><strong>Step 2: 應用最小功法（卡氏第二定理）</strong><br />
+$$ \frac{\partial U}{\partial X} = \sum \left( \frac{F_i L_i}{EA} \cdot \frac{\partial F_i}{\partial X} \right) + \frac{X}{K_s} = 0 $$<br />
+<em>(對贅力偏微分為零，滿足變形諧合)</em></p>
+<p><strong>Step 3: 公式化簡（同乘 EA）</strong><br />
+$$ \sum \left( F_i \cdot \frac{\partial F_i}{\partial X} \cdot L_i \right) + \frac{EA}{K_s} X = 0 $$<br />
+<em>(將分母常數統一處理，避免數值計算過大)</em></p>
+<p><strong>Step 4: 計算贅力</strong><br />
+$$ X = \frac{-\sum (A_i \cdot B_i \cdot L_i)}{\sum (B_i^2 \cdot L_i) + \frac{EA}{K_s}} $$<br />
+<em>(代入表格數據解出贅力，其中 $F_i = A_i + B_i X$，$B_i = \frac{\partial F_i}{\partial X}$)</em></p>
+<p><strong>Step 5: 回代求解最終內力</strong><br />
+$$ F_i = A_i + B_i \cdot \boxed{X} $$<br />
+<em>(利用求得之贅力計算各桿內力)</em></p>
+<h3>L1：題目直接給定</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">符號</th>
+<th style="text-align: left;">數值</th>
+<th style="text-align: left;">說明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">$L_{ab}, L_{bc}, L_{bd}$</td>
+<td style="text-align: left;">$4\text{ m}$</td>
+<td style="text-align: left;">水平及垂直桿長度</td>
+</tr>
+<tr>
+<td style="text-align: left;">$L_{ad}, L_{cd}$</td>
+<td style="text-align: left;">$4\sqrt{2}\text{ m}$</td>
+<td style="text-align: left;">斜桿長度</td>
+</tr>
+<tr>
+<td style="text-align: left;">$EA$</td>
+<td style="text-align: left;">$10,000\text{ kN}$</td>
+<td style="text-align: left;">桿件軸向剛度</td>
+</tr>
+<tr>
+<td style="text-align: left;">$K_s$</td>
+<td style="text-align: left;">$2,500\text{ kN/m}$</td>
+<td style="text-align: left;">彈簧勁度</td>
+</tr>
+<tr>
+<td style="text-align: left;">$P_{dx}$</td>
+<td style="text-align: left;">$20\text{ kN}$</td>
+<td style="text-align: left;">d點水平載重 (向右)</td>
+</tr>
+<tr>
+<td style="text-align: left;">$P_{dy}$</td>
+<td style="text-align: left;">$40\text{ kN}$</td>
+<td style="text-align: left;">d點垂直載重 (向下)</td>
+</tr>
+</tbody>
+</table>
+<h3>L2：需知識點推導</h3>
+<p><strong>剛度比例參數</strong><br />
+| 符號 | 公式／來源 | 卡關? |<br />
+| :--- | :--- | :--- |<br />
+| $\frac{EA}{K_s}$ | $10000 / 2500 = 4\text{ m}$ | |</p>
+<p><strong>靜力平衡：外反力（函數）</strong><br />
+| 符號 | 公式／來源 | 卡關? |<br />
+| :--- | :--- | :--- |<br />
+| $A_x$ | $\Sigma F_x = 0$ | |<br />
+| $C_y$ | $\Sigma M_a = 0$ | |<br />
+| $A_y$ | $\Sigma F_y = 0$ | |</p>
+<p><strong>靜力平衡：內力（函數）</strong><br />
+| 符號 | 公式／來源 | 卡關? |<br />
+| :--- | :--- | :--- |<br />
+| $F_i(X)$ | $F_i = A_i + B_i X$ (節點法求得) | |</p>
+<h3>L3：深層知識（不懂就卡住）</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">知識點</th>
+<th style="text-align: left;">說明</th>
+<th style="text-align: left;">卡關?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">柔性支承之應變能</td>
+<td style="text-align: left;">總應變能必須包含彈簧應變能 $\frac{X^2}{2K_s}$。若漏掉等同於將該點視為剛性滾支承。</td>
+<td style="text-align: left;"></td>
+</tr>
+<tr>
+<td style="text-align: left;">最小功法實務操作</td>
+<td style="text-align: left;">求偏微分 $\frac{\partial}{\partial X} \left(\frac{F_i^2 L_i}{2EA}\right) = \frac{F_i L_i}{EA} \cdot \frac{\partial F_i}{\partial X}$，可透過表格法系統化計算。</td>
+<td style="text-align: left;"></td>
+</tr>
+<tr>
+<td style="text-align: left;">分數有理化</td>
+<td style="text-align: left;">分母含根號時，上下同乘共軛式化簡，可避免提早帶入小數導致嚴重進位誤差。</td>
+<td style="text-align: left;"></td>
+</tr>
+</tbody>
+</table>
+<h2>4. 步驟化詳細計算過程 (Step-by-Step Detailed Calculation)</h2>
+<h3>Step 1：設定贅力與基本結構</h3>
+<p>選擇 b 點下方彈簧對桁架<strong>向上</strong>的作用力 $X$ 作為贅力（此時彈簧承受壓縮力，其大小為 $X$）。<br />
+移除彈簧束制，視桁架為一靜定基本結構，承受外部載重 (水平 20 kN, 垂直 40 kN) 及贅力 $X$ 共同作用。</p>
+<p><strong>求外部反力：</strong></p>
+<ol>
+<li>
+<p>水平平衡：<br />
+   $\sum F_x = 0 \Rightarrow A_x + 20 = 0 \Rightarrow A_x = -20\text{ kN} (\leftarrow)$</p>
+</li>
+<li>
+<p>彎矩平衡 (對 a 點取力矩)：<br />
+   $\sum M_a = 0 \Rightarrow C_y(8) + X(4) - 40(4) - 20(4) = 0$<br />
+   $8 C_y + 4 X - 240 = 0 \Rightarrow C_y = 30 - 0.5 X$</p>
+</li>
+<li>
+<p>垂直平衡：<br />
+   $\sum F_y = 0 \Rightarrow A_y + C_y + X - 40 = 0$<br />
+   $A_y + (30 - 0.5 X) + X = 40 \Rightarrow A_y = 10 - 0.5 X$</p>
+</li>
+</ol>
+<h3>Step 2：節點法求各桿件內力函數 $F_i(X)$</h3>
+<p>假設所有桿件受拉為正。</p>
+<p><strong>節點 c (8,0)：</strong><br />
+$\sum F_y = 0 \Rightarrow C_y + F_{cd} \sin(135^\circ) = 0$<br />
+$F_{cd} = -C_y \sqrt{2} = -30\sqrt{2} + 0.5\sqrt{2} X$</p>
+<p>$\sum F_x = 0 \Rightarrow -F_{bc} + F_{cd} \cos(135^\circ) = 0$<br />
+$F_{bc} = F_{cd} \left(-\frac{1}{\sqrt{2}}\right) = C_y = 30 - 0.5 X$</p>
+<p><strong>節點 a (0,0)：</strong><br />
+$\sum F_y = 0 \Rightarrow A_y + F_{ad} \sin(45^\circ) = 0$<br />
+$F_{ad} = -A_y \sqrt{2} = -10\sqrt{2} + 0.5\sqrt{2} X$</p>
+<p>$\sum F_x = 0 \Rightarrow A_x + F_{ab} + F_{ad} \cos(45^\circ) = 0$<br />
+$-20 + F_{ab} - A_y = 0 \Rightarrow F_{ab} = 20 + A_y = 20 + (10 - 0.5 X) = 30 - 0.5 X$</p>
+<p><strong>節點 b (4,0)：</strong><br />
+$\sum F_y = 0 \Rightarrow X + F_{bd} = 0 \Rightarrow F_{bd} = -X$<br />
+<em>(利用 $\sum F_x = F_{bc} - F_{ab} = (30 - 0.5X) - (30 - 0.5X) = 0$ 檢核無誤)</em></p>
+<h3>Step 3：建立最小功方程式與表格化計算</h3>
+<p>系統總應變能包含桁架與彈簧：<br />
+$$ U = \sum \frac{F_i^2 L_i}{2EA} + \frac{X^2}{2K_s} $$</p>
+<p>依卡氏第二定理對贅力 $X$ 偏微分等於零：<br />
+$$ \frac{\partial U}{\partial X} = \sum \left( \frac{F_i L_i}{EA} \cdot \frac{\partial F_i}{\partial X} \right) + \frac{X}{K_s} = 0 $$</p>
+<p>同乘 $EA$ 得到化簡方程式：<br />
+$$ \sum \left( F_i \cdot \frac{\partial F_i}{\partial X} \cdot L_i \right) + \frac{EA}{K_s} X = 0 $$<br />
+已知剛度比參數：$\frac{EA}{K_s} = \frac{10000}{2500} = 4\text{ m}$</p>
+<p>建立計算表格，令 $u = \frac{\partial F_i}{\partial X}$：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">桿件</th>
+<th style="text-align: left;">長度 $L_i$</th>
+<th style="text-align: left;">內力 $F_i$</th>
+<th style="text-align: left;">$u = \frac{\partial F_i}{\partial X}$</th>
+<th style="text-align: left;">$F_i \cdot u \cdot L_i$ 乘積項</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>ab</strong></td>
+<td style="text-align: left;">$4$</td>
+<td style="text-align: left;">$30 - 0.5 X$</td>
+<td style="text-align: left;">$-0.5$</td>
+<td style="text-align: left;">$-2(30 - 0.5 X) = -60 + X$</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>bc</strong></td>
+<td style="text-align: left;">$4$</td>
+<td style="text-align: left;">$30 - 0.5 X$</td>
+<td style="text-align: left;">$-0.5$</td>
+<td style="text-align: left;">$-2(30 - 0.5 X) = -60 + X$</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>ad</strong></td>
+<td style="text-align: left;">$4\sqrt{2}$</td>
+<td style="text-align: left;">$-10\sqrt{2} + 0.5\sqrt{2} X$</td>
+<td style="text-align: left;">$0.5\sqrt{2}$</td>
+<td style="text-align: left;">$4(-10\sqrt{2} + 0.5\sqrt{2} X) = -40\sqrt{2} + 2\sqrt{2} X$</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>cd</strong></td>
+<td style="text-align: left;">$4\sqrt{2}$</td>
+<td style="text-align: left;">$-30\sqrt{2} + 0.5\sqrt{2} X$</td>
+<td style="text-align: left;">$0.5\sqrt{2}$</td>
+<td style="text-align: left;">$4(-30\sqrt{2} + 0.5\sqrt{2} X) = -120\sqrt{2} + 2\sqrt{2} X$</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>bd</strong></td>
+<td style="text-align: left;">$4$</td>
+<td style="text-align: left;">$-X$</td>
+<td style="text-align: left;">$-1$</td>
+<td style="text-align: left;">$4(X) = 4 X$</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>彈簧</strong></td>
+<td style="text-align: left;">(等效)</td>
+<td style="text-align: left;">$X$</td>
+<td style="text-align: left;">-</td>
+<td style="text-align: left;">$\frac{EA}{K_s}X = 4 X$</td>
+</tr>
+</tbody>
+</table>
+<h3>Step 4：聯立求解贅力 $X$ 與最終內力</h3>
+<p>將表格最右側所有項加總並令其等於零：<br />
+$$ (-60 + X) + (-60 + X) + (-40\sqrt{2} + 2\sqrt{2} X) + (-120\sqrt{2} + 2\sqrt{2} X) + 4X + 4X = 0 $$</p>
+<p>合併常數項與 $X$ 係數：<br />
+$$ (-120 - 160\sqrt{2}) + (10 + 4\sqrt{2}) X = 0 $$<br />
+$$ X = \frac{120 + 160\sqrt{2}}{10 + 4\sqrt{2}} = \frac{60 + 80\sqrt{2}}{5 + 2\sqrt{2}} $$</p>
+<p>對分母進行有理化（上下同乘 $5 - 2\sqrt{2}$）：<br />
+$$ X = \frac{(60 + 80\sqrt{2})(5 - 2\sqrt{2})}{25 - 8} = \frac{300 - 120\sqrt{2} + 400\sqrt{2} - 320}{17} = \frac{-20 + 280\sqrt{2}}{17} $$</p>
+<p>數值解：<br />
+$$ \boxed{X \approx 22.116\text{ kN}} \text{ (彈簧對節點向上推力)} $$</p>
+<p><strong>回代求各桿件最終內力：</strong></p>
+<ul>
+<li>$F_{ab} = 30 - 0.5 (\boxed{X}) = \frac{520 - 140\sqrt{2}}{17} \approx \boxed{18.94\text{ kN (拉力)}}$</li>
+<li>$F_{bc} = 30 - 0.5 (\boxed{X}) = \frac{520 - 140\sqrt{2}}{17} \approx \boxed{18.94\text{ kN (拉力)}}$</li>
+<li>$F_{ad} = -10\sqrt{2} + 0.5\sqrt{2} (\boxed{X}) = \frac{280 - 180\sqrt{2}}{17} \approx \boxed{1.50\text{ kN (拉力)}}$</li>
+<li>$F_{cd} = -30\sqrt{2} + 0.5\sqrt{2} (\boxed{X}) = \frac{280 - 520\sqrt{2}}{17} \approx \boxed{-26.79\text{ kN (壓力)}}$</li>
+<li>$F_{bd} = -(\boxed{X}) = \frac{20 - 280\sqrt{2}}{17} \approx \boxed{-22.12\text{ kN (壓力)}}$</li>
+</ul>
+<h2>5. 關鍵爭議點與進階探討 (Critical Issues &amp; Advanced Discussion)</h2>
+<ul>
+<li><strong>題目限定「最小功法」</strong>：本題明訂若不用最小功法將不予計分。很多考生可能會想使用單位力法（柔度法）來解，雖然兩者本質相同（單位力法中 $\delta_{10} + \delta_{11} X + X/K_s = 0$ 的式子與最小功法完全等價），但作答時<strong>強烈建議寫出 $U$ 的偏微分表達式 $\frac{\partial U}{\partial X}=0$</strong>，並以應變能的方式呈現解題過程，以符合閱卷委員對「最小功法」的視覺期望與評分標準。</li>
+<li><strong>剛性支承與彈性支承的差異</strong>：如果 b 點是剛性的滾支承，則總應變能中就不會有 $\frac{X^2}{2K_s}$ 這一項，方程式會變成 $\sum \left( F_i \cdot \frac{\partial F_i}{\partial X} \cdot L_i \right) = 0$。加入彈簧後，其實就等同於在最小功法的方程式中多加了一項 $\frac{EA}{K_s} X$（同乘 EA 之後）。這是一個非常漂亮的數學對稱性，也凸顯了彈簧等效為具有特定柔度之桁架桿件的特性。</li>
+<li><strong>計算化簡技巧</strong>：在 Step 3 中，聰明的作法是直接將 $\frac{1}{EA}$ 提出，並觀察到 $\frac{EA}{K_s} = \frac{10000}{2500} = 4$ 是一個漂亮的整數。這大幅減少了攜帶一堆零進行計算的風險。若帶著 $10000$ 進入每一項的計算，極易在加減過程中發生小數點錯位的悲劇。手算時應盡量保持代數符號，直到最後一步再代入數值，有助於驗算及減少計算錯誤。</li>
+</ul></main>
+<footer>來源：raw/solutions/SA-2012-2/SA-2012-2.md（知識庫解題內容唯一正本；本頁僅為渲染顯示）</footer>
+</body></html>

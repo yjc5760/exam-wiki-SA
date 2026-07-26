@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="zh-Hant"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SA-2014-3 — 題目解析</title>
+<link rel="stylesheet" href="../assets/katex/katex.min.css">
+<script defer src="../assets/katex/katex.min.js"></script>
+<script defer src="../assets/katex/auto-render.min.js"
+  onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},
+  {left:'$',right:'$',display:false},{left:'\\(',right:'\\)',display:false}],throwOnError:false});"></script>
+<style>
+:root{--ac:#1565c0;--bg:#f7f9fb;--card:#fff;--ink:#263238;--mut:#607d8b;--bd:#dfe6ea}
+*{box-sizing:border-box}
+body{margin:0;font-family:"Microsoft JhengHei","Noto Sans TC",-apple-system,sans-serif;
+  background:var(--bg);color:var(--ink);line-height:1.75;font-size:15.5px}
+header{background:linear-gradient(135deg,#0d47a1,#1976d2 60%,#42a5f5);color:#fff;padding:22px 26px}
+header h1{margin:0;font-size:1.15em}
+header .back{display:inline-block;margin-top:10px;font-size:.82em;color:#fff;background:rgba(255,255,255,.18);
+  padding:4px 12px;border-radius:14px;text-decoration:none}
+main{max-width:880px;margin:0 auto;padding:26px 22px 70px}
+h1,h2,h3{color:#0d47a1} h2{font-size:1.2em;border-left:6px solid var(--ac);padding-left:12px;margin:34px 0 14px}
+table{width:100%;border-collapse:collapse;margin:14px 0;font-size:.92em;background:#fff}
+th,td{border:1px solid var(--bd);padding:7px 10px;text-align:left;vertical-align:top}
+th{background:#eceff1;font-weight:600} tbody tr:nth-child(even){background:#fafcfd}
+code{background:#eceff1;padding:1px 5px;border-radius:4px;font-size:.92em}
+img{max-width:100%;display:block;margin:14px auto;border:1px solid var(--bd);border-radius:8px}
+.katex-display{margin:12px 0!important;overflow-x:auto;overflow-y:hidden}
+footer{text-align:center;color:var(--mut);font-size:.8em;padding:22px;border-top:1px solid var(--bd)}
+</style></head><body>
+<header><h1>SA-2014-3 題目解析</h1><a class="back" href="javascript:history.back()">← 返回講義</a></header>
+<main><h1>考題編號：SA-2014-3</h1>
+<p><strong>主分類：</strong> <code>SA-U2-3</code> 靜不定結構之傾角變位法<br />
+<strong>副分類：</strong> <code>SA-U3-2</code><br />
+<strong>分析法：</strong> 傾角變位法<br />
+<strong>標籤：</strong> <code>傾角變位法</code> <code>有側移剛架</code> <code>虛功法</code> <code>斜桿側移</code></p>
+<hr />
+<h2>1. 原始題目重述 (Problem Restatement)</h2>
+<p>如圖三所示之剛架結構，其 A、C 與 E 點均為固接支承，同時每根構件之彈性模數均為常數值 E；<br />
+AB、BC、BD 及 DE 四根構件之長度分別為 $L$、$L$、$\sqrt{3}L/2$ 與 $L$（$L = 8 \text{ m}$），而慣性矩分別為 $2I$、$2I$、$\sqrt{3}I$ 與 $I$。<br />
+當 B 點承受水平向右集中載重 $P = 66 \text{ kN}$ 時，請以<strong>傾角變位法</strong>計算 A、B、C、D、E 各點彎矩。（若以其他方法計算不予計分）（25 分）</p>
+<p><img alt="SA-2014-3 題目附圖：複雜剛架受水平力" src="../../raw/solutions/SA-2014-3/SA-2014-3-fig-1.png" /></p>
+<p><em>圖說：A 點為上方固接支承，C 點為下方固接支承，AB 與 BC 均為垂直桿長 L。B 點受向右水平力 P。D 點在 B 點右方，BD 長 $\sqrt{3}L/2$ 為水平桿。E 點在 D 點右下方，為固接支承。DE 桿斜向，長度 L，其水平跨距為 $\sqrt{3}L/2$，垂直高差為 L/2。</em></p>
+<h2>2. 考題核心精神與出題者意圖 (Core Concepts &amp; Examiner's Intent)</h2>
+<p>本題是傾角變位法中<strong>最高難度</strong>的題型之一（斜桿有側移剛架）。</p>
+<ol>
+<li><strong>側移幾何相容條件</strong>：測驗考生是否能利用桿件軸向不變形的假設，精確推導出 B 點與 D 點位移之間的幾何連動關係（D 點不僅有水平位移，還被強迫產生垂直位移）。</li>
+<li><strong>層剪力方程式的推導</strong>：面對這類複雜幾何剛架，傳統截面法求層剪力非常容易出錯，出題者希望考生具備使用「虛功法（Principle of Virtual Work）」來建立側移方程式的能力。</li>
+</ol>
+<h2>3. 解題戰略地圖與陷阱分析 (Strategic Roadmap &amp; Trap Analysis)</h2>
+<p><strong>解題策略：</strong></p>
+<ol>
+<li><strong>分析幾何位移與弦旋轉角 ($\psi$)</strong>：<br />
+   - 假設 B 點向右位移 $\Delta$。<br />
+   - 推導 D 點的水平與垂直位移，確保 BD 與 DE 桿長度不變。<br />
+   - 寫出各桿件的弦旋轉角 $\psi_{AB}, \psi_{BC}, \psi_{BD}, \psi_{DE}$（以 $\Delta/L$ 為單位 $R$）。</li>
+<li><strong>建立傾角變位方程式</strong>：<br />
+   - 定義各桿件相對勁度 $K_{ij}$，列出各桿端彎矩方程式，未知數為 $\theta_B, \theta_D, R$。</li>
+<li><strong>建立節點平衡方程式</strong>：<br />
+   - $\sum M_B = 0$<br />
+   - $\sum M_D = 0$</li>
+<li><strong>建立側移方程式（虛功法）</strong>：<br />
+   - 給予結構一虛擬側移 $\delta \Delta$，計算外力虛功 $W_{ext}$。<br />
+   - 計算內力虛功 $W_{int} = \sum (M_{ij} + M_{ji}) \delta \psi_{ij}$。<br />
+   - 令 $W_{ext} = W_{int}$ 得到第三條方程式。</li>
+<li><strong>解方程並計算彎矩</strong>：<br />
+   - 解出 $\theta_B, \theta_D, R$ 後，代回步驟 2 的方程式求出所有桿端彎矩。</li>
+</ol>
+<p><strong>陷阱分析：</strong></p>
+<ul>
+<li><strong>D 點位移方向的誤判</strong>：許多考生會認為 D 點只跟著 B 點向右水平移動，忽略了 E 點是固定端，DE 桿若只做水平移動長度會改變。D 點必須沿著垂直於 DE 桿的方向移動。</li>
+<li><strong>弦旋轉角正負號</strong>：傾角變位法的標準慣例為「順時針弦旋轉為正」。由於幾何複雜，各桿件的弦旋轉方向必須仔細畫圖判定，錯一個符號全盤皆輸。</li>
+<li><strong>剛度 $K$ 的定義</strong>：題目給的慣性矩不同，需正確轉換為相對勁度。例如 BD 桿長度為 $\sqrt{3}L/2$，慣性矩為 $\sqrt{3}I$，其 $EI/L$ 必須精確計算。</li>
+</ul>
+<h2>3.5 變數層次分析 (Variable Hierarchy Analysis)</h2>
+<blockquote>
+<p>複習提示：第一次解題後，在每個卡住的知識點旁標記 <code>⚠</code>；第二次複習時只看有 <code>⚠</code> 的項目。</p>
+</blockquote>
+<h3>最終目標</h3>
+<p><code>找出側移幾何連動關係，利用傾角變位法與虛功法解出各節點轉角與側移，進而求出所有桿端彎矩。</code></p>
+<h3>本題關鍵公式（依計算順序）</h3>
+<blockquote>
+<p>$\boxed{\cdot}$ = 需由前步驟推導，非題目直接給定的變數</p>
+</blockquote>
+<p>$$\text{Step 1: } \psi_{ij} = f(\Delta)$$</p>
+<p>$$\text{Step 2: } M_{ij} = \frac{2EI_{ij}}{L_{ij}} (2\theta_i + \theta_j - 3 \boxed{\psi_{ij}})$$</p>
+<p>$$\text{Step 3: } \sum M_B = 0 \Rightarrow \boxed{M_{BA}} + \boxed{M_{BC}} + \boxed{M_{BD}} = 0$$</p>
+<p>$$\text{Step 4: } W_{ext} = W_{int} \Rightarrow P \delta\Delta = \sum (\boxed{M_{ij}} + \boxed{M_{ji}}) \delta\psi_{ij}$$</p>
+<h3>L1：題目直接給定</h3>
+<p><em>看到題目就能讀出的數字，不需要任何公式。</em></p>
+<table>
+<thead>
+<tr>
+<th>符號</th>
+<th>數值</th>
+<th>說明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>$P$</td>
+<td>66 kN</td>
+<td>水平外力</td>
+</tr>
+<tr>
+<td>$L$</td>
+<td>8 m</td>
+<td>基準長度</td>
+</tr>
+<tr>
+<td>$\theta_A, \theta_C, \theta_E$</td>
+<td>0</td>
+<td>固接端轉角條件</td>
+</tr>
+</tbody>
+</table>
+<h3>L2：需知識點推導</h3>
+<p><em>需要知道公式名稱與適用條件，套入 L1 即可算出。</em></p>
+<p><strong>相對勁度 $K$ 設定</strong><br />
+令基準 $K = \frac{EI}{L}$。</p>
+<ul>
+<li>AB, BC 桿: $K_{AB} = K_{BC} = \frac{2EI}{L} = 2K$</li>
+<li>BD 桿: $K_{BD} = \frac{\sqrt{3}EI}{\sqrt{3}L/2} = \frac{2EI}{L} = 2K$</li>
+<li>DE 桿: $K_{DE} = \frac{EI}{L} = K$</li>
+</ul>
+<h3>L3：深層知識（不懂就卡住）</h3>
+<table>
+<thead>
+<tr>
+<th>知識點</th>
+<th>說明</th>
+<th style="text-align: center;">卡關?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>D 點位移軌跡</td>
+<td>D 點必須相對於 E 點做垂直於 DE 桿方向的位移。DE 桿水平投影 $\sqrt{3}L/2$，垂直投影 $L/2$。若 D 點向右位移 $\Delta$，為維持桿長不變，必須向上位移 $\sqrt{3}\Delta$。</td>
+<td style="text-align: center;"></td>
+</tr>
+<tr>
+<td>弦旋轉角判斷</td>
+<td>依據位移，各桿弦旋轉（順時針為正）：$\psi_{AB} = -R, \psi_{BC} = R, \psi_{BD} = -2R, \psi_{DE} = 2R$。</td>
+<td style="text-align: center;"></td>
+</tr>
+<tr>
+<td>虛功法建立側移方程式</td>
+<td>對系統施加虛位移 $\delta\Delta$ 及其對應的 $\delta\psi$，令外力虛功 $P\Delta$ 等於內力虛功 $\sum(M_{ij}+M_{ji})\delta\psi$。</td>
+<td style="text-align: center;"></td>
+</tr>
+</tbody>
+</table>
+<h2>4. 步驟化詳細計算過程 (Step-by-Step Detailed Calculation)</h2>
+<h3>Step 1：幾何位移與弦旋轉角分析</h3>
+<p>令基準側移變數 $R = \Delta / L$。<br />
+假設 B 點向右產生水平位移 $\Delta$。</p>
+<ol>
+<li><strong>AB 桿</strong>：A 點固定，B 點向右 $\Delta$。弦 AB 逆時針旋轉。$\psi_{AB} = -\Delta/L = -R$。</li>
+<li><strong>BC 桿</strong>：C 點固定，B 點向右 $\Delta$。弦 CB 順時針旋轉。$\psi_{BC} = +\Delta/L = +R$。</li>
+<li><strong>D 點位移</strong>：<br />
+   - BD 為水平桿，長 $\sqrt{3}L/2$。B 向右 $\Delta$，故 D 也必須向右 $\Delta$。<br />
+   - DE 桿長 $L$，E 點在 D 點右下方。水平距 $\sqrt{3}L/2$，垂直距 $L/2$。<br />
+   - D 點位移必須垂直於 DE 桿。若 D 向右位移 $\Delta$，其向上的垂直位移 $v$ 必須滿足 $-\sqrt{3}L \Delta + L v = 0$（位移向量與桿件向量內積為 0），解得 $v = \sqrt{3}\Delta$。</li>
+<li><strong>BD 桿</strong>：B 向右 $\Delta$；D 向右 $\Delta$ 且向上 $\sqrt{3}\Delta$。D 相對於 B 向上移動 $\sqrt{3}\Delta$。<br />
+   - $\psi_{BD} = - \frac{\sqrt{3}\Delta}{\sqrt{3}L/2} = - \frac{2\Delta}{L} = -2R$（逆時針）。</li>
+<li><strong>DE 桿</strong>：E 固定。D 向右 $\Delta$ 且向上 $\sqrt{3}\Delta$。<br />
+   - 位移量垂直於 DE 桿，總位移大小為 $\sqrt{\Delta^2 + (\sqrt{3}\Delta)^2} = 2\Delta$。<br />
+   - 旋轉方向為順時針，故 $\psi_{DE} = +\frac{2\Delta}{L} = +2R$。</li>
+</ol>
+<h3>Step 2：建立桿端彎矩方程式</h3>
+<p>令 $K = \frac{EI}{L}$。依據公式 $M_{ij} = 2K_{ij} (2\theta_i + \theta_j - 3\psi_{ij})$：</p>
+<ul>
+<li>
+<p><strong>AB 桿</strong> ($K_{AB}=2K$):<br />
+  $M_{AB} = 4K (0 + \theta_B - 3(-R)) = 4K\theta_B + 12KR$<br />
+  $M_{BA} = 4K (2\theta_B + 0 - 3(-R)) = 8K\theta_B + 12KR$</p>
+</li>
+<li>
+<p><strong>BC 桿</strong> ($K_{BC}=2K$):<br />
+  $M_{BC} = 4K (2\theta_B + 0 - 3(R)) = 8K\theta_B - 12KR$<br />
+  $M_{CB} = 4K (0 + \theta_B - 3(R)) = 4K\theta_B - 12KR$</p>
+</li>
+<li>
+<p><strong>BD 桿</strong> ($K_{BD}=2K$):<br />
+  $M_{BD} = 4K (2\theta_B + \theta_D - 3(-2R)) = 8K\theta_B + 4K\theta_D + 24KR$<br />
+  $M_{DB} = 4K (2\theta_D + \theta_B - 3(-2R)) = 8K\theta_D + 4K\theta_B + 24KR$</p>
+</li>
+<li>
+<p><strong>DE 桿</strong> ($K_{DE}=K$):<br />
+  $M_{DE} = 2K (2\theta_D + 0 - 3(2R)) = 4K\theta_D - 12KR$<br />
+  $M_{ED} = 2K (0 + \theta_D - 3(2R)) = 2K\theta_D - 12KR$</p>
+</li>
+</ul>
+<h3>Step 3：節點平衡方程式</h3>
+<ul>
+<li>
+<p><strong>B 點平衡</strong>：$\sum M_B = M_{BA} + M_{BC} + M_{BD} = 0$<br />
+  $$(8K\theta_B + 12KR) + (8K\theta_B - 12KR) + (8K\theta_B + 4K\theta_D + 24KR) = 0$$<br />
+  $$24K\theta_B + 4K\theta_D + 24KR = 0 \Rightarrow 6\theta_B + \theta_D + 6R = 0 \quad \text{--- (式 1)}$$</p>
+</li>
+<li>
+<p><strong>D 點平衡</strong>：$\sum M_D = M_{DB} + M_{DE} = 0$<br />
+  $$(8K\theta_D + 4K\theta_B + 24KR) + (4K\theta_D - 12KR) = 0$$<br />
+  $$4K\theta_B + 12K\theta_D + 12KR = 0 \Rightarrow \theta_B + 3\theta_D + 3R = 0 \quad \text{--- (式 2)}$$</p>
+</li>
+</ul>
+<h3>Step 4：虛功法建立側移方程式</h3>
+<p>對結構施加虛擬側移 $\delta R$，外力虛功等於內力虛功：<br />
+$$W_{ext} = P \times (L \delta R) = PL \delta R$$<br />
+$$W_{int} = (M_{AB} + M_{BA})\delta\psi_{AB} + (M_{BC} + M_{CB})\delta\psi_{BC} + (M_{BD} + M_{DB})\delta\psi_{BD} + (M_{DE} + M_{ED})\delta\psi_{DE}$$<br />
+$$PL \delta R = (M_{AB} + M_{BA})(-\delta R) + (M_{BC} + M_{CB})(+\delta R) + (M_{BD} + M_{DB})(-2\delta R) + (M_{DE} + M_{ED})(+2\delta R)$$<br />
+消去 $\delta R$：<br />
+$$PL = -(M_{AB} + M_{BA}) + (M_{BC} + M_{CB}) - 2(M_{BD} + M_{DB}) + 2(M_{DE} + M_{ED})$$<br />
+將彎矩展開代入並化簡（過程略，見分析）：<br />
+$$PL = -24K\theta_B - 12K\theta_D - 192KR$$<br />
+同除以 $-12K$：<br />
+$$2\theta_B + \theta_D + 16R = - \frac{PL}{12K} \quad \text{--- (式 3)}$$</p>
+<h3>Step 5：解聯立方程式與代入數值</h3>
+<p>由 (式 2) 得 $\theta_B = -3\theta_D - 3R$。<br />
+代入 (式 1)：$6(-3\theta_D - 3R) + \theta_D + 6R = 0 \Rightarrow -17\theta_D - 12R = 0 \Rightarrow \theta_D = - \frac{12}{17} R$。<br />
+代回得 $\theta_B = - \frac{15}{17} R$。<br />
+將兩者代入 (式 3)：<br />
+$$2\left(- \frac{15}{17} R\right) + \left(- \frac{12}{17} R\right) + 16R = - \frac{PL}{12K} \Rightarrow \frac{230}{17} R = - \frac{PL}{12K} \Rightarrow KR = - \frac{17 PL}{2760}$$<br />
+代入已知數值 $P = 66, L = 8 \Rightarrow PL = 528$：<br />
+$$KR = - \frac{17 \times 528}{2760} = - \frac{17 \times 22}{115}$$</p>
+<p>將 $KR$, $\theta_B$, $\theta_D$ 關係代回 Step 2 的桿端彎矩公式（注意 17 的因數完美消去）：</p>
+<ul>
+<li>$M_{AB} = 4(-\frac{15}{17} R)K + 12KR = \frac{144}{17} KR = \frac{144}{17} \left( -\frac{17 \times 22}{115} \right) = -\frac{3168}{115} \approx -27.55 \text{ kN-m}$</li>
+<li>$M_{BA} = 8(-\frac{15}{17} R)K + 12KR = \frac{84}{17} KR = \frac{84}{17} \left( -\frac{17 \times 22}{115} \right) = -\frac{1848}{115} \approx -16.07 \text{ kN-m}$</li>
+<li>$M_{BC} = 8(-\frac{15}{17} R)K - 12KR = -\frac{324}{17} KR = -\frac{324}{17} \left( -\frac{17 \times 22}{115} \right) = \frac{7128}{115} \approx +61.98 \text{ kN-m}$</li>
+<li>$M_{CB} = 4(-\frac{15}{17} R)K - 12KR = -\frac{264}{17} KR = -\frac{264}{17} \left( -\frac{17 \times 22}{115} \right) = \frac{5808}{115} \approx +50.50 \text{ kN-m}$</li>
+<li>$M_{BD} = 8(-\frac{15}{17} R)K + 4(-\frac{12}{17} R)K + 24KR = \frac{240}{17} KR = -\frac{5280}{115} \approx -45.91 \text{ kN-m}$</li>
+<li>$M_{DB} = 8(-\frac{12}{17} R)K + 4(-\frac{15}{17} R)K + 24KR = \frac{252}{17} KR = -\frac{5544}{115} \approx -48.21 \text{ kN-m}$</li>
+<li>$M_{DE} = 4(-\frac{12}{17} R)K - 12KR = -\frac{252}{17} KR = \frac{5544}{115} \approx +48.21 \text{ kN-m}$</li>
+<li>$M_{ED} = 2(-\frac{12}{17} R)K - 12KR = -\frac{228}{17} KR = \frac{5016}{115} \approx +43.62 \text{ kN-m}$</li>
+</ul>
+<p>正號代表順時針，負號代表逆時針。</p>
+<p>$$\boxed{\text{A 點彎矩 } M_{AB} = -3168/115 \text{ kN-m}}$$<br />
+$$\boxed{\text{B 點彎矩 } M_{BA} = -1848/115 \text{, } M_{BC} = 7128/115 \text{, } M_{BD} = -5280/115 \text{ kN-m}}$$<br />
+$$\boxed{\text{C 點彎矩 } M_{CB} = 5808/115 \text{ kN-m}}$$<br />
+$$\boxed{\text{D 點彎矩 } M_{DB} = -5544/115 \text{, } M_{DE} = 5544/115 \text{ kN-m}}$$<br />
+$$\boxed{\text{E 點彎矩 } M_{ED} = 5016/115 \text{ kN-m}}$$</p>
+<h2>5. 關鍵爭議點與進階探討 (Critical Issues &amp; Advanced Discussion)</h2>
+<ul>
+<li><strong>層剪力方程式的容錯率</strong>：面對此類多重斜桿與節點的複雜幾何，若強行使用傳統的自由體截面法（FBD）來推導 $\sum F_x = 0$ 會非常痛苦且極易出錯。本題完美示範了「虛功法（Principle of Virtual Work）」在建立層剪力方程式上的優勢，只要確實寫對各桿件的虛擬弦旋轉角 $\delta\psi$，便能以一套機械化的公式取代複雜的幾何投影計算。</li>
+<li><strong>計算收斂性設計</strong>：在最後將 $P$ 與 $L$ 代入時，分母的 $17$ 完美消去，這是考題設計者特意留下的計算收斂設計。如果在推導過程的最後一步沒有看到數字俐落地消去，考生應立刻警覺可能在前面的 $\psi$ 幾何推導或虛功法正負號出現了失誤。</li>
+</ul></main>
+<footer>來源：raw/solutions/SA-2014-3/SA-2014-3.md（知識庫解題內容唯一正本；本頁僅為渲染顯示）</footer>
+</body></html>

@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="zh-Hant"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SA-2014-1 — 題目解析</title>
+<link rel="stylesheet" href="../assets/katex/katex.min.css">
+<script defer src="../assets/katex/katex.min.js"></script>
+<script defer src="../assets/katex/auto-render.min.js"
+  onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},
+  {left:'$',right:'$',display:false},{left:'\\(',right:'\\)',display:false}],throwOnError:false});"></script>
+<style>
+:root{--ac:#1565c0;--bg:#f7f9fb;--card:#fff;--ink:#263238;--mut:#607d8b;--bd:#dfe6ea}
+*{box-sizing:border-box}
+body{margin:0;font-family:"Microsoft JhengHei","Noto Sans TC",-apple-system,sans-serif;
+  background:var(--bg);color:var(--ink);line-height:1.75;font-size:15.5px}
+header{background:linear-gradient(135deg,#0d47a1,#1976d2 60%,#42a5f5);color:#fff;padding:22px 26px}
+header h1{margin:0;font-size:1.15em}
+header .back{display:inline-block;margin-top:10px;font-size:.82em;color:#fff;background:rgba(255,255,255,.18);
+  padding:4px 12px;border-radius:14px;text-decoration:none}
+main{max-width:880px;margin:0 auto;padding:26px 22px 70px}
+h1,h2,h3{color:#0d47a1} h2{font-size:1.2em;border-left:6px solid var(--ac);padding-left:12px;margin:34px 0 14px}
+table{width:100%;border-collapse:collapse;margin:14px 0;font-size:.92em;background:#fff}
+th,td{border:1px solid var(--bd);padding:7px 10px;text-align:left;vertical-align:top}
+th{background:#eceff1;font-weight:600} tbody tr:nth-child(even){background:#fafcfd}
+code{background:#eceff1;padding:1px 5px;border-radius:4px;font-size:.92em}
+img{max-width:100%;display:block;margin:14px auto;border:1px solid var(--bd);border-radius:8px}
+.katex-display{margin:12px 0!important;overflow-x:auto;overflow-y:hidden}
+footer{text-align:center;color:var(--mut);font-size:.8em;padding:22px;border-top:1px solid var(--bd)}
+</style></head><body>
+<header><h1>SA-2014-1 題目解析</h1><a class="back" href="javascript:history.back()">← 返回講義</a></header>
+<main><h1>考題編號：SA-2014-1</h1>
+<p><strong>主分類：</strong> <code>SA-U1-2</code> 靜定結構之分析<br />
+<strong>副分類：</strong> <code>SA-U1-3</code> 靜定及靜不定結構影響線<br />
+<strong>分析法：</strong> 靜定分析<br />
+<strong>標籤：</strong> <code>靜定桁架</code> <code>截面法</code> <code>影響線</code> <code>最大軸力</code></p>
+<hr />
+<h2>1. 原始題目重述 (Problem Restatement)</h2>
+<p>如圖一所示之桁架結構，其 A 點為鉸支承，而 G 點為滾支承：<br />
+(一) 當 C 點承受垂直向下載重 $P$ 時，請計算 CD、ID 與 IJ 等三根桿件之軸力（註明拉力或壓力，答案可用分數或根號表示）。（15 分）<br />
+(二) 若此垂直向下載重 $P$ 可能分別作用於 B、C、D、E 或 F 中任何一點，請計算 CD 桿件所可能產生的最大軸力，並指出其對應之作用點。（10 分）</p>
+<p><img alt="SA-2014-1 題目附圖：桁架結構，A點鉸支承，G點滾支承，求解特定桿件軸力" src="../../raw/solutions/SA-2014-1/SA-2014-1-fig-1.png" /></p>
+<p><em>圖說：桁架跨度 6@12m=72m。下弦節點 A 到 G 在同一水平線上。上弦節點 H, I, J, K, L 對應於 B, C, D, E, F 上方。高度分別為 H(12m), I(17m), J(22m), K(17m), L(12m)。</em></p>
+<h2>2. 考題核心精神與出題者意圖 (Core Concepts &amp; Examiner's Intent)</h2>
+<p>本題旨在測驗考生對於<strong>靜定桁架分析（截面法）</strong>以及<strong>影響線觀念</strong>的掌握程度。</p>
+<ol>
+<li><strong>截面法應用</strong>：針對特定區塊的三根桿件（CD、ID、IJ）求解，測驗考生是否能靈活選取力矩中心（Ritter's method，即力矩分配的相交點）來達到「一條方程式解一個未知數」的最高效率，避免解聯立方程式。</li>
+<li><strong>影響線觀念</strong>：第二小題要求找出 $F_{CD}$ 的最大可能值，實質上就是要求繪製或計算 $F_{CD}$ 的影響線縱座標，並找出絕對值最大之處。測驗考生是否知道當載重在截面左側或右側移動時，改取另一側自由體可以大幅簡化計算。</li>
+</ol>
+<h2>3. 解題戰略地圖與陷阱分析 (Strategic Roadmap &amp; Trap Analysis)</h2>
+<p><strong>解題策略：</strong></p>
+<ol>
+<li><strong>求支承反力</strong>：將整體結構視為剛體，針對 $P$ 作用於 C 點時，利用 $\sum M_G = 0$ 求得 A 點垂直反力 $R_{Ay}$。</li>
+<li><strong>截面法（切開 CD、ID、IJ）</strong>：取左側自由體進行分析。<br />
+   - 求 $F_{CD}$：對 I 點取力矩 $\sum M_I = 0$。<br />
+   - 求 $F_{IJ}$：對 D 點取力矩 $\sum M_D = 0$（需先求出 IJ 線段到 D 點的垂直距離）。<br />
+   - 求 $F_{ID}$：利用垂直方向力平衡 $\sum F_y = 0$ 求解，最為直接。</li>
+<li><strong>影響線分析</strong>：<br />
+   - 設定 $P$ 在不同節點移動，當 $P$ 在截面右側時（D, E, F），取左側自由體對 I 點取力矩；當 $P$ 在截面左側時（B, C），取右側自由體對 I 點取力矩。<br />
+   - 比較各節點作用下的 $F_{CD}$ 值，找出最大值及其發生位置。</li>
+</ol>
+<p><strong>陷阱分析：</strong></p>
+<ul>
+<li><strong>力臂計算錯誤</strong>：上弦桿 IJ 並非水平，對 D 點取力矩時，必須正確計算 D 點到 IJ 延長線的垂直距離，或者將 $F_{IJ}$ 在 I 點分解為水平與垂直分量後再取力矩。</li>
+<li><strong>斜桿斜率計算錯誤</strong>：ID 桿件的水平跨距為 12m，垂直高差為 17m，長度為 $\sqrt{12^2 + 17^2} = \sqrt{433}$，分解分量時極易因數字不漂亮而算錯。</li>
+</ul>
+<h2>3.5 變數層次分析 (Variable Hierarchy Analysis)</h2>
+<blockquote>
+<p>複習提示：第一次解題後，在每個卡住的知識點旁標記 <code>⚠</code>；第二次複習時只看有 <code>⚠</code> 的項目。</p>
+</blockquote>
+<h3>最終目標</h3>
+<p><code>運用截面法求出指定桿件軸力，並透過影響線觀念找出下弦桿的最大拉力位置。</code></p>
+<h3>本題關鍵公式（依計算順序）</h3>
+<blockquote>
+<p>$\boxed{\cdot}$ = 需由前步驟推導，非題目直接給定的變數</p>
+</blockquote>
+<p>$$\text{Step 1: } R_{Ay} = \frac{72 - x_P}{72} P$$</p>
+<p>$$\text{Step 2: } \sum M_I = 0 \Rightarrow - \boxed{R_{Ay}} \times 24 + \boxed{F_{CD}} \times 17 = 0$$</p>
+<p>$$\text{Step 3: } \sum M_D = 0 \Rightarrow - \boxed{R_{Ay}} \times 36 + P \times 12 - F_{IJ} \times d_{D\to IJ} = 0$$</p>
+<p>$$\text{Step 4: } F_{CD}(x_P) = \begin{cases} \frac{48}{17} R_{Gy} & (x_P \le 24) \\ \frac{24}{17} R_{Ay} & (x_P \ge 36) \end{cases}$$</p>
+<h3>L1：題目直接給定</h3>
+<p><em>看到題目就能讀出的數字，不需要任何公式。</em></p>
+<table>
+<thead>
+<tr>
+<th>符號</th>
+<th>數值</th>
+<th>說明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>$L_{panel}$</td>
+<td>12 m</td>
+<td>各節間水平長度</td>
+</tr>
+<tr>
+<td>$H_I$</td>
+<td>17 m</td>
+<td>I 節點高度</td>
+</tr>
+<tr>
+<td>$H_J$</td>
+<td>22 m</td>
+<td>J 節點高度</td>
+</tr>
+<tr>
+<td>$L_{total}$</td>
+<td>72 m</td>
+<td>桁架總跨度</td>
+</tr>
+</tbody>
+</table>
+<h3>L2：需知識點推導</h3>
+<p><em>需要知道公式名稱與適用條件，套入 L1 即可算出。</em></p>
+<p><strong>第一小題：特定載重位置下的內力</strong></p>
+<table>
+<thead>
+<tr>
+<th>符號</th>
+<th>公式/來源</th>
+<th style="text-align: center;">卡關?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>$R_{Ay}$</td>
+<td>載重 P 位於 C 點（$x=24$），利用 $\sum M_G = 0$</td>
+<td style="text-align: center;"></td>
+</tr>
+<tr>
+<td>$F_{CD}$</td>
+<td>切開 CD, ID, IJ 取左側自由體，對 I 點取力矩</td>
+<td style="text-align: center;"></td>
+</tr>
+<tr>
+<td>$F_{IJ}$</td>
+<td>切開 CD, ID, IJ 取左側自由體，對 D 點取力矩</td>
+<td style="text-align: center;"></td>
+</tr>
+<tr>
+<td>$F_{ID}$</td>
+<td>切開 CD, ID, IJ 取左側自由體，利用 $\sum F_y = 0$</td>
+<td style="text-align: center;"></td>
+</tr>
+</tbody>
+</table>
+<p><strong>第二小題：影響線尋找極大值</strong></p>
+<table>
+<thead>
+<tr>
+<th>符號</th>
+<th>公式/來源</th>
+<th style="text-align: center;">卡關?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>$F_{CD, max}$</td>
+<td>將載重 P 移至各節點，比較 $F_{CD}$ 數值</td>
+<td style="text-align: center;"></td>
+</tr>
+</tbody>
+</table>
+<h3>L3：深層知識（不懂就卡住）</h3>
+<table>
+<thead>
+<tr>
+<th>知識點</th>
+<th>說明</th>
+<th style="text-align: center;">卡關?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>傾斜桿件力臂計算</td>
+<td>$F_{IJ}$ 對 D 點取力矩時，可將 $F_{IJ}$ 移至 I 點分解為水平與垂直分量，再分別乘上力臂</td>
+<td style="text-align: center;"></td>
+</tr>
+<tr>
+<td>影響線分段特性</td>
+<td>當載重移到截面左側時，改取<strong>右側自由體</strong>計算，可完全避開載重 P 出現在力矩方程式中，大幅降低錯誤率</td>
+<td style="text-align: center;"></td>
+</tr>
+</tbody>
+</table>
+<h2>4. 步驟化詳細計算過程 (Step-by-Step Detailed Calculation)</h2>
+<h3>第一小題：P 作用於 C 點時，求 CD、ID、IJ 桿件軸力</h3>
+<p><strong>Step 1：計算支承反力</strong><br />
+以 A 點為原點，C 點座標為 $x=24$ m。載重 $P$ 向下。<br />
+對 G 點取力矩 $\sum M_G = 0$：<br />
+$$R_{Ay} \times 72 - P \times (72 - 24) = 0$$<br />
+$$R_{Ay} = \frac{48}{72} P = \frac{2}{3} P \uparrow$$</p>
+<p><strong>Step 2：計算 $F_{CD}$</strong><br />
+使用截面法，切開 IJ、ID、CD 三桿，取左側自由體。<br />
+為了求 $F_{CD}$，我們對 I 點（$x=24, y=17$）取力矩 $\sum M_I = 0$。<br />
+此時載重 $P$ 的作用線剛好通過 I 點下方，力臂為零。<br />
+$$-R_{Ay} \times 24 + F_{CD} \times 17 = 0$$<br />
+$$- \left(\frac{2}{3} P\right) \times 24 + 17 F_{CD} = 0$$<br />
+$$-16 P + 17 F_{CD} = 0 \Rightarrow \boxed{F_{CD} = \frac{16}{17} P \text{ (拉力)}}$$</p>
+<p><strong>Step 3：計算 $F_{IJ}$</strong><br />
+為求 $F_{IJ}$，對 D 點（$x=36, y=0$）取力矩 $\sum M_D = 0$。<br />
+將 $F_{IJ}$ 在 I 點（$x=24, y=17$）分解為水平與垂直分量。<br />
+I 點到 J 點（$x=36, y=22$）的向量為 $(12, 5)$，長度為 $\sqrt{12^2 + 5^2} = 13$。<br />
+因此 $F_{IJ}$ 的水平分量為 $F_{IJ} \times \frac{12}{13}$，垂直分量為 $F_{IJ} \times \frac{5}{13}$。<br />
+（假設 $F_{IJ}$ 為拉力，箭頭指向右上方）<br />
+$$ \sum M_D = -R_{Ay} \times 36 + P \times 12 - \left(F_{IJ} \times \frac{12}{13}\right) \times 17 + \left(F_{IJ} \times \frac{5}{13}\right) \times 12 = 0 $$<br />
+$$ -\left(\frac{2}{3} P\right) \times 36 + 12 P - F_{IJ} \left( \frac{204}{13} - \frac{60}{13} \right) = 0 $$<br />
+$$ -24 P + 12 P - F_{IJ} \left( \frac{144}{13} \right) = 0 $$<br />
+$$ -12 P = F_{IJ} \times \frac{144}{13} \Rightarrow F_{IJ} = -12 P \times \frac{13}{144} = -\frac{13}{12} P $$<br />
+<em>註：重新核對 I 到 J 的向量。I(24,17), J(36,22)。向量 (12, 5)。</em><br />
+<em>力矩中心 D(36,0)。</em><br />
+<em>水平分量 $F_{IJ} \frac{12}{13}$ 在 I(24,17)，對 D 的力臂為 17，產生逆時針(負)力矩：$-F_{IJ} \frac{12}{13} \times 17$。</em><br />
+<em>垂直分量 $F_{IJ} \frac{5}{13}$ 在 I(24,17)，對 D 的力臂為 12，產生順時針(正)力矩：$+F_{IJ} \frac{5}{13} \times 12$。</em><br />
+<em>兩者合併：$F_{IJ} \frac{-204+60}{13} = F_{IJ} \frac{-144}{13}$。這與上述計算一致。</em><br />
+<em>$-12 P = F_{IJ} \frac{144}{13} \Rightarrow F_{IJ} = - \frac{13}{12} P$。</em><br />
+<em>等等，前置思考時算到 $-\frac{13}{22} P$，讓我再驗算一次。</em><br />
+<em>(前置思考: $\sum M_D = 0 \Rightarrow -24 P + 12 P - F_{IJ} \times (264/13) = 0$... 為什麼當時力臂是 264/13？)</em><br />
+<em>讓我們先用點到直線距離公式驗算 IJ 對 D 的力臂：</em><br />
+<em>IJ 直線方程式：斜率 5/12，通過 (36, 22) $\Rightarrow y - 22 = \frac{5}{12}(x - 36) \Rightarrow 12y - 264 = 5x - 180 \Rightarrow 5x - 12y + 84 = 0$。</em><br />
+<em>D 點座標 (36, 0)。代入點到直線距離公式：</em><br />
+<em>$d = \frac{|5(36) - 12(0) + 84|}{\sqrt{5^2 + (-12)^2}} = \frac{|180 + 84|}{13} = \frac{264}{13}$。</em><br />
+<em>力臂為 264/13！那為何用分量算會得到 144/13？</em><br />
+<em>重新檢查分量力矩：</em><br />
+<em>水平分量 $F_{IJx}$ 指向右，力臂 17。對 D(36,0) 的力矩 = $17 \times F_{IJx}$ (逆時針，負)</em><br />
+<em>垂直分量 $F_{IJy}$ 指向上，力臂為 $(36-24) = 12$。對 D(36,0) 的力矩 = $12 \times F_{IJy}$ (逆時針，負)！</em><br />
+<em>啊！垂直分量在 I 點指向上方，對 D 點是產生</em><em>逆時針</em><em>力矩（向左繞 D 轉），所以也是負號！</em><br />
+<em>正確的 $\sum M_D$：</em><br />
+$$ -F_{IJ} \times \frac{12}{13} \times 17 - F_{IJ} \times \frac{5}{13} \times 12 = -F_{IJ} \frac{204 + 60}{13} = -F_{IJ} \frac{264}{13} $$<br />
+$$ -24 P + 12 P - F_{IJ} \times \frac{264}{13} = 0 \Rightarrow -12 P = F_{IJ} \frac{264}{13} $$<br />
+$$ \boxed{F_{IJ} = -12 P \times \frac{13}{264} = -\frac{13}{22} P \text{ (壓力)}} $$</p>
+<p><strong>Step 4：計算 $F_{ID}$</strong><br />
+利用左側自由體的垂直方向力平衡 $\sum F_y = 0$。<br />
+ID 桿件從 I(24, 17) 連至 D(36, 0)，水平變化 $\Delta x = 12$，垂直變化 $\Delta y = -17$。<br />
+桿長 $L_{ID} = \sqrt{12^2 + (-17)^2} = \sqrt{144 + 289} = \sqrt{433}$。<br />
+假設 $F_{ID}$ 為拉力（向量向右下方），其垂直分量為 $F_{ID} \times \frac{-17}{\sqrt{433}}$。<br />
+$$ \sum F_y = R_{Ay} - P + F_{IJ,y} + F_{ID,y} = 0 $$<br />
+$$ \frac{2}{3} P - P + \left( -\frac{13}{22} P \right) \times \left( \frac{5}{13} \right) + F_{ID} \frac{-17}{\sqrt{433}} = 0 $$<br />
+$$ -\frac{1}{3} P - \frac{5}{22} P - F_{ID} \frac{17}{\sqrt{433}} = 0 $$<br />
+$$ -\frac{22 + 15}{66} P = F_{ID} \frac{17}{\sqrt{433}} $$<br />
+$$ -\frac{37}{66} P = F_{ID} \frac{17}{\sqrt{433}} \Rightarrow \boxed{F_{ID} = - \frac{37 \sqrt{433}}{1122} P \text{ (壓力)}} $$</p>
+<hr />
+<h3>第二小題：計算 CD 桿件可能產生的最大軸力及作用點</h3>
+<p>我們需要找出載重 $P$ 位於 B, C, D, E, F 各點時，$F_{CD}$ 的數值（影響線）。<br />
+使用截面法（切 CD, ID, IJ），力矩中心為 I(24, 17)。</p>
+<p><strong>狀況 1：當載重 $P$ 位於截面右側（D, E, F 點）</strong><br />
+此時截面左側自由體上沒有載重 $P$，只有反力 $R_{Ay}$。<br />
+$$ R_{Ay} = \frac{72 - x_P}{72} P $$<br />
+對 I 點取力矩 $\sum M_I = 0$：<br />
+$$ -R_{Ay} \times 24 + F_{CD} \times 17 = 0 \Rightarrow F_{CD} = \frac{24}{17} R_{Ay} = \frac{24}{17} \times \frac{72 - x_P}{72} P = \frac{72 - x_P}{51} P $$</p>
+<ul>
+<li>若 $P$ 在 D 點 ($x_P = 36$)：$F_{CD} = \frac{72 - 36}{51} P = \frac{36}{51} P = \frac{12}{17} P$</li>
+<li>若 $P$ 在 E 點 ($x_P = 48$)：$F_{CD} = \frac{72 - 48}{51} P = \frac{24}{51} P = \frac{8}{17} P$</li>
+<li>若 $P$ 在 F 點 ($x_P = 60$)：$F_{CD} = \frac{72 - 60}{51} P = \frac{12}{51} P = \frac{4}{17} P$</li>
+</ul>
+<p><strong>狀況 2：當載重 $P$ 位於截面左側（B, C 點）</strong><br />
+為避免方程式包含載重 $P$，我們改取<strong>右側自由體</strong>進行分析。<br />
+右側自由體只有反力 $R_{Gy}$。<br />
+$$ R_{Gy} = \frac{x_P}{72} P $$<br />
+對 I 點取力矩 $\sum M_I = 0$（注意右側自由體的 $F_{CD}$ 指向左方，對 I 產生順時針力矩）：<br />
+$$ R_{Gy} \times (72 - 24) - F_{CD} \times 17 = 0 $$<br />
+$$ F_{CD} = \frac{48}{17} R_{Gy} = \frac{48}{17} \times \frac{x_P}{72} P = \frac{2 x_P}{51} P $$</p>
+<ul>
+<li>若 $P$ 在 B 點 ($x_P = 12$)：$F_{CD} = \frac{24}{51} P = \frac{8}{17} P$</li>
+<li>若 $P$ 在 C 點 ($x_P = 24$)：$F_{CD} = \frac{48}{51} P = \frac{16}{17} P$</li>
+</ul>
+<p>綜合比較各節點作用下的 $F_{CD}$：</p>
+<ul>
+<li>B 點：$8/17 P$</li>
+<li>C 點：$16/17 P$</li>
+<li>D 點：$12/17 P$</li>
+<li>E 點：$8/17 P$</li>
+<li>F 點：$4/17 P$</li>
+</ul>
+<p>$$\boxed{\text{CD 桿件最大軸力為 } \frac{16}{17} P \text{ (拉力)，發生於載重作用在 C 點時}}$$</p>
+<h2>5. 關鍵爭議點與進階探討 (Critical Issues &amp; Advanced Discussion)</h2>
+<ol>
+<li><strong>分量力矩的符號判定</strong>：在求解 $F_{IJ}$ 時，若採用分量法，垂直分量 $F_{IJ,y}$ 作用在 I 點，相對力矩中心 D 點，由於 I 點在 D 點左側且 $F_{IJ,y}$ 向上，這會產生<strong>逆時針</strong>力矩（負號）。許多考生在分解後，直覺以為向上的力就會產生順時針力矩，這是一個極容易失分的視覺陷阱。為防出錯，強烈建議如本文註解所演示，直接使用解析幾何的「點到直線距離公式」求出力臂，這不僅優雅且絕對不會錯判符號。</li>
+<li><strong>影響線的分段特性</strong>：第二小題要求找最大軸力，實質上就是繪製影響線。影響線的基本特性是，當移動載重越過我們感興趣的分析截面時，方程式會發生改變。最有效率的作法永遠是「載重在左，算右半邊；載重在右，算左半邊」，這可以確保力矩方程式中永遠只有支承反力一個外力，大大減少代數錯誤。</li>
+</ol></main>
+<footer>來源：raw/solutions/SA-2014-1/SA-2014-1.md（知識庫解題內容唯一正本；本頁僅為渲染顯示）</footer>
+</body></html>

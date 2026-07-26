@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="zh-Hant"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SA-2015-1 — 題目解析</title>
+<link rel="stylesheet" href="../assets/katex/katex.min.css">
+<script defer src="../assets/katex/katex.min.js"></script>
+<script defer src="../assets/katex/auto-render.min.js"
+  onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},
+  {left:'$',right:'$',display:false},{left:'\\(',right:'\\)',display:false}],throwOnError:false});"></script>
+<style>
+:root{--ac:#1565c0;--bg:#f7f9fb;--card:#fff;--ink:#263238;--mut:#607d8b;--bd:#dfe6ea}
+*{box-sizing:border-box}
+body{margin:0;font-family:"Microsoft JhengHei","Noto Sans TC",-apple-system,sans-serif;
+  background:var(--bg);color:var(--ink);line-height:1.75;font-size:15.5px}
+header{background:linear-gradient(135deg,#0d47a1,#1976d2 60%,#42a5f5);color:#fff;padding:22px 26px}
+header h1{margin:0;font-size:1.15em}
+header .back{display:inline-block;margin-top:10px;font-size:.82em;color:#fff;background:rgba(255,255,255,.18);
+  padding:4px 12px;border-radius:14px;text-decoration:none}
+main{max-width:880px;margin:0 auto;padding:26px 22px 70px}
+h1,h2,h3{color:#0d47a1} h2{font-size:1.2em;border-left:6px solid var(--ac);padding-left:12px;margin:34px 0 14px}
+table{width:100%;border-collapse:collapse;margin:14px 0;font-size:.92em;background:#fff}
+th,td{border:1px solid var(--bd);padding:7px 10px;text-align:left;vertical-align:top}
+th{background:#eceff1;font-weight:600} tbody tr:nth-child(even){background:#fafcfd}
+code{background:#eceff1;padding:1px 5px;border-radius:4px;font-size:.92em}
+img{max-width:100%;display:block;margin:14px auto;border:1px solid var(--bd);border-radius:8px}
+.katex-display{margin:12px 0!important;overflow-x:auto;overflow-y:hidden}
+footer{text-align:center;color:var(--mut);font-size:.8em;padding:22px;border-top:1px solid var(--bd)}
+</style></head><body>
+<header><h1>SA-2015-1 題目解析</h1><a class="back" href="javascript:history.back()">← 返回講義</a></header>
+<main><h1>考題編號：SA-2015-1</h1>
+<p><strong>主分類：</strong> <code>SA-U1-2</code> 靜定桁架分析<br />
+<strong>副分類：</strong><br />
+<strong>分析法：</strong> 單位力法（虛功原理）<br />
+<strong>標籤：</strong> <code>靜定桁架</code> <code>單位力法</code> <code>製造誤差</code> <code>支承沉陷</code> <code>垂直位移</code></p>
+<hr />
+<h2>1. 原始題目</h2>
+<p>一平面桁架如圖一所示，點 A 為鉸支承，點 C 為滾支承，點 D 承受一往下垂直載重 $50 \text{ kN}$。若桿件 BD 較原設計縮短 $0.5 \text{ cm}$，點 C 支承下陷 $0.4 \text{ cm}$，假設所有桿件彈性模數與斷面積乘積 $EA = 2 \times 10^5 \text{ kN}$，為使點 D 垂直位移為零，試求點 B 所需施加之水平力量 T。（25 分）</p>
+<p><img alt="平面桁架幾何示意圖，A點為左側鉸支承，C點為中間滾支承，B點受向左拉力T，D點受向下50kN載重" src="../../raw/solutions/SA-2015-1/SA-2015-1-fig-1.png" /></p>
+<p><em>圖說：A為鉸支承，C為滾支承。跨度AC=4m，CD=4m，高度BC=3m。BD桿有-0.5cm製造誤差，C點有-0.4cm支承沉陷。</em></p>
+<hr />
+<h2>2. 核心考點</h2>
+<p>本題為靜定桁架的綜合位移求解問題。要求 D 點垂直位移為零，必須綜合考慮<strong>外力載重</strong>、<strong>製造誤差</strong>以及<strong>支承沉陷</strong>三者對 D 點位移的疊加影響。</p>
+<hr />
+<h2>3. 解題戰略地圖</h2>
+<ol>
+<li><strong>真實系統分析</strong>：建立包含 T 與 50 kN 載重的真實系統，解出支承反力與各桿件內力 $S_i$（以 T 的函數表示）。</li>
+<li><strong>虛設系統分析</strong>：在要求位移的 D 點施加向下單位虛力 $1$，解出虛反力 $r_j$ 與虛內力 $u_i$。</li>
+<li><strong>虛功原理疊加</strong>：利用外部虛功等於內部虛功的方程式，將真實位移（包含支承沉陷）、真實內力彈性變形、以及製造誤差三者的貢獻代入。</li>
+<li><strong>邊界條件求解</strong>：令 D 點總位移 $\Delta_{Dy} = 0$，解出所需水平外力 T。</li>
+</ol>
+<hr />
+<h2>3.5 變數層次分析（Variable Hierarchy Analysis）</h2>
+<blockquote>
+<p>複習提示：第一次解題後，在每個卡住的知識點旁標記 <code>⚠</code>；第二次複習時只看有 <code>⚠</code> 的項目。</p>
+</blockquote>
+<h3>最終目標</h3>
+<p>求出 B 點所需施加的向左水平力 $T$，使得 D 點垂直位移 $\Delta_{Dy} = 0$。</p>
+<h3>本題關鍵公式（依計算順序）</h3>
+<blockquote>
+<p>$\boxed{\cdot}$ = 需由前步驟推導，非題目直接給定的變數</p>
+</blockquote>
+<p>$$\text{Step 1: } S_i = f_i(\boxed{T})$$<br />
+$$\text{Step 2: } u_i \text{ (由 } P=1 \text{ 向下求得)}$$<br />
+$$\text{Step 3: } 1 \cdot \Delta_{Dy} + \sum \boxed{r_j} \cdot \Delta_j = \sum \boxed{u_i} \left( \frac{\boxed{S_i} L_i}{EA} + \Delta L_{error, i} \right)$$<br />
+$$\text{Step 4: } \Delta_{Dy} = 0 \Rightarrow \text{解出 } \boxed{T}$$</p>
+<h3>L1：題目直接給定</h3>
+<p><em>看到題目就能讀出的數字，不需要任何公式。</em></p>
+<table>
+<thead>
+<tr>
+<th>符號</th>
+<th>數值</th>
+<th>說明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>$EA$</td>
+<td>$2 \times 10^5 \text{ kN}$</td>
+<td>彈性模數與斷面積乘積</td>
+</tr>
+<tr>
+<td>$P_D$</td>
+<td>$50 \text{ kN}$</td>
+<td>D點向下外力</td>
+</tr>
+<tr>
+<td>$\Delta L_{BD}$</td>
+<td>$-0.005 \text{ m}$</td>
+<td>BD桿縮短誤差（0.5 cm）</td>
+</tr>
+<tr>
+<td>$\Delta_{Cy}$</td>
+<td>$-0.004 \text{ m}$</td>
+<td>C點支承下陷（0.4 cm）</td>
+</tr>
+</tbody>
+</table>
+<h3>L2：需知識點推導</h3>
+<p><em>需要知道公式名稱與適用條件，套入 L1 即可算出。</em></p>
+<p><strong>Step 1：真實系統內力 ($S_i$) 計算</strong></p>
+<table>
+<thead>
+<tr>
+<th>符號</th>
+<th>公式/來源</th>
+<th style="text-align: center;">卡關?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>$C_y$</td>
+<td>$\sum M_A = 0 \Rightarrow 4 C_y - 50 \times 8 + T \times 3 = 0$</td>
+<td style="text-align: center;"></td>
+</tr>
+<tr>
+<td>$A_y$</td>
+<td>$\sum F_y = 0 \Rightarrow A_y = 50 - C_y$</td>
+<td style="text-align: center;"></td>
+</tr>
+<tr>
+<td>$S_i$</td>
+<td>節點平衡法，依序由 D、B、A 節點求出各桿內力</td>
+<td style="text-align: center;"></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Step 2：虛設系統內力 ($u_i$) 計算</strong></p>
+<table>
+<thead>
+<tr>
+<th>符號</th>
+<th>公式/來源</th>
+<th style="text-align: center;">卡關?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>$u_i$</td>
+<td>於 D 點施加向下單位力 1，其餘外力與 T 皆設為 0</td>
+<td style="text-align: center;"></td>
+</tr>
+<tr>
+<td>$r_{Cy}$</td>
+<td>虛反力 $C_y$</td>
+<td style="text-align: center;"></td>
+</tr>
+</tbody>
+</table>
+<h3>L3：深層知識（不懂就卡住）</h3>
+<p><em>L2 中某些公式本身需要背景概念才能正確應用的知識點。</em></p>
+<table>
+<thead>
+<tr>
+<th>知識點</th>
+<th>說明</th>
+<th style="text-align: center;">卡關?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>單位力法之虛功方程式</td>
+<td>$W_{ext} = W_{int}$。必須注意虛反力與真實支承沉陷作功的正負號。</td>
+<td style="text-align: center;"></td>
+</tr>
+<tr>
+<td>製造誤差作功正負號</td>
+<td>虛內力 $u_i$ 為拉力（正）時，配上縮短誤差（負），內部虛功為負值。</td>
+<td style="text-align: center;"></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>4. 步驟化詳細計算</h2>
+<h3>步驟 1：建立真實系統與求取真實內力 ($S_i$)</h3>
+<p>首先計算支承反力：<br />
+由整體平衡 $\sum M_A = 0$（設逆時針為正）：<br />
+$$ C_y \times 4 - 50 \times 8 + T \times 3 = 0 \quad \Rightarrow \quad C_y = 100 - 0.75T \text{ (向上)} $$<br />
+$$ \sum F_x = 0 \quad \Rightarrow \quad A_x = T \text{ (向右)} $$<br />
+$$ \sum F_y = 0 \quad \Rightarrow \quad A_y = 50 - C_y = -50 + 0.75T \text{ (向上)} $$</p>
+<p>利用節點法求各桿件真實內力 $S_i$（拉力為正，壓力為負）：</p>
+<ul>
+<li>
+<p><strong>節點 D</strong>：<br />
+  $$ \sum F_y = 0 \Rightarrow S_{BD} \cdot \frac{3}{5} - 50 = 0 \quad \Rightarrow \quad S_{BD} = \frac{250}{3} \text{ kN} $$<br />
+  $$ \sum F_x = 0 \Rightarrow -S_{CD} - S_{BD} \cdot \frac{4}{5} = 0 \quad \Rightarrow \quad S_{CD} = -\frac{200}{3} \text{ kN} $$</p>
+</li>
+<li>
+<p><strong>節點 B</strong>：<br />
+  $$ \sum F_x = 0 \Rightarrow -S_{AB} \cdot \frac{4}{5} + S_{BD} \cdot \frac{4}{5} - T = 0 \quad \Rightarrow \quad S_{AB} = \frac{250}{3} - 1.25T \text{ kN} $$<br />
+  $$ \sum F_y = 0 \Rightarrow -S_{AB} \cdot \frac{3}{5} - S_{BC} - S_{BD} \cdot \frac{3}{5} = 0 \quad \Rightarrow \quad S_{BC} = -100 + 0.75T \text{ kN} $$</p>
+</li>
+<li>
+<p><strong>節點 A</strong>：<br />
+  $$ \sum F_x = 0 \Rightarrow A_x + S_{AC} + S_{AB} \cdot \frac{4}{5} = 0 \quad \Rightarrow \quad S_{AC} = -\frac{200}{3} \text{ kN} $$</p>
+</li>
+</ul>
+<h3>步驟 2：建立虛設系統與求取虛內力 ($u_i$)</h3>
+<p>為求 D 點之垂直位移，於虛設系統的 <strong>D 點施加單位力 $1$ (向下)</strong>。<br />
+此狀態等同於真實系統中令 $T=0$ 且將 $50 \text{ kN}$ 替換為 $1$，故可直接將上述與 $T$ 無關之項次除以 $50$ 得到虛內力：</p>
+<ul>
+<li>虛反力：$r_{Cy} = \frac{100}{50} = 2 \text{ (向上)}$</li>
+<li>虛內力：</li>
+<li>$u_{BD} = \frac{5}{3}$</li>
+<li>$u_{CD} = -\frac{4}{3}$</li>
+<li>$u_{AB} = \frac{5}{3}$</li>
+<li>$u_{BC} = -2$</li>
+<li>$u_{AC} = -\frac{4}{3}$</li>
+</ul>
+<h3>步驟 3：虛功方程式計算 D 點垂直位移 ($\Delta_{Dy}$)</h3>
+<p>根據虛功原理：<br />
+$$ W_{ext} = W_{int} $$<br />
+$$ 1 \cdot \Delta_{Dy} + \sum r_j \Delta_j = \sum u_i \left( \frac{S_i L_i}{EA} + \Delta L_{error, i} \right) $$</p>
+<p><strong>1. 外部虛功 ($W_{ext}$)</strong>：<br />
+包含單位力作功與虛反力在真實支承變位上所作之功。<br />
+$$ W_{ext} = 1 \cdot \Delta_{Dy} + r_{Cy} \cdot \Delta_{Cy} = \Delta_{Dy} + (2) \cdot (-0.004) = \Delta_{Dy} - 0.008 \text{ (m)} $$</p>
+<p><strong>2. 內部虛功 ($W_{int}$)</strong>：<br />
+包含載重造成的彈性變形與製造誤差作功。</p>
+<ul>
+<li>
+<p><strong>製造誤差作功</strong>：<br />
+  $$ \sum u_i \Delta L_{error, i} = u_{BD} \cdot \Delta L_{BD} = \left(\frac{5}{3}\right) \cdot (-0.005) = -\frac{1}{120} \text{ m} $$</p>
+</li>
+<li>
+<p><strong>彈性變形作功</strong>：<br />
+  彙整各桿件的 $u_i \cdot S_i \cdot L_i$：</p>
+</li>
+<li>
+<p>AB: $\frac{5}{3} \cdot \left(\frac{250}{3} - \frac{5}{4}T\right) \cdot 5 = \frac{6250}{9} - \frac{125}{12}T$</p>
+</li>
+<li>BC: $(-2) \cdot \left(-100 + \frac{3}{4}T\right) \cdot 3 = 600 - \frac{54}{12}T$</li>
+<li>BD: $\frac{5}{3} \cdot \left(\frac{250}{3}\right) \cdot 5 = \frac{6250}{9}$</li>
+<li>AC: $\left(-\frac{4}{3}\right) \cdot \left(-\frac{200}{3}\right) \cdot 4 = \frac{3200}{9}$</li>
+<li>CD: $\left(-\frac{4}{3}\right) \cdot \left(-\frac{200}{3}\right) \cdot 4 = \frac{3200}{9}$</li>
+</ul>
+<p>加總上述各項並除以 $EA = 200000 \text{ kN}$：<br />
+  $$ \sum u_i \frac{S_i L_i}{EA} = \frac{1}{200000} \left[ \left(\frac{6250 \times 2 + 3200 \times 2}{9} + 600\right) - \left(\frac{125 + 54}{12}\right)T \right] $$<br />
+  $$ = \frac{1}{200000} \left( 2700 - \frac{179}{12}T \right) $$</p>
+<p><strong>3. 代入邊界條件求解 T</strong>：<br />
+題目要求 D 點垂直位移為零 ($\Delta_{Dy} = 0$)，代回虛功方程式：<br />
+$$ 0 - 0.008 = \frac{2700 - \frac{179}{12}T}{200000} - \frac{1}{120} $$<br />
+$$ \frac{1}{120} - \frac{8}{1000} = \frac{2700 - \frac{179}{12}T}{200000} \quad \Rightarrow \quad \frac{1}{120} - \frac{1}{125} = \frac{2700 - \frac{179}{12}T}{200000} $$<br />
+$$ \frac{1}{3000} = \frac{2700 - \frac{179}{12}T}{200000} $$<br />
+$$ \frac{200000}{3000} = 2700 - \frac{179}{12}T \quad \Rightarrow \quad \frac{200}{3} = 2700 - \frac{179}{12}T $$<br />
+$$ \frac{179}{12}T = 2700 - \frac{200}{3} = \frac{7900}{3} $$<br />
+$$ T = \frac{7900}{3} \times \frac{12}{179} = \frac{31600}{179} \approx 176.54 \text{ kN} $$</p>
+<hr />
+<h2>5. 結論</h2>
+<p>為使 D 點之垂直位移為零，B 點所需施加之向左水平力量為：<br />
+<strong>$T = \frac{31600}{179} \text{ kN} \approx 176.54 \text{ kN}$</strong></p></main>
+<footer>來源：raw/solutions/SA-2015-1/SA-2015-1.md（知識庫解題內容唯一正本；本頁僅為渲染顯示）</footer>
+</body></html>

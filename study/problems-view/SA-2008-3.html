@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="zh-Hant"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SA-2008-3 — 題目解析</title>
+<link rel="stylesheet" href="../assets/katex/katex.min.css">
+<script defer src="../assets/katex/katex.min.js"></script>
+<script defer src="../assets/katex/auto-render.min.js"
+  onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},
+  {left:'$',right:'$',display:false},{left:'\\(',right:'\\)',display:false}],throwOnError:false});"></script>
+<style>
+:root{--ac:#1565c0;--bg:#f7f9fb;--card:#fff;--ink:#263238;--mut:#607d8b;--bd:#dfe6ea}
+*{box-sizing:border-box}
+body{margin:0;font-family:"Microsoft JhengHei","Noto Sans TC",-apple-system,sans-serif;
+  background:var(--bg);color:var(--ink);line-height:1.75;font-size:15.5px}
+header{background:linear-gradient(135deg,#0d47a1,#1976d2 60%,#42a5f5);color:#fff;padding:22px 26px}
+header h1{margin:0;font-size:1.15em}
+header .back{display:inline-block;margin-top:10px;font-size:.82em;color:#fff;background:rgba(255,255,255,.18);
+  padding:4px 12px;border-radius:14px;text-decoration:none}
+main{max-width:880px;margin:0 auto;padding:26px 22px 70px}
+h1,h2,h3{color:#0d47a1} h2{font-size:1.2em;border-left:6px solid var(--ac);padding-left:12px;margin:34px 0 14px}
+table{width:100%;border-collapse:collapse;margin:14px 0;font-size:.92em;background:#fff}
+th,td{border:1px solid var(--bd);padding:7px 10px;text-align:left;vertical-align:top}
+th{background:#eceff1;font-weight:600} tbody tr:nth-child(even){background:#fafcfd}
+code{background:#eceff1;padding:1px 5px;border-radius:4px;font-size:.92em}
+img{max-width:100%;display:block;margin:14px auto;border:1px solid var(--bd);border-radius:8px}
+.katex-display{margin:12px 0!important;overflow-x:auto;overflow-y:hidden}
+footer{text-align:center;color:var(--mut);font-size:.8em;padding:22px;border-top:1px solid var(--bd)}
+</style></head><body>
+<header><h1>SA-2008-3 題目解析</h1><a class="back" href="javascript:history.back()">← 返回講義</a></header>
+<main><hr />
+<p>主分類: "SA-U1-1"<br />
+副分類: ["SA-U1-2"]<br />
+難易度: 3</p>
+<hr />
+<h1>97年結構工程技師高考 結構學 第三題</h1>
+<h2>1. 原始題目重述 (Problem Restatement)</h2>
+<p>試以最小功法（least work）計算圖示剛架（frame）各桿件之彎矩，並繪彎矩圖。圖中 A 點為滾支承（roller），C 點為固接（fixed）。已知各桿件之彈性模數 $E$ 與慣性矩 $I$ 為常數。（25 分）</p>
+<p><img alt="SA-2008-3 題目附圖：包含A滾支承與C固接的一度靜不定剛架" src="../../raw/solutions/SA-2008-3/SA-2008-3-fig-1.png" /></p>
+<p><em>圖說：(待補充說明)</em></p>
+<p><em>(註：A 為水平滾支承，C 為固定端。剛架包含水平桿 AB 與斜桿 BC。AB 長度 $6\text{ m}$，承受向下均佈載重 $2\text{ kN/m}$。BC 桿水平投影 $4.5\text{ m}$，垂直投影 $6\text{ m}$，總長度 $7.5\text{ m}$)</em></p>
+<h2>2. 考題核心精神與出題者意圖 (Core Concepts &amp; Examiner's Intent)</h2>
+<p>本題為<strong>一度外靜不定剛架</strong>，指定使用<strong>最小功法 (Method of Least Work / Castigliano's Second Theorem)</strong> 求解。出題者的核心意圖在於：</p>
+<ol>
+<li><strong>最小功法的熟練度</strong>：測驗考生能否正確選擇贅力 (Redundant force)，並將結構總應變能 $U$ 對贅力的偏微分設為零 ($\frac{\partial U}{\partial R} = 0$) 來求解。</li>
+<li><strong>座標系統與內力函數的建立</strong>：考驗考生在不同幾何區段 (水平直線與斜線) 建立彎矩方程式 $M(x)$ 的能力，以及處理斜桿段微小長度 $ds$ 與水平變數 $dx$ 轉換的幾何關係。</li>
+<li><strong>積分計算的細心度</strong>：本題計算牽涉到多項式的展開與積分，需要高度的細心與耐心，避免在多項式乘法中出錯。</li>
+</ol>
+<h2>3. 解題戰略地圖與陷阱分析 (Strategic Roadmap &amp; Trap Analysis)</h2>
+<p><strong>解題戰略：</strong></p>
+<ol>
+<li><strong>第一步：靜不定度分析與贅力選定</strong>：A 點滾支承提供 1 個垂直反力 $A_y$，C 點固接提供 3 個反力 ($C_x, C_y, M_C$)。總反力數為 4，靜不定度為 1。選定 A 點垂直反力 $A_y$ 為贅力 $R$ (設向上為正)。</li>
+<li><strong>第二步：建立全區段彎矩函數 $M(x)$</strong>：<br />
+   以 A 點為原點，定義向右為 $x$。</li>
+</ol>
+<ul>
+<li><strong>AB 段</strong> ($0 \le x \le 6$)：考慮 $x$ 左側自由體，彎矩由贅力 $R$ 與均佈載重貢獻。</li>
+<li><strong>BC 段</strong> ($6 \le x \le 10.5$)：同樣考慮 $x$ 左側自由體，均佈載重此時為定值總力，力臂為 $(x-3)$。<br />
+3. <strong>第三步：計算偏微分 $\frac{\partial M}{\partial R}$</strong>：對各段彎矩函數求偏微。<br />
+4. <strong>第四步：利用最小功法列式</strong>：$\frac{\partial U}{\partial R} = \int \frac{M}{EI} \frac{\partial M}{\partial R} ds = 0$。注意 BC 段的斜率，需將 $ds$ 轉換為 $dx$ 以利積分計算。<br />
+5. <strong>第五步：求解贅力與各端彎矩</strong>：解出 $R$ 後，代回 $M(x)$ 求得 B 點與 C 點彎矩，並找出 AB 段最大正彎矩位置以繪製精確的彎矩圖。</li>
+</ul>
+<p><strong>陷阱分析：</strong></p>
+<ul>
+<li><strong>陷阱 1：斜桿段的 $ds$ 轉換</strong>。斜桿 BC 上積分時的微小長度為 $ds$，若直接把 $ds$ 當成 $dx$ 積分將導致錯誤。必須透過勾股定理計算 $ds = \sqrt{1 + (dy/dx)^2} dx$。</li>
+<li><strong>陷阱 2：BC 段彎矩函數列式過度複雜</strong>。若將原點改至 C 點，雖然避開了贅力，但需要計算 C 點的未知反力，反而本末倒置。維持由 A 點向右看，AB 段均佈載重在 BC 段的等效力矩僅為 $12 \times (x-3)$，這是最簡潔的寫法。</li>
+<li><strong>陷阱 3：彎矩符號約定混亂</strong>。應保持統一的符號約定 (例如使結構下方受拉為正)，並確保繪製彎矩圖時畫在受拉側。</li>
+</ul>
+<h2>3.5 變數層次分析 (Variable Hierarchy Analysis)</h2>
+<h3>最終目標</h3>
+<p>求出各桿件之彎矩函數，並繪製彎矩圖。</p>
+<h3>本題關鍵公式（依計算順序）</h3>
+<ul>
+<li>彎矩函數建立：$\Sigma M = 0$</li>
+<li>最小功法 (卡氏第二定理)：$\frac{\partial U}{\partial R} = \int \frac{M}{EI} \frac{\partial M}{\partial R} ds = 0$</li>
+<li>微分幾何轉換：$ds = \sqrt{dx^2 + dy^2}$</li>
+</ul>
+<h3>L1：題目直接給定</h3>
+<table>
+<thead>
+<tr>
+<th>符號</th>
+<th>數值</th>
+<th>說明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>$w$</td>
+<td>$2\text{ kN/m}$</td>
+<td>AB 段均佈載重</td>
+</tr>
+<tr>
+<td>$EI$</td>
+<td>常數</td>
+<td>各桿件抗彎剛度</td>
+</tr>
+</tbody>
+</table>
+<h3>L2：需知識點推導</h3>
+<p><strong>一、幾何與微積分轉換</strong><br />
+| 符號 | 公式／來源 | 卡關? |<br />
+|---|---|---|<br />
+| $R$ | 設 $A_y = R$ (向上) | 贅力 |<br />
+| $ds_{AB}$ | $dx$ | 水平段微小長度 |<br />
+| $ds_{BC}$ | $\sqrt{4.5^2 + (-6)^2} / 4.5 \cdot dx = \frac{7.5}{4.5} dx = \frac{5}{3} dx$ | 斜桿微小長度轉換係數 |</p>
+<p><strong>二、各段彎矩函數與偏微</strong><br />
+| 符號 | 公式／來源 | 卡關? |<br />
+|---|---|---|<br />
+| $M_{AB}(x)$ | $R x - \frac{1}{2}(2)x^2 = R x - x^2$ | $0 \le x \le 6$ |<br />
+| $\frac{\partial M_{AB}}{\partial R}$ | $x$ | |<br />
+| $M_{BC}(x)$ | $R x - (2 \times 6)(x - 3) = R x - 12(x - 3)$ | $6 \le x \le 10.5$ |<br />
+| $\frac{\partial M_{BC}}{\partial R}$ | $x$ | |</p>
+<h2>4. 步驟化詳細計算過程 (Step-by-Step Detailed Calculation)</h2>
+<h3>步驟 1：建立彎矩函數與偏微分</h3>
+<p>設 A 點垂直反力 $A_y$ 為贅力 $R$ (向上為正)。以 A 點為原點，向右為 $x$ 軸正向，向下為 $y$ 軸正向。彎矩以使桿件下方受拉為正。</p>
+<ul>
+<li>
+<p><strong>AB 桿段 ($0 \le x \le 6$)：</strong><br />
+  $ds = dx$<br />
+  $M_{AB}(x) = R \cdot x - 2 \cdot \frac{x^2}{2} = R x - x^2$<br />
+  $\frac{\partial M_{AB}}{\partial R} = x$</p>
+</li>
+<li>
+<p><strong>BC 桿段 ($6 \le x \le 10.5$)：</strong><br />
+  BC 桿之幾何關係：$\Delta x = 4.5, \Delta y = -6$。<br />
+  $ds = \sqrt{dx^2 + dy^2} = \sqrt{1 + (-6/4.5)^2} dx = \sqrt{1 + (4/3)^2} dx = \frac{5}{3} dx$<br />
+  取 $x$ 左側自由體，均佈載重總力為 $12\text{ kN}$，作用點在 $x=3$。<br />
+  $M_{BC}(x) = R \cdot x - 12 \cdot (x - 3) = R x - 12 x + 36$<br />
+  $\frac{\partial M_{BC}}{\partial R} = x$</p>
+</li>
+</ul>
+<h3>步驟 2：利用最小功法列方程式</h3>
+<p>根據卡氏第二定理 $\frac{\partial U}{\partial R} = 0$：<br />
+$$ \int_0^6 \frac{M_{AB}}{EI} \frac{\partial M_{AB}}{\partial R} dx + \int_6^{10.5} \frac{M_{BC}}{EI} \frac{\partial M_{BC}}{\partial R} \left(\frac{5}{3} dx\right) = 0 $$</p>
+<p>將 $EI$ 提出並消去，分別計算兩項積分。<br />
+<strong>第一項 (AB 桿段)：</strong><br />
+$$ \int_0^6 (R x - x^2) x \, dx = \int_0^6 (R x^2 - x^3) \, dx = \left[ R \frac{x^3}{3} - \frac{x^4}{4} \right]_0^6 $$<br />
+$$ = R \frac{216}{3} - \frac{1296}{4} = 72 R - 324 $$</p>
+<p><strong>第二項 (BC 桿段)：</strong><br />
+$$ \frac{5}{3} \int_6^{10.5} (R x - 12 x + 36) x \, dx = \frac{5}{3} \int_6^{10.5} \left( (R-12) x^2 + 36 x \right) dx $$<br />
+其中：<br />
+$\int_6^{10.5} x^2 dx = \frac{1}{3} (10.5^3 - 6^3) = \frac{1}{3} (1157.625 - 216) = 313.875 = \frac{2511}{8}$<br />
+$\int_6^{10.5} x \, dx = \frac{1}{2} (10.5^2 - 6^2) = \frac{1}{2} (110.25 - 36) = 37.125 = \frac{297}{8}$<br />
+代入積分式：<br />
+$$ \frac{5}{3} \left[ (R-12)\frac{2511}{8} + 36\left(\frac{297}{8}\right) \right] = \frac{5}{3} \left[ \frac{2511 R - 30132 + 10692}{8} \right] = \frac{5}{3} \left[ \frac{2511 R - 19440}{8} \right] $$<br />
+$$ = \frac{5(837 R - 6480)}{8} = \frac{4185 R - 32400}{8} = \frac{4185}{8} R - 4050 $$</p>
+<h3>步驟 3：求解贅力 $R$</h3>
+<p>將兩項合併令其為 0：<br />
+$$ (72 R - 324) + \left(\frac{4185}{8} R - 4050\right) = 0 $$<br />
+$$ \left( \frac{576}{8} + \frac{4185}{8} \right) R = 324 + 4050 $$<br />
+$$ \frac{4761}{8} R = 4374 \implies R = \frac{4374 \times 8}{4761} = \frac{34992}{4761} = \frac{3888}{529} \approx \mathbf{7.350\text{ kN}} (\uparrow) $$</p>
+<h3>步驟 4：計算各端彎矩與最大正彎矩</h3>
+<p>將 $R = \frac{3888}{529}$ 代回彎矩方程式：</p>
+<ul>
+<li><strong>A 點彎矩</strong> ($x=0$)：$M_A = \mathbf{0}$</li>
+<li>
+<p><strong>B 點彎矩</strong> ($x=6$)：<br />
+  $M_B = R(6) - 36 = \frac{23328}{529} - \frac{19044}{529} = \mathbf{\frac{4284}{529} \approx 8.098\text{ kN-m}}$ (拉力在下方)</p>
+</li>
+<li>
+<p><strong>C 點彎矩</strong> ($x=10.5$)：<br />
+  $M_C = R(10.5) - 12(10.5 - 3) = \frac{3888}{529} \times \frac{21}{2} - 12 \times 7.5 = \frac{40824}{529} - 90 = \frac{40824 - 47610}{529} = \mathbf{-\frac{6786}{529} \approx -12.828\text{ kN-m}}$ (拉力在上方/外側)</p>
+</li>
+<li>
+<p><strong>AB 段最大正彎矩</strong>：<br />
+  發生在剪力為零處。令 $V_{AB} = \frac{d M_{AB}}{dx} = R - 2x = 0 \implies x = \frac{R}{2} = \frac{1944}{529} \approx 3.675\text{ m}$<br />
+  最大彎矩 $M_{max} = R(\frac{R}{2}) - (\frac{R}{2})^2 = \frac{R^2}{4} = \frac{(3888/529)^2}{4} = \mathbf{\frac{3779136}{279841} \approx 13.505\text{ kN-m}}$</p>
+</li>
+</ul>
+<h2>5. 關鍵爭議點與進階探討 (Critical Issues &amp; Advanced Discussion)</h2>
+<ul>
+<li><strong>座標系統選取的藝術</strong>：本題解法的亮點在於統一採用 $x$ 座標來表示所有桿件的彎矩函數，並利用幾何關係將斜桿的 $ds$ 直接轉換為 $\frac{5}{3} dx$。這種手法避免了在斜桿上重新建立局部 $s$ 座標、角度轉換與投影計算的繁瑣過程，大幅降低了計算過程中的出錯率，是極高效率的考場解題技巧。</li>
+<li><strong>純代數分數運算的建議</strong>：如計算過程所示，雖然 $R$ 的數值看似不平易近人 ($3888/529$)，但透過全程保留分數計算，能確保 $M_B$ 與 $M_C$ 的結果在數學上絕對精確。在國家考試中，建議先列出精確的分數解，再於括號內附上小數近似值，可展現高度的運算嚴謹性。</li>
+<li><strong>彎矩圖的連續性檢查</strong>：B 點為剛性節點，從 AB 桿段計算得 $M_B = 8.098\text{ kN-m}$，從 BC 桿段公式代入 $x=6$ 亦得出相同的 $8.098\text{ kN-m}$，此連續性檢查確保了本題彎矩方程式列式正確無誤。</li>
+</ul></main>
+<footer>來源：raw/solutions/SA-2008-3/SA-2008-3.md（知識庫解題內容唯一正本；本頁僅為渲染顯示）</footer>
+</body></html>

@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="zh-Hant"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SA-2003-2 — 題目解析</title>
+<link rel="stylesheet" href="../assets/katex/katex.min.css">
+<script defer src="../assets/katex/katex.min.js"></script>
+<script defer src="../assets/katex/auto-render.min.js"
+  onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},
+  {left:'$',right:'$',display:false},{left:'\\(',right:'\\)',display:false}],throwOnError:false});"></script>
+<style>
+:root{--ac:#1565c0;--bg:#f7f9fb;--card:#fff;--ink:#263238;--mut:#607d8b;--bd:#dfe6ea}
+*{box-sizing:border-box}
+body{margin:0;font-family:"Microsoft JhengHei","Noto Sans TC",-apple-system,sans-serif;
+  background:var(--bg);color:var(--ink);line-height:1.75;font-size:15.5px}
+header{background:linear-gradient(135deg,#0d47a1,#1976d2 60%,#42a5f5);color:#fff;padding:22px 26px}
+header h1{margin:0;font-size:1.15em}
+header .back{display:inline-block;margin-top:10px;font-size:.82em;color:#fff;background:rgba(255,255,255,.18);
+  padding:4px 12px;border-radius:14px;text-decoration:none}
+main{max-width:880px;margin:0 auto;padding:26px 22px 70px}
+h1,h2,h3{color:#0d47a1} h2{font-size:1.2em;border-left:6px solid var(--ac);padding-left:12px;margin:34px 0 14px}
+table{width:100%;border-collapse:collapse;margin:14px 0;font-size:.92em;background:#fff}
+th,td{border:1px solid var(--bd);padding:7px 10px;text-align:left;vertical-align:top}
+th{background:#eceff1;font-weight:600} tbody tr:nth-child(even){background:#fafcfd}
+code{background:#eceff1;padding:1px 5px;border-radius:4px;font-size:.92em}
+img{max-width:100%;display:block;margin:14px auto;border:1px solid var(--bd);border-radius:8px}
+.katex-display{margin:12px 0!important;overflow-x:auto;overflow-y:hidden}
+footer{text-align:center;color:var(--mut);font-size:.8em;padding:22px;border-top:1px solid var(--bd)}
+</style></head><body>
+<header><h1>SA-2003-2 題目解析</h1><a class="back" href="javascript:history.back()">← 返回講義</a></header>
+<main><h1>考題編號：[SA-2003-2]</h1>
+<p><strong>主分類：</strong> <code>SA-U1-2</code> 靜定結構分析<br />
+<strong>副分類：</strong> <code>複合結構</code><br />
+<strong>分析法：</strong> 靜定分析 / 幾何變形法 / 單位力法 (虛功原理)<br />
+<strong>標籤：</strong> <code>靜定結構</code> <code>複合結構</code> <code>剛性梁</code> <code>位移計算</code> <code>單位力法</code></p>
+<hr />
+<h2>1. 原始題目重述 (Problem Restatement)</h2>
+<p><strong>題目描述：</strong><br />
+圖示結構係由三根斷面性質相同 ($EA$) 之均質連桿 (AD、AE 及 BE) 以及一根剛梁 ($EI \to \infty$) 所組成之複合結構。若忽略剛梁自重之影響，試求：（25 分）</p>
+<ol>
+<li>各連桿之內力</li>
+<li>C 點之位移</li>
+</ol>
+<p><img alt="SA-2003-2 題目附圖：剛性梁與三根連桿複合結構" src="../../raw/solutions/SA-2003-2/SA-2003-2-fig-1.png" /></p>
+<p><em>圖說：ABC 為水平剛性梁。支承 D、E 為鉸支承，位於剛梁下方 $3\lambda$ 處，水平相距 $4\lambda$。AD、BE 為垂直連桿(長度 $3\lambda$)，AE 為斜桿(水平 $4\lambda$、垂直 $3\lambda$)。剛梁最右側 C 點受垂直向下集中載重 $F$。</em></p>
+<h2>2. 考題核心精神與出題者意圖 (Core Concepts &amp; Examiner's Intent)</h2>
+<ul>
+<li><strong>剛體與可變形連桿的複合結構分析</strong>：本題看似複雜，但剛性梁僅由三根連桿支撐，剛性梁於平面內有三個自由度（水平、垂直、旋轉），三根連桿恰好提供三個未知內力，因此為<strong>靜定結構</strong>。</li>
+<li><strong>變形諧合條件（幾何關係）</strong>：測驗考生是否能將連桿的軸向變形，透過幾何關係與剛體微小旋轉的角度轉換，精確推導出各節點的水平與垂直位移。出題者特意設計斜桿 AE，考驗斜桿伸長量與節點 $(u, v)$ 位移分量的投影計算。</li>
+</ul>
+<h2>3. 解題戰略地圖與陷阱分析 (Strategic Roadmap &amp; Trap Analysis)</h2>
+<ul>
+<li><strong>第一步：靜力平衡求內力</strong>。將剛性梁 ABC 視為自由體，利用 $\sum F_x=0, \sum F_y=0, \sum M=0$ 求出三根連桿的軸力。</li>
+<li><strong>第二步：求各連桿變形量</strong>。代入虎克定律 $\delta = NL/EA$。</li>
+<li><strong>第三步：由幾何關係求位移</strong>。利用剛體運動的特性，建立連桿變形與 A、B 節點位移的關係，進而求出 C 點的水平與垂直位移。</li>
+<li><strong>陷阱 1（靜不定誤判）</strong>：結構桿件交錯容易讓人誤以為是靜不定結構而嘗試使用力法或位移法，導致浪費大量時間。</li>
+<li><strong>陷阱 2（忽略水平位移）</strong>：雖然外力只有垂直載重，但因斜桿 AE 的存在，當梁發生垂直位移與旋轉時，為了維持 AE 桿本身的幾何變形條件，必定會連帶產生水平位移。</li>
+<li><strong>陷阱 3（斜桿位移投影）</strong>：需注意小位移假設下，節點水平與垂直位移投影至斜桿軸向的符號（正負號）定義。</li>
+</ul>
+<h2>3.5 變數層次分析 (Variable Hierarchy Analysis)</h2>
+<h3>最終目標</h3>
+<p><code>求出 AD、AE、BE 三根連桿之內力，以及剛梁自由端 C 點之水平與垂直位移。</code></p>
+<h3>本題關鍵公式（依計算順序）</h3>
+<p>$$ \sum F_x = 0 \implies N_{AE,x} = 0 \implies N_{AE} = 0 $$<br />
+$$ \sum M_A = 0 \implies N_{BE} \cdot L_{AB} + F \cdot L_{AC} = 0 \implies \boxed{N_{BE}} $$<br />
+$$ \sum F_y = 0 \implies N_{AD} + N_{AE,y} + \boxed{N_{BE}} + F = 0 \implies \boxed{N_{AD}} $$<br />
+$$ \delta_i = \frac{\boxed{N_i} L_i}{EA} \quad (i = AD, AE, BE) \implies \boxed{\delta_{AD}}, \boxed{\delta_{AE}}, \boxed{\delta_{BE}} $$<br />
+$$ v_A = \boxed{\delta_{AD}} $$<br />
+$$ -0.8 u_A + 0.6 \boxed{v_A} = \boxed{\delta_{AE}} \implies \boxed{u_A} $$<br />
+$$ \boxed{v_A} + 4\lambda \theta = \boxed{\delta_{BE}} \implies \boxed{\theta} $$<br />
+$$ u_C = \boxed{u_A} $$<br />
+$$ v_C = \boxed{v_A} + 8\lambda \boxed{\theta} $$</p>
+<h3>L1：題目直接給定</h3>
+<ul>
+<li><strong>符號 ∣ 數值 ∣ 說明</strong></li>
+<li>$L_{AD}$ ∣ $3\lambda$ ∣ AD 桿長度</li>
+<li>$L_{BE}$ ∣ $3\lambda$ ∣ BE 桿長度</li>
+<li>$L_{AB}$ ∣ $4\lambda$ ∣ A、B 水平距離</li>
+<li>$L_{AC}$ ∣ $8\lambda$ ∣ A、C 水平距離</li>
+<li>$EA$ ∣ $EA$ ∣ 連桿軸向剛度</li>
+<li>$F$ ∣ $F$ (向下) ∣ C 點外加垂直載重</li>
+</ul>
+<h3>L2：需知識點推導</h3>
+<p><strong>剛梁靜力平衡與內力</strong></p>
+<ul>
+<li><strong>符號 ∣ 公式／來源 ∣ 卡關?</strong></li>
+<li>$L_{AE}$ ∣ $\sqrt{(4\lambda)^2+(3\lambda)^2} = 5\lambda$ ∣ </li>
+<li>$N_{AE}$ ∣ $\sum F_x = 0$ ∣ </li>
+<li>$N_{BE}$ ∣ $\sum M_A = 0$ ∣ </li>
+<li>$N_{AD}$ ∣ $\sum F_y = 0$ ∣ </li>
+<li>$\delta_{AD}, \delta_{BE}, \delta_{AE}$ ∣ $\delta = \frac{NL}{EA}$ ∣ </li>
+</ul>
+<p><strong>幾何變形與節點位移</strong></p>
+<ul>
+<li><strong>符號 ∣ 公式／來源 ∣ 卡關?</strong></li>
+<li>$v_A$ ∣ 鉸支承D固定，等於 $\delta_{AD}$ ∣ </li>
+<li>$u_A$ ∣ $\delta_{AE}$ 在水平與垂直方向之幾何投影關係 ∣ </li>
+<li>$\theta$ ∣ 剛梁旋轉角，由 $v_B = v_A + L_{AB}\theta$ 求得 ∣ </li>
+<li>$u_C$ ∣ 剛體微小變形假設 $u_C = u_A$ ∣ </li>
+<li>$v_C$ ∣ 剛體旋轉 $v_C = v_A + L_{AC}\theta$ ∣ </li>
+</ul>
+<h3>L3：深層知識（不懂就卡住）</h3>
+<ul>
+<li><strong>知識點 ∣ 說明 ∣ 卡關?</strong></li>
+<li>靜不定度判別 ∣ 判斷出本題為靜定結構，可直接由剛體力平衡求出連桿內力。 ∣</li>
+<li>斜桿位移投影 ∣ 節點位移需精確投影至連桿軸向，以建立伸長量與節點位移 $(u, v)$ 的關係。 ∣</li>
+</ul>
+<h2>4. 步驟化詳細計算過程 (Step-by-Step Detailed Calculation)</h2>
+<h3>Step 1：剛性梁 ABC 靜力平衡分析求連桿內力</h3>
+<p>設定坐標系：以 A 點為原點，向右為 $x$ 正向，向上為 $y$ 正向。<br />
+假設連桿 AD、AE、BE 皆承受拉力（對剛梁施予向下的拉力）。<br />
+斜桿 AE 之幾何：<br />
+$$ L_{AE} = \sqrt{(4\lambda)^2 + (3\lambda)^2} = 5\lambda $$<br />
+拉力 $N_{AE}$ 作用於 A 點之方向為向右下方（水平比 4，垂直比 3，斜邊 5）。</p>
+<p>取剛性梁 ABC 為自由體，建立平衡方程式：</p>
+<ol>
+<li>
+<p><strong>水平力平衡：</strong><br />
+   $$ \sum F_x = 0 \implies N_{AE} \cdot \frac{4}{5} = 0 \implies N_{AE} = 0 $$<br />
+<em>(策略註解：結構無水平外力，且僅有一根斜桿提供水平分力，故該斜桿必為零力桿)</em></p>
+</li>
+<li>
+<p><strong>對 A 點取彎矩：</strong> (設逆時針為正)<br />
+   $$ \sum M_A = 0 \implies -N_{BE} \cdot (4\lambda) - F \cdot (8\lambda) = 0 $$<br />
+   $$ 4\lambda N_{BE} = -8\lambda F \implies N_{BE} = -2F \quad (\text{壓力}) $$</p>
+</li>
+<li>
+<p><strong>垂直力平衡：</strong><br />
+   $$ \sum F_y = 0 \implies -N_{AD} - N_{AE} \cdot \frac{3}{5} - N_{BE} - F = 0 $$<br />
+   代入 $N_{AE}=0$ 及 $N_{BE}=-2F$：<br />
+   $$ -N_{AD} - 0 - (-2F) - F = 0 \implies N_{AD} = F \quad (\text{拉力}) $$</p>
+</li>
+</ol>
+<p><strong>各連桿之內力結果：</strong></p>
+<ul>
+<li><strong>$N_{AD} = F$ (拉力)</strong></li>
+<li><strong>$N_{AE} = 0$</strong></li>
+<li><strong>$N_{BE} = 2F$ (壓力)</strong></li>
+</ul>
+<h3>Step 2：計算各連桿變形量</h3>
+<p>根據虎克定律 $\delta = \frac{NL}{EA}$，設伸長為正：<br />
+$$ \delta_{AD} = \frac{F \cdot (3\lambda)}{EA} = \frac{3F\lambda}{EA} $$<br />
+$$ \delta_{AE} = 0 $$<br />
+$$ \delta_{BE} = \frac{(-2F) \cdot (3\lambda)}{EA} = -\frac{6F\lambda}{EA} $$</p>
+<h3>Step 3：建立節點位移與幾何變形關係</h3>
+<p>設 A 點位移為 $(u_A, v_A)$（向右、向上為正），剛梁逆時針旋轉角為 $\theta$。</p>
+<ol>
+<li>
+<p><strong>A 點垂直位移 $v_A$</strong>：<br />
+   因支承 D 為固定，AD 桿變形即為 A 點之垂直位移：<br />
+   $$ v_A = \delta_{AD} = \frac{3F\lambda}{EA} $$</p>
+</li>
+<li>
+<p><strong>A 點水平位移 $u_A$</strong>：<br />
+   斜桿 AE 連接 A 點與固定的支承 E。A 點位移在 AE 軸向上的投影即為桿件伸長量 $\delta_{AE}$。<br />
+   E 點相對於 A 點的方向向量為 $(4, -3)$。因此 A 點向右位移會使桿件縮短，向上位移會使桿件伸長。<br />
+   $$ \delta_{AE} = -u_A \left(\frac{4}{5}\right) + v_A \left(\frac{3}{5}\right) = -0.8 u_A + 0.6 v_A $$<br />
+   已知 $\delta_{AE} = 0$，代入 $v_A$：<br />
+   $$ -0.8 u_A + 0.6 \left(\frac{3F\lambda}{EA}\right) = 0 \implies u_A = \frac{3}{4} \left(\frac{3F\lambda}{EA}\right) = \frac{9F\lambda}{4EA} $$</p>
+</li>
+<li>
+<p><strong>剛梁旋轉角 $\theta$</strong>：<br />
+   由於剛性梁小位移假設，B 點的垂直位移 $v_B$ 為：<br />
+   $$ v_B = v_A + 4\lambda \cdot \theta $$<br />
+   又 B 點垂直位移等於 BE 桿變形量：<br />
+   $$ v_B = \delta_{BE} = -\frac{6F\lambda}{EA} $$<br />
+   因此：<br />
+   $$ \frac{3F\lambda}{EA} + 4\lambda \theta = -\frac{6F\lambda}{EA} \implies 4\lambda \theta = -\frac{9F\lambda}{EA} \implies \theta = -\frac{9F}{4EA} \quad (\text{順時針旋轉}) $$</p>
+</li>
+</ol>
+<h3>Step 4：求 C 點位移</h3>
+<p>C 點位於 A 點右側 $8\lambda$ 處，根據剛體微小位移幾何：</p>
+<ul>
+<li>
+<p><strong>C 點水平位移 $u_C$</strong>：<br />
+  $$ u_C = u_A = \frac{9F\lambda}{4EA} \quad (\text{向右}) $$</p>
+</li>
+<li>
+<p><strong>C 點垂直位移 $v_C$</strong>：<br />
+  $$ v_C = v_A + 8\lambda \cdot \theta = \frac{3F\lambda}{EA} + 8\lambda \left(-\frac{9F}{4EA}\right) = \frac{3F\lambda}{EA} - \frac{18F\lambda}{EA} = -\frac{15F\lambda}{EA} $$<br />
+  負號代表向下。</p>
+</li>
+</ul>
+<h3>答案彙整</h3>
+<p>$$ \boxed{ \text{AD 桿內力} = F \, (\text{拉力}) } $$<br />
+$$ \boxed{ \text{AE 桿內力} = 0 } $$<br />
+$$ \boxed{ \text{BE 桿內力} = 2F \, (\text{壓力}) } $$<br />
+$$ \boxed{ \text{C 點水平位移} = \frac{9F\lambda}{4EA} \, (\rightarrow) } $$<br />
+$$ \boxed{ \text{C 點垂直位移} = \frac{15F\lambda}{EA} \, (\downarrow) } $$</p>
+<h2>5. 關鍵爭議點與進階探討 (Critical Issues &amp; Advanced Discussion)</h2>
+<ul>
+<li><strong>位移解的虛功法 (單位力法) 驗證</strong>：<br />
+  考場若時間充裕，可用單位力法快速驗證位移結果。</li>
+</ul>
+<ol>
+<li>
+<p><strong>驗證垂直位移 $v_C$</strong>：<br />
+     在 C 點施加向下單位力 $\delta P = 1 (\downarrow)$。因系統靜定，其引致的虛擬內力即為外力 $F=1$ 時的結果比例：<br />
+     $\delta N_{AD} = 1$、$\delta N_{AE} = 0$、$\delta N_{BE} = -2$。<br />
+     虛功方程式：$1 \cdot v_{C(\downarrow)} = \sum \delta N_i \cdot \Delta L_i$<br />
+     $$ v_{C(\downarrow)} = (1)\left(\frac{3F\lambda}{EA}\right) + (0)(0) + (-2)\left(-\frac{6F\lambda}{EA}\right) = \frac{3F\lambda}{EA} + \frac{12F\lambda}{EA} = \frac{15F\lambda}{EA} $$<br />
+     與幾何法完全吻合！</p>
+</li>
+<li>
+<p><strong>驗證水平位移 $u_C$</strong>：<br />
+     在 C 點施加向右單位力 $\delta P_x = 1 (\rightarrow)$。解剛梁平衡：<br />
+     $\sum F_x = 0 \implies \frac{4}{5} \delta N_{AE} + 1 = 0 \implies \delta N_{AE} = -1.25 = -5/4$<br />
+     $\sum M_A = 0 \implies \delta N_{BE} = 0$ (剛梁與水平力共線不產生對 A 的力矩)<br />
+     $\sum F_y = 0 \implies \delta N_{AD} = -\frac{3}{5} \delta N_{AE} = \frac{3}{4}$<br />
+     虛功方程式：$1 \cdot u_{C(\rightarrow)} = \sum \delta N_i \cdot \Delta L_i$<br />
+     $$ u_{C(\rightarrow)} = \left(\frac{3}{4}\right)\left(\frac{3F\lambda}{EA}\right) + \left(-\frac{5}{4}\right)(0) + (0)\left(-\frac{6F\lambda}{EA}\right) = \frac{9F\lambda}{4EA} $$<br />
+     再次與幾何法推導結果完美吻合。這證明了本題答案的絕對正確性。</p>
+</li>
+</ol></main>
+<footer>來源：raw/solutions/SA-2003-2/SA-2003-2.md（知識庫解題內容唯一正本；本頁僅為渲染顯示）</footer>
+</body></html>

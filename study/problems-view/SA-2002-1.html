@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="zh-Hant"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SA-2002-1 — 題目解析</title>
+<link rel="stylesheet" href="../assets/katex/katex.min.css">
+<script defer src="../assets/katex/katex.min.js"></script>
+<script defer src="../assets/katex/auto-render.min.js"
+  onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},
+  {left:'$',right:'$',display:false},{left:'\\(',right:'\\)',display:false}],throwOnError:false});"></script>
+<style>
+:root{--ac:#1565c0;--bg:#f7f9fb;--card:#fff;--ink:#263238;--mut:#607d8b;--bd:#dfe6ea}
+*{box-sizing:border-box}
+body{margin:0;font-family:"Microsoft JhengHei","Noto Sans TC",-apple-system,sans-serif;
+  background:var(--bg);color:var(--ink);line-height:1.75;font-size:15.5px}
+header{background:linear-gradient(135deg,#0d47a1,#1976d2 60%,#42a5f5);color:#fff;padding:22px 26px}
+header h1{margin:0;font-size:1.15em}
+header .back{display:inline-block;margin-top:10px;font-size:.82em;color:#fff;background:rgba(255,255,255,.18);
+  padding:4px 12px;border-radius:14px;text-decoration:none}
+main{max-width:880px;margin:0 auto;padding:26px 22px 70px}
+h1,h2,h3{color:#0d47a1} h2{font-size:1.2em;border-left:6px solid var(--ac);padding-left:12px;margin:34px 0 14px}
+table{width:100%;border-collapse:collapse;margin:14px 0;font-size:.92em;background:#fff}
+th,td{border:1px solid var(--bd);padding:7px 10px;text-align:left;vertical-align:top}
+th{background:#eceff1;font-weight:600} tbody tr:nth-child(even){background:#fafcfd}
+code{background:#eceff1;padding:1px 5px;border-radius:4px;font-size:.92em}
+img{max-width:100%;display:block;margin:14px auto;border:1px solid var(--bd);border-radius:8px}
+.katex-display{margin:12px 0!important;overflow-x:auto;overflow-y:hidden}
+footer{text-align:center;color:var(--mut);font-size:.8em;padding:22px;border-top:1px solid var(--bd)}
+</style></head><body>
+<header><h1>SA-2002-1 題目解析</h1><a class="back" href="javascript:history.back()">← 返回講義</a></header>
+<main><h1>考題編號：SA-2002-1</h1>
+<p><strong>主分類：</strong> <code>SA-1</code> 靜定結構分析<br />
+<strong>副分類：</strong> <code>SA-1-2</code> 靜定剛架<br />
+<strong>分析法：</strong> 靜定分析<br />
+<strong>標籤：</strong> <code>靜定剛架</code> <code>內鉸</code> <code>集中力矩</code> <code>剪力彎矩圖</code></p>
+<hr />
+<h2>1. 原始題目重述 (Problem Restatement)</h2>
+<p>如下圖所示之剛架結構，點F 為內鉸，在各種外力作用下，試繪其軸力圖、剪力圖及彎矩圖。（25 分）</p>
+<p><img alt="SA-2002-1 題目附圖：包含內部鉸接之靜定剛架" src="../../raw/solutions/SA-2002-1/SA-2002-1-fig-1.png" /></p>
+<p><em>圖說：本結構為一非對稱剛架，A點與H點為鉸支承。左側柱高4m，於y=2m處(B點)受6 kN-m順時針集中彎矩；頂部C點受10 kN向右集中力。橫梁長6m，C到D(2m)受2 kN/m向下均布載重，E點(x=3m)受8 kN向下集中力。右側柱高4m，下半段H到G(2m)受2 kN/m向左均布載重。F點為內鉸，梁端與柱端各受4 kN-m之集中彎矩（梁端逆時針，柱端順時針）。</em></p>
+<h2>2. 考題核心精神與出題者意圖 (Core Concepts &amp; Examiner's Intent)</h2>
+<p>本題測驗的核心觀念為<strong>靜定結構的整體與局部平衡</strong>，以及<strong>內鉸與集中力矩的處理細節</strong>。<br />
+出題者刻意在內鉸 F 點的相鄰桿端加上集中力矩（梁端 4 kN-m 逆時針，柱端 4 kN-m 順時針），藉此測驗考生是否清楚「內鉸本身彎矩為零，但緊鄰內鉸的桿端內力會因外部集中力矩而發生突變或不為零」的觀念。此外，左右側不同的均布載重與集中載重配置，考驗考生在計算支承反力與繪製內力圖時的細心程度。</p>
+<h2>3. 解題戰略地圖與陷阱分析 (Strategic Roadmap &amp; Trap Analysis)</h2>
+<p><strong>作戰計畫：</strong></p>
+<ol>
+<li><strong>分離體平衡：</strong> 將結構由內鉸 F 點拆分為左右兩分離體（左：A-B-C-D-E-F，右：F-G-H）。</li>
+<li><strong>求解反力：</strong> 利用右側分離體對 H 點取矩求得 F 點水平剪力 $F_x$，再利用左側分離體對 A 點取矩求得 F 點垂直剪力 $F_y$。接著利用整體或各自分離體的 $\Sigma F_x=0$ 與 $\Sigma F_y=0$ 求解 A、H 的支承反力。</li>
+<li><strong>分段內力計算：</strong> 依據求得之反力，逐段計算軸力(N)、剪力(V)與彎矩(M)。</li>
+<li><strong>繪製內力圖：</strong> 標示關鍵點數值，特別注意集中力矩造成的彎矩圖跳躍，以及均布載重造成的二次拋物線。</li>
+</ol>
+<p><strong>陷阱分析：</strong></p>
+<ul>
+<li>⚠ <strong>陷阱一：F點集中力矩的歸屬。</strong> 鉸 F 本身不能承受彎矩，圖示的兩個 4 kN-m 集中力矩應視為分別作用於「梁 CF 的右端」與「柱 FH 的頂端」。在取分離體平衡時，必須將對應的力矩納入該分離體中。</li>
+<li>⚠ <strong>陷阱二：彎矩圖跳躍方向。</strong> 在 B 點有 6 kN-m 的順時針集中力矩，會造成彎矩圖發生跳躍；在判斷跳躍方向時，務必以分離體切面平衡為準。</li>
+<li>⚠ <strong>陷阱三：柱頂與梁端的內力轉換。</strong> 在剛節點 C 處，柱頂的彎矩與剪力將轉換為梁端的彎矩與軸力，轉換過程需繪製節點 C 的自由體圖確認符號與方向，確保平衡。</li>
+</ul>
+<h2>3.5 變數層次分析 (Variable Hierarchy Analysis)</h2>
+<h3>最終目標</h3>
+<p><code>求出所有支承反力，並精確繪製各桿件的軸力(AFD)、剪力(SFD)與彎矩圖(BMD)</code></p>
+<h3>本題關鍵公式（依計算順序）</h3>
+<ul>
+<li>鉸接點拆解平衡（右部分）：$\sum M_H = 0 \implies F_x$</li>
+<li>鉸接點拆解平衡（左部分）：$\sum M_A = 0 \implies F_y$</li>
+<li>整體平衡求反力：$\sum F_x = 0 \implies A_x, H_x$，$\sum F_y = 0 \implies A_y, H_y$</li>
+<li>桿件內力計算：$V(x) = \int -w(x) dx$，$M(x) = \int V(x) dx$</li>
+</ul>
+<h3>L1：題目直接給定</h3>
+<ul>
+<li><strong>符號 ∣ 數值 ∣ 說明</strong></li>
+<li>$L_{AC}$ ∣ $4 \text{ m}$ ∣ 左柱高度</li>
+<li>$L_{CF}$ ∣ $6 \text{ m}$ ∣ 橫梁長度</li>
+<li>$L_{FH}$ ∣ $4 \text{ m}$ ∣ 右柱高度</li>
+<li>$P_C$ ∣ $10 \text{ kN}$ (向右) ∣ C 點集中水平力</li>
+<li>$M_B$ ∣ $6 \text{ kN-m}$ (順時針) ∣ B 點集中力矩</li>
+<li>$w_{CD}$ ∣ $2 \text{ kN/m}$ (向下) ∣ CD 段均布載重</li>
+<li>$P_E$ ∣ $8 \text{ kN}$ (向下) ∣ E 點集中垂直力</li>
+<li>$w_{GH}$ ∣ $2 \text{ kN/m}$ (向左) ∣ GH 段均布載重</li>
+<li>$M_{F,beam}$ ∣ $4 \text{ kN-m}$ (逆時針) ∣ F 點橫梁端集中力矩</li>
+<li>$M_{F,col}$ ∣ $4 \text{ kN-m}$ (順時針) ∣ F 點右柱端集中力矩</li>
+</ul>
+<h3>L2：需知識點推導</h3>
+<p><strong>求解支承反力與鉸接力</strong></p>
+<ul>
+<li><strong>符號 ∣ 公式／來源 ∣ 卡關?</strong></li>
+<li>$F_x, F_y$ ∣ F 點內鉸分離體平衡 ∣</li>
+<li>$A_x, A_y$ ∣ 整體結構或左部分離體力平衡 ∣</li>
+<li>$H_x, H_y$ ∣ 右部分離體力平衡 ∣</li>
+</ul>
+<h3>L3：深層知識（不懂就卡住）</h3>
+<ul>
+<li><strong>知識點 ∣ 說明 ∣ 卡關?</strong></li>
+<li><strong>內鉸外加力矩處理</strong> ∣ 內鉸 $M=0$，外部力矩應直接施加於分離體的桿端，不影響鉸本身的彎矩傳遞 ∣</li>
+<li><strong>節點內力轉換</strong> ∣ 剛接點 C 的柱頂剪力轉換為梁軸力，柱頂軸力轉換為梁剪力，彎矩則依節點平衡分配 ∣</li>
+</ul>
+<h2>4. 步驟化詳細計算過程 (Step-by-Step Detailed Calculation)</h2>
+<h3>Step 1: 拆解結構與反力計算</h3>
+<p>將結構於 F 點拆開，設 F 點內力為 $F_x$ (設向右為正) 與 $F_y$ (設向下為正，作用於右分離體)。<br />
+針對<strong>右分離體 (F-G-H)</strong>，H 為鉸支承有 $H_x, H_y$。</p>
+<ul>
+<li>
+<p>對 H 點取力矩 $\sum M_H = 0$：<br />
+  $$ -F_x \times 4 - 4 \text{ (柱端順時針)} + (2 \times 2) \times 1 \text{ (均布載重)} = 0 $$<br />
+  $$ -4F_x - 4 + 4 = 0 \implies \boxed{F_x = 0 \text{ kN}} $$</p>
+</li>
+<li>
+<p>$\sum F_x = 0$：<br />
+  $$ H_x + F_x - (2 \times 2) = 0 \implies H_x - 4 = 0 \implies \boxed{H_x = 4 \text{ kN} \text{ (向右)}} $$</p>
+</li>
+</ul>
+<p>針對<strong>左分離體 (A-B-C-D-E-F)</strong>，F 點受力為 $F_x=0$, $F_y$ (向上)。</p>
+<ul>
+<li>
+<p>對 A 點取力矩 $\sum M_A = 0$：<br />
+  $$ -6 \text{ (B點力矩)} - 10 \times 4 \text{ (C點水平力)} - (2 \times 2) \times 1 \text{ (CD載重)} - 8 \times 3 \text{ (E點力)} + 4 \text{ (梁端逆時針)} + F_y \times 6 = 0 $$<br />
+  $$ -6 - 40 - 4 - 24 + 4 + 6F_y = 0 \implies -70 + 6F_y = 0 \implies \boxed{F_y = \frac{35}{3} \approx 11.67 \text{ kN} \text{ (向上)}} $$</p>
+</li>
+<li>
+<p>$\sum F_x = 0$：<br />
+  $$ A_x + 10 + F_x = 0 \implies \boxed{A_x = -10 \text{ kN} \text{ (向左)}} $$</p>
+</li>
+<li>
+<p>$\sum F_y = 0$：<br />
+  $$ A_y - (2 \times 2) - 8 + F_y = 0 \implies A_y - 12 + \frac{35}{3} = 0 \implies \boxed{A_y = \frac{1}{3} \text{ kN} \text{ (向上)}} $$</p>
+</li>
+</ul>
+<p>回到右分離體求 $H_y$：</p>
+<ul>
+<li>$\sum F_y = 0 \implies H_y - F_y = 0 \implies \boxed{H_y = \frac{35}{3} \approx 11.67 \text{ kN} \text{ (向上)}} $$
+
+### Step 2: 各桿件內力計算 (以受拉側為彎矩正向)
+
+#### 1. 左側柱 (A-B-C)
+- **A-B段 (y = 0 ~ 2m)**：
+  - 軸力：$N = -A_y = \boxed{-1/3 \text{ kN} \text{ (壓)}}$
+  - 剪力：$V = A_x = \boxed{-10 \text{ kN}}$
+  - 彎矩：$M(y) = 10 \times y$ (左側受拉)。$M_A = \boxed{0}$，$M_B^- = \boxed{20 \text{ kN-m}}$ (左側受拉)。
+- **B-C段 (y = 2 ~ 4m)**：
+  - 軸力與剪力不變：$N = \boxed{-1/3 \text{ kN}}$，$V = \boxed{-10 \text{ kN}}$
+  - B點有 6 kN-m 順時針外加力矩，使左側受拉增加：$M_B^+ = 20 + 6 = \boxed{26 \text{ kN-m}}$ (左側受拉)。
+  - $M(y) = 26 + 10(y-2)$。至 C 點：$M_C = 26 + 10(2) = \boxed{46 \text{ kN-m}}$ (左側受拉)。
+
+#### 2. 剛節點 C 之平衡
+柱頂 C 點提供 46 kN-m (左側受拉，即柱頂逆時針作用於節點)。為維持節點平衡，梁左端需承受 46 kN-m 之彎矩 (順時針作用於梁左端)，這將使梁產生**底部受拉**。因此橫梁起始彎矩為 $M_{CD}(0) = \boxed{+46 \text{ kN-m}}$。
+同時，柱頂剪力 10 kN (向左) 與外力 10 kN (向右) 抵銷，故橫梁軸力為 $\boxed{0}$。柱頂軸力 $1/3$ kN (向上推) 轉換為橫梁左端剪力 $V_{CD}(0) = \boxed{+1/3 \text{ kN}}$。
+
+#### 3. 橫梁 (C-D-E-F)
+- **C-D段 (x = 0 ~ 2m)**：
+  - 軸力：$N = \boxed{0}$
+  - 剪力：$V(x) = 1/3 - 2x$。$V_C = \boxed{1/3 \text{ kN}}$，$V_D = \boxed{-11/3 \text{ kN}}$。剪力過零點在 $x = 1/6 \text{ m}$。
+  - 彎矩：$M(x) = 46 + \frac{1}{3}x - x^2$ (底部受拉)。
+    最大彎矩：$M_{max} = 46 + \frac{1}{3}(\frac{1}{6}) - (\frac{1}{6})^2 = \boxed{46.03 \text{ kN-m}}$。
+    $M_D = 46 + \frac{2}{3} - 4 = \boxed{42.67 \text{ kN-m}}$。
+- **D-E段 (x = 2 ~ 3m)**：
+  - 軸力：$N = \boxed{0}$
+  - 剪力：$V = \boxed{-11/3 \text{ kN}}$ (常數)
+  - 彎矩：線性變化。$M_E = 42.67 - \frac{11}{3} \times 1 = \boxed{39 \text{ kN-m}}$ (底部受拉)。
+- **E-F段 (x = 3 ~ 6m)**：
+  - 軸力：$N = \boxed{0}$
+  - E點有 8 kN 向下外力。剪力：$V = -11/3 - 8 = \boxed{-35/3 \text{ kN}}$ (常數)。
+  - 彎矩：線性變化。$M_F = 39 - \frac{35}{3} \times 3 = 39 - 35 = \boxed{4 \text{ kN-m}}$ (底部受拉)。
+  - 此內部彎矩剛好由 F 點逆時針 4 kN-m 的外部集中力矩完美平衡。
+
+#### 4. 右側柱 (H-G-F)
+- **H-G段 (y = 0 ~ 2m)**：
+  - 軸力：$N = -H_y = \boxed{-35/3 \text{ kN} \text{ (壓)}}$
+  - 剪力：考慮底部 $H_x=4$ (向右) 與均布力 $2y$ (向左)，剪力由下至上線性遞減，$V_H = \boxed{-4 \text{ kN}}$，$V_G = \boxed{0 \text{ kN}}$。
+  - 彎矩：$M(y) = 4y - \frac{1}{2}(2)y^2 = 4y - y^2$ (右側受拉)。
+    $M_H = \boxed{0}$，$M_G = 4(2) - 2^2 = \boxed{4 \text{ kN-m}}$ (右側受拉)。
+- **G-F段 (y = 2 ~ 4m)**：
+  - 軸力：$N = \boxed{-35/3 \text{ kN} \text{ (壓)}}$
+  - 剪力：$V = \boxed{0}$
+  - 彎矩：由於剪力為 0，彎矩維持常數。$M_F = \boxed{4 \text{ kN-m}}$ (右側受拉)。
+  - 此數值剛好由 F 點順時針 4 kN-m 外部集中力矩平衡。
+
+### Step 3: 繪製 AFD、SFD 與 BMD
+*(詳細圖形請參照手繪補充)*
+- **AFD**：左柱恆為 -1/3，橫梁為 0，右柱恆為 -35/3。
+- **SFD**：左柱恆為 -10，橫梁由 1/3 降至 -11/3，再階梯降至 -35/3；右柱由 -4 線性升至 0，其後為 0。
+- **BMD** (畫於受拉側)：
+  - **左柱(左側)**：0 $\xrightarrow{直線}$ 20 (跳躍至26) $\xrightarrow{直線}$ 46。
+  - **橫梁(下側)**：46 $\xrightarrow{二次曲線}$ 42.67 $\xrightarrow{直線}$ 39 $\xrightarrow{直線}$ 4。
+  - **右柱(右側)**：0 $\xrightarrow{二次曲線}$ 4 $\xrightarrow{直線}$ 4。
+
+## 5. 關鍵爭議點與進階探討 (Critical Issues & Advanced Discussion)
+本題最大的考驗在於 F 點「雙集中力矩」的解讀。部分考生可能會誤將 4 kN-m 力矩直接加總或互相抵銷，而忽略了它們分別作用在內鉸兩側的實體桿件上。
+標準作法是將它們**視為作用於分離體桿端的外力**，這樣一來內鉸本身的彎矩 $M=0$ 條件依然成立，且桿端的內部彎矩能與這些外部力矩完美平衡。解題時強烈建議如 Step 1 般拆解為左右兩自由體，即可避免符號混淆與漏算。</li>
+</ul></main>
+<footer>來源：raw/solutions/SA-2002-1/SA-2002-1.md（知識庫解題內容唯一正本；本頁僅為渲染顯示）</footer>
+</body></html>

@@ -77,33 +77,86 @@ $$\frac{\partial U}{\partial X_i} = 0 \quad \text{(最小應變能條件)}$$
 
 #### 桿端彎矩公式（標準形）
 
-$$M_{ij} = 4EI/L \cdot \theta_i + 2EI/L \cdot \theta_j + M_{FEM,ij} + M_{\delta,ij}$$
+$$M_{ij} = \frac{2EI}{L}\big(2\theta_i + \theta_j - 3\psi\big) + M^F_{ij}
+= \frac{4EI}{L}\theta_i + \frac{2EI}{L}\theta_j - \frac{6EI}{L^2}\Delta + M^F_{ij}$$
 
 其中：
-- $4EI/L$：轉角勁度（i端轉角 $\theta_i=1$ 時 i端彎矩）
-- $2EI/L$：轉角耦合項（j端轉角 $\theta_j=1$ 時 i端彎矩）
-- $M_{FEM,ij}$：固端彎矩
-- $M_{\delta,ij} = -6EI/L^2 \cdot \delta$：側移項（適用於側移剛架）
+- $4EI/L$：轉角勁度（i 端轉角 $\theta_i=1$、遠端固定時 i 端彎矩）
+- $2EI/L$：轉角耦合項（j 端轉角 $\theta_j=1$ 時傳到 i 端的彎矩 ⟹ 傳遞係數 $C=1/2$）
+- $M^F_{ij}$：固端彎矩（兩端固定時跨內載重造成的端彎矩）
+- $-6EI/L^2 \cdot \Delta = -6EI/L \cdot \psi$：側移項。$\Delta$ 為兩端**垂直於桿軸**的相對位移，$\psi = \Delta/L$
+
+**⭐ 建議記憶形式（把 $\psi$ 併入 $\theta$）：**
+
+$$M_{ij} = \frac{2EI}{L}\Big[\,2(\theta_i - \psi) + (\theta_j - \psi)\,\Big] + M^F_{ij}$$
+
+彎矩只認「桿端切線<u>相對於弦</u>的角度」。那個 $-3\psi$ 其實是 $-2\psi-\psi$，
+是兩個 $\theta$ 各自扣掉弦轉動的結果，不必背；且 $\psi$ 的係數必然等於兩個 $\theta$ 係數之和（$3=2+1$）。
+
+**剛體檢查（10 秒抓符號錯）：** 令 $\theta_i=\theta_j=\psi=\alpha$、無跨內載重，應得 $M_{ij}=0$。
+若不為零，符號一定錯（最常見是把 $-3\psi$ 寫成 $+3\psi$）。
 
 #### 側移剛架的額外方程：層剪力平衡
 
-若結構有 $m$ 層，第 $k$ 層側移為 $\delta_k$，則該層的**層剪力** $H_k$ 應滿足：
+第 $k$ 層的層剪力平衡：
 
-$$H_k = \sum (\text{該層各桿的剪力})$$
+$$\sum V_k = H_k \quad (\text{該層外加水平力})$$
 
-而桿剪力與側移的關係：
-$$V_{ij} = 6EI/L^2 \cdot (\theta_i + \theta_j) + 12EI/L^3 \cdot \delta_k$$
+柱**無**跨內載重時，由單柱自由體取矩：
 
-組合得側移修正項。
+$$|V| = \frac{|M_{ij} + M_{ji}|}{L}\qquad(\text{方向由自由體圖決定})$$
+
+以位移表示（與矩陣法對應時使用）：
+
+$$V = -\frac{6EI}{L^2}(\theta_i + \theta_j) + \frac{12EI}{L^3}\Delta + V^0_{ij}$$
+
+其中 $V^0_{ij}$ 為兩端固定時跨內載重造成的固端剪力。
+
+> ⚠️ **兩項符號必須相反。** 剛體檢查：令 $\theta_i=\theta_j=\alpha$、$\Delta=\alpha L$，
+> 應得 $V = -\frac{12EI\alpha}{L^2} + \frac{12EI\alpha}{L^2} = 0$。若兩項同號，此檢查會失敗。
+>
+> ⚠️ **柱上有跨內載重時 $|V| = |M_{ij}+M_{ji}|/L$ 不成立**，必須另畫自由體推導（見 [[SA-2017-3]]）。
+>
+> **斜桿／非正交幾何／柱有集中力時，改用虛功法建側移方程：**
+> $\sum(\text{外力} \times \text{虛位移}) = \sum (M_{ij}+M_{ji})\,\delta\psi_{ij}$。
+> $\delta\psi_{ij}$ 在寫方程式時已算過，直接重用，不必再做一次幾何分解。
 
 #### 勁度與修正
 
-| 情況 | 勁度修正 | 說明 |
+| 情況 | 有效勁度 | 說明 |
 |------|--------|------|
-| 標準桿（兩端剛接） | $K = 4EI/L$ | 無修正 |
-| 遠端鉸接 | $K = 3EI/L$ | 減少 25%；因遠端轉角 = 0 |
-| 對稱結構，節點i在對稱軸上 | $K = 2EI/L$ | 半結構分析，將該節點視為對稱邊界 |
-| 對稱結構，節點i不在軸上 | $K = 4EI/L$（遠端反對稱） | 修正係數 = 0.5（因 $\theta_{\text{far}} = -\theta_i$）|
+| 標準桿（兩端剛接、遠端固定） | $4EI/L$ | 無修正；傳遞係數 $C=1/2$ |
+| **遠端鉸接** | $3EI/L$（**減 25%**） | 原因是「遠端不再提供**轉動約束**」，故近端變軟。<br>**不是**「遠端轉角為零」—— 恰好相反，遠端鉸接時 $\theta_j$ 最大，只是彎矩為零。<br>修正式：$M_{ij} = \frac{3EI}{L}(\theta_i-\psi) + \big(M^F_{ij}-\tfrac12 M^F_{ji}\big)$，**式中無 $\theta_j$** |
+| 對稱結構＋**對稱**載重（跨對稱軸的桿） | $2EI/L$（減半） | $\theta_j = -\theta_i$ ⟹ $(2\theta_i-\theta_i)=\theta_i$；且 $\Delta = 0$ |
+| 對稱結構＋**反對稱**載重（跨對稱軸的桿） | $6EI/L$（1.5 倍） | $\theta_j = +\theta_i$ ⟹ $(2\theta_i+\theta_i)=3\theta_i$；且 $\Delta \ne 0$ |
+| 兩端皆無轉角、僅側移（剛性構件夾住的柱） | $M=\frac{6EI}{L^2}\Delta$、$V=\frac{12EI}{L^3}\Delta$ | 短柱效應：$V \propto 1/L^3$（見 [[SA-2006-4]]） |
+| 非均勻斷面 | $M_{ij}=S_{ij}\frac{EI_0}{L}(\theta_i+C_{ji}\theta_j)-(\text{側移項})+\bar M^F_{ij}$ | 均勻梁是 $S=4$、$C=1/2$ 的特例；須重新推導（見 [[SA-2025-3]]） |
+
+> ⚠️ **名稱陷阱：**「對稱載重」給的是**反號**的轉角，「反對稱載重」給的才是**同號**的轉角。
+> 名稱說的是載重與變形形狀的對稱性，不是轉角數值的正負。
+> 不要背這兩個數字，直接把轉角關係代進 $\frac{2EI}{L}(2\theta_i+\theta_j)$ 即可，三秒鐘且不會記反。
+
+#### 固端彎矩（FEM）與修正規則
+
+| 載重 | $M^F_{ij}$（左端） | $M^F_{ji}$（右端） |
+|------|------|------|
+| 滿跨均佈 $w$ | $-wL^2/12$ | $+wL^2/12$ |
+| 中央集中 $P$ | $-PL/8$ | $+PL/8$ |
+| 任意位置集中 $P$（距 i 為 $a$、距 j 為 $b$） | $-Pab^2/L^2$ | $+Pa^2b/L^2$ |
+| 三角形分佈（i 端 0 → j 端 $w$） | $-wL^2/30$ | $+wL^2/20$ |
+
+**遠端鉸接的修正規則（一條吃下所有特例）：**
+
+$$\bar M^F_{ij} = M^F_{ij} - \tfrac12 M^F_{ji}$$
+
+驗證：滿跨均佈 $wL^2/12 \to wL^2/8$；中央集中 $PL/8 \to 3PL/16$。
+**修正後必然變大**（遠端不能承擔彎矩，載重效應全推給近端）。算出變小就是符號寫反。
+
+> **節點載重不進 FEM。** 作用在剛節點的力沒有跨內位置 ⟹ FEM $=0$；
+> 也不進節點彎矩平衡（$\sum M=0$ 只加彎矩）；**只**進側移方程。見 [[SA-2017-3]]。
+
+> **完整原理、圖解與手算範例：** 見 [SA-U2-3 觀念講義](../../study/lecture-SA-U2-3.html)
+> 與 [SA-U2-3 題型診斷](../diagnosis/SA-U2-3.md)；本法專頁見 [[SA-code-slope-deflection]]。
 
 ### 4. 矩陣位移法（直接勁度法）
 
@@ -163,22 +216,39 @@ EA/L & 0 & 0 & -EA/L & 0 & 0 \\
 
 #### 對稱性簡化
 
-- 對稱結構可取半結構分析
-- 節點在對稱軸上：勁度減半（對稱邊界 $\theta_{\text{far}} = \theta_i$）；勁度修正為 $K = 2EI/L$
-- 同時修改分配因子與傳遞因子
+對稱結構可取半結構分析。跨對稱軸的桿件，其有效勁度依**載重**的對稱性而不同：
+
+| 載重 | 跨對稱軸桿的轉角關係 | 有效勁度 |
+|------|------------------|---------|
+| **對稱** | $\theta_{\text{far}} = -\theta_{\text{near}}$ | $K = 2EI/L$（減半） |
+| **反對稱** | $\theta_{\text{far}} = +\theta_{\text{near}}$ | $K = 6EI/L$（1.5 倍） |
+
+分配因子須依修正後的勁度重算；跨對稱軸的桿不再需要傳遞（遠端由對稱性決定）。
 
 ## 涉及題目統計
 
-| 方法 | 題數 | 代表題目 |
-|------|------|---------|
-| 最小功法 | 12 | [[SA-2013-1]], [[SA-2010-2]], [[SA-2006-1]] |
-| 諧合變位法 | 7 | [[SA-2023-2]], [[SA-2011-1]], [[SA-2002-3]] |
-| 傾角變位法 | 13 | [[SA-2020-1]], [[SA-2017-2]], [[SA-2009-2]] |
-| 矩陣位移法 | 12 | [[SA-2019-2]], [[SA-2016-1]], [[SA-2012-1]] |
-| 彎矩分配法 | 2 | [[SA-2006-3]], [[SA-2003-1]] |
+依 `raw/json/question_index.json` 的 `primaryTopicId` 統計（2026-07-26 重新核對）。
+第二單元主分類共 **46 題**（全科 96 題）：
+
+| 子項 | 方法 | 主分類題數 | 代表題目 |
+|------|------|:---------:|---------|
+| SA-U2-1 | 最小功法 | 12 | [[SA-2006-1]], [[SA-2013-2]], [[SA-2022-1]] |
+| SA-U2-2 | 諧合變位法 | 7 | [[SA-2002-3]], [[SA-2011-1]], [[SA-2023-2]] |
+| SA-U2-3 | 傾角變位法 | 13 | [[SA-2017-3]], [[SA-2022-2]], [[SA-2024-4]] |
+| SA-U2-4 | 矩陣位移法 | 12 | [[SA-2012-4]], [[SA-2019-4]], [[SA-2025-4]] |
+| SA-U2-5 | 彎矩分配法 | 2 | [[SA-2003-1]], [[SA-2006-3]] |
+
+> ⚠️ **勘誤（2026-07-26）：** 原表的「代表題目」多處題號不屬於該子項 ——
+> 最小功法列 [[SA-2013-1]]（實為 SA-U1-2 桁架三鉸拱）與 SA-2010-2；
+> 傾角變位法列 SA-2017-2（實為 SA-U2-1）與 SA-2009-2；
+> 矩陣位移法列 SA-2019-2、[[SA-2016-1]]、[[SA-2012-1]]（後兩題實為 SA-U1-2）。
+> 題數（12／7／13／12／2）本身正確，已保留並補上子項代號。
 
 ## 參考資源
 
-- 結構學第二單元命題大綱：[[SA-U2]]
-- 相關哲學思維：[[wiki/philosophy/force-method-philosophy]]、[[wiki/philosophy/displacement-method-philosophy]]、[[wiki/philosophy/matrix-method-philosophy]]
-- 相關失敗模式：[[wiki/failure-modes/符號錯誤]]、[[wiki/failure-modes/公式應用]]、[[wiki/failure-modes/收斂問題]]
+- 結構學第二單元命題大綱：見 `CLAUDE.md`「命題大綱分類」
+- 各方法專頁：[SA-code-minimum-work](SA-code-minimum-work.md)、[SA-code-compatibility](SA-code-compatibility.md)、[**SA-code-slope-deflection**](SA-code-slope-deflection.md)、[SA-code-matrix-displacement](SA-code-matrix-displacement.md)、[SA-code-moment-distribution](SA-code-moment-distribution.md)
+- 題型診斷：[SA-U2-1](../diagnosis/SA-U2-1.md)、[SA-U2-2](../diagnosis/SA-U2-2.md)、[**SA-U2-3**](../diagnosis/SA-U2-3.md)、[SA-U2-4](../diagnosis/SA-U2-4.md)、[SA-U2-5](../diagnosis/SA-U2-5.md)
+- 觀念講義：[lecture-SA-U2-3](../../study/lecture-SA-U2-3.html)（[PDF](../../study/lecture-SA-U2-3.pdf)）
+- 相關哲學思維：[force-method-philosophy](../philosophy/force-method-philosophy.md)、[displacement-method-philosophy](../philosophy/displacement-method-philosophy.md)、[matrix-method-philosophy](../philosophy/matrix-method-philosophy.md)
+- 相關失敗模式：[符號錯誤](../failure-modes/符號錯誤.md)、[公式應用](../failure-modes/公式應用.md)、[收斂問題](../failure-modes/收斂問題.md)

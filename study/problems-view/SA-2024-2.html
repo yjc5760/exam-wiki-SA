@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="zh-Hant"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SA-2024-2 — 題目解析</title>
+<link rel="stylesheet" href="../assets/katex/katex.min.css">
+<script defer src="../assets/katex/katex.min.js"></script>
+<script defer src="../assets/katex/auto-render.min.js"
+  onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},
+  {left:'$',right:'$',display:false},{left:'\\(',right:'\\)',display:false}],throwOnError:false});"></script>
+<style>
+:root{--ac:#1565c0;--bg:#f7f9fb;--card:#fff;--ink:#263238;--mut:#607d8b;--bd:#dfe6ea}
+*{box-sizing:border-box}
+body{margin:0;font-family:"Microsoft JhengHei","Noto Sans TC",-apple-system,sans-serif;
+  background:var(--bg);color:var(--ink);line-height:1.75;font-size:15.5px}
+header{background:linear-gradient(135deg,#0d47a1,#1976d2 60%,#42a5f5);color:#fff;padding:22px 26px}
+header h1{margin:0;font-size:1.15em}
+header .back{display:inline-block;margin-top:10px;font-size:.82em;color:#fff;background:rgba(255,255,255,.18);
+  padding:4px 12px;border-radius:14px;text-decoration:none}
+main{max-width:880px;margin:0 auto;padding:26px 22px 70px}
+h1,h2,h3{color:#0d47a1} h2{font-size:1.2em;border-left:6px solid var(--ac);padding-left:12px;margin:34px 0 14px}
+table{width:100%;border-collapse:collapse;margin:14px 0;font-size:.92em;background:#fff}
+th,td{border:1px solid var(--bd);padding:7px 10px;text-align:left;vertical-align:top}
+th{background:#eceff1;font-weight:600} tbody tr:nth-child(even){background:#fafcfd}
+code{background:#eceff1;padding:1px 5px;border-radius:4px;font-size:.92em}
+img{max-width:100%;display:block;margin:14px auto;border:1px solid var(--bd);border-radius:8px}
+.katex-display{margin:12px 0!important;overflow-x:auto;overflow-y:hidden}
+footer{text-align:center;color:var(--mut);font-size:.8em;padding:22px;border-top:1px solid var(--bd)}
+</style></head><body>
+<header><h1>SA-2024-2 題目解析</h1><a class="back" href="javascript:history.back()">← 返回講義</a></header>
+<main><h1>考題編號：SA-2024-2</h1>
+<p><strong>主分類：</strong> <code>SA-U2</code> 結構變位分析<br />
+<strong>副分類：</strong> <code>SA-U1</code> 靜定結構分析<br />
+<strong>分析法：</strong> 單位力法 (虛功法)<br />
+<strong>標籤：</strong> <code>靜定桁架</code>, <code>製造誤差</code>, <code>溫度變化</code>, <code>支承沉陷</code>, <code>多餘資訊陷阱</code></p>
+<hr />
+<h2>1. 原始題目重述 (Problem Restatement)</h2>
+<p>如圖二所示之桁架，已知支承 F 發生垂直向下沉陷 $v_F = 12\text{ mm}$，桿件 CD 有製造誤差 $\delta$，桿件 DE 有溫差 $\Delta T$。因以上三個原因，造成 C 點向下位移 4.8 mm，E 點向下位移 6.4 mm。試求上述製造誤差 $\delta = ?\text{ mm}$（註明過長或過短）及 $\Delta T = ?^\circ\text{C}$（註明升溫或降溫）；假設所有桁架桿件性質相同如下：熱膨脹係數 $\alpha = 1.5 \times 10^{-5} /^\circ\text{C}$，楊氏模數 $100\text{ GPa}$，斷面積 $A=150\text{ mm}^2$。（25 分）</p>
+<p><img alt="SA-2024-2 題目附圖：帶有懸臂段的 Pratt 桁架" src="../../raw/solutions/SA-2024-2/SA-2024-2-fig-1.png" /></p>
+<p><em>圖說：總跨度共 7 個節點 (A~G)，每節點間距 4m。支承位於 B (滾支承) 與 F (鉸支承)。上方節點 H~N 高度為 3m。斜桿呈現 Pratt 桁架配置 (V字型)。</em></p>
+<h2>2. 考題核心精神與出題者意圖 (Core Concepts &amp; Examiner's Intent)</h2>
+<p>本題是一道極具鑑別度的「靜定結構運動學」考題。出題者主要測驗考生兩個核心觀念：</p>
+<ol>
+<li><strong>虛功法（單位力法）的多重成因疊加</strong>：必須熟悉如何將支承沉陷、溫度變化、製造誤差同時納入虛功方程式中。</li>
+<li><strong>靜定結構的物理本質（陷阱）</strong>：靜定結構在承受溫度變化、製造誤差及支承沉陷時，<strong>完全不會產生內部應力</strong>，只會產生純幾何變形。因此，題目故意給定楊氏模數 $E$ 與斷面積 $A$，是為了誘導觀念不熟的考生去計算不存在的彈性變形（$\frac{PL}{EA}$），這是一個經典的「多餘資訊陷阱」。</li>
+</ol>
+<h2>3. 解題戰略地圖與陷阱分析 (Strategic Roadmap &amp; Trap Analysis)</h2>
+<ol>
+<li><strong>支承反力與虛擬內力計算</strong>：<br />
+   - 本桁架為靜定結構，支承位於 B 點 ($x=4$) 與 F 點 ($x=20$)，跨距為 16m。<br />
+   - 分別在 C 點與 E 點施加單位虛擬向下力，利用「切面法」求出對應的 CD 桿與 DE 桿虛擬內力 ($u_{CD}$ 與 $u_{DE}$)。</li>
+<li><strong>建立虛功方程式</strong>：<br />
+   - 總位移 = 支承沉陷引起的剛體位移 + 桿件變形引起的位移。<br />
+   - 虛功方程式：$1 \cdot \Delta = \sum u_i \delta_i + \sum R_{vi} \cdot (\text{支承位移})$<br />
+   - 透過 C 點與 E 點的已知位移，建立包含未知數 $\delta_{CD}$ 與 $\delta_{DE}$ 的二元一次聯立方程式。</li>
+<li><strong>陷阱分析</strong>：<br />
+   - <strong>陷阱一（多餘參數）</strong>：絕對不可將 $E$ 與 $A$ 代入計算，因為內力 $P=0$。<br />
+   - <strong>陷阱二（虛擬功符號）</strong>：支承 F 實際向下沉陷，若虛擬反力向上，則該項虛功為負值，移項至位移側時相當於正向貢獻，需特別注意符號一致性。<br />
+   - <strong>陷阱三（斜桿方向判斷）</strong>：若未仔細觀察圖面採用正確的切面力矩中心，將求錯 $u$ 值。Pratt 桁架在 C-D 區段斜桿為 J-D，故力矩中心為 J；在 D-E 區段斜桿為 L-D，故力矩中心為 L。</li>
+</ol>
+<h2>3.5 變數層次分析 (Variable Hierarchy Analysis)</h2>
+<h3>最終目標</h3>
+<p>透過聯立虛功方程式，解出 CD 桿的製造誤差 $\delta$ 與 DE 桿的溫度變化 $\Delta T$。</p>
+<h3>本題關鍵公式（依計算順序）</h3>
+<p>$$
+1 \cdot \Delta_{C} = u_{CD}^C \cdot \delta_{CD} + u_{DE}^C \cdot \delta_{DE} + R_{vF}^C \cdot v_F
+$$<br />
+（C點虛功方程式）</p>
+<p>$$
+1 \cdot \Delta_{E} = u_{CD}^E \cdot \delta_{CD} + u_{DE}^E \cdot \delta_{DE} + R_{vF}^E \cdot v_F
+$$<br />
+（E點虛功方程式）</p>
+<p>$$
+\delta_{DE} = \alpha \cdot \Delta T \cdot L_{DE}
+$$<br />
+（溫度變形公式）</p>
+<h3>L1：題目直接給定</h3>
+<table>
+<thead>
+<tr>
+<th>符號</th>
+<th>數值</th>
+<th>說明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>$v_F$</td>
+<td>$12\text{ mm}(\downarrow)$</td>
+<td>支承 F 下陷量</td>
+</tr>
+<tr>
+<td>$\Delta_C$</td>
+<td>$4.8\text{ mm}(\downarrow)$</td>
+<td>C 點實際向下位移</td>
+</tr>
+<tr>
+<td>$\Delta_E$</td>
+<td>$6.4\text{ mm}(\downarrow)$</td>
+<td>E 點實際向下位移</td>
+</tr>
+<tr>
+<td>$L_{CD}, L_{DE}$</td>
+<td>$4000\text{ mm}$</td>
+<td>桿件長度</td>
+</tr>
+<tr>
+<td>$\alpha$</td>
+<td>$1.5 \times 10^{-5} /^\circ\text{C}$</td>
+<td>熱膨脹係數</td>
+</tr>
+</tbody>
+</table>
+<h3>L2：需知識點推導</h3>
+<table>
+<thead>
+<tr>
+<th>符號</th>
+<th>公式／來源</th>
+<th>卡關?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>$R_{vF}^C, R_{vF}^E$</td>
+<td>取整體平衡求虛擬反力</td>
+<td></td>
+</tr>
+<tr>
+<td>$u_{CD}, u_{DE}$</td>
+<td>切面法取上弦節點為力矩中心求虛擬內力</td>
+<td></td>
+</tr>
+<tr>
+<td>$\delta_{CD}$</td>
+<td>解二元一次方程式得出</td>
+<td></td>
+</tr>
+<tr>
+<td>$\delta_{DE}$</td>
+<td>解二元一次方程式得出</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h3>L3：深層知識（不懂就卡住）</h3>
+<table>
+<thead>
+<tr>
+<th>知識點</th>
+<th>說明</th>
+<th>卡關?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>靜定無內力</td>
+<td>靜定結構受溫度與製造誤差作用時，不產生內力，故 $E, A$ 為多餘資訊。</td>
+<td></td>
+</tr>
+<tr>
+<td>剛體位移項</td>
+<td>虛功方程式中，支承沉陷項目的作功與方向必須正確對應。</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h2>4. 步驟化詳細計算過程 (Step-by-Step Detailed Calculation)</h2>
+<h3>Step 1: 分析幾何與支承配置</h3>
+<ul>
+<li>支承 B $(x=4)$，支承 F $(x=20)$，跨度 $L = 16\text{ m}$。</li>
+<li>實際產生長度變化的桿件僅有 CD ($\delta_{CD}$) 與 DE ($\delta_{DE}$)。</li>
+<li>定義拉力為正（伸長為正）。向下位移為正。</li>
+</ul>
+<h3>Step 2: 建立 C 點虛功方程式</h3>
+<p>在 C 點 $(x=8)$ 施加單位向下虛擬載重 $1(\downarrow)$：</p>
+<ul>
+<li>
+<p><strong>虛擬支承反力</strong>：<br />
+  $\Sigma M_B = 0 \implies R_{vF}^C \times 16 - 1 \times 4 = 0 \implies R_{vF}^C = 0.25 (\uparrow)$<br />
+  $R_{vB}^C = 0.75 (\uparrow)$</p>
+</li>
+<li>
+<p><strong>求 $u_{CD}^C$</strong>：切斷 J-K, J-D, C-D，取左半自由體。對 J 點 $(x=8, y=3)$ 取彎矩：<br />
+  $u_{CD}^C \times 3 - R_{vB}^C \times 4 = 0 \implies 3 u_{CD}^C = 0.75 \times 4 = 3 \implies u_{CD}^C = 1$ (拉力)</p>
+</li>
+<li>
+<p><strong>求 $u_{DE}^C$</strong>：切斷 K-L, L-D, D-E，取右半自由體。對 L 點 $(x=16, y=3)$ 取彎矩：<br />
+  $u_{DE}^C \times 3 - R_{vF}^C \times 4 = 0 \implies 3 u_{DE}^C = 0.25 \times 4 = 1 \implies u_{DE}^C = \frac{1}{3}$ (拉力)</p>
+</li>
+<li>
+<p><strong>虛功方程式</strong>：<br />
+  $1 \cdot \Delta_C + R_{vF}^C \cdot (-v_F) = u_{CD}^C \cdot \delta_{CD} + u_{DE}^C \cdot \delta_{DE}$<br />
+  $4.8 + 0.25 \times (-12) = 1 \cdot \delta_{CD} + \frac{1}{3} \cdot \delta_{DE}$<br />
+  $\boxed{\delta_{CD} + \frac{1}{3} \delta_{DE} = 1.8} \quad \text{--- (式 1)}$<br />
+<em>(註：亦可視為剛體位移 $0.25 \times 12 = 3$ mm 加上彈性位移等於總位移 4.8 mm)</em></p>
+</li>
+</ul>
+<h3>Step 3: 建立 E 點虛功方程式</h3>
+<p>在 E 點 $(x=16)$ 施加單位向下虛擬載重 $1(\downarrow)$：</p>
+<ul>
+<li>
+<p><strong>虛擬支承反力</strong>：<br />
+  $\Sigma M_B = 0 \implies R_{vF}^E \times 16 - 1 \times 12 = 0 \implies R_{vF}^E = 0.75 (\uparrow)$<br />
+  $R_{vB}^E = 0.25 (\uparrow)$</p>
+</li>
+<li>
+<p><strong>求 $u_{CD}^E$</strong>：切斷 J-K, J-D, C-D，取左半自由體。對 J 點 $(x=8, y=3)$ 取彎矩：<br />
+  $u_{CD}^E \times 3 - R_{vB}^E \times 4 = 0 \implies 3 u_{CD}^E = 0.25 \times 4 = 1 \implies u_{CD}^E = \frac{1}{3}$ (拉力)</p>
+</li>
+<li>
+<p><strong>求 $u_{DE}^E$</strong>：切斷 K-L, L-D, D-E，取右半自由體。對 L 點 $(x=16, y=3)$ 取彎矩：<br />
+  (注意：單位力 1 剛好通過 L 點，無力矩)<br />
+  $u_{DE}^E \times 3 - R_{vF}^E \times 4 = 0 \implies 3 u_{DE}^E = 0.75 \times 4 = 3 \implies u_{DE}^E = 1$ (拉力)</p>
+</li>
+<li>
+<p><strong>虛功方程式</strong>：<br />
+  $1 \cdot \Delta_E + R_{vF}^E \cdot (-v_F) = u_{CD}^E \cdot \delta_{CD} + u_{DE}^E \cdot \delta_{DE}$<br />
+  $6.4 + 0.75 \times (-12) = \frac{1}{3} \cdot \delta_{CD} + 1 \cdot \delta_{DE}$<br />
+  $\boxed{\frac{1}{3} \delta_{CD} + \delta_{DE} = -2.6} \quad \text{--- (式 2)}$</p>
+</li>
+</ul>
+<h3>Step 4: 聯立求解並判斷結果</h3>
+<p>將 (式 1) 乘以 3：<br />
+$3 \delta_{CD} + \delta_{DE} = 5.4 \quad \text{--- (式 3)}$<br />
+(式 3) 減去 (式 2)：<br />
+$\left(3 - \frac{1}{3}\right) \delta_{CD} = 5.4 - (-2.6)$<br />
+$\frac{8}{3} \delta_{CD} = 8 \implies \delta_{CD} = 3\text{ mm}$<br />
+代回 (式 1)：<br />
+$3 + \frac{1}{3} \delta_{DE} = 1.8 \implies \frac{1}{3} \delta_{DE} = -1.2 \implies \delta_{DE} = -3.6\text{ mm}$</p>
+<p><strong>判斷製造誤差：</strong><br />
+計算結果 $\delta_{CD} = +3\text{ mm}$。因虛功法中定義拉力（伸長）為正，正號代表桿件實際長度比設計長度多出 3 mm。<br />
+$$
+\boxed{\text{製造誤差 } \delta = 3\text{ mm (過長)}}
+$$</p>
+<p><strong>判斷溫度變化：</strong><br />
+計算結果 $\delta_{DE} = -3.6\text{ mm}$。負號代表桿件縮短。<br />
+利用熱變形公式：<br />
+$$
+\delta_{DE} = \alpha \cdot \Delta T \cdot L_{DE}
+$$<br />
+$$
+-3.6 = (1.5 \times 10^{-5}) \times \Delta T \times 4000
+$$<br />
+$$
+-3.6 = 0.06 \times \Delta T \implies \Delta T = -60^\circ\text{C}
+$$<br />
+$$
+\boxed{\text{溫差 } \Delta T = 60^\circ\text{C} \text{ (降溫)}}
+$$</p>
+<h2>5. 關鍵爭議點與進階探討 (Critical Issues &amp; Advanced Discussion)</h2>
+<ul>
+<li><strong>靜定結構的免受力特性</strong>：本題最大的陷阱在於提供了 $E$ 與 $A$。若考生未能一眼識破本桁架為靜定結構，可能會試圖將 $\delta = \frac{PL}{EA}$ 納入方程式中，這不僅浪費時間，更顯示對結構行為的誤解。考場上遇到這類給定大量似乎用不到的參數的題目，應先冷靜檢驗靜不定度。</li>
+<li><strong>支承沉陷的剛體位移直觀驗證</strong>：在虛功法外，其實可以直觀檢驗沉陷影響。B點不動，F點下沉12mm。C點距離B為總跨距的 1/4，剛體下沉 $12 \times \frac{1}{4} = 3$ mm。E點距離B為 3/4，剛體下沉 $12 \times \frac{3}{4} = 9$ mm。扣除剛體位移後，純因桿件變形造成的位移為 $\Delta_{C}' = 4.8 - 3 = 1.8$ mm，$\Delta_{E}' = 6.4 - 9 = -2.6$ mm，與我們方程式左側的數值完全一致。這種交叉驗證能在考場上提供極大的信心。</li>
+</ul></main>
+<footer>來源：raw/solutions/SA-2024-2/SA-2024-2.md（知識庫解題內容唯一正本；本頁僅為渲染顯示）</footer>
+</body></html>

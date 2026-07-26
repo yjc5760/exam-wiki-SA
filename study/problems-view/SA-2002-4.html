@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="zh-Hant"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SA-2002-4 — 題目解析</title>
+<link rel="stylesheet" href="../assets/katex/katex.min.css">
+<script defer src="../assets/katex/katex.min.js"></script>
+<script defer src="../assets/katex/auto-render.min.js"
+  onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},
+  {left:'$',right:'$',display:false},{left:'\\(',right:'\\)',display:false}],throwOnError:false});"></script>
+<style>
+:root{--ac:#1565c0;--bg:#f7f9fb;--card:#fff;--ink:#263238;--mut:#607d8b;--bd:#dfe6ea}
+*{box-sizing:border-box}
+body{margin:0;font-family:"Microsoft JhengHei","Noto Sans TC",-apple-system,sans-serif;
+  background:var(--bg);color:var(--ink);line-height:1.75;font-size:15.5px}
+header{background:linear-gradient(135deg,#0d47a1,#1976d2 60%,#42a5f5);color:#fff;padding:22px 26px}
+header h1{margin:0;font-size:1.15em}
+header .back{display:inline-block;margin-top:10px;font-size:.82em;color:#fff;background:rgba(255,255,255,.18);
+  padding:4px 12px;border-radius:14px;text-decoration:none}
+main{max-width:880px;margin:0 auto;padding:26px 22px 70px}
+h1,h2,h3{color:#0d47a1} h2{font-size:1.2em;border-left:6px solid var(--ac);padding-left:12px;margin:34px 0 14px}
+table{width:100%;border-collapse:collapse;margin:14px 0;font-size:.92em;background:#fff}
+th,td{border:1px solid var(--bd);padding:7px 10px;text-align:left;vertical-align:top}
+th{background:#eceff1;font-weight:600} tbody tr:nth-child(even){background:#fafcfd}
+code{background:#eceff1;padding:1px 5px;border-radius:4px;font-size:.92em}
+img{max-width:100%;display:block;margin:14px auto;border:1px solid var(--bd);border-radius:8px}
+.katex-display{margin:12px 0!important;overflow-x:auto;overflow-y:hidden}
+footer{text-align:center;color:var(--mut);font-size:.8em;padding:22px;border-top:1px solid var(--bd)}
+</style></head><body>
+<header><h1>SA-2002-4 題目解析</h1><a class="back" href="javascript:history.back()">← 返回講義</a></header>
+<main><h1>考題編號：[SA-2002-4]</h1>
+<p><strong>主分類：</strong> <code>SA-U2-3</code> 結構靜不定分析<br />
+<strong>副分類：</strong> 無<br />
+<strong>分析法：</strong> 傾角變位法<br />
+<strong>標籤：</strong> <code>傾角變位法</code> <code>有側移剛架</code> <code>反對稱變形</code></p>
+<hr />
+<h2>1. 原始題目重述 (Problem Restatement)</h2>
+<p><strong>四、試用傾角變位法(Slope-deflection method)解此剛架，並作彎矩圖。E＝常數。（25 分）</strong></p>
+<p>本題為一單層單跨平面剛架，承受節點水平集中載重：</p>
+<ul>
+<li><strong>幾何尺寸</strong>：柱 $AB$ 長度 $6\text{ m}$，梁 $BC$ 長度 $6\text{ m}$，柱 $CD$ 長度 $6\text{ m}$。</li>
+<li><strong>邊界條件</strong>：節點 A 與 D 為固定端 (Fixed supports)。</li>
+<li><strong>斷面性質</strong>：柱 $AB$ 與 $CD$ 之慣性矩為 $I$，梁 $BC$ 之慣性矩為 $2I$；彈性模數 $E$ 為常數。</li>
+<li><strong>外加載重</strong>：節點 B 承受向右之水平集中載重 $13\text{ kN}$。</li>
+</ul>
+<p><img alt="SA-2002-4 題目附圖：單層單跨剛架，承受節點水平載重" src="../../raw/solutions/SA-2002-4/SA-2002-4-fig-1.png" /></p>
+<p><em>圖說：剛架 ABCD，A、D固定，柱高6m、梁長6m，B點受13kN向右水平力，梁斷面為2I，柱為I。</em></p>
+<h2>2. 考題核心精神與出題者意圖 (Core Concepts &amp; Examiner's Intent)</h2>
+<ul>
+<li><strong>有側移分析</strong>：本題承受非對稱之水平載重，結構必然發生側移（Sway）。出題者主要測驗考生是否能正確建立並解出包含側移角 $\psi$ 的層剪力方程式（Shear condition）。</li>
+<li><strong>相對勁度與傾角變位法符號約定</strong>：測驗考生是否能正確寫出各桿件的傾角變位方程式，特別是處理梁與柱慣性矩不同 ($I$ vs $2I$) 時的相對勁度 $K$，以及固端彎矩為零情況下的基本式。</li>
+</ul>
+<h2>3. 解題戰略地圖與陷阱分析 (Strategic Roadmap &amp; Trap Analysis)</h2>
+<ol>
+<li><strong>定義未知數</strong>：因 A、D 為固定端，$\theta_A = \theta_D = 0$。未知數為節點旋轉角 $\theta_B$、$\theta_C$ 以及側移角 $\psi$。</li>
+<li><strong>建立傾角變位方程式</strong>：寫出 $M_{AB}, M_{BA}, M_{BC}, M_{CB}, M_{CD}, M_{DC}$ 關於 $\theta_B, \theta_C, \psi$ 之方程式。</li>
+<li><strong>建立平衡方程式</strong>：<br />
+   - 節點 B 彎矩平衡：$\Sigma M_B = 0 \Rightarrow M_{BA} + M_{BC} = 0$<br />
+   - 節點 C 彎矩平衡：$\Sigma M_C = 0 \Rightarrow M_{CB} + M_{CD} = 0$<br />
+   - 整體剪力平衡（側移方程式）：切開兩柱求層剪力，建立水平力平衡 $\Sigma F_x = 0$。</li>
+<li><strong>解聯立方程式</strong>：解出 $\theta_B, \theta_C, \psi$ 後，代回求各桿端彎矩。</li>
+<li><strong>繪製彎矩圖 (BMD)</strong>：依據算出的桿端彎矩數值與正負號，判斷受拉側，繪製 BMD。</li>
+</ol>
+<p><strong>陷阱分析</strong>：</p>
+<ul>
+<li><strong>層剪力方程式的符號</strong>：建立水平力平衡時，必須極度小心剪力方向與桿端彎矩正負號的關係，推導出 $M_{AB} + M_{BA} + M_{CD} + M_{DC} + 13 \times 6 = 0$。若正負號寫錯，將導致整個結果完全錯誤。</li>
+<li><strong>梁柱勁度不同</strong>：梁 $BC$ 的 $I$ 為 $2I$，柱為 $I$，代入傾角變位公式時易忘記乘上倍數。</li>
+</ul>
+<h2>3.5 變數層次分析 (Variable Hierarchy Analysis)</h2>
+<h3>最終目標</h3>
+<p><code>求出各桿端彎矩並繪製剛架之彎矩圖 (BMD)。</code></p>
+<h3>本題關鍵公式（依計算順序）</h3>
+<ul>
+<li>
+<p>傾角變位方程式：<br />
+  $$ M_{ij} = \frac{2EI_{ij}}{L} \left( 2\theta_i + \theta_j - 3\psi \right) + FEM_{ij} $$</p>
+</li>
+<li>
+<p>節點彎矩平衡：<br />
+  $$ \sum M_B = 0 \Rightarrow M_{BA} + M_{BC} = 0 $$<br />
+  $$ \sum M_C = 0 \Rightarrow M_{CB} + M_{CD} = 0 $$</p>
+</li>
+<li>
+<p>層剪力方程式（側移方程）：<br />
+  $$ \boxed{M_{AB}} + \boxed{M_{BA}} + \boxed{M_{CD}} + \boxed{M_{DC}} + H \cdot L = 0 $$</p>
+</li>
+</ul>
+<h3>L1：題目直接給定</h3>
+<table>
+<thead>
+<tr>
+<th>符號</th>
+<th>數值</th>
+<th>說明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>$L_{AB}, L_{BC}, L_{CD}$</td>
+<td>$6\text{ m}$</td>
+<td>柱與梁之長度</td>
+</tr>
+<tr>
+<td>$I_{AB}, I_{CD}$</td>
+<td>$I$</td>
+<td>柱之慣性矩</td>
+</tr>
+<tr>
+<td>$I_{BC}$</td>
+<td>$2I$</td>
+<td>梁之慣性矩</td>
+</tr>
+<tr>
+<td>$P$</td>
+<td>$13\text{ kN}$</td>
+<td>節點 B 之水平載重（向右）</td>
+</tr>
+</tbody>
+</table>
+<h3>L2：需知識點推導</h3>
+<p><strong>相對勁度與固端彎矩</strong><br />
+| 符號 | 公式／來源 | 卡關? |<br />
+|---|---|---|<br />
+| $K_{AB}$ | $I/6$ | |<br />
+| $K_{BC}$ | $2I/6 = I/3$ | |<br />
+| $K_{CD}$ | $I/6$ | |<br />
+| $\psi$ | $\Delta/6$ | |<br />
+| $FEM$ | $0$ (無構件載重) | |</p>
+<h3>L3：深層知識（不懂就卡住）</h3>
+<table>
+<thead>
+<tr>
+<th>知識點</th>
+<th>說明</th>
+<th>卡關?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>側移方程式推導</td>
+<td>利用柱之自由體圖，柱頂與柱底剪力與彎矩之關係，配合整體水平平衡求得。</td>
+<td></td>
+</tr>
+<tr>
+<td>對稱性判斷</td>
+<td>結構幾何與勁度對稱，承受反對稱側向載重，變形將呈反對稱。</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h2>4. 步驟化詳細計算過程 (Step-by-Step Detailed Calculation)</h2>
+<h3>Step 1：建立傾角變位方程式</h3>
+<p>本題無構件載重，故所有固端彎矩 $FEM = 0$。<br />
+節點 A、D 為固定端，$\theta_A = \theta_D = 0$。<br />
+令柱與梁之相對側移角為 $\psi_{AB} = \psi_{CD} = \psi$，梁無側移 $\psi_{BC} = 0$。</p>
+<p>各桿端彎矩可表為：<br />
+$$ M_{AB} = \frac{2E(I)}{6} (2\theta_A + \theta_B - 3\psi) = \frac{EI}{3} (\theta_B - 3\psi) $$<br />
+$$ M_{BA} = \frac{2E(I)}{6} (2\theta_B + \theta_A - 3\psi) = \frac{EI}{3} (2\theta_B - 3\psi) $$<br />
+$$ M_{BC} = \frac{2E(2I)}{6} (2\theta_B + \theta_C - 3(0)) = \frac{2EI}{3} (2\theta_B + \theta_C) $$<br />
+$$ M_{CB} = \frac{2E(2I)}{6} (2\theta_C + \theta_B - 3(0)) = \frac{2EI}{3} (2\theta_C + \theta_B) $$<br />
+$$ M_{CD} = \frac{2E(I)}{6} (2\theta_C + \theta_D - 3\psi) = \frac{EI}{3} (2\theta_C - 3\psi) $$<br />
+$$ M_{DC} = \frac{2E(I)}{6} (2\theta_D + \theta_C - 3\psi) = \frac{EI}{3} (\theta_C - 3\psi) $$</p>
+<h3>Step 2：建立節點平衡方程式</h3>
+<p>對於節點 B：<br />
+$$ \Sigma M_B = 0 \Rightarrow M_{BA} + M_{BC} = 0 $$<br />
+$$ \frac{EI}{3} (2\theta_B - 3\psi) + \frac{2EI}{3} (2\theta_B + \theta_C) = 0 $$<br />
+展開並整理：<br />
+$$ 2\theta_B - 3\psi + 4\theta_B + 2\theta_C = 0 $$<br />
+$$ \boxed{6\theta_B + 2\theta_C - 3\psi = 0} \quad \text{--- (1)} $$</p>
+<p>對於節點 C：<br />
+$$ \Sigma M_C = 0 \Rightarrow M_{CB} + M_{CD} = 0 $$<br />
+$$ \frac{2EI}{3} (2\theta_C + \theta_B) + \frac{EI}{3} (2\theta_C - 3\psi) = 0 $$<br />
+展開並整理：<br />
+$$ 4\theta_C + 2\theta_B + 2\theta_C - 3\psi = 0 $$<br />
+$$ \boxed{2\theta_B + 6\theta_C - 3\psi = 0} \quad \text{--- (2)} $$</p>
+<h3>Step 3：建立層剪力方程式（側移方程）</h3>
+<p>取整體剛架為自由體，設 A 點與 D 點之水平反力分別為 $H_A, H_D$（設向右為正）。<br />
+由水平力平衡：<br />
+$$ \Sigma F_x = 0 \Rightarrow 13 + H_A + H_D = 0 $$<br />
+取柱 AB 為自由體，對 B 點取彎矩（順時針為正）：<br />
+$$ \Sigma M_B = 0 \Rightarrow -H_A \times 6 + M_{AB} + M_{BA} = 0 \Rightarrow H_A = \frac{M_{AB} + M_{BA}}{6} $$<br />
+同理，取柱 CD 為自由體，對 C 點取彎矩：<br />
+$$ H_D = \frac{M_{CD} + M_{DC}}{6} $$<br />
+代回水平力平衡式：<br />
+$$ 13 + \frac{M_{AB} + M_{BA}}{6} + \frac{M_{CD} + M_{DC}}{6} = 0 $$<br />
+同乘 6 移項可得層剪力方程式：<br />
+$$ \boxed{M_{AB} + M_{BA} + M_{CD} + M_{DC} = -78} \quad \text{--- (3)} $$<br />
+<em>(註：此方程式代表若剛架向右受力，兩柱底部必定產生向左的抗剪力，故推導出負值總和。)</em></p>
+<p>將各桿端彎矩式代入 (3)：<br />
+$$ \frac{EI}{3} (\theta_B - 3\psi) + \frac{EI}{3} (2\theta_B - 3\psi) + \frac{EI}{3} (2\theta_C - 3\psi) + \frac{EI}{3} (\theta_C - 3\psi) = -78 $$<br />
+$$ \frac{EI}{3} (3\theta_B + 3\theta_C - 12\psi) = -78 $$<br />
+$$ \boxed{EI (\theta_B + \theta_C - 4\psi) = -78} \quad \text{--- (4)} $$</p>
+<h3>Step 4：解聯立方程式</h3>
+<p>由式 (1) 減去式 (2)：<br />
+$$ (6\theta_B + 2\theta_C) - (2\theta_B + 6\theta_C) = 0 \Rightarrow 4\theta_B - 4\theta_C = 0 \Rightarrow \theta_B = \theta_C $$<br />
+將 $\theta_C = \theta_B$ 代入式 (1)：<br />
+$$ 6\theta_B + 2\theta_B - 3\psi = 0 \Rightarrow 8\theta_B = 3\psi \Rightarrow \psi = \frac{8}{3}\theta_B $$<br />
+將 $\theta_C = \theta_B$ 及 $\psi = \frac{8}{3}\theta_B$ 代入式 (4)：<br />
+$$ EI \left( \theta_B + \theta_B - 4\left(\frac{8}{3}\theta_B\right) \right) = -78 $$<br />
+$$ EI \left( 2\theta_B - \frac{32}{3}\theta_B \right) = -78 $$<br />
+$$ EI \left( -\frac{26}{3}\theta_B \right) = -78 $$<br />
+$$ \theta_B = \frac{-78 \times 3}{-26 EI} = \frac{9}{EI} $$<br />
+因此可得：<br />
+$$ \theta_B = \frac{9}{EI} $$<br />
+$$ \theta_C = \frac{9}{EI} $$<br />
+$$ \psi = \frac{24}{EI} $$</p>
+<p><em>(註：$\psi$ 為正值，代表弦位移旋轉角為順時針，即剛架確實向右側移，符合物理直覺。)</em></p>
+<h3>Step 5：計算各桿端彎矩</h3>
+<p>將 $\theta_B, \theta_C, \psi$ 代回傾角變位方程式：<br />
+$$ \boxed{M_{AB}} = \frac{EI}{3} \left( \frac{9}{EI} - 3\left(\frac{24}{EI}\right) \right) = \frac{1}{3} (9 - 72) = \boxed{-21 \text{ kN-m}} $$<br />
+$$ \boxed{M_{BA}} = \frac{EI}{3} \left( 2\left(\frac{9}{EI}\right) - 3\left(\frac{24}{EI}\right) \right) = \frac{1}{3} (18 - 72) = \boxed{-18 \text{ kN-m}} $$<br />
+$$ \boxed{M_{BC}} = \frac{2EI}{3} \left( 2\left(\frac{9}{EI}\right) + \frac{9}{EI} \right) = \frac{2}{3} (27) = \boxed{18 \text{ kN-m}} $$<br />
+$$ \boxed{M_{CB}} = \frac{2EI}{3} \left( 2\left(\frac{9}{EI}\right) + \frac{9}{EI} \right) = \frac{2}{3} (27) = \boxed{18 \text{ kN-m}} $$<br />
+$$ \boxed{M_{CD}} = \frac{EI}{3} \left( 2\left(\frac{9}{EI}\right) - 3\left(\frac{24}{EI}\right) \right) = \frac{1}{3} (18 - 72) = \boxed{-18 \text{ kN-m}} $$<br />
+$$ \boxed{M_{DC}} = \frac{EI}{3} \left( \frac{9}{EI} - 3\left(\frac{24}{EI}\right) \right) = \frac{1}{3} (9 - 72) = \boxed{-21 \text{ kN-m}} $$</p>
+<p><em>(驗算平衡：$M_{BA} + M_{BC} = -18 + 18 = 0$；$M_{CB} + M_{CD} = 18 - 18 = 0$；$M_{AB} + M_{BA} + M_{CD} + M_{DC} = -21 - 18 - 18 - 21 = -78$，皆符合。)</em></p>
+<h3>Step 6：彎矩圖 (BMD) 繪製數據整理</h3>
+<blockquote>
+<p>📊 彎矩圖繪製詳見文字說明或手寫補充。</p>
+</blockquote>
+<p>依據算出的彎矩值繪製 BMD（彎矩畫在受拉側）：</p>
+<ul>
+<li><strong>柱 AB</strong>：A 端彎矩為負 (逆時針)，受拉側在右側 (內側)，值為 $21\text{ kN-m}$。B 端彎矩為負 (逆時針)，受拉側在左側 (外側)，值為 $18\text{ kN-m}$。</li>
+<li><strong>梁 BC</strong>：B 端彎矩為正 (順時針)，受拉側在上側，值為 $18\text{ kN-m}$。C 端彎矩為正 (順時針)，受拉側在下側，值為 $18\text{ kN-m}$。</li>
+<li><strong>柱 CD</strong>：C 端彎矩為負 (逆時針)，受拉側在左側 (內側)，值為 $18\text{ kN-m}$。D 端彎矩為負 (逆時針)，受拉側在右側 (外側)，值為 $21\text{ kN-m}$。</li>
+</ul>
+<h2>5. 關鍵爭議點與進階探討 (Critical Issues &amp; Advanced Discussion)</h2>
+<ul>
+<li><strong>結構對稱性之利用</strong>：本題剛架在幾何配置與桿件勁度上完全對稱，但承受了反對稱的側向載重 $13\text{ kN}$。因此結構的變形會呈現反對稱（Anti-symmetric）模態。由結果可以看出 $\theta_B = \theta_C$，且 $M_{AB} = M_{DC}$、$M_{BA} = M_{CD}$、$M_{BC} = M_{CB}$。若在考場上熟悉對稱結構承受反對稱載重的特性，可直接假設 $\theta_B = \theta_C$，從而減少一個未知數，大幅加快解題速度。</li>
+<li><strong>層剪力方向判斷</strong>：建立 $M_{AB} + M_{BA} + M_{CD} + M_{DC} = -78$ 此一方程式時，符號正負號極易出錯。建議一律依照「圖解自由體」並堅守靜力平衡方程式，不可死背公式，以避免等號右邊的正負號錯置。</li>
+</ul></main>
+<footer>來源：raw/solutions/SA-2002-4/SA-2002-4.md（知識庫解題內容唯一正本；本頁僅為渲染顯示）</footer>
+</body></html>

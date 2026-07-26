@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="zh-Hant"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SA-2009-1 — 題目解析</title>
+<link rel="stylesheet" href="../assets/katex/katex.min.css">
+<script defer src="../assets/katex/katex.min.js"></script>
+<script defer src="../assets/katex/auto-render.min.js"
+  onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},
+  {left:'$',right:'$',display:false},{left:'\\(',right:'\\)',display:false}],throwOnError:false});"></script>
+<style>
+:root{--ac:#1565c0;--bg:#f7f9fb;--card:#fff;--ink:#263238;--mut:#607d8b;--bd:#dfe6ea}
+*{box-sizing:border-box}
+body{margin:0;font-family:"Microsoft JhengHei","Noto Sans TC",-apple-system,sans-serif;
+  background:var(--bg);color:var(--ink);line-height:1.75;font-size:15.5px}
+header{background:linear-gradient(135deg,#0d47a1,#1976d2 60%,#42a5f5);color:#fff;padding:22px 26px}
+header h1{margin:0;font-size:1.15em}
+header .back{display:inline-block;margin-top:10px;font-size:.82em;color:#fff;background:rgba(255,255,255,.18);
+  padding:4px 12px;border-radius:14px;text-decoration:none}
+main{max-width:880px;margin:0 auto;padding:26px 22px 70px}
+h1,h2,h3{color:#0d47a1} h2{font-size:1.2em;border-left:6px solid var(--ac);padding-left:12px;margin:34px 0 14px}
+table{width:100%;border-collapse:collapse;margin:14px 0;font-size:.92em;background:#fff}
+th,td{border:1px solid var(--bd);padding:7px 10px;text-align:left;vertical-align:top}
+th{background:#eceff1;font-weight:600} tbody tr:nth-child(even){background:#fafcfd}
+code{background:#eceff1;padding:1px 5px;border-radius:4px;font-size:.92em}
+img{max-width:100%;display:block;margin:14px auto;border:1px solid var(--bd);border-radius:8px}
+.katex-display{margin:12px 0!important;overflow-x:auto;overflow-y:hidden}
+footer{text-align:center;color:var(--mut);font-size:.8em;padding:22px;border-top:1px solid var(--bd)}
+</style></head><body>
+<header><h1>SA-2009-1 題目解析</h1><a class="back" href="javascript:history.back()">← 返回講義</a></header>
+<main><h1>考題編號：SA-2009-1</h1>
+<p><strong>主分類：</strong> <code>SA-U1-1</code> 桁架結構分析<br />
+<strong>副分類：</strong> <code>SA-U1-2</code> 支承沉陷反力計算<br />
+<strong>分析法：</strong> 單位力法 (Force Method) / 最小功法<br />
+<strong>標籤：</strong> <code>靜不定桁架</code>, <code>支承沉陷</code>, <code>柔度法</code></p>
+<hr />
+<h2>1. 原始題目重述 (Problem Restatement)</h2>
+<p>本題為一平面桁架結構分析，由 7 根桿件組成，共有 5 個節點（a, b, c, d, e）。已知各節點的支承條件如下：</p>
+<ul>
+<li><strong>節點 a</strong>：垂直方向受拘束（滾支承），具有已知之支承沉陷 $\Delta_a = -0.1\text{ m}$（向下）。</li>
+<li><strong>節點 c</strong>：水平與垂直方向受拘束（鉸支承）。</li>
+<li><strong>節點 d</strong>：水平方向受拘束（牆面滾支承）。</li>
+</ul>
+<p>已知所有桿件的軸向剛度為 $AE = 10^4\text{ kN}$。<br />
+題目要求計算在此支承沉陷作用下，結構各支承點的最終反力。</p>
+<div style="background:#fff3e0;border-left:5px solid #ef6c00;padding:10px 14px;border-radius:0 8px 8px 0;font-size:.9em;color:#e65100">原始 .md 未內嵌附圖，以下為同資料夾之題目附圖（顯示層補上，未修改 raw/）</div><img src="../../raw/solutions/SA-2009-1/SA-2009-1-fig-1.png" alt="SA-2009-1 題目附圖"><h2>2. 考題核心精神與出題者意圖 (Core Concepts &amp; Examiner's Intent)</h2>
+<p>本題的核心精神在於評量考生對<strong>一次靜不定桁架</strong>在「<strong>無外力、僅有支承沉陷</strong>」作用下的內力與反力分析能力。<br />
+出題者的意圖包含：</p>
+<ol>
+<li><strong>靜不定度判別</strong>：要求考生能正確計算桁架的靜不定度（$m+r-2j$），並正確選擇適當的贅力（Redundant Force）。</li>
+<li><strong>力法（柔度法）的應用</strong>：在給定支承沉陷的情況下，考驗考生是否能靈活運用單位虛力法計算基本結構的變位（0-系統），以及單位力作用下的柔度係數（1-系統）。</li>
+<li><strong>相容方程式的建立</strong>：將實際變位與計算變位結合，求解贅力。</li>
+</ol>
+<h2>3. 解題戰略地圖與陷阱分析 (Strategic Roadmap &amp; Trap Analysis)</h2>
+<p><strong>戰略地圖：</strong></p>
+<ol>
+<li><strong>系統判別與贅力選擇</strong>：判斷系統為一次靜不定。為簡化計算，選擇節點 d 的水平反力 $R_{dx}$ 為贅力 $X_1$。</li>
+<li><strong>0-系統（基本結構）分析</strong>：在移除贅力後，計算已知支承沉陷對 d 點水平方向造成的相對位移 $\Delta_{10}$。</li>
+<li><strong>1-系統（單位力系統）分析</strong>：在 d 點施加單位水平力，利用節點法求出各桿件內力 $u_i$，並計算柔度係數 $f_{11}$。</li>
+<li><strong>相容方程式求解</strong>：利用 $\Delta_{10} + f_{11}X_1 = 0$ 解出 $X_1$。</li>
+<li><strong>疊加法求最終反力</strong>：將 0-系統的反力與 1-系統反力乘以 $X_1$ 進行疊加。</li>
+</ol>
+<p><strong>陷阱分析：</strong></p>
+<ul>
+<li>⚠ <strong>支承沉陷方向的符號約定</strong>：沉陷為向下（負），若在計算虛功時未與反力方向對應正確，極易造成正負號錯亂。</li>
+<li>⚠ <strong>0-系統的內力誤判</strong>：因為 0-系統僅有支承沉陷而無外力，且基本結構為靜定結構，因此桿件<strong>無內力產生</strong>，這點常被考生忽略而進行無謂的計算。</li>
+</ul>
+<h2>3.5 變數層次分析 (Variable Hierarchy Analysis)</h2>
+<h3>最終目標</h3>
+<p><code>利用力法與變位諧合條件，求出各支承點在沉陷作用下的所有真實反力。</code></p>
+<h3>本題關鍵公式（依計算順序）</h3>
+<ol>
+<li>
+<p>計算靜不定度：<br />
+   $$ i = m + r - 2j $$</p>
+</li>
+<li>
+<p>單位虛力法求 0-系統位移（僅受沉陷影響）：<br />
+   $$ 1 \cdot \Delta_{10} + \sum R^{(u)} \cdot \Delta_{support} = \sum u_i \cdot \Delta L_i $$</p>
+</li>
+<li>
+<p>柔度係數（1-系統變位）：<br />
+   $$ \boxed{f_{11}} = \sum \frac{u_i^2 L_i}{AE} $$</p>
+</li>
+<li>
+<p>變位相容方程式求贅力：<br />
+   $$ \boxed{\Delta_{10}} + \boxed{f_{11}} X_1 = 0 $$</p>
+</li>
+<li>
+<p>疊加法求最終反力：<br />
+   $$ R = R^{(0)} + R^{(u)} \cdot \boxed{X_1} $$</p>
+</li>
+</ol>
+<h3>L1：題目直接給定</h3>
+<table>
+<thead>
+<tr>
+<th>符號</th>
+<th>數值</th>
+<th>說明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>$m$</td>
+<td>$7$</td>
+<td>桿件總數</td>
+</tr>
+<tr>
+<td>$r$</td>
+<td>$4$</td>
+<td>反力總數</td>
+</tr>
+<tr>
+<td>$j$</td>
+<td>$5$</td>
+<td>節點總數</td>
+</tr>
+<tr>
+<td>$AE$</td>
+<td>$10^4\text{ kN}$</td>
+<td>桿件軸向剛度</td>
+</tr>
+<tr>
+<td>$\Delta_a$</td>
+<td>$-0.1\text{ m}$</td>
+<td>節點 a 的垂直沉陷量</td>
+</tr>
+</tbody>
+</table>
+<h3>L2：需知識點推導</h3>
+<p><strong>系統判別與 1-系統</strong><br />
+| 符號 | 公式／來源 | 卡關? |<br />
+| --- | --- | --- |<br />
+| $i$ | $m + r - 2j$ |  |<br />
+| $u_i$ | 節點法 / $\sum F_x = 0, \sum F_y = 0$ |  |</p>
+<p><strong>變位計算與相容</strong><br />
+| 符號 | 公式／來源 | 卡關? |<br />
+| --- | --- | --- |<br />
+| $\Delta_{10}$ | $1 \cdot \Delta_{10} + R_{ay}^{(u)} \cdot \Delta_a = 0$ |  |<br />
+| $f_{11}$ | $\sum (u_i^2 L_i) / AE$ |  |<br />
+| $X_1$ | $\Delta_{10} + f_{11} X_1 = 0$ |  |</p>
+<h3>L3：深層知識（不懂就卡住）</h3>
+<table>
+<thead>
+<tr>
+<th>知識點</th>
+<th>說明</th>
+<th>卡關?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0-系統受沉陷之虛功原理</td>
+<td>靜定基本結構受沉陷時，無內力產生，虛功方程式左側為外力作功，包含單位力作功與虛反力在真實沉陷上的作功。</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h2>4. 步驟化詳細計算過程 (Step-by-Step Detailed Calculation)</h2>
+<p><strong>Step 1: 靜不定度分析與建立基本結構</strong></p>
+<ul>
+<li>總桿件數 $m=7$，總反力數 $r=4$（$R_{ay}, R_{cx}, R_{cy}, R_{dx}$），節點數 $j=5$。</li>
+<li>總方程式數：$2j = 10$。</li>
+<li>靜不定度：$i = (m+r) - 2j = (7+4) - 10 = 1$ （一度靜不定系統）。</li>
+<li><strong>策略註解</strong>：我們選擇解除節點 d 的水平約束，將向左的 $d$ 點水平反力 $X_1$ 視為贅力。此時基本結構為一靜定桁架。</li>
+</ul>
+<p><strong>Step 2: 0-系統分析與位移 $\Delta_{10}$ 計算</strong><br />
+0-系統為靜定結構，僅受到 a 點支承沉陷 $\Delta_a = -0.1\text{ m}$ 的影響。</p>
+<ul>
+<li>由於無外加荷重，各桿件內力為零，因此桿件變形 $\Delta L_i = 0$。</li>
+<li><strong>策略註解</strong>：利用虛功原理計算 $\Delta_{10}$，公式中需考慮 1-系統在 a 點的虛反力於真實沉陷上所作的功。<br />
+1-系統（見 Step 3）在 a 點的垂直反力為 $R_{ay}^{(u)} = -\frac{3}{8}$（向下）。<br />
+$$ 1 \times \Delta_{10} + R_{ay}^{(u)} \times \Delta_a = \sum u_i \Delta L_i = 0 $$<br />
+$$ \Delta_{10} + \left(-\frac{3}{8}\right) \times (-0.1) = 0 \implies \Delta_{10} = -0.0375\text{ m} = -\frac{3}{80}\text{ m} $$<br />
+此負號表示基本系統在 a 點發生沉陷時，d 點實際上會向右移動 $0.0375\text{ m}$（與假設向左的單位力方向相反）。</li>
+</ul>
+<p><strong>Step 3: 1-系統分析（單位虛力系統）</strong><br />
+在基本結構 d 點施加向左的單位水平力（$X_1 = 1$）。<br />
+首先計算 1-系統的支承反力：</p>
+<ul>
+<li>
+<p>對 c 點取力矩平衡 ($\sum M_c = 0$)：<br />
+    $R_{ay}^{(u)} \times (4\text{ m} + 4\text{ m}) + 1 \times 3\text{ m} = 0 \implies R_{ay}^{(u)} = -\frac{3}{8}$ （即向下）</p>
+</li>
+<li>
+<p>水平力平衡 ($\sum F_x = 0$)：<br />
+    $R_{cx}^{(u)} - 1 = 0 \implies R_{cx}^{(u)} = 1$ （向右）</p>
+</li>
+<li>
+<p>垂直力平衡 ($\sum F_y = 0$)：<br />
+    $R_{cy}^{(u)} + R_{ay}^{(u)} = 0 \implies R_{cy}^{(u)} = \frac{3}{8}$ （向上）</p>
+</li>
+</ul>
+<p>接下來，使用節點法求出各桿件內力 $u_i$：</p>
+<ul>
+<li><strong>節點 a</strong>：<ul>
+<li>$\sum F_y = 0 \implies u_{ab} \times \frac{3}{5} - \frac{3}{8} = 0 \implies u_{ab} = \frac{5}{8}$ (張力)</li>
+<li>$\sum F_x = 0 \implies u_{ae} + u_{ab} \times \frac{4}{5} = 0 \implies u_{ae} = -\frac{1}{2}$ (壓力)</li>
+</ul>
+</li>
+<li><strong>節點 d</strong>：<ul>
+<li>$\sum F_x = 0 \implies -u_{ed} - u_{bd} \times \frac{4}{5} - 1 = 0$</li>
+<li>$\sum F_y = 0 \implies u_{cd} + u_{bd} \times \frac{3}{5} = 0$</li>
+</ul>
+</li>
+<li><strong>節點 e</strong>：<ul>
+<li>$\sum F_x = 0 \implies u_{ed} - u_{ae} = 0 \implies u_{ed} = -\frac{1}{2}$ (壓力)</li>
+</ul>
+</li>
+<li><strong>將 $u_{ed}$ 代回節點 d 的方程式</strong>：<ul>
+<li>$-\left(-\frac{1}{2}\right) - 0.8 u_{bd} - 1 = 0 \implies 0.8 u_{bd} = -0.5 \implies u_{bd} = -\frac{5}{8}$ (壓力)</li>
+<li>$u_{cd} + \left(-\frac{5}{8}\right) \times \frac{3}{5} = 0 \implies u_{cd} = \frac{3}{8}$ (張力)</li>
+</ul>
+</li>
+<li><strong>節點 b</strong>：<ul>
+<li>$\sum F_y = 0 \implies -u_{be} - u_{ab} \times \frac{3}{5} - u_{bd} \times \frac{3}{5} = 0 \implies u_{be} = 0$</li>
+<li>$\sum F_x = 0 \implies u_{bc} - u_{ab} \times \frac{4}{5} + u_{bd} \times \frac{4}{5} = 0 \implies u_{bc} = 1$ (張力)</li>
+</ul>
+</li>
+</ul>
+<p>各桿件長度 $L_i$ 與內力 $u_i$ 整理：<br />
+$L_{ab} = 5\text{ m}, L_{ae} = 4\text{ m}, L_{be} = 3\text{ m}, L_{bc} = 4\text{ m}, L_{bd} = 5\text{ m}, L_{cd} = 3\text{ m}, L_{ed} = 4\text{ m}$</p>
+<p><strong>Step 4: 柔度係數 $f_{11}$ 與相容方程式求解</strong><br />
+$$ f_{11} = \sum \frac{u_i^2 L_i}{AE} $$</p>
+<ul>
+<li>ab: $(5/8)^2 \times 5 = 125/64$</li>
+<li>ae: $(-1/2)^2 \times 4 = 64/64$</li>
+<li>be: $0$</li>
+<li>bc: $1^2 \times 4 = 256/64$</li>
+<li>bd: $(-5/8)^2 \times 5 = 125/64$</li>
+<li>cd: $(3/8)^2 \times 3 = 27/64$</li>
+<li>ed: $(-1/2)^2 \times 4 = 64/64$</li>
+</ul>
+<p>$$ \sum u_i^2 L_i = \frac{125 + 64 + 0 + 256 + 125 + 27 + 64}{64} = \frac{661}{64}\text{ m} $$<br />
+$$ f_{11} = \frac{661}{64 AE}\text{ m/kN} $$<br />
+代入已知條件 $AE = 10^4\text{ kN}$，得 $f_{11} = \frac{661}{640000}\text{ m/kN}$。</p>
+<p><strong>相容方程式 (Compatibility Equation)：</strong><br />
+因實際結構 d 點水平位移為零，故：<br />
+$$ \Delta_{10} + f_{11} X_1 = 0 $$<br />
+$$ -0.0375 + \left(\frac{661}{640000}\right) X_1 = 0 $$<br />
+$$ X_1 = \frac{0.0375 \times 640000}{661} = \frac{24000}{661} \approx 36.3086\text{ kN} $$<br />
+（$X_1$ 為正，代表實際方向向左）。</p>
+<p><strong>Step 5: 計算最終反力</strong><br />
+利用疊加原理 $R = R^{(0)} + R^{(u)} X_1$ 計算所有反力：</p>
+<ol>
+<li>
+<p><strong>d 點反力：</strong><br />
+    $$ R_{dx} = \boxed{36.31\text{ kN} (\leftarrow)} $$</p>
+</li>
+<li>
+<p><strong>a 點反力：</strong><br />
+    $$ R_{ay} = 0 + \left(-\frac{3}{8}\right) \times \left(\frac{24000}{661}\right) = -\frac{9000}{661}\text{ kN} \implies \boxed{13.62\text{ kN} (\downarrow)} $$</p>
+</li>
+<li>
+<p><strong>c 點反力：</strong><br />
+    $$ R_{cx} = 0 + 1 \times \frac{24000}{661} = \frac{24000}{661}\text{ kN} \implies \boxed{36.31\text{ kN} (\rightarrow)} $$<br />
+    $$ R_{cy} = 0 + \frac{3}{8} \times \left(\frac{24000}{661}\right) = \frac{9000}{661}\text{ kN} \implies \boxed{13.62\text{ kN} (\uparrow)} $$</p>
+</li>
+</ol>
+<h2>5. 關鍵爭議點與進階探討 (Critical Issues &amp; Advanced Discussion)</h2>
+<ul>
+<li><strong>虛功原理的符號處理</strong>：許多考生在列虛功方程式時，會將 $R_{ay}^{(u)} \times \Delta_a$ 移至等式右邊，此時應注意其為外力作功的一部分，建議維持標準式 <code>外力虛功 = 內力虛功</code> 以避免混淆。即 $1 \cdot \Delta + \sum R \cdot \Delta_{support} = \sum u \cdot \Delta L$。</li>
+<li><strong>贅力選擇的優劣</strong>：本題選擇 $d$ 點水平反力為贅力，得到的 1-系統反力及內力計算相對直觀。若選擇其它內力（如某一桿件的軸力）作為贅力，亦可求解，但在基本結構的計算上較容易發生錯誤。考場上以「盡量維持靜定但易於計算的外反力」為贅力首選。</li>
+<li><strong>剛架 vs 桁架的支承沉陷</strong>：桁架在靜定狀態下發生支承沉陷不產生內力，此與剛架特性相同。對於此類題目，利用力法計算遠比矩陣位移法來得有效率。</li>
+</ul></main>
+<footer>來源：raw/solutions/SA-2009-1/SA-2009-1.md（知識庫解題內容唯一正本；本頁僅為渲染顯示）</footer>
+</body></html>

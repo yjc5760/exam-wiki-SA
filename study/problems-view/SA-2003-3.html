@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="zh-Hant"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SA-2003-3 — 題目解析</title>
+<link rel="stylesheet" href="../assets/katex/katex.min.css">
+<script defer src="../assets/katex/katex.min.js"></script>
+<script defer src="../assets/katex/auto-render.min.js"
+  onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},
+  {left:'$',right:'$',display:false},{left:'\\(',right:'\\)',display:false}],throwOnError:false});"></script>
+<style>
+:root{--ac:#1565c0;--bg:#f7f9fb;--card:#fff;--ink:#263238;--mut:#607d8b;--bd:#dfe6ea}
+*{box-sizing:border-box}
+body{margin:0;font-family:"Microsoft JhengHei","Noto Sans TC",-apple-system,sans-serif;
+  background:var(--bg);color:var(--ink);line-height:1.75;font-size:15.5px}
+header{background:linear-gradient(135deg,#0d47a1,#1976d2 60%,#42a5f5);color:#fff;padding:22px 26px}
+header h1{margin:0;font-size:1.15em}
+header .back{display:inline-block;margin-top:10px;font-size:.82em;color:#fff;background:rgba(255,255,255,.18);
+  padding:4px 12px;border-radius:14px;text-decoration:none}
+main{max-width:880px;margin:0 auto;padding:26px 22px 70px}
+h1,h2,h3{color:#0d47a1} h2{font-size:1.2em;border-left:6px solid var(--ac);padding-left:12px;margin:34px 0 14px}
+table{width:100%;border-collapse:collapse;margin:14px 0;font-size:.92em;background:#fff}
+th,td{border:1px solid var(--bd);padding:7px 10px;text-align:left;vertical-align:top}
+th{background:#eceff1;font-weight:600} tbody tr:nth-child(even){background:#fafcfd}
+code{background:#eceff1;padding:1px 5px;border-radius:4px;font-size:.92em}
+img{max-width:100%;display:block;margin:14px auto;border:1px solid var(--bd);border-radius:8px}
+.katex-display{margin:12px 0!important;overflow-x:auto;overflow-y:hidden}
+footer{text-align:center;color:var(--mut);font-size:.8em;padding:22px;border-top:1px solid var(--bd)}
+</style></head><body>
+<header><h1>SA-2003-3 題目解析</h1><a class="back" href="javascript:history.back()">← 返回講義</a></header>
+<main><h1>考題編號：SA-2003-3</h1>
+<p><strong>主分類：</strong> <code>SA-1</code> 靜定結構分析<br />
+<strong>副分類：</strong> <br />
+<strong>分析法：</strong> 靜定分析<br />
+<strong>標籤：</strong> <code>桁架分析</code> <code>K型桁架</code> <code>截面法</code> <code>節點法</code></p>
+<hr />
+<h2>1. 原始題目重述 (Problem Restatement)</h2>
+<ul>
+<li><strong>題目描述</strong>：試求圖示桁架中 a, b 桿之內力。（25 分）</li>
+<li><strong>結構與幾何</strong>：本題為一左右對稱幾何之靜定桁架（類似 K 型細分桁架）。總跨度為 $4 \times 8\text{m} = 32\text{m}$，總高度為 $4\text{m} + 4\text{m} = 8\text{m}$。</li>
+<li><strong>支撐條件</strong>：左端為鉸支承（鉸接），右端為滾支承。</li>
+<li><strong>載重條件</strong>：於距左支承 $8\text{m}$ 及 $16\text{m}$ 處之下弦節點，各承受 $2\text{t}$ 之向下垂直集中載重。</li>
+<li><strong>欲求目標</strong>：求解標示為 a（左半側水平中弦桿）與 b（左半側右上斜腹桿）之內力。</li>
+</ul>
+<p><img alt="SA-2003-3 題目附圖：包含幾何尺寸、支承與載重條件之靜定桁架" src="../../raw/solutions/SA-2003-3/SA-2003-3-fig-1.png" /><br />
+<em>圖說：桁架跨度 32m 分為 4 個 8m 節間，高度 8m 分為上下各 4m，載重 2t 作用於左側兩個下弦節點，標示 a、b 桿件位置。</em></p>
+<h2>2. 考題核心精神與出題者意圖 (Core Concepts &amp; Examiner's Intent)</h2>
+<ul>
+<li><strong>核心觀念</strong>：本題測驗考生對於複雜桁架（Subdivided Truss / K-truss）的分析能力。這類桁架若單純依靠節點法從支承處逐一推進，會遭遇節點未知數過多而卡關的問題。</li>
+<li><strong>出題意圖</strong>：要求考生具備<strong>靈活運用截面法與節點法</strong>的能力。利用適當的截面快速求得特定弦桿內力，再輔以節點法破解局部構件內力，是本題致勝關鍵。</li>
+</ul>
+<h2>3. 解題戰略地圖與陷阱分析 (Strategic Roadmap &amp; Trap Analysis)</h2>
+<ul>
+<li><strong>步驟化作戰計畫</strong>：<br />
+  1. <strong>整體平衡求反力</strong>：將整個桁架視為剛體，取力矩平衡求出左、右支承反力。<br />
+  2. <strong>截面法求頂弦桿內力</strong>：切過桁架中央偏左的垂直截面，利用對下弦節點取力矩，快速求出頂弦桿 $U_1-U_2$ 內力。<br />
+  3. <strong>節點法求桿件 b</strong>：取頂部節點 $U_1$ 進行水平與垂直力平衡，求出桿件 b ($U_1-M_2$) 內力。<br />
+  4. <strong>節點法求桿件 a</strong>：從左支承 $L_0$ 出發推得 $L_0-M_1$ 內力後，再對節點 $M_1$ 進行力平衡，求出桿件 a ($M_1-M_2$) 內力。</li>
+<li><strong>關鍵陷阱與應對策略</strong>：</li>
+<li><strong>陷阱 1：節點未知數過多</strong>：若直接從 $L_0 \to L_1$ 或 $L_0 \to M_1 \to M_2$ 推進，會在 $M_1$ 或 $L_1$ 遇到超過 2 個未知力而無法求解。<ul>
+<li><em>策略</em>：先以截面法求出遠端的頂弦桿內力，再從頂節點逆向解回來，打破未知數的僵局。</li>
+</ul>
+</li>
+<li><strong>陷阱 2：幾何角度計算錯誤</strong>：桁架內部斜桿角度多為 $45^\circ$（底 $4\text{m}$、高 $4\text{m}$），但部分節點受力方向容易混淆。<ul>
+<li><em>策略</em>：統一將未知內力假設為拉力（向外），並仔細拆解 $x, y$ 分量（乘上 $\cos 45^\circ$ 或 $\sin 45^\circ$）。</li>
+</ul>
+</li>
+</ul>
+<h2>3.5 變數層次分析 (Variable Hierarchy Analysis)</h2>
+<h3>最終目標</h3>
+<p>求出特定內部桿件 a ($M_1-M_2$) 與 b ($U_1-M_2$) 之內力值及拉壓性質。</p>
+<h3>本題關鍵公式（依計算順序）</h3>
+<ul>
+<li>整體力矩平衡：$\sum M_{R} = 0 \implies R_L$</li>
+<li>截面法力矩平衡：$\sum M_{L2} = 0 \implies S_{U_1U_2}$</li>
+<li>$U_1$ 節點垂直平衡：$\sum F_y = 0 \implies S_{M_1U_1} = -S_b$</li>
+<li>$U_1$ 節點水平平衡：$\sum F_x = 0 \implies \boxed{S_{M_1U_1}}, \boxed{S_{U_1U_2}} \to S_b$</li>
+<li>$L_0$ 節點垂直平衡：$\sum F_y = 0 \implies \boxed{R_L} \to S_{L_0M_1}$</li>
+<li>$M_1$ 節點垂直平衡：$\sum F_y = 0 \implies \boxed{S_{L_0M_1}}, \boxed{S_{M_1U_1}} \to S_{M_1L_1}$</li>
+<li>$M_1$ 節點水平平衡：$\sum F_x = 0 \implies \boxed{S_{L_0M_1}}, \boxed{S_{M_1U_1}}, \boxed{S_{M_1L_1}} \to S_a$</li>
+</ul>
+<h3>L1：題目直接給定</h3>
+<table>
+<thead>
+<tr>
+<th>符號</th>
+<th>數值</th>
+<th>說明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>$L$</td>
+<td>$32\text{m}$</td>
+<td>桁架總跨度</td>
+</tr>
+<tr>
+<td>$H$</td>
+<td>$8\text{m}$</td>
+<td>桁架總高度</td>
+</tr>
+<tr>
+<td>$P_1$</td>
+<td>$2\text{t} (\downarrow)$</td>
+<td>$x=8\text{m}$ 處之下弦載重</td>
+</tr>
+<tr>
+<td>$P_2$</td>
+<td>$2\text{t} (\downarrow)$</td>
+<td>$x=16\text{m}$ 處之下弦載重</td>
+</tr>
+</tbody>
+</table>
+<h3>L2：需知識點推導</h3>
+<p><strong>1. 支承反力</strong><br />
+| 符號 | 公式／來源 | 卡關? |<br />
+|---|---|---|<br />
+| $R_L$ | $\sum M_{R} = 0$ | |<br />
+| $R_R$ | $\sum F_y = 0$ | |</p>
+<p><strong>2. 內力分析 (截面法 + 節點法)</strong><br />
+| 符號 | 公式／來源 | 卡關? |<br />
+|---|---|---|<br />
+| $S_{U_1U_2}$ | 垂直截面切 $U_1-U_2, M_2-L_2, L_1-L_2$ 取 $\sum M_{L2}=0$ | |<br />
+| $S_b (S_{U_1M_2})$ | 節點 $U_1$ 之 $\sum F_x=0, \sum F_y=0$ | |<br />
+| $S_{L_0M_1}$ | 節點 $L_0$ 之 $\sum F_y=0$ | |<br />
+| $S_{M_1L_1}$ | 節點 $M_1$ 之 $\sum F_y=0$ | |<br />
+| $S_a (S_{M_1M_2})$ | 節點 $M_1$ 之 $\sum F_x=0$ | |</p>
+<h3>L3：深層知識（不懂就卡住）</h3>
+<table>
+<thead>
+<tr>
+<th>知識點</th>
+<th>說明</th>
+<th>卡關?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>截面法選取技巧</td>
+<td>截面切過不超過3個未知內力構件，或利用適當力矩中心消去多餘未知數。</td>
+<td></td>
+</tr>
+<tr>
+<td>混合分析策略</td>
+<td>當單一節點法無法推進時，須敏銳切換至截面法求解遠端內力，再折返使用節點法。</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h2>4. 步驟化詳細計算過程 (Step-by-Step Detailed Calculation)</h2>
+<p>為方便說明，先對桁架節點進行命名：</p>
+<ul>
+<li>下弦節點（由左至右）：$L_0(0,0), L_1(8,0), L_2(16,0), L_3(24,0), L_4(32,0)$</li>
+<li>頂弦節點（由左至右）：$U_1(8,8), U_2(16,8), U_3(24,8)$</li>
+<li>中間斜桿節點：$M_1(4,4)$ 位於 $L_0 \to U_1$ 之間，$M_2(12,4)$ 位於 $U_1 \to L_2$ 之間。</li>
+<li>桿件 a 為 $M_1-M_2$；桿件 b 為 $U_1-M_2$。</li>
+</ul>
+<p><strong>Step 1：計算支承反力</strong><br />
+以右端支承 $L_4$ 為力矩中心，取整體結構平衡：<br />
+$$ \sum M_{L4} = 0 \implies R_L \times 32 - 2 \times (32-8) - 2 \times (32-16) = 0 $$<br />
+$$ 32 R_L - 48 - 32 = 0 \implies 32 R_L = 80 \implies \boxed{R_L = 2.5\text{t} (\uparrow)} $$</p>
+<p>由垂直力平衡求右支承反力（本題未直接用到，作驗證用）：<br />
+$$ \sum F_y = 0 \implies R_L + R_R - 2 - 2 = 0 \implies 2.5 + R_R = 4 \implies \boxed{R_R = 1.5\text{t} (\uparrow)} $$</p>
+<p><strong>Step 2：利用截面法求頂弦桿 $U_1-U_2$ 內力</strong></p>
+<blockquote>
+<p>策略註解：直接求 a, b 桿會遇到未知數過多，先用截面法切出頂弦桿內力，便可從 $U_1$ 節點解出 b 桿。</p>
+</blockquote>
+<p>取一垂直截面，切過 $U_1-U_2$、$M_2-L_2$、$L_1-L_2$ 三根桿件（即切於 $x=12 \sim 16$ 之間）。<br />
+取截面左側自由體，對節點 $L_2(16,0)$ 取力矩平衡（此時 $M_2-L_2$ 與 $L_1-L_2$ 延長線皆通過 $L_2$，不產生力矩）：<br />
+$$ \sum M_{L2} = 0 $$<br />
+$$ R_L \times 16 - 2 \times (16-8) + S_{U_1U_2} \times 8 = 0 $$<br />
+$$ 2.5 \times 16 - 2 \times 8 + 8 S_{U_1U_2} = 0 $$<br />
+$$ 40 - 16 + 8 S_{U_1U_2} = 0 \implies 8 S_{U_1U_2} = -24 \implies \boxed{S_{U_1U_2} = -3\text{t}} \text{ (壓力)} $$</p>
+<p><strong>Step 3：利用節點法求桿件 b ($U_1-M_2$)</strong><br />
+觀察節點 $U_1(8,8)$，連接三根桿件：$M_1-U_1$、$M_2-U_1$ (即桿件 b)、$U_1-U_2$。<br />
+斜桿之幾何斜率皆為 $1:1$ (角度 $45^\circ$)。假設皆為拉力。<br />
+垂直力平衡：<br />
+$$ \sum F_y = 0 \implies -S_{M_1U_1} \sin 45^\circ - S_{M_2U_1} \sin 45^\circ = 0 \implies S_{M_1U_1} = -S_{M_2U_1} $$<br />
+水平力平衡：<br />
+$$ \sum F_x = 0 \implies -S_{M_1U_1} \cos 45^\circ + S_{M_2U_1} \cos 45^\circ + S_{U_1U_2} = 0 $$<br />
+將 $S_{M_1U_1} = -S_{M_2U_1}$ 及 $S_{U_1U_2} = -3\text{t}$ 代入：<br />
+$$ -(-S_{M_2U_1}) \frac{\sqrt{2}}{2} + S_{M_2U_1} \frac{\sqrt{2}}{2} - 3 = 0 $$<br />
+$$ 2 \times S_{M_2U_1} \frac{\sqrt{2}}{2} = 3 \implies \sqrt{2} S_{M_2U_1} = 3 \implies S_{M_2U_1} = \frac{3}{\sqrt{2}} = 1.5\sqrt{2} \approx 2.121\text{t} $$<br />
+$$ \boxed{\text{桿件 b 內力 } S_b = 1.5\sqrt{2}\text{t} \text{ (拉力)}} $$<br />
+<em>(同時求得 $S_{M_1U_1} = -1.5\sqrt{2}\text{t}$)</em></p>
+<p><strong>Step 4：利用節點法求桿件 a ($M_1-M_2$)</strong><br />
+先觀察左支承節點 $L_0(0,0)$，求斜桿 $L_0-M_1$ 內力：<br />
+$$ \sum F_y = 0 \implies R_L + S_{L_0M_1} \sin 45^\circ = 0 $$<br />
+$$ 2.5 + S_{L_0M_1} \frac{\sqrt{2}}{2} = 0 \implies \boxed{S_{L_0M_1} = -2.5\sqrt{2}\text{t}} \text{ (壓力)} $$</p>
+<p>接著觀察節點 $M_1(4,4)$，連接四根桿件：$L_0-M_1$、$M_1-U_1$、$M_1-M_2$ (即桿件 a)、$M_1-L_1$。<br />
+先利用垂直力平衡求出 $S_{M_1L_1}$：<br />
+$$ \sum F_y = 0 \implies -S_{L_0M_1} \sin 45^\circ + S_{M_1U_1} \sin 45^\circ - S_{M_1L_1} \sin 45^\circ = 0 $$<br />
+$$ -(-2.5\sqrt{2})\left(\frac{\sqrt{2}}{2}\right) + (-1.5\sqrt{2})\left(\frac{\sqrt{2}}{2}\right) - S_{M_1L_1} \left(\frac{\sqrt{2}}{2}\right) = 0 $$<br />
+$$ 2.5 - 1.5 - S_{M_1L_1} \frac{\sqrt{2}}{2} = 0 \implies 1 = S_{M_1L_1} \frac{\sqrt{2}}{2} \implies \boxed{S_{M_1L_1} = \sqrt{2}\text{t}} \text{ (拉力)} $$</p>
+<p>最後利用水平力平衡求出桿件 a：<br />
+$$ \sum F_x = 0 \implies -S_{L_0M_1} \cos 45^\circ + S_{M_1U_1} \cos 45^\circ + S_a + S_{M_1L_1} \cos 45^\circ = 0 $$<br />
+$$ -(-2.5\sqrt{2})\left(\frac{\sqrt{2}}{2}\right) + (-1.5\sqrt{2})\left(\frac{\sqrt{2}}{2}\right) + S_a + (\sqrt{2})\left(\frac{\sqrt{2}}{2}\right) = 0 $$<br />
+$$ 2.5 - 1.5 + S_a + 1 = 0 \implies 2 + S_a = 0 \implies S_a = -2\text{t} $$<br />
+$$ \boxed{\text{桿件 a 內力 } S_a = -2\text{t} \text{ (壓力)}} $$</p>
+<h2>5. 關鍵爭議點與進階探討 (Critical Issues &amp; Advanced Discussion)</h2>
+<ul>
+<li><strong>多種截面解法的等效性</strong>：本題桿件 a 亦可利用特定斜向力平衡或不同截面求得。例如取一平行於 $M_1-U_1$ 與 $M_2-L_1$ 斜率之正交方向（角度 $135^\circ$）進行力平衡，但幾何計算較為抽象。對於考場而言，<strong>逐次解節點</strong>（$L_0 \to M_1$）雖然步驟多了一項，但思緒最直觀、最不易出錯。</li>
+<li><strong>符號假設原則</strong>：強烈建議解桁架時，<strong>一律假設未知內力為拉力（向外）</strong>。計算結果若為正值即為拉力 (Tension)，若為負值即為壓力 (Compression)。本題計算中嚴格遵守此原則，有效避免了 $M_1$ 節點多達 4 根斜桿時極易發生的正負號混淆錯誤。</li>
+</ul></main>
+<footer>來源：raw/solutions/SA-2003-3/SA-2003-3.md（知識庫解題內容唯一正本；本頁僅為渲染顯示）</footer>
+</body></html>
