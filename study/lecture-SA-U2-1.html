@@ -1,0 +1,1088 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>SA-U2-1 靜不定結構最小功法｜觀念講義</title>
+<link rel="stylesheet" href="assets/katex/katex.min.css">
+<script defer src="assets/katex/katex.min.js"></script>
+<script defer src="assets/katex/auto-render.min.js"
+  onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'\\(',right:'\\)',display:false}],throwOnError:false});"></script>
+<style>
+:root{--ac:#1565c0;--ac2:#e3f2fd;--tension:#2e7d32;--tension2:#e8f5e9;
+--comp:#c62828;--comp2:#ffebee;--warn:#ef6c00;--warn2:#fff3e0;
+--key:#6a1b9a;--key2:#f3e5f5;--bg:#f7f9fb;--card:#fff;--ink:#263238;--mut:#607d8b;--bd:#dfe6ea}
+*{box-sizing:border-box}
+body{margin:0;font-family:"Microsoft JhengHei","Noto Sans TC",-apple-system,sans-serif;
+background:var(--bg);color:var(--ink);line-height:1.75;font-size:15.5px}
+header{background:linear-gradient(135deg,#bf360c,#e64a19 60%,#ff8a65);color:#fff;padding:34px 26px}
+header h1{margin:0 0 8px;font-size:1.6em}header .sub{opacity:.9;font-size:.93em;margin:0}
+header .meta{margin-top:12px;font-size:.82em;opacity:.8}
+nav{position:sticky;top:0;z-index:20;background:#fff;border-bottom:2px solid var(--bd);
+padding:9px 14px;display:flex;flex-wrap:wrap;gap:6px;box-shadow:0 2px 6px rgba(0,0,0,.05)}
+nav a{text-decoration:none;color:var(--ac);font-size:.85em;padding:4px 11px;border-radius:14px;background:var(--ac2)}
+nav a:hover{background:var(--ac);color:#fff}
+main{max-width:980px;margin:0 auto;padding:24px 18px 80px}
+section{margin-bottom:46px}
+h2{font-size:1.32em;border-left:6px solid var(--ac);padding-left:12px;margin:44px 0 18px;line-height:1.4}
+h3{font-size:1.08em;margin:30px 0 10px;color:#0d47a1}
+h4{font-size:.99em;margin:20px 0 8px;color:#37474f}
+.lead{font-size:1.03em;background:#fff;border:1px solid var(--bd);border-left:5px solid var(--ac);
+border-radius:0 10px 10px 0;padding:14px 18px;margin:16px 0}
+.box{background:var(--card);border:1px solid var(--bd);border-radius:11px;padding:16px 18px;margin:16px 0}
+.why{background:var(--key2);border:1px solid #ce93d8;border-left:5px solid var(--key);
+border-radius:0 10px 10px 0;padding:13px 17px;margin:16px 0}
+.why b:first-child{color:var(--key)}
+.trap{background:var(--warn2);border:1px solid #ffcc80;border-left:5px solid var(--warn);
+border-radius:0 10px 10px 0;padding:13px 17px;margin:16px 0}
+.trap b:first-child{color:#e65100}
+.tens{background:var(--tension2);border:1px solid #a5d6a7;border-left:5px solid var(--tension);
+border-radius:0 10px 10px 0;padding:13px 17px;margin:16px 0}
+.comp{background:var(--comp2);border:1px solid #ef9a9a;border-left:5px solid var(--comp);
+border-radius:0 10px 10px 0;padding:13px 17px;margin:16px 0}
+.fig{background:#fff;border:1px solid var(--bd);border-radius:11px;padding:16px 14px 10px;margin:20px 0;overflow-x:auto}
+.fig svg{display:block;margin:0 auto;max-width:100%;height:auto}
+.fig .cap{font-size:.85em;color:var(--mut);text-align:center;margin-top:10px;line-height:1.6}
+table{width:100%;border-collapse:collapse;margin:16px 0;font-size:.9em;background:#fff}
+th,td{border:1px solid var(--bd);padding:8px 10px;text-align:left;vertical-align:top}
+th{background:#eceff1;font-weight:600}
+tbody tr:nth-child(even){background:#fafcfd}
+ul,ol{margin:10px 0 10px 4px;padding-left:22px}li{margin:5px 0}
+.pill{display:inline-block;font-size:.76em;padding:2px 8px;border-radius:10px;margin-right:4px}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+@media(max-width:760px){.grid2{grid-template-columns:1fr}}
+details{background:#fff;border:1px solid var(--bd);border-radius:9px;padding:10px 14px;margin:12px 0}
+summary{cursor:pointer;font-weight:600;color:var(--ac)}
+details p{border-left:3px solid #e0e0e0;padding-left:12px;margin:8px 0;color:#37474f}
+.qlink{color:#1565c0;text-decoration:none;border-bottom:1px dotted #90caf9;font-weight:600}
+.katex-display{margin:14px 0!important;overflow-x:auto;overflow-y:hidden}
+footer{text-align:center;color:var(--mut);font-size:.83em;padding:26px;border-top:1px solid var(--bd)}
+</style></head>
+<body>
+<header>
+<h1>SA-U2-1　靜不定結構最小功法</h1>
+<p class="sub">觀念講義 — 練題之前先建立物理直覺，不背公式</p>
+<p class="meta">結構工程技師｜結構學（SA）第二單元第 1 子項　主分類 12 題、副分類 3 題（2005–2022）　全科 10 個子項並列第 3</p>
+</header>
+<nav>
+<a href="#s0">§0 全景</a>
+<a href="#s1">§1 卡氏定理</a>
+<a href="#s2">§2 三張臉</a>
+<a href="#s3">§3 應變能盤點</a>
+<a href="#s4">§4 選多餘力</a>
+<a href="#s5">§5 寫彎矩函數</a>
+<a href="#s6">§6 求位移</a>
+<a href="#s7">§7 虛力系統任意性</a>
+<a href="#s8">§8 先判斷再算</a>
+<a href="#s9">§9 積分速查</a>
+<a href="#s10">§10 完整手算</a>
+<a href="#s11">§11 決策流程</a>
+<a href="#s12">§12 歷屆對照</a>
+<a href="#s13">§13 因果鏈</a>
+<a href="#s14">§14 陷阱總表</a>
+<a href="#s15">§15 自我檢測</a>
+<a href="#s16">★ 精選 5 題</a>
+<span style="flex:1"></span>
+<a href="../index.html#md=wiki/diagnosis/SA-U2-1.md&amp;t=SA-U2-1 題型診斷" target="_blank" style="background:#eceff1;color:#455a64">🩺 診斷頁</a>
+<a href="study-SA-U2-1.html" style="background:#eceff1;color:#455a64">📊 速查頁</a>
+<a href="SA-U2-1_能量法主戰場與高頻陷阱破解.pdf" target="_blank" style="background:#eceff1;color:#455a64">📄 Keynote</a>
+<a href="lecture-SA-U2-1.pdf" target="_blank" style="background:#eceff1;color:#455a64">🖨️ 本頁 PDF</a>
+</nav>
+<main>
+<section id="s0">
+<h2>§0　全景：這個單元只有一句話</h2>
+
+<p class="lead"><b>\(\dfrac{\partial U}{\partial X}\) 就是 \(X\) 作用方向上的位移。</b>所以「令 \(\partial U/\partial X=0\)」根本不是什麼「能量最小原理」的玄學，它只是在說一句大白話：<b>那個地方本來就不准動。</b></p>
+
+<p>把這句話立起來之後，整個單元的結構就攤開了：</p>
+
+<ul>
+<li>拆掉一個支承 → 結構變靜定 → 那個點會張開一個缺口 \(\Delta_0\)</li>
+<li>多餘力 \(X\) 的工作就是把缺口推回去</li>
+<li>「推剛好」的條件寫成能量語言，就是 \(\partial U/\partial X=0\)</li>
+</ul>
+
+<div class="fig">
+<svg viewBox="0 0 780 300" xmlns="http://www.w3.org/2000/svg">
+<rect x="0" y="0" width="780" height="300" fill="#fff"/>
+<defs><marker id="a0" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+<path d="M0,0 L7,3 L0,6 z" fill="#c62828"/></marker>
+<marker id="a1" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+<path d="M0,0 L7,3 L0,6 z" fill="#1b5e20"/></marker></defs>
+
+<!-- panel 1 -->
+<rect x="14" y="34" width="238" height="196" rx="9" fill="#fafafa" stroke="#cfd8dc"/>
+<text x="133" y="56" font-size="12.5" font-weight="700" fill="#455a64" text-anchor="middle">① 原結構（靜不定）</text>
+<line x1="42" y1="140" x2="224" y2="140" stroke="#37474f" stroke-width="4"/>
+<rect x="30" y="120" width="12" height="40" fill="#78909c"/>
+<polygon points="224,140 212,158 236,158" fill="#78909c"/>
+<line x1="60" y1="112" x2="60" y2="132" stroke="#c62828" stroke-width="2" marker-end="url(#a0)"/>
+<line x1="105" y1="112" x2="105" y2="132" stroke="#c62828" stroke-width="2" marker-end="url(#a0)"/>
+<line x1="150" y1="112" x2="150" y2="132" stroke="#c62828" stroke-width="2" marker-end="url(#a0)"/>
+<line x1="195" y1="112" x2="195" y2="132" stroke="#c62828" stroke-width="2" marker-end="url(#a0)"/>
+<line x1="55" y1="112" x2="200" y2="112" stroke="#c62828" stroke-width="2"/>
+<text x="133" y="186" font-size="11.5" fill="#455a64" text-anchor="middle">反力數 &gt; 平衡方程數</text>
+<text x="133" y="206" font-size="11.5" fill="#455a64" text-anchor="middle">單靠 ΣF、ΣM 解不出來</text>
+
+<!-- panel 2 -->
+<rect x="270" y="34" width="238" height="196" rx="9" fill="#ffebee" stroke="#ef9a9a"/>
+<text x="389" y="56" font-size="12.5" font-weight="700" fill="#b71c1c" text-anchor="middle">② 拆掉多餘束制 → 出現缺口</text>
+<line x1="298" y1="128" x2="480" y2="128" stroke="#cfd8dc" stroke-width="2" stroke-dasharray="5 4"/>
+<path d="M298 128 Q389 176 480 186" stroke="#c62828" stroke-width="4" fill="none"/>
+<rect x="286" y="108" width="12" height="40" fill="#78909c"/>
+<line x1="480" y1="128" x2="480" y2="182" stroke="#b71c1c" stroke-width="2" marker-end="url(#a0)"/>
+<text x="452" y="212" font-size="13" font-weight="700" fill="#b71c1c">缺口 Δ₀</text>
+<text x="389" y="76" font-size="11.5" fill="#b71c1c" text-anchor="middle">基本結構＝靜定，可以直接算</text>
+
+<!-- panel 3 -->
+<rect x="526" y="34" width="238" height="196" rx="9" fill="#e8f5e9" stroke="#a5d6a7"/>
+<text x="645" y="56" font-size="12.5" font-weight="700" fill="#1b5e20" text-anchor="middle">③ 多餘力 X 把缺口推回去</text>
+<line x1="554" y1="128" x2="736" y2="128" stroke="#cfd8dc" stroke-width="2" stroke-dasharray="5 4"/>
+<path d="M554 128 Q645 152 736 128" stroke="#2e7d32" stroke-width="4" fill="none"/>
+<rect x="542" y="108" width="12" height="40" fill="#78909c"/>
+<line x1="736" y1="182" x2="736" y2="134" stroke="#1b5e20" stroke-width="3" marker-end="url(#a1)"/>
+<text x="700" y="204" font-size="13" font-weight="700" fill="#1b5e20">多餘力 X</text>
+<text x="645" y="76" font-size="11.5" fill="#1b5e20" text-anchor="middle">推到剛好歸零 ⟹ 這就是真實的 X</text>
+
+<text x="262" y="136" font-size="22" font-weight="700" fill="#78909c" text-anchor="middle">→</text>
+<text x="518" y="136" font-size="22" font-weight="700" fill="#78909c" text-anchor="middle">→</text>
+
+<rect x="120" y="248" width="540" height="40" rx="9" fill="#e3f2fd" stroke="#90caf9" stroke-width="1.6"/>
+<text x="390" y="273" font-size="13" font-weight="700" fill="#0d47a1" text-anchor="middle">「缺口歸零」寫成能量語言 ⟹ ∂U/∂X = 0</text>
+</svg>
+<div class="cap">力法家族的共同骨架。最小功法、諧合變位法、單位力法，用的都是這張圖 —— 差別只在「把缺口歸零」這件事寫成哪一種數學形式。</div>
+</div>
+
+<div class="why"><b>為什麼叫「最小」功？這其實是結果，不是前提。</b>
+因為結構是線彈性的，內力對 \(X\) 是<b>一次式</b>（\(M=M_0+X\,m\)），代進 \(U=\int \frac{M^2}{2EI}dx\) 之後，\(U\) 對 \(X\) 是一條<b>開口向上的拋物線</b>：
+$$U(X)=\underbrace{\left(\int\frac{m^2}{2EI}dx\right)}_{\text{恆}>0}X^2+\left(\int\frac{M_0m}{EI}dx\right)X+\text{常數}$$
+既然開口向上，\(\partial U/\partial X=0\) 的那個駐點<b>必然是最小值</b>。所以「最小功」是這個數學形式的副產品，真正在做的事情始終是「諧合條件」。<br>
+反過來說：如果你算出的 \(X\) 讓 \(U\) 變大，那一定是符號寫錯了。</div>
+
+<div class="fig">
+<svg viewBox="0 0 700 280" xmlns="http://www.w3.org/2000/svg">
+<rect x="0" y="0" width="700" height="280" fill="#fff"/>
+<text x="350" y="24" font-size="13.5" font-weight="700" fill="#0d47a1" text-anchor="middle">應變能 U 對多餘力 X 是一條開口向上的拋物線</text>
+<line x1="90" y1="230" x2="620" y2="230" stroke="#607d8b" stroke-width="1.8"/>
+<line x1="90" y1="230" x2="90" y2="48" stroke="#607d8b" stroke-width="1.8"/>
+<text x="636" y="234" font-size="12" fill="#546e7a">X</text>
+<text x="84" y="42" font-size="12" fill="#546e7a" text-anchor="middle">U</text>
+<path d="M120 70 Q 340 300 560 70" fill="none" stroke="#1565c0" stroke-width="3.5"/>
+<circle cx="340" cy="185" r="6" fill="#c62828"/>
+<line x1="340" y1="185" x2="340" y2="230" stroke="#ef9a9a" stroke-width="1.6" stroke-dasharray="4 4"/>
+<text x="340" y="248" font-size="12" font-weight="700" fill="#c62828" text-anchor="middle">真實的 X</text>
+<line x1="240" y1="230" x2="440" y2="230" stroke="#c62828" stroke-width="0" />
+<text x="404" y="176" font-size="12.5" font-weight="700" fill="#c62828">∂U/∂X = 0</text>
+<text x="150" y="120" font-size="11.5" fill="#1565c0">X 太小 ⟹ 缺口沒推回去</text>
+<text x="540" y="120" font-size="11.5" fill="#1565c0" text-anchor="end">X 太大 ⟹ 推過頭</text>
+<text x="350" y="268" font-size="11.5" fill="#546e7a" text-anchor="middle">開口向上是因為二次項係數 ∫m²/2EI dx 恆為正</text>
+</svg>
+<div class="cap">「駐點＝最小」不是額外的物理假設，而是二次項係數恆正的必然結果。這也解釋了為什麼靜不定結構的真實內力分布，總是應變能最小的那一組。</div>
+</div>
+
+<div class="trap"><b>考場現實：</b>本子項的題目幾乎都寫「<b>以其他方法計算不予計分</b>」或直接指定「以最小功法／卡氏定理求解」（<a class="qlink" href="problems-view/SA-2005-1.html" target="_blank">SA-2005-1</a>、<a class="qlink" href="problems-view/SA-2013-2.html" target="_blank">SA-2013-2</a>、<a class="qlink" href="problems-view/SA-2014-4.html" target="_blank">SA-2014-4</a>、<a class="qlink" href="problems-view/SA-2017-2.html" target="_blank">SA-2017-2</a>）。就算你用傾角變位法三行解完，也必須把過程寫成：<b>選多餘力 → 寫 \(M(x,X)\) → 偏微分 → 積分令為零 → 回代</b>。</div>
+</section>
+
+<section id="s1">
+<h2>§1　卡氏第二定理：\(\partial U/\partial P\) 為什麼會是位移</h2>
+
+<p class="lead">$$\boxed{\Delta_i=\frac{\partial U}{\partial P_i}}\qquad
+U=\int\frac{M^2}{2EI}dx+\int\frac{N^2}{2EA}dx+\cdots$$
+這條式子看起來很抽象，但它的來源只需要「線彈性下 \(U=\tfrac12 P\Delta\)」加一次微分。</p>
+
+<div class="fig">
+<svg viewBox="0 0 740 280" xmlns="http://www.w3.org/2000/svg">
+<rect x="0" y="0" width="740" height="280" fill="#fff"/>
+<text x="370" y="24" font-size="13.5" font-weight="700" fill="#0d47a1" text-anchor="middle">力—位移圖：應變能就是曲線下的面積</text>
+<line x1="90" y1="230" x2="420" y2="230" stroke="#607d8b" stroke-width="1.8"/>
+<line x1="90" y1="230" x2="90" y2="52" stroke="#607d8b" stroke-width="1.8"/>
+<text x="436" y="234" font-size="12" fill="#546e7a">Δ</text>
+<text x="84" y="46" font-size="12" fill="#546e7a" text-anchor="middle">P</text>
+<line x1="90" y1="230" x2="330" y2="80" stroke="#1565c0" stroke-width="3"/>
+<polygon points="90,230 330,80 330,230" fill="#e3f2fd"/>
+<text x="230" y="200" font-size="13" font-weight="700" fill="#0d47a1" text-anchor="middle">U = ½PΔ</text>
+<line x1="330" y1="230" x2="330" y2="236" stroke="#607d8b"/>
+<text x="330" y="250" font-size="11.5" fill="#78909c" text-anchor="middle">Δ</text>
+<line x1="84" y1="80" x2="90" y2="80" stroke="#607d8b"/>
+<text x="78" y="84" font-size="11.5" fill="#78909c" text-anchor="end">P</text>
+<!-- increment -->
+<line x1="330" y1="80" x2="368" y2="56" stroke="#c62828" stroke-width="3"/>
+<polygon points="330,80 368,56 368,80" fill="#ffcdd2"/>
+<line x1="330" y1="66" x2="368" y2="66" stroke="#b71c1c" stroke-width="1.4" stroke-dasharray="3 3"/>
+<text x="382" y="52" font-size="11.5" fill="#b71c1c">dP</text>
+
+<rect x="452" y="60" width="272" height="170" rx="9" fill="#f3e5f5" stroke="#ce93d8"/>
+<text x="588" y="84" font-size="12.5" font-weight="700" fill="#4a148c" text-anchor="middle">一行推導</text>
+<text x="466" y="108" font-size="12" fill="#6a1b9a">加一點點力 dP，多做的功是</text>
+<text x="486" y="130" font-size="12.5" font-weight="700" fill="#4a148c">dU = Δ · dP</text>
+<text x="466" y="154" font-size="12" fill="#6a1b9a">（原有的 Δ 乘上新增的 dP，</text>
+<text x="466" y="172" font-size="12" fill="#6a1b9a">高階小量 ½dP·dΔ 可略）</text>
+<text x="486" y="198" font-size="13.5" font-weight="700" fill="#4a148c">⟹ Δ = ∂U/∂P</text>
+<text x="588" y="220" font-size="11.5" fill="#6a1b9a" text-anchor="middle">線彈性、小變形是唯一前提</text>
+</svg>
+<div class="cap">卡氏第二定理的全部內容。注意它要求<b>線彈性</b>（力—位移圖是直線）—— 這是它在 <a class="qlink" href="problems-view/SA-2019-1.html" target="_blank">SA-2019-1</a> 那種「桿件降伏／挫曲後」的題目裡必須分段使用的原因。</div>
+</div>
+
+<h3>兩種用法，同一條定理</h3>
+
+<table>
+<thead><tr><th>你想要什麼</th><th>對誰偏微分</th><th>令它等於</th><th>物理意義</th></tr></thead>
+<tbody>
+<tr><td><b>求多餘力</b>（最小功法）</td><td>多餘力 \(X\)</td><td><b>0</b></td><td>該處位移被束制住，不准動</td></tr>
+<tr><td><b>求位移</b>（卡氏第二定理）</td><td>該處的外力 \(P\)</td><td>\(\Delta\)</td><td>直接就是要求的位移</td></tr>
+<tr><td>求位移，但該處<b>沒有</b>外力</td><td>虛擬力 \(Q\)（最後令 \(Q=0\)）</td><td>\(\Delta\)</td><td>先「借」一個力來微分，微分完再還回去</td></tr>
+<tr><td>求<b>轉角</b></td><td>虛擬彎矩 \(M_0\)（最後令 \(M_0=0\)）</td><td>\(\theta\)</td><td>轉角的共軛量是彎矩，不是力</td></tr>
+</tbody>
+</table>
+
+<div class="why"><b>為什麼求轉角要用「虛擬彎矩」而不是虛擬力？</b>
+因為 \(\partial U/\partial P\) 給出的一定是「和 \(P\) 作功的那個位移」。功 = 力 × 位移、也 = 彎矩 × 轉角。想要轉角，就必須對<b>彎矩</b>微分。<br>
+這條「共軛配對」規則可以推廣：想要相對位移 → 加一對方向相反的力；想要相對轉角 → 加一對方向相反的彎矩；想要支承沉陷造成的效應 → 對該支承反力微分。<a class="qlink" href="problems-view/SA-2013-2.html" target="_blank">SA-2013-2</a> 與 <a class="qlink" href="problems-view/SA-2014-4.html" target="_blank">SA-2014-4</a> 都要求「C 點轉角」，兩題都是在 C 點加虛擬彎矩 \(M_0\)、算完令 \(M_0=0\)。</div>
+
+<div class="trap"><b>虛擬量要「先寫進去、後歸零」，順序不能顛倒。</b>
+正確順序：① 把 \(M_0\) 寫進彎矩函數 → ② 對 \(M_0\) 偏微分（得到 \(\partial M/\partial M_0\)）→ ③ <b>然後才</b>把 \(M_0=0\) 代進 \(M\) 裡 → ④ 積分。<br>
+如果一開始就令 \(M_0=0\)，\(\partial M/\partial M_0\) 這一項就沒了，等於白做。</div>
+</section>
+
+<section id="s2">
+<h2>§2　三張臉：最小功法 ＝ 單位力法 ＝ 諧合變位</h2>
+
+<p class="lead">本單元最重要的一條橋樑：<b>\(\dfrac{\partial M}{\partial X}\) 就是「單位多餘力產生的彎矩 \(m\)」。</b>知道這件事，三個方法立刻收斂成同一條方程式。</p>
+
+<div class="box"><b>三行推完</b>
+<ol>
+<li>結構是線彈性的，所以真實彎矩對多餘力是一次式：\(M=M_0+X\cdot m\)（\(M_0\) 是基本結構受外載的彎矩，\(m\) 是 \(X=1\) 時的彎矩）</li>
+<li>兩邊對 \(X\) 偏微分：\(\dfrac{\partial M}{\partial X}=m\)</li>
+<li>代進卡氏定理：
+$$\frac{\partial U}{\partial X}=\int\frac{M}{EI}\frac{\partial M}{\partial X}dx=\int\frac{M\,m}{EI}dx=0$$</li>
+</ol>
+最後一式正是<b>單位力法</b>算位移的公式，而它等於零正是<b>諧合條件</b>。</div>
+
+<div class="fig">
+<svg viewBox="0 0 780 300" xmlns="http://www.w3.org/2000/svg">
+<rect x="0" y="0" width="780" height="300" fill="#fff"/>
+<text x="390" y="26" font-size="14" font-weight="700" fill="#0d47a1" text-anchor="middle">三個名字，一條方程式</text>
+
+<rect x="14" y="48" width="240" height="112" rx="9" fill="#fff3e0" stroke="#ffb74d"/>
+<text x="134" y="72" font-size="12.5" font-weight="700" fill="#e65100" text-anchor="middle">最小功法</text>
+<text x="134" y="96" font-size="12" fill="#bf360c" text-anchor="middle">∂U / ∂X = 0</text>
+<text x="134" y="120" font-size="11.5" fill="#e65100" text-anchor="middle">未知量直接是多餘力</text>
+<text x="134" y="140" font-size="11.5" fill="#e65100" text-anchor="middle">用偏微分，不必畫 m 圖</text>
+
+<rect x="270" y="48" width="240" height="112" rx="9" fill="#e3f2fd" stroke="#64b5f6"/>
+<text x="390" y="72" font-size="12.5" font-weight="700" fill="#0d47a1" text-anchor="middle">單位力法（虛功）</text>
+<text x="390" y="96" font-size="12" fill="#1565c0" text-anchor="middle">∫ M·m / EI dx = 0</text>
+<text x="390" y="120" font-size="11.5" fill="#1565c0" text-anchor="middle">畫 M 圖與 m 圖相乘</text>
+<text x="390" y="140" font-size="11.5" fill="#1565c0" text-anchor="middle">可用圖形積分，手算最快</text>
+
+<rect x="526" y="48" width="240" height="112" rx="9" fill="#e8f5e9" stroke="#81c784"/>
+<text x="646" y="72" font-size="12.5" font-weight="700" fill="#1b5e20" text-anchor="middle">諧合變位（柔度法）</text>
+<text x="646" y="96" font-size="12" fill="#2e7d32" text-anchor="middle">δ₁₀ + δ₁₁ X = 0</text>
+<text x="646" y="120" font-size="11.5" fill="#2e7d32" text-anchor="middle">拆成「缺口」與「柔度」</text>
+<text x="646" y="140" font-size="11.5" fill="#2e7d32" text-anchor="middle">多餘力多時可矩陣化</text>
+
+<line x1="134" y1="160" x2="330" y2="196" stroke="#90a4ae" stroke-width="1.6"/>
+<line x1="390" y1="160" x2="390" y2="196" stroke="#90a4ae" stroke-width="1.6"/>
+<line x1="646" y1="160" x2="450" y2="196" stroke="#90a4ae" stroke-width="1.6"/>
+
+<rect x="150" y="198" width="480" height="82" rx="10" fill="#f3e5f5" stroke="#ba68c8" stroke-width="1.8"/>
+<text x="390" y="222" font-size="13" font-weight="700" fill="#4a148c" text-anchor="middle">共同的橋樑：∂M/∂X ≡ m</text>
+<text x="390" y="244" font-size="11.8" fill="#6a1b9a" text-anchor="middle">因為 M = M₀ + X·m 對 X 是一次式</text>
+<text x="390" y="266" font-size="11.8" fill="#6a1b9a" text-anchor="middle">δ₁₀ = ∫M₀m/EI dx（缺口）　δ₁₁ = ∫m²/EI dx（柔度）</text>
+</svg>
+<div class="cap">考卷上寫哪一種都對（除非題目指定）。但要知道它們同源 —— 這樣算不出來時可以換一張臉再試一次。</div>
+</div>
+
+<h3>什麼時候選哪一張臉</h3>
+
+<table>
+<thead><tr><th>情況</th><th>建議</th><th>理由</th></tr></thead>
+<tbody>
+<tr><td>題目指定「最小功法／卡氏定理」</td><td>寫 \(\partial U/\partial X=0\) 的形式</td><td>形式本身就是分數（<a class="qlink" href="problems-view/SA-2005-1.html" target="_blank">SA-2005-1</a> 等四題明寫）</td></tr>
+<tr><td>彎矩圖是簡單的直線／拋物線組合</td><td>單位力法＋圖形積分</td><td>不必寫函數、不必積分，查表相乘就好（§9）</td></tr>
+<tr><td>桁架</td><td>\(\sum \dfrac{F\,L}{EA}\dfrac{\partial F}{\partial X}=0\) 或表格式 \(\sum\dfrac{F_0 u L}{EA}\)</td><td>桿件是離散的，用表格排最不會漏（<a class="qlink" href="problems-view/SA-2005-4.html" target="_blank">SA-2005-4</a>）</td></tr>
+<tr><td>多餘力 3 個以上</td><td>改用諧合變位的矩陣寫法</td><td>偏微分會爆炸；柔度矩陣可系統化（見 SA-U2-2）</td></tr>
+<tr><td>真實彎矩<b>已經知道</b>，只要求位移</td><td>單位力法，且虛力系統可任選</td><td><a class="qlink" href="problems-view/SA-2016-3.html" target="_blank">SA-2016-3</a> 的神技，見 §7</td></tr>
+</tbody>
+</table>
+
+<div class="why"><b>為什麼 \(\delta_{11}=\int m^2/EI\,dx\) 一定是正的？</b>
+因為被積函數是平方。物理上：對著多餘力的方向推一單位的力，那個點<b>一定</b>朝著推的方向動，不可能反向。這一條可以當作即時檢查 —— 算出負的柔度係數，回頭查 \(m\) 圖的符號。<br>
+同理，\(\delta_{ij}=\delta_{ji}\)（Maxwell 互易定理），因為 \(\int m_i m_j/EI\,dx\) 對調 \(i,j\) 不變。多餘力兩個以上時，這是免費的驗算。</div>
+</section>
+
+<section id="s3">
+<h2>§3　應變能盤點：哪幾項要留、哪幾項可以丟</h2>
+
+<p class="lead">$$U=\underbrace{\int\frac{M^2}{2EI}dx}_{\text{彎曲}}+\underbrace{\int\frac{N^2}{2EA}dx}_{\text{軸向}}+\underbrace{\int\frac{V^2}{2GA_s}dx}_{\text{剪力}}+\underbrace{\int\frac{T^2}{2GJ}dx}_{\text{扭轉}}$$
+考場上不是「全部都算」，而是<b>先判斷哪幾項不可忽略</b>。判斷錯了，不是白算就是全錯。</p>
+
+<h3>判斷準則：看題目給了什麼</h3>
+
+<table>
+<thead><tr><th>題目給的資料</th><th>在暗示什麼</th><th>該留哪幾項</th><th>出處</th></tr></thead>
+<tbody>
+<tr><td>只給 \(E\)、\(I\)（<b>沒給</b> \(A\)）</td><td>叫你忽略軸向與剪力</td><td>只留彎曲</td><td><a class="qlink" href="problems-view/SA-2013-2.html" target="_blank">SA-2013-2</a>、<a class="qlink" href="problems-view/SA-2014-4.html" target="_blank">SA-2014-4</a></td></tr>
+<tr><td>明寫「不計軸力及剪力」</td><td>同上，直接照做</td><td>只留彎曲</td><td><a class="qlink" href="problems-view/SA-2005-1.html" target="_blank">SA-2005-1</a></td></tr>
+<tr><td>給了 \(EA\) 且結構是<b>桁架</b></td><td>桿件只有軸力</td><td>只留軸向，寫成 \(\sum\dfrac{F^2L}{2EA}\)</td><td><a class="qlink" href="problems-view/SA-2005-4.html" target="_blank">SA-2005-4</a>、<a class="qlink" href="problems-view/SA-2019-1.html" target="_blank">SA-2019-1</a></td></tr>
+<tr><td><b>同時</b>給 \(EI\) 與 \(EA\)</td><td>兩項都要算，這是本子項最難的一類</td><td>彎曲＋軸向</td><td><a class="qlink" href="problems-view/SA-2006-1.html" target="_blank">SA-2006-1</a>、<a class="qlink" href="problems-view/SA-2018-3.html" target="_blank">SA-2018-3</a></td></tr>
+<tr><td>給 \(G\)、\(J\) 或提到扭轉</td><td>空間結構或格床</td><td>加上扭轉項</td><td>（本子項未考，見 SA-U2-4）</td></tr>
+</tbody>
+</table>
+
+<div class="why"><b>為什麼細長桿件可以放心丟掉軸向項？</b>
+拿一根長 \(L\)、斷面深 \(h\) 的懸臂桿，端點受力 \(P\)：
+$$\frac{U_{\text{軸向}}}{U_{\text{彎曲}}}=\frac{P^2L/(2EA)}{P^2L^3/(6EI)}=\frac{3I}{AL^2}=3\left(\frac{r}{L}\right)^2$$
+其中 \(r=\sqrt{I/A}\) 是迴轉半徑。矩形斷面 \(r\approx h/\sqrt{12}\)，所以比值 \(\approx\dfrac{1}{4}\left(\dfrac{h}{L}\right)^2\)。<br>
+桿件長細比 \(L/h=10\) 時，軸向應變能只佔彎曲的 <b>0.25%</b>。<br>
+<b>反過來記：只有當桿件很短很粗（\(h/L\) 接近 1），或者根本沒有彎矩（桁架、纜索）時，軸向項才重要。</b>這一句話同時解釋了為什麼桁架題只留軸向、剛架題只留彎曲。</div>
+
+<div class="trap"><b>混合結構是本子項的大魔王。</b><a class="qlink" href="problems-view/SA-2006-1.html" target="_blank">SA-2006-1</a> 是「樑＋桁架」的橋梁：樑的部分算 \(\int M^2/2EI\)，桁架的部分算 \(\sum F^2L/2EA\)，兩者<b>必須加在同一個 \(U\) 裡</b>再對多餘力偏微分。<br>
+$$\frac{\partial U}{\partial X}=\int\frac{M}{EI}\frac{\partial M}{\partial X}dx+\sum\frac{F\,L}{EA}\frac{\partial F}{\partial X}=0$$
+題目若沒給 \(EI/EA\) 的比值，答案就會是含 \(EI\) 與 \(EA\) 的<b>參數解</b> —— 這是正常的，不要以為自己算錯了。</div>
+
+<div class="box"><b>量綱檢查（三秒可做）</b>
+<ul>
+<li>\(\dfrac{M^2}{EI}\)：(力·長度)² ÷ (力·長度²) = 力 → 再乘 \(dx\) 得「力·長度」＝能量 ✔</li>
+<li>\(\dfrac{N^2 L}{EA}\)：力² × 長度 ÷ 力 = 力·長度 ✔</li>
+<li>\(\dfrac{\partial U}{\partial X}\)：能量 ÷ 力 = 長度 ＝ <b>位移</b> ✔　（對彎矩微分則得「能量÷力·長度」＝無因次＝<b>轉角</b> ✔）</li>
+</ul>
+最後一條特別好用：它同時證明了「對力微分得位移、對彎矩微分得轉角」不是要背的規則。</div>
+</section>
+
+<section id="s4">
+<h2>§4　多餘力怎麼選：先數對，再選聰明的</h2>
+
+<h3>第一步：數靜不定度</h3>
+
+<table>
+<thead><tr><th>結構</th><th>公式</th><th>備註</th></tr></thead>
+<tbody>
+<tr><td>平面梁／剛架</td><td>\(n=(r+3c)-3b-h\)</td><td>\(r\)＝反力數，\(b\)＝剛體數，\(c\)＝剛接數，\(h\)＝釋放數。實務上直接數：<b>反力總數 − 可用平衡方程數 − 內部條件數</b></td></tr>
+<tr><td>平面桁架</td><td>\(n=m+r-2j\)</td><td>\(m\)＝桿件數，\(r\)＝反力數，\(j\)＝節點數</td></tr>
+</tbody>
+</table>
+
+<div class="box"><b>三題的實際數法</b>
+<ul>
+<li><a class="qlink" href="problems-view/SA-2005-1.html" target="_blank">SA-2005-1</a>：A 固接（3）＋ C 滾支承（1）＝ 4 個反力，平衡方程 3 條 → <b>1 度</b></li>
+<li><a class="qlink" href="problems-view/SA-2013-2.html" target="_blank">SA-2013-2</a>：A 固接（3）＋ C 鉸支承（2）＝ 5 個反力，平衡方程 3 條 → <b>2 度</b>（所以要解聯立）</li>
+<li><a class="qlink" href="problems-view/SA-2005-4.html" target="_blank">SA-2005-4</a>：\(m=5\)、\(r=4\)、\(j=4\) → \(5+4-8=\) <b>1 度</b></li>
+</ul></div>
+
+<div class="trap"><b>陷阱：有內鉸不等於變靜定。</b><a class="qlink" href="problems-view/SA-2017-2.html" target="_blank">SA-2017-2</a> 是兩端固定梁＋跨間一個內鉸。很多人看到鉸就直覺「靜定了」。實際上：4 個未知反力（\(R_a,M_a,R_b,M_b\)）− 2 條平衡方程（\(\Sigma F_y,\Sigma M\)，無水平載重）− 1 條鉸點條件（\(M_c=0\)）＝ <b>仍是 1 度靜不定</b>。<br>
+<b>內鉸只是「送你一條免費方程式」，把靜不定度降 1，不是降到 0。</b></div>
+
+<h3>第二步：選一個讓後面最輕鬆的多餘力</h3>
+
+<p>多餘力的選擇<b>不影響答案</b>，但會大幅影響計算量。判斷標準只有一個：<b>哪一種選法讓 \(M(x)\) 函數最短、分段最少。</b></p>
+
+<div class="fig">
+<svg viewBox="0 0 780 300" xmlns="http://www.w3.org/2000/svg">
+<rect x="0" y="0" width="780" height="300" fill="#fff"/>
+<text x="390" y="24" font-size="13.5" font-weight="700" fill="#0d47a1" text-anchor="middle">同一根「兩端固定＋中間內鉸」的梁，兩種多餘力選法</text>
+<defs><marker id="a4" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+<path d="M0,0 L7,3 L0,6 z" fill="#1b5e20"/></marker></defs>
+
+<!-- left: choose Ma -->
+<rect x="14" y="40" width="368" height="240" rx="10" fill="#ffebee" stroke="#ef9a9a"/>
+<text x="198" y="64" font-size="12.5" font-weight="700" fill="#b71c1c" text-anchor="middle">選法 A：取 a 端固端彎矩 M_a 為多餘力</text>
+<line x1="56" y1="120" x2="340" y2="120" stroke="#37474f" stroke-width="4"/>
+<rect x="44" y="100" width="12" height="40" fill="#78909c"/>
+<rect x="340" y="100" width="12" height="40" fill="#78909c"/>
+<circle cx="226" cy="120" r="6" fill="#fff" stroke="#37474f" stroke-width="2.5"/>
+<text x="226" y="146" font-size="11.5" fill="#546e7a" text-anchor="middle">內鉸 c</text>
+<text x="52" y="94" font-size="11.5" fill="#b71c1c">a</text>
+<text x="336" y="94" font-size="11.5" fill="#b71c1c">b</text>
+<text x="28" y="180" font-size="11.5" fill="#b71c1c">・要先用鉸點條件把 R_a 用 M_a 表示</text>
+<text x="28" y="200" font-size="11.5" fill="#b71c1c">・再用整體平衡把 R_b、M_b 也表示出來</text>
+<text x="28" y="220" font-size="11.5" fill="#b71c1c">・M(x) 含三、四個項，∂M/∂X 很醜</text>
+<text x="28" y="240" font-size="11.5" fill="#b71c1c">・分段積分時符號極易出錯</text>
+<text x="198" y="266" font-size="12" font-weight="700" fill="#b71c1c" text-anchor="middle">能算，但代數量大</text>
+
+<!-- right: choose hinge shear -->
+<rect x="398" y="40" width="368" height="240" rx="10" fill="#e8f5e9" stroke="#a5d6a7"/>
+<text x="582" y="64" font-size="12.5" font-weight="700" fill="#1b5e20" text-anchor="middle">選法 B：取內鉸處的剪力 V 為多餘力</text>
+<line x1="440" y1="120" x2="596" y2="120" stroke="#37474f" stroke-width="4"/>
+<line x1="616" y1="120" x2="724" y2="120" stroke="#37474f" stroke-width="4"/>
+<rect x="428" y="100" width="12" height="40" fill="#78909c"/>
+<rect x="724" y="100" width="12" height="40" fill="#78909c"/>
+<line x1="596" y1="104" x2="596" y2="136" stroke="#2e7d32" stroke-width="2.5"/>
+<line x1="616" y1="104" x2="616" y2="136" stroke="#2e7d32" stroke-width="2.5"/>
+<line x1="596" y1="150" x2="596" y2="132" stroke="#1b5e20" stroke-width="2.4" marker-end="url(#a4)"/>
+<line x1="616" y1="90" x2="616" y2="108" stroke="#1b5e20" stroke-width="2.4" marker-end="url(#a4)"/>
+<text x="606" y="170" font-size="12" font-weight="700" fill="#1b5e20" text-anchor="middle">切開鉸，露出剪力 V</text>
+<text x="412" y="196" font-size="11.5" fill="#1b5e20">・左右各自變成一根<tspan font-weight="700">懸臂梁</tspan></text>
+<text x="412" y="216" font-size="11.5" fill="#1b5e20">・M(x) = Vx − wx²/2，只有兩項</text>
+<text x="412" y="236" font-size="11.5" fill="#1b5e20">・∂M/∂V = x，乾淨到不可能寫錯</text>
+<text x="582" y="264" font-size="12" font-weight="700" fill="#1b5e20" text-anchor="middle">代數量少一半以上（§10 完整示範）</text>
+</svg>
+<div class="cap">選多餘力的唯一判準：讓自由體圖上「掛著的東西」最少。切在內鉸處、或釋放最靠近自由端的束制，通常最省力。</div>
+</div>
+
+<div class="box"><b>選多餘力的四條實用原則</b>
+<ol>
+<li><b>基本結構必須穩定。</b>釋放後不能變成機構（例：桁架不能把唯一撐住某節點的桿拿掉）。這是硬性條件，不是偏好。</li>
+<li><b>切在內鉸／自由端附近。</b>自由體圖上要平衡的力最少，\(M(x)\) 就最短。</li>
+<li><b>優先選「只影響少數桿件」的多餘力。</b>它讓大部分桿件的 \(\partial M/\partial X=0\)，那些桿件整段不必積分。</li>
+<li><b>對稱結構選對稱／反對稱的多餘力組合。</b>可以讓耦合項 \(\delta_{12}=0\)，兩個多餘力直接解耦。</li>
+</ol></div>
+
+<div class="why"><b>為什麼多餘力可以隨便選，答案卻一樣？</b>
+因為真實結構只有一組真實內力。不同的選法只是把同一組內力拆成「\(M_0\) ＋ \(X\cdot m\)」的不同拆法，拆法不同但總和相同。<br>
+這一點在 §7 會再放大一次：連<b>虛力系統</b>都可以隨便選，因為虛力系統只要滿足平衡就行，根本不必是真實的。</div>
+</section>
+
+<section id="s5">
+<h2>§5　寫彎矩函數：本單元真正花時間的地方</h2>
+
+<p class="lead">最小功法的計算量九成在「把 \(M(x)\) 寫對」。積分本身是機械動作，但函數寫錯就全錯，而且錯了很難察覺。</p>
+
+<h3>三條座標設定原則</h3>
+
+<ol>
+<li><b>原點放在「往那個方向看過去，外力最少」的那一端。</b>通常是自由端、鉸端、或剛剛被釋放的多餘力所在處。這樣自由體圖上只有一兩個力。</li>
+<li><b>每根桿件各設各的座標，不要用全域座標串起來。</b>斜桿尤其如此（<a class="qlink" href="problems-view/SA-2005-1.html" target="_blank">SA-2005-1</a> 的 BC 斜桿用沿桿的 \(s\)）。</li>
+<li><b>座標方向和積分上下限一定要寫在紙上。</b>不寫，第二頁就會忘記 \(x\) 是從哪一端量的。</li>
+</ol>
+
+<h3>什麼時候必須分段</h3>
+
+<table>
+<thead><tr><th>遇到什麼</th><th>要不要分段</th><th>理由</th></tr></thead>
+<tbody>
+<tr><td>集中力／集中彎矩</td><td><b>要</b></td><td>該點兩側的自由體圖組成不同（<a class="qlink" href="problems-view/SA-2013-2.html" target="_blank">SA-2013-2</a> 在 \(x=5\) 分段）</td></tr>
+<tr><td>均佈載重的起訖點</td><td><b>要</b></td><td>載重合力的表達式改變</td></tr>
+<tr><td>斷面性質 \(EI\) 改變</td><td><b>要</b></td><td>被積函數的分母不同</td></tr>
+<tr><td>桿件轉折（節點）</td><td><b>要</b>（各桿獨立）</td><td>方向改變，本來就要分開寫</td></tr>
+<tr><td>只是「另一根桿件接在這裡」但該桿沒傳力</td><td><b>不要</b></td><td>見下方 <a class="qlink" href="problems-view/SA-2005-1.html" target="_blank">SA-2005-1</a> 的陷阱</td></tr>
+</tbody>
+</table>
+
+<div class="trap"><b><a class="qlink" href="problems-view/SA-2005-1.html" target="_blank">SA-2005-1</a> 的自由體圖陷阱（官方標為本題最大陷阱）。</b>
+剛架由 BA 桿（水平，8 m）與 BC 斜桿在 B 點剛接，C 為滾支承。很多人以為「C 點反力沿著 BC 桿傳到 BA 桿的中點（距 B 4 m 處），所以 BA 桿要在 \(x=4\) 分段」。<br>
+<b>錯。</b>C 點的反力是經由 BC 桿傳到<b>節點 B</b>，不是傳到 BA 桿的中間某處。取 BA 桿上任一截面的左側自由體，那個自由體<b>永遠包含整根 BC 桿</b>，所以 \(R_C\) 對截面的貢獻對所有 \(x\) 都是同一個表達式 —— <b>整根 BA 桿不必分段</b>。<br>
+<b>判斷方法：</b>畫出你的自由體圖，問自己「切到 \(x\) 這一刀的左邊，包含哪些東西？」而不是憑幾何位置猜。</div>
+
+<h3>Macaulay 括號：分段的省力寫法</h3>
+
+$$\langle x-a\rangle^n=\begin{cases}0 & x<a\\ (x-a)^n & x\ge a\end{cases}$$
+
+<p><a class="qlink" href="problems-view/SA-2013-2.html" target="_blank">SA-2013-2</a> 的官方解就寫成 \(M_{BC}(x)=C_y x+M_C-20\langle x-5\rangle\)。好處是<b>一條式子涵蓋全段</b>，偏微分時不必分兩次寫。積分時再拆成 \(\int_0^5\) 與 \(\int_5^{10}\) 即可。</p>
+
+<div class="tens"><b>符號慣例：怎麼定都行，但必須從頭到尾一致。</b>
+最小功法裡 \(M\) 與 \(\partial M/\partial X\) 用的是<b>同一個</b>符號定義，所以整體正負號會自動抵消 —— 這是它比傾角變位法寬容的地方。<br>
+但是：<b>同一根桿件的不同分段之間必須一致</b>，否則積分加起來就錯了。建議全程用「桿件<b>下側／內側</b>受拉為正」，並在草稿紙第一行寫下來。</div>
+
+<div class="why"><b>桁架版本長什麼樣？</b>
+把 \(\int\frac{M}{EI}\frac{\partial M}{\partial X}dx\) 換成 \(\sum\frac{F_iL_i}{EA_i}\frac{\partial F_i}{\partial X}\) 即可 —— 積分變求和，因為桁架桿的軸力沿桿是常數。<br>
+實務上一定要<b>排成表格</b>：一列一根桿，欄位是 \(L\)、\(F(X)\)、\(\partial F/\partial X\)、\(\dfrac{FL}{EA}\dfrac{\partial F}{\partial X}\)，最後一欄加總令為零。<a class="qlink" href="problems-view/SA-2005-4.html" target="_blank">SA-2005-4</a>、<a class="qlink" href="problems-view/SA-2019-1.html" target="_blank">SA-2019-1</a> 都是這個做法。散著寫必漏桿。</div>
+</section>
+
+<section id="s6">
+<h2>§6　求位移：虛擬力與虛擬彎矩</h2>
+
+<p class="lead">本子項有一半的題目最後不是問「多餘力多大」，而是問「某點位移／轉角多少」（<a class="qlink" href="problems-view/SA-2006-1.html" target="_blank">SA-2006-1</a> 問 J 點垂直變位、<a class="qlink" href="problems-view/SA-2013-2.html" target="_blank">SA-2013-2</a> 與 <a class="qlink" href="problems-view/SA-2014-4.html" target="_blank">SA-2014-4</a> 問 C 點轉角、<a class="qlink" href="problems-view/SA-2016-3.html" target="_blank">SA-2016-3</a> 問 C 點變位）。</p>
+
+<h3>標準流程（四步，順序不可換）</h3>
+
+<div class="box">
+<ol>
+<li><b>在要求的位置、要求的方向</b>放一個虛擬量：要位移就放虛擬力 \(Q\)，要轉角就放虛擬彎矩 \(M_0\)。</li>
+<li>把它<b>寫進</b>彎矩函數：\(M(x,\,X,\,M_0)\)。多餘力 \(X\) 也還留在裡面。</li>
+<li>對虛擬量偏微分，得到 \(\dfrac{\partial M}{\partial M_0}\)。</li>
+<li><b>現在</b>才把 \(M_0=0\) 代進 \(M\)，並代入已解出的 \(X\)，然後積分：
+$$\theta=\int\frac{M}{EI}\frac{\partial M}{\partial M_0}\bigg|_{M_0=0}dx$$</li>
+</ol>
+</div>
+
+<div class="trap"><b>最常見的兩個錯：</b><br>
+① <b>太早把虛擬量歸零</b> —— \(\partial M/\partial M_0\) 這一項就消失了，等於整步白做。<br>
+② <b>忘了 \(X\) 也是 \(M_0\) 的函數？</b>不必擔心。因為在真實解處 \(\partial U/\partial X=0\)，根據包絡定理，\(X\) 隨 \(M_0\) 的變化對 \(\partial U/\partial M_0\) 沒有一階貢獻 —— <b>偏微分時可以把 \(X\) 當常數</b>。<a class="qlink" href="problems-view/SA-2013-2.html" target="_blank">SA-2013-2</a> 的官方解就明講這一點，它省下大量代數。</div>
+
+<div class="why"><b>那個「可以把 \(X\) 當常數」的技巧為什麼成立？</b>
+把 \(U\) 看成 \(U(X(M_0),\,M_0)\)，則
+$$\frac{dU}{dM_0}=\underbrace{\frac{\partial U}{\partial X}}_{=0\ (\text{最小功條件})}\cdot\frac{dX}{dM_0}+\frac{\partial U}{\partial M_0}=\frac{\partial U}{\partial M_0}$$
+第一項因為最小功條件而恆為零。這就是為什麼「先解出 \(X\)，再把 \(X\) 當已知常數去對虛擬量微分」是合法的。<br>
+換句話說：<b>結構已經在能量的最低點了，多餘力怎麼微調都不影響一階的能量變化。</b>這是最小功法一個很優雅的副產品。</div>
+
+<h3>四種常見需求的虛擬量配置</h3>
+
+<table>
+<thead><tr><th>要求什麼</th><th>放什麼</th><th>放在哪</th></tr></thead>
+<tbody>
+<tr><td>某點沿某方向的位移</td><td>單一虛擬力 \(Q=1\)</td><td>該點，沿該方向</td></tr>
+<tr><td>某點轉角</td><td>虛擬彎矩 \(M_0=1\)</td><td>該點</td></tr>
+<tr><td>兩點的<b>相對</b>位移（例：開口張開量）</td><td>一對<b>反向</b>的力</td><td>兩點，沿連線</td></tr>
+<tr><td>內鉸兩側的<b>相對</b>轉角</td><td>一對<b>反向</b>的彎矩</td><td>鉸的兩側</td></tr>
+</tbody>
+</table>
+
+<div class="tens"><b>如果該處剛好已經有外力呢？</b>那更省事 —— 直接對那個外力偏微分，不必另外加虛擬量。但注意：算出來的是「該外力作用點沿該外力方向」的位移，方向不能自己挑。方向不對就還是要加虛擬量。</div>
+</section>
+
+<section id="s7">
+<h2>§7　虛力系統的任意性：本單元投報率最高的一招</h2>
+
+<p class="lead">單位力法 \(\Delta=\displaystyle\int\frac{M\,m}{EI}dx\) 裡的兩個 \(M\) 身分完全不同：<br>
+<b>\(M\) 必須是真實結構的真實彎矩</b>（滿足平衡＋相容）；<br>
+<b>\(m\) 只要滿足平衡就好</b> —— 它可以建立在<b>任何一個</b>你喜歡的靜定基本結構上。</p>
+
+<div class="fig">
+<svg viewBox="0 0 780 340" xmlns="http://www.w3.org/2000/svg">
+<rect x="0" y="0" width="780" height="340" fill="#fff"/>
+<defs><marker id="a7" markerWidth="9" markerHeight="9" refX="7" refY="3.2" orient="auto">
+<path d="M0,0 L8,3.2 L0,6.4 z" fill="#c62828"/></marker></defs>
+<text x="390" y="24" font-size="13.5" font-weight="700" fill="#0d47a1" text-anchor="middle">SA-2016-3：題目給了全部桿端彎矩，卻沒給 AB 桿的幾何</text>
+
+<!-- real system -->
+<rect x="14" y="40" width="368" height="240" rx="10" fill="#e3f2fd" stroke="#90caf9"/>
+<text x="198" y="64" font-size="12.5" font-weight="700" fill="#0d47a1" text-anchor="middle">真實系統 M：靜不定，但題目已經給你了</text>
+<line x1="80" y1="130" x2="240" y2="130" stroke="#37474f" stroke-width="4.5"/>
+<line x1="240" y1="130" x2="240" y2="240" stroke="#37474f" stroke-width="4.5"/>
+<line x1="80" y1="130" x2="120" y2="200" stroke="#37474f" stroke-width="4.5"/>
+<rect x="104" y="240" width="0" height="0"/>
+<polygon points="120,200 108,218 132,218" fill="#78909c"/>
+<rect x="222" y="240" width="36" height="12" fill="#78909c"/>
+<text x="72" y="124" font-size="11.5" fill="#37474f">B</text>
+<text x="246" y="124" font-size="11.5" fill="#37474f">C</text>
+<text x="112" y="232" font-size="11.5" fill="#37474f">A</text>
+<text x="246" y="264" font-size="11.5" fill="#37474f">D</text>
+<line x1="100" y1="112" x2="100" y2="126" stroke="#c62828" stroke-width="2" marker-end="url(#a7)"/>
+<line x1="140" y1="112" x2="140" y2="126" stroke="#c62828" stroke-width="2" marker-end="url(#a7)"/>
+<line x1="180" y1="112" x2="180" y2="126" stroke="#c62828" stroke-width="2" marker-end="url(#a7)"/>
+<line x1="220" y1="112" x2="220" y2="126" stroke="#c62828" stroke-width="2" marker-end="url(#a7)"/>
+<line x1="95" y1="112" x2="225" y2="112" stroke="#c62828" stroke-width="2"/>
+<text x="160" y="104" font-size="11" fill="#c62828" text-anchor="middle">2 kN/m</text>
+<text x="30" y="178" font-size="11.5" fill="#0d47a1">M_AB = −23.2</text>
+<text x="30" y="196" font-size="11.5" fill="#0d47a1">M_BC = 5.63</text>
+<text x="286" y="178" font-size="11.5" font-weight="700" fill="#0d47a1">M_CD = −25.3</text>
+<text x="286" y="196" font-size="11.5" font-weight="700" fill="#0d47a1">M_DC = −17.0</text>
+<text x="198" y="264" font-size="11.5" fill="#1565c0" text-anchor="middle">AB 桿的傾角與座標，題目沒給</text>
+
+<!-- virtual system -->
+<rect x="398" y="40" width="368" height="240" rx="10" fill="#e8f5e9" stroke="#a5d6a7"/>
+<text x="582" y="64" font-size="12.5" font-weight="700" fill="#1b5e20" text-anchor="middle">虛力系統 m：我自己挑一個靜定基本結構</text>
+<line x1="624" y1="130" x2="624" y2="240" stroke="#2e7d32" stroke-width="4.5"/>
+<rect x="606" y="240" width="36" height="12" fill="#78909c"/>
+<line x1="464" y1="130" x2="618" y2="130" stroke="#cfd8dc" stroke-width="3" stroke-dasharray="6 5"/>
+<line x1="464" y1="130" x2="504" y2="200" stroke="#cfd8dc" stroke-width="3" stroke-dasharray="6 5"/>
+<text x="630" y="124" font-size="11.5" fill="#1b5e20">C</text>
+<text x="630" y="264" font-size="11.5" fill="#1b5e20">D</text>
+<line x1="574" y1="130" x2="616" y2="130" stroke="#1b5e20" stroke-width="3" marker-end="url(#a7)"/>
+<text x="560" y="126" font-size="12.5" font-weight="700" fill="#1b5e20" text-anchor="end">1</text>
+<text x="500" y="166" font-size="12" font-weight="700" fill="#2e7d32">切掉 C 點左側</text>
+<text x="500" y="186" font-size="12" font-weight="700" fill="#2e7d32">只留 D 端固定的懸臂柱</text>
+<text x="412" y="216" font-size="11.5" fill="#1b5e20">⟹ AB 桿與 BC 梁的 m = 0</text>
+<text x="412" y="236" font-size="11.5" fill="#1b5e20">⟹ 積分只剩 CD 桿</text>
+<text x="412" y="256" font-size="11.5" font-weight="700" fill="#1b5e20">⟹ 完全不需要 AB 桿的幾何</text>
+
+<rect x="120" y="292" width="540" height="40" rx="9" fill="#f3e5f5" stroke="#ba68c8" stroke-width="1.6"/>
+<text x="390" y="317" font-size="12.5" font-weight="700" fill="#4a148c" text-anchor="middle">M_AB 與 M_BC 是出題者放的干擾資訊，用來釣觀念不清的人</text>
+</svg>
+<div class="cap">這一題是整個子項最漂亮的觀念題：<b>題目故意不給 AB 桿的幾何</b>，就是在告訴你「這一段不該出現在你的積分裡」。看不出來的人會卡在解全結構的泥淖裡。</div>
+</div>
+
+<div class="why"><b>為什麼虛力系統可以亂選？</b>
+虛功原理的敘述是：<b>一組滿足平衡的力系</b>（虛力）對<b>一組滿足相容的位移</b>（真實變形）作的虛功，等於內部虛功。<br>
+注意兩個角色的要求是<b>分開</b>的：力系只要平衡、位移只要相容。虛力系統不必是真實會發生的，甚至可以完全不對應任何真實載重情況。<br>
+所以：<b>把靜不定結構隨便釋放成靜定，用它產生 \(m\)，是完全合法的。</b>而且釋放得愈徹底，\(m\) 為零的區域愈大、積分愈短。<br>
+<b>這一條同時也是 §4「多餘力可以隨便選」的兄弟命題。</b></div>
+
+<div class="tens"><b>實戰用法：把它當成「主動簡化」的工具。</b><br>
+求某點位移時，先問自己：<b>有沒有一種釋放方式，能讓虛彎矩 \(m\) 只出現在最短的那一段？</b><br>
+<a class="qlink" href="problems-view/SA-2006-1.html" target="_blank">SA-2006-1</a> 也用了同一招：求 J 點變位時選 \(R_D=0,\;H=0\) 的基本結構，讓樑的 \(m=0\)，位移公式退化成只剩桁架部分 \(\Delta_J=\sum\frac{F\,u_0L}{EA}\)。</div>
+</section>
+
+<section id="s8">
+<h2>§8　先做力學判斷，再動筆計算</h2>
+
+<p class="lead">本子項有三題的關鍵不在計算，而在「計算之前的那個判斷」。判斷對了，題目瞬間縮小一半；判斷錯了，寫滿三頁也是零分。</p>
+
+<div class="grid2">
+<div class="comp"><b>誘餌一：用不到的斷面性質</b><br>
+<a class="qlink" href="problems-view/SA-2014-4.html" target="_blank">SA-2014-4</a> 特地給 CD 桿 \(2EI\)。但 D 是<b>水平面上的滾支承</b> ⟹ \(D_x=0\) ⟹ CD 桿全段<b>沒有彎矩</b> ⟹ 不產生彎曲應變能 ⟹ 那個 \(2EI\) 從頭到尾用不到。<br>
+<b>判斷方法：</b>先畫反力，看有沒有力能讓那根桿彎起來。</div>
+<div class="comp"><b>誘餌二：多給的彎矩值</b><br>
+<a class="qlink" href="problems-view/SA-2016-3.html" target="_blank">SA-2016-3</a> 給了四個桿端彎矩，實際只用得到 CD 桿的兩個。<br>
+<b>判斷方法：</b>先想清楚虛力系統要怎麼選（§7），再回頭看需要哪些真實彎矩。</div>
+</div>
+
+<div class="trap"><b>非線性條件：纜索只受拉（<a class="qlink" href="problems-view/SA-2018-3.html" target="_blank">SA-2018-3</a>）。</b>
+題目寫「細虛線表示只承受拉力的纜索」。這代表：<b>如果解出來的纜索內力是壓力，那根纜索實際上會鬆弛，內力為 0，必須從結構中拿掉重算。</b><br>
+正確流程：① 先把兩條纜索都當多餘力解聯立 → ② 發現 \(X_1<0\)（AE 受壓）→ ③ 判定 AE 鬆弛，令 \(X_1=0\) → ④ 只留 \(X_2\) 重解 → ⑤ 事後<b>驗證</b> A 點確實往上跑（纜索真的鬆了），確認假設自洽。<br>
+<b>這是「試誤 + 驗證」型題目，不是一次算完的題目。</b>寫答案時要把這個推理過程寫出來，那本身就是給分點。</div>
+
+<div class="trap"><b>非線性條件：桿件降伏／挫曲後（<a class="qlink" href="problems-view/SA-2019-1.html" target="_blank">SA-2019-1</a>）。</b>
+題目設定「壓桿達強度後<b>內力變為零</b>（挫曲喪失承載力）、張桿維持強度、兩者勁度都歸零」。<br>
+這代表結構要<b>分階段</b>分析：<br>
+① 第一階段仍是線彈性靜不定 → 用最小功法解 → 找出最先達到強度的桿（<b>拉壓極限不同，要分開比</b>）<br>
+② 該桿失效後，結構退化為<b>靜定</b>桁架 → 內力重分配，位移會<b>跳躍</b><br>
+③ 繼續加載到下一根桿失效 → 形成破壞機構 → 得極限載重<br>
+<b>卡氏定理只在每個線彈性階段內成立</b>（§1 圖），跨階段不能直接用。</div>
+
+<div class="why"><b>把這三題串成一句話：</b>能量法的公式很寬容（符號會自動抵消、多餘力可以亂選），但它<b>完全不會幫你做力學判斷</b>。「哪根桿沒有彎矩」「哪條纜索鬆了」「哪根桿已經失效」這些事，公式不會告訴你，只有自由體圖會。<br>
+<b>所以本子項的答題順序永遠是：畫反力 → 畫自由體圖 → 判斷哪些項為零 → 才開始寫 \(M(x)\)。</b></div>
+</section>
+
+<section id="s9">
+<h2>§9　積分速查：圖形積分不是近似，是精確解</h2>
+
+<p class="lead">手算 \(\int M\,m\,dx\) 不必真的展開多項式。因為 \(M\) 最高是二次（均佈載重）、\(m\) 最高是一次（單位力），<b>乘積最高只到三次式</b> —— 而 Simpson 公式對三次以下的多項式是<b>精確</b>的。</p>
+
+$$\int_0^L f(x)\,dx=\frac{L}{6}\left[f(0)+4f\!\left(\tfrac{L}{2}\right)+f(L)\right]\qquad(f\ \text{為三次以下多項式時精確})$$
+
+<p>套用到 \(f=M\cdot m\)：</p>
+
+$$\int_0^L M\,m\,dx=\frac{L}{6}\Big[M_1m_1+4M_cm_c+M_2m_2\Big]$$
+
+<p>其中下標 1、2 是兩端、\(c\) 是中點。<b>只要讀得出兩端與中點的彎矩值，就能算出積分。</b></p>
+
+<h3>常用圖形乘積表（\(\int_0^L M\,m\,dx\)）</h3>
+
+<table>
+<thead><tr><th>\(M\) 圖形狀</th><th>\(m\) 圖形狀</th><th>結果</th></tr></thead>
+<tbody>
+<tr><td>矩形（常數 \(a\)）</td><td>矩形（常數 \(b\)）</td><td>\(L\,a\,b\)</td></tr>
+<tr><td>矩形（\(a\)）</td><td>三角形（端點 \(b\)）</td><td>\(\tfrac12 L\,a\,b\)</td></tr>
+<tr><td>三角形（\(a\)）</td><td>三角形（\(b\)，<b>同側頂點</b>）</td><td>\(\tfrac13 L\,a\,b\)</td></tr>
+<tr><td>三角形（\(a\)）</td><td>三角形（\(b\)，<b>異側頂點</b>）</td><td>\(\tfrac16 L\,a\,b\)</td></tr>
+<tr><td>二次拋物線（中央凸 \(a\)，兩端 0）</td><td>矩形（\(b\)）</td><td>\(\tfrac23 L\,a\,b\)</td></tr>
+<tr><td>二次拋物線（中央 \(a\)）</td><td>三角形（端點 \(b\)）</td><td>\(\tfrac13 L\,a\,b\)</td></tr>
+</tbody>
+</table>
+
+<div class="box"><b>用 Simpson 驗證上表（不必背表）</b><br>
+取「三角形 \(M\)（左端 0、右端 \(a\)）× 三角形 \(m\)（左端 0、右端 \(b\)）」：<br>
+兩端值：\(0\times0=0\)、\(a\times b\)；中點值：\(\tfrac{a}{2}\times\tfrac{b}{2}=\tfrac{ab}{4}\)<br>
+$$\frac{L}{6}\left[0+4\cdot\frac{ab}{4}+ab\right]=\frac{L}{6}\cdot 2ab=\frac{Lab}{3}\;\checkmark$$
+換成異側頂點（\(M\) 左 0 右 \(a\)、\(m\) 左 \(b\) 右 0）：\(\frac{L}{6}[0+4\cdot\frac{ab}{4}+0]=\frac{Lab}{6}\) ✔<br>
+<b>結論：表可以忘，Simpson 不能忘。</b></div>
+
+<div class="trap"><b>用圖形積分的三個前提：</b>① 該段 \(EI\) 為常數（否則要分段或把 \(1/EI\) 留在積分內）；② \(M\) 與 \(m\) 在該段都不轉折（有集中力就分段）；③ 兩張圖<b>在同一側</b>時乘積為正、異側為負 —— 符號要自己判斷，公式不會給你。</div>
+</section>
+
+<section id="s10">
+<h2>§10　完整手算</h2>
+
+<h3>範例 A｜一端固定一端滾支承的梁（本單元的「Hello World」）</h3>
+
+<p>A 端固定、B 端滾支承，跨度 \(L\)，全跨均佈載重 \(w\)，\(EI\) 為常數。1 度靜不定。</p>
+
+<div class="fig">
+<svg viewBox="0 0 740 320" xmlns="http://www.w3.org/2000/svg">
+<rect x="0" y="0" width="740" height="320" fill="#fff"/>
+<defs><marker id="aA" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+<path d="M0,0 L7,3 L0,6 z" fill="#c62828"/></marker>
+<marker id="aB" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+<path d="M0,0 L7,3 L0,6 z" fill="#1b5e20"/></marker></defs>
+
+<text x="370" y="24" font-size="13.5" font-weight="700" fill="#0d47a1" text-anchor="middle">結構、多餘力，與最後的彎矩圖</text>
+
+<!-- structure -->
+<line x1="110" y1="88" x2="590" y2="88" stroke="#37474f" stroke-width="5"/>
+<rect x="96" y="64" width="14" height="48" fill="#78909c"/>
+<polygon points="590,88 578,108 602,108" fill="#78909c"/>
+<line x1="572" y1="112" x2="608" y2="112" stroke="#546e7a" stroke-width="3"/>
+<text x="100" y="56" font-size="12.5" font-weight="700" fill="#37474f">A</text>
+<text x="586" y="56" font-size="12.5" font-weight="700" fill="#37474f">B</text>
+<line x1="150" y1="58" x2="150" y2="80" stroke="#c62828" stroke-width="2" marker-end="url(#aA)"/>
+<line x1="230" y1="58" x2="230" y2="80" stroke="#c62828" stroke-width="2" marker-end="url(#aA)"/>
+<line x1="310" y1="58" x2="310" y2="80" stroke="#c62828" stroke-width="2" marker-end="url(#aA)"/>
+<line x1="390" y1="58" x2="390" y2="80" stroke="#c62828" stroke-width="2" marker-end="url(#aA)"/>
+<line x1="470" y1="58" x2="470" y2="80" stroke="#c62828" stroke-width="2" marker-end="url(#aA)"/>
+<line x1="550" y1="58" x2="550" y2="80" stroke="#c62828" stroke-width="2" marker-end="url(#aA)"/>
+<line x1="145" y1="58" x2="555" y2="58" stroke="#c62828" stroke-width="2"/>
+<text x="350" y="48" font-size="12" fill="#c62828" text-anchor="middle">w（均佈）</text>
+<line x1="590" y1="140" x2="590" y2="98" stroke="#1b5e20" stroke-width="3" marker-end="url(#aB)"/>
+<text x="632" y="136" font-size="12.5" font-weight="700" fill="#1b5e20" text-anchor="middle">多餘力 R</text>
+<line x1="590" y1="88" x2="590" y2="88" stroke="#000"/>
+<text x="590" y="130" font-size="11" fill="#546e7a" text-anchor="middle"> </text>
+<line x1="110" y1="150" x2="590" y2="150" stroke="#b0bec5" stroke-width="1.2" stroke-dasharray="4 4"/>
+<text x="350" y="146" font-size="11.5" fill="#78909c" text-anchor="middle">x 自 B 端向左量（自由體上力最少）</text>
+
+<!-- BMD -->
+<line x1="110" y1="215" x2="590" y2="215" stroke="#607d8b" stroke-width="1.6"/>
+<path d="M110 275 L170 241 L230 215 L290 196 L350 185 L410 181 L470 185 L530 196 L590 215 L590 215 L110 215 Z"
+ fill="#e3f2fd" stroke="none"/>
+<polyline points="110,275 170,241 230,215 290,196 350,185 410,181 470,185 530,196 590,215"
+ fill="none" stroke="#1565c0" stroke-width="2.8"/>
+<line x1="110" y1="215" x2="110" y2="275" stroke="#1565c0" stroke-width="2.8"/>
+<text x="116" y="292" font-size="12.5" font-weight="700" fill="#c62828">M_A = −wL²/8（上緣受拉）</text>
+<circle cx="410" cy="181" r="4.5" fill="#2e7d32"/>
+<line x1="410" y1="181" x2="410" y2="215" stroke="#a5d6a7" stroke-width="1.4" stroke-dasharray="3 3"/>
+<text x="410" y="172" font-size="12" font-weight="700" fill="#1b5e20" text-anchor="middle">Mmax = 9wL²/128</text>
+<text x="410" y="234" font-size="11" fill="#2e7d32" text-anchor="middle">在 x = 3L/8（自 B 量）</text>
+<circle cx="230" cy="215" r="4" fill="#ef6c00"/>
+<text x="230" y="252" font-size="11" fill="#e65100" text-anchor="middle">反曲點 x = 3L/4</text>
+<text x="230" y="266" font-size="11" fill="#e65100" text-anchor="middle">（＝距 A 端 L/4）</text>
+<text x="592" y="200" font-size="11.5" fill="#546e7a">M_B = 0</text>
+</svg>
+<div class="cap">先把座標原點放在 B（滾支承端），自由體上就只有 \(R\) 與均佈載重兩樣東西，\(M(x)\) 只有兩項。</div>
+</div>
+
+<div class="box">
+<b>Step 1　選多餘力並設座標</b><br>
+取 B 點垂直反力 \(R\)（向上）為多餘力。基本結構＝A 端固定的懸臂梁（穩定 ✔）。\(x\) 自 B 端向左量，\(0\le x\le L\)。<br><br>
+
+<b>Step 2　寫彎矩函數（取 \(x\) 截面右側自由體）</b>
+$$M(x)=R\,x-\frac{w x^2}{2},\qquad \frac{\partial M}{\partial R}=x$$
+不必分段：整段的自由體組成都一樣。<br><br>
+
+<b>Step 3　最小功條件</b>
+$$\frac{\partial U}{\partial R}=\frac{1}{EI}\int_0^L\left(Rx-\frac{wx^2}{2}\right)x\,dx
+=\frac{1}{EI}\left[\frac{RL^3}{3}-\frac{wL^4}{8}\right]=0$$
+$$\Longrightarrow\;\boxed{R=\frac{3wL}{8}}$$
+（\(EI\) 為常數時直接消掉，這就是為什麼題目常常不給數值。）<br><br>
+
+<b>Step 4　回代</b>
+$$M(x)=\frac{3wL}{8}x-\frac{wx^2}{2},\qquad
+M_A=M(L)=\frac{3wL^2}{8}-\frac{wL^2}{2}=\boxed{-\frac{wL^2}{8}}$$
+剪力為零處：\(\dfrac{dM}{dx}=\dfrac{3wL}{8}-wx=0\Rightarrow x=\dfrac{3L}{8}\)
+$$M_{\max}=\frac{3wL}{8}\cdot\frac{3L}{8}-\frac{w}{2}\left(\frac{3L}{8}\right)^2=\frac{9wL^2}{64}-\frac{9wL^2}{128}=\boxed{\frac{9wL^2}{128}}$$
+</div>
+
+<div class="tens"><b>三個獨立驗算（考場一分鐘可完成）</b>
+<ol>
+<li><b>約束愈多，固端彎矩愈小：</b>純懸臂 \(\frac{wL^2}{2}\) ＞ 本題 \(\frac{wL^2}{8}\) ＞ 兩端固定 \(\frac{wL^2}{12}\)。順序合理 ✔（本題比純懸臂小 4 倍，撐一根柱子很划算。）</li>
+<li><b>反力合理性：</b>\(R_B=\frac38 wL\)、\(R_A=\frac58 wL\)。固定端分到比較多 ✔（比較硬的一端吸走比較多力）</li>
+<li><b>換一張臉再算一次（§2）：</b>用單位力法，\(m=x\)、\(M_0=-\frac{wx^2}{2}\)
+$$\delta_{10}=\int_0^L\frac{M_0m}{EI}dx=-\frac{wL^4}{8EI},\quad
+\delta_{11}=\int_0^L\frac{m^2}{EI}dx=\frac{L^3}{3EI}$$
+$$R=-\frac{\delta_{10}}{\delta_{11}}=\frac{wL^4/8}{L^3/3}=\frac{3wL}{8}\;\checkmark$$
+兩條路完全一致 —— 這就是 \(\partial M/\partial X\equiv m\) 的實證。</li>
+</ol></div>
+
+<h3>範例 B｜兩端固定＋跨間內鉸（<a class="qlink" href="problems-view/SA-2017-2.html" target="_blank">SA-2017-2</a>，全符號解）</h3>
+
+<p>梁 \(a\)–\(c\)–\(b\)，兩端固定，\(c\) 點為內鉸，\(ac=m\)、\(cb=n\)，全跨受均佈載重 \(w\)。求 \(a\)、\(b\) 兩端的固端彎矩。</p>
+
+<div class="box">
+<b>Step 1　靜不定度</b><br>
+未知反力 4 個（\(R_a,M_a,R_b,M_b\)）− 平衡方程 2 條 − 鉸點條件 1 條 = <b>1 度</b>。<br>
+（有鉸不代表靜定 —— 見 §4 陷阱。）<br><br>
+
+<b>Step 2　選多餘力：切開內鉸，取該處剪力 \(V\)</b><br>
+切開後<b>左右各自成為一根懸臂梁</b>（左端固定於 \(a\)、右端固定於 \(b\)），這是最省力的選法（§4 選法 B）。<br>
+設 \(V\) 為右段對左段施加的<b>向上</b>力。<br><br>
+
+<b>Step 3　兩段的彎矩函數</b>（座標都自鉸點 \(c\) 向外量）
+$$M_{\text{左}}(x)=V x-\frac{wx^2}{2}\;(0\le x\le m),\qquad \frac{\partial M}{\partial V}=x$$
+$$M_{\text{右}}(\xi)=-V\xi-\frac{w\xi^2}{2}\;(0\le \xi\le n),\qquad \frac{\partial M}{\partial V}=-\xi$$
+兩段都只有兩項，這就是選對多餘力的報酬。<br><br>
+
+<b>Step 4　諧合條件：鉸兩側的相對垂直位移為零</b>
+$$EI\frac{\partial U}{\partial V}=\int_0^m\!\left(Vx-\frac{wx^2}{2}\right)x\,dx+\int_0^n\!\left(-V\xi-\frac{w\xi^2}{2}\right)(-\xi)\,d\xi=0$$
+$$\frac{V m^3}{3}-\frac{w m^4}{8}+\frac{V n^3}{3}+\frac{w n^4}{8}=0$$
+$$\Longrightarrow\;\boxed{V=\frac{3w\,(m^4-n^4)}{8\,(m^3+n^3)}=\frac{3w\,(m-n)(m^2+n^2)}{8\,(m^2-mn+n^2)}}$$
+
+<b>Step 5　回代求固端彎矩</b>
+$$M_a=V m-\frac{wm^2}{2}=-\frac{w\,m\,(m+n)\,(m^2-2mn+3n^2)}{8\,(m^2-mn+n^2)}$$
+$$M_b=-V n-\frac{wn^2}{2}=-\frac{w\,n\,(m+n)\,(3m^2-2mn+n^2)}{8\,(m^2-mn+n^2)}$$
+（負號代表<b>上緣受拉</b>，也就是一般固端彎矩的方向。）
+</div>
+
+<div class="tens"><b>三個極限檢查 —— 這才是全符號題真正的價值</b>
+<table>
+<thead><tr><th>檢查</th><th>代入</th><th>結果</th><th>該是什麼</th></tr></thead>
+<tbody>
+<tr><td><b>對稱</b></td><td>\(m=n\)</td><td>\(V=0\)，\(M_a=M_b=-\dfrac{wm^2}{2}\)</td><td>對稱 ⟹ 鉸處剪力必為 0 ⟹ 各半邊變成純懸臂，固端彎矩 \(wm^2/2\) ✔</td></tr>
+<tr><td><b>鉸貼到右端</b></td><td>\(n\to0\)</td><td>\(V\to\dfrac{3wm}{8}\)，\(M_a\to-\dfrac{wm^2}{8}\)</td><td>鉸貼在 \(b\) 端 ⟹ 左跨變成「一端固定一端簡支」⟹ 正是<b>範例 A</b> 的答案 ✔</td></tr>
+<tr><td><b>互換</b></td><td>\(m\leftrightarrow n\)</td><td>\(M_a\leftrightarrow M_b\)、\(V\to-V\)</td><td>左右對調，答案應該跟著對調 ✔</td></tr>
+</tbody>
+</table>
+<b>第二個檢查特別漂亮：範例 A 是範例 B 的一個特例。</b>兩題用完全不同的多餘力選法，卻在極限處接上了 —— 這是最強的正確性證據。</div>
+
+<div class="box"><b>數值抽驗</b>（\(m=6\)、\(n=4\)、\(w=10\)）：\(m^2-mn+n^2=28\)
+$$V=\frac{3(10)(2)(52)}{8(28)}=13.93,\quad
+M_a=-\frac{10(6)(10)(36)}{8(28)}=-96.4,\quad
+M_b=-\frac{10(4)(10)(76)}{8(28)}=-135.7$$
+獨立驗算：\(R_a+R_b=w(m+n)=100\)。由 \(R_a=wm-V=60-13.93=46.07\)、\(R_b=wn+V=40+13.93=53.93\)，合計 \(100.0\) ✔<br>
+物理直覺：\(n\) 較短 ⟹ \(b\) 端較硬 ⟹ \(|M_b|>|M_a|\) ✔</div>
+</section>
+
+<section id="s11">
+<h2>§11　解題決策流程</h2>
+
+<div class="fig">
+<svg viewBox="0 0 780 660" xmlns="http://www.w3.org/2000/svg">
+<rect x="0" y="0" width="780" height="660" fill="#fff"/>
+<defs><marker id="fc" markerWidth="9" markerHeight="9" refX="7" refY="3.2" orient="auto">
+<path d="M0,0 L8,3.2 L0,6.4 z" fill="#546e7a"/></marker></defs>
+
+<rect x="248" y="12" width="284" height="42" rx="8" fill="#e3f2fd" stroke="#1565c0" stroke-width="1.6"/>
+<text x="390" y="31" font-size="12.5" font-weight="700" fill="#0d47a1" text-anchor="middle">① 畫反力，數靜不定度</text>
+<text x="390" y="48" font-size="11.5" fill="#1565c0" text-anchor="middle">內鉸＝送一條方程式，不是變靜定</text>
+<line x1="390" y1="54" x2="390" y2="72" stroke="#546e7a" stroke-width="1.6" marker-end="url(#fc)"/>
+
+<polygon points="390,74 566,106 390,138 214,106" fill="#fff3e0" stroke="#ef6c00" stroke-width="1.6"/>
+<text x="390" y="103" font-size="12" font-weight="700" fill="#e65100" text-anchor="middle">題目要的是「多餘力」還是「位移」？</text>
+<text x="390" y="121" font-size="11.5" fill="#ef6c00" text-anchor="middle">很多題兩者都要</text>
+<line x1="566" y1="106" x2="638" y2="106" stroke="#546e7a" stroke-width="1.6" marker-end="url(#fc)"/>
+<text x="602" y="98" font-size="11" fill="#546e7a" text-anchor="middle">位移</text>
+<rect x="624" y="80" width="150" height="52" rx="7" fill="#f3e5f5" stroke="#ce93d8"/>
+<text x="699" y="100" font-size="11.5" fill="#4a148c" text-anchor="middle">先想虛力系統怎麼選</text>
+<text x="699" y="118" font-size="11.5" fill="#4a148c" text-anchor="middle">可能整段都不必算（§7）</text>
+<line x1="390" y1="138" x2="390" y2="156" stroke="#546e7a" stroke-width="1.6" marker-end="url(#fc)"/>
+
+<rect x="238" y="158" width="304" height="46" rx="8" fill="#e8f5e9" stroke="#2e7d32" stroke-width="1.6"/>
+<text x="390" y="178" font-size="12.5" font-weight="700" fill="#1b5e20" text-anchor="middle">② 畫自由體圖，先判斷哪些項為零</text>
+<text x="390" y="196" font-size="11.5" fill="#2e7d32" text-anchor="middle">沒彎矩的桿？鬆弛的纜索？用不到的 EI？</text>
+<line x1="390" y1="204" x2="390" y2="222" stroke="#546e7a" stroke-width="1.6" marker-end="url(#fc)"/>
+
+<polygon points="390,224 570,256 390,288 210,256" fill="#fff3e0" stroke="#ef6c00" stroke-width="1.6"/>
+<text x="390" y="253" font-size="12" font-weight="700" fill="#e65100" text-anchor="middle">應變能要留哪幾項？</text>
+<text x="390" y="271" font-size="11.5" fill="#ef6c00" text-anchor="middle">看題目給了 EI、EA 還是兩者</text>
+<line x1="570" y1="256" x2="638" y2="256" stroke="#546e7a" stroke-width="1.6" marker-end="url(#fc)"/>
+<text x="604" y="248" font-size="11" fill="#546e7a" text-anchor="middle">兩者</text>
+<rect x="624" y="230" width="150" height="52" rx="7" fill="#ffebee" stroke="#ef5350"/>
+<text x="699" y="250" font-size="11.5" fill="#b71c1c" text-anchor="middle">混合結構，兩項相加</text>
+<text x="699" y="268" font-size="11.5" fill="#b71c1c" text-anchor="middle">答案會是參數解</text>
+<line x1="390" y1="288" x2="390" y2="306" stroke="#546e7a" stroke-width="1.6" marker-end="url(#fc)"/>
+
+<rect x="238" y="308" width="304" height="46" rx="8" fill="#e8f5e9" stroke="#2e7d32" stroke-width="1.6"/>
+<text x="390" y="328" font-size="12.5" font-weight="700" fill="#1b5e20" text-anchor="middle">③ 選多餘力：讓 M(x) 最短、分段最少</text>
+<text x="390" y="346" font-size="11.5" fill="#2e7d32" text-anchor="middle">切內鉸／釋放靠近自由端的束制</text>
+<line x1="390" y1="354" x2="390" y2="372" stroke="#546e7a" stroke-width="1.6" marker-end="url(#fc)"/>
+
+<polygon points="390,374 570,406 390,438 210,406" fill="#fff3e0" stroke="#ef6c00" stroke-width="1.6"/>
+<text x="390" y="403" font-size="12" font-weight="700" fill="#e65100" text-anchor="middle">要求的是轉角嗎？</text>
+<text x="390" y="421" font-size="11.5" fill="#ef6c00" text-anchor="middle">或該處沒有現成外力？</text>
+<line x1="570" y1="406" x2="638" y2="406" stroke="#546e7a" stroke-width="1.6" marker-end="url(#fc)"/>
+<text x="604" y="398" font-size="11" fill="#546e7a" text-anchor="middle">是</text>
+<rect x="624" y="378" width="152" height="58" rx="7" fill="#f3e5f5" stroke="#ce93d8"/>
+<text x="700" y="398" font-size="11.5" fill="#4a148c" text-anchor="middle">加虛擬彎矩 M₀ 或虛擬力 Q</text>
+<text x="700" y="416" font-size="11.5" fill="#4a148c" text-anchor="middle">先寫進 M(x)、微分完</text>
+<text x="700" y="432" font-size="11.5" font-weight="700" fill="#4a148c" text-anchor="middle">最後才令它為 0</text>
+<line x1="390" y1="438" x2="390" y2="456" stroke="#546e7a" stroke-width="1.6" marker-end="url(#fc)"/>
+
+<rect x="238" y="458" width="304" height="46" rx="8" fill="#e8f5e9" stroke="#2e7d32" stroke-width="1.6"/>
+<text x="390" y="478" font-size="12.5" font-weight="700" fill="#1b5e20" text-anchor="middle">④ 寫 M(x)、∂M/∂X，分段列清楚</text>
+<text x="390" y="496" font-size="11.5" fill="#2e7d32" text-anchor="middle">桁架改用表格：L / F / ∂F/∂X</text>
+<line x1="390" y1="504" x2="390" y2="522" stroke="#546e7a" stroke-width="1.6" marker-end="url(#fc)"/>
+
+<rect x="238" y="524" width="304" height="46" rx="8" fill="#e8f5e9" stroke="#2e7d32" stroke-width="1.6"/>
+<text x="390" y="544" font-size="12.5" font-weight="700" fill="#1b5e20" text-anchor="middle">⑤ 積分令為零 → 解 X → 回代</text>
+<text x="390" y="562" font-size="11.5" fill="#2e7d32" text-anchor="middle">圖形簡單時直接用 Simpson（§9，精確）</text>
+<line x1="390" y1="570" x2="390" y2="588" stroke="#546e7a" stroke-width="1.6" marker-end="url(#fc)"/>
+
+<rect x="188" y="590" width="404" height="58" rx="8" fill="#f3e5f5" stroke="#6a1b9a" stroke-width="1.8"/>
+<text x="390" y="611" font-size="12.5" font-weight="700" fill="#4a148c" text-anchor="middle">⑥ 三個獨立驗算</text>
+<text x="390" y="630" font-size="11.5" fill="#6a1b9a" text-anchor="middle">整體平衡 ΣF、ΣM ｜ 量綱 ｜ 極限／對稱情況</text>
+<text x="390" y="644" font-size="11" fill="#6a1b9a" text-anchor="middle">全符號題一定要做極限檢查，那是最強的證據</text>
+</svg>
+<div class="cap">三個菱形對應三個最容易失分的判斷：要不要先想虛力系統、應變能留哪幾項、要不要加虛擬量。注意步驟②在步驟③之前 —— <b>判斷永遠先於計算</b>。</div>
+</div>
+</section>
+
+<section id="s12">
+<h2>§12　歷屆題 × 觀念對照表</h2>
+
+<h3>主分類（12 題）</h3>
+
+<table>
+<thead><tr><th>題號</th><th>年</th><th>結構</th><th>真正在考的東西</th><th>先讀本講義</th></tr></thead>
+<tbody>
+<tr><td><a class="qlink" href="problems-view/SA-2005-1.html" target="_blank">SA-2005-1</a></td><td>2005</td><td>斜桿剛架</td><td>最小功法基本流程；<b>自由體圖取法</b>（BA 桿不必在 \(x=4\) 分段）</td><td>§4 §5</td></tr>
+<tr><td><a class="qlink" href="problems-view/SA-2005-4.html" target="_blank">SA-2005-4</a></td><td>2005</td><td>矩形桁架（1 度）</td><td>桁架柔度表格法 \(\sum\frac{F_0uL}{EA}\)；題目要的是<b>應力</b>不是內力</td><td>§3 §5</td></tr>
+<tr><td><a class="qlink" href="problems-view/SA-2006-1.html" target="_blank">SA-2006-1</a></td><td>2006</td><td>樑＋桁架混合（2 度）</td><td>\(U_{梁}+U_{桁架}\) 相加；參數解；虛功巧選基本結構讓 \(m=0\)</td><td>§3 §7</td></tr>
+<tr><td><a class="qlink" href="problems-view/SA-2007-2.html" target="_blank">SA-2007-2</a></td><td>2007</td><td>無側移剛架</td><td>題目指定<b>傾角變位法</b>（分類存疑，見下方說明）</td><td>—</td></tr>
+<tr><td><a class="qlink" href="problems-view/SA-2007-4.html" target="_blank">SA-2007-4</a></td><td>2007</td><td>有側移剛架</td><td>題目指定<b>傾角變位法</b>；側移方程用虛功法列（分類存疑）</td><td>§2</td></tr>
+<tr><td><a class="qlink" href="problems-view/SA-2013-2.html" target="_blank">SA-2013-2</a></td><td>2013</td><td>L 型剛架（2 度）</td><td>兩個多餘力解聯立；虛擬彎矩求轉角；Macaulay 分段</td><td>§1 §5 §6</td></tr>
+<tr><td><a class="qlink" href="problems-view/SA-2014-4.html" target="_blank">SA-2014-4</a></td><td>2014</td><td>L 型剛架（1 度）</td><td><b>誘餌識別</b>：\(2EI\) 用不到，因為 \(D_x=0\Rightarrow M_{CD}=0\)；虛擬彎矩求轉角</td><td>§6 §8</td></tr>
+<tr><td><a class="qlink" href="problems-view/SA-2016-3.html" target="_blank">SA-2016-3</a></td><td>2016</td><td>剛架（已知桿端彎矩）</td><td><b>虛力系統的任意性</b>；圖形積分；干擾資訊識別</td><td>§7 §9</td></tr>
+<tr><td><a class="qlink" href="problems-view/SA-2017-2.html" target="_blank">SA-2017-2</a></td><td>2017</td><td>兩端固定＋內鉸梁</td><td>內鉸不等於靜定；全符號解；用 \(m=n\) 對稱自我驗算</td><td>§4 §10</td></tr>
+<tr><td><a class="qlink" href="problems-view/SA-2018-3.html" target="_blank">SA-2018-3</a></td><td>2018</td><td>梁＋柱＋纜索</td><td><b>纜索只受拉</b>：算出受壓就要判定鬆弛、令內力為 0 再重解；\(U\) 含軸向項</td><td>§3 §8</td></tr>
+<tr><td><a class="qlink" href="problems-view/SA-2019-1.html" target="_blank">SA-2019-1</a></td><td>2019</td><td>交叉斜撐桁架</td><td>最小功法求內力 → 挫曲後內力重分配 → 極限載重 → \(P\)-\(U_B\) 定性圖</td><td>§3 §8</td></tr>
+<tr><td><a class="qlink" href="problems-view/SA-2022-1.html" target="_blank">SA-2022-1</a></td><td>2022</td><td>含內鉸與彈簧的梁</td><td>由<b>已知彎矩圖</b>反推反力；共軛梁法求位移；彈簧相容條件（能量法成分低）</td><td>§8</td></tr>
+</tbody>
+</table>
+
+<h3>副分類（3 題）</h3>
+
+<table>
+<thead><tr><th>題號</th><th>年</th><th>主分類</th><th>與本子項的交集</th></tr></thead>
+<tbody>
+<tr><td><a class="qlink" href="problems-view/SA-2012-1.html" target="_blank">SA-2012-1</a></td><td>2012</td><td>SA-U1-2</td><td>靜定梁的位移與轉角、共軛梁法 —— 能量法求位移的對照組</td></tr>
+<tr><td><a class="qlink" href="problems-view/SA-2014-2.html" target="_blank">SA-2014-2</a></td><td>2014</td><td>SA-U2-2</td><td>諧合變位法複合結構 —— 本子項的孿生兄弟（§2）</td></tr>
+<tr><td><a class="qlink" href="problems-view/SA-2015-2.html" target="_blank">SA-2015-2</a></td><td>2015</td><td>SA-U1-3</td><td>Müller–Breslau 原理，本質上也是虛功原理的一個應用</td></tr>
+</tbody>
+</table>
+
+<div class="trap"><b>兩個分類存疑，讀表時要知道：</b><br>
+<b>① <a class="qlink" href="problems-view/SA-2007-2.html" target="_blank">SA-2007-2</a> 與 <a class="qlink" href="problems-view/SA-2007-4.html" target="_blank">SA-2007-4</a></b> 的 <code>primaryTopicId</code> 掛在 SA-U2-1，但題目<b>明文指定傾角變位法</b>，解析的「分析法」欄也寫傾角變位法，標籤是「無側移剛架／修正傾角撓度法／固端彎矩」與「有側移剛架／側移方程式」。實質上屬 <b>SA-U2-3</b>。<br>
+<b>② <a class="qlink" href="problems-view/SA-2022-1.html" target="_blank">SA-2022-1</a></b> 的分析法是「靜力平衡與共軛梁法」，全程沒有用到能量偏微分。<br>
+<b>所以本子項的「真正能量法題」實際上是 9 題，不是 12 題。</b>但反過來說，剩下的 9 題密度極高，幾乎每一題都有一個獨立的觀念關卡。</div>
+
+<div class="box"><b>出題節奏：明顯降溫，但別放掉。</b>
+主分類分布在 2005、2005、2006、2007、2007、2013、2014、2016、2017、2018、2019、2022 —— <b>2020 年以後只出過 1 題（2022），2023–2025 完全沒出。</b><br>
+近年重心明顯移向 SA-U2-3（傾角變位法）與 SA-U2-4（矩陣法）。<br>
+<b>但這不代表可以跳過：</b>① 能量法是 SA-U2-2（諧合變位）與 SA-U1-2（求位移）的共用底層，② 「久未出題」在國考裡往往是回歸的前兆，③ 這 9 題的觀念關卡（虛力系統任意性、纜索鬆弛、誘餌識別）在別的子項也會以變形出現。</div>
+</section>
+
+<section id="s13">
+<h2>§13　把整個單元濃縮成五條因果鏈</h2>
+
+<div class="tens"><b>鏈 1｜為什麼令偏微分等於零</b><br>
+線彈性 → 力—位移圖是直線 → \(U=\frac12P\Delta\) → 加 \(dP\) 多做的功 \(=\Delta\,dP\) → \(\Delta=\partial U/\partial P\) → 多餘力處位移被束制為零 → \(\partial U/\partial X=0\)<br><span style="color:#546e7a;font-size:.9em">（§0 §1）</span></div>
+
+<div class="tens"><b>鏈 2｜三個方法為什麼是同一個</b><br>
+線彈性 → \(M=M_0+Xm\) 對 \(X\) 是一次式 → \(\partial M/\partial X=m\) → \(\partial U/\partial X=\int\frac{Mm}{EI}dx\) → 這正是單位力法的位移公式 → 令它為零就是諧合條件 → 最小功＝單位力法＝諧合變位<br><span style="color:#546e7a;font-size:.9em">（§2）</span></div>
+
+<div class="tens"><b>鏈 3｜「最小」是結果不是前提</b><br>
+\(M\) 對 \(X\) 是一次式 → \(M^2\) 對 \(X\) 是二次式 → \(U(X)\) 是拋物線 → 二次項係數 \(\int\frac{m^2}{2EI}dx>0\) → 開口向上 → 駐點必為最小 → 「最小功」是數學形式的副產品<br><span style="color:#546e7a;font-size:.9em">（§0）</span></div>
+
+<div class="tens"><b>鏈 4｜為什麼細長桿可以丟掉軸向能量</b><br>
+懸臂端點受力 → \(U_{軸}/U_{彎}=3(r/L)^2\) → 矩形斷面 \(r\approx h/\sqrt{12}\) → 比值 \(\approx\frac14(h/L)^2\) → \(L/h=10\) 時只有 0.25% → 剛架只留彎曲；反之桁架沒有彎矩，只剩軸向<br><span style="color:#546e7a;font-size:.9em">（§3）</span></div>
+
+<div class="tens"><b>鏈 5｜虛力系統為什麼可以亂選</b><br>
+虛功原理要求「力系平衡、位移相容」是<b>兩個分開</b>的條件 → 虛力只需平衡、不必真實 → 可建立在任何靜定基本結構上 → 釋放得愈徹底，\(m=0\) 的區域愈大 → 積分愈短 → 甚至可以完全不需要某些桿件的幾何資訊<br><span style="color:#546e7a;font-size:.9em">（§7）</span></div>
+</section>
+
+<section id="s14">
+<h2>§14　陷阱總表（考前十分鐘掃這裡）</h2>
+
+<table>
+<thead><tr><th style="width:22%">觸發信號</th><th style="width:29%">錯誤思維</th><th style="width:36%">正確認知</th><th>出處</th></tr></thead>
+<tbody>
+<tr><td>題目寫「以其他方法計算不予計分」</td><td>答案一樣就好</td><td>必須寫出：選多餘力 → \(M(x,X)\) → 偏微分 → 積分令為零 → 回代。形式本身就是分數</td><td>2005-1、2013-2、2014-4、2017-2</td></tr>
+<tr><td>梁上有內鉸</td><td>「有鉸就變靜定了」</td><td>內鉸只是<b>送一條方程式</b>，靜不定度降 1 不是降到 0</td><td>2017-2</td></tr>
+<tr><td>要求某點<b>轉角</b></td><td>加一個虛擬<b>力</b></td><td>轉角的共軛量是<b>彎矩</b>，要加虛擬彎矩 \(M_0\)</td><td>2013-2、2014-4</td></tr>
+<tr><td>加了虛擬量之後</td><td>先把它設 0 再微分</td><td>順序：寫進去 → 微分 → <b>然後才</b>令為 0 → 積分</td><td>2013-2、2014-4</td></tr>
+<tr><td>求位移時多餘力也在式子裡</td><td>要對 \(X\) 用連鎖律</td><td>因 \(\partial U/\partial X=0\)，\(X\) 可當常數。這是最小功法的免費禮物</td><td>2013-2</td></tr>
+<tr><td>題目給某桿 \(2EI\)</td><td>「給了就一定要用」</td><td>先看那根桿有沒有彎矩。\(D_x=0\Rightarrow M_{CD}=0\Rightarrow\) \(2EI\) 完全用不到</td><td>2014-4</td></tr>
+<tr><td>題目給了一堆桿端彎矩</td><td>全部都要代進積分</td><td>先想虛力系統怎麼選，\(m=0\) 的段落根本不必算。多給的是干擾資訊</td><td>2016-3</td></tr>
+<tr><td>結構有一段幾何沒給</td><td>「題目漏印了」</td><td>那是<b>提示</b>：那一段不該出現在你的計算裡</td><td>2016-3</td></tr>
+<tr><td>虛線標示「只受拉的纜索」</td><td>當一般桿件解</td><td>解出受壓 ⟹ 該纜索鬆弛、內力歸零 ⟹ 拿掉重解 ⟹ 事後驗證假設自洽</td><td>2018-3</td></tr>
+<tr><td>「壓桿達強度後內力變為零」</td><td>維持降伏強度繼續承載</td><td>挫曲＝喪失承載力 ⟹ 內力重分配 ⟹ 位移<b>跳躍</b> ⟹ 結構退化為靜定後再繼續加載</td><td>2019-1</td></tr>
+<tr><td>桿件拉、壓強度不同</td><td>只比一個極限值</td><td>先判斷該桿受拉還是受壓，再比對應的強度。比錯就找錯失效順序</td><td>2019-1</td></tr>
+<tr><td>剛架某桿接在另一桿的中間</td><td>在該幾何位置分段</td><td>看<b>自由體圖包含什麼</b>，不是看幾何位置。力經由節點傳遞</td><td>2005-1</td></tr>
+<tr><td>桁架題</td><td>把桿件散在算式裡逐根寫</td><td>一定要<b>排成表格</b>：\(L\)、\(F(X)\)、\(\partial F/\partial X\)、乘積。散寫必漏桿</td><td>2005-4、2019-1</td></tr>
+<tr><td>算出桁架桿內力</td><td>直接當答案</td><td>看清楚題目要「內力」還是「<b>應力</b>」，後者要再除以 \(A\)</td><td>2005-4</td></tr>
+<tr><td>樑與桁架混合</td><td>分開算兩個 \(U\) 各自求極值</td><td>必須<b>加成同一個 \(U\)</b> 再對多餘力偏微分</td><td>2006-1</td></tr>
+<tr><td>題目只說 \(E,I,A\) 為常數</td><td>「少給數值，題目有問題」</td><td>答案本來就是含 \(EI\)、\(EA\) 的<b>參數解</b></td><td>2006-1</td></tr>
+<tr><td>兩支承都是鉸</td><td>假設沒有水平反力</td><td>兩鉸支承受載會產生向外推力，水平反力必須列為未知（常是第二個多餘力）</td><td>2006-1</td></tr>
+<tr><td>符號慣例</td><td>擔心正負號會影響答案</td><td>\(M\) 與 \(\partial M/\partial X\) 同一套定義 ⟹ 整體正負自動抵消。但<b>同一桿的各分段必須一致</b></td><td>通用</td></tr>
+<tr><td>算出的柔度係數 \(\delta_{11}<0\)</td><td>重算一次應該就好</td><td>\(\int m^2/EI\,dx\) 恆為正。負值＝\(m\) 圖符號錯，回頭查</td><td>通用</td></tr>
+<tr><td>全符號解算出一長串</td><td>照抄交卷</td><td>一定要做<b>極限檢查</b>（對稱、某長度→0、互換），那是最強的正確性證據</td><td>2017-2</td></tr>
+<tr><td>算完就交卷</td><td>時間不夠，驗算算了</td><td>整體平衡、量綱、極限值三個檢查完全獨立於能量法，一分鐘可完成</td><td>通用</td></tr>
+</tbody>
+</table>
+</section>
+
+<section id="s15">
+<h2>§15　自我檢測：12 個「為什麼」</h2>
+
+<p class="lead">先自己講一遍再展開。講不出來的直接回去看對應節次。</p>
+
+<details><summary>1. \(\partial U/\partial P\) 為什麼會等於位移？</summary>
+<p>線彈性下力—位移圖是直線，\(U=\tfrac12P\Delta\)。再加一點點力 \(dP\)，多做的功是「原有的 \(\Delta\) 乘上新增的 \(dP\)」，即 \(dU=\Delta\,dP\)（\(\tfrac12dP\,d\Delta\) 是高階小量）。所以 \(\Delta=\partial U/\partial P\)。前提只有線彈性與小變形。（§1）</p></details>
+
+<details><summary>2. 「最小功」的「最小」從哪來？可以不談它嗎？</summary>
+<p>可以，而且應該。真正在做的是「諧合條件」。\(U(X)\) 是開口向上的拋物線（二次項係數 \(\int m^2/2EI\,dx>0\)），所以駐點必然是最小值 —— 「最小」是數學形式的副產品。（§0）</p></details>
+
+<details><summary>3. 為什麼 \(\partial M/\partial X\) 就是單位多餘力產生的彎矩 \(m\)？</summary>
+<p>因為線彈性下 \(M=M_0+X\cdot m\) 對 \(X\) 是一次式，偏微分掉常數項就剩 \(m\)。這條等式把最小功法、單位力法、諧合變位三者接在一起。（§2）</p></details>
+
+<details><summary>4. 什麼時候可以把軸向應變能丟掉？根據是什麼？</summary>
+<p>\(U_{軸}/U_{彎}=3(r/L)^2\approx\frac14(h/L)^2\)。長細比 10 的桿件只有 0.25%，可略。反過來，桁架沒有彎矩、纜索只有軸力，那時軸向項就是全部。判斷信號：題目給了 \(A\) 或 \(EA\) 沒有？（§3）</p></details>
+
+<details><summary>5. 內鉸把靜不定度降到 0 嗎？</summary>
+<p>不會。它只降 1。兩端固定梁本是 2 度（水平無載重時），加一個內鉸後仍是 1 度。內鉸是「送你一條方程式（\(M=0\)）」，不是「送你靜定」。（§4）</p></details>
+
+<details><summary>6. 多餘力可以隨便選嗎？選哪個最好？</summary>
+<p>只要基本結構<b>穩定</b>就可以隨便選，答案一樣。但要選讓 \(M(x)\) 最短的：切在內鉸處或釋放靠近自由端的束制。SA-2017-2 取內鉸剪力，左右各成懸臂，\(M\) 只剩兩項。（§4 §10）</p></details>
+
+<details><summary>7. 為什麼求轉角要加虛擬彎矩而不是虛擬力？</summary>
+<p>\(\partial U/\partial P\) 給的是「和 \(P\) 作功的那個位移」。功＝彎矩×轉角，所以要得到轉角必須對彎矩微分。同理，要相對位移就加一對反向的力。（§1 §6）</p></details>
+
+<details><summary>8. 求位移時，多餘力 \(X\) 也隨虛擬量改變，為什麼可以當常數？</summary>
+<p>因為 \(\dfrac{dU}{dM_0}=\underbrace{\dfrac{\partial U}{\partial X}}_{=0}\dfrac{dX}{dM_0}+\dfrac{\partial U}{\partial M_0}\)，第一項因最小功條件恆為零。結構已在能量最低點，多餘力的微調沒有一階效應。（§6）</p></details>
+
+<details><summary>9. 單位力法裡的 \(M\) 和 \(m\)，要求一樣嗎？</summary>
+<p>完全不一樣。\(M\) 必須是真實結構的真實彎矩（平衡＋相容）；\(m\) 只要滿足<b>平衡</b>，可以建在任何靜定基本結構上。這就是 SA-2016-3 可以只用 CD 桿彎矩解題的原因。（§7）</p></details>
+
+<details><summary>10. 圖形積分（Simpson）是近似還是精確？</summary>
+<p>對本單元而言是<b>精確</b>的。\(M\) 最高二次、\(m\) 最高一次，乘積最高三次，而 Simpson 對三次以下多項式是精確的。前提：該段 \(EI\) 為常數、圖形不轉折。（§9）</p></details>
+
+<details><summary>11. 為什麼纜索題要「先算再判斷再重算」？</summary>
+<p>因為「只受拉」是一個<b>不等式條件</b>，線性方程組不會自己滿足它。做法：先當一般桿解 → 若解出受壓則該索鬆弛、令內力為 0 → 拿掉重解 → 事後驗證變形方向確實讓它鬆弛。這是試誤＋驗證型題目。（§8）</p></details>
+
+<details><summary>12. 桿件挫曲之後，卡氏定理還能用嗎？</summary>
+<p>不能跨階段用。卡氏定理要求線彈性；桿件失效後結構的勁度改變，必須<b>分階段</b>各自線彈性分析，階段之間用「內力重分配」與「位移跳躍」銜接。SA-2019-1 就是要你畫出這條分段的 \(P\)-\(U_B\) 曲線。（§1 §8）</p></details>
+</section>
+
+<section id="s16">
+<h2>★ §16　精選 5 題：時間只夠練五題就練這五題</h2>
+
+<p class="lead">選題標準不是覆蓋率最高，而是<b>一題能練到最多互相獨立的技能、彼此重疊最少</b>。本子項「真正的能量法題」只有 9 題，下面五題涵蓋其中的絕大多數關卡。</p>
+
+<div class="box">
+<h3>① <a class="qlink" href="problems-view/SA-2016-3.html" target="_blank">SA-2016-3</a>（2016）已知桿端彎矩，求 C 點變位</h3>
+<p><b>為什麼選它：</b>計算量最小、觀念密度最高。整題的分數在「看出虛力系統可以自己選」這一個動作上，看出來三行解完、看不出來一頁寫不完。<b>投報率第一名。</b></p>
+<p><b>先讀：</b>§2 → §7 → §9</p>
+<p><b>做完要能回答：</b>為什麼題目不給 AB 桿的傾角？\(M\) 與 \(m\) 的要求哪裡不同？如果改問 B 點變位，虛力系統要怎麼換？</p>
+</div>
+
+<div class="box">
+<h3>② <a class="qlink" href="problems-view/SA-2014-4.html" target="_blank">SA-2014-4</a>（2014）剛架，最小功法求反力＋卡氏求轉角</h3>
+<p><b>為什麼選它：</b>一題把「解多餘力」與「求轉角」兩種用法跑完，而且藏了一個高鑑別度的誘餌（\(2EI\) 用不到）。它同時訓練「先判斷、再計算」的順序。</p>
+<p><b>先讀：</b>§1 → §5 → §6 → §8</p>
+<p><b>做完要能回答：</b>為什麼 \(M_{CD}=0\)？虛擬彎矩什麼時候可以歸零？為什麼求 \(\theta_C\) 時可以把 \(R\) 當常數？</p>
+</div>
+
+<div class="box">
+<h3>③ <a class="qlink" href="problems-view/SA-2017-2.html" target="_blank">SA-2017-2</a>（2017）兩端固定＋內鉸梁，全符號解</h3>
+<p><b>為什麼選它：</b>唯一的全符號題。沒有數字可以躲，逼你把靜不定度、多餘力選法、分段積分全部想清楚，而且最後可以用 \(m=n\) 的對稱情況<b>自己驗算自己</b>。這種「自帶答案卷」的訓練別題給不了。本講義 §10 已完整示範，練習時請蓋住重推。</p>
+<p><b>先讀：</b>§4 → §10</p>
+<p><b>做完要能回答：</b>有內鉸為什麼還是靜不定？取「鉸處剪力」當多餘力為什麼比取 \(M_a\) 省一半功夫？令 \(n\to0\) 會得到什麼熟悉的答案？</p>
+</div>
+
+<div class="box">
+<h3>④ <a class="qlink" href="problems-view/SA-2019-1.html" target="_blank">SA-2019-1</a>（2019）交叉斜撐桁架，極限載重與 \(P\)-\(U_B\) 曲線</h3>
+<p><b>為什麼選它：</b>唯一同時練到「桁架能量法（表格式）」與「非線性分階段分析」的題目。它逼你面對卡氏定理的<b>適用邊界</b> —— 這是很多人只會套公式、從沒想過的地方。而且要畫定性圖，訓練物理直覺而非計算。</p>
+<p><b>先讀：</b>§1（線彈性前提）→ §3 → §5（桁架表格）→ §8</p>
+<p><b>做完要能回答：</b>為什麼壓桿失效後位移會「跳躍」？第一根桿失效後結構變成幾度靜不定？拉桿與壓桿的失效判準為什麼要分開比？</p>
+</div>
+
+<div class="box">
+<h3>⑤ <a class="qlink" href="problems-view/SA-2006-1.html" target="_blank">SA-2006-1</a>（2006）樑＋桁架混合結構，二度靜不定，求 J 點變位</h3>
+<p><b>為什麼選它：</b>本子項最完整也最難的一題：要自己拆解混合結構（滾支承只傳垂直力）、要判斷兩個多餘力、要把 \(U_{梁}\) 與 \(U_{桁架}\) 加在一起、要接受參數解、最後還要用 §7 的巧選把位移計算簡化。<b>需要自己建立前置資料</b>，別題練不到。</p>
+<p><b>先讀：</b>§3 → §4 → §7</p>
+<p><b>做完要能回答：</b>為什麼樑不能當成桁架的上弦桿？兩個鉸支承為什麼一定有水平反力？求 \(\Delta_J\) 時怎麼讓樑的 \(m\) 變成 0？</p>
+</div>
+
+<h3>練這五題的正確方法</h3>
+
+<ol>
+<li><b>先蓋住解答，只寫到「靜不定度＋多餘力選擇＋\(M(x)\) 函數」為止</b>，然後對答案。函數寫錯就不用往下練了 —— 回去看 §4、§5。</li>
+<li>第二輪才做完整積分。<b>算完先自己做三個驗算（平衡、量綱、極限），再看答案。</b></li>
+<li>每題做完，用一句話寫下「這題真正在考什麼」。五句話就是你的考前小抄。</li>
+<li>解析裡的 <b>§3.5 變數層次分析</b> 是設計來標記卡關點的：第一次做完在卡住處打 <code>⚠</code>，第二輪只看 <code>⚠</code>。</li>
+</ol>
+
+<h3>候補（時間還有的話，依序加）</h3>
+
+<ul>
+<li><b><a class="qlink" href="problems-view/SA-2013-2.html" target="_blank">SA-2013-2</a>（二度靜不定剛架）</b>：兩個多餘力解聯立的標準演練。若你覺得只解單一多餘力不踏實，補這題。</li>
+<li><b><a class="qlink" href="problems-view/SA-2018-3.html" target="_blank">SA-2018-3</a>（纜索鬆弛）</b>：唯一練得到「不等式條件 → 試誤 → 驗證」的題目，且應變能同時含彎曲與軸向。</li>
+<li><b><a class="qlink" href="problems-view/SA-2005-4.html" target="_blank">SA-2005-4</a>（桁架柔度表格法）</b>：\(\sum\frac{F_0uL}{EA}\) 的標準表格流程，與 SA-2019-1 的偏微分路線互補。</li>
+</ul>
+
+<div class="trap"><b>誠實說明：這五題沒有涵蓋到的考點群</b>
+<ul>
+<li><b>兩個多餘力解聯立</b>（SA-2013-2）—— 五題中 SA-2006-1 雖有兩個多餘力，但是<b>依序</b>解不是聯立解。矩陣化的聯立請補 SA-2013-2 或直接看 SA-U2-2。</li>
+<li><b>桁架柔度表格法</b>（SA-2005-4）—— SA-2019-1 用的是偏微分路線，表格法（\(F_0\)、\(u\) 兩系統）沒練到。</li>
+<li><b>纜索／不等式條件</b>（SA-2018-3）—— 五題中沒有。</li>
+<li><b>自由體圖取法陷阱</b>（SA-2005-1）—— §5 有講原理，但沒有練到完整手算。</li>
+<li><b>由已知彎矩圖反推</b>（SA-2022-1）—— 該題能量法成分低，但「反向使用資訊」的思路值得看一次。</li>
+</ul>
+換句話說：<b>練完這五題大約掌握本子項七成</b>。加上三題候補就接近完整。</div>
+</section>
+
+</main>
+<footer>
+SA-U2-1 觀念講義｜exam-wiki-SA｜資料來源：raw/solutions/ 各題解析與 wiki/methods、wiki/code-ref
+</footer>
+</body>
+</html>

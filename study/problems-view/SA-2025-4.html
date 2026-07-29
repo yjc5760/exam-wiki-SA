@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="zh-Hant"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SA-2025-4 — 題目解析</title>
+<link rel="stylesheet" href="../assets/katex/katex.min.css">
+<script defer src="../assets/katex/katex.min.js"></script>
+<script defer src="../assets/katex/auto-render.min.js"
+  onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},
+  {left:'$',right:'$',display:false},{left:'\\(',right:'\\)',display:false}],throwOnError:false});"></script>
+<style>
+:root{--ac:#1565c0;--bg:#f7f9fb;--card:#fff;--ink:#263238;--mut:#607d8b;--bd:#dfe6ea}
+*{box-sizing:border-box}
+body{margin:0;font-family:"Microsoft JhengHei","Noto Sans TC",-apple-system,sans-serif;
+  background:var(--bg);color:var(--ink);line-height:1.75;font-size:15.5px}
+header{background:linear-gradient(135deg,#0d47a1,#1976d2 60%,#42a5f5);color:#fff;padding:22px 26px}
+header h1{margin:0;font-size:1.15em}
+header .back{display:inline-block;margin-top:10px;font-size:.82em;color:#fff;background:rgba(255,255,255,.18);
+  padding:4px 12px;border-radius:14px;text-decoration:none}
+main{max-width:880px;margin:0 auto;padding:26px 22px 70px}
+h1,h2,h3{color:#0d47a1} h2{font-size:1.2em;border-left:6px solid var(--ac);padding-left:12px;margin:34px 0 14px}
+table{width:100%;border-collapse:collapse;margin:14px 0;font-size:.92em;background:#fff}
+th,td{border:1px solid var(--bd);padding:7px 10px;text-align:left;vertical-align:top}
+th{background:#eceff1;font-weight:600} tbody tr:nth-child(even){background:#fafcfd}
+code{background:#eceff1;padding:1px 5px;border-radius:4px;font-size:.92em}
+img{max-width:100%;display:block;margin:14px auto;border:1px solid var(--bd);border-radius:8px}
+.katex-display{margin:12px 0!important;overflow-x:auto;overflow-y:hidden}
+footer{text-align:center;color:var(--mut);font-size:.8em;padding:22px;border-top:1px solid var(--bd)}
+</style></head><body>
+<header><h1>SA-2025-4 題目解析</h1><a class="back" href="javascript:history.back()">← 返回講義</a></header>
+<main><h3>考題編號：SA-2025-4</h3>
+<p><strong>主分類：</strong> <code>SA-U2-4</code> 靜不定結構之矩陣分析法<br />
+<strong>副分類：</strong><br />
+<strong>分析法：</strong> 矩陣法<br />
+<strong>標籤：</strong> <code>矩陣位移法</code> <code>整體勁度矩陣</code> <code>自由度</code> <code>格床結構</code> <code>實心圓桿</code> <code>對稱性利用</code></p>
+<hr />
+<h2>1. 原始題目重述 (Problem Restatement)</h2>
+<p>圖 4 所示 $abcd$ 為一位於 $xy$ 平面上的構架，$a$ 及 $d$ 為固定端，$ab$ 及 $bc$ 桿垂直剛接於 $b$ 點，$bc$ 及 $cd$ 桿垂直剛接於 $c$ 點。$ab$、$bc$ 及 $cd$ 三根桿件皆為長度 $L$ 的實心圓桿，其彈性模數為 $E$，剪力模數為 $G$，慣性矩為 $I$。已知 $bc$ 桿件受到負 $z$ 軸方向的均布載重 $\omega$。若不考慮桿件的軸向變形，請以勁度法求所有自由度之變位（含位移及轉角），及 $a$、$d$ 兩支承之反力。（25 分）</p>
+<p><img alt="SA-2025-4 題目附圖：位於 xy 平面的 U 型格床結構，bc 桿受向下均布載重" src="../../raw/solutions/SA-2025-4/SA-2025-4-fig-1.png" /></p>
+<p><em>圖說：本題為立體平面構架（Grid），載重在負 $z$ 向。節點 $a, d$ 均為固定端。各桿件長度皆為 $L$。</em></p>
+<h2>2. 考題核心精神與出題者意圖 (Core Concepts &amp; Examiner's Intent)</h2>
+<p>本題測驗考生對於<strong>立體平面構架（Grid Frame / 格床結構）</strong>的矩陣位移法分析能力。<br />
+出題者的核心意圖包含：</p>
+<ol>
+<li><strong>實心圓桿的極慣性矩特性</strong>：考驗是否知道實心圓形斷面的極慣性矩 $J = I_x + I_y = 2I$，若直接寫 $J$ 而未轉換，將無法得到最終最簡答案。</li>
+<li><strong>對稱性的應用</strong>：完整的 Grid 結構有 2 個活動節點（$b, c$），每節點 3 個自由度（$w, \theta_x, \theta_y$），若直接組裝將形成 $6 \times 6$ 矩陣，在考場上手算極易出錯。利用結構幾何與載重的對稱性，可以將問題簡化至 $3 \times 3$ 甚至解耦，這是拿分的絕對關鍵。</li>
+</ol>
+<h2>3. 解題戰略地圖與陷阱分析 (Strategic Roadmap &amp; Trap Analysis)</h2>
+<ul>
+<li><strong>Step 1: 定義坐標與自由度</strong>：設 $a$ 為 $(L,0,0)$、$b$ 為 $(0,0,0)$、$c$ 為 $(0,L,0)$、$d$ 為 $(L,L,0)$。由於載重 $\omega$ 均勻作用在 $bc$ 上，結構變形呈完全對稱。$w_b = w_c$、$\theta_{xb} = -\theta_{xc}$、$\theta_{yb} = \theta_{yc}$。</li>
+<li><strong>Step 2: 建立節點等效載重</strong>：均布載重 $\omega$ 作用於 $bc$，產生固端剪力與固端彎矩。將其反向即為節點等效載重。</li>
+<li><strong>Step 3: 組裝勁度矩陣並求解</strong>：針對節點 $b$ 建立平衡方程式。由於對稱性，$\theta_{yb} = \theta_{yc}$ 使得 $bc$ 桿無扭轉，而 $ab$ 桿提供彎曲與扭轉勁度。</li>
+<li><strong>陷阱 1</strong>：<strong>方向符號約定</strong>。彎矩與轉角的正負號必須依循嚴格的右手定則。</li>
+<li><strong>陷阱 2</strong>：<strong>$J = 2I$</strong>。忘記將 $J$ 換成 $2I$ 會導致扭轉剛度項無法與彎曲剛度項合併。</li>
+</ul>
+<h2>3.5 變數層次分析 (Variable Hierarchy Analysis)</h2>
+<blockquote>
+<p>複習提示：第一次解題後，在每個卡住的知識點旁標記 <code>⚠</code>；第二次複習時只看有 <code>⚠</code> 的項目。</p>
+</blockquote>
+<h3>最終目標</h3>
+<p><code>求出節點 b, c 的變位 (w, θx, θy)，並回代求 a, d 支承反力</code></p>
+<h3>本題關鍵公式（依計算順序）</h3>
+<blockquote>
+<p>$\boxed{\cdot}$ = 需由前步驟推導，非題目直接給定的變數</p>
+</blockquote>
+<p>$$\text{Step 1: } P_{zb} = \frac{\omega L}{2}, \quad P_{mxb} = \frac{\omega L^2}{12}$$</p>
+<p>$$\text{Step 2: } \Sigma F_{zb} = K_{11} w_b + K_{13} \theta_{yb} = \boxed{P_{zb}}$$</p>
+<p>$$\text{Step 3: } \Sigma M_{yb} = K_{31} w_b + K_{33} \theta_{yb} = 0 \implies \theta_{yb} = f(\boxed{w_b})$$</p>
+<p>$$\text{Step 4: } \Sigma M_{xb} = K_{22} \theta_{xb} = \boxed{P_{mxb}} \implies \theta_{xb}$$</p>
+<h3>L1：題目直接給定</h3>
+<p><em>看到題目就能讀出的數字，不需要任何公式。</em></p>
+<table>
+<thead>
+<tr>
+<th>符號</th>
+<th>數值</th>
+<th>說明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>$L$</td>
+<td>$L$</td>
+<td>各桿長度</td>
+</tr>
+<tr>
+<td>$\omega$</td>
+<td>$\omega$</td>
+<td>負 $z$ 向均布載重</td>
+</tr>
+<tr>
+<td>$E, G, I$</td>
+<td>$E, G, I$</td>
+<td>材料及斷面性質</td>
+</tr>
+</tbody>
+</table>
+<h3>L2：需知識點推導</h3>
+<p><em>需要知道公式名稱與適用條件，套入 L1 即可算出。</em></p>
+<p><strong>Step 1：固端載重與等效節點載重</strong></p>
+<table>
+<thead>
+<tr>
+<th>符號</th>
+<th>公式/來源</th>
+<th style="text-align: center;">卡關?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>$P_{zb}$</td>
+<td>$bc$ 桿之一半總重：$\omega L / 2$</td>
+<td style="text-align: center;"></td>
+</tr>
+<tr>
+<td>$P_{mxb}$</td>
+<td>$bc$ 桿均布載重之固端彎矩：$\omega L^2 / 12$</td>
+<td style="text-align: center;"></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Step 2：局部勁度項</strong></p>
+<table>
+<thead>
+<tr>
+<th>符號</th>
+<th>公式/來源</th>
+<th style="text-align: center;">卡關?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>$K_{w,w}$</td>
+<td>懸臂梁端點受力：$12EI/L^3$</td>
+<td style="text-align: center;"></td>
+</tr>
+<tr>
+<td>$K_{\theta,\theta}$</td>
+<td>懸臂梁端點彎曲：$4EI/L$</td>
+<td style="text-align: center;"></td>
+</tr>
+<tr>
+<td>$K_{\text{torsion}}$</td>
+<td>扭轉剛度：$GJ/L = 2GI/L$</td>
+<td style="text-align: center;"></td>
+</tr>
+</tbody>
+</table>
+<h3>L3：深層知識（不懂就卡住）</h3>
+<table>
+<thead>
+<tr>
+<th>知識點</th>
+<th>說明</th>
+<th style="text-align: center;">卡關?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>實心圓桿極慣性矩</td>
+<td>$J = I_x + I_y = 2I$</td>
+<td style="text-align: center;"></td>
+</tr>
+<tr>
+<td>幾何對稱性分析</td>
+<td>U 型構架受對稱載重，兩側撓度相同 $w_b=w_c$，對稱軸彎矩反向 $\theta_{xb}=-\theta_{xc}$</td>
+<td style="text-align: center;"></td>
+</tr>
+<tr>
+<td>扭轉相容條件</td>
+<td>因 $\theta_{yb} = \theta_{yc}$，$bc$ 桿沿自身軸線無相對扭轉變形</td>
+<td style="text-align: center;"></td>
+</tr>
+</tbody>
+</table>
+<h2>4. 步驟化詳細計算過程 (Step-by-Step Detailed Calculation)</h2>
+<blockquote>
+<p>📊 互動圖：<code>SA-2025-4-matrix-viz.html</code></p>
+</blockquote>
+<p><strong>Step 1: 坐標系統與對稱性</strong><br />
+建立坐標系：設 $b$ 點為 $(0,0,0)$，$c$ 點為 $(0,L,0)$，$a$ 點為 $(L,0,0)$。<br />
+則 $ab$ 桿沿 $x$ 軸，$bc$ 桿沿 $y$ 軸。<br />
+由於結構與載重皆對稱於 $y = L/2$ 平面，可知節點位移具備以下對稱性：</p>
+<ul>
+<li>$z$ 向位移：$w_b = w_c$ (向下為正)</li>
+<li>繞 $x$ 軸轉角：$\theta_{xb} = -\theta_{xc}$</li>
+<li>繞 $y$ 軸轉角：$\theta_{yb} = \theta_{yc}$</li>
+</ul>
+<p><strong>Step 2: 節點等效載重</strong><br />
+作用於 $bc$ 桿的均布載重 $\omega$ (方向向下)，在節點 $b$ 產生的等效節點載重為：</p>
+<ul>
+<li>$P_{zb} = \frac{\omega L}{2}$ (方向向下)</li>
+<li>$P_{mxb} = \frac{\omega L^2}{12}$ (依右手定則，繞 $x$ 軸之轉矩)</li>
+</ul>
+<p><strong>Step 3: 節點 $b$ 之勁度平衡方程式</strong><br />
+探討節點 $b$ 處的三個自由度 $w_b, \theta_{xb}, \theta_{yb}$：</p>
+<ol>
+<li>
+<p><strong>對於繞 $x$ 軸的彎矩平衡 ($\Sigma M_{xb}$)</strong>：<br />
+$ab$ 桿提供扭轉勁度：$T_{ab} = \frac{GJ}{L} \theta_{xb} = \frac{2GI}{L} \theta_{xb}$<br />
+$bc$ 桿因 $\theta_{xb} = -\theta_{xc}$，提供彎曲勁度：$M_{xb}^{(bc)} = \frac{4EI}{L}\theta_{xb} + \frac{2EI}{L}(-\theta_{xb}) = \frac{2EI}{L}\theta_{xb}$<br />
+$\Sigma M_{xb} = \left( \frac{2GI}{L} + \frac{2EI}{L} \right) \theta_{xb} = P_{mxb} = \frac{\omega L^2}{12}$<br />
+解得：<br />
+$$ \boxed{ \theta_{xb} = \frac{\omega L^3}{24I(E+G)} } \quad (\text{且 } \theta_{xc} = -\frac{\omega L^3}{24I(E+G)}) $$</p>
+</li>
+<li>
+<p><strong>對於繞 $y$ 軸的彎矩平衡 ($\Sigma M_{yb}$)</strong>：<br />
+$ab$ 桿提供彎曲勁度：$M_{yb}^{(ab)} = \frac{4EI}{L} \theta_{yb} - \frac{6EI}{L^2} w_b$<br />
+$bc$ 桿因 $\theta_{yb} = \theta_{yc}$，無相對扭角，提供之扭矩為 $0$。<br />
+外部無 $y$ 向力矩載重：<br />
+$\frac{4EI}{L} \theta_{yb} - \frac{6EI}{L^2} w_b = 0 \implies \theta_{yb} = \frac{3}{2L} w_b$</p>
+</li>
+<li>
+<p><strong>對於 $z$ 向的力平衡 ($\Sigma F_{zb}$)</strong>：<br />
+$ab$ 桿提供剪力勁度：$V_{zb}^{(ab)} = \frac{12EI}{L^3} w_b - \frac{6EI}{L^2} \theta_{yb}$<br />
+$bc$ 桿之剪力貢獻因對稱性互相抵銷（外部載重已化為等效載重）。<br />
+$\frac{12EI}{L^3} w_b - \frac{6EI}{L^2} \left( \frac{3}{2L} w_b \right) = P_{zb} = \frac{\omega L}{2}$<br />
+$\left( \frac{12EI}{L^3} - \frac{9EI}{L^3} \right) w_b = \frac{\omega L}{2}$<br />
+$\frac{3EI}{L^3} w_b = \frac{\omega L}{2}$<br />
+解得：<br />
+$$ \boxed{ w_b = \frac{\omega L^4}{6EI} } \quad (\text{且 } w_c = \frac{\omega L^4}{6EI}) $$<br />
+將 $w_b$ 代回求 $\theta_{yb}$：<br />
+$$ \boxed{ \theta_{yb} = \frac{3}{2L} \left( \frac{\omega L^4}{6EI} \right) = \frac{\omega L^3}{4EI} } \quad (\text{且 } \theta_{yc} = \frac{\omega L^3}{4EI}) $$</p>
+</li>
+</ol>
+<p><strong>Step 4: 計算支承反力</strong><br />
+求 $a$ 點之支承反力（固定端，對應 $ab$ 桿端點力）：</p>
+<ul>
+<li>
+<p><strong>垂直反力 $R_{za}$</strong>：<br />
+  $R_{za} = V_{ab} = \frac{\omega L}{2}$ (向上)</p>
+</li>
+<li>
+<p><strong>繞 $x$ 軸反彎矩 $M_{xa}$</strong>（扭矩）：<br />
+  $M_{xa} = \frac{GJ}{L}\theta_{xb} = \frac{2GI}{L} \frac{\omega L^3}{24I(E+G)} = \frac{\omega L^2 G}{12(E+G)}$</p>
+</li>
+<li>
+<p><strong>繞 $y$ 軸反彎矩 $M_{ya}$</strong>（彎矩）：<br />
+  固端彎矩為 $M_{ya} = \frac{6EI}{L^2} w_b - \frac{2EI}{L} \theta_{yb} = \frac{6EI}{L^2} (\frac{\omega L^4}{6EI}) - \frac{2EI}{L} (\frac{\omega L^3}{4EI}) = \omega L^2 - \frac{\omega L^2}{2} = \frac{\omega L^2}{2}$</p>
+</li>
+</ul>
+<p>由對稱性，$d$ 點支承反力量值與 $a$ 點相同（方向依坐標系對稱對應）。</p>
+<h2>5. 關鍵爭議點與進階探討 (Critical Issues &amp; Advanced Discussion)</h2>
+<ul>
+<li>若考場上未察覺 $w$ 與 $\theta_y$ 可解耦，可直接寫出完整的 $3 \times 3$ 勁度矩陣，聯立求解亦會得到完全相同的結果。</li>
+<li>$bc$ 桿無扭轉變形的結論非常優雅，這意味著就彎曲而言，$ab$ 桿形同自由端承受集中載重 $\omega L / 2$ 之懸臂梁，其位移 $PL^3/3EI$ 與旋轉 $PL^2/2EI$ 完全吻合。考場上若能以靜力概念快速驗算，便能保證答案無誤。</li>
+</ul></main>
+<footer>來源：raw/solutions/SA-2025-4/SA-2025-4.md（知識庫解題內容唯一正本；本頁僅為渲染顯示）</footer>
+</body></html>

@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="zh-Hant"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SA-2014-4 — 題目解析</title>
+<link rel="stylesheet" href="../assets/katex/katex.min.css">
+<script defer src="../assets/katex/katex.min.js"></script>
+<script defer src="../assets/katex/auto-render.min.js"
+  onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},
+  {left:'$',right:'$',display:false},{left:'\\(',right:'\\)',display:false}],throwOnError:false});"></script>
+<style>
+:root{--ac:#1565c0;--bg:#f7f9fb;--card:#fff;--ink:#263238;--mut:#607d8b;--bd:#dfe6ea}
+*{box-sizing:border-box}
+body{margin:0;font-family:"Microsoft JhengHei","Noto Sans TC",-apple-system,sans-serif;
+  background:var(--bg);color:var(--ink);line-height:1.75;font-size:15.5px}
+header{background:linear-gradient(135deg,#0d47a1,#1976d2 60%,#42a5f5);color:#fff;padding:22px 26px}
+header h1{margin:0;font-size:1.15em}
+header .back{display:inline-block;margin-top:10px;font-size:.82em;color:#fff;background:rgba(255,255,255,.18);
+  padding:4px 12px;border-radius:14px;text-decoration:none}
+main{max-width:880px;margin:0 auto;padding:26px 22px 70px}
+h1,h2,h3{color:#0d47a1} h2{font-size:1.2em;border-left:6px solid var(--ac);padding-left:12px;margin:34px 0 14px}
+table{width:100%;border-collapse:collapse;margin:14px 0;font-size:.92em;background:#fff}
+th,td{border:1px solid var(--bd);padding:7px 10px;text-align:left;vertical-align:top}
+th{background:#eceff1;font-weight:600} tbody tr:nth-child(even){background:#fafcfd}
+code{background:#eceff1;padding:1px 5px;border-radius:4px;font-size:.92em}
+img{max-width:100%;display:block;margin:14px auto;border:1px solid var(--bd);border-radius:8px}
+.katex-display{margin:12px 0!important;overflow-x:auto;overflow-y:hidden}
+footer{text-align:center;color:var(--mut);font-size:.8em;padding:22px;border-top:1px solid var(--bd)}
+</style></head><body>
+<header><h1>SA-2014-4 題目解析</h1><a class="back" href="javascript:history.back()">← 返回講義</a></header>
+<main><h1>考題編號：SA-2014-4</h1>
+<p><strong>主分類：</strong> <code>SA-U2-1</code> 靜不定結構之能量法<br />
+<strong>副分類：</strong> 無<br />
+<strong>分析法：</strong> 最小功法 (Method of Least Work) / 卡氏第二定理<br />
+<strong>標籤：</strong> <code>最小功法</code> <code>卡氏第二定理</code> <code>靜不定結構</code> <code>多餘資訊陷阱</code> <code>剛架</code></p>
+<hr />
+<h2>1. 原始題目重述 (Problem Restatement)</h2>
+<p>如圖四所示之剛架結構，其 A 點為固接支承，D 點為滾支承，構件 AC 與 CD 之彈性模數與慣性矩乘積分別為 $EI$ 及 $2EI$，且 $EI = 1000 \text{ kN-m}^2$。請以<strong>最小功法</strong>計算當 B 點承受一垂直向下載重 $20 \text{ kN}$ 時 C 點之轉角。（若以其他方法計算不予計分）（25 分）</p>
+<p><img alt="SA-2014-4 題目附圖：剛架承受垂直載重" src="../../raw/solutions/SA-2014-4/SA-2014-4-fig-1.png" /></p>
+<p><em>圖說：A 點為左側固接支承。AC 為水平梁，長度 12m，B 點位於其中點（距 A、C 皆為 6m）。C 點連接垂直構件 CD，長度 12m。D 點為位於水平面上的滾支承。B 點承受向下 20 kN 載重。AC 剛度為 EI，CD 剛度為 2EI。</em></p>
+<h2>2. 考題核心精神與出題者意圖 (Core Concepts &amp; Examiner's Intent)</h2>
+<p>本題測驗考生對<strong>最小功法（Castigliano's 2nd Theorem 求解靜不定）</strong>的熟練度，並暗藏了一個極具鑑別度的觀念陷阱：</p>
+<ol>
+<li><strong>多餘反力選擇與最小功法</strong>：結構為一次靜不定，選擇 D 點的垂直反力作為多餘力 $R$，建立總應變能對 $R$ 的偏微分等於零（$\frac{\partial U}{\partial R} = 0$）的條件。</li>
+<li><strong>無效剛度陷阱（Trap）</strong>：題目特地給定 CD 桿的剛度為 $2EI$，這是極大的誘餌。因為 D 點是水平面上的滾支承，無法提供水平反力（$D_x = 0$），導致 CD 桿全段<strong>沒有任何彎矩</strong>（$M_{CD} = 0$）。因此 CD 桿不產生彎曲應變能，其剛度 $2EI$ 在本題計算中完全用不到！</li>
+<li><strong>卡氏定理求變位</strong>：求出多餘力後，需在 C 點施加虛擬彎矩 $M_0$，再利用 $\theta_C = \frac{\partial U}{\partial M_0}$ 求解轉角。</li>
+</ol>
+<h2>3. 解題戰略地圖與陷阱分析 (Strategic Roadmap &amp; Trap Analysis)</h2>
+<p><strong>解題策略：</strong></p>
+<ol>
+<li><strong>靜不定度與基本系統</strong>：A 為固接 (3)，D 為水平面滾支承 (1)，共 4 個未知反力，為一次靜不定。取 D 點垂直反力 $D_y = R$（向上）為多餘力。</li>
+<li><strong>彎矩方程式建立</strong>：<br />
+   - CD 桿：無水平外力與支承力，$M_{CD} = 0$。<br />
+   - AC 桿：以 C 點為原點向左設座標 $x$。考慮 C 點施加逆時針虛擬彎矩 $M_0$（為求 $\theta_C$ 準備），寫出 $M_{AC}(x)$。</li>
+<li><strong>最小功法求反力</strong>：<br />
+   - $\frac{\partial U}{\partial R} = \int \frac{M}{EI} \frac{\partial M}{\partial R} dx = 0$。將 $M_0 = 0$ 代入解出 $R$。</li>
+<li><strong>卡氏第二定理求轉角</strong>：<br />
+   - $\theta_C = \frac{\partial U}{\partial M_0} = \int \frac{M}{EI} \frac{\partial M}{\partial M_0} dx$。代入已知的 $R$ 與 $M_0 = 0$ 積分即可得解。</li>
+</ol>
+<p><strong>陷阱分析：</strong></p>
+<ul>
+<li><strong>誤判 CD 桿受力</strong>：若考生看到 $2EI$ 就認定 CD 桿一定會彎曲，進而假設了不存在的水平反力或錯誤的彎矩方程式，整題將全盤皆錯。必須堅定相信力學平衡：$D_x = 0 \Rightarrow M_{CD} = 0$。</li>
+<li><strong>符號與變形方向</strong>：虛擬彎矩 $M_0$ 的方向決定了算出來的轉角正負號代表的實際轉向。建議一開始先明確設定（例如逆時針），並畫出正確的內部彎矩正負號（下緣受拉為正）。</li>
+</ul>
+<h2>3.5 變數層次分析 (Variable Hierarchy Analysis)</h2>
+<blockquote>
+<p>複習提示：第一次解題後，在每個卡住的知識點旁標記 <code>⚠</code>；第二次複習時只看有 <code>⚠</code> 的項目。</p>
+</blockquote>
+<h3>最終目標</h3>
+<p><code>利用最小功法找出 D 點垂直反力，再以卡氏第二定理求出 C 點轉角。</code></p>
+<h3>本題關鍵公式（依計算順序）</h3>
+<blockquote>
+<p>$\boxed{\cdot}$ = 需由前步驟推導，非題目直接給定的變數</p>
+</blockquote>
+<p>$$\text{Step 1: } M_{AC}(x) = \boxed{R}x + M_0 - P\langle x - 6 \rangle$$</p>
+<p>$$\text{Step 2: } \frac{\partial U}{\partial R} = \int_0^{12} \frac{\boxed{M(x)}}{EI} \frac{\partial \boxed{M(x)}}{\partial R} dx = 0 \Rightarrow \text{解出 } R$$</p>
+<p>$$\text{Step 3: } \theta_C = \frac{\partial U}{\partial M_0} = \int_0^{12} \frac{\boxed{M(x)}}{EI} \frac{\partial \boxed{M(x)}}{\partial M_0} dx$$</p>
+<h3>L1：題目直接給定</h3>
+<p><em>看到題目就能讀出的數字，不需要任何公式。</em></p>
+<table>
+<thead>
+<tr>
+<th>符號</th>
+<th>數值</th>
+<th>說明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>$P$</td>
+<td>20 kN</td>
+<td>B 點向下集中載重</td>
+</tr>
+<tr>
+<td>$EI$</td>
+<td>1000 kN-m²</td>
+<td>AC 桿彎曲剛度</td>
+</tr>
+<tr>
+<td>$L_{AB}, L_{BC}$</td>
+<td>6 m</td>
+<td>AC 桿各段長度</td>
+</tr>
+</tbody>
+</table>
+<h3>L2：需知識點推導</h3>
+<p><em>需要知道公式名稱與適用條件，套入 L1 即可算出。</em></p>
+<p><strong>彎矩方程式 (自 C 點向左 $x$)</strong><br />
+令下緣受拉為正彎矩，虛擬彎矩 $M_0$ 設為逆時針。</p>
+<table>
+<thead>
+<tr>
+<th>區段</th>
+<th>$M(x)$</th>
+<th>$\partial M/\partial R$</th>
+<th>$\partial M/\partial M_0$</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>C-B ($0 \le x < 6$)</td>
+<td>$Rx + M_0$</td>
+<td>$x$</td>
+<td>$1$</td>
+</tr>
+<tr>
+<td>B-A ($6 \le x \le 12$)</td>
+<td>$Rx + M_0 - 20(x-6)$</td>
+<td>$x$</td>
+<td>$1$</td>
+</tr>
+</tbody>
+</table>
+<h3>L3：深層知識（不懂就卡住）</h3>
+<table>
+<thead>
+<tr>
+<th>知識點</th>
+<th>說明</th>
+<th style="text-align: center;">卡關?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>多餘資訊陷阱</td>
+<td>滾支承在水平面 $\Rightarrow$ 水平反力 $D_x=0$ $\Rightarrow$ 垂直桿 CD 無彎矩 $\Rightarrow$ $2EI$ 不參與應變能計算。</td>
+<td style="text-align: center;"></td>
+</tr>
+<tr>
+<td>偏微分順序</td>
+<td>計算 $\theta_C$ 時，因為 $R$ 是由最小功法（$\partial U/\partial R = 0$）求得，依據連鎖律 $\frac{dU}{dM_0} = \frac{\partial U}{\partial M_0} + \frac{\partial U}{\partial R}\frac{\partial R}{\partial M_0}$，後項為 0。因此可直接將算出的 $R$ 當作常數代入 $\frac{\partial U}{\partial M_0}$ 積分。</td>
+<td style="text-align: center;"></td>
+</tr>
+</tbody>
+</table>
+<h2>4. 步驟化詳細計算過程 (Step-by-Step Detailed Calculation)</h2>
+<h3>Step 1：定義多餘力與建立彎矩方程式</h3>
+<p>令 D 點向上的垂直反力為 $R$。<br />
+在 C 點施加一逆時針方向之虛擬彎矩 $M_0$。<br />
+建立 AC 桿的彎矩方程式（以 C 點為原點，向左為 $x$ 軸正向，$0 \le x \le 12$）。</p>
+<ul>
+<li>
+<p><strong>區間 C-B ($0 \le x < 6$)</strong>：<br />
+  取 $x$ 處的切面，右側受力為向上的 $R$ 與逆時針的 $M_0$。<br />
+  $M(x) = Rx + M_0$</p>
+</li>
+<li>
+<p><strong>區間 B-A ($6 \le x \le 12$)</strong>：<br />
+  右側受力增加 B 點向下 $P = 20 \text{ kN}$。<br />
+  $M(x) = Rx + M_0 - 20(x-6)$</p>
+</li>
+</ul>
+<p><em>註：因 D 點為滾支承，$D_x=0$，CD 桿的彎矩恆為 0，其應變能 $U_{CD} = 0$。</em></p>
+<h3>Step 2：利用最小功法求反力 $R$</h3>
+<p>最小功法：$\frac{\partial U}{\partial R} = 0$。此時真實結構中 $M_0 = 0$。<br />
+$$\frac{\partial U}{\partial R} = \int_0^{12} \frac{M}{EI} \frac{\partial M}{\partial R} dx = 0$$<br />
+將區段拆開並代入 $M_0 = 0$：<br />
+$$\frac{1}{EI} \left[ \int_0^6 (Rx) \cdot (x) dx + \int_6^{12} (Rx - 20(x-6)) \cdot (x) dx \right] = 0$$<br />
+$$R \int_0^{12} x^2 dx - 20 \int_6^{12} x(x-6) dx = 0$$<br />
+計算定積分：<br />
+$$\int_0^{12} x^2 dx = \left[ \frac{x^3}{3} \right]_0^{12} = \frac{1728}{3} = 576$$<br />
+$$\int_6^{12} (x^2 - 6x) dx = \left[ \frac{x^3}{3} - 3x^2 \right]_6^{12} = (576 - 432) - (72 - 108) = 144 - (-36) = 180$$<br />
+代回原式：<br />
+$$576 R - 20(180) = 0 \Rightarrow 576 R = 3600 \Rightarrow R = 6.25 \text{ kN (向上)}$$</p>
+<h3>Step 3：利用卡氏第二定理求 C 點轉角</h3>
+<p>卡氏第二定理：$\theta_C = \frac{\partial U}{\partial M_0} \Big|_{M_0=0}$。<br />
+$$\theta_C = \int_0^{12} \frac{M}{EI} \frac{\partial M}{\partial M_0} dx$$<br />
+由 Step 1 可知 $\frac{\partial M}{\partial M_0} = 1$。將 $R = 6.25$ 代入：<br />
+$$\theta_C = \frac{1}{EI} \left[ \int_0^6 (6.25x) \cdot (1) dx + \int_6^{12} (6.25x - 20(x-6)) \cdot (1) dx \right]$$<br />
+合併積分區間：<br />
+$$\theta_C = \frac{1}{EI} \left[ \int_0^{12} 6.25x dx - \int_6^{12} 20(x-6) dx \right]$$<br />
+計算定積分：<br />
+$$\int_0^{12} x dx = \left[ \frac{x^2}{2} \right]_0^{12} = 72 \Rightarrow 6.25 \times 72 = 450$$<br />
+$$\int_6^{12} (x-6) dx = \left[ \frac{(x-6)^2}{2} \right]_6^{12} = \frac{36}{2} = 18 \Rightarrow 20 \times 18 = 360$$<br />
+代回得：<br />
+$$\theta_C = \frac{1}{EI} [450 - 360] = \frac{90}{EI}$$</p>
+<h3>Step 4：代入數值求最終解答</h3>
+<p>已知 $EI = 1000 \text{ kN-m}^2$。<br />
+$$\theta_C = \frac{90}{1000} = 0.09 \text{ rad}$$<br />
+因算出的 $\theta_C$ 為正值，代表實際轉向與設定的虛擬彎矩 $M_0$ 方向相同，即為<strong>逆時針方向</strong>。</p>
+<p>$$\boxed{\text{C 點轉角為 } 0.09 \text{ rad (逆時針方向)}}$$</p>
+<h2>5. 關鍵爭議點與進階探討 (Critical Issues &amp; Advanced Discussion)</h2>
+<ul>
+<li><strong>彎矩面積法 / 共軛梁法驗證</strong>：若將 AC 視為一端固定 (A) 一端滾支承 (C) 的簡支懸臂梁，受載重 $P$ 作用。利用靜定基本公式疊加，載重 $P$ 造成的 C 點順時針轉角為 $\frac{PL^2}{8EI} = \frac{20 \times 144}{8 \times 1000} = 0.36 \text{ rad}$；向上反力 $R$ 造成的 C 點逆時針轉角為 $\frac{RL^2}{2EI} = \frac{6.25 \times 144}{2 \times 1000} = 0.45 \text{ rad}$。淨轉角為 $0.45 - 0.36 = 0.09 \text{ rad}$ (逆時針)。這證明了最小功法的計算完全正確。</li>
+<li><strong>如果 D 點是鉸支承 (Pin) 呢？</strong> 若考題將 D 點改為鉸支承，則 $D_x$ 不為零，此時為二次靜不定，必須設定兩個多餘力（$D_x, D_y$），CD 桿的 $2EI$ 剛度就會進入應變能方程式中。這是備考時可以自行延伸練習的絕佳變體題。</li>
+</ul></main>
+<footer>來源：raw/solutions/SA-2014-4/SA-2014-4.md（知識庫解題內容唯一正本；本頁僅為渲染顯示）</footer>
+</body></html>

@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="zh-Hant"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SA-2018-4 — 題目解析</title>
+<link rel="stylesheet" href="../assets/katex/katex.min.css">
+<script defer src="../assets/katex/katex.min.js"></script>
+<script defer src="../assets/katex/auto-render.min.js"
+  onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},
+  {left:'$',right:'$',display:false},{left:'\\(',right:'\\)',display:false}],throwOnError:false});"></script>
+<style>
+:root{--ac:#1565c0;--bg:#f7f9fb;--card:#fff;--ink:#263238;--mut:#607d8b;--bd:#dfe6ea}
+*{box-sizing:border-box}
+body{margin:0;font-family:"Microsoft JhengHei","Noto Sans TC",-apple-system,sans-serif;
+  background:var(--bg);color:var(--ink);line-height:1.75;font-size:15.5px}
+header{background:linear-gradient(135deg,#0d47a1,#1976d2 60%,#42a5f5);color:#fff;padding:22px 26px}
+header h1{margin:0;font-size:1.15em}
+header .back{display:inline-block;margin-top:10px;font-size:.82em;color:#fff;background:rgba(255,255,255,.18);
+  padding:4px 12px;border-radius:14px;text-decoration:none}
+main{max-width:880px;margin:0 auto;padding:26px 22px 70px}
+h1,h2,h3{color:#0d47a1} h2{font-size:1.2em;border-left:6px solid var(--ac);padding-left:12px;margin:34px 0 14px}
+table{width:100%;border-collapse:collapse;margin:14px 0;font-size:.92em;background:#fff}
+th,td{border:1px solid var(--bd);padding:7px 10px;text-align:left;vertical-align:top}
+th{background:#eceff1;font-weight:600} tbody tr:nth-child(even){background:#fafcfd}
+code{background:#eceff1;padding:1px 5px;border-radius:4px;font-size:.92em}
+img{max-width:100%;display:block;margin:14px auto;border:1px solid var(--bd);border-radius:8px}
+.katex-display{margin:12px 0!important;overflow-x:auto;overflow-y:hidden}
+footer{text-align:center;color:var(--mut);font-size:.8em;padding:22px;border-top:1px solid var(--bd)}
+</style></head><body>
+<header><h1>SA-2018-4 題目解析</h1><a class="back" href="javascript:history.back()">← 返回講義</a></header>
+<main><div style="background:#fff;border:1px solid #dfe6ea;border-radius:10px;padding:12px 14px;margin:0 0 18px"><p style="margin:0 0 6px;font-size:.88em;color:#607d8b">題目附圖（原始 .md 未內嵌，由 raw/solutions/ 自動補上）</p><img src="../../raw/solutions/SA-2018-4/SA-2018-4-fig-1.png" alt="SA-2018-4 附圖"></div><h1>考題編號：SA-2018-4</h1>
+<p><strong>主分類：</strong> 影響線分析 (SA-U4)<br />
+<strong>副分類：</strong> <br />
+<strong>分析法：</strong> 馬克士威-貝提互惠定理 (Maxwell-Betti Reciprocal Theorem) + 傾角撓度法<br />
+<strong>標籤：</strong> <code>影響線</code>, <code>靜不定結構</code>, <code>對稱性</code>, <code>剛架位移</code></p>
+<hr />
+<h2>1. 核心觀念與物理簡化</h2>
+<p>依據 <strong>馬克士威-貝提互惠定理 (Maxwell-Betti Reciprocal Theorem)</strong>，要求 C 點向下位移 $v_C$ 的影響線 $IL_{v_C}(x)$，其形狀與數值<strong>完全等同於在 C 點施加一單位向下力 ($P=1$) 時，整個梁 A-B-C-D-E 的撓度曲線 $v(x)$</strong>。</p>
+<h3>1.1 對稱性與運動學分析</h3>
+<p>當我們在 C 點施加向下單位力時，結構幾何與載重呈現<strong>完全對稱</strong>。</p>
+<ul>
+<li>由於忽略所有軸向變形 ($EA = \infty$)，梁 A-E 各點的水平位移必須相同，設為 $u$。</li>
+<li>F、G 為固定端。斜向構件 BF 與 DG 長度皆為 $\sqrt{3^2 + 4^2} = 5\text{ m}$。</li>
+<li>對於構件 BF，B 點位移必須與 BF 垂直，故運動學限制為 $3u + 4v_B = 0 \implies v_B = -0.75u$。</li>
+<li>對於構件 DG，D 點位移必須與 DG 垂直，限制為 $-3u + 4v_D = 0 \implies v_D = 0.75u$。</li>
+<li>然而，因為結構與載重對稱，結構的變形也必然對稱，即 $v_B = v_D$。</li>
+<li>代入後得到 $-0.75u = 0.75u \implies u = 0$。進而得出 <strong>$v_B = 0$ 且 $v_D = 0$</strong>。</li>
+</ul>
+<p><strong>重要結論：</strong> 在 C 點施加對稱載重時，結構不發生側移，且 B、D 兩點不發生垂直位移！因此，B 與 D 可視為<strong>剛性鉸支承</strong>。<br />
+同時，斜向構件 BF 與 DG 兩端皆無平移，僅在 B、D 點隨梁旋轉。這兩根構件提供了轉動勁度 $K = \frac{4EI}{L_{BF}} = \frac{4(800)}{5} = 640 \text{ kN-m/rad}$。</p>
+<hr />
+<h2>2. 傾角撓度法求解</h2>
+<p>將梁視為連續梁，在 B、D 點有剛性垂直支承與旋轉彈簧。<br />
+利用對稱性，$\theta_C = 0$。我們來解節點 B 的轉角 $\theta_B$。</p>
+<ul>
+<li><strong>AB 段 (L=5m)</strong>：A 為滾支承 ($M_A=0$)，故 $M_{BA} = \frac{3EI}{L} \theta_B = \frac{3(800)}{5} \theta_B = 480 \theta_B$。</li>
+<li><strong>BF 段 (旋轉彈簧)</strong>：$M_{BF} = 640 \theta_B$。</li>
+<li><strong>BD 段 (L=10m)</strong>：跨中 C 點受 $P=1$。兩端固定彎矩 (FEM) 為 $\pm \frac{PL}{8} = \pm \frac{1(10)}{8} = \pm 1.25 \text{ kN-m}$。<br />
+  $M_{BD} = \frac{2EI}{10} (2\theta_B + \theta_D) - 1.25$。因對稱性 $\theta_D = -\theta_B$，<br />
+  $M_{BD} = \frac{EI}{5} \theta_B - 1.25 = 160 \theta_B - 1.25$。</li>
+</ul>
+<p><strong>節點 B 力矩平衡</strong>：<br />
+$$ M_{BA} + M_{BF} + M_{BD} = 0 $$<br />
+$$ 480 \theta_B + 640 \theta_B + 160 \theta_B - 1.25 = 0 \implies 1280 \theta_B = 1.25 \implies \theta_B = \frac{1}{1024} \text{ rad} $$</p>
+<p>將 $\theta_B$ 代回求桿端彎矩：</p>
+<ul>
+<li>$M_{BA} = 480 \times \frac{1}{1024} = \frac{15}{32} \text{ kN-m}$ (對 AB 段為負彎矩，即上方受拉)。</li>
+<li>$M_{BD} = 160 \times \frac{1}{1024} - 1.25 = -\frac{35}{32} \text{ kN-m}$ (對 BD 段為負彎矩)。</li>
+</ul>
+<hr />
+<h2>3. 影響線數值計算 (撓度曲線)</h2>
+<h3>3.1 跨度 AB (與跨度 DE 對稱)</h3>
+<p>AB 段僅受端彎矩 $M_B = -15/32 \text{ kN-m}$，無跨中載重。<br />
+其撓度曲線 (向下為正)：<br />
+$$ v(x) = \frac{x (x^2 - L^2) M_B}{6 EI \cdot L} = \frac{x (x^2 - 25) (-15/32)}{6(800)(5)} = \frac{x (x^2 - 25)}{51200} $$<br />
+欲求局部極值，令 $v'(x) = 0 \implies 3x^2 - 25 = 0 \implies x = \frac{5}{\sqrt{3}} \approx 2.887 \text{ m}$ (自 A 點起算)。<br />
+代入得局部最小值 (最大向上位移)：<br />
+$$ v_{min} = -\frac{5\sqrt{3}}{9216} \approx -0.000940 \text{ m} $$</p>
+<h3>3.2 跨度 BD (計算 C 點最大值)</h3>
+<p>BD 段長 10m，跨中受 $P=1$，兩端受負彎矩 $M = -35/32 \text{ kN-m}$。<br />
+C 點位移為懸垂位移與端彎矩位移的疊加：<br />
+$$ v_C = \frac{P L_{BD}^3}{48 EI} + \frac{M L_{BD}^2}{8 EI} = \frac{1 \times 10^3}{48(800)} - \frac{(35/32) \times 10^2}{8(800)} $$<br />
+$$ v_C = \frac{1000}{38400} - \frac{3500}{204800} = \frac{5}{192} - \frac{35}{2048} = \frac{160 - 105}{6144} = \frac{55}{6144} \approx 0.00895 \text{ m} $$<br />
+此即為全結構影響線的<strong>正向最大值</strong>。</p>
+<hr />
+<h2>4. 影響線繪製重點整理</h2>
+<p>影響線 $IL_{v_C}(x)$ 之特徵如下：</p>
+<ol>
+<li><strong>A 點 ($x=0$)</strong>：0</li>
+<li><strong>A~B 區段</strong>：影響線為負值 (代表載重在此區段會使 C 點上抬)。<br />
+   - <strong>局部最小值</strong>發生在距離 A 點 $\frac{5}{\sqrt{3}} \approx 2.887\text{m}$ 處，值為 <strong>$-\frac{5\sqrt{3}}{9216} \approx -0.000940 \text{ m/kN}$</strong>。</li>
+<li><strong>B 點 ($x=5\text{m}$)</strong>：0</li>
+<li><strong>B~D 區段</strong>：影響線為正值 (載重在此區段使 C 點下沉)。<br />
+   - <strong>全域最大值</strong>發生在中點 C ($x=10\text{m}$)，值為 <strong>$\frac{55}{6144} \approx 0.00895 \text{ m/kN}$</strong>。</li>
+<li><strong>D 點 ($x=15\text{m}$)</strong>：0</li>
+<li><strong>D~E 區段</strong>：對稱於 A~B，影響線為負值。<br />
+   - <strong>局部最小值</strong>發生在距離 E 點 $\frac{5}{\sqrt{3}}\text{m}$ (即 $x \approx 17.113\text{m}$) 處，值為 <strong>$-\frac{5\sqrt{3}}{9216} \approx -0.000940 \text{ m/kN}$</strong>。</li>
+<li><strong>E 點 ($x=20\text{m}$)</strong>：0</li>
+</ol></main>
+<footer>來源：raw/solutions/SA-2018-4/SA-2018-4.md（知識庫解題內容唯一正本；本頁僅為渲染顯示）</footer>
+</body></html>

@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="zh-Hant"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SA-2022-4 — 題目解析</title>
+<link rel="stylesheet" href="../assets/katex/katex.min.css">
+<script defer src="../assets/katex/katex.min.js"></script>
+<script defer src="../assets/katex/auto-render.min.js"
+  onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},
+  {left:'$',right:'$',display:false},{left:'\\(',right:'\\)',display:false}],throwOnError:false});"></script>
+<style>
+:root{--ac:#1565c0;--bg:#f7f9fb;--card:#fff;--ink:#263238;--mut:#607d8b;--bd:#dfe6ea}
+*{box-sizing:border-box}
+body{margin:0;font-family:"Microsoft JhengHei","Noto Sans TC",-apple-system,sans-serif;
+  background:var(--bg);color:var(--ink);line-height:1.75;font-size:15.5px}
+header{background:linear-gradient(135deg,#0d47a1,#1976d2 60%,#42a5f5);color:#fff;padding:22px 26px}
+header h1{margin:0;font-size:1.15em}
+header .back{display:inline-block;margin-top:10px;font-size:.82em;color:#fff;background:rgba(255,255,255,.18);
+  padding:4px 12px;border-radius:14px;text-decoration:none}
+main{max-width:880px;margin:0 auto;padding:26px 22px 70px}
+h1,h2,h3{color:#0d47a1} h2{font-size:1.2em;border-left:6px solid var(--ac);padding-left:12px;margin:34px 0 14px}
+table{width:100%;border-collapse:collapse;margin:14px 0;font-size:.92em;background:#fff}
+th,td{border:1px solid var(--bd);padding:7px 10px;text-align:left;vertical-align:top}
+th{background:#eceff1;font-weight:600} tbody tr:nth-child(even){background:#fafcfd}
+code{background:#eceff1;padding:1px 5px;border-radius:4px;font-size:.92em}
+img{max-width:100%;display:block;margin:14px auto;border:1px solid var(--bd);border-radius:8px}
+.katex-display{margin:12px 0!important;overflow-x:auto;overflow-y:hidden}
+footer{text-align:center;color:var(--mut);font-size:.8em;padding:22px;border-top:1px solid var(--bd)}
+</style></head><body>
+<header><h1>SA-2022-4 題目解析</h1><a class="back" href="javascript:history.back()">← 返回講義</a></header>
+<main><h1>考題編號：SA-2022-4</h1>
+<p><strong>主分類：</strong> <code>SA-U2-4</code> 靜不定結構與位移<br />
+<strong>副分類：</strong> 無<br />
+<strong>分析法：</strong> 剪力棟架法 (Shear Building Method)<br />
+<strong>標籤：</strong> <code>剪力棟架</code> <code>剛性樓板</code> <code>側移剛度</code> <code>不規則構架</code> <code>挑高柱</code></p>
+<hr />
+<h2>1. 原始題目重述 (Problem Restatement)</h2>
+<p>如圖 4 所示三層樓構架，各樓層承受水平外力，構架梁柱桿件的彈性模數都為 $E$，另構架之柱桿件斷面慣性矩都為 $I$，且 $EI = 97200 \text{ kN-m}^2$，而構架之梁桿件斷面慣性矩為無限大。不考慮構架梁柱桿件的軸向變形，求 $c$ 點水平位移、$b$ 點水平位移、$a$ 點及 $m$ 點固定端的水平反力與彎矩。（25 分）</p>
+<p><img alt="SA-2022-4 題目附圖" src="../../raw/solutions/SA-2022-4/SA-2022-4-fig-1.png" /></p>
+<p><em>圖說：(待補充說明)</em></p>
+<h2>2. 考題核心精神與出題者意圖 (Core Concepts &amp; Examiner's Intent)</h2>
+<p><strong>核心精神：</strong></p>
+<ol>
+<li><strong>剪力棟架 (Shear Building) 概念</strong>：題目明示「梁桿件斷面慣性矩為無限大 ($EI=\infty$)」且「不考慮軸向變形」，這是標準的剪力棟架假設。意即所有節點均無轉角 ($\theta=0$)，且同一樓層的所有節點具有相同的水平側移 ($\Delta$)。</li>
+<li><strong>不規則樓層 (挑高柱) 的剛度分配</strong>：觀察圖 4，一樓 ($y=3.6\text{m}$) 的梁僅存在於第一跨 (x=0~4m)，而第二、三跨 (x=4~12m) 處無梁。這導致第 3、4 根柱子從地面直通二樓，形成兩層樓高 ($7.2\text{m}$) 的「挑高柱」。考驗考生是否能正確判別各樓層的等效側移剛度並建立正確的平衡方程式。</li>
+</ol>
+<h2>3. 解題戰略地圖與陷阱分析 (Strategic Roadmap &amp; Trap Analysis)</h2>
+<p><strong>戰略步驟：</strong></p>
+<ol>
+<li><strong>計算柱側移剛度</strong>：利用兩端固定柱的側移剛度公式 $k = 12EI / L^3$，分別計算「標準柱 (高 3.6m)」與「挑高柱 (高 7.2m)」的剛度。</li>
+<li><strong>定義自由度</strong>：定義一樓位移為 $\Delta_1$、二樓位移為 $\Delta_2$、三樓位移為 $\Delta_3$。</li>
+<li><strong>建立樓層剪力平衡方程式</strong>：利用水平截面法 (Free Body Diagram of stories) 找出各樓層剪力與位移的關係。<br />
+   - 三樓截面：切過 4 根標準柱。<br />
+   - 二樓截面：切過 2 根標準柱 (1、2 柱) 與 2 根挑高柱 (3、4 柱)。<br />
+   - 一樓截面：切過 2 根標準柱 (1、2 柱) 與 2 根挑高柱 (3、4 柱)。</li>
+<li><strong>解聯立方程式</strong>：求得各樓層的絕對位移。</li>
+<li><strong>回推反力</strong>：將位移代回基層柱的剛度方程式，求得底部剪力與彎矩。</li>
+</ol>
+<p><strong>陷阱分析：</strong></p>
+<ul>
+<li><strong>致命陷阱：未察覺右側兩跨在一樓無梁</strong>。若盲目套用每層皆有 4 根柱子的公式，將會導致第一層與第二層剛度計算錯誤。圖面上的梁線段長短是解題的關鍵。</li>
+</ul>
+<h2>3.5 變數層次分析 (Variable Hierarchy Analysis)</h2>
+<h3>最終目標</h3>
+<p><code>求解 Δ1 (b點位移), Δ2 (c點位移), Ha, Ma, Hm, Mm</code></p>
+<h3>本題關鍵公式</h3>
+<blockquote>
+<p>$\boxed{\cdot}$ = 需由前步驟推導，非題目直接給定的變數</p>
+</blockquote>
+<p>$$\text{柱側移剛度: } k = \frac{12EI}{L^3}$$<br />
+$$\text{柱底剪力: } V = k \times \Delta_{relative}$$<br />
+$$\text{柱底彎矩: } M = V \times \frac{L}{2}$$</p>
+<h3>L1：題目直接給定</h3>
+<table>
+<thead>
+<tr>
+<th>符號</th>
+<th>數值</th>
+<th>說明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>$EI$</td>
+<td>$97200 \text{ kN-m}^2$</td>
+<td>柱抗彎剛度</td>
+</tr>
+<tr>
+<td>$h$</td>
+<td>$3.6 \text{ m}$</td>
+<td>標準層高</td>
+</tr>
+<tr>
+<td>$F_1, F_2, F_3$</td>
+<td>$100, 200, 300 \text{ kN}$</td>
+<td>各樓層外加側力</td>
+</tr>
+</tbody>
+</table>
+<h3>L2：需知識點推導</h3>
+<table>
+<thead>
+<tr>
+<th>符號</th>
+<th>公式/來源</th>
+<th style="text-align: center;">數值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>$k$</td>
+<td>$12EI / h^3$</td>
+<td style="text-align: center;">標準柱側移剛度</td>
+</tr>
+<tr>
+<td>$k_{double}$</td>
+<td>$12EI / (2h)^3$</td>
+<td style="text-align: center;">挑高柱側移剛度</td>
+</tr>
+</tbody>
+</table>
+<h2>4. 步驟化詳細計算過程 (Step-by-Step Detailed Calculation)</h2>
+<h3>Step 1：計算柱側移剛度</h3>
+<p>標準柱（高 $L = 3.6\text{m}$）：<br />
+$$k = \frac{12EI}{h^3} = \frac{12 \times 97200}{3.6^3} = \frac{1166400}{46.656} = 25000 \text{ kN/m}$$</p>
+<p>挑高柱（高 $L = 2h = 7.2\text{m}$，對應第 3、4 根柱子，自地面直通二樓）：<br />
+$$k_{double} = \frac{12EI}{(2h)^3} = \frac{k}{8} = \frac{25000}{8} = 3125 \text{ kN/m}$$</p>
+<h3>Step 2：建立樓層剪力平衡方程式</h3>
+<p>設一、二、三樓之水平位移分別為 $\Delta_1, \Delta_2, \Delta_3$。</p>
+<p><strong>1. 三樓截面 (介於 y=7.2m 與 10.8m 之間)：</strong><br />
+切過 4 根標準柱。該截面以上之總外力為 $V_{ext,3} = 300 \text{ kN}$。<br />
+$$4k(\Delta_3 - \Delta_2) = 300$$<br />
+$$100000(\Delta_3 - \Delta_2) = 300 \implies \Delta_3 - \Delta_2 = 0.003 \quad \text{--- (式 1)}$$</p>
+<p><strong>2. 二樓截面 (介於 y=3.6m 與 7.2m 之間)：</strong><br />
+切過第 1、2 根標準柱（連接一、二樓，位移差為 $\Delta_2 - \Delta_1$），以及第 3、4 根挑高柱（連接地面與二樓，位移差為 $\Delta_2 - 0$）。<br />
+該截面以上之總外力為 $V_{ext,2} = 300 + 200 = 500 \text{ kN}$。<br />
+$$2k(\Delta_2 - \Delta_1) + 2k_{double}(\Delta_2 - 0) = 500$$<br />
+$$2(25000)(\Delta_2 - \Delta_1) + 2(3125)\Delta_2 = 500$$<br />
+$$50000(\Delta_2 - \Delta_1) + 6250\Delta_2 = 500$$<br />
+$$56250\Delta_2 - 50000\Delta_1 = 500 \implies 56.25\Delta_2 - 50\Delta_1 = 0.5 \quad \text{--- (式 2)}$$</p>
+<p><strong>3. 一樓截面 (介於 y=0m 與 3.6m 之間)：</strong><br />
+切過第 1、2 根標準柱（連接地面與一樓，位移差為 $\Delta_1 - 0$），以及第 3、4 根挑高柱（連接地面與二樓，位移差為 $\Delta_2 - 0$）。<br />
+該截面以上之總外力為 $V_{ext,1} = 300 + 200 + 100 = 600 \text{ kN}$。<br />
+$$2k(\Delta_1 - 0) + 2k_{double}(\Delta_2 - 0) = 600$$<br />
+$$50000\Delta_1 + 6250\Delta_2 = 600 \implies 50\Delta_1 + 6.25\Delta_2 = 0.6 \quad \text{--- (式 3)}$$</p>
+<h3>Step 3：解聯立方程式</h3>
+<p>將 (式 2) 與 (式 3) 相加消去 $\Delta_1$：<br />
+$$(56.25\Delta_2 - 50\Delta_1) + (50\Delta_1 + 6.25\Delta_2) = 0.5 + 0.6$$<br />
+$$62.5\Delta_2 = 1.1 \implies \Delta_2 = \frac{1.1}{62.5} = \mathbf{0.0176 \text{ m}}$$</p>
+<p>將 $\Delta_2$ 代回 (式 3) 求 $\Delta_1$：<br />
+$$50\Delta_1 + 6.25(0.0176) = 0.6$$<br />
+$$50\Delta_1 + 0.11 = 0.6 \implies 50\Delta_1 = 0.49 \implies \Delta_1 = \mathbf{0.0098 \text{ m}}$$</p>
+<p><em>(註：若需 $\Delta_3$，代入式 1 可得 $\Delta_3 = 0.0176 + 0.003 = 0.0206 \text{ m}$)</em></p>
+<h3>Step 4：計算各點反力與彎矩</h3>
+<p><strong>對於 $a$ 點 (左側標準柱底)：</strong></p>
+<ul>
+<li>柱高 $h = 3.6\text{m}$，頂端水平位移 $\Delta_1 = 0.0098\text{m}$。</li>
+<li>
+<p>水平剪力 (推力)：$V_a = k\Delta_1 = 25000 \times 0.0098 = \mathbf{245 \text{ kN}}$。<br />
+  結構向右側移，故地面需提供向左之反力：<strong>$H_a = 245 \text{ kN} (\leftarrow)$</strong>。</p>
+</li>
+<li>
+<p>柱底彎矩：剪力棟架中，柱端彎矩 $M = V \times \frac{h}{2}$。<br />
+  $M_a = 245 \times \frac{3.6}{2} = \mathbf{441 \text{ kN-m}}$。<br />
+  欲抵抗柱子右傾趨勢，需逆時針彎矩：<strong>$M_a = 441 \text{ kN-m} (\circlearrowleft)$</strong>。</p>
+</li>
+</ul>
+<p><strong>對於 $m$ 點 (右側挑高柱底)：</strong></p>
+<ul>
+<li>柱高 $2h = 7.2\text{m}$，頂端水平位移 $\Delta_2 = 0.0176\text{m}$。</li>
+<li>
+<p>水平剪力 (推力)：$V_m = k_{double}\Delta_2 = 3125 \times 0.0176 = \mathbf{55 \text{ kN}}$。<br />
+  反力方向同為向左：<strong>$H_m = 55 \text{ kN} (\leftarrow)$</strong>。</p>
+</li>
+<li>
+<p>柱底彎矩：$M_m = V_m \times \frac{2h}{2} = V_m \times h$。<br />
+  $M_m = 55 \times 3.6 = \mathbf{198 \text{ kN-m}}$。<br />
+  方向同為逆時針：<strong>$M_m = 198 \text{ kN-m} (\circlearrowleft)$</strong>。</p>
+</li>
+</ul>
+<p><em>(檢核：總基底剪力 $\sum H = 2 \times 245 + 2 \times 55 = 490 + 110 = 600 \text{ kN}$，恰等於總外力，平衡無誤！)</em></p>
+<h2>5. 最終答案彙整 (Summary of Answers)</h2>
+<ol>
+<li><strong>$c$ 點水平位移</strong>：$0.0176 \text{ m}$ (或 $17.6 \text{ mm}$)，方向向右。</li>
+<li><strong>$b$ 點水平位移</strong>：$0.0098 \text{ m}$ (或 $9.8 \text{ mm}$)，方向向右。</li>
+<li><strong>$a$ 點固定端反力與彎矩</strong>：<br />
+   - 水平反力：$245 \text{ kN}$，方向向左。<br />
+   - 彎矩：$441 \text{ kN-m}$，逆時針方向。</li>
+<li><strong>$m$ 點固定端反力與彎矩</strong>：<br />
+   - 水平反力：$55 \text{ kN}$，方向向左。<br />
+   - 彎矩：$198 \text{ kN-m}$，逆時針方向。</li>
+</ol></main>
+<footer>來源：raw/solutions/SA-2022-4/SA-2022-4.md（知識庫解題內容唯一正本；本頁僅為渲染顯示）</footer>
+</body></html>

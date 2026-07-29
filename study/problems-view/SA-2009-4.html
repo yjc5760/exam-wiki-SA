@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="zh-Hant"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SA-2009-4 — 題目解析</title>
+<link rel="stylesheet" href="../assets/katex/katex.min.css">
+<script defer src="../assets/katex/katex.min.js"></script>
+<script defer src="../assets/katex/auto-render.min.js"
+  onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},
+  {left:'$',right:'$',display:false},{left:'\\(',right:'\\)',display:false}],throwOnError:false});"></script>
+<style>
+:root{--ac:#1565c0;--bg:#f7f9fb;--card:#fff;--ink:#263238;--mut:#607d8b;--bd:#dfe6ea}
+*{box-sizing:border-box}
+body{margin:0;font-family:"Microsoft JhengHei","Noto Sans TC",-apple-system,sans-serif;
+  background:var(--bg);color:var(--ink);line-height:1.75;font-size:15.5px}
+header{background:linear-gradient(135deg,#0d47a1,#1976d2 60%,#42a5f5);color:#fff;padding:22px 26px}
+header h1{margin:0;font-size:1.15em}
+header .back{display:inline-block;margin-top:10px;font-size:.82em;color:#fff;background:rgba(255,255,255,.18);
+  padding:4px 12px;border-radius:14px;text-decoration:none}
+main{max-width:880px;margin:0 auto;padding:26px 22px 70px}
+h1,h2,h3{color:#0d47a1} h2{font-size:1.2em;border-left:6px solid var(--ac);padding-left:12px;margin:34px 0 14px}
+table{width:100%;border-collapse:collapse;margin:14px 0;font-size:.92em;background:#fff}
+th,td{border:1px solid var(--bd);padding:7px 10px;text-align:left;vertical-align:top}
+th{background:#eceff1;font-weight:600} tbody tr:nth-child(even){background:#fafcfd}
+code{background:#eceff1;padding:1px 5px;border-radius:4px;font-size:.92em}
+img{max-width:100%;display:block;margin:14px auto;border:1px solid var(--bd);border-radius:8px}
+.katex-display{margin:12px 0!important;overflow-x:auto;overflow-y:hidden}
+footer{text-align:center;color:var(--mut);font-size:.8em;padding:22px;border-top:1px solid var(--bd)}
+</style></head><body>
+<header><h1>SA-2009-4 題目解析</h1><a class="back" href="javascript:history.back()">← 返回講義</a></header>
+<main><div style="background:#fff;border:1px solid #dfe6ea;border-radius:10px;padding:12px 14px;margin:0 0 18px"><p style="margin:0 0 6px;font-size:.88em;color:#607d8b">題目附圖（原始 .md 未內嵌，由 raw/solutions/ 自動補上）</p><img src="../../raw/solutions/SA-2009-4/SA-2009-4-fig-1.png" alt="SA-2009-4 附圖"></div><h1>考題編號：SA-2009-4</h1>
+<p><strong>主分類：</strong> <code>SA-U1-1</code> 桁架結構分析<br />
+<strong>副分類：</strong> <code>SA-U1-5</code> 直接勁度法 (Direct Stiffness Method)<br />
+<strong>分析法：</strong> 矩陣直接勁度法<br />
+<strong>標籤：</strong> <code>直接勁度法</code> <code>桁架</code> <code>位移求解</code> <code>內力計算</code></p>
+<hr />
+<h2>1. 原始題目重述 (Problem Restatement)</h2>
+<p>本題為一個由三根桿件組成之共點桁架系統。所有桿件共用節點 $a$，節點 $a$ 承受一垂直向下的集中載重。<br />
+各支承節點均為鉸支承 (Hinge Support)。</p>
+<p><strong>幾何與材料條件：</strong></p>
+<ul>
+<li>各構件彈性模數與斷面積之乘積為常數：$AE = 1000\text{ kN}$</li>
+<li>節點座標（以 $a$ 點為原點 $(0,0)$，單位：m）：<ul>
+<li>$a = (0, 0)$，自由節點，承受外力 $F_x = 0$，$F_y = -100\text{ kN}$。</li>
+<li>$d = (-4, 0)$，鉸支承。</li>
+<li>$c = (0, 3)$，鉸支承。</li>
+<li>$b = (4, 3)$，鉸支承。</li>
+</ul>
+</li>
+</ul>
+<p><strong>求解目標：</strong></p>
+<ol>
+<li>節點 $a$ 的水平變位 $d_1$ 及垂直變位 $d_2$。</li>
+<li>各桿件 ($ad$, $ac$, $ab$) 之內力。</li>
+</ol>
+<h2>2. 考題核心精神與出題者意圖 (Core Concepts &amp; Examiner's Intent)</h2>
+<p>本題的核心在於測驗考生對<strong>矩陣直接勁度法 (Direct Stiffness Method)</strong> 於平面桁架應用之熟練度。</p>
+<ul>
+<li><strong>系統自由度識別：</strong> 由於 $b, c, d$ 點均為鉸支承，無位移產生，整個系統僅節點 $a$ 具有兩個獨立平移自由度（水平 $d_1$、垂直 $d_2$）。</li>
+<li><strong>元素勁度矩陣建立：</strong> 測驗考生能否正確依據幾何座標算出方向餘弦 ($\cos\theta, \sin\theta$)，並代入桁架桿件之局部至總體剛度轉換公式。</li>
+<li><strong>總體矩陣組裝與求解：</strong> 將各桿件對節點 $a$ 的剛度貢獻疊加，形成 $2 \times 2$ 的結構總體剛度矩陣 $[K_{ff}]$，並利用邊界條件解出節點位移。</li>
+<li><strong>內力回算機制：</strong> 確認考生是否理解「位移 $\to$ 桿件變形 $\to$ 內力」的轉換邏輯。</li>
+</ul>
+<h2>3. 解題戰略地圖與陷阱分析 (Strategic Roadmap &amp; Trap Analysis)</h2>
+<p><strong>解題戰略：</strong></p>
+<ol>
+<li><strong>幾何預處理：</strong> 計算各桿件之長度 $L$ 以及由節點 $a$ 指向各支承點之方向餘弦 $\cos\theta, \sin\theta$。</li>
+<li><strong>單一桿件矩陣推導：</strong> 套用桁架勁度矩陣公式，分別計算 $k_{ad}, k_{ac}, k_{ab}$ 對於節點 $a$ 之剛度貢獻矩陣。</li>
+<li><strong>整體組裝與外力對應：</strong> 將三個 $2 \times 2$ 矩陣疊加得 $K_{ff}$。建立 $K_{ff} D = F$ 方程式，其中外力向量 $F = [0, -100]^T$。</li>
+<li><strong>聯立求解：</strong> 解二元一次聯立方程式求得位移 $d_1, d_2$。</li>
+<li><strong>內力回代：</strong> 將 $d_1, d_2$ 代入各桿件變形公式求得內力，並判別拉壓。</li>
+</ol>
+<p><strong>陷阱分析 (Trap Analysis)：</strong></p>
+<ul>
+<li><strong>陷阱一：方向餘弦的定義方向混淆。</strong> <ul>
+<li><em>應對策略：</em> 統一規定桿件向量是由「受力自由點 (a) 指向 支承點」。則變形量 $\Delta L = d_{\text{far}} \cos\theta + d_{\text{far}} \sin\theta - (d_{\text{near}, x} \cos\theta + d_{\text{near}, y} \sin\theta)$。因遠端為支承點位移為 0，所以 $\Delta L = -d_1 \cos\theta - d_2 \sin\theta$。</li>
+</ul>
+</li>
+<li><strong>陷阱二：計算過程中的分數與小數精度誤差。</strong><ul>
+<li><em>應對策略：</em> 由於斜桿 $ab$ 的長度為 5，會產生 $0.8$ 及 $0.6$ 的小數，但在組合 $K_{ff}$ 時強烈建議轉換為<strong>最簡分數</strong>，以免後續聯立方程式求解時產生截斷誤差。</li>
+</ul>
+</li>
+</ul>
+<h2>3.5 變數層次分析 (Variable Hierarchy Analysis)</h2>
+<h3>最終目標</h3>
+<p>求出節點 $a$ 的水平與垂直位移 ($d_1, d_2$)，並回算三根桿件的內力。</p>
+<h3>本題關鍵公式（依計算順序）</h3>
+<p>Step 1: 建立各桿對節點 $a$ 之剛度貢獻矩陣<br />
+$$ k = \frac{AE}{L} \begin{bmatrix} \cos^2\theta & \cos\theta\sin\theta \\ \cos\theta\sin\theta & \sin^2\theta \end{bmatrix} $$</p>
+<p>Step 2: 組裝總體剛度矩陣並求解位移<br />
+$$ \boxed{K_{ff}} = \sum k $$<br />
+$$ \boxed{K_{ff}} \begin{bmatrix} d_1 \\ d_2 \end{bmatrix} = \begin{bmatrix} F_1 \\ F_2 \end{bmatrix} $$</p>
+<p>Step 3: 由位移回算各桿內力（張力為正）<br />
+$$ T = \frac{AE}{L} (-\boxed{d_1} \cos\theta - \boxed{d_2} \sin\theta) $$</p>
+<h3>L1：題目直接給定</h3>
+<table>
+<thead>
+<tr>
+<th>符號</th>
+<th>數值</th>
+<th>說明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>$AE$</td>
+<td>$1000\text{ kN}$</td>
+<td>桿件軸向剛度</td>
+</tr>
+<tr>
+<td>$a$</td>
+<td>$(0, 0)$</td>
+<td>自由節點座標</td>
+</tr>
+<tr>
+<td>$b, c, d$</td>
+<td>$(4, 3), (0, 3), (-4, 0)$</td>
+<td>鉸支承節點座標</td>
+</tr>
+<tr>
+<td>$F_y$</td>
+<td>$-100\text{ kN}$</td>
+<td>節點 $a$ 承受之垂直載重</td>
+</tr>
+</tbody>
+</table>
+<h3>L2：需知識點推導</h3>
+<p><strong>剛度矩陣建立與求解</strong><br />
+| 符號 | 公式／來源 | 卡關? |<br />
+|---|---|---|<br />
+| $L, \cos\theta, \sin\theta$ | $L=\sqrt{\Delta x^2 + \Delta y^2}, \cos\theta=\Delta x/L, \sin\theta=\Delta y/L$ | |<br />
+| $k_{ad}, k_{ac}, k_{ab}$ | 元素剛度公式 | |<br />
+| $K_{ff}$ | $\sum k_i$ | |<br />
+| $d_1, d_2$ | $K_{ff} D = F$ 解聯立 | |</p>
+<p><strong>內力回算</strong><br />
+| 符號 | 公式／來源 | 卡關? |<br />
+|---|---|---|<br />
+| $T_{ad}, T_{ac}, T_{ab}$ | $\frac{AE}{L} (-d_1 \cos\theta - d_2 \sin\theta)$ | |</p>
+<h3>L3：深層知識（不懂就卡住）</h3>
+<table>
+<thead>
+<tr>
+<th>知識點</th>
+<th>說明</th>
+<th>卡關?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>節點剛度疊加原理</td>
+<td>對於共用同一自由點的多桿桁架，該點的總剛度即為各相連桿件剛度的直接矩陣相加。</td>
+<td></td>
+</tr>
+<tr>
+<td>相對變形與內力符號</td>
+<td>必須嚴格遵守「指向遠端」的向量定義，算出的變形量 $\Delta L > 0$ 即代表伸長（張力），反之為壓力。</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h2>4. 步驟化詳細計算過程 (Step-by-Step Detailed Calculation)</h2>
+<h3>4.1 建立各桿件之元素勁度矩陣</h3>
+<p>對於平面桁架桿件，其對於兩端節點的剛度貢獻矩陣 $k$ （相對於總體座標）為：<br />
+$$ k = \frac{AE}{L} \begin{bmatrix} \cos^2\theta & \cos\theta\sin\theta \\ \cos\theta\sin\theta & \sin^2\theta \end{bmatrix} $$<br />
+<em>策略註解：定義 $\theta$ 為由受力節點 ($a$) 指向支承節點的方位角。</em></p>
+<p><strong>1. 桿件 ad (Member 1)：</strong></p>
+<ul>
+<li>長度 $L_{ad} = 4\text{ m}$</li>
+<li>方向向量為 $(-4, 0)$，$\cos\theta = -1$, $\sin\theta = 0$<br />
+$$ k_{ad} = \frac{AE}{4} \begin{bmatrix} (-1)^2 & 0 \\ 0 & 0^2 \end{bmatrix} = AE \begin{bmatrix} 0.25 & 0 \\ 0 & 0 \end{bmatrix} = AE \begin{bmatrix} \frac{1}{4} & 0 \\ 0 & 0 \end{bmatrix} $$</li>
+</ul>
+<p><strong>2. 桿件 ac (Member 2)：</strong></p>
+<ul>
+<li>長度 $L_{ac} = 3\text{ m}$</li>
+<li>方向向量為 $(0, 3)$，$\cos\theta = 0$, $\sin\theta = 1$<br />
+$$ k_{ac} = \frac{AE}{3} \begin{bmatrix} 0 & 0 \\ 0 & 1^2 \end{bmatrix} = AE \begin{bmatrix} 0 & 0 \\ 0 & \frac{1}{3} \end{bmatrix} $$</li>
+</ul>
+<p><strong>3. 桿件 ab (Member 3)：</strong></p>
+<ul>
+<li>長度 $L_{ab} = \sqrt{4^2 + 3^2} = 5\text{ m}$</li>
+<li>方向向量為 $(4, 3)$，$\cos\theta = \frac{4}{5} = 0.8$, $\sin\theta = \frac{3}{5} = 0.6$<br />
+$$ k_{ab} = \frac{AE}{5} \begin{bmatrix} (0.8)^2 & 0.8 \times 0.6 \\ 0.8 \times 0.6 & (0.6)^2 \end{bmatrix} = \frac{AE}{5} \begin{bmatrix} 0.64 & 0.48 \\ 0.48 & 0.36 \end{bmatrix} = AE \begin{bmatrix} 0.128 & 0.096 \\ 0.096 & 0.072 \end{bmatrix} $$<br />
+<em>策略註解：為避免誤差，將小數轉為分數：</em><br />
+$$ k_{ab} = AE \begin{bmatrix} \frac{16}{125} & \frac{12}{125} \\ \frac{12}{125} & \frac{9}{125} \end{bmatrix} $$</li>
+</ul>
+<h3>4.2 組裝總體勁度矩陣與外力向量</h3>
+<p>由於僅節點 $a$ 為自由節點，我們只需建立對應 $d_1, d_2$ 的 $2 \times 2$ 總體剛度矩陣 $K_{ff}$：<br />
+$$ K_{11} = AE \left( \frac{1}{4} + 0 + \frac{16}{125} \right) = AE \left( \frac{125 + 64}{500} \right) = \frac{189}{500} AE $$<br />
+$$ K_{12} = K_{21} = AE \left( 0 + 0 + \frac{12}{125} \right) = \frac{48}{500} AE $$<br />
+$$ K_{22} = AE \left( 0 + \frac{1}{3} + \frac{9}{125} \right) = AE \left( \frac{125 + 27}{375} \right) = \frac{152}{375} AE $$</p>
+<p>外力向量 $F$：<br />
+$$ F = \begin{bmatrix} F_1 \\ F_2 \end{bmatrix} = \begin{bmatrix} 0 \\ -100 \end{bmatrix}\text{ kN} $$</p>
+<p>建立方程式 $K_{ff} D = F$ （代入 $AE = 1000\text{ kN}$）：<br />
+$$ 1000 \begin{bmatrix} 189/500 & 48/500 \\ 48/500 & 152/375 \end{bmatrix} \begin{bmatrix} d_1 \\ d_2 \end{bmatrix} = \begin{bmatrix} 0 \\ -100 \end{bmatrix} $$<br />
+$$ \begin{bmatrix} 378 & 96 \\ 96 & 1216/3 \end{bmatrix} \begin{bmatrix} d_1 \\ d_2 \end{bmatrix} = \begin{bmatrix} 0 \\ -100 \end{bmatrix} $$</p>
+<h3>4.3 解聯立方程式求位移</h3>
+<p>由第一式得：<br />
+$$ 378 d_1 + 96 d_2 = 0 \implies d_1 = -\frac{96}{378} d_2 = -\frac{16}{63} d_2 $$</p>
+<p>代入第二式：<br />
+$$ 96 \left(-\frac{16}{63} d_2\right) + \frac{1216}{3} d_2 = -100 $$<br />
+$$ \left(-\frac{1536}{63} + \frac{25536}{63}\right) d_2 = -100 \implies \left(\frac{24000}{63}\right) d_2 = -100 \implies \frac{8000}{21} d_2 = -100 $$<br />
+$$ \implies d_2 = -100 \times \frac{21}{8000} = -\frac{21}{80}\text{ m} $$<br />
+$$ \boxed{ d_2 = -0.2625\text{ m} \text{ (向下)} } $$</p>
+<p>將 $d_2$ 代回求 $d_1$：<br />
+$$ d_1 = -\frac{16}{63} \times \left(-\frac{21}{80}\right) = \frac{16 \times 21}{63 \times 80} = \frac{1}{15}\text{ m} $$<br />
+$$ \boxed{ d_1 \approx 0.0667\text{ m} \text{ (向右)} } $$</p>
+<h3>4.4 計算各桿件內力</h3>
+<p>利用桿件變形關係求內力（張力為正）：<br />
+$$ T = \frac{AE}{L} \Delta L = \frac{AE}{L} (-d_1 \cos\theta - d_2 \sin\theta) $$</p>
+<p><strong>1. 桿件 ad:</strong> ($\cos\theta = -1, \sin\theta = 0, L = 4$)<br />
+$$ T_{ad} = \frac{1000}{4} \left[ - \left(\frac{1}{15}\right)(-1) - 0 \right] = 250 \times \frac{1}{15} = \frac{50}{3}\text{ kN} $$<br />
+$$ \boxed{ T_{ad} \approx 16.67\text{ kN} \text{ (張力)} } $$</p>
+<p><strong>2. 桿件 ac:</strong> ($\cos\theta = 0, \sin\theta = 1, L = 3$)<br />
+$$ T_{ac} = \frac{1000}{3} \left[ 0 - \left(-\frac{21}{80}\right)(1) \right] = \frac{1000}{3} \times \frac{21}{80} = 87.5\text{ kN} $$<br />
+$$ \boxed{ T_{ac} = 87.5\text{ kN} \text{ (張力)} } $$</p>
+<p><strong>3. 桿件 ab:</strong> ($\cos\theta = 0.8, \sin\theta = 0.6, L = 5$)<br />
+$$ T_{ab} = \frac{1000}{5} \left[ - \left(\frac{1}{15}\right)(0.8) - \left(-\frac{21}{80}\right)(0.6) \right] = 200 \left( -\frac{4}{75} + \frac{63}{400} \right) $$<br />
+$$ T_{ab} = 200 \left( \frac{-64 + 189}{1200} \right) = 200 \times \frac{125}{1200} = \frac{125}{6}\text{ kN} $$<br />
+$$ \boxed{ T_{ab} \approx 20.83\text{ kN} \text{ (張力)} } $$</p>
+<p><em>(註：節點 $a$ 內力平衡檢查 $\sum F_x = 0, \sum F_y = 0$，皆完美吻合：</em><br />
+$\sum F_x = -T_{ad} + T_{ab} \times 0.8 = -16.667 + 20.833 \times 0.8 = 0$<br />
+$\sum F_y = T_{ac} + T_{ab} \times 0.6 - 100 = 87.5 + 20.833 \times 0.6 - 100 = 0$)</p>
+<h2>5. 關鍵爭議點與進階探討 (Critical Issues &amp; Advanced Discussion)</h2>
+<ul>
+<li>
+<p><strong>力法與位移法之選擇：</strong><br />
+    本題系統有 3 根桿件、反力總數為 6 (三個鉸支承)，節點數 4。其靜不定度 $i = m + r - 2j = 3 + 6 - 2(4) = 1$，屬於一階靜不定桁架。若使用「力法 (Force Method) / 諧合變位法」，需切斷一根桿件（或移除一個支承反應）作為贅力，求柔度矩陣後再套用位移諧合條件，步驟較為繁雜。<br />
+    本題使用「位移法 (Displacement Method) / 直接勁度法」，自由度僅有 2 個（節點 a 的水平與垂直位移），只要建立 $2 \times 2$ 矩陣即可輕鬆求解，是考場上最推薦且最不易出錯的穩健作法。</p>
+</li>
+<li>
+<p><strong>計算精度控制：</strong><br />
+    在手算矩陣直接勁度法時，最常犯的錯誤在於早期帶入小數運算導致的誤差累積。如本題桿件 $ab$ 產生的剛度矩陣內含 $0.128, 0.096$ 等數字，若考場上使用非精確的小數直接相加，很容易在求解聯立方程時失真。全程保持分數運算 (如 $\frac{16}{125}$ 等) 是確保最終答案精準、甚至能完美通過靜力平衡檢驗的關鍵。</p>
+</li>
+</ul></main>
+<footer>來源：raw/solutions/SA-2009-4/SA-2009-4.md（知識庫解題內容唯一正本；本頁僅為渲染顯示）</footer>
+</body></html>

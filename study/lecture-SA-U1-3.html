@@ -1,0 +1,1061 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>SA-U1-3 靜定及靜不定結構影響線｜觀念講義</title>
+<link rel="stylesheet" href="assets/katex/katex.min.css">
+<script defer src="assets/katex/katex.min.js"></script>
+<script defer src="assets/katex/auto-render.min.js"
+  onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'\\(',right:'\\)',display:false}],throwOnError:false});"></script>
+<style>
+:root{--ac:#1565c0;--ac2:#e3f2fd;--tension:#2e7d32;--tension2:#e8f5e9;
+--comp:#c62828;--comp2:#ffebee;--warn:#ef6c00;--warn2:#fff3e0;
+--key:#6a1b9a;--key2:#f3e5f5;--bg:#f7f9fb;--card:#fff;--ink:#263238;--mut:#607d8b;--bd:#dfe6ea}
+*{box-sizing:border-box}
+body{margin:0;font-family:"Microsoft JhengHei","Noto Sans TC",-apple-system,sans-serif;
+background:var(--bg);color:var(--ink);line-height:1.75;font-size:15.5px}
+header{background:linear-gradient(135deg,#1b5e20,#2e7d32 60%,#66bb6a);color:#fff;padding:34px 26px}
+header h1{margin:0 0 8px;font-size:1.6em}header .sub{opacity:.9;font-size:.93em;margin:0}
+header .meta{margin-top:12px;font-size:.82em;opacity:.8}
+nav{position:sticky;top:0;z-index:20;background:#fff;border-bottom:2px solid var(--bd);
+padding:9px 14px;display:flex;flex-wrap:wrap;gap:6px;box-shadow:0 2px 6px rgba(0,0,0,.05)}
+nav a{text-decoration:none;color:var(--ac);font-size:.85em;padding:4px 11px;border-radius:14px;background:var(--ac2)}
+nav a:hover{background:var(--ac);color:#fff}
+main{max-width:980px;margin:0 auto;padding:24px 18px 80px}
+section{margin-bottom:46px}
+h2{font-size:1.32em;border-left:6px solid var(--ac);padding-left:12px;margin:44px 0 18px;line-height:1.4}
+h3{font-size:1.08em;margin:30px 0 10px;color:#0d47a1}
+h4{font-size:.99em;margin:20px 0 8px;color:#37474f}
+.lead{font-size:1.03em;background:#fff;border:1px solid var(--bd);border-left:5px solid var(--ac);
+border-radius:0 10px 10px 0;padding:14px 18px;margin:16px 0}
+.box{background:var(--card);border:1px solid var(--bd);border-radius:11px;padding:16px 18px;margin:16px 0}
+.why{background:var(--key2);border:1px solid #ce93d8;border-left:5px solid var(--key);
+border-radius:0 10px 10px 0;padding:13px 17px;margin:16px 0}
+.why b:first-child{color:var(--key)}
+.trap{background:var(--warn2);border:1px solid #ffcc80;border-left:5px solid var(--warn);
+border-radius:0 10px 10px 0;padding:13px 17px;margin:16px 0}
+.trap b:first-child{color:#e65100}
+.tens{background:var(--tension2);border:1px solid #a5d6a7;border-left:5px solid var(--tension);
+border-radius:0 10px 10px 0;padding:13px 17px;margin:16px 0}
+.comp{background:var(--comp2);border:1px solid #ef9a9a;border-left:5px solid var(--comp);
+border-radius:0 10px 10px 0;padding:13px 17px;margin:16px 0}
+.fig{background:#fff;border:1px solid var(--bd);border-radius:11px;padding:16px 14px 10px;margin:20px 0;overflow-x:auto}
+.fig svg{display:block;margin:0 auto;max-width:100%;height:auto}
+.fig .cap{font-size:.85em;color:var(--mut);text-align:center;margin-top:10px;line-height:1.6}
+table{width:100%;border-collapse:collapse;margin:16px 0;font-size:.9em;background:#fff}
+th,td{border:1px solid var(--bd);padding:8px 10px;text-align:left;vertical-align:top}
+th{background:#eceff1;font-weight:600}
+tbody tr:nth-child(even){background:#fafcfd}
+ul,ol{margin:10px 0 10px 4px;padding-left:22px}li{margin:5px 0}
+.pill{display:inline-block;font-size:.76em;padding:2px 8px;border-radius:10px;margin-right:4px}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+@media(max-width:760px){.grid2{grid-template-columns:1fr}}
+details{background:#fff;border:1px solid var(--bd);border-radius:9px;padding:10px 14px;margin:12px 0}
+summary{cursor:pointer;font-weight:600;color:var(--ac)}
+details p{border-left:3px solid #e0e0e0;padding-left:12px;margin:8px 0;color:#37474f}
+.qlink{color:#1565c0;text-decoration:none;border-bottom:1px dotted #90caf9;font-weight:600}
+.katex-display{margin:14px 0!important;overflow-x:auto;overflow-y:hidden}
+footer{text-align:center;color:var(--mut);font-size:.83em;padding:26px;border-top:1px solid var(--bd)}
+</style></head>
+<body>
+<header>
+<h1>SA-U1-3　靜定及靜不定結構影響線</h1>
+<p class="sub">觀念講義 — 練題之前先建立物理直覺，不背公式</p>
+<p class="meta">結構工程技師｜結構學（SA）第一單元第 3 子項　主分類 9 題、副分類 4 題（2003–2025）　近 6 年出題 2 年 2 題</p>
+</header>
+<nav>
+<a href="#s0">§0 全景</a>
+<a href="#s1">§1 Müller-Breslau</a>
+<a href="#s2">§2 三種拆法</a>
+<a href="#s3">§3 折線 vs 曲線</a>
+<a href="#s4">§4 靜定梁關鍵數字</a>
+<a href="#s5">§5 桁架影響線</a>
+<a href="#s6">§6 靜不定的三條路線</a>
+<a href="#s7">§7 求最大效應</a>
+<a href="#s8">§8 特殊題型</a>
+<a href="#s9">§9 完整手算</a>
+<a href="#s10">§10 決策流程</a>
+<a href="#s11">§11 歷屆對照</a>
+<a href="#s12">§12 因果鏈</a>
+<a href="#s13">§13 陷阱總表</a>
+<a href="#s14">§14 自我檢測</a>
+<a href="#s15">★ 精選 5 題</a>
+<span style="flex:1"></span>
+<a href="../index.html#md=wiki/diagnosis/SA-U1-3.md&amp;t=SA-U1-3 題型診斷" target="_blank" style="background:#eceff1;color:#455a64">🩺 診斷頁</a>
+<a href="study-SA-U1-3.html" style="background:#eceff1;color:#455a64">📊 速查頁</a>
+<a href="SA-U1-3_靜定及靜不定結構影響線.pdf" target="_blank" style="background:#eceff1;color:#455a64">📄 Keynote</a>
+<a href="lecture-SA-U1-3.pdf" target="_blank" style="background:#eceff1;color:#455a64">🖨️ 本頁 PDF</a>
+</nav>
+<main>
+<section id="s0">
+<h2>§0　全景：橫軸畫的是「載重在哪」，不是「斷面在哪」</h2>
+
+<p class="lead">影響線和彎矩圖長得很像，但問的是<b>相反的問題</b>：<br>
+<b>彎矩圖：</b>載重<b>固定</b>，問「各個<b>斷面</b>的彎矩多大」——橫軸是斷面位置。<br>
+<b>影響線：</b>斷面<b>固定</b>，問「載重跑到各處時，<b>這一個</b>斷面的彎矩多大」——橫軸是載重位置。<br>
+把這兩件事分清楚，本單元一半的錯誤就不會發生。</p>
+
+<div class="fig">
+<svg viewBox="0 0 760 360" xmlns="http://www.w3.org/2000/svg">
+<rect x="0" y="0" width="760" height="360" fill="#fff"/>
+<defs><marker id="a0" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+<path d="M0,0 L7,3 L0,6 z" fill="#c62828"/></marker></defs>
+<line x1="380" y1="16" x2="380" y2="344" stroke="#b0bec5" stroke-width="1.5" stroke-dasharray="6 5"/>
+
+<text x="190" y="32" font-size="14.5" font-weight="700" fill="#c62828" text-anchor="middle">彎矩圖（BMD）</text>
+<text x="570" y="32" font-size="14.5" font-weight="700" fill="#2e7d32" text-anchor="middle">影響線（IL）</text>
+
+<!-- LEFT: BMD -->
+<text x="190" y="54" font-size="12" fill="#546e7a" text-anchor="middle">載重固定不動</text>
+<line x1="60" y1="94" x2="320" y2="94" stroke="#37474f" stroke-width="4"/>
+<polygon points="60,94 48,112 72,112" fill="#78909c"/>
+<polygon points="320,94 308,112 332,112" fill="#78909c"/>
+<line x1="190" y1="66" x2="190" y2="88" stroke="#c62828" stroke-width="3" marker-end="url(#a0)"/>
+<text x="204" y="76" font-size="12.5" font-weight="700" fill="#c62828">P（固定在這）</text>
+<text x="190" y="132" font-size="12" fill="#546e7a" text-anchor="middle">問：每一個斷面的 M 是多少？</text>
+<line x1="60" y1="176" x2="320" y2="176" stroke="#607d8b" stroke-width="1.4"/>
+<polygon points="60,176 190,236 320,176" fill="#ffebee" stroke="#c62828" stroke-width="2.2"/>
+<text x="190" y="256" font-size="12" font-weight="700" fill="#c62828" text-anchor="middle">M(斷面位置)</text>
+<rect x="52" y="272" width="276" height="60" rx="8" fill="#ffebee" stroke="#ef9a9a"/>
+<text x="190" y="294" font-size="12.5" font-weight="700" fill="#b71c1c" text-anchor="middle">橫軸 = 斷面位置</text>
+<text x="190" y="316" font-size="12" fill="#c62828" text-anchor="middle">一張圖描述「整根梁」在某一組載重下的狀態</text>
+
+<!-- RIGHT: IL -->
+<text x="570" y="54" font-size="12" fill="#546e7a" text-anchor="middle">斷面固定不動，載重跑來跑去</text>
+<line x1="440" y1="94" x2="700" y2="94" stroke="#37474f" stroke-width="4"/>
+<polygon points="440,94 428,112 452,112" fill="#78909c"/>
+<polygon points="700,94 688,112 712,112" fill="#78909c"/>
+<circle cx="570" cy="94" r="6" fill="#2e7d32"/>
+<text x="570" y="130" font-size="12" font-weight="700" fill="#1b5e20" text-anchor="middle">斷面 B（固定在這）</text>
+<line x1="480" y1="66" x2="480" y2="88" stroke="#c62828" stroke-width="2" marker-end="url(#a0)"/>
+<line x1="530" y1="66" x2="530" y2="88" stroke="#c62828" stroke-width="1.4" opacity=".45" marker-end="url(#a0)"/>
+<line x1="620" y1="66" x2="620" y2="88" stroke="#c62828" stroke-width="1.4" opacity=".45" marker-end="url(#a0)"/>
+<line x1="665" y1="66" x2="665" y2="88" stroke="#c62828" stroke-width="1.4" opacity=".45" marker-end="url(#a0)"/>
+<text x="452" y="84" font-size="11.5" fill="#c62828" text-anchor="end">P = 1 移動</text>
+<line x1="440" y1="176" x2="700" y2="176" stroke="#607d8b" stroke-width="1.4"/>
+<polygon points="440,176 570,236 700,176" fill="#e8f5e9" stroke="#2e7d32" stroke-width="2.2"/>
+<text x="570" y="256" font-size="12" font-weight="700" fill="#1b5e20" text-anchor="middle">M_B(載重位置)</text>
+<rect x="432" y="272" width="276" height="60" rx="8" fill="#e8f5e9" stroke="#a5d6a7"/>
+<text x="570" y="294" font-size="12.5" font-weight="700" fill="#1b5e20" text-anchor="middle">橫軸 = 載重位置</text>
+<text x="570" y="316" font-size="12" fill="#2e7d32" text-anchor="middle">一張圖描述「一個斷面」對所有可能載重位置的反應</text>
+</svg>
+<div class="cap">兩張圖在簡支梁中點的情況下形狀恰好相似（都是三角形），所以特別容易混。但注意峰值：BMD 的峰值是 \(PL/4\)，IL 的峰值是 \(L/4\)（<b>沒有力的單位</b>）—— 這是最快的辨識法。</div>
+</div>
+
+<div class="why"><b>影響線的縱座標有單位嗎？</b>
+有，但是「每單位載重」的量。反力／剪力影響線的縱座標<b>無因次</b>（力÷力）；彎矩影響線的縱座標是<b>長度</b>（力·長度÷力）。<br>
+所以看到一條「彎矩影響線」的峰值寫 \(2.5\ \text{m}\)，那是對的，不是漏寫單位。<br>
+<b>反過來當檢查用：</b>如果你算出的彎矩影響線縱座標帶著 kN，一定是把 IL 和 BMD 搞混了。</div>
+
+<h3>為什麼要有影響線？</h3>
+
+<p>因為橋梁、吊車梁、廠房行車這類結構，載重<b>會動</b>。設計時要問的不是「這組載重造成多大內力」，而是「<b>所有可能的載重位置裡，最糟的是哪一種</b>」。影響線就是把這個問題一次答完的工具：</p>
+
+<ul>
+<li>畫好某個量的影響線 → 峰值在哪，就把最重的載重擺在哪</li>
+<li>均佈載重可以任意佈置時 → 只鋪在影響線<b>同號</b>的區域（§7）</li>
+</ul>
+
+<div class="trap"><b>本子項的考法有兩層，缺一不可：</b><br>
+① <b>畫出形狀</b>（定性）—— 靠 Müller-Breslau 原理，幾乎不用計算。<br>
+② <b>標出數值</b>（定量）—— 靜定題靠靜力平衡，靜不定題靠柔度法／共軛梁法／三彎矩。<br>
+歷屆題幾乎都同時要求兩件事：<a class="qlink" href="problems-view/SA-2003-4.html" target="_blank">SA-2003-4</a>「需標示影響值」、<a class="qlink" href="problems-view/SA-2005-3.html" target="_blank">SA-2005-3</a>「每隔 2.5 m 畫出」、<a class="qlink" href="problems-view/SA-2016-2.html" target="_blank">SA-2016-2</a>「並列出其方程式」。只畫形狀拿不到一半的分。</div>
+</section>
+
+<section id="s1">
+<h2>§1　Müller-Breslau 原理：變形曲線<b>就是</b>影響線</h2>
+
+<p class="lead"><b>把你要求的那個量的束制拆掉，讓結構沿著那個量的正方向產生「單位廣義位移」，畫出來的變形曲線，就是那個量的影響線。</b><br>
+不必逐點放載重、不必逐點解一次結構 —— 算<b>一次</b>就得到<b>整條</b>影響線。</p>
+
+<div class="fig">
+<svg viewBox="0 0 780 320" xmlns="http://www.w3.org/2000/svg">
+<rect x="0" y="0" width="780" height="320" fill="#fff"/>
+<defs><marker id="a1" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+<path d="M0,0 L7,3 L0,6 z" fill="#c62828"/></marker>
+<marker id="a1b" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+<path d="M0,0 L7,3 L0,6 z" fill="#1b5e20"/></marker></defs>
+<text x="390" y="24" font-size="14" font-weight="700" fill="#0d47a1" text-anchor="middle">兩個「反過來」的狀態，用貝蒂互換定理接在一起</text>
+
+<!-- state 1 -->
+<rect x="14" y="42" width="360" height="132" rx="9" fill="#ffebee" stroke="#ef9a9a"/>
+<text x="194" y="64" font-size="12.5" font-weight="700" fill="#b71c1c" text-anchor="middle">狀態 ①：單位載重放在 x 處</text>
+<line x1="52" y1="112" x2="336" y2="112" stroke="#37474f" stroke-width="4"/>
+<polygon points="52,112 40,130 64,130" fill="#78909c"/>
+<polygon points="336,112 324,130 348,130" fill="#78909c"/>
+<line x1="180" y1="84" x2="180" y2="106" stroke="#c62828" stroke-width="2.6" marker-end="url(#a1)"/>
+<text x="180" y="78" font-size="12" fill="#c62828" text-anchor="middle">P = 1</text>
+<text x="180" y="148" font-size="11.5" fill="#b71c1c" text-anchor="middle">x</text>
+<line x1="336" y1="140" x2="336" y2="120" stroke="#b71c1c" stroke-width="2.4" marker-end="url(#a1)"/>
+<text x="352" y="152" font-size="12" font-weight="700" fill="#b71c1c">量值 X ＝ IL(x)</text>
+
+<!-- state 2 -->
+<rect x="406" y="42" width="360" height="132" rx="9" fill="#e8f5e9" stroke="#a5d6a7"/>
+<text x="586" y="64" font-size="12.5" font-weight="700" fill="#1b5e20" text-anchor="middle">狀態 ②：拆掉 X 的束制，強迫單位位移</text>
+<line x1="444" y1="112" x2="728" y2="112" stroke="#cfd8dc" stroke-width="2" stroke-dasharray="5 4"/>
+<path d="M444 112 Q560 148 728 92" stroke="#2e7d32" stroke-width="3.6" fill="none"/>
+<polygon points="444,112 432,130 456,130" fill="#78909c"/>
+<line x1="728" y1="112" x2="728" y2="92" stroke="#1b5e20" stroke-width="2.6" marker-end="url(#a1b)"/>
+<text x="742" y="86" font-size="12" font-weight="700" fill="#1b5e20">Δ = 1</text>
+<circle cx="572" cy="133" r="4.5" fill="#1b5e20"/>
+<line x1="572" y1="112" x2="572" y2="129" stroke="#1b5e20" stroke-width="1.6" stroke-dasharray="3 3"/>
+<text x="572" y="152" font-size="12" font-weight="700" fill="#1b5e20" text-anchor="middle">δ(x)</text>
+
+<rect x="120" y="190" width="540" height="118" rx="10" fill="#f3e5f5" stroke="#ba68c8" stroke-width="1.8"/>
+<text x="390" y="214" font-size="13" font-weight="700" fill="#4a148c" text-anchor="middle">貝蒂互換定理：①的力對②的位移作功 ＝ ②的力對①的位移作功</text>
+<text x="390" y="240" font-size="12.5" fill="#6a1b9a" text-anchor="middle">1 · δ(x)　＝　X · 1</text>
+<text x="390" y="266" font-size="14" font-weight="700" fill="#4a148c" text-anchor="middle">⟹　IL_X(x) = δ(x)</text>
+<text x="390" y="292" font-size="11.8" fill="#6a1b9a" text-anchor="middle">影響線的縱座標，就是狀態②那條變形曲線的縱座標</text>
+</svg>
+<div class="cap">整個 Müller-Breslau 原理就這麼一行。它的威力在於「<b>把 n 次計算換成 1 次計算</b>」—— 原本要對每一個載重位置 \(x\) 各解一次結構，現在只要解「在 X 處施加單位位移」這<b>一個</b>問題。</div>
+</div>
+
+<div class="why"><b>為什麼可以這樣互換？根源是 Maxwell 互易定理。</b>
+線彈性結構中，「在 A 施力使 B 產生的位移」＝「在 B 施力使 A 產生的位移」（\(\delta_{AB}=\delta_{BA}\)）。<br>
+影響線要問的是「載重在<b>各個</b> \(x\) 時，<b>某一固定點</b>的反應」；Müller-Breslau 把它翻轉成「在<b>那一固定點</b>施加單位量，<b>各個</b> \(x\) 的反應」。互易定理保證這兩者數值相同。<br>
+<b>這就是為什麼影響線是「可算的」</b> —— 否則靜不定結構每移動一次載重就要重解一次，根本不可能手算。</div>
+
+<div class="trap"><b>Müller-Breslau 給的是「形狀」，正負號要另外校準。</b>
+運動學畫出的變形曲線，形狀與各段的相對比例一定正確；但整體的正負號取決於「X 的正方向怎麼定義」與「位移量正方向怎麼定義」，兩個約定一不小心就會差一個負號。<br>
+<b>最快的做法：形狀用 Müller-Breslau 畫，然後挑一個最好算的特徵點（通常是載重直接壓在支承上）用靜力平衡算一次，拿它校準整條線的正負號。</b>§9 的範例 A 就是這樣做的。</div>
+</section>
+
+<section id="s2">
+<h2>§2　三種束制的拆法：反力、剪力、彎矩</h2>
+
+<p class="lead">「拆掉束制、施加單位廣義位移」這句話，對三種量的具體動作不一樣。這三個動作要能閉著眼睛畫出來。</p>
+
+<div class="fig">
+<svg viewBox="0 0 780 330" xmlns="http://www.w3.org/2000/svg">
+<rect x="0" y="0" width="780" height="330" fill="#fff"/>
+<defs><marker id="a2" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+<path d="M0,0 L7,3 L0,6 z" fill="#1b5e20"/></marker></defs>
+
+<!-- 1 reaction -->
+<rect x="12" y="34" width="246" height="278" rx="10" fill="#e8f5e9" stroke="#a5d6a7"/>
+<text x="135" y="58" font-size="13" font-weight="700" fill="#1b5e20" text-anchor="middle">① 反力 R</text>
+<text x="135" y="80" font-size="11.5" fill="#2e7d32" text-anchor="middle">拆法：整個支承拿掉</text>
+<line x1="40" y1="126" x2="230" y2="126" stroke="#90a4ae" stroke-width="3"/>
+<polygon points="40,126 30,142 50,142" fill="#90a4ae"/>
+<polygon points="230,126 220,142 240,142" fill="#90a4ae"/>
+<text x="135" y="160" font-size="11" fill="#78909c" text-anchor="middle">原結構（求左端反力）</text>
+<line x1="40" y1="212" x2="230" y2="212" stroke="#cfd8dc" stroke-width="2" stroke-dasharray="4 4"/>
+<line x1="40" y1="186" x2="230" y2="212" stroke="#2e7d32" stroke-width="3.4"/>
+<polygon points="230,212 220,228 240,228" fill="#90a4ae"/>
+<line x1="40" y1="212" x2="40" y2="190" stroke="#1b5e20" stroke-width="2.4" marker-end="url(#a2)"/>
+<text x="56" y="182" font-size="12" font-weight="700" fill="#1b5e20">Δ = 1（向上）</text>
+<text x="135" y="252" font-size="11.5" fill="#1b5e20" text-anchor="middle">單位<b>平移</b>，方向同反力</text>
+<text x="135" y="274" font-size="11.5" fill="#1b5e20" text-anchor="middle">縱座標<b>無因次</b></text>
+<text x="135" y="296" font-size="11" fill="#2e7d32" text-anchor="middle">例：簡支梁 IL_RA = (L−x)/L</text>
+
+<!-- 2 shear -->
+<rect x="266" y="34" width="246" height="278" rx="10" fill="#e3f2fd" stroke="#90caf9"/>
+<text x="389" y="58" font-size="13" font-weight="700" fill="#0d47a1" text-anchor="middle">② 剪力 V</text>
+<text x="389" y="80" font-size="11.5" fill="#1565c0" text-anchor="middle">拆法：插入「剪力釋放」</text>
+<line x1="294" y1="126" x2="484" y2="126" stroke="#90a4ae" stroke-width="3"/>
+<polygon points="294,126 284,142 304,142" fill="#90a4ae"/>
+<polygon points="484,126 474,142 494,142" fill="#90a4ae"/>
+<line x1="389" y1="116" x2="389" y2="136" stroke="#1565c0" stroke-width="2"/>
+<text x="389" y="160" font-size="11" fill="#78909c" text-anchor="middle">在該斷面切開</text>
+<line x1="294" y1="212" x2="382" y2="224" stroke="#1565c0" stroke-width="3.4"/>
+<line x1="396" y1="200" x2="484" y2="212" stroke="#1565c0" stroke-width="3.4"/>
+<line x1="294" y1="212" x2="484" y2="212" stroke="#cfd8dc" stroke-width="2" stroke-dasharray="4 4"/>
+<polygon points="294,212 284,228 304,228" fill="#90a4ae"/>
+<polygon points="484,212 474,228 494,228" fill="#90a4ae"/>
+<line x1="382" y1="224" x2="396" y2="200" stroke="#0d47a1" stroke-width="1.6" stroke-dasharray="3 3"/>
+<text x="389" y="252" font-size="11.5" fill="#0d47a1" text-anchor="middle">左右<b>相對錯動</b> 1，但<b>保持平行</b></text>
+<text x="389" y="274" font-size="11.5" fill="#0d47a1" text-anchor="middle">縱座標<b>無因次</b>；斷面處<b>跳躍 1</b></text>
+<text x="389" y="296" font-size="11" fill="#1565c0" text-anchor="middle">最難想像的一種，畫錯就全錯</text>
+
+<!-- 3 moment -->
+<rect x="520" y="34" width="248" height="278" rx="10" fill="#fff3e0" stroke="#ffcc80"/>
+<text x="644" y="58" font-size="13" font-weight="700" fill="#e65100" text-anchor="middle">③ 彎矩 M</text>
+<text x="644" y="80" font-size="11.5" fill="#ef6c00" text-anchor="middle">拆法：插入一個鉸</text>
+<line x1="548" y1="126" x2="740" y2="126" stroke="#90a4ae" stroke-width="3"/>
+<polygon points="548,126 538,142 558,142" fill="#90a4ae"/>
+<polygon points="740,126 730,142 750,142" fill="#90a4ae"/>
+<circle cx="644" cy="126" r="5" fill="#fff" stroke="#e65100" stroke-width="2.2"/>
+<text x="644" y="160" font-size="11" fill="#78909c" text-anchor="middle">該斷面裝鉸</text>
+<line x1="548" y1="212" x2="644" y2="238" stroke="#e65100" stroke-width="3.4"/>
+<line x1="644" y1="238" x2="740" y2="212" stroke="#e65100" stroke-width="3.4"/>
+<line x1="548" y1="212" x2="740" y2="212" stroke="#cfd8dc" stroke-width="2" stroke-dasharray="4 4"/>
+<polygon points="548,212 538,228 558,228" fill="#90a4ae"/>
+<polygon points="740,212 730,228 750,228" fill="#90a4ae"/>
+<path d="M622 236 A 26 26 0 0 1 666 236" stroke="#bf360c" stroke-width="1.8" fill="none"/>
+<text x="644" y="252" font-size="11.5" fill="#e65100" text-anchor="middle">左右<b>相對轉角</b> 1 弧度</text>
+<text x="644" y="274" font-size="11.5" fill="#e65100" text-anchor="middle">縱座標單位是<b>長度</b></text>
+<text x="644" y="296" font-size="11" fill="#ef6c00" text-anchor="middle">例：簡支梁 IL_M 峰值 = ab/L</text>
+</svg>
+<div class="cap">三種拆法。注意剪力那一張：左右兩段必須<b>保持平行</b>（相對轉角為零），只有上下錯開 —— 這是「剪力釋放」與「鉸」最容易搞混的地方。</div>
+</div>
+
+<div class="box"><b>三個立刻可用的推論</b>
+<ol>
+<li><b>剪力影響線在斷面處必定「跳躍 1」。</b>因為施加的就是單位相對錯動。看到你畫的 \(V\) 影響線在斷面處是連續的，一定畫錯。</li>
+<li><b>彎矩影響線在斷面處必定有「折點」但連續。</b>因為施加的是相對轉角，位移連續、斜率不連續。</li>
+<li><b>影響線在支承處必為零</b>（該支承本身的反力影響線除外）。因為支承不動，變形曲線在那裡是零。這是最快的自我檢查。</li>
+</ol></div>
+
+<div class="trap"><b><a class="qlink" href="problems-view/SA-2015-2.html" target="_blank">SA-2015-2</a> 考的正是剪力釋放。</b>題目要「F 點的剪力影響線」，結構是 1 度靜不定的連續梁。解除 F 點的剪力束制後，結構<b>恰好變成靜定</b> —— 這就是為什麼可以接著用共軛梁法定量。<br>
+<b>操作提示：</b>剪力釋放在自由體圖上等於「在斷面左側加向下 1、右側加向上 1 的一對力」（正剪力方向），再用靜力求彎矩函數。</div>
+</section>
+
+<section id="s3">
+<h2>§3　一句話分辨：靜定是折線，靜不定是曲線</h2>
+
+<p class="lead"><b>拆掉那個束制之後，結構還撐得住嗎？</b><br>
+撐不住（變成機構）→ 位移是<b>剛體運動</b> → 影響線由<b>直線段</b>組成 → 這是靜定結構。<br>
+還撐得住（少一個束制仍穩定）→ 位移是<b>彈性變形</b> → 影響線是<b>光滑曲線</b> → 這是靜不定結構。</p>
+
+<div class="fig">
+<svg viewBox="0 0 760 300" xmlns="http://www.w3.org/2000/svg">
+<rect x="0" y="0" width="760" height="300" fill="#fff"/>
+<line x1="380" y1="14" x2="380" y2="286" stroke="#b0bec5" stroke-width="1.5" stroke-dasharray="6 5"/>
+<defs><marker id="a3" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+<path d="M0,0 L7,3 L0,6 z" fill="#1b5e20"/></marker></defs>
+
+<text x="190" y="30" font-size="14" font-weight="700" fill="#1b5e20" text-anchor="middle">靜定：簡支梁，求 R_A</text>
+<text x="570" y="30" font-size="14" font-weight="700" fill="#c62828" text-anchor="middle">靜不定：一端固定一端滾支承，求 R_C</text>
+
+<!-- left -->
+<line x1="60" y1="86" x2="320" y2="86" stroke="#37474f" stroke-width="4"/>
+<polygon points="60,86 48,104 72,104" fill="#78909c"/>
+<polygon points="320,86 308,104 332,104" fill="#78909c"/>
+<text x="190" y="122" font-size="11.5" fill="#546e7a" text-anchor="middle">拿掉左支承 ⟹ 剩一個支承 ⟹ <tspan font-weight="700">機構</tspan></text>
+<line x1="60" y1="196" x2="320" y2="196" stroke="#607d8b" stroke-width="1.4"/>
+<polygon points="60,152 320,196 60,196" fill="#e8f5e9" stroke="#2e7d32" stroke-width="2.4"/>
+<line x1="60" y1="196" x2="60" y2="156" stroke="#1b5e20" stroke-width="2.4" marker-end="url(#a3)"/>
+<text x="80" y="146" font-size="12" font-weight="700" fill="#1b5e20">1</text>
+<text x="190" y="228" font-size="12.5" font-weight="700" fill="#1b5e20" text-anchor="middle">整根梁繞右支承<tspan fill="#c62828">剛體旋轉</tspan></text>
+<text x="190" y="250" font-size="12" fill="#2e7d32" text-anchor="middle">IL = (L − x)/L　<tspan font-weight="700">一條直線</tspan></text>
+<text x="190" y="274" font-size="11.5" fill="#2e7d32" text-anchor="middle">不需要 EI，不需要積分</text>
+
+<!-- right -->
+<line x1="440" y1="86" x2="700" y2="86" stroke="#37474f" stroke-width="4"/>
+<rect x="426" y="62" width="14" height="48" fill="#78909c"/>
+<polygon points="700,86 688,104 712,104" fill="#78909c"/>
+<text x="570" y="122" font-size="11.5" fill="#546e7a" text-anchor="middle">拿掉右支承 ⟹ 剩懸臂梁 ⟹ <tspan font-weight="700">仍穩定</tspan></text>
+<line x1="440" y1="196" x2="700" y2="196" stroke="#607d8b" stroke-width="1.4"/>
+<path d="M440 196 C 520 194, 600 176, 700 152 L 700 196 Z" fill="#ffebee" stroke="#c62828" stroke-width="2.4"/>
+<line x1="700" y1="196" x2="700" y2="156" stroke="#b71c1c" stroke-width="2.4" marker-end="url(#a3)"/>
+<text x="676" y="146" font-size="12" font-weight="700" fill="#b71c1c">1</text>
+<text x="570" y="228" font-size="12.5" font-weight="700" fill="#b71c1c" text-anchor="middle">懸臂梁的<tspan fill="#1b5e20">彈性撓曲線</tspan></text>
+<text x="570" y="250" font-size="12" fill="#c62828" text-anchor="middle">IL = x²(3L − x)/(2L³)　<tspan font-weight="700">三次曲線</tspan></text>
+<text x="570" y="274" font-size="11.5" fill="#c62828" text-anchor="middle">EI 在正規化時消掉，所以答案仍與 EI 無關</text>
+</svg>
+<div class="cap">同一個原理、同一個動作，只因為「拆掉之後還撐不撐得住」而長出完全不同的兩種圖形。右圖那條三次曲線正是 §9 範例 B 要算的東西。</div>
+</div>
+
+<div class="why"><b>為什麼靜不定結構的影響線與 \(EI\) 無關（各段 \(EI\) 相同時）？</b>
+因為影響線是<b>比值</b>：\(\mathrm{IL}(x)=\delta(x)/\delta_{\text{單位處}}\)。分子分母都含 \(1/EI\)，正規化時消掉。<br>
+所以題目常常只說「\(EI\) 為常數」而不給數值（<a class="qlink" href="problems-view/SA-2005-3.html" target="_blank">SA-2005-3</a>、<a class="qlink" href="problems-view/SA-2011-3.html" target="_blank">SA-2011-3</a>、<a class="qlink" href="problems-view/SA-2016-2.html" target="_blank">SA-2016-2</a> 都是）—— <b>那不是漏給，是在告訴你「不需要」。</b><br>
+但注意：各段 \(EI\) <b>不同</b>時就不會消掉，比值會留下 \(EI\) 的相對關係。</div>
+
+<div class="tens"><b>拿來當即時檢查：</b>
+<ul>
+<li>你在解一個<b>靜定</b>結構卻畫出了曲線 → 一定錯了。</li>
+<li>你在解一個<b>靜不定</b>結構卻畫出了純折線 → 一定錯了（除非題目只要定性草圖）。</li>
+<li>影響線在<b>每個支承處</b>都必須是零（該支承自身反力的 IL 例外）。</li>
+</ul></div>
+</section>
+
+<section id="s4">
+<h2>§4　靜定梁影響線的關鍵數字</h2>
+
+<h3>簡支梁（跨度 \(L\)，斷面距左支承 \(a\)、距右支承 \(b\)）</h3>
+
+<table>
+<thead><tr><th>量</th><th>影響線方程式</th><th>關鍵縱座標</th><th>形狀</th></tr></thead>
+<tbody>
+<tr><td>左反力 \(R_A\)</td><td>\(\dfrac{L-x}{L}\)</td><td>左端 1、右端 0</td><td>單一直線</td></tr>
+<tr><td>斷面剪力 \(V\)</td><td>\(-\dfrac{x}{L}\;(x<a)\)；\(\dfrac{L-x}{L}\;(x>a)\)</td><td>斷面左 \(-\dfrac{a}{L}\)、斷面右 \(+\dfrac{b}{L}\)，<b>跳躍 1</b></td><td>兩條平行直線＋跳躍</td></tr>
+<tr><td>斷面彎矩 \(M\)</td><td>\(\dfrac{bx}{L}\;(x\le a)\)；\(\dfrac{a(L-x)}{L}\;(x\ge a)\)</td><td>斷面處峰值 \(\dfrac{ab}{L}\)（單位：長度）</td><td>三角形</td></tr>
+</tbody>
+</table>
+
+<div class="box"><b>三個記憶錨點</b>
+<ul>
+<li><b>\(V\) 的兩個縱座標加起來一定是 1</b>：\(\dfrac{a}{L}+\dfrac{b}{L}=1\)。這是「跳躍量 = 施加的單位相對錯動」的直接結果。</li>
+<li><b>\(M\) 的峰值 \(ab/L\) 在跨中最大</b>：\(a=b=L/2\) 時為 \(L/4\)。往兩端移動就變小，端點為 0。</li>
+<li><b>兩條斜線的斜率</b>：\(M\) 影響線左段斜率 \(b/L\)、右段斜率 \(-a/L\)，斜率差 = 1（＝施加的單位相對轉角）。</li>
+</ul></div>
+
+<h3>懸臂段與 Gerber（內鉸）梁：主從關係決定一切</h3>
+
+<p>含內鉸的靜定梁（Gerber 梁，<a class="qlink" href="problems-view/SA-2025-2.html" target="_blank">SA-2025-2</a>）看起來複雜，但只要先把「誰撐著誰」搞清楚，影響線就是一連串直線的接力：</p>
+
+<div class="box">
+<b>三步驟拆解 Gerber 梁</b>
+<ol>
+<li><b>找出各獨立段</b>：以內鉸為界切開。</li>
+<li><b>判斷主／從</b>：靠自己的支承就能站穩的是「主段」；必須靠隔壁段撐住鉸端的是「從段」。</li>
+<li><b>畫影響線時把它當機構</b>：拆掉要求的束制後，各段沿著鉸點連成一條折線 —— 主段若不動就保持零，從段則跟著轉。</li>
+</ol>
+<b>載重路徑的方向性：</b>載重放在<b>從段</b>會傳給主段（所以主段的反力影響線在從段區域<b>不為零</b>）；載重放在<b>主段</b>不會傳給從段（所以從段支承的反力影響線在主段區域<b>是零</b>）。<br>
+<a class="qlink" href="problems-view/SA-2025-2.html" target="_blank">SA-2025-2</a> 的 \(R_E\) 影響線在左半部整段為零，就是這個原因。
+</div>
+
+<div class="trap"><b>自由端的剪力恆為零。</b><a class="qlink" href="problems-view/SA-2025-2.html" target="_blank">SA-2025-2</a> 要求「\(V_F\) 的影響線」，而 F 是懸臂的<b>自由端</b> —— 它右側什麼都沒有，所以不論載重放在哪裡，\(V_F\equiv 0\)。<br>
+整條影響線是一條躺在軸上的直線。這種題不是計算題，是<b>觀念題</b>：敢不敢寫「恆為零」。想太多、硬去算的人反而丟分。</div>
+
+<div class="why"><b>影響線可以是負的，而且很常見。</b>
+懸臂段或 Gerber 梁的從段受載時，主段的某些反力會<b>向下</b>（把結構壓住），影響線就是負值。<br>
+<a class="qlink" href="problems-view/SA-2025-2.html" target="_blank">SA-2025-2</a> 的 \(R_C\) 影響線在最右端是 \(-2\)：載重站在懸臂尖端 F 時，C 支承要提供 2 單位的<b>向下</b>反力才不會翹起來。<br>
+<b>設計上的意義：</b>這種支承必須能抵抗上拔力（錨定），否則結構會被掀起來。影響線的負值區在真實設計裡是要特別檢核的。</div>
+</section>
+
+<section id="s5">
+<h2>§5　桁架影響線：節間必為直線</h2>
+
+<p class="lead">桁架有一條靜定梁沒有的規則：<b>載重是透過橋面版與縱梁傳到節點的</b>，桁架桿件不可能承受節間中的載重。因此 —— <b>不論該桿的影響線在節點上是什麼值，節點與節點之間一定是直線。</b></p>
+
+<div class="fig">
+<svg viewBox="0 0 760 300" xmlns="http://www.w3.org/2000/svg">
+<rect x="0" y="0" width="760" height="300" fill="#fff"/>
+<defs><marker id="a5" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+<path d="M0,0 L7,3 L0,6 z" fill="#c62828"/></marker></defs>
+<text x="380" y="24" font-size="13.5" font-weight="700" fill="#0d47a1" text-anchor="middle">間接載重傳遞：載重先上縱梁，再到節點</text>
+
+<!-- truss -->
+<line x1="80" y1="70" x2="680" y2="70" stroke="#37474f" stroke-width="3.4"/>
+<line x1="80" y1="150" x2="680" y2="150" stroke="#37474f" stroke-width="3.4"/>
+<g stroke="#37474f" stroke-width="3">
+<line x1="80" y1="70" x2="80" y2="150"/><line x1="200" y1="70" x2="200" y2="150"/>
+<line x1="320" y1="70" x2="320" y2="150"/><line x1="440" y1="70" x2="440" y2="150"/>
+<line x1="560" y1="70" x2="560" y2="150"/><line x1="680" y1="70" x2="680" y2="150"/>
+<line x1="80" y1="150" x2="200" y2="70"/><line x1="200" y1="150" x2="320" y2="70"/>
+<line x1="320" y1="150" x2="440" y2="70"/><line x1="440" y1="150" x2="560" y2="70"/>
+<line x1="560" y1="150" x2="680" y2="70"/>
+</g>
+<g fill="#455a64">
+<circle cx="80" cy="150" r="5"/><circle cx="200" cy="150" r="5"/><circle cx="320" cy="150" r="5"/>
+<circle cx="440" cy="150" r="5"/><circle cx="560" cy="150" r="5"/><circle cx="680" cy="150" r="5"/>
+</g>
+<polygon points="80,150 68,170 92,170" fill="#78909c"/>
+<polygon points="680,150 668,170 692,170" fill="#78909c"/>
+<!-- stringer -->
+<line x1="80" y1="176" x2="680" y2="176" stroke="#1565c0" stroke-width="3" stroke-dasharray="10 4"/>
+<text x="380" y="196" font-size="11.5" fill="#1565c0" text-anchor="middle">縱梁（把載重帶到最近的兩個節點）</text>
+<line x1="260" y1="206" x2="260" y2="182" stroke="#c62828" stroke-width="2.6" marker-end="url(#a5)"/>
+<text x="260" y="222" font-size="12" font-weight="700" fill="#c62828" text-anchor="middle">P = 1 停在節間中間</text>
+
+<!-- IL -->
+<line x1="80" y1="266" x2="680" y2="266" stroke="#607d8b" stroke-width="1.4"/>
+<polyline points="80,266 200,242 320,254 440,266 560,266 680,266" fill="none" stroke="#2e7d32" stroke-width="3"/>
+<g fill="#2e7d32">
+<circle cx="80" cy="266" r="4"/><circle cx="200" cy="242" r="4"/><circle cx="320" cy="254" r="4"/>
+<circle cx="440" cy="266" r="4"/><circle cx="560" cy="266" r="4"/><circle cx="680" cy="266" r="4"/>
+</g>
+<text x="380" y="290" font-size="12" font-weight="700" fill="#1b5e20" text-anchor="middle">節點值算出來後，中間<tspan fill="#c62828">一律用直線連</tspan>（不會是曲線，也不會有折點）</text>
+</svg>
+<div class="cap">這一條規則讓桁架影響線變得非常好畫：只要算出<b>各節點</b>的值，剩下的用尺連起來就好。要算的點數等於節點數，通常不超過六七個。</div>
+</div>
+
+<h3>兩種桿件、兩種算法</h3>
+
+<table>
+<thead><tr><th>桿件</th><th>用什麼求</th><th>影響線特徵</th></tr></thead>
+<tbody>
+<tr><td><b>弦桿</b>（上／下弦）</td><td><b>力矩法</b>：切開節間，對「另兩桿交點」取矩，\(F=\dfrac{\sum M}{h}\)</td><td>力矩中心固定 ⟹ 影響線像「該點的彎矩影響線 ÷ 桁高」，三角形</td></tr>
+<tr><td><b>斜桿／豎桿</b></td><td><b>剪力法</b>：切開節間，取垂直力平衡，\(F=\dfrac{V_{\text{節間}}}{\sin\theta}\)</td><td>影響線像「該節間的剪力影響線 ÷ \(\sin\theta\)」，有跳躍與轉折</td></tr>
+</tbody>
+</table>
+
+<div class="why"><b>為什麼弦桿影響線長得像彎矩影響線？</b>
+因為力矩法的分子就是「切面一側對力矩中心的彎矩」，分母 \(h\) 是常數。所以
+$$\mathrm{IL}_{F_{\text{弦}}}=\frac{\mathrm{IL}_{M(\text{力矩中心})}}{h}$$
+同理斜桿影響線 = 節間剪力影響線 ÷ \(\sin\theta\)。<br>
+<b>你不需要為桁架另外背一套影響線</b> —— 只要會畫梁的 \(M\) 與 \(V\) 影響線，再除以一個常數就好。這是本節最省力的一句話。</div>
+
+<div class="trap"><b>細長拉桿（Counters）：<a class="qlink" href="problems-view/SA-2022-3.html" target="_blank">SA-2022-3</a> 的核心。</b>
+交叉斜撐（X 型）如果是<b>細長拉桿</b>，只能受拉、不能受壓。移動載重讓節間剪力<b>變號</b>時，「作用中」的那一根會切換到另一根。<br>
+<b>做法：</b>① 先求該節間的剪力影響線 → ② 找出剪力<b>變號點</b> → ③ 剪力為某一號時，A 桿作用、B 桿內力為 0；變號後互換。<br>
+結果是一條「<b>分段、且某些區段恆為零</b>」的影響線。豎桿因為同時受左右兩個節間的斜桿狀態影響，甚至會出現雙轉折的特殊形狀。<br>
+<b>辨識信號：</b>題目畫了 X 型斜撐、卻<b>沒有給 \(EA\)</b> —— 那就是在暗示「這是靜定結構，斜撐是細長拉桿」。</div>
+</section>
+
+<section id="s6">
+<h2>§6　靜不定影響線：三條計算路線</h2>
+
+<p class="lead">形狀由 Müller-Breslau 給，但數值要算。三條路線的共同結構是：<b>先求「某一個多餘力」的影響線，再用靜力疊加把其他量推出來。</b></p>
+
+<h3>路線一：柔度法（最通用，也最容易講清楚）</h3>
+
+<div class="box">
+<ol>
+<li>選一個多餘力 \(X\)（通常選要求的那個反力），移除對應束制得靜定基本結構。</li>
+<li>單位載重放在 \(x\) 處，求基本結構在 \(X\) 位置的位移 \(\delta_{X,x}\)。</li>
+<li>求 \(X=1\) 時 \(X\) 位置自身的位移 \(\delta_{XX}\)。</li>
+<li>諧合條件：\(\delta_{X,x}+X\,\delta_{XX}=0\Rightarrow\boxed{\mathrm{IL}_X(x)=-\dfrac{\delta_{X,x}}{\delta_{XX}}}\)</li>
+<li>其他量（其他反力、任意斷面的 \(V\)、\(M\)）用靜力平衡由 \(X\) 推出。</li>
+</ol>
+</div>
+
+<div class="why"><b>關鍵的一步：Maxwell 互易讓第 2 步只算一次。</b>
+第 2 步看起來要對<b>每一個</b> \(x\) 各算一次位移。但由互易定理
+$$\delta_{X,x}=\delta_{x,X}$$
+右邊的意思是「<b>在 X 處放單位力</b>，在 \(x\) 處量到的位移」—— 那是<b>一條完整的撓曲線</b>，一次就得到全部的 \(x\)。<br>
+所以整條影響線 \(=\) 「在 X 處施加單位力所得的撓曲線」\(\div\;\delta_{XX}\)。<br>
+<b>這就是 Müller-Breslau 原理的定量版本</b>，而 §9 範例 B 會把它從頭算一遍。</div>
+
+<h3>路線二：共軛梁法（適合連續梁、要標定量值時）</h3>
+
+<p>釋放束制後若結構變成靜定梁，就可以：真實彎矩圖 \(M(x)\) → 當成共軛梁的載重 → 共軛梁的彎矩 \(M^*\) 就是真實撓度。<a class="qlink" href="problems-view/SA-2015-2.html" target="_blank">SA-2015-2</a> 走的是這條路。</p>
+
+<div class="box"><b>共軛梁的支承轉換（必背，但可用「位移／轉角存不存在」推出）</b>
+<table>
+<thead><tr><th>真實梁</th><th>共軛梁</th><th>理由</th></tr></thead>
+<tbody>
+<tr><td>簡支端（鉸／滾）</td><td>簡支端</td><td>\(\delta=0\)（共軛 \(M^*=0\)）、\(\theta\ne0\)（共軛 \(V^*\ne0\)）</td></tr>
+<tr><td>固定端</td><td>自由端</td><td>\(\delta=0,\theta=0\) ⟹ \(M^*=0,V^*=0\)</td></tr>
+<tr><td>自由端</td><td>固定端</td><td>反過來</td></tr>
+<tr><td>內部支承</td><td>內部鉸</td><td>\(\delta=0\) 但 \(\theta\) 左右連續</td></tr>
+<tr><td>內部鉸</td><td>內部支承</td><td>\(\delta\) 連續但 \(\theta\) 左右不同</td></tr>
+</tbody>
+</table>
+記法只有一句：<b>「位移對應 \(M^*\)、轉角對應 \(V^*\)」，把真實梁的邊界條件翻譯過去就好。</b></div>
+
+<h3>路線三：三彎矩方程式／傾角變位法（連續梁、剛架）</h3>
+
+<p><a class="qlink" href="problems-view/SA-2005-3.html" target="_blank">SA-2005-3</a> 用三彎矩方程式求 \(M_B(x)\) 的影響線，再靜力疊加求跨中 D 點的彎矩；<a class="qlink" href="problems-view/SA-2016-2.html" target="_blank">SA-2016-2</a> 則可用傾角變位法。這條路線的優點是「方法已經很熟」，缺點是要對載重在<b>不同跨</b>分別列式。</p>
+
+<div class="trap"><b><a class="qlink" href="problems-view/SA-2016-2.html" target="_blank">SA-2016-2</a> 的側移陷阱。</b>倒 L 型剛架（A 固定、B 剛接、C 滾支承在水平面），移動載重在 BC 梁上。很多人看到載重全是垂直的，就認定「無側移」。<br>
+<b>錯。</b>C 是滾支承（無水平束制），梁彎曲時 B 節點旋轉會帶動柱 AB，而柱底無水平力 ⟹ 剛架<b>必然側移</b>。用傾角變位法漏了 \(\psi\) 項就全錯。<br>
+<b>避開的方法：</b>改用單位力法／Müller-Breslau（基本結構取「A 端固定的懸臂剛架」），側移效應自動包含在撓曲線裡，根本不必判斷。<b>這是本題選對方法就少一半風險的例子。</b></div>
+
+<div class="tens"><b>怎麼選路線？</b>
+<ul>
+<li><b>只有一個多餘力、基本結構是懸臂</b> → 路線一（柔度法），最直接。</li>
+<li><b>連續梁、要標很多點的數值</b> → 路線二（共軛梁法），一次算出整條撓曲線。</li>
+<li><b>已經很熟傾角變位法，且結構是剛架</b> → 路線三，但要小心側移。</li>
+<li><b>題目只要定性形狀</b> → 直接 Müller-Breslau 畫，不必算。</li>
+</ul></div>
+</section>
+
+<section id="s7">
+<h2>§7　畫完影響線要拿來做什麼：求最大效應</h2>
+
+<p class="lead">影響線本身不是答案，它是<b>工具</b>。真正的問題是「最糟的載重配置是什麼，最糟有多糟」。三種載重、三個規則：</p>
+
+<table>
+<thead><tr><th>載重型式</th><th>效應公式</th><th>最不利配置</th></tr></thead>
+<tbody>
+<tr><td>單一集中力 \(P\)</td><td>\(P\times y_{\max}\)</td><td>放在影響線<b>峰值</b>處</td></tr>
+<tr><td>一組集中力 \(P_i\)（車隊）</td><td>\(\sum P_i\,y_i\)</td><td>用<b>載重斜率變化法則</b>逐一試（見下）</td></tr>
+<tr><td>可任意佈置的均佈載重 \(w\)</td><td>\(w\times(\text{IL 面積})\)</td><td><b>只鋪在同號區</b>；求最大正值就只鋪正值區</td></tr>
+</tbody>
+</table>
+
+<div class="why"><b>為什麼均佈載重的效應是「\(w\times\) 面積」？</b>
+把均佈載重看成無數個微小集中力 \(w\,dx\)，每一個的貢獻是 \(y(x)\cdot w\,dx\)，加起來就是 \(w\int y\,dx\)。<br>
+這也解釋了為什麼「只鋪在同號區」是對的：<b>負值區的載重會抵銷你要的效應</b>，把它拿掉當然更糟。<br>
+<a class="qlink" href="problems-view/SA-2011-3.html" target="_blank">SA-2011-3</a> 特別寫「可作用於全長<b>或部分跨長</b>」，就是在提示這件事。若不加思索把 2 kN/m 鋪滿 60 m 全長，會把 AB 跨的負效應一起算進去，答案偏低 —— 而且是<b>不保守</b>的偏低，設計上是危險錯誤。</div>
+
+<h3>車隊載重：載重斜率變化法則</h3>
+
+<div class="box">
+<p>車隊在影響線上移動一小段 \(\Delta x\) 時，效應的變化量是</p>
+$$\Delta E=\sum_i P_i\,s_i\,\Delta x$$
+<p>其中 \(s_i\) 是第 \(i\) 個載重<b>當下所在那一段</b>的影響線斜率。</p>
+<ul>
+<li>\(\sum P_i s_i > 0\) → 繼續往那個方向移動，效應還會增加</li>
+<li>\(\sum P_i s_i < 0\) → 已經過頭，退回來</li>
+<li><b>極值一定發生在「某一個集中力剛好壓在影響線折點（通常是峰值）上」的位置</b>，因為只有跨過折點時 \(\sum P_i s_i\) 才會變號</li>
+</ul>
+<b>實作：</b>把每個載重輪流放到峰值，各算一次 \(\sum P_i y_i\)，取最大。輪子不多時（<a class="qlink" href="problems-view/SA-2004-2.html" target="_blank">SA-2004-2</a> 只有 4 個）直接窮舉最快也最不會錯。
+</div>
+
+<div class="trap"><b><a class="qlink" href="problems-view/SA-2004-2.html" target="_blank">SA-2004-2</a> 的三個陷阱：</b><br>
+① <b>行駛方向</b>：圖上有箭頭。車隊向左行駛時 20 kN 是<b>前導</b>載重，座標最小。方向弄反，整個配置就錯。<br>
+② <b>節間線性</b>：桁架桿件的影響線在節間是直線（§5），不能用連續梁的曲線。<br>
+③ <b>不要憑直覺</b>：以為「把最重的放峰值」就結束了。三角形影響線的峰值兩側斜率不同，把最重的擺峰值不一定最大 —— 必須逐一試。</div>
+
+<div class="tens"><b>三個一定要做的檢查</b>
+<ol>
+<li><b>量綱：</b>反力／剪力的效應是「力」（無因次 IL × 力）；彎矩的效應是「力·長度」（長度 IL × 力）。算出來的單位不對就是搞混了 IL 和 BMD。</li>
+<li><b>合理性上界：</b>簡支梁跨中彎矩不可能超過 \(PL/4\)（單一集中力）或 \(wL^2/8\)（滿跨均佈）。超過就錯了。</li>
+<li><b>正負區：</b>把最大正效應與最大負效應<b>分開報</b>。題目問「最大彎矩」時，若影響線有負值區，通常兩個都要。</li>
+</ol></div>
+</section>
+
+<section id="s8">
+<h2>§8　特殊題型：位移影響線</h2>
+
+<p class="lead">前面談的都是「內力／反力」的影響線。但也可以問<b>位移</b>的影響線：「單位載重跑到 \(x\) 時，某一固定點 C 的撓度是多少？」<br>
+這一類題最漂亮，因為答案是 Maxwell–Betti 定理的<b>直接</b>結果，幾乎不需要另外推導。</p>
+
+<div class="box"><b>位移影響線的一句話解法</b>
+$$\mathrm{IL}_{\delta_C}(x)=\delta_{C,x}=\delta_{x,C}$$
+右邊的意思是：<b>在 C 點施加單位力，整根梁的撓曲線</b>。<br>
+所以「求 C 點位移的影響線」＝「求 C 點受單位力時的撓曲線」，一次計算解決。<br>
+<a class="qlink" href="problems-view/SA-2018-4.html" target="_blank">SA-2018-4</a> 就是這一題型：求 C 點向下位移的影響線，官方解第一句話就是「其形狀與數值完全等同於在 C 點施加單位向下力時，整個梁的撓度曲線」。
+</div>
+
+<div class="why"><b>注意這和 Müller-Breslau 的差別。</b>
+Müller-Breslau 求的是<b>內力／反力</b>的影響線，要「<b>拆掉束制</b>再施加單位<b>位移</b>」。<br>
+位移影響線則是「<b>不拆任何東西</b>，直接施加單位<b>力</b>」。<br>
+兩者都源自互易定理，但操作完全不同。<b>看到題目問「位移的影響線」而去拆束制，就是搞混了。</b></div>
+
+<div class="tens"><b><a class="qlink" href="problems-view/SA-2018-4.html" target="_blank">SA-2018-4</a> 的加分技巧：先用對稱性把結構簡化。</b>
+該題在 C 點施加對稱單位力後，利用「忽略軸向變形」與斜撐的運動學約束推出 \(u=0\)、\(v_B=v_D=0\) ⟹ B、D 兩點可視為<b>剛性支承</b>，斜撐退化成兩個<b>旋轉彈簧</b>（勁度 \(4EI/L\)）。<br>
+原本複雜的剛架瞬間變成「連續梁＋兩個旋轉彈簧」，剩下的用傾角變位法三行解完。<br>
+<b>通則：位移影響線題先施加單位力，然後把它當一個普通的「求撓曲線」問題 —— 該用的對稱性、該做的簡化，一樣都不能少。</b></div>
+
+<h3>其他零星題型</h3>
+
+<ul>
+<li><b>三鉸拱的移動載重</b>（<a class="qlink" href="problems-view/SA-2007-3.html" target="_blank">SA-2007-3</a>，副分類）：拱的水平推力使影響線與梁不同；仍是靜定，仍是折線，但要同時處理水平與垂直反力。</li>
+<li><b>細長拉桿</b>（<a class="qlink" href="problems-view/SA-2022-3.html" target="_blank">SA-2022-3</a>）：見 §5。</li>
+<li><b>靜不定桁架影響線</b>（<a class="qlink" href="problems-view/SA-2021-3.html" target="_blank">SA-2021-3</a>，屬 SA-U3-2）：單位力法／柔度法求多餘桿力的影響線，再靜力疊加。邏輯與 §6 路線一相同，只是把積分換成求和。</li>
+</ul>
+</section>
+
+<section id="s9">
+<h2>§9　完整手算</h2>
+
+<h3>範例 A｜靜定 Gerber 梁（<a class="qlink" href="problems-view/SA-2025-2.html" target="_blank">SA-2025-2</a>）—— 用運動學，不用算</h3>
+
+<p>A 固定端（\(x=0\)）、B 內鉸（2）、C 滾支承（6）、D 內鉸（10）、E 滾支承（14）、F 自由端（18）。</p>
+
+<div class="box"><b>Step 1　確認靜定</b><br>
+未知反力 \(R_A,H_A,M_A,R_C,R_E\) 共 5 個；平衡方程 3 條 ＋ 內鉸條件 2 條（B、D 處 \(M=0\)）＝ 5 條。
+$$靜不定度 = 5-3-2 = 0\quad\checkmark\ \text{靜定}$$
+
+<b>Step 2　判斷主從關係（整題的關鍵）</b>
+<ul>
+<li><b>A–B</b>：從固定端 A 伸出的懸臂 → <b>自己站得住，是主段</b></li>
+<li><b>B–D</b>：靠鉸 B（掛在 A–B 上）＋滾支承 C 撐住 → <b>次段</b></li>
+<li><b>D–F</b>：靠鉸 D（掛在 B–D 上）＋滾支承 E 撐住 → <b>末段</b></li>
+</ul>
+載重路徑：D–F → B–D → A–B。<b>反過來不會傳。</b>
+</div>
+
+<div class="box"><b>Step 3　用 Müller-Breslau 畫（拆掉束制 → 各段變剛體 → 連成折線）</b>
+
+<p><b>\(R_C\) 的影響線：</b>拿掉 C 的滾支承，讓 C 上移 1。</p>
+<ul>
+<li>A–B 仍固定在 A → 整段不動，\(\delta=0\)，B 點仍在 0</li>
+<li>B–D 繞 B 旋轉，C（\(x=6\)）升 1 → 斜率 \(\dfrac{1}{6-2}=\dfrac14\) → D（\(x=10\)）升 \(\dfrac{10-2}{4}=2\)</li>
+<li>D–F 由 D（\(\delta=2\)）與 E（\(x=14,\ \delta=0\)）決定 → 斜率 \(-\dfrac12\) → F（18）為 \(-2\)</li>
+</ul>
+<p><b>校準：</b>載重直接放在 C 上時 \(R_C=1\)（其餘支承分不到）✔ 符號正確，整條線成立。</p>
+</div>
+
+<div class="fig">
+<svg viewBox="0 0 700 360" xmlns="http://www.w3.org/2000/svg">
+<rect x="0" y="0" width="700" height="360" fill="#fff"/>
+<text x="350" y="24" font-size="13.5" font-weight="700" fill="#0d47a1" text-anchor="middle">SA-2025-2 Gerber 梁與 R_C 影響線</text>
+
+<!-- beam -->
+<line x1="70" y1="80" x2="610" y2="80" stroke="#37474f" stroke-width="5"/>
+<rect x="56" y="56" width="14" height="48" fill="#78909c"/>
+<circle cx="130" cy="80" r="5.5" fill="#fff" stroke="#e65100" stroke-width="2.4"/>
+<polygon points="250,80 238,98 262,98" fill="#78909c"/><line x1="232" y1="102" x2="268" y2="102" stroke="#546e7a" stroke-width="2.6"/>
+<circle cx="370" cy="80" r="5.5" fill="#fff" stroke="#e65100" stroke-width="2.4"/>
+<polygon points="490,80 478,98 502,98" fill="#78909c"/><line x1="472" y1="102" x2="508" y2="102" stroke="#546e7a" stroke-width="2.6"/>
+<g font-size="12" font-weight="700" fill="#37474f" text-anchor="middle">
+<text x="66" y="48">A</text><text x="130" y="66">B</text><text x="250" y="48">C</text>
+<text x="370" y="66">D</text><text x="490" y="48">E</text><text x="610" y="66">F</text></g>
+<g font-size="10.5" fill="#78909c" text-anchor="middle">
+<text x="66" y="124">0</text><text x="130" y="124">2</text><text x="250" y="124">6</text>
+<text x="370" y="124">10</text><text x="490" y="124">14</text><text x="610" y="124">18 m</text></g>
+<text x="100" y="146" font-size="11" fill="#e65100" text-anchor="middle">固定</text>
+<text x="130" y="160" font-size="11" fill="#e65100" text-anchor="middle">內鉸</text>
+<text x="370" y="146" font-size="11" fill="#e65100" text-anchor="middle">內鉸</text>
+
+<!-- segments annotation -->
+<line x1="70" y1="176" x2="130" y2="176" stroke="#2e7d32" stroke-width="5"/>
+<line x1="130" y1="188" x2="370" y2="188" stroke="#1565c0" stroke-width="5"/>
+<line x1="370" y1="200" x2="610" y2="200" stroke="#6a1b9a" stroke-width="5"/>
+<text x="100" y="170" font-size="10.5" fill="#1b5e20" text-anchor="middle">主段</text>
+<text x="250" y="182" font-size="10.5" fill="#0d47a1" text-anchor="middle">次段（掛在 B）</text>
+<text x="490" y="194" font-size="10.5" fill="#4a148c" text-anchor="middle">末段（掛在 D）</text>
+
+<!-- IL -->
+<line x1="70" y1="284" x2="640" y2="284" stroke="#607d8b" stroke-width="1.5"/>
+<polyline points="70,284 130,284 370,232 610,336" fill="none" stroke="#2e7d32" stroke-width="3.2"/>
+<g fill="#2e7d32">
+<circle cx="130" cy="284" r="4"/><circle cx="250" cy="258" r="4.6"/><circle cx="370" cy="232" r="4.6"/>
+<circle cx="490" cy="284" r="4"/><circle cx="610" cy="336" r="4.6"/></g>
+<g stroke="#a5d6a7" stroke-width="1.3" stroke-dasharray="3 3">
+<line x1="250" y1="258" x2="250" y2="284"/><line x1="370" y1="232" x2="370" y2="284"/>
+<line x1="610" y1="284" x2="610" y2="336"/></g>
+<text x="250" y="250" font-size="12" font-weight="700" fill="#1b5e20" text-anchor="middle">1</text>
+<text x="370" y="224" font-size="12" font-weight="700" fill="#1b5e20" text-anchor="middle">2</text>
+<text x="632" y="342" font-size="12" font-weight="700" fill="#c62828">−2</text>
+<text x="100" y="302" font-size="11" fill="#78909c" text-anchor="middle">0（主段不動）</text>
+<text x="350" y="356" font-size="11.5" fill="#546e7a" text-anchor="middle">全部由直線段組成 —— 靜定結構的標記</text>
+</svg>
+<div class="cap">從 B 到 F 其實只有<b>兩條直線</b>：B→D 一條、D→F 一條。E 點必須落在軸上（支承不動），F 點自然延伸成 \(-2\)。畫完後只要檢查「每個支承處是否為零」就能自我驗證。</div>
+</div>
+
+<div class="tens"><b>五條影響線一次列完（<a class="qlink" href="problems-view/SA-2025-2.html" target="_blank">SA-2025-2</a> 完整答案）</b>
+<table>
+<thead><tr><th>量</th><th>A(0)</th><th>B(2)</th><th>C(6)</th><th>D(10)</th><th>E(14)</th><th>F(18)</th><th>拆法</th></tr></thead>
+<tbody>
+<tr><td>\(R_A\)</td><td>1</td><td>1</td><td>0</td><td>−1</td><td>0</td><td>1</td><td>A 改為<b>垂直滑動</b>支承（仍不能轉）⟹ A–B 平移不轉</td></tr>
+<tr><td>\(M_A\)（下緣受拉為正）</td><td>0</td><td>−2</td><td>0</td><td>+2</td><td>0</td><td>−2</td><td>A 處插入鉸，施加單位轉角</td></tr>
+<tr><td>\(R_C\)</td><td>0</td><td>0</td><td>1</td><td>2</td><td>0</td><td>−2</td><td>拿掉 C 支承，C 上升 1</td></tr>
+<tr><td>\(R_E\)</td><td>0</td><td>0</td><td>0</td><td>0</td><td>1</td><td>2</td><td>拿掉 E 支承；只有 D–F 段會動</td></tr>
+<tr><td>\(V_F\)</td><td colspan="6" style="text-align:center">恆為 <b>0</b></td><td>自由端右側無任何東西</td></tr>
+</tbody>
+</table>
+<b>以上五條全部用靜力平衡逐點反驗過，完全吻合。</b>注意 \(R_A\) 那一列：把「固定端的垂直反力」釋放掉，剩下的<b>還有轉動束制</b>，所以 A–B 是<b>平移</b>而不是旋轉 —— 這是最容易畫錯的一條。</div>
+
+<h3>範例 B｜靜不定：一端固定一端滾支承（<a class="qlink" href="problems-view/SA-2003-4.html" target="_blank">SA-2003-4</a>）—— 曲線的來歷</h3>
+
+<p>A 固定（\(x=0\)）、C 滾支承（\(x=L=10\ \mathrm{m}\)）、B 為中點（\(x=5\)）、\(EI\) 常數。1 度靜不定。</p>
+
+<div class="box"><b>Step 1　取 \(C_y\) 為多餘力，基本結構＝A 端固定的懸臂梁</b><br>
+
+<b>Step 2　用互易定理一次得到整條曲線</b><br>
+需要的是「單位載重在 \(x\) 時，C 點的撓度 \(\delta_{C,x}\)」。由 Maxwell 互易，它等於「<b>單位載重在 C 點時，\(x\) 處的撓度</b>」：
+$$\delta_{x,C}=\frac{x^2(3L-x)}{6EI}$$
+（懸臂梁端點受單位力的標準撓曲線。）<br>
+再算 \(\delta_{CC}=\dfrac{L^3}{3EI}\)。
+
+<b>Step 3　諧合條件</b>
+$$\mathrm{IL}_{C_y}(x)=\frac{\delta_{x,C}}{\delta_{CC}}=\frac{x^2(3L-x)/(6EI)}{L^3/(3EI)}=\boxed{\frac{x^2(3L-x)}{2L^3}}$$
+\(EI\) 消掉了（§3 的說明）。這是一條<b>三次曲線</b>。
+</div>
+
+<div class="fig">
+<svg viewBox="0 0 700 300" xmlns="http://www.w3.org/2000/svg">
+<rect x="0" y="0" width="700" height="300" fill="#fff"/>
+<text x="350" y="24" font-size="13.5" font-weight="700" fill="#0d47a1" text-anchor="middle">IL of C_y = x²(3L − x) / (2L³)　（L = 10 m）</text>
+<line x1="90" y1="70" x2="610" y2="70" stroke="#37474f" stroke-width="5"/>
+<rect x="76" y="46" width="14" height="48" fill="#78909c"/>
+<polygon points="610,70 598,88 622,88" fill="#78909c"/><line x1="592" y1="92" x2="628" y2="92" stroke="#546e7a" stroke-width="2.6"/>
+<circle cx="350" cy="70" r="5" fill="#2e7d32"/>
+<g font-size="12" font-weight="700" fill="#37474f" text-anchor="middle">
+<text x="86" y="38">A</text><text x="350" y="56">B</text><text x="610" y="38">C</text></g>
+<g font-size="10.5" fill="#78909c" text-anchor="middle"><text x="90" y="110">0</text><text x="350" y="110">5</text><text x="610" y="110">10 m</text></g>
+
+<line x1="90" y1="230" x2="640" y2="230" stroke="#607d8b" stroke-width="1.5"/>
+<polyline points="90,230 142,229 194,225 246,219 298,211 350,202 402,191 454,179 506,167 558,153 610,140"
+ fill="none" stroke="#c62828" stroke-width="3.2"/>
+<g stroke="#ef9a9a" stroke-width="1.3" stroke-dasharray="3 3">
+<line x1="350" y1="202" x2="350" y2="230"/><line x1="610" y1="140" x2="610" y2="230"/></g>
+<circle cx="350" cy="202" r="4.6" fill="#c62828"/><circle cx="610" cy="140" r="4.6" fill="#c62828"/>
+<line x1="90" y1="230" x2="610" y2="140" stroke="#90a4ae" stroke-width="1.6" stroke-dasharray="6 5"/>
+<polyline points="344,200 268,180 232,172" fill="none" stroke="#ef9a9a" stroke-width="1.3"/>
+<text x="226" y="168" font-size="12" font-weight="700" fill="#b71c1c" text-anchor="end">中點 5/16 = 0.3125</text>
+<text x="628" y="136" font-size="12" font-weight="700" fill="#b71c1c">1</text>
+<text x="556" y="150" font-size="11" fill="#78909c" text-anchor="end">若是簡支梁（靜定）會是這條虛線</text>
+<text x="350" y="262" font-size="11.5" fill="#546e7a" text-anchor="middle">曲線在 A 端與軸相切（固定端的斜率為零）—— 這是「彈性撓曲線」的簽名</text>
+<text x="350" y="284" font-size="11.5" fill="#c62828" text-anchor="middle">中點值 5/16 ＝ 集中力在跨中時的支撐反力，這是熟知的標準答案</text>
+</svg>
+<div class="cap">和虛線（簡支梁的直線）並排看最清楚：固定端把曲線「壓平」在 A 附近（斜率為零），使得載重靠近 A 時 C 幾乎分不到力。</div>
+</div>
+
+<div class="box"><b>Step 4　由 \(C_y\) 推 B 點（中點）的 \(V\) 與 \(M\)</b>（取 B 右側自由體，\(L=10\)）
+$$\mathrm{IL}_{V_B}=\begin{cases}-C_y(x) & x\le5\\ 1-C_y(x) & x>5\end{cases}\qquad
+\mathrm{IL}_{M_B}=\begin{cases}5\,C_y(x) & x\le5\\ 5\,C_y(x)-(x-5) & x>5\end{cases}$$
+關鍵值：
+<table>
+<thead><tr><th></th><th>\(x=0\)</th><th>\(x=2.5\)</th><th>\(x=5^-\)</th><th>\(x=5^+\)</th><th>\(x=7.5\)</th><th>\(x=10\)</th></tr></thead>
+<tbody>
+<tr><td>\(C_y\)</td><td>0</td><td>11/128 ≈ 0.0859</td><td colspan="2" style="text-align:center">5/16 = 0.3125</td><td>81/128 ≈ 0.6328</td><td>1</td></tr>
+<tr><td>\(V_B\)</td><td>0</td><td>−0.0859</td><td><b>−5/16</b></td><td><b>+11/16</b></td><td>+0.3672</td><td>0</td></tr>
+<tr><td>\(M_B\)</td><td>0</td><td>0.4297</td><td colspan="2" style="text-align:center"><b>25/16 = 1.5625 m</b></td><td>0.6641</td><td>0</td></tr>
+</tbody>
+</table>
+</div>
+
+<div class="tens"><b>四個驗算，全部通過</b>
+<ol>
+<li><b>\(V_B\) 在斷面處跳躍：</b>\(\dfrac{11}{16}-\left(-\dfrac{5}{16}\right)=1\) ✔（§2 的規則）</li>
+<li><b>支承處為零：</b>\(x=0\) 與 \(x=10\) 時 \(V_B=M_B=0\) ✔</li>
+<li><b>\(C_y(L)=1\)：</b>載重壓在 C 上，全部由 C 承擔 ✔</li>
+<li><b>與簡支梁比較：</b>簡支梁跨中 \(M\) 影響線峰值 \(\dfrac{ab}{L}=\dfrac{5\times5}{10}=2.5\)；本題 1.5625，是它的 <b>62.5%</b>。固定端吸走了一部分彎矩，比值小於 1 ✔ 合理</li>
+</ol>
+<b>順帶一提：</b>\(M_B\) 的峰值就在 \(x=5\)（載重壓在該斷面上）。可以驗證 \(x>5\) 那一段的導數在 \(x=5^+\) 為 \(-0.4375<0\)，確實是遞減，所以不會有更大的值。</div>
+</section>
+
+<section id="s10">
+<h2>§10　解題決策流程</h2>
+
+<div class="fig">
+<svg viewBox="0 0 780 620" xmlns="http://www.w3.org/2000/svg">
+<rect x="0" y="0" width="780" height="620" fill="#fff"/>
+<defs><marker id="fd" markerWidth="9" markerHeight="9" refX="7" refY="3.2" orient="auto">
+<path d="M0,0 L8,3.2 L0,6.4 z" fill="#546e7a"/></marker></defs>
+
+<rect x="242" y="12" width="296" height="44" rx="8" fill="#e3f2fd" stroke="#1565c0" stroke-width="1.6"/>
+<text x="390" y="32" font-size="12.5" font-weight="700" fill="#0d47a1" text-anchor="middle">① 確認要求的是「內力／反力」還是「位移」</text>
+<text x="390" y="49" font-size="11.5" fill="#1565c0" text-anchor="middle">兩者的操作完全不同</text>
+<line x1="538" y1="34" x2="620" y2="34" stroke="#546e7a" stroke-width="1.6" marker-end="url(#fd)"/>
+<text x="578" y="26" font-size="11" fill="#546e7a" text-anchor="middle">位移</text>
+<rect x="606" y="10" width="168" height="48" rx="7" fill="#f3e5f5" stroke="#ce93d8"/>
+<text x="690" y="30" font-size="11.5" fill="#4a148c" text-anchor="middle"><tspan font-weight="700">不拆任何束制</tspan></text>
+<text x="690" y="48" font-size="11.5" fill="#4a148c" text-anchor="middle">直接在該點施單位力求撓曲線</text>
+<line x1="390" y1="56" x2="390" y2="74" stroke="#546e7a" stroke-width="1.6" marker-end="url(#fd)"/>
+
+<rect x="242" y="76" width="296" height="44" rx="8" fill="#e8f5e9" stroke="#2e7d32" stroke-width="1.6"/>
+<text x="390" y="96" font-size="12.5" font-weight="700" fill="#1b5e20" text-anchor="middle">② 數靜不定度</text>
+<text x="390" y="113" font-size="11.5" fill="#2e7d32" text-anchor="middle">內鉸每個送一條方程式；桁架用 m+r−2j</text>
+<line x1="390" y1="120" x2="390" y2="138" stroke="#546e7a" stroke-width="1.6" marker-end="url(#fd)"/>
+
+<polygon points="390,140 570,172 390,204 210,172" fill="#fff3e0" stroke="#ef6c00" stroke-width="1.6"/>
+<text x="390" y="169" font-size="12" font-weight="700" fill="#e65100" text-anchor="middle">拆掉那個束制後還撐得住嗎？</text>
+<text x="390" y="187" font-size="11.5" fill="#ef6c00" text-anchor="middle">（＝原結構是靜定還是靜不定）</text>
+<line x1="210" y1="172" x2="130" y2="172" stroke="#546e7a" stroke-width="1.6" marker-end="url(#fd)"/>
+<text x="170" y="164" font-size="11" fill="#546e7a" text-anchor="middle">不行</text>
+<rect x="6" y="140" width="120" height="64" rx="7" fill="#e8f5e9" stroke="#66bb6a"/>
+<text x="66" y="160" font-size="11.5" font-weight="700" fill="#1b5e20" text-anchor="middle">靜定 ⟹ 折線</text>
+<text x="66" y="178" font-size="11" fill="#2e7d32" text-anchor="middle">畫剛體機構</text>
+<text x="66" y="195" font-size="11" fill="#2e7d32" text-anchor="middle">不必用到 EI</text>
+<line x1="570" y1="172" x2="650" y2="172" stroke="#546e7a" stroke-width="1.6" marker-end="url(#fd)"/>
+<text x="610" y="164" font-size="11" fill="#546e7a" text-anchor="middle">還行</text>
+<rect x="646" y="140" width="128" height="64" rx="7" fill="#ffebee" stroke="#ef5350"/>
+<text x="710" y="160" font-size="11.5" font-weight="700" fill="#b71c1c" text-anchor="middle">靜不定 ⟹ 曲線</text>
+<text x="710" y="178" font-size="11" fill="#c62828" text-anchor="middle">要算彈性撓曲線</text>
+<text x="710" y="195" font-size="11" fill="#c62828" text-anchor="middle">見步驟 ④</text>
+<line x1="390" y1="204" x2="390" y2="222" stroke="#546e7a" stroke-width="1.6" marker-end="url(#fd)"/>
+
+<rect x="228" y="224" width="324" height="46" rx="8" fill="#e8f5e9" stroke="#2e7d32" stroke-width="1.6"/>
+<text x="390" y="244" font-size="12.5" font-weight="700" fill="#1b5e20" text-anchor="middle">③ 用 Müller-Breslau 畫形狀</text>
+<text x="390" y="261" font-size="11.5" fill="#2e7d32" text-anchor="middle">反力→移除支承｜剪力→相對錯動｜彎矩→插鉸轉一單位</text>
+<line x1="390" y1="270" x2="390" y2="288" stroke="#546e7a" stroke-width="1.6" marker-end="url(#fd)"/>
+
+<rect x="228" y="290" width="324" height="46" rx="8" fill="#f3e5f5" stroke="#6a1b9a" stroke-width="1.6"/>
+<text x="390" y="310" font-size="12.5" font-weight="700" fill="#4a148c" text-anchor="middle">④ 標數值</text>
+<text x="390" y="327" font-size="11.5" fill="#6a1b9a" text-anchor="middle">靜定：靜力平衡逐點算｜靜不定：柔度法／共軛梁／三彎矩</text>
+<line x1="390" y1="336" x2="390" y2="354" stroke="#546e7a" stroke-width="1.6" marker-end="url(#fd)"/>
+
+<rect x="228" y="356" width="324" height="46" rx="8" fill="#e3f2fd" stroke="#1565c0" stroke-width="1.6"/>
+<text x="390" y="376" font-size="12.5" font-weight="700" fill="#0d47a1" text-anchor="middle">⑤ 用一個特徵點校準正負號</text>
+<text x="390" y="393" font-size="11.5" fill="#1565c0" text-anchor="middle">最好用：載重直接壓在支承上（答案通常是 0 或 1）</text>
+<line x1="390" y1="402" x2="390" y2="420" stroke="#546e7a" stroke-width="1.6" marker-end="url(#fd)"/>
+
+<polygon points="390,422 570,454 390,486 210,454" fill="#fff3e0" stroke="#ef6c00" stroke-width="1.6"/>
+<text x="390" y="451" font-size="12" font-weight="700" fill="#e65100" text-anchor="middle">題目還要求「最大效應」嗎？</text>
+<text x="390" y="469" font-size="11.5" fill="#ef6c00" text-anchor="middle">車隊載重／可任意佈置的均佈載重</text>
+<line x1="570" y1="454" x2="640" y2="454" stroke="#546e7a" stroke-width="1.6" marker-end="url(#fd)"/>
+<text x="606" y="446" font-size="11" fill="#546e7a" text-anchor="middle">要</text>
+<rect x="626" y="424" width="150" height="60" rx="7" fill="#ffebee" stroke="#ef5350"/>
+<text x="701" y="444" font-size="11.5" fill="#b71c1c" text-anchor="middle">集中力：ΣP·y，逐一試</text>
+<text x="701" y="462" font-size="11.5" fill="#b71c1c" text-anchor="middle">均佈：w × 面積</text>
+<text x="701" y="479" font-size="11" font-weight="700" fill="#c62828" text-anchor="middle">只鋪同號區！</text>
+<line x1="390" y1="486" x2="390" y2="504" stroke="#546e7a" stroke-width="1.6" marker-end="url(#fd)"/>
+
+<rect x="188" y="506" width="404" height="66" rx="8" fill="#f3e5f5" stroke="#6a1b9a" stroke-width="1.8"/>
+<text x="390" y="528" font-size="12.5" font-weight="700" fill="#4a148c" text-anchor="middle">⑥ 三個獨立驗算</text>
+<text x="390" y="547" font-size="11.5" fill="#6a1b9a" text-anchor="middle">每個支承處為零｜剪力 IL 在斷面跳躍 1｜量綱（M 的 IL 帶長度單位）</text>
+<text x="390" y="564" font-size="11" fill="#6a1b9a" text-anchor="middle">全部不依賴前面的計算，能獨立抓錯</text>
+
+<text x="390" y="600" font-size="11.5" fill="#546e7a" text-anchor="middle">注意步驟 ③ 在 ④ 之前：先有形狀再標數值，比一開始就硬算安全得多</text>
+</svg>
+<div class="cap">三個菱形對應三個判斷：問的是內力還是位移、結構是靜定還是靜不定、要不要接著求最大效應。</div>
+</div>
+</section>
+
+<section id="s11">
+<h2>§11　歷屆題 × 觀念對照表</h2>
+
+<h3>主分類（9 題）</h3>
+
+<table>
+<thead><tr><th>題號</th><th>年</th><th>結構</th><th>真正在考的東西</th><th>先讀本講義</th></tr></thead>
+<tbody>
+<tr><td><a class="qlink" href="problems-view/SA-2003-4.html" target="_blank">SA-2003-4</a></td><td>2003</td><td>一端固定一端滾支承梁</td><td>靜不定 IL 的柔度法標準流程；中點 \(V\)、\(M\) 的分段方程式（本講義 §9 範例 B）</td><td>§3 §6 §9</td></tr>
+<tr><td><a class="qlink" href="problems-view/SA-2004-2.html" target="_blank">SA-2004-2</a></td><td>2004</td><td>四節間靜定桁架</td><td>桁架 IL 的節間線性；<b>卡車車隊極值</b>；行駛方向判讀</td><td>§5 §7</td></tr>
+<tr><td><a class="qlink" href="problems-view/SA-2005-3.html" target="_blank">SA-2005-3</a></td><td>2005</td><td>兩跨連續梁</td><td>三彎矩方程式求 \(M_B(x)\) 的 IL；再靜力疊加求跨中彎矩；每 2.5 m 標值</td><td>§6</td></tr>
+<tr><td><a class="qlink" href="problems-view/SA-2011-3.html" target="_blank">SA-2011-3</a></td><td>2011</td><td>兩跨連續梁（30+30 m）</td><td>穆勒法定性繪 <b>5 條</b> IL；<b>均佈載重只鋪同號區</b>求最大彎矩</td><td>§2 §3 §7</td></tr>
+<tr><td><a class="qlink" href="problems-view/SA-2015-2.html" target="_blank">SA-2015-2</a></td><td>2015</td><td>四支承連續梁＋內部鉸</td><td><b>剪力束制的釋放</b>；釋放後恰成靜定；用<b>共軛梁法</b>求 IL 定量值</td><td>§2 §6</td></tr>
+<tr><td><a class="qlink" href="problems-view/SA-2016-2.html" target="_blank">SA-2016-2</a></td><td>2016</td><td>倒 L 型剛架（1 度）</td><td>靜不定 IL 的<b>方程式推導</b>；<b>側移陷阱</b>（滾支承使剛架必然側移）</td><td>§6</td></tr>
+<tr><td><a class="qlink" href="problems-view/SA-2018-4.html" target="_blank">SA-2018-4</a></td><td>2018</td><td>含斜撐的連續梁剛架</td><td><b>位移影響線</b>；Maxwell–Betti 直接套用；先用對稱性把斜撐化成旋轉彈簧</td><td>§1 §8</td></tr>
+<tr><td><a class="qlink" href="problems-view/SA-2022-3.html" target="_blank">SA-2022-3</a></td><td>2022</td><td>十節間連續桁架</td><td><b>細長拉桿（counters）</b>；由「沒給 \(EA\)」推斷靜定；內部鉸判讀；間接載重</td><td>§5</td></tr>
+<tr><td><a class="qlink" href="problems-view/SA-2025-2.html" target="_blank">SA-2025-2</a></td><td>2025</td><td>Gerber 梁（含 2 個內鉸）</td><td>靜定 IL 的<b>運動學繪法</b>；主從關係；自由端剪力恆為零（本講義 §9 範例 A）</td><td>§3 §4 §9</td></tr>
+</tbody>
+</table>
+
+<h3>副分類（4 題）</h3>
+
+<table>
+<thead><tr><th>題號</th><th>年</th><th>主分類</th><th>與本子項的關聯</th></tr></thead>
+<tbody>
+<tr><td><a class="qlink" href="problems-view/SA-2007-3.html" target="_blank">SA-2007-3</a></td><td>2007</td><td>SA-U1-1</td><td>三鉸拱桁架＋卡車移動載重求極值 —— 與 SA-2004-2 同型，可當第二題練</td></tr>
+<tr><td><a class="qlink" href="problems-view/SA-2014-1.html" target="_blank">SA-2014-1</a></td><td>2014</td><td>SA-U1-2</td><td>靜定桁架截面法＋影響線求最大軸力</td></tr>
+<tr><td><a class="qlink" href="problems-view/SA-2009-2.html" target="_blank">SA-2009-2</a></td><td>2009</td><td>SA-U1-1</td><td>柔度法解複合結構受均佈載重 —— <b>無移動載重、無影響線</b>（分類存疑）</td></tr>
+<tr><td><a class="qlink" href="problems-view/SA-2013-1.html" target="_blank">SA-2013-1</a></td><td>2013</td><td>SA-U1-2</td><td>靜定桁架求桿力、零力桿 —— <b>無影響線</b>（分類存疑）</td></tr>
+</tbody>
+</table>
+
+<div class="trap"><b>讀表時要知道的三件事：</b><br>
+① <b>兩題副分類名不副實：</b><a class="qlink" href="problems-view/SA-2009-2.html" target="_blank">SA-2009-2</a>（柔度法解均佈載重複合結構）與 <a class="qlink" href="problems-view/SA-2013-1.html" target="_blank">SA-2013-1</a>（靜定桁架零力桿）都<b>沒有移動載重也沒有影響線</b>，掛在本子項的理由不明。<br>
+② <b>四題解析檔的標頭用了不存在的編碼：</b><a class="qlink" href="problems-view/SA-2011-3.html" target="_blank">SA-2011-3</a> 寫 <code>SA-U5-1</code>、<a class="qlink" href="problems-view/SA-2018-4.html" target="_blank">SA-2018-4</a> 寫 <code>SA-U4</code>、<a class="qlink" href="problems-view/SA-2007-3.html" target="_blank">SA-2007-3</a> 寫 <code>SA-U1-4</code>；<a class="qlink" href="problems-view/SA-2003-4.html" target="_blank">SA-2003-4</a> 與 <a class="qlink" href="problems-view/SA-2005-3.html" target="_blank">SA-2005-3</a> 只寫到單元層級 <code>SA-U1</code>。官方大綱只有 SA-U1-1～U1-3、U2-1～U2-5、U3-1～U3-2。以 <code>question_index.json</code> 為準。<br>
+③ 上述都不影響解題，但查資料時別被標頭誤導。</div>
+
+<div class="box"><b>出題節奏：穩定但不密集。</b>
+主分類分布在 2003、2004、2005、2011、2015、2016、2018、2022、2025 —— 平均<b>兩到三年一題</b>，近 6 年（2020–2025）出了 2 年 2 題。<br>
+<b>特徵：從沒有連續兩年出過，但也從沒有超過 5 年空窗。</b>2022、2025 都出過，2026 出現的機率不算高，但這一子項的 CP 值在於：<b>定性部分（Müller-Breslau）幾乎不用計算就能拿一半分數</b>，投入產出比很好。</div>
+</section>
+
+<section id="s12">
+<h2>§12　把整個單元濃縮成五條因果鏈</h2>
+
+<div class="tens"><b>鏈 1｜影響線在問什麼</b><br>
+橋梁的載重會動 → 要問「最糟的載重位置在哪」→ 固定一個斷面、讓載重跑 → 縱軸是那個斷面的反應、橫軸是載重位置 → 這與彎矩圖（固定載重、橫軸是斷面）恰好相反<br><span style="color:#546e7a;font-size:.9em">（§0）</span></div>
+
+<div class="tens"><b>鏈 2｜為什麼變形曲線就是影響線</b><br>
+狀態①單位載重在 \(x\) → 狀態②拆掉束制施加單位位移 → 貝蒂互換：\(1\cdot\delta(x)=X\cdot1\) → \(\mathrm{IL}_X(x)=\delta(x)\) → 原本要對每個 \(x\) 解一次結構，現在只要解一次<br><span style="color:#546e7a;font-size:.9em">（§1）</span></div>
+
+<div class="tens"><b>鏈 3｜折線與曲線的分野</b><br>
+拆掉束制 → 結構若變成機構 → 位移是剛體運動 → 直線段 → 靜定；結構若仍穩定 → 位移是彈性變形 → 光滑曲線 → 靜不定 → 而且因為 IL 是位移的<b>比值</b>，\(EI\) 會消掉（各段相同時）<br><span style="color:#546e7a;font-size:.9em">（§3）</span></div>
+
+<div class="tens"><b>鏈 4｜桁架為什麼那麼好畫</b><br>
+載重經橋面版與縱梁傳到節點 → 桿件感受不到節間中的載重 → 節間內影響線必為直線 → 只要算出各節點的值再連線 → 而弦桿 IL＝彎矩 IL÷桁高、斜桿 IL＝剪力 IL÷\(\sin\theta\) → 不必另背一套<br><span style="color:#546e7a;font-size:.9em">（§5）</span></div>
+
+<div class="tens"><b>鏈 5｜影響線的用途</b><br>
+效應 \(=\sum P_iy_i\)（集中）或 \(w\times\)面積（均佈）→ 均佈載重可任意佈置時，負值區的載重會抵銷 → 只鋪同號區 → 集中車隊則移動到 \(\sum P_is_i\) 變號處 → 極值必發生在「某個輪子壓在折點上」<br><span style="color:#546e7a;font-size:.9em">（§7）</span></div>
+</section>
+
+<section id="s13">
+<h2>§13　陷阱總表（考前十分鐘掃這裡）</h2>
+
+<table>
+<thead><tr><th style="width:22%">觸發信號</th><th style="width:29%">錯誤思維</th><th style="width:36%">正確認知</th><th>出處</th></tr></thead>
+<tbody>
+<tr><td>看到一條三角形的圖</td><td>「這是彎矩圖」</td><td>先看橫軸：斷面位置＝BMD、載重位置＝IL。峰值 \(PL/4\) vs \(L/4\) 是最快的辨識法</td><td>通用</td></tr>
+<tr><td>彎矩影響線的縱座標</td><td>寫成 kN-m</td><td>單位是<b>長度</b>（m）。反力／剪力 IL 則無因次</td><td>通用</td></tr>
+<tr><td>要畫剪力影響線</td><td>在斷面插一個鉸</td><td>鉸是<b>彎矩</b>的釋放。剪力要「左右相對錯動但<b>保持平行</b>」</td><td>2015-2</td></tr>
+<tr><td>畫好的剪力影響線</td><td>在斷面處連續</td><td>斷面處必定<b>跳躍 1</b>（＝施加的單位相對錯動）</td><td>通用</td></tr>
+<tr><td>靜定結構的影響線</td><td>畫成曲線</td><td>靜定＝拆掉束制變機構＝剛體運動＝<b>折線</b>。畫出曲線一定錯</td><td>2025-2、2022-3</td></tr>
+<tr><td>靜不定結構的影響線</td><td>畫成折線</td><td>拆掉一個束制仍穩定 ⟹ 彈性撓曲線 ⟹ <b>光滑曲線</b>，且在固定端與軸相切</td><td>2003-4、2011-3</td></tr>
+<tr><td>題目只給「\(EI\) 為常數」</td><td>「數值不夠，題目有問題」</td><td>IL 是位移的<b>比值</b>，\(EI\) 會消掉。不給就是在說「不需要」</td><td>2005-3、2011-3、2016-2</td></tr>
+<tr><td>釋放固定端的<b>垂直反力</b></td><td>讓該段繞著轉</td><td>只釋放垂直力，<b>轉動束制還在</b> ⟹ 該段是<b>平移</b>不是旋轉</td><td>2025-2</td></tr>
+<tr><td>要求懸臂<b>自由端</b>的剪力 IL</td><td>硬去算分段方程式</td><td>自由端右側什麼都沒有 ⟹ \(V\equiv0\)，整條線躺在軸上</td><td>2025-2</td></tr>
+<tr><td>Gerber 梁的反力 IL</td><td>各段分開各算各的</td><td>先判斷<b>主從關係</b>：載重在從段會傳給主段，反之不會。從段支承的 IL 在主段區域為零</td><td>2025-2</td></tr>
+<tr><td>影響線出現負值</td><td>以為算錯</td><td>負值代表該支承要提供<b>向下</b>反力（上拔），是真實現象，設計上要錨定</td><td>2025-2</td></tr>
+<tr><td>桁架桿件的影響線</td><td>畫成連續梁的曲線</td><td>間接載重傳遞 ⟹ <b>節間內必為直線</b>，只要算節點值再連</td><td>2004-2、2022-3</td></tr>
+<tr><td>X 型斜撐、但題目<b>沒給 \(EA\)</b></td><td>當成高次靜不定放棄</td><td>那是在暗示「靜定＋細長拉桿」：斜撐只受拉，剪力變號時切換作用桿</td><td>2022-3</td></tr>
+<tr><td>細長拉桿的影響線</td><td>畫成完整的三角形</td><td>受壓的區段內力為 <b>0</b>，影響線在該段貼著軸線</td><td>2022-3</td></tr>
+<tr><td>均佈載重「可作用於全長或部分」</td><td>直接鋪滿全長</td><td>只鋪<b>同號區</b>。鋪滿會把負效應算進去，答案偏低且<b>不保守</b></td><td>2011-3</td></tr>
+<tr><td>車隊載重求極值</td><td>把最重的放峰值就交卷</td><td>峰值兩側斜率不同，要<b>逐一試</b>（或用 \(\sum P_is_i\) 判斷方向）</td><td>2004-2</td></tr>
+<tr><td>車隊行駛方向</td><td>沒看圖上的箭頭</td><td>方向決定哪一軸是前導載重，配置全部跟著變</td><td>2004-2</td></tr>
+<tr><td>剛架受<b>垂直</b>移動載重</td><td>「沒有水平力，所以無側移」</td><td>滾支承無水平束制 ⟹ 必然側移。用 Müller-Breslau／單位力法可自動避開</td><td>2016-2</td></tr>
+<tr><td>題目問「<b>位移</b>的影響線」</td><td>照樣拆束制</td><td>位移 IL 是「在該點施加單位<b>力</b>的撓曲線」，<b>不拆任何東西</b></td><td>2018-4</td></tr>
+<tr><td>連續梁某跨的剪力 IL</td><td>以為其他跨都是零</td><td>連續梁有蹺蹺板效應：一跨壓下去會把鄰跨翹起來，鄰跨 IL <b>不為零且可能變號</b></td><td>2011-3</td></tr>
+<tr><td>Müller-Breslau 畫完</td><td>直接標正負號</td><td>形狀正確但整體符號取決於兩個約定。<b>挑一個特徵點用靜力校準</b></td><td>通用</td></tr>
+<tr><td>算完就交卷</td><td>時間不夠，驗算算了</td><td>支承處為零、剪力跳躍為 1、量綱三項完全獨立，一分鐘可完成</td><td>通用</td></tr>
+</tbody>
+</table>
+</section>
+
+<section id="s14">
+<h2>§14　自我檢測：12 個「為什麼」</h2>
+
+<p class="lead">先自己講一遍再展開。講不出來的直接回去看對應節次。</p>
+
+<details><summary>1. 影響線和彎矩圖差在哪？</summary>
+<p>橫軸的意義相反。BMD 是「載重固定、橫軸是斷面位置」；IL 是「斷面固定、橫軸是載重位置」。簡支梁中點的兩者都是三角形，但峰值分別是 \(PL/4\)（帶力的單位）與 \(L/4\)（只有長度單位）。（§0）</p></details>
+
+<details><summary>2. Müller-Breslau 原理為什麼成立？</summary>
+<p>貝蒂互換定理。狀態①「單位載重在 \(x\)」與狀態②「拆掉束制、施加單位位移」互作虛功相等：\(1\cdot\delta(x)=X\cdot1\)，故 \(\mathrm{IL}_X(x)=\delta(x)\)。它的價值是把 \(n\) 次計算壓縮成 1 次。（§1）</p></details>
+
+<details><summary>3. 反力、剪力、彎矩的「束制拆法」分別是什麼？</summary>
+<p>反力：移除整個支承，施加單位平移。剪力：在斷面插入剪力釋放，左右相對錯動 1 但<b>保持平行</b>。彎矩：插入鉸，施加單位相對轉角。（§2）</p></details>
+
+<details><summary>4. 為什麼剪力影響線在斷面處一定跳躍 1？</summary>
+<p>因為施加的廣義位移就是「單位相對錯動」，跳躍量等於施加量。這是最快的自我檢查：畫出連續的剪力 IL 一定錯。（§2）</p></details>
+
+<details><summary>5. 一句話分辨靜定與靜不定的影響線？</summary>
+<p>拆掉那個束制後結構還撐不撐得住。撐不住（機構）→ 剛體運動 → 折線 → 靜定；撐得住 → 彈性變形 → 曲線 → 靜不定。（§3）</p></details>
+
+<details><summary>6. 為什麼靜不定影響線與 \(EI\) 無關？</summary>
+<p>因為 IL 是位移的比值 \(\delta(x)/\delta_{\text{單位處}}\)，分子分母都含 \(1/EI\)，正規化時消掉。但各段 \(EI\) 不同時只會消掉共同因子，相對關係會留下。（§3）</p></details>
+
+<details><summary>7. 簡支梁斷面（距左端 \(a\)、距右端 \(b\)）的三個關鍵數字？</summary>
+<p>\(M\) 影響線峰值 \(ab/L\)（跨中最大為 \(L/4\)）；\(V\) 影響線斷面左 \(-a/L\)、右 \(+b/L\)，兩者絕對值相加為 1；\(M\) 影響線左右斜率為 \(b/L\) 與 \(-a/L\)，斜率差為 1。（§4）</p></details>
+
+<details><summary>8. 為什麼桁架影響線在節間必為直線？</summary>
+<p>因為載重透過橋面版與縱梁傳到<b>節點</b>，桿件不承受節間中的載重。所以只要算出各節點的值，中間用直線連即可。（§5）</p></details>
+
+<details><summary>9. 弦桿與斜桿的影響線可以「借用」梁的影響線嗎？</summary>
+<p>可以。弦桿 IL ＝ 力矩中心處的彎矩 IL ÷ 桁高；斜桿 IL ＝ 該節間的剪力 IL ÷ \(\sin\theta\)。不必為桁架另背一套。（§5）</p></details>
+
+<details><summary>10. 靜不定影響線的柔度法為什麼只要算一次撓曲線？</summary>
+<p>Maxwell 互易：\(\delta_{X,x}=\delta_{x,X}\)。後者是「在 X 處放單位力，各 \(x\) 的位移」，那是一條完整撓曲線。所以整條 IL ＝ 該撓曲線 ÷ \(\delta_{XX}\)。（§6）</p></details>
+
+<details><summary>11. 均佈載重可任意佈置時，為什麼只鋪同號區？</summary>
+<p>效應 ＝ \(w\times\int y\,dx\)。負值區的載重貢獻是負的，會抵銷你要的效應，拿掉當然更糟。鋪滿全長算出的值偏低，而且是<b>不保守</b>的偏低。（§7）</p></details>
+
+<details><summary>12. 「位移的影響線」和 Müller-Breslau 有什麼不同？</summary>
+<p>位移 IL 是「在該點施加單位<b>力</b>所得的撓曲線」，<b>不拆任何束制</b>；Müller-Breslau 求內力／反力 IL，要「<b>拆掉束制</b>再施加單位<b>位移</b>」。兩者都源自互易定理，但操作完全相反。（§1 §8）</p></details>
+</section>
+
+<section id="s15">
+<h2>★ §15　精選 5 題：時間只夠練五題就練這五題</h2>
+
+<p class="lead">選題標準不是覆蓋率最高，而是<b>一題能練到最多互相獨立的技能、彼此重疊最少</b>。</p>
+
+<div class="box">
+<h3>① <a class="qlink" href="problems-view/SA-2025-2.html" target="_blank">SA-2025-2</a>（2025）Gerber 梁，五條影響線</h3>
+<p><b>為什麼選它：</b>最新題，也是靜定 IL 的完整基本功 —— 一題練到五種不同的束制釋放（含固定端的<b>垂直反力</b>與<b>彎矩</b>兩種釋放法，最容易畫錯的兩種），還有「自由端剪力恆為零」的觀念送分題。全程<b>不需要任何積分</b>，純運動學。<b>投報率第一名。</b></p>
+<p><b>先讀：</b>§2 → §3 → §4 → §9 範例 A（已完整示範，練習時請蓋住重推）</p>
+<p><b>做完要能回答：</b>釋放固定端的垂直反力時，為什麼 A–B 段是平移不是旋轉？\(R_E\) 的影響線為什麼在左半部全是零？\(R_C\) 在 F 點為什麼是 \(-2\)（負值代表什麼）？</p>
+</div>
+
+<div class="box">
+<h3>② <a class="qlink" href="problems-view/SA-2011-3.html" target="_blank">SA-2011-3</a>（2011）兩跨連續梁，五條 IL ＋ 最大彎矩</h3>
+<p><b>為什麼選它：</b>唯一同時考「定性繪製」與「拿來用」的完整題。五條 IL（兩個反力、支承負彎矩、跨中彎矩與剪力）涵蓋所有束制型式；第二小題的「均佈載重只鋪同號區」是本子項<b>最容易失分</b>的一步。<b>畫完 IL 不會用，等於白畫 —— 這題就是在教這件事。</b></p>
+<p><b>先讀：</b>§2 → §3 → §7</p>
+<p><b>做完要能回答：</b>\(V_C\) 的影響線為什麼在<b>另一跨</b>也有值（且是正的）？如果把 2 kN/m 鋪滿 60 m，答案會偏高還是偏低？為什麼這種偏差在設計上是危險的？</p>
+</div>
+
+<div class="box">
+<h3>③ <a class="qlink" href="problems-view/SA-2015-2.html" target="_blank">SA-2015-2</a>（2015）連續梁＋內部鉸，剪力影響線</h3>
+<p><b>為什麼選它：</b>三種束制釋放裡<b>最難想像的剪力釋放</b>，就是這一題。而且它示範了一個漂亮的巧合：釋放 F 點的剪力後，1 度靜不定的結構<b>恰好變成靜定</b>，於是可以直接用共軛梁法定量。共軛梁的支承轉換（內部支承↔內部鉸）也一次練到。</p>
+<p><b>先讀：</b>§2 → §6 路線二</p>
+<p><b>做完要能回答：</b>剪力釋放為什麼要「保持平行」？釋放後為什麼變成靜定？共軛梁裡真實梁的「內部鉸」要換成什麼？</p>
+</div>
+
+<div class="box">
+<h3>④ <a class="qlink" href="problems-view/SA-2016-2.html" target="_blank">SA-2016-2</a>（2016）倒 L 型剛架，推導 IL 方程式</h3>
+<p><b>為什麼選它：</b>靜不定 IL 的<b>定量</b>代表題，而且藏了一個高鑑別度的陷阱（垂直載重卻必然側移）。更重要的是它示範了「<b>選對方法可以讓陷阱消失</b>」—— 用 Müller-Breslau／單位力法，側移效應自動包含在撓曲線裡，根本不必判斷。這種「方法選擇本身就是風險管理」的訓練很少見。</p>
+<p><b>先讀：</b>§1 → §6（含側移陷阱）</p>
+<p><b>做完要能回答：</b>為什麼全垂直載重的剛架會側移？用傾角變位法會漏掉什麼？為什麼單位力法不會漏？</p>
+</div>
+
+<div class="box">
+<h3>⑤ <a class="qlink" href="problems-view/SA-2022-3.html" target="_blank">SA-2022-3</a>（2022）十節間桁架，細長拉桿</h3>
+<p><b>為什麼選它：</b>本子項最難的一題，也是唯一需要<b>自己判讀結構模型</b>的題目：從「沒給 \(EA\)」推斷是靜定、從圖上找出內部鉸、把交叉斜撐認定為細長拉桿、再切出一段獨立簡支桁架。這種「動筆前先讀懂結構」的能力別題練不到。豎桿那條「雙轉折」的影響線也是全庫最特別的圖形。</p>
+<p><b>先讀：</b>§5（整節）</p>
+<p><b>做完要能回答：</b>「沒給 \(EA\)」為什麼是靜定的暗示？剪力變號點怎麼找？為什麼豎桿的影響線會有兩個轉折？</p>
+</div>
+
+<h3>練這五題的正確方法</h3>
+
+<ol>
+<li><b>先蓋住解答，只畫「形狀」不標數值</b>，然後對答案。形狀錯了就別往下算 —— 回去看 §2、§3。</li>
+<li>第二輪才標數值。<b>標完先自己做三個檢查（支承處為零、剪力跳躍 1、量綱），再看答案。</b></li>
+<li>每題做完，用一句話寫下「這題真正在考什麼」。五句話就是考前小抄。</li>
+<li>解析裡的 <b>§3.5 變數層次分析</b> 是設計來標記卡關點的：第一次做完在卡住處打 <code>⚠</code>，第二輪只看 <code>⚠</code>。</li>
+</ol>
+
+<h3>候補（時間還有的話，依序加）</h3>
+
+<ul>
+<li><b><a class="qlink" href="problems-view/SA-2004-2.html" target="_blank">SA-2004-2</a>（卡車車隊極值）</b>：唯一完整練到「移動車隊求極值」的題目。若你擔心考到橋梁活載重配置，這題一定要做。<a class="qlink" href="problems-view/SA-2007-3.html" target="_blank">SA-2007-3</a> 是同型的第二題。</li>
+<li><b><a class="qlink" href="problems-view/SA-2018-4.html" target="_blank">SA-2018-4</a>（位移影響線）</b>：唯一的位移 IL 題，Maxwell–Betti 的最純粹應用，附帶練到「用對稱性把斜撐化成旋轉彈簧」。</li>
+<li><b><a class="qlink" href="problems-view/SA-2003-4.html" target="_blank">SA-2003-4</a>（柔度法標準流程）</b>：本講義 §9 範例 B 已完整示範，可直接當作範例 B 的練習。</li>
+</ul>
+
+<div class="trap"><b>誠實說明：這五題沒有涵蓋到的考點群</b>
+<ul>
+<li><b>移動車隊極值判定</b>（SA-2004-2、SA-2007-3）—— 五題中沒有。§7 講了原理但沒有完整手算。如果考橋梁活載重，這是直接失分點。</li>
+<li><b>位移影響線</b>（SA-2018-4）—— 五題中沒有。§8 有講一句話解法，但沒有練到。</li>
+<li><b>三彎矩方程式路線</b>（SA-2005-3）—— 五題用的是柔度法與共軛梁法，三彎矩沒練到。</li>
+<li><b>柔度法的完整手算</b>（SA-2003-4）—— §9 範例 B 已示範，但沒放進精選（因為和 SA-2016-2 的路線重疊）。</li>
+</ul>
+換句話說：<b>練完這五題大約掌握本子項七成</b>。加上三題候補就接近完整。</div>
+</section>
+
+</main>
+<footer>
+SA-U1-3 觀念講義｜exam-wiki-SA｜資料來源：raw/solutions/ 各題解析與 wiki/concepts、wiki/code-ref
+</footer>
+</body>
+</html>

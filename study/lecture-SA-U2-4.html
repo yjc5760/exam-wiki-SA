@@ -1,0 +1,1187 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>SA-U2-4 靜不定結構之矩陣分析法｜觀念講義</title>
+<link rel="stylesheet" href="assets/katex/katex.min.css">
+<script defer src="assets/katex/katex.min.js"></script>
+<script defer src="assets/katex/auto-render.min.js"
+  onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'\\(',right:'\\)',display:false}],throwOnError:false});"></script>
+<style>
+:root{--ac:#1565c0;--ac2:#e3f2fd;--tension:#2e7d32;--tension2:#e8f5e9;
+--comp:#c62828;--comp2:#ffebee;--warn:#ef6c00;--warn2:#fff3e0;
+--key:#6a1b9a;--key2:#f3e5f5;--bg:#f7f9fb;--card:#fff;--ink:#263238;--mut:#607d8b;--bd:#dfe6ea}
+*{box-sizing:border-box}
+body{margin:0;font-family:"Microsoft JhengHei","Noto Sans TC",-apple-system,sans-serif;
+background:var(--bg);color:var(--ink);line-height:1.75;font-size:15.5px}
+header{background:linear-gradient(135deg,#004d40,#00695c 60%,#26a69a);color:#fff;padding:34px 26px}
+header h1{margin:0 0 8px;font-size:1.6em}header .sub{opacity:.9;font-size:.93em;margin:0}
+header .meta{margin-top:12px;font-size:.82em;opacity:.8}
+nav{position:sticky;top:0;z-index:20;background:#fff;border-bottom:2px solid var(--bd);
+padding:9px 14px;display:flex;flex-wrap:wrap;gap:6px;box-shadow:0 2px 6px rgba(0,0,0,.05)}
+nav a{text-decoration:none;color:var(--ac);font-size:.85em;padding:4px 11px;border-radius:14px;background:var(--ac2)}
+nav a:hover{background:var(--ac);color:#fff}
+main{max-width:980px;margin:0 auto;padding:24px 18px 80px}
+section{margin-bottom:46px}
+h2{font-size:1.32em;border-left:6px solid var(--ac);padding-left:12px;margin:44px 0 18px;line-height:1.4}
+h3{font-size:1.08em;margin:30px 0 10px;color:#0d47a1}
+h4{font-size:.99em;margin:20px 0 8px;color:#37474f}
+.lead{font-size:1.03em;background:#fff;border:1px solid var(--bd);border-left:5px solid var(--ac);
+border-radius:0 10px 10px 0;padding:14px 18px;margin:16px 0}
+.box{background:var(--card);border:1px solid var(--bd);border-radius:11px;padding:16px 18px;margin:16px 0}
+.why{background:var(--key2);border:1px solid #ce93d8;border-left:5px solid var(--key);
+border-radius:0 10px 10px 0;padding:13px 17px;margin:16px 0}
+.why b:first-child{color:var(--key)}
+.trap{background:var(--warn2);border:1px solid #ffcc80;border-left:5px solid var(--warn);
+border-radius:0 10px 10px 0;padding:13px 17px;margin:16px 0}
+.trap b:first-child{color:#e65100}
+.tens{background:var(--tension2);border:1px solid #a5d6a7;border-left:5px solid var(--tension);
+border-radius:0 10px 10px 0;padding:13px 17px;margin:16px 0}
+.comp{background:var(--comp2);border:1px solid #ef9a9a;border-left:5px solid var(--comp);
+border-radius:0 10px 10px 0;padding:13px 17px;margin:16px 0}
+.fig{background:#fff;border:1px solid var(--bd);border-radius:11px;padding:16px 14px 10px;margin:20px 0;overflow-x:auto}
+.fig svg{display:block;margin:0 auto;max-width:100%;height:auto}
+.fig .cap{font-size:.85em;color:var(--mut);text-align:center;margin-top:10px;line-height:1.6}
+table{width:100%;border-collapse:collapse;margin:16px 0;font-size:.9em;background:#fff}
+th,td{border:1px solid var(--bd);padding:8px 10px;text-align:left;vertical-align:top}
+th{background:#eceff1;font-weight:600}
+tbody tr:nth-child(even){background:#fafcfd}
+ul,ol{margin:10px 0 10px 4px;padding-left:22px}li{margin:5px 0}
+.pill{display:inline-block;font-size:.76em;padding:2px 8px;border-radius:10px;margin-right:4px}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+@media(max-width:760px){.grid2{grid-template-columns:1fr}}
+details{background:#fff;border:1px solid var(--bd);border-radius:9px;padding:10px 14px;margin:12px 0}
+summary{cursor:pointer;font-weight:600;color:var(--ac)}
+details p{border-left:3px solid #e0e0e0;padding-left:12px;margin:8px 0;color:#37474f}
+.qlink{color:#1565c0;text-decoration:none;border-bottom:1px dotted #90caf9;font-weight:600}
+.katex-display{margin:14px 0!important;overflow-x:auto;overflow-y:hidden}
+footer{text-align:center;color:var(--mut);font-size:.83em;padding:26px;border-top:1px solid var(--bd)}
+</style></head>
+<body>
+<header>
+<h1>SA-U2-4　靜不定結構之矩陣分析法</h1>
+<p class="sub">觀念講義 — 練題之前先建立物理直覺，不背矩陣</p>
+<p class="meta">結構工程技師｜結構學（SA）第二單元第 4 子項　主分類 12 題、副分類 3 題（2004–2025）　近 6 年（2020–2025）出題 2 年 3 題</p>
+</header>
+<nav>
+<a href="#s0">§0 全景</a>
+<a href="#s1">§1 單位位移實驗</a>
+<a href="#s2">§2 自由度盤點</a>
+<a href="#s3">§3 梁元素四係數</a>
+<a href="#s4">§4 桁架元素</a>
+<a href="#s5">§5 組裝與轉換</a>
+<a href="#s6">§6 載重向量</a>
+<a href="#s7">§7 降維三招</a>
+<a href="#s8">§8 特殊元素</a>
+<a href="#s9">§9 回代求內力</a>
+<a href="#s10">§10 完整手算</a>
+<a href="#s11">§11 決策流程</a>
+<a href="#s12">§12 歷屆對照</a>
+<a href="#s13">§13 因果鏈</a>
+<a href="#s14">§14 陷阱總表</a>
+<a href="#s15">§15 自我檢測</a>
+<a href="#s16">★ 精選 5 題</a>
+<span style="flex:1"></span>
+<a href="../index.html#md=wiki/diagnosis/SA-U2-4.md&amp;t=SA-U2-4 題型診斷" target="_blank" style="background:#eceff1;color:#455a64">🩺 診斷頁</a>
+<a href="study-SA-U2-4.html" style="background:#eceff1;color:#455a64">📊 速查頁</a>
+<a href="SA-U2-4_靜不定結構之矩陣分析法.pdf" target="_blank" style="background:#eceff1;color:#455a64">📄 Keynote</a>
+<a href="lecture-SA-U2-4.pdf" target="_blank" style="background:#eceff1;color:#455a64">🖨️ 本頁 PDF</a>
+</nav>
+<main>
+<section id="s0">
+<h2>§0　全景：這個單元只有一句話</h2>
+
+<p class="lead"><b>勁度矩陣的第 <span>j</span> 行，就是一場實驗的紀錄：把所有自由度都鎖死，只讓第 j 個自由度移動「一個單位」，然後去量各個自由度上必須施加多少力才能維持這個姿勢 —— 量到的第 i 個力就是 \(K_{ij}\)。</b><br>
+整個矩陣分析法，從頭到尾就是把這場實驗重複 n 次、把結果排成一張表，然後解一次聯立方程。</p>
+
+<p>如果你能把上面那句話當成反射動作，本單元幾乎所有「特殊題型」都會自動崩解：</p>
+
+<ul>
+<li>彈簧支承怎麼處理？→ 做同一場實驗，彈簧也會出力，把它的力加進去。</li>
+<li>\(EI=\infty\) 的剛性桿怎麼辦？→ 做實驗時它不變形，但它會<b>帶著</b>別的節點一起動，把幾何關係寫清楚。</li>
+<li>半剛性接頭？→ 它就是一個「只有轉角自由度」的元素，做實驗時它也出力。</li>
+<li>跨間有均佈載重？→ 實驗時節點是鎖住的，載重被「關」在桿件裡，那就是固端力；把它反號丟回節點。</li>
+</ul>
+
+<div class="why"><b>為什麼是「位移」當未知量而不是「力」？</b>
+因為<b>位移是連續的、力是不連續的</b>。一個剛性節點上不管接幾根桿，這些桿在該節點的轉角<b>只有一個值</b>；但各桿的端彎矩是各自不同的好幾個值。拿「唯一的那個量」當未知數，未知數自然最少、關係最乾淨。力法（最小功法、諧合變位）拿多餘力當未知量，好處是靜不定度低時未知數更少，壞處是「哪幾個是多餘力」需要人為判斷，沒辦法交給電腦。這就是本單元存在的理由。</div>
+
+<div class="fig">
+<svg viewBox="0 0 740 330" xmlns="http://www.w3.org/2000/svg">
+<rect x="0" y="0" width="740" height="330" fill="#fff"/>
+<line x1="370" y1="14" x2="370" y2="316" stroke="#b0bec5" stroke-width="1.5" stroke-dasharray="6 5"/>
+
+<text x="185" y="30" font-size="15" font-weight="700" fill="#c62828" text-anchor="middle">力法（Force Method）</text>
+<text x="555" y="30" font-size="15" font-weight="700" fill="#2e7d32" text-anchor="middle">位移法（Displacement Method）</text>
+
+<!-- LEFT structure -->
+<line x1="70" y1="90" x2="300" y2="90" stroke="#37474f" stroke-width="4"/>
+<polygon points="70,90 58,108 82,108" fill="#78909c"/>
+<polygon points="185,90 173,108 197,108" fill="#78909c"/>
+<polygon points="300,90 288,108 312,108" fill="#78909c"/>
+<text x="185" y="128" font-size="12" fill="#546e7a" text-anchor="middle">兩跨連續梁（1 次靜不定）</text>
+<path d="M185 78 L185 56" stroke="#c62828" stroke-width="2.5" marker-end="url(#arL)"/>
+<text x="185" y="48" font-size="13" fill="#c62828" text-anchor="middle">未知量 = 中間支承反力 X</text>
+
+<!-- RIGHT structure -->
+<line x1="440" y1="90" x2="670" y2="90" stroke="#37474f" stroke-width="4"/>
+<polygon points="440,90 428,108 452,108" fill="#78909c"/>
+<polygon points="555,90 543,108 567,108" fill="#78909c"/>
+<polygon points="670,90 658,108 682,108" fill="#78909c"/>
+<circle cx="555" cy="90" r="6" fill="none" stroke="#2e7d32" stroke-width="2.5"/>
+<path d="M540 74 A22 22 0 0 1 572 74" stroke="#2e7d32" stroke-width="2.5" fill="none" marker-end="url(#arL)"/>
+<text x="555" y="128" font-size="12" fill="#546e7a" text-anchor="middle">同一根梁</text>
+<text x="555" y="48" font-size="13" fill="#2e7d32" text-anchor="middle">未知量 = 中間節點轉角 θ</text>
+
+<rect x="30" y="150" width="310" height="70" rx="8" fill="#ffebee" stroke="#ef9a9a"/>
+<text x="185" y="173" font-size="12.5" fill="#b71c1c" text-anchor="middle">先假設力 → 用「變位必須相容」列方程</text>
+<text x="185" y="194" font-size="12.5" fill="#b71c1c" text-anchor="middle">未知數 = 靜不定度</text>
+<text x="185" y="213" font-size="12" fill="#c62828" text-anchor="middle">要人為挑「哪幾個是多餘力」</text>
+
+<rect x="400" y="150" width="310" height="70" rx="8" fill="#e8f5e9" stroke="#a5d6a7"/>
+<text x="555" y="173" font-size="12.5" fill="#1b5e20" text-anchor="middle">先假設位移 → 用「節點必須平衡」列方程</text>
+<text x="555" y="194" font-size="12.5" fill="#1b5e20" text-anchor="middle">未知數 = 自由度數</text>
+<text x="555" y="213" font-size="12" fill="#2e7d32" text-anchor="middle">自由度是「數出來」的，不必挑</text>
+
+<rect x="150" y="248" width="440" height="62" rx="9" fill="#e3f2fd" stroke="#90caf9" stroke-width="1.6"/>
+<text x="370" y="270" font-size="13.5" font-weight="700" fill="#0d47a1" text-anchor="middle">矩陣分析法 = 位移法 + 一套機械化的簿記規則</text>
+<text x="370" y="292" font-size="12" fill="#1565c0" text-anchor="middle">不必看出結構行為，只要照自由度編號把每個元素的貢獻加進去</text>
+
+<defs><marker id="arL" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+<path d="M0,0 L7,3 L0,6 z" fill="#c62828"/></marker></defs>
+</svg>
+<div class="cap">左右並排看得最清楚：兩種方法的差別只在「先假設什麼」。力法先假設力、用變位相容收尾；位移法先假設位移、用節點平衡收尾。矩陣法沒有發明新物理，它只是把位移法的簿記標準化到可以交給電腦。</div>
+</div>
+
+<div class="trap"><b>考場現實：</b>本單元的題目幾乎都會寫「<b>以其他方法計算不予計分</b>」（SA-2010-4、SA-2011-4、SA-2013-4、SA-2018-2 都明寫）。就算你用傾角變位法能更快算出同樣答案，也必須<b>把過程寫成矩陣的樣子</b>：定義自由度編號 → 寫出各元素勁度矩陣 → 組裝 \([K]\) → 寫出 \(\{P\}\) → 解 \(\{D\}=[K]^{-1}\{P\}\) → 回代。缺任何一段都可能被視為「非指定方法」。</div>
+</section>
+
+<section id="s1">
+<h2>§1　勁度係數是量出來的，不是背出來的</h2>
+
+<p class="lead">\(K_{ij}\) 的定義：<b>令第 j 個自由度位移為 1、其餘自由度全部為 0 時，為了維持這個變形狀態，必須在第 i 個自由度方向上施加的力。</b>這是定義，不是公式；所有元素勁度矩陣都是把這個定義套在一根桿上算出來的結果。</p>
+
+<div class="fig">
+<svg viewBox="0 0 760 300" xmlns="http://www.w3.org/2000/svg">
+<rect x="0" y="0" width="760" height="300" fill="#fff"/>
+<text x="380" y="24" font-size="14" font-weight="700" fill="#0d47a1" text-anchor="middle">同一個兩自由度結構，做兩場實驗，得到勁度矩陣的兩行</text>
+
+<!-- panel 1 -->
+<rect x="18" y="40" width="230" height="180" rx="9" fill="#fafafa" stroke="#cfd8dc"/>
+<text x="133" y="62" font-size="12.5" font-weight="700" fill="#455a64" text-anchor="middle">狀態 0：全鎖</text>
+<line x1="48" y1="150" x2="218" y2="150" stroke="#90a4ae" stroke-width="4"/>
+<circle cx="133" cy="150" r="6" fill="#90a4ae"/>
+<text x="133" y="182" font-size="11.5" fill="#78909c" text-anchor="middle">D1 = 0, D2 = 0</text>
+<text x="133" y="202" font-size="11.5" fill="#78909c" text-anchor="middle">結構不動</text>
+
+<!-- panel 2 -->
+<rect x="264" y="40" width="230" height="180" rx="9" fill="#e8f5e9" stroke="#a5d6a7"/>
+<text x="379" y="62" font-size="12.5" font-weight="700" fill="#1b5e20" text-anchor="middle">實驗 1：D1 = 1，D2 鎖住</text>
+<path d="M294 150 Q379 128 464 150" stroke="#2e7d32" stroke-width="3.5" fill="none"/>
+<line x1="294" y1="150" x2="464" y2="150" stroke="#cfd8dc" stroke-width="2" stroke-dasharray="4 4"/>
+<circle cx="379" cy="134" r="5" fill="#2e7d32"/>
+<path d="M379 118 L379 100" stroke="#1b5e20" stroke-width="2.5" marker-end="url(#ar1)"/>
+<text x="379" y="93" font-size="12" fill="#1b5e20" text-anchor="middle">量到這裡要出力 K11</text>
+<text x="379" y="182" font-size="11.5" fill="#1b5e20" text-anchor="middle">同時量 D2 上要出多少力</text>
+<text x="379" y="202" font-size="11.5" fill="#1b5e20" text-anchor="middle">＝ K21（第 1 行完成）</text>
+
+<!-- panel 3 -->
+<rect x="510" y="40" width="230" height="180" rx="9" fill="#e3f2fd" stroke="#90caf9"/>
+<text x="625" y="62" font-size="12.5" font-weight="700" fill="#0d47a1" text-anchor="middle">實驗 2：D2 = 1，D1 鎖住</text>
+<path d="M540 150 Q625 172 710 150" stroke="#1565c0" stroke-width="3.5" fill="none"/>
+<line x1="540" y1="150" x2="710" y2="150" stroke="#cfd8dc" stroke-width="2" stroke-dasharray="4 4"/>
+<circle cx="625" cy="166" r="5" fill="#1565c0"/>
+<text x="625" y="196" font-size="11.5" fill="#0d47a1" text-anchor="middle">量 K12、K22（第 2 行完成）</text>
+
+<rect x="120" y="238" width="520" height="48" rx="9" fill="#f3e5f5" stroke="#ce93d8"/>
+<text x="380" y="258" font-size="12.5" font-weight="700" fill="#4a148c" text-anchor="middle">K12 = K21　（馬克士威－貝蒂互易定理）</text>
+<text x="380" y="277" font-size="11.5" fill="#6a1b9a" text-anchor="middle">實驗 1 的力對實驗 2 的位移作的功 ＝ 實驗 2 的力對實驗 1 的位移作的功</text>
+
+<defs><marker id="ar1" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+<path d="M0,0 L7,3 L0,6 z" fill="#1b5e20"/></marker></defs>
+</svg>
+<div class="cap">勁度矩陣是「一行一場實驗」拼出來的。狀態 0 是所有實驗的共同起點 —— 這也解釋了為什麼跨間載重必須先算固端力：實驗進行時節點是被鎖住的。</div>
+</div>
+
+<h3>三個由定義直接推出的性質（不必背，能自己講出來）</h3>
+
+<table>
+<thead><tr><th>性質</th><th>物理理由</th><th>怎麼拿來檢查自己算對沒</th></tr></thead>
+<tbody>
+<tr><td><b>對稱</b> \(K_{ij}=K_{ji}\)</td><td>Maxwell–Betti 互易定理：線彈性系統中，第一組力對第二組位移作的功等於第二組力對第一組位移作的功</td><td>手算完整體矩陣後，非對角線一定要成對相等。SA-2012-4 的官方解就用 \(K_{12}=K_{21}\) 當驗算</td></tr>
+<tr><td><b>對角線恆為正</b> \(K_{ii}&gt;0\)</td><td>推它一單位，結構一定「頂回來」，不可能反過來幫你推</td><td>算出負的對角線＝符號慣例前後不一致，回頭檢查</td></tr>
+<tr><td><b>正定</b>（可逆）</td><td>任何非零位移都要花正的應變能</td><td>算出 \(\det[K]=0\) 表示結構是<b>幾何不穩定</b>（機構），不是算錯就是自由度取錯</td></tr>
+</tbody>
+</table>
+
+<div class="why"><b>為什麼「鎖住其他自由度」這件事這麼關鍵？</b>
+因為勁度是「阻抗」，阻抗的大小完全取決於<b>周圍被限制到什麼程度</b>。同一根梁的近端轉角勁度，遠端固定時是 \(4EI/L\)、遠端鉸接時是 \(3EI/L\)、遠端可自由轉但不可位移時又不同。這不是三條要背的公式，而是<b>同一件事在不同約束下的三個值</b>。你只要記住「約束愈少 → 勁度愈小」，就永遠不會把 \(3EI/L\) 和 \(4EI/L\) 用反（見 §7）。</div>
+</section>
+
+<section id="s2">
+<h2>§2　自由度盤點：本單元真正的分水嶺</h2>
+
+<p class="lead">矩陣本身不難，難的是<b>矩陣有幾階</b>。改卷時「自由度判定」幾乎是第一個檢查點：自由度取錯，後面全部白算。SA-2015-4 整題的分數幾乎都在這裡，SA-2012-4、SA-2018-2、SA-2022-4 的致命陷阱也都在這裡。</p>
+
+<h3>盤點的順序：先加滿，再一條一條扣</h3>
+
+<p>平面問題每個節點先給 3 個分量（\(u,\;v,\;\theta\)），然後依序扣：</p>
+
+<div class="fig">
+<svg viewBox="0 0 780 600" xmlns="http://www.w3.org/2000/svg">
+<rect x="0" y="0" width="780" height="600" fill="#fff"/>
+<defs><marker id="fa" markerWidth="9" markerHeight="9" refX="7" refY="3.2" orient="auto">
+<path d="M0,0 L8,3.2 L0,6.4 z" fill="#546e7a"/></marker></defs>
+
+<rect x="255" y="14" width="270" height="42" rx="8" fill="#e3f2fd" stroke="#1565c0" stroke-width="1.6"/>
+<text x="390" y="32" font-size="12.5" font-weight="700" fill="#0d47a1" text-anchor="middle">每個節點先列 3 個分量</text>
+<text x="390" y="49" font-size="12" fill="#1565c0" text-anchor="middle">水平 u、垂直 v、轉角 θ</text>
+<line x1="390" y1="56" x2="390" y2="76" stroke="#546e7a" stroke-width="1.6" marker-end="url(#fa)"/>
+
+<polygon points="390,78 560,110 390,142 220,110" fill="#fff3e0" stroke="#ef6c00" stroke-width="1.6"/>
+<text x="390" y="107" font-size="12.5" font-weight="700" fill="#e65100" text-anchor="middle">支承直接束制？</text>
+<text x="390" y="124" font-size="11.5" fill="#ef6c00" text-anchor="middle">固定端 / 鉸 / 滾</text>
+<line x1="560" y1="110" x2="640" y2="110" stroke="#546e7a" stroke-width="1.6" marker-end="url(#fa)"/>
+<text x="600" y="102" font-size="11" fill="#546e7a" text-anchor="middle">是</text>
+<rect x="644" y="92" width="122" height="36" rx="7" fill="#eceff1" stroke="#b0bec5"/>
+<text x="705" y="115" font-size="12" fill="#455a64" text-anchor="middle">刪除該分量</text>
+<line x1="390" y1="142" x2="390" y2="162" stroke="#546e7a" stroke-width="1.6" marker-end="url(#fa)"/>
+<text x="404" y="157" font-size="11" fill="#546e7a">否</text>
+
+<polygon points="390,164 570,198 390,232 210,198" fill="#fff3e0" stroke="#ef6c00" stroke-width="1.6"/>
+<text x="390" y="194" font-size="12.5" font-weight="700" fill="#e65100" text-anchor="middle">題目說「忽略軸向變形」？</text>
+<text x="390" y="212" font-size="11.5" fill="#ef6c00" text-anchor="middle">桿長不可變</text>
+<line x1="570" y1="198" x2="640" y2="198" stroke="#546e7a" stroke-width="1.6" marker-end="url(#fa)"/>
+<text x="605" y="190" font-size="11" fill="#546e7a" text-anchor="middle">是</text>
+<rect x="626" y="172" width="150" height="52" rx="7" fill="#e8f5e9" stroke="#66bb6a"/>
+<text x="701" y="192" font-size="11.5" fill="#1b5e20" text-anchor="middle">沿桿方向位移被</text>
+<text x="701" y="209" font-size="11.5" fill="#1b5e20" text-anchor="middle">另一端「綁定」→合併</text>
+<line x1="390" y1="232" x2="390" y2="252" stroke="#546e7a" stroke-width="1.6" marker-end="url(#fa)"/>
+<text x="404" y="247" font-size="11" fill="#546e7a">否</text>
+
+<polygon points="390,254 570,288 390,322 210,288" fill="#fff3e0" stroke="#ef6c00" stroke-width="1.6"/>
+<text x="390" y="284" font-size="12.5" font-weight="700" fill="#e65100" text-anchor="middle">接到 EI = ∞ 剛性桿？</text>
+<text x="390" y="302" font-size="11.5" fill="#ef6c00" text-anchor="middle">剛性桿 / 剛性樓板</text>
+<line x1="570" y1="288" x2="640" y2="288" stroke="#546e7a" stroke-width="1.6" marker-end="url(#fa)"/>
+<text x="605" y="280" font-size="11" fill="#546e7a" text-anchor="middle">是</text>
+<rect x="626" y="262" width="150" height="52" rx="7" fill="#e8f5e9" stroke="#66bb6a"/>
+<text x="701" y="282" font-size="11.5" fill="#1b5e20" text-anchor="middle">主從關係 v = θ × 力臂</text>
+<text x="701" y="299" font-size="11.5" fill="#1b5e20" text-anchor="middle">併入主自由度</text>
+<line x1="390" y1="322" x2="390" y2="342" stroke="#546e7a" stroke-width="1.6" marker-end="url(#fa)"/>
+<text x="404" y="337" font-size="11" fill="#546e7a">否</text>
+
+<polygon points="390,344 578,378 390,412 202,378" fill="#fff3e0" stroke="#ef6c00" stroke-width="1.6"/>
+<text x="390" y="374" font-size="12.5" font-weight="700" fill="#e65100" text-anchor="middle">節點處有彈簧 / 半剛性接頭？</text>
+<text x="390" y="392" font-size="11.5" fill="#ef6c00" text-anchor="middle">抗扭彈簧、鉸接、零長度元素</text>
+<line x1="578" y1="378" x2="640" y2="378" stroke="#546e7a" stroke-width="1.6" marker-end="url(#fa)"/>
+<text x="609" y="370" font-size="11" fill="#546e7a" text-anchor="middle">是</text>
+<rect x="626" y="352" width="150" height="52" rx="7" fill="#ffebee" stroke="#ef5350"/>
+<text x="701" y="372" font-size="11.5" fill="#b71c1c" text-anchor="middle">節點拆成兩個</text>
+<text x="701" y="389" font-size="11.5" fill="#b71c1c" text-anchor="middle">自由度反而變多</text>
+<line x1="390" y1="412" x2="390" y2="432" stroke="#546e7a" stroke-width="1.6" marker-end="url(#fa)"/>
+<text x="404" y="427" font-size="11" fill="#546e7a">否</text>
+
+<rect x="252" y="434" width="276" height="44" rx="8" fill="#e8f5e9" stroke="#2e7d32" stroke-width="1.8"/>
+<text x="390" y="452" font-size="12.5" font-weight="700" fill="#1b5e20" text-anchor="middle">保留為獨立自由度，給編號</text>
+<text x="390" y="470" font-size="11.5" fill="#2e7d32" text-anchor="middle">編號順序決定矩陣的行列順序</text>
+
+<rect x="118" y="500" width="544" height="82" rx="9" fill="#f3e5f5" stroke="#ce93d8" stroke-width="1.5"/>
+<text x="390" y="522" font-size="12.5" font-weight="700" fill="#4a148c" text-anchor="middle">最後一步：檢查每個「被刪掉」的分量是否真的為零</text>
+<text x="390" y="543" font-size="11.5" fill="#6a1b9a" text-anchor="middle">SA-2015-4：水平彈簧 ks 的兩端 u 都被軸向約束逼成 0</text>
+<text x="390" y="562" font-size="11.5" fill="#6a1b9a" text-anchor="middle">→ 彈簧不變形、不出力 → 整個 ks 不會出現在答案裡</text>
+</svg>
+<div class="cap">自由度盤點決策流程。注意最後兩個菱形的方向相反：剛性桿讓自由度<b>變少</b>，彈簧／半剛性接頭讓自由度<b>變多</b>（因為原本共用一個轉角的兩根桿，現在可以各轉各的）。</div>
+</div>
+
+<h3>「忽略軸向變形」到底扣掉什麼</h3>
+
+<p>這句話的意思是：<b>每根桿的兩端沿桿軸方向的位移必須相同</b>。它會像骨牌一樣一路傳遞下去：</p>
+
+<div class="box">
+<b>SA-2018-2 的實際盤點</b>（A、D 皆固定端，AB 柱、BC 梁、CD 柱，長度均 L）
+<ul>
+<li>AB 柱是<b>垂直</b>的 → 軸向 = 垂直方向 → \(v_B = v_A = 0\)</li>
+<li>CD 柱是<b>垂直</b>的 → \(v_C = v_D = 0\)</li>
+<li>BC 梁是<b>水平</b>的 → 軸向 = 水平方向 → \(u_B = u_C \equiv u\)（兩個合併成一個！）</li>
+<li>剩下：\(u,\;\theta_B,\;\theta_C\) → <b>3 個自由度</b>，矩陣是 3×3</li>
+</ul>
+如果忘記 \(u_B=u_C\) 這條，會誤判成 4 個自由度；如果忘記 \(v_B=v_C=0\)，會誤判成 5 個。
+</div>
+
+<div class="trap"><b>陷阱：對稱結構不一定沒有側移。</b>SA-2018-2 的幾何看起來左右對稱，但 A 在<b>頂部</b>固定、D 在<b>底部</b>固定，這是<b>點對稱（反對稱）</b>而非鏡射對稱。反對稱構架受對稱載重時側移<b>不為零</b>，\(u\neq 0\)。判斷對稱前先確認「對稱的是幾何還是拓樸」。</div>
+
+<h3>剛性桿與剪力棟架：自由度被壓縮到剩幾個</h3>
+
+<div class="grid2">
+<div class="tens"><b>剛性桿（SA-2012-4）</b><br>
+\(EI=\infty\) 的 c–d 桿不會彎，所以 c 點的位移完全由 d 點的轉角決定：<br>
+\(\theta_c=r_2\)，\(v_c = r_2\times L_{cd}\)（蹺蹺板效應）<br>
+<b>致命點：</b>多數人只傳遞了轉角、漏掉 \(v_c\)。漏掉 \(v_c\) 就等於讓 b–c 桿的弦角 \(\psi=0\)，\(K_{22}\)、\(K_{12}\) 全錯。</div>
+<div class="comp"><b>剪力棟架（SA-2022-4）</b><br>
+梁 \(EI=\infty\) ＋ 忽略軸向變形 → 所有節點<b>不能轉</b>（\(\theta=0\)），同一樓層所有節點<b>側移相同</b>。<br>
+n 層樓 → 只剩 n 個自由度。<br>
+<b>致命點：</b>某一跨如果<b>沒有梁</b>，那裡的柱就會直通兩層變成「挑高柱」，勁度是 \(12EI/(2h)^3 = k/8\)，不是 \(k\)。圖上梁線段的長短就是答案。</div>
+</div>
+
+<div class="why"><b>為什麼挑高柱只剩 1/8 的勁度？</b>
+\(k=12EI/L^3\) 對 \(L\) 是<b>三次方</b>反比。柱高變成兩倍 → 勁度變成 \(1/2^3=1/8\)。這也是為什麼「軟弱底層」在耐震上這麼危險 —— 高度只要多一點點，剛度掉得非常快，變形和損傷會全部集中到那一層。同一條 \(1/L^3\) 也解釋了為什麼矮胖的結構抗側力遠優於細長的結構。</div>
+
+<h3>半剛性接頭：節點要拆成兩個</h3>
+
+<p>SA-2019-4 與 SA-2015-4 都考這件事。B 點看起來是「一個節點」，但柱端和梁端之間夾了一個彈簧，兩邊<b>可以轉不同的角度</b>，所以必須給兩個轉角自由度 \(d_2\)（彈簧左側）、\(d_3\)（彈簧右側）。彈簧本身是一個「零長度元素」，它的勁度矩陣長這樣：</p>
+
+$$[k]_{spring}=\begin{bmatrix} k_\theta & -k_\theta \\ -k_\theta & k_\theta\end{bmatrix}$$
+
+<div class="why"><b>為什麼是這個形狀？</b>因為彈簧的彎矩只跟<b>兩端的相對轉角</b>有關：\(M=k_\theta(\theta_1-\theta_2)\)。任何「只感受相對量」的元素，勁度矩陣都是 \(\begin{bmatrix}k&-k\\-k&k\end{bmatrix}\) 這個形狀 —— 軸向彈簧、桁架桿（局部座標下）全都一樣。你可以立刻做極限檢查：令 \(\theta_1=\theta_2=1\)（整體剛體旋轉），矩陣乘出來是 \(\{0,0\}\)，代表剛體運動不產生內力 ✔。這個檢查對任何元素勁度矩陣都成立：<b>每一列的和必須為零</b>（在有剛體模態的方向上）。</div>
+
+<div class="trap"><b>三個層次要分清楚：</b>剛接（兩邊轉角綁在一起，\(k_\theta\to\infty\)，1 個自由度）／半剛性（\(k_\theta\) 有限，2 個自由度，彼此以彈簧耦合）／鉸接（\(k_\theta=0\)，2 個自由度，彼此完全脫鉤）。SA-2019-4 給 \(k_\theta=10EI/L\)，就是中間那一檔。</div>
+</section>
+
+<section id="s3">
+<h2>§3　梁元素的四個數字：\(12EI/L^3,\;6EI/L^2,\;4EI/L,\;2EI/L\)</h2>
+
+<p class="lead">這四個數字不是規定，是把 §1 的「單位位移實驗」套在一根<b>兩端固定的梁</b>上算出來的四個答案。它們共用同一個來源：無載重梁的撓曲線是<b>三次多項式</b>，四個係數剛好由四個端點條件決定。</p>
+
+<div class="fig">
+<svg viewBox="0 0 760 340" xmlns="http://www.w3.org/2000/svg">
+<rect x="0" y="0" width="760" height="340" fill="#fff"/>
+<defs><marker id="ag" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+<path d="M0,0 L7,3 L0,6 z" fill="#1b5e20"/></marker>
+<marker id="ab" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+<path d="M0,0 L7,3 L0,6 z" fill="#0d47a1"/></marker></defs>
+
+<!-- left: unit translation -->
+<rect x="16" y="14" width="356" height="308" rx="10" fill="#e8f5e9" stroke="#a5d6a7"/>
+<text x="194" y="38" font-size="13.5" font-weight="700" fill="#1b5e20" text-anchor="middle">實驗 A：左端下沉 1，兩端都不准轉</text>
+<line x1="56" y1="130" x2="332" y2="130" stroke="#cfd8dc" stroke-width="2" stroke-dasharray="5 5"/>
+<path d="M56 170 C 130 170, 200 130, 332 130" stroke="#2e7d32" stroke-width="4" fill="none"/>
+<rect x="42" y="150" width="14" height="40" fill="#78909c"/>
+<rect x="332" y="110" width="14" height="40" fill="#78909c"/>
+<line x1="56" y1="130" x2="56" y2="170" stroke="#1b5e20" stroke-width="2" marker-end="url(#ag)"/>
+<text x="76" y="158" font-size="12" fill="#1b5e20">δ = 1</text>
+<text x="194" y="216" font-size="12.5" fill="#1b5e20" text-anchor="middle">要壓下去，需要一個力：</text>
+<text x="194" y="240" font-size="15" font-weight="700" fill="#1b5e20" text-anchor="middle">V = 12EI / L³</text>
+<text x="194" y="266" font-size="12.5" fill="#1b5e20" text-anchor="middle">同時兩端要各出一個彎矩才不會轉：</text>
+<text x="194" y="290" font-size="15" font-weight="700" fill="#1b5e20" text-anchor="middle">M = 6EI / L²</text>
+<text x="194" y="311" font-size="11.5" fill="#2e7d32" text-anchor="middle">（這就是矩陣裡「平移－轉角」的耦合項）</text>
+
+<!-- right: unit rotation -->
+<rect x="388" y="14" width="356" height="308" rx="10" fill="#e3f2fd" stroke="#90caf9"/>
+<text x="566" y="38" font-size="13.5" font-weight="700" fill="#0d47a1" text-anchor="middle">實驗 B：左端轉 1 弧度，兩端都不准移動</text>
+<line x1="428" y1="140" x2="704" y2="140" stroke="#cfd8dc" stroke-width="2" stroke-dasharray="5 5"/>
+<path d="M428 140 C 500 100, 620 158, 704 140" stroke="#1565c0" stroke-width="4" fill="none"/>
+<rect x="414" y="120" width="14" height="40" fill="#78909c"/>
+<rect x="704" y="120" width="14" height="40" fill="#78909c"/>
+<path d="M436 158 A 26 26 0 0 1 448 122" stroke="#0d47a1" stroke-width="2.5" fill="none" marker-end="url(#ab)"/>
+<text x="470" y="176" font-size="12" fill="#0d47a1">θ = 1</text>
+<text x="566" y="216" font-size="12.5" fill="#0d47a1" text-anchor="middle">近端要出的彎矩：</text>
+<text x="566" y="240" font-size="15" font-weight="700" fill="#0d47a1" text-anchor="middle">M近 = 4EI / L</text>
+<text x="566" y="266" font-size="12.5" fill="#0d47a1" text-anchor="middle">遠端「被傳過去」的彎矩：</text>
+<text x="566" y="290" font-size="15" font-weight="700" fill="#0d47a1" text-anchor="middle">M遠 = 2EI / L</text>
+<text x="566" y="311" font-size="11.5" fill="#1565c0" text-anchor="middle">比值 1/2 ＝ 傳遞係數 COF</text>
+</svg>
+<div class="cap">兩場實驗生出全部四個數字。實驗 A 的「\(6EI/L^2\)」和實驗 B 裡「維持左端不移動所需的剪力」是同一個數 —— 這不是巧合，是 \(K_{ij}=K_{ji}\)。</div>
+</div>
+
+<h3>把四個數字拼成矩陣</h3>
+
+<p>對一根梁元素，取端點自由度順序 \(\{v_i,\;\theta_i,\;v_j,\;\theta_j\}\)（向上為正、逆時針為正）：</p>
+
+$$[k]=\begin{bmatrix}
+\dfrac{12EI}{L^3} & \dfrac{6EI}{L^2} & -\dfrac{12EI}{L^3} & \dfrac{6EI}{L^2}\\[4pt]
+\dfrac{6EI}{L^2} & \dfrac{4EI}{L} & -\dfrac{6EI}{L^2} & \dfrac{2EI}{L}\\[4pt]
+-\dfrac{12EI}{L^3} & -\dfrac{6EI}{L^2} & \dfrac{12EI}{L^3} & -\dfrac{6EI}{L^2}\\[4pt]
+\dfrac{6EI}{L^2} & \dfrac{2EI}{L} & -\dfrac{6EI}{L^2} & \dfrac{4EI}{L}
+\end{bmatrix}$$
+
+<div class="box"><b>三個不用背也能自己驗的檢查</b>
+<ol>
+<li><b>量綱：</b>\(12EI/L^3\) → 力/長度（剪力對位移）；\(6EI/L^2\) → 力（剪力對轉角，也等於彎矩對位移）；\(4EI/L\) → 力·長度（彎矩對轉角）。位置對不對，看單位就知道。</li>
+<li><b>剛體平移：</b>令 \(\{1,0,1,0\}\)（整根梁平移 1）→ 乘出來必須是零向量。檢查第 1 行：\(12/L^3-12/L^3=0\) ✔</li>
+<li><b>極限：</b>\(L\to\infty\)（超長桿）所有項 → 0，桿變得無限軟 ✔；\(L\to 0\) 全部 →∞，短桿無限硬 ✔。方向對了就不會把 \(L\) 放到分子。</li>
+</ol></div>
+
+<h3>另外兩種元素勁度</h3>
+
+<table>
+<thead><tr><th>變形模式</th><th>勁度</th><th>物理意義</th><th>出現在</th></tr></thead>
+<tbody>
+<tr><td>軸向拉壓</td><td>\(EA/L\)</td><td>桿伸長 1 需要的軸力</td><td>桁架元素（§4）、彈簧支承</td></tr>
+<tr><td>撓曲</td><td>\(12EI/L^3,\;4EI/L\;\ldots\)</td><td>上表四個數字</td><td>所有梁柱剛架題</td></tr>
+<tr><td>扭轉</td><td>\(GJ/L\)</td><td>桿扭轉 1 弧度需要的扭矩</td><td>格床結構 SA-2025-4</td></tr>
+</tbody>
+</table>
+
+<div class="why"><b>SA-2025-4 的 \(J=2I\) 從哪來？</b>
+極慣性矩的定義是 \(J=\int r^2 dA\)，而 \(r^2=x^2+y^2\)，所以 \(J=I_x+I_y\)（垂直軸定理）。<b>實心圓斷面</b>對任何形心軸都一樣，\(I_x=I_y=I\)，於是 \(J=2I\)。題目特別寫「實心圓桿」就是在提示這件事。若不換成 \(2I\)，扭轉項 \(GJ/L\) 沒辦法跟彎曲項 \(EI/L\) 合併，答案會停在半路。<br>
+順帶一提：這只對<b>實心圓／圓管</b>成立。矩形或工型斷面的扭轉常數 \(J\) 遠小於 \(I_x+I_y\)（斷面會翹曲），不可以照抄。</div>
+</section>
+
+<section id="s4">
+<h2>§4　桁架元素：一根桿只「看得見」一個方向</h2>
+
+<p class="lead">桁架題（SA-2009-4、SA-2010-4、SA-2011-4、SA-2013-4，四題，是本單元最大宗）反覆用同一個 2×2 矩陣：
+$$[k]_{ii}=\frac{EA}{L}\begin{bmatrix}c^2 & cs\\ cs & s^2\end{bmatrix},\qquad c=\frac{\Delta x}{L},\;s=\frac{\Delta y}{L}$$
+很多人把它當咒語背。它其實是「<b>投影兩次</b>」，推一次就再也不會記錯。</p>
+
+<div class="fig">
+<svg viewBox="0 0 740 330" xmlns="http://www.w3.org/2000/svg">
+<rect x="0" y="0" width="740" height="330" fill="#fff"/>
+<defs><marker id="ao" markerWidth="9" markerHeight="9" refX="7" refY="3.2" orient="auto">
+<path d="M0,0 L8,3.2 L0,6.4 z" fill="#e65100"/></marker>
+<marker id="ap" markerWidth="9" markerHeight="9" refX="7" refY="3.2" orient="auto">
+<path d="M0,0 L8,3.2 L0,6.4 z" fill="#1565c0"/></marker></defs>
+
+<text x="370" y="26" font-size="14" font-weight="700" fill="#0d47a1" text-anchor="middle">桁架桿只感受「沿桿方向」的那一份位移</text>
+
+<!-- bar -->
+<line x1="110" y1="250" x2="330" y2="110" stroke="#37474f" stroke-width="5"/>
+<circle cx="110" cy="250" r="7" fill="#546e7a"/>
+<circle cx="330" cy="110" r="7" fill="#546e7a"/>
+<text x="96" y="272" font-size="13" fill="#37474f">i</text>
+<text x="342" y="104" font-size="13" fill="#37474f">j</text>
+<text x="196" y="166" font-size="12.5" fill="#546e7a" transform="rotate(-32 196 166)">長度 L，方向 (c, s)</text>
+
+<!-- displacement vector at j -->
+<line x1="330" y1="110" x2="430" y2="66" stroke="#1565c0" stroke-width="3" marker-end="url(#ap)"/>
+<text x="444" y="62" font-size="12.5" fill="#1565c0">位移 d = (u, v)</text>
+<!-- projection -->
+<line x1="330" y1="110" x2="392" y2="70" stroke="#e65100" stroke-width="3" stroke-dasharray="5 4" marker-end="url(#ao)"/>
+<text x="352" y="52" font-size="12" fill="#e65100">投影 e = cu + sv</text>
+
+<rect x="470" y="106" width="252" height="196" rx="9" fill="#fff3e0" stroke="#ffcc80"/>
+<text x="596" y="130" font-size="12.5" font-weight="700" fill="#e65100" text-anchor="middle">三個步驟，各自都很直觀</text>
+<text x="484" y="156" font-size="12" fill="#5d4037">① 投影：只有沿桿的分量會讓桿伸長</text>
+<text x="500" y="176" font-size="12.5" fill="#bf360c">e = c·u + s·v</text>
+<text x="484" y="202" font-size="12" fill="#5d4037">② 虎克定律：伸長多少 → 軸力多少</text>
+<text x="500" y="222" font-size="12.5" fill="#bf360c">N = (EA/L) · e</text>
+<text x="484" y="248" font-size="12" fill="#5d4037">③ 投影回去：軸力分回 x、y 兩向</text>
+<text x="500" y="268" font-size="12.5" fill="#bf360c">Fx = c·N,  Fy = s·N</text>
+<text x="596" y="292" font-size="12" font-weight="700" fill="#e65100" text-anchor="middle">合起來就是 (EA/L)·(c,s)ᵀ(c,s)</text>
+
+<rect x="60" y="286" width="380" height="34" rx="8" fill="#e3f2fd" stroke="#90caf9"/>
+<text x="250" y="308" font-size="12.5" fill="#0d47a1" text-anchor="middle">矩陣的秩 = 1 → 桿對「垂直於自己」的位移完全沒有勁度</text>
+</svg>
+<div class="cap">投影 → 虎克 → 投影回去。\(c^2\)、\(cs\)、\(s^2\) 就是「投影兩次」留下的乘積，不是要背的東西。</div>
+</div>
+
+<div class="why"><b>秩為 1 的深層意義。</b>這個 2×2 矩陣的行列式 \(=(EA/L)^2(c^2s^2-c^2s^2)=0\)，永遠奇異。物理上：一根桿只能抵抗「沿自己方向」的位移，垂直方向推它它完全不反抗（小變形假設下）。<br>
+這一條直接解釋了兩件事：<br>
+① 一個自由節點必須連到<b>至少兩根不共線</b>的桿才穩定 —— 三根共線的桿疊加起來還是秩 1，\(\det[K]=0\)，矩陣解不出來。<br>
+② 這正是「幾何穩定性」判定（SA-U1-1）的矩陣版本。\(\det[K]=0\) 不是計算錯誤，是結構真的是機構。</div>
+
+<h3>方向餘弦：只要「起點→終點」一致就不會錯</h3>
+
+<div class="trap"><b>符號陷阱（SA-2010-4、SA-2013-4 的官方陷阱）：</b>\(c,s\) 的正負取決於你把哪一端當起點。<b>組裝勁度矩陣時反正 \(c,s\) 都會平方或成對相乘，方向反了不影響</b>（\((-c)(-s)=cs\)）；但<b>回算軸力時方向反了會讓拉壓顛倒</b>。<br>
+所以：<b>組裝可以隨便，回算必須一致。</b>養成「一律由編號小的節點指向編號大的節點」的習慣，然後回算時用同一組 \(c,s\)。</div>
+
+<div class="box"><b>SA-2010-4 的「巧思」：為什麼答案那麼好算</b><br>
+三根桿 AB、AC、AD 的 \(cs\) 乘積剛好正負抵消，組裝出的 2×2 矩陣變成<b>對角矩陣</b>，\(u_A\) 與 \(v_A\) 直接解耦，不必解聯立。<br>
+<b>反過來用：</b>如果你算出來的交叉項沒有抵消、必須解一個很醜的聯立方程，那八成是某一根桿的 \(cs\) 符號弄反了。這就是一個免費的自我檢查點。</div>
+
+<h3>回算軸力</h3>
+
+$$N=\frac{EA}{L}\left[c(u_j-u_i)+s(v_j-v_i)\right]\qquad(\text{正}=\text{拉力})$$
+
+<p>這條就是上圖的步驟 ①＋②，只是把兩端的相對位移代進去。支承端的位移是 0，直接寫 0 即可。</p>
+</section>
+
+<section id="s5">
+<h2>§5　組裝與座標轉換：兩個「為什麼」</h2>
+
+<h3>為什麼可以直接把數字加起來？</h3>
+
+<p class="lead">因為<b>疊加原理</b>。在自由度 i 上要維持位移狀態所需的總力，等於接在該自由度上每一個元素各自要出的力之和 —— 節點是各元素的公用邊界，力在這裡直接相加。所以組裝就是「把每個元素的小矩陣，按照自由度編號，加到大矩陣的對應格子」。</p>
+
+<div class="box"><b>手算組裝的實作訣竅：在小矩陣旁邊標自由度</b><br>
+SA-2008-4 的官方解就是這樣寫的：
+$$k_2=\frac{EI}{6}\begin{bmatrix}4&2\\2&4\end{bmatrix}\begin{array}{l}\leftarrow \theta_B\\ \leftarrow \theta_C\end{array}$$
+標上箭頭後，組裝就變成純粹的抄寫動作，不需要任何思考，也就不會出錯。<b>考卷上一定要把這個標註寫出來</b>，它同時是給改卷者看的「我知道自由度對應」的證明。</div>
+
+<h3>為什麼座標轉換是 \([T]^T[k][T]\) 這個三明治？</h3>
+
+<p>轉換矩陣 \([T]\) 把整體座標的位移轉成局部座標：\(\{d\}_{loc}=[T]\{d\}_{glo}\)。力的轉換方向相反：\(\{f\}_{glo}=[T]^T\{f\}_{loc}\)。串起來：</p>
+
+$$\{f\}_{glo}=[T]^T\{f\}_{loc}=[T]^T[k]_{loc}\{d\}_{loc}=\underbrace{[T]^T[k]_{loc}[T]}_{[k]_{glo}}\{d\}_{glo}$$
+
+<div class="why"><b>更深一層：功不隨座標改變。</b>\([T]\) 是旋轉矩陣，\([T]^{-1}=[T]^T\)（正交）。這保證了 \(\{f\}^T\{d\}\) 在兩個座標系下算出同一個功。所以「三明治」不是湊出來的形式，而是<b>能量不變</b>的必然結果。<br>
+順帶一提：因為 \([T]^T[k][T]\) 這個運算保持對稱性與正定性，轉換後的 \([k]_{glo}\) 仍然對稱、仍然是勁度矩陣 —— 這就是為什麼可以放心地把不同角度的桿件加在一起。</div>
+
+<div class="trap"><b>手算時通常不用真的做 \([T]^T[k][T]\)。</b>考場上直接做 6×6 矩陣三重乘法太慢。桁架直接用 §4 的 \(\frac{EA}{L}\begin{bmatrix}c^2&cs\\cs&s^2\end{bmatrix}\)（那已經是轉換後的結果）；剛架則是<b>逐個自由度做單位位移實驗</b>（§1），把幾何關係手動寫進去。SA-2018-2、SA-2015-4、SA-2025-1 的官方解全部是後者，沒有一題真的去乘轉換矩陣。<br>
+<b>但答題時要說明</b>：「因各桿與整體座標軸平行／已考慮方向餘弦，故直接組裝」，讓改卷者知道你不是忘了轉換。</div>
+</section>
+
+<section id="s6">
+<h2>§6　載重向量：跨間載重、製造誤差、溫度、沉陷，全是同一招</h2>
+
+<p class="lead">矩陣法只認識「作用在節點上的力」。任何不長在節點上的效應，都要先翻譯成節點力。翻譯的方法只有一個：<b>兩階段疊加 —— 先鎖住，再放開</b>。</p>
+
+<div class="fig">
+<svg viewBox="0 0 780 300" xmlns="http://www.w3.org/2000/svg">
+<rect x="0" y="0" width="780" height="300" fill="#fff"/>
+<defs><marker id="ad" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+<path d="M0,0 L7,3 L0,6 z" fill="#c62828"/></marker></defs>
+
+<!-- panel 1 -->
+<rect x="14" y="34" width="238" height="200" rx="9" fill="#fafafa" stroke="#cfd8dc"/>
+<text x="133" y="56" font-size="12.5" font-weight="700" fill="#455a64" text-anchor="middle">狀態 I：把節點全部鎖死</text>
+<line x1="46" y1="140" x2="220" y2="140" stroke="#37474f" stroke-width="4"/>
+<rect x="32" y="120" width="14" height="40" fill="#78909c"/>
+<rect x="220" y="120" width="14" height="40" fill="#78909c"/>
+<line x1="60" y1="112" x2="60" y2="132" stroke="#c62828" stroke-width="2" marker-end="url(#ad)"/>
+<line x1="90" y1="112" x2="90" y2="132" stroke="#c62828" stroke-width="2" marker-end="url(#ad)"/>
+<line x1="120" y1="112" x2="120" y2="132" stroke="#c62828" stroke-width="2" marker-end="url(#ad)"/>
+<line x1="150" y1="112" x2="150" y2="132" stroke="#c62828" stroke-width="2" marker-end="url(#ad)"/>
+<line x1="180" y1="112" x2="180" y2="132" stroke="#c62828" stroke-width="2" marker-end="url(#ad)"/>
+<line x1="55" y1="112" x2="185" y2="112" stroke="#c62828" stroke-width="2"/>
+<text x="133" y="180" font-size="11.5" fill="#455a64" text-anchor="middle">結構不動，載重全被「關」在桿內</text>
+<text x="133" y="200" font-size="12" font-weight="700" fill="#b71c1c" text-anchor="middle">產生固端力 {f_F}</text>
+<text x="133" y="220" font-size="11.5" fill="#455a64" text-anchor="middle">但節點上多出一組不平衡力</text>
+
+<!-- panel 2 -->
+<rect x="270" y="34" width="238" height="200" rx="9" fill="#e8f5e9" stroke="#a5d6a7"/>
+<text x="389" y="56" font-size="12.5" font-weight="700" fill="#1b5e20" text-anchor="middle">狀態 II：把不平衡力反號</text>
+<line x1="302" y1="140" x2="476" y2="140" stroke="#cfd8dc" stroke-width="2" stroke-dasharray="5 4"/>
+<path d="M302 140 Q389 172 476 140" stroke="#2e7d32" stroke-width="4" fill="none"/>
+<rect x="288" y="120" width="14" height="40" fill="#78909c"/>
+<rect x="476" y="120" width="14" height="40" fill="#78909c"/>
+<path d="M312 122 A 22 22 0 0 1 328 106" stroke="#1b5e20" stroke-width="2.5" fill="none"/>
+<path d="M466 122 A 22 22 0 0 0 450 106" stroke="#1b5e20" stroke-width="2.5" fill="none"/>
+<text x="389" y="180" font-size="11.5" fill="#1b5e20" text-anchor="middle">把 −{f_F} 當成真正的節點外力</text>
+<text x="389" y="200" font-size="12" font-weight="700" fill="#1b5e20" text-anchor="middle">節點自由變形，解 [K]{D} = {P}</text>
+<text x="389" y="220" font-size="11.5" fill="#1b5e20" text-anchor="middle">這一步才需要矩陣</text>
+
+<!-- panel 3 -->
+<rect x="526" y="34" width="238" height="200" rx="9" fill="#e3f2fd" stroke="#90caf9"/>
+<text x="645" y="56" font-size="12.5" font-weight="700" fill="#0d47a1" text-anchor="middle">相加 = 真實答案</text>
+<line x1="558" y1="140" x2="732" y2="140" stroke="#cfd8dc" stroke-width="2" stroke-dasharray="5 4"/>
+<path d="M558 140 Q645 178 732 140" stroke="#1565c0" stroke-width="4" fill="none"/>
+<rect x="544" y="120" width="14" height="40" fill="#78909c"/>
+<rect x="732" y="120" width="14" height="40" fill="#78909c"/>
+<line x1="580" y1="104" x2="580" y2="124" stroke="#c62828" stroke-width="2" marker-end="url(#ad)"/>
+<line x1="645" y1="104" x2="645" y2="124" stroke="#c62828" stroke-width="2" marker-end="url(#ad)"/>
+<line x1="710" y1="104" x2="710" y2="124" stroke="#c62828" stroke-width="2" marker-end="url(#ad)"/>
+<line x1="575" y1="104" x2="715" y2="104" stroke="#c62828" stroke-width="2"/>
+<text x="645" y="180" font-size="12" font-weight="700" fill="#0d47a1" text-anchor="middle">內力 = {f_F} + [k]{d}</text>
+<text x="645" y="202" font-size="11.5" fill="#1565c0" text-anchor="middle">狀態 I 的固端力絕對不能漏</text>
+<text x="645" y="222" font-size="11.5" fill="#1565c0" text-anchor="middle">否則跨間載重整個消失</text>
+
+<text x="262" y="146" font-size="24" font-weight="700" fill="#78909c" text-anchor="middle">+</text>
+<text x="518" y="146" font-size="24" font-weight="700" fill="#78909c" text-anchor="middle">=</text>
+
+<rect x="150" y="252" width="480" height="36" rx="8" fill="#f3e5f5" stroke="#ce93d8"/>
+<text x="390" y="276" font-size="12.5" font-weight="700" fill="#4a148c" text-anchor="middle">{P} = {節點直接外力} − {固端力在各自由度上的分量}</text>
+</svg>
+<div class="cap">兩階段疊加。狀態 I 之所以要「鎖住」，正是因為勁度矩陣是在「其他自由度全鎖」的前提下量出來的（§1）—— 兩者用的是同一個基準狀態，才能相加。</div>
+</div>
+
+<h3>同一套邏輯的四種化身</h3>
+
+<table>
+<thead><tr><th>效應</th><th>狀態 I 產生什麼</th><th>考題</th></tr></thead>
+<tbody>
+<tr><td>跨間均佈載重 \(w\)</td><td>\(FEM=wL^2/12\)（兩端固定）或 \(wL^2/8\)（一端鉸）</td><td>SA-2004-4、SA-2008-4、SA-2015-4、SA-2025-4</td></tr>
+<tr><td>跨中集中力 \(P\)</td><td>\(FEM=PL/8\)</td><td>SA-2018-2、SA-2019-4</td></tr>
+<tr><td>製造誤差（桿短了 \(\Delta\)）</td><td>硬把它接上所需的初始張力 \(T_0=\dfrac{EA}{L}\Delta\)</td><td>SA-2011-4</td></tr>
+<tr><td>溫度變化、支承沉陷</td><td>同上，先算「不准它動」需要多大的力</td><td>（本單元未直接考，但邏輯完全相同）</td></tr>
+</tbody>
+</table>
+
+<div class="trap"><b>SA-2011-4 的兩個高危陷阱（官方標紅）：</b><br>
+① <b>方向搞反：</b>AC 桿短了 0.02 m，要硬拉才能接上 → 桿處於<b>受拉</b>狀態 → 它對節點 A 的作用是「把 A 拉向 C」。等效節點載重是這個力的<b>反號</b>。想清楚「誰拉誰」再下筆。<br>
+② <b>回算漏掉初始力：</b>解出的位移只是「釋放」過程的改變量，真實內力 \(=T_0+\frac{EA}{L}e\)。漏掉 \(T_0\)，AC 桿的答案會錯得離譜。<br>
+記憶錨點：<b>凡是狀態 I 有力，狀態 III 就要加回去。</b></div>
+
+<div class="why"><b>為什麼一端鉸接的固端彎矩是 \(wL^2/8\) 而不是 \(wL^2/12\)？</b>
+\(wL^2/12\) 是兩端都不准轉的結果；一端放開後，那一端的彎矩必須為 0，它「釋放」的彎矩會有一半傳到固定端（傳遞係數 1/2），所以固定端變成 \(wL^2/12+\frac{1}{2}\cdot wL^2/12 = wL^2/8\)。<br>
+極限檢查：兩端都放開 → 簡支梁，兩端彎矩 0，跨中 \(wL^2/8\) ✔ 三個數字（\(1/12\)、\(1/8\)、\(1/8\)）不是三條公式，是同一根梁在三種約束下的三種分配。</div>
+</section>
+
+<section id="s7">
+<h2>§7　降維三招：把 6×6 變成 2×2 的合法作弊</h2>
+
+<p class="lead">考場上手算 4×4 以上的矩陣求逆幾乎必錯。出題者其實都留了降維的門，而這三招背後<b>其實是同一件事</b>：把「沒有外力作用的自由度」消掉。</p>
+
+<h3>第一招：靜態凝縮（Static Condensation）—— 其他兩招的母體</h3>
+
+<p>把自由度分成「要留的 a」與「要消的 b」，且 b 上<b>沒有外力</b>：</p>
+
+$$\begin{bmatrix}K_{aa}&K_{ab}\\K_{ba}&K_{bb}\end{bmatrix}\begin{Bmatrix}D_a\\D_b\end{Bmatrix}=\begin{Bmatrix}P_a\\ \mathbf{0}\end{Bmatrix}
+\;\Longrightarrow\;
+\boxed{[K^*]=K_{aa}-K_{ab}K_{bb}^{-1}K_{ba}}$$
+
+<div class="why"><b>物理意義比公式重要：</b>\(D_b\) 上沒有外力，代表它會<b>自己滑到平衡位置</b>去，不需要你管它。既然它「讓步」了，結構對 \(D_a\) 的抵抗一定<b>變小</b>。<br>
+數學上，扣掉的那一項 \(K_{ab}K_{bb}^{-1}K_{ba}\) 恆為半正定 → <b>凝縮永遠讓勁度變小，絕不會變大</b>。<br>
+這一句話就是本節唯一要記的東西。算完發現凝縮後的勁度變大了，一定是符號錯。</div>
+
+<h3>第二招：修正勁度 \(3EI/L\) —— 其實就是最小的靜態凝縮</h3>
+
+<p>梁元素的轉角子矩陣是 \(\frac{EI}{L}\begin{bmatrix}4&2\\2&4\end{bmatrix}\)。遠端是鉸支承 → 遠端彎矩為 0 → 可以把 \(\theta_j\) 凝縮掉：</p>
+
+$$K^*=\frac{4EI}{L}-\frac{2EI}{L}\cdot\left(\frac{L}{4EI}\right)\cdot\frac{2EI}{L}=\frac{4EI}{L}-\frac{EI}{L}=\boxed{\frac{3EI}{L}}$$
+
+<p>同樣地，把梁元素平移－轉角的 2×2 子矩陣 \(\begin{bmatrix}12EI/L^3 & -6EI/L^2\\ -6EI/L^2 & 4EI/L\end{bmatrix}\) 中的轉角凝縮掉：</p>
+
+$$K^*=\frac{12EI}{L^3}-\frac{6EI}{L^2}\cdot\frac{L}{4EI}\cdot\frac{6EI}{L^2}=\frac{12EI}{L^3}-\frac{9EI}{L^3}=\boxed{\frac{3EI}{L^3}}$$
+
+<div class="tens"><b>所以你根本不用背「修正勁度表」。</b>看到「遠端是鉸／滾支承、該處沒有外加彎矩」，就把那個轉角凝縮掉，四則運算三十秒算出來。而且兩個結果都是 \(4\to3\)、\(12\to3\)，比例分別是 75% 與 25% —— 放開一個轉角，抗轉勁度掉 25%，抗側移勁度掉 75%。側移對「端部能不能轉」敏感得多，這也是為什麼柱頂鉸接的構架側向勁度會崩掉。</div>
+
+<div class="box"><b>三題用到修正勁度</b>
+<ul>
+<li><b>SA-2004-4：</b>CB 桿右端是滾支承 → 用 \(\frac{3(3EI)}{2L}\) 等，把 3×3 降成 2×2。同時固端彎矩要換成 \(wL_{CB}^2/8\)（§6）。</li>
+<li><b>SA-2019-4：</b>梁 DE 右端 E 是滾支承且題目沒給該處自由度 → \([k^{(5)}]=[3EI/L]\)，一個 1×1 元素。</li>
+<li><b>SA-2008-4：</b>C 點鉸支承。官方解<b>沒有</b>凝縮，而是老實把 \(\theta_C\) 列成自由度，解 2×2。<b>兩種都對</b>：列出來比較符合「標準矩陣法」的形式（本題要求矩陣法），凝縮則比較快。若題目沒指定，建議<b>列出來但在旁邊註明也可用 \(3EI/L\) 凝縮</b>，兩邊分數都拿。</li>
+</ul></div>
+
+<h3>第三招：對稱／反對稱</h3>
+
+<p>SA-2025-1（門型剛架）與 SA-2025-4（U 型格床）都靠這招把矩陣砍半：</p>
+
+<ul>
+<li><b>SA-2025-1：</b>幾何與側力使 \(\theta_B=\theta_C\)，3 個未知量剩 2 個關係式，直接解。</li>
+<li><b>SA-2025-4：</b>結構與載重對稱於中央面 → \(w_b=w_c\)、\(\theta_{xb}=-\theta_{xc}\)、\(\theta_{yb}=\theta_{yc}\)。原本 6×6（兩節點各 3 個自由度）降到只需處理節點 b 的 3 個，而且因為 \(\theta_{yb}=\theta_{yc}\)，bc 桿<b>沒有相對扭轉</b>，扭轉項又消掉一部分。</li>
+</ul>
+
+<div class="trap"><b>對稱要同時成立三件事才能用：</b>幾何對稱、勁度對稱、<b>載重也對稱</b>。SA-2018-2 就是反例：幾何看起來對稱，但支承是點對稱、載重是對稱的 → 破壞了鏡射對稱，側移不為零。<b>先確認對稱軸兩側是否互為鏡像，再談降維。</b></div>
+
+<h3>把三招串起來看：門型剛架的側向勁度光譜</h3>
+
+<div class="fig">
+<svg viewBox="0 0 700 400" xmlns="http://www.w3.org/2000/svg">
+<rect x="0" y="0" width="700" height="400" fill="#fff"/>
+<text x="350" y="24" font-size="13.5" font-weight="700" fill="#0d47a1" text-anchor="middle">門型剛架側向勁度 k 隨「梁／柱勁度比」變化</text>
+
+<!-- axes -->
+<line x1="80" y1="320" x2="660" y2="320" stroke="#607d8b" stroke-width="1.8"/>
+<line x1="80" y1="320" x2="80" y2="46" stroke="#607d8b" stroke-width="1.8"/>
+<text x="370" y="356" font-size="12" fill="#546e7a" text-anchor="middle">梁柱勁度比 b = EI(梁) / EI(柱)</text>
+<text x="26" y="190" font-size="12" fill="#546e7a" text-anchor="middle" transform="rotate(-90 26 190)">k ÷ (EI/L³)</text>
+
+<!-- ticks x -->
+<line x1="80" y1="320" x2="80" y2="326" stroke="#607d8b"/><text x="80" y="340" font-size="11" fill="#78909c" text-anchor="middle">0</text>
+<line x1="136" y1="320" x2="136" y2="326" stroke="#607d8b"/><text x="136" y="340" font-size="11" fill="#78909c" text-anchor="middle">1</text>
+<line x1="192" y1="320" x2="192" y2="326" stroke="#607d8b"/><text x="192" y="340" font-size="11" fill="#78909c" text-anchor="middle">2</text>
+<line x1="304" y1="320" x2="304" y2="326" stroke="#607d8b"/><text x="304" y="340" font-size="11" fill="#78909c" text-anchor="middle">4</text>
+<line x1="416" y1="320" x2="416" y2="326" stroke="#607d8b"/><text x="416" y="340" font-size="11" fill="#78909c" text-anchor="middle">6</text>
+<line x1="528" y1="320" x2="528" y2="326" stroke="#607d8b"/><text x="528" y="340" font-size="11" fill="#78909c" text-anchor="middle">8</text>
+<line x1="640" y1="320" x2="640" y2="326" stroke="#607d8b"/><text x="640" y="340" font-size="11" fill="#78909c" text-anchor="middle">10</text>
+
+<!-- ticks y -->
+<line x1="74" y1="257.7" x2="80" y2="257.7" stroke="#607d8b"/><text x="68" y="262" font-size="11" fill="#78909c" text-anchor="end">6</text>
+<line x1="74" y1="195.2" x2="80" y2="195.2" stroke="#607d8b"/><text x="68" y="199" font-size="11" fill="#78909c" text-anchor="end">12</text>
+<line x1="74" y1="145.5" x2="80" y2="145.5" stroke="#607d8b"/><text x="68" y="149" font-size="11" fill="#78909c" text-anchor="end">16.8</text>
+<line x1="74" y1="70.8" x2="80" y2="70.8" stroke="#607d8b"/><text x="68" y="75" font-size="11" fill="#78909c" text-anchor="end">24</text>
+
+<!-- asymptote -->
+<line x1="80" y1="70.8" x2="660" y2="70.8" stroke="#c62828" stroke-width="2" stroke-dasharray="7 5"/>
+<text x="590" y="62" font-size="11.5" fill="#c62828" text-anchor="middle">上限 24EI/L³（剪力棟架）</text>
+
+<!-- curve -->
+<polyline points="80,257.7 94,206.7 108,177.6 136,145.5 164,128.3 192,117.5 248,104.7 304,97.5 416,89.4 528,85.1 640,82.5"
+ fill="none" stroke="#1565c0" stroke-width="3.5"/>
+
+<!-- key points -->
+<circle cx="80" cy="257.7" r="5.5" fill="#2e7d32"/>
+<text x="98" y="278" font-size="11.5" fill="#2e7d32">b = 0：柱頂可自由轉 → 6EI/L³</text>
+<circle cx="136" cy="145.5" r="5.5" fill="#6a1b9a"/>
+<line x1="136" y1="145.5" x2="136" y2="320" stroke="#ce93d8" stroke-width="1.4" stroke-dasharray="4 4"/>
+<text x="152" y="132" font-size="11.5" font-weight="700" fill="#6a1b9a">SA-2025-1：b = 1 → 84EI/(5L³) = 16.8</text>
+
+<rect x="330" y="196" width="330" height="106" rx="9" fill="#f3e5f5" stroke="#ce93d8"/>
+<text x="495" y="218" font-size="12" font-weight="700" fill="#4a148c" text-anchor="middle">同一條曲線串起三個觀念</text>
+<text x="344" y="240" font-size="11.5" fill="#6a1b9a">• 上限 24：梁 EI=∞，節點不轉（剪力棟架假設）</text>
+<text x="344" y="259" font-size="11.5" fill="#6a1b9a">• 下限 6：梁 EI=0，每柱只剩 3EI/L³（修正勁度）</text>
+<text x="344" y="278" font-size="11.5" fill="#6a1b9a">• 中間值：靜態凝縮掉轉角後的結果，永遠低於 24</text>
+<text x="344" y="296" font-size="11.5" font-weight="700" fill="#4a148c">凝縮 = 讓步 = 變軟，方向永遠一致</text>
+</svg>
+<div class="cap">兩個端點都是「修正勁度」的特例，中間整條曲線是「靜態凝縮」的結果，而剪力棟架只是取上限的近似。三招其實是一招。曲線 \(k=\left(24-\dfrac{72}{4+6b}\right)\dfrac{EI}{L^3}\)，你可以自己代 \(b=0,1,\infty\) 驗證端點。</div>
+</div>
+</section>
+
+<section id="s8">
+<h2>§8　四種特殊元素的處理法</h2>
+
+<table>
+<thead><tr><th>元素</th><th>怎麼進矩陣</th><th>關鍵注意事項</th><th>考題</th></tr></thead>
+<tbody>
+<tr>
+<td><b>軸向彈簧支承</b></td>
+<td>直接把 \(k\) 加到<b>該位移自由度的對角線</b>上，沒有耦合項</td>
+<td>只有一端接結構、另一端接地時才是純對角線加項；若兩端都接結構，要用 \(\begin{bmatrix}k&-k\\-k&k\end{bmatrix}\)</td>
+<td>SA-2004-4</td>
+</tr>
+<tr>
+<td><b>旋轉（抗扭）彈簧</b></td>
+<td>當成獨立元素，\(\begin{bmatrix}k_\theta&-k_\theta\\-k_\theta&k_\theta\end{bmatrix}\)，接兩個轉角自由度</td>
+<td>必須先把節點拆成兩個轉角（§2），否則彈簧無處可接</td>
+<td>SA-2015-4、SA-2019-4</td>
+</tr>
+<tr>
+<td><b>剛性桿 \(EI=\infty\)</b></td>
+<td>不建元素矩陣；改寫成<b>主從自由度的幾何關係</b>，把從屬位移用主自由度表示</td>
+<td>轉角<b>與</b>位移都要傳遞（\(v=\theta\times\)力臂）；再用剛性桿的靜力平衡把力轉到主自由度</td>
+<td>SA-2012-4、SA-2022-4</td>
+</tr>
+<tr>
+<td><b>格床元素（Grid）</b></td>
+<td>每節點 3 個自由度：\(w\)（面外位移）、\(\theta_x\)、\(\theta_y\)；元素同時提供彎曲（\(12EI/L^3\)、\(4EI/L\)）與扭轉（\(GJ/L\)）</td>
+<td>沿桿軸的轉角 = 扭轉；垂直桿軸的轉角 = 彎曲。<b>相鄰兩根互相垂直的桿，一根的彎曲對應另一根的扭轉</b></td>
+<td>SA-2025-4</td>
+</tr>
+</tbody>
+</table>
+
+<div class="fig">
+<svg viewBox="0 0 700 290" xmlns="http://www.w3.org/2000/svg">
+<rect x="0" y="0" width="700" height="290" fill="#fff"/>
+<text x="350" y="24" font-size="13.5" font-weight="700" fill="#0d47a1" text-anchor="middle">格床（Grid）的關鍵：同一個轉角，對兩根桿是不同的變形</text>
+<defs><marker id="ak" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+<path d="M0,0 L7,3 L0,6 z" fill="#6a1b9a"/></marker></defs>
+
+<!-- L shape in plan -->
+<line x1="150" y1="200" x2="330" y2="200" stroke="#37474f" stroke-width="6"/>
+<line x1="330" y1="200" x2="330" y2="80" stroke="#37474f" stroke-width="6"/>
+<circle cx="330" cy="200" r="8" fill="#1565c0"/>
+<text x="342" y="222" font-size="13" font-weight="700" fill="#0d47a1">節點 b</text>
+<text x="230" y="226" font-size="12" fill="#546e7a" text-anchor="middle">ab 桿（沿 x）</text>
+<text x="356" y="140" font-size="12" fill="#546e7a">bc 桿（沿 y）</text>
+
+<!-- rotation about x arrow -->
+<path d="M290 178 A 46 46 0 0 1 290 222" stroke="#6a1b9a" stroke-width="2.6" fill="none" marker-end="url(#ak)"/>
+<text x="222" y="164" font-size="12" font-weight="700" fill="#6a1b9a">節點繞 x 軸轉 θx</text>
+
+<rect x="400" y="66" width="288" height="86" rx="9" fill="#f3e5f5" stroke="#ce93d8"/>
+<text x="414" y="90" font-size="12" fill="#4a148c">對 ab 桿（桿軸 = x）：這是<tspan font-weight="700">扭轉</tspan></text>
+<text x="430" y="110" font-size="12.5" font-weight="700" fill="#6a1b9a">勁度 GJ / L，實心圓 J = 2I</text>
+<text x="414" y="134" font-size="12" fill="#4a148c">對 bc 桿（桿軸 = y）：這是<tspan font-weight="700">彎曲</tspan></text>
+
+<rect x="400" y="166" width="288" height="102" rx="9" fill="#e8f5e9" stroke="#a5d6a7"/>
+<text x="414" y="190" font-size="12" fill="#1b5e20">同一節點的 θy 則剛好相反：</text>
+<text x="430" y="210" font-size="12.5" fill="#1b5e20">ab 桿 → 彎曲　bc 桿 → 扭轉</text>
+<text x="414" y="236" font-size="12" font-weight="700" fill="#1b5e20">所以組裝時「彎曲與扭轉會加在同一格」</text>
+<text x="414" y="256" font-size="11.5" fill="#2e7d32">→ 這就是為什麼一定要先把 J 換成 2I 才合得起來</text>
+</svg>
+<div class="cap">格床題唯一的新東西：轉角對「和它平行的桿」是扭轉、對「和它垂直的桿」是彎曲。把這句話寫在草稿紙上，SA-2025-4 的組裝就不會亂。</div>
+</div>
+</section>
+
+<section id="s9">
+<h2>§9　回代：內力等於「鎖住時的力」加上「放開後的力」</h2>
+
+$$\{f\}=[k]\{d\}+\{f_F\}$$
+
+<p class="lead">這條式子的兩項各有身分：\(\{f_F\}\) 是 §6 狀態 I（節點鎖住）的固端力，\([k]\{d\}\) 是狀態 II（節點放開）新增的部分。少了前者，跨間載重的效應就整個消失。</p>
+
+<div class="trap"><b>符號慣例的正負號問題（本單元最常見的扣分點）。</b>有些教材寫 \(\{f\}=[k]\{d\}-\{f_F\}\)，有些寫 \(+\)，差別只在 \(\{f_F\}\) 定義的是「固端<b>力</b>」還是「固端<b>反力</b>」。<br>
+<b>不要去記哪個版本，去做物理檢查：</b>算完後拿一根桿畫自由體圖，把兩端彎矩與跨間載重放上去，檢查 \(\sum M=0\)、\(\sum F=0\)。對得起來就是對的。SA-2008-4 要求畫彎矩圖，這個檢查等於免費送你答案。</div>
+
+<h3>回代之後還沒結束的三件事</h3>
+
+<ol>
+<li><b>跨間最大彎矩不在跨中。</b>SA-2008-4 明確要求標出局部極值。均佈載重跨的最大彎矩在<b>剪力為零</b>處，先由端彎矩反算端剪力，再解 \(V(x)=0\)。兩端彎矩不相等時，那個位置一定偏離跨中。</li>
+<li><b>支承反力要用整體平衡驗算。</b>SA-2025-4 要求求 a、d 兩支承反力 —— 算完後把所有反力與外力加總，\(\sum F_z=0\) 必須成立。這是<b>唯一一個完全獨立於矩陣的檢查</b>，一定要做。</li>
+<li><b>桁架軸力的拉壓符號。</b>用 §4 的公式，\(c,s\) 必須和「位移差的方向」一致，正值為拉。寫答案時直接標「(T)」或「(C)」，不要只留一個數字。</li>
+</ol>
+
+<div class="why"><b>一個免費的整體檢查：能量。</b>解完後，外力作的功 \(\frac{1}{2}\{P\}^T\{D\}\) 必須為<b>正</b>。如果算出負值，代表位移方向和力方向相反 —— 除非結構真的很怪，否則就是解錯了。這個檢查花五秒，但能攔下大部分的符號錯誤。</div>
+</section>
+
+<section id="s10">
+<h2>§10　完整手算：門型剛架的側向勁度（SA-2025-1）</h2>
+
+<p class="lead">一層樓單跨剛架，兩柱底固定，梁柱皆 \(EI\)、長度皆 \(L\)，忽略軸向變形。求對應側力 \(P\) 的側向勁度。<b>這題把 §1～§7 全部用上一遍</b>，是本單元最好的一題示範。</p>
+
+<div class="fig">
+<svg viewBox="0 0 720 300" xmlns="http://www.w3.org/2000/svg">
+<rect x="0" y="0" width="720" height="300" fill="#fff"/>
+<defs><marker id="ar2" markerWidth="9" markerHeight="9" refX="7" refY="3.2" orient="auto">
+<path d="M0,0 L8,3.2 L0,6.4 z" fill="#c62828"/></marker>
+<marker id="ar3" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+<path d="M0,0 L7,3 L0,6 z" fill="#6a1b9a"/></marker></defs>
+
+<!-- frame -->
+<line x1="150" y1="80" x2="390" y2="80" stroke="#37474f" stroke-width="6"/>
+<line x1="150" y1="80" x2="150" y2="240" stroke="#37474f" stroke-width="6"/>
+<line x1="390" y1="80" x2="390" y2="240" stroke="#37474f" stroke-width="6"/>
+<rect x="122" y="240" width="56" height="14" fill="#78909c"/>
+<rect x="362" y="240" width="56" height="14" fill="#78909c"/>
+<line x1="118" y1="254" x2="182" y2="254" stroke="#546e7a" stroke-width="3"/>
+<line x1="358" y1="254" x2="422" y2="254" stroke="#546e7a" stroke-width="3"/>
+<text x="140" y="272" font-size="13" fill="#37474f">A</text>
+<text x="398" y="272" font-size="13" fill="#37474f">D</text>
+<text x="132" y="72" font-size="13" fill="#37474f">B</text>
+<text x="398" y="72" font-size="13" fill="#37474f">C</text>
+<text x="270" y="68" font-size="12" fill="#546e7a" text-anchor="middle">梁 BC：EI, L</text>
+<text x="104" y="164" font-size="12" fill="#546e7a" text-anchor="middle" transform="rotate(-90 104 164)">柱 AB：EI, L</text>
+
+<!-- load -->
+<line x1="96" y1="80" x2="142" y2="80" stroke="#c62828" stroke-width="3" marker-end="url(#ar2)"/>
+<text x="86" y="76" font-size="14" font-weight="700" fill="#c62828" text-anchor="end">P</text>
+
+<!-- DOF markers -->
+<path d="M136 62 A 20 20 0 0 1 164 62" stroke="#6a1b9a" stroke-width="2.4" fill="none" marker-end="url(#ar3)"/>
+<text x="150" y="46" font-size="12.5" font-weight="700" fill="#6a1b9a" text-anchor="middle">θB</text>
+<path d="M376 62 A 20 20 0 0 1 404 62" stroke="#6a1b9a" stroke-width="2.4" fill="none" marker-end="url(#ar3)"/>
+<text x="390" y="46" font-size="12.5" font-weight="700" fill="#6a1b9a" text-anchor="middle">θC</text>
+<line x1="410" y1="104" x2="450" y2="104" stroke="#6a1b9a" stroke-width="2.4" marker-end="url(#ar3)"/>
+<text x="462" y="108" font-size="12.5" font-weight="700" fill="#6a1b9a">Δ（B、C 共用）</text>
+
+<rect x="470" y="150" width="238" height="118" rx="9" fill="#e8f5e9" stroke="#a5d6a7"/>
+<text x="589" y="172" font-size="12.5" font-weight="700" fill="#1b5e20" text-anchor="middle">自由度盤點（§2）</text>
+<text x="482" y="194" font-size="11.5" fill="#1b5e20">柱不縮短 → vB = vC = 0</text>
+<text x="482" y="214" font-size="11.5" fill="#1b5e20">梁不伸長 → uB = uC ≡ Δ</text>
+<text x="482" y="234" font-size="11.5" fill="#1b5e20">A、D 固定 → 該處全束制</text>
+<text x="482" y="256" font-size="12" font-weight="700" fill="#1b5e20">剩 3 個：θB, θC, Δ</text>
+</svg>
+<div class="cap">先把自由度盤點寫清楚，這是本題最先被改卷者看的地方。忽略軸向變形讓 \(u_B\) 與 \(u_C\) 合併成單一個 \(\Delta\)。</div>
+</div>
+
+<h3>Step 1　三場單位位移實驗，組出 \([K]\)</h3>
+
+<table>
+<thead><tr><th>實驗</th><th>誰出力</th><th>得到的係數</th></tr></thead>
+<tbody>
+<tr><td>\(\theta_B=1\)</td><td>柱 AB 給 \(4EI/L\)、梁 BC 給 \(4EI/L\)；梁另一端拿到 \(2EI/L\)；柱身產生剪力 \(6EI/L^2\)（要施力才能維持 \(\Delta=0\)）</td><td>\(K_{11}=\frac{8EI}{L},\;K_{21}=\frac{2EI}{L},\;K_{31}=-\frac{6EI}{L^2}\)</td></tr>
+<tr><td>\(\theta_C=1\)</td><td>與上一列鏡像</td><td>\(K_{12}=\frac{2EI}{L},\;K_{22}=\frac{8EI}{L},\;K_{32}=-\frac{6EI}{L^2}\)</td></tr>
+<tr><td>\(\Delta=1\)</td><td>兩根柱各產生弦角 \(\psi=1/L\)，各出剪力 \(12EI/L^3\)、端彎矩 \(6EI/L^2\)；<b>梁沒有弦角</b>（B、C 無垂直位移差）故不參與</td><td>\(K_{33}=\frac{24EI}{L^3},\;K_{13}=K_{23}=-\frac{6EI}{L^2}\)</td></tr>
+</tbody>
+</table>
+
+$$[K]=\begin{bmatrix}\dfrac{8EI}{L} & \dfrac{2EI}{L} & -\dfrac{6EI}{L^2}\\[4pt]
+\dfrac{2EI}{L} & \dfrac{8EI}{L} & -\dfrac{6EI}{L^2}\\[4pt]
+-\dfrac{6EI}{L^2} & -\dfrac{6EI}{L^2} & \dfrac{24EI}{L^3}\end{bmatrix},\qquad
+\{F\}=\begin{Bmatrix}0\\0\\P\end{Bmatrix}$$
+
+<div class="trap"><b>最常見的錯：以為梁 BC 也有弦角。</b>弦角是「兩端<b>垂直於桿軸</b>的相對位移 ÷ 桿長」。梁是水平的，兩端的垂直位移都是 0（柱不縮短），所以 \(\psi_{BC}=0\)。只有兩根<b>柱</b>有 \(\psi=\Delta/L\)。畫一張變形圖就能避免這個錯。</div>
+
+<h3>Step 2　用對稱性解（考場首選）</h3>
+
+<p>結構與 \(\Delta\) 都對稱 → \(\theta_B=\theta_C\equiv\theta\)。取第一列：</p>
+
+$$\frac{8EI}{L}\theta+\frac{2EI}{L}\theta-\frac{6EI}{L^2}\Delta=0
+\;\Longrightarrow\;\frac{10EI}{L}\theta=\frac{6EI}{L^2}\Delta
+\;\Longrightarrow\;\boxed{\theta=\frac{3\Delta}{5L}}$$
+
+<p>代入第三列：</p>
+
+$$-\frac{6EI}{L^2}(2\theta)+\frac{24EI}{L^3}\Delta=P
+\;\Longrightarrow\;-\frac{12EI}{L^2}\cdot\frac{3\Delta}{5L}+\frac{24EI}{L^3}\Delta=P$$
+
+$$\left(24-\frac{36}{5}\right)\frac{EI\Delta}{L^3}=P
+\;\Longrightarrow\;\boxed{k=\frac{P}{\Delta}=\frac{84EI}{5L^3}=16.8\frac{EI}{L^3}}$$
+
+<h3>Step 3　用靜態凝縮再算一次（自我檢查）</h3>
+
+<p>留下 \(\Delta\)、消去 \(\{\theta_B,\theta_C\}\)（這兩個自由度上沒有外加彎矩）：</p>
+
+$$K_{aa}=\frac{EI}{L}\begin{bmatrix}8&2\\2&8\end{bmatrix},\quad
+K_{aa}^{-1}=\frac{L}{60EI}\begin{bmatrix}8&-2\\-2&8\end{bmatrix},\quad
+K_{a3}=-\frac{6EI}{L^2}\begin{Bmatrix}1\\1\end{Bmatrix}$$
+
+$$K_{3a}K_{aa}^{-1}K_{a3}=\frac{36E^2I^2}{L^4}\cdot\frac{L}{60EI}\cdot(8-2-2+8)=\frac{36\times12}{60}\cdot\frac{EI}{L^3}=7.2\frac{EI}{L^3}$$
+
+$$k=K_{33}-7.2\frac{EI}{L^3}=24\frac{EI}{L^3}-7.2\frac{EI}{L^3}=16.8\frac{EI}{L^3}\;\checkmark$$
+
+<div class="tens"><b>兩條路殊途同歸，而且順便驗證了 §7 的結論：</b>凝縮讓側向勁度從 \(24EI/L^3\) 掉到 \(16.8EI/L^3\)，<b>變小了 30%</b>。方向正確。若你算出來比 24 大，立刻知道錯了 —— 這就是「不必背也能自檢」的價值。</div>
+
+<div class="box"><b>三個獨立的合理性檢查（考場上花不到一分鐘）</b>
+<ol>
+<li><b>量綱：</b>\(EI/L^3\) 的單位是「力／長度」＝勁度 ✔</li>
+<li><b>上下界：</b>\(6\le k L^3/EI\le 24\)。梁無限硬時 \(24\)（節點不轉，剪力棟架）、梁無限軟時 \(6\)（每柱只剩 \(3EI/L^3\)）。16.8 落在中間 ✔</li>
+<li><b>轉角合理性：</b>\(\theta=0.6\Delta/L\)。若梁無限硬，\(\theta\) 應該趨近 0；若梁無限軟，\(\theta\) 應趨近弦角 \(\Delta/L\)。0.6 介於 0 和 1 之間 ✔</li>
+</ol></div>
+
+<h3>對照組：桁架題的標準流程（SA-2010-4 型）</h3>
+
+<div class="box">
+<ol>
+<li><b>建座標</b>：把每個節點的 \((x,y)\) 寫出來，算各桿 \(L\)、\(c=\Delta x/L\)、\(s=\Delta y/L\)。<b>用表格排</b>，不要散在算式裡。</li>
+<li><b>逐桿算貢獻</b>：\(\frac{EA}{L}\begin{bmatrix}c^2&cs\\cs&s^2\end{bmatrix}\)，標明它接到哪幾個自由度編號。</li>
+<li><b>疊加</b>成 \([K]\)。若交叉項意外抵消 → 很可能是出題者的設計（SA-2010-4），順著算下去。</li>
+<li><b>解</b> \(\{D\}=[K]^{-1}\{P\}\)。2×2 直接用 \(\frac{1}{\det}\begin{bmatrix}d&-b\\-c&a\end{bmatrix}\)。</li>
+<li><b>回代</b> \(N=\frac{EA}{L}[c(u_j-u_i)+s(v_j-v_i)]\)，標 (T)/(C)。</li>
+<li><b>驗算</b>：拿自由節點做 \(\sum F_x=0,\;\sum F_y=0\)，用求得的軸力對外力 —— 這是完全獨立的檢查。</li>
+</ol>
+<b>單位陷阱（SA-2013-4）：</b>\(E=200\) GPa 與位移 mm 混用時，全程統一成 <b>kN、mm</b>：\(E=200\) kN/mm²、\(A=10^4\) mm² → \(EA=2\times10^6\) kN。長度也要換成 mm（14 m → 14000 mm）。忘了換會差好幾個數量級。
+</div>
+</section>
+
+<section id="s11">
+<h2>§11　解題決策流程</h2>
+
+<div class="fig">
+<svg viewBox="0 0 780 640" xmlns="http://www.w3.org/2000/svg">
+<rect x="0" y="0" width="780" height="640" fill="#fff"/>
+<defs><marker id="fb" markerWidth="9" markerHeight="9" refX="7" refY="3.2" orient="auto">
+<path d="M0,0 L8,3.2 L0,6.4 z" fill="#546e7a"/></marker></defs>
+
+<rect x="250" y="12" width="280" height="40" rx="8" fill="#e3f2fd" stroke="#1565c0" stroke-width="1.6"/>
+<text x="390" y="38" font-size="12.5" font-weight="700" fill="#0d47a1" text-anchor="middle">讀題：題目指定用矩陣法嗎？</text>
+<line x1="390" y1="52" x2="390" y2="70" stroke="#546e7a" stroke-width="1.6" marker-end="url(#fb)"/>
+
+<polygon points="390,72 566,104 390,136 214,104" fill="#fff3e0" stroke="#ef6c00" stroke-width="1.6"/>
+<text x="390" y="101" font-size="12" font-weight="700" fill="#e65100" text-anchor="middle">寫著「其他方法不予計分」？</text>
+<text x="390" y="119" font-size="11.5" fill="#ef6c00" text-anchor="middle">或「先寫出勁度矩陣」</text>
+<line x1="566" y1="104" x2="638" y2="104" stroke="#546e7a" stroke-width="1.6" marker-end="url(#fb)"/>
+<text x="602" y="96" font-size="11" fill="#546e7a" text-anchor="middle">是</text>
+<rect x="624" y="80" width="148" height="48" rx="7" fill="#ffebee" stroke="#ef5350"/>
+<text x="698" y="100" font-size="11.5" fill="#b71c1c" text-anchor="middle">全程用矩陣格式寫</text>
+<text x="698" y="118" font-size="11.5" fill="#b71c1c" text-anchor="middle">即使心算更快也要寫</text>
+<line x1="390" y1="136" x2="390" y2="156" stroke="#546e7a" stroke-width="1.6" marker-end="url(#fb)"/>
+
+<rect x="238" y="158" width="304" height="42" rx="8" fill="#e8f5e9" stroke="#2e7d32" stroke-width="1.6"/>
+<text x="390" y="177" font-size="12.5" font-weight="700" fill="#1b5e20" text-anchor="middle">① 自由度盤點（用 §2 流程圖）並編號</text>
+<text x="390" y="194" font-size="11.5" fill="#2e7d32" text-anchor="middle">畫結構圖、標箭頭、寫正向約定</text>
+<line x1="390" y1="200" x2="390" y2="218" stroke="#546e7a" stroke-width="1.6" marker-end="url(#fb)"/>
+
+<polygon points="390,220 560,250 390,280 220,250" fill="#fff3e0" stroke="#ef6c00" stroke-width="1.6"/>
+<text x="390" y="248" font-size="12" font-weight="700" fill="#e65100" text-anchor="middle">自由度 &gt; 3 個？</text>
+<text x="390" y="265" font-size="11.5" fill="#ef6c00" text-anchor="middle">手算求逆會很痛</text>
+<line x1="560" y1="250" x2="632" y2="250" stroke="#546e7a" stroke-width="1.6" marker-end="url(#fb)"/>
+<text x="596" y="242" font-size="11" fill="#546e7a" text-anchor="middle">是</text>
+<rect x="618" y="220" width="156" height="62" rx="7" fill="#f3e5f5" stroke="#ce93d8"/>
+<text x="696" y="240" font-size="11.5" fill="#4a148c" text-anchor="middle">找降維（§7）：</text>
+<text x="696" y="257" font-size="11.5" fill="#4a148c" text-anchor="middle">對稱？鉸端修正勁度？</text>
+<text x="696" y="274" font-size="11.5" fill="#4a148c" text-anchor="middle">靜態凝縮？</text>
+<line x1="390" y1="280" x2="390" y2="298" stroke="#546e7a" stroke-width="1.6" marker-end="url(#fb)"/>
+
+<rect x="238" y="300" width="304" height="42" rx="8" fill="#e8f5e9" stroke="#2e7d32" stroke-width="1.6"/>
+<text x="390" y="319" font-size="12.5" font-weight="700" fill="#1b5e20" text-anchor="middle">② 逐元素寫勁度矩陣，旁邊標自由度</text>
+<text x="390" y="336" font-size="11.5" fill="#2e7d32" text-anchor="middle">桁架用 c、s；剛架用單位位移實驗</text>
+<line x1="390" y1="342" x2="390" y2="360" stroke="#546e7a" stroke-width="1.6" marker-end="url(#fb)"/>
+
+<rect x="238" y="362" width="304" height="42" rx="8" fill="#e8f5e9" stroke="#2e7d32" stroke-width="1.6"/>
+<text x="390" y="381" font-size="12.5" font-weight="700" fill="#1b5e20" text-anchor="middle">③ 組裝 [K]，檢查對稱與對角線為正</text>
+<text x="390" y="398" font-size="11.5" fill="#2e7d32" text-anchor="middle">Kij = Kji 對不上就是這裡錯</text>
+<line x1="390" y1="404" x2="390" y2="422" stroke="#546e7a" stroke-width="1.6" marker-end="url(#fb)"/>
+
+<polygon points="390,424 580,456 390,488 200,456" fill="#fff3e0" stroke="#ef6c00" stroke-width="1.6"/>
+<text x="390" y="452" font-size="12" font-weight="700" fill="#e65100" text-anchor="middle">載重在節點上嗎？</text>
+<text x="390" y="470" font-size="11.5" fill="#ef6c00" text-anchor="middle">跨間載重／製造誤差／溫度</text>
+<line x1="580" y1="456" x2="640" y2="456" stroke="#546e7a" stroke-width="1.6" marker-end="url(#fb)"/>
+<text x="610" y="448" font-size="11" fill="#546e7a" text-anchor="middle">否</text>
+<rect x="626" y="428" width="150" height="58" rx="7" fill="#ffebee" stroke="#ef5350"/>
+<text x="701" y="448" font-size="11.5" fill="#b71c1c" text-anchor="middle">先算固端力 {f_F}</text>
+<text x="701" y="465" font-size="11.5" fill="#b71c1c" text-anchor="middle">反號成等效節點載重</text>
+<text x="701" y="481" font-size="11" fill="#c62828" text-anchor="middle">回代時要加回去！</text>
+<line x1="390" y1="488" x2="390" y2="506" stroke="#546e7a" stroke-width="1.6" marker-end="url(#fb)"/>
+
+<rect x="238" y="508" width="304" height="42" rx="8" fill="#e8f5e9" stroke="#2e7d32" stroke-width="1.6"/>
+<text x="390" y="527" font-size="12.5" font-weight="700" fill="#1b5e20" text-anchor="middle">④ 解 {D} = [K]⁻¹{P}，⑤ 回代求內力</text>
+<text x="390" y="544" font-size="11.5" fill="#2e7d32" text-anchor="middle">{f} = [k]{d} + {f_F}</text>
+<line x1="390" y1="550" x2="390" y2="568" stroke="#546e7a" stroke-width="1.6" marker-end="url(#fb)"/>
+
+<rect x="196" y="570" width="388" height="58" rx="8" fill="#f3e5f5" stroke="#6a1b9a" stroke-width="1.8"/>
+<text x="390" y="591" font-size="12.5" font-weight="700" fill="#4a148c" text-anchor="middle">⑥ 三個獨立驗算，一定要做</text>
+<text x="390" y="610" font-size="11.5" fill="#6a1b9a" text-anchor="middle">整體平衡（ΣF、ΣM）｜量綱｜極限值上下界</text>
+<text x="390" y="624" font-size="11" fill="#6a1b9a" text-anchor="middle">這三個都不依賴矩陣，可以抓出矩陣裡的錯</text>
+</svg>
+<div class="cap">流程圖裡三個菱形對應三個最容易失分的判斷：要不要照矩陣格式寫、要不要降維、載重在不在節點上。</div>
+</div>
+</section>
+
+<section id="s12">
+<h2>§12　歷屆題 × 觀念對照表</h2>
+
+<h3>主分類（12 題）</h3>
+
+<table>
+<thead><tr><th>題號</th><th>年</th><th>結構型式</th><th>真正在考的東西</th><th>先讀本講義</th></tr></thead>
+<tbody>
+<tr><td><a class="qlink" href="problems-view/SA-2004-4.html" target="_blank">SA-2004-4</a></td><td>2004</td><td>連續梁＋彈簧支承</td><td>修正勁度降維、彈簧疊加到對角線、\(wL^2/8\) 與 \(wL^2/12\) 的分辨</td><td>§6 §7 §8</td></tr>
+<tr><td><a class="qlink" href="problems-view/SA-2008-4.html" target="_blank">SA-2008-4</a></td><td>2008</td><td>L 型剛架（無側移）</td><td>標準組裝流程、固端力、剪力為零處的最大彎矩</td><td>§5 §6 §9</td></tr>
+<tr><td><a class="qlink" href="problems-view/SA-2010-4.html" target="_blank">SA-2010-4</a></td><td>2010</td><td>三桿桁架</td><td>方向餘弦、交叉項抵消的設計、拉壓符號</td><td>§4</td></tr>
+<tr><td><a class="qlink" href="problems-view/SA-2011-4.html" target="_blank">SA-2011-4</a></td><td>2011</td><td>三桿桁架＋製造誤差</td><td>非載重效應 → 等效節點載重；回代要加回初始力</td><td>§4 §6</td></tr>
+<tr><td><a class="qlink" href="problems-view/SA-2012-4.html" target="_blank">SA-2012-4</a></td><td>2012</td><td>含 \(EI=\infty\) 剛性桿的剛架</td><td>主從自由度、剛性桿的蹺蹺板效應（\(v_c=\theta\cdot r\)）、弦角</td><td>§2 §8</td></tr>
+<tr><td><a class="qlink" href="problems-view/SA-2013-4.html" target="_blank">SA-2013-4</a></td><td>2013</td><td>四桿桁架（3 自由度）</td><td>反向使用 \(\{P\}=[K]\{D\}\)、單位系統統一</td><td>§4 §10</td></tr>
+<tr><td><a class="qlink" href="problems-view/SA-2015-4.html" target="_blank">SA-2015-4</a></td><td>2015</td><td>剛架＋抗扭彈簧＋線性彈簧</td><td><b>自由度判定</b>；水平彈簧因兩端位移皆 0 而完全不出現</td><td>§2 §8</td></tr>
+<tr><td><a class="qlink" href="problems-view/SA-2018-2.html" target="_blank">SA-2018-2</a></td><td>2018</td><td>Z 型剛架（有側移）</td><td>側移自由度合併、\(K_{12}\) 與 \(K_{13}\) 符號一正一負、BMD</td><td>§2 §5 §9</td></tr>
+<tr><td><a class="qlink" href="problems-view/SA-2019-4.html" target="_blank">SA-2019-4</a></td><td>2019</td><td>剛架＋半剛性接頭</td><td>節點拆兩個轉角、彈簧當獨立元素、外伸端用 \(3EI/L\)</td><td>§2 §7 §8</td></tr>
+<tr><td><a class="qlink" href="problems-view/SA-2022-4.html" target="_blank">SA-2022-4</a></td><td>2022</td><td>三層樓剪力棟架</td><td>梁 \(EI=\infty\) 的自由度壓縮、挑高柱 \(k/8\)、樓層剪力平衡</td><td>§2</td></tr>
+<tr><td><a class="qlink" href="problems-view/SA-2025-1.html" target="_blank">SA-2025-1</a></td><td>2025</td><td>門型剛架</td><td>靜態凝縮求側向勁度、對稱降維（本講義 §10 全解）</td><td>§7 §10</td></tr>
+<tr><td><a class="qlink" href="problems-view/SA-2025-4.html" target="_blank">SA-2025-4</a></td><td>2025</td><td>U 型格床（Grid）</td><td>彎曲＋扭轉同時、\(J=2I\)、對稱把 6×6 砍成 3×3</td><td>§3 §7 §8</td></tr>
+</tbody>
+</table>
+
+<h3>副分類（3 題，主考點在別的子項但用得到本單元觀念）</h3>
+
+<table>
+<thead><tr><th>題號</th><th>年</th><th>與本單元的關聯</th></tr></thead>
+<tbody>
+<tr><td><a class="qlink" href="problems-view/SA-2007-2.html" target="_blank">SA-2007-2</a></td><td>2007</td><td>無側移剛架、修正傾角撓度法 —— 修正勁度 \(3EI/L\) 的另一個面貌（§7）</td></tr>
+<tr><td><a class="qlink" href="problems-view/SA-2007-4.html" target="_blank">SA-2007-4</a></td><td>2007</td><td>有側移剛架、側移方程式 —— 對照矩陣法如何「自動」把側移納入（§0）</td></tr>
+<tr><td><a class="qlink" href="problems-view/SA-2009-4.html" target="_blank">SA-2009-4</a></td><td>2009</td><td>桁架直接勁度法、位移求解與內力計算（§4）</td></tr>
+</tbody>
+</table>
+
+<div class="box"><b>出題節奏：</b>2004–2025 共 22 年，本子項出現 12 次主分類，約<b>兩年一題</b>。近年（2018 起）明顯偏向「非標準元素」：半剛性接頭（2019）、剪力棟架（2022）、格床（2025）。<b>標準桁架與標準剛架反而是 2013 以前的題型</b> —— 但那些是基本功，不練沒辦法應付變形題。</div>
+</section>
+
+<section id="s13">
+<h2>§13　把整個單元濃縮成五條因果鏈</h2>
+
+<p class="lead">下面五條要能用嘴巴一口氣講完。講不出來的那一條，回去看對應的節。</p>
+
+<div class="tens"><b>鏈 1｜勁度矩陣的來源</b><br>
+鎖住所有自由度 → 只放第 j 個動 1 單位 → 量各處反力 → 那一整欄就是 \([K]\) 的第 j 行 → 重複 n 次 → 由互易定理保證 \(K_{ij}=K_{ji}\) → 矩陣對稱、正定、可逆<br><span style="color:#546e7a;font-size:.9em">（§1）</span></div>
+
+<div class="tens"><b>鏈 2｜自由度為什麼會變少</b><br>
+忽略軸向變形 → 桿長不變 → 兩端沿桿方向位移相同 → 位移沿著桿件鏈式傳遞 → 多個節點的位移合併成一個 → 若梁再 \(EI=\infty\) 則節點連轉都不能轉 → 剪力棟架：每層只剩一個側移<br><span style="color:#546e7a;font-size:.9em">（§2）</span></div>
+
+<div class="tens"><b>鏈 3｜跨間載重為什麼要繞一圈</b><br>
+矩陣法只認識節點力 → 但實驗時節點是鎖住的 → 鎖住狀態下載重被關在桿內 → 產生固端力 → 節點上出現不平衡力 → 把它反號當作外力去解 → 解完的位移只是「放開」那一半 → <b>回代時必須把固端力加回去</b><br><span style="color:#546e7a;font-size:.9em">（§6 §9）</span></div>
+
+<div class="tens"><b>鏈 4｜降維為什麼一定讓結構變軟</b><br>
+被消掉的自由度上沒有外力 → 它會自己滑到平衡位置 → 等於對結構「讓步」 → 保留自由度感受到的抵抗變小 → 扣掉的 \(K_{ab}K_{bb}^{-1}K_{ba}\) 恆為半正定 → \(4EI/L\to3EI/L\)、\(12EI/L^3\to3EI/L^3\)、\(24EI/L^3\to16.8EI/L^3\) 全都變小<br><span style="color:#546e7a;font-size:.9em">（§7）</span></div>
+
+<div class="tens"><b>鏈 5｜桁架桿為什麼是秩 1</b><br>
+桿只沿自己的方向出力 → 位移要先投影到桿軸才算數 → 虎克定律給軸力 → 軸力再投影回 x、y → 兩次投影 → \(\frac{EA}{L}\begin{bmatrix}c^2&cs\\cs&s^2\end{bmatrix}\)，行列式恆為 0 → 一根桿撐不住一個節點 → 至少要兩根不共線 → 這就是幾何穩定性的矩陣版本<br><span style="color:#546e7a;font-size:.9em">（§4）</span></div>
+</section>
+
+<section id="s14">
+<h2>§14　陷阱總表（考前十分鐘掃這裡）</h2>
+
+<table>
+<thead><tr><th style="width:22%">觸發信號</th><th style="width:30%">錯誤思維</th><th style="width:36%">正確認知</th><th>出處</th></tr></thead>
+<tbody>
+<tr><td>題目寫「以其他方法計算不予計分」</td><td>反正答案一樣，用傾角變位法比較快</td><td>必須寫出自由度編號、元素矩陣、組裝、\([K]^{-1}\{P\}\)、回代。形式本身就是分數</td><td>2010-4、2011-4、2013-4、2018-2</td></tr>
+<tr><td>「忽略軸向變形」</td><td>只是說軸力可以不算</td><td>它是<b>幾何約束</b>：桿長不變 → 兩端沿桿方向位移相同 → 自由度合併或歸零</td><td>2015-4、2018-2、2022-4</td></tr>
+<tr><td>題目給了彈簧常數 \(k_s\)</td><td>給了就一定要用</td><td>先檢查彈簧兩端位移是否都是 0。SA-2015-4 的水平彈簧完全不出現在答案裡</td><td>2015-4</td></tr>
+<tr><td>看到 \(EI=\infty\) 的桿</td><td>把它當成很硬的普通元素</td><td>它不變形，但會<b>帶動</b>相鄰節點：轉角要傳、<b>垂直位移也要傳</b>（\(v=\theta\times\)力臂）</td><td>2012-4</td></tr>
+<tr><td>剛性桿旋轉</td><td>只傳遞轉角，弦角 \(\psi=0\)</td><td>蹺蹺板效應會讓另一端產生垂直位移，柔性桿因此有弦角，\(K_{22}\) 完全不同</td><td>2012-4</td></tr>
+<tr><td>剪力棟架、各樓層都有梁的圖</td><td>每層柱數相同，套同一個公式</td><td>看清楚哪一跨<b>沒有梁</b>；沒梁處的柱直通兩層，\(k=12EI/(2h)^3=k_{標準}/8\)</td><td>2022-4</td></tr>
+<tr><td>結構左右看起來對稱</td><td>直接用對稱簡化，令 \(\Delta=0\)</td><td>要確認是<b>鏡射</b>對稱不是點對稱，而且載重也對稱。SA-2018-2 是反對稱構架，\(u\neq0\)</td><td>2018-2</td></tr>
+<tr><td>兩根柱一個頂端固定、一個底端固定</td><td>側移耦合項 \(K_{12}\)、\(K_{13}\) 同號</td><td>頂底關係相反 → 端彎矩方向相反 → 兩個耦合項<b>一正一負</b></td><td>2018-2</td></tr>
+<tr><td>遠端是鉸／滾支承</td><td>照抄 \(4EI/L\)</td><td>用 \(3EI/L\)（或老實把該轉角列成自由度）。同時固端彎矩要改成 \(wL^2/8\)</td><td>2004-4、2019-4</td></tr>
+<tr><td>跨間有均佈載重或集中載重</td><td>只把節點上的外力寫進 \(\{P\}\)</td><td>必須先算固端力再反號。漏掉等於載重消失</td><td>2004-4、2008-4、2018-2、2019-4</td></tr>
+<tr><td>桿件有製造誤差／溫差／支承沉陷</td><td>不知道怎麼放進矩陣，跳過</td><td>與跨間載重同一招：鎖住 → 算初始力 → 反號當節點力 → <b>回代時加回初始力</b></td><td>2011-4</td></tr>
+<tr><td>製造誤差「桿短了 \(\Delta\)」</td><td>短了所以是壓力，方向往外推</td><td>硬拉才接得上 → 桿受<b>拉</b> → 把節點拉向對端。先想「誰拉誰」</td><td>2011-4</td></tr>
+<tr><td>半剛性接頭 / 抗扭彈簧</td><td>節點還是一個轉角自由度</td><td>拆成左右兩個轉角，彈簧當獨立元素 \(\begin{bmatrix}k&-k\\-k&k\end{bmatrix}\)。自由度<b>變多</b></td><td>2015-4、2019-4</td></tr>
+<tr><td>桁架桿的 \(c,s\)</td><td>方向隨便挑，反正會平方</td><td>組裝時無所謂，<b>回算軸力時必須與位移差同一組</b>，否則拉壓顛倒</td><td>2010-4、2013-4</td></tr>
+<tr><td>桁架交叉項算出來很醜、要解聯立</td><td>硬著頭皮解</td><td>先檢查 \(cs\) 的正負。出題者常故意讓它抵消成對角矩陣</td><td>2010-4</td></tr>
+<tr><td>\(E=200\) GPa、位移單位 mm</td><td>直接代入</td><td>全程統一 kN、mm：\(E=200\) kN/mm²，長度也換成 mm</td><td>2013-4</td></tr>
+<tr><td>實心圓桿、格床結構</td><td>把 \(J\) 留成符號或直接用 \(I\)</td><td>實心圓 \(J=I_x+I_y=2I\)。不換就沒辦法和彎曲項合併<b>（矩形／工型不適用此式）</b></td><td>2025-4</td></tr>
+<tr><td>格床的節點轉角</td><td>一律當成彎曲</td><td>轉角<b>平行</b>桿軸 → 扭轉 \(GJ/L\)；<b>垂直</b>桿軸 → 彎曲 \(4EI/L\)</td><td>2025-4</td></tr>
+<tr><td>題目只要求「勁度矩陣」不用解</td><td>省略自由度定義直接寫矩陣</td><td>矩陣的意義完全依附於自由度編號與正向約定。沒定義的矩陣等於沒有答案</td><td>2012-4、2015-4、2019-4</td></tr>
+<tr><td>算出 \(K_{ij}\neq K_{ji}\) 或對角線為負</td><td>再算一次應該就好</td><td>這是<b>符號慣例前後不一致</b>的鐵證，回去統一正向定義，不要盲目重算</td><td>通用</td></tr>
+<tr><td>算完就交卷</td><td>時間不夠，驗算算了</td><td>整體平衡（\(\sum F\)、\(\sum M\)）、量綱、上下界三個檢查完全獨立於矩陣，一分鐘內可完成</td><td>通用</td></tr>
+</tbody>
+</table>
+</section>
+
+<section id="s15">
+<h2>§15　自我檢測：12 個「為什麼」</h2>
+
+<p class="lead">先自己講一遍再展開。講不出來的直接回去看對應節次 —— 那就是你的破口。</p>
+
+<details><summary>1. 為什麼位移法（矩陣法）比力法更適合電腦？</summary>
+<p>力法要人為挑選「哪幾個是多餘力」，這個選擇沒有唯一解、無法程式化；位移法的未知量是自由度，是「數出來」的，規則完全機械化。此外位移在節點上是唯一值，力則是每根桿各一組。（§0）</p></details>
+
+<details><summary>2. \(K_{ij}\) 的定義是什麼？為什麼一定要「鎖住其他自由度」？</summary>
+<p>令第 j 個自由度位移為 1、其餘為 0 時，第 i 個自由度上必須施加的力。必須鎖住，是因為勁度是「阻抗」，阻抗大小取決於周圍的約束程度；不鎖住就沒有明確定義。這也是後面固端力必須存在的理由。（§1 §6）</p></details>
+
+<details><summary>3. 為什麼 \([K]\) 一定對稱？</summary>
+<p>Maxwell–Betti 互易定理：線彈性系統中，第一組力對第二組位移作的功等於第二組力對第一組位移作的功。手算完組裝一定要檢查這件事。（§1）</p></details>
+
+<details><summary>4. \(\det[K]=0\) 代表你算錯了嗎？</summary>
+<p>不一定。它代表結構在該組自由度下是<b>幾何不穩定</b>（機構），也可能是自由度取錯（例如漏了約束、或把不獨立的自由度列成獨立）。先檢查結構穩定性，再檢查自由度。（§1 §4）</p></details>
+
+<details><summary>5. \(12EI/L^3\)、\(6EI/L^2\)、\(4EI/L\)、\(2EI/L\) 分別是什麼實驗量到的？</summary>
+<p>前兩個來自「一端單位下沉、兩端不准轉」：需要的剪力 \(12EI/L^3\)、兩端要出的彎矩 \(6EI/L^2\)。後兩個來自「一端轉 1 弧度、不准移動」：近端 \(4EI/L\)、遠端 \(2EI/L\)（比值 1/2 就是傳遞係數）。（§3）</p></details>
+
+<details><summary>6. 為什麼桁架元素的勁度矩陣是 \(\frac{EA}{L}\begin{bmatrix}c^2&cs\\cs&s^2\end{bmatrix}\)，而不是別的形狀？</summary>
+<p>投影兩次：位移投影到桿軸得伸長 \(e=cu+sv\)，虎克定律給 \(N=(EA/L)e\)，軸力再投影回 x、y 得 \((cN,sN)\)。合起來就是 \((EA/L)\,\mathbf{n}\mathbf{n}^T\)，秩為 1。（§4）</p></details>
+
+<details><summary>7. 「忽略軸向變形」在自由度上到底做了什麼？</summary>
+<p>它是幾何約束：每根桿兩端沿桿軸方向的位移必須相同。這會沿著桿件鏈式傳遞，讓多個節點的位移合併或直接歸零。SA-2018-2 靠它把潛在的 5 個自由度壓成 3 個。（§2）</p></details>
+
+<details><summary>8. 為什麼跨間載重要先算固端力再反號？</summary>
+<p>因為勁度矩陣是在「節點全鎖」的狀態下量出來的。要把載重效應和矩陣放在同一個基準上，必須先算「鎖住時載重造成什麼」（固端力），再把節點上多出的不平衡力反號釋放。兩個狀態相加才是真實答案。（§6）</p></details>
+
+<details><summary>9. 為什麼回代時 \(\{f\}=[k]\{d\}+\{f_F\}\) 不能漏掉 \(\{f_F\}\)？</summary>
+<p>\([k]\{d\}\) 只是「放開」那一階段新增的內力，跨間載重的效應全部藏在 \(\{f_F\}\) 裡。漏掉它等於把載重從題目裡刪掉。SA-2011-4 的製造誤差是同樣道理。（§6 §9）</p></details>
+
+<details><summary>10. 為什麼靜態凝縮永遠讓勁度變小，而不是變大？</summary>
+<p>被消掉的自由度上沒有外力，它會自行移動到平衡位置 —— 這是對結構的「讓步」。數學上扣掉的 \(K_{ab}K_{bb}^{-1}K_{ba}\) 恆為半正定。\(4\to3\)、\(12\to3\)、\(24\to16.8\) 都是同一件事。（§7）</p></details>
+
+<details><summary>11. 門型剛架的側向勁度為什麼一定落在 \(6EI/L^3\) 與 \(24EI/L^3\) 之間？</summary>
+<p>上界是梁 \(EI\to\infty\)：節點完全不轉，每柱貢獻 \(12EI/L^3\)（剪力棟架假設）。下界是梁 \(EI\to0\)：柱頂可自由轉，每柱只剩 \(3EI/L^3\)。梁柱等勁度時為 \(84EI/(5L^3)=16.8EI/L^3\)。（§7 §10）</p></details>
+
+<details><summary>12. 為什麼實心圓桿的 \(J=2I\)，而工型鋼不能這樣算？</summary>
+<p>\(J=\int r^2dA=I_x+I_y\)（垂直軸定理）。實心圓對任何形心軸 \(I_x=I_y=I\)，故 \(J=2I\)。開口薄壁斷面（工型、槽型）扭轉時斷面會<b>翹曲</b>，實際扭轉常數遠小於 \(I_x+I_y\)，必須另查斷面表。（§3 §8）</p></details>
+</section>
+
+<section id="s16">
+<h2>★ §16　精選 5 題：時間只夠練五題就練這五題</h2>
+
+<p class="lead">選題標準不是「覆蓋率最高」，而是<b>一題能練到最多互相獨立的技能、彼此重疊最少</b>。下面五題涵蓋本子項 12 題主分類中的絕大多數判斷點。</p>
+
+<div class="box">
+<h3>① <a class="qlink" href="problems-view/SA-2025-1.html" target="_blank">SA-2025-1</a>（2025）門型剛架的側向勁度</h3>
+<p><b>為什麼選它：</b>計算量最小、觀念密度最高的一題。自由度盤點、單位位移實驗、組裝、對稱降維、靜態凝縮、上下界驗算，六件事全在同一題裡，而且答案是一個乾淨的數字可以自己驗。<b>投報率第一名。</b></p>
+<p><b>先讀：</b>§1 → §2 → §7 → §10（本講義 §10 已完整示範，練習時請蓋住答案自己重推一次）</p>
+<p><b>做完要能回答：</b>為什麼梁 BC 沒有弦角？為什麼凝縮後從 24 掉到 16.8 而不是變大？如果柱底改成鉸支承，答案會變成多少？</p>
+</div>
+
+<div class="box">
+<h3>② <a class="qlink" href="problems-view/SA-2015-4.html" target="_blank">SA-2015-4</a>（2015）剛架＋抗扭彈簧＋線性彈簧</h3>
+<p><b>為什麼選它：</b>本單元<b>自由度判定</b>的天花板，而且是唯一一題「題目給了一個參數但正確答案裡不會出現它」的題目。這種「假資訊」的判斷，是任何標準題練不到的。它同時練到半剛性接頭的節點拆分。</p>
+<p><b>先讀：</b>§2（整節）→ §8</p>
+<p><b>做完要能回答：</b>為什麼水平彈簧 \(k_s\) 不出現在 \([K]\) 裡？把「忽略軸向變形」這句話拿掉，自由度會變成幾個？「無垂直力傳遞」這句話在自由度上代表什麼？</p>
+</div>
+
+<div class="box">
+<h3>③ <a class="qlink" href="problems-view/SA-2018-2.html" target="_blank">SA-2018-2</a>（2018）Z 型剛架，有側移，求 BMD</h3>
+<p><b>為什麼選它：</b>最完整的一題「標準剛架矩陣題」：3 個自由度、側移合併、耦合項正負號、固端力、回代畫彎矩圖並標局部極值。做完這一題等於把 §2、§5、§6、§9 一次跑完，SA-2008-4 的技能被它包含。</p>
+<p><b>先讀：</b>§2 → §5 → §6 → §9</p>
+<p><b>做完要能回答：</b>為什麼 \(K_{12}\) 和 \(K_{13}\) 一正一負？為什麼「看起來對稱」的結構卻有側移？BC 跨的最大彎矩為什麼不在跨中？</p>
+</div>
+
+<div class="box">
+<h3>④ <a class="qlink" href="problems-view/SA-2013-4.html" target="_blank">SA-2013-4</a>（2013）四桿桁架，3 自由度，反求外力</h3>
+<p><b>為什麼選它：</b>桁架是本子項的最大宗（4 題），這一題是其中資訊量最大的：3 個自由度（不是簡單的 2 個）、四根桿、跨節點耦合項、單位換算陷阱，而且要<b>反過來</b>用 \(\{P\}=[K]\{D\}\)。反向使用能檢驗你是不是真的理解矩陣的意義，而不是只會按流程。</p>
+<p><b>先讀：</b>§4 → §10（桁架流程那段）</p>
+<p><b>做完要能回答：</b>BD 桿為什麼會同時貢獻到三個自由度？為什麼 \(K_{12}^{(BD)}\) 是 \(-c^2\) 而不是 \(+c^2\)？把單位改成 m 與 kN，哪些數字會變？</p>
+</div>
+
+<div class="box">
+<h3>⑤ <a class="qlink" href="problems-view/SA-2025-4.html" target="_blank">SA-2025-4</a>（2025）U 型格床結構</h3>
+<p><b>為什麼選它：</b>最新題型，也是唯一同時處理<b>彎曲與扭轉</b>的題目。它逼你自己建立座標與對稱條件（沒有現成的自由度編號可抄），這是別題練不到的前置能力。若不用對稱，6×6 手算幾乎不可能完成 —— 這一題等於在教「考場上怎麼避免自殺」。</p>
+<p><b>先讀：</b>§3（扭轉那段）→ §7（對稱）→ §8（格床圖）</p>
+<p><b>做完要能回答：</b>為什麼 \(J=2I\)？為什麼 \(\theta_{xb}=-\theta_{xc}\) 而 \(\theta_{yb}=+\theta_{yc}\)？為什麼 bc 桿沒有相對扭轉？如果桿件改成工型鋼，哪一步會失效？</p>
+</div>
+
+<h3>練這五題的正確方法</h3>
+
+<ol>
+<li><b>先蓋住解答，只寫到「自由度定義＋\([K]\) 的結構」為止</b>，然後對答案。如果自由度就錯了，後面不用練 —— 回去看 §2。</li>
+<li>第二輪才算完整數值。<b>算完先自己做三個驗算（平衡、量綱、上下界），再看答案。</b>自己抓到錯誤的價值，遠高於被解答告知錯誤。</li>
+<li>每題做完，在草稿紙上用一句話寫下「這題真正在考什麼」。五題五句話，就是你的考前小抄。</li>
+<li>解析裡的 <b>§3.5 變數層次分析</b> 是設計來標記卡關點的：第一次做完，在卡住的項目旁打 <code>⚠</code>；第二輪只看 <code>⚠</code>。</li>
+</ol>
+
+<h3>候補（時間還有的話，依序加）</h3>
+
+<ul>
+<li><b><a class="qlink" href="problems-view/SA-2011-4.html" target="_blank">SA-2011-4</a>（製造誤差）</b>：唯一練得到「非載重效應 → 等效節點載重 → 回代加回初始力」完整循環的題目。溫度與沉陷題若出現，靠的就是這條。</li>
+<li><b><a class="qlink" href="problems-view/SA-2022-4.html" target="_blank">SA-2022-4</a>（剪力棟架）</b>：計算很簡單，但「從圖面判讀出某跨沒有梁 → 挑高柱」這個動作只有這題練得到，而且它是耐震設計的入口觀念。</li>
+<li><b><a class="qlink" href="problems-view/SA-2012-4.html" target="_blank">SA-2012-4</a>（剛性桿）</b>：主從自由度與蹺蹺板效應，是本單元最抽象的一題。</li>
+</ul>
+
+<div class="trap"><b>誠實說明：這五題沒有涵蓋到的考點群</b>
+<ul>
+<li><b>剪力棟架與挑高柱</b>（SA-2022-4）—— 完全沒碰到，而且它是近年題型。強烈建議至少讀過本講義 §2 的剪力棟架段落並看一次解答。</li>
+<li><b>剛性桿 \(EI=\infty\) 的主從自由度</b>（SA-2012-4）—— 五題中沒有。這是「\(K_{22}\) 算不出來」型的失分點。</li>
+<li><b>製造誤差／初始應力</b>（SA-2011-4）—— 五題中沒有。若考溫度或支承沉陷會直接卡住。</li>
+<li><b>彈簧支承直接疊加對角線＋修正勁度組合</b>（SA-2004-4）—— §7 的觀念有講，但沒有練到完整手算。</li>
+</ul>
+換句話說：<b>練完這五題大約掌握本子項七成</b>。若時間允許，加上三題候補就接近完整。</div>
+</section>
+
+</main>
+<footer>
+SA-U2-4 觀念講義｜exam-wiki-SA｜資料來源：raw/solutions/ 各題解析與 wiki/methods、wiki/code-ref
+</footer>
+</body>
+</html>

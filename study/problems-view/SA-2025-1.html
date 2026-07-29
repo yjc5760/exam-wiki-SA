@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html lang="zh-Hant"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SA-2025-1 — 題目解析</title>
+<link rel="stylesheet" href="../assets/katex/katex.min.css">
+<script defer src="../assets/katex/katex.min.js"></script>
+<script defer src="../assets/katex/auto-render.min.js"
+  onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},
+  {left:'$',right:'$',display:false},{left:'\\(',right:'\\)',display:false}],throwOnError:false});"></script>
+<style>
+:root{--ac:#1565c0;--bg:#f7f9fb;--card:#fff;--ink:#263238;--mut:#607d8b;--bd:#dfe6ea}
+*{box-sizing:border-box}
+body{margin:0;font-family:"Microsoft JhengHei","Noto Sans TC",-apple-system,sans-serif;
+  background:var(--bg);color:var(--ink);line-height:1.75;font-size:15.5px}
+header{background:linear-gradient(135deg,#0d47a1,#1976d2 60%,#42a5f5);color:#fff;padding:22px 26px}
+header h1{margin:0;font-size:1.15em}
+header .back{display:inline-block;margin-top:10px;font-size:.82em;color:#fff;background:rgba(255,255,255,.18);
+  padding:4px 12px;border-radius:14px;text-decoration:none}
+main{max-width:880px;margin:0 auto;padding:26px 22px 70px}
+h1,h2,h3{color:#0d47a1} h2{font-size:1.2em;border-left:6px solid var(--ac);padding-left:12px;margin:34px 0 14px}
+table{width:100%;border-collapse:collapse;margin:14px 0;font-size:.92em;background:#fff}
+th,td{border:1px solid var(--bd);padding:7px 10px;text-align:left;vertical-align:top}
+th{background:#eceff1;font-weight:600} tbody tr:nth-child(even){background:#fafcfd}
+code{background:#eceff1;padding:1px 5px;border-radius:4px;font-size:.92em}
+img{max-width:100%;display:block;margin:14px auto;border:1px solid var(--bd);border-radius:8px}
+.katex-display{margin:12px 0!important;overflow-x:auto;overflow-y:hidden}
+footer{text-align:center;color:var(--mut);font-size:.8em;padding:22px;border-top:1px solid var(--bd)}
+</style></head><body>
+<header><h1>SA-2025-1 題目解析</h1><a class="back" href="javascript:history.back()">← 返回講義</a></header>
+<main><h1>考題編號：SA-2025-1</h1>
+<p><strong>主分類：</strong> <code>SA-U2-4</code> 靜不定結構之矩陣分析法<br />
+<strong>副分類：</strong> （無）<br />
+<strong>分析法：</strong> 矩陣位移法（Direct Stiffness Method）<br />
+<strong>標籤：</strong> <code>矩陣勁度法</code> <code>側向勁度</code> <code>門型剛構架</code> <code>固定端</code> <code>靜態凝縮</code> <code>忽略軸向變形</code>  </p>
+<hr />
+<h2>§1 題目重述</h2>
+<p>如圖1所示之一層樓單跨度剛構架（Rigid-jointed frame），梁及柱皆為垂直剛接，兩柱底為固定支承。梁柱之撓曲剛度均為 $EI$，長度均為 $L$。若忽略所有桿件之軸向變形，請推導對應側向作用力 $P$ 之<strong>側向勁度</strong>（提示：請先寫出結構之勁度矩陣）。（25 分）</p>
+<p><img alt="SA-2025-1 題目附圖：一層樓單跨剛構架，兩柱底固定支承，梁柱剛接，所有桿件 EI、L 相同，側向力 P 作用於節點" src="../../raw/solutions/SA-2025-1/SA-2025-1-fig-1.png" /></p>
+<p><em>圖說：門型剛構架。左柱底 A、右柱底 D 固定；頂部節點 B（左）、C（右）剛接連接水平梁 BC。所有桿件撓曲剛度 $EI$、長度 $L$。側向力 $P$ 作用於梁端（水平向右）。</em></p>
+<hr />
+<h2>§2 核心精神與出題者意圖</h2>
+<p><strong>核心觀念：</strong> 以矩陣位移法系統化建立結構勁度矩陣，再透過<strong>靜態凝縮（Static Condensation）</strong>消去旋轉自由度，直接得到側向勁度 $k_{lateral} = P/\Delta$。</p>
+<p><strong>出題者意圖：</strong></p>
+<ul>
+<li>測試能否在忽略軸向變形後，正確辨識有效自由度（三個：$\theta_B,\,\theta_C,\,\Delta$）</li>
+<li>測試勁度矩陣從構件局部矩陣到整體矩陣的系統化組裝能力</li>
+<li>題目提示「先寫出勁度矩陣」，不可僅用傾角變位法消去轉角後直接回答</li>
+<li>靜態凝縮是矩陣分析核心技術，考察是否掌握 Schur complement 公式</li>
+</ul>
+<hr />
+<h2>§3 解題戰略地圖</h2>
+<pre><code>忽略軸向變形
+    ↓
+辨識 DOF：θB、θC、Δ（3個）
+    ↓
+各構件局部勁度矩陣（2×2 自由端子矩陣）
+    ↓
+組裝 3×3 整體勁度矩陣 [K]
+    ↓
+建立方程組 [K]{d} = {F}（其中 F = {0, 0, P}）
+    ↓
+由對稱性知 θB = θC，解出 θ = 3Δ/(5L)
+    ↓
+代入第三行，求出 k = P/Δ = 84EI/(5L³)
+</code></pre>
+<p><strong>陷阱分析：</strong></p>
+<table>
+<thead>
+<tr>
+<th>陷阱</th>
+<th>說明</th>
+<th>應對</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>梁的弦轉角 $\psi_{BC}$</td>
+<td>梁 BC 水平，B、C 無垂直位移差（柱不縮短），故 $\psi_{BC}=0$</td>
+<td>只有兩根柱有 $\psi=\Delta/L$</td>
+</tr>
+<tr>
+<td>勁度矩陣 $K_{33}$ 符號</td>
+<td>柱頂側移產生的柱頂剪力與 $\Delta$ 方向相反（阻抗），$K_{33}$ 應為正</td>
+<td>$K_{33}=+24EI/L^3$</td>
+</tr>
+<tr>
+<td>靜態凝縮 vs. 直接代入</td>
+<td>兩種方式等效，本題用「代入轉角結果至第三方程」即可；大型結構需用凝縮公式</td>
+<td>本題代入法較簡潔</td>
+</tr>
+<tr>
+<td>DOF 順序對勁度矩陣的影響</td>
+<td>組裝時必須統一 DOF 對應關係，不可混用</td>
+<td>統一用 $\{\theta_B,\,\theta_C,\,\Delta\}$</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>§3.5 變數層次分析（Variable Hierarchy Analysis）</h2>
+<blockquote>
+<p>複習提示：第一次解題後在卡住處標記 <code>⚠</code>；複習時只看 <code>⚠</code> 項目。</p>
+</blockquote>
+<h3>最終目標</h3>
+<p>$$k_{lateral} = \frac{P}{\Delta} = \frac{84EI}{5L^3}$$</p>
+<p><strong>推導路徑：</strong> 矩陣位移法建立 $[K]_{3\times3}$ → 建立 $[K]\{d\}=\{F\}$ → 對稱性推出 $\theta_B=\theta_C$ → 代入求 $\Delta$ → 得 $k$</p>
+<hr />
+<h3>L1：題目直接給定</h3>
+<table>
+<thead>
+<tr>
+<th>符號</th>
+<th>數值</th>
+<th>說明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>$EI$</td>
+<td>$EI$（符號）</td>
+<td>所有桿件撓曲剛度均相同</td>
+</tr>
+<tr>
+<td>$L$</td>
+<td>$L$（符號）</td>
+<td>所有桿件長度均相同</td>
+</tr>
+<tr>
+<td>支承條件</td>
+<td>兩柱底固定支承</td>
+<td>A、D：$\theta=0,\;\delta_H=0,\;\delta_V=0$</td>
+</tr>
+<tr>
+<td>節點條件</td>
+<td>梁柱剛接</td>
+<td>B、C：梁柱連續，轉角相同</td>
+</tr>
+<tr>
+<td>外力</td>
+<td>側向力 $P$</td>
+<td>水平作用於節點（B 或 C）</td>
+</tr>
+<tr>
+<td>約束</td>
+<td>忽略軸向變形</td>
+<td>柱不縮短、梁不伸縮</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h3>L2：需知識點推導</h3>
+<p><strong>Step 1：自由度辨識</strong></p>
+<table>
+<thead>
+<tr>
+<th>符號</th>
+<th>推導依據</th>
+<th style="text-align: center;">卡關?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>$\theta_B$</td>
+<td>B 節點旋轉自由</td>
+<td style="text-align: center;"></td>
+</tr>
+<tr>
+<td>$\theta_C$</td>
+<td>C 節點旋轉自由</td>
+<td style="text-align: center;"></td>
+</tr>
+<tr>
+<td>$\Delta$</td>
+<td>B、C 水平位移相同（梁不伸縮）；垂直位移 = 0（柱不縮短）</td>
+<td style="text-align: center;"></td>
+</tr>
+<tr>
+<td>柱底 A、D</td>
+<td>全固定 → 不貢獻自由度</td>
+<td style="text-align: center;"></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Step 2：柱元素局部勁度（自由端子矩陣，DOF：$\theta_{top},\,\delta_{top}$）</strong></p>
+<p>基底固定端消去後，自由端 2×2 子矩陣：</p>
+<p>$$[\bar{k}]_{col} = \begin{bmatrix} \dfrac{4EI}{L} & -\dfrac{6EI}{L^2} \\[4pt] -\dfrac{6EI}{L^2} & \dfrac{12EI}{L^3} \end{bmatrix}$$</p>
+<table>
+<thead>
+<tr>
+<th>項目</th>
+<th>公式</th>
+<th>物理意義</th>
+<th style="text-align: center;">卡關?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>$k_{\theta\theta}$</td>
+<td>$4EI/L$</td>
+<td>施加單位旋轉所需彎矩</td>
+<td style="text-align: center;"></td>
+</tr>
+<tr>
+<td>$k_{\theta\delta}=k_{\delta\theta}$</td>
+<td>$-6EI/L^2$</td>
+<td>旋轉-側移耦合（負號：側移抑制旋轉）</td>
+<td style="text-align: center;"></td>
+</tr>
+<tr>
+<td>$k_{\delta\delta}$</td>
+<td>$12EI/L^3$</td>
+<td>施加單位側移所需剪力</td>
+<td style="text-align: center;"></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Step 3：梁元素局部勁度（DOF：$\theta_B,\,\theta_C$，無側移）</strong></p>
+<p>$$[\bar{k}]_{beam} = \frac{EI}{L}\begin{bmatrix} 4 & 2 \\ 2 & 4 \end{bmatrix}$$</p>
+<table>
+<thead>
+<tr>
+<th>項目</th>
+<th>公式</th>
+<th>物理意義</th>
+<th style="text-align: center;">卡關?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>近端剛度</td>
+<td>$4EI/L$</td>
+<td>遠端固定時施加單位旋轉所需彎矩</td>
+<td style="text-align: center;"></td>
+</tr>
+<tr>
+<td>遠端傳遞</td>
+<td>$2EI/L$</td>
+<td>近端旋轉在遠端產生的彎矩（傳遞率 1/2）</td>
+<td style="text-align: center;"></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Step 4：整體勁度矩陣組裝（DOF 順序：$\theta_B,\,\theta_C,\,\Delta$）</strong></p>
+<table>
+<thead>
+<tr>
+<th>位置</th>
+<th>貢獻構件</th>
+<th>數值</th>
+<th style="text-align: center;">卡關?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>$K_{11}$</td>
+<td>左柱 $4EI/L$ + 梁 $4EI/L$</td>
+<td>$8EI/L$</td>
+<td style="text-align: center;"></td>
+</tr>
+<tr>
+<td>$K_{12}=K_{21}$</td>
+<td>梁 $2EI/L$</td>
+<td>$2EI/L$</td>
+<td style="text-align: center;"></td>
+</tr>
+<tr>
+<td>$K_{13}=K_{31}$</td>
+<td>左柱 $-6EI/L^2$</td>
+<td>$-6EI/L^2$</td>
+<td style="text-align: center;"></td>
+</tr>
+<tr>
+<td>$K_{22}$</td>
+<td>右柱 $4EI/L$ + 梁 $4EI/L$</td>
+<td>$8EI/L$</td>
+<td style="text-align: center;"></td>
+</tr>
+<tr>
+<td>$K_{23}=K_{32}$</td>
+<td>右柱 $-6EI/L^2$</td>
+<td>$-6EI/L^2$</td>
+<td style="text-align: center;"></td>
+</tr>
+<tr>
+<td>$K_{33}$</td>
+<td>左柱 $12EI/L^3$ + 右柱 $12EI/L^3$</td>
+<td>$24EI/L^3$</td>
+<td style="text-align: center;"></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Step 5：對稱推論 $\theta_B = \theta_C$</strong></p>
+<table>
+<thead>
+<tr>
+<th>推論</th>
+<th>依據</th>
+<th style="text-align: center;">卡關?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>結構幾何對稱 + 荷載反對稱（側移）</td>
+<td>兩個旋轉方程對稱，故 $\theta_B=\theta_C=\theta$</td>
+<td style="text-align: center;"></td>
+</tr>
+<tr>
+<td>$\theta=3\Delta/(5L)$</td>
+<td>解方程 $10EI\theta/L = 6EI\Delta/L^2$</td>
+<td style="text-align: center;"></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h3>L3：深層知識（不懂就卡住）</h3>
+<table>
+<thead>
+<tr>
+<th>知識點</th>
+<th>說明</th>
+<th style="text-align: center;">卡關?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>「忽略軸向變形」對 DOF 的精確影響</td>
+<td>消去梁的相對側移差（B、C 同一 $\Delta$）；消去柱軸縮（B、C 無垂直位移）</td>
+<td style="text-align: center;"></td>
+</tr>
+<tr>
+<td>梁的弦轉角 $\psi_{BC}=0$</td>
+<td>僅柱有 $\psi=\Delta/L$，梁端無相對垂直位移</td>
+<td style="text-align: center;"></td>
+</tr>
+<tr>
+<td>4×4 梁元素矩陣的縮減方式</td>
+<td>固定端（位移=0）直接消去對應行列，剩餘子矩陣即為局部勁度</td>
+<td style="text-align: center;"></td>
+</tr>
+<tr>
+<td>整體矩陣組裝（direct stiffness assembly）</td>
+<td>局部 DOF 對應到整體 DOF 後，逐項疊加</td>
+<td style="text-align: center;"></td>
+</tr>
+<tr>
+<td>靜態凝縮公式（Schur complement）</td>
+<td>$k_{eff}=K_{33}-\{K_{31},K_{32}\}[K_{\theta\theta}]^{-1}\{K_{13};K_{23}\}$，與代入消元等效</td>
+<td style="text-align: center;"></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>§4 詳細計算過程</h2>
+<h3>4.1 自由度辨識</h3>
+<p>忽略所有桿件軸向變形：</p>
+<ul>
+<li><strong>柱 AB、DC</strong> 不縮短 → B、C 垂直位移 = 0</li>
+<li><strong>梁 BC</strong> 不伸縮 → B、C 水平位移相同，設為 $\Delta$</li>
+</ul>
+<p><strong>有效自由度（DOF）：</strong></p>
+<p>$$\{d\} = \{\theta_B,\;\theta_C,\;\Delta\}^T$$</p>
+<p>邊界條件：柱底 A、D 為固定端，三個自由度均為零（不貢獻 DOF）。</p>
+<hr />
+<h3>4.2 各構件局部勁度矩陣</h3>
+<p><strong>構件① 左柱 AB</strong>（A 固定，B 自由，垂直桿件，側向 = 水平方向）</p>
+<p>基底固定端消去後，自由端子矩陣（DOF 順序：$\theta_B,\,\Delta$）：</p>
+<p>$$[\bar{k}]_{AB} = \begin{bmatrix} \dfrac{4EI}{L} & -\dfrac{6EI}{L^2} \\[6pt] -\dfrac{6EI}{L^2} & \dfrac{12EI}{L^3} \end{bmatrix}$$</p>
+<p><strong>構件② 右柱 DC</strong>（D 固定，C 自由，垂直桿件，側向 = 水平方向）</p>
+<p>$$[\bar{k}]_{DC} = \begin{bmatrix} \dfrac{4EI}{L} & -\dfrac{6EI}{L^2} \\[6pt] -\dfrac{6EI}{L^2} & \dfrac{12EI}{L^3} \end{bmatrix} \quad \text{（DOF 順序：}\theta_C,\,\Delta\text{）}$$</p>
+<p><strong>構件③ 梁 BC</strong>（兩端無側移：$\psi_{BC}=0$，水平桿件，橫向 = 垂直方向）</p>
+<p>B、C 之垂直位移均為零（柱不縮短），梁無橫向端位移，故：</p>
+<p>$$[\bar{k}]_{BC} = \frac{EI}{L}\begin{bmatrix} 4 & 2 \\ 2 & 4 \end{bmatrix} \quad \text{（DOF 順序：}\theta_B,\,\theta_C\text{）}$$</p>
+<hr />
+<h3>4.3 整體勁度矩陣組裝</h3>
+<p>DOF 全域編號：1 = $\theta_B$，2 = $\theta_C$，3 = $\Delta$</p>
+<p>$$\boxed{[K] = \begin{bmatrix} \dfrac{8EI}{L} & \dfrac{2EI}{L} & -\dfrac{6EI}{L^2} \\[8pt] \dfrac{2EI}{L} & \dfrac{8EI}{L} & -\dfrac{6EI}{L^2} \\[8pt] -\dfrac{6EI}{L^2} & -\dfrac{6EI}{L^2} & \dfrac{24EI}{L^3} \end{bmatrix}}$$</p>
+<table>
+<thead>
+<tr>
+<th>位置</th>
+<th>貢獻</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>$K_{11}$</td>
+<td>$4EI/L_{\text{（左柱）}} + 4EI/L_{\text{（梁）}} = 8EI/L$</td>
+</tr>
+<tr>
+<td>$K_{12}=K_{21}$</td>
+<td>$2EI/L_{\text{（梁）}}$</td>
+</tr>
+<tr>
+<td>$K_{13}=K_{31}$</td>
+<td>$-6EI/L^2_{\text{（左柱）}}$</td>
+</tr>
+<tr>
+<td>$K_{22}$</td>
+<td>$4EI/L_{\text{（右柱）}} + 4EI/L_{\text{（梁）}} = 8EI/L$</td>
+</tr>
+<tr>
+<td>$K_{23}=K_{32}$</td>
+<td>$-6EI/L^2_{\text{（右柱）}}$</td>
+</tr>
+<tr>
+<td>$K_{33}$</td>
+<td>$12EI/L^3_{\text{（左柱）}} + 12EI/L^3_{\text{（右柱）}} = 24EI/L^3$</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h3>4.4 建立方程組</h3>
+<p>外力向量：$\{F\} = \{0,\;0,\;P\}^T$（B、C 節點無外部彎矩；$\Delta$ 方向施加 $P$）</p>
+<p>$$[K]\{d\} = \{F\}$$</p>
+<p>展開：</p>
+<p>$$\frac{8EI}{L}\,\theta_B + \frac{2EI}{L}\,\theta_C - \frac{6EI}{L^2}\,\Delta = 0 \qquad \cdots(1)$$</p>
+<p>$$\frac{2EI}{L}\,\theta_B + \frac{8EI}{L}\,\theta_C - \frac{6EI}{L^2}\,\Delta = 0 \qquad \cdots(2)$$</p>
+<p>$$-\frac{6EI}{L^2}\,\theta_B - \frac{6EI}{L^2}\,\theta_C + \frac{24EI}{L^3}\,\Delta = P \qquad \cdots(3)$$</p>
+<hr />
+<h3>4.5 求解旋轉自由度</h3>
+<p>方程 (1) 與 (2) 結構對稱，令 $\theta_B = \theta_C = \theta$，代入 (1)：</p>
+<p>$$\frac{8EI}{L}\,\theta + \frac{2EI}{L}\,\theta - \frac{6EI}{L^2}\,\Delta = 0$$</p>
+<p>$$\frac{10EI}{L}\,\theta = \frac{6EI}{L^2}\,\Delta$$</p>
+<p>$$\therefore\;\theta_B = \theta_C = \frac{3\Delta}{5L} \qquad \cdots(4)$$</p>
+<hr />
+<h3>4.6 求側向勁度</h3>
+<p>將 (4) 代入方程 (3)：</p>
+<p>$$-\frac{6EI}{L^2}\cdot\frac{3\Delta}{5L} - \frac{6EI}{L^2}\cdot\frac{3\Delta}{5L} + \frac{24EI}{L^3}\,\Delta = P$$</p>
+<p>$$-\frac{18EI}{5L^3}\,\Delta - \frac{18EI}{5L^3}\,\Delta + \frac{24EI}{L^3}\,\Delta = P$$</p>
+<p>$$\frac{EI\,\Delta}{L^3}\!\left(-\frac{18}{5} - \frac{18}{5} + 24\right) = P$$</p>
+<p>$$\frac{EI\,\Delta}{L^3}\!\left(-\frac{36}{5} + \frac{120}{5}\right) = P$$</p>
+<p>$$\frac{84\,EI}{5L^3}\,\Delta = P$$</p>
+<p>$$\therefore\;\boxed{k_{lateral} = \frac{P}{\Delta} = \frac{84EI}{5L^3}}$$</p>
+<hr />
+<h3>4.7 驗算：靜態凝縮公式（Schur Complement）</h3>
+<p>$$k_{eff} = K_{33} - \begin{bmatrix} K_{31} & K_{32} \end{bmatrix} [K_{\theta\theta}]^{-1} \begin{bmatrix} K_{13} \\ K_{23} \end{bmatrix}$$</p>
+<p>其中：</p>
+<p>$$[K_{\theta\theta}] = \frac{EI}{L}\begin{bmatrix} 8 & 2 \\ 2 & 8 \end{bmatrix},\qquad \det = \frac{(EI)^2}{L^2}(64-4) = \frac{60(EI)^2}{L^2}$$</p>
+<p>$$[K_{\theta\theta}]^{-1} = \frac{L}{60EI}\begin{bmatrix} 8 & -2 \\ -2 & 8 \end{bmatrix}$$</p>
+<p>$$[K_{\theta\theta}]^{-1}\!\begin{bmatrix} K_{13} \\ K_{23} \end{bmatrix} = \frac{L}{60EI}\begin{bmatrix} 8 & -2 \\ -2 & 8 \end{bmatrix}\!\begin{bmatrix} -6EI/L^2 \\ -6EI/L^2 \end{bmatrix} = \frac{L}{60EI}\!\begin{bmatrix} -36EI/L^2 \\ -36EI/L^2 \end{bmatrix} = \begin{bmatrix} -3/(5L) \\ -3/(5L) \end{bmatrix}$$</p>
+<p>$$\begin{bmatrix} K_{31} & K_{32} \end{bmatrix}\!\begin{bmatrix} -3/(5L) \\ -3/(5L) \end{bmatrix} = \left(-\frac{6EI}{L^2}\right)\!\left(-\frac{3}{5L}\right)\times 2 = \frac{36EI}{5L^3}$$</p>
+<p>$$k_{eff} = \frac{24EI}{L^3} - \frac{36EI}{5L^3} = \frac{120EI}{5L^3} - \frac{36EI}{5L^3} = \frac{84EI}{5L^3}\quad \checkmark$$</p>
+<hr />
+<h2>§5 進階探討</h2>
+<h3>5.1 端點彎矩計算（以 $P$ 表示）</h3>
+<p>由 $\Delta = \dfrac{5PL^3}{84EI}$，$\theta_B=\theta_C=\dfrac{3\Delta}{5L}=\dfrac{PL^2}{28EI}$，</p>
+<p>以傾角變位公式驗算各端彎矩（$\psi_{col}=\Delta/L$）：</p>
+<table>
+<thead>
+<tr>
+<th>位置</th>
+<th>彎矩（傾角變位法）</th>
+<th>數值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>左柱基底 A（$M_{AB}$）</td>
+<td>$\dfrac{2EI}{L}(\theta_B - 3\psi) = \dfrac{2EI}{L}\!\left(\dfrac{PL^2}{28EI}-\dfrac{3\Delta}{L}\right)$</td>
+<td>$-\dfrac{2PL}{7}$</td>
+</tr>
+<tr>
+<td>左柱頂 B（$M_{BA}$）</td>
+<td>$\dfrac{2EI}{L}(2\theta_B - 3\psi)$</td>
+<td>$-\dfrac{3PL}{14}$</td>
+</tr>
+<tr>
+<td>梁左端 B（$M_{BC}$）</td>
+<td>$\dfrac{2EI}{L}(2\theta_B+\theta_C)$</td>
+<td>$+\dfrac{3PL}{14}$</td>
+</tr>
+<tr>
+<td>梁右端 C（$M_{CB}$）</td>
+<td>$\dfrac{2EI}{L}(2\theta_C+\theta_B)$</td>
+<td>$+\dfrac{3PL}{14}$</td>
+</tr>
+<tr>
+<td>右柱頂 C（$M_{CD}$）</td>
+<td>$\dfrac{2EI}{L}(2\theta_C - 3\psi)$</td>
+<td>$-\dfrac{3PL}{14}$</td>
+</tr>
+<tr>
+<td>右柱基底 D（$M_{DC}$）</td>
+<td>$\dfrac{2EI}{L}(\theta_C - 3\psi)$</td>
+<td>$-\dfrac{2PL}{7}$</td>
+</tr>
+</tbody>
+</table>
+<p>節點彎矩平衡驗算：</p>
+<ul>
+<li>B 節點：$M_{BA}+M_{BC} = -\dfrac{3PL}{14}+\dfrac{3PL}{14} = 0\;\checkmark$</li>
+<li>C 節點：$M_{CD}+M_{CB} = -\dfrac{3PL}{14}+\dfrac{3PL}{14} = 0\;\checkmark$</li>
+</ul>
+<p>樓層剪力驗算（V = 柱兩端彎矩之和除以柱長）：</p>
+<p>$$V_{left} + V_{right} = \frac{|M_{AB}|+|M_{BA}|}{L}\times 2 = \frac{\frac{2PL}{7}+\frac{3PL}{14}}{L}\times 2 = \frac{\frac{7PL}{14}}{L}\times 2 = P\;\checkmark$$</p>
+<h3>5.2 參數影響探討</h3>
+<p>若梁柱 EI 不同（梁：$EI_b$，柱：$EI_c$），柱長 $L_c$，梁長 $L_b$，則：</p>
+<p>$$K_{11} = \frac{4EI_c}{L_c} + \frac{4EI_b}{L_b},\quad K_{33} = \frac{24EI_c}{L_c^3}$$</p>
+<p>側向勁度隨梁剛度增大而增大（梁越剛，對節點旋轉的束縛越大，側向剛度越高）。梁無限剛（$EI_b \to \infty$）時，$\theta_B=\theta_C=0$，$k_{lateral} = 24EI_c/L_c^3$（雙固定柱的純剪切剛度）。</p>
+<p>本題梁柱剛度相同，凝縮效果使得：</p>
+<p>$$k_{lateral} = \frac{84EI}{5L^3} \approx 0.70\times\frac{12EI}{L^3}\times 2 = 0.70\times k_{cantilever}$$</p>
+<p>（相當於兩根懸臂柱側移剛度總和的 70%，其餘 30% 由節點旋轉造成剛度折減。）</p>
+<h3>5.3 與傾角變位法的等效性</h3>
+<p>本題亦可直接以傾角變位法建立：</p>
+<ul>
+<li>轉角平衡方程（對應勁度矩陣第 1、2 行）</li>
+<li>水平剪力平衡方程（對應第 3 行）</li>
+</ul>
+<p>兩法本質相同：傾角變位法是直接列方程，矩陣位移法是系統化組裝後整體求解。矩陣法的優點在於對複雜結構（多層多跨）可程式化實作。</p>
+<hr />
+<h2>§6 本題知識點索引</h2>
+<table>
+<thead>
+<tr>
+<th>知識點</th>
+<th>概念 ID</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>勁度矩陣（梁元素）</td>
+<td><span style="background:#e3f2fd;color:#1565c0;border-radius:8px;padding:1px 7px;font-size:.88em;font-weight:600">STIFFNESS-MATRIX</span></td>
+</tr>
+<tr>
+<td>矩陣位移法</td>
+<td><span style="background:#e3f2fd;color:#1565c0;border-radius:8px;padding:1px 7px;font-size:.88em;font-weight:600">MATRIX-DISPLACEMENT-METHOD</span></td>
+</tr>
+<tr>
+<td>傾角變位公式</td>
+<td><span style="background:#e3f2fd;color:#1565c0;border-radius:8px;padding:1px 7px;font-size:.88em;font-weight:600">SLOPE-DEFLECTION-EQUATION</span></td>
+</tr>
+<tr>
+<td>弦轉角（Chord rotation）</td>
+<td><span style="background:#e3f2fd;color:#1565c0;border-radius:8px;padding:1px 7px;font-size:.88em;font-weight:600">CHORD-ROTATION</span></td>
+</tr>
+<tr>
+<td>靜態凝縮（Schur complement）</td>
+<td><span style="background:#e3f2fd;color:#1565c0;border-radius:8px;padding:1px 7px;font-size:.88em;font-weight:600">STIFFNESS-MATRIX</span></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p><em>解析日期：2026-07-02</em></p></main>
+<footer>來源：raw/solutions/SA-2025-1/SA-2025-1.md（知識庫解題內容唯一正本；本頁僅為渲染顯示）</footer>
+</body></html>

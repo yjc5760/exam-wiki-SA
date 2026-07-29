@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="zh-Hant"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SA-2005-3 — 題目解析</title>
+<link rel="stylesheet" href="../assets/katex/katex.min.css">
+<script defer src="../assets/katex/katex.min.js"></script>
+<script defer src="../assets/katex/auto-render.min.js"
+  onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},
+  {left:'$',right:'$',display:false},{left:'\\(',right:'\\)',display:false}],throwOnError:false});"></script>
+<style>
+:root{--ac:#1565c0;--bg:#f7f9fb;--card:#fff;--ink:#263238;--mut:#607d8b;--bd:#dfe6ea}
+*{box-sizing:border-box}
+body{margin:0;font-family:"Microsoft JhengHei","Noto Sans TC",-apple-system,sans-serif;
+  background:var(--bg);color:var(--ink);line-height:1.75;font-size:15.5px}
+header{background:linear-gradient(135deg,#0d47a1,#1976d2 60%,#42a5f5);color:#fff;padding:22px 26px}
+header h1{margin:0;font-size:1.15em}
+header .back{display:inline-block;margin-top:10px;font-size:.82em;color:#fff;background:rgba(255,255,255,.18);
+  padding:4px 12px;border-radius:14px;text-decoration:none}
+main{max-width:880px;margin:0 auto;padding:26px 22px 70px}
+h1,h2,h3{color:#0d47a1} h2{font-size:1.2em;border-left:6px solid var(--ac);padding-left:12px;margin:34px 0 14px}
+table{width:100%;border-collapse:collapse;margin:14px 0;font-size:.92em;background:#fff}
+th,td{border:1px solid var(--bd);padding:7px 10px;text-align:left;vertical-align:top}
+th{background:#eceff1;font-weight:600} tbody tr:nth-child(even){background:#fafcfd}
+code{background:#eceff1;padding:1px 5px;border-radius:4px;font-size:.92em}
+img{max-width:100%;display:block;margin:14px auto;border:1px solid var(--bd);border-radius:8px}
+.katex-display{margin:12px 0!important;overflow-x:auto;overflow-y:hidden}
+footer{text-align:center;color:var(--mut);font-size:.8em;padding:22px;border-top:1px solid var(--bd)}
+</style></head><body>
+<header><h1>SA-2005-3 題目解析</h1><a class="back" href="javascript:history.back()">← 返回講義</a></header>
+<main><h1>考題編號：[SA-2005-3]</h1>
+<p><strong>主分類：</strong> <code>SA-U1</code> 影響線與靜定結構<br />
+<strong>副分類：</strong> <code>SA-U2</code> 靜不定結構分析<br />
+<strong>分析法：</strong> 影響線 / 三彎矩方程式<br />
+<strong>標籤：</strong> <code>影響線</code>, <code>連續梁</code>, <code>三彎矩方程式</code>, <code>Müller-Breslau原理</code></p>
+<hr />
+<h2>1. 原始題目重述 (Problem Restatement)</h2>
+<p>三、二跨之靜不定梁如圖三，各梁之楊氏係數 $E$ 及慣性矩 $I$ 為常數，試每隔 2.5m 畫出 BC 跨度中點 D 之彎矩影響線（influence line）。（25 分）</p>
+<p><img alt="SA-2005-3 題目附圖：兩跨連續梁，A與C為滾支承，B為鉸支承，跨距皆為10m" src="../../raw/solutions/SA-2005-3/SA-2005-3-fig-1.png" /></p>
+<p><em>圖說：兩跨連續梁 AC，A 點為滾支承，B 點為鉸支承，C 點為滾支承。AB 跨距為 10m，BC 跨距為 10m。D 點為 BC 跨之中點。各梁之 EI 為常數。</em></p>
+<h2>2. 考題核心精神與出題者意圖 (Core Concepts &amp; Examiner's Intent)</h2>
+<p>本題主要測驗考生對於<strong>靜不定結構影響線</strong>的計算與繪製能力。<br />
+出題者意圖包含：</p>
+<ol>
+<li><strong>影響線的基本概念</strong>：理解影響線的縱座標代表單位載重移動至該點時，特定位置（D點）之內力（彎矩）大小。</li>
+<li><strong>靜不定分析方法</strong>：對於一次靜不定結構，需能熟練運用力法（如三彎矩方程式）或位移法求出多餘反力（如支承 B 的彎矩 $M_B$）。</li>
+<li><strong>內力疊加原理</strong>：在求出 $M_B$ 後，利用靜力平衡或疊加法（簡單梁彎矩圖 + 端點彎矩影響）求出 D 點彎矩 $M_D$。</li>
+</ol>
+<h2>3. 解題戰略地圖與陷阱分析 (Strategic Roadmap &amp; Trap Analysis)</h2>
+<p><strong>戰略地圖：</strong></p>
+<ol>
+<li><strong>建立模型</strong>：考慮單位載重 $P=1$ 在距離 A 點 $x$ 處移動。</li>
+<li><strong>計算 $M_B$</strong>：利用三彎矩方程式，分別針對載重在 AB 跨 ($0 \le x \le 10$) 與 BC 跨 ($10 \le x \le 20$) 列式，求出 $M_B$ 隨 $x$ 變化的函數。</li>
+<li><strong>計算 $M_D$</strong>：<br />
+   - 當 $P=1$ 在 AB 跨時，BC 跨無外力，D 點彎矩僅由 $M_B$ 貢獻，即 $M_D = M_B / 2$。<br />
+   - 當 $P=1$ 在 BC 跨時，D 點彎矩等於「簡支梁 BC 受載重時 D 點的彎矩 $M_{D,simple}$」加上「$M_B$ 產生的彎矩 $M_B / 2$」。</li>
+<li><strong>計算縱座標</strong>：代入 $x = 0, 2.5, 5, 7.5, 10, 12.5, 15, 17.5, 20$，求出各點的 $M_D$ 值，並整理成表。</li>
+</ol>
+<p><strong>陷阱分析：</strong></p>
+<ol>
+<li><strong>三彎矩方程式的右式載重項</strong>：載重項 $\frac{6A\bar{x}}{L}$ 的距離 $\bar{x}$ 必須是由「外側支承」量至彎矩圖形心的距離，代入時容易搞錯 $a$ 與 $b$ 的順序。</li>
+<li><strong>D點彎矩的疊加</strong>：當載重在 BC 跨上時，絕對不能忘記加上簡支梁效應 $M_{D,simple}$。</li>
+<li><strong>符號約定</strong>：計算出的 $M_B$ 通常為負值（上緣受拉），疊加時必須帶有正確的符號。</li>
+</ol>
+<h2>3.5 變數層次分析 (Variable Hierarchy Analysis)</h2>
+<h3>最終目標</h3>
+<p>求出單位集中載重 $P=1$ 通過連續梁時，BC 跨中點 D 之彎矩 $M_D$ 於各 2.5m 節點的精確數值。</p>
+<h3>本題關鍵公式（依計算順序）</h3>
+<ol>
+<li>
+<p>三彎矩方程式：<br />
+$$ M_A L_1 + 2 M_B (L_1 + L_2) + M_C L_2 = - \frac{6 A_1 a_1}{L_1} - \frac{6 A_2 b_2}{L_2} $$</p>
+</li>
+<li>
+<p>載重在 AB 跨時的 $M_B$：<br />
+$$ \boxed{M_B} = - \frac{P \cdot x \cdot (10-x) \cdot (10+x)}{10 \cdot 40} $$</p>
+</li>
+<li>
+<p>載重在 BC 跨時的 $M_B$（令 $x' = x-10$）：<br />
+$$ \boxed{M_B} = - \frac{P \cdot x' \cdot (10-x') \cdot (20-x')}{10 \cdot 40} $$</p>
+</li>
+<li>
+<p>疊加法求 D 點彎矩：<br />
+$$ \boxed{M_D} = M_{D,simple} + \frac{\boxed{M_B}}{2} $$</p>
+</li>
+</ol>
+<h3>L1：題目直接給定</h3>
+<ul>
+<li>符號 $L_1$ ∣ 數值 $10\text{ m}$ ∣ 說明 AB 跨度</li>
+<li>符號 $L_2$ ∣ 數值 $10\text{ m}$ ∣ 說明 BC 跨度</li>
+<li>符號 $P$ ∣ 數值 $1$ ∣ 說明 單位載重</li>
+<li>符號 $x_D$ ∣ 數值 $15\text{ m}$ ∣ 說明 D 點距離 A 點位置</li>
+</ul>
+<h3>L2：需知識點推導</h3>
+<p><strong>三彎矩方程式計算</strong></p>
+<ul>
+<li>符號 $M_A, M_C$ ∣ 公式 $M_A = M_C = 0$ (鉸/滾端) ∣ 卡關? </li>
+<li>符號 $M_B$ (P在AB跨) ∣ 公式 $-\frac{x(100-x^2)}{400}$ ∣ 卡關?</li>
+<li>符號 $M_B$ (P在BC跨) ∣ 公式 $-\frac{x'(10-x')(20-x')}{400}$ ∣ 卡關?</li>
+</ul>
+<p><strong>D點彎矩計算</strong></p>
+<ul>
+<li>符號 $M_{D,simple}$ ∣ 公式 簡支梁跨中彎矩公式 ∣ 卡關?</li>
+<li>符號 $M_D$ ∣ 公式 $M_{D,simple} + M_B / 2$ ∣ 卡關?</li>
+</ul>
+<h3>L3：深層知識（不懂就卡住）</h3>
+<ul>
+<li>知識點 三彎矩方程式右式 ∣ 說明 $\frac{6Aa}{L} = \frac{Pab(L+a)}{L}$，需注意 $a$ 為距離遠端支承之長度 ∣ 卡關?</li>
+<li>知識點 影響線定義 ∣ 說明 IL 上 $x$ 處的數值代表載重在 $x$ 處時目標函數的值 ∣ 卡關?</li>
+</ul>
+<h2>4. 步驟化詳細計算過程 (Step-by-Step Detailed Calculation)</h2>
+<p><strong>Step 1：建立三彎矩方程式</strong><br />
+對於 A-B-C 連續梁，因 A、C 為端點滾支承，故 $M_A = 0$、$M_C = 0$。<br />
+設 $L_1 = 10\text{ m}$，$L_2 = 10\text{ m}$，套用三彎矩方程式：<br />
+$$ M_A L_1 + 2M_B(L_1 + L_2) + M_C L_2 = - \frac{6A_1 a_1}{L_1} - \frac{6A_2 b_2}{L_2} $$<br />
+$$ 0 + 2M_B(10 + 10) + 0 = 40M_B = - \sum \frac{P a b (L+a)}{L} $$</p>
+<p><strong>Step 2：計算單位載重 $P=1$ 在 AB 跨 ($0 \le x \le 10$) 時的 $M_B$ 與 $M_D$</strong><br />
+設載重距離 A 點為 $x$，則在 AB 跨中，距外側支承 A 之距離 $a = x$，距內側支承 B 之距離 $b = 10 - x$。<br />
+三彎矩方程式右式僅有第一跨有載重：<br />
+$$ 40M_B = - \frac{1 \cdot x \cdot (10-x) \cdot (10+x)}{10} = - \frac{x(100-x^2)}{10} $$<br />
+$$ M_B = - \frac{x(100-x^2)}{400} $$</p>
+<p>此時 BC 跨無任何垂直外力，僅受 B 點彎矩 $M_B$ 作用。由靜力平衡，BC 跨之彎矩呈線性分佈，從 B 點的 $M_B$ 遞減至 C 點的 0。<br />
+D 為 BC 中點，故：<br />
+$$ M_D = \frac{M_B}{2} = - \frac{x(100-x^2)}{800} $$</p>
+<p>各點縱座標計算 ($0 \le x \le 10$)：</p>
+<ul>
+<li>$x = 0$：$M_D = 0$</li>
+<li>$x = 2.5$：$M_B = - \frac{2.5(100 - 6.25)}{400} = - \frac{75}{128} \approx -0.586$，$M_D = - \frac{75}{256} \approx \boxed{-0.293}$</li>
+<li>$x = 5.0$：$M_B = - \frac{5(100 - 25)}{400} = - \frac{15}{16} = -0.9375$，$M_D = - \frac{15}{32} \approx \boxed{-0.469}$</li>
+<li>$x = 7.5$：$M_B = - \frac{7.5(100 - 56.25)}{400} = - \frac{105}{128} \approx -0.820$，$M_D = - \frac{105}{256} \approx \boxed{-0.410}$</li>
+<li>$x = 10.0$：$M_B = 0$，$M_D = \boxed{0}$</li>
+</ul>
+<p><strong>Step 3：計算單位載重 $P=1$ 在 BC 跨 ($10 \le x \le 20$) 時的 $M_B$ 與 $M_D$</strong><br />
+設載重距離 B 點為 $x'$ ($x' = x - 10$)，則距內側支承 B 之距離為 $x'$，距外側支承 C 之距離為 $b = 10 - x'$。<br />
+對於第二跨，公式中的 $a$ 為距離遠端 C 之距離，故 $a = 10 - x'$，$b = x'$。<br />
+$$ 40M_B = - \frac{1 \cdot (10-x') \cdot x' \cdot (10 + 10 - x')}{10} = - \frac{x'(10-x')(20-x')}{10} $$<br />
+$$ M_B = - \frac{x'(10-x')(20-x')}{400} $$</p>
+<p>D 點彎矩可視為「簡支梁 BC 在載重下的彎矩 $M_{D,simple}$」與「支承彎矩 $M_B$ 產生的彎矩」之疊加：<br />
+$$ M_D = M_{D,simple} + \frac{M_B}{2} $$<br />
+其中 $M_{D,simple}$ 計算如下：</p>
+<ul>
+<li>若載重在 B、D 之間 ($0 \le x' \le 5$)：$M_{D,simple} = R_C \cdot 5 = \frac{x'}{10} \cdot 5 = \frac{x'}{2}$</li>
+<li>若載重在 D、C 之間 ($5 \le x' \le 10$)：$M_{D,simple} = R_B \cdot 5 = \frac{10-x'}{10} \cdot 5 = \frac{10-x'}{2}$</li>
+</ul>
+<p>各點縱座標計算 ($10 < x \le 20$)：</p>
+<ul>
+<li>
+<p>$x = 12.5$ ($x'=2.5$)：<br />
+  $M_B = - \frac{2.5(7.5)(17.5)}{400} = - \frac{105}{128} \approx -0.820$<br />
+  $M_{D,simple} = \frac{2.5}{2} = 1.25$<br />
+  $M_D = 1.25 - \frac{105}{256} = \frac{320 - 105}{256} = \frac{215}{256} \approx \boxed{0.840}$</p>
+</li>
+<li>
+<p>$x = 15.0$ ($x'=5.0$)：<br />
+  $M_B = - \frac{5(5)(15)}{400} = - \frac{15}{16} = -0.9375$<br />
+  $M_{D,simple} = \frac{5}{2} = 2.5$<br />
+  $M_D = 2.5 - \frac{15}{32} = \frac{80 - 15}{32} = \frac{65}{32} = \boxed{2.03125}$</p>
+</li>
+<li>
+<p>$x = 17.5$ ($x'=7.5$)：<br />
+  $M_B = - \frac{7.5(2.5)(12.5)}{400} = - \frac{75}{128} \approx -0.586$<br />
+  $M_{D,simple} = \frac{10-7.5}{2} = 1.25$<br />
+  $M_D = 1.25 - \frac{75}{256} = \frac{320 - 75}{256} = \frac{245}{256} \approx \boxed{0.957}$</p>
+</li>
+<li>
+<p>$x = 20.0$ ($x'=10.0$)：<br />
+  $M_B = 0$，$M_D = \boxed{0}$</p>
+</li>
+</ul>
+<p><strong>Step 4：影響線座標總表</strong></p>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;">$x$ (m)</th>
+<th style="text-align: center;">點位</th>
+<th style="text-align: center;">$M_D$ (tf-m/tf)</th>
+<th style="text-align: center;">分數值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">A</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">0</td>
+</tr>
+<tr>
+<td style="text-align: center;">2.5</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">-0.293</td>
+<td style="text-align: center;">-75/256</td>
+</tr>
+<tr>
+<td style="text-align: center;">5.0</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">-0.469</td>
+<td style="text-align: center;">-15/32</td>
+</tr>
+<tr>
+<td style="text-align: center;">7.5</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">-0.410</td>
+<td style="text-align: center;">-105/256</td>
+</tr>
+<tr>
+<td style="text-align: center;">10.0</td>
+<td style="text-align: center;">B</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">0</td>
+</tr>
+<tr>
+<td style="text-align: center;">12.5</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">0.840</td>
+<td style="text-align: center;">215/256</td>
+</tr>
+<tr>
+<td style="text-align: center;">15.0</td>
+<td style="text-align: center;">D</td>
+<td style="text-align: center;">2.031</td>
+<td style="text-align: center;">65/32</td>
+</tr>
+<tr>
+<td style="text-align: center;">17.5</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">0.957</td>
+<td style="text-align: center;">245/256</td>
+</tr>
+<tr>
+<td style="text-align: center;">20.0</td>
+<td style="text-align: center;">C</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">0</td>
+</tr>
+</tbody>
+</table>
+<p><em>(依據上述數值繪製出兩跨之平滑曲線，在 D 點會有尖峰轉折)</em></p>
+<h2>5. 關鍵爭議點與進階探討 (Critical Issues &amp; Advanced Discussion)</h2>
+<ol>
+<li>
+<p><strong>Müller-Breslau 原理的應用</strong>：<br />
+   本題雖然使用三彎矩方程式（力法）計算十分快捷精確，但若從 Müller-Breslau 原理的角度來看，將 D 點切開並加入鉸接，施加單位相對旋轉角 $\Delta \theta_D = 1$ 後的彈性曲線即為 $M_D$ 的影響線。因為原結構為一次靜不定，在 D 點加鉸後變成「靜定結構」，此時可以完全使用共軛梁法求出該靜定結構的變形曲線，兩種方法所得結果完全一致，可用作考場上的互相驗算。</p>
+</li>
+<li>
+<p><strong>影響線形狀特徵</strong>：<br />
+   在 AB 跨，影響線皆為負值，代表載重在 AB 跨時會使 BC 跨產生上凸變形，導致 D 點產生負彎矩；在 BC 跨，D 點附近影響線為正值，且在 D 點有明顯的尖點（非平滑），這是因為內力影響線在所求截面處必定有相對位移（此題為相對轉角）的不連續。</p>
+</li>
+</ol></main>
+<footer>來源：raw/solutions/SA-2005-3/SA-2005-3.md（知識庫解題內容唯一正本；本頁僅為渲染顯示）</footer>
+</body></html>

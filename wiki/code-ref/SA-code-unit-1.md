@@ -162,6 +162,6 @@ $$R_B = \begin{cases} \frac{x}{L} & x \in [0, L] \end{cases}$$
 
 - 結構學第一單元命題大綱：見 `CLAUDE.md`「命題大綱分類」
 - 題型診斷（決策樹）：[SA-U1-1](../diagnosis/SA-U1-1.md)、[**SA-U1-2**](../diagnosis/SA-U1-2.md)、[SA-U1-3](../diagnosis/SA-U1-3.md)
-- 觀念講義：[lecture-SA-U1-2](../../study/lecture-SA-U1-2.html)（[PDF](../../study/lecture-SA-U1-2.pdf)）
+- 觀念講義：[lecture-SA-U1-2](../../study/lecture-SA-U1-2.html)（[PDF](../../study/lecture-SA-U1-2.pdf)）、[**lecture-SA-U1-3**](../../study/lecture-SA-U1-3.html)（[PDF](../../study/lecture-SA-U1-3.pdf)）
 - 相關方法論：見 [wiki/methods](../methods/index.md)
 - 相關失敗模式：[自由度](../failure-modes/自由度.md)、[符號錯誤](../failure-modes/符號錯誤.md)、[邊界條件](../failure-modes/邊界條件.md)

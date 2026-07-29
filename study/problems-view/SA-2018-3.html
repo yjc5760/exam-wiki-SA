@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="zh-Hant"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SA-2018-3 — 題目解析</title>
+<link rel="stylesheet" href="../assets/katex/katex.min.css">
+<script defer src="../assets/katex/katex.min.js"></script>
+<script defer src="../assets/katex/auto-render.min.js"
+  onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},
+  {left:'$',right:'$',display:false},{left:'\\(',right:'\\)',display:false}],throwOnError:false});"></script>
+<style>
+:root{--ac:#1565c0;--bg:#f7f9fb;--card:#fff;--ink:#263238;--mut:#607d8b;--bd:#dfe6ea}
+*{box-sizing:border-box}
+body{margin:0;font-family:"Microsoft JhengHei","Noto Sans TC",-apple-system,sans-serif;
+  background:var(--bg);color:var(--ink);line-height:1.75;font-size:15.5px}
+header{background:linear-gradient(135deg,#0d47a1,#1976d2 60%,#42a5f5);color:#fff;padding:22px 26px}
+header h1{margin:0;font-size:1.15em}
+header .back{display:inline-block;margin-top:10px;font-size:.82em;color:#fff;background:rgba(255,255,255,.18);
+  padding:4px 12px;border-radius:14px;text-decoration:none}
+main{max-width:880px;margin:0 auto;padding:26px 22px 70px}
+h1,h2,h3{color:#0d47a1} h2{font-size:1.2em;border-left:6px solid var(--ac);padding-left:12px;margin:34px 0 14px}
+table{width:100%;border-collapse:collapse;margin:14px 0;font-size:.92em;background:#fff}
+th,td{border:1px solid var(--bd);padding:7px 10px;text-align:left;vertical-align:top}
+th{background:#eceff1;font-weight:600} tbody tr:nth-child(even){background:#fafcfd}
+code{background:#eceff1;padding:1px 5px;border-radius:4px;font-size:.92em}
+img{max-width:100%;display:block;margin:14px auto;border:1px solid var(--bd);border-radius:8px}
+.katex-display{margin:12px 0!important;overflow-x:auto;overflow-y:hidden}
+footer{text-align:center;color:var(--mut);font-size:.8em;padding:22px;border-top:1px solid var(--bd)}
+</style></head><body>
+<header><h1>SA-2018-3 題目解析</h1><a class="back" href="javascript:history.back()">← 返回講義</a></header>
+<main><div style="background:#fff;border:1px solid #dfe6ea;border-radius:10px;padding:12px 14px;margin:0 0 18px"><p style="margin:0 0 6px;font-size:.88em;color:#607d8b">題目附圖（原始 .md 未內嵌，由 raw/solutions/ 自動補上）</p><img src="../../raw/solutions/SA-2018-3/SA-2018-3-fig-1.png" alt="SA-2018-3 附圖"></div><h1>考題編號：SA-2018-3</h1>
+<p><strong>主分類：</strong> 結構系統定性分析與能量法 (SA-U3-4)<br />
+<strong>副分類：</strong> <br />
+<strong>分析法：</strong> 最小功法 (Castigliano's 2nd Theorem)<br />
+<strong>標籤：</strong> <code>最小功法</code>, <code>靜不定結構</code>, <code>纜索無壓力</code>, <code>彎矩圖</code></p>
+<hr />
+<h2>1. 基本設定與物理判斷</h2>
+<p>觀察題目所給結構，梁 ABCD 由柱 CG 及纜索 AE、BF 支撐。特別注意題目提示：「<strong>細虛線表示只承受拉力的纜索</strong>」。這是一個極重要的陷阱，意味著在受力變形過程中，若計算出纜索受壓，則該纜索實際上會發生<strong>鬆弛 (Slack)</strong>，其內力為 0。</p>
+<ul>
+<li>結構幾何與剛度：</li>
+<li>梁 ABCD 長度分段：$L_{AB}=5\text{m}$, $L_{BC}=5\text{m}$, $L_{CD}=5\text{m}$。$EI = 1000 \text{ kN-m}^2$。</li>
+<li>柱 CG 長度：$L_{CG}=5\text{m}$。$EI = 1000 \text{ kN-m}^2$。</li>
+<li>纜索 AE, BF 長度：$L = 5\text{m}$。$EA = 500 \text{ kN}$。</li>
+<li>忽略梁、柱之軸向與剪切變形。</li>
+</ul>
+<p>若無纜索作用，D 點 $100\text{ kN}$ 向下的載重會對 C 點產生巨大的順時針彎矩 $M_C = 100 \times 5 = 500 \text{ kN-m}$。此彎矩由柱 CG 抵抗，導致柱頂 C 點發生順時針旋轉角 $\theta_C = \frac{M L}{EI} = \frac{500 \times 5}{1000} = 2.5 \text{ rad}$。<br />
+這會使得 A、B 兩點產生極大的向上位移（$v_A \approx 25\text{m}, v_B \approx 12.5\text{m}$）。因此，纜索勢必會被拉伸以抵抗此位移。</p>
+<p>然而，若我們同時將 AE ($X_1$) 與 BF ($X_2$) 設為冗力並列出最小功聯立方程式，會解得 $X_1 < 0$，代表 AE 處於壓力狀態。由於纜索<strong>無法承受壓力</strong>，因此 <strong>AE 必定鬆弛，其內力 $X_1 = 0$</strong>。以下我們直接以 $X_1 = 0$、僅 $X_2$（BF拉力）為冗力進行分析，並在事後驗證 A 點位移。</p>
+<hr />
+<h2>2. 最小功法解析 (單一冗力 $X_2$)</h2>
+<p>去除鬆弛的纜索 AE，設纜索 BF 的拉力為 $X_2$ (冗力)。</p>
+<h3>2.1 彎矩函數建立</h3>
+<p>定義各桿件之彎矩 $M$ (以造成梁底面/柱右面受拉為正)：</p>
+<ul>
+<li><strong>AB段</strong> (0~5m)：無外力作用，$M_{AB} = 0$。</li>
+<li><strong>BC段</strong> (設 $x$ 由 B 點向右起算，0~5m)：僅受 B 點向下力 $X_2$，$M_{BC}(x) = -X_2 x$。</li>
+<li><strong>CD段</strong> (設 $x$ 由 D 點向左起算，0~5m)：受 D 點向下力 100kN，$M_{CD}(x) = -100 x$。</li>
+<li><strong>CG段 (柱)</strong> (由 C 至 G)：<br />
+  在節點 C 取力矩平衡。梁 BC 對 C 點的彎矩為 $-5 X_2$ (逆時針)，梁 CD 對 C 點的彎矩為 $-500$ (順時針)。<br />
+  故柱 CG 必須提供一抵抗彎矩，使得整體平衡。由於無水平力作用，柱的剪力為 0，彎矩呈常數分佈。<br />
+  $M_{CG} = 500 - 5 X_2$ (常數)。</li>
+</ul>
+<h3>2.2 應變能與最小功方程式</h3>
+<p>總應變能 $U = \sum \int \frac{M^2}{2EI} ds + \sum \frac{F^2 L}{2EA}$。<br />
+依據最小功法 (卡氏第二定理)，$\frac{\partial U}{\partial X_2} = 0$：<br />
+$$ \frac{\partial U}{\partial X_2} = \int \frac{M_{BC}}{EI} \left(\frac{\partial M_{BC}}{\partial X_2}\right) dx + \int \frac{M_{CG}}{EI} \left(\frac{\partial M_{CG}}{\partial X_2}\right) dy + \frac{X_2 L_{BF}}{EA} = 0 $$</p>
+<p>將彎矩函數與偏導數代入 ($EI = 1000, EA = 500$)：<br />
+$$ \frac{\partial M_{BC}}{\partial X_2} = -x \quad , \quad \frac{\partial M_{CG}}{\partial X_2} = -5 $$</p>
+<p>計算各項積分：</p>
+<ol>
+<li>BC段：$\int_0^5 \frac{(-X_2 x)(-x)}{1000} dx = \frac{X_2}{1000} \left[ \frac{x^3}{3} \right]_0^5 = \frac{125}{3000} X_2 = \frac{125}{3} \times 10^{-3} X_2$</li>
+<li>CG段：$\int_0^5 \frac{(500 - 5 X_2)(-5)}{1000} dy = \frac{-25}{1000} (500 - 5 X_2) = \left(-12.5 + \frac{125}{1000} X_2 \right)$</li>
+<li>纜索BF：$\frac{X_2 \times 5}{500} = \frac{10}{1000} X_2$</li>
+</ol>
+<p>將三項相加並令其等於 0：<br />
+$$ \left( \frac{125/3}{1000} + \frac{125}{1000} + \frac{10}{1000} \right) X_2 - 12.5 = 0 $$<br />
+$$ \left( \frac{125}{3} + 135 \right) \frac{X_2}{1000} = 12.5 $$<br />
+$$ \left( \frac{125 + 405}{3} \right) X_2 = 12500 \implies \frac{530}{3} X_2 = 12500 $$<br />
+$$ X_2 = \frac{37500}{530} = \frac{3750}{53} \approx 70.755 \text{ kN} $$</p>
+<h3>2.3 驗證纜索 AE 鬆弛 (Slack)</h3>
+<p>我們需計算 A 點的最終位移，確認其向下移動 (使得纜索長度變短而鬆弛)。<br />
+在 A 點施加一向下單位虛擬力 $P_A = 1$：</p>
+<ul>
+<li>$m_{BC}(x) = -(x+5)$</li>
+<li>$m_{CG} = -10$<br />
+$$ v_A = \int_0^5 \frac{M_{BC} m_{BC}}{EI} dx + \int_0^5 \frac{M_{CG} m_{CG}}{EI} dy $$<br />
+$$ v_A = \int_0^5 \frac{(-70.755 x)(-(x+5))}{1000} dx + \int_0^5 \frac{(500 - 5(70.755))(-10)}{1000} dy $$<br />
+$$ v_A = \frac{70.755}{1000} \left( \frac{125}{3} + \frac{125}{2} \right) - \frac{50}{1000}(146.225) = 7.370 - 7.311 = 0.059 \text{ m} \text{ (向下)} $$<br />
+因為 $v_A > 0$ (A 點向下位移)，纜索 AE 受壓縮而發生鬆弛，驗證 $X_1 = 0$ 完全正確！</li>
+</ul>
+<hr />
+<h2>3. 彎矩圖 (梁 A~D)</h2>
+<p>根據算出的 $X_2 = \frac{3750}{53} \text{ kN}$，計算各關鍵點的彎矩：</p>
+<ul>
+<li><strong>A 點與 B 點：</strong> $M_A = M_B = 0$ (AB段無外力，且 AE 鬆弛)。</li>
+<li><strong>C 點左側 (BC段端點)：</strong> $M_{C-} = -X_2 \times 5 = -70.755 \times 5 = -353.77 \text{ kN-m}$。</li>
+<li><strong>C 點右側 (CD段端點)：</strong> $M_{C+} = -100 \times 5 = -500 \text{ kN-m}$。</li>
+<li><strong>D 點：</strong> $M_D = 0$。</li>
+</ul>
+<p><em>(註：C 點左右兩側的彎矩差額 $500 - 353.77 = 146.23 \text{ kN-m}$，即為傳遞至柱 CG 的彎矩。)</em></p>
+<p><strong>繪圖指示：</strong></p>
+<ol>
+<li>繪製 A-B-C-D 基準線。</li>
+<li>AB 段彎矩為 0。</li>
+<li>BC 段為一次線性分佈，從 B 點的 0 漸增至 C 點左側的 $-353.77 \text{ kN-m}$ (上方受拉)。</li>
+<li>CD 段為一次線性分佈，從 D 點的 0 漸增至 C 點右側的 $-500 \text{ kN-m}$ (上方受拉)。</li>
+<li>注意在 C 點有一突跳不連續 (被柱吸收)。</li>
+</ol>
+<h2>4. 結論</h2>
+<ul>
+<li><strong>纜索 AE 內力：</strong> $0 \text{ kN}$ (鬆弛)</li>
+<li><strong>纜索 BF 內力：</strong> $70.75 \text{ kN}$ (拉力)</li>
+</ul></main>
+<footer>來源：raw/solutions/SA-2018-3/SA-2018-3.md（知識庫解題內容唯一正本；本頁僅為渲染顯示）</footer>
+</body></html>

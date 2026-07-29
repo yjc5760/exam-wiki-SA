@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="zh-Hant"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SA-2007-2 — 題目解析</title>
+<link rel="stylesheet" href="../assets/katex/katex.min.css">
+<script defer src="../assets/katex/katex.min.js"></script>
+<script defer src="../assets/katex/auto-render.min.js"
+  onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},
+  {left:'$',right:'$',display:false},{left:'\\(',right:'\\)',display:false}],throwOnError:false});"></script>
+<style>
+:root{--ac:#1565c0;--bg:#f7f9fb;--card:#fff;--ink:#263238;--mut:#607d8b;--bd:#dfe6ea}
+*{box-sizing:border-box}
+body{margin:0;font-family:"Microsoft JhengHei","Noto Sans TC",-apple-system,sans-serif;
+  background:var(--bg);color:var(--ink);line-height:1.75;font-size:15.5px}
+header{background:linear-gradient(135deg,#0d47a1,#1976d2 60%,#42a5f5);color:#fff;padding:22px 26px}
+header h1{margin:0;font-size:1.15em}
+header .back{display:inline-block;margin-top:10px;font-size:.82em;color:#fff;background:rgba(255,255,255,.18);
+  padding:4px 12px;border-radius:14px;text-decoration:none}
+main{max-width:880px;margin:0 auto;padding:26px 22px 70px}
+h1,h2,h3{color:#0d47a1} h2{font-size:1.2em;border-left:6px solid var(--ac);padding-left:12px;margin:34px 0 14px}
+table{width:100%;border-collapse:collapse;margin:14px 0;font-size:.92em;background:#fff}
+th,td{border:1px solid var(--bd);padding:7px 10px;text-align:left;vertical-align:top}
+th{background:#eceff1;font-weight:600} tbody tr:nth-child(even){background:#fafcfd}
+code{background:#eceff1;padding:1px 5px;border-radius:4px;font-size:.92em}
+img{max-width:100%;display:block;margin:14px auto;border:1px solid var(--bd);border-radius:8px}
+.katex-display{margin:12px 0!important;overflow-x:auto;overflow-y:hidden}
+footer{text-align:center;color:var(--mut);font-size:.8em;padding:22px;border-top:1px solid var(--bd)}
+</style></head><body>
+<header><h1>SA-2007-2 題目解析</h1><a class="back" href="javascript:history.back()">← 返回講義</a></header>
+<main><h1>考題編號：[SA-2007-2]</h1>
+<p><strong>主分類：</strong> <code>SA-U2-1</code><br />
+<strong>副分類：</strong> <code>SA-U2-4</code><br />
+<strong>分析法：</strong> 傾角變位法<br />
+<strong>標籤：</strong> <code>無側移剛架</code> <code>修正傾角撓度法</code> <code>固端彎矩</code></p>
+<hr />
+<h2>1. 原始題目重述 (Problem Restatement)</h2>
+<p>如圖所示之剛架 (frame)，其構架高 $4 \text{ m}$，跨距為 $12 \text{ m}$，點 A、B 為固接 (fixed)，E 點為鉸接 (hinge)。若每根桿件之彈性模數 $E$ 為常數；各桿件之慣性矩 ($I$ 或 $2I$) 分別標示如圖示，且 $I$ 值亦為常數。則在圖示載重下，試求出每根桿件之結點彎矩。(25分)</p>
+<p><img alt="SA-2007-2 題目附圖：包含垂直與水平桿件之無側移剛架" src="../../raw/solutions/SA-2007-2/SA-2007-2-fig-1.png" /></p>
+<p><em>圖說：</em></p>
+<ul>
+<li><em>A 點與 B 點為底部固定端，上方垂直桿件 AC 長度 $4 \text{ m}$ ($I$)，BD 長度 $4 \text{ m}$ ($I$)。</em></li>
+<li><em>AC 桿件中點承受水平向右 $8 \text{ kN}$ 集中載重。</em></li>
+<li><em>頂部水平桿件 CE 總長 $12 \text{ m}$。CD 長度 $6 \text{ m}$ ($2I$)，DE 長度 $6 \text{ m}$ ($2I$)。</em></li>
+<li><em>C 點為 AC 與 CD 剛接點；D 點為 BD 與 CD、DE 剛接點。</em></li>
+<li><em>E 點為最右側鉸接支承 (hinge support)。</em></li>
+<li><em>水平桿件 CE 承受向下均佈載重 $2 \text{ kN/m}$。</em></li>
+</ul>
+<h2>2. 考題核心精神與出題者意圖 (Core Concepts &amp; Examiner's Intent)</h2>
+<ul>
+<li><strong>無側移剛架之判定：</strong> 考驗考生對於邊界條件的敏銳度。最右側的 E 點為鉸接支承，提供了水平與垂直方向的拘束。加上忽略桿件軸向變形的假設，剛架將無側移 ($\Delta = 0$)。</li>
+<li><strong>傾角變位法與修正公式：</strong> 測驗基本傾角撓度方程式的應用。針對遠端為鉸接的 DE 桿件，若能熟練使用「修正傾角撓度公式」，將可直接減少一個未知數 $\theta_E$，大幅簡化計算。</li>
+<li><strong>相對勁度與固端彎矩計算：</strong> 結構中桿件長度不一、慣性矩不一 ($I$ 與 $2I$)。考生必須正確計算各桿件之勁度比例與不同載重 (集中力與均佈力) 對應之固端彎矩。</li>
+</ul>
+<h2>3. 解題戰略地圖與陷阱分析 (Strategic Roadmap &amp; Trap Analysis)</h2>
+<ul>
+<li><strong>戰略一：判別側移與確立未知數</strong><ul>
+<li>E 點鉸支承限制了整體水平位移，故為無側移剛架。</li>
+<li>A、B 兩點為固端，$\theta_A = 0, \theta_B = 0$。</li>
+<li>E 點鉸接，可使用修正公式消除 $\theta_E$。</li>
+<li>最終未知節點旋轉角僅有兩個：$\theta_C, \theta_D$。</li>
+</ul>
+</li>
+<li><strong>戰略二：計算固端彎矩 (FEM)</strong><ul>
+<li>AC 桿中點受集中力，需計算標準 FEM。</li>
+<li>CD 桿受均佈載重，需計算標準 FEM。</li>
+<li>DE 桿受均佈載重且 E 端鉸接，需計算「修正」FEM。</li>
+</ul>
+</li>
+<li><strong>戰略三：建立節點平衡方程式並求解</strong><ul>
+<li>於 C、D 兩節點建立 $\sum M_C = 0$ 與 $\sum M_D = 0$。</li>
+<li>解出 $\theta_C$ 與 $\theta_D$。</li>
+</ul>
+</li>
+<li><strong>戰略四：計算桿端彎矩</strong><ul>
+<li>將求得的轉角代回傾角撓度方程式，得出所有彎矩。</li>
+</ul>
+</li>
+<li><strong>陷阱分析：</strong><ul>
+<li><strong>陷阱 1 (相對勁度錯誤)：</strong> 忽略 $2I$ 或長度不同的影響，誤將所有桿件視為相同勁度。</li>
+<li><strong>陷阱 2 (修正公式錯用)：</strong> 對 DE 桿件使用標準 FEM，未修正為一端鉸接的 $wL^2/8$。或在使用修正傾角變位公式時，勁度係數忘記改為 $3EI/L$。</li>
+<li><strong>陷阱 3 (載重方向與符號)：</strong> AC 桿受向右外力，若順時針定為正，則 $FEM_{AC}$ 為負、$FEM_{CA}$ 為正。符號顛倒將導致全錯。</li>
+</ul>
+</li>
+</ul>
+<h2>3.5 變數層次分析 (Variable Hierarchy Analysis)</h2>
+<h3>最終目標</h3>
+<p><code>求出剛架所有桿件之節點桿端彎矩</code></p>
+<h3>本題關鍵公式（依計算順序）</h3>
+<ul>
+<li>
+<p>標準固端彎矩：<br />
+  中點集中力 $FEM = \pm \frac{PL}{8}$，均佈力 $FEM = \pm \frac{wL^2}{12}$</p>
+</li>
+<li>
+<p>修正固端彎矩 (遠端鉸接)：<br />
+  $FEM' = FEM - 0.5 FEM_{\text{far}}$</p>
+</li>
+<li>
+<p>標準傾角變位方程式：<br />
+  $M_{ij} = \boxed{FEM_{ij}} + \frac{2EI}{L} (2\theta_i + \theta_j)$</p>
+</li>
+<li>
+<p>修正傾角變位方程式 (j端鉸接)：<br />
+  $M_{ij} = \boxed{FEM'_{ij}} + \frac{3EI}{L} \theta_i$</p>
+</li>
+<li>
+<p>節點平衡方程式：<br />
+  $\sum M = 0$ </p>
+</li>
+</ul>
+<h3>L1：題目直接給定</h3>
+<table>
+<thead>
+<tr>
+<th>符號</th>
+<th>數值</th>
+<th>說明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>$L_{AC}, L_{BD}$</td>
+<td>$4 \text{ m}$</td>
+<td>垂直桿長度</td>
+</tr>
+<tr>
+<td>$L_{CD}, L_{DE}$</td>
+<td>$6 \text{ m}$</td>
+<td>水平桿長度</td>
+</tr>
+<tr>
+<td>$I_{AC}, I_{BD}$</td>
+<td>$I$</td>
+<td>垂直桿慣性矩</td>
+</tr>
+<tr>
+<td>$I_{CD}, I_{DE}$</td>
+<td>$2I$</td>
+<td>水平桿慣性矩</td>
+</tr>
+<tr>
+<td>$P_{AC}$</td>
+<td>$8 \text{ kN}$ (向右)</td>
+<td>AC 桿中點載重</td>
+</tr>
+<tr>
+<td>$w_{CE}$</td>
+<td>$2 \text{ kN/m}$ (向下)</td>
+<td>CE 桿均佈載重</td>
+</tr>
+</tbody>
+</table>
+<h3>L2：需知識點推導</h3>
+<p><strong>固端彎矩 (FEM)</strong><br />
+| 符號 | 公式／來源 | 卡關? |<br />
+|---|---|---|<br />
+| $FEM_{AC}, FEM_{CA}$ | $\mp \frac{PL}{8}$ | |<br />
+| $FEM_{CD}, FEM_{DC}$ | $\mp \frac{wL^2}{12}$ | |<br />
+| $FEM'_{DE}$ | $-\frac{wL^2}{8}$ (遠端鉸接) | |</p>
+<p><strong>傾角變位方程式</strong><br />
+| 符號 | 公式／來源 | 卡關? |<br />
+|---|---|---|<br />
+| $M_{CA}$ | $FEM_{CA} + \frac{2EI}{L}(2\theta_C)$ | |<br />
+| $M_{CD}$ | $FEM_{CD} + \frac{2E(2I)}{L}(2\theta_C + \theta_D)$ | |<br />
+| $M_{DE}$ | $FEM'_{DE} + \frac{3E(2I)}{L}(\theta_D)$ | |</p>
+<p><strong>聯立方程式求解</strong><br />
+| 符號 | 公式／來源 | 卡關? |<br />
+|---|---|---|<br />
+| $\theta_C, \theta_D$ | $\sum M_C = 0, \sum M_D = 0$ | |</p>
+<h3>L3：深層知識（不懂就卡住）</h3>
+<table>
+<thead>
+<tr>
+<th>知識點</th>
+<th>說明</th>
+<th>卡關?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>結構側移判別</td>
+<td>E 點鉸接使剛架具備水平拘束，判定為無側移剛架，$\psi = 0$</td>
+<td></td>
+</tr>
+<tr>
+<td>修正傾角變位公式</td>
+<td>遠端鉸接時，近端彎矩公式係數變為 $3EI/L$，減少 $\theta_E$ 未知數</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h2>4. 步驟化詳細計算過程 (Step-by-Step Detailed Calculation)</h2>
+<h3>Step 1: 計算固端彎矩 (FEM)</h3>
+<p>設順時針彎矩為正。</p>
+<ul>
+<li>
+<p><strong>桿件 AC:</strong> 中點集中載重 $8 \text{ kN}$向右。<br />
+    $FEM_{AC} = -\frac{PL}{8} = -\frac{8 \times 4}{8} = -4 \text{ kN-m}$<br />
+    $FEM_{CA} = +\frac{PL}{8} = +\frac{8 \times 4}{8} = +4 \text{ kN-m}$</p>
+</li>
+<li>
+<p><strong>桿件 BD:</strong> 無橫向載重。<br />
+    $FEM_{BD} = FEM_{DB} = 0$</p>
+</li>
+<li>
+<p><strong>桿件 CD:</strong> 均佈載重 $2 \text{ kN/m}$向下。<br />
+    $FEM_{CD} = -\frac{wL^2}{12} = -\frac{2 \times 6^2}{12} = -6 \text{ kN-m}$<br />
+    $FEM_{DC} = +\frac{wL^2}{12} = +\frac{2 \times 6^2}{12} = +6 \text{ kN-m}$</p>
+</li>
+<li>
+<p><strong>桿件 DE:</strong> 均佈載重 $2 \text{ kN/m}$向下。因 E 點為鉸接，使用修正固端彎矩。<br />
+    $FEM'_{DE} = -\frac{wL^2}{8} = -\frac{2 \times 6^2}{8} = -9 \text{ kN-m}$</p>
+</li>
+</ul>
+<h3>Step 2: 建立傾角變位方程式</h3>
+<p>已知 $\theta_A = 0, \theta_B = 0$ (固定端)，且無側移 ($\psi = 0$)。</p>
+<ul>
+<li>
+<p><strong>桿件 AC ($L=4, I$):</strong><br />
+    $M_{CA} = FEM_{CA} + \frac{2EI}{4}(2\theta_C + \theta_A) = 4 + EI\theta_C$<br />
+    $M_{AC} = FEM_{AC} + \frac{2EI}{4}(2\theta_A + \theta_C) = -4 + 0.5 EI\theta_C$</p>
+</li>
+<li>
+<p><strong>桿件 CD ($L=6, 2I$):</strong><br />
+    $M_{CD} = FEM_{CD} + \frac{2E(2I)}{6}(2\theta_C + \theta_D) = -6 + \frac{2}{3}EI(2\theta_C + \theta_D) = -6 + \frac{4}{3}EI\theta_C + \frac{2}{3}EI\theta_D$<br />
+    $M_{DC} = FEM_{DC} + \frac{2E(2I)}{6}(2\theta_D + \theta_C) = 6 + \frac{4}{3}EI\theta_D + \frac{2}{3}EI\theta_C$</p>
+</li>
+<li>
+<p><strong>桿件 BD ($L=4, I$):</strong><br />
+    $M_{DB} = 0 + \frac{2EI}{4}(2\theta_D + \theta_B) = EI\theta_D$<br />
+    $M_{BD} = 0 + \frac{2EI}{4}(2\theta_B + \theta_D) = 0.5 EI\theta_D$</p>
+</li>
+<li>
+<p><strong>桿件 DE ($L=6, 2I$, E端鉸接):</strong><br />
+<em>策略註解：使用修正公式 $M_{ij} = FEM' + \frac{3EK}{L}\theta_i$</em><br />
+    $M_{DE} = FEM'_{DE} + \frac{3E(2I)}{6}(\theta_D) = -9 + EI\theta_D$<br />
+    $M_{ED} = 0 \text{ kN-m}$ (鉸接端條件)</p>
+</li>
+</ul>
+<h3>Step 3: 節點平衡與解聯立方程式</h3>
+<ul>
+<li>
+<p><strong>節點 C 平衡:</strong> $\sum M_C = 0$<br />
+    $M_{CA} + M_{CD} = 0$<br />
+    $(4 + EI\theta_C) + (-6 + \frac{4}{3}EI\theta_C + \frac{2}{3}EI\theta_D) = 0$<br />
+    $\frac{7}{3}EI\theta_C + \frac{2}{3}EI\theta_D = 2$<br />
+    $\implies 7 EI\theta_C + 2 EI\theta_D = 6 \quad \text{--- (式 1)}$</p>
+</li>
+<li>
+<p><strong>節點 D 平衡:</strong> $\sum M_D = 0$<br />
+    $M_{DC} + M_{DB} + M_{DE} = 0$<br />
+    $(6 + \frac{4}{3}EI\theta_D + \frac{2}{3}EI\theta_C) + (EI\theta_D) + (-9 + EI\theta_D) = 0$<br />
+    $\frac{2}{3}EI\theta_C + \frac{10}{3}EI\theta_D = 3$<br />
+    $\implies 2 EI\theta_C + 10 EI\theta_D = 9 \quad \text{--- (式 2)}$</p>
+</li>
+<li>
+<p><strong>解方程組:</strong><br />
+    將 (式 1) 乘以 5 減去 (式 2)：<br />
+    $35 (EI\theta_C) + 10 (EI\theta_D) = 30$<br />
+    $- \quad [2 (EI\theta_C) + 10 (EI\theta_D) = 9]$<br />
+    -------------------------------------------<br />
+    $33 (EI\theta_C) = 21 \implies \boxed{EI\theta_C = \frac{21}{33} = \frac{7}{11} \approx 0.6364}$</p>
+<p>代回 (式 2)：<br />
+$2 (\frac{7}{11}) + 10 (EI\theta_D) = 9 \implies 10 (EI\theta_D) = 9 - \frac{14}{11} = \frac{85}{11}$<br />
+$\implies \boxed{EI\theta_D = \frac{85}{110} = \frac{17}{22} \approx 0.7727}$</p>
+</li>
+</ul>
+<h3>Step 4: 代回計算最終桿端彎矩</h3>
+<ul>
+<li>$M_{AC} = -4 + 0.5(\frac{7}{11}) = -4 + \frac{7}{22} = \boxed{-\frac{81}{22} \approx -3.682 \text{ kN-m}}$</li>
+<li>$M_{CA} = 4 + 1.0(\frac{7}{11}) = 4 + \frac{7}{11} = \boxed{\frac{51}{11} \approx 4.636 \text{ kN-m}}$</li>
+<li>$M_{CD} = -6 + \frac{4}{3}(\frac{7}{11}) + \frac{2}{3}(\frac{17}{22}) = -6 + \frac{28}{33} + \frac{17}{33} = -6 + \frac{15}{11} = \boxed{-\frac{51}{11} \approx -4.636 \text{ kN-m}}$</li>
+<li>$M_{DC} = 6 + \frac{4}{3}(\frac{17}{22}) + \frac{2}{3}(\frac{7}{11}) = 6 + \frac{34}{33} + \frac{14}{33} = 6 + \frac{16}{11} = \boxed{\frac{82}{11} \approx 7.455 \text{ kN-m}}$</li>
+<li>$M_{DB} = 1.0(\frac{17}{22}) = \boxed{\frac{17}{22} \approx 0.773 \text{ kN-m}}$</li>
+<li>$M_{BD} = 0.5(\frac{17}{22}) = \boxed{\frac{17}{44} \approx 0.386 \text{ kN-m}}$</li>
+<li>$M_{DE} = -9 + 1.0(\frac{17}{22}) = -9 + \frac{17}{22} = \boxed{-\frac{181}{22} \approx -8.227 \text{ kN-m}}$</li>
+<li>$M_{ED} = \boxed{0 \text{ kN-m}}$</li>
+</ul>
+<h2>5. 關鍵爭議點與進階探討 (Critical Issues &amp; Advanced Discussion)</h2>
+<ul>
+<li><strong>無側移假設之成立要件：</strong> 剛架的無側移特性除了依靠 E 點的鉸接支承提供約束外，還基於「忽略桿件軸向變形」的假設。實務上高層建築或大跨徑結構若軸向力極大，仍會產生微小側移；但在國考中，若無特別註明，皆視橫樑具無窮大軸向勁度。</li>
+<li><strong>不使用修正公式的解法比較：</strong> 若不使用修正公式，則 $M_{DE} = -6 + \frac{2}{3}EI(2\theta_D + \theta_E)$，$M_{ED} = 6 + \frac{2}{3}EI(2\theta_E + \theta_D) = 0$。由 $\sum M_E = 0$ 得到 $\theta_E = -0.5\theta_D - \frac{9}{EI}$。將其代回 $M_{DE}$ 同樣可得到 $M_{DE} = -9 + EI\theta_D$。雖然結果完全一致，但在考場上徒增一個未知數 $\theta_E$ 會增加聯立方程式的維度與計算出錯率，強烈建議直接熟記修正傾角撓度公式。</li>
+</ul></main>
+<footer>來源：raw/solutions/SA-2007-2/SA-2007-2.md（知識庫解題內容唯一正本；本頁僅為渲染顯示）</footer>
+</body></html>

@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="zh-Hant"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SA-2004-4 — 題目解析</title>
+<link rel="stylesheet" href="../assets/katex/katex.min.css">
+<script defer src="../assets/katex/katex.min.js"></script>
+<script defer src="../assets/katex/auto-render.min.js"
+  onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},
+  {left:'$',right:'$',display:false},{left:'\\(',right:'\\)',display:false}],throwOnError:false});"></script>
+<style>
+:root{--ac:#1565c0;--bg:#f7f9fb;--card:#fff;--ink:#263238;--mut:#607d8b;--bd:#dfe6ea}
+*{box-sizing:border-box}
+body{margin:0;font-family:"Microsoft JhengHei","Noto Sans TC",-apple-system,sans-serif;
+  background:var(--bg);color:var(--ink);line-height:1.75;font-size:15.5px}
+header{background:linear-gradient(135deg,#0d47a1,#1976d2 60%,#42a5f5);color:#fff;padding:22px 26px}
+header h1{margin:0;font-size:1.15em}
+header .back{display:inline-block;margin-top:10px;font-size:.82em;color:#fff;background:rgba(255,255,255,.18);
+  padding:4px 12px;border-radius:14px;text-decoration:none}
+main{max-width:880px;margin:0 auto;padding:26px 22px 70px}
+h1,h2,h3{color:#0d47a1} h2{font-size:1.2em;border-left:6px solid var(--ac);padding-left:12px;margin:34px 0 14px}
+table{width:100%;border-collapse:collapse;margin:14px 0;font-size:.92em;background:#fff}
+th,td{border:1px solid var(--bd);padding:7px 10px;text-align:left;vertical-align:top}
+th{background:#eceff1;font-weight:600} tbody tr:nth-child(even){background:#fafcfd}
+code{background:#eceff1;padding:1px 5px;border-radius:4px;font-size:.92em}
+img{max-width:100%;display:block;margin:14px auto;border:1px solid var(--bd);border-radius:8px}
+.katex-display{margin:12px 0!important;overflow-x:auto;overflow-y:hidden}
+footer{text-align:center;color:var(--mut);font-size:.8em;padding:22px;border-top:1px solid var(--bd)}
+</style></head><body>
+<header><h1>SA-2004-4 題目解析</h1><a class="back" href="javascript:history.back()">← 返回講義</a></header>
+<main><h1>考題編號：SA-2004-4</h1>
+<p><strong>主分類：</strong> <code>SA-U2-4</code> 結構分析（靜不定）<br />
+<strong>副分類：</strong> 無<br />
+<strong>分析法：</strong> 矩陣位移法 (直接勁度法)<br />
+<strong>標籤：</strong> <code>矩陣位移法</code>, <code>彈簧支承</code>, <code>修正式勁度矩陣</code>, <code>非節點載重</code></p>
+<hr />
+<h2>1. 原始題目重述 (Problem Restatement)</h2>
+<p>本題為一連續梁結構，A 點為固定端，B 點為滾支承，C 點為內部節點。</p>
+<ul>
+<li>構件 AC：長度 $L$，抗彎剛度 $EI$。</li>
+<li>構件 CB：長度 $2L$，抗彎剛度 $3EI$。</li>
+<li>C 點下方設有一軸向彈簧，勁度 $k = 12EI/L^3$。</li>
+<li>均布載重 $w$ 作用於全跨 (A 到 B)。<br />
+要求以<strong>直接勁度法</strong>或<strong>矩陣位移法</strong>，求各構件端之彎矩及彈簧力大小。</li>
+</ul>
+<p><img alt="SA-2004-4 題目附圖：包含固定端、滾支承與內部彈簧之連續梁受均布載重" src="../../raw/solutions/SA-2004-4/SA-2004-4-fig-1.png" /><br />
+<em>圖說：結構總長 $3L$，A 點固定，B 點滾支承，C 點有彈簧支承且為剛度變化點，全跨受向下均布載重 $w$。</em></p>
+<h2>2. 考題核心精神與出題者意圖 (Core Concepts &amp; Examiner's Intent)</h2>
+<p>本題測驗考生對<strong>矩陣位移法（直接勁度法）</strong>的熟練度。核心難點有三：</p>
+<ol>
+<li><strong>系統維度選擇：</strong> 一般情況 C 點與 B 點均有旋轉自由度，系統維度為 $3 \times 3$。但若利用 B 點為鉸支承的邊界條件，對 CB 桿段使用「修正式勁度矩陣」（靜態凝聚），可將系統維度降為 $2 \times 2$，大幅降低手算矩陣反轉的錯誤率。</li>
+<li><strong>彈簧支承處理：</strong> C 點的軸向彈簧與垂直位移自由度直接相關，只需在整體勁度矩陣對應的對角線元素疊加彈簧勁度 $k$ 即可。</li>
+<li><strong>固端載重轉換：</strong> 外力為均布載重，須先計算固端反力（Fixed-End Forces），再反轉符號成為「等效節點載重（Equivalent Nodal Loads）」。</li>
+</ol>
+<h2>3. 解題戰略地圖與陷阱分析 (Strategic Roadmap &amp; Trap Analysis)</h2>
+<p><strong>戰略地圖：</strong></p>
+<ol>
+<li><strong>定義自由度：</strong> 選擇 C 點的垂直位移 $D_1$（向上為正）及旋轉角 $D_2$（逆時針為正）作為未知自由度。</li>
+<li><strong>建立單元勁度矩陣：</strong><br />
+   - AC 桿：標準固端-固端梁元素（考慮右端自由度）。<br />
+   - CB 桿：右端為滾支承，採用固端-鉸端之修正式勁度矩陣。<br />
+   - 彈簧：直接疊加至 $K_{11}$。</li>
+<li><strong>計算等效節點載重：</strong> 將 AC 與 CB 的均布載重轉換為固端反力，並取負號作為節點外力。</li>
+<li><strong>解聯立方程式：</strong> 解出 $D_1, D_2$。</li>
+<li><strong>回代求內力：</strong> 依單元勁度方程式回推各桿端彎矩，並計算彈簧力 $F_s = k \cdot D_1$。</li>
+</ol>
+<p><strong>陷阱分析：</strong></p>
+<ul>
+<li><strong>陷阱一（符號錯亂）：</strong> 位移法高度依賴嚴格的符號系統。建議全程採用「位移向上為正、旋轉逆時針為正；節點力向上為正、彎矩逆時針為正」的標準直角座標系。</li>
+<li><strong>陷阱二（CB 桿的剛度參數）：</strong> CB 桿長度為 $2L$、剛度為 $3EI$，代入公式時極易忘記平方或三次方，例如 $K = \frac{3(3EI)}{(2L)^3}$。</li>
+<li><strong>陷阱三（固端彎矩的修正式）：</strong> 對於一端鉸接的 CB 桿，其固端彎矩公式為 $wL_{CB}^2/8$，切勿誤用 $wL_{CB}^2/12$。</li>
+</ul>
+<h2>3.5 變數層次分析 (Variable Hierarchy Analysis)</h2>
+<h3>最終目標</h3>
+<p><code>利用矩陣位移法，求出結構所有桿端彎矩與 C 點彈簧力。</code></p>
+<h3>本題關鍵公式（依計算順序）</h3>
+<ol>
+<li>
+<p>建立整體勁度矩陣（含彈簧）：<br />
+$$ [K] = [K^{(AC)}] + [K^{(CB)}_{mod}] + [K^{(spring)}] $$</p>
+</li>
+<li>
+<p>計算等效節點載重向量：<br />
+$$ \{P_{eq}\} = -\{F_{FEM}^{(AC)}\} - \{F_{FEM}^{(CB)}\} $$</p>
+</li>
+<li>
+<p>求解位移向量：<br />
+$$ \{D\} = [K]^{-1} \{P_{eq}\} $$</p>
+</li>
+<li>
+<p>回代求桿端內力與彈簧力：<br />
+$$ \{F^{(i)}\} = [k^{(i)}] \{d^{(i)}\} + \{F_{FEM}^{(i)}\} $$<br />
+$$ F_{s} = k \cdot \boxed{D_1} $$</p>
+</li>
+</ol>
+<h3>L1：題目直接給定</h3>
+<table>
+<thead>
+<tr>
+<th>符號</th>
+<th>數值</th>
+<th>說明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>$L_1, (EI)_1$</td>
+<td>$L, EI$</td>
+<td>AC 桿長度與抗彎剛度</td>
+</tr>
+<tr>
+<td>$L_2, (EI)_2$</td>
+<td>$2L, 3EI$</td>
+<td>CB 桿長度與抗彎剛度</td>
+</tr>
+<tr>
+<td>$k$</td>
+<td>$12EI/L^3$</td>
+<td>C 點彈簧勁度</td>
+</tr>
+<tr>
+<td>$w$</td>
+<td>$w$ (向下)</td>
+<td>全跨均布載重</td>
+</tr>
+</tbody>
+</table>
+<h3>L2：需知識點推導</h3>
+<p><strong>單元勁度與固端力計算</strong><br />
+| 符號 | 公式／來源 | 卡關? |<br />
+|---|---|---|<br />
+| $[k_{mod}]$ | 一端鉸接之修正式勁度矩陣 | |<br />
+| $FEM_{mod}$ | 一端鉸接之固端反力 ($5wL^2/8, wL^2/8$ 形式) | |</p>
+<h3>L3：深層知識（不懂就卡住）</h3>
+<table>
+<thead>
+<tr>
+<th>知識點</th>
+<th>說明</th>
+<th>卡關?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>靜態凝聚 (Static Condensation)</td>
+<td>若支承端彎矩已知(如鉸支承 $M=0$)，可將該自由度從矩陣中消去，縮小矩陣階數以簡化手算。</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h2>4. 步驟化詳細計算過程 (Step-by-Step Detailed Calculation)</h2>
+<p><strong>Step 1：定義座標系統與自由度</strong><br />
+採用標準卡式座標：垂直位移 $v$ 向上為正，旋轉角 $\theta$ 逆時針為正。<br />
+節點 A：固定端，$v_A = 0, \theta_A = 0$<br />
+節點 B：滾支承，$v_B = 0, \theta_B$ 不為零，但因其彎矩為零，可將其凝聚。<br />
+節點 C：定義未知自由度 $D_1 = v_C$ (向上為正)，$D_2 = \theta_C$ (逆時針為正)。</p>
+<p><strong>Step 2：計算各單元之局部勁度矩陣 (對應 $D_1, D_2$)</strong><br />
+(1) <strong>AC 桿單元 (長度 $L$，剛度 $EI$)</strong><br />
+A 端固定，C 端對應 $D_1, D_2$。對應矩陣為：<br />
+$$ [k^{(AC)}] = \begin{bmatrix} \frac{12EI}{L^3} & -\frac{6EI}{L^2} \\ -\frac{6EI}{L^2} & \frac{4EI}{L} \end{bmatrix} $$</p>
+<p>(2) <strong>CB 桿單元 (長度 $2L$，剛度 $3EI$)</strong><br />
+右端 B 為滾支承 (鉸)，使用修正式勁度矩陣 (只取左端 C 對應的自由度)：<br />
+$$ [k_{mod}^{(CB)}] = \begin{bmatrix} \frac{3(3EI)}{(2L)^3} & \frac{3(3EI)}{(2L)^2} \\ \frac{3(3EI)}{(2L)^2} & \frac{3(3EI)}{(2L)} \end{bmatrix} = \begin{bmatrix} \frac{9EI}{8L^3} & \frac{9EI}{4L^2} \\ \frac{9EI}{4L^2} & \frac{9EI}{2L} \end{bmatrix} = \begin{bmatrix} 1.125 \frac{EI}{L^3} & 2.25 \frac{EI}{L^2} \\ 2.25 \frac{EI}{L^2} & 4.5 \frac{EI}{L} \end{bmatrix} $$</p>
+<p>(3) <strong>彈簧支承</strong><br />
+C 點彈簧貢獻垂直勁度 $k = 12 \frac{EI}{L^3}$，直接疊加至 $K_{11}$。</p>
+<p><strong>Step 3：組裝整體勁度矩陣 $[K]$</strong><br />
+$$ K_{11} = 12\frac{EI}{L^3} + 1.125\frac{EI}{L^3} + 12\frac{EI}{L^3} = 25.125\frac{EI}{L^3} = \frac{201}{8}\frac{EI}{L^3} $$<br />
+$$ K_{12} = K_{21} = -6\frac{EI}{L^2} + 2.25\frac{EI}{L^2} = -3.75\frac{EI}{L^2} = -\frac{15}{4}\frac{EI}{L^2} $$<br />
+$$ K_{22} = 4\frac{EI}{L} + 4.5\frac{EI}{L} = 8.5\frac{EI}{L} = \frac{17}{2}\frac{EI}{L} $$<br />
+$$ [K] = \begin{bmatrix} \frac{201}{8} \frac{EI}{L^3} & -\frac{15}{4} \frac{EI}{L^2} \\ -\frac{15}{4} \frac{EI}{L^2} & \frac{17}{2} \frac{EI}{L} \end{bmatrix} $$</p>
+<p><strong>Step 4：計算等效節點載重 $\{P_{eq}\}$</strong><br />
+均布載重 $w$ 向下。先求各桿於 C 點的固端反力 (Fixed-End Forces, $F_{FEM}$)：</p>
+<ul>
+<li>
+<p><strong>AC 桿 (兩端固定)：</strong><br />
+  $V_C^{(AC)} = \frac{wL}{2}$ (向上)<br />
+  $M_C^{(AC)} = -\frac{wL^2}{12}$ (順時針，負)</p>
+</li>
+<li>
+<p><strong>CB 桿 (左端固定，右端鉸接)：</strong><br />
+  長度為 $2L$。<br />
+  $V_C^{(CB)} = \frac{5w(2L)}{8} = \frac{10wL}{8} = 1.25 wL$ (向上)<br />
+  $M_C^{(CB)} = \frac{w(2L)^2}{8} = \frac{4wL^2}{8} = 0.5 wL^2$ (逆時針，正)</p>
+</li>
+</ul>
+<p>等效節點載重為固端反力反向（加負號）：<br />
+$$ P_1 = - (V_C^{(AC)} + V_C^{(CB)}) = - (0.5 wL + 1.25 wL) = -1.75 wL = -\frac{7}{4} wL $$<br />
+$$ P_2 = - (M_C^{(AC)} + M_C^{(CB)}) = - \left(-\frac{1}{12} wL^2 + \frac{1}{2} wL^2\right) = -\frac{5}{12} wL^2 $$<br />
+$$ \{P_{eq}\} = \begin{bmatrix} -\frac{7}{4} wL \\ -\frac{5}{12} wL^2 \end{bmatrix} $$</p>
+<p><strong>Step 5：解矩陣方程式</strong><br />
+$$ \begin{bmatrix} \frac{201}{8} \frac{EI}{L^3} & -\frac{15}{4} \frac{EI}{L^2} \\ -\frac{15}{4} \frac{EI}{L^2} & \frac{17}{2} \frac{EI}{L} \end{bmatrix} \begin{bmatrix} D_1 \\ D_2 \end{bmatrix} = \begin{bmatrix} -\frac{7}{4} wL \\ -\frac{5}{12} wL^2 \end{bmatrix} $$<br />
+提取出 $EI, L$，簡化係數矩陣的行列式值：<br />
+$$ \Delta = \det[K] = \left(\frac{201}{8}\right)\left(\frac{17}{2}\right) - \left(-\frac{15}{4}\right)^2 = \frac{3417}{16} - \frac{225}{16} = \frac{3192}{16} = \frac{399}{2} $$<br />
+由 Cramer's Rule 求 $D_1, D_2$：<br />
+$$ D_1 = \frac{1}{\Delta} \left[ \left(-\frac{7}{4}\right)\left(\frac{17}{2}\right) - \left(-\frac{15}{4}\right)\left(-\frac{5}{12}\right) \right] \frac{wL^4}{EI} = \frac{2}{399} \left[ -\frac{119}{8} - \frac{75}{48} \right] \frac{wL^4}{EI} = \frac{2}{399} \left[ -\frac{714+75}{48} \right] \frac{wL^4}{EI} = \boxed{ -\frac{263}{3192} \frac{wL^4}{EI} } $$<br />
+$$ D_2 = \frac{1}{\Delta} \left[ \left(\frac{201}{8}\right)\left(-\frac{5}{12}\right) - \left(-\frac{7}{4}\right)\left(-\frac{15}{4}\right) \right] \frac{wL^3}{EI} = \frac{2}{399} \left[ -\frac{1005}{96} - \frac{105}{16} \right] \frac{wL^3}{EI} = \frac{2}{399} \left[ -\frac{1005+630}{96} \right] \frac{wL^3}{EI} = \boxed{ -\frac{545}{6384} \frac{wL^3}{EI} } $$<br />
+($D_1$ 為負，表示節點 C 實際向下位移；$D_2$ 為負，表示節點 C 順時針旋轉)</p>
+<p><strong>Step 6：回代求各桿端彎矩與彈簧力</strong><br />
+利用 $\{F\} = [k]\{D\} + \{F_{FEM}\}$，此處均遵循逆時針為正。</p>
+<ul>
+<li>
+<p><strong>A端彎矩 $M_{A} = M_{AC}$：</strong><br />
+  $M_{AC} = [ -\frac{6EI}{L^2} \quad \frac{2EI}{L} ] \begin{bmatrix} D_1 \\ D_2 \end{bmatrix} + \frac{wL^2}{12}$<br />
+  $M_{AC} = -\frac{6EI}{L^2} \left(-\frac{263}{3192} \frac{wL^4}{EI}\right) + \frac{2EI}{L} \left(-\frac{545}{6384} \frac{wL^3}{EI}\right) + \frac{wL^2}{12}$<br />
+  $M_{AC} = \left( \frac{1578}{3192} - \frac{1090}{6384} + \frac{266}{3192} \right) wL^2 = \left( \frac{3156 - 1090 + 532}{6384} \right) wL^2 = \frac{2598}{6384} wL^2 = \boxed{ \frac{433}{1064} wL^2 \text{ (逆時針)} }$</p>
+</li>
+<li>
+<p><strong>C端彎矩 $M_{CA}$ (AC桿右側)：</strong><br />
+  $M_{CA} = [ -\frac{6EI}{L^2} \quad \frac{4EI}{L} ] \begin{bmatrix} D_1 \\ D_2 \end{bmatrix} - \frac{wL^2}{12}$<br />
+  $M_{CA} = -\frac{6EI}{L^2} \left(-\frac{263}{3192}\right) + \frac{4EI}{L} \left(-\frac{545}{6384}\right) - \frac{1}{12} = \left( \frac{3156}{6384} - \frac{2180}{6384} - \frac{532}{6384} \right) wL^2 = \frac{444}{6384} wL^2 = \boxed{ \frac{37}{532} wL^2 \text{ (逆時針)} }$</p>
+</li>
+<li>
+<p><strong>C端彎矩 $M_{CB}$ (CB桿左側)：</strong><br />
+  $M_{CB} = [ \frac{2.25EI}{L^2} \quad \frac{4.5EI}{L} ] \begin{bmatrix} D_1 \\ D_2 \end{bmatrix} + \frac{w(2L)^2}{8}$<br />
+  $M_{CB} = \frac{9}{4} \left(-\frac{263}{3192}\right) + \frac{9}{2} \left(-\frac{545}{6384}\right) + 0.5 = \left( -\frac{2367}{12768} - \frac{4905}{12768} + \frac{6384}{12768} \right) wL^2 = -\frac{888}{12768} wL^2 = \boxed{ -\frac{37}{532} wL^2 \text{ (順時針)} }$<br />
+<em>(註：$M_{CA} + M_{CB} = 0$，滿足內部節點彎矩平衡，計算無誤！)</em></p>
+</li>
+<li>
+<p><strong>B端彎矩 $M_{B}$：</strong><br />
+  B 端為滾支承，彎矩直接為零：<br />
+  $\boxed{ M_{B} = 0 }$</p>
+</li>
+<li>
+<p><strong>彈簧力 $F_s$：</strong><br />
+  $F_s = k \cdot D_1 = \left( \frac{12EI}{L^3} \right) \left(-\frac{263}{3192} \frac{wL^4}{EI}\right) = -\frac{3156}{3192} wL = -\frac{263}{266} wL$<br />
+  彈簧力大小：<br />
+  $\boxed{ |F_s| = \frac{263}{266} wL \approx 0.989 wL \text{ (壓力)} }$</p>
+</li>
+</ul>
+<h2>5. 關鍵爭議點與進階探討 (Critical Issues &amp; Advanced Discussion)</h2>
+<ol>
+<li>
+<p><strong>維度縮減的重要性：</strong><br />
+   若不使用鉸端修正矩陣，系統矩陣將是 $3 \times 3$。在考場上手動求解 $3 \times 3$ 矩陣的反矩陣極易發生算術錯誤且耗時。利用 B 點滾支承 $M_B=0$ 的條件預先將 $\theta_B$ 凝聚，是確保解題速度與準確度的關鍵策略。</p>
+</li>
+<li>
+<p><strong>彈簧力符號解讀：</strong><br />
+   求得之 $D_1$ 為負值（向下），而彈簧位於梁之下方，故梁向下擠壓彈簧。因此彈簧本身承受壓縮力，其反向施加於梁節點 C 的力方向為向上（對抗外部載重）。在寫答案時，應指明彈簧力的大小及為壓力。</p>
+</li>
+<li>
+<p><strong>驗算機制：</strong><br />
+   計算完畢後，強烈建議進行節點 C 的彎矩平衡檢驗 ($M_{CA} + M_{CB} = 0$)。若不為零，必為勁度矩陣或等效載重計算有誤，這是一個能在考場上立刻自我糾正的重要工具。</p>
+</li>
+</ol></main>
+<footer>來源：raw/solutions/SA-2004-4/SA-2004-4.md（知識庫解題內容唯一正本；本頁僅為渲染顯示）</footer>
+</body></html>
