@@ -25,8 +25,24 @@ code{background:#eceff1;padding:1px 5px;border-radius:4px;font-size:.92em}
 img{max-width:100%;display:block;margin:14px auto;border:1px solid var(--bd);border-radius:8px}
 .katex-display{margin:12px 0!important;overflow-x:auto;overflow-y:hidden}
 footer{text-align:center;color:var(--mut);font-size:.8em;padding:22px;border-top:1px solid var(--bd)}
+
+header h1{color:#fff!important;font-size:1.25em;margin:0;letter-spacing:.5px}
+header .meta2{margin:8px 0 0;font-size:.84em;opacity:.93;line-height:1.6}
+header .meta2 b{background:rgba(255,255,255,.2);border-radius:4px;padding:1px 7px;font-weight:600}
+header .hbtns{display:flex;flex-wrap:wrap;gap:10px;margin-top:14px}
+header .hbtns a{font-size:.85em;text-decoration:none;padding:7px 17px;border-radius:22px;
+  font-weight:700;white-space:nowrap;line-height:1.4}
+header .b-study{background:#fff;color:#1565c0}
+header .b-lect{background:#6a1b9a;color:#fff}
+header .b-fg{background:#c62828;color:#fff}
+header .hbtns a:hover{filter:brightness(1.08)}
+header .nomat{margin-top:12px;font-size:.8em;opacity:.85}
 </style></head><body>
-<header><h1>SA-2009-4 題目解析</h1><a class="back" href="javascript:history.back()">← 返回講義</a></header>
+<header>
+<h1>SA-2009-4　靜不定度與穩定性之判斷</h1>
+<p class="meta2">主分類 <b>SA-U1-1</b> 靜不定度與穩定性之判斷 ｜ 副分類 <b>SA-U2-4</b> 靜不定結構之矩陣分析法 ｜ 2009 年（民國 98） ｜ 矩陣直接勁度法</p>
+<div class="hbtns"><a class="b-study" href="../study-SA-U2-4.html">🔍 U2-4 命題分析</a><a class="b-lect" href="../lecture-SA-U2-4.html">📚 U2-4 靜不定結構之矩陣分析法 講義</a><a class="b-fg" href="../formula-given-SA-U2-4.html">🎯 U2-4 給／背分界</a></div><p class="nomat">本題主分類 SA-U1-1 目前尚無教材，按鈕指向有教材的副分類 SA-U2-4。</p>
+</header>
 <main><div style="background:#fff;border:1px solid #dfe6ea;border-radius:10px;padding:12px 14px;margin:0 0 18px"><p style="margin:0 0 6px;font-size:.88em;color:#607d8b">題目附圖（原始 .md 未內嵌，由 raw/solutions/ 自動補上）</p><img src="../../raw/solutions/SA-2009-4/SA-2009-4-fig-1.png" alt="SA-2009-4 附圖"></div><h1>考題編號：SA-2009-4</h1>
 <p><strong>主分類：</strong> <code>SA-U1-1</code> 桁架結構分析<br />
 <strong>副分類：</strong> <code>SA-U1-5</code> 直接勁度法 (Direct Stiffness Method)<br />
@@ -232,4 +248,21 @@ $\sum F_y = T_{ac} + T_{ab} \times 0.6 - 100 = 87.5 + 20.833 \times 0.6 - 100 = 
 </li>
 </ul></main>
 <footer>來源：raw/solutions/SA-2009-4/SA-2009-4.md（知識庫解題內容唯一正本；本頁僅為渲染顯示）</footer>
+
+<script>
+/* 跟隨來源單元：若由 study-/lecture-/formula-given-SA-Un-m.html 點進來，
+   三顆按鈕改指向「來源那個單元」。靜態 href 保底，無 JS 或無 referrer 時仍可用。 */
+(function(){
+  var NAMES={"SA-U1-2": "靜定結構之分析", "SA-U1-3": "靜定及靜不定結構影響線", "SA-U2-1": "靜不定結構最小功法", "SA-U2-3": "靜不定結構之傾角變位法", "SA-U2-4": "靜不定結構之矩陣分析法"};
+  var m=(document.referrer||'').match(/\/(?:study|lecture|formula-given)-(SA-U\d+-\d+)\.html/);
+  if(!m||!NAMES[m[1]])return;
+  var u=m[1], s=u.slice(3), box=document.querySelector('.hbtns');
+  if(!box)return;
+  box.innerHTML=
+    '<a class="b-study" href="../study-'+u+'.html">\u{1F50D} '+s+' \u547D\u984C\u5206\u6790</a>'+
+    '<a class="b-lect" href="../lecture-'+u+'.html">\u{1F4DA} '+s+' '+NAMES[u]+' \u8B1B\u7FA9</a>'+
+    '<a class="b-fg" href="../formula-given-'+u+'.html">\u{1F3AF} '+s+' \u7D66\uFF0F\u80CC\u5206\u754C</a>';
+  var n=document.querySelector('.nomat'); if(n)n.remove();
+})();
+</script>
 </body></html>

@@ -2,273 +2,223 @@
 <html lang="zh-Hant">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>SA-U2-1 靜不定結構最小功法｜深度複習</title>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
-<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
-<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
- onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'\\(',right:'\\)',display:false}]})"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SA-U2-1 靜不定結構最小功法｜命題分析</title>
 <style>
-:root{--bg:#f6f7fb;--card:#fff;--ink:#1e293b;--mut:#64748b;--line:#e2e8f0;--acc:#2563eb}
-*{box-sizing:border-box}
-body{margin:0;font-family:'Segoe UI','Microsoft JhengHei','Noto Sans TC',sans-serif;background:var(--bg);color:var(--ink);line-height:1.65}
-.wrap{max-width:1100px;margin:0 auto;padding:24px 20px 80px}
-header.hero{background:linear-gradient(135deg,#1e3a8a,#2563eb);color:#fff;border-radius:16px;padding:28px 32px;margin-bottom:28px}
-header.hero .bc{font-size:13px;opacity:.85;margin-bottom:6px}
-header.hero .bc a{color:#bfdbfe;text-decoration:none}
-header.hero h1{margin:0;font-size:26px}
-header.hero p{margin:8px 0 0;opacity:.9;font-size:14px}
-h2.sec{font-size:20px;margin:44px 0 16px;padding-left:12px;border-left:5px solid var(--acc)}
-h2.sec small{font-weight:400;font-size:13px;color:var(--mut);margin-left:10px}
-.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:14px}
-.kpi{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:16px 18px}
-.kpi .v{font-size:28px;font-weight:700;color:var(--acc)}
-.kpi .l{font-size:13px;color:var(--mut)}
-.typecards{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:14px;margin-top:18px}
-.tcard{background:var(--card);border:1px solid var(--line);border-left:6px solid #888;border-radius:12px;padding:14px 16px;cursor:pointer;transition:.15s}
-.tcard:hover{transform:translateY(-2px);box-shadow:0 4px 14px rgba(0,0,0,.08)}
-.tcard b{font-size:15px}
-.tcard .n{font-size:22px;font-weight:700;float:right}
-.tcard p{margin:6px 0 0;font-size:12.5px;color:var(--mut)}
-.charts{display:grid;grid-template-columns:2fr 1fr;gap:18px;margin-top:20px}
-@media(max-width:820px){.charts{grid-template-columns:1fr}}
-.chartbox{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:16px}
-.chartbox h4{margin:0 0 10px;font-size:14px;color:var(--mut)}
-.chartbox canvas{width:100%;height:auto;display:block}
-.legend{font-size:12.5px;color:var(--mut);margin-top:8px}
-.legend i{display:inline-block;width:11px;height:11px;border-radius:3px;margin:0 5px 0 12px;vertical-align:-1px}
-.svgbox{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:18px;overflow-x:auto}
-.svgbox+.svgbox{margin-top:16px}
-.svgbox h4{margin:0 0 8px;font-size:15px}
-.svgbox .cap{font-size:12.5px;color:var(--mut);margin-top:8px}
-.fgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(330px,1fr));gap:16px}
-.fcard{background:var(--card);border:1px solid var(--line);border-top:5px solid #888;border-radius:12px;padding:16px 18px;overflow-x:auto}
-.fcard h4{margin:0 0 10px;font-size:15px}
-.fcard .note{font-size:12.5px;color:var(--mut);background:#f1f5f9;border-radius:8px;padding:8px 10px;margin-top:10px}
-.fbtns{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:16px}
-.fbtn{border:1px solid var(--line);background:var(--card);border-radius:20px;padding:6px 16px;font-size:13.5px;cursor:pointer}
-.fbtn.on{background:var(--acc);border-color:var(--acc);color:#fff}
-.qitem{background:var(--card);border:1px solid var(--line);border-left:6px solid #888;border-radius:10px;padding:12px 16px;margin-bottom:10px;display:flex;gap:14px;align-items:flex-start}
-.qitem .yr{min-width:76px;text-align:center;background:#f1f5f9;border-radius:8px;padding:6px 4px;font-size:11.5px;color:var(--mut)}
-.qitem .yr b{display:block;font-size:15px;color:var(--ink)}
-.qitem .bd{flex:1}
-.qitem a.tt{font-weight:600;color:#1d4ed8;text-decoration:none;font-size:15px}
-.qitem a.tt:hover{text-decoration:underline}
-.badge{display:inline-block;font-size:11px;color:#fff;border-radius:10px;padding:2px 9px;margin-left:8px;vertical-align:1px}
-.tags{margin-top:5px;font-size:12px;color:var(--mut)}
-.tags span{background:#eef2ff;color:#4338ca;border-radius:8px;padding:1px 8px;margin-right:6px;display:inline-block;margin-top:3px}
-.icons{white-space:nowrap;font-size:13px;color:var(--mut);padding-top:2px}
-.trap{background:var(--card);border:1px solid var(--line);border-left:6px solid #888;border-radius:10px;padding:12px 16px;margin-bottom:10px}
-.trap b{font-size:14.5px}
-.trap p{margin:5px 0 0;font-size:13.5px;color:#475569}
-.trap .src{font-size:12px;color:#94a3b8}
-.calc{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:20px}
-.calc .row{display:flex;flex-wrap:wrap;gap:16px;align-items:flex-end;margin-bottom:14px}
-.calc label{font-size:13px;color:var(--mut);display:block;margin-bottom:3px}
-.calc input,.calc select{padding:6px 10px;border:1px solid var(--line);border-radius:8px;font-size:14px;width:120px}
-.calc button{background:var(--acc);color:#fff;border:0;border-radius:8px;padding:9px 24px;font-size:14px;cursor:pointer}
-.calc .out{background:#f1f5f9;border-radius:10px;padding:12px 16px;margin:12px 0;font-size:14px}
-.calc canvas{width:100%;height:auto;display:block;border:1px solid var(--line);border-radius:10px;margin-top:8px}
-footer{margin-top:60px;font-size:12px;color:var(--mut);text-align:center}
+:root{--ac:#1565c0;--ac2:#e3f2fd;--t:#f57c00;--k:#2e7d32;--c:#1565c0;--x:#8e24aa;
+--bg:#f7f9fb;--card:#fff;--ink:#263238;--mut:#78909c;--bd:#e0e6ea;--warn:#c62828}
+*{box-sizing:border-box}body{margin:0;font-family:"Microsoft JhengHei","Noto Sans TC",sans-serif;background:var(--bg);color:var(--ink);line-height:1.6}
+header{background:linear-gradient(135deg,#0d47a1,#1976d2);color:#fff;padding:28px 24px}
+header h1{margin:0 0 6px;font-size:1.5em}header p{margin:0;opacity:.85;font-size:.92em}
+nav{position:sticky;top:0;z-index:9;background:#fff;border-bottom:2px solid var(--bd);padding:8px 16px;display:flex;flex-wrap:wrap;gap:6px}
+nav a{text-decoration:none;color:var(--ac);font-size:.88em;padding:5px 10px;border-radius:16px;background:var(--ac2)}
+nav a:hover{background:var(--ac);color:#fff}
+main{max-width:1080px;margin:0 auto;padding:20px 16px 60px}
+section{margin-bottom:34px}
+h2{font-size:1.25em;border-left:5px solid var(--ac);padding-left:10px;margin:26px 0 14px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px}
+h3{font-size:1.05em;margin:30px 0 10px;padding-bottom:5px;border-bottom:2px solid var(--ac2)}
+.role{background:#fffde7;border:1px solid #ffe082;border-left:5px solid #f9a825;border-radius:8px;padding:12px 16px;font-size:.88em;margin-bottom:6px}
+.role b{color:#e65100}
+.btnbar{display:flex;flex-wrap:wrap;gap:8px;margin:12px 0 4px}
+.btnbar a{padding:5px 14px;border-radius:6px;font-size:.9em;text-decoration:none;display:inline-flex;align-items:center;gap:6px}
+.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px}
+.kpi{background:var(--card);border:1px solid var(--bd);border-radius:10px;padding:14px;text-align:center}
+.kpi .n{font-size:1.9em;font-weight:700;color:var(--ac)}.kpi .l{font-size:.82em;color:var(--mut)}
+.cats{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px;margin-top:14px}
+.cat{background:var(--card);border:1px solid var(--bd);border-left:6px solid;border-radius:10px;padding:12px 14px;cursor:pointer;transition:.15s}
+.cat:hover{transform:translateY(-2px);box-shadow:0 3px 10px rgba(0,0,0,.1)}
+.cat h3{margin:0 0 4px;font-size:1em;border:none;padding:0}.cat p{margin:0;font-size:.82em;color:var(--mut)}
+.charts{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:16px}
+@media(max-width:760px){.charts{grid-template-columns:1fr}}
+.chartbox{background:var(--card);border:1px solid var(--bd);border-radius:10px;padding:14px}
+.chartbox h4{margin:0 0 8px;font-size:.95em;color:var(--mut)}
+canvas{width:100%;height:auto}
+table{border-collapse:collapse;width:100%;background:#fff;font-size:.9em}
+th,td{border:1px solid var(--bd);padding:8px 10px;text-align:left;vertical-align:middle}
+th{background:var(--ac2)}
+td.num{text-align:center;font-variant-numeric:tabular-nums}
+.bar{display:inline-block;height:12px;border-radius:3px;vertical-align:middle}
+.up{color:#2e7d32;font-weight:700}.down{color:var(--warn);font-weight:700}
+.filters{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:14px}
+.fbtn{border:1px solid var(--bd);background:#fff;border-radius:18px;padding:6px 14px;cursor:pointer;font-size:.88em;font-family:inherit}
+.fbtn.on{background:var(--ac);color:#fff;border-color:var(--ac)}
+.qrow{background:var(--card);border:1px solid var(--bd);border-left:6px solid;border-radius:8px;padding:10px 14px;margin-bottom:8px;display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.qrow.sec{background:#fafafa;border-style:dashed}
+.qrow a{font-weight:700;text-decoration:none;color:var(--ac);min-width:92px}
+.qrow a:hover{text-decoration:underline}
+.qrow .sum{flex:1;min-width:200px;font-size:.92em}
+.qrow .tags{font-size:.75em;color:var(--mut)}
+.qrow .meta{font-size:.72em;white-space:nowrap;color:#fff;border-radius:10px;padding:1px 8px}
+.note{font-size:.85em;color:var(--mut);background:#fff;border:1px dashed var(--bd);border-radius:8px;padding:10px 14px;margin-top:12px}
+.risk-hi{background:#ffebee}.risk-md{background:#fff8e1}.risk-lo{background:#f1f8e9}
+footer{text-align:center;color:var(--mut);font-size:.8em;padding:20px}
 </style>
 </head>
 <body>
-<div class="wrap">
-
-<header class="hero">
-  <div class="bc"><a href="../index.html" target="_blank">⌂ SA 結構學題庫儀表板</a> ／ SA-U2 第二單元 ／ SA-U2-1</div>
-  <h1>SA-U2-1　靜不定結構最小功法</h1>
-  <p>能量法主戰場：卡氏第二定理、最小功諧合方程、混合結構應變能、纜索與挫曲特殊條件</p>
+<header>
+<h1>SA-U2-1 靜不定結構最小功法 — 命題分析</h1>
+<p>結構技師「結構學」子項命題情報頁｜資料來源：raw/json/question_index.json（2002–2025，24 個考年、96 題）｜更新日期 2026-08-09</p>
 </header>
+<nav>
+<a href="#b1">出題概況</a><a href="#b2">考點結構</a><a href="#b3">考點漂移</a>
+<a href="#b4">題型走向</a><a href="#b5">考題清單</a><a href="#b6">命題風險</a>
+</nav>
+<main>
 
-<h2 class="sec" style="display: flex; justify-content: space-between; align-items: center; margin-top: 44px;">
-  <span>① 命題分析<small>資料來源：question_index.json（2002–2025，全科 96 題）</small></span>
-  <span style="display:flex;gap:8px;align-items:center;flex-wrap:wrap;">
-    <a href="lecture-SA-U2-1.html" style="background:#6a1b9a;color:#fff;font-size:14px;padding:6px 16px;border-radius:6px;text-decoration:none;font-weight:500;box-shadow:0 2px 4px rgba(0,0,0,0.1);">觀念講義 📘</a>
-    <a href="lecture-SA-U2-1.pdf" target="_blank" style="background:#ede7f6;color:#4a148c;font-size:14px;padding:6px 14px;border-radius:6px;text-decoration:none;font-weight:500;border:1px solid #ce93d8;">PDF 🖨️</a>
-    <a href="SA-U2-1_能量法主戰場與高頻陷阱破解.pdf" target="_blank" style="background:var(--acc);color:#fff;font-size:14px;padding:6px 16px;border-radius:6px;text-decoration:none;font-weight:500;box-shadow:0 2px 4px rgba(0,0,0,0.1);">Keynote 📄</a>
-  </span>
-</h2>
-<p style="margin:-8px 0 18px;font-size:13.5px;color:#6b7280;">建議使用順序：<b style="color:#6a1b9a;">觀念講義（練題前建立原理）</b> → <b>Keynote（課堂）</b> → <b>本頁速查（考前總複習）</b></p>
-<div class="kpis"><div class="kpi"><div class="v">12 題</div><div class="l">主考點題數（2002–2025）</div></div><div class="kpi"><div class="v">12.5%</div><div class="l">佔全科 96 題比例</div></div><div class="kpi"><div class="v">No.3（並列）</div><div class="l">全部 10 個子項排名</div></div><div class="kpi"><div class="v">17%</div><div class="l">近 6 年出題率（1/6 年）</div></div></div>
-<div class="typecards"><div class="tcard" style="border-left-color:#dc2626" onclick="jumpFilter('frame')"><span class="n" style="color:#dc2626">6</span><b>靜不定剛架</b><p>最小功／卡氏定理解贅力、側移方程式、纜索構件特殊條件</p></div><div class="tcard" style="border-left-color:#2563eb" onclick="jumpFilter('truss')"><span class="n" style="color:#2563eb">3</span><b>桁架與混合結構</b><p>贅桿桁架、桁架＋梁混合系統、挫曲控制之極限載重</p></div><div class="tcard" style="border-left-color:#d97706" onclick="jumpFilter('beam')"><span class="n" style="color:#d97706">2</span><b>靜不定梁</b><p>內鉸與彈簧支承、由彎矩圖反求載重</p></div><div class="tcard" style="border-left-color:#059669" onclick="jumpFilter('disp')"><span class="n" style="color:#059669">1</span><b>變位計算</b><p>單位力法、基本結構選取、圖乘法（圖形積分）</p></div></div>
+<section id="s1">
+<h2><span>命題分析</span></h2>
+
+<div class="role">
+📚 <b>本頁只回答一件事：這個子項「考什麼」。</b>
+原理與圖解看 <b>觀念講義</b>、公式要不要背看 <b>給／背分界</b>、本頁提供的是可從 <code>question_index.json</code> 重生的命題事實：頻率、結構、漂移、題型、清單、風險。<br>
+建議順序：<b style="color:#6a1b9a;">觀念講義</b>（練題前建立直覺）→ <b style="color:var(--warn);">給／背分界</b>（決定記憶投資）→ <b>本頁</b>（決定練題順序與押題）。
+</div>
+<div class="btnbar">
+  <a href="lecture-SA-U2-1.html" title="原理圖解、公式來源、精選必練題" style="background:#6a1b9a;color:#fff;">觀念講義 📘</a>
+  <a href="lecture-SA-U2-1.pdf" target="_blank" style="background:#f3e5f5;color:#6a1b9a;border:1px solid #ce93d8;">講義 PDF 🖨️</a>
+  <a href="formula-given-SA-U2-1.html" title="逐條公式 × 24 年考卷證據：哪些會印給你、哪些必須自己背" style="background:#c62828;color:#fff;">給／背分界 🎯</a>
+  <a href="formula-given-SA-U2-1.pdf" target="_blank" style="background:#ffebee;color:#c62828;border:1px solid #ef9a9a;">分界 PDF 🖨️</a>
+</div>
+
+<h3 id="b1">出題概況</h3>
+<div class="kpis">
+<div class="kpi"><div class="n">12</div><div class="l">主考點題數（另有 3 題副考點）</div></div>
+<div class="kpi"><div class="n">12.5%</div><div class="l">佔全科比例（12／96）</div></div>
+<div class="kpi"><div class="n">#4</div><div class="l">全科出題排名（與 SA-U2-4 並列 12 題）</div></div>
+<div class="kpi"><div class="n">1/6</div><div class="l">近 6 考年出題年數（2020–25 共 1 題）</div></div>
+</div>
 <div class="charts">
-  <div class="chartbox"><h4>年度出題分布（依題型堆疊）</h4><canvas id="yearChart"></canvas></div>
-  <div class="chartbox"><h4>題型比例</h4><canvas id="pieChart"></canvas><div class="legend" id="pieLegend"></div></div>
+<div class="chartbox"><h4>年度分布（依考點結構堆疊，主考點 12 題）</h4><canvas id="cvBar" width="520" height="260"></canvas></div>
+<div class="chartbox"><h4>考點結構比例（主考點 12 題）</h4><canvas id="cvPie" width="520" height="260"></canvas></div>
+</div>
+<div class="note">
+📌 <b>三個要記住的數字</b>：① 主考點 12 題、佔全科 12.5%，全科排名 #4／10；
+② 24 個考年裡有 10 年出現過；
+③ 近 6 考年（2020–2025）1/6 年出題、共 1 題。
+空窗年段：2002–2004、2008–2012、2020–2021、2023–2025——<b>空窗不代表退場</b>，本科 24 年都在同一組解法裡輪替，只是換載體。
 </div>
 
-<h2 class="sec">② 結構示意圖解</h2>
+<h3 id="b2">考點結構（點卡片可篩選下方考題清單）</h3>
+<p style="font-size:.9em;margin:0 0 4px;color:var(--mut)">每題只歸一群。括號內為<b>主考點＋副考點</b>合計（與下方篩選鈕一致）；上方圓餅圖只計主考點，故兩處數字不同屬正常。</p>
+<div class="cats"><div class="cat" style="border-left-color:#dc2626" onclick="filterQ('FR')"><h3>🏗️ 靜不定剛架解贅力（3 題）</h3><p>分段彎矩函數・∂U/∂R=0・側移方程</p></div><div class="cat" style="border-left-color:#2563eb" onclick="filterQ('TR')"><h3>🔺 靜不定桁架與混合結構（4 題）</h3><p>軸力應變能・纜索鬆弛判定・極限機構</p></div><div class="cat" style="border-left-color:#d97706" onclick="filterQ('BM')"><h3>📏 靜不定梁與固端彎矩（4 題）</h3><p>內鉸條件・固端彎矩推導・彎矩圖反算</p></div><div class="cat" style="border-left-color:#059669" onclick="filterQ('DP')"><h3>📐 卡氏定理求位移與轉角（4 題）</h3><p>虛設力・圖乘法・支承沉陷修正</p></div></div>
 
-<div class="svgbox"><h4>最小功法的典型對象：一次靜不定結構</h4>
-<svg viewBox="0 0 980 250" xmlns="http://www.w3.org/2000/svg"><defs><marker id="ah" markerWidth="9" markerHeight="9" refX="7" refY="4" orient="auto"><path d="M0,0L8,4L0,8z" fill="#64748b"/></marker></defs>
-<!-- propped cantilever -->
-<text x="130" y="24" font-size="14" font-weight="bold" fill="#d97706">撐持懸臂梁（贅力 R<tspan font-size="10" dy="3">B</tspan><tspan dy="-3">）</tspan></text>
-<line x1="50" y1="60" x2="50" y2="120" stroke="#334155" stroke-width="2.5"/><line x1="50" y1="60" x2="41" y2="69" stroke="#334155" stroke-width="1.4"/><line x1="50" y1="70" x2="41" y2="79" stroke="#334155" stroke-width="1.4"/><line x1="50" y1="80" x2="41" y2="89" stroke="#334155" stroke-width="1.4"/><line x1="50" y1="90" x2="41" y2="99" stroke="#334155" stroke-width="1.4"/><line x1="50" y1="100" x2="41" y2="109" stroke="#334155" stroke-width="1.4"/><line x1="50" y1="110" x2="41" y2="119" stroke="#334155" stroke-width="1.4"/>
-<line x1="50" y1="90" x2="310" y2="90" stroke="#334155" stroke-width="3"/>
-<path d="M310,90 l-11,14 h22 z" fill="#fff" stroke="#334155" stroke-width="2"/><circle cx="304" cy="108" r="3.5" fill="none" stroke="#334155" stroke-width="1.6"/><circle cx="316" cy="108" r="3.5" fill="none" stroke="#334155" stroke-width="1.6"/><line x1="294" y1="112" x2="326" y2="112" stroke="#334155" stroke-width="2"/>
-<line x1="120" y1="50" x2="120" y2="82" stroke="#dc2626" stroke-width="2"/><path d="M120,86 l-5,-9 h10 z" fill="#dc2626"/><text x="127" y="56" font-size="13" fill="#dc2626">w（均佈）</text><line x1="180" y1="50" x2="180" y2="82" stroke="#dc2626" stroke-width="2"/><path d="M180,86 l-5,-9 h10 z" fill="#dc2626"/><text x="187" y="56" font-size="13" fill="#dc2626"></text><line x1="240" y1="50" x2="240" y2="82" stroke="#dc2626" stroke-width="2"/><path d="M240,86 l-5,-9 h10 z" fill="#dc2626"/><text x="247" y="56" font-size="13" fill="#dc2626"></text>
-<line x1="120" y1="50" x2="240" y2="50" stroke="#dc2626" stroke-width="2"/>
-<line x1="310" y1="160" x2="310" y2="120" stroke="#64748b" stroke-width="1.6" marker-end="url(#ah)"/>
-<text x="318" y="145" font-size="13" fill="#2563eb">R_B＝贅力，∂U/∂R_B = 0</text>
-<!-- indeterminate truss -->
-<text x="500" y="24" font-size="14" font-weight="bold" fill="#2563eb">靜不定桁架（贅桿）</text>
-<g stroke="#2563eb" stroke-width="2.5" fill="none">
-<line x1="430" y1="70" x2="560" y2="70"/><line x1="430" y1="170" x2="560" y2="170"/>
-<line x1="430" y1="70" x2="430" y2="170"/><line x1="560" y1="70" x2="560" y2="170"/>
-<line x1="430" y1="70" x2="560" y2="170"/>
-</g>
-<line x1="560" y1="70" x2="430" y2="170" stroke="#dc2626" stroke-width="2.5" stroke-dasharray="6 4"/>
-<path d="M430,174 l-11,17 h22 z" fill="#fff" stroke="#334155" stroke-width="2"/><line x1="414" y1="191" x2="446" y2="191" stroke="#334155" stroke-width="2"/><path d="M560,174 l-11,14 h22 z" fill="#fff" stroke="#334155" stroke-width="2"/><circle cx="554" cy="192" r="3.5" fill="none" stroke="#334155" stroke-width="1.6"/><circle cx="566" cy="192" r="3.5" fill="none" stroke="#334155" stroke-width="1.6"/><line x1="544" y1="196" x2="576" y2="196" stroke="#334155" stroke-width="2"/>
-<text x="470" y="130" font-size="12" fill="#dc2626">贅桿力 X</text>
-<text x="428" y="220" font-size="11.5" fill="#64748b">m+r &gt; 2j → 取一桿為贅力</text>
-<!-- frame with cable -->
-<text x="800" y="24" font-size="14" font-weight="bold" fill="#059669">剛架＋纜索（僅受拉）</text>
-<g stroke="#059669" stroke-width="3" fill="none">
-<line x1="740" y1="190" x2="740" y2="80"/><line x1="740" y1="80" x2="930" y2="80"/>
-</g>
-<line x1="740" y1="80" x2="930" y2="180" stroke="#dc2626" stroke-width="2" stroke-dasharray="6 4"/>
-<line x1="715" y1="190" x2="765" y2="190" stroke="#334155" stroke-width="2.5"/><line x1="721" y1="190" x2="712" y2="199" stroke="#334155" stroke-width="1.4"/><line x1="731" y1="190" x2="722" y2="199" stroke="#334155" stroke-width="1.4"/><line x1="741" y1="190" x2="732" y2="199" stroke="#334155" stroke-width="1.4"/><line x1="751" y1="190" x2="742" y2="199" stroke="#334155" stroke-width="1.4"/><line x1="761" y1="190" x2="752" y2="199" stroke="#334155" stroke-width="1.4"/>
-<path d="M930,184 l-11,17 h22 z" fill="#fff" stroke="#334155" stroke-width="2"/><line x1="914" y1="201" x2="946" y2="201" stroke="#334155" stroke-width="2"/>
-<text x="835" y="120" font-size="12" fill="#dc2626">T ≥ 0（壓力→移除）</text>
-<line x1="860" y1="42" x2="860" y2="72" stroke="#dc2626" stroke-width="2"/><path d="M860,76 l-5,-9 h10 z" fill="#dc2626"/><text x="867" y="48" font-size="13" fill="#dc2626">P</text>
-</svg>
-<div class="cap">圖說：最小功法（卡氏第二定理特例）選取贅力 R 或贅桿力 X，令 ∂U/∂R=0 建立諧合方程；纜索類構件解出張力為負時須移除重解。</div></div>
+<h3 id="b3">考點漂移：前段 vs. 後段</h3>
+<p style="font-size:.9em;margin:0 0 10px;color:var(--mut)">把主考點依題號排序後對切：2005–2013（6 題）vs. 2014–2022（6 題）。</p>
+<table>
+<thead><tr><th>考點結構</th><th class="num">前段</th><th class="num">後段</th><th class="num">變化</th><th>解讀</th></tr></thead>
+<tbody><tr><td><span class="bar" style="width:12px;background:#dc2626"></span> 🏗️ 靜不定剛架解贅力</td><td class="num">3</td><td class="num">0</td><td class="num down">▼ −3</td><td>「給剛架、解贅力」的正統題型後段掛零，最後一次是 2007-4，已空窗 18 年</td></tr><tr><td><span class="bar" style="width:12px;background:#059669"></span> 📐 卡氏定理求位移與轉角</td><td class="num">1</td><td class="num">2</td><td class="num up">▲ +1</td><td>重心移到求位移／轉角（2013-2、2014-4、2016-3），且都指定用卡氏定理</td></tr><tr><td><span class="bar" style="width:12px;background:#d97706"></span> 📏 靜不定梁與固端彎矩</td><td class="num">0</td><td class="num">2</td><td class="num up">▲ +2</td><td>新形態：2017-2 要推固端彎矩通式、2022-1 直接給彎矩圖要你反算，都是「反過來做」</td></tr><tr><td><span class="bar" style="width:12px;background:#2563eb"></span> 🔺 靜不定桁架與混合結構</td><td class="num">2</td><td class="num">2</td><td class="num ">－</td><td>題數持平但難度上升：從單純桁架（2005-4）走到纜索鬆弛（2018-3）與極限機構（2019-1）</td></tr></tbody>
+</table>
+<div class="note">📌 <b>一句話</b>：這個單元的重心從「<b>解贅力</b>」漂到「<b>求位移／反算</b>」。正統的「以最小功法解靜不定剛架」已經 18 年沒出現，近十年真正在考的是「卡氏定理求轉角」與「給結果反推原因」——兩者用的是同一組應變能公式，但解題流程的方向相反。</div>
 
-
-<h2 class="sec">③ 解題流程圖</h2>
-<div class="svgbox"><svg viewBox="0 0 960 500" xmlns="http://www.w3.org/2000/svg"><defs><marker id="ah" markerWidth="9" markerHeight="9" refX="7" refY="4" orient="auto"><path d="M0,0L8,4L0,8z" fill="#64748b"/></marker></defs>
-<rect x="370" y="10" width="220" height="44" rx="8" fill="#eff6ff" stroke="#2563eb" stroke-width="1.5"/><text x="480.0" y="37.0" text-anchor="middle" font-size="13" fill="#1e293b">靜不定結構（能量法）</text>
-<polygon points="480,81.0 605.0,110 480,139.0 355.0,110" fill="#fef3c7" stroke="#d97706" stroke-width="1.5"/><text x="480" y="107.5" text-anchor="middle" font-size="12.5" fill="#1e293b">判定靜不定度 n</text><text x="480" y="122.5" text-anchor="middle" font-size="12.5" fill="#1e293b">選 n 個贅力</text>
-<line x1="480" y1="54" x2="480" y2="81" stroke="#64748b" stroke-width="1.6" marker-end="url(#ah)"/>
-<rect x="70" y="200" width="260" height="72" rx="8" fill="#dbeafe" stroke="#2563eb" stroke-width="1.5"/><text x="200.0" y="225.0" text-anchor="middle" font-size="13" fill="#1e293b">桁架／含桿構件</text><text x="200.0" y="241.0" text-anchor="middle" font-size="13" fill="#1e293b">U = Σ N²L/2AE</text><text x="200.0" y="257.0" text-anchor="middle" font-size="13" fill="#1e293b">切贅桿以 X 表示各桿力</text>
-<rect x="370" y="200" width="240" height="72" rx="8" fill="#fee2e2" stroke="#dc2626" stroke-width="1.5"/><text x="490.0" y="225.0" text-anchor="middle" font-size="13" fill="#1e293b">梁／剛架</text><text x="490.0" y="241.0" text-anchor="middle" font-size="13" fill="#1e293b">U = ∫ M²/2EI dx</text><text x="490.0" y="257.0" text-anchor="middle" font-size="13" fill="#1e293b">分段寫 M(x)（含 R）</text>
-<rect x="660" y="200" width="250" height="72" rx="8" fill="#d1fae5" stroke="#059669" stroke-width="1.5"/><text x="785.0" y="225.0" text-anchor="middle" font-size="13" fill="#1e293b">混合結構</text><text x="785.0" y="241.0" text-anchor="middle" font-size="13" fill="#1e293b">U = ∫M²/2EI + ΣN²L/2AE</text><text x="785.0" y="257.0" text-anchor="middle" font-size="13" fill="#1e293b">剛性構件 EI→∞ 項為零</text>
-<line x1="390" y1="132" x2="220" y2="200" stroke="#64748b" stroke-width="1.6" marker-end="url(#ah)"/>
-<line x1="480" y1="139" x2="480" y2="200" stroke="#64748b" stroke-width="1.6" marker-end="url(#ah)"/>
-<line x1="570" y1="132" x2="760" y2="200" stroke="#64748b" stroke-width="1.6" marker-end="url(#ah)"/>
-<rect x="330" y="320" width="320" height="58" rx="8" fill="#fef3c7" stroke="#d97706" stroke-width="1.5"/><text x="490.0" y="346.0" text-anchor="middle" font-size="13" fill="#1e293b">最小功：∂U/∂R_i = 0（i=1..n）</text><text x="490.0" y="362.0" text-anchor="middle" font-size="13" fill="#1e293b">聯立解出贅力</text>
-<line x1="220" y1="272" x2="420" y2="320" stroke="#64748b" stroke-width="1.6" marker-end="url(#ah)"/>
-<line x1="480" y1="272" x2="480" y2="320" stroke="#64748b" stroke-width="1.6" marker-end="url(#ah)"/>
-<line x1="760" y1="272" x2="570" y2="320" stroke="#64748b" stroke-width="1.6" marker-end="url(#ah)"/>
-<polygon points="480,401.0 615.0,430 480,459.0 345.0,430" fill="#fef3c7" stroke="#d97706" stroke-width="1.5"/><text x="480" y="427.5" text-anchor="middle" font-size="12.5" fill="#1e293b">求位移？→ 卡氏第二定理</text><text x="480" y="442.5" text-anchor="middle" font-size="12.5" fill="#1e293b">∂U/∂P = Δ（無 P 則加虛力）</text>
-<line x1="480" y1="378" x2="480" y2="401" stroke="#64748b" stroke-width="1.6" marker-end="url(#ah)"/>
-</svg></div>
-
-<h2 class="sec">④ 核心公式速查</h2>
-<div class="fgrid"><div class="fcard" style="border-top-color:#dc2626"><h4>卡氏第二定理與最小功法</h4><p>卡氏第二定理（求位移）：$$\Delta_i = \frac{\partial U}{\partial P_i}$$</p>
-<p>最小功法（求贅力）：$$\frac{\partial U}{\partial R_i} = 0 \quad\Rightarrow\quad \int \frac{M}{EI}\frac{\partial M}{\partial R_i}dx + \sum \frac{NL}{EA}\frac{\partial N}{\partial R_i} = 0$$</p><div class="note">⚠ 對「外力」微分得位移；對「贅力」微分＝0。兩者不可混用（SA-2013-2）。</div></div><div class="fcard" style="border-top-color:#dc2626"><h4>應變能組成</h4><p>$$U = \int \frac{M^2}{2EI}dx + \sum \frac{N^2L}{2EA} + \int \frac{V^2}{2GA'}dx + \int \frac{T^2}{2GJ}dx$$</p>
-<p>剛架通常僅取彎矩項；桁架桿、纜索、彈簧必須計入軸力項；彈簧 \(U_s = F^2/2k\)。</p><div class="note">⚠ 剛性構件（EI→∞）之應變能為零，但其平衡條件仍要寫。</div></div><div class="fcard" style="border-top-color:#059669"><h4>單位力法與圖乘法</h4><p>$$\Delta = \int \frac{mM}{EI}dx = \sum \frac{A_M \cdot \bar m}{EI}$$</p>
-<p>圖乘：實際彎矩圖面積 \(A_M\) × 其形心對應之單位彎矩圖縱標 \(\bar m\)。</p>
-<p>常用面積：三角形 \(\frac{1}{2}Lh\)（形心 L/3）、二次拋物線 \(\frac{2}{3}Lh\)（形心 L/2）。</p><div class="note">⚠ 圖乘法要求該段 EI 為常數、m 圖為直線；折點處必須分段（SA-2016-3）。</div></div><div class="fcard" style="border-top-color:#2563eb"><h4>靜不定桁架與極限行為</h4><p>贅力方程：$$\sum \frac{N\,n\,L}{EA} = 0,\qquad N = N_0 + X\,n$$</p>
-<p>極限載重：逐桿檢核降伏 \(N_y = \sigma_y A\) 與壓桿挫曲 $$P_{cr} = \frac{\pi^2 EI}{(KL)^2}$$取控制者。</p><div class="note">⚠ 纜索／細長桿僅能受拉：解出壓力須移除該桿重新分析（SA-2018-3、SA-2019-1）。</div></div></div>
-
-<h2 class="sec" id="qlist">⑤ 考題清單<small>點題號開啟完整解析（KaTeX 渲染）</small></h2>
-<div class="fbtns">
-  <button class="fbtn on" data-key="all" onclick="setFilter('all',this)">全部（12）</button>
-<button class="fbtn" data-key="frame" onclick="setFilter('frame',this)">靜不定剛架</button><button class="fbtn" data-key="truss" onclick="setFilter('truss',this)">桁架與混合結構</button><button class="fbtn" data-key="beam" onclick="setFilter('beam',this)">靜不定梁</button><button class="fbtn" data-key="disp" onclick="setFilter('disp',this)">變位計算</button>
-</div>
-<div id="qwrap"><div class="qitem" data-type="beam" style="border-left-color:#d97706"><div class="yr"><b>2022</b>民國 111</div><div class="bd"><a class="tt" href="../index.html#md=raw/solutions/SA-2022-1/SA-2022-1.md&t=SA-2022-1" target="_blank">SA-2022-1｜由彎矩圖反求載重：彈簧＋沉陷（共軛梁）</a><span class="badge" style="background:#d97706">靜不定梁</span><div class="tags"><span>彎矩圖反求</span><span>彈簧</span><span>共軛梁法</span><span>支承沉陷</span><span>鉸接點</span></div></div><div class="icons">📄 ✅</div></div><div class="qitem" data-type="truss" style="border-left-color:#2563eb"><div class="yr"><b>2019</b>民國 108</div><div class="bd"><a class="tt" href="../index.html#md=raw/solutions/SA-2019-1/SA-2019-1.md&t=SA-2019-1" target="_blank">SA-2019-1｜靜不定桁架：最小功＋挫曲極限載重</a><span class="badge" style="background:#2563eb">桁架與混合結構</span><div class="tags"><span>靜不定桁架</span><span>最小功法</span><span>破壞機構</span><span>挫曲</span><span>極限載重</span></div></div><div class="icons">📄 ✅</div></div><div class="qitem" data-type="frame" style="border-left-color:#dc2626"><div class="yr"><b>2018</b>民國 107</div><div class="bd"><a class="tt" href="../index.html#md=raw/solutions/SA-2018-3/SA-2018-3.md&t=SA-2018-3" target="_blank">SA-2018-3｜纜索無壓效應：最小功法與彎矩圖</a><span class="badge" style="background:#dc2626">靜不定剛架</span><div class="tags"><span>最小功法</span><span>靜不定結構</span><span>纜索無壓力</span><span>彎矩圖</span></div></div><div class="icons">📄 ✅</div></div><div class="qitem" data-type="beam" style="border-left-color:#d97706"><div class="yr"><b>2017</b>民國 106</div><div class="bd"><a class="tt" href="../index.html#md=raw/solutions/SA-2017-2/SA-2017-2.md&t=SA-2017-2" target="_blank">SA-2017-2｜靜不定梁含內鉸：最小功法求固定端彎矩</a><span class="badge" style="background:#d97706">靜不定梁</span><div class="tags"><span>最小功法</span><span>卡氏定理</span><span>內鉸條件</span><span>固定端彎矩</span><span>靜不定梁</span></div></div><div class="icons">📄 ✅</div></div><div class="qitem" data-type="disp" style="border-left-color:#059669"><div class="yr"><b>2016</b>民國 105</div><div class="bd"><a class="tt" href="../index.html#md=raw/solutions/SA-2016-3/SA-2016-3.md&t=SA-2016-3" target="_blank">SA-2016-3｜單位力法側移變位：基本結構選取＋圖乘法</a><span class="badge" style="background:#059669">變位計算</span><div class="tags"><span>虛功法</span><span>單位力法</span><span>側移變位</span><span>基本結構選取</span><span>圖形積分法</span></div></div><div class="icons">📄 ✅ 🎬</div></div><div class="qitem" data-type="frame" style="border-left-color:#dc2626"><div class="yr"><b>2014</b>民國 103</div><div class="bd"><a class="tt" href="../index.html#md=raw/solutions/SA-2014-4/SA-2014-4.md&t=SA-2014-4" target="_blank">SA-2014-4｜最小功法（卡氏第二定理）：多餘資訊陷阱</a><span class="badge" style="background:#dc2626">靜不定剛架</span><div class="tags"><span>最小功法</span><span>卡氏第二定理</span><span>靜不定結構</span><span>多餘資訊陷阱</span><span>剛架</span></div></div><div class="icons">📄 ✅</div></div><div class="qitem" data-type="frame" style="border-left-color:#dc2626"><div class="yr"><b>2013</b>民國 102</div><div class="bd"><a class="tt" href="../index.html#md=raw/solutions/SA-2013-2/SA-2013-2.md&t=SA-2013-2" target="_blank">SA-2013-2｜卡氏定理求靜不定剛架反力與轉角</a><span class="badge" style="background:#dc2626">靜不定剛架</span><div class="tags"><span>卡氏定理</span><span>靜不定剛架</span><span>反力</span><span>轉角</span></div></div><div class="icons">📄 ✅</div></div><div class="qitem" data-type="frame" style="border-left-color:#dc2626"><div class="yr"><b>2007</b>民國 96</div><div class="bd"><a class="tt" href="../index.html#md=raw/solutions/SA-2007-2/SA-2007-2.md&t=SA-2007-2" target="_blank">SA-2007-2｜無側移剛架：修正傾角撓度法（能量法對照）</a><span class="badge" style="background:#dc2626">靜不定剛架</span><div class="tags"><span>無側移剛架</span><span>修正傾角撓度法</span><span>固端彎矩</span></div></div><div class="icons">📄 ✅</div></div><div class="qitem" data-type="frame" style="border-left-color:#dc2626"><div class="yr"><b>2007</b>民國 96</div><div class="bd"><a class="tt" href="../index.html#md=raw/solutions/SA-2007-4/SA-2007-4.md&t=SA-2007-4" target="_blank">SA-2007-4｜有側移剛架：虛功原理側移方程式</a><span class="badge" style="background:#dc2626">靜不定剛架</span><div class="tags"><span>有側移剛架</span><span>虛功原理</span><span>側移方程式</span></div></div><div class="icons">📄 ✅</div></div><div class="qitem" data-type="truss" style="border-left-color:#2563eb"><div class="yr"><b>2006</b>民國 95</div><div class="bd"><a class="tt" href="../index.html#md=raw/solutions/SA-2006-1/SA-2006-1.md&t=SA-2006-1" target="_blank">SA-2006-1｜桁架與梁混合結構：虛功原理參數解</a><span class="badge" style="background:#2563eb">桁架與混合結構</span><div class="tags"><span>桁架與樑混合結構</span><span>靜不定</span><span>虛功原理</span><span>最小功法</span><span>參數解</span></div></div><div class="icons">📄 ✅</div></div><div class="qitem" data-type="frame" style="border-left-color:#dc2626"><div class="yr"><b>2005</b>民國 94</div><div class="bd"><a class="tt" href="../index.html#md=raw/solutions/SA-2005-1/SA-2005-1.md&t=SA-2005-1" target="_blank">SA-2005-1｜靜不定剛架最小功法：彎矩函數建立</a><span class="badge" style="background:#dc2626">靜不定剛架</span><div class="tags"><span>最小功法</span><span>靜不定剛架</span><span>彎矩函數</span></div></div><div class="icons">📄 ✅</div></div><div class="qitem" data-type="truss" style="border-left-color:#2563eb"><div class="yr"><b>2005</b>民國 94</div><div class="bd"><a class="tt" href="../index.html#md=raw/solutions/SA-2005-4/SA-2005-4.md&t=SA-2005-4" target="_blank">SA-2005-4｜靜不定桁架：單位力法／柔度矩陣求桿力</a><span class="badge" style="background:#2563eb">桁架與混合結構</span><div class="tags"><span>靜不定桁架</span><span>單位力法</span><span>柔度矩陣法</span><span>桁架應力</span></div></div><div class="icons">📄 ✅</div></div></div>
-
-<h2 class="sec">⑥ 高頻陷阱<small>由考古題解析歸納</small></h2>
-<div class="trap" style="border-left-color:#dc2626"><b>1. 對贅力微分 ≠ 對外力微分</b><p>∂U/∂R=0 只適用於贅力（支承反力、贅桿力）；要求某點位移須對該點外力微分（無外力時加虛力 Q，最後令 Q=0）。 <span class="src">（SA-2013-2）</span></p></div><div class="trap" style="border-left-color:#d97706"><b>2. 內鉸條件與贅力選取衝突</b><p>內鉸提供 M=0 條件，靜不定度要扣除；選贅力時避免選到會被內鉸條件直接決定的量。 <span class="src">（SA-2017-2）</span></p></div><div class="trap" style="border-left-color:#2563eb"><b>3. 漏算（或多算）軸力應變能</b><p>剛架慣性忽略 N²/2AE，但題目含桁架桿、拉桿、纜索、彈簧時該項是主角；漏掉諧合方程就錯。 <span class="src">（SA-2006-1、SA-2018-3）</span></p></div><div class="trap" style="border-left-color:#2563eb"><b>4. 纜索解出壓力未重解</b><p>纜索、細長拉桿不能受壓：若解得 T<0，須將該構件移除（T=0）重新分析，不能取負值。 <span class="src">（SA-2018-3、SA-2019-1）</span></p></div><div class="trap" style="border-left-color:#dc2626"><b>5. 彎矩函數分段漏段／座標原點混亂</b><p>每段各自設座標可簡化 M(x)，但 ∂M/∂R 要跟著同一段寫；漏一段積分，方程就少一塊。 <span class="src">（SA-2005-1、SA-2014-4）</span></p></div><div class="trap" style="border-left-color:#059669"><b>6. 圖乘法誤用於變斷面或曲線×曲線</b><p>EI 非常數須分段或直接積分；兩圖皆曲線時不可簡單圖乘（可用分段疊加或積分）。 <span class="src">（SA-2016-3）</span></p></div><div class="trap" style="border-left-color:#dc2626"><b>7. 多餘資訊陷阱</b><p>題目給的斷面性質未必每項都用；先判斷哪些構件的哪種應變能才是主要項。 <span class="src">（SA-2014-4）</span></p></div><div class="trap" style="border-left-color:#2563eb"><b>8. 極限載重只檢降伏漏檢挫曲</b><p>靜不定桁架逐桿檢核：受壓桿挫曲常先於降伏發生，控制極限載重。 <span class="src">（SA-2019-1）</span></p></div>
-
-<h2 class="sec">⑦ 互動計算器</h2>
-<div class="calc">
-<h4 style="margin-top:0">撐持懸臂梁最小功法計算器</h4>
-<p style="font-size:13px;color:#64748b;margin:4px 0 14px">A 端固定、B 端滾支承之一次靜不定梁：以 ∂U/∂R<sub>B</sub>=0 解贅力並繪 BMD。</p>
-<div class="row">
-  <div><label>跨度 L (m)</label><input id="cL" type="number" value="6" step="0.5" min="1"></div>
-  <div><label>載重型式</label><select id="cType"><option value="udl">全跨均佈 w</option><option value="pt">集中載重 P</option></select></div>
-  <div><label>w (kN/m) 或 P (kN)</label><input id="cP" type="number" value="20" step="1"></div>
-  <div><label>P 距固定端 a (m)</label><input id="cA" type="number" value="3" step="0.5" min="0"></div>
-  <div><button onclick="calc()">計算</button></div>
-</div>
-<div class="out" id="calcOut">—</div>
-<canvas id="calcCv"></canvas>
+<h3 id="b4">題型走向（本科未標註 designMethod，改以題型分析）</h3>
+<p style="font-size:.9em;margin:0 0 10px;color:var(--mut)">結構學沒有 LRFD／ASD 之分，全部是分析題。改看「產出什麼」：<b>計算</b>＝求數值、<b>繪圖</b>＝主要產出是 SFD／BMD／影響線／變形曲線、<b>推導</b>＝要求通式或符號解、<b>說明</b>＝判斷與定性論述。</p>
+<table>
+<thead><tr><th>期間</th><th class="num">計算</th><th class="num">繪圖</th><th class="num">推導</th><th class="num">說明</th></tr></thead>
+<tbody><tr><td>2005–2013（前段 6 題）</td><td class="num">5</td><td class="num">0</td><td class="num">1</td><td class="num">0</td></tr><tr><td>2014–2022（後段 6 題）</td><td class="num">3</td><td class="num">2</td><td class="num">1</td><td class="num">0</td></tr><tr style="background:#fff8e1"><td>近 6 考年 2020–2025（1 題）</td><td class="num">1</td><td class="num">0</td><td class="num">0</td><td class="num">0</td></tr></tbody>
+</table>
+<div class="note">
+📌 <b>對複習的直接影響</b>：繪圖題的評分點在「圖形階數、正負號、關鍵斷面標值」，推導題的評分點在「通式能不能退化回標準情形」——
+兩者要練的東西不同，不能只練會算數字。公式在考卷上給不給，見 <a href="formula-given-SA-U2-1.html">給／背分界</a>。
 </div>
 
-<footer>exam-wiki-SA ｜ study SA-U2-1 ｜ 生成日期 2026-07-10 ｜ 解析內容以 raw/solutions/ 為準</footer>
+<h3 id="b5">考題清單（主 12 ＋ 副 3 ＝ 15 題，點題號開啟解析）</h3>
+<div class="filters">
+<button class="fbtn on" onclick="filterQ('ALL',this)">全部（15）</button><button class="fbtn" onclick="filterQ('FR',this)">靜不定剛架解贅力（3）</button><button class="fbtn" onclick="filterQ('TR',this)">靜不定桁架與混合結構（4）</button><button class="fbtn" onclick="filterQ('BM',this)">靜不定梁與固端彎矩（4）</button><button class="fbtn" onclick="filterQ('DP',this)">卡氏定理求位移與轉角（4）</button><button class="fbtn" onclick="filterQ('PRI',this)">僅主考點（12）</button><button class="fbtn" onclick="filterQ('SEC',this)">僅副考點（3）</button>
 </div>
+<div id="qlist"></div>
+<div class="note">虛線灰底＝副考點（主考點在別的子項，但解題會用到本子項的知識）。色塊為題型。圖示：📄 有解析／📊 有互動圖／✅ 已驗證。</div>
+
+<h3 id="b6">命題風險排序（下一次最可能考什麼）</h3>
+<p style="font-size:.9em;margin:0 0 10px;color:var(--mut)">依「歷史頻率 × 空窗年數 × 近年趨勢」排序。<b>這是推測而非預言</b>，用途是決定<b>練題順序</b>，不是拿來 all-in 單一考點。</p>
+<table>
+<thead><tr><th>風險</th><th>考點</th><th class="num">歷史題數</th><th>最後出現</th><th class="num">空窗</th><th>理由</th></tr></thead>
+<tbody><tr class="risk-hi"><td><b>高</b></td><td>卡氏定理求指定點轉角／位移</td><td class="num">3</td><td>2016-3</td><td class="num">9 年</td><td>2013-2、2014-4、2016-3 三題都明寫「使用其他方法不予給分」；空窗 9 年而本單元 2023–2025 連三年空白，回鍋壓力最大的就是這一型</td></tr><tr class="risk-hi"><td><b>高</b></td><td>給彎矩圖／給結果的反算題</td><td class="num">2</td><td>2022-1</td><td class="num">3 年</td><td>2016-3（給四個桿端彎矩求變位）、2022-1（給 BMD 求彈簧力與沉陷）都是這個模板；2016 年也在 U1-3 用過同一招，是命題者近十年偏好的包裝</td></tr><tr class="risk-md"><td><b>中高</b></td><td>纜索／僅受拉桿件的鬆弛判定</td><td class="num">1</td><td>2018-3</td><td class="num">7 年</td><td>只出現過 2018-3 一次，但它是「不先判斷就整題錯」的類型；成本只有一條規則，投報率高</td></tr><tr class="risk-md"><td><b>中高</b></td><td>固端彎矩通式推導（含內鉸）</td><td class="num">1</td><td>2017-2</td><td class="num">8 年</td><td>2017-2 以 m、n 表示的通式解，是本單元少數的純推導題；推導結果必須能退化回 wL²/12 才算對，正好與 U2-3 的固端彎矩表互為驗算</td></tr><tr class="risk-lo"><td><b>低</b></td><td>最小功法解靜不定剛架（正統型）</td><td class="num">3</td><td>2007-4</td><td class="num">18 年</td><td>2005-1、2007-2、2007-4 之後 18 年未再出現；該考點已被 U2-3 傾角變位法與 U2-4 矩陣法吸收，但基本功仍要會</td></tr></tbody>
+</table>
+<div class="note">📌 <b>若只剩三天</b>：本單元近 6 考年只出過 1 題（2022-1），已連三年空窗，排練題順序時可以放在傾角變位法與矩陣法之後；但真的要練，就先練「卡氏定理求轉角」與「給圖反算」這兩型，其餘用讀的即可。
+逐題練習順序建議見 <a href="lecture-SA-U2-1.html">觀念講義</a>的精選必練題章節。</div>
+
+</section>
+
+<footer>study SA-U2-1 命題分析｜exam-wiki-SA 知識庫｜統計基準 raw/json/question_index.json（96 題 / 24 考年）｜題號連結指向 study/problems-view/｜本頁所有數字可由 unit-exam-intel/scripts/stats.py 複算</footer>
+</main>
+
 <script>
-const QTYPES=[{"key": "frame", "label": "靜不定剛架", "color": "#dc2626"}, {"key": "truss", "label": "桁架與混合結構", "color": "#2563eb"}, {"key": "beam", "label": "靜不定梁", "color": "#d97706"}, {"key": "disp", "label": "變位計算", "color": "#059669"}];
-const QUESTIONS=[{"year": 2005, "type": "frame"}, {"year": 2005, "type": "truss"}, {"year": 2006, "type": "truss"}, {"year": 2007, "type": "frame"}, {"year": 2007, "type": "frame"}, {"year": 2013, "type": "frame"}, {"year": 2014, "type": "frame"}, {"year": 2016, "type": "disp"}, {"year": 2017, "type": "beam"}, {"year": 2018, "type": "frame"}, {"year": 2019, "type": "truss"}, {"year": 2022, "type": "beam"}];
-
-function drawCharts(){
-  const cv=document.getElementById('yearChart'),ctx=cv.getContext('2d');
-  const years=[];for(let y=2002;y<=2025;y++)years.push(y);
-  const W=cv.width=960,H=cv.height=300,padL=34,padB=44,padT=14;
-  const counts=years.map(y=>QTYPES.map(t=>QUESTIONS.filter(q=>q.year===y&&q.type===t.key).length));
-  const maxC=Math.max(2,...counts.map(c=>c.reduce((a,b)=>a+b,0)));
-  const bw=(W-padL-10)/years.length;
-  ctx.font='12px sans-serif';
-  for(let i=0;i<=maxC;i++){const y=H-padB-(H-padB-padT)*i/maxC;
-    ctx.strokeStyle='#e2e8f0';ctx.beginPath();ctx.moveTo(padL,y);ctx.lineTo(W-6,y);ctx.stroke();
-    ctx.fillStyle='#94a3b8';ctx.fillText(i,12,y+4);}
-  years.forEach((y,i)=>{let acc=0;
-    QTYPES.forEach((t,k)=>{const c=counts[i][k];if(c){const h=(H-padB-padT)*c/maxC;
-      ctx.fillStyle=t.color;ctx.fillRect(padL+i*bw+3,H-padB-acc-h,bw-6,h);acc+=h;}});
-    ctx.fillStyle='#64748b';ctx.save();ctx.translate(padL+i*bw+bw/2+4,H-padB+12);
-    ctx.rotate(-Math.PI/3);ctx.textAlign='right';ctx.fillText(String(y),0,0);ctx.restore();});
-  const pv=document.getElementById('pieChart'),pctx=pv.getContext('2d');
-  const PW=pv.width=320,PH=pv.height=260,tot=QUESTIONS.length;let a0=-Math.PI/2;
-  QTYPES.forEach(t=>{const n=QUESTIONS.filter(q=>q.type===t.key).length;if(!n)return;
-    const a1=a0+2*Math.PI*n/tot;
-    pctx.beginPath();pctx.moveTo(PW/2,PH/2);pctx.arc(PW/2,PH/2,95,a0,a1);pctx.closePath();
-    pctx.fillStyle=t.color;pctx.fill();pctx.strokeStyle='#fff';pctx.lineWidth=2;pctx.stroke();
-    const am=(a0+a1)/2;pctx.fillStyle='#fff';pctx.font='bold 13px sans-serif';pctx.textAlign='center';
-    pctx.fillText(n,PW/2+Math.cos(am)*62,PH/2+Math.sin(am)*62+4);a0=a1;});
-  const lg=document.getElementById('pieLegend');
-  lg.innerHTML=QTYPES.map(t=>{const n=QUESTIONS.filter(q=>q.type===t.key).length;
-    return '<i style="background:'+t.color+'"></i>'+t.label+' '+n+'題';}).join('');
+const CATC={"FR": "#dc2626", "TR": "#2563eb", "BM": "#d97706", "DP": "#059669"};
+const CATN={"FR": "靜不定剛架解贅力", "TR": "靜不定桁架與混合結構", "BM": "靜不定梁與固端彎矩", "DP": "卡氏定理求位移與轉角"};
+const MC={"計算": "#1565c0", "繪圖": "#f57c00", "推導": "#6a1b9a", "說明": "#546e7a"};
+// [題號, 分群, 摘要, 標籤, 有viz, 題型, 主(1)/副(0), 副考點的主分類]
+const Q=[
+["SA-2005-1", "FR", "一次靜不定剛架以最小功法解贅力，寫出分段彎矩函數", ["最小功法", "靜不定剛架", "彎矩函數"], 0, "計算", 1, ""],
+["SA-2005-4", "TR", "靜不定桁架以單位力法／柔度矩陣解贅力並求桿件應力", ["靜不定桁架", "單位力法", "柔度矩陣法", "桁架應力"], 0, "計算", 1, ""],
+["SA-2006-1", "TR", "桁架與梁混合結構，答案以 α = EI/EA 的參數形式表示", ["桁架與樑混合結構", "靜不定", "虛功原理", "最小功法", "參數解"], 0, "推導", 1, ""],
+["SA-2007-2", "FR", "無側移剛架以修正傾角撓度法求固端彎矩", ["無側移剛架", "修正傾角撓度法", "固端彎矩"], 0, "計算", 1, ""],
+["SA-2007-4", "FR", "有側移剛架以虛功原理建立側移方程並解贅力", ["有側移剛架", "虛功原理", "側移方程式"], 0, "計算", 1, ""],
+["SA-2013-2", "DP", "卡氏定理求 C 點支承反力與 C 點轉角（指定解法）", ["卡氏定理", "靜不定剛架", "反力", "轉角"], 0, "計算", 1, ""],
+["SA-2014-4", "DP", "最小功法求 C 點轉角，題目含多餘資訊陷阱", ["最小功法", "卡氏第二定理", "靜不定結構", "多餘資訊陷阱"], 0, "計算", 1, ""],
+["SA-2016-3", "DP", "由已給的四個桿端彎矩，以虛功法／圖乘法反算 C 點變位", ["虛功法", "單位力法", "側移變位", "圖形積分法"], 1, "計算", 1, ""],
+["SA-2017-2", "BM", "含內鉸靜不定梁以最小功法推導兩端固定端彎矩通式", ["最小功法", "卡氏定理", "內鉸條件", "固定端彎矩"], 0, "推導", 1, ""],
+["SA-2018-3", "TR", "僅受拉纜索的靜不定結構，先判鬆弛再解索力並繪 BMD", ["最小功法", "靜不定結構", "纜索無壓力", "彎矩圖"], 0, "繪圖", 1, ""],
+["SA-2019-1", "TR", "逐步加載至破壞機構，求極限外力並繪 P–U 定性關係圖", ["靜不定桁架", "最小功法", "破壞機構", "挫曲", "極限載重"], 0, "繪圖", 1, ""],
+["SA-2022-1", "BM", "由已給彎矩圖反求彈簧內力與 c、e 兩點垂直位移", ["彎矩圖反求", "彈簧", "共軛梁法", "支承沉陷"], 0, "計算", 1, ""],
+["SA-2012-1", "DP", "內鉸靜定梁求 e、c 兩點位移與轉角（單位力法）", ["靜定梁", "內鉸", "位移與轉角", "共軛梁法"], 0, "繪圖", 0, "U1-2 靜定結構之分析"],
+["SA-2014-2", "BM", "梁＋軸力桿複合結構以諧合變位法求最大彎矩", ["諧合變位法", "複合結構", "最大彎矩", "彈性變形"], 0, "計算", 0, "U2-2 靜不定結構諧合變位"],
+["SA-2015-2", "BM", "靜不定連續梁剪力影響線，共軛梁法求縱距", ["影響線", "共軛梁法", "靜不定連續梁", "內部鉸"], 0, "繪圖", 0, "U1-3 靜定及靜不定結構影響線"]
+];
+const ORDER=["ALL", "FR", "TR", "BM", "DP", "PRI", "SEC"];
+function renderQ(cat){
+  const box=document.getElementById('qlist');box.innerHTML='';
+  const sel=Q.filter(q=>{
+    if(cat==='ALL')return true;
+    if(cat==='PRI')return q[6]===1;
+    if(cat==='SEC')return q[6]===0;
+    return q[1]===cat;});
+  sel.sort((a,b)=>a[0].localeCompare(b[0])).forEach(q=>{
+    const d=document.createElement('div');
+    d.className='qrow'+(q[6]?'':' sec');d.style.borderLeftColor=CATC[q[1]];
+    d.innerHTML=`<a href="problems-view/${q[0]}.html" target="_blank">${q[0]}</a>
+    <span class="meta" style="background:${MC[q[5]]}">${q[5]}</span>
+    ${q[6]?'':`<span class="meta" style="background:#90a4ae">副・${q[7]}</span>`}
+    <span class="sum">${q[2]}</span><span class="tags">${q[3].join('・')}</span>
+    <span class="ico" title="解析／互動圖／已驗證">📄${q[4]?' 📊':''} ✅</span>`;
+    box.appendChild(d);});
 }
-function setFilter(key,btn){
+function filterQ(cat,btn){renderQ(cat);
   document.querySelectorAll('.fbtn').forEach(b=>b.classList.remove('on'));
-  if(!btn)btn=document.querySelector('.fbtn[data-key="'+key+'"]');
-  if(btn)btn.classList.add('on');
-  document.querySelectorAll('.qitem').forEach(el=>{
-    el.style.display=(key==='all'||el.dataset.type===key)?'flex':'none';});
+  const idx=ORDER.indexOf(cat);if(idx>=0)document.querySelectorAll('.fbtn')[idx].classList.add('on');
+  if(!btn)document.getElementById('b5').scrollIntoView({behavior:'smooth'});
 }
-function jumpFilter(key){
-  setFilter(key,null);
-  document.getElementById('qlist').scrollIntoView({behavior:'smooth'});
+renderQ('ALL');
+const KEYS=Object.keys(CATC);
+const PQ=Q.filter(q=>q[6]===1);
+const byYear={};PQ.forEach(q=>{const y=q[0].split('-')[1];
+  if(!byYear[y]){byYear[y]={};KEYS.forEach(k=>byYear[y][k]=0);}byYear[y][q[1]]++;});
+function drawBar(){
+  const cv=document.getElementById('cvBar'),ctx=cv.getContext('2d');
+  const years=Object.keys(byYear).sort(),W=cv.width,H=cv.height,bw=(W-60)/years.length;
+  const max=Math.max(...years.map(y=>Object.values(byYear[y]).reduce((a,b)=>a+b,0)));
+  ctx.font='10px sans-serif';ctx.fillStyle='#78909c';
+  for(let i=0;i<=max;i++){const yy=H-30-(H-60)*i/max;ctx.fillStyle='#78909c';ctx.fillText(i,8,yy+3);
+    ctx.strokeStyle='#eceff1';ctx.beginPath();ctx.moveTo(24,yy);ctx.lineTo(W-10,yy);ctx.stroke();}
+  years.forEach((y,i)=>{let acc=0;
+    KEYS.forEach(c=>{const v=byYear[y][c];if(!v)return;
+      const h=(H-60)*v/max;ctx.fillStyle=CATC[c];
+      ctx.fillRect(30+i*bw,H-30-acc-h,bw*0.7,h);acc+=h;});
+    ctx.fillStyle='#78909c';ctx.save();ctx.translate(30+i*bw+bw*0.35,H-18);ctx.rotate(-0.7);
+    ctx.fillText(y.slice(2),0,0);ctx.restore();});
 }
-document.addEventListener('DOMContentLoaded',drawCharts);
-
-
-function calc(){
-  const L=+document.getElementById('cL').value,
-        type=document.getElementById('cType').value,
-        P=+document.getElementById('cP').value;
-  let a=Math.min(Math.max(+document.getElementById('cA').value,0),L);
-  let RB,MA,formula;
-  if(type==='udl'){RB=3*P*L/8;MA=-P*L*L/8;
-    formula='R<sub>B</sub> = 3wL/8 = '+RB.toFixed(2)+' kN，M<sub>A</sub> = −wL²/8 = '+MA.toFixed(2)+' kN·m';
-  }else{const b=L-a;RB=P*a*a*(3*L-a)/(2*L*L*L);MA=RB*L-P*b;
-    formula='R<sub>B</sub> = Pa²(3L−a)/2L³ = '+RB.toFixed(2)+' kN，M<sub>A</sub> = '+MA.toFixed(2)+' kN·m';}
-  document.getElementById('calcOut').innerHTML=
-    '∂U/∂R<sub>B</sub> = ∫(M/EI)(∂M/∂R<sub>B</sub>)dx = 0 →　'+formula+
-    '　（負值＝上緣受拉之固定端彎矩）';
-  const N=241,xs=[],M=[];
-  for(let i=0;i<N;i++){const x=L*i/(N-1),xb=L-x;xs.push(x);
-    if(type==='udl')M.push(RB*xb-P*xb*xb/2);
-    else M.push(RB*xb-(xb>L-a?P*(xb-(L-a)):0));}
-  const cv=document.getElementById('calcCv'),ctx=cv.getContext('2d');
-  const W=cv.width=960,H=cv.height=260;ctx.clearRect(0,0,W,H);
-  ctx.font='12px sans-serif';
-  const mx=Math.max(...M.map(Math.abs),1e-6),base=140,sc=100/mx;
-  ctx.strokeStyle='#94a3b8';ctx.beginPath();ctx.moveTo(50,base);ctx.lineTo(W-30,base);ctx.stroke();
-  ctx.fillStyle='#334155';ctx.fillText('BMD (kN·m)　固定端 A（左）→ 滾支承 B（右）',50,24);
-  ctx.beginPath();ctx.moveTo(50,base);
-  M.forEach((v,i)=>ctx.lineTo(50+(W-80)*xs[i]/L,base-v*sc));
-  ctx.lineTo(W-30,base);ctx.closePath();
-  ctx.fillStyle='#dc262622';ctx.fill();ctx.strokeStyle='#dc2626';ctx.lineWidth=2;ctx.stroke();ctx.lineWidth=1;
-  ctx.fillStyle='#dc2626';
-  ctx.fillText('M_A = '+M[0].toFixed(1),56,base-M[0]*sc-6);
-  const mmax=Math.max(...M),imax=M.indexOf(mmax);
-  if(mmax>1e-6)ctx.fillText('M_max = '+mmax.toFixed(1)+' @x='+xs[imax].toFixed(2)+' m',50+(W-80)*xs[imax]/L-30,base-mmax*sc-6);
+function drawPie(){
+  const cv=document.getElementById('cvPie'),ctx=cv.getContext('2d');
+  const cnt={};KEYS.forEach(k=>cnt[k]=0);PQ.forEach(q=>cnt[q[1]]++);
+  const tot=PQ.length,cx=cv.width*0.3,cy=cv.height/2,r=Math.min(cx,cy)-16;let a=-Math.PI/2;
+  KEYS.forEach(c=>{if(!cnt[c])return;const a2=a+cnt[c]/tot*2*Math.PI;
+    ctx.beginPath();ctx.moveTo(cx,cy);ctx.arc(cx,cy,r,a,a2);ctx.closePath();
+    ctx.fillStyle=CATC[c];ctx.fill();a=a2;});
+  ctx.font='12px sans-serif';let ly=44;
+  KEYS.forEach(c=>{ctx.fillStyle=CATC[c];ctx.fillRect(cv.width*0.58,ly-9,12,12);
+    ctx.fillStyle='#263238';
+    ctx.fillText(`${CATN[c]}：${cnt[c]} 題（${Math.round(cnt[c]/tot*100)}%）`,cv.width*0.58+18,ly);ly+=28;});
 }
-document.addEventListener('DOMContentLoaded',calc);
-
+drawBar();drawPie();
 </script>
 </body>
 </html>

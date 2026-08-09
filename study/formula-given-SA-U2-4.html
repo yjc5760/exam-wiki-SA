@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="zh-Hant"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>SA-U2-4 靜不定結構之矩陣分析法｜主要公式 給／背分界</title>
+<link rel="stylesheet" href="assets/katex/katex.min.css">
+<script defer src="assets/katex/katex.min.js"></script>
+<script defer src="assets/katex/auto-render.min.js"
+  onload="renderMathInElement(document.body,{delimiters:[
+    {left:'$$',right:'$$',display:true},
+    {left:'\\(',right:'\\)',display:false}],throwOnError:false});"></script>
+<style>
+*{box-sizing:border-box}
+body{margin:0;background:#f4f6f8;color:#26323a;
+ font-family:"Noto Sans TC","PingFang TC","Microsoft JhengHei",system-ui,sans-serif;
+ line-height:1.7;-webkit-text-size-adjust:100%}
+main{max-width:1180px;margin:0 auto;padding:0 18px 60px}
+header{background:linear-gradient(135deg,#0d47a1,#1565c0 55%,#1976d2);color:#fff;
+ padding:30px 26px;border-radius:0 0 18px 18px}
+header .eyebrow{font-size:.78rem;letter-spacing:.16em;opacity:.85;margin:0 0 6px}
+header h1{margin:0 0 10px;font-size:1.62rem;line-height:1.4}
+header p{margin:0;font-size:.92rem;opacity:.94;max-width:78ch}
+nav{position:sticky;top:0;z-index:20;background:#fff;border-bottom:1px solid #dde4ea;
+ padding:9px 14px;display:flex;flex-wrap:wrap;gap:7px;box-shadow:0 2px 8px rgba(0,0,0,.05)}
+nav a{font-size:.8rem;text-decoration:none;color:#1565c0;background:#e8f0fe;
+ padding:5px 12px;border-radius:20px;white-space:nowrap}
+nav a:hover{background:#d3e3fd}
+section{margin:30px 0}
+h2{font-size:1.24rem;margin:0 0 12px;padding-left:11px;border-left:5px solid #1565c0;color:#0d47a1}
+h3{font-size:1.03rem;margin:20px 0 8px;color:#37474f}
+h3.grph{background:#eceff1;border-left:5px solid #1565c0;padding:6px 12px;border-radius:6px;color:#1565c0}
+p.lead{font-size:.95rem;color:#455a64}
+.kpis{display:flex;flex-wrap:wrap;gap:11px;margin:16px 0;break-inside:avoid}
+.kpi{flex:1 1 120px;background:#fff;border:1px solid #e0e6ea;border-radius:11px;padding:13px;text-align:center}
+.kpi .n{font-size:1.7em;font-weight:800;color:#0d47a1;line-height:1.15}
+.kpi .l{font-size:.74rem;color:#607d8b;margin-top:3px}
+.kpi.red .n{color:#c62828}.kpi.org .n{color:#ef6c00}.kpi.grn .n{color:#2e7d32}
+.legend{display:flex;flex-wrap:wrap;gap:11px;margin:14px 0;break-inside:avoid}
+.lg{flex:1 1 230px;border-radius:11px;padding:12px 14px;border:1px solid}
+.lg h4{margin:0 0 5px;font-size:.98rem}.lg p{margin:0;font-size:.84rem;line-height:1.6}
+.lg.must{background:#fdecea;border-color:#f5c6c2}.lg.must h4{color:#c62828}
+.lg.half{background:#fff4e5;border-color:#ffd9a8}.lg.half h4{color:#ef6c00}
+.lg.give{background:#e9f5ec;border-color:#bcdfc6}.lg.give h4{color:#2e7d32}
+.note,.warn{border-radius:10px;padding:12px 16px;margin:14px 0;font-size:.9rem}
+.note{background:#e8f0fe;border-left:5px solid #1565c0}
+.warn{background:#fff4e5;border-left:5px solid #ef6c00}
+blockquote{margin:10px 0;padding:9px 15px;background:#fafbfc;border-left:4px solid #90a4ae;
+ font-size:.89rem;color:#37474f}
+.filters{display:flex;flex-wrap:wrap;gap:6px;margin:14px 0}
+.filters .fg{display:flex;flex-wrap:wrap;gap:6px;align-items:center}
+.filters b{font-size:.78rem;color:#607d8b;margin-right:2px}
+.filters button{font-size:.79rem;border:1px solid #cfd8dc;background:#fff;color:#455a64;
+ border-radius:16px;padding:4px 12px;cursor:pointer}
+.filters button.on{background:#1565c0;border-color:#1565c0;color:#fff}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(330px,1fr));gap:13px}
+.fc{background:#fff;border:1px solid #e0e6ea;border-left:6px solid #90a4ae;border-radius:11px;
+ padding:13px 16px;box-shadow:0 1px 4px rgba(0,0,0,.04)}
+.fc.must{border-left-color:#c62828}.fc.half{border-left-color:#ef6c00}.fc.give{border-left-color:#2e7d32}
+.fc .top{display:flex;justify-content:space-between;align-items:flex-start;gap:9px;margin-bottom:5px}
+.fc .nm{font-weight:700;font-size:1.01rem;color:#26323a}
+.tag{font-size:.72rem;font-weight:700;border-radius:14px;padding:2px 10px;white-space:nowrap}
+.tag.must{background:#fdecea;color:#c62828}.tag.half{background:#fff4e5;color:#ef6c00}
+.tag.give{background:#e9f5ec;color:#2e7d32}
+.fc .eq{background:#f7f9fb;border-radius:8px;padding:6px 11px;margin:6px 0;overflow-x:auto}
+.fc .meta{font-size:.87rem;color:#455a64;margin:6px 0 0;line-height:1.68}
+.fc .ev{font-size:.79rem;margin-top:9px;padding-top:7px;border-top:1px dashed #dde4ea;color:#607d8b}
+.yr{display:inline-block;border-radius:4px;padding:0 5px;margin:1px 2px 1px 0;font-size:.76rem}
+.yr.ok{background:#e9f5ec;color:#2e7d32}.yr.no{background:#fdecea;color:#c62828}
+.never{color:#c62828;font-weight:700}
+.tw{overflow-x:auto;border:1px solid #e0e6ea;border-radius:11px;background:#fff}
+table{border-collapse:collapse;width:100%;min-width:920px;font-size:.82rem}
+th,td{padding:5px 7px;border-bottom:1px solid #eceff1;text-align:left;vertical-align:top}
+th{background:#eceff1;color:#37474f;font-size:.76rem;position:sticky;top:44px;text-align:center}
+th:first-child,th:last-child{text-align:left}
+td.c{text-align:center}
+td .y{color:#2e7d32;font-weight:800}td .n{color:#cfd8dc}
+tr.hl{background:#f2f7fc}
+td.qq{font-size:.8rem;color:#0d47a1;font-weight:600}
+td.rm{font-size:.78rem;color:#546e7a;line-height:1.55}
+.ynote{font-size:.72rem;color:#78909c}
+#mx{font-size:.8rem}
+@media print{#mx{font-size:7pt}#mx th,#mx td{padding:1.8px 3px}}
+footer{margin-top:38px;padding-top:14px;border-top:1px solid #dde4ea;color:#78909c;font-size:.79rem}
+@media(max-width:640px){.cards{grid-template-columns:1fr}header h1{font-size:1.3rem}}
+</style>
+</head><body>
+
+<header>
+  <p class="eyebrow">exam-wiki-SA｜結構學｜主要公式 給／背分界</p>
+  <h1>SA-U2-4　靜不定結構之矩陣分析法</h1>
+  <p>把本單元的主要公式逐條攤開，以 <b>2002–2025 共 24 份考卷原文</b>為證據，判定哪些「考卷會印給你」、哪些「必須自己寫得出來」。這不是公式速查表，是<b>背誦資源的投放決策</b>。</p>
+</header>
+
+<nav>
+  <a href="#how">判定方法</a>
+  <a href="#sec-cards">公式清單</a>
+  <a href="#matrix">逐年證據表</a>
+  <a href="#strategy">背誦策略</a>
+  <a href="lecture-SA-U2-4.html">▶ U2-4 觀念講義</a>
+  <a href="study-SA-U2-4.html">▶ U2-4 命題分析</a>
+  <a href="formula-given-SA-U1-2.html">▶ U1-2 給／背分界</a><a href="formula-given-SA-U1-3.html">▶ U1-3 給／背分界</a><a href="formula-given-SA-U2-1.html">▶ U2-1 給／背分界</a><a href="formula-given-SA-U2-3.html">▶ U2-3 給／背分界</a>
+  <a href="formula-given-SA-U2-4.pdf" target="_blank" style="background:#eceff1;color:#455a64">🖨️ 本頁 PDF</a>
+</nav>
+
+<main>
+
+<section id="how">
+<h2>一、我怎麼判定的</h2>
+<p class="lead">12 題主考點 + 3 題副考點，而且幾乎固定坐在第四題（2004、2008、2010、2011、2012、2013、2015、2019、2022、2025 都是）。本單元是 24 年唯一「考卷偶爾會露一點東西」的單元——但露的都是符號約定，不是公式。</p>
+
+<h3>1-1　「有給」的三種擺法</h3>
+<p class="lead">考卷把公式交給考生有三種方式，三種都算「有給」：<b>(a) 集中式</b>——最後一題後另闢「※參考公式」區；<b>(b) 隨題式</b>——緊跟在該題題目正下方；<b>(c) 內文式</b>——混在題目敘述裡當已知條件。判定時三種都掃過。</p>
+
+<div class="warn">
+<b>SA 的判定結果非常極端：24 份考卷（91–114 年）沒有任何一年設過「參考公式」或「參考資料」區。</b>
+文字抽取（<code>pdftotext -layout</code>）＋ 2002–2007、2009 七年的逐頁目視判讀（該七年中文字型缺失，只靠文字抽取會誤判）都確認：集中式 0 次、隨題式 0 次。
+24 年裡唯一被印出來的力學公式，是 <b>2004 年第四題內文的「勁度 k = 12EI/L³」</b>——屬於 (c) 內文式，且只出現過那一次。
+</div>
+
+<h3>1-2　考卷自己怎麼說</h3>
+<p class="lead">SA 沒有像其他科那樣的「公式僅供參考，應自負勘誤責任」聲明，因為它根本不給公式。取而代之的是兩句更直接的話：</p>
+<blockquote>「本試題之相關公式，請自行合理推知。」<br><span class="ynote">——100 年（2011）試題注意欄</span></blockquote>
+<blockquote>「本試題之相關公式、物理常數、符號意義及設計參數未提及時，請自行合理推斷與假設。」<br><span class="ynote">——101 年（2012）試題注意欄</span></blockquote>
+<p class="lead">106 年（2017）起注意欄多了一句「本科目除專門名詞或數理公式外，應使用本國文字作答」——那是<b>作答語言</b>的規定，不是要給你公式，不要看到「數理公式」四個字就誤會。</p>
+
+<h3>1-3　三級圖例</h3>
+<div class="legend">
+<div class="lg must"><h4>必背</h4><p>考卷從未印過；或曾發生「考了卻沒給」。自己要寫得出來，否則整題卡死。</p></div>
+<div class="lg half"><h4>別賭</h4><p>曾在某一年以內文式露出過，但多數年份沒有；或給的只是符號約定而非可用的式子。仍建議背。</p></div>
+<div class="lg give"><h4>通常會給</h4><p>凡需要用到就幾乎必定印在題幹，且無「考了卻沒給」的先例。背概念與用法即可。</p></div>
+</div>
+<p class="lead">採<b>保守標準</b>：拿不準就往上歸。把「必背」誤判成「會給」的代價，遠大於反過來多背幾條。</p>
+
+<div class="kpis">
+<div class="kpi"><div class="n">17</div><div class="l">本單元條列公式</div></div>
+<div class="kpi red"><div class="n">13</div><div class="l">必背</div></div>
+<div class="kpi org"><div class="n">3</div><div class="l">別賭</div></div>
+<div class="kpi grn"><div class="n">1</div><div class="l">通常會給</div></div>
+<div class="kpi"><div class="n">13</div><div class="l">本單元出題年數</div></div>
+<div class="kpi red"><div class="n">0</div><div class="l">24 年設參考公式區次數</div></div>
+</div>
+</section>
+
+<section id="sec-cards">
+<h2>二、公式逐條分界</h2>
+<p class="lead">可依「級別 × 主題」篩選。每條的說明都寫到<b>年份與題號</b>，不寫「常常會給」這種無法據以判斷風險的話。</p>
+<div class="filters" id="flt"></div>
+<div class="cards" id="cards"></div>
+</section>
+
+<section id="matrix">
+<h2>三、逐年證據表</h2>
+<p class="lead">24 個考年 × 本單元主要公式欄。<b>✔＝該年考卷印出</b>（含三種擺法）；<b>·＝沒印</b>。底色標示的列表示該年有本單元的題目。</p>
+<div class="tw"><table id="mx">
+<thead><tr><th>考卷年</th><th>單元題號</th><th class="c">{P}=[K]{D} 形式</th><th class="c">元素勁度矩陣</th><th class="c">座標轉換</th><th class="c">固端力／等效節點載重</th><th class="c">12EI/L³、3EI/L³</th><th class="c">旋轉彈簧勁度</th><th class="c">材料／斷面數值</th><th>備註</th></tr></thead>
+<tbody></tbody>
+</table></div>
+<p class="lead" style="margin-top:10px">本表的「✔」總數＝<b>9</b> 個年份欄位。對照一下：24 年 × 7 欄 = 168 格，實際有給的比例接近於零——這就是 SA 這一科的樣貌。</p>
+</section>
+
+<section id="strategy">
+<h2>四、背誦策略</h2>
+<h3>1. 本單元幾乎固定在第四題，時間永遠不夠</h3><p class="lead">2004、2008、2010、2011、2012、2013、2015、2019、2022、2025 都排在最後一題。也就是說：元素勁度矩陣必須背到「不用想」，因為你只剩 25 分鐘。</p><h3>2. 四個係數的次方是唯一必須零錯誤的東西</h3><p class="lead">\(12EI/L^3\)、\(6EI/L^2\)、\(4EI/L\)、\(2EI/L\)。次方記錯，整個 [K] 的量綱就崩。驗算訣竅：位移對應的係數次方高、轉角對應的次方低，交叉項介於中間。</p><h3>3. 考卷會給「符號怎麼排」，不會給「矩陣怎麼組」</h3><p class="lead">2012、2015、2019 三年印了 \(\{P\}=[K]\{D\}\) 的形式，但沒有一年印過任何一個元素勁度矩陣。看到題目印了矩陣關係式不要鬆懈——那只是在統一符號。</p><h3>4. 近年新增：格床與扭轉</h3><p class="lead">2025 四首次出現 xy 平面格床（實心圓桿、含 GJ/L 扭轉自由度）。題目給了 G 卻沒給 J 的算法，也沒說格床元素要含扭轉。這類「第一次出現」的題型，完全沒有前例可以指望考卷會補提示。</p>
+</section>
+
+<footer>
+資料來源：<code>raw/exams/SA-2002~2025_結構學.pdf</code>（24 份）、<code>raw/json/question_index.json</code>、<code>raw/solutions/</code>、<code>raw/solutions/methods/</code>。<br>
+判定方式：全年份 <code>pdftotext -layout</code> 文字抽取 + 關鍵字掃描；2002–2007、2009 因中文字型缺失另以 <code>pdftoppm</code> 逐頁轉圖目視判讀。<br>
+同單元另有 <code>lecture-SA-U2-4.html</code>（觀念講義：為什麼成立）與 <code>study-SA-U2-4.html</code>（命題分析：這個單元考什麼），三份互不覆蓋。
+</footer>
+
+</main>
+
+<script>
+const F = [
+ {
+  "g": "勁度方程與求解流程",
+  "lv": "half",
+  "nm": "結構勁度方程的形式",
+  "eq": "$$\\{P\\} = [K]\\{D\\}$$",
+  "meta": "這是 24 年裡「唯一反覆被印出來」的東西：2012 四印 \\(\\{R\\}=[K]\\{r\\}\\)、2015 四印 \\([R]=[K][r]\\) 並註明 [r] 為位移矩陣、2019 四印 \\([K]\\{D\\}=\\{P\\}\\) 並定義四個自由度順序。但 2004、2008、2010、2011、2013、2018、2022、2025 八年一個字都沒有。印出來的也只是「符號怎麼排」，[K] 怎麼組還是自己的事——12 題裡只有 3 題露過，歸「別賭」。",
+  "ok": [
+   2012,
+   2015,
+   2019
+  ],
+  "no": [
+   2004,
+   2008,
+   2010,
+   2011,
+   2013,
+   2018,
+   2022,
+   2025
+  ]
+ },
+ {
+  "g": "勁度方程與求解流程",
+  "lv": "must",
+  "nm": "自由度編號與束制判定",
+  "eq": "$$\\text{DOF} = \\text{節點平移} + \\text{節點轉角} - \\text{支承束制} - \\text{剛性／軸向不變形約束}$$",
+  "meta": "2018 二明寫「請畫結構圖並定義自由度編號」，2019 四指定四個自由度的順序，2015 四要「標示此結構之位移自由度」。判錯自由度數，矩陣尺寸就錯，後面全部作廢。這是流程規則，考卷從不給。",
+  "ok": [],
+  "no": [
+   2004,
+   2007,
+   2008,
+   2009,
+   2010,
+   2011,
+   2012,
+   2013,
+   2015,
+   2018,
+   2019,
+   2022,
+   2025
+  ]
+ },
+ {
+  "g": "勁度方程與求解流程",
+  "lv": "must",
+  "nm": "求解與桿端內力回代",
+  "eq": "$$\\{D\\} = [K]^{-1}\\{P\\},\\qquad \\{f\\} = [k]\\{d\\} + \\{f_F\\}$$",
+  "meta": "回代時忘了加固端力 \\(\\{f_F\\}\\)，跨間載重的效應就整個不見。2008 四、2011 四、2018 二 都有此陷阱。2011 四的正解 \\(F_{AB} = -16.76\\) kN 就是靠回代求出。",
+  "ok": [],
+  "no": [
+   2004,
+   2007,
+   2008,
+   2009,
+   2010,
+   2011,
+   2012,
+   2013,
+   2015,
+   2018,
+   2019,
+   2022,
+   2025
+  ]
+ },
+ {
+  "g": "勁度方程與求解流程",
+  "lv": "must",
+  "nm": "靜態凝縮",
+  "eq": "$$[K^{*}] = [K_{aa}] - [K_{ab}][K_{bb}]^{-1}[K_{ba}]$$",
+  "meta": "2025 一要求「推導對應側向作用力 P 之側向勁度」，正解 \\(k_{lateral} = 84EI/5L^3\\)，就是把兩個轉角自由度凝縮掉。2012 四、2015 四 也在做同一件事（只是題目說「求勁度矩陣」）。",
+  "ok": [],
+  "no": [
+   2012,
+   2015,
+   2025
+  ]
+ },
+ {
+  "g": "元素勁度矩陣",
+  "lv": "must",
+  "nm": "桁架元素（局部座標）",
+  "eq": "$$[k]_{local} = \\frac{EA}{L}\\begin{bmatrix}1 & -1\\\\ -1 & 1\\end{bmatrix}$$",
+  "meta": "2009 四、2010 四、2011 四、2013 四 的起點。這是矩陣法最基本的一塊磚，考卷 24 年沒有印過任何一個元素勁度矩陣。",
+  "ok": [],
+  "no": [
+   2009,
+   2010,
+   2011,
+   2013
+  ]
+ },
+ {
+  "g": "元素勁度矩陣",
+  "lv": "must",
+  "nm": "桁架元素（整體座標）",
+  "eq": "$$[k]_{global} = \\frac{EA}{L}\\begin{bmatrix}c^{2} & cs\\\\ cs & s^{2}\\end{bmatrix},\\quad c=\\cos\\theta,\\ s=\\sin\\theta$$",
+  "meta": "2010 四的解直接以 \\(c^2,\\ cs,\\ s^2\\) 組裝；2013 四要組 3×3 的 [K]。\\(\\theta\\) 的量法（自 x 軸逆時針到桿件 i→j）弄反，交叉項符號就錯。",
+  "ok": [],
+  "no": [
+   2009,
+   2010,
+   2011,
+   2013
+  ]
+ },
+ {
+  "g": "元素勁度矩陣",
+  "lv": "must",
+  "nm": "梁／剛架元素勁度係數",
+  "eq": "$$k_{11}=\\frac{12EI}{L^{3}},\\quad k_{12}=\\frac{6EI}{L^{2}},\\quad k_{22}=\\frac{4EI}{L},\\quad k_{24}=\\frac{2EI}{L}$$",
+  "meta": "2004 四、2008 四、2012 四、2015 四、2018 二、2019 四、2025 一 全部要用。2025 一的正解 \\([K]\\) 三個對角元 \\(8EI/L,\\ 8EI/L,\\ 24EI/L^3\\) 就是這四個係數疊出來的。四個係數的次方（3、2、1、1）記混是最常見的組裝錯誤。",
+  "ok": [],
+  "no": [
+   2004,
+   2007,
+   2008,
+   2012,
+   2015,
+   2018,
+   2019,
+   2022,
+   2025
+  ]
+ },
+ {
+  "g": "元素勁度矩陣",
+  "lv": "must",
+  "nm": "座標轉換",
+  "eq": "$$[k]_{global} = [T]^{\\mathsf{T}}[k]_{local}[T]$$",
+  "meta": "2010 四、2011 四、2013 四（斜桁架）、2025 四（xy 平面格床）都需要。轉換矩陣 [T] 的排法（平移在前、轉角在後）與角度正負，考卷完全不規範。",
+  "ok": [],
+  "no": [
+   2009,
+   2010,
+   2011,
+   2013,
+   2025
+  ]
+ },
+ {
+  "g": "元素勁度矩陣",
+  "lv": "must",
+  "nm": "扭轉元素勁度",
+  "eq": "$$k_{T} = \\frac{GJ}{L},\\qquad J = \\frac{\\pi d^{4}}{32}\\ (\\text{實心圓桿})$$",
+  "meta": "2025 四是 24 年第一次出現格床（grid）結構：三根實心圓桿在 xy 平面、載重沿 −z。題目給了 E、G、I，但 \\(J = \\pi d^4/32\\) 與「格床元素要含扭轉自由度」完全沒提。",
+  "ok": [],
+  "no": [
+   2025
+  ]
+ },
+ {
+  "g": "載重向量",
+  "lv": "must",
+  "nm": "固端力向量與等效節點載重",
+  "eq": "$$\\{P_{eq}\\} = -\\{FEM\\}$$",
+  "meta": "2008 四、2018 二、2025 四 都有跨間均布載重。2018 二的解第一步就寫 \\(\\{P\\} = -\\{FEM\\}\\)。負號漏掉，位移全部反向。固端彎矩表本身也要自己背（見 U2-3 頁）。",
+  "ok": [],
+  "no": [
+   2004,
+   2008,
+   2015,
+   2018,
+   2025
+  ]
+ },
+ {
+  "g": "載重向量",
+  "lv": "must",
+  "nm": "製造誤差／溫度的等效節點載重",
+  "eq": "$$\\{P_{eq}\\} = \\frac{EA}{L}\\,\\Delta L_{0}\\begin{bmatrix}c\\\\ s\\end{bmatrix}$$",
+  "meta": "2011 四整題就是「AC 桿件組裝前短了 0.02 m」，要換成等效節點力才進得了矩陣。這是矩陣法裡最容易被漏掉的一塊，而題目只寫「因製造瑕疵短了 0.02 m」。",
+  "ok": [],
+  "no": [
+   2011
+  ]
+ },
+ {
+  "g": "載重向量",
+  "lv": "must",
+  "nm": "彈簧與支承沉陷的處理",
+  "eq": "$$[K]_{total} = [K]_{struct} + k_s\\,[\\,\\cdots\\,],\\qquad \\{P\\} \\mathrel{-}= [K_{fs}]\\{D_s\\}$$",
+  "meta": "2004 四（彈簧支承）、2015 四（抗扭彈簧 kθ 與線性彈簧 ks）、2019 四（旋轉彈簧）、2022 四（剛性樓板）都要把非桿件元素併進 [K]。把彈簧當成一個「額外元素」直接加到對應對角項——這一步沒有任何題目提示過。",
+  "ok": [],
+  "no": [
+   2004,
+   2015,
+   2019,
+   2022
+  ]
+ },
+ {
+  "g": "側移勁度與特殊約束",
+  "lv": "half",
+  "nm": "柱側移勁度 12EI/L³、3EI/L³",
+  "eq": "$$k = \\frac{12EI}{L^{3}}\\ (\\text{兩端固接}),\\qquad k = \\frac{3EI}{L^{3}}\\ (\\text{一端鉸接})$$",
+  "meta": "24 年唯一一次被印出來就在本單元：2004 四內文寫「勁度 k = 12EI/L³」，把柱直接簡化成彈簧給你。但 2008 四、2012 四、2018 二、2019 四、2022 四、2025 一 需要同一條時全部沒給。一次 vs. 六次——這就是「別賭」的定義。",
+  "ok": [
+   2004
+  ],
+  "no": [
+   2008,
+   2012,
+   2018,
+   2019,
+   2022,
+   2025
+  ]
+ },
+ {
+  "g": "側移勁度與特殊約束",
+  "lv": "must",
+  "nm": "剪力棟架層勁度",
+  "eq": "$$K_{\\text{層}} = \\sum_{\\text{該層柱}} \\frac{12EI}{L^{3}}\\quad(\\text{梁 } I=\\infty)$$",
+  "meta": "2022 四（三層樓構架、梁 I = ∞）、2025 一 的骨幹。2022 四的解第一行就是「柱側移剛度 k = 12EI/L³」。題目只會寫「構架之梁桿件斷面慣性矩為無限大」，剩下要自己翻譯成剪力棟架模型。",
+  "ok": [],
+  "no": [
+   2022,
+   2025
+  ]
+ },
+ {
+  "g": "側移勁度與特殊約束",
+  "lv": "half",
+  "nm": "半剛性接頭／旋轉彈簧的元素化",
+  "eq": "$$k_{\\theta} = \\frac{M}{\\Delta\\theta},\\qquad [k]_{spring} = k_{\\theta}\\begin{bmatrix}1 & -1\\\\ -1 & 1\\end{bmatrix}$$",
+  "meta": "2019 四是唯一給了數值的年份：明寫「旋轉彈簧勁度假設為 10 EI/L」，還特別指示「旋轉彈簧視為一個元素」。2015 四同樣有抗扭彈簧 kθ，但只給符號、不給任何提示。給過一次就算給過，但別指望。",
+  "ok": [
+   2019
+  ],
+  "no": [
+   2015
+  ]
+ },
+ {
+  "g": "側移勁度與特殊約束",
+  "lv": "must",
+  "nm": "剛性桿件與剛性樓板的約束",
+  "eq": "$$EI \\to \\infty \\Rightarrow \\theta_i = \\theta_j;\\qquad \\text{剛性樓板} \\Rightarrow \\text{同層水平位移相同}$$",
+  "meta": "2012 四（cd 桿件 EI 值為無限大）、2022 四（梁 I = ∞）、2021 四型的剛性樓板都用它降自由度。判斷「哪些自由度被綁在一起」是矩陣尺寸正確與否的關鍵，考卷只給一句 \\(I=\\infty\\)。",
+  "ok": [],
+  "no": [
+   2012,
+   2022
+  ]
+ },
+ {
+  "g": "側移勁度與特殊約束",
+  "lv": "give",
+  "nm": "材料與斷面數值（E、A、I、EI、EA、G、k）",
+  "eq": "$$E,\\ A,\\ I,\\ EI,\\ EA,\\ G,\\ k \\ \\text{(數值)}$$",
+  "meta": "2004 四給 EI 與 k = 12EI/L³；2009 四給 AE = 1000 kN；2010 四給 EA = 10000 kN；2011 四給 EA = 10⁴ kN；2013 四給 E = 200 GPa、A = 10×10³ mm²；2019 四給旋轉彈簧 10EI/L；2022 四給 EI = 97200 kN-m²。其餘（2007、2008、2012、2015、2018、2025）是符號解。要算數字就一定有給，這一類完全不必背。",
+  "ok": [
+   2004,
+   2009,
+   2010,
+   2011,
+   2013,
+   2019,
+   2022
+  ],
+  "no": []
+ }
+];
+const MX = [[2002, 91, "(—)", 0, 0, 0, 0, 0, 0, 0, "無參考公式區。整份只有幾何、載重與「E、I 為常數」等敘述。"], [2003, 92, "(—)", 0, 0, 0, 0, 0, 0, 0, "無參考公式區。第一題連 EI 都只寫「為常數」。"], [2004, 93, "四", 0, 0, 0, 0, 1, 0, 1, "無參考公式區。第四題內文寫出「勁度 k = 12EI/L³」——24 年唯一被印出的力學公式。"], [2005, 94, "(—)", 0, 0, 0, 0, 0, 0, 0, "無參考公式區。第一題只給 E、斷面積數值。"], [2006, 95, "(—)", 0, 0, 0, 0, 0, 0, 0, "無參考公式區。第一題明寫「精度 0.1 kN-m」，公式一條也沒有。"], [2007, 96, "二、四（副）", 0, 0, 0, 0, 0, 0, 0, "無參考公式區。第一題給 A、E 數值，第二題只寫 I、2I。"], [2008, 97, "四", 0, 0, 0, 0, 0, 0, 0, "無參考公式區。第二題指定用傾角變位法，傾角變位式本身沒印。"], [2009, 98, "四（副）", 0, 0, 0, 0, 0, 0, 1, "無參考公式區。第三題以「若令 P = K_H·Δ」定義水平勁度符號，不是給公式。"], [2010, 99, "四", 0, 0, 0, 0, 0, 0, 1, "無參考公式區。第三、四題都指定解法且「以其他方法計算不予計分」。"], [2011, 100, "四", 0, 0, 0, 0, 0, 0, 1, "注意欄明寫「本試題之相關公式，請自行合理推知」。α 與 EA 有給數值。"], [2012, 101, "四", 1, 0, 0, 0, 0, 0, 0, "注意欄明寫「相關公式、物理常數、符號意義及設計參數未提及時，請自行合理推斷與假設」；第四題給勁度方程式形式 {R}=[K]{r}。"], [2013, 102, "四", 0, 0, 0, 0, 0, 0, 1, "無參考公式區。三題指定解法且「使用其他方法不予給分」。"], [2014, 103, "(—)", 0, 0, 0, 0, 0, 0, 0, "無參考公式區。第三題連 √3 I 這種斷面配置都要自己換算。"], [2015, 104, "四", 1, 0, 0, 0, 0, 0, 0, "無參考公式區。第四題給矩陣關係式 [R]=[K][r] 並說明 [r] 為位移矩陣。"], [2016, 105, "(—)", 0, 0, 0, 0, 0, 0, 0, "無參考公式區。第三題直接給四個桿端彎矩數值，反過來要你算變位。"], [2017, 106, "(—)", 0, 0, 0, 0, 0, 0, 0, "無參考公式區。本年起注意欄加「本科目除專門名詞或數理公式外，應使用本國文字作答」——那是語言規定，不是給公式。"], [2018, 107, "二", 0, 0, 0, 0, 0, 0, 0, "無參考公式區。第二題要求自行定義自由度編號並建立勁度矩陣。"], [2019, 108, "四", 1, 0, 0, 0, 0, 1, 1, "無參考公式區。第四題給平衡式形式 [K]{D}={P} 與旋轉彈簧勁度 10EI/L。"], [2020, 109, "(—)", 0, 0, 0, 0, 0, 0, 0, "無參考公式區。第四題以數值矩陣給出剪力牆的 {F}–{Δ} 關係（該題專屬數據）。"], [2021, 110, "(—)", 0, 0, 0, 0, 0, 0, 0, "無參考公式區。第四題連柱的雙向慣性矩都只給 EI 數值。"], [2022, 111, "四", 0, 0, 0, 0, 0, 0, 1, "無參考公式區。第一題直接給彎矩圖，要你反算彈簧內力與沉陷。"], [2023, 112, "(—)", 0, 0, 0, 0, 0, 0, 0, "無參考公式區。第三題指定傾角變位法，公式沒印。"], [2024, 113, "(—)", 0, 0, 0, 0, 0, 0, 0, "無參考公式區。第二題給 α、E、A 數值；第四題給 Mp 值，塑性分析流程要自己會。"], [2025, 114, "一、四", 0, 0, 0, 0, 0, 0, 0, "無參考公式區。第一題僅寫「提示：請先寫出結構之勁度矩陣」。"]];
+
+/* ---------- 渲染 ---------- */
+const LVN={must:'必背',half:'別賭',give:'通常會給'};
+const G=[...new Set(F.map(f=>f.g))];
+let fl={lv:'all',g:'all'};
+function yrs(a,c){return a.map(y=>'<span class="yr '+c+'">'+(y-1911)+'年</span>').join('');}
+function draw(){
+  const box=document.getElementById('cards');
+  box.innerHTML=F.filter(f=>(fl.lv==='all'||f.lv===fl.lv)&&(fl.g==='all'||f.g===fl.g)).map(f=>{
+    let ev=f.ok.length?'<b>考卷給過：</b>'+yrs(f.ok,'ok')
+                      :'<b>考卷給過：</b><span class="never">從未</span>';
+    if(f.no.length) ev+='　｜　<b>考了卻沒給：</b>'+yrs(f.no,'no');
+    return '<div class="fc '+f.lv+'"><div class="top"><span class="nm">'+f.nm+'</span>'+
+      '<span class="tag '+f.lv+'">'+LVN[f.lv]+'</span></div>'+
+      '<div class="eq">'+f.eq+'</div><p class="meta">'+f.meta+'</p>'+
+      '<div class="ev">'+ev+'</div></div>';}).join('')
+    ||'<p class="lead">（此組合下沒有公式）</p>';
+  if(window.renderMathInElement)renderMathInElement(box,{delimiters:[
+    {left:'$$',right:'$$',display:true},{left:'\\(',right:'\\)',display:false}],throwOnError:false});
+}
+function drawMx(){
+  const tb=document.querySelector('#mx tbody');const N=MX[0].length-4;
+  tb.innerHTML=MX.map(r=>{
+    const has=r[2]!=='(—)';
+    let c='';for(let i=0;i<N;i++)c+='<td class="c">'+(r[3+i]?'<span class="y">✔</span>':'<span class="n">·</span>')+'</td>';
+    return '<tr class="'+(has?'hl':'')+'"><td><b>'+r[0]+'</b><br><span class="ynote">'+r[1]+'年</span></td>'+
+      '<td class="qq">'+r[2]+'</td>'+c+'<td class="rm">'+r[r.length-1]+'</td></tr>';}).join('');
+}
+document.addEventListener('DOMContentLoaded',()=>{
+  const fb=document.getElementById('flt');
+  fb.innerHTML='<div class="fg"><b>級別</b>'+
+    [['all','全部'],['must','必背'],['half','別賭'],['give','通常會給']]
+      .map(([k,v],i)=>'<button data-t="lv" data-v="'+k+'"'+(i===0?' class="on"':'')+'>'+v+'</button>').join('')+
+    '</div><div class="fg"><b>主題</b>'+
+    ['all',...G].map((g,i)=>'<button data-t="g" data-v="'+g+'"'+(i===0?' class="on"':'')+'>'+(g==='all'?'全部':g)+'</button>').join('')+
+    '</div>';
+  fb.querySelectorAll('button').forEach(b=>b.onclick=()=>{
+    const t=b.dataset.t;fl[t]=b.dataset.v;
+    fb.querySelectorAll('button[data-t="'+t+'"]').forEach(x=>x.classList.remove('on'));
+    b.classList.add('on');draw();});
+  drawMx();draw();
+});
+
+</script>
+</body></html>

@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="zh-Hant"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>SA-U2-1 靜不定結構最小功法｜主要公式 給／背分界</title>
+<link rel="stylesheet" href="assets/katex/katex.min.css">
+<script defer src="assets/katex/katex.min.js"></script>
+<script defer src="assets/katex/auto-render.min.js"
+  onload="renderMathInElement(document.body,{delimiters:[
+    {left:'$$',right:'$$',display:true},
+    {left:'\\(',right:'\\)',display:false}],throwOnError:false});"></script>
+<style>
+*{box-sizing:border-box}
+body{margin:0;background:#f4f6f8;color:#26323a;
+ font-family:"Noto Sans TC","PingFang TC","Microsoft JhengHei",system-ui,sans-serif;
+ line-height:1.7;-webkit-text-size-adjust:100%}
+main{max-width:1180px;margin:0 auto;padding:0 18px 60px}
+header{background:linear-gradient(135deg,#0d47a1,#1565c0 55%,#1976d2);color:#fff;
+ padding:30px 26px;border-radius:0 0 18px 18px}
+header .eyebrow{font-size:.78rem;letter-spacing:.16em;opacity:.85;margin:0 0 6px}
+header h1{margin:0 0 10px;font-size:1.62rem;line-height:1.4}
+header p{margin:0;font-size:.92rem;opacity:.94;max-width:78ch}
+nav{position:sticky;top:0;z-index:20;background:#fff;border-bottom:1px solid #dde4ea;
+ padding:9px 14px;display:flex;flex-wrap:wrap;gap:7px;box-shadow:0 2px 8px rgba(0,0,0,.05)}
+nav a{font-size:.8rem;text-decoration:none;color:#1565c0;background:#e8f0fe;
+ padding:5px 12px;border-radius:20px;white-space:nowrap}
+nav a:hover{background:#d3e3fd}
+section{margin:30px 0}
+h2{font-size:1.24rem;margin:0 0 12px;padding-left:11px;border-left:5px solid #1565c0;color:#0d47a1}
+h3{font-size:1.03rem;margin:20px 0 8px;color:#37474f}
+h3.grph{background:#eceff1;border-left:5px solid #1565c0;padding:6px 12px;border-radius:6px;color:#1565c0}
+p.lead{font-size:.95rem;color:#455a64}
+.kpis{display:flex;flex-wrap:wrap;gap:11px;margin:16px 0;break-inside:avoid}
+.kpi{flex:1 1 120px;background:#fff;border:1px solid #e0e6ea;border-radius:11px;padding:13px;text-align:center}
+.kpi .n{font-size:1.7em;font-weight:800;color:#0d47a1;line-height:1.15}
+.kpi .l{font-size:.74rem;color:#607d8b;margin-top:3px}
+.kpi.red .n{color:#c62828}.kpi.org .n{color:#ef6c00}.kpi.grn .n{color:#2e7d32}
+.legend{display:flex;flex-wrap:wrap;gap:11px;margin:14px 0;break-inside:avoid}
+.lg{flex:1 1 230px;border-radius:11px;padding:12px 14px;border:1px solid}
+.lg h4{margin:0 0 5px;font-size:.98rem}.lg p{margin:0;font-size:.84rem;line-height:1.6}
+.lg.must{background:#fdecea;border-color:#f5c6c2}.lg.must h4{color:#c62828}
+.lg.half{background:#fff4e5;border-color:#ffd9a8}.lg.half h4{color:#ef6c00}
+.lg.give{background:#e9f5ec;border-color:#bcdfc6}.lg.give h4{color:#2e7d32}
+.note,.warn{border-radius:10px;padding:12px 16px;margin:14px 0;font-size:.9rem}
+.note{background:#e8f0fe;border-left:5px solid #1565c0}
+.warn{background:#fff4e5;border-left:5px solid #ef6c00}
+blockquote{margin:10px 0;padding:9px 15px;background:#fafbfc;border-left:4px solid #90a4ae;
+ font-size:.89rem;color:#37474f}
+.filters{display:flex;flex-wrap:wrap;gap:6px;margin:14px 0}
+.filters .fg{display:flex;flex-wrap:wrap;gap:6px;align-items:center}
+.filters b{font-size:.78rem;color:#607d8b;margin-right:2px}
+.filters button{font-size:.79rem;border:1px solid #cfd8dc;background:#fff;color:#455a64;
+ border-radius:16px;padding:4px 12px;cursor:pointer}
+.filters button.on{background:#1565c0;border-color:#1565c0;color:#fff}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(330px,1fr));gap:13px}
+.fc{background:#fff;border:1px solid #e0e6ea;border-left:6px solid #90a4ae;border-radius:11px;
+ padding:13px 16px;box-shadow:0 1px 4px rgba(0,0,0,.04)}
+.fc.must{border-left-color:#c62828}.fc.half{border-left-color:#ef6c00}.fc.give{border-left-color:#2e7d32}
+.fc .top{display:flex;justify-content:space-between;align-items:flex-start;gap:9px;margin-bottom:5px}
+.fc .nm{font-weight:700;font-size:1.01rem;color:#26323a}
+.tag{font-size:.72rem;font-weight:700;border-radius:14px;padding:2px 10px;white-space:nowrap}
+.tag.must{background:#fdecea;color:#c62828}.tag.half{background:#fff4e5;color:#ef6c00}
+.tag.give{background:#e9f5ec;color:#2e7d32}
+.fc .eq{background:#f7f9fb;border-radius:8px;padding:6px 11px;margin:6px 0;overflow-x:auto}
+.fc .meta{font-size:.87rem;color:#455a64;margin:6px 0 0;line-height:1.68}
+.fc .ev{font-size:.79rem;margin-top:9px;padding-top:7px;border-top:1px dashed #dde4ea;color:#607d8b}
+.yr{display:inline-block;border-radius:4px;padding:0 5px;margin:1px 2px 1px 0;font-size:.76rem}
+.yr.ok{background:#e9f5ec;color:#2e7d32}.yr.no{background:#fdecea;color:#c62828}
+.never{color:#c62828;font-weight:700}
+.tw{overflow-x:auto;border:1px solid #e0e6ea;border-radius:11px;background:#fff}
+table{border-collapse:collapse;width:100%;min-width:920px;font-size:.82rem}
+th,td{padding:5px 7px;border-bottom:1px solid #eceff1;text-align:left;vertical-align:top}
+th{background:#eceff1;color:#37474f;font-size:.76rem;position:sticky;top:44px;text-align:center}
+th:first-child,th:last-child{text-align:left}
+td.c{text-align:center}
+td .y{color:#2e7d32;font-weight:800}td .n{color:#cfd8dc}
+tr.hl{background:#f2f7fc}
+td.qq{font-size:.8rem;color:#0d47a1;font-weight:600}
+td.rm{font-size:.78rem;color:#546e7a;line-height:1.55}
+.ynote{font-size:.72rem;color:#78909c}
+#mx{font-size:.8rem}
+@media print{#mx{font-size:7pt}#mx th,#mx td{padding:1.8px 3px}}
+footer{margin-top:38px;padding-top:14px;border-top:1px solid #dde4ea;color:#78909c;font-size:.79rem}
+@media(max-width:640px){.cards{grid-template-columns:1fr}header h1{font-size:1.3rem}}
+</style>
+</head><body>
+
+<header>
+  <p class="eyebrow">exam-wiki-SA｜結構學｜主要公式 給／背分界</p>
+  <h1>SA-U2-1　靜不定結構最小功法</h1>
+  <p>把本單元的主要公式逐條攤開，以 <b>2002–2025 共 24 份考卷原文</b>為證據，判定哪些「考卷會印給你」、哪些「必須自己寫得出來」。這不是公式速查表，是<b>背誦資源的投放決策</b>。</p>
+</header>
+
+<nav>
+  <a href="#how">判定方法</a>
+  <a href="#sec-cards">公式清單</a>
+  <a href="#matrix">逐年證據表</a>
+  <a href="#strategy">背誦策略</a>
+  <a href="lecture-SA-U2-1.html">▶ U2-1 觀念講義</a>
+  <a href="study-SA-U2-1.html">▶ U2-1 命題分析</a>
+  <a href="formula-given-SA-U1-2.html">▶ U1-2 給／背分界</a><a href="formula-given-SA-U1-3.html">▶ U1-3 給／背分界</a><a href="formula-given-SA-U2-3.html">▶ U2-3 給／背分界</a><a href="formula-given-SA-U2-4.html">▶ U2-4 給／背分界</a>
+  <a href="formula-given-SA-U2-1.pdf" target="_blank" style="background:#eceff1;color:#455a64">🖨️ 本頁 PDF</a>
+</nav>
+
+<main>
+
+<section id="how">
+<h2>一、我怎麼判定的</h2>
+<p class="lead">12 題主考點 + 3 題副考點。多數年份會明寫「若以其他方法計算不予計分」，方法被綁死、公式卻一條不給，是最需要肌肉記憶的單元之一。</p>
+
+<h3>1-1　「有給」的三種擺法</h3>
+<p class="lead">考卷把公式交給考生有三種方式，三種都算「有給」：<b>(a) 集中式</b>——最後一題後另闢「※參考公式」區；<b>(b) 隨題式</b>——緊跟在該題題目正下方；<b>(c) 內文式</b>——混在題目敘述裡當已知條件。判定時三種都掃過。</p>
+
+<div class="warn">
+<b>SA 的判定結果非常極端：24 份考卷（91–114 年）沒有任何一年設過「參考公式」或「參考資料」區。</b>
+文字抽取（<code>pdftotext -layout</code>）＋ 2002–2007、2009 七年的逐頁目視判讀（該七年中文字型缺失，只靠文字抽取會誤判）都確認：集中式 0 次、隨題式 0 次。
+24 年裡唯一被印出來的力學公式，是 <b>2004 年第四題內文的「勁度 k = 12EI/L³」</b>——屬於 (c) 內文式，且只出現過那一次。
+</div>
+
+<h3>1-2　考卷自己怎麼說</h3>
+<p class="lead">SA 沒有像其他科那樣的「公式僅供參考，應自負勘誤責任」聲明，因為它根本不給公式。取而代之的是兩句更直接的話：</p>
+<blockquote>「本試題之相關公式，請自行合理推知。」<br><span class="ynote">——100 年（2011）試題注意欄</span></blockquote>
+<blockquote>「本試題之相關公式、物理常數、符號意義及設計參數未提及時，請自行合理推斷與假設。」<br><span class="ynote">——101 年（2012）試題注意欄</span></blockquote>
+<p class="lead">106 年（2017）起注意欄多了一句「本科目除專門名詞或數理公式外，應使用本國文字作答」——那是<b>作答語言</b>的規定，不是要給你公式，不要看到「數理公式」四個字就誤會。</p>
+
+<h3>1-3　三級圖例</h3>
+<div class="legend">
+<div class="lg must"><h4>必背</h4><p>考卷從未印過；或曾發生「考了卻沒給」。自己要寫得出來，否則整題卡死。</p></div>
+<div class="lg half"><h4>別賭</h4><p>曾在某一年以內文式露出過，但多數年份沒有；或給的只是符號約定而非可用的式子。仍建議背。</p></div>
+<div class="lg give"><h4>通常會給</h4><p>凡需要用到就幾乎必定印在題幹，且無「考了卻沒給」的先例。背概念與用法即可。</p></div>
+</div>
+<p class="lead">採<b>保守標準</b>：拿不準就往上歸。把「必背」誤判成「會給」的代價，遠大於反過來多背幾條。</p>
+
+<div class="kpis">
+<div class="kpi"><div class="n">16</div><div class="l">本單元條列公式</div></div>
+<div class="kpi red"><div class="n">15</div><div class="l">必背</div></div>
+<div class="kpi org"><div class="n">0</div><div class="l">別賭</div></div>
+<div class="kpi grn"><div class="n">1</div><div class="l">通常會給</div></div>
+<div class="kpi"><div class="n">12</div><div class="l">本單元出題年數</div></div>
+<div class="kpi red"><div class="n">0</div><div class="l">24 年設參考公式區次數</div></div>
+</div>
+</section>
+
+<section id="sec-cards">
+<h2>二、公式逐條分界</h2>
+<p class="lead">可依「級別 × 主題」篩選。每條的說明都寫到<b>年份與題號</b>，不寫「常常會給」這種無法據以判斷風險的話。</p>
+<div class="filters" id="flt"></div>
+<div class="cards" id="cards"></div>
+</section>
+
+<section id="matrix">
+<h2>三、逐年證據表</h2>
+<p class="lead">24 個考年 × 本單元主要公式欄。<b>✔＝該年考卷印出</b>（含三種擺法）；<b>·＝沒印</b>。底色標示的列表示該年有本單元的題目。</p>
+<div class="tw"><table id="mx">
+<thead><tr><th>考卷年</th><th>單元題號</th><th class="c">卡氏定理／最小功法</th><th class="c">應變能表達式</th><th class="c">單位力法等價式</th><th class="c">圖乘法／積分表</th><th class="c">固端彎矩表</th><th class="c">材料／斷面數值</th><th>備註</th></tr></thead>
+<tbody></tbody>
+</table></div>
+<p class="lead" style="margin-top:10px">本表的「✔」總數＝<b>6</b> 個年份欄位。對照一下：24 年 × 6 欄 = 144 格，實際有給的比例接近於零——這就是 SA 這一科的樣貌。</p>
+</section>
+
+<section id="strategy">
+<h2>四、背誦策略</h2>
+<h3>1. 方法被指定、公式不給——這是本單元的常態</h3><p class="lead">2005 一、2013 二、2014 四、2016 三、2017 二、2018 三 都寫了「使用其他方法不予給分」之類的字句。也就是說：你不能換一條自己比較熟的路，只能把卡氏定理與應變能三式寫得出來。這兩張卡是本單元的門票。</p><h3>2. 「= 0」不是永遠成立</h3><p class="lead">2015 二、2022 一 有支承沉陷，\(\partial U/\partial R = \delta\) 而非 0。這一條在 24 年裡出現兩次，每次都是整題成敗的分水嶺。背的時候要連例外一起背。</p><h3>3. 圖乘法是時間投資報酬率最高的一張卡</h3><p class="lead">2 小時 4 題，本單元的題目動輒 3～5 段彎矩函數。背熟三角×三角、三角×常數、拋物線×三角這幾個乘積值，比多背一條理論公式省時得多。</p><h3>4. 用固端彎矩標準值自我驗算</h3><p class="lead">算完最小功法的答案，若結構退化成均勻梁的情形，結果必須回到 \(wL^2/12\)、\(PL/8\)。2017 二的正解在 m = n 時就會收斂到這些值。考卷不給檢核，只能靠自己記得的標準值。</p>
+</section>
+
+<footer>
+資料來源：<code>raw/exams/SA-2002~2025_結構學.pdf</code>（24 份）、<code>raw/json/question_index.json</code>、<code>raw/solutions/</code>、<code>raw/solutions/methods/</code>。<br>
+判定方式：全年份 <code>pdftotext -layout</code> 文字抽取 + 關鍵字掃描；2002–2007、2009 因中文字型缺失另以 <code>pdftoppm</code> 逐頁轉圖目視判讀。<br>
+同單元另有 <code>lecture-SA-U2-1.html</code>（觀念講義：為什麼成立）與 <code>study-SA-U2-1.html</code>（命題分析：這個單元考什麼），三份互不覆蓋。
+</footer>
+
+</main>
+
+<script>
+const F = [
+ {
+  "g": "能量原理",
+  "lv": "must",
+  "nm": "卡氏第二定理",
+  "eq": "$$\\Delta_i = \\frac{\\partial U}{\\partial P_i}$$",
+  "meta": "2013 二題目明寫「請應用卡氏定理」、2014 四明寫「以最小功法」，卻都沒印出定理本身。求「非多餘力方向」的位移時（如 2013 二的 C 點轉角、2014 四的 C 點轉角）必須虛設一個力再偏微分。",
+  "ok": [],
+  "no": [
+   2005,
+   2006,
+   2012,
+   2013,
+   2014,
+   2015,
+   2016,
+   2017,
+   2019,
+   2022
+  ]
+ },
+ {
+  "g": "能量原理",
+  "lv": "must",
+  "nm": "最小功法",
+  "eq": "$$\\frac{\\partial U}{\\partial R_i} = 0$$",
+  "meta": "本單元的定義式。2005 一、2006 一、2007 二、2014 四、2017 二、2018 三、2019 一 全部靠它建立方程。「= 0」的前提是該多餘力方向位移為零——2015 二、2022 一 有支承沉陷時右邊就不是 0（見下一張卡）。",
+  "ok": [],
+  "no": [
+   2005,
+   2006,
+   2007,
+   2013,
+   2014,
+   2017,
+   2018,
+   2019
+  ]
+ },
+ {
+  "g": "能量原理",
+  "lv": "must",
+  "nm": "單位力法（虛功法）等價式",
+  "eq": "$$\\delta = \\int \\frac{m\\,M}{EI}\\,dx + \\sum \\frac{n\\,N\\,L}{EA}$$",
+  "meta": "2016 三題目要求「虛功法／單位力法求側移」，2006 一是桁架與梁的混合結構，兩項都不能漏。與最小功法本質等價，考場上哪個快用哪個——但兩條式子都得自己寫得出來。",
+  "ok": [],
+  "no": [
+   2005,
+   2006,
+   2015,
+   2016,
+   2017,
+   2022
+  ]
+ },
+ {
+  "g": "能量原理",
+  "lv": "must",
+  "nm": "有支承位移時的修正",
+  "eq": "$$\\frac{\\partial U}{\\partial R_i} = \\delta_i \\quad (\\delta_i = \\text{該多餘力方向的已知位移})$$",
+  "meta": "2022 一 e 點有向下沉陷 \\(\\Delta_e\\)、2015 二 有支承沉陷，右邊都不是 0。直接照抄「= 0」是本單元最典型的整題歸零錯法，而考卷不會提醒你這一點。",
+  "ok": [],
+  "no": [
+   2015,
+   2022
+  ]
+ },
+ {
+  "g": "應變能表達式",
+  "lv": "must",
+  "nm": "彎曲應變能",
+  "eq": "$$U = \\int \\frac{M^{2}}{2EI}\\,dx$$",
+  "meta": "剛架／梁題的主體。2005 一、2013 二、2014 四、2017 二、2018 三、2022 一 都要先寫出分段 \\(M(x)\\) 再積分。考卷 24 年沒印過。",
+  "ok": [],
+  "no": [
+   2005,
+   2006,
+   2013,
+   2014,
+   2017,
+   2018,
+   2022
+  ]
+ },
+ {
+  "g": "應變能表達式",
+  "lv": "must",
+  "nm": "軸力應變能",
+  "eq": "$$U = \\sum \\frac{N^{2}L}{2EA}$$",
+  "meta": "桁架題（2005 四、2019 一）與混合結構（2006 一、2018 三 的纜索）用。2006 一的正解含 \\(\\alpha = EI/EA\\) 的參數比，就是因為兩種應變能同時存在。",
+  "ok": [],
+  "no": [
+   2005,
+   2006,
+   2012,
+   2018,
+   2019
+  ]
+ },
+ {
+  "g": "應變能表達式",
+  "lv": "must",
+  "nm": "剪力與扭轉應變能",
+  "eq": "$$U_V = \\int \\frac{\\kappa V^{2}}{2GA}\\,dx,\\qquad U_T = \\int \\frac{T^{2}}{2GJ}\\,dx$$",
+  "meta": "2016 三、2018 三 都明寫「忽略軸向及剪切變形」——但你得先知道有這兩項，才知道題目是在幫你簡化。若某年不寫「忽略」（如 2025 四的圓桿格床），漏掉就錯。",
+  "ok": [],
+  "no": [
+   2016,
+   2018
+  ]
+ },
+ {
+  "g": "應變能表達式",
+  "lv": "must",
+  "nm": "彈簧應變能",
+  "eq": "$$U_s = \\frac{R^{2}}{2k}\\qquad(\\text{等效柔度 } 1/k)$$",
+  "meta": "2012 二（線彈性彈簧 Ks = 2500 kN/m）、2022 一（k = 6000 kN/m）都把彈簧塞進靜不定結構裡。題目給 k 的「數值」，但「彈簧要以 \\(R^2/2k\\) 併入應變能」這件事不會說。",
+  "ok": [],
+  "no": [
+   2012,
+   2022
+  ]
+ },
+ {
+  "g": "積分與圖乘工具",
+  "lv": "must",
+  "nm": "圖乘法乘積積分表",
+  "eq": "$$\\int_0^L M_1 M_2\\,dx:\\ \\ \\text{三角}\\times\\text{三角}=\\tfrac{L}{3}M_1M_2,\\quad \\text{三角}\\times\\text{常數}=\\tfrac{L}{2}M_1M_2$$",
+  "meta": "2016 三題目標籤即「圖形積分法」。不背這張表，每一段都要重新硬積，2 小時 4 題根本做不完。SS、RC 有時會在題目附常用積分表，SA 從來沒有。",
+  "ok": [],
+  "no": [
+   2005,
+   2013,
+   2016,
+   2017
+  ]
+ },
+ {
+  "g": "積分與圖乘工具",
+  "lv": "must",
+  "nm": "拋物線面積與形心",
+  "eq": "$$A = \\frac{2}{3}bh,\\qquad \\bar{x} = \\frac{3}{8}b\\ (\\text{自頂點側量})$$",
+  "meta": "均布載重段的 \\(M\\) 圖是二次拋物線，圖乘時必用。2016 三、2017 二、2018 三、2022 一 都有均布段。記錯 \\(\\tfrac{2}{3}\\) 與 \\(\\tfrac{3}{8}\\) 的搭配是常見扣分。",
+  "ok": [],
+  "no": [
+   2016,
+   2017,
+   2018,
+   2022
+  ]
+ },
+ {
+  "g": "積分與圖乘工具",
+  "lv": "must",
+  "nm": "分段彎矩函數與 Macaulay 括號",
+  "eq": "$$M(x) = R\\,x + M_0 - P\\langle x - a\\rangle$$",
+  "meta": "2013 二、2014 四、2017 二 的解都寫成這個形式。分段點抓錯（尤其跨越內鉸、變斷面處）是本單元最常見的計算錯誤。",
+  "ok": [],
+  "no": [
+   2013,
+   2014,
+   2017
+  ]
+ },
+ {
+  "g": "多餘力的選取與特殊條件",
+  "lv": "must",
+  "nm": "靜不定度與多餘力數",
+  "eq": "$$n = i \\ \\Rightarrow\\ \\text{需 } n \\text{ 條 } \\partial U/\\partial R_i = 0$$",
+  "meta": "選錯數量或選到讓基本結構變成機構，整題作廢。2007 四（有側移剛架）、2019 一（破壞機構）尤其容易判錯。",
+  "ok": [],
+  "no": [
+   2005,
+   2006,
+   2007,
+   2013,
+   2014,
+   2017,
+   2018,
+   2019
+  ]
+ },
+ {
+  "g": "多餘力的選取與特殊條件",
+  "lv": "must",
+  "nm": "僅受拉纜索的鬆弛判定",
+  "eq": "$$N < 0 \\Rightarrow N = 0\\ (\\text{纜索退出工作，靜不定度下降})$$",
+  "meta": "2018 三明寫「細虛線表示只承受拉力的纜索」。若不先判斷 AE、BF 兩索是否都受拉就直接列方程，答案必錯。這是「流程規則」，不是公式，考卷更不會印。",
+  "ok": [],
+  "no": [
+   2018
+  ]
+ },
+ {
+  "g": "多餘力的選取與特殊條件",
+  "lv": "must",
+  "nm": "固端彎矩表",
+  "eq": "$$M_F = \\frac{wL^{2}}{12},\\quad \\frac{PL}{8},\\quad \\frac{P a b^{2}}{L^{2}}$$",
+  "meta": "2017 二整題就是「以最小功法求固定端彎矩」，2007 二求固端彎矩。用最小功法算出來的答案要能跟標準表對得上（均勻梁 \\(wL^2/12\\)）才敢交卷——這是自我驗算的唯一基準。",
+  "ok": [],
+  "no": [
+   2007,
+   2017
+  ]
+ },
+ {
+  "g": "多餘力的選取與特殊條件",
+  "lv": "must",
+  "nm": "塑性破壞機構的判定",
+  "eq": "$$\\text{塑鉸數} = i + 1 \\Rightarrow \\text{機構形成}$$",
+  "meta": "2019 一要求「求出破壞機構形成時對應之極限外力」，並畫 P–U 關係圖。題目給了各桿軸拉／軸壓強度數值，但「幾根桿件失效才成機構」要自己判。",
+  "ok": [],
+  "no": [
+   2019
+  ]
+ },
+ {
+  "g": "多餘力的選取與特殊條件",
+  "lv": "give",
+  "nm": "材料與斷面數值（E、A、EI、EA、k、強度）",
+  "eq": "$$E,\\ A,\\ EI,\\ EA,\\ k,\\ F_y \\ \\text{(數值)}$$",
+  "meta": "需要數值答案的年份一律有給：2005 一給 E = 10⁶ N/cm²、A = 20 cm²；2012 二給 EA = 10000 kN、Ks = 2500 kN/m；2014 二給 EI = 10000、EA = 40000；2018 三給 EI = 1000 kN-m²、EA = 500 kN；2019 一給各桿軸拉／軸壓強度；2022 一給 EI = 250000、k = 6000。其餘年份（2006、2007、2013、2016、2017）是符號解。這類東西背了純浪費。",
+  "ok": [
+   2005,
+   2012,
+   2014,
+   2018,
+   2019,
+   2022
+  ],
+  "no": []
+ }
+];
+const MX = [[2002, 91, "(—)", 0, 0, 0, 0, 0, 0, "無參考公式區。整份只有幾何、載重與「E、I 為常數」等敘述。"], [2003, 92, "(—)", 0, 0, 0, 0, 0, 0, "無參考公式區。第一題連 EI 都只寫「為常數」。"], [2004, 93, "(—)", 0, 0, 0, 0, 0, 0, "無參考公式區。第四題內文寫出「勁度 k = 12EI/L³」——24 年唯一被印出的力學公式。"], [2005, 94, "一、四", 0, 0, 0, 0, 0, 1, "無參考公式區。第一題只給 E、斷面積數值。"], [2006, 95, "一", 0, 0, 0, 0, 0, 0, "無參考公式區。第一題明寫「精度 0.1 kN-m」，公式一條也沒有。"], [2007, 96, "二、四", 0, 0, 0, 0, 0, 0, "無參考公式區。第一題給 A、E 數值，第二題只寫 I、2I。"], [2008, 97, "(—)", 0, 0, 0, 0, 0, 0, "無參考公式區。第二題指定用傾角變位法，傾角變位式本身沒印。"], [2009, 98, "(—)", 0, 0, 0, 0, 0, 0, "無參考公式區。第三題以「若令 P = K_H·Δ」定義水平勁度符號，不是給公式。"], [2010, 99, "(—)", 0, 0, 0, 0, 0, 0, "無參考公式區。第三、四題都指定解法且「以其他方法計算不予計分」。"], [2011, 100, "(—)", 0, 0, 0, 0, 0, 0, "注意欄明寫「本試題之相關公式，請自行合理推知」。α 與 EA 有給數值。"], [2012, 101, "一（副）", 0, 0, 0, 0, 0, 1, "注意欄明寫「相關公式、物理常數、符號意義及設計參數未提及時，請自行合理推斷與假設」；第四題給勁度方程式形式 {R}=[K]{r}。"], [2013, 102, "二", 0, 0, 0, 0, 0, 0, "無參考公式區。三題指定解法且「使用其他方法不予給分」。"], [2014, 103, "二（副）、四", 0, 0, 0, 0, 0, 1, "無參考公式區。第三題連 √3 I 這種斷面配置都要自己換算。"], [2015, 104, "二（副）", 0, 0, 0, 0, 0, 0, "無參考公式區。第四題給矩陣關係式 [R]=[K][r] 並說明 [r] 為位移矩陣。"], [2016, 105, "三", 0, 0, 0, 0, 0, 0, "無參考公式區。第三題直接給四個桿端彎矩數值，反過來要你算變位。"], [2017, 106, "二", 0, 0, 0, 0, 0, 0, "無參考公式區。本年起注意欄加「本科目除專門名詞或數理公式外，應使用本國文字作答」——那是語言規定，不是給公式。"], [2018, 107, "三", 0, 0, 0, 0, 0, 1, "無參考公式區。第二題要求自行定義自由度編號並建立勁度矩陣。"], [2019, 108, "一", 0, 0, 0, 0, 0, 1, "無參考公式區。第四題給平衡式形式 [K]{D}={P} 與旋轉彈簧勁度 10EI/L。"], [2020, 109, "(—)", 0, 0, 0, 0, 0, 0, "無參考公式區。第四題以數值矩陣給出剪力牆的 {F}–{Δ} 關係（該題專屬數據）。"], [2021, 110, "(—)", 0, 0, 0, 0, 0, 0, "無參考公式區。第四題連柱的雙向慣性矩都只給 EI 數值。"], [2022, 111, "一", 0, 0, 0, 0, 0, 1, "無參考公式區。第一題直接給彎矩圖，要你反算彈簧內力與沉陷。"], [2023, 112, "(—)", 0, 0, 0, 0, 0, 0, "無參考公式區。第三題指定傾角變位法，公式沒印。"], [2024, 113, "(—)", 0, 0, 0, 0, 0, 0, "無參考公式區。第二題給 α、E、A 數值；第四題給 Mp 值，塑性分析流程要自己會。"], [2025, 114, "(—)", 0, 0, 0, 0, 0, 0, "無參考公式區。第一題僅寫「提示：請先寫出結構之勁度矩陣」。"]];
+
+/* ---------- 渲染 ---------- */
+const LVN={must:'必背',half:'別賭',give:'通常會給'};
+const G=[...new Set(F.map(f=>f.g))];
+let fl={lv:'all',g:'all'};
+function yrs(a,c){return a.map(y=>'<span class="yr '+c+'">'+(y-1911)+'年</span>').join('');}
+function draw(){
+  const box=document.getElementById('cards');
+  box.innerHTML=F.filter(f=>(fl.lv==='all'||f.lv===fl.lv)&&(fl.g==='all'||f.g===fl.g)).map(f=>{
+    let ev=f.ok.length?'<b>考卷給過：</b>'+yrs(f.ok,'ok')
+                      :'<b>考卷給過：</b><span class="never">從未</span>';
+    if(f.no.length) ev+='　｜　<b>考了卻沒給：</b>'+yrs(f.no,'no');
+    return '<div class="fc '+f.lv+'"><div class="top"><span class="nm">'+f.nm+'</span>'+
+      '<span class="tag '+f.lv+'">'+LVN[f.lv]+'</span></div>'+
+      '<div class="eq">'+f.eq+'</div><p class="meta">'+f.meta+'</p>'+
+      '<div class="ev">'+ev+'</div></div>';}).join('')
+    ||'<p class="lead">（此組合下沒有公式）</p>';
+  if(window.renderMathInElement)renderMathInElement(box,{delimiters:[
+    {left:'$$',right:'$$',display:true},{left:'\\(',right:'\\)',display:false}],throwOnError:false});
+}
+function drawMx(){
+  const tb=document.querySelector('#mx tbody');const N=MX[0].length-4;
+  tb.innerHTML=MX.map(r=>{
+    const has=r[2]!=='(—)';
+    let c='';for(let i=0;i<N;i++)c+='<td class="c">'+(r[3+i]?'<span class="y">✔</span>':'<span class="n">·</span>')+'</td>';
+    return '<tr class="'+(has?'hl':'')+'"><td><b>'+r[0]+'</b><br><span class="ynote">'+r[1]+'年</span></td>'+
+      '<td class="qq">'+r[2]+'</td>'+c+'<td class="rm">'+r[r.length-1]+'</td></tr>';}).join('');
+}
+document.addEventListener('DOMContentLoaded',()=>{
+  const fb=document.getElementById('flt');
+  fb.innerHTML='<div class="fg"><b>級別</b>'+
+    [['all','全部'],['must','必背'],['half','別賭'],['give','通常會給']]
+      .map(([k,v],i)=>'<button data-t="lv" data-v="'+k+'"'+(i===0?' class="on"':'')+'>'+v+'</button>').join('')+
+    '</div><div class="fg"><b>主題</b>'+
+    ['all',...G].map((g,i)=>'<button data-t="g" data-v="'+g+'"'+(i===0?' class="on"':'')+'>'+(g==='all'?'全部':g)+'</button>').join('')+
+    '</div>';
+  fb.querySelectorAll('button').forEach(b=>b.onclick=()=>{
+    const t=b.dataset.t;fl[t]=b.dataset.v;
+    fb.querySelectorAll('button[data-t="'+t+'"]').forEach(x=>x.classList.remove('on'));
+    b.classList.add('on');draw();});
+  drawMx();draw();
+});
+
+</script>
+</body></html>

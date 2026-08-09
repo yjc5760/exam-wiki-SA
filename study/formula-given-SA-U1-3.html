@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="zh-Hant"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>SA-U1-3 靜定及靜不定結構影響線｜主要公式 給／背分界</title>
+<link rel="stylesheet" href="assets/katex/katex.min.css">
+<script defer src="assets/katex/katex.min.js"></script>
+<script defer src="assets/katex/auto-render.min.js"
+  onload="renderMathInElement(document.body,{delimiters:[
+    {left:'$$',right:'$$',display:true},
+    {left:'\\(',right:'\\)',display:false}],throwOnError:false});"></script>
+<style>
+*{box-sizing:border-box}
+body{margin:0;background:#f4f6f8;color:#26323a;
+ font-family:"Noto Sans TC","PingFang TC","Microsoft JhengHei",system-ui,sans-serif;
+ line-height:1.7;-webkit-text-size-adjust:100%}
+main{max-width:1180px;margin:0 auto;padding:0 18px 60px}
+header{background:linear-gradient(135deg,#0d47a1,#1565c0 55%,#1976d2);color:#fff;
+ padding:30px 26px;border-radius:0 0 18px 18px}
+header .eyebrow{font-size:.78rem;letter-spacing:.16em;opacity:.85;margin:0 0 6px}
+header h1{margin:0 0 10px;font-size:1.62rem;line-height:1.4}
+header p{margin:0;font-size:.92rem;opacity:.94;max-width:78ch}
+nav{position:sticky;top:0;z-index:20;background:#fff;border-bottom:1px solid #dde4ea;
+ padding:9px 14px;display:flex;flex-wrap:wrap;gap:7px;box-shadow:0 2px 8px rgba(0,0,0,.05)}
+nav a{font-size:.8rem;text-decoration:none;color:#1565c0;background:#e8f0fe;
+ padding:5px 12px;border-radius:20px;white-space:nowrap}
+nav a:hover{background:#d3e3fd}
+section{margin:30px 0}
+h2{font-size:1.24rem;margin:0 0 12px;padding-left:11px;border-left:5px solid #1565c0;color:#0d47a1}
+h3{font-size:1.03rem;margin:20px 0 8px;color:#37474f}
+h3.grph{background:#eceff1;border-left:5px solid #1565c0;padding:6px 12px;border-radius:6px;color:#1565c0}
+p.lead{font-size:.95rem;color:#455a64}
+.kpis{display:flex;flex-wrap:wrap;gap:11px;margin:16px 0;break-inside:avoid}
+.kpi{flex:1 1 120px;background:#fff;border:1px solid #e0e6ea;border-radius:11px;padding:13px;text-align:center}
+.kpi .n{font-size:1.7em;font-weight:800;color:#0d47a1;line-height:1.15}
+.kpi .l{font-size:.74rem;color:#607d8b;margin-top:3px}
+.kpi.red .n{color:#c62828}.kpi.org .n{color:#ef6c00}.kpi.grn .n{color:#2e7d32}
+.legend{display:flex;flex-wrap:wrap;gap:11px;margin:14px 0;break-inside:avoid}
+.lg{flex:1 1 230px;border-radius:11px;padding:12px 14px;border:1px solid}
+.lg h4{margin:0 0 5px;font-size:.98rem}.lg p{margin:0;font-size:.84rem;line-height:1.6}
+.lg.must{background:#fdecea;border-color:#f5c6c2}.lg.must h4{color:#c62828}
+.lg.half{background:#fff4e5;border-color:#ffd9a8}.lg.half h4{color:#ef6c00}
+.lg.give{background:#e9f5ec;border-color:#bcdfc6}.lg.give h4{color:#2e7d32}
+.note,.warn{border-radius:10px;padding:12px 16px;margin:14px 0;font-size:.9rem}
+.note{background:#e8f0fe;border-left:5px solid #1565c0}
+.warn{background:#fff4e5;border-left:5px solid #ef6c00}
+blockquote{margin:10px 0;padding:9px 15px;background:#fafbfc;border-left:4px solid #90a4ae;
+ font-size:.89rem;color:#37474f}
+.filters{display:flex;flex-wrap:wrap;gap:6px;margin:14px 0}
+.filters .fg{display:flex;flex-wrap:wrap;gap:6px;align-items:center}
+.filters b{font-size:.78rem;color:#607d8b;margin-right:2px}
+.filters button{font-size:.79rem;border:1px solid #cfd8dc;background:#fff;color:#455a64;
+ border-radius:16px;padding:4px 12px;cursor:pointer}
+.filters button.on{background:#1565c0;border-color:#1565c0;color:#fff}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(330px,1fr));gap:13px}
+.fc{background:#fff;border:1px solid #e0e6ea;border-left:6px solid #90a4ae;border-radius:11px;
+ padding:13px 16px;box-shadow:0 1px 4px rgba(0,0,0,.04)}
+.fc.must{border-left-color:#c62828}.fc.half{border-left-color:#ef6c00}.fc.give{border-left-color:#2e7d32}
+.fc .top{display:flex;justify-content:space-between;align-items:flex-start;gap:9px;margin-bottom:5px}
+.fc .nm{font-weight:700;font-size:1.01rem;color:#26323a}
+.tag{font-size:.72rem;font-weight:700;border-radius:14px;padding:2px 10px;white-space:nowrap}
+.tag.must{background:#fdecea;color:#c62828}.tag.half{background:#fff4e5;color:#ef6c00}
+.tag.give{background:#e9f5ec;color:#2e7d32}
+.fc .eq{background:#f7f9fb;border-radius:8px;padding:6px 11px;margin:6px 0;overflow-x:auto}
+.fc .meta{font-size:.87rem;color:#455a64;margin:6px 0 0;line-height:1.68}
+.fc .ev{font-size:.79rem;margin-top:9px;padding-top:7px;border-top:1px dashed #dde4ea;color:#607d8b}
+.yr{display:inline-block;border-radius:4px;padding:0 5px;margin:1px 2px 1px 0;font-size:.76rem}
+.yr.ok{background:#e9f5ec;color:#2e7d32}.yr.no{background:#fdecea;color:#c62828}
+.never{color:#c62828;font-weight:700}
+.tw{overflow-x:auto;border:1px solid #e0e6ea;border-radius:11px;background:#fff}
+table{border-collapse:collapse;width:100%;min-width:920px;font-size:.82rem}
+th,td{padding:5px 7px;border-bottom:1px solid #eceff1;text-align:left;vertical-align:top}
+th{background:#eceff1;color:#37474f;font-size:.76rem;position:sticky;top:44px;text-align:center}
+th:first-child,th:last-child{text-align:left}
+td.c{text-align:center}
+td .y{color:#2e7d32;font-weight:800}td .n{color:#cfd8dc}
+tr.hl{background:#f2f7fc}
+td.qq{font-size:.8rem;color:#0d47a1;font-weight:600}
+td.rm{font-size:.78rem;color:#546e7a;line-height:1.55}
+.ynote{font-size:.72rem;color:#78909c}
+#mx{font-size:.8rem}
+@media print{#mx{font-size:7pt}#mx th,#mx td{padding:1.8px 3px}}
+footer{margin-top:38px;padding-top:14px;border-top:1px solid #dde4ea;color:#78909c;font-size:.79rem}
+@media(max-width:640px){.cards{grid-template-columns:1fr}header h1{font-size:1.3rem}}
+</style>
+</head><body>
+
+<header>
+  <p class="eyebrow">exam-wiki-SA｜結構學｜主要公式 給／背分界</p>
+  <h1>SA-U1-3　靜定及靜不定結構影響線</h1>
+  <p>把本單元的主要公式逐條攤開，以 <b>2002–2025 共 24 份考卷原文</b>為證據，判定哪些「考卷會印給你」、哪些「必須自己寫得出來」。這不是公式速查表，是<b>背誦資源的投放決策</b>。</p>
+</header>
+
+<nav>
+  <a href="#how">判定方法</a>
+  <a href="#sec-cards">公式清單</a>
+  <a href="#matrix">逐年證據表</a>
+  <a href="#strategy">背誦策略</a>
+  <a href="lecture-SA-U1-3.html">▶ U1-3 觀念講義</a>
+  <a href="study-SA-U1-3.html">▶ U1-3 命題分析</a>
+  <a href="formula-given-SA-U1-2.html">▶ U1-2 給／背分界</a><a href="formula-given-SA-U2-1.html">▶ U2-1 給／背分界</a><a href="formula-given-SA-U2-3.html">▶ U2-3 給／背分界</a><a href="formula-given-SA-U2-4.html">▶ U2-4 給／背分界</a>
+  <a href="formula-given-SA-U1-3.pdf" target="_blank" style="background:#eceff1;color:#455a64">🖨️ 本頁 PDF</a>
+</nav>
+
+<main>
+
+<section id="how">
+<h2>一、我怎麼判定的</h2>
+<p class="lead">9 題主考點 + 4 題副考點，近十年（2015、2016、2018、2022、2025）幾乎兩三年一次。本單元的「公式」大多是規則與作圖法，正因如此更不可能被印出來。</p>
+
+<h3>1-1　「有給」的三種擺法</h3>
+<p class="lead">考卷把公式交給考生有三種方式，三種都算「有給」：<b>(a) 集中式</b>——最後一題後另闢「※參考公式」區；<b>(b) 隨題式</b>——緊跟在該題題目正下方；<b>(c) 內文式</b>——混在題目敘述裡當已知條件。判定時三種都掃過。</p>
+
+<div class="warn">
+<b>SA 的判定結果非常極端：24 份考卷（91–114 年）沒有任何一年設過「參考公式」或「參考資料」區。</b>
+文字抽取（<code>pdftotext -layout</code>）＋ 2002–2007、2009 七年的逐頁目視判讀（該七年中文字型缺失，只靠文字抽取會誤判）都確認：集中式 0 次、隨題式 0 次。
+24 年裡唯一被印出來的力學公式，是 <b>2004 年第四題內文的「勁度 k = 12EI/L³」</b>——屬於 (c) 內文式，且只出現過那一次。
+</div>
+
+<h3>1-2　考卷自己怎麼說</h3>
+<p class="lead">SA 沒有像其他科那樣的「公式僅供參考，應自負勘誤責任」聲明，因為它根本不給公式。取而代之的是兩句更直接的話：</p>
+<blockquote>「本試題之相關公式，請自行合理推知。」<br><span class="ynote">——100 年（2011）試題注意欄</span></blockquote>
+<blockquote>「本試題之相關公式、物理常數、符號意義及設計參數未提及時，請自行合理推斷與假設。」<br><span class="ynote">——101 年（2012）試題注意欄</span></blockquote>
+<p class="lead">106 年（2017）起注意欄多了一句「本科目除專門名詞或數理公式外，應使用本國文字作答」——那是<b>作答語言</b>的規定，不是要給你公式，不要看到「數理公式」四個字就誤會。</p>
+
+<h3>1-3　三級圖例</h3>
+<div class="legend">
+<div class="lg must"><h4>必背</h4><p>考卷從未印過；或曾發生「考了卻沒給」。自己要寫得出來，否則整題卡死。</p></div>
+<div class="lg half"><h4>別賭</h4><p>曾在某一年以內文式露出過，但多數年份沒有；或給的只是符號約定而非可用的式子。仍建議背。</p></div>
+<div class="lg give"><h4>通常會給</h4><p>凡需要用到就幾乎必定印在題幹，且無「考了卻沒給」的先例。背概念與用法即可。</p></div>
+</div>
+<p class="lead">採<b>保守標準</b>：拿不準就往上歸。把「必背」誤判成「會給」的代價，遠大於反過來多背幾條。</p>
+
+<div class="kpis">
+<div class="kpi"><div class="n">15</div><div class="l">本單元條列公式</div></div>
+<div class="kpi red"><div class="n">14</div><div class="l">必背</div></div>
+<div class="kpi org"><div class="n">0</div><div class="l">別賭</div></div>
+<div class="kpi grn"><div class="n">1</div><div class="l">通常會給</div></div>
+<div class="kpi"><div class="n">13</div><div class="l">本單元出題年數</div></div>
+<div class="kpi red"><div class="n">0</div><div class="l">24 年設參考公式區次數</div></div>
+</div>
+</section>
+
+<section id="sec-cards">
+<h2>二、公式逐條分界</h2>
+<p class="lead">可依「級別 × 主題」篩選。每條的說明都寫到<b>年份與題號</b>，不寫「常常會給」這種無法據以判斷風險的話。</p>
+<div class="filters" id="flt"></div>
+<div class="cards" id="cards"></div>
+</section>
+
+<section id="matrix">
+<h2>三、逐年證據表</h2>
+<p class="lead">24 個考年 × 本單元主要公式欄。<b>✔＝該年考卷印出</b>（含三種擺法）；<b>·＝沒印</b>。底色標示的列表示該年有本單元的題目。</p>
+<div class="tw"><table id="mx">
+<thead><tr><th>考卷年</th><th>單元題號</th><th class="c">影響線定義／靜定作圖</th><th class="c">Müller–Breslau</th><th class="c">互易定理</th><th class="c">共軛梁／三彎矩</th><th class="c">移動載重極值</th><th class="c">材料／斷面數值</th><th>備註</th></tr></thead>
+<tbody></tbody>
+</table></div>
+<p class="lead" style="margin-top:10px">本表的「✔」總數＝<b>2</b> 個年份欄位。對照一下：24 年 × 6 欄 = 144 格，實際有給的比例接近於零——這就是 SA 這一科的樣貌。</p>
+</section>
+
+<section id="strategy">
+<h2>四、背誦策略</h2>
+<h3>1. 「題目點名方法，但不給方法」是本單元的固定套路</h3><p class="lead">2011 三點名 Müller-Breslau、2015 二點名共軛梁法、2005 三 適用三彎矩方程——三次都只寫方法名稱，操作步驟一個字都沒有。所以背的重點不是式子長相，而是「聽到方法名稱能立刻寫出前三步」。</p><h3>2. 靜定作圖那五張卡是保底分</h3><p class="lead">2025 二整整 25 分只要求畫五條靜定影響線（RA、RC、RE、MA、VF），沒有任何靜不定成分。把反力／剪力／彎矩三種基本形狀 + 內鉸與懸臂折線規則練熟，這類題可以在 10 分鐘內拿滿。</p><h3>3. 靜不定影響線一定要記得除以 \(f_{ii}\)</h3><p class="lead">2003 四、2016 二、2018 四 三次都考。畫出變形曲線只拿形狀分，除以自身柔度才拿數值分。這是本單元最集中的失分點。</p><h3>4. 影響線面積法比逐點試算快得多</h3><p class="lead">面對均布載重（2005 三、2011 三），把影響線正面積算出來一次乘 \(w\) 就結束；逐點掃描在 2 小時的考試裡做不完。</p>
+</section>
+
+<footer>
+資料來源：<code>raw/exams/SA-2002~2025_結構學.pdf</code>（24 份）、<code>raw/json/question_index.json</code>、<code>raw/solutions/</code>、<code>raw/solutions/methods/</code>。<br>
+判定方式：全年份 <code>pdftotext -layout</code> 文字抽取 + 關鍵字掃描；2002–2007、2009 因中文字型缺失另以 <code>pdftoppm</code> 逐頁轉圖目視判讀。<br>
+同單元另有 <code>lecture-SA-U1-3.html</code>（觀念講義：為什麼成立）與 <code>study-SA-U1-3.html</code>（命題分析：這個單元考什麼），三份互不覆蓋。
+</footer>
+
+</main>
+
+<script>
+const F = [
+ {
+  "g": "影響線的定義與靜定作圖",
+  "lv": "must",
+  "nm": "影響線的定義",
+  "eq": "$$\\eta(x) = \\text{單位載重移動到 } x \\text{ 時，該指定量值的大小}$$",
+  "meta": "是「一個量值 vs. 載重位置」，不是「內力 vs. 斷面位置」。這個定義弄混，2011 三、2022 三、2025 二 這種一次要畫五條線的題目會全錯。13 個出題年份沒有一年寫過這句話。",
+  "ok": [],
+  "no": [
+   2003,
+   2004,
+   2005,
+   2007,
+   2009,
+   2011,
+   2013,
+   2014,
+   2015,
+   2016,
+   2018,
+   2022,
+   2025
+  ]
+ },
+ {
+  "g": "影響線的定義與靜定作圖",
+  "lv": "must",
+  "nm": "簡支梁反力影響線",
+  "eq": "$$R_A(x) = \\frac{L-x}{L},\\qquad R_B(x) = \\frac{x}{L}$$",
+  "meta": "所有影響線題的起手式。2004 二、2011 三、2022 三、2025 二 都從這裡開始。考卷只給跨距。",
+  "ok": [],
+  "no": [
+   2004,
+   2005,
+   2011,
+   2022,
+   2025
+  ]
+ },
+ {
+  "g": "影響線的定義與靜定作圖",
+  "lv": "must",
+  "nm": "剪力影響線的分段式",
+  "eq": "$$V_C(x) = \\begin{cases}-\\dfrac{x}{L} & x < a\\\\[4pt] 1-\\dfrac{x}{L} & x > a\\end{cases}$$",
+  "meta": "斷面處必然出現單位跳躍，正負分段是失分重災區。2015 二（F 點剪力影響線）、2025 二（VF）、2003 四（VB）都考。",
+  "ok": [],
+  "no": [
+   2003,
+   2015,
+   2022,
+   2025
+  ]
+ },
+ {
+  "g": "影響線的定義與靜定作圖",
+  "lv": "must",
+  "nm": "彎矩影響線的峰值",
+  "eq": "$$M_C^{\\max} = \\frac{a\\,b}{L}\\quad (a+b=L,\\ \\text{載重在 } C \\text{ 時})$$",
+  "meta": "靜定簡支梁彎矩影響線是折線，尖點在斷面正上方。2005 三、2011 三、2025 二 的 MA、MC 都要標出這個值。",
+  "ok": [],
+  "no": [
+   2003,
+   2005,
+   2011,
+   2025
+  ]
+ },
+ {
+  "g": "影響線的定義與靜定作圖",
+  "lv": "must",
+  "nm": "內鉸與懸臂段的折線規則",
+  "eq": "$$\\text{內鉸處影響線斜率可轉折；懸臂段外延為直線}$$",
+  "meta": "2025 二（B、D 為內鉸、A 為固定支承、兩端懸臂）整題就是在測這個。2015 二、2022 三 也都放了內鉸。規則性的東西，考卷不會寫。",
+  "ok": [],
+  "no": [
+   2015,
+   2022,
+   2025
+  ]
+ },
+ {
+  "g": "Müller–Breslau 原理",
+  "lv": "must",
+  "nm": "Müller–Breslau 原理",
+  "eq": "$$\\text{IL of } X = \\text{解除 } X \\text{ 對應束制後，施以單位變位所得之變形曲線}$$",
+  "meta": "2011 三題目直接點名「請使用穆勒法（Müller-Breslau method）」，2005 三、2015 二、2016 二、2018 四、2022 三 也都靠它。題目點名了方法，卻不會告訴你這個方法怎麼操作——這是 SA 最常見的出題方式。",
+  "ok": [],
+  "no": [
+   2003,
+   2005,
+   2011,
+   2015,
+   2016,
+   2018,
+   2022,
+   2025
+  ]
+ },
+ {
+  "g": "Müller–Breslau 原理",
+  "lv": "must",
+  "nm": "靜不定影響線的正規化",
+  "eq": "$$\\text{IL}(x) = \\frac{v(x)}{f_{ii}}$$",
+  "meta": "靜不定結構解除一個束制後施單位力，得到的變形曲線 \\(v(x)\\) 除以該點自身柔度 \\(f_{ii}\\) 才是影響線。2016 二解出 \\(f_{CC}=4L^3/3EI\\) 就是這一步；2003 四、2018 四 同理。少除這一步，形狀對、數值全錯。",
+  "ok": [],
+  "no": [
+   2003,
+   2016,
+   2018
+  ]
+ },
+ {
+  "g": "Müller–Breslau 原理",
+  "lv": "must",
+  "nm": "Maxwell–Betti 互易定理",
+  "eq": "$$f_{ij} = f_{ji}$$",
+  "meta": "Müller–Breslau 之所以成立的理論根據，也是把「移動載重掃過全跨」化簡成「解一次變形曲線」的關鍵。2003 四、2016 二、2018 四 的推導都依賴它。",
+  "ok": [],
+  "no": [
+   2003,
+   2016,
+   2018
+  ]
+ },
+ {
+  "g": "Müller–Breslau 原理",
+  "lv": "must",
+  "nm": "共軛梁法求影響線縱距",
+  "eq": "$$w^{*}=\\frac{M}{EI},\\qquad y = M^{*}$$",
+  "meta": "2015 二題目明寫「用共軛梁法求此影響線在點 F 及點 C 的值」。方法被指定，公式仍要自己帶。",
+  "ok": [],
+  "no": [
+   2005,
+   2015
+  ]
+ },
+ {
+  "g": "Müller–Breslau 原理",
+  "lv": "must",
+  "nm": "三彎矩方程",
+  "eq": "$$M_A L_1 + 2M_B(L_1+L_2) + M_C L_2 = -6\\left(\\frac{A_1\\bar{a}_1}{L_1} + \\frac{A_2\\bar{b}_2}{L_2}\\right)$$",
+  "meta": "2005 三連續梁影響線的最快路徑。整條式子含載重項的面積矩，記錯一個係數（6 還是 3）結果就偏。2003 四也可用。考卷沒印過。",
+  "ok": [],
+  "no": [
+   2003,
+   2005
+  ]
+ },
+ {
+  "g": "桁架影響線",
+  "lv": "must",
+  "nm": "節間（panel）線性內插",
+  "eq": "$$\\eta(x) = \\eta_i + \\frac{x - x_i}{x_{i+1}-x_i}\\,(\\eta_{i+1}-\\eta_i)$$",
+  "meta": "載重只能經由下弦節點傳入，節間內必為直線。2004 二、2014 一、2022 三 的桁架影響線都靠這條把折點連起來。2007 三（三鉸拱桁架）也同理。",
+  "ok": [],
+  "no": [
+   2004,
+   2007,
+   2014,
+   2022
+  ]
+ },
+ {
+  "g": "桁架影響線",
+  "lv": "must",
+  "nm": "桁架桿力影響線（配合截面法）",
+  "eq": "$$S(x) = f\\big(R(x)\\big) \\quad \\text{由切開斷面的} \\sum M_O = 0 \\text{ 或} \\sum F_y = 0 \\text{ 求得}$$",
+  "meta": "2022 三一次要畫 mn、nk 兩根桿的影響線，2004 二要 bc 桿，2014 一要 CD 桿最大軸力。關鍵是「載重在切口左側 vs. 右側要分兩式」，這個分段規則考卷不會提。",
+  "ok": [],
+  "no": [
+   2004,
+   2014,
+   2022
+  ]
+ },
+ {
+  "g": "移動載重極值",
+  "lv": "must",
+  "nm": "載重列效應疊加",
+  "eq": "$$R_{\\max} = \\sum_{i} P_i\\,\\eta_i$$",
+  "meta": "2004 二（20/40/40/40 kN 車隊）、2007 三（卡車載重）、2014 一（P 分別作用於 B～F）都要試算數個位置取最大。哪個位置是臨界，得自己判斷（讓最大載重落在影響線尖點）。",
+  "ok": [],
+  "no": [
+   2004,
+   2007,
+   2014
+  ]
+ },
+ {
+  "g": "移動載重極值",
+  "lv": "must",
+  "nm": "均布載重最大效應＝影響線正（負）面積",
+  "eq": "$$M_{\\max} = w\\!\\!\\int_{\\eta>0}\\!\\!\\eta\\,dx,\\qquad M_{\\min} = w\\!\\!\\int_{\\eta<0}\\!\\!\\eta\\,dx$$",
+  "meta": "2011 三明寫「均布載重可作用於全長或部分跨長」——就是要你只鋪在正面積上。正解 168.75 kN-m 即由正面積積分得到。2005 三同理。",
+  "ok": [],
+  "no": [
+   2005,
+   2011
+  ]
+ },
+ {
+  "g": "移動載重極值",
+  "lv": "give",
+  "nm": "材料與斷面數值（EI、EA）",
+  "eq": "$$EI,\\ EA\\ \\text{(數值)}$$",
+  "meta": "本單元只有兩年需要真正的數值：2009 二給 EI = 1000 kN-m²、AE = 1000 kN；2018 四給 EI = 800 kN-m²。其餘年份（2003、2005、2011、2016、2022、2025）都是符號或純幾何解，本來就不需要材料值。可以完全不背。",
+  "ok": [
+   2009,
+   2018
+  ],
+  "no": []
+ }
+];
+const MX = [[2002, 91, "(—)", 0, 0, 0, 0, 0, 0, "無參考公式區。整份只有幾何、載重與「E、I 為常數」等敘述。"], [2003, 92, "四", 0, 0, 0, 0, 0, 0, "無參考公式區。第一題連 EI 都只寫「為常數」。"], [2004, 93, "二", 0, 0, 0, 0, 0, 0, "無參考公式區。第四題內文寫出「勁度 k = 12EI/L³」——24 年唯一被印出的力學公式。"], [2005, 94, "三", 0, 0, 0, 0, 0, 0, "無參考公式區。第一題只給 E、斷面積數值。"], [2006, 95, "(—)", 0, 0, 0, 0, 0, 0, "無參考公式區。第一題明寫「精度 0.1 kN-m」，公式一條也沒有。"], [2007, 96, "三（副）", 0, 0, 0, 0, 0, 0, "無參考公式區。第一題給 A、E 數值，第二題只寫 I、2I。"], [2008, 97, "(—)", 0, 0, 0, 0, 0, 0, "無參考公式區。第二題指定用傾角變位法，傾角變位式本身沒印。"], [2009, 98, "二（副）", 0, 0, 0, 0, 0, 1, "無參考公式區。第三題以「若令 P = K_H·Δ」定義水平勁度符號，不是給公式。"], [2010, 99, "(—)", 0, 0, 0, 0, 0, 0, "無參考公式區。第三、四題都指定解法且「以其他方法計算不予計分」。"], [2011, 100, "三", 0, 0, 0, 0, 0, 0, "注意欄明寫「本試題之相關公式，請自行合理推知」。α 與 EA 有給數值。"], [2012, 101, "(—)", 0, 0, 0, 0, 0, 0, "注意欄明寫「相關公式、物理常數、符號意義及設計參數未提及時，請自行合理推斷與假設」；第四題給勁度方程式形式 {R}=[K]{r}。"], [2013, 102, "一（副）", 0, 0, 0, 0, 0, 0, "無參考公式區。三題指定解法且「使用其他方法不予給分」。"], [2014, 103, "一（副）", 0, 0, 0, 0, 0, 0, "無參考公式區。第三題連 √3 I 這種斷面配置都要自己換算。"], [2015, 104, "二", 0, 0, 0, 0, 0, 0, "無參考公式區。第四題給矩陣關係式 [R]=[K][r] 並說明 [r] 為位移矩陣。"], [2016, 105, "二", 0, 0, 0, 0, 0, 0, "無參考公式區。第三題直接給四個桿端彎矩數值，反過來要你算變位。"], [2017, 106, "(—)", 0, 0, 0, 0, 0, 0, "無參考公式區。本年起注意欄加「本科目除專門名詞或數理公式外，應使用本國文字作答」——那是語言規定，不是給公式。"], [2018, 107, "四", 0, 0, 0, 0, 0, 1, "無參考公式區。第二題要求自行定義自由度編號並建立勁度矩陣。"], [2019, 108, "(—)", 0, 0, 0, 0, 0, 0, "無參考公式區。第四題給平衡式形式 [K]{D}={P} 與旋轉彈簧勁度 10EI/L。"], [2020, 109, "(—)", 0, 0, 0, 0, 0, 0, "無參考公式區。第四題以數值矩陣給出剪力牆的 {F}–{Δ} 關係（該題專屬數據）。"], [2021, 110, "(—)", 0, 0, 0, 0, 0, 0, "無參考公式區。第四題連柱的雙向慣性矩都只給 EI 數值。"], [2022, 111, "三", 0, 0, 0, 0, 0, 0, "無參考公式區。第一題直接給彎矩圖，要你反算彈簧內力與沉陷。"], [2023, 112, "(—)", 0, 0, 0, 0, 0, 0, "無參考公式區。第三題指定傾角變位法，公式沒印。"], [2024, 113, "(—)", 0, 0, 0, 0, 0, 0, "無參考公式區。第二題給 α、E、A 數值；第四題給 Mp 值，塑性分析流程要自己會。"], [2025, 114, "二", 0, 0, 0, 0, 0, 0, "無參考公式區。第一題僅寫「提示：請先寫出結構之勁度矩陣」。"]];
+
+/* ---------- 渲染 ---------- */
+const LVN={must:'必背',half:'別賭',give:'通常會給'};
+const G=[...new Set(F.map(f=>f.g))];
+let fl={lv:'all',g:'all'};
+function yrs(a,c){return a.map(y=>'<span class="yr '+c+'">'+(y-1911)+'年</span>').join('');}
+function draw(){
+  const box=document.getElementById('cards');
+  box.innerHTML=F.filter(f=>(fl.lv==='all'||f.lv===fl.lv)&&(fl.g==='all'||f.g===fl.g)).map(f=>{
+    let ev=f.ok.length?'<b>考卷給過：</b>'+yrs(f.ok,'ok')
+                      :'<b>考卷給過：</b><span class="never">從未</span>';
+    if(f.no.length) ev+='　｜　<b>考了卻沒給：</b>'+yrs(f.no,'no');
+    return '<div class="fc '+f.lv+'"><div class="top"><span class="nm">'+f.nm+'</span>'+
+      '<span class="tag '+f.lv+'">'+LVN[f.lv]+'</span></div>'+
+      '<div class="eq">'+f.eq+'</div><p class="meta">'+f.meta+'</p>'+
+      '<div class="ev">'+ev+'</div></div>';}).join('')
+    ||'<p class="lead">（此組合下沒有公式）</p>';
+  if(window.renderMathInElement)renderMathInElement(box,{delimiters:[
+    {left:'$$',right:'$$',display:true},{left:'\\(',right:'\\)',display:false}],throwOnError:false});
+}
+function drawMx(){
+  const tb=document.querySelector('#mx tbody');const N=MX[0].length-4;
+  tb.innerHTML=MX.map(r=>{
+    const has=r[2]!=='(—)';
+    let c='';for(let i=0;i<N;i++)c+='<td class="c">'+(r[3+i]?'<span class="y">✔</span>':'<span class="n">·</span>')+'</td>';
+    return '<tr class="'+(has?'hl':'')+'"><td><b>'+r[0]+'</b><br><span class="ynote">'+r[1]+'年</span></td>'+
+      '<td class="qq">'+r[2]+'</td>'+c+'<td class="rm">'+r[r.length-1]+'</td></tr>';}).join('');
+}
+document.addEventListener('DOMContentLoaded',()=>{
+  const fb=document.getElementById('flt');
+  fb.innerHTML='<div class="fg"><b>級別</b>'+
+    [['all','全部'],['must','必背'],['half','別賭'],['give','通常會給']]
+      .map(([k,v],i)=>'<button data-t="lv" data-v="'+k+'"'+(i===0?' class="on"':'')+'>'+v+'</button>').join('')+
+    '</div><div class="fg"><b>主題</b>'+
+    ['all',...G].map((g,i)=>'<button data-t="g" data-v="'+g+'"'+(i===0?' class="on"':'')+'>'+(g==='all'?'全部':g)+'</button>').join('')+
+    '</div>';
+  fb.querySelectorAll('button').forEach(b=>b.onclick=()=>{
+    const t=b.dataset.t;fl[t]=b.dataset.v;
+    fb.querySelectorAll('button[data-t="'+t+'"]').forEach(x=>x.classList.remove('on'));
+    b.classList.add('on');draw();});
+  drawMx();draw();
+});
+
+</script>
+</body></html>
