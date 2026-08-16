@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SA-2025-1　解題圖解組（向量重繪）</title>
+<style>
+  :root{
+    --ink:#16212E; --navy:#1B3A5C; --rule:#D8DFE7; --paper:#FBFCFD;
+    --panel:#F2F5F8; --muted:#657386; --mark:#B45309; --live:#1D4ED8;
+  }
+  *{box-sizing:border-box}
+  body{
+    margin:0; background:var(--paper); color:var(--ink);
+    font-family:"Noto Sans TC","Microsoft JhengHei","PingFang TC",sans-serif;
+    font-size:16px; line-height:1.75; -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:1180px; margin:0 auto; padding:56px 32px 96px}
+
+  header{border-bottom:2px solid var(--navy); padding-bottom:22px; margin-bottom:8px}
+  .eyebrow{font-size:12.5px; letter-spacing:.18em; color:var(--muted); font-weight:600}
+  h1{font-size:29px; margin:10px 0 6px; color:var(--navy); font-weight:700; letter-spacing:-.01em}
+  .sub{color:var(--muted); font-size:14.5px; margin:0}
+
+  .lead{
+    margin:34px 0 12px; padding:20px 24px; background:var(--panel);
+    border-left:3px solid var(--navy); border-radius:0 8px 8px 0;
+    font-size:15px; color:#2A3646;
+  }
+  .lead b{color:var(--navy)}
+
+  figure{margin:0 0 12px}
+  .fig{
+    border:1px solid var(--rule); border-radius:10px; background:#fff;
+    padding:18px; margin-top:20px;
+  }
+  .fig img{width:100%; height:auto; display:block}
+  figcaption{
+    font-size:13.5px; color:var(--muted); line-height:1.7;
+    margin-top:14px; padding-top:12px; border-top:1px dashed var(--rule);
+  }
+
+  /* 圖號 + 用途說明的雙欄 */
+  .item{display:grid; grid-template-columns:186px 1fr; gap:30px; padding:44px 0;
+        border-top:1px solid var(--rule)}
+  .rail .num{
+    font-family:ui-monospace,"SFMono-Regular",Menlo,monospace;
+    font-size:12px; letter-spacing:.12em; color:var(--mark); font-weight:700;
+  }
+  .rail h2{font-size:17.5px; color:var(--navy); margin:6px 0 12px; font-weight:700; line-height:1.45}
+  .rail dl{margin:0; font-size:13px; line-height:1.65}
+  .rail dt{color:var(--muted); font-weight:600; margin-top:12px; letter-spacing:.03em}
+  .rail dd{margin:2px 0 0; color:#2A3646}
+  .catch{color:#9A3412}
+
+  .close{margin-top:52px; padding:26px 28px; border:1px solid var(--rule);
+         border-radius:10px; background:#fff}
+  .close h3{margin:0 0 12px; font-size:16px; color:var(--navy)}
+  .close ul{margin:0; padding-left:20px; font-size:14.5px; color:#2A3646}
+  .close li{margin:7px 0}
+  code{font-family:ui-monospace,Menlo,monospace; font-size:13px;
+       background:var(--panel); padding:1px 6px; border-radius:4px; color:var(--navy)}
+
+  @media (max-width:860px){
+    .item{grid-template-columns:1fr; gap:16px; padding:32px 0}
+    .wrap{padding:36px 18px 64px}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <div class="eyebrow">EXAM-WIKI-SA　／　解題圖解組</div>
+  <h1>SA-2025-1　門型剛構架側向勁度</h1>
+  <p class="sub">SA-U2-4 靜不定結構之矩陣分析法　·　矩陣位移法＋靜態凝縮　·　全部圖形由座標與公式產生（非 AI 生圖）</p>
+</header>
+
+<div class="lead">
+  這五張圖不是插圖，是<b>檢核工具</b>。矩陣位移法最常見的失分不是算錯，而是正負號與自由度數目一開始就設錯，
+  而純算式沒有任何地方會提醒你。每一張圖對應解題流程的一個節點，並明確指出<b>它能攔下哪一種錯誤</b>。
+</div>
+
+<div class="item">
+  <div class="rail">
+    <div class="num">FIG 1R</div>
+    <h2>題目重繪</h2>
+    <dl>
+      <dt>對應章節</dt><dd>§1 題目重述</dd>
+      <dt>作用</dt><dd>取代低解析度截圖；節點命名與座標固定下來，後面所有矩陣才有共同語言</dd>
+      <dt class="catch">攔截</dt><dd>作答時把 B、C 標反導致矩陣行列對應錯亂</dd>
+    </dl>
+  </div>
+  <figure class="fig">
+    <img src="figs/SA-2025-1-fig-1-frame.svg" alt="門型剛構架向量重繪：節點 A、B、C、D，柱底固定支承，梁柱 EI 與長度 L 標註，側向力 P 作用於節點 C">
+    <figcaption>兩柱底固定、B 與 C 剛接、所有桿件 EI 與 L 相同。P 水平作用於梁端。</figcaption>
+  </figure>
+</div>
+
+<div class="item">
+  <div class="rail">
+    <div class="num">FIG 2</div>
+    <h2>自由度辨識</h2>
+    <dl>
+      <dt>對應章節</dt><dd>§4.1 自由度辨識</dd>
+      <dt>作用</dt><dd>把「忽略軸向變形」這句話翻譯成看得見的約束，並標出被消去的自由度</dd>
+      <dt class="catch">攔截</dt><dd>誤把 B、C 的水平位移當兩個獨立自由度，寫出 4×4 矩陣</dd>
+    </dl>
+  </div>
+  <figure class="fig">
+    <img src="figs/SA-2025-1-fig-2-dof.svg" alt="自由度辨識圖解：保留 θB、θC、Δ 三個自由度，紅色叉號標出被忽略軸向變形消去的垂直位移">
+    <figcaption>有效自由度只剩 θ<sub>B</sub>、θ<sub>C</sub>、Δ 三個。自由度數目即勁度矩陣階數，這一步錯，後面整個矩陣都白算。</figcaption>
+  </figure>
+</div>
+
+<div class="item">
+  <div class="rail">
+    <div class="num">FIG 3</div>
+    <h2>勁度矩陣三行的物理意義</h2>
+    <dl>
+      <dt>對應章節</dt><dd>§4.2–4.3 組裝 [K]</dd>
+      <dt>作用</dt><dd>把抽象的 3×3 矩陣還原成三個可以「用手推」的變形狀態</dd>
+      <dt class="catch">攔截</dt><dd>K<sub>13</sub> 正負號寫反——看圖就知道水平力該往左還是往右</dd>
+    </dl>
+  </div>
+  <figure class="fig">
+    <img src="figs/SA-2025-1-fig-3-unit-states.svg" alt="三個單位位移狀態的變形形狀與所需節點力，分別對應勁度矩陣的第一、二、三行">
+    <figcaption>第 j 行 ＝ 讓第 j 個自由度產生單位位移、其餘全部鎖住時所需施加的節點力。符號約定：轉角與彎矩順時針為正，Δ 與水平力向右為正。</figcaption>
+  </figure>
+</div>
+
+<div class="item">
+  <div class="rail">
+    <div class="num">FIG 4</div>
+    <h2>變形形狀與彎矩圖</h2>
+    <dl>
+      <dt>對應章節</dt><dd>§5.1 端點彎矩計算</dd>
+      <dt>作用</dt><dd>提供兩個與矩陣運算完全獨立的檢核：反曲點位置、節點彎矩平衡</dd>
+      <dt class="catch">攔截</dt><dd>柱反曲點不在 4L/7、或梁中點彎矩不為零 → 前面必有錯</dd>
+    </dl>
+  </div>
+  <figure class="fig">
+    <img src="figs/SA-2025-1-fig-4-deflected-bmd.svg" alt="左為側移模式變形形狀並標示反曲點，右為繪於受拉側的彎矩圖">
+    <figcaption>柱反曲點位於距柱底 4L/7，由 M<sub>AB</sub>:M<sub>BA</sub> = 2/7 : 3/14 線性內插得到；梁為反對稱，中點彎矩為零。兩柱剪力各 P/2，合計為 P。</figcaption>
+  </figure>
+</div>
+
+<div class="item">
+  <div class="rail">
+    <div class="num">FIG 5</div>
+    <h2>側向勁度光譜</h2>
+    <dl>
+      <dt>對應章節</dt><dd>§5.2 參數影響探討</dd>
+      <dt>作用</dt><dd>把靜態凝縮扣掉的那一項變成可理解的物理量：節點旋轉的代價</dd>
+      <dt class="catch">攔截</dt><dd>答案落在 6EI/L³ 與 24EI/L³ 之外 → 量級錯誤，不必細查也知道要重算</dd>
+    </dl>
+  </div>
+  <figure class="fig">
+    <img src="figs/SA-2025-1-fig-5-stiffness-spectrum.svg" alt="側向勁度光譜比較：梁無限剛 24EI/L³、本題 16.8EI/L³、梁無勁度 6EI/L³">
+    <figcaption>梁越軟，凝縮扣掉的越多。本題 84EI/5L³ ＝ 16.8EI/L³，恰為梁無限剛時的 70%。</figcaption>
+  </figure>
+</div>
+
+<div class="close">
+  <h3>這批圖怎麼來的</h3>
+  <ul>
+    <li>全部由 <code>gen_sa2025_1.py</code> 呼叫 <code>structdraw.py</code> 產生，輸入是節點座標與位移量，不是提示詞。</li>
+    <li>變形曲線用三次 Hermite 形狀函數取樣，反曲點 4L/7 是算出來的，不是畫出來的——改 EI 比值重跑，圖會跟著變。</li>
+    <li>輸出 SVG（供 HTML wiki 與 WeasyPrint）與 2× PNG（供 pptx／影片管線）兩種格式。</li>
+    <li>要驗證某張圖對不對，看程式碼即可；要修改樣式，改 <code>structdraw.py</code> 一處，六科全部一致。</li>
+  </ul>
+</div>
+
+</div>
+</body>
+</html>
