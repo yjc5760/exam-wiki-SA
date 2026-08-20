@@ -188,6 +188,7 @@ Wiki 導航依七層知識架構組織（前三層由 Cowork 透過 compile-all/
 
 | 日期 | 變更 | 原因 |
 |------|------|------|
+| 2026-08-20 | **新增** `study/frequency-SA.html`（全科出題頻率熱圖：10 子項 × 24 考年，可切換主考點／主＋副，含排名總表與單元權重） | `study-SA-Un-m.html` 一次只看一個子項，缺少「整科該從哪裡開始讀」的全貌；數字全由 `build_frequency.py` 從 `question_index.json` 算出，題庫更新後可無腦重跑 |
 | 2026-07-02 | 從 exam-wiki-RC 克隆，全面改寫為 SA 科目 | 建立結構學獨立知識庫 |
 | 2026-08-09 | **新增** `study/formula-given-SA-*.html` + `.pdf`（5 單元，主要公式給／背分界）；**重構** `study/study-SA-*.html` 五頁為命題情報頁（刪除與 lecture／formula-given 重複的五個區段、補上漏列的 18 題副考點、題號連結改指 `problems-view/`） | 24 份考卷判定結果為「零參考公式區」，需獨立成頁供背誦決策；舊 study 七區段頁與 lecture 大量重複且數字有誤，詳見 wiki/log.md |
 | 2026-07-25 | **規則 1 例外擴充**：`raw/` 唯讀的例外從「`question_index.json`」擴充為「`question_index.json` + `raw/solutions/methods/`」，並訂出三項修改條件（驗算／同步 wiki／記 log） | `methods/` 是 `wiki/methods/` 的 compile 來源，只改 wiki 副本會被 `compile-all` 蓋回；公式勘誤需能根治。個別題目解析 `raw/solutions/SA-YYYY-N/` 仍受完整保護 |
