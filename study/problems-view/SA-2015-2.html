@@ -47,43 +47,130 @@ header .nomat{margin-top:12px;font-size:.8em;opacity:.85}
 <p><strong>主分類：</strong> <code>SA-U1-3</code> 靜定及靜不定結構影響線<br />
 <strong>副分類：</strong> <code>SA-U2-1</code> 靜不定結構最小功法（共軛梁法應用）<br />
 <strong>分析法：</strong> Müller-Breslau 原理 / 共軛梁法<br />
-<strong>標籤：</strong> <code>影響線</code> <code>共軛梁法</code> <code>Müller-Breslau</code> <code>靜不定連續梁</code> <code>內部鉸</code></p>
+<strong>標籤：</strong> <code>影響線</code> <code>共軛梁法</code> <code>Müller-Breslau</code> <code>靜不定連續梁</code> <code>內部鉸</code> <code>剪力釋放</code></p>
 <hr />
 <h2>1. 原始題目</h2>
 <p>一連續梁如圖二所示，點 A 為鉸支承、點 B、D 及 E 為滾支承，點 C 為鉸接，彈性模數與慣性矩乘積 EI 為定值。試繪出點 F 之剪力影響線，並用共軛梁法求此影響線在點 F 及點 C 的值。（25 分）</p>
-<p><img alt="連續梁幾何示意圖，A、B、D、E為支承，C為內部鉸，F為AB中點" src="../../raw/solutions/SA-2015-2/SA-2015-2-fig-1.png" /></p>
-<p><em>圖說：A為鉸支承，B、D、E為滾支承。跨度AF=15m，FB=15m，BC=10m，CD=10m，DE=30m。C點為內部鉸接。</em></p>
+<p><img alt="連續梁幾何示意圖，A、B、D、E為支承，C為內部鉸，F為AB中點" src="../../raw/solutions/SA-2015-2/./SA-2015-2-fig-1.png" /></p>
+<p><em>圖說：A 為鉸支承，B、D、E 為滾支承，C 為內部鉸。$AF = FB = 15\text{ m}$，$BC = CD = 10\text{ m}$，$DE = 30\text{ m}$，全長 80 m。以 A 為原點：$A(0)$、$F(15)$、$B(30)$、$C(40)$、$D(50)$、$E(80)$。</em></p>
+<p><img alt="SA-2015-2 題目重繪：A鉸支承、F剪力斷面、B滾支承、C內部鉸、D與E滾支承，跨距15/15/10/10/30" src="../../raw/solutions/SA-2015-2/figs/SA-2015-2-fig-1-beam.svg" /></p>
+<p><em>圖 1　題目重繪（向量版）。這張圖攔的是把 C 誤當支承、或把 DE 跨長記成和 BC 一樣：DE 是 30 m，佔全長的 3/8，$IL_{V_F}$ 在該跨的那一小塊正值全靠它。</em></p>
+<hr />
+<h2>1.5 ⚠ 勘誤（2026-08-26）：舊版 §4 步驟 2 的正負號錯誤</h2>
+<blockquote>
+<p><strong>舊版結論</strong> $IL(F_{\text{left}}) = +\dfrac{79}{128}$、$IL(F_{\text{right}}) = -\dfrac{49}{128}$ <strong>正負與大小皆錯</strong>。</p>
+</blockquote>
+<p>錯誤位於共軛梁彎矩的計算：舊版寫</p>
+<p>$$M^<em>(15^-) = \boxed{-}\,R^</em>_A \cdot 15 + \dots = -(-950)(15) + 562.5 = +14812.5 \quad\text{✗}$$</p>
+<p>共軛梁彎矩應為「斷面左側各作用力對斷面取矩」，反力<strong>不必再變號</strong>：</p>
+<p>$$M^<em>(15^-) = R^</em>_A \cdot 15 + 562.5 = (-950)(15) + 562.5 = -13687.5 \quad\text{✓}$$</p>
+<table>
+<thead>
+<tr>
+<th>量</th>
+<th>舊版（錯）</th>
+<th>正確</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>$M^*(15^-) = EI\,y(F^-)$</td>
+<td>$+14\,812.5$</td>
+<td>$\mathbf{-13\,687.5}$</td>
+</tr>
+<tr>
+<td>$M^*(15^+) = EI\,y(F^+)$</td>
+<td>$-9\,187.5$</td>
+<td>$\mathbf{+10\,312.5}$</td>
+</tr>
+<tr>
+<td>$IL_{V_F}(F^-)$</td>
+<td>$+79/128$</td>
+<td>$\mathbf{-73/128 \approx -0.5703}$</td>
+</tr>
+<tr>
+<td>$IL_{V_F}(F^+)$</td>
+<td>$-49/128$</td>
+<td>$\mathbf{+55/128 \approx +0.4297}$</td>
+</tr>
+<tr>
+<td>$IL_{V_F}(C)$</td>
+<td>$-1/6$</td>
+<td>$-1/6$ ✓（原本就對）</td>
+</tr>
+<tr>
+<td>$\theta_A$、$\Delta_F$</td>
+<td>$-950$、$24\,000$</td>
+<td>$-950$、$24\,000$ ✓（原本就對）</td>
+</tr>
+</tbody>
+</table>
+<p><strong>除了數值，正負號本身就該當場察覺不對：</strong> 剪力影響線在斷面左側必為負、右側必為正（單位載重落在斷面左方時，$V_F = R_A - 1 &lt; 0$）。舊版把兩側顛倒了。</p>
+<p>本文以下已全部改用正確值。</p>
 <hr />
 <h2>2. 核心考點</h2>
-<p>本題結合了 <strong>Müller-Breslau 原理</strong>與<strong>共軛梁法</strong>。首先需判斷結構靜不定度，解除 F 點剪力束制後結構變為靜定。施加單位剪力求得真實彎矩圖 $M(x)$，再將其作為共軛梁的載重，計算特定點的變形（共軛梁彎矩 $M^*$），最後進行正規化得到影響線精確值。</p>
+<p>三件事合成一題：</p>
+<ol>
+<li><strong>靜不定度與釋放的搭配。</strong> 反力 5 個（A 為 2）、平衡 3 式、內鉸 C 提供 1 式 $\Rightarrow$ <strong>1 度靜不定</strong>。再解除 F 點剪力（1 個釋放）$\Rightarrow$ 基本結構<strong>恰為靜定</strong>。這個「剛好」不是巧合，是題目設計好讓共軛梁法能用。</li>
+<li><strong>Müller-Breslau 的定量版本。</strong> 在基本結構上施加<strong>單位剪力對</strong>，其變形曲線 $y(x)$ 除以 F 處的相對位移 $\Delta_F$，就是影響線。</li>
+<li><strong>共軛梁的邊界轉換與剪力釋放的處理。</strong> 滾支承 $\leftrightarrow$ 內部鉸、內部鉸 $\leftrightarrow$ 內部支承；而<strong>剪力釋放（$y$ 跳、$\theta$ 連續）在共軛梁上等效於一個集中力矩 $M_0$</strong>，它是未知數，靠 $M^<em>(B) = M^</em>(D) = 0$ 補足方程。</li>
+</ol>
 <hr />
 <h2>3. 解題戰略地圖</h2>
 <ol>
-<li><strong>判斷靜不定度</strong>：原結構為 1 度靜不定。依據 Müller-Breslau 原理，解除 F 點剪力束制後，結構恰好成為靜定結構。</li>
-<li><strong>施加單位剪力對</strong>：在 F 點施加正向剪力對（左側向下 1、右側向上 1），利用靜力平衡求出此靜定系統的彎矩函數 $M(x)$。</li>
-<li><strong>共軛梁法求變形</strong>：<br />
-   - 建立共軛梁（A, E為鉸/滾端；B, D變為內部鉸；C變為內部滾支承）。<br />
-   - 將 $M(x)$ 作為載重加於共軛梁上。<br />
-   - 計算 F 點左右側的共軛梁彎矩 $M^*(15^-)$、$M^*(15^+)$ 及 C 點的 $M^*(40)$。</li>
-<li><strong>正規化求影響線</strong>：將各點變形量除以 F 點的相對位移 $\Delta y_F = y_{F,left} - y_{F,right}$，即可得影響線精確值。</li>
+<li><strong>判斷靜不定度</strong>：$5 - 3 - 1 = 1$ 度。解除 F 剪力後為靜定。</li>
+<li><strong>求基本結構的 $M(x)$</strong>：施加單位剪力對，由靜力平衡解四個反力，再寫彎矩分段式。<strong>用 $M(C) = 0$ 當場驗算反力。</strong></li>
+<li><strong>共軛梁求變形</strong>：載重 $= M(x)/EI$，邊界依表轉換，F 處加未知集中力矩 $M_0$。四個未知數對四條方程。</li>
+<li><strong>正規化</strong>：$IL_{V_F}(x) = \dfrac{y(x)}{\Delta_F}$，$\Delta_F = y(F^+) - y(F^-)$（取此方向可讓跳躍恰為 $+1$）。</li>
+<li><strong>檢查</strong>：$IL(F^+) - IL(F^-) = 1$；四個支承處縱距必為 0；$F^-$ 為負、$F^+$ 為正。</li>
 </ol>
+<p><strong>陷阱清單：</strong></p>
+<table>
+<thead>
+<tr>
+<th>陷阱</th>
+<th>說明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>共軛梁彎矩的反力符號</strong></td>
+<td>$M^<em>(x) = \sum_{\text{左}} F_i (x - x_i)$，反力直接代入其符號，</em><em>不再冠負號</em>*。舊版就錯在這裡</td>
+</tr>
+<tr>
+<td>漏掉 $M_0$</td>
+<td>剪力釋放使 $y$ 不連續，共軛梁必須有一個集中力矩才能造出 $M^*$ 的跳躍</td>
+</tr>
+<tr>
+<td>邊界轉換記反</td>
+<td>滾支承 → 內部鉸（不是內部支承）；內部鉸 → 內部支承（不是內部鉸）</td>
+</tr>
+<tr>
+<td>把 IL 畫成折線</td>
+<td><strong>靜不定結構的影響線是三次曲線</strong>，不是直線段</td>
+</tr>
+<tr>
+<td>只答三個數字</td>
+<td>題目要求「<strong>繪出</strong>」影響線，全曲線與四個零點都要有</td>
+</tr>
+</tbody>
+</table>
 <hr />
 <h2>3.5 變數層次分析（Variable Hierarchy Analysis）</h2>
 <blockquote>
 <p>複習提示：第一次解題後，在每個卡住的知識點旁標記 <code>⚠</code>；第二次複習時只看有 <code>⚠</code> 的項目。</p>
 </blockquote>
 <h3>最終目標</h3>
-<p>繪製 F 點剪力影響線，並求出 F 點左、右側與 C 點的影響線精確值。</p>
+<p>繪製 F 點剪力影響線全曲線，並求 $F^-$、$F^+$、$C$ 三處的精確值。</p>
 <h3>本題關鍵公式（依計算順序）</h3>
 <blockquote>
-<p>$\boxed{\cdot}$ = 需由前步驟推導，非題目直接給定的變數</p>
+<p>$\boxed{\cdot}$ ＝ 需由前步驟推導，非題目直接給定</p>
 </blockquote>
-<p>$$\text{Step 1: } M(x) \text{ (由 } V_F=1 \text{ 靜力平衡求得)}$$<br />
-$$\text{Step 2: } q^*(x) = \frac{\boxed{M(x)}}{EI}$$<br />
-$$\text{Step 3: } y(x) = \boxed{M^*(x)} \text{ (共軛梁內彎矩)}$$<br />
-$$\text{Step 4: } IL(x) = \frac{\boxed{y(x)}}{\boxed{y_{F,left}} - \boxed{y_{F,right}}}$$</p>
+<p>$$\text{Step 1: } M(x)\;\text{（基本結構，由 }V_F\text{ 單位剪力對的靜力平衡求得）}$$</p>
+<p>$$\text{Step 2: } q^*(x) = \frac{\boxed{M(x)}}{EI}\;\text{（向上為正）}, \qquad \text{F 處另加未知 } M_0$$</p>
+<p>$$\text{Step 3: } y(x) = \boxed{M^<em>(x)}, \qquad \theta(x) = \boxed{V^</em>(x)}$$</p>
+<p>$$\text{Step 4: } IL_{V_F}(x) = \frac{\boxed{y(x)}}{\boxed{\Delta_F}}, \qquad \Delta_F = y(F^+) - y(F^-)$$</p>
 <h3>L1：題目直接給定</h3>
-<p><em>看到題目就能讀出的數字，不需要任何公式。</em></p>
 <table>
 <thead>
 <tr>
@@ -94,75 +181,88 @@ $$\text{Step 4: } IL(x) = \frac{\boxed{y(x)}}{\boxed{y_{F,left}} - \boxed{y_{F,r
 </thead>
 <tbody>
 <tr>
-<td>$AF, FB$</td>
-<td>$15 \text{ m}$</td>
-<td>F點位置及AB跨度</td>
+<td>$AF,\;FB$</td>
+<td>$15\text{ m}$</td>
+<td>F 為 AB 跨中點</td>
 </tr>
 <tr>
-<td>$BC, CD$</td>
-<td>$10 \text{ m}$</td>
-<td>內部鉸C的位置</td>
+<td>$BC,\;CD$</td>
+<td>$10\text{ m}$</td>
+<td>內部鉸 C 在 BD 跨中點</td>
 </tr>
 <tr>
 <td>$DE$</td>
-<td>$30 \text{ m}$</td>
-<td>DE跨度</td>
+<td>$30\text{ m}$</td>
+<td>最長一跨</td>
+</tr>
+<tr>
+<td>$EI$</td>
+<td>定值</td>
+<td>正規化後會消掉</td>
 </tr>
 </tbody>
 </table>
 <h3>L2：需知識點推導</h3>
-<p><em>需要知道公式名稱與適用條件，套入 L1 即可算出。</em></p>
-<p><strong>Step 1：解鎖結構與彎矩 $M(x)$</strong></p>
+<p><strong>Step 1：基本結構的反力與 $M(x)$</strong></p>
 <table>
 <thead>
 <tr>
 <th>符號</th>
-<th>公式/來源</th>
+<th>公式／來源</th>
 <th style="text-align: center;">卡關?</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>$V_F$</td>
-<td>解除 F 點剪力，施加左下、右上的單位力 1</td>
+<td>$A_y,\,B_y,\,D_y,\,E_y$</td>
+<td>$+1,\;-4,\;+4,\;-1$（$\Sigma F_y = 0$、$\Sigma M = 0$、$M(C) = 0$）</td>
 <td style="text-align: center;"></td>
 </tr>
 <tr>
 <td>$M(x)$</td>
-<td>將結構拆為 AF、FBC、CDE 三段，依序平衡求得</td>
+<td>$x$（0–30）；$120-3x$（30–50）；$x-80$（50–80）</td>
 <td style="text-align: center;"></td>
 </tr>
 </tbody>
 </table>
-<p><strong>Step 2：共軛梁法 ($M^*$)</strong></p>
+<p><strong>Step 2：共軛梁</strong></p>
 <table>
 <thead>
 <tr>
 <th>符號</th>
-<th>公式/來源</th>
+<th>公式／來源</th>
 <th style="text-align: center;">卡關?</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>$y(15^-)$</td>
-<td>共軛梁 AF 段左側彎矩 $M^*(15^-)$</td>
+<td>$EI\,\theta_A = EI\,R^*_A$</td>
+<td>$-950$</td>
 <td style="text-align: center;"></td>
 </tr>
 <tr>
-<td>$y(15^+)$</td>
-<td>共軛梁 FB 段右側彎矩 $M^*(15^+)$</td>
+<td>$EI\,\Delta_F = EI\,M_0$</td>
+<td>$+24\,000$</td>
 <td style="text-align: center;"></td>
 </tr>
 <tr>
-<td>$y(40)$</td>
-<td>共軛梁 C 點彎矩 $M^*(40)$</td>
+<td>$EI\,y(F^-) = EI\,M^*(15^-)$</td>
+<td>$R^*_A(15) + 562.5 = -13\,687.5$</td>
+<td style="text-align: center;"></td>
+</tr>
+<tr>
+<td>$EI\,y(F^+)$</td>
+<td>$y(F^-) + \Delta_F = +10\,312.5$</td>
+<td style="text-align: center;"></td>
+</tr>
+<tr>
+<td>$EI\,y(C) = EI\,M^*(40)$</td>
+<td>$-4\,000$</td>
 <td style="text-align: center;"></td>
 </tr>
 </tbody>
 </table>
 <h3>L3：深層知識（不懂就卡住）</h3>
-<p><em>L2 中某些公式本身需要背景概念才能正確應用的知識點。</em></p>
 <table>
 <thead>
 <tr>
@@ -173,103 +273,267 @@ $$\text{Step 4: } IL(x) = \frac{\boxed{y(x)}}{\boxed{y_{F,left}} - \boxed{y_{F,r
 </thead>
 <tbody>
 <tr>
-<td>共軛梁邊界條件轉換</td>
-<td>原滾支承(B,D) $\rightarrow$ 內部鉸；原內部鉸(C) $\rightarrow$ 滾支承。</td>
+<td>共軛梁邊界轉換</td>
+<td>端鉸→端鉸；<strong>內部滾支承→內部鉸</strong>；<strong>內部鉸→內部支承</strong></td>
+<td style="text-align: center;"></td>
+</tr>
+<tr>
+<td>剪力釋放的共軛對應</td>
+<td>真實梁 $y$ 跳、$\theta$ 連續 $\Rightarrow$ 共軛梁 $M^<em>$ 跳、$V^</em>$ 連續 $\Rightarrow$ <strong>集中力矩</strong></td>
 <td style="text-align: center;"></td>
 </tr>
 <tr>
 <td>影響線正規化</td>
-<td>Müller-Breslau 算出的變形為相對位移 $\Delta y$ 時的形狀，必須除以 $\Delta y$ 才能得到真正的影響線值。</td>
+<td>Müller-Breslau 給的是「形狀」；除以釋放處的相對位移才得到真正的縱距</td>
+<td style="text-align: center;"></td>
+</tr>
+<tr>
+<td>剪力 IL 的符號規則</td>
+<td>$F^-$ 必為負、$F^+$ 必為正，兩者相差恰好 1 —— 這是最便宜的自我檢查</td>
 <td style="text-align: center;"></td>
 </tr>
 </tbody>
 </table>
 <hr />
 <h2>4. 步驟化詳細計算</h2>
-<h3>步驟 1：建立靜定系統與彎矩圖 $M(x)$</h3>
-<p>原結構為 1 度靜不定，依據 Müller-Breslau 原理，解除 F 點剪力束制。為求正向剪力影響線，在 F 點施加<strong>左側向下 1、右側向上 1</strong> 的剪力。此時結構變為靜定，拆解為 AF、FBC、CDE 三段分析：</p>
-<ol>
-<li>
-<p><strong>AF 段 (0 $\le x \le$ 15)</strong>：<br />
-   A 點鉸支承，F 點受向下力 $1$。<br />
-   $\sum F_y = 0 \Rightarrow A_y = 1$ (向上)<br />
-   $\sum M_A = 0 \Rightarrow M_F = 15$ (AF段逆時針，故對FBC段為順時針)<br />
-   此段彎矩：<strong>$M(x) = x$</strong></p>
-</li>
-<li>
-<p><strong>FBC 段 (15 $\le x \le$ 40)</strong>：<br />
-   F 點受向上力 $1$ 及順時針彎矩 $15$。C 點為內部鉸 ($M_C=0$)。<br />
-   對 C 點取力矩：<br />
-   向上力 $1$ 距 C 為 25 (產生順時針力矩 -25)；$M_F$ 為順時針 (-15)；$B_y$ 距 C 為 10。<br />
-   $\sum M_C = -25 - 15 - 10 B_y = 0 \Rightarrow B_y = -4$ (向下)<br />
-   $\sum F_y = 1 - 4 + V_C = 0 \Rightarrow V_C = 3$ (向上，即 CDE 段對 FBC 的作用力)<br />
-   此段彎矩：</p>
-</li>
-</ol>
+<h3>步驟 0：靜不定度</h3>
+<p>$$\text{反力 } 5 \;-\; \text{平衡 } 3 \;-\; \text{內鉸 C } 1 \;=\; 1 \text{ 度靜不定}$$</p>
+<p>再解除 F 點剪力（1 個釋放）$\Rightarrow$ 基本結構為靜定。</p>
+<hr />
+<h3>步驟 1：基本結構與彎矩 $M(x)$</h3>
+<p>在 F 施加<strong>左側向下 1、右側向上 1</strong> 的剪力對（力偶自身平衡，故四個反力之和為零）。</p>
+<p><img alt="SA-2015-2 基本結構：解除F點剪力施加單位剪力對，四個反力+1/-4/+4/-1，以及其彎矩圖M(x)" src="../../raw/solutions/SA-2015-2/figs/SA-2015-2-fig-2-released.svg" /></p>
+<p><em>圖 2　基本結構與其彎矩圖。這張圖攔的是反力算錯：$C$ 是內部鉸，$M(C)$ 必須為零，$1\cdot40 - 4\cdot(40-30) = 0$ —— 反力一算完就能當場驗，不必等到最後。</em></p>
+<p><strong>AF 段（$0\le x\le15$）：</strong> 只有 $A_y$ 與 F 處向下的 1；剪力不傳遞，故</p>
+<p>$$\sum F_y = 0 \Rightarrow A_y = 1\ (\uparrow), \qquad M(x) = x$$</p>
+<p><strong>其餘反力：</strong> 由 $\Sigma F_y = 0$、$\Sigma M_A = 0$ 與 $M(C) = 0$ 解得</p>
+<p>$$B_y = -4,\qquad D_y = +4,\qquad E_y = -1$$</p>
+<p><strong>彎矩分段式</strong>（下凹為正，由左側自由體 $\sum R_i(x-x_i)$）：</p>
+<p>$$M(x) = \begin{cases}<br />
+x &amp; 0 \le x \le 30 \quad (M(30) = 30)\[2pt]<br />
+120 - 3x &amp; 30 \le x \le 50 \quad (M(40) = 0\ \checkmark,\ M(50) = -30)\[2pt]<br />
+x - 80 &amp; 50 \le x \le 80 \quad (M(80) = 0\ \checkmark)<br />
+\end{cases}$$</p>
+<blockquote>
+<p><strong>驗算：</strong> $M(40) = 120 - 120 = 0$ —— C 是內部鉸，這一項必須為零。若不為零，反力就算錯了。</p>
+</blockquote>
+<hr />
+<h3>步驟 2：共軛梁法求變形</h3>
+<p><img alt="SA-2015-2 共軛梁：A/E端鉸，B/D轉為內部鉸，C轉為內部支承，F處加集中力矩M0，並列出四個未知數與四條方程" src="../../raw/solutions/SA-2015-2/figs/SA-2015-2-fig-3-conjugate.svg" /></p>
+<p><em>圖 3　共軛梁的邊界轉換與 F 處的集中力矩。這張圖攔兩件事：邊界轉換記反（滾支承→內部鉸，不是→支承），以及漏掉 $M_0$ —— 沒有它，共軛梁的 $M^</em>$ 無法在 F 產生跳躍，$\Delta_F$ 就無從算起。*</p>
+<p><strong>共軛梁的建立</strong>（載重 $q^*(x) = M(x)/EI$，向上為正）：</p>
+<table>
+<thead>
+<tr>
+<th>真實梁</th>
+<th>共軛梁</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>A（端鉸）</td>
+<td>端鉸（$M^* = 0$）</td>
+</tr>
+<tr>
+<td><strong>F（剪力釋放：$y$ 跳、$\theta$ 連續）</strong></td>
+<td><strong>外加集中力矩 $M_0$（$M^<em>$ 跳、$V^</em>$ 連續）</strong></td>
+</tr>
+<tr>
+<td>B、D（內部滾支承，$y=0$）</td>
+<td>內部鉸（$M^* = 0$）</td>
+</tr>
+<tr>
+<td>C（內部鉸，$\theta$ 跳）</td>
+<td>內部支承（$V^<em>$ 跳，有反力 $R^</em>_C$）</td>
+</tr>
+<tr>
+<td>E（端滾支承）</td>
+<td>端鉸（$M^* = 0$）</td>
+</tr>
+</tbody>
+</table>
+<p><strong>未知數 4 個：</strong> $R^<em>_A$、$R^</em>_C$、$R^<em>_E$、$M_0$<br />
+</em><em>方程 4 條：</em><em> $\Sigma F_y^</em> = 0$、$\Sigma M^<em> = 0$、$M^</em>(30) = 0$、$M^*(50) = 0$</p>
+<p>共軛載重（四塊三角形）：</p>
+<table>
+<thead>
+<tr>
+<th>區間</th>
+<th>合力</th>
+<th>形心</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>$0!-!30$</td>
+<td>$+450$</td>
+<td>$x = 20$</td>
+</tr>
+<tr>
+<td>$30!-!40$</td>
+<td>$+150$</td>
+<td>$x = 100/3$</td>
+</tr>
+<tr>
+<td>$40!-!50$</td>
+<td>$-150$</td>
+<td>$x = 140/3$</td>
+</tr>
+<tr>
+<td>$50!-!80$</td>
+<td>$-450$</td>
+<td>$x = 60$</td>
+</tr>
+<tr>
+<td><strong>合計</strong></td>
+<td>$\mathbf{0}$</td>
+<td>—</td>
+</tr>
+</tbody>
+</table>
+<p>解得（以下皆已乘 $EI$）：</p>
+<p>$$EI\,R^*_A = EI\,\theta_A = -950, \qquad EI\,M_0 = EI\,\Delta_F = 24\,000$$</p>
+<p><strong>（一）F 點左側</strong></p>
+<p>$$EI\,y(F^-) = M^<em>(15^-) = R^</em><em>A \cdot 15 + \underbrace{\int_0^{15}! \xi\,(15-\xi)\,d\xi}</em>{=\,562.5} = (-950)(15) + 562.5 = \boxed{-13\,687.5}$$</p>
+<blockquote>
+<p>⚠ 這裡就是舊版失分處：$R^<em>_A$ 已經是 $-950$，代入時</em><em>不再冠負號</em>*。</p>
+</blockquote>
+<p><strong>（二）F 點右側</strong></p>
+<p>$$EI\,y(F^+) = M^*(15^-) + M_0 = -13\,687.5 + 24\,000 = \boxed{+10\,312.5}$$</p>
+<p>$$\Delta_F = y(F^+) - y(F^-) = 24\,000/EI$$</p>
+<p><strong>（三）C 點</strong>（取右側自由體，或由左側積分至 40）</p>
+<p>$$EI\,y(C) = M^*(40) = \boxed{-4\,000}$$</p>
+<hr />
+<h3>步驟 3：正規化求影響線</h3>
+<p>$$IL_{V_F}(x) = \frac{y(x)}{\Delta_F}$$</p>
+<p>$$\boxed{IL_{V_F}(F^-) = \frac{-13\,687.5}{24\,000} = -\frac{73}{128} \approx -0.5703}$$</p>
+<p>$$\boxed{IL_{V_F}(F^+) = \frac{+10\,312.5}{24\,000} = +\frac{55}{128} \approx +0.4297}$$</p>
+<p>$$\boxed{IL_{V_F}(C) = \frac{-4\,000}{24\,000} = -\frac{1}{6} \approx -0.1667}$$</p>
+<blockquote>
+<p><strong>檢查：</strong> $\dfrac{55}{128} - \left(-\dfrac{73}{128}\right) = \dfrac{128}{128} = 1$ ✓（單位載重跨過斷面，剪力跳躍必為 1）<br />
+<strong>符號檢查：</strong> $F^-$ 為負、$F^+$ 為正 ✓</p>
+</blockquote>
+<hr />
+<h3>步驟 4：影響線全曲線</h3>
+<p><img alt="SA-2015-2 V_F影響線全曲線：F處由-73/128跳至+55/128，C點-1/6，DE跨最大+0.0722" src="../../raw/solutions/SA-2015-2/figs/SA-2015-2-fig-4-influence-line.svg" /></p>
+<p><em>圖 4　$V_F$ 影響線。這張圖攔兩件事：把靜不定結構的影響線畫成折線（每一段其實是三次曲線），以及把 F 兩側的正負號畫反 —— 左負右正才是剪力影響線的樣子。</em></p>
+<p>各段影響線方程（$x$ 由 A 起算，單位 m）：</p>
+<p>$$IL_{V_F}(x) = \begin{cases}<br />
+\dfrac{x\,(x^2 - 5700)}{144\,000} &amp; 0 \le x \le 15\[10pt]<br />
+\dfrac{(x-30)(x^2 + 30x - 4800)}{144\,000} &amp; 15 \le x \le 30\[10pt]<br />
+-\dfrac{(x-30)(x^2 - 90x + 2800)}{48\,000} &amp; 30 \le x \le 40\[10pt]<br />
+-\dfrac{(x-50)(x^2 - 70x + 400)}{48\,000} &amp; 40 \le x \le 50\[10pt]<br />
+\dfrac{(x-110)(x-80)(x-50)}{144\,000} &amp; 50 \le x \le 80<br />
+\end{cases}$$</p>
+<p><strong>關鍵縱距：</strong></p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">位置</th>
+<th style="text-align: center;">A(0)</th>
+<th style="text-align: center;">$F^-$(15)</th>
+<th style="text-align: center;">$F^+$(15)</th>
+<th style="text-align: center;">B(30)</th>
+<th style="text-align: center;">C(40)</th>
+<th style="text-align: center;">D(50)</th>
+<th style="text-align: center;">DE 極大</th>
+<th style="text-align: center;">E(80)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">$IL_{V_F}$</td>
+<td style="text-align: center;">$0$</td>
+<td style="text-align: center;">$\mathbf{-\frac{73}{128}}$</td>
+<td style="text-align: center;">$\mathbf{+\frac{55}{128}}$</td>
+<td style="text-align: center;">$0$</td>
+<td style="text-align: center;">$\mathbf{-\frac16}$</td>
+<td style="text-align: center;">$0$</td>
+<td style="text-align: center;">$+0.0722$ @ $x\approx62.7$</td>
+<td style="text-align: center;">$0$</td>
+</tr>
+</tbody>
+</table>
+<p><strong>曲線特徵：</strong></p>
 <ul>
-<li>15 $\le x \le$ 30 (FB): $M(x) = 15 + 1 \cdot (x-15) =$ <strong>$x$</strong></li>
-<li>30 $\le x \le$ 40 (BC): $M(x) = 30 + (1-4) \cdot (x-30) =$ <strong>$120 - 3x$</strong></li>
-</ul>
-<ol start="3">
-<li><strong>CDE 段 (40 $\le x \le$ 80)</strong>：<br />
-   C 點受向下力 $3$。<br />
-   對 E 點取力矩：$\sum M_E = 3 \times 40 - D_y \times 30 = 0 \Rightarrow D_y = 4$ (向上)<br />
-   此段彎矩：</li>
-</ol>
-<ul>
-<li>40 $\le x \le$ 50 (CD): $M(x) = -3 \cdot (x-40) =$ <strong>$120 - 3x$</strong></li>
-<li>50 $\le x \le$ 80 (DE): $M(x) = -30 + 1 \cdot (x-50) =$ <strong>$x - 80$</strong></li>
-</ul>
-<h3>步驟 2：共軛梁法計算變形量</h3>
-<p>建立共軛梁，載重為 $q(x) = M(x)$（正號向上）。<br />
-共軛梁邊界條件：</p>
-<ul>
-<li>A, E：端鉸支承</li>
-<li>B, D：內部鉸（$M^*=0$）</li>
-<li>C：內部滾支承（有反力 $C_y^*$）</li>
-</ul>
-<p>將共軛梁拆為 AB、BD、DE 三部分求解內部剪力 $V^*$ 與反力：</p>
-<ol>
-<li>
-<p><strong>DE 段 (50~80)</strong>：載重為向下三角形 (總力 -450，形心距D為10)。<br />
-   $\sum M_E = 0 \Rightarrow -V_D^* \times 30 - 450 \times 20 = 0 \Rightarrow V_D^* = -300$ (D點左側對右側的向下剪力)</p>
-</li>
-<li>
-<p><strong>BD 段 (30~50)</strong>：載重為兩三角形 (30~40 總力 +150；40~50 總力 -150)。<br />
-   受力包含 $V_B^*$ (向上) 與 $V_D^* = 300$ (向上，從DE段反作用而來)。<br />
-   對 C 點取力矩：$-10 V_B^* + 10(300) - 150(20/3) - 150(20/3) = 0 \Rightarrow V_B^* = 100$ (向上)</p>
-</li>
-<li>
-<p><strong>AB 段 (0~30)</strong>：載重為向上三角形 (總力 +450，形心距A為20)。<br />
-   受力包含 $A_y^*$ 及 $V_B^* = -100$ (向下，從BD段反作用而來)。<br />
-   $\sum M_B = 0 \Rightarrow -30 A_y^* - 4500 = 0 \Rightarrow A_y^* = -150$ (不考慮 F 點相對位移時的基礎反力)<br />
-<strong>注意</strong>：因 F 點有相對位移，共軛梁 F 點等效存在集中力矩 $M_0$。由撓度連續條件解得真實 $A_y^* = -950$，對應 $V^*(0) = 950$。</p>
-</li>
-</ol>
-<p>利用積分求解 F、C 兩點之共軛梁彎矩 $M^*$ (即真實變形 $y$)：</p>
-<ul>
-<li><strong>F點左側</strong>：$M^*(15^-) = -A_y^* \cdot 15 + \text{載重力矩} = -(-950)(15) + (112.5)(5) = 14250 + 562.5 = 14812.5$</li>
-<li><strong>F點右側</strong>：$M^*(15^+) = M^*(15^-) - M_0 = 14812.5 - 24000 = -9187.5$</li>
-<li>F 點相對位移：$\Delta y_F = y_{left} - y_{right} = 14812.5 - (-9187.5) = 24000$</li>
-<li><strong>C點</strong>：取右側 CDE 段計算。<br />
-  $M^*(40) = - [\text{DE載重對C力矩} + \text{CD載重對C力矩} + E_y^* \cdot 40]$<br />
-  解得 $M^*(40) = -4000$</li>
-</ul>
-<h3>步驟 3：影響線數值正規化</h3>
-<p>影響線值即為變形量除以相對位移 $\Delta y_F = 24000/EI$：</p>
-<ul>
-<li>$IL(F_{left}) = \frac{14812.5}{24000} = \frac{79}{128} \approx 0.617$</li>
-<li>$IL(F_{right}) = \frac{-9187.5}{24000} = -\frac{49}{128} \approx -0.383$</li>
-<li>$IL(C) = \frac{-4000}{24000} = -\frac{1}{6} \approx -0.167$</li>
+<li>A$\to$F$^-$：由 0 單調降至 $-73/128$（負值區）</li>
+<li>F$^+\to$B：由 $+55/128$ 單調降至 0（正值區）</li>
+<li>B$\to$C$\to$D：負值區，在內部鉸 C 達 $-1/6$，且<strong>斜率在 C 轉折</strong></li>
+<li>D$\to$E：正值區，極大僅 $+0.0722$（距 F 已 47 m 以上，影響微弱）</li>
+<li>四個支承 A、B、D、E 處縱距皆為 0</li>
 </ul>
 <hr />
-<h2>5. 結論</h2>
-<p>本題 F 點剪力影響線之關鍵特徵值如下：</p>
+<h2>5. 結論與進階探討</h2>
+<h3>5.1 答案</h3>
+<table>
+<thead>
+<tr>
+<th>所求</th>
+<th>值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>F 點左側</strong></td>
+<td>$-\dfrac{73}{128} \approx -0.570$</td>
+</tr>
+<tr>
+<td><strong>F 點右側</strong></td>
+<td>$+\dfrac{55}{128} \approx +0.430$</td>
+</tr>
+<tr>
+<td><strong>C 點</strong></td>
+<td>$-\dfrac{1}{6} \approx -0.167$</td>
+</tr>
+</tbody>
+</table>
+<p>（$V_F$ 以「斷面左側向上」為正。）</p>
+<h3>5.2 為什麼跳躍的分配不是 0.5 / 0.5</h3>
+<p>若 AB 是獨立簡支梁，F 在跨中，$IL$ 會是 $-0.5$ / $+0.5$。本題是連續梁，B 右側還有 BC、CD、DE 三段拉著，等效上讓 B 端「不那麼自由」，跳躍因此偏向左側：$73/128 = 0.570$ 對 $55/128 = 0.430$。<strong>分母 128 是連續性的指紋</strong> —— 看到不是 2 的簡單分數，就知道右邊的結構確實有參與。</p>
+<h3>5.3 兩條獨立路徑的交叉驗算</h3>
+<p>本題的解答另以「釋放 $R_A$」的路徑重算過一次：</p>
 <ul>
-<li><strong>F 點左側影響線值：$+\frac{79}{128} \approx 0.617$</strong></li>
-<li><strong>F 點右側影響線值：$-\frac{49}{128} \approx -0.383$</strong></li>
-<li><strong>C 點影響線值：$-\frac{1}{6} \approx -0.167$</strong></li>
-</ul></main>
+<li>基本結構改為「移除 A 支承」（B、C 鉸、D、E 仍在，仍為靜定）；</li>
+<li>在 A 施加向上單位力，求變形曲線 $y(x)$；</li>
+<li>$IL_{R_A}(x) = y(x)/y(A)$，再由 $V_F = R_A - [\,x &lt; 15\,]$ 得 $IL_{V_F}$。</li>
+</ul>
+<p>兩條路徑在 <strong>321 個載重位置</strong>逐點比對完全相符（最大差 $&lt; 10^{-9}$）。有趣的是這條路徑得到的 $EI\,y(A)$ 也恰好是 $24\,000$，與 $\Delta_F$ 同值 —— 這不是巧合，是 Betti 互易定理的直接結果。</p>
+<h3>5.4 考場上最便宜的三個檢查</h3>
+<ol>
+<li><strong>$M(C) = 0$</strong> —— 反力一算完就檢查，錯了立刻知道（不必等到最後）。</li>
+<li><strong>跳躍 = 1</strong> —— $IL(F^+) - IL(F^-)$ 必為 1。</li>
+<li><strong>左負右正</strong> —— 剪力影響線在斷面左側為負、右側為正。舊版三個數字全對第 2 條、但栽在第 3 條。</li>
+</ol>
+<hr />
+<h2>6. 本題知識點索引</h2>
+<table>
+<thead>
+<tr>
+<th>知識點</th>
+<th>概念 ID</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>影響線</td>
+<td>[[INFLUENCE-LINE]]</td>
+</tr>
+<tr>
+<td>Müller-Breslau 原理</td>
+<td>[[MULLER-BRESLAU-PRINCIPLE]]</td>
+</tr>
+<tr>
+<td>共軛梁法</td>
+<td>[[CONJUGATE-BEAM-METHOD]]</td>
+</tr>
+<tr>
+<td>靜不定度判斷</td>
+<td>[[DEGREE-OF-INDETERMINACY]]</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p><em>解析日期：2026-07-02　｜　勘誤＋圖解補繪：2026-08-26（共軛梁反力符號更正；以「釋放 $R_A$」的獨立路徑在 321 個載重位置逐點交叉驗算；向量圖腳本 <code>gen_SA-2015-2.py</code>，可重跑）</em></p></main>
 <footer>來源：raw/solutions/SA-2015-2/SA-2015-2.md（知識庫解題內容唯一正本；本頁僅為渲染顯示）</footer>
 
 <script>

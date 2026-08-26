@@ -40,60 +40,101 @@ header .nomat{margin-top:12px;font-size:.8em;opacity:.85}
 </style></head><body>
 <header>
 <h1>SA-2011-3　靜定及靜不定結構影響線</h1>
-<p class="meta2">主分類 <b>SA-U1-3</b> 靜定及靜不定結構影響線 ｜ 2011 年（民國 100） ｜ 穆勒法 (Müller-Breslau Principle) / 積分法</p>
+<p class="meta2">主分類 <b>SA-U1-3</b> 靜定及靜不定結構影響線 ｜ 2011 年（民國 100） ｜ 穆勒法（Müller-Breslau Principle）／力法＋影響線面積積分</p>
 <div class="hbtns"><a class="b-study" href="../study-SA-U1-3.html">🔍 U1-3 命題分析</a><a class="b-lect" href="../lecture-SA-U1-3.html">📚 U1-3 靜定及靜不定結構影響線 講義</a><a class="b-fg" href="../formula-given-SA-U1-3.html">🎯 U1-3 給／背分界</a></div>
 </header>
 <main><h1>考題編號：SA-2011-3</h1>
-<p><strong>主分類：</strong> <code>SA-U5-1</code> 影響線分析<br />
-<strong>副分類：</strong> <code>SA-U5-2</code> 靜不定結構影響線<br />
-<strong>分析法：</strong> 穆勒法 (Müller-Breslau Principle) / 積分法<br />
-<strong>標籤：</strong> <code>穆勒法</code>, <code>連續梁</code>, <code>影響線</code>, <code>最大彎矩</code></p>
+<p><strong>主分類：</strong> <code>SA-U1-3</code> 靜定及靜不定結構影響線<br />
+<strong>副分類：</strong> 無<br />
+<strong>分析法：</strong> 穆勒法（Müller-Breslau Principle）／力法＋影響線面積積分<br />
+<strong>標籤：</strong> <code>穆勒法</code> <code>連續梁</code> <code>影響線</code> <code>最大彎矩</code> <code>載重佈置</code></p>
 <hr />
 <h2>1. 原始題目重述 (Problem Restatement)</h2>
-<p>如圖所示為一兩跨連續梁結構，AB 跨距 $30\text{ m}$，BD 跨距 $30\text{ m}$，C 點位於 BD 跨之中央：<br />
-(1) 請使用穆勒法 (Müller-Breslau method) 繪出支承 A 點反力 ($R_A$)、支承 B 點反力 ($R_B$)、支承 B 點負彎矩 ($M_B^-$)、C 點彎矩 ($M_C$) 及其剪力 ($V_C$) 之影響線圖。<br />
-(2) 假設該梁承受 $2\text{ kN/m}$ 之均布載重可作用於全長或部分跨長，請計算 C 點之最大彎矩 ($M_{max,C}$)。(25 分)</p>
+<p>如圖所示為一兩跨連續梁結構，AB 跨距 $30\text{ m}$，BD 跨距 $30\text{ m}$，C 點位於 BD 跨之中央：</p>
+<p>(1) 請使用穆勒法（Müller-Breslau method）繪出支承 A 點反力（$R_A$）、支承 B 點反力（$R_B$）、支承 B 點負彎矩（$M_B^-$）、C 點彎矩（$M_C$）及其剪力（$V_C$）之影響線圖。<br />
+(2) 假設該梁承受 $2\text{ kN/m}$ 之均布載重可作用於全長或部分跨長，請計算 C 點之最大彎矩（$M_{max,C}$）。（25 分）</p>
 <p><img alt="SA-2011-3 題目附圖：兩跨連續梁，AB=30m，BD=30m，C為BD中點" src="../../raw/solutions/SA-2011-3/SA-2011-3-fig-1.png" /></p>
-<p><em>圖說：兩跨對稱連續梁，支承條件為 A、B、D 點鉸支承或滾支承，總跨長 60m。</em></p>
+<p><em>圖說：A、B 為滾支承，D 為鉸支承，總跨長 60 m。</em><em>梁在 B 上方是連續的</em><em>（不是內鉸）。以 A 為原點：$A(0)$、$B(30)$、$C(45)$、$D(60)$。</em></p>
+<p><img alt="SA-2011-3 題目重繪：兩跨對稱連續梁，A與B滾支承、D鉸支承，C為BD跨中點斷面，w=2kN/m可只佈部分跨長" src="../../raw/solutions/SA-2011-3/figs/SA-2011-3-fig-1-beam.svg" /></p>
+<p><em>圖 1　題目重繪（向量版）。這張圖攔兩件事：把 C 當成支承（它只是 BD 跨的中點斷面），以及把結構當成兩根獨立的簡支梁 —— B 上方是連續的，這正是 1 度靜不定的來源，也是第 (1) 小題五條影響線都是曲線的原因。</em></p>
+<hr />
 <h2>2. 考題核心精神與出題者意圖 (Core Concepts &amp; Examiner's Intent)</h2>
-<p>本題旨在測驗考生對<strong>靜不定結構影響線 (Influence Lines for Statically Indeterminate Structures)</strong> 的定性與定量綜合能力：</p>
+<p>本題測驗<strong>靜不定結構影響線</strong>的定性與定量綜合能力：</p>
 <ol>
-<li><strong>定性繪製 (穆勒法, Müller-Breslau Principle)</strong>：考驗考生是否能精確運用穆勒原理——藉由解除對應束制並施加單位變形，判斷靜不定連續梁的彈性變形曲線 (即影響線形狀)。這要求對各支承與鉸接變形邊界條件有極高敏銳度。</li>
-<li><strong>定量計算 (最大效應分析)</strong>：利用對稱連續梁的影響線方程式，透過積分求出影響線的面積，並根據均布載重的特性 (只需佈置在影響線為正的區域以求得最大正效應)，算出特定點的最大彎矩。出題者測試考生是否真正理解「影響線面積與均布載重的乘積即為總效應」的核心物理意義。</li>
+<li><strong>定性繪製（穆勒法）</strong> —— 解除對應束制、施加單位變形，彈性變形曲線即為影響線形狀。關鍵在對邊界條件（支承處位移為零）與連續性的敏銳度。</li>
+<li><strong>靜不定結構的影響線是曲線</strong> —— 本題 1 度靜不定，五條影響線<strong>沒有一段是直線</strong>。把它們畫成折線是最常見的失分。</li>
+<li><strong>定量計算（最大效應分析）</strong> —— 「影響線面積 × 均布載重 = 總效應」，而且<strong>只把載重佈在影響線為正的區間</strong>才能得到最大正效應。</li>
+<li><strong>贅力效應的疊加</strong> —— 把連續梁的 $M_C$ 拆成「簡支梁部分」＋「端彎矩 $M_B$ 部分」，兩塊面積分別算再相加，避免直接對三次曲線積分。</li>
 </ol>
+<hr />
 <h2>3. 解題戰略地圖與陷阱分析 (Strategic Roadmap &amp; Trap Analysis)</h2>
 <p><strong>解題策略：</strong></p>
 <ol>
-<li><strong>第一階段：影響線定性繪製 (利用穆勒法)</strong><br />
-   - 針對所求標的 ($R_A, R_B, M_B^-, M_C, V_C$)，逐一解除對應的束制。<br />
-   - 施加單位正向變形 (如單位位移、相對旋轉、相對剪切變形)。<br />
-   - 根據邊界條件 (其餘支承處位移必為 0) 與連續梁的彎曲連續性，繪製變形後的彈性曲線。</li>
-<li><strong>第二階段：影響線面積積分與最大彎矩計算</strong><br />
-   - 根據繪出的 $M_C$ 影響線，確認正值區間 (僅 BD 跨)。<br />
-   - 將 $M_C$ 影響線拆解為「靜定簡支梁 $M_C$」與「贅力 $M_B$ 效應」的疊加。<br />
-   - 分別利用幾何關係與積分求出兩部分的面積，相加得總正面積。<br />
-   - 將總正面積乘以均布載重 $w$，即得 $M_{max,C}$。</li>
+<li><strong>第一階段：影響線定性繪製（穆勒法）</strong><ul>
+<li>逐一解除 $R_A$、$R_B$、$M_B$、$M_C$、$V_C$ 對應的束制；</li>
+<li>施加單位正向變形（位移／相對轉角／相對橫向錯動）；</li>
+<li>依邊界條件（其餘支承處位移為零）與彎曲連續性，畫出<strong>平滑曲線</strong>。</li>
+</ul>
+</li>
+<li><strong>第二階段：面積積分求最大彎矩</strong><ul>
+<li>由 $M_C$ 影響線確認正值區間（僅 BD 跨）；</li>
+<li>拆解成「簡支梁 $M_C$」＋「贅力 $M_B$ 效應」；</li>
+<li>兩塊面積相加後乘上 $w$。</li>
+</ul>
+</li>
 </ol>
 <p><strong>陷阱分析：</strong></p>
-<ul>
-<li><strong>陷阱 1：$V_C$ 影響線的形狀 (蹺蹺板效應)</strong>。C 點正剪力會使 BC 段向下、CD 段向上。但由於這是連續梁，BC 段向下壓會像蹺蹺板一樣把 B 點左側的 AB 跨「翹起來」(向上)，因此 AB 跨的影響線為正值！若忽略結構的連續性極易畫錯。</li>
-<li><strong>陷阱 2：均布載重的佈置位置</strong>。題目特別強調「可作用於全長或部分跨長」，若不加思索直接將 $2\text{ kN/m}$ 佈滿 $60\text{ m}$ 全長，會將 AB 跨的負效應一併計入，導致算出的結果低於真正的「最大正彎矩」。必須依據影響線正負號決定載重佈置。</li>
-</ul>
+<table>
+<thead>
+<tr>
+<th>陷阱</th>
+<th>為什麼會錯</th>
+<th>正解</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>把影響線畫成折線</strong></td>
+<td>記住了靜定梁 IL 是分段直線的規則</td>
+<td>本題 1 度靜不定，五條 IL 全是曲線；折線只在 $V_C$ 的斷面處有一個跳躍</td>
+</tr>
+<tr>
+<td><strong>$V_C$ 在 AB 跨的符號（蹺蹺板效應）</strong></td>
+<td>直覺認為「離 C 那麼遠，應該是 0 或負的」</td>
+<td>C 點正剪力使 BC 段下壓，會把 B 左側的 AB 跨<strong>翹起來</strong> $\Rightarrow$ AB 跨為<strong>正</strong>（極大 $+0.0962$）</td>
+</tr>
+<tr>
+<td><strong>均布載重佈滿全長 60 m</strong></td>
+<td>沒注意「可作用於全長或<strong>部分跨長</strong>」</td>
+<td>佈滿全長會把 AB 跨的負面積一併計入，答案偏低（$168.75 - 56.25 = 112.5$，不是最大值）</td>
+</tr>
+<tr>
+<td>只答 $M_{max}$ 不答形狀</td>
+<td>第 (1) 小題佔一半分數</td>
+<td>五條 IL 都要畫，且要標關鍵縱距</td>
+</tr>
+<tr>
+<td>忘記檢查 $M_C$ 的最小值</td>
+<td>只算正的</td>
+<td>$M_{min,C} = -56.25\text{ kN·m}$（載重只佈 AB 跨）；量體小於正值，故「最大彎矩」仍是 $168.75$</td>
+</tr>
+</tbody>
+</table>
+<hr />
 <h2>3.5 變數層次分析 (Variable Hierarchy Analysis)</h2>
 <h3>最終目標</h3>
-<p><code>利用穆勒法繪出各項影響線後，透過積分求出影響線面積，進而算出 C 點的最大正彎矩。</code></p>
+<p><code>繪出五條影響線，並由 M_C 影響線的正面積算出 C 點的最大正彎矩</code></p>
 <h3>本題關鍵公式（依計算順序）</h3>
-<p>Step 1: 疊加法拆解 $M_C$ 影響線<br />
-$$ M_C(x) = M_C^{\text{simp}}(x) + \frac{1}{2} M_B(x) $$</p>
-<p>Step 2: 靜定簡支梁影響線面積<br />
-$$ A_1 = \frac{1}{2} \cdot L \cdot \frac{L}{4} $$</p>
-<p>Step 3: 贅力 $M_B$ 在單跨內之影響線方程式與面積<br />
-$$ M_B(x) = -\frac{x(L^2 - x^2)}{4L^2} $$<br />
-$$ A_2 = \int_0^L \boxed{M_B(x)} \,dx $$</p>
-<p>Step 4: $M_C$ 影響線正面積<br />
-$$ \text{Area}_{M_C} = \boxed{A_1} + \frac{1}{2} \boxed{A_2} $$</p>
-<p>Step 5: 計算最大正彎矩<br />
-$$ M_{max, C} = w \times \boxed{\text{Area}_{M_C}} $$</p>
+<blockquote>
+<p>$\boxed{\cdot}$ ＝ 需由前步驟推導，非題目直接給定</p>
+</blockquote>
+<p>$$\text{Step 1: } M_B(u) = -\frac{u\,(L^2 - u^2)}{4L^2}<br />
+\quad (u = \text{載重距「所在跨外側支承」的距離})$$</p>
+<p>$$\text{Step 2: } M_C(x) = M_C^{\text{simp}}(x) + \tfrac12\,\boxed{M_B(x)}$$</p>
+<p>$$\text{Step 3: } A_1 = \tfrac12 \cdot L \cdot \tfrac{L}{4} = \tfrac{L^2}{8},<br />
+\qquad A_2 = \int_0^L \boxed{M_B(u)}\,du = -\tfrac{L^2}{16}$$</p>
+<p>$$\text{Step 4: } \text{Area}^+_{M_C} = \boxed{A_1} + \tfrac12 \boxed{A_2} = \tfrac{3L^2}{32}$$</p>
+<p>$$\text{Step 5: } M_{max,C} = w \times \boxed{\text{Area}^+_{M_C}}$$</p>
 <h3>L1：題目直接給定</h3>
 <table>
 <thead>
@@ -107,119 +148,258 @@ $$ M_{max, C} = w \times \boxed{\text{Area}_{M_C}} $$</p>
 <tr>
 <td>$L$</td>
 <td>$30\text{ m}$</td>
-<td>單跨跨距 (AB = BD = 30m)</td>
+<td>單跨跨距（AB = BD）</td>
 </tr>
 <tr>
 <td>$w$</td>
 <td>$2\text{ kN/m}$</td>
-<td>均布載重強度</td>
+<td>均布載重強度（可佈部分跨長）</td>
+</tr>
+<tr>
+<td>$x_C$</td>
+<td>$45\text{ m}$</td>
+<td>C 為 BD 跨中點</td>
 </tr>
 </tbody>
 </table>
 <h3>L2：需知識點推導</h3>
-<p><strong>影響線面積計算</strong><br />
-| 符號 | 公式／來源 | 卡關? |<br />
-|---|---|---|<br />
-| $A_1$ | $A_1 = \frac{1}{2} \cdot L \cdot \frac{L}{4}$ | |<br />
-| $A_2$ | $A_2 = \int_0^L M_B(x) dx$ | |<br />
-| $\text{Area}_{M_C}$ | $\text{Area}_{M_C} = A_1 + 0.5 A_2$ | |<br />
-| $M_{max, C}$ | $M_{max, C} = w \times \text{Area}_{M_C}$ | |</p>
+<table>
+<thead>
+<tr>
+<th>符號</th>
+<th>公式／來源</th>
+<th style="text-align: center;">卡關?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>靜不定度</td>
+<td>反力 4（D 為 2）− 平衡 3 = <strong>1 度</strong></td>
+<td style="text-align: center;"></td>
+</tr>
+<tr>
+<td>$M_B(u)$</td>
+<td>諧合條件 $\dfrac{2M_B L}{3EI} = \dfrac{u(L^2-u^2)}{6LEI}$</td>
+<td style="text-align: center;"></td>
+</tr>
+<tr>
+<td>$A_1$</td>
+<td>$\frac12 L \cdot \frac{L}{4} = \frac{L^2}{8} = 112.5\text{ m}^2$</td>
+<td style="text-align: center;"></td>
+</tr>
+<tr>
+<td>$A_2$</td>
+<td>$\int_0^L M_B\,du = -\frac{L^2}{16} = -56.25\text{ m}^2$</td>
+<td style="text-align: center;"></td>
+</tr>
+<tr>
+<td>$\text{Area}^+$</td>
+<td>$\frac{L^2}{8} - \frac{L^2}{32} = \frac{3L^2}{32} = 84.375\text{ m}^2$</td>
+<td style="text-align: center;"></td>
+</tr>
+<tr>
+<td>$M_{max,C}$</td>
+<td>$w \times \text{Area}^+ = 168.75\text{ kN·m}$</td>
+<td style="text-align: center;"></td>
+</tr>
+</tbody>
+</table>
 <h3>L3：深層知識（不懂就卡住）</h3>
 <table>
 <thead>
 <tr>
 <th>知識點</th>
 <th>說明</th>
-<th>卡關?</th>
+<th style="text-align: center;">卡關?</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>穆勒法 (Müller-Breslau)</td>
-<td>解除束制施加單位變形，曲線形狀即為影響線形狀。</td>
-<td></td>
+<td>穆勒法（Müller-Breslau）</td>
+<td>解除束制、施加單位變形，<strong>彈性變形曲線</strong>的形狀即為影響線</td>
+<td style="text-align: center;"></td>
+</tr>
+<tr>
+<td>靜不定 IL 為曲線</td>
+<td>靜定結構的 IL 才是折線；有贅力時，變形曲線是三次的</td>
+<td style="text-align: center;"></td>
 </tr>
 <tr>
 <td>連續梁影響線拆解</td>
-<td>$M_C$ 可視為簡支梁效應與端點贅力彎矩效應之線性疊加。</td>
-<td></td>
+<td>$M_C$ ＝ 簡支效應 ＋ 端點贅力彎矩效應（線性疊加）</td>
+<td style="text-align: center;"></td>
 </tr>
 <tr>
 <td>載重佈置原則</td>
-<td>欲求最大正效應，均布載重僅能佈置在影響線縱座標為正的區間。</td>
-<td></td>
+<td>求最大正效應 $\Rightarrow$ $w$ 只佈在 IL 縱座標為正的區間</td>
+<td style="text-align: center;"></td>
+</tr>
+<tr>
+<td>蹺蹺板效應</td>
+<td>連續梁中，某跨被壓下去會使相鄰跨翹起 $\Rightarrow$ 遠處 IL 可以變號</td>
+<td style="text-align: center;"></td>
 </tr>
 </tbody>
 </table>
+<hr />
 <h2>4. 步驟化詳細計算過程 (Step-by-Step Detailed Calculation)</h2>
-<h3>第一部分：穆勒法繪製影響線圖</h3>
-<p>根據穆勒法，影響線的形狀即為解除對應束制並施加單位正向變形後的彈性變形曲線：</p>
-<ol>
-<li>
-<p><strong>$R_A$ 影響線</strong>：<br />
-   - <strong>動作</strong>：移除 A 支承，將 A 點向上抬起。<br />
-   - <strong>形狀</strong>：A 點為正極大值，曲線向下穿過 B 點 (因為 B 為支承)，在 BD 跨下垂為負值，最後收斂於 D 點。<br />
-   - <strong>符號</strong>：AB 跨 (+)，BD 跨 (-)。</p>
-</li>
-<li>
-<p><strong>$R_B$ 影響線</strong>：<br />
-   - <strong>動作</strong>：移除 B 支承，將 B 點向上抬起。<br />
-   - <strong>形狀</strong>：A 點為 0，B 點為正極大值，D 點為 0。整條梁如同一條拱起的弓。<br />
-   - <strong>符號</strong>：AB 跨 (+)，BD 跨 (+)。</p>
-</li>
-<li>
-<p><strong>$M_B^-$ (B 點負彎矩) 影響線</strong>：<br />
-   - <strong>動作</strong>：在 B 點切開加入鉸接，施加產生負彎矩的變形 (即兩側懸臂向下彎折)。<br />
-   - <strong>形狀</strong>：由於強制兩端向下彎折，但在 A、D 兩點又有支承，所以 AB 跨與 BD 跨均會向上拱起。<br />
-   - <strong>符號</strong>：AB 跨 (-)，BD 跨 (-)。<em>(註：因為變形向上，單位向下力作負功，故全線為負)</em></p>
-</li>
-<li>
-<p><strong>$M_C$ 影響線</strong>：<br />
-   - <strong>動作</strong>：在 C 點加入鉸接，施加產生正彎矩的變形 (即 C 點向下凹折)。<br />
-   - <strong>形狀</strong>：C 點向下垂 (BD 跨為正)。因為 B 點是支承，BC 段下壓會使 AB 段向上翹起。<br />
-   - <strong>符號</strong>：AB 跨 (-)，BD 跨 (+)。</p>
-</li>
-<li>
-<p><strong>$V_C$ 影響線</strong>：<br />
-   - <strong>動作</strong>：在 C 點切開，施加正剪力變形 (左側 BC 段向下壓、右側 CD 段向上拉)。<br />
-   - <strong>形狀</strong>：CD 段向上 (正)；BC 段向下 (負)；AB 段因蹺蹺板效應向上翹起 (正)。<br />
-   - <strong>符號</strong>：AB 跨 (+)，BC 段 (-)，CD 段 (+)。</p>
-</li>
-</ol>
-<p><em>(請依據上述定性描述繪製平滑曲線，注意在支承處位移為 0)</em></p>
-<h3>第二部分：計算 C 點之最大彎矩 $M_{max, C}$</h3>
-<p>要使 C 點產生最大正彎矩，均布載重 $w = 2\text{ kN/m}$ 應僅佈置於 $M_C$ 影響線為正的區域。由前述定性分析可知，<strong>僅有 BD 跨 ($L=30\text{ m}$) 為正值區域</strong>，AB 跨為負值區域。</p>
-<p>我們利用重疊法 (Superposition) 將連續梁的 $M_C$ 影響線拆解為靜定系統與贅力系統的疊加：<br />
-$$ M_C(x) = M_C^{\text{simp}}(x) + \frac{1}{2} M_B(x) $$<br />
-<em>(其中 $M_C^{\text{simp}}$ 為 BD 視為簡支梁時的影響線，$M_B$ 為支承 B 彎矩的影響線)</em></p>
-<p><strong>1. 計算各部分影響線面積：</strong><br />
-令單跨跨距 $L = 30\text{ m}$。</p>
+<h3>第一部分：五條影響線（第 (1) 小題）</h3>
+<p><strong>贅力選擇：</strong> 取 B 點彎矩 $M_B$ 為贅力，基本結構為兩根獨立的簡支梁 AB、BD。由 B 處的轉角諧合條件：</p>
+<p>$$\frac{2 M_B L}{3EI} = \frac{u\,(L^2 - u^2)}{6LEI}<br />
+\quad\Longrightarrow\quad<br />
+\boxed{M_B(u) = -\frac{u\,(L^2 - u^2)}{4L^2}}$$</p>
+<p>其中 $u$ 為載重距<strong>所在跨外側支承</strong>的距離（載重在 AB 跨時 $u=x$；在 BD 跨時 $u = 60-x$）。</p>
+<p>由此可寫出其餘四條：</p>
+<p>$$R_A = \underbrace{\frac{L-x}{L}\Big|<em>{\text{僅 AB 跨}}}</em>{\text{簡支值}} + \frac{M_B}{L},<br />
+\qquad R_D(x) = R_A(60-x)\ \text{（對稱）},<br />
+\qquad R_B = 1 - R_A - R_D$$</p>
+<p>$$M_C = M_C^{\text{simp}} + \frac{M_B}{2},<br />
+\qquad V_C = R_A + R_B - \begin{cases}1 &amp; x &lt; 45\ 0 &amp; x &gt; 45\end{cases}$$</p>
+<p><img alt="SA-2011-3 五條影響線：RA、RB、MB、MC、VC，全為曲線，標出關鍵縱距與極值位置" src="../../raw/solutions/SA-2011-3/figs/SA-2011-3-fig-2-influence-lines.svg" /></p>
+<p><em>圖 2　五條影響線（穆勒法的定量版本）。這張圖攔兩件事：把靜不定結構的影響線畫成折線，以及漏掉 $V_C$ 在 AB 跨的</em><em>正值</em><em>（蹺蹺板效應）—— 那一小塊 $+0.0962$ 的面積，正是「BC 段被壓下去、AB 跨被翹起來」的直接證據。</em></p>
+<p><strong>各條影響線的穆勒法解讀與關鍵縱距：</strong></p>
+<table>
+<thead>
+<tr>
+<th>影響線</th>
+<th>解除什麼束制</th>
+<th>形狀</th>
+<th>關鍵縱距</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>$R_A$</td>
+<td>移除 A 的垂直束制，A 抬升單位位移</td>
+<td>AB 跨為正、BD 跨為負</td>
+<td>$A: +1$；BD 跨極小 $-0.0962$（$x \approx 42.68$）</td>
+</tr>
+<tr>
+<td>$R_B$</td>
+<td>移除 B 的垂直束制，B 抬升單位位移</td>
+<td>全線為正（整條梁像拱起的弓）</td>
+<td>$B: +1$；A、D 為 0</td>
+</tr>
+<tr>
+<td>$M_B^-$</td>
+<td>B 處插入鉸，施加單位相對轉角</td>
+<td><strong>全線為負</strong>（任何位置的向下載重都在 B 產生負彎矩）</td>
+<td>兩跨極小皆為 $-2.887\text{ m}$（$x \approx 17.32$ 與 $42.68$，即 $L/\sqrt3$）</td>
+</tr>
+<tr>
+<td>$M_C$</td>
+<td>C 處插入鉸，施加單位相對轉角</td>
+<td>AB 跨為負、BD 跨為正</td>
+<td>$C: +\frac{195}{32} = +6.094\text{ m}$；AB 跨極小 $-1.443\text{ m}$（$x \approx 17.32$）</td>
+</tr>
+<tr>
+<td>$V_C$</td>
+<td>C 處插入剪力釋放，兩側平行錯動</td>
+<td><strong>AB 跨為正</strong>、BC 為負、CD 為正</td>
+<td>$C^-: -\frac{13}{32}$；$C^+: +\frac{19}{32}$（跳躍 $=1$）；AB 跨極大 $+0.0962$（$x \approx 17.32$）</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><strong>兩個免費的自我檢查：</strong><br />
+① $V_C(C^+) - V_C(C^-) = \frac{19}{32} + \frac{13}{32} = 1$ ✓（單位載重跨過斷面，剪力必跳躍 1）<br />
+② $M_B$ 在 A、B、D 三個支承處皆為 0 ✓</p>
+<p><strong>為什麼極值都落在 $x = L/\sqrt3 \approx 17.32$？</strong><br />
+$M_B(u) = -u(L^2-u^2)/(4L^2)$，微分得 $L^2 - 3u^2 = 0 \Rightarrow u = L/\sqrt3$。<br />
+$R_A$、$M_C$（AB 跨）、$V_C$（AB 跨）都正比於 $M_B$，所以極值位置全部相同。</p>
+</blockquote>
+<hr />
+<h3>第二部分：計算 C 點之最大彎矩（第 (2) 小題）</h3>
+<p>要使 C 點產生最大正彎矩，$w = 2\text{ kN/m}$ 應<strong>僅佈置於 $M_C$ 影響線為正的區域</strong>。由第一部分可知：<strong>僅 BD 跨（30 m）為正</strong>，AB 跨全為負。</p>
+<p><img alt="SA-2011-3 M_C影響線的載重佈置與面積分解：w只佈BD跨，正面積84.375 m²，M_max=168.75 kN·m" src="../../raw/solutions/SA-2011-3/figs/SA-2011-3-fig-3-mc-loading.svg" /></p>
+<p><em>圖 3　載重佈置與面積分解。這張圖攔的是最貴的一個錯：把 $2\text{ kN/m}$ 佈滿 60 m —— 那會把 AB 跨的 $-28.125\text{ m}^2$ 一併計入，得到 $112.5\text{ kN·m}$，比真正的最大值少了三分之一。</em></p>
+<p><strong>1. 疊加分解</strong></p>
+<p>$$M_C(x) = M_C^{\text{simp}}(x) + \tfrac12 M_B(x)$$</p>
+<p>（BD 跨的端彎矩為 B 端 $M_B$、D 端 $0$，線性內插到中點即 $M_B/2$。）</p>
+<p><strong>2. 兩塊面積</strong></p>
 <ul>
-<li>
-<p><strong>靜定部分面積 ($A_1$)</strong>：<br />
-  為一頂點在 C (高 $L/4$) 的三角形。<br />
-  $$ A_1 = \frac{1}{2} \times L \times \frac{L}{4} = \frac{L^2}{8} $$</p>
-</li>
-<li>
-<p><strong>贅力 $M_B$ 影響線面積 ($A_2$)</strong>：<br />
-  利用三彎矩方程式或力法，可得單位力在單跨內 (距外側支承 $x$) 的 $M_B$ 影響線方程式為：<br />
-  $$ M_B(x) = -\frac{x(L^2 - x^2)}{4L^2} $$<br />
-  將其在整個跨度 (0 到 $L$) 積分：<br />
-  $$ \int_0^L -\frac{xL^2 - x^3}{4L^2} dx = -\frac{1}{4L^2} \left[ \frac{L^2 x^2}{2} - \frac{x^4}{4} \right]_0^L = -\frac{1}{4L^2} \left( \frac{L^4}{4} \right) = -\frac{L^2}{16} $$</p>
-</li>
+<li><strong>靜定部分 $A_1$</strong>：頂點在 C、高 $L/4$ 的三角形</li>
 </ul>
-<p><strong>2. 計算 $M_C$ 影響線之正面積：</strong><br />
-$$ \text{Area}_{M_C} = A_1 + \frac{1}{2} A_2 = \frac{L^2}{8} + \frac{1}{2}\left(-\frac{L^2}{16}\right) = \frac{L^2}{8} - \frac{L^2}{32} = \frac{3L^2}{32} $$<br />
-將 $L = 30\text{ m}$ 代入：<br />
-$$ \text{Area}_{M_C} = \frac{3 \times (30)^2}{32} = \frac{2700}{32} = 84.375\text{ m}^2 $$</p>
-<p><strong>3. 求取最大正彎矩：</strong><br />
-$$ M_{max, C} = w \times \text{Area}_{M_C} = 2\text{ kN/m} \times 84.375\text{ m}^2 = \boxed{168.75\text{ kN-m}} $$</p>
-<h2>5. 關鍵爭議點與進階探討 (Critical Issues &amp; Advanced Discussion)</h2>
+<p>$$A_1 = \tfrac12 \times L \times \tfrac{L}{4} = \tfrac{L^2}{8} = \tfrac{900}{8} = 112.5\text{ m}^2$$</p>
 <ul>
-<li><strong>積分法與查表法的抉擇</strong>：本題解法使用了 $M_B$ 的影響線方程式進行積分。在實務或考場上，若考生背有連續梁影響線面積的速算法 (如對稱兩跨連續梁單跨受單位均布載重時的端彎矩為 $-wL^2/16$)，可以直接得出贅力 $M_B$ 的總面積效應為 $-L^2/16$，進而大幅縮減計算時間。建議熟記常用幾何條件的固定端彎矩與連續梁反應。</li>
-<li><strong>影響線正負號的物理意義</strong>：穆勒法中「施加對應變形」往往會讓初學者搞混正負號。請牢記：若單位變形與標的內力/反力方向一致，外力在該變形曲線上作正功的區域，即為影響線的正值區。</li>
-<li><strong>載重佈置的保守性</strong>：如果題目沒有強調「部分跨長」，而是「全跨滿載」，則需要扣除 AB 跨的負面積。由於要求「最大彎矩」，切斷載重佈置以避開負效應是工程設計中尋求極值包絡線 (Envelope) 的基本概念。</li>
-</ul></main>
+<li><strong>贅力部分 $A_2$</strong>：$M_B$ 影響線在單跨內的面積</li>
+</ul>
+<p>$$A_2 = \int_0^L -\frac{u(L^2-u^2)}{4L^2}\,du<br />
+= -\frac{1}{4L^2}\left[\frac{L^2u^2}{2} - \frac{u^4}{4}\right]_0^L<br />
+= -\frac{1}{4L^2}\cdot\frac{L^4}{4} = -\frac{L^2}{16} = -56.25\text{ m}^2$$</p>
+<p><strong>3. $M_C$ 影響線的正面積</strong></p>
+<p>$$\text{Area}^+_{M_C} = A_1 + \tfrac12 A_2 = \frac{L^2}{8} - \frac{L^2}{32} = \frac{3L^2}{32}<br />
+= \frac{3 \times 900}{32} = 84.375\text{ m}^2$$</p>
+<p><strong>4. 最大正彎矩</strong></p>
+<p>$$\boxed{M_{max,C} = w \times \text{Area}^+_{M_C} = 2 \times 84.375 = 168.75\text{ kN·m}}$$</p>
+<p><strong>5.（補充）最小彎矩</strong> —— 載重只佈 AB 跨時：</p>
+<p>$$\text{Area}^-<em>{M_C} = \tfrac12 A_2 = -\frac{L^2}{32} = -28.125\text{ m}^2<br />
+\quad\Longrightarrow\quad<br />
+M</em>{min,C} = 2 \times (-28.125) = -56.25\text{ kN·m}$$</p>
+<p>$|{-56.25}| &lt; 168.75$，故「C 點之最大彎矩」為 $\mathbf{168.75\text{ kN·m}}$（正彎矩）。</p>
+<blockquote>
+<p><strong>若載重佈滿全長 60 m</strong>（題目沒問，但常被誤答）：<br />
+$M_C = 2 \times (84.375 - 28.125) = 112.5\text{ kN·m}$ —— 比真正的最大值少 $33\%$。</p>
+</blockquote>
+<hr />
+<h2>5. 關鍵爭議點與進階探討 (Critical Issues &amp; Advanced Discussion)</h2>
+<p><strong>（一）積分法與速算法的抉擇。</strong> 考場上若記得「對稱兩跨連續梁、單跨滿載均布載重時的端彎矩為 $-wL^2/16$」，可直接得到贅力部分的總面積效應為 $-L^2/16$，省下整段積分。建議把常用的固定端彎矩與連續梁反應背熟 —— 本題的 $A_2$ 就是它的直接應用。</p>
+<p><strong>（二）為什麼要特別強調「$V_C$ 在 AB 跨為正」。</strong> 這是連續性的最直接證據：BC 段被壓下去，B 支承作為支點，把 AB 跨像蹺蹺板一樣翹起來。數量上它只有 $+0.0962$，面積也只有 $+2.887\text{ m}^2$（乘 $w$ 後 $5.77\text{ kN}$），但<strong>符號畫錯就代表對連續梁的變形機制沒有掌握</strong>，閱卷上是重扣項。</p>
+<p><strong>（三）載重佈置與包絡線（Envelope）。</strong> 「切斷載重以避開負效應」是工程設計求極值包絡線的基本操作。實務上活載重本來就可以只出現在部分跨長，設計必須用最不利的佈置；本題把這個觀念用 25 分包裝起來。</p>
+<p><strong>（四）$M_C$ 峰值 $6.094\text{ m}$ 與簡支梁的比較。</strong> 若 BD 是獨立簡支梁，$M_C$ 的 IL 峰值會是 $L/4 = 7.5\text{ m}$。連續性把它壓到 $6.094\text{ m}$（$81\%$）—— 這就是 B 上方的負彎矩把跨中正彎矩「拉回來」的量化結果。</p>
+<hr />
+<h2>6. 本題知識點索引</h2>
+<table>
+<thead>
+<tr>
+<th>知識點</th>
+<th>概念 ID</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>影響線</td>
+<td>[[INFLUENCE-LINE]]</td>
+</tr>
+<tr>
+<td>Müller-Breslau 原理</td>
+<td>[[MULLER-BRESLAU-PRINCIPLE]]</td>
+</tr>
+<tr>
+<td>力法（諧合變位）</td>
+<td>[[FORCE-METHOD]]</td>
+</tr>
+<tr>
+<td>靜不定度判斷</td>
+<td>[[DEGREE-OF-INDETERMINACY]]</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>CHANGELOG</h2>
+<table>
+<thead>
+<tr>
+<th>日期</th>
+<th>變更</th>
+<th>原因</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2026-07-02</td>
+<td>初版解析</td>
+<td>—</td>
+</tr>
+<tr>
+<td>2026-08-26</td>
+<td><strong>修正分類</strong>：<code>SA-U5-1</code>／<code>SA-U5-2</code> → <code>SA-U1-3</code>；<strong>補上第 (1) 小題的影響線圖與關鍵縱距</strong>（原文只有文字描述、無縱距、無圖）；補 $M_{min,C} = -56.25\text{ kN·m}$</td>
+<td>SA 命題大綱只有 U1～U3，沒有 U5（<code>question_index.json</code> 原本就記為 <code>SA-U1-3</code>，是 .md 標頭與索引不一致）；第 (1) 小題要求「繪出」五條影響線，原文以「請依上述定性描述繪製平滑曲線」帶過，等於沒答</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p><em>解析日期：2026-07-02　｜　分類修正＋圖解補繪：2026-08-26（$M_{max,C} = 168.75\text{ kN·m}$ 經梁有限元在 241 個載重位置獨立驗證；向量圖腳本 <code>gen_SA-2011-3.py</code>，可重跑）</em></p></main>
 <footer>來源：raw/solutions/SA-2011-3/SA-2011-3.md（知識庫解題內容唯一正本；本頁僅為渲染顯示）</footer>
 
 <script>
