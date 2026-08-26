@@ -843,7 +843,7 @@
       ],
       "verificationStatus": "unverified",
       "hasSolution": true,
-      "hasViz": false,
+      "hasViz": true,
       "hasHandwritten": false,
       "tags": [
         "影響線",

@@ -1,70 +1,119 @@
-<!DOCTYPE html>
-<html lang="zh-Hant">
-<head>
-<meta charset="UTF-8">
-<title>SA-2015-2 F點剪力影響線</title>
-<style>
-  body { font-family: "Microsoft JhengHei", sans-serif; margin: 0; padding: 10px; background: #fafafa; }
-  .wrap { width: 580px; margin: 0 auto; background: #fff; border: 1px solid #ddd; border-radius: 8px; padding: 12px; box-sizing: border-box; }
-  h3 { margin: 4px 0 8px; font-size: 15px; color: #222; }
-  canvas { display: block; margin: 6px auto; background: #fff; }
-  .legend { font-size: 12px; color: #555; margin-top: 6px; line-height: 1.6; }
-  table { width: 100%; border-collapse: collapse; font-size: 11px; margin-top: 8px; }
-  td, th { border: 1px solid #ddd; padding: 2px 4px; text-align: center; }
-  th { background: #f0f0f0; }
-</style>
-</head>
-<body>
-<div class="wrap">
-  <h3>SA-2015-2 — F 點剪力影響線（Müller-Breslau + 共軛梁法）</h3>
-  <div class="legend">
-    梁 A-F-B-C-D-E（AF=FB=15m，BC=CD=10m，DE=30m），C 為內部鉸。本題僅計算並驗證 3 個關鍵值：F 點左側、F 點右側（因 F 處剪力釋放而不連續）、及 C 點之影響線縱座標；其餘位置之精確曲線原解未提供逐點數據，故不在此虛構插值，僅標示已驗證之三點與結構示意。
-  </div>
-  <canvas id="c" width="556" height="240"></canvas>
-  <table>
-    <tr><th>位置</th><th>F 左側</th><th>F 右側</th><th>C</th></tr>
-    <tr><td>影響線值</td><td>+0.617 (79/128)</td><td>-0.383 (-49/128)</td><td>-0.167 (-1/6)</td></tr>
-  </table>
+<!DOCTYPE html><html lang="zh-Hant"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>SA-2015-2 F 點剪力影響線</title><style>
+:root{--ac:#1565c0;--ink:#263238;--mut:#607d8b;--bd:#dfe6ea;--pos:#2e7d6f;--neg:#7c3aed}
+*{box-sizing:border-box}
+body{margin:0;padding:18px;font-family:"Microsoft JhengHei","Noto Sans TC",-apple-system,sans-serif;
+  background:#f7f9fb;color:var(--ink);line-height:1.7}
+.wrap{max-width:900px;margin:0 auto;background:#fff;border:1px solid var(--bd);
+  border-radius:12px;padding:20px 22px}
+h1{font-size:1.12em;margin:0 0 4px;color:#0d47a1}
+.sub{font-size:.85em;color:var(--mut);margin-bottom:14px}
+canvas{display:block;width:100%;height:auto;margin:10px 0}
+.ctl{display:flex;align-items:center;gap:12px;margin:14px 0 6px;flex-wrap:wrap}
+.ctl input[type=range]{flex:1;min-width:220px}
+.read{font-variant-numeric:tabular-nums;font-size:.92em}
+.read b{color:var(--ac)}
+table{width:100%;border-collapse:collapse;font-size:.86em;margin-top:12px}
+th,td{border:1px solid var(--bd);padding:5px 8px;text-align:center}
+th{background:#eceff1}
+tbody tr:nth-child(even){background:#fafcfd}
+.note{font-size:.82em;color:var(--mut);margin-top:12px;border-top:1px solid var(--bd);padding-top:10px}
+.warn{background:#fff8e1;border-left:4px solid #f9a825;padding:8px 12px;font-size:.84em;margin:12px 0}
+</style></head><body><div class="wrap">
+<h1>SA-2015-2　F 點剪力影響線（Müller-Breslau ＋ 共軛梁法）</h1><div class="sub">梁 A–F–B–C–D–E：AF = FB = 15 m，BC = CD = 10 m，DE = 30 m，C 為內部鉸。拖動下方滑桿改變單位載重位置，即時讀出 V<sub>F</sub> 的影響線縱距。</div><div class="warn">⚠ 2026-08-26 更新：本頁原本標示 IL(F⁻)=+79/128、IL(F⁺)=−49/128，係共軛梁彎矩多冠一個負號所致，正負與大小皆錯。已更正為 <b>IL(F⁻)=−73/128</b>、<b>IL(F⁺)=+55/128</b>，並補上原本缺少的完整曲線。</div>
+<canvas id="cv" width="1720" height="620"></canvas>
+<div class="ctl">
+  <label for="s">單位載重位置 x =</label>
+  <input id="s" type="range" min="0" max="80" step="0.1" value="24">
+  <span class="read">x = <b id="xv">24.0</b> m　｜　IL of V<sub>F</sub> = <b id="yv"></b></span>
+</div>
+<table>
+ <thead><tr><th>位置</th><th>A (0)</th><th>F⁻ (15)</th><th>F⁺ (15)</th><th>B (30)</th>
+ <th>C (40)</th><th>D (50)</th><th>DE 極大</th><th>E (80)</th></tr></thead>
+ <tbody><tr><td>IL<sub>V<sub>F</sub></sub></td><td>0</td>
+ <td><b>−73/128<br>= −0.5703</b></td><td><b>+55/128<br>= +0.4297</b></td><td>0</td>
+ <td><b>−1/6<br>= −0.1667</b></td><td>0</td><td>+0.0722<br>@ x≈62.7</td><td>0</td></tr></tbody>
+</table>
+<div class="note">
+分段方程（x 由 A 起算，m）：<br>
+0–15：x(x²−5700)/144000　｜　15–30：(x−30)(x²+30x−4800)/144000<br>
+30–40：−(x−30)(x²−90x+2800)/48000　｜　40–50：−(x−50)(x²−70x+400)/48000<br>
+50–80：(x−110)(x−80)(x−50)/144000<br>
+V<sub>F</sub> 以「斷面左側向上」為正。四個支承（A、B、D、E）處縱距皆為 0；
+F 處跳躍恰為 1；C 為內部鉸，斜率在此轉折。
 </div>
 <script>
-const cv=document.getElementById('c'); const ctx=cv.getContext('2d');
-const W=556,H=240, marginL=45, marginR=15, marginT=20, marginB=32;
-const plotW=W-marginL-marginR, plotH=H-marginT-marginB;
-const bounds=[0,15,30,40,50,80]; const names=['A','F','B','C','D','E'];
-const totalLen=80;
-function px(x){ return marginL + x/totalLen*plotW; }
-function py(v){ return marginT + plotH*0.4 - v/1.0*(plotH*0.45); }
-
-ctx.strokeStyle='#999'; ctx.lineWidth=1;
-ctx.beginPath(); ctx.moveTo(marginL,py(0)); ctx.lineTo(W-marginR,py(0)); ctx.stroke();
-ctx.strokeStyle='#ddd';
-bounds.forEach(b=>{ ctx.beginPath(); ctx.moveTo(px(b),marginT); ctx.lineTo(px(b),H-marginB); ctx.stroke(); });
-ctx.font='11px sans-serif'; ctx.fillStyle='#333';
-bounds.forEach((b,i)=>{ ctx.fillText(names[i], px(b)-3, H-marginB+14); });
-ctx.fillText('(內部鉸)', px(40)-16, H-marginB+28);
-
-// 已驗證的三點：F左、F右（不連續跳躍）、C
-ctx.strokeStyle='#0066cc'; ctx.lineWidth=2;
-ctx.setLineDash([4,3]);
-ctx.beginPath(); ctx.moveTo(px(0),py(0)); ctx.lineTo(px(15),py(0.617)); ctx.stroke();
-ctx.beginPath(); ctx.moveTo(px(15),py(-0.383)); ctx.lineTo(px(40),py(-0.167)); ctx.stroke();
-ctx.setLineDash([]);
-// F 點跳躍虛線
-ctx.strokeStyle='#999';
-ctx.beginPath(); ctx.moveTo(px(15),py(0.617)); ctx.lineTo(px(15),py(-0.383)); ctx.stroke();
-
-ctx.fillStyle='#0066cc';
-[[15,0.617],[15,-0.383],[40,-0.167],[0,0]].forEach(p=>{
-  ctx.beginPath(); ctx.arc(px(p[0]),py(p[1]),3,0,7); ctx.fill();
-});
-ctx.font='11px sans-serif';
-ctx.fillText('+0.617', px(15)+6, py(0.617)-4);
-ctx.fillText('-0.383', px(15)+6, py(-0.383)+12);
-ctx.fillText('-0.167', px(40)+6, py(-0.167)+12);
-
-ctx.fillStyle='#333'; ctx.font='10px sans-serif';
-ctx.fillText('虛線僅連接已驗證之三個關鍵點，非完整曲線擬合', 6, H-6);
-ctx.fillText('剪力影響線縱座標（per unit load）', 6, marginT-6);
+const KN=[0,15,30,40,50,80], NM=['A','F','B','C','D','E'];
+function IL(x,right){
+  if(x<15||(x===15&&!right)) return x*(x*x-5700)/144000;
+  if(x<=30) return (x-30)*(x*x+30*x-4800)/144000;
+  if(x<=40) return -(x-30)*(x*x-90*x+2800)/48000;
+  if(x<=50) return -(x-50)*(x*x-70*x+400)/48000;
+  return (x-110)*(x-80)*(x-50)/144000;
+}
+const cv=document.getElementById('cv'),g=cv.getContext('2d');
+const W=1720,H=620,L=90,R=60,T=150,B=90,PW=W-L-R;
+const Y0=T+(H-T-B)*0.46, KY=(H-T-B)*0.46/0.62;
+const PX=x=>L+x/80*PW, PY=v=>Y0-v*KY;
+function draw(xl){
+  g.clearRect(0,0,W,H); g.lineJoin='round';
+  // 梁示意
+  g.strokeStyle='#3F4A5A'; g.lineWidth=7; g.beginPath();
+  g.moveTo(PX(0),70); g.lineTo(PX(80),70); g.stroke();
+  g.fillStyle='#3F4A5A';
+  [[0,'pin'],[30,'rol'],[50,'rol'],[80,'rol']].forEach(([x,k])=>{
+    g.beginPath(); g.moveTo(PX(x),74); g.lineTo(PX(x)-13,98); g.lineTo(PX(x)+13,98);
+    g.closePath(); g.fill();
+    if(k==='rol'){g.beginPath();g.arc(PX(x),104,5,0,7);g.fill();}
+  });
+  g.fillStyle='#fff'; g.strokeStyle='#3F4A5A'; g.lineWidth=3;
+  g.beginPath(); g.arc(PX(40),70,8,0,7); g.fill(); g.stroke();
+  g.setLineDash([6,5]); g.strokeStyle='#B45309'; g.lineWidth=3;
+  g.beginPath(); g.moveTo(PX(15),44); g.lineTo(PX(15),96); g.stroke(); g.setLineDash([]);
+  g.font='700 22px sans-serif'; g.textAlign='center';
+  KN.forEach((x,i)=>{ g.fillStyle=(NM[i]==='F')?'#B45309':'#1F2733';
+    g.fillText(NM[i],PX(x),132); });
+  g.fillStyle='#6B7684'; g.font='16px sans-serif';
+  g.fillText('內部鉸',PX(40),40); g.fillText('剪力斷面',PX(15),34);
+  // 載重
+  g.strokeStyle='#C0392B'; g.fillStyle='#C0392B'; g.lineWidth=4;
+  g.beginPath(); g.moveTo(PX(xl),14); g.lineTo(PX(xl),64); g.stroke();
+  g.beginPath(); g.moveTo(PX(xl),70); g.lineTo(PX(xl)-8,54); g.lineTo(PX(xl)+8,54);
+  g.closePath(); g.fill();
+  // 影響線
+  g.strokeStyle='#9AA4B2'; g.lineWidth=1.5;
+  g.beginPath(); g.moveTo(L,Y0); g.lineTo(W-R,Y0); g.stroke();
+  g.setLineDash([3,5]); g.strokeStyle='#E1E6ED';
+  KN.forEach(x=>{g.beginPath();g.moveTo(PX(x),T);g.lineTo(PX(x),H-B+10);g.stroke();});
+  g.setLineDash([]);
+  [[0,15,false],[15,80,true]].forEach(([a,b,rt])=>{
+    g.beginPath(); g.moveTo(PX(a),Y0);
+    for(let i=0;i<=400;i++){const x=a+(b-a)*i/400; g.lineTo(PX(x),PY(IL(x,rt||x>15)));}
+    g.lineTo(PX(b),Y0); g.closePath();
+    g.fillStyle='rgba(124,58,237,0.16)'; g.fill();
+    g.strokeStyle='#7C3AED'; g.lineWidth=3.4; g.stroke();
+  });
+  g.setLineDash([5,4]); g.strokeStyle='#B45309'; g.lineWidth=3;
+  g.beginPath(); g.moveTo(PX(15),PY(IL(15,false))); g.lineTo(PX(15),PY(IL(15,true)));
+  g.stroke(); g.setLineDash([]);
+  // 讀值
+  const v=IL(xl,xl>15);
+  g.strokeStyle='#C0392B'; g.setLineDash([4,4]); g.lineWidth=2;
+  g.beginPath(); g.moveTo(PX(xl),Y0); g.lineTo(PX(xl),PY(v)); g.stroke(); g.setLineDash([]);
+  g.fillStyle='#C0392B'; g.beginPath(); g.arc(PX(xl),PY(v),7,0,7); g.fill();
+  g.font='700 20px sans-serif'; g.textAlign='center';
+  g.fillText(v.toFixed(4),PX(xl),PY(v)+(v>0?-18:32));
+  [[15,false,'−73/128'],[15,true,'+55/128'],[40,true,'−1/6']].forEach(([x,rt,lb])=>{
+    const y=IL(x,rt); g.fillStyle='#7C3AED';
+    g.beginPath(); g.arc(PX(x),PY(y),5,0,7); g.fill();
+    g.font='700 18px sans-serif';
+    g.fillText(lb,PX(x)+(rt&&x===15?58:(x===15?-58:0)),PY(y)+(y>0?-16:30));
+  });
+  document.getElementById('xv').textContent=xl.toFixed(1);
+  document.getElementById('yv').textContent=v.toFixed(4);
+}
+const s=document.getElementById('s');
+s.addEventListener('input',()=>draw(parseFloat(s.value))); draw(24);
 </script>
-</body>
-</html>
+</div></body></html>
