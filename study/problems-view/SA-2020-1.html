@@ -44,51 +44,156 @@ header .nomat{margin-top:12px;font-size:.8em;opacity:.85}
 <div class="hbtns"><a class="b-study" href="../study-SA-U2-3.html">🔍 U2-3 命題分析</a><a class="b-lect" href="../lecture-SA-U2-3.html">📚 U2-3 靜不定結構之傾角變位法 講義</a><a class="b-fg" href="../formula-given-SA-U2-3.html">🎯 U2-3 給／背分界</a></div>
 </header>
 <main><h1>考題編號：SA-2020-1</h1>
-<p><strong>主分類：</strong> <code>SA-U2-3</code> 靜不定結構分析<br />
+<p><strong>主分類：</strong> <code>SA-U2-3</code> 靜不定結構之傾角變位法<br />
 <strong>副分類：</strong> 無<br />
 <strong>分析法：</strong> 傾角變位法<br />
-<strong>標籤：</strong> <code>傾角變位法</code> <code>無軸向變形</code> <code>垂直滾支承</code> <code>側移方程式</code></p>
+<strong>標籤：</strong> <code>傾角變位法</code> <code>無軸向變形</code> <code>斜桿載重分解</code> <code>滾支承</code> <code>側移方程式</code></p>
 <hr />
 <h2>1. 原始題目重述 (Problem Restatement)</h2>
 <p>如圖 1 所示結構，承受垂直集中載重 68 kN，$a$ 點為固定端，桿件 $ab$ 及 $bc$ 有相同之彈性模數 $E$ 與慣性矩 $I$。若不考慮桿件 $ab$ 及 $bc$ 的軸向變形，求 $ab$ 桿件端點彎矩及 $c$ 點反力。（25 分）</p>
-<p><img alt="SA-2020-1 題目附圖：包含斜桿與水平桿之剛架，a端固定，c端為垂直滾動支承，b點受集中載重" src="../../raw/solutions/SA-2020-1/SA-2020-1-fig-1.png" /></p>
-<p><em>圖說：節點 $a$ 位於原點為固定端，$ab$ 為斜桿，水平投影 $4\text{m}$、垂直落差 $3\text{m}$，實長 $5\text{m}$；$bc$ 為水平桿，長 $2\text{m}$；$c$ 點有垂直滑軌（垂直滾動支承，允許垂直移動但不可水平移動或旋轉）。$b$ 點承受 $68\text{ kN}$ 向下集中載重。所有桿件 $EI$ 相同，不考慮軸向變形。</em></p>
+<p><img alt="SA-2020-1 題目附圖：水平桿 ab 接斜桿 bc，a 為固定端，c 為靠垂直牆的滾支承，68 kN 作用於 bc 中點" src="../../raw/solutions/SA-2020-1/SA-2020-1-fig-1.png" /></p>
+<p><em>圖說：以 $a$ 為原點。</em><em>$ab$ 是水平桿，長 4 m</em><em>（$a(0,0) \to b(4,0)$）；</em><em>$bc$ 是斜桿</em><em>，水平 4 m、垂直落差 3 m，</em><em>實長 5 m</em><em>（$b(4,0) \to c(8,-3)$）。</em><em>68 kN 向下作用於 $bc$ 的中點</em><em>（$x = 6$ m）。$a$ 為固定端（貼左側垂直牆）；$c$ 為貼右側垂直牆的</em><em>滾支承</em><em>——只束制水平位移，可垂直滑動、</em><em>可自由轉動</em><em>。</em></p>
+<hr />
+<h2>1.5 ⚠ 勘誤（2026-08-26）：舊版把附圖讀成了另一個結構</h2>
+<blockquote>
+<p>舊版 §1 的圖說與 §4 的全部計算建立在四項誤讀之上，<strong>結論全部作廢</strong>。</p>
+</blockquote>
+<p>考卷附圖經逐像素掃描（尺寸刻度落在 $x = 0 / 4.00 / 5.99 / 7.99$；水平桿橫跨 $x = 0 \to 4.10$；載重箭頭實心三角中心 $x \approx 6.0$；$c$ 處為單一圓圈貼在垂直剖面線牆上）：</p>
+<table>
+<thead>
+<tr>
+<th>項目</th>
+<th>舊版寫的</th>
+<th>附圖實況</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>哪根是斜桿</td>
+<td>「$ab$ 為斜桿，水平投影 4 m、垂直落差 3 m，實長 5 m」</td>
+<td><strong>$ab$ 是水平桿，長 4 m</strong></td>
+</tr>
+<tr>
+<td>另一根</td>
+<td>「$bc$ 為水平桿，長 2 m」</td>
+<td><strong>$bc$ 是斜桿，4-3-5，長 5 m</strong></td>
+</tr>
+<tr>
+<td>載重位置</td>
+<td>「$b$ 點承受 68 kN」</td>
+<td><strong>68 kN 在 $bc$ 的中點</strong>（因此有固端彎矩）</td>
+</tr>
+<tr>
+<td>$c$ 的支承</td>
+<td>「垂直滑軌，<strong>不可旋轉</strong>」</td>
+<td><strong>單一滾輪 ⇒ 可自由轉動，$M_{cb}=0$</strong></td>
+</tr>
+</tbody>
+</table>
+<p>四項全錯，連帶的運動學（哪根桿有弦旋轉）、固端彎矩（舊版認為沒有）、未知數個數都不對。</p>
+<table>
+<thead>
+<tr>
+<th>量</th>
+<th>舊版（錯）</th>
+<th>正確</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>$M_{ab}$</td>
+<td>$+231.8$ kN·m</td>
+<td>$\mathbf{-191}$ kN·m</td>
+</tr>
+<tr>
+<td>$M_{ba}$</td>
+<td>$+193.2$ kN·m</td>
+<td>$\mathbf{-81}$ kN·m</td>
+</tr>
+<tr>
+<td>$c$ 點反力</td>
+<td>「$C_y = 0$」</td>
+<td><strong>水平 $\dfrac{217}{3} \approx 72.33$ kN</strong>（垂直分量確為 0，但題目要的是這個水平反力）</td>
+</tr>
+</tbody>
+</table>
 <hr />
 <h2>2. 考題核心精神與出題者意圖 (Core Concepts &amp; Examiner's Intent)</h2>
-<p>本題的核心在於測驗考生對於<strong>「不考慮軸向變形（剛性軸向）」</strong>與<strong>「特殊邊界條件（垂直滾支承）」</strong>的幾何相容性判定能力。<br />
-出題者故意設計了一個帶有斜桿的剛架，並在 $c$ 端放置了一個平時較少見的「垂直滾支承（只能垂直平移，無水平平移與旋轉）」。如果考生無法準確畫出結構的可能變形位移（即各桿件的側移角 $\psi$），就會陷入未知的泥淖中。本題的「靈魂」在於推導出 $b, c$ 兩點的運動學限制。</p>
+<p><strong>核心：</strong> 「不考慮軸向變形」＋「特殊邊界」共同決定了<strong>只剩一個側移自由度</strong>，而斜桿上的載重必須先分解。</p>
+<ol>
+<li><strong>運動學相容性</strong>：$ab$ 水平且軸向剛性 $\Rightarrow u_b = 0$；$c$ 靠垂直牆 $\Rightarrow u_c = 0$；$bc$ 軸向剛性且兩端 $u=0 \Rightarrow v_c = v_b$。三個條件鎖死之後，$b$ 與 $c$ <strong>只能一起垂直下移同一個 $\Delta$</strong>。</li>
+<li><strong>弦旋轉在哪一根</strong>：$b$、$c$ 同時下移 $\Delta$ $\Rightarrow$ <strong>斜桿 $bc$ 是純平移，$\psi_{bc} = 0$</strong>；反而是<strong>水平桿 $ab$</strong> 的弦轉了 $\psi_{ab} = \Delta/4$。這與直覺相反，是本題的魔王關。</li>
+<li><strong>斜桿上的載重要先分解</strong>：只有<strong>垂直於桿軸</strong>的分量才產生固端彎矩。</li>
+<li><strong>滾支承可轉動</strong>：$M_{cb} = 0$ 是第三條方程，$\theta_c$ 是未知數而非零。</li>
+</ol>
 <hr />
 <h2>3. 解題戰略地圖與陷阱分析 (Strategic Roadmap &amp; Trap Analysis)</h2>
 <p><strong>解題步驟：</strong></p>
 <ol>
-<li><strong>運動學分析（判斷未知數）：</strong> 利用不考慮軸向變形的條件，分析 $b$ 與 $c$ 的可能位移，求出各桿件的側移角 $\psi$ 關係。</li>
-<li><strong>建立傾角變位方程式：</strong> 寫出各桿端的彎矩方程式，代入已知的邊界條件（$\theta_a = 0, \theta_c = 0$）。</li>
-<li><strong>節點平衡與剪力平衡：</strong> 利用節點 $b$ 的彎矩平衡，以及取整體結構力矩平衡（剪力方程式）建立聯立方程式。</li>
-<li><strong>解聯立方程式：</strong> 求出未知的節點旋轉角 $\theta_b$ 與側移參數，進而回代求出所有端點彎矩與 $c$ 點反力。</li>
+<li><strong>運動學</strong>：由軸向剛性與邊界條件推出 $v_b = v_c = \Delta$、$\psi_{ab} = \Delta/4$、$\psi_{bc} = 0$。</li>
+<li><strong>載重分解</strong>：把 68 kN 分解成 $bc$ 的法向與軸向分量，只用法向分量算固端彎矩。</li>
+<li><strong>傾角變位方程式</strong>：寫出 $M_{ab}$、$M_{ba}$、$M_{bc}$、$M_{cb}$。</li>
+<li><strong>三條平衡式</strong>：節點 $b$ 的 $\Sigma M = 0$、滾支承的 $M_{cb} = 0$、側移方程（虛功法）。</li>
+<li><strong>回代</strong>求端彎矩與反力。</li>
 </ol>
 <p><strong>陷阱分析：</strong></p>
-<ul>
-<li><strong>陷阱一：誤判 $c$ 點的支承性質。</strong> 圖示 $c$ 點是牆壁上的滾輪，只能「上下」滑動。這代表 $u_c = 0$ 且 $\theta_c = 0$。若誤以為是鉸支承或一般滾支承，將導致全錯。</li>
-<li><strong>陷阱二：無法找出 $\psi_{ab}$ 與 $\psi_{bc}$ 的關係。</strong> $bc$ 桿長度不變且 $u_c = 0$，表示 $u_b = 0$。因此 $b$ 點只能純粹「垂直下移」。若 $b$ 點垂直下移 $\Delta$，將導致斜桿 $ab$ 產生相對應的弦旋轉角 $\psi_{ab}$。但 $bc$ 桿由於只有純平移（兩端皆下移 $\Delta$），弦並未旋轉，故 $\psi_{bc} = 0$！這是本題最大的魔王關。</li>
-<li><strong>陷阱三：剪力方程式的建立。</strong> 由於 $b$ 點發生側移（其實是垂直位移），必須要有第三個方程式。此時取 $ab$ 桿件分離體並針對 $a$ 點取力矩是最容易出錯的地方，必須考慮 $b$ 點的內力與外力關係。</li>
-</ul>
+<table>
+<thead>
+<tr>
+<th>陷阱</th>
+<th>為什麼會錯</th>
+<th>正解</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>把 $ab$ 當斜桿</strong></td>
+<td>附圖左半段畫得較長，容易先入為主</td>
+<td>尺寸線是 4 ｜ 2 ｜ 2；水平段就是前面那 4 m</td>
+</tr>
+<tr>
+<td><strong>把 68 kN 當節點載重</strong></td>
+<td>箭頭離 $b$ 不遠</td>
+<td>箭頭中心在 $x=6$，正好是 $bc$ 中點 $\Rightarrow$ <strong>有固端彎矩</strong></td>
+</tr>
+<tr>
+<td><strong>把 $c$ 當不可轉動的滑軌</strong></td>
+<td>滑軌與滾支承的圖例相近</td>
+<td>單一圓圈 = 滾支承，<strong>可轉動</strong>；若當滑軌會少一個未知數、多一個約束</td>
+</tr>
+<tr>
+<td><strong>弦旋轉認錯桿</strong></td>
+<td>直覺以為「斜的那根才會轉」</td>
+<td>$b$、$c$ 同步下移 $\Rightarrow$ $bc$ 純平移；轉的是水平的 $ab$</td>
+</tr>
+<tr>
+<td><strong>直接拿 68 kN 算 FEM</strong></td>
+<td>忘了斜桿要分解</td>
+<td>法向分量 $68 \times \frac45 = 54.4$ kN，用它算 $\pm PL/8$；直接用 68 會高估 25%</td>
+</tr>
+<tr>
+<td><strong>只答「$C_y = 0$」</strong></td>
+<td>沒注意滾支承的反力方向</td>
+<td>滾輪貼<strong>垂直</strong>牆 $\Rightarrow$ 反力是<strong>水平</strong>的</td>
+</tr>
+</tbody>
+</table>
 <hr />
 <h2>3.5 變數層次分析 (Variable Hierarchy Analysis)</h2>
 <blockquote>
 <p>複習提示：第一次解題後，在每個卡住的知識點旁標記 <code>⚠</code>；第二次複習時只看有 <code>⚠</code> 的項目。</p>
 </blockquote>
 <h3>最終目標</h3>
-<p><code>求出端點彎矩 M_{ab} 及支承反力 C_y</code></p>
+<p><code>求 ab 桿的端點彎矩 M_ab、M_ba，以及 c 點的反力</code></p>
 <h3>本題關鍵公式（依計算順序）</h3>
 <blockquote>
-<p>$\boxed{\cdot}$ = 需由前步驟推導，非題目直接給定的變數</p>
+<p>$\boxed{\cdot}$ ＝ 需由前步驟推導</p>
 </blockquote>
-<p>$$\text{Step 1 (幾何分析): } \Delta_b = \Delta_c = \Delta \text{ (向下)} \Rightarrow \psi_{ab} = -\frac{4\Delta/5}{5} = -\frac{4\Delta}{25}, \quad \psi_{bc} = \boxed{0}$$</p>
-<p>$$\text{Step 2 (傾角變位): } M_{AB} = \frac{2EI}{L}(2\theta_A + \theta_B - 3\boxed{\psi}) + M_{FAB}$$</p>
-<p>$$\text{Step 3 (節點平衡): } \boxed{M_{ba}} + \boxed{M_{bc}} = 0$$</p>
-<p>$$\text{Step 4 (剪力方程): } \Sigma M_a = 0 \Rightarrow \boxed{M_{ab}} + \boxed{M_{ba}} - V_{b,ab} \cdot L_{ab} = 0 \text{ (需轉換外力與內力)}$$</p>
+<p>$$\text{Step 1（運動學）：} \; v_b = v_c = \Delta \;\Rightarrow\; \psi_{ab} = \frac{\Delta}{4},\quad \boxed{\psi_{bc} = 0}$$</p>
+<p>$$\text{Step 2（載重分解）：} \; P_\perp = P\cos\phi = 68 \times \tfrac45,\qquad M_F = \pm\frac{\boxed{P_\perp}\,L_{bc}}{8}$$</p>
+<p>$$\text{Step 3（傾角變位）：} \; M_{nf} = \frac{2EI}{L}\left(2\theta_n + \theta_f - 3\psi\right) + M_F$$</p>
+<p>$$\text{Step 4（三條方程）：} \; M_{ba} + M_{bc} = 0,\qquad \boxed{M_{cb}} = 0,\qquad M_{ab} + M_{ba} = -P\,L_{ab}$$</p>
 <h3>L1：題目直接給定</h3>
-<p><em>看到題目就能讀出的數字，不需要任何公式。</em></p>
 <table>
 <thead>
 <tr>
@@ -100,58 +205,59 @@ header .nomat{margin-top:12px;font-size:.8em;opacity:.85}
 <tbody>
 <tr>
 <td>$P$</td>
-<td>68 kN</td>
-<td>集中載重向下</td>
+<td>68 kN（↓）</td>
+<td>集中載重，作用於 $bc$ 中點</td>
 </tr>
 <tr>
 <td>$L_{ab}$</td>
-<td>5 m</td>
-<td>$ab$ 桿長 ($\sqrt{4^2+3^2}$)</td>
+<td>4 m</td>
+<td><strong>水平</strong>桿</td>
 </tr>
 <tr>
 <td>$L_{bc}$</td>
-<td>2 m</td>
-<td>$bc$ 桿長</td>
+<td>5 m</td>
+<td><strong>斜</strong>桿（4-3-5）</td>
 </tr>
 <tr>
 <td>$EI$</td>
-<td>常數</td>
-<td>各桿彈性模數與慣性矩乘積</td>
+<td>兩桿相同</td>
+<td>最終答案與 $EI$ 無關</td>
 </tr>
 </tbody>
 </table>
 <h3>L2：需知識點推導</h3>
-<p><em>需要知道公式名稱與適用條件，套入 L1 即可算出。</em></p>
-<p><strong>Step 1：固端彎矩計算</strong></p>
 <table>
 <thead>
 <tr>
 <th>符號</th>
-<th>公式/來源</th>
+<th>公式／來源</th>
 <th style="text-align: center;">卡關?</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>$M_{FAB}$</td>
-<td>集中載重直接作用在節點上，無節點間載重</td>
+<td>$\cos\phi,\ \sin\phi$</td>
+<td>$4/5,\ 3/5$（由 4-3-5）</td>
 <td style="text-align: center;"></td>
 </tr>
-</tbody>
-</table>
-<p><strong>Step 2：建立傾角變位方程式</strong></p>
-<table>
-<thead>
 <tr>
-<th>符號</th>
-<th>公式/來源</th>
-<th style="text-align: center;">卡關?</th>
+<td>$P_\perp$</td>
+<td>$68 \times 4/5 = 54.4$ kN</td>
+<td style="text-align: center;"></td>
 </tr>
-</thead>
-<tbody>
 <tr>
-<td>$\theta_a, \theta_c$</td>
-<td>幾何邊界條件，固定端及垂直滑軌皆為 0</td>
+<td>$P_\parallel$</td>
+<td>$68 \times 3/5 = 40.8$ kN（軸向，不生彎矩）</td>
+<td style="text-align: center;"></td>
+</tr>
+<tr>
+<td>$M_F^{bc},\,M_F^{cb}$</td>
+<td>$\mp P_\perp L_{bc}/8 = \mp 34$ kN·m</td>
+<td style="text-align: center;"></td>
+</tr>
+<tr>
+<td>$\psi_{ab},\ \psi_{bc}$</td>
+<td>$\Delta/4$ ，$0$</td>
 <td style="text-align: center;"></td>
 </tr>
 </tbody>
@@ -167,23 +273,28 @@ header .nomat{margin-top:12px;font-size:.8em;opacity:.85}
 </thead>
 <tbody>
 <tr>
-<td>軸向剛性之位移諧合</td>
-<td>$bc$ 無軸向變形且 $u_c=0 \Rightarrow u_b=0$。故 $b$ 僅能垂直位移。</td>
+<td>軸向剛性的連鎖推論</td>
+<td>水平桿鎖住 $u$、斜桿加上兩端 $u=0$ 再鎖住 $v$ 的相對量，最後只剩一個 $\Delta$</td>
 <td style="text-align: center;"></td>
 </tr>
 <tr>
-<td>$\psi_{bc}$ 的判定</td>
-<td>桿件弦旋轉角 $\psi = \Delta_\perp / L$。$bc$ 兩端皆下移 $\Delta$，相對垂直位移為0，故 $\psi_{bc} = 0$。</td>
+<td>弦旋轉的定義</td>
+<td>$\psi = \dfrac{\text{兩端垂直於桿軸的相對位移}}{L}$；<strong>兩端位移相同 $\Rightarrow$ 純平移 $\Rightarrow \psi = 0$</strong></td>
 <td style="text-align: center;"></td>
 </tr>
 <tr>
-<td>$\psi_{ab}$ 的判定</td>
-<td>$b$ 下移 $\Delta$，$ab$ 桿垂直於桿軸線的位移分量為 $\Delta \cdot (4/5)$，故 $\psi_{ab} = \frac{4\Delta/5}{5} = \frac{4\Delta}{25}$。</td>
+<td>斜桿載重分解</td>
+<td>只有法向分量產生彎矩；軸向分量在「不考慮軸向變形」下由桿件直接傳遞</td>
 <td style="text-align: center;"></td>
 </tr>
 <tr>
-<td>側移（剪力）方程式</td>
-<td>取整體 $abc$ 對 $a$ 取矩，或取 $ab$ 對 $a$ 取矩以找出包含彎矩與載重的關係式。</td>
+<td>滾支承 vs 滑軌</td>
+<td>單一滾輪：束制 1 個平移、<strong>可轉動</strong>（$M=0$）；滑軌：束制 1 個平移 ＋ 轉動（$M \ne 0$）</td>
+<td style="text-align: center;"></td>
+</tr>
+<tr>
+<td>側移方程（虛功法）</td>
+<td>給機構一個虛位移 $\delta\Delta$：$\sum (M_{nf}+M_{fn})\,\delta\psi_{nf} + \sum P\,\delta = 0$</td>
 <td style="text-align: center;"></td>
 </tr>
 </tbody>
@@ -193,82 +304,160 @@ header .nomat{margin-top:12px;font-size:.8em;opacity:.85}
 <blockquote>
 <p>📊 互動圖：<code>SA-2020-1-slope-deflect-viz.html</code></p>
 </blockquote>
-<p><strong>Step 1: 幾何變位分析 (側移角 $\psi$)</strong></p>
+<h3>4.0 幾何與靜不定度</h3>
+<p><img alt="SA-2020-1 題目重繪：ab 水平桿 4m、bc 斜桿 5m、68kN 在 bc 中點、c 為可轉動滾支承" src="../../raw/solutions/SA-2020-1/figs/SA-2020-1-fig-1-frame.svg" /></p>
+<p><em>圖 1　題目重繪（向量版，幾何由附圖像素掃描而來）。這張圖攔本題最致命的三個誤讀：哪一根是斜桿、68 kN 在節點還是桿件中間、$c$ 是可轉動的滾支承還是不可轉動的滑軌——任一項錯了，整份答案作廢。</em></p>
+<p>反力：$a$ 為固定端（3 個）＋ $c$ 為滾支承（1 個）＝ 4；平衡方程 3 式 $\Rightarrow$ <strong>1 度靜不定</strong>。</p>
+<h3>4.1 運動學：只剩一個側移自由度</h3>
+<p><img alt="SA-2020-1 運動學：軸向剛性導致 b、c 同步下移 Δ，ab 的弦轉動而 bc 純平移" src="../../raw/solutions/SA-2020-1/figs/SA-2020-1-fig-2-kinematics.svg" /></p>
+<p><em>圖 2　側移機構。這張圖攔的是「以為斜桿才會有弦旋轉」：$b$、$c$ 同步下移 $\Delta$，$bc$ 是純平移（$\psi_{bc}=0$），真正轉的是水平桿 $ab$。</em></p>
 <ul>
-<li>$c$ 點為垂直滾支承：不可水平移動 ($u_c = 0$)，不可旋轉 ($\theta_c = 0$)，僅能垂直位移 ($v_c = \Delta \downarrow$)。</li>
-<li>$bc$ 桿無軸向變形：$u_b = u_c = 0$。因此 $b$ 點只能純粹垂直下移，令 $v_b = \Delta \downarrow$。</li>
-<li>對於 $bc$ 桿，左右兩端皆下移 $\Delta$，相對側移為 0，故 $\mathbf{\psi_{bc} = 0}$。</li>
-<li>對於 $ab$ 桿，端點 $b$ 下移 $\Delta$。將此位移分解為平行與垂直 $ab$ 桿的方向：<br />
-  垂直 $ab$ 的位移分量為 $\Delta_{\perp} = \Delta \cos\phi = \Delta \times \frac{4}{5} = 0.8\Delta$。<br />
-  $ab$ 桿的弦旋轉角 $\psi_{ab} = \frac{-\Delta_{\perp}}{L_{ab}} = \frac{-0.8\Delta}{5} = \mathbf{-0.16\Delta}$ （令逆時針為正，順時針為負）。</li>
+<li>$ab$ 為水平桿且軸向剛性 $\Rightarrow u_b = u_a = 0$</li>
+<li>$c$ 靠垂直牆的滾支承 $\Rightarrow u_c = 0$</li>
+<li>$bc$ 軸向剛性，其軸向方向為 $(\tfrac45, -\tfrac35)$：</li>
 </ul>
-<p><strong>Step 2: 建立傾角變位方程式</strong><br />
-令 $E K = \frac{EI}{1}$ 作為相對剛度基準：</p>
+<p>$$(u_c - u_b)\tfrac45 + (v_c - v_b)\left(-\tfrac35\right) = 0 \;\xrightarrow{\;u_b=u_c=0\;}\; v_c = v_b$$</p>
+<p>令 $b$、$c$ 同時下移 $\Delta$：</p>
+<p>$$\boxed{\psi_{ab} = \frac{\Delta}{4}\ \text{（順時針為正）}}\qquad \boxed{\psi_{bc} = 0\ \text{（純平移）}}$$</p>
+<p><strong>未知數：</strong> $\theta_b$、$\theta_c$、$\Delta$ 三個。</p>
+<h3>4.2 斜桿上的載重分解與固端彎矩</h3>
+<p><img alt="SA-2020-1 68kN 在斜桿上分解為法向 54.4 kN 與軸向 40.8 kN，只有法向進固端彎矩" src="../../raw/solutions/SA-2020-1/figs/SA-2020-1-fig-3-load-decomp.svg" /></p>
+<p><em>圖 3　載重分解。這張圖攔的是「直接拿 68 kN 去套 $PL/8$」：斜桿只有法向分量會彎它，直接用 68 會把固端彎矩高估 25%。</em></p>
+<p>$bc$ 的方向餘弦 $(\cos\phi, -\sin\phi) = (\tfrac45, -\tfrac35)$：</p>
+<p>$$P_\perp = 68 \times \tfrac45 = 54.4\ \text{kN}\ \text{（法向，產生彎矩）}$$<br />
+$$P_\parallel = 68 \times \tfrac35 = 40.8\ \text{kN}\ \text{（軸向，不產生彎矩）}$$</p>
+<p>法向載重落在 5 m 桿的<strong>中點</strong>：</p>
+<p>$$M_F^{bc} = -\frac{P_\perp L_{bc}}{8} = -34\ \text{kN·m},\qquad M_F^{cb} = +34\ \text{kN·m}$$</p>
+<h3>4.3 傾角變位方程式</h3>
+<p>以順時針為正，$EI$ 為共同係數：</p>
+<p>$$M_{ab} = \frac{2EI}{4}\left(\theta_b - 3\tfrac{\Delta}{4}\right) = 0.5EI\,\theta_b - 0.375EI\,\Delta$$<br />
+$$M_{ba} = \frac{2EI}{4}\left(2\theta_b - 3\tfrac{\Delta}{4}\right) = EI\,\theta_b - 0.375EI\,\Delta$$<br />
+$$M_{bc} = \frac{2EI}{5}\left(2\theta_b + \theta_c\right) - 34 = 0.8EI\,\theta_b + 0.4EI\,\theta_c - 34$$<br />
+$$M_{cb} = \frac{2EI}{5}\left(2\theta_c + \theta_b\right) + 34 = 0.8EI\,\theta_c + 0.4EI\,\theta_b + 34$$</p>
+<h3>4.4 三條平衡方程式</h3>
+<p><strong>（1）節點 $b$ 力矩平衡：</strong> $M_{ba} + M_{bc} = 0$</p>
+<p>$$1.8\,EI\theta_b + 0.4\,EI\theta_c - 0.375\,EI\Delta = 34 \tag{1}$$</p>
+<p><strong>（2）滾支承：$c$ 可自由轉動 $\Rightarrow M_{cb} = 0$</strong></p>
+<p>$$0.4\,EI\theta_b + 0.8\,EI\theta_c = -34 \tag{2}$$</p>
+<p><strong>（3）側移方程（虛功法）：</strong> 給機構虛位移 $\delta\Delta$（$b$、$c$ 同時下移），則 $\delta\psi_{ab} = \delta\Delta/4$、$\delta\psi_{bc} = 0$，而 68 kN 隨 $bc$ 剛體平移下降 $\delta\Delta$：</p>
+<p>$$(M_{ab} + M_{ba})\cdot\frac{\delta\Delta}{4} + 68\,\delta\Delta = 0<br />
+\;\Longrightarrow\; \boxed{M_{ab} + M_{ba} = -272} \tag{3}$$</p>
+<p>展開 (3)：$1.5\,EI\theta_b - 0.75\,EI\Delta = -272$</p>
+<h3>4.5 解聯立</h3>
+<p>由 (2)：$EI\theta_c = -42.5 - 0.5\,EI\theta_b$。代入 (1)：</p>
+<p>$$1.6\,EI\theta_b - 0.375\,EI\Delta = 51 \tag{1'}$$</p>
+<p>$(1')\times 2 - (3)$：$1.7\,EI\theta_b = 374 \Rightarrow \boxed{EI\theta_b = 220}$</p>
+<p>$$EI\Delta = \frac{1.5(220) + 272}{0.75} = \frac{602}{0.75} = \frac{2408}{3} \approx 802.67$$<br />
+$$EI\theta_c = -42.5 - 110 = -152.5$$</p>
+<h3>4.6 端點彎矩與反力</h3>
+<p>$$\boxed{M_{ab} = 0.5(220) - 0.375!\left(\tfrac{2408}{3}\right) = 110 - 301 = -191\ \text{kN·m}}$$<br />
+$$\boxed{M_{ba} = 220 - 301 = -81\ \text{kN·m}}$$<br />
+$$M_{bc} = +81\ \text{kN·m}\quad(\text{節點 } b \text{ 平衡 ✓}),\qquad M_{cb} = 0\ \checkmark$$</p>
+<p>（順時針為正。$M_{ab} = -191$ 代表固定端 $a$ 對桿件施加 191 kN·m 的<strong>逆時針</strong>彎矩。）</p>
+<p><strong>$c$ 點反力：</strong> $c$ 是貼<strong>垂直</strong>牆的滾支承，反力方向為<strong>水平</strong>。由整體對 $a$ 取矩（逆時針正）：</p>
+<p>$$M_a + 3C_x - 68 \times 6 = 0,\qquad M_a = 191\ \text{（逆時針）}$$<br />
+$$\boxed{C_x = \frac{408 - 191}{3} = \frac{217}{3} \approx 72.33\ \text{kN}}$$</p>
+<p>$c$ 為滾支承，<strong>垂直反力為 0</strong>；68 kN 全部由固定端 $a$ 承擔（$A_y = 68$ kN ↑，$A_x = -72.33$ kN）。</p>
+<h3>4.7 彎矩圖</h3>
+<p><img alt="SA-2020-1 彎矩圖：ab 由 -191 線性到 +81（反曲點距 a 2.809 m），bc 由 +81 到 0 並在中點疊加至 +108.5" src="../../raw/solutions/SA-2020-1/figs/SA-2020-1-fig-4-bmd.svg" /></p>
+<p><em>圖 4　彎矩圖（畫在受拉側）。這張圖攔兩件事：把 $ab$ 桿當成全段同號（它在距 $a$ 2.809 m 處變號），以及在 $bc$ 只把兩端點連線（會漏掉法向載重造成的三角形，中點少了 68 kN·m）。</em></p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">位置</th>
+<th style="text-align: center;">$a$</th>
+<th style="text-align: center;">$ab$ 反曲點</th>
+<th style="text-align: center;">$b$</th>
+<th style="text-align: center;">$bc$ 中點</th>
+<th style="text-align: center;">$c$</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">彎矩（下凹為正）</td>
+<td style="text-align: center;">$-191$</td>
+<td style="text-align: center;">$0$（距 $a$ 2.809 m）</td>
+<td style="text-align: center;">$+81$</td>
+<td style="text-align: center;">$+108.5$</td>
+<td style="text-align: center;">$0$</td>
+</tr>
+</tbody>
+</table>
+<h3>4.8 驗算</h3>
 <ul>
-<li>$k_{ab} = \frac{I}{5}$</li>
-<li>$k_{bc} = \frac{I}{2} = 2.5 k_{ab}$</li>
+<li>節點 $b$：$M_{ba} + M_{bc} = -81 + 81 = 0$ ✓</li>
+<li>滾支承：$M_{cb} = 0$ ✓</li>
+<li>$\Sigma F_y$：$A_y = 68$ ✓　$\Sigma F_x$：$A_x + C_x = -72.33 + 72.33 = 0$ ✓</li>
+<li>$\Sigma M_a$：$191 + 3(72.33) - 68(6) = 191 + 217 - 408 = 0$ ✓</li>
+<li>側移方程：$M_{ab} + M_{ba} = -191 - 81 = -272 = -68 \times 4$ ✓</li>
 </ul>
-<p>為了計算方便，直接代入原公式：<br />
-$$M_{ab} = \frac{2EI}{5} (2\theta_a + \theta_b - 3\psi_{ab}) = \frac{2EI}{5} (\theta_b - 3(-0.16\Delta)) = \frac{2EI}{5}\theta_b + \frac{0.96EI}{5}\Delta$$<br />
-$$M_{ba} = \frac{2EI}{5} (2\theta_b + \theta_a - 3\psi_{ab}) = \frac{4EI}{5}\theta_b + \frac{0.96EI}{5}\Delta$$<br />
-$$M_{bc} = \frac{2EI}{2} (2\theta_b + \theta_c - 3\psi_{bc}) = EI(2\theta_b) = 2EI\theta_b$$<br />
-$$M_{cb} = \frac{2EI}{2} (2\theta_c + \theta_b - 3\psi_{bc}) = EI(\theta_b) = EI\theta_b$$<br />
-<em>(此處所有無桿節間載重，故 $M_F = 0$)</em>。</p>
-<p><strong>Step 3: 建立平衡方程式</strong><br />
-(1) 節點 $b$ 的力矩平衡：<br />
-$$ \Sigma M_b = 0 \Rightarrow M_{ba} + M_{bc} = 0 $$<br />
-$$ \left( \frac{4EI}{5}\theta_b + \frac{0.96EI}{5}\Delta \right) + 2EI\theta_b = 0 $$<br />
-$$ \frac{14EI}{5}\theta_b + \frac{0.96EI}{5}\Delta = 0 \Rightarrow \mathbf{14\theta_b + 0.96\Delta = 0} \quad \text{--- (式1)} $$</p>
-<p>(2) 剪力方程式 (取整體分離體圖或 $ab$ 桿分離體圖)：<br />
-觀察整體結構 $a-b-c$：<br />
-$a$ 點為固定端，有 $A_x, A_y, M_a$。<br />
-$c$ 點為垂直滾輪，有水平反力 $C_x$，及反力彎矩 $M_c$。<strong>無垂直反力 ($C_y = 0$)</strong>。<br />
-外力在 $b$ 點有 68 kN 向下。</p>
-<ul>
-<li>
-<p>取整體結構對 $a$ 取力矩：<br />
-  $\Sigma M_a = 0 \Rightarrow M_{ab} + M_{cb} - C_x(3\text{m}) - 68(4\text{m}) = 0$</p>
-</li>
-<li>
-<p>因為 $bc$ 桿為水平桿且無橫向（水平）載重，取 $bc$ 桿分離體可知，軸力 $N_{bc} = -C_x$ (壓力)。</p>
-</li>
-<li>取 $ab$ 桿對 $a$ 點取矩：<br />
-  $\Sigma M_a = 0 \Rightarrow M_{ab} + M_{ba} + V_{b,ab} \times 5 = 0$ (若以順時針方向推導)<br />
-  更簡便的方式是直接利用虛功原理：<br />
-  假設發生虛位移 $\delta\Delta$，則內力虛功等於外力虛功：<br />
-  $W_{int} = M_{ab} \cdot \delta\theta_{ab} + M_{ba} \cdot \delta\theta_{ba} + M_{bc} \cdot \delta\theta_{bc} + M_{cb} \cdot \delta\theta_{cb}$<br />
-  此時令 $\delta\theta_b = 0$，僅發生機構虛側移 $\delta\Delta$：<br />
-  $\delta\psi_{ab} = -0.16 \delta\Delta$<br />
-  $W_{int} = (M_{ab} + M_{ba}) \cdot (-0.16 \delta\Delta)$<br />
-  外力虛功 $W_{ext} = P \cdot \delta\Delta = 68 \delta\Delta$<br />
-  令 $W_{int} + W_{ext} = 0$：<br />
-  $(M_{ab} + M_{ba})(-0.16) + 68 = 0 \Rightarrow \mathbf{M_{ab} + M_{ba} = 425} \quad \text{--- (式2)}$</li>
-</ul>
-<p><strong>Step 4: 求解與代回</strong><br />
-將 $M_{ab}$ 與 $M_{ba}$ 展開代入 (式2)：<br />
-$$ \left( \frac{2EI}{5}\theta_b + \frac{0.96EI}{5}\Delta \right) + \left( \frac{4EI}{5}\theta_b + \frac{0.96EI}{5}\Delta \right) = 425 $$<br />
-$$ \frac{6EI}{5}\theta_b + \frac{1.92EI}{5}\Delta = 425 \Rightarrow \mathbf{6EI\theta_b + 1.92EI\Delta = 2125} \quad \text{--- (式3)} $$</p>
-<p>聯立 (式1) 與 (式3)：<br />
-由 (式1) 得 $\Delta = -\frac{14}{0.96}\theta_b = -14.5833 \theta_b$<br />
-代入 (式3)：<br />
-$$ 6EI\theta_b + 1.92EI(-14.5833\theta_b) = 2125 $$<br />
-$$ 6EI\theta_b - 28EI\theta_b = 2125 \Rightarrow -22EI\theta_b = 2125 \Rightarrow EI\theta_b = -96.591 $$<br />
-$$ EI\Delta = -14.5833 \times (-96.591) = 1408.62 $$</p>
-<p>代回求端點彎矩：<br />
-$$ \boxed{M_{ab}} = \frac{2}{5}(-96.591) + \frac{0.96}{5}(1408.62) = -38.636 + 270.455 = \mathbf{231.8 \text{ kN-m}} $$<br />
-$$ \boxed{M_{ba}} = \frac{4}{5}(-96.591) + \frac{0.96}{5}(1408.62) = -77.273 + 270.455 = \mathbf{193.2 \text{ kN-m}} $$<br />
-$$ M_{bc} = 2(-96.591) = -193.2 \text{ kN-m} \text{ (與 } M_{ba} \text{ 大小相等，符號相反，平衡！)} $$<br />
-$$ M_{cb} = 1(-96.591) = -96.6 \text{ kN-m} $$</p>
-<p>求 $c$ 點反力：<br />
-因為 $c$ 為垂直滾動支承（滑軌），<strong>不提供垂直反力</strong>，所以垂直反力：<br />
-$$ \boxed{C_y = 0 \text{ kN}} $$<br />
-(所有 68 kN 的垂直外力皆由固定端 $a$ 承受，即 $A_y = 68 \text{ kN} \uparrow$)。</p>
 <hr />
 <h2>5. 關鍵爭議點與進階探討 (Critical Issues &amp; Advanced Discussion)</h2>
-<ul>
-<li><strong>$c$ 點支承性質的詮釋</strong>：此題唯一可能引發爭議的是對 $c$ 點圖示的認知。在結構學圖學標準中，這種有上下兩條線夾住滾輪的圖案，代表「允許平行於牆面的移動，限制垂直於牆面的移動，並限制旋轉」。因此它是一個提供水平反力 $C_x$ 與彎矩 $M_c$，但不提供垂直反力 $C_y$ 的「垂直向滑動固定端 (Vertical Slider / Guided Roller)」。</li>
-<li><strong>虛功原理的優勢</strong>：在計算側移方程式（如本題 Step 3）時，傳統的取分離體求力矩法極易發生外力漏算或方向弄反的失誤。強烈建議在傾角變位法中，涉及複雜側移時，統一使用<strong>虛功原理 (Virtual Work Method)</strong> 來建立側移（剪力）方程式，能有效確保內外力作功符號的一致性。</li>
-</ul></main>
+<h3>5.1 $c$ 點支承性質的判定</h3>
+<p>考卷圖上 $c$ 處是<strong>單一圓圈</strong>貼在垂直剖面線牆上 —— 這是標準的<strong>滾支承</strong>：束制垂直於牆面的位移（此處為水平），允許沿牆面滑動（垂直），<strong>且允許轉動</strong>。</p>
+<p>若誤讀成「滑軌／導引支承」（兩條平行線夾住滾輪，額外束制轉動），會多出一個 $M_c \ne 0$ 的約束、少一個 $\theta_c$ 未知數，方程組整組改變。兩者的圖例差別就在<strong>滾輪是一個還是一排、外面有沒有再包一層平行滑板</strong>。</p>
+<h3>5.2 為什麼「純平移」的桿沒有弦旋轉</h3>
+<p>$\psi$ 的定義是「兩端<strong>垂直於桿軸</strong>的相對位移除以桿長」。$bc$ 兩端都下移同一個 $\Delta$，相對位移為零，因此 $\psi_{bc} = 0$ —— <strong>與桿件是不是斜的無關</strong>。反而是 $ab$：$a$ 不動、$b$ 下移 $\Delta$，相對位移就是 $\Delta$，$\psi_{ab} = \Delta/4$。</p>
+<p>判斷 $\psi$ 的唯一可靠方法是<strong>先把位移場解出來，再逐桿計算相對位移</strong>，不要靠「哪根看起來會轉」。</p>
+<h3>5.3 側移方程用虛功法最不容易錯</h3>
+<p>本題的側移機構是「$b$、$c$ 一起垂直下移」，用自由體取矩很容易漏掉 $bc$ 上的 68 kN 或弄反方向。改用虛功：</p>
+<p>$$\sum_{\text{桿}} (M_{nf} + M_{fn})\,\delta\psi_{nf} + \sum P\,\delta = 0$$</p>
+<p>只要虛位移場與 $\psi$ 用同一組符號，內外功的符號自動一致。本題 $bc$ 的 $\delta\psi = 0$，整式只剩 $ab$ 一項，一行就寫完。</p>
+<h3>5.4 驗算紀錄（2026-08-26）</h3>
+<p>本題以「傾角變位法手算」與「剛架有限元（$EA$ 取極大以模擬不考慮軸向變形）」兩條獨立路徑求解，端彎矩、轉角、位移、反力<strong>全部相符</strong>（$M_{ab} = -191.00$、$M_{ba} = -81.00$、$C_x = 72.3333 = 217/3$、$EI\theta_b = 220.00$、$EI\theta_c = -152.50$、$EI\Delta = 802.66$）。</p>
+<hr />
+<h2>6. 本題知識點索引</h2>
+<table>
+<thead>
+<tr>
+<th>知識點</th>
+<th>概念 ID</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>傾角變位法</td>
+<td>[[SLOPE-DEFLECTION-EQUATION]]</td>
+</tr>
+<tr>
+<td>固定端彎矩</td>
+<td>[[FIXED-END-MOMENT]]</td>
+</tr>
+<tr>
+<td>側移方程式</td>
+<td>[[SWAY-EQUATION]]</td>
+</tr>
+<tr>
+<td>虛功原理</td>
+<td>[[VIRTUAL-WORK]]</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>CHANGELOG</h2>
+<table>
+<thead>
+<tr>
+<th>日期</th>
+<th>變更</th>
+<th>原因</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2026-07-02</td>
+<td>初版解析</td>
+<td>—</td>
+</tr>
+<tr>
+<td>2026-08-26</td>
+<td><strong>全題重做</strong></td>
+<td>附圖遭四項誤讀（$ab$／$bc$ 對調、載重位置、支承型式），舊版結論全部作廢。改以逐像素判讀的幾何重解，並補四張向量圖</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p><em>解析日期：2026-07-02　｜　全題重做＋圖解：2026-08-26（幾何經附圖逐像素掃描確認；傾角變位法手算與剛架有限元兩條獨立路徑相符；向量圖腳本 <code>gen_SA-2020-1.py</code>，可重跑）</em></p></main>
 <footer>來源：raw/solutions/SA-2020-1/SA-2020-1.md（知識庫解題內容唯一正本；本頁僅為渲染顯示）</footer>
 
 <script>

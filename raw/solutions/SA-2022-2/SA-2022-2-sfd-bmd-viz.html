@@ -262,16 +262,16 @@
                     <line x1="250" y1="280" x2="450" y2="280" stroke="rgba(255,255,255,0.1)" stroke-width="2" />
                     <line x1="450" y1="280" x2="450" y2="80" stroke="rgba(255,255,255,0.1)" stroke-width="2" />
 
-                    <!-- BMD c-d (60 kN-m constant on tension side/top) -->
-                    <path d="M 250 280 L 250 220 L 450 220 L 450 280 Z" class="bmd-fill" />
-                    <text x="350" y="245" class="bmd-text">60 kN-m</text>
+                    <!-- BMD c-d：定值 60 kN-m 為 sagging（下側受拉）→ 畫在梁下方 -->
+                    <path d="M 250 280 L 250 340 L 450 340 L 450 280 Z" class="bmd-fill" />
+                    <text x="335" y="360" class="bmd-text">60 kN-m</text>
 
                     <!-- BMD a-c -->
-                    <!-- a is 0. b is 60 (right). c is -60 (left). -->
+                    <!-- a=0，b=60，c=60，同號 → 兩段同畫於右側（受拉側） -->
                     <path d="M 250 480 L 310 380 L 250 380 Z" class="bmd-fill" />
-                    <path d="M 250 380 L 190 280 L 250 280 Z" class="bmd-fill" />
+                    <path d="M 250 380 L 310 380 L 310 280 L 250 280 Z" class="bmd-fill" />
                     <text x="325" y="385" class="bmd-text">60</text>
-                    <text x="165" y="285" class="bmd-text">-60</text>
+                    <text x="325" y="285" class="bmd-text">60</text>
 
                     <!-- BMD d-e -->
                     <!-- e is 0. mid is 60 (right). d is 60 (right). -->

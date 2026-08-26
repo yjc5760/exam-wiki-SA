@@ -44,7 +44,7 @@ header .nomat{margin-top:12px;font-size:.8em;opacity:.85}
 <div class="hbtns"><a class="b-study" href="../study-SA-U2-3.html">🔍 U2-3 命題分析</a><a class="b-lect" href="../lecture-SA-U2-3.html">📚 U2-3 靜不定結構之傾角變位法 講義</a><a class="b-fg" href="../formula-given-SA-U2-3.html">🎯 U2-3 給／背分界</a></div>
 </header>
 <main><h1>考題編號：SA-2022-2</h1>
-<p><strong>主分類：</strong> <code>SA-U2-3</code> 靜不定結構與位移<br />
+<p><strong>主分類：</strong> <code>SA-U2-3</code> 靜不定結構之傾角變位法<br />
 <strong>副分類：</strong> 無<br />
 <strong>分析法：</strong> 傾角變位法 (Slope-Deflection Method)<br />
 <strong>標籤：</strong> <code>傾角變位法</code> <code>有側移剛架</code> <code>側移方程式</code> <code>修正固端彎矩</code> <code>疊加法</code></p>
@@ -52,6 +52,8 @@ header .nomat{margin-top:12px;font-size:.8em;opacity:.85}
 <h2>1. 原始題目重述 (Problem Restatement)</h2>
 <p>如圖 2 所示剛架結構，不考慮桿件的軸向變形，$a$ 點及 $e$ 點為鉸支承，桿件有相同彈性模數 $E$ 與慣性矩 $I$，且 $EI = 40000 \text{ kN-m}^2$。求 $cd$ 梁桿件的彎矩圖、$b$ 點及 $c$ 點的水平位移。（25 分）</p>
 <p><img alt="SA-2022-2 題目附圖" src="../../raw/solutions/SA-2022-2/SA-2022-2-fig-1.png" /></p>
+<p><img alt="SA-2022-2 題目重繪：階梯型剛架，a 在柱底、e 在柱頂皆為鉸支承，兩個 30kN 分別作用於下柱與上柱的中點" src="../../raw/solutions/SA-2022-2/figs/SA-2022-2-fig-1-frame.svg" /></p>
+<p><em>圖 1　題目重繪（向量版）。這張圖攔的是把 $e$ 當成柱底：$a$ 在</em><em>下</em><em>、$e$ 在</em><em>上</em><em>，兩根柱的弦轉角因此符號相反（$\psi_{ac} = +\Delta/4$、$\psi_{de} = -\Delta/4$）——符號弄反全盤皆輸。</em></p>
 <p><em>圖說：本題為一階梯型剛架。節點 $a, e$ 為鉸支承。柱 $a-c$ 高度 4m，在 $b$ 點（距底 2m 處）受水平向右 30 kN 集中力；梁 $c-d$ 長 4m；柱 $d-e$ 高度 4m，在距 $d$ 點 2m 處受水平向右 30 kN 集中力。$c, d$ 皆為剛節點。</em></p>
 <h2>2. 考題核心精神與出題者意圖 (Core Concepts &amp; Examiner's Intent)</h2>
 <p><strong>核心精神：</strong></p>
@@ -210,9 +212,14 @@ $K \Delta = 230$</p>
 <li>$cd$ 梁端彎矩：<br />
   $$M_{cd} = 4(30) + 2(-30) = \mathbf{60 \text{ kN-m}}$$<br />
   $$M_{dc} = 4(-30) + 2(30) = \mathbf{-60 \text{ kN-m}}$$<br />
-  這代表 $cd$ 梁左端受順時針 60 kN-m，右端受逆時針 60 kN-m。此受力狀態在全梁產生均勻之 <strong>60 kN-m 正彎矩（致使梁上方受拉）</strong>，剪力為零。<br />
-<strong>$cd$ 梁彎矩圖為一均勻矩形，大小 60 kN-m，全線繪於桿件上方（受拉側）。</strong></li>
+  這代表 $cd$ 梁左端受順時針 60 kN·m、右端受逆時針 60 kN·m。兩端大小相等方向相反 $\Rightarrow$ <strong>剪力為零、全梁彎矩為定值 60 kN·m</strong>。</li>
 </ul>
+<p><strong>⚠ 受拉側的判定（2026-08-26 更正）：</strong> 這個定值彎矩是 <strong>sagging（下凹）</strong>，<strong>梁的下側受拉</strong>。<br />
+  最直接的驗證是看變形：在梁中點加一個節點量測，該點相對於弦（$v_c = v_d = 0$）<strong>往下撓 3 mm</strong>——<br />
+  下凹即為正彎矩、下側受拉。</p>
+<p><strong>$cd$ 梁彎矩圖為一均勻矩形，大小 60 kN·m，全線繪於桿件的「下方」（受拉側）。</strong></p>
+<p><img alt="SA-2022-2 cd 梁彎矩圖：定值 60 kN·m 畫在下側，並附變形形狀顯示梁中點相對弦下撓 3mm" src="../../raw/solutions/SA-2022-2/figs/SA-2022-2-fig-2-bmd.svg" /></p>
+<p><em>圖 2　$cd$ 梁的彎矩圖與整體變形。這張圖攔的正是本題最容易錯的一步：兩端彎矩「一順一逆」很容易被讀成上側受拉，但梁中點其實是往</em><em>下</em><em>撓的 —— 定值 60 kN·m 是 sagging，圖要畫在梁的下方。</em></p>
 <p><strong>Step 7：計算 $b$ 點位移</strong><br />
 $b$ 點位移 $\Delta_b$ 由「弦之剛體側移」與「柱的彈性彎曲」疊加：</p>
 <ol>
@@ -227,8 +234,35 @@ $b$ 點位移 $\Delta_b$ 由「弦之剛體側移」與「柱的彈性彎曲」�
 <p>總位移：$\Delta_b = 11.5 + 2.5 = \mathbf{14 \text{ mm (向右)}}$。</p>
 </li>
 </ol>
+<p><img alt="SA-2022-2 b 點位移的疊加分解：弦的剛體位移 11.5mm ＋ 桿件彈性彎曲 2.5mm ＝ 14.0mm" src="../../raw/solutions/SA-2022-2/figs/SA-2022-2-fig-3-delta-b.svg" /></p>
+<p><em>圖 3　$b$ 點位移的疊加。這張圖攔的是「直接取頂端位移的一半」：$b$ 在桿件中段，除了弦的剛體位移之外，桿件本身還被 30 kN 彎出 2.5 mm —— 只取一半會少 18%。</em></p>
 <h2>5. 關鍵爭議點與進階探討 (Critical Issues &amp; Advanced Discussion)</h2>
-<p>本題計算 $b$ 點位移時，最常犯的錯誤是直接認定為頂端位移的一半（11.5 mm）。實際上，由於側向力直接作用於 $b$ 點，桿件本身會發生顯著的彎曲變形。利用疊加原理（Superposition），將變形拆解為「節點平移造成的弦旋轉」與「桿件相對於弦的彈性撓度」，是處理此類問題最標準且不易出錯的方法。</p></main>
+<p>本題計算 $b$ 點位移時，最常犯的錯誤是直接認定為頂端位移的一半（11.5 mm）。實際上，由於側向力直接作用於 $b$ 點，桿件本身會發生顯著的彎曲變形。利用疊加原理（Superposition），將變形拆解為「節點平移造成的弦旋轉」與「桿件相對於弦的彈性撓度」，是處理此類問題最標準且不易出錯的方法。</p>
+<hr />
+<h2>CHANGELOG</h2>
+<table>
+<thead>
+<tr>
+<th>日期</th>
+<th>變更</th>
+<th>原因</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2026-07-02</td>
+<td>初版解析</td>
+<td>—</td>
+</tr>
+<tr>
+<td>2026-08-26</td>
+<td><strong>更正 $cd$ 梁彎矩圖的受拉側</strong>（「上方受拉」改為「下方受拉」）；補三張向量圖；主分類名稱與 <code>question_index.json</code> 對齊</td>
+<td>有限元在梁中點量得相對弦下撓 3 mm ⇒ sagging ⇒ 下側受拉。舊版同一句話裡既寫「正彎矩」又寫「上方受拉」，自相矛盾。其餘數值（$\Delta_c = 23$ mm、$\Delta_b = 14$ mm、定值 60 kN·m、剪力為零）經有限元驗證<strong>全部正確</strong></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p><em>解析日期：2026-07-02　｜　勘誤＋圖解：2026-08-26（傾角變位法手算與剛架有限元兩條獨立路徑相符至小數第四位；向量圖腳本 <code>gen_SA-2022-2.py</code>，可重跑）</em></p></main>
 <footer>來源：raw/solutions/SA-2022-2/SA-2022-2.md（知識庫解題內容唯一正本；本頁僅為渲染顯示）</footer>
 
 <script>

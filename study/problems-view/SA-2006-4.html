@@ -44,7 +44,7 @@ header .nomat{margin-top:12px;font-size:.8em;opacity:.85}
 <div class="hbtns"><a class="b-study" href="../study-SA-U2-3.html">🔍 U2-3 命題分析</a><a class="b-lect" href="../lecture-SA-U2-3.html">📚 U2-3 靜不定結構之傾角變位法 講義</a><a class="b-fg" href="../formula-given-SA-U2-3.html">🎯 U2-3 給／背分界</a></div>
 </header>
 <main><h1>考題編號：SA-2006-4</h1>
-<p><strong>主分類：</strong> <code>SA-U2-3</code> 結構分析<br />
+<p><strong>主分類：</strong> <code>SA-U2-3</code> 靜不定結構之傾角變位法<br />
 <strong>副分類：</strong> 無<br />
 <strong>分析法：</strong> 傾角變位法<br />
 <strong>標籤：</strong> <code>傾角變位法</code> <code>剪力房屋</code> <code>剛性梁</code> <code>剛性矮牆</code></p>
@@ -52,6 +52,8 @@ header .nomat{margin-top:12px;font-size:.8em;opacity:.85}
 <h2>1. 原始題目重述 (Problem Restatement)</h2>
 <p>如圖示，一建物結構受 $100\text{ kN}$ 之水平橫力。假設該建物之 AE 構件為剛性梁（慣性矩 $I = \infty$），HJLM 構件為剛性矮牆（慣性矩 $I = \infty$）。各柱之彈性模數（E 值）與慣性矩（I 值）均為常數。試以傾角變位法（slope-deflection method）計算長柱 AF 與短柱 EL 二者柱底彎矩之比值，以及二者柱底剪力之比值。不計構件之自重。（25 分）</p>
 <p><img alt="SA-2006-4 題目附圖：包含剛性梁與剛性矮牆之剛架結構受側向力" src="../../raw/solutions/SA-2006-4/SA-2006-4-fig-1.png" /></p>
+<p><img alt="SA-2006-4 題目重繪：剪力屋模型，剛性梁在 3m 高處，剛性矮牆高 1m，長柱 3m 兩根、短柱 2m 三根" src="../../raw/solutions/SA-2006-4/figs/SA-2006-4-fig-1-frame.svg" /></p>
+<p><em>圖 1　題目重繪（向量版）。這張圖攔的是柱長誤判：矮牆之上是 $2\text{ m}$，但</em><em>左側長柱從地面起算是 $2+1 = 3\text{ m}$</em><em> —— 代錯一個長度，兩個比值都會錯。</em></p>
 <p><em>圖說：結構總長 $20\text{ m}$，分為 4 跨各 $5\text{ m}$。頂部為剛性梁 AE。底部左側兩跨為平地，柱 AF、BG 高度為 $3\text{ m}$；右側兩跨有高度 $1\text{ m}$ 之剛性矮牆 HJLM，因此其上的柱 CJ、DK、EL 高度為 $2\text{ m}$。A 點受水平向右 $100\text{ kN}$ 外力。</em></p>
 <h2>2. 考題核心精神與出題者意圖 (Core Concepts &amp; Examiner's Intent)</h2>
 <p>本題主要測驗考生對於<strong>傾角變位法</strong>在特殊邊界條件（剛性構件）下之應用。<br />
@@ -73,7 +75,7 @@ header .nomat{margin-top:12px;font-size:.8em;opacity:.85}
 <p><strong>陷阱分析：</strong></p>
 <ul>
 <li><strong>陷阱 1：高度誤判</strong>：左側長柱高度為 $2+1 = 3\text{ m}$，右側短柱高度為 $2\text{ m}$，若看圖不仔細容易代錯長度。</li>
-<li><strong>陷阱 2：符號約定混淆</strong>：傾角變位法中順時針為正，側移角 $\psi = \Delta / L$。向右側移時，$\psi > 0$，因此固定端彎矩為負值（逆時針），計算比值時應取絕對值或保留相同符號。</li>
+<li><strong>陷阱 2：符號約定混淆</strong>：傾角變位法中順時針為正，側移角 $\psi = \Delta / L$。向右側移時，$\psi &gt; 0$，因此固定端彎矩為負值（逆時針），計算比值時應取絕對值或保留相同符號。</li>
 </ul>
 <h2>3.5 變數層次分析 (Variable Hierarchy Analysis)</h2>
 <h3>最終目標</h3>
@@ -86,26 +88,96 @@ header .nomat{margin-top:12px;font-size:.8em;opacity:.85}
 <p>$$ V = \frac{|M_{top} + \boxed{M_{bottom}}|}{L} = \frac{12EI\Delta}{L^3} $$<br />
 <em>(柱剪力)</em></p>
 <h3>L1：題目直接給定</h3>
-<ul>
-<li><strong>符號 ∣ 數值 ∣ 說明</strong></li>
-<li>$L_1$ ∣ $3\text{ m}$ ∣ 長柱（AF, BG）長度</li>
-<li>$L_2$ ∣ $2\text{ m}$ ∣ 短柱（CJ, DK, EL）長度</li>
-<li>$\theta_{top}$ ∣ $0$ ∣ 剛性梁限制頂端節點轉角</li>
-<li>$\theta_{bot}$ ∣ $0$ ∣ 基礎與剛性矮牆為固定端</li>
-</ul>
+<table>
+<thead>
+<tr>
+<th>符號</th>
+<th>數值</th>
+<th>說明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>$L_1$</td>
+<td>$3\text{ m}$</td>
+<td>長柱 AF、BG 的長度（$= 2 + 1$，<strong>含矮牆那 1 m</strong>）</td>
+</tr>
+<tr>
+<td>$L_2$</td>
+<td>$2\text{ m}$</td>
+<td>短柱 CJ、DK、EL 的長度</td>
+</tr>
+<tr>
+<td>$\theta_{top}$</td>
+<td>$0$</td>
+<td>剛性梁限制頂端節點轉角</td>
+</tr>
+<tr>
+<td>$\theta_{bot}$</td>
+<td>$0$</td>
+<td>基礎與剛性矮牆頂皆視同固定端</td>
+</tr>
+<tr>
+<td>$P$</td>
+<td>$100\text{ kN}$</td>
+<td>水平外力（求比值時會消掉）</td>
+</tr>
+</tbody>
+</table>
 <h3>L2：需知識點推導</h3>
-<ul>
-<li><strong>符號 ∣ 公式／來源 ∣ 卡關?</strong></li>
-<li>$M_{FA}$ ∣ $M_{FA} = -\frac{6EI\Delta}{L_1^2}$ ∣ </li>
-<li>$M_{LE}$ ∣ $M_{LE} = -\frac{6EI\Delta}{L_2^2}$ ∣ </li>
-<li>$V_{AF}$ ∣ $V_{AF} = \frac{12EI\Delta}{L_1^3}$ ∣ </li>
-<li>$V_{EL}$ ∣ $V_{EL} = \frac{12EI\Delta}{L_2^3}$ ∣ </li>
-</ul>
+<table>
+<thead>
+<tr>
+<th>符號</th>
+<th>公式／來源</th>
+<th style="text-align: center;">卡關?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>$M_{FA}$</td>
+<td>$-\dfrac{6EI\Delta}{L_1^2}$</td>
+<td style="text-align: center;"></td>
+</tr>
+<tr>
+<td>$M_{LE}$</td>
+<td>$-\dfrac{6EI\Delta}{L_2^2}$</td>
+<td style="text-align: center;"></td>
+</tr>
+<tr>
+<td>$V_{AF}$</td>
+<td>$\dfrac{12EI\Delta}{L_1^3}$</td>
+<td style="text-align: center;"></td>
+</tr>
+<tr>
+<td>$V_{EL}$</td>
+<td>$\dfrac{12EI\Delta}{L_2^3}$</td>
+<td style="text-align: center;"></td>
+</tr>
+</tbody>
+</table>
 <h3>L3：深層知識（不懂就卡住）</h3>
-<ul>
-<li><strong>知識點 ∣ 說明 ∣ 卡關?</strong></li>
-<li>剪力房屋特性 ∣ 當橫梁剛度無限大且忽略柱軸向變形時，所有柱頂具有相同的側向位移 $\Delta$ 且無轉角。 ∣ </li>
-</ul>
+<table>
+<thead>
+<tr>
+<th>知識點</th>
+<th>說明</th>
+<th style="text-align: center;">卡關?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>剪力屋（Shear Building）特性</td>
+<td>橫梁剛度無限大 ＋ 忽略柱軸向變形 $\Rightarrow$ 所有柱頂有相同的側移 $\Delta$ 且<strong>無轉角</strong></td>
+<td style="text-align: center;"></td>
+</tr>
+<tr>
+<td>側向勁度 $\propto 1/L^3$</td>
+<td>兩端無轉角的柱，$V = 12EI\Delta/L^3$；柱越短，同一個 $\Delta$ 逼出的剪力越大</td>
+<td style="text-align: center;"></td>
+</tr>
+</tbody>
+</table>
 <h2>4. 步驟化詳細計算過程 (Step-by-Step Detailed Calculation)</h2>
 <p><strong>Step 1：確認結構邊界條件與變位自由度</strong><br />
 因為頂部 AE 構件為剛性梁（$I = \infty$），且不計柱之軸向變形，故頂部各節點不發生轉角，且具有相同之側向位移量 $\Delta$：<br />
@@ -156,6 +228,8 @@ $$ \left( \frac{8}{9} + \frac{9}{2} \right) EI\Delta = 100 \implies \frac{97}{18
 $M_{FA} / M_{LE} = 12.37 / 27.84 = 4/9$<br />
 $V_{AF} / V_{EL} = 8.25 / 27.84 = 8/27$</li>
 </ul>
+<p><img alt="SA-2006-4 短柱效應：五根柱的彎矩圖與側移，以及彎矩比 4/9、剪力比 8/27 的比較" src="../../raw/solutions/SA-2006-4/figs/SA-2006-4-fig-2-short-column.svg" /></p>
+<p><em>圖 2　短柱效應。這張圖攔的是「剪力按柱數平均分配」的直覺：$V \propto 1/L^3$，三根短柱吃掉了 </em><em>83.5%</em><em> 的層剪力，單根短柱扛的剪力是單根長柱的 $27/8 = 3.375$ 倍。</em></p>
 <h2>5. 關鍵爭議點與進階探討 (Critical Issues &amp; Advanced Discussion)</h2>
 <ul>
 <li>
@@ -174,7 +248,32 @@ $V_{AF} / V_{EL} = 8.25 / 27.84 = 8/27$</li>
 <p><strong>外力 $100\text{ kN}$ 的作用</strong>：<br />
   這是一個干擾資訊，當題目僅要求計算「比值」時，其結果僅與結構幾何與勁度分布有關，與外力大小無關。</p>
 </li>
-</ul></main>
+</ul>
+<hr />
+<h2>CHANGELOG</h2>
+<table>
+<thead>
+<tr>
+<th>日期</th>
+<th>變更</th>
+<th>原因</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2026-07-02</td>
+<td>初版解析</td>
+<td>—</td>
+</tr>
+<tr>
+<td>2026-08-26</td>
+<td>補兩張向量圖；§3.5 的破折號清單改為表格；主分類名稱與 <code>question_index.json</code> 對齊</td>
+<td>所有數值（彎矩比 $4/9$、剪力比 $8/27$、$EI\Delta = 1800/97$、$M_{FA} = -12.37$、$V_{EL} = 27.84$）經剛架有限元（剛性梁以極大 $EI$ 模擬）驗證<strong>全部正確</strong>，解析本身無誤</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p><em>解析日期：2026-07-02　｜　複核＋補圖：2026-08-26（閉合式與剛架有限元逐項相符；向量圖腳本 <code>gen_SA-2006-4.py</code>，可重跑）</em></p></main>
 <footer>來源：raw/solutions/SA-2006-4/SA-2006-4.md（知識庫解題內容唯一正本；本頁僅為渲染顯示）</footer>
 
 <script>

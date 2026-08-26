@@ -44,15 +44,18 @@ header .nomat{margin-top:12px;font-size:.8em;opacity:.85}
 <div class="hbtns"><a class="b-study" href="../study-SA-U2-3.html">🔍 U2-3 命題分析</a><a class="b-lect" href="../lecture-SA-U2-3.html">📚 U2-3 靜不定結構之傾角變位法 講義</a><a class="b-fg" href="../formula-given-SA-U2-3.html">🎯 U2-3 給／背分界</a></div>
 </header>
 <main><h1>考題編號：SA-2024-4</h1>
-<p><strong>主分類：</strong> <code>SA-U2-3</code> 靜不定結構分析<br />
+<p><strong>主分類：</strong> <code>SA-U2-3</code> 靜不定結構之傾角變位法<br />
 <strong>副分類：</strong> 無<br />
 <strong>分析法：</strong> 傾角變位法<br />
 <strong>標籤：</strong> <code>傾角變位法</code>, <code>剛架</code>, <code>側移</code>, <code>集中力</code>, <code>反對稱</code>, <code>非均勻斷面</code></p>
 <hr />
 <h2>1. 原始題目重述 (Problem Restatement)</h2>
-<p>圖四為一剛架，A、D 皆為固定端，節點 B 承受一向右之集中力 $P$。請求出 B 點的水平位移及 C、D 節點的彎矩值。<br />
-（註：經確認幾何配置與剛度為，左柱 AB 長度 2L、剛度 $2EI$，右柱 CD 長度 2L、剛度 $2EI$，橫梁 BC 長度 L、剛度 $EI$）。</p>
-<div style="background:#fff3e0;border-left:5px solid #ef6c00;padding:10px 14px;border-radius:0 8px 8px 0;font-size:.9em;color:#e65100">原始 .md 未內嵌附圖，以下為同資料夾之題目附圖（顯示層補上，未修改 raw/）</div><img src="../../raw/solutions/SA-2024-4/SA-2024-4-fig-1.png" alt="SA-2024-4 題目附圖"><h2>2. 考題核心精神與出題者意圖 (Core Concepts &amp; Examiner's Intent)</h2>
+<p>圖四為一剛架，A、D 皆為固定端，節點 B 承受一向右之集中力 $P$。請求出 B 點的水平位移及 C、D 節點的彎矩值。</p>
+<p><img alt="SA-2024-4 題目附圖：門型剛架，A、D 固定端，柱 AB 與 CD 長 2L、剛度 2EI，梁 BC 長 L、剛度 EI，P 作用於 B 點向右" src="../../raw/solutions/SA-2024-4/SA-2024-4-fig-1.png" /></p>
+<p><em>圖說：門型剛架。$A$、$D$ 為固定端。左柱 $AB$ 與右柱 $CD$ </em><em>長 $2L$、剛度 $2EI$</em><em>；橫梁 $BC$ </em><em>長 $L$、剛度 $EI$</em><em>。集中力 $P$ 作用於節點 $B$，方向向右。（以上幾何與剛度皆由考卷附圖直接標註讀出。）</em></p>
+<p><img alt="SA-2024-4 題目重繪：三根桿的相對勁度 K = EI/L 完全相等" src="../../raw/solutions/SA-2024-4/figs/SA-2024-4-fig-1-frame.svg" /></p>
+<p><em>圖 1　題目重繪（向量版）。這張圖攔的是「柱 $2EI$、梁 $EI$ 看起來不對稱」的第一印象：換算成相對勁度 $K = EI/L$ 之後，三根桿完全相等 —— 這是出題者刻意的設計，先看出來就能少算一半。</em></p>
+<h2>2. 考題核心精神與出題者意圖 (Core Concepts &amp; Examiner's Intent)</h2>
 <p>本題是測試學生處理「有側移」剛架之傾角變位法，並且加入了「桿件 $EI$ 不同」的變化。核心測驗重點有二：</p>
 <ol>
 <li><strong>相對剛度的計算與反對稱變形之利用</strong>：雖然各桿件 $EI$ 與長度不同，但經過相對剛度 $K=EI/L$ 換算後，三根桿件的 $K$ 值完全相等。由於結構剛度對稱，且承受反對稱的集中側向力，可預知兩柱之變形模式相同，即 $\theta_B = \theta_C$。</li>
@@ -60,18 +63,18 @@ header .nomat{margin-top:12px;font-size:.8em;opacity:.85}
 </ol>
 <h2>3. 解題戰略地圖與陷阱分析 (Strategic Roadmap &amp; Trap Analysis)</h2>
 <ol>
-<li><strong>定義自由度與相對剛度</strong>：<br />
-   - A, D 為固定端，$\theta_A = \theta_D = 0$。未知自由度為 $\theta_B, \theta_C, \psi$。<br />
-   - 計算各桿剛度 $K_{AB} = \frac{2EI}{2L} = \frac{EI}{L}$，梁剛度 $K_{BC} = \frac{EI}{L}$。令 $K = \frac{EI}{L}$，則 $K_{AB} = K_{BC} = K_{CD} = K$。</li>
-<li><strong>判斷固端彎矩 (FEM)</strong>：<br />
-   - 由於無桿件載重，僅有節點載重 $P$，故所有桿件之 $FEM = 0$。</li>
-<li><strong>建立三大平衡方程式</strong>：<br />
-   - 節點 B 彎矩平衡：$\Sigma M_B = 0 \implies 4\theta_B + \theta_C - 3\psi = 0$<br />
-   - 節點 C 彎矩平衡：$\Sigma M_C = 0 \implies \theta_B + 4\theta_C - 3\psi = 0$<br />
-   - 層剪力平衡：取剛架水平力平衡導出 $M_{AB} + M_{BA} + M_{CD} + M_{DC} = 2PL$。</li>
-<li><strong>陷阱分析</strong>：<br />
-   - <strong>EI 值陷阱</strong>：題目給的 $EI$ 不同，若未先化簡為相對剛度 $K$，會以為這是不對稱結構，導致算式冗長且易錯。<br />
-   - <strong>符號法則混淆</strong>：若約定弦旋轉逆時針為正 $\psi$，則向右位移 $\Delta$ 會造成順時針旋轉，代入公式 $\psi$ 必為負值。推導層剪力時必須嚴格遵守自己設定的符號法則。</li>
+<li><strong>定義自由度與相對剛度</strong>：</li>
+<li>A, D 為固定端，$\theta_A = \theta_D = 0$。未知自由度為 $\theta_B, \theta_C, \psi$。</li>
+<li>計算各桿剛度 $K_{AB} = \frac{2EI}{2L} = \frac{EI}{L}$，梁剛度 $K_{BC} = \frac{EI}{L}$。令 $K = \frac{EI}{L}$，則 $K_{AB} = K_{BC} = K_{CD} = K$。</li>
+<li><strong>判斷固端彎矩 (FEM)</strong>：</li>
+<li>由於無桿件載重，僅有節點載重 $P$，故所有桿件之 $FEM = 0$。</li>
+<li><strong>建立三大平衡方程式</strong>：</li>
+<li>節點 B 彎矩平衡：$\Sigma M_B = 0 \implies 4\theta_B + \theta_C - 3\psi = 0$</li>
+<li>節點 C 彎矩平衡：$\Sigma M_C = 0 \implies \theta_B + 4\theta_C - 3\psi = 0$</li>
+<li>層剪力平衡：取剛架水平力平衡導出 $M_{AB} + M_{BA} + M_{CD} + M_{DC} = 2PL$。</li>
+<li><strong>陷阱分析</strong>：</li>
+<li><strong>EI 值陷阱</strong>：題目給的 $EI$ 不同，若未先化簡為相對剛度 $K$，會以為這是不對稱結構，導致算式冗長且易錯。</li>
+<li><strong>符號法則混淆</strong>：若約定弦旋轉逆時針為正 $\psi$，則向右位移 $\Delta$ 會造成順時針旋轉，代入公式 $\psi$ 必為負值。推導層剪力時必須嚴格遵守自己設定的符號法則。</li>
 </ol>
 <h2>3.5 變數層次分析 (Variable Hierarchy Analysis)</h2>
 <h3>最終目標</h3>
@@ -81,7 +84,7 @@ header .nomat{margin-top:12px;font-size:.8em;opacity:.85}
 <li>定義桿件相對剛度：$$K_{ij} = \frac{EI_{ij}}{L_{ij}}$$</li>
 <li>傾角變位方程式（無固端彎矩）：$$M_{ij} = 2\boxed{K_{ij}} \left(2\theta_i + \theta_j - 3\psi\right)$$</li>
 <li>節點彎矩平衡：$$\sum M_{node} = 0 \implies \boxed{M_{ij}} + \boxed{M_{ik}} = 0$$</li>
-<li>層剪力平衡（由自由體圖推導）：$$\sum H_{col} = P \implies \frac{\sum \boxed{M_{col\_top}} + \sum \boxed{M_{col\_bot}}}{h} = P$$</li>
+<li>層剪力平衡（由自由體圖推導）：$$\sum H_{col} = P \implies \frac{\sum \boxed{M_{col_top}} + \sum \boxed{M_{col_bot}}}{h} = P$$</li>
 <li>水平側移換算：$$\Delta = -h \cdot \boxed{\psi}$$</li>
 </ol>
 <h3>L1：題目直接給定</h3>
@@ -117,7 +120,7 @@ header .nomat{margin-top:12px;font-size:.8em;opacity:.85}
 <ul>
 <li><strong>知識點 ∣ 說明 ∣ 卡關?</strong></li>
 <li>反對稱變形 ∣ 剛架對稱但受反對稱側向力時，兩柱變形模式相同，必然發生 $\theta_B = \theta_C$，可直接使用此條件減少未知數。 ∣ </li>
-<li>層剪力方程式與符號法則 ∣ 若約定逆時針弦旋轉為正 $\psi$，則向右位移會導致 $\psi < 0$。推導層剪力需從自由體圖確實取力矩平衡，避免正負號錯亂導致算錯位移方向。 ∣ </li>
+<li>層剪力方程式與符號法則 ∣ 若約定逆時針弦旋轉為正 $\psi$，則向右位移會導致 $\psi &lt; 0$。推導層剪力需從自由體圖確實取力矩平衡，避免正負號錯亂導致算錯位移方向。 ∣ </li>
 </ul>
 <h2>4. 步驟化詳細計算過程 (Step-by-Step Detailed Calculation)</h2>
 <h3>Step 1: 參數設定與傾角變位方程式</h3>
@@ -173,11 +176,78 @@ $$ M_{CB} = 2K(2\theta_C + \theta_B) = 2K \left( 3\left(-\frac{3}{42}\right) \ri
 <em>(驗算 $M_{CB} + M_{CD} = 0$，符合節點平衡)</em></p>
 <p><strong>D 點彎矩 ($M_{DC}$)：</strong><br />
 $$ \boxed{ M_{DC} = 2K(\theta_C - 3\psi) = 2K \left( -\frac{3}{42} - 3\left(-\frac{5}{42}\right) \right)\frac{PL}{K} = 2 \left( \frac{-3 + 15}{42} \right)PL = \frac{24}{42}PL = \frac{4}{7}PL \quad \text{(逆時針)} } $$</p>
+<h3>Step 6: 結果彙整與彎矩圖</h3>
+<p><img alt="SA-2024-4 反對稱變形與彎矩圖：兩柱皆為雙曲率且變形模式相同，柱底 4/7 PL 是柱頂 3/7 PL 的 4/3 倍" src="../../raw/solutions/SA-2024-4/figs/SA-2024-4-fig-2-antisym-bmd.svg" /></p>
+<p><em>圖 2　反對稱變形與彎矩圖。這張圖攔兩件事：以為柱頂與柱底的彎矩一樣大（柱底 $\frac47 PL$ 是柱頂 $\frac37 PL$ 的 $\frac43$ 倍，因為柱頂還要跟梁分攤節點彎矩），以及把「反對稱」誤畫成鏡像 —— 兩柱的變形模式是</em><em>完全相同</em><em>，不是左右對照。</em></p>
+<table>
+<thead>
+<tr>
+<th>量</th>
+<th>值</th>
+<th>說明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>$\Delta_B$</td>
+<td>$\dfrac{5}{21}\dfrac{PL^3}{EI}$（向右）</td>
+<td>B、C 同一個側移</td>
+</tr>
+<tr>
+<td>$\theta_B = \theta_C$</td>
+<td>$\dfrac{1}{14}\dfrac{PL^2}{EI}$（順時針）</td>
+<td>反對稱 $\Rightarrow$ 兩節點轉角相同</td>
+</tr>
+<tr>
+<td>$M_{AB} = M_{DC}$</td>
+<td>$\dfrac47 PL$</td>
+<td><strong>柱底</strong></td>
+</tr>
+<tr>
+<td>$M_{BA} = M_{CD} = M_{BC} = M_{CB}$</td>
+<td>$\dfrac37 PL$</td>
+<td><strong>柱頂與梁端</strong></td>
+</tr>
+<tr>
+<td>$H_A = H_D$</td>
+<td>$P/2$</td>
+<td>剛度相同 $\Rightarrow$ 平分層剪力</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><strong>驗算：</strong> 節點 $B$、$C$ 的力矩平衡皆為 0；層剪力 $\dfrac{M_{AB}+M_{BA}}{2L} + \dfrac{M_{CD}+M_{DC}}{2L} = \dfrac{4/7+3/7}{2} P \times 2 = P$ ✓</p>
+</blockquote>
 <h2>5. 關鍵爭議點與進階探討 (Critical Issues &amp; Advanced Discussion)</h2>
 <ul>
 <li><strong>剛度巧合</strong>：出題者特意將柱子設定為 $2L$ 高、$2EI$ 剛度，梁設定為 $L$ 長、$EI$ 剛度。這讓三段桿件的相對剛度 $K$ 完全相等，這是標準的「放水」設計，用來獎勵有先觀察整體結構剛度的考生，能極大化地減少計算量。</li>
 <li><strong>單位與參數</strong>：本解析以通用代數 $P$ 求解。若題目圖面有給定具體數值（例如 $P = 10\text{tf}$），直接代入 $P$ 即可獲得精確值。</li>
-</ul></main>
+</ul>
+<hr />
+<h2>CHANGELOG</h2>
+<table>
+<thead>
+<tr>
+<th>日期</th>
+<th>變更</th>
+<th>原因</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2026-07-02</td>
+<td>初版解析</td>
+<td>—</td>
+</tr>
+<tr>
+<td>2026-08-26</td>
+<td><strong>補上 §1 缺漏的考卷附圖引用與圖說</strong>（原文以「（註：經確認幾何配置與剛度為…）」帶過，未引用 <code>SA-2024-4-fig-1.png</code>）；補兩張向量圖；主分類名稱與 <code>question_index.json</code> 對齊</td>
+<td>附圖上的 <code>2EI / 2L / EI / L</code> 標註本來就清楚，不需要「經確認」的括號註記。所有數值（$\Delta_B = \frac{5}{21}\frac{PL^3}{EI}$、$M_{CD} = \frac37 PL$、$M_{DC} = \frac47 PL$）經剛架有限元驗證<strong>全部正確</strong></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p><em>解析日期：2026-07-02　｜　補圖：2026-08-26（數值經剛架有限元獨立驗證，與閉合式相符至 $10^{-8}$；向量圖腳本 <code>gen_SA-2024-4.py</code>，可重跑）</em></p></main>
 <footer>來源：raw/solutions/SA-2024-4/SA-2024-4.md（知識庫解題內容唯一正本；本頁僅為渲染顯示）</footer>
 
 <script>

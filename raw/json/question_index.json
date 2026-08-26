@@ -283,7 +283,7 @@
       "secondaryTopicIds": [],
       "verificationStatus": "unverified",
       "hasSolution": true,
-      "hasViz": false,
+      "hasViz": true,
       "hasHandwritten": false,
       "tags": [
         "傾角變位法",
@@ -427,7 +427,8 @@
       "tags": [
         "傾角變位法",
         "無軸向變形",
-        "垂直滾支承",
+        "斜桿載重分解",
+        "滾支承",
         "側移方程式"
       ],
       "primaryTopicId": "SA-U2-3",
@@ -702,7 +703,7 @@
         "門型剛架",
         "側移",
         "層剪力方程",
-        "固定端彎矩",
+        "固定端彎矩符號",
         "節點轉角"
       ]
     },
