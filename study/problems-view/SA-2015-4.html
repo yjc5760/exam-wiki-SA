@@ -44,7 +44,7 @@ header .nomat{margin-top:12px;font-size:.8em;opacity:.85}
 <div class="hbtns"><a class="b-study" href="../study-SA-U2-4.html">🔍 U2-4 命題分析</a><a class="b-lect" href="../lecture-SA-U2-4.html">📚 U2-4 靜不定結構之矩陣分析法 講義</a><a class="b-fg" href="../formula-given-SA-U2-4.html">🎯 U2-4 給／背分界</a></div>
 </header>
 <main><h1>考題編號：SA-2015-4</h1>
-<p><strong>主分類：</strong> <code>SA-U4-1</code> 矩陣結構分析<br />
+<p><strong>主分類：</strong> <code>SA-U2-4</code> 靜不定結構之矩陣分析法<br />
 <strong>副分類：</strong> 無<br />
 <strong>分析法：</strong> 直接勁度法 (Direct Stiffness Method)<br />
 <strong>標籤：</strong> <code>矩陣位移法</code> <code>彈簧接頭</code> <code>自由度判定</code> <code>固端彎矩</code> <code>無軸向變形</code></p>
@@ -53,6 +53,8 @@ header .nomat{margin-top:12px;font-size:.8em;opacity:.85}
 <p>一平面構架承受載重如圖四所示，點 A、C 及 D 為固定支承，桿件 AB 與 BC 在 B 點為剛接，與桿件 BD 的接合是以一抗扭彈簧及一水平線性彈簧來連結，分別模擬彎矩及水平力的傳遞，但無垂直力傳遞。抗扭彈簧及線性彈簧的力與位移關係皆為線彈性。設桿件 AB、BC 與 BD 之 EI 及 EA 都為定值，桿長皆為 L，且忽略其軸向變形，抗扭彈簧及線性彈簧之彈簧常數分別為 $k_\theta$ 和 $k_s$。試標示此結構之位移自由度（完全束制之位移自由度不計），然後求對應這些自由度之勁度矩陣 $[K]$ 及外力矩陣 $[R]$。（$[R]=[K][r]$，$[r]$ 為位移矩陣）（25 分）</p>
 <p><img alt="平面構架矩陣分析" src="../../raw/solutions/SA-2015-4/SA-2015-4-fig-1.png" /></p>
 <p><em>圖說：構架 A-B-C-D。A、C、D為固定端。AB(長L)受向下均佈載重w，BC(長L)為直柱，BD(長L)於中央受向下集中力P。B節點處，AB與BC剛接，並透過抗扭彈簧與水平線性彈簧連接BD桿左端。</em></p>
+<p><img alt="SA-2015-4 題目重繪：A-B-C-D 構架向量圖，B 點以線性彈簧 ks 與抗扭彈簧 kθ 連接 BD 左端" src="../../raw/solutions/SA-2015-4/figs/SA-2015-4-fig-1-frame.svg" /></p>
+<p><em>圖 1　題目重繪（向量版），把彈簧接頭型式（線性彈簧 $k_s$／抗扭彈簧 $k_\theta$）與各段跨距 $L$、$L/2$、$L/2$ 釘死。這張圖攔的是把彈簧接頭誤看成剛接或鉸接，或跨距標錯，導致邊界條件與後續 FEM 全盤皆錯。</em></p>
 <hr />
 <h2>2. 核心考點</h2>
 <p>本題旨在測驗考生對於<strong>直接勁度法中「系統自由度 (DOF)」的精準判定</strong>，以及包含彈簧元件的勁度矩陣組裝。<br />
@@ -131,6 +133,8 @@ header .nomat{margin-top:12px;font-size:.8em;opacity:.85}
 <p><strong>⚠ 陷阱解析：</strong> 因 $u_{B(left)} = 0$ 且 $u_{B(right)} = 0$，水平線性彈簧 $k_s$ 兩端皆無位移，故<strong>不變形、無內力，與本題解答矩陣完全無關</strong>。</p>
 </blockquote>
 <hr />
+<p><img alt="SA-2015-4 自由度辨識：B 拆成 B1(AB-BC 剛接)／B2(BD 左端)，凸顯 ks 兩端零位移而消失的陷阱" src="../../raw/solutions/SA-2015-4/figs/SA-2015-4-fig-2-dof.svg" /></p>
+<p><em>圖 2　自由度辨識（B1、B2 為同一位置，分離繪製僅為清楚標示）。有效自由度只剩 $r_1=\theta_{B1}$、$r_2=v_{B2}$、$r_3=\theta_{B2}$ 三個。這張圖攔的正是上方陷阱：誤把 $k_s$ 對應的水平位移列為第 4 個自由度，或漏乘 $k_s$ 卻沒發現它其實不出現在 $[K]$ 中。</em></p>
 <h2>4. 步驟化詳細計算過程</h2>
 <h3>步驟 1：定義位移自由度矩陣 $[r]$</h3>
 <p>為了方便建立符號慣例，定義以下三個獨立自由度（完全束制者不計）：</p>
@@ -225,7 +229,8 @@ $$ [R] = \begin{bmatrix}
 \frac{P}{2} \\
 \frac{PL}{8}
 \end{bmatrix} $$</p>
-<p><em>(註：若學生自定義之自由度方向與本解相反，矩陣內元素正負號會依循對應邏輯改變，但矩陣主對角線元素恆正。)</em></p></main>
+<p><em>(註：若學生自定義之自由度方向與本解相反，矩陣內元素正負號會依循對應邏輯改變，但矩陣主對角線元素恆正。)</em></p>
+<p><em>圖解補繪：2026-08-27（向量圖，腳本 <code>gen_SA-2015-4.py</code>，可重跑）</em></p></main>
 <footer>來源：raw/solutions/SA-2015-4/SA-2015-4.md（知識庫解題內容唯一正本；本頁僅為渲染顯示）</footer>
 
 <script>

@@ -17,13 +17,13 @@
 <body>
 <div class="wrap">
   <h3>SA-2002-1 — 靜定剛架 SFD / BMD（沿桿件路徑 A→B→C→D→E→F→G→H 展開）</h3>
-  <div class="legend">路徑總長 14m：A-B-C 為左柱（各 2m），C-D-E-F 為橫梁（2m+1m+3m），F-G-H 為右柱（各 2m）。F 點為內鉸。</div>
+  <div class="legend">路徑總長 14m：A-B-C 為左柱（各 2m），C-D-E-F 為橫梁（2m+1m+3m），F-G-H 為右柱（各 2m）。F 點為內鉸（數值已依 B、F 力矩轉向校正，見 .md 說明）。</div>
   <canvas id="cM" width="556" height="220"></canvas>
   <canvas id="cV" width="556" height="180"></canvas>
   <table>
     <tr><th>位置</th><th>A</th><th>B⁻/B⁺</th><th>C</th><th>D</th><th>E</th><th>F(梁側)</th><th>F(柱側)</th><th>G</th><th>H</th></tr>
-    <tr><td>M (kN-m)</td><td>0</td><td>20/26</td><td>46</td><td>42.67</td><td>39</td><td>4</td><td>4</td><td>4</td><td>0</td></tr>
-    <tr><td>V (kN)</td><td>-10</td><td>-10</td><td>1/3</td><td>-11/3</td><td>-11/3→-35/3</td><td>-35/3</td><td>0</td><td>0→-4</td><td>-4</td></tr>
+    <tr><td>M (kN-m)</td><td>0</td><td>16/10</td><td>26</td><td>26.67</td><td>25</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
+    <tr><td>V (kN)</td><td>-8</td><td>-8</td><td>7/3</td><td>-5/3</td><td>-5/3→-29/3</td><td>-29/3</td><td>2</td><td>-2</td><td>2</td></tr>
   </table>
 </div>
 <script>
@@ -63,24 +63,27 @@ function buildChart(canvasId, segments, yLabel, color){
 }
 
 // M(x) 分段函式（受拉側正負依既有解析標示，此處統一以數值正負表示，正=下/內側受拉視解析標示）
+// f(local) 之 local 皆為「該段起點=0」的區段內偏移量（與 buildChart 呼叫方式一致）
+// F 點左右兩側之「跳躍前」數值（梁側 -4、柱側 +4）保留於曲線末端，
+// 實際內鉸彎矩經外部集中力矩修正後精確為 0（見 .md Step 2 說明），未在圖上另畫垂直跳躍線。
 const Msegs = [
-  {x0:0, x1:2, f:(y)=> 10*y},                         // A-B: 0 -> 20
-  {x0:2, x1:4, f:(y)=> 26 + 10*y},                     // B-C: 26 -> 46 (含跳躍)
-  {x0:4, x1:6, f:(x)=> 46 + (1/3)*x - x*x},            // C-D
-  {x0:6, x1:7, f:(x)=> 42.667 - (11/3)*x},             // D-E (linear, local x 0~1)
-  {x0:7, x1:10, f:(x)=> 39 - (35/3)*x},                // E-F (linear, local x 0~3)
-  {x0:10, x1:12, f:()=> 4},                            // F-G (right col, upper half, M const = 4)
-  {x0:12, x1:14, f:(y)=> 4*(2-y) - (2-y)*(2-y)}        // G-H (right col, lower half, ->0 at H)
+  {x0:0, x1:2, f:(y)=> 8*y},                          // A-B: 0 -> 16
+  {x0:2, x1:4, f:(y)=> 10 + 8*y},                      // B-C: 10 -> 26 (M_B 處已含跳躍 -6)
+  {x0:4, x1:6, f:(x)=> 26 + (7/3)*x - x*x},            // C-D: 26 -> 26.67 (峰值27.36於x=7/6)
+  {x0:6, x1:7, f:(x)=> 26.667 - (5/3)*x},              // D-E: 26.67 -> 25 (local x 0~1)
+  {x0:7, x1:10, f:(x)=> 25 - (29/3)*x},                // E-F: 25 -> -4 (跳躍前，local x 0~3)
+  {x0:10, x1:12, f:(loc)=> 4 - 2*loc},                 // F-G (右柱上半，跳躍前 4 -> 0)
+  {x0:12, x1:14, f:(loc)=> loc*loc - 2*loc}            // G-H (右柱下半，0 -> 中點-1 -> 0)
 ];
 buildChart('cM', Msegs, 'M (kN-m)', '#0066cc');
 
 const Vsegs = [
-  {x0:0, x1:4, f:()=> -10},                            // A-B-C
-  {x0:4, x1:6, f:(x)=> 1/3 - 2*x},                     // C-D
-  {x0:6, x1:7, f:()=> -11/3},                          // D-E
-  {x0:7, x1:10, f:()=> -35/3},                         // E-F
-  {x0:10, x1:12, f:()=> 0},                            // F-G (right col, upper half, V=0)
-  {x0:12, x1:14, f:(y)=> -2*y}                         // G-H (right col, lower half, ->-4 at H)
+  {x0:0, x1:4, f:()=> -8},                             // A-B-C
+  {x0:4, x1:6, f:(x)=> 7/3 - 2*x},                     // C-D: 7/3 -> -5/3
+  {x0:6, x1:7, f:()=> -5/3},                           // D-E
+  {x0:7, x1:10, f:()=> -29/3},                         // E-F
+  {x0:10, x1:12, f:()=> -2},                           // F-G (右柱上半，常數 -2)
+  {x0:12, x1:14, f:(loc)=> 2*loc - 2}                  // G-H (右柱下半，-2 -> 2)
 ];
 buildChart('cV', Vsegs, 'V (kN)', '#cc6600');
 </script>
