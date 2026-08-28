@@ -123,8 +123,9 @@ ctx.strokeStyle = '#ef5350';
 ctx.fillStyle = 'rgba(239, 83, 80, 0.2)';
 ctx.lineWidth = 2;
 
-// M(y) = 25.3 (top), -17.0 (bot)
-let M_t = 25.3, M_b = -17.0;
+// 斷面內彎矩（左側受拉為正，軸線 C→D）：近端同號、遠端反號
+// M(0) = M_CD = -25.3（C 端右側受拉）、M(L) = -M_DC = +17.0（D 端左側受拉）
+let M_t = -25.3, M_b = 17.0;
 ctx.beginPath();
 ctx.moveTo(x_M, y0);
 ctx.lineTo(x_M - M_t * scale_M, y0);
@@ -135,8 +136,8 @@ ctx.fill();
 ctx.stroke();
 
 ctx.fillStyle = '#ffee58';
-ctx.fillText('25.3', x_M - M_t * scale_M - 35, y0 + 5);
-ctx.fillText('-17.0', x_M - M_b * scale_M + 5, y0 + L + 5);
+ctx.fillText('-25.3', x_M - M_t * scale_M + 5, y0 + 5);
+ctx.fillText('+17.0', x_M - M_b * scale_M - 40, y0 + L + 5);
 ctx.font = '12px Segoe UI';
 ctx.fillStyle = '#aaa';
 ctx.fillText('M 圖', x_M - 15, y0 - 15);
@@ -155,8 +156,8 @@ ctx.strokeStyle = '#ab47bc';
 ctx.fillStyle = 'rgba(171, 71, 188, 0.2)';
 ctx.lineWidth = 2;
 
-// m(y) = 0 (top), -20 (bot)
-let m_t = 0, m_b = -20;
+// 柱頂向右單位力 ⇒ 柱向右彎 ⇒ 背向位移的左側受拉 ⇒ m(y) = +y
+let m_t = 0, m_b = 20;
 ctx.beginPath();
 ctx.moveTo(x_m, y0);
 ctx.lineTo(x_m - m_t * scale_m, y0);
@@ -169,7 +170,7 @@ ctx.stroke();
 ctx.fillStyle = '#ffee58';
 ctx.font = '14px Segoe UI';
 ctx.fillText('0', x_m - m_t * scale_m + 5, y0 + 5);
-ctx.fillText('-20', x_m - m_b * scale_m + 5, y0 + L + 5);
+ctx.fillText('+20', x_m - m_b * scale_m - 32, y0 + L + 5);
 ctx.font = '12px Segoe UI';
 ctx.fillStyle = '#aaa';
 ctx.fillText('m 圖', x_m - 15, y0 - 15);
@@ -179,7 +180,7 @@ ctx.font = '14px Segoe UI';
 ctx.fillStyle = '#fff';
 ctx.fillText('∫ M m dy = (L/6) [ Mt·mt + 4 Mm·mm + Mb·mb ]', 150, 360);
 ctx.fillStyle = '#4fc3f7';
-ctx.fillText('ΔCx = (20/6EI) [ 25.3(0) + 4(4.15)(-10) + (-17.0)(-20) ] = 580 / EI', 150, 385);
+ctx.fillText('ΔCx = (20/6EI) [ (-25.3)(0) + 4(-4.15)(+10) + (+17.0)(+20) ] = 580 / EI', 150, 385);
 
 </script>
 </body>

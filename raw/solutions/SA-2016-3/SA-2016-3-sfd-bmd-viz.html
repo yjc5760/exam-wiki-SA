@@ -261,8 +261,9 @@
                     <line x1="480" y1="150" x2="480" y2="450" stroke="rgba(255,255,255,0.1)" stroke-width="2" />
 
                     <!-- BMD -->
-                    <!-- AB: MA=-23.2, MB=-5.63. -->
-                    <path d="M 170 225 L 146.8 184.8 L 288.7 130.4 L 300 150 Z" class="bmd-fill" />
+                    <!-- AB: M(A)=-23.2（外側受拉）、M(B)=-M_BA=+5.63（內側受拉，與 BC 在 B 端連續）
+                         兩端異號 ⇒ 圖形跨越桿軸，B 端與 BC 段同在內側 -->
+                    <path d="M 170 225 L 146.8 184.8 L 305.6 159.8 L 300 150 Z" class="bmd-fill" />
                     <text x="140" y="200" class="bmd-text">-23.2</text>
 
                     <!-- BC: MB=5.63, MC=-25.3 -->
@@ -270,10 +271,11 @@
                     <text x="310" y="175" class="bmd-text">5.63</text>
                     <text x="470" y="90" class="bmd-text">-25.3</text>
 
-                    <!-- CD: MC=25.3, MD=-17.0 -->
-                    <path d="M 480 150 L 429.4 150 L 514 450 L 480 450 Z" class="bmd-fill" />
-                    <text x="410" y="150" class="bmd-text">25.3</text>
-                    <text x="530" y="450" class="bmd-text">-17.0</text>
+                    <!-- CD: 斷面內彎矩 M(C)=-25.3（外側/右受拉）、M(D)=+17.0（內側/左受拉）
+                         正彎矩畫於內側（左），與 AB、BC 同一慣例；兩端異號故圖形跨越桿軸 -->
+                    <path d="M 480 150 L 530.6 150 L 446 450 L 480 450 Z" class="bmd-fill" />
+                    <text x="540" y="150" class="bmd-text">-25.3</text>
+                    <text x="404" y="450" class="bmd-text">+17.0</text>
 
                     <!-- Nodes overlay -->
                     <circle cx="170" cy="225" r="4" fill="var(--bg-color)" stroke="rgba(255,255,255,0.3)" stroke-width="2"/>

@@ -43,7 +43,8 @@ header .nomat{margin-top:12px;font-size:.8em;opacity:.85}
 <p class="meta2">主分類 <b>SA-U2-1</b> 靜不定結構最小功法 ｜ 2017 年（民國 106） ｜ 最小功法（Castigliano's 2nd Theorem）</p>
 <div class="hbtns"><a class="b-study" href="../study-SA-U2-1.html">🔍 U2-1 命題分析</a><a class="b-lect" href="../lecture-SA-U2-1.html">📚 U2-1 靜不定結構最小功法 講義</a><a class="b-fg" href="../formula-given-SA-U2-1.html">🎯 U2-1 給／背分界</a></div>
 </header>
-<main><h1>考題編號：SA-2017-2</h1>
+<main>
+<h1>考題編號：SA-2017-2</h1>
 <p><strong>主分類：</strong> 靜不定結構分析—力法 (SA-U2-1)<br />
 <strong>副分類：</strong> <br />
 <strong>分析法：</strong> 最小功法（Castigliano's 2nd Theorem）<br />
@@ -52,6 +53,8 @@ header .nomat{margin-top:12px;font-size:.8em;opacity:.85}
 <h2>1. 原始題目重述 (Problem Restatement)</h2>
 <p><img alt="SA-2017-2 題目附圖：兩端固定梁，中間設置內鉸 c，全梁受均布載重 w，a 到 c 距離為 m，c 到 b 距離為 n，全跨 L = m + n" src="../../raw/solutions/SA-2017-2/SA-2017-2-fig-1.png" /></p>
 <p><em>圖說：梁 a–c–b 兩端均為固定支承，c 點設有內鉸（梁在此點彎矩必為零）。均布載重 w（向下）作用於全梁。各段長度：ac = m，cb = n，全跨 L = m + n。所有桿件彈性模數 E 與斷面慣性矩 I 皆為定值。</em></p>
+<p><img alt="SA-2017-2 題目重繪：兩端固定梁，c 點設內鉸，全跨受向下均佈載重 w，並列出靜不定度的計算（4 未知 − 3 方程 = 1）" src="../../raw/solutions/SA-2017-2/figs/SA-2017-2-fig-1-beam.svg" /></p>
+<p><em>圖 2　題目重繪（向量版），右上角把靜不定度攤開。它攔下的是「有鉸就變靜定」——內鉸只多提供一條方程式，兩端固定梁仍剩一度靜不定。</em></p>
 <p><strong>題目要求：</strong> 以<strong>最小功法</strong>求 a、b 兩端固定端彎矩（需標明方向，採用其他方法計算不予計分）。</p>
 <hr />
 <h2>2. 考題核心精神與出題者意圖 (Core Concepts &amp; Examiner's Intent)</h2>
@@ -85,7 +88,8 @@ header .nomat{margin-top:12px;font-size:.8em;opacity:.85}
 <p><strong>⚠ 陷阱二：鉸點條件的正確列法</strong><br />
 取<strong>左段 ac</strong> 對鉸點 c 取矩（只含左段的力與矩），方程為：<br />
 $R_a \cdot m + M_a - \frac{wm^2}{2} = 0$<br />
-注意 $M_a$ 以<strong>逆時針為正</strong>（施加在梁左端），若方向定義不同，正負號會整個翻轉。</p>
+此處 $M_a$ 是 <strong>a 端斷面的內彎矩（下側受拉為正）</strong>，不是「支承施加於梁的外力矩」——<br />
+兩者差一個負號，是本題最常見的翻號來源。全篇務必只用其中一種，見 §4.2 的約定表。</p>
 <p><strong>⚠ 陷阱三：右段從 b 往左積分</strong><br />
 右段坐標 $\xi$（由 b 往左起算），此時彎矩函數形式對稱地從 b 端建立，計算偏導時需小心 $\partial M_b/\partial X$ 的值。</p>
 <p><strong>⚠ 陷阱四：最終對稱性驗算</strong><br />
@@ -299,65 +303,67 @@ $R_a \cdot m + M_a - \frac{wm^2}{2} = 0$<br />
 <p><strong>未知反力：</strong> $R_a,\ M_a,\ R_b,\ M_b$（水平方向無外力，忽略水平反力）共 4 個。<br />
 <strong>可用方程式：</strong> 整體平衡 2 條 + 內鉸條件（$M_c = 0$）1 條 = 3 條。</p>
 <p>$$i = 4 - 3 = 1 \quad \text{（一度靜不定）}$$</p>
-<p><strong>選取冗力：</strong> $X = M_a$（a 端固定端彎矩，逆時針為正）</p>
-<h3>4.2 以冗力 X 表示全部反力</h3>
-<p><strong>符號約定：</strong> 逆時針力矩為正；向上反力為正；$x$ 由 a 向右起算；$\xi$ 由 b 向左起算。</p>
-<p><strong>鉸點條件（對左段 ac，對 c 點取矩 = 0）：</strong><br />
-$$R_a \cdot m + M_a - \frac{w m^2}{2} = 0$$<br />
-$$\boxed{R_a = \frac{wm}{2} - \frac{X}{m}}$$</p>
-<p><strong>整體 $\sum F_y = 0$：</strong><br />
-$$R_b = wL - R_a = w(m+n) - \frac{wm}{2} + \frac{X}{m}$$<br />
-$$\boxed{R_b = w\!\left(n + \frac{m}{2}\right) + \frac{X}{m}}$$</p>
-<p><strong>整體 $\sum M_a = 0$（逆時針正）：</strong><br />
-$$R_b \cdot L - \frac{wL^2}{2} + M_a - M_b = 0 \quad (\text{注意 } M_b \text{ 在 b 端，順時針})$$</p>
-<p>等等，此處需要小心。以下統一採用「梁端力矩若順時針作用於梁截面則為正（即使梁上端受拉，此為 hogging convention）」——</p>
-<p>實際上，為了避免混淆，我重新定義：取 $M_a$ 與 $M_b$ 皆以「使梁上方受拉（hogging）為正」，即在支點處向梁內側的逆時針力矩（對左端a）和順時針力矩（對右端b）為正。</p>
-<p>以整體取矩（對 a 點，逆時針正）：<br />
-$$R_b \cdot L - \frac{wL^2}{2} + X - M_b = 0$$</p>
-<p>（$M_b$ 若為 hogging，其在梁上對 a 點為逆時針，在方程中以 $+M_b$ 出現，故此處用 $-M_b$。）</p>
-<p>解出：<br />
-$$M_b = R_b \cdot L - \frac{wL^2}{2} + X$$<br />
-$$= \left[w\!\left(n+\frac{m}{2}\right)+\frac{X}{m}\right](m+n) - \frac{w(m+n)^2}{2} + X$$</p>
-<p>整理 $w$ 項：<br />
-$$w\!\left(n+\frac{m}{2}\right)(m+n) - \frac{w(m+n)^2}{2}$$<br />
-$$= w(m+n)\!\left[\left(n+\frac{m}{2}\right) - \frac{m+n}{2}\right]$$<br />
-$$= w(m+n)\!\left[\frac{2n+m-m-n}{2}\right] = \frac{wn(m+n)}{2} = \frac{wnL}{2}$$</p>
-<p>整理 $X$ 項：$\frac{X}{m}(m+n) + X = \frac{X(m+n)}{m} + X = \frac{X(m+n+m)}{m} = \frac{X(2m+n)}{m}$</p>
-<p>$$M_b = \frac{wnL}{2} + \frac{X(2m+n)}{m}$$</p>
-<p><em>（此時 $M_b$ 為 hogging 正方向的值；下面積分中右段彎矩方程中 $M_b$ 的帶入需保持一致。）</em></p>
-<p><strong>自我檢查（用另一個方程）：</strong><br />
-實際上，我建議重新用更直觀的方式：以絕對值計算彎矩，然後在最後標方向。</p>
-<hr />
-<p><strong>採用更直觀的方法重新推導（重設符號）：</strong></p>
-<p>設 $M_a = X$（<strong>使 a 端上方受拉</strong> = 物理上的 hogging 彎矩，視為正值的冗力）。<br />
-設 $M_b$（<strong>使 b 端上方受拉</strong> = 物理上的 hogging 彎矩，待求）。</p>
-<p><strong>鉸點條件</strong>（左段 ac 對 c 取矩，向上反力 $R_a$ 逆時針、$M_a$ 使左端 hogging 故為順時針於截面 → 向右力矩臂正）：<br />
-$$R_a \cdot m - M_a - \frac{wm^2}{2} = 0 \implies R_a = \frac{wm}{2} + \frac{X}{m}$$</p>
-<p><em>（說明：$M_a$ 在 a 端使上方受拉，對於以 a 端截面向右看時，$M_a$ 在截面右側為順時針，對 c 點取矩為負。重新整理：$R_a m + (-M_a) - wm^2/2 = 0$，即 $R_a = (wm^2/2 + M_a)/m$。）</em></p>
-<p><em>【重新統一符號約定，避免混亂】</em></p>
-<hr />
-<p><strong>最終採用標準力法符號約定：</strong></p>
-<p>定義彎矩正方向：<strong>下側受拉為正（sagging positive）</strong>，這是桿端彎矩方程的標準慣例。</p>
-<p>在此約定下：</p>
-<ul>
-<li>$M_a$（固定端彎矩）= 負值代表 hogging（上側受拉），符合 UDL 下固定端的物理情況</li>
-<li>設 $X = M_a$（可為任意符號，最後結果的正負即代表 sagging/hogging）</li>
-</ul>
-<p><strong>鉸點條件（左段 ac，對 c 取矩，順時針正）：</strong><br />
-$$\sum M_c^{(L)} = 0: \quad R_a \cdot m - \frac{wm^2}{2} + M_a = 0$$<br />
-$$\implies R_a = \frac{wm}{2} - \frac{X}{m} \quad \cdots (1)$$</p>
-<p><em>（說明：$M_a$ 為左端外加力矩，以逆時針作用於截面時為正 sagging 於左端，但從全段對 c 取矩時，逆時針 $M_a$ 對 c 為正順時針，因此帶 $+M_a$。）</em></p>
-<p>為避免繼續在符號上迷失，本文直接以 §4.2 中已完成且驗證正確的公式為準：</p>
-<p>$$R_a = \frac{wm}{2} - \frac{X}{m}, \quad R_b = w\!\left(n+\frac{m}{2}\right) + \frac{X}{m}$$<br />
-$$M_b = -\frac{wnL}{2} - \frac{nX}{m} \quad \cdots (*)$$</p>
-<p>其中 $(*)$ 可由整體對 a 取矩驗算（此公式已通過對稱性驗證，見 §4.6）。</p>
+<p><strong>選取冗力：</strong> $X \equiv M_a$（a 端<strong>斷面內彎矩</strong>，下側受拉為正）</p>
+<h3>4.2 符號約定與以冗力 X 表示全部反力</h3>
+<p><strong>全篇只用一套約定，不中途更換：</strong></p>
+<table>
+<thead>
+<tr>
+<th>量</th>
+<th>正方向</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>反力 $R_a,\ R_b$</td>
+<td>向上為正</td>
+</tr>
+<tr>
+<td>斷面內彎矩 $M(x)$</td>
+<td><strong>下側受拉（sagging）為正</strong></td>
+</tr>
+<tr>
+<td>$X = M_a$</td>
+<td>a 端斷面內彎矩（UDL 下預期為負值，即上側受拉 hogging）</td>
+</tr>
+<tr>
+<td>座標 $x$</td>
+<td>由 a 向右起算，$0 \le x \le L$</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><strong>為什麼只用「斷面內彎矩」一種量：</strong> 本題最容易失分之處，就是「支承施加於梁的外力矩」<br />
+與「梁斷面的內彎矩」差一個負號。全程只談斷面內彎矩，就不會在中途翻號。</p>
+</blockquote>
+<p><strong>全梁彎矩函數（一式到底，不需分段）：</strong></p>
+<p>取自 a 端起算長度 $x$ 的左側自由體：</p>
+<p>$$M(x) = R_a x + X - \frac{wx^2}{2}, \qquad 0 \le x \le L$$</p>
+<blockquote>
+<p>$x=0$ 時 $M = X$，與 $X$ 的定義相符。內鉸只釋放彎矩、仍傳遞剪力，且 c 點無集中載重，<br />
+故 $M(x)$ 在全梁是<strong>同一條連續拋物線</strong>，只是在 $x=m$ 處恰好通過零點。</p>
+</blockquote>
+<p><strong>內鉸條件 $M(m) = 0$：</strong></p>
+<p>$$R_a m + X - \frac{wm^2}{2} = 0$$<br />
+$$\boxed{R_a = \frac{wm}{2} - \frac{X}{m}} \qquad \cdots (1)$$</p>
+<p><strong>整體 $\sum F_y = 0$：</strong></p>
+<p>$$\boxed{R_b = wL - R_a = w!\left(n + \frac{m}{2}\right) + \frac{X}{m}} \qquad \cdots (2)$$</p>
+<p><strong>b 端彎矩（把 $x = L$ 代回同一條 $M(x)$，不需另外取矩）：</strong></p>
+<p>$$M_b = M(L) = R_a L + X - \frac{wL^2}{2}$$</p>
+<p>$w$ 項：$\dfrac{wm}{2}(m+n) - \dfrac{w(m+n)^2}{2} = \dfrac{w(m+n)}{2}\big[m - (m+n)\big] = -\dfrac{wnL}{2}$</p>
+<p>$X$ 項：$-\dfrac{X}{m}(m+n) + X = -\dfrac{nX}{m}$</p>
+<p>$$\boxed{M_b = -\frac{wnL}{2} - \frac{nX}{m}} \qquad \cdots (3)$$</p>
 <h3>4.3 建立彎矩函數</h3>
 <p><strong>左段 ac</strong>（$x$ 由 a 往右，$0 \le x \le m$）：<br />
 $$M_L(x) = R_a \cdot x + X - \frac{wx^2}{2} = \left(\frac{wm}{2} - \frac{X}{m}\right)x + X - \frac{wx^2}{2}$$</p>
 <p>對 X 偏微分：<br />
 $$\frac{\partial M_L}{\partial X} = -\frac{x}{m} + 1 = 1 - \frac{x}{m}$$</p>
-<p><strong>右段 cb</strong>（$\xi$ 由 b 往左，$0 \le \xi \le n$）：<br />
-$$M_R(\xi) = R_b \cdot \xi + M_b - \frac{w\xi^2}{2}$$<br />
+<p><strong>右段 cb</strong>（$\xi$ 由 b 往左，$0 \le \xi \le n$）：</p>
+<blockquote>
+<p>這與 §4.2 的 $M(x)$ 是同一條曲線，只是換成從 b 端起算（$\xi = L - x$），<br />
+目的是讓 b 端的邊界條件從 $\xi = 0$ 直接讀出。可代入驗證 $M_R(\xi) \equiv M(L-\xi)$。</p>
+</blockquote>
+<p>$$M_R(\xi) = R_b \cdot \xi + M_b - \frac{w\xi^2}{2}$$<br />
 $$= \left[w\!\left(n+\frac{m}{2}\right)+\frac{X}{m}\right]\xi + \left(-\frac{wnL}{2} - \frac{nX}{m}\right) - \frac{w\xi^2}{2}$$</p>
 <p>對 X 偏微分：<br />
 $$\frac{\partial M_R}{\partial X} = \frac{\xi}{m} - \frac{n}{m} = \frac{\xi - n}{m}$$</p>
@@ -397,6 +403,8 @@ $$I_R = \frac{n^3 X}{3m^2} + \frac{wn^3(3n+4m)}{24m}$$</p>
 <p>注意到 $m^3 + n^3 = (m+n)(m^2-mn+n^2)$ 及 $m^4 + n^3(3n+4m) = (m+n)(m^3-m^2n+mn^2+3n^3)$（可展開驗證），因此：</p>
 <p>$$X = -\frac{w \cdot (m+n)(m^3-m^2n+mn^2+3n^3)}{8(m+n)(m^2-mn+n^2)}$$</p>
 <p>$$\boxed{M_a = -\frac{wm(m^3 - m^2n + mn^2 + 3n^3)}{8(m^2 - mn + n^2)}}$$</p>
+<p>分子可再提出 $(m+n) = L$，得到較易記的等價形式：</p>
+<p>$$M_a = -\frac{w\,m\,L\,(m^2 - 2mn + 3n^2)}{8(m^2 - mn + n^2)}$$</p>
 <p><strong>方向：</strong> $M_a < 0$，代表 hogging（<strong>a 端上側受拉</strong>，即固定端彎矩使梁上緣受拉，為標準均布載重下固定端行為）。</p>
 <h3>4.6 求 $M_b$</h3>
 <p>代入 $M_b = -\frac{wnL}{2} - \frac{nX}{m}$：</p>
@@ -405,21 +413,71 @@ $$I_R = \frac{n^3 X}{3m^2} + \frac{wn^3(3n+4m)}{24m}$$</p>
 <p>展開 $-4(m+n)(m^2-mn+n^2) = -4(m^3+n^3) = -4m^3-4n^3$：</p>
 <p>$$-4m^3-4n^3 + m^3 - m^2n + mn^2 + 3n^3 = -3m^3 - m^2n + mn^2 - n^3 = -(3m^3+m^2n-mn^2+n^3)$$</p>
 <p>$$\boxed{M_b = -\frac{wn(3m^3 + m^2n - mn^2 + n^3)}{8(m^2 - mn + n^2)}}$$</p>
+<p>同樣提出 $(m+n) = L$：</p>
+<p>$$M_b = -\frac{w\,n\,L\,(3m^2 - 2mn + n^2)}{8(m^2 - mn + n^2)}$$</p>
+<p>兩式互為 $m \leftrightarrow n$ 對調，可作為抄寫錯誤的快速檢查。</p>
 <p><strong>方向：</strong> $M_b < 0$，代表 hogging（<strong>b 端上側受拉</strong>）。</p>
 <h3>4.7 最終結果彙整</h3>
 <p>$$\boxed{M_a = -\frac{wm(m^3 - m^2n + mn^2 + 3n^3)}{8(m^2 - mn + n^2)}} \quad (\text{hogging，a 端上側受拉})$$</p>
 <p>$$\boxed{M_b = -\frac{wn(3m^3 + m^2n - mn^2 + n^3)}{8(m^2 - mn + n^2)}} \quad (\text{hogging，b 端上側受拉})$$</p>
+<p><img alt="SA-2017-2 代表案例 m/L=0.4 的三聯圖：載重與支承（含內鉸）、剪力圖（+53.93 到 −46.07，零點 x=5.393 m）、彎矩圖（兩端皆 hogging，內鉸處 M=0）" src="../../raw/solutions/SA-2017-2/figs/SA-2017-2-fig-3-vm.svg" /></p>
+<p><em>圖 3　代表案例 $m/L = 0.4$ 的載重／剪力／彎矩三聯圖，座標全部由 §4.5、§4.6 的封閉解代入算出。它攔下三件事：內鉸處的彎矩沒有歸零、剪力零點與彎矩極值位置對不上、固端彎矩符號寫成正的。</em></p>
+<h3>4.8 固端彎矩隨鉸點位置的變化</h3>
+<p>把 §4.5、§4.6 的公式對 $m/L$ 掃過一遍，可以看出一件與直覺相反的事：</p>
+<p><img alt="SA-2017-2 固端彎矩隨鉸點位置變化的曲線：|M_a| 與 |M_b| 除以 wL² 對 m/L 作圖，與無內鉸的 wL²/12 基準線對照，m=n 時兩者皆為 wL²/8" src="../../raw/solutions/SA-2017-2/figs/SA-2017-2-fig-2-curve.svg" /></p>
+<p><em>圖 4　$|M_a|$、$|M_b|$ 隨鉸點位置的變化，與「無內鉸的兩端固定梁」$wL^2/12$ 對照。$m = n$ 時兩端都是 $wL^2/8$，比無內鉸</em><em>大 50%</em>*；只有少數幾段區間才小於 $wL^2/12$，且並非單調。它攔下的是「內鉸讓固端彎矩變小」這個常見但錯誤的結論——拿它來自我驗算，會把正確答案判成錯的。</p>
+<p>*</p>
 <hr />
 <h2>5. 關鍵爭議點與進階探討 (Critical Issues &amp; Advanced Discussion)</h2>
 <p><strong>對稱性驗算（令 m = n）：</strong><br />
 $$M_a = -\frac{wm(m^3-m^3+m^3+3m^3)}{8(m^2-m^2+m^2)} = -\frac{wm \cdot 4m^3}{8m^2} = -\frac{wm^2}{2}$$<br />
 $$M_b = -\frac{wm(3m^3+m^3-m^3+m^3)}{8m^2} = -\frac{wm \cdot 4m^3}{8m^2} = -\frac{wm^2}{2}$$</p>
-<p>$M_a = M_b$ ✓ 符合對稱性（且可用鉸點條件 + 對稱反力直接驗算：$R_a = wm/2$，$\sum M_c^{(L)} = wm \cdot m/2 + M_a - wm^2/2 = 0 \implies M_a = -wm^2/2$ ✓）</p>
+<p>$M_a = M_b$ ✓ 符合對稱性。</p>
+<p><strong>獨立驗算：</strong> $m = n$ 時鉸點位於跨中，由對稱性可知<strong>鉸點剪力為零</strong>，<br />
+故左半段由 $R_a$ 單獨承擔自身載重 $wm$，即 $R_a = wm$（<strong>不是</strong> $wm/2$）。代入鉸點條件：</p>
+<p>$$\sum M_c^{(L)} = R_a m + M_a - \frac{wm^2}{2} = wm^2 + M_a - \frac{wm^2}{2} = 0 \implies M_a = -\frac{wm^2}{2} \;✓$$</p>
+<p>亦可由 (1) 反算核對：$R_a = \frac{wm}{2} - \frac{X}{m} = \frac{wm}{2} + \frac{wm}{2} = wm$ ✓</p>
 <p><strong>與傾角變位法結果比較：</strong><br />
 本題題目明令「採用其他方法計算不予計分」，但實務驗算可用傾角變位法或彎矩分配法確認。兩者應給出相同結果，差異代表計算錯誤。</p>
 <p><strong>分母 $m^2 - mn + n^2$ 恆正：</strong><br />
 $(m-n)^2 = m^2 - 2mn + n^2 \ge 0 \implies m^2 - mn + n^2 \ge mn > 0$（m, n &gt; 0），故分母不為零，公式在任意正值 m, n 下均有定義。</p>
-<p><strong>物理意義：</strong> 內鉸的存在使兩端的固定端彎矩<strong>小於</strong>同跨度完全固定梁的固定端彎矩（$wL^2/12$）。這是因為鉸點允許梁在該截面自由旋轉，減少了彎矩的傳遞，從而降低了支端的約束彎矩。</p></main>
+<p><strong>物理意義（常見的直覺陷阱）：</strong> 很多人直覺認為「多一個鉸 → 束制變鬆 → 固端彎矩變小」，<br />
+<strong>這是錯的</strong>。內鉸沒有放鬆任何<strong>支承</strong>，它切斷的是<strong>梁跨越 c 點傳遞彎矩的能力</strong>。<br />
+原本連續的固端梁，是靠 c 附近的負彎矩把兩端「拉住」；這條路徑被切斷後，<br />
+每一側各自退化成接近「一端固定、一端簡支」的行為，固端彎矩反而可能<strong>變大</strong>。</p>
+<p>最乾淨的反例就是對稱情況 $m = n$：</p>
+<table>
+<thead>
+<tr>
+<th>情況</th>
+<th>a 端固端彎矩</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>兩端固定、<strong>無</strong>內鉸</td>
+<td>$wL^2/12 = 0.0833\,wL^2$</td>
+</tr>
+<tr>
+<td>兩端固定、鉸在跨中（$m = n$）</td>
+<td>$wm^2/2 = wL^2/8 = 0.125\,wL^2$ ← <strong>大 50%</strong></td>
+</tr>
+<tr>
+<td>兩端固定、鉸貼近 b 端（$n \to 0$）</td>
+<td>$wm^2/8 \to wL^2/8 = 0.125\,wL^2$</td>
+</tr>
+</tbody>
+</table>
+<p>鉸點偏心時，兩端固端彎矩與 $wL^2/12$ 的大小關係<strong>隨 $m/L$ 變動且非單調</strong>：<br />
+例如 $m/L = 0.75$ 時 $|M_a| = 0.0804\,wL^2$ 略<strong>小於</strong> $wL^2/12$，<br />
+而 $m/L = 0.90$ 時 $|M_a| = 0.1017\,wL^2$ 又<strong>大於</strong> $wL^2/12$<br />
+（交叉點在 $m/L = 0.211,\ 0.667,\ 0.789$，見 §4.8 的曲線圖）。</p>
+<p><strong>可靠的敘述只有一句：不可以假設內鉸一定讓固端彎矩變小。</strong><br />
+考場上若想用「小於 $wL^2/12$」來自我驗算，會把正確答案判成錯的。<br />
+真正可用的驗算是 §4.6 的對稱性檢查與 $m \leftrightarrow n$ 對調檢查。</p>
+<hr />
+<p><em>圖解補繪：2026-08-28（向量圖，腳本 <code>gen_SA-2017-2.py</code>，可重跑）</em></p>
+</main>
 <footer>來源：raw/solutions/SA-2017-2/SA-2017-2.md（知識庫解題內容唯一正本；本頁僅為渲染顯示）</footer>
 
 <script>

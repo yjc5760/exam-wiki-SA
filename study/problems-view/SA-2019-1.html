@@ -43,7 +43,8 @@ header .nomat{margin-top:12px;font-size:.8em;opacity:.85}
 <p class="meta2">主分類 <b>SA-U2-1</b> 靜不定結構最小功法 ｜ 副分類 <b>SA-U1-1</b> 靜不定度與穩定性之判斷 ｜ 2019 年（民國 108） ｜ 最小功法 / 靜定分析</p>
 <div class="hbtns"><a class="b-study" href="../study-SA-U2-1.html">🔍 U2-1 命題分析</a><a class="b-lect" href="../lecture-SA-U2-1.html">📚 U2-1 靜不定結構最小功法 講義</a><a class="b-fg" href="../formula-given-SA-U2-1.html">🎯 U2-1 給／背分界</a></div>
 </header>
-<main><h1>考題編號：SA-2019-1</h1>
+<main>
+<h1>考題編號：SA-2019-1</h1>
 <p><strong>主分類：</strong> <code>SA-U2-1</code> 靜不定結構最小功法<br />
 <strong>副分類：</strong> <code>SA-U1-1</code> 靜不定度與穩定性之判斷<br />
 <strong>分析法：</strong> 最小功法 / 靜定分析<br />
@@ -221,21 +222,61 @@ $$U_{B2} = \sum \frac{F_i f_i L_i}{EA} = \frac{1}{EA} \left[ 15(1.25P)(1.25) + 9
 <li><strong>AB桿 (壓)</strong>：容量 $400\text{ kN} \Rightarrow P_{ult} = \frac{400}{0.75} = 533.33\text{ kN}$</li>
 <li><strong>BC桿 (拉)</strong>：容量 $1250\text{ kN} \Rightarrow P = \frac{1250}{1.25} = 1000\text{ kN}$</li>
 </ul>
-<p>AB 桿最先達到 $400\text{ kN}$ 而挫曲，內力歸零。<br />
-AB 桿失效後，節點 B 僅剩 BC 與 BD 桿，無法抵抗外力 $P$ 的垂直不平衡分量，形成<strong>破壞機構</strong>。<br />
-因此，<strong>極限外力 $P_{ult} = 533.33\text{ kN}$</strong>。<br />
+<p>AB 桿最先達到 $400\text{ kN}$ 壓力而挫曲，依題意內力歸零。</p>
+<p><strong>為什麼此時就是破壞機構？</strong><br />
+DA 與 AB 都退出後，尚在作用的桿件只剩 DB、DC、AC、CB 四根：</p>
+<p>$$m + r = 4 + 3 = 7 \;&lt;\; 2j = 8$$</p>
+<p>方程式比未知數多一個 $\Rightarrow$ 結構為<strong>一自由度機構</strong>。逐節點檢查可以看得更直接<br />
+（注意 $P$ 是<strong>水平</strong>力，矛盾並非出在「B 點的垂直分量」）：</p>
+<table>
+<thead>
+<tr>
+<th>節點</th>
+<th>尚存桿件</th>
+<th>平衡方程</th>
+<th>結果</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>D</td>
+<td>DB, DC</td>
+<td>$\sum F_x = 0$</td>
+<td>$F_{DB} = 0$</td>
+</tr>
+<tr>
+<td>B</td>
+<td>BD, BC</td>
+<td>$\sum F_y = 0$</td>
+<td>$F_{BC} = 0$</td>
+</tr>
+<tr>
+<td>B</td>
+<td>BD, BC</td>
+<td>$\sum F_x = 0$</td>
+<td>$F_{BD} = P$</td>
+</tr>
+</tbody>
+</table>
+<p>節點 D 要求 $F_{DB} = 0$，節點 B 卻要求 $F_{DB} = P$——除非 $P = 0$，否則無解。<br />
+結構已無法以任何內力組合平衡外力，<strong>破壞機構形成</strong>。</p>
+<p>因此，<strong>極限外力 $P_{ult} = 533.33\text{ kN}$</strong>。<br />
 破壞時的最大位移：<br />
 $$U_{B,ult} = 28.5 \times \frac{533.33}{EA} = \frac{15200}{EA}$$</p>
+<p><img alt="SA-2019-1 兩階段桁架力流對照：左為一度靜不定（P=327.41 kN，DA 達 −144 kN 挫曲），右為 DA 退出後的靜定狀態（P=533.33 kN，AB 達 −400 kN）" src="../../raw/solutions/SA-2019-1/figs/SA-2019-1-fig-1-truss.svg" /></p>
+<p><em>圖 2　兩階段桁架力流（拉紅／壓藍，線寬隨軸力大小）。它攔下的是「A 為滾支承所以 AC 是零桿」這個誤判——AC 在第一階段實際承受 $+115.2$ kN 拉力，要到 DA 退出後才歸零。</em></p>
+<p><img alt="SA-2019-1 的 P–U_B 關係圖：兩段斜率不同的直線，中間夾一段外力不變的水平位移跳躍，末端為破壞機構的水平線" src="../../raw/solutions/SA-2019-1/figs/SA-2019-1-fig-2-p-u.svg" /></p>
+<p><em>圖 3　$P$–$U_B$ 關係圖（題目指定要畫的那一張）。三個轉折點的座標都是計算值不是示意：$(6048,\,327.41)$、$(9331.2,\,327.41)$、$(15200,\,533.33)$。它攔下的是把挫曲後的位移跳躍畫成連續曲線、或把兩段斜率的大小關係畫反。</em></p>
 <hr />
 <h2>5. 關鍵爭議點與進階探討 (Critical Issues &amp; Advanced Discussion)</h2>
 <ul>
 <li><strong>挫曲後行為的假設：</strong> 實務上，細長壓桿挫曲後仍保有殘餘強度（Post-buckling strength），但本題明確指示「壓桿內力變為零」，此屬理想化的脆性破壞假設。這會導致在 $P-U_B$ 圖中出現一條水平的位移跳躍線（Snap-through）。</li>
-<li><strong>$P-U_B$ 關係圖特徵：</strong><br />
-  1. $0 \le P \le 327.41\text{ kN}$：斜率較陡的彈性直線，勁度為 $\frac{EA}{18.47}$。<br />
-  2. $P = 327.41\text{ kN}$：DA 桿斷裂，外力不變下位移瞬間由 $\frac{6048}{EA}$ 噴發至 $\frac{9331.2}{EA}$。<br />
-  3. $327.41\text{ kN} < P \le 533.33\text{ kN}$：斜率變緩的彈性直線，勁度降為 $\frac{EA}{28.5}$。<br />
-  4. $P = 533.33\text{ kN}$：AB 桿斷裂，承載力歸零，形成機構。</li>
-</ul></main>
+<li>$P = 327.41\text{ kN}$：DA 桿<strong>挫曲</strong>（非斷裂，壓桿失去承載力），外力不變下位移瞬間由 $\frac{6048}{EA}$ 水平跳升至 $\frac{9331.2}{EA}$。</li>
+<li>$P = 533.33\text{ kN}$：AB 桿<strong>挫曲</strong>，內力歸零 $\Rightarrow$ 形成機構。$P$ 無法再增加，曲線轉為水平線（位移無限增大）。</li>
+</ul>
+<hr />
+<p><em>圖解補繪：2026-08-28（向量圖，腳本 <code>gen_SA-2019-1.py</code>，可重跑）</em></p>
+</main>
 <footer>來源：raw/solutions/SA-2019-1/SA-2019-1.md（知識庫解題內容唯一正本；本頁僅為渲染顯示）</footer>
 
 <script>

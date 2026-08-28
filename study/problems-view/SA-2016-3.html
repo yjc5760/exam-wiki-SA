@@ -43,7 +43,8 @@ header .nomat{margin-top:12px;font-size:.8em;opacity:.85}
 <p class="meta2">主分類 <b>SA-U2-1</b> 靜不定結構最小功法 ｜ 副分類 <b>SA-U2-2</b> 靜不定結構諧合變位 ｜ 2016 年（民國 105） ｜ 單位力法（虛功原理） / 圖形積分法</p>
 <div class="hbtns"><a class="b-study" href="../study-SA-U2-1.html">🔍 U2-1 命題分析</a><a class="b-lect" href="../lecture-SA-U2-1.html">📚 U2-1 靜不定結構最小功法 講義</a><a class="b-fg" href="../formula-given-SA-U2-1.html">🎯 U2-1 給／背分界</a></div>
 </header>
-<main><h1>考題編號：SA-2016-3</h1>
+<main>
+<h1>考題編號：SA-2016-3</h1>
 <p><strong>主分類：</strong> <code>SA-U2-1</code> 靜不定結構最小功法<br />
 <strong>副分類：</strong> <code>SA-U2-2</code> 靜不定結構諧合變位<br />
 <strong>分析法：</strong> 單位力法（虛功原理） / 圖形積分法<br />
@@ -68,13 +69,15 @@ header .nomat{margin-top:12px;font-size:.8em;opacity:.85}
 </ul>
 <p><img alt="SA-2016-3 題目附圖：剛架，AB 斜桿 10m，BC 水平梁 12m 受 2kN/m 均佈載重，CD 垂直柱 20m" src="../../raw/solutions/SA-2016-3/SA-2016-3-fig-1.png" /></p>
 <p><em>圖說：剛架結構，AB 桿長 10 m，BC 梁長 12 m 且受 2 kN/m 向下均佈載重，CD 柱長 20 m。D 為固定支承。已知各節點的端彎矩。</em></p>
+<p><img alt="SA-2016-3 題目重繪：A、D 固接，AB 斜桿 10 m、BC 梁 12 m 受 2 kN/m、CD 柱 20 m，並列出四個給定桿端彎矩，標明只有 M_CD 與 M_DC 會用到" src="../../raw/solutions/SA-2016-3/figs/SA-2016-3-fig-1-frame.svg" /></p>
+<p><em>圖 2　題目重繪（向量版）。四個桿端彎矩中只有橘色的 $M_{CD}$、$M_{DC}$ 會進入計算。它攔下的是「題目給了就一定要用」的直覺，以及把 AB 的傾角當成必要資訊而卡住。</em></p>
 <hr />
 <h2>2. 考題核心精神與出題者意圖 (Core Concepts &amp; Examiner's Intent)</h2>
 <p><strong>核心觀念：</strong> 虛功原理（單位力法）中「虛力系統基本結構」的任意性。</p>
 <p><strong>出題者意圖與破題關鍵：</strong><br />
 這是一道極具鑑別度的「觀念題」。</p>
 <ol>
-<li>題目並<strong>沒有給定 A 點的確切座標或 AB 桿的傾角</strong>，這意味著考生無法對全剛架進行完整的幾何與靜力分析。</li>
+<li>圖上只標了 $AB = 10\ \text{m}$，<strong>沒有標註 AB 桿的傾角或 A 點座標</strong>。想硬解全剛架，得先反推幾何——而題目根本不打算讓你走這條路。</li>
 <li>題目卻給了「所有的桿端彎矩」。</li>
 <li>根據虛功原理 $1 \cdot \Delta = \int \frac{M m}{EI} ds$，真實彎矩 $M$ 已經完全已知。而虛彎矩 $m$ 可以建立在<strong>任何滿足靜力平衡的靜定基本結構</strong>上。</li>
 <li>若我們巧妙地選擇「<strong>將 CD 視為固定於 D 的懸臂柱</strong>」作為虛力系統的基本結構（相當於切斷 C 點左側），並在 C 點施加虛力，則虛彎矩 $m$ <strong>僅存在於 CD 桿</strong>。</li>
@@ -130,15 +133,38 @@ header .nomat{margin-top:12px;font-size:.8em;opacity:.85}
 </tbody>
 </table>
 <h3>L2：需知識點推導</h3>
-<p><strong>Step 1：真實彎矩 $M$ 的受拉側判斷</strong><br />
-| 符號 | 公式／來源 | 卡關? |<br />
-|------|-----------|:-----:|<br />
-| $M_t$ (頂端) | +25.3 kN-m | 頂端受逆時針力矩 $\Rightarrow$ 柱向左彎 $\Rightarrow$ 左側受拉 |<br />
-| $M_b$ (底端) | -17.0 kN-m | 底端受逆時針力矩 $\Rightarrow$ 柱向右彎 $\Rightarrow$ 右側受拉 |</p>
+<p><strong>Step 1：桿端彎矩 → 斷面內彎矩的換算（左側受拉為正）</strong></p>
+<p>換算規則（軸線由 C 指向 D）：<strong>近端同號、遠端反號</strong>。</p>
+<table>
+<thead>
+<tr>
+<th>符號</th>
+<th>公式／來源</th>
+<th style="text-align: center;">卡關?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>$M_t$ (C 端)</td>
+<td>$= M_{CD} = -25.3$ kN-m $\Rightarrow$ C 端<strong>右</strong>側受拉</td>
+<td style="text-align: center;"></td>
+</tr>
+<tr>
+<td>$M_b$ (D 端)</td>
+<td>$= -M_{DC} = +17.0$ kN-m $\Rightarrow$ D 端<strong>左</strong>側受拉</td>
+<td style="text-align: center;"></td>
+</tr>
+<tr>
+<td>$y^*$ (反曲點)</td>
+<td>$\dfrac{25.3}{(25.3+17.0)/20} = 11.96$ m（自 C 起算）</td>
+<td style="text-align: center;"></td>
+</tr>
+</tbody>
+</table>
 <p><strong>Step 2：虛彎矩 $m$ 的建立（懸臂柱模型）</strong><br />
 | 符號 | 公式／來源 | 卡關? |<br />
 |------|-----------|:-----:|<br />
-| $m(y)$ | $-1 \cdot y = -y$ | 頂端受向右單位力 $\Rightarrow$ 柱向右彎 $\Rightarrow$ 右側受拉（負值） |</p>
+| $m(y)$ | $+y$ | 柱頂受向右單位力 $\Rightarrow$ 柱向右彎 $\Rightarrow$ <strong>背向位移的左側受拉</strong>（正值） |</p>
 <h3>L3：深層知識（不懂就卡住）</h3>
 <table>
 <thead>
@@ -172,46 +198,119 @@ header .nomat{margin-top:12px;font-size:.8em;opacity:.85}
 <li><strong>彎矩正負號：定義使「左側受拉」為正彎矩。</strong></li>
 </ul>
 <h3>Step 2：解析真實彎矩 $M(y)$</h3>
-<p>已知桿端彎矩（依傾角變位法，逆時針為負）：</p>
+<p>題目給的是<strong>桿端彎矩</strong>（傾角變位法慣例：順時針作用於桿端為正，故 $-25.3$、$-17.0$ 皆為<strong>逆時針</strong>）；<br />
+虛功積分需要的是<strong>斷面內彎矩</strong>。兩者的換算只有一條規則要記：</p>
+<blockquote>
+<p>沿桿件軸線由第一個下標指向第二個下標（此處 C $\to$ D，即 $y$ 向下），<br />
+<strong>近端取同號、遠端取反號</strong>：$M(0) = M_{CD}$，$M(L) = -M_{DC}$。</p>
+</blockquote>
 <ul>
-<li><strong>C 端 (頂部)：</strong> $M_{CD} = -25.3$ kN-m（逆時針）。逆時針力矩作用於柱頂，會使柱身左側突起（受拉），故 $M_{top} = +25.3$。</li>
-<li><strong>D 端 (底部)：</strong> $M_{DC} = -17.0$ kN-m（逆時針）。逆時針力矩作用於柱底，會使柱身右側突起（受拉），故 $M_{bot} = -17.0$。</li>
-<li><strong>中點 ($y=10$)：</strong> 呈線性分佈， $M_{mid} = \frac{25.3 + (-17.0)}{2} = +4.15$。</li>
+<li><strong>C 端 (頂部, $y=0$)：</strong> $M_{top} = M_{CD} = -25.3$ kN-m $\Rightarrow$ 負值代表 C 端<strong>右側受拉</strong>。</li>
+<li><strong>D 端 (底部, $y=20$)：</strong> $M_{bot} = -M_{DC} = +17.0$ kN-m $\Rightarrow$ 正值代表 D 端<strong>左側受拉</strong>。</li>
+<li><strong>中點 ($y=10$)：</strong> CD 桿無側向載重，彎矩沿桿線性變化，$M_{mid} = \dfrac{-25.3 + 17.0}{2} = -4.15$。</li>
+<li><strong>反曲點：</strong> 兩端受拉側相反 $\Rightarrow$ 柱為<strong>雙曲率</strong>，零彎矩點在<br />
+  $y^* = \dfrac{25.3}{(25.3+17.0)/20} = 11.96$ m（自 C 起算）。這正是剛架側移的典型特徵。</li>
 </ul>
 <h3>Step 3：建立虛力系統與虛彎矩 $m(y)$</h3>
 <ul>
 <li><strong>基本結構：</strong> 移除 A、B 節點的約束，將 CD 視為固定於 D 的懸臂柱。</li>
 <li><strong>虛載重：</strong> 於 C 點施加水平向右的單位力 $P'=1$。</li>
-<li><strong>虛彎矩 $m(y)$：</strong> 距 C 點 $y$ 處，力矩為 $1 \cdot y$。向右推會使柱的右側受拉，依慣例為負。</li>
-<li>$m_{top} = 0$</li>
-<li>$m_{bot} = -20$</li>
-<li>$m_{mid} = -10$</li>
+<li>
+<p><strong>虛彎矩 $m(y)$：</strong> 距 C 點 $y$ 處，力矩大小為 $1 \cdot y$。<br />
+  柱頂被推向右、柱身向右彎，<strong>受拉的是背向位移的左側</strong>，依「左側受拉為正」的約定取正號：<br />
+  $$m(y) = +y$$</p>
+</li>
+<li>
+<p>$m_{top} = 0$</p>
+</li>
+<li>$m_{mid} = +10$</li>
+<li>$m_{bot} = +20$</li>
 </ul>
+<blockquote>
+<p><strong>⚠ 這裡是本題最容易翻號的地方。</strong> 常見的錯誤直覺是「往右推 $\Rightarrow$ 右側受拉」。<br />
+以旗桿受風為例：桿頂往下風處移動，受拉的是<strong>迎風面</strong>，也就是<strong>背離位移方向</strong>的那一側。<br />
+這與水平懸臂梁受向下載重時<strong>上緣</strong>受拉是同一件事。<br />
+（$M$ 與 $m$ 若同時翻號，乘積不變、答案照樣對——但只要翻錯其中一個，答案就整個變號。）</p>
+</blockquote>
+<p><img alt="SA-2016-3 虛力系統基本結構對照：左為直接用原靜不定結構（三根桿都有虛彎矩），右為在 C 切開後固定於 D 的懸臂柱（只有 CD 有虛彎矩）" src="../../raw/solutions/SA-2016-3/figs/SA-2016-3-fig-2-primary.svg" /></p>
+<p><em>圖 3　虛力系統的基本結構選取。左圖是多數人的直覺路徑，右圖是本題的解法。它攔下的是「虛力系統必須與真實系統同構」這個誤解——虛系統只需滿足靜力平衡，不必具有相同的靜不定度。</em></p>
 <h3>Step 4：圖形積分法求水平位移 $\Delta_{Cx}$</h3>
 <p>根據虛功原理：<br />
 $$1 \cdot \Delta_{Cx} = \int_0^{20} \frac{M(y) \cdot m(y)}{EI} dy$$</p>
 <p>使用圖形積分公式：<br />
 $$\int Mm dy = \frac{L}{6} \left( M_{top} m_{top} + 4 M_{mid} m_{mid} + M_{bot} m_{bot} \right)$$</p>
 <p>代入數值：<br />
-$$\Delta_{Cx} = \frac{20}{6EI} \left[ (25.3)(0) + 4(4.15)(-10) + (-17.0)(-20) \right]$$<br />
+$$\Delta_{Cx} = \frac{20}{6EI} \left[ (-25.3)(0) + 4(-4.15)(+10) + (+17.0)(+20) \right]$$<br />
 $$\Delta_{Cx} = \frac{10}{3EI} \left[ 0 - 166 + 340 \right]$$<br />
 $$\Delta_{Cx} = \frac{10}{3EI} \left[ 174 \right] = \frac{1740}{3EI} = \boxed{ \frac{580}{EI} }$$</p>
 <p>由於結果為正，表示變位方向與虛力 $P'=1$ 相同，即<strong>向右</strong>。</p>
+<p><img alt="SA-2016-3 CD 桿的圖形積分三聯圖：真實彎矩 M（−25.3 到 +17.0，反曲點 y=11.96 m）、虛彎矩 m=+y、兩者乘積曲線及其淨面積 580" src="../../raw/solutions/SA-2016-3/figs/SA-2016-3-fig-3-integration.svg" /></p>
+<p><em>圖 4　CD 桿的 $M$ 圖、$m$ 圖與乘積曲線。乘積先負（$-603$）後正（$+1183$），淨面積 $580$ 才是答案。它攔下的是受拉側判斷寫反：$M$ 與 $m$ 同時翻號時答案不變，但只翻其中一個，$580/EI$ 就會變成 $-580/EI$。</em></p>
 <hr />
 <p><strong>（補充）求 C 點轉角 $\theta_C$</strong><br />
 雖一般「變位」指平移位移，但為求完整，同理可求轉角：</p>
 <ul>
-<li>虛設系統：於 C 點施加逆時針（使左側受拉，正向）單位力矩 $M'=1$。</li>
-<li>虛彎矩分佈為常數：$m_\theta(y) = +1$。</li>
-<li>$\theta_C = \int_0^{20} \frac{M(y) \cdot 1}{EI} dy = \text{M圖面積} / EI$</li>
-<li>$\theta_C = \frac{1}{EI} \left( \frac{25.3 + (-17.0)}{2} \right) \times 20 = \frac{4.15 \times 20}{EI} = \boxed{ \frac{83}{EI} \text{ (逆時針)} }$</li>
+<li>
+<p>虛設系統：於 C 點施加<strong>順時針</strong>單位力矩 $M'=1$（在「左側受拉為正」的約定下，<br />
+  順時針施加於懸臂柱頂端對應 $m_\theta(y) = +1$，全桿為常數）。</p>
+</li>
+<li>
+<p>$\theta_C^{(順)} = \displaystyle\int_0^{20} \frac{M(y) \cdot 1}{EI} dy = \frac{\text{M 圖淨面積}}{EI}$</p>
+</li>
+<li>$\theta_C^{(順)} = \dfrac{1}{EI}\left(\dfrac{-25.3 + 17.0}{2}\right) \times 20 = \dfrac{-4.15 \times 20}{EI} = -\dfrac{83}{EI}$</li>
+<li>結果為負 $\Rightarrow$ 實際轉向與假設的順時針<strong>相反</strong>：</li>
 </ul>
+<p>$$\boxed{ \theta_C = \frac{83}{EI} \text{（逆時針）} }$$</p>
 <hr />
 <h2>5. 關鍵爭議點與進階探討 (Critical Issues &amp; Advanced Discussion)</h2>
 <p><strong>干擾資訊的識別：</strong><br />
 本題給定了 $M_{AB} = -23.2$ 與 $M_{BC} = 5.63$，以及 BC 上的載重 2 kN/m。這些資訊對於計算 C 點變位是<strong>完全不需要</strong>的。這凸顯了結構學考試中，不只要會「算」，更要會「選」——選擇最簡單、最不易出錯的虛功基本結構路徑。</p>
+<p><strong>答案的獨立驗算（全剛架模型）：</strong><br />
+題目雖未標 AB 的傾角，仍可反推：取 A 位於 B 左方 $5\ \text{m}$、下方 $5\sqrt{3} \approx 8.66\ \text{m}$<br />
+（即 $AB = 10\ \text{m}$、與水平夾 $60^\circ$），以 A、D 皆固接、忽略軸向變形建立<strong>全剛架</strong>模型，<br />
+可重現題目給定的四個桿端彎矩：</p>
+<table>
+<thead>
+<tr>
+<th>桿端彎矩</th>
+<th>題目給定</th>
+<th>全剛架模型</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>$M_{AB}$</td>
+<td>$-23.2$</td>
+<td>$-23.16$</td>
+</tr>
+<tr>
+<td>$M_{BC}$</td>
+<td>$+5.63$</td>
+<td>$+5.63$</td>
+</tr>
+<tr>
+<td>$M_{CD}$</td>
+<td>$-25.3$</td>
+<td>$-25.29$</td>
+</tr>
+<tr>
+<td>$M_{DC}$</td>
+<td>$-17.0$</td>
+<td>$-17.05$</td>
+</tr>
+</tbody>
+</table>
+<p>同一模型直接讀出 $\Delta_{Cx} = 587.4/EI$（向右）、$\theta_C = 82.4/EI$（逆時針）、$\Delta_{Cy} \approx 0$，<br />
+與本題「只積分 CD 桿」得到的 $580/EI$、$83/EI$ 相差約 $1.3\%$。<br />
+這個差異<strong>全部來自題目給的桿端彎矩已四捨五入到三位有效數字</strong>——<br />
+把未取捨的 $M_{CD} = -25.286$、$M_{DC} = -17.049$ 代入同一條圖形積分式，得到的正是 $587.4/EI$。<br />
+換句話說，「捨棄 AB、BC 兩桿」在理論上是<strong>精確</strong>的，不是近似；<br />
+考場上以題目給定的數據作答，$580/EI$ 就是正確答案。</p>
 <p><strong>幾何條件的暗示：</strong><br />
-當題目刻意不給定 AB 桿的傾角與 A 點的精確座標時，就是在暗示考生「不要試圖計算全結構」。這種「資訊不足但仍可解」的題型，是國考常見的巧思，旨在獎勵觀念透徹的考生。</p></main>
+當題目刻意不給定 AB 桿的傾角與 A 點的精確座標時，就是在暗示考生「不要試圖計算全結構」。這種「資訊不足但仍可解」的題型，是國考常見的巧思，旨在獎勵觀念透徹的考生。</p>
+<hr />
+<p><em>圖解補繪：2026-08-28（向量圖，腳本 <code>gen_SA-2016-3.py</code>，可重跑）</em></p>
+</main>
 <footer>來源：raw/solutions/SA-2016-3/SA-2016-3.md（知識庫解題內容唯一正本；本頁僅為渲染顯示）</footer>
 
 <script>

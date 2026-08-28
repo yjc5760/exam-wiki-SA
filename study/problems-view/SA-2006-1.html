@@ -43,7 +43,8 @@ header .nomat{margin-top:12px;font-size:.8em;opacity:.85}
 <p class="meta2">主分類 <b>SA-U2-1</b> 靜不定結構最小功法 ｜ 2006 年（民國 95） ｜ 最小功法 / 虛功法 (單位力法)</p>
 <div class="hbtns"><a class="b-study" href="../study-SA-U2-1.html">🔍 U2-1 命題分析</a><a class="b-lect" href="../lecture-SA-U2-1.html">📚 U2-1 靜不定結構最小功法 講義</a><a class="b-fg" href="../formula-given-SA-U2-1.html">🎯 U2-1 給／背分界</a></div>
 </header>
-<main><h1>考題編號：[SA-2006-1]</h1>
+<main>
+<h1>考題編號：[SA-2006-1]</h1>
 <p><strong>主分類：</strong> <code>SA-U2-1</code> 靜不定結構分析<br />
 <strong>副分類：</strong> 無<br />
 <strong>分析法：</strong> 最小功法 / 虛功法 (單位力法)<br />
@@ -54,6 +55,8 @@ header .nomat{margin-top:12px;font-size:.8em;opacity:.85}
 如圖所示之橋樑，試計算 J 點之垂直變位。圖中 AE 為樑（beam）構件，其餘為桁架（truss）構件，支點 A、B、D 為滾支承（roller），而支點 F 與 G 為鉸支承（hinge）。假設各構件之 E 值（彈性模數）、I 值（慣性矩）與 A 值（斷面積）皆為常數。不計構件之自重與樑之深度。（25 分）</p>
 <p><img alt="SA-2006-1 題目附圖：混合結構，上方為連續樑AE，下方為桁架，由滾支承與鉸支承支撐" src="../../raw/solutions/SA-2006-1/SA-2006-1-fig-1.png" /><br />
 <em>圖說：連續樑 AE 受兩個 10 kN 集中載重，透過滾支承 B, D 將力量傳遞至下方桁架。桁架左右端 F, G 為鉸支承。</em></p>
+<p><img alt="SA-2006-1 題目重繪：樑 AE 疊在桁架上方，A 為地面滾支承，B、D 為連接樑與桁架的滾支承，桁架 F、G 為鉸支承，跨度 4@10 m、桁架高 10 m" src="../../raw/solutions/SA-2006-1/figs/SA-2006-1-fig-1-frame.svg" /></p>
+<p><em>圖 2　題目重繪（向量版）。橘色圓圈標出 B、D 兩個滾支承——樑與桁架只在這兩點接觸，且只傳垂直力。它攔下的是把樑 AE 當成桁架上弦桿：滾支承不傳水平力，桁架必須另有自己的上弦桿 F–B′–C′–D′–G。</em></p>
 <hr />
 <h2>2. 考題核心精神與出題者意圖 (Core Concepts &amp; Examiner's Intent)</h2>
 <ol>
@@ -189,6 +192,8 @@ header .nomat{margin-top:12px;font-size:.8em;opacity:.85}
 </table>
 <hr />
 <h2>4. 步驟化詳細計算過程 (Step-by-Step Detailed Calculation)</h2>
+<p><img alt="SA-2006-1 兩個自由體：左為樑 AE（三個垂直反力以 R_D 表示），右為桁架（承受樑傳來的 P_B、P_D 與 F、G 的垂直反力及水平贅力 H）" src="../../raw/solutions/SA-2006-1/figs/SA-2006-1-fig-2-fbd.svg" /></p>
+<p><em>圖 3　把系統拆成兩個自由體，兩個贅力 $R_D$ 與 $H$ 的來源一目了然。它攔下的是漏掉水平贅力 $H$：F、G 皆為鉸支承，桁架受載後會向外撐，必須有水平反力才能平衡，不可直接假設 $H = 0$。</em></p>
 <h3>Step 1：樑之靜力平衡與內力函數</h3>
 <p>樑 AE 長度 40m，支承於 A(0), B(10), D(30)。受載 10kN 於 $x=15, 25$。<br />
 選取 $R_D$ 為贅力（向上為正），則由靜力平衡：</p>
@@ -214,21 +219,69 @@ $$ \boxed{ \int \frac{M \frac{\partial M}{\partial R_D}}{EI} dx = \frac{4000 R_D
 由桁架整體平衡求垂直反力：<br />
 $\sum M_F = 0 \implies 40 G_y - 10 P_B - 30 P_D = 0 \implies G_y = 10 \text{ kN}$<br />
 $F_y = P_B + P_D - G_y = 30 - 2 R_D \text{ kN}$</p>
-<p>利用節點法解出各桿內力 $F$（拉力為正）：</p>
-<ul>
-<li><strong>上弦桿</strong> (FB', B'C'): $F = R_D - 10 - H$</li>
-<li><strong>上弦桿</strong> (C'D', D'G): $F = 10 - R_D - H$</li>
-<li><strong>下弦桿</strong> (HJ, JK): $F = 20 - R_D$</li>
-<li><strong>垂直桿</strong>: B'H $= 3 R_D - 40$, C'J $= 0$, D'K $= -R_D$</li>
-<li><strong>斜桿</strong>: FH $= \sqrt{2}(30 - 2 R_D)$, HC' $= \sqrt{2}(10 - R_D)$, C'K $= \sqrt{2}(R_D - 10)$, KG $= 10\sqrt{2}$</li>
-</ul>
-<p>由最小功法 $\frac{\partial U_{truss}}{\partial H} = 0$，因只有上弦桿受 $H$ 影響（$\frac{\partial F}{\partial H} = -1$）：<br />
-$$ \sum_{top} F (-1) L = 0 \implies (R_D - 10 - H) \times 2 + (10 - R_D - H) \times 2 = 0 \implies 4H = 4 R_D - 80 \implies \boxed{ H = R_D - 20 } $$<br />
+<p>利用節點法解出各桿內力 $F$（拉力為正）。<br />
+<strong>注意：只有上弦桿含 $H$</strong>（水平贅力沿上弦傳遞），其餘各桿的 $\partial F/\partial H = 0$：</p>
+<table>
+<thead>
+<tr>
+<th>桿群</th>
+<th>桿件</th>
+<th>$F$（含贅力）</th>
+<th>$\partial F/\partial H$</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>上弦桿</td>
+<td>FB', B'C'</td>
+<td>$2R_D - 30 - H$</td>
+<td>$-1$</td>
+</tr>
+<tr>
+<td>上弦桿</td>
+<td>C'D', D'G</td>
+<td>$-10 - H$</td>
+<td>$-1$</td>
+</tr>
+<tr>
+<td>下弦桿</td>
+<td>HJ, JK</td>
+<td>$20 - R_D$</td>
+<td>$0$</td>
+</tr>
+<tr>
+<td>垂直桿</td>
+<td>B'H $= 3R_D - 40$、C'J $= 0$、D'K $= -R_D$</td>
+<td></td>
+<td>$0$</td>
+</tr>
+<tr>
+<td>斜桿</td>
+<td>FH $= \sqrt{2}(30 - 2R_D)$、HC' $= \sqrt{2}(10 - R_D)$</td>
+<td></td>
+<td>$0$</td>
+</tr>
+<tr>
+<td>斜桿</td>
+<td>C'K $= \sqrt{2}(R_D - 10)$、KG $= 10\sqrt{2}$</td>
+<td></td>
+<td>$0$</td>
+</tr>
+</tbody>
+</table>
+<p>由最小功法 $\dfrac{\partial U_{truss}}{\partial H} = 0$，$\sum F \dfrac{\partial F}{\partial H} L = 0$，<br />
+式中僅四根上弦桿（各長 $10\ \text{m}$）有貢獻：</p>
+<p>$$ (-1)(10)\Big[\, 2\,(2R_D - 30 - H) + 2\,(-10 - H) \,\Big] = 0 $$<br />
+$$ \implies 4R_D - 80 - 4H = 0 \implies \boxed{ H = R_D - 20 } $$<br />
 代回更新上弦桿真實內力：</p>
 <ul>
-<li>FB' = B'C' $= R_D - 10$</li>
-<li>C'D' = D'G $= 10 - R_D$</li>
+<li>FB' = B'C' $= 2R_D - 30 - (R_D - 20) = R_D - 10$</li>
+<li>C'D' = D'G $= -10 - (R_D - 20) = 10 - R_D$</li>
 </ul>
+<blockquote>
+<p><strong>驗算：</strong> 上弦桿四根的內力總和為 $2(R_D-10) + 2(10-R_D) = 0$，<br />
+與 $\partial U/\partial H = 0$（上弦桿總伸長量為零，即 F、G 兩鉸支承間無相對水平位移）互相印證。</p>
+</blockquote>
 <h3>Step 3：求系統垂直贅力 $R_D$</h3>
 <p>計算桁架應變能對 $R_D$ 之偏微分 $T = \sum F \frac{\partial F}{\partial R_D} \frac{L}{EA}$：<br />
 經各桿件加總（上弦+下弦+垂直+斜桿）：<br />
@@ -257,12 +310,19 @@ $$ \implies \Delta_J = \frac{20(1+\sqrt{2})(20 - R_D)}{EA} $$<br />
 將 $\boxed{R_D}$ 代入，得最終答案：<br />
 $$ \boxed{ \Delta_J = \frac{20(1+\sqrt{2})}{EA} \left[ \frac{1187.5 + \alpha(30 + 20\sqrt{2})}{100 + \alpha(4 + 3\sqrt{2})} \right] \quad \text{(向下)} } $$<br />
 <em>(其中 $\alpha = \frac{EI}{EA}$)</em></p>
+<p><img alt="SA-2006-1 虛力系統 u0：J 點受 1 kN 向下，基本結構為切斷 R_D、G 改滾支承的靜定桁架，上弦全為 −0.5、下弦 +1、C'J 為 +1、斜桿 ±0.7071" src="../../raw/solutions/SA-2006-1/figs/SA-2006-1-fig-3-virtual.svg" /></p>
+<p><em>圖 4　虛力系統 $u_0$。樑在基本結構中已被切離且無虛載重，故 $m_0 \equiv 0$，整條樑的積分項直接消失。圖上的數值是產圖腳本自己用節點法重解出來的，並與 §4 Step 4 的清單逐桿比對。它攔下的是誤以為虛力系統必須沿用原本的二度靜不定結構。</em></p>
+<p><img alt="SA-2006-1 的 Δ_J·EA 隨 α=EI/EA 變化的曲線：從 α→0 的 573.4 單調降到 α→∞ 的 341.4，α=1 時為 555.7" src="../../raw/solutions/SA-2006-1/figs/SA-2006-1-fig-4-alpha.svg" /></p>
+<p><em>圖 5　$\Delta_J \cdot EA$ 隨 $\alpha = EI/EA$ 的變化。不論剛度比為何，答案必落在 $341.4 \sim 573.4$ 之間，相差僅 $1.68$ 倍。它攔下的是對參數解沒有信心而擅自假設「樑剛性無限大」或「桁架無限剛」——那等於直接取到曲線的端點值，屬過度推論。</em></p>
 <hr />
 <h2>5. 關鍵爭議點與進階探討 (Critical Issues &amp; Advanced Discussion)</h2>
 <ul>
 <li><strong>參數解的合理性</strong>：國家考試中若未明確給定 EI 與 EA 的比例，最終答案必然會同時包含兩者。強行假設「樑剛性無限大」或「桁架剛性無限大」皆屬過度推論，將導致嚴重扣分。此參數解在 $\alpha \to \infty$ 或 $\alpha \to 0$ 時皆有收斂的物理極限值，證明其推導無誤。</li>
 <li><strong>虛功法虛力系統之選取</strong>：許多考生會使用原靜不定結構來求解虛功，這會導致虛力系統也產生 $r_d, h$ 等虛贅力，使得計算量翻倍。本題完美展示了「虛功法允許使用任意滿足平衡之基本結構」的強大威力，直接將樑的積分項歸零。</li>
-</ul></main>
+</ul>
+<hr />
+<p><em>圖解補繪：2026-08-28（向量圖，腳本 <code>gen_SA-2006-1.py</code>，可重跑）</em></p>
+</main>
 <footer>來源：raw/solutions/SA-2006-1/SA-2006-1.md（知識庫解題內容唯一正本；本頁僅為渲染顯示）</footer>
 
 <script>

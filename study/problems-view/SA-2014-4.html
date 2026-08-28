@@ -43,7 +43,8 @@ header .nomat{margin-top:12px;font-size:.8em;opacity:.85}
 <p class="meta2">主分類 <b>SA-U2-1</b> 靜不定結構最小功法 ｜ 2014 年（民國 103） ｜ 最小功法 (Method of Least Work) / 卡氏第二定理</p>
 <div class="hbtns"><a class="b-study" href="../study-SA-U2-1.html">🔍 U2-1 命題分析</a><a class="b-lect" href="../lecture-SA-U2-1.html">📚 U2-1 靜不定結構最小功法 講義</a><a class="b-fg" href="../formula-given-SA-U2-1.html">🎯 U2-1 給／背分界</a></div>
 </header>
-<main><h1>考題編號：SA-2014-4</h1>
+<main>
+<h1>考題編號：SA-2014-4</h1>
 <p><strong>主分類：</strong> <code>SA-U2-1</code> 靜不定結構之能量法<br />
 <strong>副分類：</strong> 無<br />
 <strong>分析法：</strong> 最小功法 (Method of Least Work) / 卡氏第二定理<br />
@@ -53,6 +54,8 @@ header .nomat{margin-top:12px;font-size:.8em;opacity:.85}
 <p>如圖四所示之剛架結構，其 A 點為固接支承，D 點為滾支承，構件 AC 與 CD 之彈性模數與慣性矩乘積分別為 $EI$ 及 $2EI$，且 $EI = 1000 \text{ kN-m}^2$。請以<strong>最小功法</strong>計算當 B 點承受一垂直向下載重 $20 \text{ kN}$ 時 C 點之轉角。（若以其他方法計算不予計分）（25 分）</p>
 <p><img alt="SA-2014-4 題目附圖：剛架承受垂直載重" src="../../raw/solutions/SA-2014-4/SA-2014-4-fig-1.png" /></p>
 <p><em>圖說：A 點為左側固接支承。AC 為水平梁，長度 12m，B 點位於其中點（距 A、C 皆為 6m）。C 點連接垂直構件 CD，長度 12m。D 點為位於水平面上的滾支承。B 點承受向下 20 kN 載重。AC 剛度為 EI，CD 剛度為 2EI。</em></p>
+<p><img alt="SA-2014-4 題目重繪與 CD 柱自由體：左為 L 型剛架幾何與支承，右為柱的隔離體並標出切斷面的 N、V、M 三個內力（V=0、M=0）" src="../../raw/solutions/SA-2014-4/figs/SA-2014-4-fig-1-frame-fbd.svg" /></p>
+<p><em>圖 2　題目重繪（左）與 CD 柱自由體（右）。右圖把切斷面的軸力／剪力／彎矩三者都標出來，即使 $V$ 與 $M$ 都是 $0$ 也照標。它攔下的是「看到 $2EI$ 就假設 CD 會彎」——$D_x = 0$ 使柱上任一斷面對 D 的力臂為零，全柱 $M \equiv 0$，$2EI$ 從頭到尾用不到。</em></p>
 <h2>2. 考題核心精神與出題者意圖 (Core Concepts &amp; Examiner's Intent)</h2>
 <p>本題測驗考生對<strong>最小功法（Castigliano's 2nd Theorem 求解靜不定）</strong>的熟練度，並暗藏了一個極具鑑別度的觀念陷阱：</p>
 <ol>
@@ -197,6 +200,8 @@ $$\int_0^{12} x^2 dx = \left[ \frac{x^3}{3} \right]_0^{12} = \frac{1728}{3} = 57
 $$\int_6^{12} (x^2 - 6x) dx = \left[ \frac{x^3}{3} - 3x^2 \right]_6^{12} = (576 - 432) - (72 - 108) = 144 - (-36) = 180$$<br />
 代回原式：<br />
 $$576 R - 20(180) = 0 \Rightarrow 576 R = 3600 \Rightarrow R = 6.25 \text{ kN (向上)}$$</p>
+<p><img alt="SA-2014-4 彎矩圖：AC 梁的彎矩由 A 端 −45 kN-m 變到 B 點 +37.5 kN-m，在 x=3.273 m 處通過零點；CD 柱彎矩恆為零" src="../../raw/solutions/SA-2014-4/figs/SA-2014-4-fig-2-bmd.svg" /></p>
+<p><em>圖 3　彎矩圖（繪於受拉側）。反曲點 $x = 3.273$ m 是由 $R$ 與 $P$ 解出的，不是目測畫上去的。它攔下兩件事：受拉側畫反（A 端應為上緣受拉、B 點為下緣受拉），以及在 CD 柱上畫出根本不存在的彎矩。</em></p>
 <h3>Step 3：利用卡氏第二定理求 C 點轉角</h3>
 <p>卡氏第二定理：$\theta_C = \frac{\partial U}{\partial M_0} \Big|_{M_0=0}$。<br />
 $$\theta_C = \int_0^{12} \frac{M}{EI} \frac{\partial M}{\partial M_0} dx$$<br />
@@ -214,11 +219,16 @@ $$\theta_C = \frac{1}{EI} [450 - 360] = \frac{90}{EI}$$</p>
 $$\theta_C = \frac{90}{1000} = 0.09 \text{ rad}$$<br />
 因算出的 $\theta_C$ 為正值，代表實際轉向與設定的虛擬彎矩 $M_0$ 方向相同，即為<strong>逆時針方向</strong>。</p>
 <p>$$\boxed{\text{C 點轉角為 } 0.09 \text{ rad (逆時針方向)}}$$</p>
+<p><img alt="SA-2014-4 變形形狀：梁向下撓曲、C 點垂直位移為零、節點 C 逆時針轉 0.09 rad，柱保持直線僅隨 C 剛體轉動" src="../../raw/solutions/SA-2014-4/figs/SA-2014-4-fig-3-deflected.svg" /></p>
+<p><em>圖 4　變形形狀（位移放大 2 倍）。梁的撓度曲線由 $EIv'' = M$ 積分而得，圖上的 $v_C = 0$ 與 $\theta_C = 0.09$ rad 正是計算結果的兩個邊界條件。它攔下的是把柱畫成彎曲（等於自認 CD 有彎矩）、以及 $\theta_C$ 轉向畫反。</em></p>
 <h2>5. 關鍵爭議點與進階探討 (Critical Issues &amp; Advanced Discussion)</h2>
 <ul>
 <li><strong>彎矩面積法 / 共軛梁法驗證</strong>：若將 AC 視為一端固定 (A) 一端滾支承 (C) 的簡支懸臂梁，受載重 $P$ 作用。利用靜定基本公式疊加，載重 $P$ 造成的 C 點順時針轉角為 $\frac{PL^2}{8EI} = \frac{20 \times 144}{8 \times 1000} = 0.36 \text{ rad}$；向上反力 $R$ 造成的 C 點逆時針轉角為 $\frac{RL^2}{2EI} = \frac{6.25 \times 144}{2 \times 1000} = 0.45 \text{ rad}$。淨轉角為 $0.45 - 0.36 = 0.09 \text{ rad}$ (逆時針)。這證明了最小功法的計算完全正確。</li>
 <li><strong>如果 D 點是鉸支承 (Pin) 呢？</strong> 若考題將 D 點改為鉸支承，則 $D_x$ 不為零，此時為二次靜不定，必須設定兩個多餘力（$D_x, D_y$），CD 桿的 $2EI$ 剛度就會進入應變能方程式中。這是備考時可以自行延伸練習的絕佳變體題。</li>
-</ul></main>
+</ul>
+<hr />
+<p><em>圖解補繪：2026-08-28（向量圖，腳本 <code>gen_SA-2014-4.py</code>，可重跑）</em></p>
+</main>
 <footer>來源：raw/solutions/SA-2014-4/SA-2014-4.md（知識庫解題內容唯一正本；本頁僅為渲染顯示）</footer>
 
 <script>
