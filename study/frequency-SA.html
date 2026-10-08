@@ -5,59 +5,105 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>SA 全科出題頻率熱圖｜結構學</title>
 <style>
-:root{--ac:#1565c0;--ac2:#e3f2fd;--bg:#f7f9fb;--card:#fff;--ink:#263238;--mut:#78909c;--bd:#e0e6ea;--warn:#c62828}
+:root{--ac:#1565c0;--ac2:#e3f2fd;--bg:#f7f9fb;--card:#fff;--ink:#263238;--mut:#78909c;--bd:#e0e6ea;--warn:#c62828;
+--up:#c62828;--up2:#ffebee;--dn:#546e7a;--dn2:#eceff1;--hot:#ef6c00}
 *{box-sizing:border-box}body{margin:0;font-family:"Microsoft JhengHei","Noto Sans TC",sans-serif;background:var(--bg);color:var(--ink);line-height:1.6}
 header{background:linear-gradient(135deg,#0d47a1,#1976d2);color:#fff;padding:28px 24px}
 header h1{margin:0 0 6px;font-size:1.5em}header p{margin:0;opacity:.85;font-size:.92em}
-nav{position:sticky;top:0;z-index:9;background:#fff;border-bottom:2px solid var(--bd);padding:8px 16px;display:flex;flex-wrap:wrap;gap:6px}
+nav{position:sticky;top:0;z-index:20;background:#fff;border-bottom:2px solid var(--bd);padding:8px 16px;display:flex;flex-wrap:wrap;gap:6px}
 nav a{text-decoration:none;color:var(--ac);font-size:.88em;padding:5px 10px;border-radius:16px;background:var(--ac2)}
 nav a:hover{background:var(--ac);color:#fff}
 main{max-width:1240px;margin:0 auto;padding:20px 16px 60px}
 h2{font-size:1.25em;border-left:5px solid var(--ac);padding-left:10px;margin:26px 0 14px}
-h3{font-size:1.05em;margin:30px 0 10px;padding-bottom:5px;border-bottom:2px solid var(--ac2)}
+h3{font-size:1.05em;margin:34px 0 10px;padding-bottom:5px;border-bottom:2px solid var(--ac2);scroll-margin-top:56px}
+code{background:#eceff1;border-radius:4px;padding:0 4px;font-size:.92em}
 .role{background:#fffde7;border:1px solid #ffe082;border-left:5px solid #f9a825;border-radius:8px;padding:12px 16px;font-size:.88em;margin-bottom:12px}
 .role b{color:#e65100}
-.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px}
+.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:12px}
 .kpi{background:var(--card);border:1px solid var(--bd);border-radius:10px;padding:14px;text-align:center}
-.kpi .n{font-size:1.9em;font-weight:700;color:var(--ac)}.kpi .l{font-size:.82em;color:var(--mut)}
+.kpi .n{font-size:1.8em;font-weight:700;color:var(--ac);line-height:1.3}.kpi .l{font-size:.82em;color:var(--mut)}
+.kpi.hot .n{color:var(--hot)}
+.insight{display:grid;gap:10px;margin-top:14px}
+.ins{background:#fff;border:1px solid var(--bd);border-left:5px solid var(--hot);border-radius:8px;padding:10px 14px;font-size:.9em}
+.ins.cold{border-left-color:var(--dn)}
+.ins b.k{color:var(--hot)}.ins.cold b.k{color:var(--dn)}
 .note{font-size:.85em;color:var(--mut);background:#fff;border:1px dashed var(--bd);border-radius:8px;padding:10px 14px;margin-top:12px}
 .tw{overflow-x:auto;background:#fff;border:1px solid var(--bd);border-radius:10px;padding:10px}
 table{border-collapse:collapse;width:100%;background:#fff;font-size:.88em}
 th,td{border:1px solid var(--bd);padding:6px 8px;text-align:left;vertical-align:middle}
-th{background:var(--ac2);position:sticky;top:0}
+th{background:var(--ac2)}
 td.num,th.num{text-align:center;font-variant-numeric:tabular-nums}
+#hm{width:auto;min-width:100%}
 #hm td,#hm th{border:1px solid #eceff1;padding:0;text-align:center}
-#hm th.rowh{text-align:left;padding:4px 8px;white-space:nowrap;background:#fff;position:sticky;left:0;z-index:3;border-right:2px solid var(--bd)}
-#hm th.yr{font-size:.72em;font-weight:600;color:var(--mut);background:#fff;padding:3px 0;min-width:26px}
+#hm th.rowh{text-align:left;padding:4px 8px;white-space:nowrap;background:#fff;position:sticky;left:0;z-index:3;border-right:2px solid var(--bd);cursor:pointer}
+#hm th.rowh:hover,#hm th.rowh.hl{background:#fff3e0}
+#hm th.rowh .dr{font-size:.75em;margin-left:4px}
+#hm th.yr{font-size:.72em;font-weight:600;color:var(--mut);background:#fff;padding:3px 0;min-width:28px}
 #hm th.yr.r6{background:#fff8e1;color:#e65100}
-#hm td.c{width:26px;height:26px;font-size:.78em;font-weight:700;cursor:default}
+#hm th.yr.hl{background:#ffe0b2;color:#bf360c}
+#hm .split{border-left:3px solid #90a4ae !important}
+#hm td.c{width:28px;height:28px;font-size:.78em;font-weight:700;cursor:pointer;transition:box-shadow .1s}
+#hm td.c.empty{cursor:default}
 #hm td.c.r6{outline:1px solid #ffcc80;outline-offset:-1px}
-#hm tr.usep td,#hm tr.usep th{background:#f2f5f8;height:6px;padding:0;border:none}
-.sec-dot{position:absolute;right:2px;bottom:1px;width:5px;height:5px;border-radius:50%;background:#ef6c00}
+#hm td.c:not(.empty):hover{box-shadow:inset 0 0 0 2px #ff9800}
+#hm td.c.sel{box-shadow:inset 0 0 0 3px #e65100 !important}
+#hm td.tot{background:#fff;color:#0d47a1;font-weight:700;min-width:42px;font-size:.8em}
+#hm tr.usep td{background:#f2f5f8;height:6px;padding:0;border:none}
+#hm tr.foot th,#hm tr.foot td{background:#fafbfc;font-size:.72em;color:var(--mut);font-weight:600;height:24px}
+#hm tr.half td{font-size:.72em;color:var(--mut);background:#fafbfc;padding:2px 0;height:20px}
+.sec-dot{position:absolute;right:2px;bottom:2px;width:5px;height:5px;border-radius:50%;background:#ef6c00}
 .cellwrap{position:relative;width:100%;height:100%;display:flex;align-items:center;justify-content:center}
+#tip{position:fixed;pointer-events:none;z-index:50;background:#263238;color:#fff;font-size:.8em;padding:6px 10px;border-radius:6px;max-width:320px;display:none;line-height:1.5;box-shadow:0 2px 8px rgba(0,0,0,.2)}
+#tip .h{color:#ffcc80;font-weight:700}
 .legend{display:flex;flex-wrap:wrap;gap:14px;align-items:center;font-size:.84em;color:var(--mut);margin:10px 0 0}
 .sw{display:inline-block;width:20px;height:16px;border:1px solid #cfd8dc;vertical-align:middle;margin-right:4px}
-.btns{display:flex;flex-wrap:wrap;gap:8px;margin:12px 0}
+.btns{display:flex;flex-wrap:wrap;gap:8px;margin:12px 0;align-items:center}
 .fbtn{border:1px solid var(--bd);background:#fff;border-radius:18px;padding:6px 14px;cursor:pointer;font-size:.88em;font-family:inherit}
 .fbtn.on{background:var(--ac);color:#fff;border-color:var(--ac)}
+.hint{font-size:.82em;color:var(--mut)}
+#detail{margin-top:12px;background:#fff;border:2px solid #ffcc80;border-radius:10px;padding:12px 16px;display:none}
+#detail h4{margin:0 0 8px;font-size:1em;display:flex;justify-content:space-between;align-items:center;gap:10px}
+#detail .x{border:none;background:#eceff1;border-radius:50%;width:26px;height:26px;cursor:pointer;font-size:.9em}
+.ql{list-style:none;margin:0;padding:0}
+.ql li{padding:6px 0;border-bottom:1px dashed #eceff1;display:flex;flex-wrap:wrap;gap:6px;align-items:center;font-size:.88em}
+.ql li:last-child{border:none}
+.ql .qid{font-weight:700;font-variant-numeric:tabular-nums;min-width:86px}
+.ql a.qid{color:var(--ac);text-decoration:none}.ql a.qid:hover{text-decoration:underline}
+.b{font-size:.72em;border-radius:9px;padding:1px 7px;white-space:nowrap;display:inline-block}
+.b-p{background:#1565c0;color:#fff}.b-s{background:#ffe0b2;color:#e65100}
+.b-v{background:#e8f5e9;color:#1b5e20}.b-u{background:#f5f5f5;color:#9e9e9e}
+.b-t{background:#eceff1;color:#546e7a}
+a.b-vid{background:#fce4ec;color:#ad1457;text-decoration:none}a.b-vid:hover{background:#ad1457;color:#fff}
+.sub{font-size:.82em;color:var(--mut);margin:10px 0 4px;font-weight:700}
 .bar{display:inline-block;height:13px;border-radius:3px;vertical-align:middle;background:var(--ac)}
 .bar2{display:inline-block;height:13px;border-radius:3px;vertical-align:middle;background:#ffcc80}
-.tag{font-size:.72em;border-radius:9px;padding:1px 7px;margin-right:3px;white-space:nowrap;display:inline-block}
+.tag{font-size:.72em;border-radius:9px;padding:1px 7px;margin:1px 3px 1px 0;white-space:nowrap;display:inline-block}
 a.tag{text-decoration:none}
 .t-y{background:#e8f5e9;color:#1b5e20}a.t-y:hover{background:#1b5e20;color:#fff}
 .t-n{background:#fafafa;color:#bdbdbd}
+.t-v{background:#fce4ec;color:#ad1457;cursor:pointer;border:none;font-family:inherit}.t-v:hover{background:#ad1457;color:#fff}
+.dr-up,.dr-new{color:var(--up);font-weight:700}.dr-down,.dr-frozen{color:var(--dn);font-weight:700}.dr-flat{color:#9e9e9e}
+#rank th.sk{cursor:pointer;user-select:none;white-space:nowrap}
+#rank th.sk:hover{background:#bbdefb}
+#rank th.sk::after{content:" ⇅";color:#90caf9;font-size:.8em}
+#rank th.sk.asc::after{content:" ▲";color:var(--ac)}#rank th.sk.desc::after{content:" ▼";color:var(--ac)}
+#rank tr.frozen td{background:#f5f7f8;color:#78909c}
+.ubar{display:flex;height:14px;border-radius:4px;overflow:hidden;min-width:160px;background:#eceff1}
+.ubar span{display:block;height:100%}
 .zero{background:#fce4ec !important}
 footer{text-align:center;color:var(--mut);font-size:.8em;padding:20px}
-@media(max-width:760px){#hm td.c{width:20px;height:22px;font-size:.7em}}
+@media(max-width:760px){#hm td.c{width:22px;height:24px;font-size:.7em}#hm th.rowh .nm{display:none}header{padding:20px 16px}}
+@media print{nav,.btns,#detail,#tip,.hint{display:none !important}body{background:#fff}.tw{border:none;padding:0}
+ #hm td.c{-webkit-print-color-adjust:exact;print-color-adjust:exact}h3{break-after:avoid}}
 </style>
 </head>
 <body>
 <header>
 <h1>SA 結構學 — 全科出題頻率熱圖</h1>
-<p>2002–2025，24 個考年 × 每年 4 題 = 96 題｜資料來源：raw/json/question_index.json｜更新日期 2026-08-20</p>
+<p>2002–2025，24 個考年 × 每年 4 題 = 96 題｜資料來源：raw/json/question_index.json｜更新日期 2026-10-08</p>
 </header>
 <nav>
-<a href="#s-heat">頻率熱圖</a><a href="#s-rank">排名總表</a><a href="#s-unit">各單元的權重</a><a href="#s-read">怎麼用這張表</a>
+<a href="#s-sum">出題概況</a><a href="#s-heat">頻率熱圖</a><a href="#s-rank">排名總表</a><a href="#s-unit">各單元的權重</a><a href="#s-read">讀書順序</a>
 </nav>
 <main>
 
@@ -65,117 +111,218 @@ footer{text-align:center;color:var(--mut);font-size:.8em;padding:20px}
 <div class="role">
 📊 <b>這張表只回答一件事：整科該從哪裡開始讀。</b>
 它把 96 題逐題攤在「10 個子項 × 24 個考年」的格子上，
-讓你一眼看出誰是主力、誰是工具型、誰空窗很久、誰根本沒考過。
-每個子項的細節（考點結構、漂移、風險排序）看該子項的 <code>study-SA-Un-m.html</code> 命題分析頁。<br>
-所有數字都可以用 <code>python3 skills/unit-exam-intel/scripts/stats.py SA-Un-m</code> 逐項複算。
+並把考年切成前半（2002–2013）與後半（2014–2025）比較，讓你同時看到「誰一直重要」與「誰最近才重要」。
+各子項的細節（考點結構、風險排序）看該子項的 <code>study-SA-Un-m.html</code> 命題分析頁。<br>
+本頁由 <code>python scripts/build_frequency.py</code> 從題庫自動產生；題庫或教材更新後重跑即可，請勿手改。
 </div>
 
-<h2>出題概況</h2>
+<h3 id="s-sum">出題概況</h3>
 <div class="kpis">
 <div class="kpi"><div class="n">96</div><div class="l">總題數（24 個考年 × 每年 4 題 = 96 題）</div></div>
 <div class="kpi"><div class="n">10/10</div><div class="l">曾當過主考點的子項</div></div>
-<div class="kpi"><div class="n">17</div><div class="l">第一名 U1-2 的題數（佔 17.7%）</div></div>
-<div class="kpi"><div class="n">34／46／16</div><div class="l">U1／U2／U3 各單元的題數分配</div></div>
+<div class="kpi"><div class="n">17</div><div class="l">全期第一 U1-2 的題數（佔 17.7%）</div></div>
+<div class="kpi hot"><div class="n">10</div><div class="l">後半期第一 U2-3 的題數（佔後半 20.8%）</div></div>
+<div class="kpi"><div class="n">34／46／16</div><div class="l">U1／U2／U3 各單元題數</div></div>
+<div class="kpi"><div class="n">5/96</div><div class="l">已人工驗證的解析</div></div>
 </div>
+<div class="insight"><div class="ins">🔥 <b class="k">全期排名低估了 U3-2</b>：<b>U3-2</b> 建築結構系統分析 24 年總數只排第 9，但後半期（2014–2025）以 7 題排第 <b>3</b>——前半期 0 題、後半期 7 題。只看總排名會把它排得太後面。</div><div class="ins">▲ <b class="k">U2-3 升溫</b>：<b>U2-3</b> 靜不定結構之傾角變位法 前半期 3 題 → 後半期 10 題，近 6 考年出現 5 年、共 8 題。</div><div class="ins cold">❄ <b class="k">U1-1 冷凍</b>：<b>U1-1</b> 靜不定度與穩定性之判斷 最後一次當主考點是 2010 年，後半期（2014–2025）0 題；但仍以<b>副考點</b>出現在 2016、2019、2023——它變成別題的第一步，觀念要懂、不必專門練。</div><div class="ins cold">❄ <b class="k">U2-5 冷凍</b>：<b>U2-5</b> 彎矩分配法 最後一次當主考點是 2006 年，後半期（2014–2025）0 題；後半期連副考點都沒有。</div><div class="ins cold">▼ <b class="k">U3-1 退燒</b>：<b>U3-1</b> 建築結構系統之使用 前半期 6 題 → 後半期 3 題。</div></div>
 
-<h3 id="s-heat">頻率熱圖（滑過格子看題號）</h3>
+<h3 id="s-heat">頻率熱圖</h3>
 <div class="btns" id="modebtns">
   <button class="fbtn on" onclick="setMode('p',this)">只看主考點</button>
   <button class="fbtn" onclick="setMode('a',this)">主考點 ＋ 副考點</button>
+  <span class="hint">👆 點格子看該年題目；點子項名稱看它 24 年的全部題目、影片與教材</span>
 </div>
 <div class="tw" id="heat"></div>
 <div class="legend" id="lg"></div>
+<div id="detail"></div>
+<div id="tip"></div>
 <div class="note">
-📌 <b>看熱圖的三個切入點</b>：
-① <b>橫著看</b>——一整列都很淡代表這個子項很少當主考點；有連續空白就是空窗年段。
-② <b>直著看</b>——每一欄一定剛好 4 題（一年 4 題），所以某一年某個子項考了 2 題，就代表那年別的子項被擠掉了。
-③ <b>切到「主＋副」模式</b>——顏色會整片變深的那幾列，就是「工具型子項」：它們本身很少單獨成題，卻是別人的第一步。
+📌 <b>看熱圖的四個切入點</b>：
+① <b>橫著看</b>——有連續空白就是空窗年段。
+② <b>直著看</b>——每一欄一定剛好 4 題，所以某年某子項考了 2 題，就代表那年別的子項被擠掉了。
+③ <b>左右比</b>——粗灰線左邊是前半期、右邊是後半期；子項名稱旁的 ▲／❄ 就是比較結果。
+④ <b>切到「主＋副」</b>——整列變深的是「工具型子項」：很少單獨成題，卻是別題的第一步。
 </div>
 
 <h3 id="s-rank">排名總表</h3>
+<div class="hint" style="margin-bottom:6px">點欄位名稱可排序（例如點「後半排名」看現在的強弱順序）</div>
 <div class="tw" id="rank"></div>
 <div class="note">
-藍色長條＝主考點題數，橘色接續段＝副考點題數。「常見題號位置」是該子項的主考點落在該年第幾題——
-題號靠前多半是短題與名詞解釋，靠後多半是長計算題，這會影響你要練的答題節奏。
-「現有教材」綠色可點、灰色表示尚未製作。
+藍色＝主考點題數，橘色＝副考點題數。「前→後半」是 2002–2013 與 2014–2025 的主考點數比較：
+差 3 題以上算升溫／退燒，後半期 0 題算冷凍。「後半排名」旁的 ↑ 代表比全期排名前進 3 名以上。
+「常見題號位置」看得出這個子項是短題還是壓軸長計算題。「現有教材」綠色可點、灰色尚未製作；🎬 點開看影片清單。
 </div>
 
 <h3 id="s-unit">各單元的權重</h3>
 <div class="tw">
 <table>
-<thead><tr><th>單元</th><th class="num">主考點題數</th><th class="num">佔全科</th><th>包含的子項</th></tr></thead>
+<thead><tr><th>單元</th><th class="num">主考點題數</th><th class="num">佔全科</th><th class="num">前半 → 後半佔比</th><th>子項組成</th><th>包含的子項（題數）</th></tr></thead>
 <tbody>
-<tr><td><b>SA-U1</b> 第一單元</td><td class="num">34</td><td class="num">35.4%</td><td>靜不定度與穩定性之判斷、靜定結構之分析、靜定及靜不定結構影響線</td></tr>
-<tr><td><b>SA-U2</b> 第二單元</td><td class="num">46</td><td class="num">47.9%</td><td>靜不定結構最小功法、靜不定結構諧合變位、靜不定結構之傾角變位法、靜不定結構之矩陣分析法、彎矩分配法</td></tr>
-<tr><td><b>SA-U3</b> 第三單元</td><td class="num">16</td><td class="num">16.7%</td><td>建築結構系統之使用、建築結構系統分析</td></tr>
+<tr><td><b>SA-U1</b> 第一單元</td><td class="num">34</td><td class="num">35.4%</td><td class="num">43.8% → <b>27.1%</b></td><td><div class="ubar"><span title="U1-1 靜不定度與穩定性之判斷：8 題" style="width:8.3%;background:#1565c0"></span><span title="U1-2 靜定結構之分析：17 題" style="width:17.7%;background:#42a5f5"></span><span title="U1-3 靜定及靜不定結構影響線：9 題" style="width:9.4%;background:#90caf9"></span></div></td><td style="font-size:.85em">U1-1 靜不定度與穩定性之判斷（8）、U1-2 靜定結構之分析（17）、U1-3 靜定及靜不定結構影響線（9）</td></tr>
+<tr><td><b>SA-U2</b> 第二單元</td><td class="num">46</td><td class="num">47.9%</td><td class="num">43.8% → <b>52.1%</b></td><td><div class="ubar"><span title="U2-1 靜不定結構最小功法：12 題" style="width:12.5%;background:#1565c0"></span><span title="U2-2 靜不定結構諧合變位：7 題" style="width:7.3%;background:#42a5f5"></span><span title="U2-3 靜不定結構之傾角變位法：13 題" style="width:13.5%;background:#90caf9"></span><span title="U2-4 靜不定結構之矩陣分析法：12 題" style="width:12.5%;background:#bbdefb"></span><span title="U2-5 彎矩分配法：2 題" style="width:2.1%;background:#e3f2fd"></span></div></td><td style="font-size:.85em">U2-1 靜不定結構最小功法（12）、U2-2 靜不定結構諧合變位（7）、U2-3 靜不定結構之傾角變位法（13）、U2-4 靜不定結構之矩陣分析法（12）、U2-5 彎矩分配法（2）</td></tr>
+<tr><td><b>SA-U3</b> 第三單元</td><td class="num">16</td><td class="num">16.7%</td><td class="num">12.5% → <b>20.8%</b></td><td><div class="ubar"><span title="U3-1 建築結構系統之使用：9 題" style="width:9.4%;background:#1565c0"></span><span title="U3-2 建築結構系統分析：7 題" style="width:7.3%;background:#42a5f5"></span></div></td><td style="font-size:.85em">U3-1 建築結構系統之使用（9）、U3-2 建築結構系統分析（7）</td></tr>
 </tbody>
 </table>
 </div>
-<div class="note">📌 換算成投資：最重的 <b>SA-U2</b>（46 題）是最輕的 <b>SA-U3</b>（16 題）的 <b>2.9 倍</b>。</div>
+<div class="note">📌 換算成投資：最重的 <b>SA-U2</b>（46 題）是最輕的 <b>SA-U3</b>（16 題）的 <b>2.9 倍</b>。　變動最大的是 <b>SA-U1</b>：佔比從前半期 43.8% 降到後半期 27.1%。</div>
 
 <h3 id="s-read">怎麼用這張表排讀書順序</h3>
 <div class="tw">
 <table>
 <thead><tr><th>如果你…</th><th>先讀哪幾個子項</th><th>理由（可從熱圖直接驗證）</th></tr></thead>
 <tbody>
-<tr><td><b>時間充裕，要拿高分</b></td><td>U1-2 → U2-3 → U2-4 → U2-1 → U1-3</td><td>這 5 個合計 63 題，佔全科 65.6%。其中 5 個已有完整教材（講義＋給／背＋命題分析＋記憶片）</td></tr>
-<tr><td><b>只剩一個月</b></td><td>U1-2（17 題）、U2-3（13 題）、U2-4（12 題）</td><td>合計 42 題、佔 43.8%；三者的出現年數都在 10 年以上，是最穩定的柱子</td></tr>
-<tr><td><b>想押近年趨勢</b></td><td>看熱圖黃框那 6 欄</td><td>近 6 考年（2020–2025）共 24 題，集中在少數幾列。空窗最久的反而常是下一次的回歸點</td></tr>
-<tr><td><b>想知道哪些可以不讀</b></td><td>（無：每個子項都考過）</td><td>本科每個子項都至少當過一次主考點，沒有可以整段跳過的</td></tr>
+<tr><td><b>時間充裕，要拿高分</b></td><td>U1-2 → U2-3 → U2-4 → U2-1 → U1-3</td><td>全期前 5 名，合計 63 題、佔 65.6%；其中 5 個四種教材都已備齊。</td></tr>
+<tr><td><b>只剩一個月</b></td><td>U2-3（後半 10 題）、U1-2（後半 8 題）、U3-2（後半 7 題）</td><td>改用<b>後半期</b>（2014–2025）排名：三者合計 25／48 題、佔 52.1%。比全期前三名更貼近現在的出題口味。</td></tr>
+<tr><td><b>想跟上近年走向</b></td><td>U2-3（8 題／5 年）、U3-2（5 題／3 年）、U1-2（3 題／2 年）</td><td>近 6 考年（2020–2025）共 24 題，前兩名就佔 13 題（54.2%）。看熱圖黃框那 6 欄可驗證。</td></tr>
+<tr><td><b>放到最後（不是跳過）</b></td><td>U1-1（最後 2010）、U2-5（最後 2006）</td><td>後半期 0 題主考點。U1-1 仍有 3 次副考點，觀念不能丟；時間不夠時最先砍的就是這幾個。</td></tr>
 </tbody>
 </table>
 </div>
 <div class="note">
-📌 <b>一句話</b>：這張表告訴你「該讀哪裡」，各子項的 <code>study-SA-Un-m.html</code> 命題分析頁告訴你「那裡該先練哪幾題」，
-<code>formula-given-SA-Un-m.html</code> 告訴你「那裡哪些公式非背不可」。三層一起用才完整。<br>
-⚠️ <b>使用提醒</b>：頻率高不等於一定會再考，頻率低也不等於不會考——這張表的用途是<b>分配時間</b>，不是預測考題。
-真正的押題請看各子項命題分析頁最後那張「命題風險排序」，那裡有空窗年數與近年趨勢的交叉判斷。
+📌 <b>一句話</b>：這張表告訴你「該讀哪裡」，<code>study-SA-Un-m.html</code> 告訴你「那裡該先練哪幾題」，
+<code>formula-given-SA-Un-m.html</code> 告訴你「那裡哪些公式非背不可」。<br>
+⚠️ <b>使用提醒</b>：頻率高不等於一定會再考，冷凍也不等於不會回來——這張表的用途是<b>分配時間</b>，不是預測考題。
+押題請看各子項命題分析頁的「命題風險排序」。
 </div>
 
 </main>
-<footer>SA 全科出題頻率熱圖｜exam-wiki-SA 知識庫｜統計基準 raw/json/question_index.json（96 題／24 考年）｜每個數字都可用 <code>scripts/stats.py</code> 複算</footer>
+<footer>SA 全科出題頻率熱圖｜exam-wiki-SA｜統計基準 raw/json/question_index.json（96 題／24 考年）｜產生器 <code>scripts/build_frequency.py</code></footer>
 <script>
-const D = {"years":[2002,2003,2004,2005,2006,2007,2008,2009,2010,2011,2012,2013,2014,2015,2016,2017,2018,2019,2020,2021,2022,2023,2024,2025],"recent6":[2020,2021,2022,2023,2024,2025],"rows":[{"id":"SA-U1-1","short":"U1-1","name":"靜不定度與穩定性之判斷","unit":"SA-U1","p":8,"s":3,"share":8.3,"rank":7,"hit":4,"last":2010,"gap":15,"gapSpan":[2011,2025],"r6h":0,"r6q":0,"pos":{"1":4,"2":1,"3":2,"4":1},"mat":[],"deckFile":"","cells":[{"p":0,"s":0,"ids":[]},{"p":0,"s":0,"ids":[]},{"p":0,"s":0,"ids":[]},{"p":0,"s":0,"ids":[]},{"p":0,"s":0,"ids":[]},{"p":2,"s":0,"ids":["SA-2007-1","SA-2007-3"]},{"p":1,"s":0,"ids":["SA-2008-1"]},{"p":4,"s":0,"ids":["SA-2009-1","SA-2009-2","SA-2009-3","SA-2009-4"]},{"p":1,"s":0,"ids":["SA-2010-1"]},{"p":0,"s":0,"ids":[]},{"p":0,"s":0,"ids":[]},{"p":0,"s":0,"ids":[]},{"p":0,"s":0,"ids":[]},{"p":0,"s":0,"ids":[]},{"p":0,"s":1,"ids":["(副)SA-2016-1"]},{"p":0,"s":0,"ids":[]},{"p":0,"s":0,"ids":[]},{"p":0,"s":1,"ids":["(副)SA-2019-1"]},{"p":0,"s":0,"ids":[]},{"p":0,"s":0,"ids":[]},{"p":0,"s":0,"ids":[]},{"p":0,"s":1,"ids":["(副)SA-2023-2"]},{"p":0,"s":0,"ids":[]},{"p":0,"s":0,"ids":[]}]},{"id":"SA-U1-2","short":"U1-2","name":"靜定結構之分析","unit":"SA-U1","p":17,"s":3,"share":17.7,"rank":1,"hit":12,"last":2024,"gap":5,"gapSpan":[2018,2022],"r6h":2,"r6q":3,"pos":{"1":10,"2":3,"3":3,"4":1},"mat":["study","lecture","formula","deck"],"deckFile":"decks/SA-U1-2_靜定結構之分析_公式給背分界_記憶片.pdf","cells":[{"p":2,"s":0,"ids":["SA-2002-1","SA-2002-2"]},{"p":2,"s":0,"ids":["SA-2003-2","SA-2003-3"]},{"p":2,"s":0,"ids":["SA-2004-1","SA-2004-3"]},{"p":0,"s":0,"ids":[]},{"p":0,"s":0,"ids":[]},{"p":0,"s":1,"ids":["(副)SA-2007-1"]},{"p":1,"s":0,"ids":["SA-2008-3"]},{"p":0,"s":1,"ids":["(副)SA-2009-1"]},{"p":0,"s":1,"ids":["(副)SA-2010-1"]},{"p":0,"s":0,"ids":[]},{"p":1,"s":0,"ids":["SA-2012-1"]},{"p":1,"s":0,"ids":["SA-2013-1"]},{"p":1,"s":0,"ids":["SA-2014-1"]},{"p":1,"s":0,"ids":["SA-2015-1"]},{"p":2,"s":0,"ids":["SA-2016-1","SA-2016-4"]},{"p":1,"s":0,"ids":["SA-2017-1"]},{"p":0,"s":0,"ids":[]},{"p":0,"s":0,"ids":[]},{"p":0,"s":0,"ids":[]},{"p":0,"s":0,"ids":[]},{"p":0,"s":0,"ids":[]},{"p":1,"s":0,"ids":["SA-2023-1"]},{"p":2,"s":0,"ids":["SA-2024-1","SA-2024-2"]},{"p":0,"s":0,"ids":[]}]},{"id":"SA-U1-3","short":"U1-3","name":"靜定及靜不定結構影響線","unit":"SA-U1","p":9,"s":4,"share":9.4,"rank":5,"hit":9,"last":2025,"gap":5,"gapSpan":[2006,2010],"r6h":2,"r6q":2,"pos":{"2":4,"3":3,"4":2},"mat":["study","lecture","formula","deck"],"deckFile":"decks/SA-U1-3_靜定及靜不定結構影響線_公式給背分界_記憶片.pdf","cells":[{"p":0,"s":0,"ids":[]},{"p":1,"s":0,"ids":["SA-2003-4"]},{"p":1,"s":0,"ids":["SA-2004-2"]},{"p":1,"s":0,"ids":["SA-2005-3"]},{"p":0,"s":0,"ids":[]},{"p":0,"s":1,"ids":["(副)SA-2007-3"]},{"p":0,"s":0,"ids":[]},{"p":0,"s":1,"ids":["(副)SA-2009-2"]},{"p":0,"s":0,"ids":[]},{"p":1,"s":0,"ids":["SA-2011-3"]},{"p":0,"s":0,"ids":[]},{"p":0,"s":1,"ids":["(副)SA-2013-1"]},{"p":0,"s":1,"ids":["(副)SA-2014-1"]},{"p":1,"s":0,"ids":["SA-2015-2"]},{"p":1,"s":0,"ids":["SA-2016-2"]},{"p":0,"s":0,"ids":[]},{"p":1,"s":0,"ids":["SA-2018-4"]},{"p":0,"s":0,"ids":[]},{"p":0,"s":0,"ids":[]},{"p":0,"s":0,"ids":[]},{"p":1,"s":0,"ids":["SA-2022-3"]},{"p":0,"s":0,"ids":[]},{"p":0,"s":0,"ids":[]},{"p":1,"s":0,"ids":["SA-2025-2"]}]},{"id":"SA-U2-1","short":"U2-1","name":"靜不定結構最小功法","unit":"SA-U2","p":12,"s":3,"share":12.5,"rank":4,"hit":10,"last":2022,"gap":5,"gapSpan":[2008,2012],"r6h":1,"r6q":1,"pos":{"1":4,"2":3,"3":2,"4":3},"mat":["study","lecture","formula","deck"],"deckFile":"decks/SA-U2-1_靜不定結構最小功法_公式給背分界_記憶片.pdf","cells":[{"p":0,"s":0,"ids":[]},{"p":0,"s":0,"ids":[]},{"p":0,"s":0,"ids":[]},{"p":2,"s":0,"ids":["SA-2005-1","SA-2005-4"]},{"p":1,"s":0,"ids":["SA-2006-1"]},{"p":2,"s":0,"ids":["SA-2007-2","SA-2007-4"]},{"p":0,"s":0,"ids":[]},{"p":0,"s":0,"ids":[]},{"p":0,"s":0,"ids":[]},{"p":0,"s":0,"ids":[]},{"p":0,"s":1,"ids":["(副)SA-2012-1"]},{"p":1,"s":0,"ids":["SA-2013-2"]},{"p":1,"s":1,"ids":["SA-2014-4","(副)SA-2014-2"]},{"p":0,"s":1,"ids":["(副)SA-2015-2"]},{"p":1,"s":0,"ids":["SA-2016-3"]},{"p":1,"s":0,"ids":["SA-2017-2"]},{"p":1,"s":0,"ids":["SA-2018-3"]},{"p":1,"s":0,"ids":["SA-2019-1"]},{"p":0,"s":0,"ids":[]},{"p":0,"s":0,"ids":[]},{"p":1,"s":0,"ids":["SA-2022-1"]},{"p":0,"s":0,"ids":[]},{"p":0,"s":0,"ids":[]},{"p":0,"s":0,"ids":[]}]},{"id":"SA-U2-2","short":"U2-2","name":"靜不定結構諧合變位","unit":"SA-U2","p":7,"s":2,"share":7.3,"rank":8,"hit":7,"last":2023,"gap":4,"gapSpan":[2007,2010],"r6h":1,"r6q":1,"pos":{"1":1,"2":4,"3":2},"mat":[],"deckFile":"","cells":[{"p":1,"s":0,"ids":["SA-2002-3"]},{"p":0,"s":1,"ids":["(副)SA-2003-4"]},{"p":0,"s":0,"ids":[]},{"p":0,"s":0,"ids":[]},{"p":1,"s":0,"ids":["SA-2006-2"]},{"p":0,"s":0,"ids":[]},{"p":0,"s":0,"ids":[]},{"p":0,"s":0,"ids":[]},{"p":0,"s":0,"ids":[]},{"p":1,"s":0,"ids":["SA-2011-1"]},{"p":1,"s":0,"ids":["SA-2012-2"]},{"p":0,"s":0,"ids":[]},{"p":1,"s":0,"ids":["SA-2014-2"]},{"p":0,"s":0,"ids":[]},{"p":0,"s":1,"ids":["(副)SA-2016-3"]},{"p":0,"s":0,"ids":[]},{"p":0,"s":0,"ids":[]},{"p":1,"s":0,"ids":["SA-2019-3"]},{"p":0,"s":0,"ids":[]},{"p":0,"s":0,"ids":[]},{"p":0,"s":0,"ids":[]},{"p":1,"s":0,"ids":["SA-2023-2"]},{"p":0,"s":0,"ids":[]},{"p":0,"s":0,"ids":[]}]},{"id":"SA-U2-3","short":"U2-3","name":"靜不定結構之傾角變位法","unit":"SA-U2","p":13,"s":5,"share":13.5,"rank":2,"hit":10,"last":2025,"gap":7,"gapSpan":[2007,2013],"r6h":5,"r6q":8,"pos":{"1":2,"2":4,"3":4,"4":3},"mat":["study","lecture","formula","deck"],"deckFile":"decks/SA-U2-3_靜不定結構之傾角變位法_公式給背分界_記憶片.pdf","cells":[{"p":1,"s":0,"ids":["SA-2002-4"]},{"p":0,"s":0,"ids":[]},{"p":0,"s":0,"ids":[]},{"p":1,"s":0,"ids":["SA-2005-2"]},{"p":1,"s":0,"ids":["SA-2006-4"]},{"p":0,"s":0,"ids":[]},{"p":0,"s":0,"ids":[]},{"p":0,"s":1,"ids":["(副)SA-2009-3"]},{"p":0,"s":0,"ids":[]},{"p":0,"s":1,"ids":["(副)SA-2011-1"]},{"p":0,"s":2,"ids":["(副)SA-2012-2","(副)SA-2012-4"]},{"p":0,"s":0,"ids":[]},{"p":1,"s":0,"ids":["SA-2014-3"]},{"p":0,"s":0,"ids":[]},{"p":0,"s":1,"ids":["(副)SA-2016-2"]},{"p":1,"s":0,"ids":["SA-2017-3"]},{"p":0,"s":0,"ids":[]},{"p":0,"s":0,"ids":[]},{"p":2,"s":0,"ids":["SA-2020-1","SA-2020-2"]},{"p":2,"s":0,"ids":["SA-2021-1","SA-2021-2"]},{"p":1,"s":0,"ids":["SA-2022-2"]},{"p":0,"s":0,"ids":[]},{"p":2,"s":0,"ids":["SA-2024-3","SA-2024-4"]},{"p":1,"s":0,"ids":["SA-2025-3"]}]},{"id":"SA-U2-4","short":"U2-4","name":"靜不定結構之矩陣分析法","unit":"SA-U2","p":12,"s":3,"share":12.5,"rank":3,"hit":11,"last":2025,"gap":3,"gapSpan":[2005,2007],"r6h":2,"r6q":3,"pos":{"1":1,"2":1,"4":10},"mat":["study","lecture","formula","deck"],"deckFile":"decks/SA-U2-4_靜不定結構之矩陣分析法_公式給背分界_記憶片.pdf","cells":[{"p":0,"s":0,"ids":[]},{"p":0,"s":0,"ids":[]},{"p":1,"s":0,"ids":["SA-2004-4"]},{"p":0,"s":0,"ids":[]},{"p":0,"s":0,"ids":[]},{"p":0,"s":2,"ids":["(副)SA-2007-2","(副)SA-2007-4"]},{"p":1,"s":0,"ids":["SA-2008-4"]},{"p":0,"s":1,"ids":["(副)SA-2009-4"]},{"p":1,"s":0,"ids":["SA-2010-4"]},{"p":1,"s":0,"ids":["SA-2011-4"]},{"p":1,"s":0,"ids":["SA-2012-4"]},{"p":1,"s":0,"ids":["SA-2013-4"]},{"p":0,"s":0,"ids":[]},{"p":1,"s":0,"ids":["SA-2015-4"]},{"p":0,"s":0,"ids":[]},{"p":0,"s":0,"ids":[]},{"p":1,"s":0,"ids":["SA-2018-2"]},{"p":1,"s":0,"ids":["SA-2019-4"]},{"p":0,"s":0,"ids":[]},{"p":0,"s":0,"ids":[]},{"p":1,"s":0,"ids":["SA-2022-4"]},{"p":0,"s":0,"ids":[]},{"p":0,"s":0,"ids":[]},{"p":2,"s":0,"ids":["SA-2025-1","SA-2025-4"]}]},{"id":"SA-U2-5","short":"U2-5","name":"彎矩分配法","unit":"SA-U2","p":2,"s":0,"share":2.1,"rank":10,"hit":2,"last":2006,"gap":19,"gapSpan":[2007,2025],"r6h":0,"r6q":0,"pos":{"1":1,"3":1},"mat":[],"deckFile":"","cells":[{"p":0,"s":0,"ids":[]},{"p":1,"s":0,"ids":["SA-2003-1"]},{"p":0,"s":0,"ids":[]},{"p":0,"s":0,"ids":[]},{"p":1,"s":0,"ids":["SA-2006-3"]},{"p":0,"s":0,"ids":[]},{"p":0,"s":0,"ids":[]},{"p":0,"s":0,"ids":[]},{"p":0,"s":0,"ids":[]},{"p":0,"s":0,"ids":[]},{"p":0,"s":0,"ids":[]},{"p":0,"s":0,"ids":[]},{"p":0,"s":0,"ids":[]},{"p":0,"s":0,"ids":[]},{"p":0,"s":0,"ids":[]},{"p":0,"s":0,"ids":[]},{"p":0,"s":0,"ids":[]},{"p":0,"s":0,"ids":[]},{"p":0,"s":0,"ids":[]},{"p":0,"s":0,"ids":[]},{"p":0,"s":0,"ids":[]},{"p":0,"s":0,"ids":[]},{"p":0,"s":0,"ids":[]},{"p":0,"s":0,"ids":[]}]},{"id":"SA-U3-1","short":"U3-1","name":"建築結構系統之使用","unit":"SA-U3","p":9,"s":0,"share":9.4,"rank":6,"hit":8,"last":2023,"gap":6,"gapSpan":[2002,2007],"r6h":1,"r6q":1,"pos":{"2":3,"3":5,"4":1},"mat":[],"deckFile":"","cells":[{"p":0,"s":0,"ids":[]},{"p":0,"s":0,"ids":[]},{"p":0,"s":0,"ids":[]},{"p":0,"s":0,"ids":[]},{"p":0,"s":0,"ids":[]},{"p":0,"s":0,"ids":[]},{"p":1,"s":0,"ids":["SA-2008-2"]},{"p":0,"s":0,"ids":[]},{"p":2,"s":0,"ids":["SA-2010-2","SA-2010-3"]},{"p":1,"s":0,"ids":["SA-2011-2"]},{"p":1,"s":0,"ids":["SA-2012-3"]},{"p":1,"s":0,"ids":["SA-2013-3"]},{"p":0,"s":0,"ids":[]},{"p":1,"s":0,"ids":["SA-2015-3"]},{"p":0,"s":0,"ids":[]},{"p":1,"s":0,"ids":["SA-2017-4"]},{"p":0,"s":0,"ids":[]},{"p":0,"s":0,"ids":[]},{"p":0,"s":0,"ids":[]},{"p":0,"s":0,"ids":[]},{"p":0,"s":0,"ids":[]},{"p":1,"s":0,"ids":["SA-2023-3"]},{"p":0,"s":0,"ids":[]},{"p":0,"s":0,"ids":[]}]},{"id":"SA-U3-2","short":"U3-2","name":"建築結構系統分析","unit":"SA-U3","p":7,"s":5,"share":7.3,"rank":9,"hit":5,"last":2023,"gap":16,"gapSpan":[2002,2017],"r6h":3,"r6q":5,"pos":{"1":1,"2":1,"3":2,"4":3},"mat":[],"deckFile":"","cells":[{"p":0,"s":0,"ids":[]},{"p":0,"s":0,"ids":[]},{"p":0,"s":0,"ids":[]},{"p":0,"s":0,"ids":[]},{"p":0,"s":0,"ids":[]},{"p":0,"s":0,"ids":[]},{"p":0,"s":0,"ids":[]},{"p":0,"s":0,"ids":[]},{"p":0,"s":2,"ids":["(副)SA-2010-2","(副)SA-2010-3"]},{"p":0,"s":1,"ids":["(副)SA-2011-2"]},{"p":0,"s":1,"ids":["(副)SA-2012-3"]},{"p":0,"s":0,"ids":[]},{"p":0,"s":1,"ids":["(副)SA-2014-3"]},{"p":0,"s":0,"ids":[]},{"p":0,"s":0,"ids":[]},{"p":0,"s":0,"ids":[]},{"p":1,"s":0,"ids":["SA-2018-1"]},{"p":1,"s":0,"ids":["SA-2019-2"]},{"p":2,"s":0,"ids":["SA-2020-3","SA-2020-4"]},{"p":2,"s":0,"ids":["SA-2021-3","SA-2021-4"]},{"p":0,"s":0,"ids":[]},{"p":1,"s":0,"ids":["SA-2023-4"]},{"p":0,"s":0,"ids":[]},{"p":0,"s":0,"ids":[]}]}],"maxP":4,"maxA":4};
-const YEARS = D.years, R6 = new Set(D.recent6);
-let MODE = 'p';
+const D = {"years":[2002,2003,2004,2005,2006,2007,2008,2009,2010,2011,2012,2013,2014,2015,2016,2017,2018,2019,2020,2021,2022,2023,2024,2025],"recent6":[2020,2021,2022,2023,2024,2025],"early":[2002,2003,2004,2005,2006,2007,2008,2009,2010,2011,2012,2013],"late":[2014,2015,2016,2017,2018,2019,2020,2021,2022,2023,2024,2025],"earlyTotal":48,"lateTotal":48,"rows":[{"id":"SA-U1-1","short":"U1-1","name":"靜不定度與穩定性之判斷","unit":"SA-U1","p":8,"s":3,"share":8.3,"rank":7,"hit":4,"last":2010,"gap":15,"gapSpan":[2011,2025],"r6h":0,"r6q":0,"early":8,"late":0,"lateS":3,"lateSYears":[2016,2019,2023],"drift":"frozen","pos":{"1":4,"2":1,"3":2,"4":1},"mat":{},"vids":[],"qvids":0,"cells":[{"p":[],"s":[]},{"p":[],"s":[]},{"p":[],"s":[]},{"p":[],"s":[]},{"p":[],"s":[]},{"p":["SA-2007-1","SA-2007-3"],"s":[]},{"p":["SA-2008-1"],"s":[]},{"p":["SA-2009-1","SA-2009-2","SA-2009-3","SA-2009-4"],"s":[]},{"p":["SA-2010-1"],"s":[]},{"p":[],"s":[]},{"p":[],"s":[]},{"p":[],"s":[]},{"p":[],"s":[]},{"p":[],"s":[]},{"p":[],"s":["SA-2016-1"]},{"p":[],"s":[]},{"p":[],"s":[]},{"p":[],"s":["SA-2019-1"]},{"p":[],"s":[]},{"p":[],"s":[]},{"p":[],"s":[]},{"p":[],"s":["SA-2023-2"]},{"p":[],"s":[]},{"p":[],"s":[]}],"lateRank":null},{"id":"SA-U1-2","short":"U1-2","name":"靜定結構之分析","unit":"SA-U1","p":17,"s":3,"share":17.7,"rank":1,"hit":12,"last":2024,"gap":5,"gapSpan":[2018,2022],"r6h":2,"r6q":3,"early":9,"late":8,"lateS":0,"lateSYears":[],"drift":"flat","pos":{"1":10,"2":3,"3":3,"4":1},"mat":{"study":"study-SA-U1-2.html","lecture":"lecture-SA-U1-2.html","formula":"formula-given-SA-U1-2.html","deck":"decks/SA-U1-2_靜定結構之分析_公式給背分界_記憶片.pdf"},"vids":[{"name":"SA-U1-2 位移計算與非外力成因","title":"位移計算與非外力成因","href":"../解題過程影片/SA-U1-2 位移計算與非外力成因/video/SA-U1-2-disp.mp4"},{"name":"SA-U1-2 桁架之內力分析","title":"桁架之內力分析","href":"../解題過程影片/SA-U1-2 桁架之內力分析/video/SA-U1-2-truss.mp4"},{"name":"SA-U1-2 梁與剛架之內力分析","title":"梁與剛架之內力分析","href":"../解題過程影片/SA-U1-2 梁與剛架之內力分析/video/SA-U1-2.mp4"}],"qvids":1,"cells":[{"p":["SA-2002-1","SA-2002-2"],"s":[]},{"p":["SA-2003-2","SA-2003-3"],"s":[]},{"p":["SA-2004-1","SA-2004-3"],"s":[]},{"p":[],"s":[]},{"p":[],"s":[]},{"p":[],"s":["SA-2007-1"]},{"p":["SA-2008-3"],"s":[]},{"p":[],"s":["SA-2009-1"]},{"p":[],"s":["SA-2010-1"]},{"p":[],"s":[]},{"p":["SA-2012-1"],"s":[]},{"p":["SA-2013-1"],"s":[]},{"p":["SA-2014-1"],"s":[]},{"p":["SA-2015-1"],"s":[]},{"p":["SA-2016-1","SA-2016-4"],"s":[]},{"p":["SA-2017-1"],"s":[]},{"p":[],"s":[]},{"p":[],"s":[]},{"p":[],"s":[]},{"p":[],"s":[]},{"p":[],"s":[]},{"p":["SA-2023-1"],"s":[]},{"p":["SA-2024-1","SA-2024-2"],"s":[]},{"p":[],"s":[]}],"lateRank":2},{"id":"SA-U1-3","short":"U1-3","name":"靜定及靜不定結構影響線","unit":"SA-U1","p":9,"s":4,"share":9.4,"rank":5,"hit":9,"last":2025,"gap":5,"gapSpan":[2006,2010],"r6h":2,"r6q":2,"early":4,"late":5,"lateS":1,"lateSYears":[2014],"drift":"flat","pos":{"2":4,"3":3,"4":2},"mat":{"study":"study-SA-U1-3.html","lecture":"lecture-SA-U1-3.html","formula":"formula-given-SA-U1-3.html","deck":"decks/SA-U1-3_靜定及靜不定結構影響線_公式給背分界_記憶片.pdf"},"vids":[{"name":"SA-U1-3-1 影響線基本觀念與定性繪圖","title":"1 影響線基本觀念與定性繪圖","href":"../解題過程影片/SA-U1-3-1 影響線基本觀念與定性繪圖/video/SA-U1-3-1.mp4"}],"qvids":2,"cells":[{"p":[],"s":[]},{"p":["SA-2003-4"],"s":[]},{"p":["SA-2004-2"],"s":[]},{"p":["SA-2005-3"],"s":[]},{"p":[],"s":[]},{"p":[],"s":["SA-2007-3"]},{"p":[],"s":[]},{"p":[],"s":["SA-2009-2"]},{"p":[],"s":[]},{"p":["SA-2011-3"],"s":[]},{"p":[],"s":[]},{"p":[],"s":["SA-2013-1"]},{"p":[],"s":["SA-2014-1"]},{"p":["SA-2015-2"],"s":[]},{"p":["SA-2016-2"],"s":[]},{"p":[],"s":[]},{"p":["SA-2018-4"],"s":[]},{"p":[],"s":[]},{"p":[],"s":[]},{"p":[],"s":[]},{"p":["SA-2022-3"],"s":[]},{"p":[],"s":[]},{"p":[],"s":[]},{"p":["SA-2025-2"],"s":[]}],"lateRank":6},{"id":"SA-U2-1","short":"U2-1","name":"靜不定結構最小功法","unit":"SA-U2","p":12,"s":3,"share":12.5,"rank":4,"hit":10,"last":2022,"gap":5,"gapSpan":[2008,2012],"r6h":1,"r6q":1,"early":6,"late":6,"lateS":2,"lateSYears":[2014,2015],"drift":"flat","pos":{"1":4,"2":3,"3":2,"4":3},"mat":{"study":"study-SA-U2-1.html","lecture":"lecture-SA-U2-1.html","formula":"formula-given-SA-U2-1.html","deck":"decks/SA-U2-1_靜不定結構最小功法_公式給背分界_記憶片.pdf"},"vids":[],"qvids":3,"cells":[{"p":[],"s":[]},{"p":[],"s":[]},{"p":[],"s":[]},{"p":["SA-2005-1","SA-2005-4"],"s":[]},{"p":["SA-2006-1"],"s":[]},{"p":["SA-2007-2","SA-2007-4"],"s":[]},{"p":[],"s":[]},{"p":[],"s":[]},{"p":[],"s":[]},{"p":[],"s":[]},{"p":[],"s":["SA-2012-1"]},{"p":["SA-2013-2"],"s":[]},{"p":["SA-2014-4"],"s":["SA-2014-2"]},{"p":[],"s":["SA-2015-2"]},{"p":["SA-2016-3"],"s":[]},{"p":["SA-2017-2"],"s":[]},{"p":["SA-2018-3"],"s":[]},{"p":["SA-2019-1"],"s":[]},{"p":[],"s":[]},{"p":[],"s":[]},{"p":["SA-2022-1"],"s":[]},{"p":[],"s":[]},{"p":[],"s":[]},{"p":[],"s":[]}],"lateRank":4},{"id":"SA-U2-2","short":"U2-2","name":"靜不定結構諧合變位","unit":"SA-U2","p":7,"s":2,"share":7.3,"rank":8,"hit":7,"last":2023,"gap":4,"gapSpan":[2007,2010],"r6h":1,"r6q":1,"early":4,"late":3,"lateS":1,"lateSYears":[2016],"drift":"flat","pos":{"1":1,"2":4,"3":2},"mat":{},"vids":[],"qvids":0,"cells":[{"p":["SA-2002-3"],"s":[]},{"p":[],"s":["SA-2003-4"]},{"p":[],"s":[]},{"p":[],"s":[]},{"p":["SA-2006-2"],"s":[]},{"p":[],"s":[]},{"p":[],"s":[]},{"p":[],"s":[]},{"p":[],"s":[]},{"p":["SA-2011-1"],"s":[]},{"p":["SA-2012-2"],"s":[]},{"p":[],"s":[]},{"p":["SA-2014-2"],"s":[]},{"p":[],"s":[]},{"p":[],"s":["SA-2016-3"]},{"p":[],"s":[]},{"p":[],"s":[]},{"p":["SA-2019-3"],"s":[]},{"p":[],"s":[]},{"p":[],"s":[]},{"p":[],"s":[]},{"p":["SA-2023-2"],"s":[]},{"p":[],"s":[]},{"p":[],"s":[]}],"lateRank":8},{"id":"SA-U2-3","short":"U2-3","name":"靜不定結構之傾角變位法","unit":"SA-U2","p":13,"s":5,"share":13.5,"rank":2,"hit":10,"last":2025,"gap":7,"gapSpan":[2007,2013],"r6h":5,"r6q":8,"early":3,"late":10,"lateS":1,"lateSYears":[2016],"drift":"up","pos":{"1":2,"2":4,"3":4,"4":3},"mat":{"study":"study-SA-U2-3.html","lecture":"lecture-SA-U2-3.html","formula":"formula-given-SA-U2-3.html","deck":"decks/SA-U2-3_靜不定結構之傾角變位法_公式給背分界_記憶片.pdf"},"vids":[{"name":"SA-U2-3 靜不定結構之傾角變位法","title":"靜不定結構之傾角變位法","href":"../解題過程影片/SA-U2-3 靜不定結構之傾角變位法/video/SA-U2-3.mp4"}],"qvids":1,"cells":[{"p":["SA-2002-4"],"s":[]},{"p":[],"s":[]},{"p":[],"s":[]},{"p":["SA-2005-2"],"s":[]},{"p":["SA-2006-4"],"s":[]},{"p":[],"s":[]},{"p":[],"s":[]},{"p":[],"s":["SA-2009-3"]},{"p":[],"s":[]},{"p":[],"s":["SA-2011-1"]},{"p":[],"s":["SA-2012-2","SA-2012-4"]},{"p":[],"s":[]},{"p":["SA-2014-3"],"s":[]},{"p":[],"s":[]},{"p":[],"s":["SA-2016-2"]},{"p":["SA-2017-3"],"s":[]},{"p":[],"s":[]},{"p":[],"s":[]},{"p":["SA-2020-1","SA-2020-2"],"s":[]},{"p":["SA-2021-1","SA-2021-2"],"s":[]},{"p":["SA-2022-2"],"s":[]},{"p":[],"s":[]},{"p":["SA-2024-3","SA-2024-4"],"s":[]},{"p":["SA-2025-3"],"s":[]}],"lateRank":1},{"id":"SA-U2-4","short":"U2-4","name":"靜不定結構之矩陣分析法","unit":"SA-U2","p":12,"s":3,"share":12.5,"rank":3,"hit":11,"last":2025,"gap":3,"gapSpan":[2005,2007],"r6h":2,"r6q":3,"early":6,"late":6,"lateS":0,"lateSYears":[],"drift":"flat","pos":{"1":1,"2":1,"4":10},"mat":{"study":"study-SA-U2-4.html","lecture":"lecture-SA-U2-4.html","formula":"formula-given-SA-U2-4.html","deck":"decks/SA-U2-4_靜不定結構之矩陣分析法_公式給背分界_記憶片.pdf"},"vids":[{"name":"SA-U2-4-1 矩陣分析法核心觀念","title":"1 矩陣分析法核心觀念","href":"../解題過程影片/SA-U2-4-1 矩陣分析法核心觀念/video/SA-U2-4-1.mp4"},{"name":"SA-U2-4-2 元素勁度矩陣","title":"2 元素勁度矩陣","href":"../解題過程影片/SA-U2-4-2 元素勁度矩陣/video/SA-U2-4-2.mp4"},{"name":"SA-U2-4-3 座標轉換與整體組裝","title":"3 座標轉換與整體組裝","href":"../解題過程影片/SA-U2-4-3 座標轉換與整體組裝/video/SA-U2-4-3.mp4"},{"name":"SA-U2-4-4 等值節點載重與非載重效應","title":"4 等值節點載重與非載重效應","href":"../解題過程影片/SA-U2-4-4 等值節點載重與非載重效應/video/SA-U2-4-4.mp4"}],"qvids":2,"cells":[{"p":[],"s":[]},{"p":[],"s":[]},{"p":["SA-2004-4"],"s":[]},{"p":[],"s":[]},{"p":[],"s":[]},{"p":[],"s":["SA-2007-2","SA-2007-4"]},{"p":["SA-2008-4"],"s":[]},{"p":[],"s":["SA-2009-4"]},{"p":["SA-2010-4"],"s":[]},{"p":["SA-2011-4"],"s":[]},{"p":["SA-2012-4"],"s":[]},{"p":["SA-2013-4"],"s":[]},{"p":[],"s":[]},{"p":["SA-2015-4"],"s":[]},{"p":[],"s":[]},{"p":[],"s":[]},{"p":["SA-2018-2"],"s":[]},{"p":["SA-2019-4"],"s":[]},{"p":[],"s":[]},{"p":[],"s":[]},{"p":["SA-2022-4"],"s":[]},{"p":[],"s":[]},{"p":[],"s":[]},{"p":["SA-2025-1","SA-2025-4"],"s":[]}],"lateRank":5},{"id":"SA-U2-5","short":"U2-5","name":"彎矩分配法","unit":"SA-U2","p":2,"s":0,"share":2.1,"rank":10,"hit":2,"last":2006,"gap":19,"gapSpan":[2007,2025],"r6h":0,"r6q":0,"early":2,"late":0,"lateS":0,"lateSYears":[],"drift":"frozen","pos":{"1":1,"3":1},"mat":{},"vids":[],"qvids":0,"cells":[{"p":[],"s":[]},{"p":["SA-2003-1"],"s":[]},{"p":[],"s":[]},{"p":[],"s":[]},{"p":["SA-2006-3"],"s":[]},{"p":[],"s":[]},{"p":[],"s":[]},{"p":[],"s":[]},{"p":[],"s":[]},{"p":[],"s":[]},{"p":[],"s":[]},{"p":[],"s":[]},{"p":[],"s":[]},{"p":[],"s":[]},{"p":[],"s":[]},{"p":[],"s":[]},{"p":[],"s":[]},{"p":[],"s":[]},{"p":[],"s":[]},{"p":[],"s":[]},{"p":[],"s":[]},{"p":[],"s":[]},{"p":[],"s":[]},{"p":[],"s":[]}],"lateRank":null},{"id":"SA-U3-1","short":"U3-1","name":"建築結構系統之使用","unit":"SA-U3","p":9,"s":0,"share":9.4,"rank":6,"hit":8,"last":2023,"gap":6,"gapSpan":[2002,2007],"r6h":1,"r6q":1,"early":6,"late":3,"lateS":0,"lateSYears":[],"drift":"down","pos":{"2":3,"3":5,"4":1},"mat":{},"vids":[],"qvids":0,"cells":[{"p":[],"s":[]},{"p":[],"s":[]},{"p":[],"s":[]},{"p":[],"s":[]},{"p":[],"s":[]},{"p":[],"s":[]},{"p":["SA-2008-2"],"s":[]},{"p":[],"s":[]},{"p":["SA-2010-2","SA-2010-3"],"s":[]},{"p":["SA-2011-2"],"s":[]},{"p":["SA-2012-3"],"s":[]},{"p":["SA-2013-3"],"s":[]},{"p":[],"s":[]},{"p":["SA-2015-3"],"s":[]},{"p":[],"s":[]},{"p":["SA-2017-4"],"s":[]},{"p":[],"s":[]},{"p":[],"s":[]},{"p":[],"s":[]},{"p":[],"s":[]},{"p":[],"s":[]},{"p":["SA-2023-3"],"s":[]},{"p":[],"s":[]},{"p":[],"s":[]}],"lateRank":7},{"id":"SA-U3-2","short":"U3-2","name":"建築結構系統分析","unit":"SA-U3","p":7,"s":5,"share":7.3,"rank":9,"hit":5,"last":2023,"gap":16,"gapSpan":[2002,2017],"r6h":3,"r6q":5,"early":0,"late":7,"lateS":1,"lateSYears":[2014],"drift":"new","pos":{"1":1,"2":1,"3":2,"4":3},"mat":{},"vids":[],"qvids":0,"cells":[{"p":[],"s":[]},{"p":[],"s":[]},{"p":[],"s":[]},{"p":[],"s":[]},{"p":[],"s":[]},{"p":[],"s":[]},{"p":[],"s":[]},{"p":[],"s":[]},{"p":[],"s":["SA-2010-2","SA-2010-3"]},{"p":[],"s":["SA-2011-2"]},{"p":[],"s":["SA-2012-3"]},{"p":[],"s":[]},{"p":[],"s":["SA-2014-3"]},{"p":[],"s":[]},{"p":[],"s":[]},{"p":[],"s":[]},{"p":["SA-2018-1"],"s":[]},{"p":["SA-2019-2"],"s":[]},{"p":["SA-2020-3","SA-2020-4"],"s":[]},{"p":["SA-2021-3","SA-2021-4"],"s":[]},{"p":[],"s":[]},{"p":["SA-2023-4"],"s":[]},{"p":[],"s":[]},{"p":[],"s":[]}],"lateRank":3}],"Q":{"SA-2002-1":{"y":2002,"n":1,"p":"SA-U1-2","s":[],"tags":["靜定剛架","內鉸","集中力矩","剪力彎矩圖"],"v":false,"view":true,"vid":""},"SA-2002-2":{"y":2002,"n":2,"p":"SA-U1-2","s":[],"tags":["桁架分析","截面法","節點法","繫索桁架"],"v":false,"view":true,"vid":""},"SA-2002-3":{"y":2002,"n":3,"p":"SA-U2-2","s":[],"tags":["靜不定結構","諧合變位法","勁度法","複合結構"],"v":false,"view":false,"vid":""},"SA-2002-4":{"y":2002,"n":4,"p":"SA-U2-3","s":[],"tags":["傾角變位法","有側移剛架","反對稱變形"],"v":false,"view":true,"vid":""},"SA-2003-1":{"y":2003,"n":1,"p":"SA-U2-5","s":[],"tags":["對稱結構","對稱修正勁度","固端彎矩疊加"],"v":false,"view":false,"vid":""},"SA-2003-2":{"y":2003,"n":2,"p":"SA-U1-2","s":[],"tags":["靜定結構","複合結構","剛性梁","位移計算","單位力法"],"v":false,"view":true,"vid":""},"SA-2003-3":{"y":2003,"n":3,"p":"SA-U1-2","s":[],"tags":["桁架分析","K型桁架","截面法","節點法"],"v":false,"view":true,"vid":""},"SA-2003-4":{"y":2003,"n":4,"p":"SA-U1-3","s":["SA-U2-2"],"tags":["靜不定影響線","Müller-Breslau","柔度法","彎矩影響線","剪力影響線"],"v":false,"view":true,"vid":""},"SA-2004-1":{"y":2004,"n":1,"p":"SA-U1-2","s":[],"tags":["靜定剛架","剪力圖","彎矩圖","內部鉸"],"v":false,"view":true,"vid":""},"SA-2004-2":{"y":2004,"n":2,"p":"SA-U1-3","s":[],"tags":["桁架","影響線","移動載重","最大內力"],"v":false,"view":true,"vid":""},"SA-2004-3":{"y":2004,"n":3,"p":"SA-U1-2","s":[],"tags":["內部鉸","彈簧支承","剛體位移","懸臂梁","複合梁"],"v":false,"view":true,"vid":""},"SA-2004-4":{"y":2004,"n":4,"p":"SA-U2-4","s":[],"tags":["矩陣位移法","彈簧支承","修正式勁度矩陣","非節點載重"],"v":false,"view":true,"vid":""},"SA-2005-1":{"y":2005,"n":1,"p":"SA-U2-1","s":[],"tags":["最小功法","靜不定剛架","彎矩函數"],"v":false,"view":true,"vid":""},"SA-2005-2":{"y":2005,"n":2,"p":"SA-U2-3","s":[],"tags":["剛架分析","側移","傾角變位法","剪力方程式"],"v":false,"view":true,"vid":""},"SA-2005-3":{"y":2005,"n":3,"p":"SA-U1-3","s":[],"tags":["影響線","連續梁","三彎矩方程式","Müller-Breslau原理"],"v":false,"view":true,"vid":""},"SA-2005-4":{"y":2005,"n":4,"p":"SA-U2-1","s":[],"tags":["靜不定桁架","單位力法","柔度矩陣法","桁架應力"],"v":false,"view":true,"vid":""},"SA-2006-1":{"y":2006,"n":1,"p":"SA-U2-1","s":[],"tags":["桁架與樑混合結構","靜不定","虛功原理","最小功法","參數解"],"v":false,"view":true,"vid":""},"SA-2006-2":{"y":2006,"n":2,"p":"SA-U2-2","s":[],"tags":["靜不定結構","複合結構","連桿","虛功原理","彈性支承"],"v":false,"view":false,"vid":""},"SA-2006-3":{"y":2006,"n":3,"p":"SA-U2-5","s":[],"tags":["對稱結構","彎矩分配法","有效勁度","鉸支承外加彎矩"],"v":false,"view":false,"vid":""},"SA-2006-4":{"y":2006,"n":4,"p":"SA-U2-3","s":[],"tags":["傾角變位法","剪力房屋","剛性梁","剛性矮牆"],"v":false,"view":true,"vid":""},"SA-2007-1":{"y":2007,"n":1,"p":"SA-U1-1","s":["SA-U1-2"],"tags":["靜不定桁架","單位力法","柔度矩陣法","相容方程式"],"v":false,"view":true,"vid":""},"SA-2007-2":{"y":2007,"n":2,"p":"SA-U2-1","s":["SA-U2-4"],"tags":["無側移剛架","修正傾角撓度法","固端彎矩"],"v":false,"view":true,"vid":""},"SA-2007-3":{"y":2007,"n":3,"p":"SA-U1-1","s":["SA-U1-3"],"tags":["三鉸拱桁架","移動載重","極值分析","卡車載重"],"v":false,"view":true,"vid":""},"SA-2007-4":{"y":2007,"n":4,"p":"SA-U2-1","s":["SA-U2-4"],"tags":["有側移剛架","虛功原理","側移方程式"],"v":false,"view":true,"vid":""},"SA-2008-1":{"y":2008,"n":1,"p":"SA-U1-1","s":[],"tags":["靜不定桁架","單位力法","支承反力","內力計算"],"v":false,"view":false,"vid":""},"SA-2008-2":{"y":2008,"n":2,"p":"SA-U3-1","s":[],"tags":["連續梁","傾角變位法","彎矩圖","剪力圖"],"v":false,"view":false,"vid":""},"SA-2008-3":{"y":2008,"n":3,"p":"SA-U1-2","s":[],"tags":["最小功法","剛架","均佈載重","彎矩圖"],"v":false,"view":true,"vid":""},"SA-2008-4":{"y":2008,"n":4,"p":"SA-U2-4","s":[],"tags":["矩陣直接勁度法","剛架","均佈載重","彎矩圖"],"v":false,"view":true,"vid":""},"SA-2009-1":{"y":2009,"n":1,"p":"SA-U1-1","s":["SA-U1-2"],"tags":["靜不定桁架","支承沉陷","柔度法"],"v":false,"view":true,"vid":""},"SA-2009-2":{"y":2009,"n":2,"p":"SA-U1-1","s":["SA-U1-3"],"tags":["靜不定","梁柱系統","均布載重"],"v":false,"view":true,"vid":""},"SA-2009-3":{"y":2009,"n":3,"p":"SA-U1-1","s":["SA-U2-3"],"tags":["側移剛架","水平勁度","對稱性"],"v":false,"view":true,"vid":""},"SA-2009-4":{"y":2009,"n":4,"p":"SA-U1-1","s":["SA-U2-4"],"tags":["直接勁度法","桁架","位移求解","內力計算"],"v":false,"view":true,"vid":""},"SA-2010-1":{"y":2010,"n":1,"p":"SA-U1-1","s":["SA-U1-2"],"tags":["零力桿件","節點法","斷面法","靜定桁架"],"v":false,"view":true,"vid":""},"SA-2010-2":{"y":2010,"n":2,"p":"SA-U3-1","s":["SA-U3-2"],"tags":["傾角撓度法","剛架","側移","固端彎矩","剪力方程式"],"v":false,"view":false,"vid":""},"SA-2010-3":{"y":2010,"n":3,"p":"SA-U3-1","s":["SA-U3-2"],"tags":["傾角撓度法","側移","非正交剛架","虛功法","剛架"],"v":false,"view":false,"vid":""},"SA-2010-4":{"y":2010,"n":4,"p":"SA-U2-4","s":[],"tags":["直接勁度法","桁架","節點變位","勁度矩陣"],"v":false,"view":true,"vid":""},"SA-2011-1":{"y":2011,"n":1,"p":"SA-U2-2","s":["SA-U2-3"],"tags":["靜不定桁架","溫度變化","製造誤差","支承位移"],"v":false,"view":true,"vid":""},"SA-2011-2":{"y":2011,"n":2,"p":"SA-U3-1","s":["SA-U3-2"],"tags":["傾角變位法","有側移剛架","修正固端彎矩","剪力平衡"],"v":false,"view":false,"vid":""},"SA-2011-3":{"y":2011,"n":3,"p":"SA-U1-3","s":[],"tags":["穆勒法","連續梁","影響線","最大彎矩"],"v":false,"view":true,"vid":"../解題過程影片/SA-2011-3/video/SA-2011-3.mp4"},"SA-2011-4":{"y":2011,"n":4,"p":"SA-U2-4","s":[],"tags":["矩陣勁度法","桁架","製造誤差","等效節點載重"],"v":false,"view":true,"vid":""},"SA-2012-1":{"y":2012,"n":1,"p":"SA-U1-2","s":["SA-U2-1"],"tags":["靜定梁","內鉸","彎矩圖","位移與轉角","反曲點","共軛梁法"],"v":false,"view":true,"vid":""},"SA-2012-2":{"y":2012,"n":2,"p":"SA-U2-2","s":["SA-U2-3"],"tags":["靜不定桁架","最小功法","彈性支承","彈簧"],"v":false,"view":true,"vid":""},"SA-2012-3":{"y":2012,"n":3,"p":"SA-U3-1","s":["SA-U3-2"],"tags":["對稱剛架","傾角變位法","彎矩圖","變形曲線","懸臂變位"],"v":false,"view":false,"vid":""},"SA-2012-4":{"y":2012,"n":4,"p":"SA-U2-4","s":["SA-U2-3"],"tags":["直接勁度法","勁度矩陣","剛性桿件","內部約束"],"v":false,"view":true,"vid":""},"SA-2013-1":{"y":2013,"n":1,"p":"SA-U1-2","s":["SA-U1-3"],"tags":["桁架","三鉸拱","靜定","零力桿","隱藏條件"],"v":false,"view":true,"vid":""},"SA-2013-2":{"y":2013,"n":2,"p":"SA-U2-1","s":[],"tags":["卡氏定理","靜不定剛架","反力","轉角"],"v":false,"view":true,"vid":""},"SA-2013-3":{"y":2013,"n":3,"p":"SA-U3-1","s":[],"tags":["傾角變位法","側移剛架","斜桿","半剛接","符號慣例"],"v":false,"view":false,"vid":""},"SA-2013-4":{"y":2013,"n":4,"p":"SA-U2-4","s":[],"tags":["直接勁度法","桁架","勁度矩陣","節點位移","內力"],"v":true,"view":true,"vid":""},"SA-2014-1":{"y":2014,"n":1,"p":"SA-U1-2","s":["SA-U1-3"],"tags":["靜定桁架","截面法","影響線","最大軸力"],"v":false,"view":true,"vid":""},"SA-2014-2":{"y":2014,"n":2,"p":"SA-U2-2","s":["SA-U2-1"],"tags":["諧合變位法","複合結構","最大彎矩","彈性變形"],"v":false,"view":true,"vid":""},"SA-2014-3":{"y":2014,"n":3,"p":"SA-U2-3","s":["SA-U3-2"],"tags":["傾角變位法","有側移剛架","虛功法","斜桿側移"],"v":false,"view":true,"vid":""},"SA-2014-4":{"y":2014,"n":4,"p":"SA-U2-1","s":[],"tags":["最小功法","卡氏第二定理","靜不定結構","多餘資訊陷阱","剛架"],"v":false,"view":true,"vid":"../解題過程影片/SA-2014-4/video/SA-2014-4.mp4"},"SA-2015-1":{"y":2015,"n":1,"p":"SA-U1-2","s":[],"tags":["靜定桁架","單位力法","製造誤差","支承沉陷","垂直位移"],"v":false,"view":true,"vid":"../解題過程影片/SA-2015-1/video/SA-2015-1.mp4"},"SA-2015-2":{"y":2015,"n":2,"p":"SA-U1-3","s":["SA-U2-1"],"tags":["影響線","共軛梁法","Müller-Breslau","靜不定連續梁","內部鉸"],"v":false,"view":true,"vid":""},"SA-2015-3":{"y":2015,"n":3,"p":"SA-U3-1","s":[],"tags":["對稱剛架","傾角變位法","內部鉸","相對位移"],"v":false,"view":false,"vid":""},"SA-2015-4":{"y":2015,"n":4,"p":"SA-U2-4","s":[],"tags":["矩陣位移法","彈簧接頭","自由度判定","固端彎矩","無軸向變形"],"v":true,"view":true,"vid":"../解題過程影片/SA-2015-4/video/SA-2015-4.mp4"},"SA-2016-1":{"y":2016,"n":1,"p":"SA-U1-2","s":["SA-U1-1"],"tags":["靜定剛架","內鉸","靜力平衡","BMD","水平載重"],"v":false,"view":true,"vid":""},"SA-2016-2":{"y":2016,"n":2,"p":"SA-U1-3","s":["SA-U2-3"],"tags":["影響線","靜不定剛架","Müller-Breslau原理","有側移剛架","移動載重"],"v":false,"view":true,"vid":""},"SA-2016-3":{"y":2016,"n":3,"p":"SA-U2-1","s":["SA-U2-2"],"tags":["虛功法","單位力法","側移變位","基本結構選取","圖形積分法"],"v":false,"view":true,"vid":"../解題過程影片/SA-2016-3/video/SA-2016-3.mp4"},"SA-2016-4":{"y":2016,"n":4,"p":"SA-U1-2","s":[],"tags":["零力桿件","桁架","節點平衡"],"v":false,"view":true,"vid":""},"SA-2017-1":{"y":2017,"n":1,"p":"SA-U1-2","s":[],"tags":["靜定桁架","節點法","零桿判斷","虛功法","水平位移"],"v":false,"view":true,"vid":""},"SA-2017-2":{"y":2017,"n":2,"p":"SA-U2-1","s":[],"tags":["最小功法","卡氏定理","內鉸條件","固定端彎矩","靜不定梁"],"v":false,"view":true,"vid":"../解題過程影片/SA-2017-2/video/SA-2017-2.mp4"},"SA-2017-3":{"y":2017,"n":3,"p":"SA-U2-3","s":[],"tags":["傾角變位法","門型剛架","側移","層剪力方程","固定端彎矩符號","節點轉角"],"v":false,"view":true,"vid":""},"SA-2017-4":{"y":2017,"n":4,"p":"SA-U3-1","s":[],"tags":["剪力牆","平面配置","偏心","扭矩","水平載重傳遞","建築結構系統"],"v":false,"view":false,"vid":""},"SA-2018-1":{"y":2018,"n":1,"p":"SA-U3-2","s":[],"tags":["剛架與剪力牆互制","變形模態","剪力型與彎曲型","水平力分配"],"v":false,"view":false,"vid":""},"SA-2018-2":{"y":2018,"n":2,"p":"SA-U2-4","s":[],"tags":["直接勁度法","勁度矩陣","節點外力向量","彎矩圖"],"v":true,"view":true,"vid":"../解題過程影片/SA-2018-2/video/SA-2018-2.mp4"},"SA-2018-3":{"y":2018,"n":3,"p":"SA-U2-1","s":[],"tags":["最小功法","靜不定結構","纜索無壓力","彎矩圖"],"v":false,"view":true,"vid":""},"SA-2018-4":{"y":2018,"n":4,"p":"SA-U1-3","s":[],"tags":["影響線","靜不定結構","對稱性","剛架位移"],"v":false,"view":true,"vid":""},"SA-2019-1":{"y":2019,"n":1,"p":"SA-U2-1","s":["SA-U1-1"],"tags":["靜不定桁架","最小功法","破壞機構","挫曲","極限載重"],"v":false,"view":true,"vid":""},"SA-2019-2":{"y":2019,"n":2,"p":"SA-U3-2","s":[],"tags":["范倫迪爾桁架","近似分析","反曲點","彎矩圖","軸力圖"],"v":false,"view":false,"vid":""},"SA-2019-3":{"y":2019,"n":3,"p":"SA-U2-2","s":[],"tags":["傾角變位法","連續梁","支承沉陷","對稱性"],"v":false,"view":false,"vid":""},"SA-2019-4":{"y":2019,"n":4,"p":"SA-U2-4","s":[],"tags":["勁度矩陣","半剛性接頭","旋轉彈簧","節點載重向量"],"v":false,"view":true,"vid":""},"SA-2020-1":{"y":2020,"n":1,"p":"SA-U2-3","s":[],"tags":["傾角變位法","無軸向變形","斜桿載重分解","滾支承","側移方程式"],"v":false,"view":true,"vid":""},"SA-2020-2":{"y":2020,"n":2,"p":"SA-U2-3","s":[],"tags":["傾角變位法","對稱性","剛架分析","降維分析"],"v":false,"view":true,"vid":""},"SA-2020-3":{"y":2020,"n":3,"p":"SA-U3-2","s":[],"tags":["影響線","靜不定結構","最大值","反力影響線"],"v":false,"view":false,"vid":""},"SA-2020-4":{"y":2020,"n":4,"p":"SA-U3-2","s":[],"tags":["剛架與剪力牆互制","矩陣分析","剪力建築"],"v":false,"view":false,"vid":""},"SA-2021-1":{"y":2021,"n":1,"p":"SA-U2-3","s":[],"tags":["傾角變位法","彈簧支承","內部鉸","連續梁","沈陷"],"v":false,"view":true,"vid":""},"SA-2021-2":{"y":2021,"n":2,"p":"SA-U2-3","s":[],"tags":["傾角變位法","有側移剛架","對稱結構","反對稱載重","連桿效應"],"v":false,"view":true,"vid":""},"SA-2021-3":{"y":2021,"n":3,"p":"SA-U3-2","s":[],"tags":["影響線","靜不定桁架","單位力法","柔軟度法","Müller-Breslau"],"v":false,"view":true,"vid":""},"SA-2021-4":{"y":2021,"n":4,"p":"SA-U3-2","s":[],"tags":["剛性樓板","平移與扭轉","剛心位置","扭轉勁度","柱剪力分配"],"v":false,"view":false,"vid":""},"SA-2022-1":{"y":2022,"n":1,"p":"SA-U2-1","s":[],"tags":["彎矩圖反求","彈簧","共軛梁法","支承沉陷","鉸接點"],"v":false,"view":true,"vid":""},"SA-2022-2":{"y":2022,"n":2,"p":"SA-U2-3","s":[],"tags":["傾角變位法","有側移剛架","側移方程式","修正固端彎矩","疊加法"],"v":false,"view":true,"vid":"../解題過程影片/SA-2022-2/video/SA-2022-2.mp4"},"SA-2022-3":{"y":2022,"n":3,"p":"SA-U1-3","s":[],"tags":["影響線","桁架","細長拉桿","等效內鉸","間接載重","無斜桿嵌板"],"v":false,"view":true,"vid":""},"SA-2022-4":{"y":2022,"n":4,"p":"SA-U2-4","s":[],"tags":["剪力棟架","剛性樓板","側移剛度","不規則構架","挑高柱"],"v":false,"view":true,"vid":""},"SA-2023-1":{"y":2023,"n":1,"p":"SA-U1-2","s":[],"tags":["靜定剛架","支承沉陷","剛體位移","單位力法","疊加原理"],"v":false,"view":true,"vid":""},"SA-2023-2":{"y":2023,"n":2,"p":"SA-U2-2","s":["SA-U1-1"],"tags":["靜不定桁架","諧合變位法","多餘力","節點法","單位力法"],"v":false,"view":false,"vid":""},"SA-2023-3":{"y":2023,"n":3,"p":"SA-U3-1","s":[],"tags":["平面剛架","無側移","傾角變位法","鉸端修正","整體平衡"],"v":false,"view":false,"vid":""},"SA-2023-4":{"y":2023,"n":4,"p":"SA-U3-2","s":[],"tags":["偏心斜撐構架","EBF","剛性區域","連梁旋轉角","層剪力","層間位移"],"v":false,"view":false,"vid":""},"SA-2024-1":{"y":2024,"n":1,"p":"SA-U1-2","s":[],"tags":["靜定梁","內部鉸","最大位移","共軛梁法","懸臂梁"],"v":false,"view":true,"vid":""},"SA-2024-2":{"y":2024,"n":2,"p":"SA-U1-2","s":[],"tags":["靜定桁架","製造誤差","溫度變化","支承沉陷","多餘資訊陷阱"],"v":false,"view":true,"vid":""},"SA-2024-3":{"y":2024,"n":3,"p":"SA-U2-3","s":[],"tags":["傾角變位法","門型剛構架","對稱性","極值比例"],"v":false,"view":true,"vid":""},"SA-2024-4":{"y":2024,"n":4,"p":"SA-U2-3","s":[],"tags":["傾角變位法","剛架","側移","集中力","反對稱","非均勻斷面"],"v":false,"view":true,"vid":""},"SA-2025-1":{"y":2025,"n":1,"p":"SA-U2-4","s":[],"tags":["矩陣勁度法","側向勁度","門型剛構架","固定端","靜態凝縮","忽略軸向變形"],"v":true,"view":true,"vid":""},"SA-2025-2":{"y":2025,"n":2,"p":"SA-U1-3","s":[],"tags":["影響線","靜定梁","內鉸接","固定端","懸臂段","滾支承"],"v":false,"view":true,"vid":"../解題過程影片/SA-2025-2/video/SA-2025-2.mp4"},"SA-2025-3":{"y":2025,"n":3,"p":"SA-U2-3","s":[],"tags":["傾角變位法","非均勻斷面","勁度係數","傳遞係數","固端彎矩","共軛樑"],"v":false,"view":true,"vid":""},"SA-2025-4":{"y":2025,"n":4,"p":"SA-U2-4","s":[],"tags":["矩陣位移法","整體勁度矩陣","自由度","格床結構","實心圓桿","對稱性利用"],"v":true,"view":true,"vid":""}},"maxP":4,"maxA":4};
+const YEARS = D.years, R6 = new Set(D.recent6), SPLIT = D.late[0];
+const DR = {up:['▲','升溫'],new:['★','新出現'],down:['▼','退燒'],frozen:['❄','冷凍'],flat:['＝','持平'],none:['','—']};
+let MODE = 'p', SEL = null;
+const $ = id => document.getElementById(id);
+const esc = s => String(s).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
 
 function shade(v, max){
   if(!v) return '#f7fafc';
-  const t = Math.min(1, v / max);
-  const a=[227,242,253], b=[13,71,161];
+  const t = Math.min(1, v / max), a=[227,242,253], b=[13,71,161];
   const c=a.map((x,i)=>Math.round(x+(b[i]-x)*(0.25+0.75*t)));
   return `rgb(${c[0]},${c[1]},${c[2]})`;
 }
 function fg(v, max){ return (!v) ? '#cfd8dc' : ((v/max)>0.45 ? '#fff' : '#0d47a1'); }
+const val = c => MODE==='p' ? c.p.length : c.p.length + c.s.length;
 
 function drawHeat(){
   const max = MODE==='p' ? D.maxP : D.maxA;
-  let h = '<table id="hm"><thead><tr><th class="rowh">子項</th>';
-  YEARS.forEach(y=>{ h += `<th class="yr${R6.has(y)?' r6':''}">${String(y).slice(2)}</th>`; });
+  const sp = y => y===SPLIT ? ' split' : '';
+  let h = '<table id="hm"><thead><tr><th class="rowh" style="cursor:default">子項</th>';
+  YEARS.forEach((y,i)=>{ h += `<th class="yr${R6.has(y)?' r6':''}${sp(y)}" data-yi="${i}">${String(y).slice(2)}</th>`; });
   h += '<th class="yr" style="min-width:42px">合計</th></tr></thead><tbody>';
   let lastUnit = null;
-  D.rows.forEach(r=>{
+  const colTot = YEARS.map(()=>0);
+  D.rows.forEach((r,ri)=>{
     if(lastUnit && r.unit!==lastUnit) h += `<tr class="usep"><td colspan="${YEARS.length+2}"></td></tr>`;
     lastUnit = r.unit;
     const tot = MODE==='p' ? r.p : (r.p + r.s);
-    h += `<tr><th class="rowh"><b>${r.short}</b> ${r.name}</th>`;
+    const dr = DR[r.drift];
+    h += `<tr data-ri="${ri}"><th class="rowh" data-ri="${ri}" title="點一下看這個子項的全部題目"><b>${r.short}</b> <span class="nm">${esc(r.name)}</span>`
+       + (dr[0] ? `<span class="dr dr-${r.drift}" title="前半 ${r.early} 題 → 後半 ${r.late} 題（${dr[1]}）">${dr[0]}</span>` : '') + '</th>';
     r.cells.forEach((c,i)=>{
-      const v = MODE==='p' ? c.p : (c.p + c.s);
-      const y = YEARS[i];
-      const tip = c.ids.length ? `${y}：${c.ids.join('、')}` : `${y}：無`;
-      h += `<td class="c${R6.has(y)?' r6':''}" style="background:${shade(v,max)};color:${fg(v,max)}" title="${tip}">`
-         + `<div class="cellwrap">${v||''}${(MODE==='p'&&c.s)?'<span class="sec-dot"></span>':''}</div></td>`;
+      const v = val(c), y = YEARS[i];
+      colTot[i] += v;
+      const sel = SEL && SEL.t==='c' && SEL.ri===ri && SEL.yi===i ? ' sel' : '';
+      h += `<td class="c${R6.has(y)?' r6':''}${sp(y)}${v?'':' empty'}${sel}" data-ri="${ri}" data-yi="${i}" style="background:${shade(v,max)};color:${fg(v,max)}">`
+         + `<div class="cellwrap">${v||''}${(MODE==='p'&&c.s.length)?'<span class="sec-dot"></span>':''}</div></td>`;
     });
-    h += `<td class="c" style="background:#fff;color:#0d47a1;font-weight:700;min-width:42px">${tot||'0'}</td></tr>`;
+    h += `<td class="tot">${tot||'0'}</td></tr>`;
   });
+  h += `<tr class="foot"><th class="rowh" style="cursor:default">每年合計</th>`
+     + colTot.map((v,i)=>`<td class="${sp(YEARS[i]).trim()}">${v}</td>`).join('')
+     + `<td>${colTot.reduce((a,b)=>a+b,0)}</td></tr>`;
+  const eN = D.early.length, lN = D.late.length;
+  h += `<tr class="half"><th class="rowh" style="cursor:default;font-size:.72em;color:#78909c">前／後半期</th>`
+     + `<td colspan="${eN}">◀ 前半 ${D.early[0]}–${D.early[eN-1]}（${D.earlyTotal} 題）</td>`
+     + `<td colspan="${lN}" class="split">後半 ${D.late[0]}–${D.late[lN-1]}（${D.lateTotal} 題）▶</td><td></td></tr>`;
   h += '</tbody></table>';
-  document.getElementById('heat').innerHTML = h;
+  $('heat').innerHTML = h;
+
   let lg = '';
   for(let v=0; v<=max; v++) lg += `<span><span class="sw" style="background:${shade(v,max)}"></span>${v} 題</span>`;
-  lg += (MODE==='p' ? '<span>🟠 右下角橘點 ＝ 該年該子項還有副考點</span>'
-                    : '<span>此模式的格值 ＝ 主考點 ＋ 副考點</span>');
-  lg += `<span>黃框欄位 ＝ 近 ${D.recent6.length} 考年（${D.recent6[0]}–${D.recent6[D.recent6.length-1]}）</span>`;
-  document.getElementById('lg').innerHTML = lg;
+  lg += (MODE==='p' ? '<span>🟠 右下角橘點 ＝ 該年該子項還有副考點</span>' : '<span>此模式的格值 ＝ 主考點 ＋ 副考點</span>');
+  lg += `<span>黃框 ＝ 近 ${D.recent6.length} 考年</span><span>粗灰線 ＝ 前／後半期分界</span>`;
+  lg += '<span>▲升溫 ★新出現 ▼退燒 ❄冷凍（後半期 0 題）</span>';
+  $('lg').innerHTML = lg;
+}
+
+function hl(ri, yi, on){
+  document.querySelectorAll('#hm .hl').forEach(e=>e.classList.remove('hl'));
+  if(!on) return;
+  const th = document.querySelector(`#hm th.yr[data-yi="${yi}"]`); if(th) th.classList.add('hl');
+  const rh = document.querySelector(`#hm th.rowh[data-ri="${ri}"]`); if(rh) rh.classList.add('hl');
+}
+function tipFor(r, yi){
+  const c = r.cells[yi], y = YEARS[yi];
+  const ids = c.p.map(m=>`${m}（第${D.Q[m].n}題）`).concat(c.s.map(m=>`(副) ${m}`));
+  return `<span class="h">${r.short} · ${y}</span><br>` + (ids.length ? ids.join('<br>') + '<br><span style="opacity:.7">點一下看題目</span>' : '無');
+}
+function bindHeat(){
+  const tip = $('tip'), hm = $('heat');
+  hm.addEventListener('mousemove', e=>{
+    const td = e.target.closest('td.c');
+    if(!td){ tip.style.display='none'; hl(0,0,false); return; }
+    const ri=+td.dataset.ri, yi=+td.dataset.yi;
+    hl(ri, yi, true);
+    tip.innerHTML = tipFor(D.rows[ri], yi);
+    tip.style.display='block';
+    const x = Math.min(e.clientX+14, window.innerWidth - tip.offsetWidth - 8);
+    const y = e.clientY + 16 + tip.offsetHeight > window.innerHeight ? e.clientY - tip.offsetHeight - 10 : e.clientY + 16;
+    tip.style.left = x+'px'; tip.style.top = y+'px';
+  });
+  hm.addEventListener('mouseleave', ()=>{ tip.style.display='none'; hl(0,0,false); });
+  hm.addEventListener('click', e=>{
+    const td = e.target.closest('td.c'), rh = e.target.closest('th.rowh[data-ri]');
+    if(td && !td.classList.contains('empty')) showCell(+td.dataset.ri, +td.dataset.yi);
+    else if(rh) showRow(+rh.dataset.ri);
+  });
+}
+
+function qItem(m, role){
+  const q = D.Q[m];
+  const idh = q.view ? `<a class="qid" href="problems-view/${m}.html" target="_blank">${m}</a>` : `<span class="qid">${m}</span>`;
+  let h = `<li>${idh}<span class="b ${role==='p'?'b-p':'b-s'}">${role==='p'?'主考點':'副考點'}</span>`
+        + `<span style="color:#78909c;font-size:.9em">第 ${q.n} 題</span>`;
+  if(role==='s'){ const pr = D.rows.find(r=>r.id===q.p); if(pr) h += `<span style="color:#78909c;font-size:.85em">主＝${pr.short}</span>`; }
+  h += q.v ? '<span class="b b-v">✓ 已驗證</span>' : '<span class="b b-u">未驗證</span>';
+  if(q.vid) h += `<a class="b b-vid" href="${encodeURI(q.vid)}" target="_blank">🎬 解題影片</a>`;
+  h += q.tags.map(t=>`<span class="b b-t">${esc(t)}</span>`).join('');
+  if(!q.view) h += '<span style="font-size:.78em;color:#bdbdbd">（尚無 problems-view 頁）</span>';
+  return h + '</li>';
+}
+function openDetail(title, body){
+  $('detail').innerHTML = `<h4><span>${title}</span><button class="x" onclick="closeDetail()" aria-label="關閉">✕</button></h4>${body}`;
+  $('detail').style.display = 'block';
+  drawHeat();
+  $('detail').scrollIntoView({behavior:'smooth', block:'nearest'});
+}
+function closeDetail(){ SEL=null; $('detail').style.display='none'; drawHeat(); }
+function showCell(ri, yi){
+  SEL = {t:'c', ri, yi};
+  const r = D.rows[ri], c = r.cells[yi];
+  openDetail(`${r.short} ${esc(r.name)} · ${YEARS[yi]} 年`,
+    '<ul class="ql">' + c.p.map(m=>qItem(m,'p')).join('') + c.s.map(m=>qItem(m,'s')).join('') + '</ul>'
+    + `<div class="hint" style="margin-top:6px">點左側子項名稱可看這個子項 ${YEARS.length} 年的全部題目</div>`);
+}
+const LBL = {study:'命題分析',lecture:'講義',formula:'給／背',deck:'記憶片'};
+function matTags(r){
+  return ['study','lecture','formula','deck'].map(m=> r.mat[m]
+     ? `<a class="tag t-y" href="${encodeURI(r.mat[m])}" target="_blank">${LBL[m]}</a>`
+     : `<span class="tag t-n">${LBL[m]}</span>`).join('');
+}
+function showRow(ri){
+  SEL = {t:'r', ri};
+  const r = D.rows[ri];
+  const P = r.cells.flatMap(c=>c.p), S = r.cells.flatMap(c=>c.s);
+  const dr = DR[r.drift];
+  let b = `<div style="font-size:.88em;margin-bottom:6px">主考點 <b>${r.p}</b> 題、副考點 <b>${r.s}</b> 題｜前半 ${r.early} → 後半 ${r.late}`
+        + (dr[0] ? ` <span class="dr-${r.drift}">${dr[0]} ${dr[1]}</span>` : '') + `｜教材：${matTags(r)}</div>`;
+  if(r.vids.length) b += '<div class="sub">🎬 單元講解影片</div><ul class="ql">'
+      + r.vids.map(v=>`<li><a class="b b-vid" href="${encodeURI(v.href)}" target="_blank">▶ 播放</a>${esc(v.title)}</li>`).join('') + '</ul>';
+  b += `<div class="sub">主考點（${P.length}）</div><ul class="ql">` + (P.map(m=>qItem(m,'p')).join('') || '<li>無</li>') + '</ul>';
+  if(S.length) b += `<div class="sub">副考點（${S.length}）——這個子項是別題的工具</div><ul class="ql">` + S.map(m=>qItem(m,'s')).join('') + '</ul>';
+  openDetail(`${r.short} ${esc(r.name)}`, b);
 }
 function setMode(m, btn){
   MODE = m;
@@ -183,40 +330,69 @@ function setMode(m, btn){
   btn.classList.add('on');
   drawHeat();
 }
+
+// ---------------- 排名表（可排序）
+const COLS = [
+  {k:'rank',  h:'#', f:r=>r.rank||99, num:1, def:'asc'},
+  {k:'id',    h:'子項', f:r=>r.id, def:'asc'},
+  {k:'p',     h:'主', f:r=>r.p, num:1},
+  {k:'bar',   h:'主＋副題量'},
+  {k:'s',     h:'副', f:r=>r.s, num:1},
+  {k:'share', h:'佔全科', f:r=>r.share, num:1},
+  {k:'drift', h:'前→後半', f:r=>r.late-r.early, num:1},
+  {k:'lateRank', h:'後半<br>排名', f:r=>r.lateRank||99, num:1, def:'asc'},
+  {k:'hit',   h:'出現<br>年數', f:r=>r.hit, num:1},
+  {k:'gap',   h:'最長<br>空窗', f:r=>r.gap, num:1},
+  {k:'last',  h:'最後<br>出現', f:r=>r.last||0, num:1},
+  {k:'r6',    h:'', f:r=>r.r6q, num:1},
+  {k:'pos',   h:'常見題號位置'},
+  {k:'mat',   h:'現有教材', f:r=>Object.keys(r.mat).length + r.vids.length/100},
+];
+let SORT = {k:'rank', dir:'asc'};
 function drawRank(){
-  const maxP = Math.max(1, ...D.rows.map(r=>r.p));
-  const sorted = [...D.rows].sort((a,b)=> (a.rank||9999)-(b.rank||9999) || b.s-a.s);
-  const lbl = {study:'命題分析',lecture:'講義',formula:'給／背',deck:'記憶片'};
-  let h = '<table><thead><tr><th class="num">#</th><th>子項</th><th class="num">主</th><th>主考點量</th>'
-        + '<th class="num">副</th><th class="num">佔全科</th><th class="num">出現<br>年數</th>'
-        + '<th class="num">最長<br>空窗</th><th class="num">最後<br>出現</th>'
-        + `<th class="num">近 ${D.recent6.length} 考年</th>`
-        + '<th>常見題號位置</th><th>現有教材</th></tr></thead><tbody>';
+  COLS.find(c=>c.k==='r6').h = `近 ${D.recent6.length}<br>考年`;
+  const maxA = Math.max(1, ...D.rows.map(r=>r.p+r.s));
+  const col = COLS.find(c=>c.k===SORT.k);
+  const sorted = [...D.rows].sort((a,b)=>{
+    const x = col.f(a), y = col.f(b);
+    const d = (x<y?-1:x>y?1:0) * (SORT.dir==='asc'?1:-1);
+    return d || ((a.rank||99)-(b.rank||99));
+  });
+  let h = '<table><thead><tr>' + COLS.map(c=>{
+    const cls = [c.num?'num':'', c.f?'sk':'', SORT.k===c.k?SORT.dir:''].filter(Boolean).join(' ');
+    return `<th class="${cls}"${c.f?` data-k="${c.k}"`:''}>${c.h}</th>`;
+  }).join('') + '</tr></thead><tbody>';
   sorted.forEach(r=>{
-    const w = r.p/maxP*150, w2 = r.s/maxP*150;
+    const ri = D.rows.indexOf(r);
+    const w = r.p/maxA*150, w2 = r.s/maxA*150;
     const pos = Object.entries(r.pos).map(([k,v])=>`第${k}題×${v}`).join('、') || '—';
-    const href = {study:`study-${r.id}.html`, lecture:`lecture-${r.id}.html`,
-                  formula:`formula-given-${r.id}.html`, deck:r.deckFile};
-    const tags = ['study','lecture','formula','deck'].map(m=> r.mat.includes(m)
-        ? `<a class="tag t-y" href="${encodeURI(href[m])}" target="_blank">${lbl[m]}</a>`
-        : `<span class="tag t-n">${lbl[m]}</span>`).join('');
-    const nm = r.mat.includes('study')
-        ? `<a href="study-${r.id}.html" target="_blank" style="color:var(--ac);text-decoration:none"><b>${r.short}</b> ${r.name}</a>`
-        : `<b>${r.short}</b> ${r.name}`;
-    h += `<tr${r.p===0?' class="zero"':''}><td class="num">${r.p? (r.rank||'') : '—'}</td>`
+    const nm = r.mat.study
+        ? `<a href="${encodeURI(r.mat.study)}" target="_blank" style="color:var(--ac);text-decoration:none"><b>${r.short}</b> ${esc(r.name)}</a>`
+        : `<b>${r.short}</b> ${esc(r.name)}`;
+    const dr = DR[r.drift];
+    const nv = r.vids.length + r.qvids;
+    const vt = nv ? `<button class="tag t-v" onclick="showRow(${ri})" title="單元影片 ${r.vids.length} 支、題目解題影片 ${r.qvids} 支">🎬 影片 ${nv}</button>` : '';
+    h += `<tr class="${r.p===0?'zero':''}${r.drift==='frozen'?' frozen':''}"><td class="num">${r.p? (r.rank||'') : '—'}</td>`
       + `<td>${nm}</td><td class="num"><b>${r.p}</b></td>`
       + `<td><span class="bar" style="width:${w}px"></span><span class="bar2" style="width:${w2}px"></span></td>`
       + `<td class="num">${r.s}</td><td class="num">${r.share}%</td>`
+      + `<td class="num">${r.early} → ${r.late}<br><span class="dr-${r.drift}" style="font-size:.85em">${dr[0]} ${dr[1]}</span></td>`
+      + `<td class="num">${r.lateRank||'—'}${r.lateRank && r.rank && r.rank - r.lateRank >= 3 ? ' <span class="dr-up">↑</span>' : ''}</td>`
       + `<td class="num">${r.hit}/${YEARS.length}</td>`
       + `<td class="num">${r.gap?`${r.gap} 年<br><span style="font-size:.82em;color:#90a4ae">${r.gapSpan[0]}–${r.gapSpan[1]}</span>`:'—'}</td>`
       + `<td class="num">${r.last||'—'}</td>`
       + `<td class="num">${r.r6h}/${D.recent6.length}<br><span style="font-size:.82em;color:#90a4ae">${r.r6q} 題</span></td>`
-      + `<td style="font-size:.82em;color:#78909c">${pos}</td><td>${tags}</td></tr>`;
+      + `<td style="font-size:.82em;color:#78909c">${pos}</td><td>${matTags(r)}${vt}</td></tr>`;
   });
   h += '</tbody></table>';
-  document.getElementById('rank').innerHTML = h;
+  $('rank').innerHTML = h;
+  document.querySelectorAll('#rank th.sk').forEach(th=>th.onclick=()=>{
+    const k = th.dataset.k, c = COLS.find(x=>x.k===k);
+    SORT = SORT.k===k ? {k, dir: SORT.dir==='asc'?'desc':'asc'} : {k, dir: c.def||'desc'};
+    drawRank();
+  });
 }
-drawHeat(); drawRank();
+drawHeat(); bindHeat(); drawRank();
 </script>
 </body>
 </html>

@@ -60,7 +60,7 @@ header .nomat{margin-top:12px;font-size:.8em;opacity:.85}
 <ol>
 <li>正確選定並編號系統的獨立自由度（需判斷忽略軸向變形下的側移自由度）。</li>
 <li>組裝整體勁度矩陣 $[K]$（特別考驗左右兩根垂直柱因節點位置不同，對側移與旋轉耦合項 $K_{12}, K_{13}$ 的正負號判斷）。</li>
-<li>計算等效節點外力向量 $\{P\}$。</li>
+<li>計算等效節點外力向量 ${P}$。</li>
 <li>解方程式求得位移後，回代求端彎矩並繪製精確的 BMD。</li>
 </ol>
 <h2>3. 解題戰略地圖與陷阱分析 (Strategic Roadmap &amp; Trap Analysis)</h2>
@@ -70,26 +70,26 @@ header .nomat{margin-top:12px;font-size:.8em;opacity:.85}
   忽略軸向變形，A、D 固定，故 $v_B = v_A = 0$，$v_C = v_D = 0$。水平樑 BC 不可伸長，故 $u_B = u_C = u$。系統共有 3 個獨立自由度：側移 $u$、節點 B 旋轉 $\theta_B$、節點 C 旋轉 $\theta_C$。</p>
 </li>
 <li>
-<p><strong>戰略二：建立 $[K]$ 與 $\{P\}$</strong><br />
-  分別計算 AB 柱、BC 樑、CD 柱對各自由度的勁度貢獻，並利用 BC 跨中載重求固端彎矩，反向施加於節點得 $\{P\}$。</p>
+<p><strong>戰略二：建立 $[K]$ 與 ${P}$</strong><br />
+  分別計算 AB 柱、BC 樑、CD 柱對各自由度的勁度貢獻，並利用 BC 跨中載重求固端彎矩，反向施加於節點得 ${P}$。</p>
 </li>
 <li>
-<p><strong>陷阱</strong>：<br />
-  1. <strong>座標系與符號約定</strong>：AB 柱與 CD 柱的頂底關係不同。AB 柱是頂部固定、底部活動；CD 柱是頂部活動、底部固定。這會導致它們在側移 $u$ 時，引發的端點彎矩方向相反，進而使 $K_{12}$ 與 $K_{13}$ 的符號一正一負。若直接死背公式極易出錯。<br />
-  2. <strong>對稱性誤判</strong>：雖然載重與幾何形狀看起來有些對稱，但這是「點對稱 (反對稱)」構架，向下力會打破點對稱性，最終產生側移 $u \neq 0$。</p>
+<p><strong>陷阱</strong>：</p>
 </li>
+<li><strong>座標系與符號約定</strong>：AB 柱與 CD 柱的頂底關係不同。AB 柱是頂部固定、底部活動；CD 柱是頂部活動、底部固定。這會導致它們在側移 $u$ 時，引發的端點彎矩方向相反，進而使 $K_{12}$ 與 $K_{13}$ 的符號一正一負。若直接死背公式極易出錯。</li>
+<li><strong>對稱性誤判</strong>：雖然載重與幾何形狀看起來有些對稱，但這是「點對稱 (反對稱)」構架，向下力會打破點對稱性，最終產生側移 $u \neq 0$。</li>
 </ul>
 <h2>3.5 變數層次分析 (Variable Hierarchy Analysis)</h2>
 <h3>最終目標</h3>
-<p>建立 $[K]\{D\} = \{P\}$ 並求解位移 $D_1, D_2, D_3$，進而繪製全結構 BMD。</p>
+<p>建立 $[K]{D} = {P}$ 並求解位移 $D_1, D_2, D_3$，進而繪製全結構 BMD。</p>
 <h3>本題關鍵公式（依計算順序）</h3>
-<p>$$ [K] = \sum [K]_{member} $$<br />
+<p>$$ [K] = \sum [K]<em>{member} $$<br />
 （組裝整體勁度矩陣）<br />
-$$ \boxed{\{P\}} = -\{FEM\} $$<br />
+$$ \boxed{{P}} = -{FEM} $$<br />
 （等效節點外力向量）<br />
-$$ \{D\} = \boxed{[K]}^{-1} \boxed{\{P\}} $$<br />
+$$ {D} = \boxed{[K]}^{-1} \boxed{{P}} $$<br />
 （求解節點位移向量）<br />
-$$ M_{end} = M_{FEM} + \sum K_{ij} D_j $$<br />
+$$ M</em>{end} = M_{FEM} + \sum K_{ij} D_j $$<br />
 （回代求桿端彎矩）</p>
 <h3>L1：題目直接給定</h3>
 <ul>
@@ -121,87 +121,97 @@ $$ M_{end} = M_{FEM} + \sum K_{ij} D_j $$<br />
 <h3>Step 2: 建立勁度矩陣 $[K]$</h3>
 <p>依序考慮給定單一自由度單位位移時，各節點所需之對應外力：</p>
 <ol>
+<li><strong>令 $D_1 = 1$ ($u=1$, $\theta_B=0, \theta_C=0$)：</strong></li>
+<li>AB 柱（頂部固定，底部右移）：需水平力 $12EI/L^3$、節點 B 需彎矩 $-6EI/L^2$ (順時針)。</li>
+<li>CD 柱（底部固定，頂部右移）：需水平力 $12EI/L^3$、節點 C 需彎矩 $+6EI/L^2$ (逆時針)。</li>
+<li>$K_{11} = \frac{12EI}{L^3} + \frac{12EI}{L^3} = \frac{24EI}{L^3}$</li>
+<li>$K_{21} = -\frac{6EI}{L^2}$</li>
 <li>
-<p><strong>令 $D_1 = 1$ ($u=1$, $\theta_B=0, \theta_C=0$)：</strong><br />
-   - AB 柱（頂部固定，底部右移）：需水平力 $12EI/L^3$、節點 B 需彎矩 $-6EI/L^2$ (順時針)。<br />
-   - CD 柱（底部固定，頂部右移）：需水平力 $12EI/L^3$、節點 C 需彎矩 $+6EI/L^2$ (逆時針)。<br />
-   - $K_{11} = \frac{12EI}{L^3} + \frac{12EI}{L^3} = \frac{24EI}{L^3}$<br />
-   - $K_{21} = -\frac{6EI}{L^2}$<br />
-   - $K_{31} = \frac{6EI}{L^2}$</p>
+<p>$K_{31} = \frac{6EI}{L^2}$</p>
 </li>
 <li>
-<p><strong>令 $D_2 = 1$ ($u=0$, $\theta_B=1, \theta_C=0$)：</strong><br />
-   - AB 柱：產生 B 端彎矩 $4EI/L$，並需水平力 $-6EI/L^2$ 以維持 $u=0$。<br />
-   - BC 樑：產生 B 端彎矩 $4EI/L$、C 端彎矩 $2EI/L$。<br />
-   - $K_{12} = -\frac{6EI}{L^2}$<br />
-   - $K_{22} = \frac{4EI}{L} + \frac{4EI}{L} = \frac{8EI}{L}$<br />
-   - $K_{32} = \frac{2EI}{L}$</p>
+<p><strong>令 $D_2 = 1$ ($u=0$, $\theta_B=1, \theta_C=0$)：</strong></p>
+</li>
+<li>AB 柱：產生 B 端彎矩 $4EI/L$，並需水平力 $-6EI/L^2$ 以維持 $u=0$。</li>
+<li>BC 樑：產生 B 端彎矩 $4EI/L$、C 端彎矩 $2EI/L$。</li>
+<li>$K_{12} = -\frac{6EI}{L^2}$</li>
+<li>$K_{22} = \frac{4EI}{L} + \frac{4EI}{L} = \frac{8EI}{L}$</li>
+<li>
+<p>$K_{32} = \frac{2EI}{L}$</p>
 </li>
 <li>
-<p><strong>令 $D_3 = 1$ ($u=0$, $\theta_B=0, \theta_C=1$)：</strong><br />
-   - CD 柱：產生 C 端彎矩 $4EI/L$，並需水平力 $+6EI/L^2$ 以維持 $u=0$。<br />
-   - BC 樑：產生 C 端彎矩 $4EI/L$、B 端彎矩 $2EI/L$。<br />
-   - $K_{13} = \frac{6EI}{L^2}$<br />
-   - $K_{23} = \frac{2EI}{L}$<br />
-   - $K_{33} = \frac{4EI}{L} + \frac{4EI}{L} = \frac{8EI}{L}$</p>
+<p><strong>令 $D_3 = 1$ ($u=0$, $\theta_B=0, \theta_C=1$)：</strong></p>
 </li>
+<li>CD 柱：產生 C 端彎矩 $4EI/L$，並需水平力 $+6EI/L^2$ 以維持 $u=0$。</li>
+<li>BC 樑：產生 C 端彎矩 $4EI/L$、B 端彎矩 $2EI/L$。</li>
+<li>$K_{13} = \frac{6EI}{L^2}$</li>
+<li>$K_{23} = \frac{2EI}{L}$</li>
+<li>$K_{33} = \frac{4EI}{L} + \frac{4EI}{L} = \frac{8EI}{L}$</li>
 </ol>
 <p>組裝得整體勁度矩陣：<br />
-$$ [K] = \begin{bmatrix} 
-\frac{24EI}{L^3} & -\frac{6EI}{L^2} & \frac{6EI}{L^2} \\ 
--\frac{6EI}{L^2} & \frac{8EI}{L} & \frac{2EI}{L} \\ 
-\frac{6EI}{L^2} & \frac{2EI}{L} & \frac{8EI}{L} 
+$$ [K] = \begin{bmatrix} <br />
+\frac{24EI}{L^3} &amp; -\frac{6EI}{L^2} &amp; \frac{6EI}{L^2} \ <br />
+-\frac{6EI}{L^2} &amp; \frac{8EI}{L} &amp; \frac{2EI}{L} \ <br />
+\frac{6EI}{L^2} &amp; \frac{2EI}{L} &amp; \frac{8EI}{L} <br />
 \end{bmatrix} $$</p>
-<h3>Step 3: 建立節點外力向量 $\{P\}$</h3>
+<h3>Step 3: 建立節點外力向量 ${P}$</h3>
 <p>BC 樑中點受向下力 P，其固端彎矩為：</p>
 <ul>
-<li>$FEM_{BC} = -\frac{PL}{8}$ (順時針)</li>
-<li>$FEM_{CB} = +\frac{PL}{8}$ (逆時針)</li>
+<li>$FEM_{BC} = +\frac{PL}{8}$ (逆時針)</li>
+<li>$FEM_{CB} = -\frac{PL}{8}$ (順時針)</li>
 </ul>
+<blockquote>
+<p>⚠️ 判斷方向：若 B 端未被固定，梁受向下載重下垂，B 端會<strong>順時針</strong>轉；固定端要擋住它，所以施加在梁 B 端的固端彎矩是<strong>逆時針</strong>。（2026-10-06 修正：原稿此處正負號寫反。）</p>
+</blockquote>
 <p>將固端力反向施加於節點形成等效節點載重：</p>
 <ul>
 <li>$P_1 = 0$ (無直接水平外力)</li>
-<li>$P_2 = -FEM_{BC} = \frac{PL}{8}$</li>
-<li>$P_3 = -FEM_{CB} = -\frac{PL}{8}$</li>
+<li>$P_2 = -FEM_{BC} = -\frac{PL}{8}$</li>
+<li>$P_3 = -FEM_{CB} = +\frac{PL}{8}$</li>
 </ul>
-<p>$$ \{P\} = \begin{bmatrix} 0 \\ \frac{PL}{8} \\ -\frac{PL}{8} \end{bmatrix} $$</p>
+<p>$$ {P} = \begin{bmatrix} 0 \ -\frac{PL}{8} \ \frac{PL}{8} \end{bmatrix} $$</p>
 <h3>Step 4: 求解各自由度位移</h3>
-<p>解矩陣方程式 $[K]\{D\} = \{P\}$：<br />
-1) $\frac{24EI}{L^3} D_1 - \frac{6EI}{L^2} D_2 + \frac{6EI}{L^2} D_3 = 0 \implies D_1 = \frac{L}{4}(D_2 - D_3)$<br />
-2) $-\frac{6EI}{L^2} D_1 + \frac{8EI}{L} D_2 + \frac{2EI}{L} D_3 = \frac{PL}{8}$<br />
-3) $\frac{6EI}{L^2} D_1 + \frac{2EI}{L} D_2 + \frac{8EI}{L} D_3 = -\frac{PL}{8}$</p>
+<p>解矩陣方程式 $[K]{D} = {P}$：</p>
+<p>1) $\frac{24EI}{L^3} D_1 - \frac{6EI}{L^2} D_2 + \frac{6EI}{L^2} D_3 = 0 \implies D_1 = \frac{L}{4}(D_2 - D_3)$<br />
+2) $-\frac{6EI}{L^2} D_1 + \frac{8EI}{L} D_2 + \frac{2EI}{L} D_3 = -\frac{PL}{8}$<br />
+3) $\frac{6EI}{L^2} D_1 + \frac{2EI}{L} D_2 + \frac{8EI}{L} D_3 = \frac{PL}{8}$</p>
 <p>將 $D_1$ 代入 2) 與 3) 並兩式相加，可得 $10\frac{EI}{L}(D_2 + D_3) = 0 \implies D_3 = -D_2$。<br />
-代回原式解得：<br />
-$$ \boxed{ D_1 = u = \frac{PL^3}{48EI} } $$<br />
-$$ \boxed{ D_2 = \theta_B = \frac{PL^2}{24EI} } $$<br />
-$$ \boxed{ D_3 = \theta_C = -\frac{PL^2}{24EI} } $$</p>
+代回 1) 得 $D_1 = \frac{L}{2}D_2$；再代入 2)：$\left(-3+8-2\right)\frac{EI}{L}D_2 = 3\frac{EI}{L}D_2 = -\frac{PL}{8}$。解得：<br />
+$$ \boxed{ D_1 = u = -\frac{PL^3}{48EI} } \quad\text{（向左）} $$<br />
+$$ \boxed{ D_2 = \theta_B = -\frac{PL^2}{24EI} } \quad\text{（順時針）} $$<br />
+$$ \boxed{ D_3 = \theta_C = +\frac{PL^2}{24EI} } \quad\text{（逆時針）} $$</p>
+<blockquote>
+<p>合理性：梁受向下載重而下垂，B 端順時針、C 端逆時針轉，符合直覺；AB 柱底端 B 順時針轉，柱身向左彎，故側移向左。（已以有限元素程式驗算，數值與符號一致。）</p>
+</blockquote>
 <h3>Step 5: 繪製彎矩圖 (BMD)</h3>
 <p>計算各桿端彎矩 (以逆時針為正)：</p>
 <ul>
-<li>$M_{AB} = \frac{2EI}{L} \theta_B - \frac{6EI}{L^2} u = \frac{PL}{12} - \frac{PL}{8} = -\frac{PL}{24}$ (順時針，左側受拉)</li>
-<li>$M_{BA} = \frac{4EI}{L} \theta_B - \frac{6EI}{L^2} u = \frac{PL}{6} - \frac{PL}{8} = \frac{PL}{24}$ (逆時針，左側受拉)</li>
-<li>$M_{BC} = \frac{2EI}{L}(2\theta_B + \theta_C) - \frac{PL}{8} = \frac{PL}{12} - \frac{PL}{8} = -\frac{PL}{24}$ (順時針，上方受拉)</li>
-<li>$M_{CB} = \frac{2EI}{L}(2\theta_C + \theta_B) + \frac{PL}{8} = -\frac{PL}{12} + \frac{PL}{8} = \frac{PL}{24}$ (逆時針，上方受拉)</li>
-<li>$M_{CD} = \frac{2EI}{L}(2\theta_C) + \frac{6EI}{L^2} u = -\frac{PL}{6} + \frac{PL}{8} = -\frac{PL}{24}$ (順時針，左側受拉)</li>
-<li>$M_{DC} = \frac{2EI}{L}(\theta_C) + \frac{6EI}{L^2} u = -\frac{PL}{12} + \frac{PL}{8} = \frac{PL}{24}$ (逆時針，左側受拉)</li>
+<li>$M_{AB} = \frac{2EI}{L} \theta_B - \frac{6EI}{L^2} u = -\frac{PL}{12} + \frac{PL}{8} = +\frac{PL}{24}$ (逆時針)</li>
+<li>$M_{BA} = \frac{4EI}{L} \theta_B - \frac{6EI}{L^2} u = -\frac{PL}{6} + \frac{PL}{8} = -\frac{PL}{24}$ (順時針) → AB 柱全段<strong>右側（內側）受拉</strong></li>
+<li>$M_{BC} = \frac{2EI}{L}(2\theta_B + \theta_C) + \frac{PL}{8} = -\frac{PL}{12} + \frac{PL}{8} = +\frac{PL}{24}$ (逆時針，上方受拉)</li>
+<li>$M_{CB} = \frac{2EI}{L}(2\theta_C + \theta_B) - \frac{PL}{8} = \frac{PL}{12} - \frac{PL}{8} = -\frac{PL}{24}$ (順時針，上方受拉)</li>
+<li>$M_{CD} = \frac{4EI}{L}\theta_C + \frac{6EI}{L^2} u = \frac{PL}{6} - \frac{PL}{8} = +\frac{PL}{24}$ (逆時針)</li>
+<li>$M_{DC} = \frac{2EI}{L}\theta_C + \frac{6EI}{L^2} u = \frac{PL}{12} - \frac{PL}{8} = -\frac{PL}{24}$ (順時針) → CD 柱全段<strong>右側（外側）受拉</strong></li>
 </ul>
+<p>檢核：節點 B $M_{BA}+M_{BC}=0$ ✓、節點 C $M_{CB}+M_{CD}=0$ ✓；兩柱 $M_{AB}+M_{BA}=0$、$M_{CD}+M_{DC}=0$ ⇒ 柱剪力為零 ✓。</p>
 <p><strong>BC樑跨中最大彎矩：</strong><br />
 $M_{mid} = \frac{PL}{4} - \frac{PL}{24} = \frac{5PL}{24}$ (下方受拉)</p>
 <blockquote>
 <p>📊 <strong>彎矩圖 (BMD) 標示說明：</strong><br />
-- <strong>AB 柱</strong>：全段均勻彎矩 $PL/24$，畫於柱<strong>左側</strong> (外側)。<br />
-- <strong>CD 柱</strong>：全段均勻彎矩 $PL/24$，畫於柱<strong>左側</strong> (內側)。<br />
+- <strong>AB 柱</strong>：全段均勻彎矩 $PL/24$，畫於柱<strong>右側</strong> (內側，與梁 B 端上緣受拉連續)。<br />
+- <strong>CD 柱</strong>：全段均勻彎矩 $PL/24$，畫於柱<strong>右側</strong> (外側，與梁 C 端上緣受拉連續)。<br />
 - <strong>BC 樑</strong>：B、C 兩端彎矩為 $PL/24$ 畫於樑<strong>上方</strong>；跨中最大正彎矩為 $5PL/24$ 畫於樑<strong>下方</strong>，呈兩段直線折線。<br />
 <em>(請參見系統生成的互動圖 SA-2018-2-sfd-bmd-viz.html)</em></p>
 </blockquote>
 <p><img alt="SA-2018-2 變形形狀與彎矩圖互相檢核：左圖側移模式，右圖彎矩圖（柱端全為 PL/24、梁跨中 5PL/24）" src="../../raw/solutions/SA-2018-2/figs/SA-2018-2-fig-3-deflected-bmd.svg" /></p>
-<p><em>圖 3　變形形狀與彎矩圖的互相檢核。左圖顯示兩柱皆為單曲率（純彎曲、剪力為零）、梁呈反對稱撓曲；右圖標出梁的彎矩在端點（上方受拉）與跨中（下方受拉）異號、圖形需穿越梁軸線。這張圖攔兩種最常見的錯誤：柱端彎矩正負號寫反（導致柱出現不存在的剪力），以及把梁的彎矩圖畫成不變號的單邊三角形（跨中 $5PL/24$ 算成與端點同側）。</em></p>
+<p><em>圖 3　變形形狀與彎矩圖的互相檢核。左圖顯示側移向左、兩柱皆為單曲率（純彎曲、剪力為零）、梁對稱下垂（B 順時針、C 逆時針）；右圖標出梁的彎矩在端點（上方受拉）與跨中（下方受拉）異號、圖形需穿越梁軸線。這張圖攔三種最常見的錯誤：固端彎矩正負號寫反（側移方向與柱受拉側整組顛倒）、柱端彎矩正負號寫反（導致柱出現不存在的剪力），以及把梁的彎矩圖畫成不變號的單邊三角形（跨中 $5PL/24$ 算成與端點同側）。</em></p>
 <h2>5. 關鍵爭議點與進階探討 (Critical Issues &amp; Advanced Discussion)</h2>
 <ul>
 <li><strong>剪力消失現象</strong>：由算出的柱端彎矩可知，$M_{AB} + M_{BA} = 0$，這意味著 AB 柱的剪力為零；同理 CD 柱的剪力亦為零。這是一個非常優雅的力學結果：外加垂直載重在此特定「點對稱幾何」構架中，並未在柱中引發任何剪力，兩根柱子處於「純彎曲」狀態，進而產生側移 $u$。</li>
 <li><strong>對稱性迷思</strong>：考生常會誤以為垂直載重置中，結構就不會發生側移。然而本題構架為 Z 字型（點對稱而非鏡像對稱），其勁度矩陣存在不平衡的耦合項，因此垂直力會誘發側向位移，不可將側移自由度 $u$ 假設為 0。</li>
 </ul>
-<p><em>圖解補繪：2026-08-27（向量圖，腳本 <code>gen_SA-2018-2.py</code>，可重跑）</em></p></main>
+<p><em>圖解補繪：2026-08-27（向量圖，腳本 <code>gen_SA-2018-2.py</code>，可重跑）</em></p>
+<p><em>符號修正：2026-10-06——原稿 FEM_BC 正負號寫反，連帶 D₁～D₃ 與各端彎矩整組變號、柱受拉側標錯；已改正並重繪圖 3（量值不變：u＝PL³/48EI、θ＝PL²/24EI、端彎矩 PL/24、跨中 5PL/24）。</em></p></main>
 <footer>來源：raw/solutions/SA-2018-2/SA-2018-2.md（知識庫解題內容唯一正本；本頁僅為渲染顯示）</footer>
 
 <script>

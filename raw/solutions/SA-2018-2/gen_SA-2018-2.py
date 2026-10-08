@@ -1,6 +1,9 @@
 #!/usr/bin/env python3
 import sys, os
 sys.path.insert(0, "/root/.claude/skills/synced/struct-diagram/scripts")
+import glob as _g
+for _d in _g.glob("/root/.claude/skills/synced/*/struct-diagram/scripts"):
+    sys.path.insert(0, _d)
 from structdraw import Canvas, C, FONT_M, compose, column_shape, beam_shape
 
 OUT = sys.argv[1] if len(sys.argv) > 1 else "figs"
@@ -12,12 +15,13 @@ TAG = "SA-2018-2"
 M_END = 1/24     # §4 Step5：六個端彎矩量值皆為 PL/24（M_AB, M_BA, M_BC, M_CB, M_CD, M_DC）
 M_MID = 5/24      # 梁跨中最大彎矩 = 5PL/24（下方受拉）
 
-# §4 Step4：D1=u=PL^3/48EI，D2=θ_B=+PL^2/24EI（逆時針），D3=θ_C=-PL^2/24EI（順時針）
-# 比例：θ/u = (PL^2/24EI)/(PL^3/48EI) = 2/L
-D_DRAW = 0.10                    # 繪圖側移量（純視覺放大，不影響上列任何物理量）
-TH_MAG = 2.0 * D_DRAW             # |θ_B|=|θ_C| 對應之繪圖角度
-TH_B_CCW = +TH_MAG                # θ_B = +PL^2/24EI，逆時針為正 → 取正
-TH_C_CCW = -TH_MAG                # θ_C = -PL^2/24EI，逆時針為正 → 取負（即順時針）
+# §4 Step4（2026-10-06 修正符號）：FEM_BC=+PL/8（逆時針）
+#   D1=u=-PL^3/48EI（向左），D2=θ_B=-PL^2/24EI（順時針），D3=θ_C=+PL^2/24EI（逆時針）
+# 比例：θ_B = 2u/L，θ_C = -2u/L
+KS = 4.8                          # 繪圖放大：PL^3/EI → 圖面單位（L=1）
+D_DRAW = -KS / 48                 # u = -PL^3/48EI → -0.10（向左）
+TH_B_CCW = 2.0 * D_DRAW           # θ_B = 2u/L → 負（順時針）
+TH_C_CCW = -2.0 * D_DRAW          # θ_C = -2u/L → 正（逆時針）
 
 NA, NB, NC, ND = (0, 2), (0, 1), (1, 1), (1, 0)
 
@@ -75,52 +79,66 @@ def fig2_dof():
     return cv.save(f"{OUT}/{TAG}-fig-2-dof.svg")
 
 
+def beam_true(x0, y0, n=60):
+    """梁 BC 真實撓曲＝端點轉角的 Hermite 形狀＋兩端固定梁跨中集中載重形狀"""
+    pts = beam_shape((x0, y0), 1.0, TH_B_CCW, TH_C_CCW, n=n)
+    out = []
+    for (x, y) in pts:
+        xi = x - x0
+        t = min(xi, 1 - xi)
+        vp = -KS * t * t * (3 - 4 * t) / 48      # 固定梁中點載重：PL^3/192EI＠中點
+        out.append((x, y + vp))
+    return out
+
+
 def fig3_deflected_bmd():
     """變形形狀與彎矩圖：題目明確要求繪製的答案本體"""
     PW, PH = 430, 640
 
     a = Canvas(PW, PH, sx=170, ox=126, oy=144)
-    a.panel("變形形狀（側移模式）", "柱：純彎曲、剪力為零　梁：反對稱")
+    a.panel("變形形狀（側移向左）", "柱：單曲率、剪力為零　梁：對稱下垂")
     ghost(a)
-    # AB：A(頂,固定) 為 column_shape 的「top」；B(底,自由) 為「base」
+    # AB：A(頂,固定)；B(底) 隨 u 左移、順時針轉
     a.poly(column_shape((0, 1), 1.0, delta_top=0, theta_top=0,
                         delta_bot=D_DRAW, theta_bot=TH_B_CCW), C["deform"], 5.0)
-    # CD：D(底,固定) 為「base」；C(頂,自由) 為「top」
+    # CD：D(底,固定)；C(頂) 隨 u 左移、逆時針轉
     a.poly(column_shape((1, 0), 1.0, delta_top=D_DRAW, theta_top=TH_C_CCW,
                         delta_bot=0, theta_bot=0), C["deform"], 5.0)
-    a.poly(beam_shape((D_DRAW, 1), 1.0, TH_B_CCW, TH_C_CCW), C["deform"], 5.0)
+    bt = beam_true(D_DRAW, 1)
+    a.poly(bt, C["deform"], 5.0)
     a.fixed_support((0, 2), ang=180, size=17); a.fixed_support((1, 0), ang=0, size=17)
-    a.dot((D_DRAW + 0.5, 1), 5.0, fill="#FFFFFF", stroke=C["accent"], w=2.6)
-    a.math_px(a.X(D_DRAW + 0.5), a.Y(1) + 22, "梁中點：反曲點", 12, C["accent"], weight="700")
-    a.arrow((D_DRAW - 0.30, 1.30), (D_DRAW, 1), C["load"], 3.2, 11)
-    a.math((D_DRAW - 0.30, 1.30), "P", 16, C["load"], dx=-8, dy=-10, weight="700")
-    a.math_px(PW/2, 545, "u=PL^{3}/48EI", 13, C["deform"], weight="700")
-    a.math_px(PW/2, 570, "θ_{B}=-θ_{C}=PL^{2}/24EI", 13, C["deform"], weight="700")
-    a.text_px(PW/2, 595, "M_AB+M_BA=0 → 柱剪力為零（純彎曲）", 12, C["deform"], weight="700")
+    ym = bt[len(bt)//2][1]
+    a.arrow((D_DRAW + 0.5, 1.33), (D_DRAW + 0.5, ym + 0.02), C["load"], 3.2, 11)
+    a.math((D_DRAW + 0.5, 1.33), "P", 16, C["load"], dx=12, dy=-4, weight="700")
+    a.arrow((0.22, 1.12), (0.22 + D_DRAW * 1.6, 1.12), C["accent"], 2.6, 9)
+    a.math((0.22, 1.12), "u", 15, C["accent"], "start", dx=6, dy=4, weight="700")
+    a.text_px(PW/2, 545, "u = −PL³/48EI（向左）", 13, C["deform"], weight="700")
+    a.text_px(PW/2, 570, "θB = −θC = −PL²/24EI（B 順時針、C 逆時針）", 13, C["deform"], weight="700")
+    a.text_px(PW/2, 595, "M_AB+M_BA=0 → 柱剪力為零（單曲率）", 12, C["deform"], weight="700")
 
     b = Canvas(PW, PH, sx=170, ox=126, oy=144)
     b.panel("彎矩圖（繪於受拉側）", "柱、梁端全為 PL/24；梁中點 5PL/24")
     ms = 0.62
     Me, Mm = M_END * ms, M_MID * ms
-    # AB 柱：M_AB=M_BA=PL/24（同號、剪力為零 ⇒ 全段均勻彎矩）→ 左側/外側受拉
-    b.polygon([(0, 2), (-Me, 2), (-Me, 1), (0, 1)], C["fill_m"], C["bmd"], 2)
-    # CD 柱：M_CD=M_DC=PL/24（畫在柱左側/內側，依 md 圖說）
-    b.polygon([(1, 1), (1 - Me, 1), (1 - Me, 0), (1, 0)], C["fill_m"], C["bmd"], 2)
-    # BC 梁：B、C 端 PL/24 上方受拉（負彎矩／hogging），跨中 5PL/24 下方受拉（正彎矩／sagging）
+    # AB 柱：M_AB=+PL/24、M_BA=−PL/24（逆時針為正）⇒ 剪力為零、全段均勻 → 右側（內側）受拉
+    b.polygon([(0, 2), (Me, 2), (Me, 1), (0, 1)], C["fill_m"], C["bmd"], 2)
+    # CD 柱：M_CD=+PL/24、M_DC=−PL/24 ⇒ 全段均勻 → 右側（外側）受拉
+    b.polygon([(1, 1), (1 + Me, 1), (1 + Me, 0), (1, 0)], C["fill_m"], C["bmd"], 2)
+    # BC 梁：B、C 端 PL/24 上方受拉（hogging），跨中 5PL/24 下方受拉（sagging）
     # 端點與跨中彎矩異號 ⇒ 彎矩圖需穿越梁軸線；交點由線性內插公式算出（非目測）
-    xc = 0.5 * Me / (Me + Mm)          # B→跨中之零彎矩點（相對 B 的 x 距離）
+    xc = 0.5 * Me / (Me + Mm)
     b.polygon([(0, 1), (0, 1 + Me), (xc, 1)], C["fill_m"], C["bmd"], 2)
     b.polygon([(1, 1), (1, 1 + Me), (1 - xc, 1)], C["fill_m"], C["bmd"], 2)
     b.polygon([(xc, 1), (0.5, 1 - Mm), (1 - xc, 1)], C["fill_m"], C["bmd"], 2)
     frame(b, "#4A5568", 3.4)
     b.fixed_support((0, 2), ang=180, size=17); b.fixed_support((1, 0), ang=0, size=17)
     b.dot((0.5, 1 - Mm), 4.6, fill="#FFFFFF", stroke=C["bmd"], w=2.4)
-    b.math_px(b.X(-Me) - 6, b.Y(1.5), "PL/24", 12.5, C["bmd"], "end", weight="700")
-    b.math_px(b.X(1 - Me) - 6, b.Y(0.5), "PL/24", 12.5, C["bmd"], "end", weight="700")
+    b.math_px(b.X(Me) + 6, b.Y(1.5), "PL/24", 12.5, C["bmd"], "start", weight="700")
+    b.math_px(b.X(1 + Me) + 6, b.Y(0.5), "PL/24", 12.5, C["bmd"], "start", weight="700")
     b.math_px(b.X(0) + 4, b.Y(1 + Me) - 4, "PL/24", 11.5, C["bmd"], "start", weight="700")
     b.math_px(b.X(1) - 4, b.Y(1 + Me) - 4, "PL/24", 11.5, C["bmd"], "end", weight="700")
-    b.math_px(b.X(0.5), b.Y(1 - Mm) - 14, "5PL/24", 12.5, C["bmd"], weight="700")
-    b.text_px(PW/2, 545, "節點平衡：M_BA+M_BC=0 ✓　M_CD+M_CB=0 ✓", 12, C["bmd"], weight="700")
+    b.math_px(b.X(0.5), b.Y(1 - Mm) + 22, "5PL/24", 12.5, C["bmd"], weight="700")
+    b.text_px(PW/2, 545, "節點平衡：M_BA+M_BC=0 ✓　M_CB+M_CD=0 ✓", 12, C["bmd"], weight="700")
     b.text_px(PW/2, 570, "梁中點 M = PL/4 − PL/24 = 5PL/24", 12.5, C["bmd"], weight="700")
 
     compose([a, b], title="解出 u, θ_{B}, θ_{C} 之後：變形形狀與彎矩圖互相檢核",
@@ -132,7 +150,7 @@ def fig3_deflected_bmd():
 FIGURES = [
     (fig1_frame,          "§1",   "Z 字型誤看成鏡射對稱 → 誤判 u=0"),
     (fig2_dof,             "§3",  "自由度數目/方向弄錯 → K 矩陣階數或行列錯位"),
-    (fig3_deflected_bmd,   "§4 Step5", "柱端彎矩正負號寫反、梁中點彎矩算錯"),
+    (fig3_deflected_bmd,   "§4 Step5", "FEM 正負號寫反 → 側移方向、柱受拉側全反；梁中點彎矩算錯"),
 ]
 
 if __name__ == "__main__":
