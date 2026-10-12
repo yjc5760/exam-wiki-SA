@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SA 最小功法底層觀念｜影片講義</title>
+<link rel="stylesheet" href="../../study/assets/katex/katex.min.css">
+<script defer src="../../study/assets/katex/katex.min.js"></script>
+<script defer src="../../study/assets/katex/auto-render.min.js"></script>
+<style>
+:root{--board:#2b4236;--board2:#1f3329;--paper:#faf7f0;--ink:#26302b;--chalk:#f2e8c9;--accent:#c8a03a;--muted:#6b7a71;--line:#d9d2c0;}
+*{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--ink);font:16px/1.75 "Noto Sans TC","Microsoft JhengHei","PingFang TC",sans-serif}
+main{max-width:860px;margin:0 auto;padding:24px 16px 60px}
+.cover{background:linear-gradient(160deg,var(--board),var(--board2));color:var(--chalk);border-radius:14px;padding:28px 28px 24px;margin-bottom:22px}
+.cover .tag{font-size:13px;letter-spacing:.08em;color:#bcd2c2}
+.cover h1{margin:6px 0 8px;font-size:30px;color:#f4d76b;line-height:1.3}
+.cover .meta{font-size:14px;color:#cfdcd2}
+.cover .core{margin-top:16px;padding:10px 14px;border:1.5px solid #f4d76b;border-radius:8px;color:#fff;font-size:17px}
+h2{font-size:21px;color:var(--board);border-bottom:2px solid var(--board);padding-bottom:4px;margin:38px 0 14px;display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+h3{font-size:17px;color:var(--board);margin:22px 0 8px}
+.toc{border:1px solid var(--line);border-radius:10px;padding:12px 18px;background:#fff}
+.toc ol{margin:0;padding-left:0;list-style:none;columns:2;column-gap:28px}
+.toc li{padding:3px 0;break-inside:avoid}
+.toc a{color:var(--ink);text-decoration:none}
+.toc a:hover{color:var(--board);text-decoration:underline}
+.toc .t{color:var(--muted);font-variant-numeric:tabular-nums;margin-left:6px;font-size:14px}
+.player{position:sticky;top:0;z-index:5;background:var(--paper);padding:10px 0}
+video{width:100%;border-radius:10px;background:#000;display:block}
+.seek{font:13px/1 inherit;font-family:inherit;border:1px solid var(--board);background:#fff;color:var(--board);border-radius:20px;padding:5px 10px;cursor:pointer}
+.seek:hover{background:var(--board);color:#fff}
+figure{margin:18px 0;background:#fff;border:1px solid var(--line);border-radius:10px;padding:8px}
+figure img{width:100%;display:block;border-radius:6px}
+figcaption{display:flex;justify-content:space-between;gap:12px;font-size:13.5px;color:var(--muted);padding:6px 4px 0}
+figcaption span:last-child{white-space:nowrap}
+.key,.warn,.ok{border-radius:8px;padding:10px 14px;margin:14px 0}
+.key{background:#fdf6dc;border-left:5px solid #d9a826}
+.warn{background:#fdeceb;border-left:5px solid #d0544a}
+.ok{background:#e8f5ea;border-left:5px solid #4c9a5c}
+.key>b,.warn>b,.ok>b{display:block;margin-bottom:2px}
+table{border-collapse:collapse;width:100%;margin:12px 0;background:#fff;font-size:15px}
+th,td{border:1px solid var(--line);padding:6px 10px;text-align:center}
+th{background:#eef2ee;color:var(--board)}
+td:first-child,th:first-child{white-space:nowrap;text-align:left}
+.katex-display{margin:.7em 0;overflow-x:auto;overflow-y:hidden}
+.src{margin-top:40px;font-size:13px;color:var(--muted);border-top:1px solid var(--line);padding-top:10px}
+.note{font-size:14px;color:var(--muted)}
+@media (max-width:600px){.toc ol{columns:1}.cover h1{font-size:24px}}
+@media print{
+  @page{size:A4;margin:14mm}
+  body{background:#fff;font-size:12.5pt}
+  main{max-width:none;padding:0}
+  .player,.seek{display:none!important}
+  figure,.key,.warn,.ok,table,.katex-display{break-inside:avoid}
+  h2,h3{break-after:avoid}
+  figure img{width:80%;margin:0 auto}
+  .cover{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+}
+</style>
+</head>
+<body>
+<main>
+
+<header class="cover">
+  <div class="tag">結構學 SA ｜ 命題大綱 U2-1-1 ｜ 影片講義</div>
+  <h1>最小功法・底層觀念</h1>
+  <div class="meta">影片 6:26 ・ 7 章 ・ 22 段 ・ 三個本質＋四步驟 SOP＋例題①（A 固定、B 滾支）</div>
+  <div class="core">物理上把位移缺口推回零；數學上 U 是開口向上的拋物線；方法上三種方法是同一條方程式。</div>
+</header>
+
+<nav class="toc">
+  <ol>
+    <li><a href="#c0">開場</a><span class="t">0:00</span></li>
+    <li><a href="#c1">一、物理本質：缺口歸零</a><span class="t">0:21</span></li>
+    <li><a href="#c2">二、數學本質：拋物線</a><span class="t">1:49</span></li>
+    <li><a href="#c3">三、方法本質：三張臉同源</a><span class="t">2:58</span></li>
+    <li><a href="#c4">四步驟 SOP 演練</a><span class="t">4:10</span></li>
+    <li><a href="#c5">易錯點</a><span class="t">5:27</span></li>
+    <li><a href="#c6">總結</a><span class="t">6:00</span></li>
+  </ol>
+</nav>
+
+<div class="player">
+  <video id="vid" controls preload="metadata" src="video/SA-concept-最小功法底層觀念.mp4"></video>
+</div>
+
+<!-- c0 -->
+<section id="c0">
+<h2>開場 <button class="seek" data-t="0">▶ 0:00</button></h2>
+<figure><img src="handout/img/s01.jpg" alt="三個本質"><figcaption><span>最小功法的三個本質 ⇒ 固定四步驟 SOP</span><span>影片 0:21</span></figcaption></figure>
+<p>這支影片講最小功法的底層觀念。它背後只有三件事：</p>
+<table>
+<tr><th>本質</th><th>一句話</th></tr>
+<tr><td>① 物理</td><td>把位移缺口推回零</td></tr>
+<tr><td>② 數學</td><td>應變能是開口向上的拋物線</td></tr>
+<tr><td>③ 方法</td><td>三種方法其實是同一條方程式</td></tr>
+</table>
+<p>弄懂了，代公式就是固定的四個步驟。</p>
+</section>
+
+<!-- c1 -->
+<section id="c1">
+<h2>一、物理本質：缺口歸零 <button class="seek" data-t="21.77">▶ 0:21</button></h2>
+<figure><img src="handout/img/s02.jpg" alt="例題①梁與靜不定度"><figcaption><span>例題①：A 固定、B 滾支，w＝24 kN/m、L＝6 m；未知數 4、平衡方程 3</span><span>影片 0:43</span></figcaption></figure>
+<p>先看例題①。A 端固定、B 端滾支承，跨長 6 m，均布載重 \(w=24\ \text{kN/m}\)。固定端三個反力（\(A_x, A_y, M_A\)），滾支承一個（\(R_B\)），共 <b>4 個未知數</b>，平衡方程式只有 <b>3 條</b>：</p>
+$$4-3=1\ \Rightarrow\ \text{一次靜不定}$$
+<p>光靠平衡，\(R_B\) 解不出來。</p>
+
+<h3>拆支承 → 量缺口 → 放回多餘力</h3>
+<figure><img src="handout/img/s05.jpg" alt="缺口與多餘力"><figcaption><span>左：拆掉 B 支承成懸臂，缺口 Δ₀（橘）；右：只放多餘力 X，上頂 δ（綠）；下：缺口填平解出 X</span><span>影片 1:28</span></figcaption></figure>
+<p>先把 B 支承拆掉，變成懸臂梁。B 端會往下掉，這就是<b>位移缺口</b> \(\color{#e08a3c}{\Delta_0}\)：</p>
+$$\color{#e08a3c}{\Delta_0=\frac{wL^4}{8EI}=\frac{3888}{EI}\ \downarrow}$$
+<p>再只把多餘力 \(X\) 放回 B 端往上頂，上頂的位移 \(\color{#4c9a5c}{\delta}\)：</p>
+$$\color{#4c9a5c}{\delta=\frac{XL^3}{3EI}=\frac{72X}{EI}\ \uparrow}$$
+<p>真實結構的 B 點被擋住、不准動，所以缺口必須剛好填平：</p>
+$$\color{#e08a3c}{\Delta_0}-\color{#4c9a5c}{\delta}=0\ \Rightarrow\ \frac{wL^4}{8EI}=\frac{XL^3}{3EI}\ \Rightarrow\ X=\frac{3wL}{8}=54\ \text{kN}$$
+<div class="key"><b>多餘力是什麼</b>多餘力，就是剛好把缺口填平的那個力。</div>
+<p class="note">黑板配色：橘＝缺口 \(\Delta_0\)（外載單獨作用）、綠＝多餘力 \(X\) 造成的 \(\delta\)。</p>
+
+<h3>∂U/∂X 是什麼？</h3>
+<figure><img src="handout/img/s06.jpg" alt="卡氏第二定理"><figcaption><span>卡氏第二定理：∂U/∂X＝Δ_B＝0 ⟺ 缺口歸零（位移諧合）</span><span>影片 1:49</span></figcaption></figure>
+<p>卡氏第二定理：應變能對某個力偏微分，等於那個力作用點沿力方向的位移。</p>
+$$\frac{\partial U}{\partial P}=\Delta_P,\qquad \frac{\partial U}{\partial X}=\Delta_B=0$$
+<p>所以 \(\partial U/\partial X=0\)，白話就是 <b>B 點位移等於零</b>。</p>
+<div class="key"><b>一件事兩種寫法</b>缺口歸零（位移諧合）\(\iff \dfrac{\partial U}{\partial X}=0\)</div>
+</section>
+
+<!-- c2 -->
+<section id="c2">
+<h2>二、數學本質：拋物線 <button class="seek" data-t="109.95">▶ 1:49</button></h2>
+<figure><img src="handout/img/s08.jpg" alt="M 線性、U 二次"><figcaption><span>M＝M₀＋X·m（對 X 一次式）⇒ U(X)＝aX²＋bX＋c</span><span>影片 2:22</span></figcaption></figure>
+<p>那為什麼叫「最小」功？把 \(X\) 當成還沒定下來的外力，彎矩可以拆成：</p>
+$$M=\color{#5aa6d6}{M_0}+X\cdot m$$
+<table>
+<tr><th>符號</th><th>意義</th></tr>
+<tr><td>\(\color{#5aa6d6}{M_0}\)</td><td>外載作用在基本結構的彎矩</td></tr>
+<tr><td>\(m\)</td><td>單位多餘力 \(X=1\) 的彎矩</td></tr>
+</table>
+<p>\(M\) 對 \(X\) 是<b>一次式</b>（直線）。代進應變能，一次式平方就變成二次式：</p>
+$$U=\int\frac{M^2}{2EI}\,dx\ \Rightarrow\ U(X)=aX^2+bX+c$$
+$$a=\int\frac{m^2}{2EI}\,dx,\qquad b=\int\frac{M_0\,m}{EI}\,dx,\qquad c=\text{基本結構應變能}$$
+
+<figure><img src="handout/img/s09.jpg" alt="U-X 拋物線"><figcaption><span>例題① 的 U/U₀–X 曲線：X＝0 與 X＝108 同高，X＝54 為最低點 U₀/16</span><span>影片 2:43</span></figcaption></figure>
+<p>\(m^2\ge0\)、\(EI>0\)，所以 \(a\) 恆為正 ⇒ <b>U 是開口向上的拋物線</b> ⇒ 駐點＝最小值。畫出例題①：</p>
+<table>
+<tr><th>\(X=R_B\)</th><th>狀態</th><th>\(U\)</th></tr>
+<tr><td>0</td><td>懸臂</td><td>最大（\(U_0\)）</td></tr>
+<tr><td>108</td><td>梁被頂過頭</td><td>一樣大（\(U_0\)）</td></tr>
+<tr><td>54</td><td>斜率為零，\(dU/dX=0\)</td><td>只剩 \(U_0/16\)</td></tr>
+</table>
+
+<figure><img src="handout/img/s10.jpg" alt="最小是結果不是前提"><figcaption><span>「最小」是結果，不是前提：理由寫「B 點位移＝0（位移相容）」</span><span>影片 2:57</span></figcaption></figure>
+<div class="key"><b>「最小」是結果，不是前提</b>真正的條件永遠是位移相容。</div>
+<div class="ok"><b>考卷上寫理由</b>寫「因為 B 點位移為零」，比寫「能量要最小」精準。</div>
+</section>
+
+<!-- c3 -->
+<section id="c3">
+<h2>三、方法本質：三張臉同源 <button class="seek" data-t="178.35">▶ 2:58</button></h2>
+<figure><img src="handout/img/s11.jpg" alt="∂M/∂X ≡ m"><figcaption><span>唯一的橋樑 ∂M/∂X ≡ m（M₀ 不含 X → 消掉）</span><span>影片 3:12</span></figcaption></figure>
+<p>第三個本質：三張臉同源。唯一的橋樑是：</p>
+$$\frac{\partial M}{\partial X}\equiv m$$
+<p>\(M=M_0+X\cdot m\) 對 \(X\) 偏微分，\(M_0\) 不含 \(X\) 消掉，剩下的就是 \(m\)。</p>
+
+<figure><img src="handout/img/s12.jpg" alt="推導 δ10＋δ11X＝0"><figcaption><span>把 M 拆開：前項 δ₁₀、後項 δ₁₁X</span><span>影片 3:33</span></figcaption></figure>
+<p>代進最小功法：</p>
+$$\frac{\partial U}{\partial X}=\int\frac{M}{EI}\frac{\partial M}{\partial X}dx=\int\frac{M\,m}{EI}dx
+=\underbrace{\int\frac{M_0\,m}{EI}dx}_{\color{#e08a3c}{\delta_{10}}}+X\underbrace{\int\frac{m^2}{EI}dx}_{\color{#4c9a5c}{\delta_{11}}}$$
+$$\color{#e08a3c}{\delta_{10}}+\color{#4c9a5c}{\delta_{11}}X=0$$
+
+<figure><img src="handout/img/s13.jpg" alt="三種方法對照"><figcaption><span>同一條方程式，三個名字</span><span>影片 3:50</span></figcaption></figure>
+<table>
+<tr><th>方法</th><th>出發點</th><th>寫法</th><th>特色</th></tr>
+<tr><td>最小功法</td><td>能量駐點</td><td>\(\dfrac{\partial U}{\partial X}=0\)</td><td>直接偏微分，不必畫第二張圖</td></tr>
+<tr><td>單位力法（虛功）</td><td>虛功原理</td><td>\(\displaystyle\int\frac{M\,m}{EI}dx=0\)</td><td>要另畫 m 圖，可用圖形相乘</td></tr>
+<tr><td>諧合變位法（柔度）</td><td>位移相容</td><td>\(\delta_{10}+\delta_{11}X=0\)</td><td>柔度方程式，多餘力多時最好矩陣化</td></tr>
+</table>
+
+<figure><img src="handout/img/s14.jpg" alt="例題①驗證"><figcaption><span>例題① 驗證（s 從 B 端量起）：δ₁₀ 就是向下的缺口</span><span>影片 4:09</span></figcaption></figure>
+<p>例題①驗證：\(M_0=-\dfrac{ws^2}{2}\)、\(m=s\)。</p>
+$$\color{#e08a3c}{\delta_{10}=\int_0^6\frac{(-12s^2)(s)}{EI}ds=-\frac{3888}{EI}}\quad\text{（正是向下的缺口）}$$
+$$\color{#4c9a5c}{\delta_{11}=\int_0^6\frac{s^2}{EI}ds=\frac{72}{EI}}$$
+$$-3888+72X=0\ \Rightarrow\ X=54\ \text{kN}$$
+<div class="ok"><b>驗證</b>解出來 \(X\) 還是 54 kN，和「缺口歸零」的結果相同。</div>
+</section>
+
+<!-- c4 -->
+<section id="c4">
+<h2>四步驟 SOP 演練 <button class="seek" data-t="250.43">▶ 4:10</button></h2>
+<figure><img src="handout/img/s18.jpg" alt="四步驟完成"><figcaption><span>四步驟寫完的黑板：X＝R_B、s 從 B 端量起</span><span>影片 5:09</span></figcaption></figure>
+<table>
+<tr><th>步驟</th><th>做什麼</th><th>例題①</th></tr>
+<tr><td>Step 1 選定多餘力</td><td>選讓彎矩式最短的那個</td><td>\(X=R_B\)，座標 \(s\) 從 B 端量起，彎矩式裡就不會出現 A 端反力</td></tr>
+<tr><td>Step 2 寫出 \(M(s,X)\)</td><td>寫出含 \(X\) 的彎矩式</td><td>\(M(s)=Xs-\dfrac{ws^2}{2}=Xs-12s^2\)</td></tr>
+<tr><td>Step 3 對 \(X\) 偏微分</td><td>不含 \(X\) 的項直接消掉</td><td>\(\dfrac{\partial M}{\partial X}=s\ (=m)\)，不用另外畫圖</td></tr>
+<tr><td>Step 4 代入積分令其＝0</td><td>\(\int M\,\dfrac{\partial M}{\partial X}ds=0\)</td><td>見下式</td></tr>
+</table>
+$$\int_0^6(Xs-12s^2)\,s\,ds=0\ \Rightarrow\ 72X-3888=0\ \Rightarrow\ X=54\ \text{kN}$$
+
+<h3>剩下就是靜定問題</h3>
+<figure><img src="handout/img/s19.jpg" alt="反力"><figcaption><span>R_A＝90 kN、R_B＝54 kN；M_A＝−wL²/8（上側受拉）</span><span>影片 5:26</span></figcaption></figure>
+$$R_A=24\times6-54=90\ \text{kN}$$
+$$M_A=54\times6-\frac{24\times6^2}{2}=324-432=-108\ \text{kN}\cdot\text{m}=-\frac{wL^2}{8}\ \text{（上側受拉）}$$
+<p class="note">符號約定：\(X=R_B\) 向上為正；彎矩以下側受拉為正，\(M_A\) 為負即上側受拉。</p>
+</section>
+
+<!-- c5 -->
+<section id="c5">
+<h2>易錯點 <button class="seek" data-t="327.43">▶ 5:27</button></h2>
+<figure><img src="handout/img/s21.jpg" alt="兩個常見錯誤"><figcaption><span>上：易錯一（座標從 A 端量）；下：易錯二（支承沉陷）</span><span>影片 6:00</span></figcaption></figure>
+<div class="warn"><b>易錯一：座標從 A 端量</b>
+彎矩式 \(M(x)=R_A x+M_A-\dfrac{wx^2}{2}\) 會有 \(R_A\) 和 \(M_A\)，它們也含 \(X\)。如果當成常數偏微分，會算出 \(\partial M/\partial X=0\)，整題全錯。</div>
+<div class="ok"><b>正確做法</b>先用平衡把它們寫成 \(X\) 的函數：
+$$R_A=wL-X,\qquad M_A=XL-\frac{wL^2}{2}\ \Rightarrow\ \frac{\partial M}{\partial X}=L-x$$</div>
+<div class="warn"><b>易錯二：支承有沉陷</b>B 往下沉 \(\Delta_B\)，\(X\) 向上為正，條件不能硬套 \(\partial U/\partial X=0\)。</div>
+<div class="ok"><b>正確條件</b>
+$$\frac{\partial U}{\partial X}=-\Delta_B$$
+記得 \(\partial U/\partial X\) 的意義是位移，就不會硬套等於零。</div>
+</section>
+
+<!-- c6 -->
+<section id="c6">
+<h2>總結 <button class="seek" data-t="360.63">▶ 6:00</button></h2>
+<figure><img src="handout/img/s22.jpg" alt="三條重點與答案"><figcaption><span>三條重點；例題① R_B＝3wL/8＝54 kN</span><span>影片 6:25</span></figcaption></figure>
+<table>
+<tr><th>本質</th><th>重點</th></tr>
+<tr><td>① 物理</td><td>\(\dfrac{\partial U}{\partial X}=0\)，就是位移缺口歸零</td></tr>
+<tr><td>② 數學</td><td>\(M\) 一次、\(U\) 二次、\(a>0\) → 開口向上的拋物線，駐點就是最小值</td></tr>
+<tr><td>③ 方法</td><td>\(\dfrac{\partial M}{\partial X}\equiv m\) → 三種方法是同一條方程式</td></tr>
+</table>
+<div class="key"><b>例題① 答案</b>
+$$R_B=\frac{3wL}{8}=54\ \text{kN}$$</div>
+</section>
+
+<p class="src">來源：video/SA-concept-最小功法底層觀念.mp4（旁白 segments.py、字幕 SA-concept-最小功法底層觀念.srt、時間軸 timeline.json）。黑板圖取自各段結束前 0.5 秒畫面；例題數值已依 HANDOFF.md 複算一致（Δ₀＝3888/EI、δ₁₁＝72/EI、X＝54 kN、R_A＝90 kN、M_A＝−108 kN·m、U_min＝U₀/16）。</p>
+</main>
+<script>
+document.addEventListener('DOMContentLoaded',function(){
+  renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'\\(',right:'\\)',display:false}],throwOnError:false});
+  var v=document.getElementById('vid');
+  document.querySelectorAll('.seek').forEach(function(b){b.addEventListener('click',function(){v.currentTime=parseFloat(b.dataset.t);v.play();v.scrollIntoView({behavior:'smooth',block:'nearest'});});});
+});
+</script>
+</body>
+</html>

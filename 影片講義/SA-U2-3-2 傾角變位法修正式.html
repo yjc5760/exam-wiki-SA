@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>傾角變位法修正式｜影片講義（SA-U2-3-2）</title>
+<link rel="stylesheet" href="../../study/assets/katex/katex.min.css">
+<script defer src="../../study/assets/katex/katex.min.js"></script>
+<script defer src="../../study/assets/katex/auto-render.min.js"></script>
+<style>
+:root{--paper:#faf7ef;--ink:#222;--board:#2d4a3e;--board2:#3a5e4f;--muted:#6b6b6b;--line:#ddd5c4;
+--pink:#c94f6d;--blue:#2f7fb0;--tan:#9a6b3c;--green:#2f8a4f;--yellow:#b88a00;}
+*{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:"Noto Sans TC","Microsoft JhengHei","PingFang TC",sans-serif;line-height:1.75;font-size:16px}
+main{max-width:860px;margin:0 auto;padding:24px 16px 60px}
+.cover{background:var(--board);color:#f3f0e6;border-radius:10px;padding:28px 28px 24px;margin-bottom:24px;background-image:radial-gradient(circle at 70% 20%,var(--board2),transparent 60%)}
+.cover .tag{font-size:13px;letter-spacing:.08em;color:#e9c96a}
+.cover h1{margin:6px 0 8px;font-size:32px;line-height:1.3}
+.cover .meta{font-size:14px;color:#cfd8cf}
+.cover .core{margin-top:16px;padding:12px 14px;border:1.5px solid #e9c96a;border-radius:8px;color:#fff6d8}
+h2{font-size:22px;color:var(--board);border-bottom:2px solid var(--board);padding-bottom:4px;margin:40px 0 14px;display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+h2 .no{color:var(--muted);font-size:15px;font-weight:normal}
+.toc{border:1px solid var(--line);border-radius:8px;padding:12px 18px;background:#fff}
+.toc ol{columns:2;margin:6px 0;padding-left:20px}
+.toc a{color:var(--board);text-decoration:none}
+.toc .t{color:var(--muted);font-size:13px;margin-left:6px}
+video{width:100%;border-radius:8px;background:#000;margin:18px 0 4px}
+.vnote{font-size:13px;color:var(--muted)}
+button.seek{font-size:13px;border:1px solid var(--board);background:#fff;color:var(--board);border-radius:14px;padding:1px 10px;cursor:pointer}
+button.seek:hover{background:var(--board);color:#fff}
+figure{margin:18px 0}
+figure img{width:100%;display:block;border-radius:6px;border:1px solid #1d3329}
+figcaption{display:flex;justify-content:space-between;gap:12px;font-size:13px;color:var(--muted);margin-top:4px}
+figcaption .ts{white-space:nowrap}
+p{margin:10px 0}
+.eq{margin:8px 0;overflow-x:auto}
+table{border-collapse:collapse;width:100%;margin:12px 0;background:#fff;font-size:15px}
+th,td{border:1px solid var(--line);padding:6px 10px;text-align:center}
+th{background:#eee8d9}
+td:first-child,th:first-child{white-space:nowrap}
+.key,.ok,.warn{border-radius:8px;padding:10px 14px;margin:14px 0;border-left:5px solid}
+.key{background:#fff7d6;border-color:#d4a600}
+.ok{background:#e6f4ea;border-color:var(--green)}
+.warn{background:#fdeaea;border-color:#c0392b}
+.key b:first-child,.ok b:first-child,.warn b:first-child{display:block;margin-bottom:2px}
+.src{font-size:12.5px;color:var(--muted);border-top:1px solid var(--line);margin-top:40px;padding-top:10px}
+.legend span{white-space:nowrap}
+@media (max-width:600px){.toc ol{columns:1}.cover h1{font-size:26px}figcaption{flex-direction:column;gap:0}}
+@media print{
+  @page{size:A4;margin:14mm}
+  body{background:#fff;font-size:11pt}
+  main{max-width:none;padding:0}
+  video,.vnote,button.seek{display:none}
+  figure,.key,.ok,.warn,table,.eq{break-inside:avoid}
+  h2{break-after:avoid}
+  figure img{width:80%;margin:0 auto}
+  .cover,.key,.ok,.warn,th{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+}
+</style>
+</head>
+<body>
+<main>
+
+<header class="cover">
+  <div class="tag">結構學（SA）・SA-U2-3-2・影片講義</div>
+  <h1>傾角變位法修正式</h1>
+  <div class="meta">影片長度 7:33 ・ 9 章 ・ 21 段 ・ 遠端鉸接／對稱／反對稱</div>
+  <div class="core">修正式的目的只有一個：先把已知條件代進去，消掉一個自由度，聯立方程式就少一條。<br>記住轉角勁度 <b>4・3・2・6</b>，修正式就不用死背。</div>
+</header>
+
+<nav class="toc">
+  <b>目錄</b>
+  <ol>
+    <li><a href="#c0">基本式</a><span class="t">0:00</span></li>
+    <li><a href="#c1">一、遠端鉸接</a><span class="t">0:38</span></li>
+    <li><a href="#c2">鉸接修正的四個結論</a><span class="t">1:40</span></li>
+    <li><a href="#c3">勁度比較</a><span class="t">3:09</span></li>
+    <li><a href="#c4">二、對稱</a><span class="t">4:01</span></li>
+    <li><a href="#c5">三、反對稱</a><span class="t">4:37</span></li>
+    <li><a href="#c6">取半結構</a><span class="t">5:39</span></li>
+    <li><a href="#c7">易錯點</a><span class="t">6:07</span></li>
+    <li><a href="#c8">總結</a><span class="t">7:01</span></li>
+  </ol>
+</nav>
+
+<video id="vid" controls preload="metadata" src="video/SA-concept-傾角變位法修正式.mp4"></video>
+<div class="vnote">點各章標題旁的 ▶ 可跳到影片對應位置。</div>
+
+<p class="legend" style="font-size:14px;color:var(--muted)">配色對應黑板：<span>\(\color{#c94f6d}\theta\)（轉角，粉紅）</span>、<span>\(\color{#2f7fb0}R\)（弦旋轉角，藍）</span>、<span>\(\color{#9a6b3c}M^F\)（固端彎矩，褐）</span>。</p>
+
+<!-- c0 -->
+<section id="c0">
+<h2><span class="no">0</span>基本式 <button class="seek" data-t="0">▶ 0:00</button></h2>
+<figure><img src="handout/img/s01.jpg" alt="標題與三種修正"><figcaption><span>三種修正：遠端鉸接、對稱、反對稱；目的：代入已知條件 → 消去一個自由度</span><span class="ts">影片 0:16</span></figcaption></figure>
+<p>這支影片整理傾角變位法的三種修正式：遠端鉸接、對稱、反對稱。修正式的目的只有一個：先把已知條件代進去，消掉一個自由度，聯立方程式就少一條。</p>
+<figure><img src="handout/img/s02.jpg" alt="基本式"><figcaption><span>AB 梁、式①②、\(K=EI/L\)、\(R=\Delta/L\)、順時針為正</span><span class="ts">影片 0:37</span></figcaption></figure>
+<p>先回顧基本式：</p>
+<div class="eq">$$M_{AB}=2K(2\tA+\tB-3\R)+\MF{AB}\tag{1}$$
+$$M_{BA}=2K(\tA+2\tB-3\R)+\MF{BA}\tag{2}$$</div>
+<p>\(K\) 是 \(EI\) 除以長度，\(\R\) 是 \(\Delta\) 除以長度，\(\theta\) 和 \(\R\) 都以順時針為正。</p>
+</section>
+
+<!-- c1 -->
+<section id="c1">
+<h2><span class="no">1</span>一、遠端鉸接 <button class="seek" data-t="38.37">▶ 0:38</button></h2>
+<figure><img src="handout/img/s03.jpg" alt="鉸接 MBA=0"><figcaption><span>B 端鉸支：\(M_{BA}=0\) → 式②＝0 → 解出 \(\theta_B\)</span><span class="ts">影片 0:57</span></figcaption></figure>
+<p>第一種，B 端是鉸接。鉸接不能傳彎矩，所以 \(M_{BA}=0\)。把式②設成零，就能把 \(\tB\) 用 \(\tA\) 和 \(\R\) 表示出來：</p>
+<div class="eq">$$\tB=-\tfrac12\tA+\tfrac32\R-\frac{1}{4K}\MF{BA}$$</div>
+<figure><img src="handout/img/s04.jpg" alt="代回式一"><figcaption><span>代回式①逐項整理；\(\theta_B\) 消去</span><span class="ts">影片 1:23</span></figcaption></figure>
+<p>把 \(\tB\) 代回式①：</p>
+<table>
+<tr><th>項目</th><th>整理</th></tr>
+<tr><td>轉角項</td><td>\(2\tA-\tfrac12\tA=1.5\tA\)</td></tr>
+<tr><td>R 項</td><td>\(-3\R+\tfrac32\R=-1.5\R\)</td></tr>
+<tr><td>固端彎矩</td><td>\(2K\cdot\left(-\tfrac{1}{4K}\MF{BA}\right)=-\tfrac12\MF{BA}\)</td></tr>
+</table>
+<p>修正式：</p>
+<div class="eq">$$M_{AB}=2K(1.5\tA-1.5\R)+\MF{AB}-\tfrac12\MF{BA}$$</div>
+<p>\(\tB\) 這個未知數被消掉了。</p>
+<figure><img src="handout/img/s05.jpg" alt="外加彎矩 M"><figcaption><span>鉸接端有外加彎矩：\(M_{BA}=M\) → 尾端多 \(+M/2\)</span><span class="ts">影片 1:40</span></figcaption></figure>
+<p>如果鉸接端還作用一個已知的外加彎矩 \(M\)，\(M_{BA}\) 就不是零而是 \(M\)。同樣代回，修正式後面再多一項 \(+\frac{M}{2}\)：</p>
+<div class="eq">$$M_{AB}=2K(1.5\tA-1.5\R)+\MF{AB}-\tfrac12\MF{BA}+\frac{M}{2}$$</div>
+<div class="key"><b>重點</b>只要遠端的彎矩是已知的，都可以用這一條。</div>
+</section>
+
+<!-- c2 -->
+<section id="c2">
+<h2><span class="no">2</span>鉸接修正的四個結論 <button class="seek" data-t="100.5">▶ 1:40</button></h2>
+<p>把修正式跟基本式比對（基本 \(2K(2\tA+\tB-3\R)\)；鉸接 \(2K(1.5\tA-1.5\R)\)），得到四個結論。</p>
+<table>
+<tr><th>結論</th><th>基本式</th><th>遠端鉸接</th><th>修正</th></tr>
+<tr><td>① 轉角勁度</td><td>\(4K\tA\)</td><td>\(3K\tA\)</td><td>\(\times\frac34\)</td></tr>
+<tr><td>② 桿端變位項</td><td>\(6K\R\)</td><td>\(3K\R\)</td><td>\(\times\frac12\)</td></tr>
+<tr><td>③ 傳遞係數</td><td>\(C=\frac12\)</td><td>\(C=0\)</td><td>外加 \(M\) 傳一半：\(+\frac M2\)</td></tr>
+<tr><td>④ 固端彎矩</td><td>\(\MF{AB}\)</td><td>\(\MF{AB}-\frac12\MF{BA}\)</td><td>反向傳一半</td></tr>
+</table>
+<figure><img src="handout/img/s07.jpg" alt="傳遞係數"><figcaption><span>傳遞係數：遠端固定 \(C=\tfrac12\)、遠端鉸接 \(C=0\)</span><span class="ts">影片 2:19</span></figcaption></figure>
+<p>第三，傳遞係數。遠端固定時，A 端轉一個單位，B 端會產生一半的彎矩（\(4EI/L\) → \(2EI/L\)），傳遞係數是 \(\frac12\)；遠端鉸接，B 端彎矩永遠是零，傳遞係數是零。反過來，外加彎矩 \(M\) 從 B 傳到 A，一樣傳一半，所以是 \(+\frac M2\)。</p>
+<figure><img src="handout/img/s08.jpg" alt="彎矩分配三步"><figcaption><span>彎矩分配三步：①鎖住 ②放開 B 加 \(-M_{BA}^F\) ③傳一半到 A</span><span class="ts">影片 2:39</span></figcaption></figure>
+<p>第四，固端彎矩反向傳一半。用彎矩分配法來看：</p>
+<ol>
+<li>先把兩端鎖住，得到兩個固端彎矩 \(\MF{AB}\)、\(\MF{BA}\)；</li>
+<li>再把 B 放開，B 端的鎖住力矩要反向加回去，也就是 \(-\MF{BA}\)；</li>
+<li>這個放鬆力矩傳一半到 A，就是 \(-\frac12\MF{BA}\)。</li>
+</ol>
+<figure><img src="handout/img/s09.jpg" alt="例題驗證"><figcaption><span>例題：A 固定、B 鉸支，均布載重 \(w\)</span><span class="ts">影片 3:08</span></figcaption></figure>
+<p>舉個例子驗證。A 固定、B 鉸接的梁，受均布載重 \(w\)：\(\MF{AB}=-\frac{wL^2}{12}\)，\(\MF{BA}=+\frac{wL^2}{12}\)。A 端不轉、沒有側移（\(\tA=0\)、\(\R=0\)）：</p>
+<div class="eq">$$M_{AB}=-\frac{wL^2}{12}-\frac12\cdot\frac{wL^2}{12}=-\frac{wL^2}{12}-\frac{wL^2}{24}=-\frac{wL^2}{8}$$</div>
+<div class="ok"><b>驗證</b>正好就是一端固定、一端鉸支梁熟悉的 \(wL^2/8\)。</div>
+</section>
+
+<!-- c3 -->
+<section id="c3">
+<h2><span class="no">3</span>勁度比較 <button class="seek" data-t="189.05">▶ 3:09</button></h2>
+<figure><img src="handout/img/s11.jpg" alt="勁度比較"><figcaption><span>上排轉角 \(\theta_A=1\)、下排側移 \(\Delta=1\)；左遠端固定、右遠端鉸接</span><span class="ts">影片 4:01</span></figcaption></figure>
+<p>用勁度的觀念再看一次。遠端固定，A 端轉一個單位：A 端彎矩 \(4EI/L\)，B 端 \(2EI/L\)，兩端剪力 \(6EI/L^2\)，口訣 4、2、6、6。遠端鉸接：A 端 3，B 端 0，兩端剪力都是 3，口訣 3、0、3、3。</p>
+<p>側移一個單位也一樣。兩端固定：兩端彎矩都是 \(6EI/L^2\)，剪力 \(12EI/L^3\)，6、6、12、12。遠端鉸接：只剩固定端有彎矩 \(3EI/L^2\)，剪力 \(3EI/L^3\)，又是 3、0、3、3。</p>
+<table>
+<tr><th>單位變形</th><th>遠端固定</th><th>遠端鉸接</th></tr>
+<tr><td>轉角 \(\theta_A=1\)</td><td>\(\frac{4EI}{L},\ \frac{2EI}{L}\)；剪力 \(\frac{6EI}{L^2}\)　<b>4-2-6-6</b></td><td>\(\frac{3EI}{L},\ 0\)；剪力 \(\frac{3EI}{L^2}\)　<b>3-0-3-3</b></td></tr>
+<tr><td>側移 \(\Delta=1\)</td><td>\(\frac{6EI}{L^2},\ \frac{6EI}{L^2}\)；剪力 \(\frac{12EI}{L^3}\)　<b>6-6-12-12</b></td><td>\(\frac{3EI}{L^2},\ 0\)；剪力 \(\frac{3EI}{L^3}\)　<b>3-0-3-3</b></td></tr>
+</table>
+<div class="key"><b>重點</b>鉸接讓桿件變軟，這就是 \(\frac34\) 和 \(\frac12\) 的來源。</div>
+</section>
+
+<!-- c4 -->
+<section id="c4">
+<h2><span class="no">4</span>二、對稱 <button class="seek" data-t="241.6">▶ 4:01</button></h2>
+<figure><img src="handout/img/s13.jpg" alt="對稱"><figcaption><span>對稱門型剛架：\(\theta_B=-\theta_A\)、\(M_{AB}=-M_{BA}\)</span><span class="ts">影片 4:37</span></figcaption></figure>
+<p>第二種修正：對稱。結構形式、勁度和荷重都對稱時，跨越對稱軸的那根梁，兩端轉角大小相等、方向相反：\(\tB=-\tA\)，\(M_{AB}=-M_{BA}\)。</p>
+<p>代進基本式：\(2\tA-\tA\)，只剩一個 \(\tA\)。</p>
+<div class="eq">$$M_{AB}=2K(2\tA-\tA-3\R)+\MF{AB}=2K(\tA-3\R)+\MF{AB}$$</div>
+<p>轉角勁度從 \(4K\) 變成 \(2K\)，修正 \(\frac12\)；桿端變位項 \(6K\R\) 不變；固端彎矩也不變。</p>
+</section>
+
+<!-- c5 -->
+<section id="c5">
+<h2><span class="no">5</span>三、反對稱 <button class="seek" data-t="277.82">▶ 4:37</button></h2>
+<figure><img src="handout/img/s15.jpg" alt="反對稱"><figcaption><span>反對稱門型剛架（側向力 \(P/2\)、\(P/2\)），梁彎成 S 形</span><span class="ts">影片 5:13</span></figcaption></figure>
+<p>第三種：反對稱。結構和勁度對稱，荷重大小相等、方向相反，例如門型剛架受側向力。這時梁兩端轉角相同：\(\tB=\tA\)，\(M_{AB}=M_{BA}\)。</p>
+<p>代進去：\(2\tA+\tA=3\tA\)。</p>
+<div class="eq">$$M_{AB}=2K(2\tA+\tA-3\R)+\MF{AB}=2K(3\tA-3\R)+\MF{AB}$$</div>
+<p>轉角勁度從 \(4K\) 變成 \(6K\)，修正 \(\frac32\)；桿端變位項和固端彎矩一樣不變。</p>
+<figure><img src="handout/img/s16.jpg" alt="單曲率與雙曲率"><figcaption><span>單曲率（遠端反向轉，較軟）｜雙曲率 S 形（遠端同向轉，較硬）</span><span class="ts">影片 5:39</span></figcaption></figure>
+<p>為什麼對稱變軟、反對稱變硬？</p>
+<table>
+<tr><th></th><th>對稱</th><th>反對稱</th></tr>
+<tr><td>變形</td><td>單曲率</td><td>雙曲率（S 形）</td></tr>
+<tr><td>遠端轉向</td><td>反向轉，等於在幫近端放鬆</td><td>同向轉，要轉同樣的角度得出更大的力</td></tr>
+<tr><td>轉角勁度</td><td>\(2K\)（\(\times\frac12\)）較軟</td><td>\(6K\)（\(\times\frac32\)）較硬</td></tr>
+</table>
+<div class="key"><b>重點</b>兩種情況的傳遞係數都是零，因為遠端轉角已經被近端綁住，不再是獨立的未知數。</div>
+</section>
+
+<!-- c6 -->
+<section id="c6">
+<h2><span class="no">6</span>取半結構 <button class="seek" data-t="339.52">▶ 5:39</button></h2>
+<figure><img src="handout/img/s17.jpg" alt="取半結構"><figcaption><span>對稱軸 → 導向支承；反對稱軸 → 滾支承</span><span class="ts">影片 6:06</span></figcaption></figure>
+<p>這兩個修正式配合對稱軸的特性，就能只取一半結構分析。</p>
+<table>
+<tr><th></th><th>對稱軸</th><th>反對稱軸</th></tr>
+<tr><td>軸上特性</td><td>剪力 \(V=0\)、轉角 \(\theta=0\)、沒有側移</td><td>沒有垂直變位、軸力 \(N=0\)、彎矩 \(M=0\)</td></tr>
+<tr><td>換成</td><td>導向支承</td><td>滾支承</td></tr>
+<tr><td>軸上集中載重</td><td>集中力 \(P\) → 每邊 \(\frac P2\)</td><td>集中彎矩 \(M\) → 每邊 \(\frac M2\)</td></tr>
+</table>
+</section>
+
+<!-- c7 -->
+<section id="c7">
+<h2><span class="no">7</span>易錯點 <button class="seek" data-t="367.28">▶ 6:07</button></h2>
+<p>三個常見錯誤。</p>
+<figure><img src="handout/img/s19.jpg" alt="易錯一、二"><figcaption><span>易錯①遠端鉸接忘了改 R 項；易錯②固端彎矩修正項的正負號</span><span class="ts">影片 6:40</span></figcaption></figure>
+<div class="warn"><b>易錯①　遠端鉸接只改了勁度，忘了改 R 項</b>還寫 \(6K\R\)（\(2K(1.5\tA-3\R)\)）是錯的。正確是 \(2K(1.5\tA-1.5\R)\)，\(2K\times1.5\R=3K\R\)。</div>
+<div class="warn"><b>易錯②　固端彎矩修正項的正負號</b>是 \(-\frac12\MF{BA}\)，要帶著 \(\MF{BA}\) 自己的正負號代進去。剛才的均布載重，\(\MF{BA}\) 是正的，減完變 \(-\frac18\)：
+$$-\tfrac1{12}-\tfrac12\left(+\tfrac1{12}\right)=-\tfrac18\quad(\times wL^2)\ \checkmark$$
+如果符號弄反，會算出 \(-\frac1{12}+\frac1{24}=-\frac1{24}\)，差了三倍。</div>
+<figure><img src="handout/img/s20.jpg" alt="易錯三與課本筆誤"><figcaption><span>易錯③對稱／反對稱只修正轉角項；課本重點回顧筆誤</span><span class="ts">影片 7:01</span></figcaption></figure>
+<div class="warn"><b>易錯③　對稱與反對稱只修正轉角項</b>桿端變位造成的彎矩仍然是 \(\frac{6EI}{L}\R=6K\R\)，沒有修正。</div>
+<div class="ok"><b>課本筆誤</b>課本重點回顧把遠端鉸接式印成 \(1.5\theta_B\)，那是筆誤：消掉的是 B，留下的是近端 A，應該是 \(1.5\tA\)。</div>
+</section>
+
+<!-- c8 -->
+<section id="c8">
+<h2><span class="no">8</span>總結 <button class="seek" data-t="421.85">▶ 7:01</button></h2>
+<figure><img src="handout/img/s21.jpg" alt="總表"><figcaption><span>總表：轉角勁度 4K／3K／2K／6K；口訣 4・3・2・6</span><span class="ts">影片 7:31</span></figcaption></figure>
+<p>整理一下。基本式的轉角勁度是 \(4K\)。</p>
+<table>
+<tr><th></th><th>轉角勁度</th><th>R 項</th><th>固端彎矩</th></tr>
+<tr><td>基本式</td><td>\(4K\)</td><td>\(6K\R\)</td><td>\(\MF{AB}\)</td></tr>
+<tr><td>一、遠端鉸接</td><td>\(3K\)</td><td>\(3K\R\)</td><td>\(-\frac12\MF{BA}\)（外加彎矩 \(+\frac M2\)）</td></tr>
+<tr><td>二、對稱</td><td>\(2K\)</td><td>\(6K\R\)</td><td>不變</td></tr>
+<tr><td>三、反對稱</td><td>\(6K\)</td><td>\(6K\R\)</td><td>不變</td></tr>
+</table>
+<div class="key"><b>口訣　4・3・2・6</b>第一，遠端鉸接，四變三，R 項六變三，固端彎矩減 \(\frac12\MF{BA}\)，外加彎矩加 \(\frac M2\)。第二，對稱，四變二。第三，反對稱，四變六，這兩種的 R 項和固端彎矩都不變。記住四、三、二、六，修正式就不用死背。</div>
+</section>
+
+<div class="src">來源：<code>video/SA-concept-傾角變位法修正式.mp4</code>（7:33）、<code>video/segments.py</code>（逐字旁白，21 段）、<code>video/SA-concept-傾角變位法修正式.srt</code>；黑板圖為各段結束前 0.5 秒截圖。例題數值已對照 <code>video/HANDOFF.md</code> 複算。</div>
+</main>
+<script>
+document.querySelectorAll('button.seek').forEach(b=>b.addEventListener('click',()=>{
+  const v=document.getElementById('vid'); v.currentTime=parseFloat(b.dataset.t); v.play(); v.scrollIntoView({behavior:'smooth',block:'center'});
+}));
+document.addEventListener('DOMContentLoaded',()=>{
+  if(!window.renderMathInElement) return;
+  renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'\\(',right:'\\)',display:false}],
+    throwOnError:false,
+    macros:{'\\tA':'{\\color{#c94f6d}\\theta_A}','\\tB':'{\\color{#c94f6d}\\theta_B}','\\R':'{\\color{#2f7fb0}R}','\\MF':'{\\color{##9a6b3c}M_{#1}^F}'}});
+});
+</script>
+</body>
+</html>

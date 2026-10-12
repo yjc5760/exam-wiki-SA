@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SA-U2-4 單元五 靜態凝縮與全景 SOP — 影片講義</title>
+<link rel="stylesheet" href="../../study/assets/katex/katex.min.css">
+<script defer src="../../study/assets/katex/katex.min.js"></script>
+<script defer src="../../study/assets/katex/auto-render.min.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+  renderMathInElement(document.body, {
+    delimiters: [{left: '$$', right: '$$', display: true}, {left: '\\(', right: '\\)', display: false}],
+    throwOnError: false
+  });
+  var v = document.getElementById('vid');
+  document.querySelectorAll('.seek').forEach(function (b) {
+    b.addEventListener('click', function () {
+      v.currentTime = parseFloat(b.dataset.t);
+      v.scrollIntoView({behavior: 'smooth', block: 'center'});
+      v.play();
+    });
+  });
+});
+</script>
+<style>
+:root{--board:#2b3f35;--board2:#34493f;--paper:#faf7ef;--ink:#222;--muted:#666;--chalk:#f0e6c8;--yellow:#e8c95a;--line:#d8d2c2;}
+*{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:"Noto Sans TC","Microsoft JhengHei","PingFang TC",sans-serif;line-height:1.75;font-size:16px}
+.wrap{max-width:860px;margin:0 auto;padding:24px 16px 48px}
+.cover{background:var(--board);color:var(--chalk);border-radius:10px;padding:28px 28px 22px;margin-bottom:22px}
+.cover .tag{font-size:14px;letter-spacing:.06em;color:#b9cbbf}
+.cover h1{margin:6px 0 8px;font-size:28px;color:var(--yellow);line-height:1.35}
+.cover .meta{font-size:14px;color:#cfd8cf}
+.cover .core{margin-top:14px;padding:12px 14px;border:1px solid #6d8a78;border-radius:6px;background:var(--board2)}
+nav.toc{border:1px solid var(--line);border-radius:8px;padding:12px 18px;margin-bottom:20px;background:#fff}
+nav.toc h3{margin:0 0 6px;font-size:16px}
+nav.toc ol{margin:0;padding-left:22px;columns:2;column-gap:28px}
+nav.toc li{break-inside:avoid}
+nav.toc a{color:var(--board);text-decoration:none}
+nav.toc .t{color:var(--muted);font-size:13px;margin-left:6px}
+video{width:100%;border-radius:8px;background:#000;margin-bottom:8px}
+.vnote{font-size:13px;color:var(--muted);margin:0 0 22px}
+section{margin:30px 0}
+h2{font-size:22px;border-left:6px solid var(--board);padding-left:10px;margin:0 0 12px;display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+h2 .no{color:var(--board)}
+.seek{font-size:13px;border:1px solid var(--board);background:#fff;color:var(--board);border-radius:14px;padding:2px 10px;cursor:pointer;font-family:inherit}
+.seek:hover{background:var(--board);color:#fff}
+figure{margin:16px 0}
+figure img{width:100%;border-radius:6px;display:block;border:1px solid #1e2d26}
+figcaption{display:flex;justify-content:space-between;gap:12px;font-size:13px;color:var(--muted);margin-top:4px}
+figcaption .ts{white-space:nowrap}
+p{margin:8px 0}
+.key,.warn,.ok{border-radius:6px;padding:10px 14px;margin:12px 0}
+.key{background:#fff7d6;border-left:5px solid #d6a800}
+.warn{background:#fdecec;border-left:5px solid #d04545}
+.ok{background:#e9f6ec;border-left:5px solid #3c9a5a}
+.key b,.warn b,.ok b{display:block;margin-bottom:2px}
+table{border-collapse:collapse;width:100%;margin:12px 0;font-size:15px;background:#fff}
+th,td{border:1px solid var(--line);padding:6px 10px;text-align:left;vertical-align:top}
+th{background:#eef2ee}
+td:first-child,th:first-child{white-space:nowrap}
+.src{font-size:12px;color:var(--muted);border-top:1px solid var(--line);margin-top:36px;padding-top:10px}
+.katex-display{margin:.6em 0;overflow-x:auto;overflow-y:hidden}
+@media (max-width:600px){nav.toc ol{columns:1}.cover h1{font-size:23px}}
+@media print{
+  @page{size:A4;margin:14mm 14mm 16mm}
+  body{background:#fff;font-size:12.5pt}
+  .wrap{max-width:none;padding:0}
+  video,.vnote,.seek{display:none}
+  figure,.key,.warn,.ok,table,.katex-display{break-inside:avoid}
+  h2{break-after:avoid}
+  figure img{width:80%;margin:0 auto}
+  figcaption{width:80%;margin:4px auto 0}
+  .cover,figure img{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header class="cover">
+  <div class="tag">結構學 SA ｜ SA-U2-4 靜不定結構之矩陣分析法 ｜ 影片講義</div>
+  <h1>單元五：靜態凝縮與全景 SOP 實戰</h1>
+  <div class="meta">影片長度 8:04 ・ 7 章 ・ 23 段</div>
+  <div class="core">靜態凝縮＝先解被消掉的自由度、再代回——矩陣變小，答案完全不失真；勁度一定變小（讓步＝抵抗變小）。進考場照 6 步驟走、交卷前做 3 個獨立檢查。</div>
+</header>
+
+<nav class="toc">
+  <h3>目錄</h3>
+  <ol>
+    <li><a href="#c0">開場</a><span class="t">0:00</span></li>
+    <li><a href="#c1">讓步＝抵抗變小</a><span class="t">0:19</span></li>
+    <li><a href="#c2">Schur 補式與例題④</a><span class="t">1:19</span></li>
+    <li><a href="#c3">考場 6 步驟 SOP</a><span class="t">3:41</span></li>
+    <li><a href="#c4">門型剛架實戰</a><span class="t">4:57</span></li>
+    <li><a href="#c5">三大獨立檢查</a><span class="t">6:51</span></li>
+    <li><a href="#c6">總結</a><span class="t">7:32</span></li>
+  </ol>
+</nav>
+
+<video id="vid" controls preload="metadata" src="video/SA-U2-4-U5.mp4"></video>
+<p class="vnote">點各章標題旁的 ▶ 按鈕可直接跳到影片對應位置。</p>
+
+<!-- ── c0 ── -->
+<section id="c0">
+  <h2><span class="no">0</span> 開場 <button class="seek" data-t="0">▶ 0:00</button></h2>
+  <figure>
+    <img src="handout/img/s01.jpg" alt="開場黑板：靜態凝縮與 6 步驟＋3 檢查">
+    <figcaption><span>兩張卡片：①靜態凝縮（大矩陣→小矩陣）②6 步驟＋3 檢查</span><span class="ts">影片 0:19</span></figcaption>
+  </figure>
+  <p>矩陣分析法的最後一個單元：靜態凝縮與全景 SOP。</p>
+  <p>第一，<b>靜態凝縮</b>：把沒有外力的自由度乾淨地消掉，矩陣變小，答案完全不失真。第二，<b>考場六個標準動作，加上三個獨立檢查</b>。</p>
+</section>
+
+<!-- ── c1 ── -->
+<section id="c1">
+  <h2><span class="no">1</span> 讓步＝抵抗變小 <button class="seek" data-t="19.38">▶ 0:19</button></h2>
+  <p>先建立物理直覺。勁度，是在<b>其他自由度全部鎖死</b>的前提下量出來的。近端轉一個單位角；遠端固接、不准動，就產生傳遞彎矩 \(2EI/L\)，近端要撐住 \(4EI/L\)。</p>
+  <figure>
+    <img src="handout/img/s03.jpg" alt="遠端固接與遠端鉸接對照">
+    <figcaption><span>上：遠端固接（白）；下：遠端鉸接（橘）會自己轉到平衡位置——讓步</span><span class="ts">影片 0:57</span></figcaption>
+  </figure>
+  <p>如果遠端是鉸接，遠端會自己轉到平衡位置，這就是<b>讓步</b>，近端只要撐住 \(3EI/L\)：</p>
+  $$\frac{4EI}{L}-\frac{(2EI/L)^2}{4EI/L}=\frac{3EI}{L}$$
+  <p>抗轉勁度掉了 25%。</p>
+  <figure>
+    <img src="handout/img/s04.jpg" alt="抗轉與抗平移勁度降幅長條圖">
+    <figcaption><span>長條圖：遠端固接（灰）vs 遠端鉸接（橘）</span><span class="ts">影片 1:19</span></figcaption>
+  </figure>
+  <table>
+    <tr><th>勁度</th><th>遠端固接</th><th>遠端鉸接</th><th>降幅</th></tr>
+    <tr><td>抗轉</td><td>\(4EI/L\)</td><td>\(3EI/L\)</td><td>−25%</td></tr>
+    <tr><td>抗平移</td><td>\(12EI/L^3\)</td><td>\(3EI/L^3\)</td><td>−75%</td></tr>
+  </table>
+  <div class="key"><b>請記住：靜態凝縮不是近似法</b>它只是先解被消掉的自由度、再代回，位移和內力與直接解大矩陣完全相同。</div>
+</section>
+
+<!-- ── c2 ── -->
+<section id="c2">
+  <h2><span class="no">2</span> Schur 補式與例題④ <button class="seek" data-t="79.73">▶ 1:19</button></h2>
+  <figure>
+    <img src="handout/img/s05.jpg" alt="自由度分兩群與分塊矩陣">
+    <figcaption><span>a 群（綠）保留、b 群（藍）消去；勁度矩陣切成四塊</span><span class="ts">影片 1:38</span></figcaption>
+  </figure>
+  <p>代數上怎麼做？把自由度分成兩群：<b style="color:#3c9a5a">a 群</b>是想保留的，通常有外力；<b style="color:#3a7fc0">b 群</b>是想消掉的，上面沒有外力，或只有固端力。把勁度矩陣切成四塊：\(K_{aa}\)、\(K_{ab}\)、\(K_{ba}\)、\(K_{bb}\)。</p>
+  $$\begin{bmatrix}\color{#3c9a5a}{K_{aa}} & K_{ab}\\ K_{ba} & \color{#3a7fc0}{K_{bb}}\end{bmatrix}\begin{Bmatrix}D_a\\ D_b\end{Bmatrix}=\begin{Bmatrix}P_a\\ P_b\end{Bmatrix}$$
+
+  <p><b>第一條，凝縮後的勁度</b>（Schur 補式）：</p>
+  $$[K^*]=K_{aa}-K_{ab}K_{bb}^{-1}K_{ba}$$
+  <p>減掉的那一項恆為正半定，所以 \(K^*\) 一定小於等於 \(K_{aa}\)：</p>
+  $$K_{ab}K_{bb}^{-1}K_{ba}\succeq 0\;(\text{正半定})\;\Rightarrow\;K^*\le K_{aa}$$
+  <div class="key"><b>代數上嚴格證明了</b>讓步，等於抵抗變小。<span style="float:right;color:#666;font-size:13px">影片 1:59</span></div>
+
+  <figure>
+    <img src="handout/img/s07.jpg" alt="凝縮勁度與凝縮載重">
+    <figcaption><span>②凝縮載重與「修正固端彎矩」的等價關係（藍字）</span><span class="ts">影片 2:19</span></figcaption>
+  </figure>
+  <p><b>第二條，凝縮後的載重</b>：</p>
+  $$\{P^*\}=P_a-K_{ab}K_{bb}^{-1}P_b$$
+  <p>b 群有固端力時，載重要跟著改；這一項正好等價於修正固端彎矩：</p>
+  $$\bar M^F=M^F_{ij}-\tfrac12 M^F_{ji}$$
+
+  <figure>
+    <img src="handout/img/s08.jpg" alt="三條公式與回代陷阱">
+    <figcaption><span>③回代 \(D_b\)；紅字為失分陷阱</span><span class="ts">影片 2:37</span></figcaption>
+  </figure>
+  <p><b>第三條</b>，解出 \(D_a\) 之後，回代求 \(D_b\)：</p>
+  $$\{D_b\}=K_{bb}^{-1}\left(P_b-K_{ba}\{D_a\}\right)$$
+  <div class="warn"><b>失分陷阱</b>忘了回代，被消掉那一區的桿端內力，就會整段漏算。</div>
+
+  <figure>
+    <img src="handout/img/s10.jpg" alt="例題④兩跨連續梁與 K*、P*">
+    <figcaption><span>例題④（承例題③）：θ<sub>B</sub> 保留（a）、θ<sub>C</sub> 凝縮（b）</span><span class="ts">影片 3:19</span></figcaption>
+  </figure>
+  <p><b>看例題四。</b>兩跨連續梁，A 固定、B 和 C 是滾支承；AB 跨 6 m，每米 24 kN；BC 跨 8 m，中央集中力 40 kN。自由度是 B 點轉角和 C 點轉角；C 點沒有外加彎矩，把它凝縮掉。</p>
+  $$K^*=1.1667-\frac{0.25^2}{0.5}=1.0417\,EI\;=\;\color{#d9822b}{\frac{4EI}{6}+\frac{3EI}{8}}$$
+  <p>拆開看，就是 \(4EI/6\) 加 \(3EI/8\)，正是<span style="color:#d9822b">遠端鉸接的修正式</span>。載重：</p>
+  $$P^*=32-\frac{0.25}{0.5}\times 40=12$$
+
+  <figure>
+    <img src="handout/img/s11.jpg" alt="例題④解出 θB、回代 θC">
+    <figcaption><span>EIθ<sub>B</sub>、EIθ<sub>C</sub> 皆與 2 自由度直解相同</span><span class="ts">影片 3:40</span></figcaption>
+  </figure>
+  $$EI\theta_B=\frac{12}{1.0417}=11.52\qquad EI\theta_C=\frac{40-0.25\times 11.52}{0.5}=74.24$$
+  <div class="ok"><b>✓ 兩條路線、同一個答案</b>\(EI\theta_B=11.52\) 和兩個自由度直接解完全相同；回代 C 點 \(EI\theta_C=74.24\) 也完全相同——這就是降維不失真。</div>
+</section>
+
+<!-- ── c3 ── -->
+<section id="c3">
+  <h2><span class="no">3</span> 考場 6 步驟 SOP <button class="seek" data-t="221.17">▶ 3:41</button></h2>
+  <p>接下來看全景。整個矩陣分析法，就是：</p>
+  <div class="key"><b>做 n 場單位位移實驗 → 排成一張表 → 解一次聯立</b>進考場，照六個標準動作走。<span style="float:right;color:#666;font-size:13px">影片 3:54</span></div>
+
+  <figure>
+    <img src="handout/img/s13.jpg" alt="步驟 1、2">
+    <figcaption><span>步驟 1 自由度盤點、步驟 2 逐元素勁度（行列旁標整體編號）</span><span class="ts">影片 4:16</span></figcaption>
+  </figure>
+  <figure>
+    <img src="handout/img/s14.jpg" alt="步驟 3、4">
+    <figcaption><span>步驟 3 組裝 [K]（10 秒自檢）、步驟 4 載重向量</span><span class="ts">影片 4:36</span></figcaption>
+  </figure>
+  <figure>
+    <img src="handout/img/s15.jpg" alt="步驟 5、6">
+    <figcaption><span>步驟 5 求解位移（先 Schur 凝縮）、步驟 6 回代內力</span><span class="ts">影片 4:56</span></figcaption>
+  </figure>
+  <table>
+    <tr><th>步驟</th><th>內容（旁白）</th></tr>
+    <tr><td>① 自由度盤點與編號</td><td>平面節點預設 \(u、v、\theta\) 三個，扣掉支承；忽略軸向變形，就把同一層的水平位移合併成一個側移 \(\Delta\)。</td></tr>
+    <tr><td>② 逐元素算勁度</td><td>梁 4×4、桁架 2×2，行列旁標上整體編號。</td></tr>
+    <tr><td>③ 組裝 [K]</td><td>對號入座相加。十秒自檢：對角線恆為正，非對角線對稱——\(K_{ii}>0,\;K_{ij}=K_{ji}\)。</td></tr>
+    <tr><td>④ 載重向量</td><td>跨間載重、沉陷、溫差，先鎖住算固端力，再反號：\(\{P\}=\{P_{ext}\}-\{f_F\}\)。</td></tr>
+    <tr><td>⑤ 求解位移</td><td>自由度多、又有沒外力的自由度，先用 Schur 補式凝縮，再求解：\(\{D\}=[K]^{-1}\{P\}\)。</td></tr>
+    <tr><td>⑥ 回代內力</td><td>真實內力等於 \(k\cdot d\)，再加上 \(f_F\)：\(\{f\}=[k]\{d\}+\{f_F\}\)。</td></tr>
+  </table>
+  <div class="warn"><b>跨間有載重時</b>\(f_F\) 絕對不能漏加。</div>
+</section>
+
+<!-- ── c4 ── -->
+<section id="c4">
+  <h2><span class="no">4</span> 門型剛架實戰 <button class="seek" data-t="297.12">▶ 4:57</button></h2>
+  <figure>
+    <img src="handout/img/s16.jpg" alt="門型剛架題目">
+    <figcaption><span>題目：柱 4 m、梁 6 m、兩柱底固定、等 EI，B 點水平力 P = 60 kN</span><span class="ts">影片 5:20</span></figcaption>
+  </figure>
+  <p>實戰：門型剛架。柱高 4 m、梁長 6 m、兩柱底固定、EI 相同，B 點受水平力 60 kN。忽略軸向變形：柱不縮短 \((v_B=v_C=0)\)、梁不伸長 \((u_B=u_C=\Delta)\)，B、C 兩點水平位移相同。只剩<b>三個自由度</b>：① B 點轉角 \(\theta_B\)、② C 點轉角 \(\theta_C\)、③ 側移 \(\Delta\)。</p>
+
+  <figure>
+    <img src="handout/img/s17.jpg" alt="實驗①②">
+    <figcaption><span>實驗① θ<sub>B</sub>=1（其餘鎖死，橘）；實驗②鏡像（藍）</span><span class="ts">影片 5:45</span></figcaption>
+  </figure>
+  <p>三場單位位移實驗。<b>第一場</b>，B 點轉一個單位、其餘鎖死：</p>
+  $$\begin{aligned}K_{11}&=\frac{4EI}{4}+\frac{4EI}{6}=1.667\,EI\\ K_{21}&=\frac{2EI}{6}=0.333\,EI\\ K_{31}&=\frac{6EI}{h^2}=0.375\,EI\end{aligned}$$
+  <p>左柱 \(4EI/4\) 加梁 \(4EI/6\)；梁傳到 C 點得 \(K_{21}\)；柱的側向耦合 \(6EI/h^2\)。<b>第二場</b>是鏡像，數字對調：\(K_{22}=1.667,\;K_{12}=0.333,\;K_{32}=0.375\)。</p>
+
+  <figure>
+    <img src="handout/img/s18.jpg" alt="實驗③與 3×3 矩陣">
+    <figcaption><span>實驗③ Δ=1（兩個轉角鎖死）；3×3 矩陣與載重向量</span><span class="ts">影片 6:05</span></figcaption>
+  </figure>
+  <p><b>第三場</b>，側移一個單位、兩個轉角鎖死：兩根柱的抗平移勁度相加，</p>
+  $$K_{33}=2\times\frac{12EI}{h^3}=0.375\,EI$$
+  <p>3×3 矩陣排好，載重向量只有側移那一列有外力：0、0、60。</p>
+  $$EI\begin{bmatrix}1.667&0.333&0.375\\0.333&1.667&0.375\\0.375&0.375&0.375\end{bmatrix}\begin{Bmatrix}\theta_B\\ \theta_C\\ \Delta\end{Bmatrix}=\begin{Bmatrix}0\\0\\60\end{Bmatrix}$$
+
+  <figure>
+    <img src="handout/img/s19.jpg" alt="凝縮得側向勁度">
+    <figcaption><span>凝縮兩個轉角 → 側向勁度；黃框為解答</span><span class="ts">影片 6:31</span></figcaption>
+  </figure>
+  <p>把兩個轉角凝縮掉，直接得到側向勁度：</p>
+  $$\begin{aligned}k_{lat}&=K_{33}-K_{3a}K_{aa}^{-1}K_{a3}\\&=0.375-0.140625=0.234375\,EI\\&=\frac{15EI}{h^3}\;<\;\frac{24EI}{h^3}\end{aligned}$$
+  <div class="key"><b>比節點不轉時的 \(24EI/h^3\) 小</b>因為節點會轉、讓步了。</div>
+  $$EI\Delta=256,\qquad EI\theta_B=EI\theta_C=-48$$
+
+  <figure>
+    <img src="handout/img/s20.jpg" alt="彎矩圖與反曲點">
+    <figcaption><span>彎矩圖（粉紅）、反曲點（黃點）</span><span class="ts">影片 6:51</span></figcaption>
+  </figure>
+  <p>回代桿端彎矩，逆時針為正（kN·m）：</p>
+  <table>
+    <tr><th>位置</th><th>桿端彎矩</th></tr>
+    <tr><td>柱底</td><td>\(M_{AB}=M_{DC}=72\)</td></tr>
+    <tr><td>柱頂</td><td>\(M_{BA}=M_{CD}=48\)</td></tr>
+    <tr><td>梁端</td><td>\(M_{BC}=M_{CB}=-48\)</td></tr>
+  </table>
+  <p>柱兩端同號，代表<b>雙曲率</b>，反曲點距柱底 2.4 m。柱剪力：</p>
+  $$V=\frac{72+48}{4}=30\ \text{kN}$$
+</section>
+
+<!-- ── c5 ── -->
+<section id="c5">
+  <h2><span class="no">5</span> 三大獨立檢查 <button class="seek" data-t="411.92">▶ 6:51</button></h2>
+  <figure>
+    <img src="handout/img/s22.jpg" alt="三個獨立檢查">
+    <figcaption><span>交卷前 1 分鐘：三個不依賴矩陣過程的獨立檢查</span><span class="ts">影片 7:32</span></figcaption>
+  </figure>
+  <p>交卷前花一分鐘，做三個不依賴矩陣過程的獨立檢查。</p>
+  <div class="ok"><b>✓ 第一，節點平衡</b>\(\Sigma M_B=0\)：B 點柱端 48，加梁端 −48，等於零——\(48+(-48)=0\)。</div>
+  <div class="ok"><b>✓ 第二，整體平衡</b>\(\Sigma F_x=0\)：兩根柱底剪力 \(30+30=60=P\)，等於外力。</div>
+  <div class="ok"><b>✓ 第三，方向與剛體檢查</b>外力作功 \(\tfrac12\{P\}^T\{D\}>0\)：力往右推，位移也要往右，否則就是符號錯了。另外，未扣支承的勁度矩陣乘上剛體位移，必須全為零——\([K]\{d_{rigid}\}=\{0\}\)；不是零，就是矩陣組錯了。</div>
+</section>
+
+<!-- ── c6 ── -->
+<section id="c6">
+  <h2><span class="no">6</span> 總結 <button class="seek" data-t="452.35">▶ 7:32</button></h2>
+  <figure>
+    <img src="handout/img/s23.jpg" alt="總結四點">
+    <figcaption><span>四點總結與門型剛架答案</span><span class="ts">影片 8:03</span></figcaption>
+  </figure>
+  <ol>
+    <li>靜態凝縮是先解再代回，不是近似，勁度一定變小。</li>
+    <li>\(K^*\)、\(P^*\) 之後，別忘了回代 \(D_b\)。</li>
+    <li>六步驟：盤點 → 元素 → 組裝 → 載重 → 求解 → 回代。</li>
+    <li>三個檢查（節點、整體、方向／剛體）全過再交卷。</li>
+  </ol>
+  <div class="key"><b>門型剛架答案</b>\(EI\Delta=256\)，柱底彎矩 \(M=72\ \text{kN}\cdot\text{m}\)。</div>
+</section>
+
+<div class="src">
+來源：<code>video/SA-U2-4-U5.mp4</code>（黑板畫面截圖）、<code>video/segments.py</code>（逐字旁白）、<code>video/SA-U2-4-U5.srt</code>（時間軸）。例題數值已與 <code>video/HANDOFF.md</code> 核對。門型剛架側向勁度依影片勘誤為 \(15EI/h^3\)。
+</div>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SA-U2-1-3 虛擬量法與連續梁 — 影片講義</title>
+<link rel="stylesheet" href="../../study/assets/katex/katex.min.css">
+<script defer src="../../study/assets/katex/katex.min.js"></script>
+<script defer src="../../study/assets/katex/auto-render.min.js"></script>
+<style>
+:root{--paper:#faf7f0;--ink:#24302a;--board:#2b4a3c;--board2:#1f3a2e;--chalk:#f3e6a8;--muted:#6b756f;--line:#d9d3c3;
+  --warn:#c0392b;--warnbg:#fbeceb;--ok:#2e7d4f;--okbg:#e9f5ee;--key:#b8860b;--keybg:#fdf6dc;--blue:#2f6f9f;}
+*{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:"Noto Sans TC","Microsoft JhengHei","PingFang TC",sans-serif;line-height:1.75;font-size:16px}
+main{max-width:860px;margin:0 auto;padding:24px 18px 60px}
+.cover{background:linear-gradient(135deg,var(--board),var(--board2));color:#f4f1e8;border-radius:14px;padding:30px 28px;margin-bottom:22px}
+.cover .tag{color:var(--chalk);font-size:14px;letter-spacing:.06em}
+.cover h1{margin:8px 0 6px;font-size:28px;line-height:1.35}
+.cover .meta{font-size:14px;opacity:.85}
+.cover .core{margin-top:16px;padding:12px 16px;border:1.5px solid var(--chalk);border-radius:8px;color:var(--chalk);font-size:17px}
+.toc{border:1px solid var(--line);border-radius:10px;padding:14px 18px;background:#fff;margin-bottom:20px}
+.toc h3{margin:0 0 6px;font-size:16px}
+.toc ol{margin:0;padding-left:22px;columns:2;column-gap:28px}
+.toc li{break-inside:avoid}
+.toc a{color:var(--ink);text-decoration:none}.toc a:hover{text-decoration:underline}
+.toc .t{color:var(--muted);font-size:13px;margin-left:6px;font-variant-numeric:tabular-nums}
+video{width:100%;border-radius:10px;background:#000;margin-bottom:8px}
+.vnote{font-size:13px;color:var(--muted);margin:0 0 18px}
+section{margin-top:34px}
+h2{font-size:22px;border-bottom:3px solid var(--board);padding-bottom:6px;display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+h2 .no{background:var(--board);color:var(--chalk);border-radius:6px;padding:0 9px;font-size:16px}
+h3{font-size:17px;margin:22px 0 6px;color:var(--board)}
+.seek{margin-left:auto;font-size:13px;border:1px solid var(--board);background:#fff;color:var(--board);border-radius:999px;padding:2px 12px;cursor:pointer;font-family:inherit}
+.seek:hover{background:var(--board);color:#fff}
+figure{margin:16px 0;background:#fff;border:1px solid var(--line);border-radius:10px;padding:8px}
+figure img{width:100%;display:block;border-radius:6px}
+figcaption{display:flex;justify-content:space-between;gap:12px;font-size:13px;color:var(--muted);padding:6px 4px 0}
+figcaption .tm{white-space:nowrap;font-variant-numeric:tabular-nums}
+.box{border-left:5px solid;border-radius:6px;padding:10px 14px;margin:14px 0}
+.box .h{font-weight:700;margin-bottom:2px}
+.warn{border-color:var(--warn);background:var(--warnbg)}.warn .h{color:var(--warn)}
+.ok{border-color:var(--ok);background:var(--okbg)}.ok .h{color:var(--ok)}
+.key{border-color:var(--key);background:var(--keybg)}.key .h{color:#8a6508}
+.box .tm{float:right;font-size:12px;color:var(--muted)}
+table{border-collapse:collapse;width:100%;margin:12px 0;font-size:15px;background:#fff}
+th,td{border:1px solid var(--line);padding:6px 9px;text-align:left;vertical-align:top}
+th{background:#eef1ec}
+td:first-child,th:first-child{white-space:nowrap}
+.katex-display{margin:.6em 0;overflow-x:auto;overflow-y:hidden}
+footer{margin-top:40px;font-size:13px;color:var(--muted);border-top:1px solid var(--line);padding-top:10px}
+@media (max-width:600px){.toc ol{columns:1}.cover h1{font-size:23px}}
+@media print{
+  @page{size:A4;margin:14mm}
+  body{background:#fff;font-size:12.5pt}
+  main{max-width:none;padding:0}
+  video,.vnote,.seek{display:none!important}
+  figure,.box,table,.cover{break-inside:avoid}
+  h2,h3{break-after:avoid}
+  figure img{width:80%;margin:0 auto}
+  .cover{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+}
+</style>
+</head>
+<body>
+<main>
+
+<div class="cover">
+  <div class="tag">結構學 SA ｜ 命題大綱 SA-U2-1 靜不定結構最小功法 ｜ 單元三 ｜ 影片講義</div>
+  <h1>虛擬量法與連續梁</h1>
+  <div class="meta">影片長度 7:43 ・ 8 章 ・ 19 段 ・ 黑板圖 15 張</div>
+  <div class="core">對什麼偏微分，就得到什麼：求位移掛虛擬力 Q、求轉角掛虛擬彎矩 M₀，先寫進去、偏微分完才歸零；多個多餘力就列柔度方程組，先查交叉項對稱。</div>
+</div>
+
+<nav class="toc">
+  <h3>目錄</h3>
+  <ol>
+    <li><a href="#c0">開場</a><span class="t">0:00</span></li>
+    <li><a href="#c1">一、對什麼微分，就得到什麼</a><span class="t">0:24</span></li>
+    <li><a href="#c2">二、先寫進去、後歸零</a><span class="t">1:10</span></li>
+    <li><a href="#c3">三、例題②求 B 端轉角</a><span class="t">2:12</span></li>
+    <li><a href="#c4">四、例題②求跨中撓度</a><span class="t">3:06</span></li>
+    <li><a href="#c5">五、例題③兩個多餘力</a><span class="t">4:06</span></li>
+    <li><a href="#c6">考場避坑</a><span class="t">6:41</span></li>
+    <li><a href="#c7">總結</a><span class="t">7:09</span></li>
+  </ol>
+</nav>
+
+<video id="vid" controls preload="metadata" src="video/SA-concept-虛擬量法與連續梁.mp4"></video>
+<p class="vnote">點各章標題旁的 ▶ 按鈕可直接跳到影片該段。</p>
+
+<!-- ───────── c0 ───────── -->
+<section id="c0">
+<h2><span class="no">0</span>開場<button class="seek" data-t="0">▶ 0:00</button></h2>
+<figure><img src="handout/img/s01.jpg" alt="虛擬量法與連續梁標題黑板">
+<figcaption><span>已會 \(\partial U/\partial X=0\) 解出多餘力；本支兩個問題：① 求任意點的 \(\Delta,\theta\)？② 多餘力 \(\ge 2\) 個？</span><span class="tm">影片 0:24</span></figcaption></figure>
+<p>這支影片是最小功法單元三。前面兩支，我們已經會用 \(\partial U/\partial X=0\)，把多餘力解出來。這支回答兩個高頻考點：</p>
+<table>
+<tr><th>考點</th><th>問題</th></tr>
+<tr><td>第一</td><td>多餘力解出來以後，怎麼求任意一點的位移和轉角</td></tr>
+<tr><td>第二</td><td>多餘力有兩個以上，像連續梁，要怎麼列式、怎麼驗算</td></tr>
+</table>
+</section>
+
+<!-- ───────── c1 ───────── -->
+<section id="c1">
+<h2><span class="no">1</span>一、對什麼微分，就得到什麼<button class="seek" data-t="24.59">▶ 0:24</button></h2>
+<figure><img src="handout/img/s02.jpg" alt="偏U偏X等於零只得到X那點位移">
+<figcaption><span>\(\partial U/\partial X=0\) 只得到 \(X\) 那一點的位移（本來就 \(=0\)）；梁上別處的 \(\theta,\Delta\) 打問號——「借一個虛擬量進來」</span><span class="tm">影片 0:46</span></figcaption></figure>
+<p>先想一個問題。\(\partial U/\partial X=0\)，告訴我們的只是多餘力那一點的位移，而且這個位移本來就是零。如果題目要的是其他位置的撓度或轉角，那裡通常沒有外力，沒有東西可以偏微分。怎麼辦？借一個虛擬量進來。</p>
+
+<figure><img src="handout/img/s03.jpg" alt="功等於力乘位移、彎矩乘轉角">
+<figcaption><span>兩欄卡片：功＝力×位移 → 掛虛擬力 \(Q\)｜功＝彎矩×轉角 → 掛虛擬彎矩 \(M_0\)；紅字劃掉「求轉角卻掛 \(Q\)」</span><span class="tm">影片 1:09</span></figcaption></figure>
+<p>借什麼，看功怎麼寫：</p>
+<table>
+<tr><th>功的寫法</th><th>要求</th><th>掛什麼虛擬量</th></tr>
+<tr><td>功＝力 × 位移</td><td>位移</td><td>虛擬力 \(Q\)</td></tr>
+<tr><td>功＝彎矩 × 轉角</td><td>轉角</td><td>虛擬彎矩 \(M_0\)</td></tr>
+</table>
+<div class="box key"><div class="h">一句話</div>對什麼偏微分，就得到什麼。</div>
+<div class="box warn"><div class="h">錯配</div>求轉角卻掛了虛擬力，算出來的只會是位移。</div>
+</section>
+
+<!-- ───────── c2 ───────── -->
+<section id="c2">
+<h2><span class="no">2</span>二、先寫進去、後歸零<button class="seek" data-t="70.18">▶ 1:10</button></h2>
+<figure><img src="handout/img/s05.jpg" alt="固定四步與紅框錯誤">
+<figcaption><span>左：固定四步（③ 黃框強調）；右紅框：一開始就令 \(M_0=0\Rightarrow \partial M/\partial M_0\equiv 0\)，整題白做；下方黃框口訣</span><span class="tm">影片 1:47</span></figcaption></figure>
+<p>虛擬量的解題順序是固定的四步：</p>
+<table>
+<tr><th>步驟</th><th>內容</th></tr>
+<tr><td>第一</td><td>把虛擬量寫進彎矩式 \(M\) 裡</td></tr>
+<tr><td>第二</td><td>對虛擬量偏微分</td></tr>
+<tr><td>第三</td><td>這時候才令虛擬量等於零</td></tr>
+<tr><td>第四</td><td>代入已經解出的 \(X\)，積分</td></tr>
+</table>
+<div class="box warn"><div class="h">最常見的錯：順序顛倒</div>一開始就把 \(M_0\) 設成零，彎矩式裡根本沒有 \(M_0\)，\(\partial M/\partial M_0\) 恆等於零，整條積分歸零，整題白做。</div>
+<div class="box key"><div class="h">口訣</div>先寫進去 → 偏微分完 → 才歸零。</div>
+
+<figure><img src="handout/img/s06.jpg" alt="包絡定理 X 可以當常數">
+<figcaption><span>包絡定理：全微分第二項 \((\partial U/\partial X)(dX/dQ)\) 被紅線劃掉，因 \(\partial U/\partial X=0\)；綠框「X 直接當已知常數代入」</span><span class="tm">影片 2:11</span></figcaption></figure>
+<p>還有一個省力的定理。照理說，掛了 \(Q\) 之後，多餘力 \(X\) 也會跟著 \(Q\) 改變，全微分要用連鎖律：</p>
+$$\frac{dU}{dQ}=\frac{\partial U}{\partial Q}+\color{#c0392b}{\frac{\partial U}{\partial X}\,\frac{dX}{dQ}}$$
+<p>但第二項的 \(\partial U/\partial X\) 本來就等於零。</p>
+<div class="box ok"><div class="h">結論</div>這一步，\(X\) 直接當已知常數代進去就好，不必追它隨 \(Q\) 的變化。</div>
+</section>
+
+<!-- ───────── c3 ───────── -->
+<section id="c3">
+<h2><span class="no">3</span>三、例題②求 B 端轉角<button class="seek" data-t="132.43">▶ 2:12</button></h2>
+<figure><img src="handout/img/s08.jpg" alt="例題2 求 theta_B">
+<figcaption><span>A 固定、B 滾支，\(w=24\) kN/m、\(L=6\) m、\(X=54\)（綠箭頭）；B 端綠色逆時針 \(M_0\)；s 原點 B；黃框 \(\theta_B=wL^3/48EI\)</span><span class="tm">影片 3:05</span></figcaption></figure>
+<p>用例題②演練。同一根梁：A 端固定、B 端滾支承，跨長 6 m，均布載重 24 kN/m，上一支已經解出 \(X=R_B=54\) kN。求 B 端轉角，就在 B 點掛一個逆時針的虛擬彎矩 \(M_0\)。</p>
+<p>從 B 往左量 \(s\)：</p>
+$$M(s)=Xs-\frac{ws^2}{2}+M_0,\qquad \frac{\partial M}{\partial M_0}=1\ \ (\text{全跨都看得到})$$
+<p>令 \(M_0=0\)，代入 \(X=54\)：</p>
+$$\theta_B=\frac{1}{EI}\int_0^6\left(54s-12s^2\right)ds=\frac{972-864}{EI}=\frac{108}{EI}=\frac{wL^3}{48EI}$$
+<div class="box key"><div class="h">讀正負號</div>正號，代表和假設方向相同——逆時針。</div>
+</section>
+
+<!-- ───────── c4 ───────── -->
+<section id="c4">
+<h2><span class="no">4</span>四、例題②求跨中撓度<button class="seek" data-t="186.42">▶ 3:06</button></h2>
+<figure><img src="handout/img/s09.jpg" alt="跨中掛向上虛擬力 Q 分段">
+<figcaption><span>跨中綠色向上 \(Q\)，紅虛線為新分段點：\(s\ge 3\)：\(\partial M/\partial Q=s-3=s-L/2\)；\(s&lt;3\)：\(\partial M/\partial Q=0\)</span><span class="tm">影片 3:29</span></figcaption></figure>
+<p>再求跨中撓度。在跨中掛一個向上的虛擬力 \(Q\)。注意，從 B 量起，\(Q\) 只有在 \(s\) 大於 3 m、也就是跨中到 A 的那半段才看得到。所以跨中是新的分段點：</p>
+<table>
+<tr><th>區段</th><th>\(\partial M/\partial Q\)</th></tr>
+<tr><td>前半段 \(0\le s&lt;3\)</td><td>\(0\)</td></tr>
+<tr><td>後半段 \(3\le s\le 6\)</td><td>\(s-3=s-\dfrac{L}{2}\)</td></tr>
+</table>
+<p>令 \(Q=0\)，只積後半段：</p>
+$$\delta_{mid}=\frac{1}{EI}\int_3^6\left(54s-12s^2\right)(s-3)\,ds=\color{#c0392b}{-\frac{162}{EI}}$$
+
+<figure><img src="handout/img/s11.jpg" alt="負號讀法與跨中撓度">
+<figcaption><span>橘色虛線為梁下凹示意、跨中紅箭頭向下；黃框 \(\delta_{mid}=162/EI=wL^4/192EI\)</span><span class="tm">影片 4:05</span></figcaption></figure>
+<p>負號怎麼讀？負號代表實際方向和假設的虛擬力相反。\(Q\) 假設向上，所以跨中實際是向下：</p>
+$$\delta_{mid}=\frac{162}{EI}=\frac{wL^4}{192EI}\ (\downarrow)$$
+<div class="box key"><div class="h">方向不用事先猜對</div>先假設，讓正負號告訴你答案。</div>
+</section>
+
+<!-- ───────── c5 ───────── -->
+<section id="c5">
+<h2><span class="no">5</span>五、例題③兩個多餘力<button class="seek" data-t="246.17">▶ 4:06</button></h2>
+<figure><img src="handout/img/s12.jpg" alt="例題3 兩跨連續梁">
+<figcaption><span>例題③：A 固定、B/C 滾支；AB＝6 m 滿布 \(w=24\) kN/m；BC＝8 m 跨中 \(P=40\) kN；未知反力 5 個 − 平衡 3 條＝二次靜不定</span><span class="tm">影片 4:28</span></figcaption></figure>
+<p>接著看多個多餘力。例題③，兩跨連續梁：A 端固定，B 和 C 是滾支承。AB 跨 6 m，滿布 24 kN/m；BC 跨 8 m，跨中有 40 kN 的集中力。未知反力五個（A：3、B：1、C：1），平衡方程三條，二次靜不定。</p>
+
+<h3>基本結構與分段</h3>
+<figure><img src="handout/img/s13.jpg" alt="14 m 懸臂基本結構三段">
+<figcaption><span>基本結構＝14 m 懸臂，原點放自由端 C；紅虛線切三段：① \(0\le s\le4\)、② \(4\le s\le8\)、③ \(8\le s\le14\)</span><span class="tm">影片 4:56</span></figcaption></figure>
+<p>拆掉 B、C 兩個滾支承，基本結構是從 A 伸出的 14 m 懸臂梁，選 \(X_1=R_B\)、\(X_2=R_C\)。原點放在自由端 C，從 C 往左量 \(s\)。集中力和 B 支承都要切刀，所以分成三段寫彎矩式。</p>
+<table>
+<tr><th>偏導數</th><th>值</th><th>作用範圍</th></tr>
+<tr><td>\(\partial M/\partial X_2\)</td><td>\(s\)</td><td>全長都有</td></tr>
+<tr><td>\(\partial M/\partial X_1\)</td><td>\(s-8\)</td><td>只有 B 到 A 這一段</td></tr>
+</table>
+
+<h3>柔度方程組與互易定理</h3>
+<figure><img src="handout/img/s15.jpg" alt="柔度方程組與 Maxwell-Betti">
+<figcaption><span>柔度方程組＋係數矩陣（\(\div EI\)）；兩個交叉項 216 綠圈起來——Maxwell–Betti 互易定理 \(\delta_{12}=\delta_{21}\) ✓</span><span class="tm">影片 5:37</span></figcaption></figure>
+<p>兩個條件同時成立：\(\partial U/\partial X_1=0\)，\(\partial U/\partial X_2=0\)，整理成柔度方程組：</p>
+$$\begin{cases}\delta_{10}+\delta_{11}X_1+\delta_{12}X_2=0\\[2pt]\delta_{20}+\delta_{21}X_1+\delta_{22}X_2=0\end{cases}\qquad \delta_{ij}=\int\frac{m_i\,m_j}{EI}\,ds,\quad m_i=\frac{\partial M}{\partial X_i}$$
+<p>係數算出來（都要再除以 \(EI\)）：</p>
+$$\begin{bmatrix}\delta_{11}&\delta_{12}\\ \delta_{21}&\delta_{22}\end{bmatrix}=\frac{1}{EI}\begin{bmatrix}72&\color{#2e7d4f}{216}\\ \color{#2e7d4f}{216}&\dfrac{2744}{3}\end{bmatrix}$$
+<div class="box ok"><div class="h">考場驗算的寶藏：馬克士威互易定理</div>交叉項一定對稱，\(\delta_{12}=\delta_{21}\)。列完 2×2 的方程組，第一時間先看交叉項相不相等，不相等就是列式有錯——算一個等於算兩個。</div>
+
+<h3>解聯立與平衡檢查</h3>
+<figure><img src="handout/img/s16.jpg" alt="載重項與解聯立">
+<figcaption><span>載重項 \(\delta_{10},\delta_{20}\)；聯立方程；黃框 \(X_1=R_B=98.12\)、\(X_2=R_C=11.96\) kN；平衡 \(R_A=73.92\) kN；總和檢核 ✓</span><span class="tm">影片 6:06</span></figcaption></figure>
+<p>載重項：</p>
+$$\delta_{10}=-\frac{9648}{EI},\qquad \delta_{20}=-\frac{32133.3}{EI}$$
+$$\begin{cases}72X_1+216X_2=9648\\[2pt]216X_1+\dfrac{2744}{3}X_2=32133.3\end{cases}$$
+<p>解聯立：</p>
+$$X_1=R_B=98.12\ \text{kN},\qquad X_2=R_C=11.96\ \text{kN}$$
+<p>再由平衡，\(R_A=73.92\) kN。</p>
+<div class="box ok"><div class="h">檢查</div>三個反力加起來 \(73.92+98.12+11.96=184\)，剛好等於總載重 \(144+40\)。</div>
+
+<h3>彎矩圖與三法對照</h3>
+<figure><img src="handout/img/s17.jpg" alt="彎矩圖與三法對照表">
+<figcaption><span>彎矩圖（kN·m，正＝下側受拉）：\(-75.84\)、\(+38\,@\,3.08\) m、\(-64.32\)、\(+47.84\)；下方最小功法／傾角變位法／矩陣分析法對照表</span><span class="tm">影片 6:41</span></figcaption></figure>
+<p>彎矩圖：\(M_A=-75.84\)，\(M_B=-64.32\ \text{kN}\cdot\text{m}\)；AB 跨在 3.08 m 處有最大正彎矩 \(+38\)，集中力下方是 \(+47.84\)。再拿傾角變位法和矩陣分析法來比，三種方法得到一模一樣的數字：</p>
+<table>
+<tr><th>項目</th><th>最小功法</th><th>傾角變位法</th><th>矩陣分析法</th></tr>
+<tr><td>\(M_A\)</td><td>−75.84</td><td>−75.84</td><td>−75.84</td></tr>
+<tr><td>\(M_B\)</td><td>−64.32</td><td>−64.32</td><td>−64.32</td></tr>
+<tr><td>\(R_B\)</td><td>98.12</td><td>98.12</td><td>98.12</td></tr>
+<tr><td>\(EI\theta_B\)</td><td>11.52（逆時針為正）</td><td>−11.52（順時針為正）</td><td>−11.52（順時針為正）</td></tr>
+</table>
+<div class="box key"><div class="h">差一個負號只是正負號約定</div>B 點轉角也是 \(11.52/EI\)，只是本單元取逆時針為正，位移法慣例取順時針為正，所以表上差一個負號，指的是同一個逆時針轉動。</div>
+</section>
+
+<!-- ───────── c6 ───────── -->
+<section id="c6">
+<h2><span class="no">6</span>考場避坑<button class="seek" data-t="401.54">▶ 6:41</button></h2>
+<figure><img src="handout/img/s18.jpg" alt="考場避坑三條">
+<figcaption><span>坑①～③（紅）與對策（綠）；底部紅字「少切一刀 → 積分範圍和彎矩式一起錯」</span><span class="tm">影片 7:08</span></figcaption></figure>
+<table>
+<tr><th>陷阱</th><th>說明</th></tr>
+<tr><td>① 求轉角卻掛了虛擬力</td><td>對什麼微分就得到什麼，轉角要配虛擬彎矩 \(M_0\)</td></tr>
+<tr><td>② 虛擬量太早歸零</td><td>偏微分直接變零（\(\partial M/\partial M_0\equiv0\)），整題白做</td></tr>
+<tr><td>③ 分段漏切刀</td><td>虛擬力的作用點、集中力、支承點，都是分段點</td></tr>
+</table>
+<div class="box warn"><div class="h">少切一刀</div>積分範圍和彎矩式就一起錯。</div>
+</section>
+
+<!-- ───────── c7 ───────── -->
+<section id="c7">
+<h2><span class="no">7</span>總結<button class="seek" data-t="429.09">▶ 7:09</button></h2>
+<figure><img src="handout/img/s19.jpg" alt="總結三條與例題答案">
+<figcaption><span>三條重點＋黃框：例題② \(\theta_B,\ \delta_{mid}\)；例題③ \(R_B,\ R_C\)</span><span class="tm">影片 7:42</span></figcaption></figure>
+<table>
+<tr><th>第一</th><td>求位移掛虛擬力 \(Q\)，求轉角掛虛擬彎矩 \(M_0\)</td></tr>
+<tr><th>第二</th><td>先寫進去、偏微分完才歸零，\(X\) 在這一步當已知常數</td></tr>
+<tr><th>第三</th><td>多個多餘力就列柔度方程組，先檢查交叉項對稱 \(\delta_{12}=\delta_{21}\)</td></tr>
+</table>
+<div class="box key"><div class="h">例題答案</div>
+例題②：\(\displaystyle\theta_B=\frac{wL^3}{48EI}\)（逆時針），\(\displaystyle\delta_{mid}=\frac{wL^4}{192EI}\)（向下）<br>
+例題③：\(R_B=98.12\) kN，\(R_C=11.96\) kN</div>
+</section>
+
+<footer>來源：影片 <code>video/SA-concept-虛擬量法與連續梁.mp4</code>（7:43）、旁白 <code>video/segments.py</code>、字幕 <code>video/SA-concept-虛擬量法與連續梁.srt</code>；例題數值對照 <code>video/HANDOFF.md</code> 已驗算數字並另行複算。黑板圖取自各段結束前 0.5 秒畫面。符號約定：彎矩下側受拉為正；轉角逆時針為正；例題② \(s\) 從 B 量起；例題③ \(s\) 從 C 量起。</footer>
+</main>
+<script>
+document.addEventListener('DOMContentLoaded',function(){
+  renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'\\(',right:'\\)',display:false}],throwOnError:false});
+  var v=document.getElementById('vid');
+  document.querySelectorAll('.seek').forEach(function(b){b.addEventListener('click',function(){v.currentTime=parseFloat(b.dataset.t);v.play();v.scrollIntoView({behavior:'smooth',block:'center'});});});
+});
+</script>
+</body>
+</html>

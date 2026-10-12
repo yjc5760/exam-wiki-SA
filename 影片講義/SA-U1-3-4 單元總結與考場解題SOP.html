@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SA-U1-3-4 影響線考場 SOP｜影片講義</title>
+<link rel="stylesheet" href="../../study/assets/katex/katex.min.css">
+<script defer src="../../study/assets/katex/katex.min.js"></script>
+<script defer src="../../study/assets/katex/auto-render.min.js"></script>
+<style>
+:root{
+  --ink:#1d2421; --muted:#5b6661; --line:#d9dfdb; --paper:#fbfaf6; --card:#ffffff;
+  --board:#24382f; --chalk-y:#c9a227; --pink:#c2557a; --green:#3f8f5a; --blue:#3a78a8; --red:#c0453b; --orange:#c8742f;
+}
+*{box-sizing:border-box}
+html{background:var(--paper)}
+body{margin:0;color:var(--ink);background:var(--paper);
+  font-family:"Microsoft JhengHei","Noto Sans TC","Noto Sans CJK TC",-apple-system,sans-serif;
+  line-height:1.85;font-size:16.5px}
+.wrap{max-width:860px;margin:0 auto;padding:40px 16px 80px}
+header.cover{border-bottom:3px solid var(--board);padding-bottom:18px;margin-bottom:26px}
+.kicker{font-size:13px;letter-spacing:.12em;color:var(--muted)}
+h1{font-size:30px;margin:6px 0 6px;line-height:1.35}
+h3{font-size:17.5px;margin:26px 0 4px}
+.sub{color:var(--muted);margin:0}
+.meta{display:flex;flex-wrap:wrap;gap:8px 18px;font-size:13.5px;color:var(--muted);margin-top:12px}
+.thesis{margin:22px 0 8px;background:var(--board);color:#f3efe0;border-radius:10px;padding:18px 22px;text-align:center}
+.thesis b{color:#f0cf5a;font-size:22px;letter-spacing:.06em}
+.thesis div{font-size:14px;opacity:.85;margin-top:6px}
+nav.toc{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:14px 20px;margin:22px 0 30px}
+nav.toc h2{font-size:15px;margin:0 0 6px;color:var(--muted);border:0;padding:0}
+nav.toc ol{margin:0;padding-left:22px;columns:2;column-gap:28px}
+nav.toc li{font-size:14.5px;break-inside:avoid}
+nav.toc a{color:var(--ink);text-decoration:none}
+nav.toc a:hover{text-decoration:underline}
+.ts{font-variant-numeric:tabular-nums;font-size:12.5px;color:var(--muted);margin-left:6px}
+video{width:100%;border-radius:8px;background:#000;display:block}
+.video-box{margin:0 0 30px}
+.video-box p{font-size:13px;color:var(--muted);margin:6px 0 0}
+section.ch{margin:46px 0 0}
+section.ch > h2{font-size:22px;margin:0 0 4px;padding-bottom:6px;border-bottom:2px solid var(--line);display:flex;align-items:baseline;gap:10px;flex-wrap:wrap}
+.chno{display:inline-block;background:var(--board);color:#f0cf5a;font-size:14px;border-radius:6px;padding:1px 9px;font-weight:600}
+button.seek{font:inherit;font-size:12.5px;border:1px solid var(--line);background:var(--card);color:var(--muted);border-radius:999px;padding:1px 10px;cursor:pointer}
+button.seek:hover{border-color:var(--board);color:var(--ink)}
+figure{margin:18px 0 14px;break-inside:avoid}
+figure img{width:100%;border-radius:8px;display:block;border:1px solid #1a2a22}
+figcaption{font-size:13px;color:var(--muted);margin-top:6px;display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap}
+p{margin:10px 0}
+.eq{overflow-x:auto;margin:10px 0;padding:6px 0}
+.key{border-left:4px solid var(--chalk-y);background:#fdf6dd;padding:10px 16px;border-radius:0 8px 8px 0;margin:14px 0}
+.ok{border-left:4px solid var(--green);background:#eaf5ec;padding:10px 16px;border-radius:0 8px 8px 0;margin:14px 0}
+.warn{border-left:4px solid var(--red);background:#fbeceb;padding:10px 16px;border-radius:0 8px 8px 0;margin:14px 0}
+.key b,.ok b,.warn b{display:block;font-size:14px;margin-bottom:2px}
+table{border-collapse:collapse;width:100%;margin:12px 0;font-size:15px}
+th,td{border:1px solid var(--line);padding:6px 10px;text-align:left;vertical-align:top}
+td:first-child{white-space:nowrap}
+th{background:#eef1ef;font-weight:600}
+.c-pink{color:var(--pink)} .c-green{color:var(--green)} .c-blue{color:var(--blue)} .c-y{color:#a07f12} .c-red{color:var(--red)} .c-orange{color:var(--orange)}
+ol.steps{padding-left:22px} ol.steps li{margin:4px 0}
+.summary{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:6px 20px 12px}
+.summary ol{padding-left:24px}
+.summary li{margin:8px 0}
+footer{margin-top:50px;padding-top:14px;border-top:1px solid var(--line);font-size:12.5px;color:var(--muted)}
+@media (max-width:640px){ nav.toc ol{columns:1} h1{font-size:25px} }
+@media print{
+  @page{size:A4;margin:14mm 14mm 16mm}
+  body{font-size:11pt;line-height:1.7}
+  .wrap{max-width:none;padding:0}
+  .video-box,button.seek{display:none}
+  section.ch > h2, h3{break-after:avoid}
+  figure{break-inside:avoid}
+  .key,.ok,.warn,table,.summary{break-inside:avoid}
+  a{color:inherit;text-decoration:none}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header class="cover">
+  <div class="kicker">結構學 SA ｜ 命題大綱 SA-U1-3 靜定及靜不定結構影響線 ｜ 單元四 ｜ 影片講義</div>
+  <h1>影響線考場 SOP：五個問題</h1>
+  <p class="sub">本講義依解題過程影片〈SA-U1-3-4 單元總結與考場解題 SOP〉逐段整理，圖片皆為影片中的黑板畫面。</p>
+  <div class="meta"><span>影片長度 10:31</span><span>5 章 · 18 段</span><span>實戰：SA-2025-2 的 \(IL_{V_F}\)</span><span>影響線單元最後一集（接 SA-U1-3-1～3）</span></div>
+  <div class="thesis"><b>把斷面固定、讓載重移動</b><div>不靠靈感，依序問自己五個問題，照著做就出答案。</div></div>
+</header>
+
+<nav class="toc">
+  <h2>目錄</h2>
+  <ol start="0">
+    <li><a href="#c0">開場</a><span class="ts">0:00</span></li>
+    <li><a href="#c1">考場五步驟</a><span class="ts">0:33</span></li>
+    <li><a href="#c2">實戰：SA-2025-2 的 \(V_F\)</a><span class="ts">4:45</span></li>
+    <li><a href="#c3">四大高頻陷阱</a><span class="ts">7:31</span></li>
+    <li><a href="#c4">全景與收束</a><span class="ts">9:32</span></li>
+  </ol>
+</nav>
+
+<div class="video-box">
+  <video id="vid" controls preload="metadata" src="video/SA-U1-3-4.mp4"></video>
+  <p>各章標題旁的時間按鈕可直接跳到影片對應位置（需與 video/ 資料夾放在一起開啟）。</p>
+</div>
+
+<!-- ───────────── c0 ───────────── -->
+<section class="ch" id="c0">
+  <h2><span class="chno">0</span>開場 <button class="seek" data-t="0">▶ 0:00</button></h2>
+  <figure>
+    <img src="handout/img/s01.jpg" alt="黑板：前三集三種束制 R·V·M、兩種結構 靜定·靜不定、三種載重 P·w·車隊 → 考場 SOP：五個問題；下方實戰 SA-2025-2、四大高頻陷阱">
+    <figcaption><span>黑板：前三集的內容壓縮成一套考場 SOP</span><span>影片 0:33</span></figcaption>
+  </figure>
+  <p>這是影響線單元的最後一集。前三集，我們學了<strong>三種束制、兩種結構、三種載重</strong>：</p>
+  <table>
+    <tr><th>前三集</th><th>內容</th></tr>
+    <tr><td>三種束制</td><td>\(R\)、\(V\)、\(M\)</td></tr>
+    <tr><td>兩種結構</td><td>靜定、靜不定</td></tr>
+    <tr><td>三種載重</td><td>集中力 \(P\)、均佈 \(w\)、車隊</td></tr>
+  </table>
+  <p>這一集把它們壓縮成一套考場演算法——一個不用靠靈感、照著做就會出答案的標準流程。看到影響線題目，不必重新回想公式，只要依序問自己五個問題，答案和數字就會自動浮現。最後，用 SA-2025-2 完整跑一遍，再看四個最常扣分的陷阱。</p>
+</section>
+
+<!-- ───────────── c1 ───────────── -->
+<section class="ch" id="c1">
+  <h2><span class="chno">1</span>考場五步驟 <button class="seek" data-t="33.4">▶ 0:33</button></h2>
+  <figure>
+    <img src="handout/img/s02.jpg" alt="考場五步驟：①問的是什麼 ②撐得住嗎 ③怎麼定量 ④載重是哪一種 ⑤檢查過了嗎；①–③圖形、④–⑤數字">
+    <figcaption><span>黑板：依序問自己五個問題</span><span>影片 1:10</span></figcaption>
+  </figure>
+  <p>先看全貌：</p>
+  <table>
+    <tr><th>步驟</th><th>問題</th><th>要做的事</th></tr>
+    <tr><td>① 問什麼</td><td>問的是什麼？</td><td>鎖定斷面和反應 → 決定拆法</td></tr>
+    <tr><td>② 撐得住嗎</td><td>結構還撐得住嗎？</td><td>一秒判定是折線還是曲線</td></tr>
+    <tr><td>③ 怎麼定量</td><td>怎麼定量？</td><td>對號入座代公式</td></tr>
+    <tr><td>④ 載重型態</td><td>載重是哪一種？</td><td>集中／均佈／車隊 → 決定怎麼取最大效應</td></tr>
+    <tr><td>⑤ 檢查</td><td>檢查過了嗎？</td><td>花十秒做三個驗算</td></tr>
+  </table>
+  <div class="key"><b>重點</b>五個問題，<strong>前三個決定圖形，後兩個決定數字和防呆</strong>。</div>
+
+  <h3>① 問的是什麼？反應不同，拆法就不同</h3>
+  <figure>
+    <img src="handout/img/s03.jpg" alt="三欄：反力 R 拿掉支承 Δ=1；剪力 V 切開錯動 1 保持平行；彎矩 M 插入鉸轉 1 rad；底部 形狀＝變形後的樣子（Müller-Breslau 原理）">
+    <figcaption><span>黑板：R／V／M 三種拆法與特徵</span><span>影片 1:47</span></figcaption>
+  </figure>
+  <p>題目要的反應不同，拆法就不同：</p>
+  <table>
+    <tr><th>反應</th><th>拆法</th><th>特徵</th><th>單位</th></tr>
+    <tr><td>反力 \(R\)</td><td>拿掉那個支承，沿正方向強迫單位平移 \(\Delta=1\)</td><td>該支承處 \(=1\)</td><td>無因次</td></tr>
+    <tr><td class="c-orange">剪力 \(V\)</td><td>在斷面切開，左右相對錯動 1，<strong>兩段必須保持平行</strong></td><td>斷面處跳躍 \(=1\)</td><td>無因次</td></tr>
+    <tr><td class="c-green">彎矩 \(M\)</td><td>在斷面插入一個鉸，左右相對轉 1 rad</td><td>斷面處折點、連續</td><td>長度 m</td></tr>
+  </table>
+  <div class="key"><b>Müller-Breslau 原理</b>拆法一確定，影響線的形狀就是變形後的樣子：<strong>形狀 = 變形後的樣子</strong>。</div>
+
+  <h3>② 結構還撐得住嗎？一秒判定線型</h3>
+  <figure>
+    <img src="handout/img/s04.jpg" alt="左：變成機構→靜定→剛體轉動→折線，與 EI 完全無關；右：仍然穩定→靜不定→彈性彎曲→光滑曲線，固定端相切（轉角沒被放掉時）；下：Gerber 梁主段/從段，從段的量 IL 在主段區 = 0">
+    <figcaption><span>黑板：機構→折線；穩定→曲線；Gerber 梁主從段</span><span>影片 2:33</span></figcaption>
+  </figure>
+  <table>
+    <tr><th>拆掉束制後</th><th>結構</th><th>如何變形</th><th>影響線</th></tr>
+    <tr><td>變成機構</td><td>靜定</td><td>只能剛體轉動</td><td>一段段直線組成的<strong>折線</strong>，與 \(EI\) 完全無關</td></tr>
+    <tr><td>仍然穩定</td><td>靜不定</td><td>靠彈性彎曲</td><td><strong>光滑曲線</strong>；只要固定端的轉角沒被放掉，曲線在固定端就和軸線相切</td></tr>
+  </table>
+  <p>含內鉸的 Gerber 梁，先分<span class="c-green">主段</span>和<span class="c-red">從段</span>：載重放在主段上，從段完全感覺不到。</p>
+  <div class="key"><b>Gerber 梁</b>從段的反力和內力，影響線在<strong>主段區域恆為零</strong>。</div>
+
+  <h3>③ 怎麼定量？靜定：對號入座</h3>
+  <figure>
+    <img src="handout/img/s05.jpg" alt="左：簡支梁記憶錨點 IL_RA=(L−x)/L、IL_VC: −a/L | +b/L、IL_MC peak=ab/L；右：桁架借用同跨梁 弦桿=±IL_M(O)/h、斜桿=IL_V(panel)/sinθ；底：靜定四題只用靜力平衡">
+    <figcaption><span>黑板：簡支梁記憶錨點與桁架借用法</span><span>影片 3:08</span></figcaption>
+  </figure>
+  <p>靜定梁直接套<strong>記憶錨點</strong>（簡支梁）：</p>
+  <div class="eq">$$IL_{R_A}=\frac{L-x}{L}\qquad IL_{V_C}:\ -\frac{a}{L}\ \Big|\ +\frac{b}{L}\qquad IL_{M_C}\ \text{peak}=\frac{ab}{L}$$</div>
+  <p>靜定桁架，借用同跨簡支梁的影響線：</p>
+  <div class="eq">$$\text{弦桿}=\pm\frac{IL_M(O)}{h}\qquad\qquad \text{斜桿}=\frac{IL_V(\text{panel})}{\sin\theta}$$</div>
+  <ul>
+    <li><strong>弦桿內力</strong>：力矩中心 \(O\) 那一點的彎矩影響線除以桁高 \(h\)，再判斷正負。</li>
+    <li><strong>斜桿內力</strong>：那個節間的剪力影響線除以 \(\sin\theta\)。</li>
+  </ul>
+
+  <h3>③ 怎麼定量？靜不定：柔度法</h3>
+  <figure>
+    <img src="handout/img/s06.jpg" alt="拿掉多餘力 X → 基本結構 → X 處施單位力；IL_X(x)=δ(x)/δ_XX，分子分母的 1/EI 打叉，EI 自動消去；其他內力 → 靜力疊加 IL_M = M⁰ + IL_X·m_X">
+    <figcaption><span>黑板：柔度法，分子粉紅、分母藍，1/EI 劃掉</span><span>影片 3:36</span></figcaption>
+  </figure>
+  <p>靜不定結構走柔度法：拿掉多餘力 \(X\)，得到靜定的基本結構；在 \(X\) 處施加單位力，寫出撓曲線 \(\delta(x)\)，再除以 \(X\) 點自己的撓度 \(\delta_{XX}\)：</p>
+  <div class="eq">$$IL_X(x)=\frac{\color{#c2557a}{\delta(x)}}{\color{#3a78a8}{\delta_{XX}}}$$</div>
+  <p>分子分母都帶 \(\dfrac{1}{EI}\)，相除以後<strong>自動消掉</strong>。其他內力，再用靜力疊加就好（黑板）：</p>
+  <div class="eq">$$IL_M=M^0+IL_X\cdot m_X$$</div>
+
+  <h3>④ 載重是哪一種？決定怎麼取最大效應</h3>
+  <figure>
+    <img src="handout/img/s07.jpg" alt="三格：單一集中力 P 擺在峰值 P·y_max；任意佈置均佈 w 只鋪同號區 w·A⁺；車隊載重 逐一試每個折點 max ΣP_i y_i">
+    <figcaption><span>黑板：三種載重的取值方式</span><span>影片 4:12</span></figcaption>
+  </figure>
+  <table>
+    <tr><th>載重</th><th>做法</th><th>效應</th></tr>
+    <tr><td>單一集中力 \(P\)</td><td>直接擺在影響線的峰值</td><td>\(P\cdot y_{max}\)</td></tr>
+    <tr><td>任意佈置均佈 \(w\)</td><td><strong>只鋪同號區</strong>：要最大正效應，就只鋪正面積</td><td>\(w\cdot A^{+}\)</td></tr>
+    <tr><td>車隊載重</td><td>逐一試每個折點：每個重輪輪流壓在峰值上，算 \(P\cdot y\) 的總和，取最大的那一組</td><td>\(\max\sum P_i\,y_i\)</td></tr>
+  </table>
+
+  <h3>⑤ 檢查過了嗎？十秒三個獨立驗算</h3>
+  <figure>
+    <img src="handout/img/s08.jpg" alt="①支承點 沒被拿掉的支承處=0 ②剪力跳躍 斷面兩側 y⁺−y⁻=1 ③量綱 R、V 無因次；M 縱座標帶 m">
+    <figcaption><span>黑板：十秒三檢查</span><span>影片 4:44</span></figcaption>
+  </figure>
+  <div class="ok"><b>十秒三檢查</b>
+    <ol class="steps" style="margin:4px 0">
+      <li><strong>支承點</strong>：沒有被拿掉的支承，影響線在那裡一定是 0。</li>
+      <li><strong>剪力跳躍</strong>：剪力影響線在斷面兩側相減，一定等於 1，\(y^{+}-y^{-}=1\)。</li>
+      <li><strong>量綱</strong>：反力和剪力影響線沒有單位；彎矩影響線的縱座標一定帶長度單位 m。</li>
+    </ol>
+  </div>
+</section>
+
+<!-- ───────────── c2 ───────────── -->
+<section class="ch" id="c2">
+  <h2><span class="chno">2</span>實戰：SA-2025-2 的 \(V_F\) <button class="seek" data-t="285.2">▶ 4:45</button></h2>
+  <figure>
+    <img src="handout/img/s09.jpg" alt="SA-2025-2 求 IL_VF：A 固定端、B 內鉸、F 斷面、C 滾支承、D 內鉸、E 滾支承，4@4 m，F–C 2 m；右側 ①問 V_F F 切開兩側平行錯動 1 ②撐得住嗎 反力 5、平衡 3、鉸 2，5−3−2=0 靜定→折線">
+    <figcaption><span>黑板：題目梁與步驟 ①②</span><span>影片 5:28</span></figcaption>
+  </figure>
+  <p>梁長 16 m，四跨各 4 m：A 固定端，B 和 D 是內鉸，C 和 E 是滾支承。F 是 B 和 C 之間的一個斷面，在 C 左方 2 m。求 F 點剪力的影響線 \(IL_{V_F}\)。</p>
+  <ol class="steps">
+    <li><strong>① 問什麼</strong>：問剪力，所以在 F 切開，兩側平行錯動 1。</li>
+    <li><strong>② 撐得住嗎</strong>：未知反力 5 個，平衡 3 式加上兩個內鉸條件，\(5-3-2=0\)，剛好靜定；拆掉以後是機構，影響線一定是<strong>折線</strong>。</li>
+  </ol>
+
+  <h3>形狀怎麼畫</h3>
+  <figure>
+    <img src="handout/img/s10.jpg" alt="IL_VF 形狀：A–B 主段不動=0；B–F 繞 B 轉，F 處錯開 1、兩段平行；F–D 繞 C 轉；D–E 繞 E 轉；折點 B、F、C、D、E">
+    <figcaption><span>黑板：Müller-Breslau 機構形狀（各段繞哪點轉）</span><span>影片 6:05</span></figcaption>
+  </figure>
+  <table>
+    <tr><th>區段</th><th>運動</th></tr>
+    <tr><td>A–B</td><td>A 固定端加上 B 鉸，AB 是主段，自己站得住，切開 F 也不會動 → 影響線 \(=0\)</td></tr>
+    <tr><td>B–F</td><td>只能繞 B 轉</td></tr>
+    <tr><td>F–D</td><td>只能繞 C 轉；與 B–F <strong>保持平行</strong>，F 處左邊往下、右邊往上，總共錯開 1</td></tr>
+    <tr><td>D–E</td><td>繞 E 轉回到零</td></tr>
+  </table>
+  <div class="key"><b>折點</b>折點只會出現在 B、F、C、D、E。</div>
+
+  <h3>③ 靜力平衡校準數值</h3>
+  <figure>
+    <img src="handout/img/s11.jpg" alt="P=1 在 D；右側 ③靜力平衡校準：R_E=0, R_C=0.5, R_A=0.5；V_F⁻=0.5−1=−0.5，V_F⁺=+0.5，跳躍 1 ✓；R_C=2, R_A=−1, V_F=−1；影響線標值 +0.5、−0.5、0、−1、0">
+    <figcaption><span>黑板：載重放在 F、放在 D 兩次校準</span><span>影片 6:46</span></figcaption>
+  </figure>
+  <p><strong>載重放在 F</strong>，從右往左解：\(R_E=0\)；對鉸 B 取矩，\(R_C=0.5\)，所以 \(R_A=0.5\)。取 F 左側自由體：</p>
+  <div class="eq">$$R_E=0,\quad R_C=0.5,\quad R_A=0.5$$
+  $$V_F^{-}=0.5-1=-0.5\qquad V_F^{+}=+0.5$$</div>
+  <p>載重在左邊時 \(V_F=-0.5\)，在右邊時 \(+0.5\)，跳躍剛好是 1 ✓。</p>
+  <p><strong>再把載重放在 D</strong>：</p>
+  <div class="eq">$$R_C=2,\quad R_A=-1\quad\Rightarrow\quad V_F=-1$$</div>
+  <p>C 和 E 是 0。</p>
+  <table>
+    <tr><th>位置</th><th>A–B</th><th>F⁻</th><th>F⁺</th><th>C</th><th>D</th><th>E</th></tr>
+    <tr><td>\(IL_{V_F}\)</td><td>0</td><td>−0.5</td><td>+0.5</td><td>0</td><td>−1</td><td>0</td></tr>
+  </table>
+
+  <h3>④ 取最大效應 ＋ ⑤ 檢查</h3>
+  <figure>
+    <img src="handout/img/s12.jpg" alt="面積填色：F–C 正（綠），B–F 與 C–E 負（紅，−4）；④最大效應 集中力 P 最大負=−P(在 D)、最大正=0.5P(F 右)；均佈 w +0.5w(只鋪 F–C)、−(0.5+4)w=−4.5w；⑤檢查 A、C、E=0 ✓ F 跳 1 ✓ 無因次 ✓">
+    <figcaption><span>黑板：正區（綠）／負區（紅）與五步驟最後兩步</span><span>影片 7:30</span></figcaption>
+  </figure>
+  <table>
+    <tr><th>載重</th><th>最大正剪力</th><th>最大負剪力</th></tr>
+    <tr><td>集中力 \(P\)</td><td>\(0.5P\)（P 放在 F 右側）</td><td>\(-P\)（P 放在 D）</td></tr>
+    <tr><td>均佈 \(w\)</td><td>\(+0.5w\)（只鋪 F–C）</td><td>\(-(0.5+4)\,w=-4.5w\)（鋪 B–F 與 C–E）</td></tr>
+  </table>
+  <div class="warn"><b>最大負剪力不在 F 附近</b>集中力 \(P\) 的最大負剪力不在 F 附近，而在 <strong>D</strong>：\(-1\times P\)。</div>
+  <p>均佈載重：正面積只有 F 到 C 的 0.5；負面積是 B 到 F 的 0.5，加上 C 到 E 的 4。</p>
+  <div class="ok"><b>⑤ 檢查</b>A、C、E 是 0 ✓；F 跳躍 1 ✓；沒有單位 ✓。全部通過。</div>
+</section>
+
+<!-- ───────────── c3 ───────────── -->
+<section class="ch" id="c3">
+  <h2><span class="chno">3</span>四大高頻陷阱 <button class="seek" data-t="451.4">▶ 7:31</button></h2>
+
+  <h3>陷阱 1：均佈載重鋪滿全長</h3>
+  <figure>
+    <img src="handout/img/s13.jpg" alt="簡支梁 IL_VC：−0.4／+0.6，A⁺=1.8、負區 −0.8；只鋪正區 20×1.8=36 kN ✓；鋪滿全長 20×1.0=20 kN ✗；少 44.44%，偏低且不保守；SA-2025-2 鋪滿：−4w vs −4.5w">
+    <figcaption><span>黑板：簡支梁 V<sub>C</sub>，正區（綠）A⁺ = 1.8、負區（紅）0.8</span><span>影片 8:05</span></figcaption>
+  </figure>
+  <p>直覺以為全梁受載效應最大，但<strong>活載重可以出現，也可以不出現</strong>。用前一集的簡支梁剪力 \(V_C\)（\(-0.4\,/\,+0.6\)），\(w=20\ \text{kN/m}\)：</p>
+  <table>
+    <tr><th>鋪法</th><th>計算</th><th></th></tr>
+    <tr><td>只鋪正區</td><td>\(20\times1.8=36\ \text{kN}\)</td><td class="c-green">✓</td></tr>
+    <tr><td>鋪滿全長</td><td>\(20\times1.0=20\ \text{kN}\)（負區吃掉正效應）</td><td class="c-red">✗</td></tr>
+  </table>
+  <div class="warn"><b>少了 44.44%</b>鋪滿全長偏低，而且<strong>不保守</strong>。剛剛 SA-2025-2 鋪滿也一樣，只剩 \(-4w\)（正確是 \(-4.5w\)）。</div>
+
+  <h3>陷阱 2：彎矩影響線的縱座標寫成 kN</h3>
+  <figure>
+    <img src="handout/img/s14.jpg" alt="IL_MC 峰值 ✗2.4 kN → 2.4 m；IL ≠ 彎矩圖；IL = 對單位載重的敏感度；ab/L = 4×6/10 = 2.4 m；100 kN × 2.4 m = 240 kN·m">
+    <figcaption><span>黑板：峰值單位是 m，不是 kN</span><span>影片 8:36</span></figcaption>
+  </figure>
+  <p>這是把影響線和彎矩圖混在一起了。<strong>影響線是對單位載重的敏感度</strong>，彎矩影響線的單位是公尺。例如 \(L=10\)、\(a=4\)：</p>
+  <div class="eq">$$\frac{ab}{L}=\frac{4\times6}{10}=2.4\ \text{m}$$
+  $$100\ \text{kN}\times2.4\ \text{m}=240\ \text{kN}\cdot\text{m}$$</div>
+  <div class="warn"><b>IL ≠ 彎矩圖</b>峰值寫成「2.4 kN」是錯的；乘上 100 kN 之後，才得到 240 kN·m 的彎矩。</div>
+
+  <h3>陷阱 3：剪力斷面畫錯</h3>
+  <figure>
+    <img src="handout/img/s15.jpg" alt="錯：插鉸畫成 V 字 ✗；對：平行錯動、跳 1 ✓，−0.4 → +0.6；y⁺−y⁻=0.6−(−0.4)=1；兩段斜率相同（平行），斷面兩側必跳躍 1">
+    <figcaption><span>黑板：左紅（錯）V 字形；右綠（對）平行錯動</span><span>影片 9:03</span></figcaption>
+  </figure>
+  <div class="warn"><b>常見錯誤</b>在剪力斷面插入鉸，畫成 V 字形，或者把兩段連起來。</div>
+  <p>剪力釋放要求左右<strong>平行錯動</strong>，兩段斜率相同，斷面兩側一定跳躍 1。簡支梁就是左邊 \(-0.4\)、右邊 \(+0.6\)：</p>
+  <div class="eq">$$y^{+}-y^{-}=0.6-(-0.4)=1$$</div>
+
+  <h3>陷阱 4：靜不定題硬找 EI</h3>
+  <figure>
+    <img src="handout/img/s16.jpg" alt="IL_X(x)=δ(x)/δ_XX，1/EI 打叉；EI 為常數 → 自動消去；例外：問「位移」的影響線 → 沒有分母可除，EI 不會消，答案帶單位 m/kN">
+    <figcaption><span>黑板：EI 自動消去，與「位移影響線」例外框</span><span>影片 9:32</span></figcaption>
+  </figure>
+  <p>看到題目沒給 \(EI\) 數值，以為漏給。其實靜不定影響線是<strong>位移比值</strong>，全梁 \(EI\) 為常數時，分子分母自動消掉：</p>
+  <div class="eq">$$IL_X(x)=\frac{\color{#c2557a}{\delta(x)}}{\color{#3a78a8}{\delta_{XX}}}\quad\Rightarrow\quad EI\ \text{為常數，自動消去}$$</div>
+  <div class="warn"><b>唯一要小心的例外</b>題目問的是<strong>位移的影響線</strong>：沒有分母可以除，\(EI\) 不會消，答案帶單位 m/kN。</div>
+</section>
+
+<!-- ───────────── c4 ───────────── -->
+<section class="ch" id="c4">
+  <h2><span class="chno">4</span>全景與收束 <button class="seek" data-t="572.9">▶ 9:32</button></h2>
+  <figure>
+    <img src="handout/img/s17.jpg" alt="全景：本單元六題的位置；靜定只用靜力平衡：①簡支梁 R/V/M 折線 ②最大效應三型態 取值 ③Gerber 梁 5 條 折線 ④桁架弦桿/斜桿 折線；靜不定柔度法 IL=δ/δ_XX：⑤一端固定 三次曲線 ⑥兩跨連續梁 R_B 曲線">
+    <figcaption><span>黑板：本單元六個代表題的位置</span><span>影片 10:05</span></figcaption>
+  </figure>
+  <p>把整個單元放在同一張圖上：</p>
+  <table>
+    <tr><th>代表題</th><th>線型</th><th>數值怎麼來</th></tr>
+    <tr><td>① 簡支梁 R／V／M</td><td>折線</td><td rowspan="3">靜力平衡</td></tr>
+    <tr><td>③ Gerber 梁 5 條</td><td>折線</td></tr>
+    <tr><td>④ 桁架弦桿／斜桿</td><td>折線</td></tr>
+    <tr><td>② 最大效應三型態</td><td colspan="2">負責取值</td></tr>
+    <tr><td>⑤ 一端固定一端滾支 三次曲線</td><td>曲線</td><td rowspan="2">柔度法，\(IL=\delta/\delta_{XX}\)（\(\delta\) 的比值）</td></tr>
+    <tr><td>⑥ 兩跨連續梁 \(R_B\)</td><td>曲線</td></tr>
+  </table>
+  <div class="key"><b>一句話</b>靜定四題 → 靜力平衡；靜不定兩題 → 柔度法（\(\delta\) 比值）。</div>
+
+  <figure>
+    <img src="handout/img/s18.jpg" alt="影響線不是新的分析方法，而是視角切換；把斷面固定、讓載重移動；Müller-Breslau → 形狀；靜力平衡＋柔度法 → 數值；同號區＋折點 → 最大效應；五個問題＋十秒檢查＝穩拿的分數">
+    <figcaption><span>黑板：一句話收束</span><span>影片 10:29</span></figcaption>
+  </figure>
+  <p>影響線不是新的分析方法，而是<strong>把斷面固定、讓載重移動</strong>的視角切換。</p>
+  <div class="summary">
+    <ol>
+      <li><span class="c-orange"><strong>Müller-Breslau</strong></span> → 負責<strong>形狀</strong></li>
+      <li><span class="c-green"><strong>靜力平衡 ＋ 柔度法</strong></span> → 負責<strong>數值</strong></li>
+      <li><span class="c-pink"><strong>同號區 ＋ 折點</strong></span> → 負責<strong>最大效應</strong></li>
+    </ol>
+  </div>
+  <div class="thesis" style="margin-top:20px"><b>五個問題 ＋ 十秒檢查 ＝ 穩拿的分數</b><div>考場上，照五個問題走一遍，再花十秒檢查。</div></div>
+</section>
+
+<footer>
+  來源：解題過程影片／SA-U1-3-4 單元總結與考場解題SOP／video（SA-U1-3-4.mp4、segments.py 講稿、SA-U1-3-4.srt）。文字依影片旁白整理，圖片為影片各段結束時的黑板畫面。實戰與陷阱數值已依 HANDOFF.md 以靜力平衡複算一致。
+</footer>
+</div>
+
+<script>
+document.addEventListener("DOMContentLoaded",function(){
+  if(window.renderMathInElement){
+    renderMathInElement(document.body,{delimiters:[
+      {left:"$$",right:"$$",display:true},{left:"\\(",right:"\\)",display:false}],throwOnError:false});
+  }
+  var v=document.getElementById("vid");
+  document.querySelectorAll("button.seek").forEach(function(b){
+    b.addEventListener("click",function(){
+      if(!v)return; v.currentTime=parseFloat(b.dataset.t)||0;
+      v.scrollIntoView({behavior:"smooth",block:"center"}); v.play().catch(function(){});
+    });
+  });
+});
+</script>
+</body>
+</html>

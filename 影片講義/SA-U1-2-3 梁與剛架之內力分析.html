@@ -1,0 +1,245 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>SA-U1-2-3 梁與剛架之內力分析｜影片講義</title>
+<link rel="stylesheet" href="../../study/assets/katex/katex.min.css">
+<script defer src="../../study/assets/katex/katex.min.js"></script>
+<script defer src="../../study/assets/katex/auto-render.min.js"></script>
+<style>
+:root{--paper:#faf7f0;--ink:#24302a;--board:#2c4a3a;--board2:#1f3a2c;--chalk:#f3efe2;--muted:#6b726c;--line:#ddd6c6;
+--warn:#c0392b;--warnbg:#fdecea;--ok:#2e7d4f;--okbg:#e8f5ec;--key:#b8860b;--keybg:#fff6d9;--orange:#d9792b;--pink:#c2477a;--blue:#2f78b5}
+*{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--ink);font:16px/1.75 "Noto Sans TC","Microsoft JhengHei","PingFang TC",sans-serif}
+main{max-width:860px;margin:0 auto;padding:24px 16px 48px}
+.cover{background:linear-gradient(160deg,var(--board),var(--board2));color:var(--chalk);border-radius:14px;padding:28px 28px 24px;margin-bottom:24px}
+.cover .tag{font-size:13px;letter-spacing:.08em;color:#e8d27a}
+.cover h1{margin:6px 0 4px;font-size:30px;line-height:1.3}
+.cover .meta{font-size:14px;color:#c9d6cc}
+.cover .core{margin-top:16px;padding:12px 16px;border:1.5px solid #e8d27a;border-radius:10px;font-size:17px;color:#fff3c4}
+h2{font-size:22px;margin:40px 0 12px;padding-bottom:6px;border-bottom:2px solid var(--board);display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+h2 .no{color:var(--board);font-weight:700}
+h3{font-size:17px;margin:22px 0 6px;color:var(--board)}
+.toc{background:#fff;border:1px solid var(--line);border-radius:10px;padding:14px 18px}
+.toc ol{margin:0;padding-left:22px;columns:2;column-gap:28px}
+.toc li{break-inside:avoid}
+.toc a{color:var(--ink);text-decoration:none}.toc a:hover{text-decoration:underline}
+.toc .t{color:var(--muted);font-size:13px;margin-left:6px;font-variant-numeric:tabular-nums}
+.vid{margin:20px 0 4px;position:sticky;top:0;z-index:5;background:var(--paper);padding:6px 0}
+video{width:100%;border-radius:10px;background:#000;display:block}
+.seek{font:inherit;font-size:13px;border:1px solid var(--board);background:#fff;color:var(--board);border-radius:999px;padding:1px 10px;cursor:pointer}
+.seek:hover{background:var(--board);color:#fff}
+figure{margin:18px 0;background:#fff;border:1px solid var(--line);border-radius:10px;padding:8px;break-inside:avoid}
+figure img{width:100%;display:block;border-radius:6px}
+figcaption{display:flex;justify-content:space-between;gap:12px;font-size:13px;color:var(--muted);padding:6px 4px 0}
+figcaption .ts{white-space:nowrap;font-variant-numeric:tabular-nums}
+p{margin:8px 0}
+.box{border-radius:8px;padding:10px 14px;margin:14px 0;break-inside:avoid;border-left:5px solid}
+.warn{background:var(--warnbg);border-color:var(--warn)}.warn b.h{color:var(--warn)}
+.ok{background:var(--okbg);border-color:var(--ok)}.ok b.h{color:var(--ok)}
+.key{background:var(--keybg);border-color:var(--key)}.key b.h{color:var(--key)}
+table{border-collapse:collapse;width:100%;margin:12px 0;font-size:15px;background:#fff;break-inside:avoid}
+th,td{border:1px solid var(--line);padding:6px 10px;vertical-align:top;text-align:left}
+th{background:#eef2ee;color:var(--board)}
+td:first-child,th:first-child{white-space:nowrap}
+.katex-display{margin:10px 0;overflow-x:auto;overflow-y:hidden}
+.legend{font-size:13px;color:var(--muted)}
+.src{margin-top:40px;font-size:13px;color:var(--muted);border-top:1px solid var(--line);padding-top:10px}
+.src code{font-size:12px}
+@media (max-width:640px){.toc ol{columns:1}.cover h1{font-size:24px}.vid{position:static}}
+@media print{
+ @page{size:A4;margin:14mm 14mm 16mm}
+ body{background:#fff;font-size:12.5pt}
+ main{max-width:none;padding:0}
+ .vid,.seek{display:none!important}
+ .cover{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+ figure,.box,table{break-inside:avoid}
+ h2,h3{break-after:avoid}h2{margin-top:26px}
+ figure img{max-height:80mm;width:auto;max-width:100%;margin:0 auto}
+}
+</style>
+</head>
+<body>
+<main>
+
+<header class="cover">
+  <div class="tag">結構學 SA ｜ 命題大綱 U1-2 靜定結構之分析 ｜ 影片講義</div>
+  <h1>SA-U1-2-3　梁與剛架之內力分析</h1>
+  <div class="meta">影片長度 7:34 ・ 5 章 ・ 21 段 ・ 例題：帶內鉸梁（8 m＋4 m）、三鉸剛架（12 m × 6 m）</div>
+  <div class="core">畫剪力圖和彎矩圖，不要逐點代值。只用三把工具：① 內鉸是一把刀；② 用微分關係和面積法推形狀；③ 剛架彎矩畫在受拉側，並且在節點檢查平衡。</div>
+</header>
+
+<nav class="toc">
+  <strong>目錄</strong>
+  <ol start="0">
+    <li><a href="#c0">開場</a><span class="t">0:00</span></li>
+    <li><a href="#c1">內鉸是一把刀：先解附屬結構</a><span class="t">0:23</span></li>
+    <li><a href="#c2">微分關係推 SFD／BMD</a><span class="t">2:13</span></li>
+    <li><a href="#c3">三鉸剛架：受拉側與節點平衡</a><span class="t">4:09</span></li>
+    <li><a href="#c4">考場四步 SOP</a><span class="t">6:43</span></li>
+  </ol>
+</nav>
+
+<div class="vid"><video id="v" controls preload="metadata" src="video/SA-U1-2.mp4"></video></div>
+
+<!-- c0 -->
+<section id="c0">
+<h2><span class="no">0</span> 開場 <button class="seek" data-t="0">▶ 0:00</button></h2>
+<p>這一集講梁與剛架的內力分析。目標只有一個：<strong>畫剪力圖和彎矩圖的時候，不要逐點代值。</strong></p>
+<p>我們只用三把工具：</p>
+<table>
+<tr><th>工具</th><th>內容</th></tr>
+<tr><td>① 內鉸是一把刀</td><td>切開內鉸 → 先解附屬結構</td></tr>
+<tr><td>② 微分關係</td><td>\(\dfrac{dV}{dx}=-w,\ \dfrac{dM}{dx}=V\) → 用面積法推形狀</td></tr>
+<tr><td>③ 受拉側＋節點平衡</td><td>剛架彎矩畫在受拉側，並且在節點檢查平衡</td></tr>
+</table>
+<figure><img src="handout/img/s01.jpg" alt="開場：三把工具"><figcaption><span>開場黑板：「內力圖不逐點代值」＋三把工具</span><span class="ts">影片 0:22</span></figcaption></figure>
+</section>
+
+<!-- c1 -->
+<section id="c1">
+<h2><span class="no">1</span> 內鉸是一把刀：先解附屬結構 <button class="seek" data-t="23.26">▶ 0:23</button></h2>
+<h3>例題：帶內鉸的梁</h3>
+<p>先看這根梁。左端 A 是固定端，8 m 處 C 是內鉸，再過 4 m D 是滾支承。AC 段受均布載重 10 kN/m，CD 段在中點有 20 kN 的集中力。</p>
+<p>反力有四個，用靜定判定式：</p>
+$$d=r-3-c=4-3-1=0\quad\Rightarrow\ \text{靜定}$$
+<figure><img src="handout/img/s02.jpg" alt="例題梁"><figcaption><span>題目：A 固定端、C 內鉸（空心圓）、D 滾支承；\(w=10\) kN/m 於 AC、\(P=20\) kN 距 C 2 m；\(d=0\) 靜定 ✓</span><span class="ts">影片 0:46</span></figcaption></figure>
+
+<p>內鉸不能傳彎矩，所以內鉸處的彎矩一定等於零，\(M_C=0\)，這就是多出來的第四個方程式。</p>
+<p>哪一半先解？問一句話：</p>
+<div class="box key"><b class="h">一句話判別：</b>拿掉哪一半，另一半還站得住？<br>
+拿掉 CD，AC 還是一根懸臂，站得住 → <strong>AC 是主結構</strong>。<br>
+拿掉 AC，CD 只剩一個滾支承，馬上倒 → <strong>CD 是附屬結構</strong>。</div>
+<figure><img src="handout/img/s03.jpg" alt="切開內鉸判主從"><figcaption><span>從 C 切一刀（橘虛線）：AC 懸臂站得住 → 主結構；CD 只剩滾支承會倒 → 附屬結構</span><span class="ts">影片 1:13</span></figcaption></figure>
+
+<h3>① 先解附屬結構 CD</h3>
+<p>附屬結構未知數少，先解它。對內鉸 C 取矩：</p>
+$$\Sigma M_C=0:\ R_D\times4=20\times2\ \Rightarrow\ R_D=10\ \text{kN}\ (\uparrow)$$
+<p>再用垂直力平衡，內鉸傳遞的剪力：</p>
+$$V_C=20-10=10\ \text{kN}$$
+<figure><img src="handout/img/s04.jpg" alt="附屬結構自由體"><figcaption><span>附屬結構 CD 自由體：C 鉸處 \(V_C\)、20 kN、\(R_D\)（綠箭頭）</span><span class="ts">影片 1:30</span></figcaption></figure>
+
+<h3>② 再解主結構 AC</h3>
+<p>接著把 \(V_C\) <strong>反向</strong>施加到主結構上：CD 在 C 點被往上托 10，所以 AC 在 C 點被往下壓 10。主結構就是一根懸臂：</p>
+$$R_A=80+10=90\ \text{kN}$$
+$$M_A=80\times4+10\times8=400\ \text{kN}\cdot\text{m}\quad(\text{上側受拉})$$
+<figure><img src="handout/img/s05.jpg" alt="主結構自由體"><figcaption><span>主結構 AC：C 端紅色 10 kN 向下（反向施加）；\(R_A=90\)、\(M_A=400\) kN·m 上側受拉（黃框）</span><span class="ts">影片 1:51</span></figcaption></figure>
+
+<div class="box warn"><b class="h">最常見的錯——忘了反向：</b>如果把 10 kN 往上加在主結構，\(R_A\) 會變成 70，\(M_A\) 只剩 240。</div>
+<div class="box ok"><b class="h">整體檢查（反力和＝總載重 100）：</b>\(70+10=80\neq100\) ✗ 露餡；正確的 \(90+10=100\) ✓。</div>
+<figure><img src="handout/img/s06.jpg" alt="忘了反向的錯誤"><figcaption><span>紅色錯誤版 \(R_A=70\)、\(M_A=240\) 打叉；整體檢查 80 ≠ 100 ✗、100 ✓</span><span class="ts">影片 2:13</span></figcaption></figure>
+</section>
+
+<!-- c2 -->
+<section id="c2">
+<h2><span class="no">2</span> 微分關係推 SFD／BMD <button class="seek" data-t="133.94">▶ 2:13</button></h2>
+<p>反力有了，內力圖不必一點一點代。只要記兩條關係：</p>
+$$\color{#2f78b5}{\frac{dV}{dx}=-w}\qquad\color{#c2477a}{\frac{dM}{dx}=V}$$
+<p>換成考場好用的面積法：</p>
+$$\color{#2f78b5}{\Delta V=-(\text{載重圖面積})}\qquad\color{#c2477a}{\Delta M=+(\text{剪力圖面積})}$$
+<p class="legend">黑板配色：藍＝剪力 V、粉紅＝彎矩 M、綠＝反力／正確、紅＝錯誤。</p>
+<figure><img src="handout/img/s07.jpg" alt="微分關係與面積法"><figcaption><span>\(dV/dx=-w\)、\(dM/dx=V\)；面積法 \(\Delta V\)、\(\Delta M\)；上方梁已標 \(R_A=90\)、\(M_A=400\)、\(R_D=10\)</span><span class="ts">影片 2:32</span></figcaption></figure>
+
+<p>所以每種載重的形狀是固定的：</p>
+<table>
+<tr><th>載重</th><th>剪力 V</th><th>彎矩 M</th></tr>
+<tr><td>無載重</td><td>常數</td><td>直線</td></tr>
+<tr><td>均布 w</td><td>斜直線</td><td>二次曲線</td></tr>
+<tr><td>集中力 P</td><td>跳一格（跳躍）</td><td>出現折點</td></tr>
+</table>
+<figure><img src="handout/img/s08.jpg" alt="三列速記表"><figcaption><span>載重 → V → M 形狀速記表</span><span class="ts">影片 2:48</span></figcaption></figure>
+
+<h3>剪力圖（由左往右）</h3>
+<p>A 端起跳 +90，AC 段斜率是 \(-w=-10\)，走了 8 m，掉了 \(10\times8=80\)，到內鉸剩 +10——<strong>注意它不歸零</strong>。CD 段沒有載重，維持 +10，碰到 20 kN 往下跳到 −10，到 D 點再被 \(R_D\) 拉回零。</p>
+<figure><img src="handout/img/s09.jpg" alt="剪力圖"><figcaption><span>SFD：+90 → 斜率 −10 → C 處 +10「不歸零！」→ 常數 → 跳到 −10 → D 歸零</span><span class="ts">影片 3:09</span></figcaption></figure>
+<div class="box key"><b class="h">彎矩極值在哪：</b>看一眼剪力圖就知道——在剪力等於零的地方。AC 段剪力從 90 到 10，整段都沒有變號，所以彎矩單調，最大值一定在端點，也就是固定端 A 的 400。</div>
+
+<h3>彎矩圖（由左往右）</h3>
+<p>A 點是 −400，上側受拉，畫在梁的上方。AC 段的剪力圖是梯形，面積：</p>
+$$\frac{90+10}{2}\times8=400\qquad -400+400=0$$
+<p>到內鉸剛好歸零。</p>
+<div class="box ok"><b class="h">自我檢查：</b>內鉸的彎矩一定要算出零。</div>
+<figure><img src="handout/img/s11.jpg" alt="彎矩圖 AC 段"><figcaption><span>剪力梯形面積 400（黃）→ BMD 由 −400（上側受拉）以二次曲線回到 C 點 0 ✓</span><span class="ts">影片 3:49</span></figcaption></figure>
+<p>CD 段，剪力 +10 走 2 m，彎矩加 20，在集中力處達到 +20，下側受拉；接著剪力變成 −10，再走 2 m，回到零。</p>
+<p>彎矩圖穿過零線的地方就是<strong>反曲點</strong>，這一題的反曲點剛好就在內鉸上。</p>
+<figure><img src="handout/img/s12.jpg" alt="彎矩圖 CD 段"><figcaption><span>CD 段 +20 下側受拉（折點，綠）→ D 回 0；C 處標「反曲點＝內鉸」</span><span class="ts">影片 4:09</span></figcaption></figure>
+</section>
+
+<!-- c3 -->
+<section id="c3">
+<h2><span class="no">3</span> 三鉸剛架：受拉側與節點平衡 <button class="seek" data-t="249.99">▶ 4:09</button></h2>
+<h3>例題：三鉸剛架</h3>
+<p>跨度 12 m，柱高 6 m，A 和 E 都是鉸支承，梁的中央 C 是內鉸。梁上滿佈 8 kN/m，B 點還有一個向右的 20 kN。</p>
+<p>四個反力 \(V_A, H_A, V_E, H_E\)，三個整體平衡加上 \(M_C=0\)，剛好四條方程式（\(d=4-3-1=0\) 靜定）。</p>
+<figure><img src="handout/img/s13.jpg" alt="三鉸剛架題目"><figcaption><span>題目：12 m × 6 m，A／E 鉸支、C 內鉸、\(w=8\) kN/m、\(P=20\) kN →（作用於 B）</span><span class="ts">影片 4:32</span></figcaption></figure>
+
+<h3>第一步　對 A 取矩解豎向反力</h3>
+$$V_E\times12=96\times6+20\times6\ \Rightarrow\ V_E=58,\quad V_A=38$$
+<div class="box warn"><b class="h">陷阱在水平力：</b>它對 A 也有力矩，力臂就是柱高 6 m。漏掉它，兩邊都算成 48，看起來很對稱，其實是錯的。</div>
+<figure><img src="handout/img/s14.jpg" alt="第一步"><figcaption><span>\(\Sigma M_A=0\)，橘框標出 \(20\times6\)；紅字「漏掉 → \(V_A=V_E=48\)」打叉</span><span class="ts">影片 4:55</span></figcaption></figure>
+
+<h3>第二步　用內鉸</h3>
+<p>取左半部 ABC 對 C 取矩：</p>
+$$38\times6-H_A\times6-48\times3=0\ \Rightarrow\ H_A=14\ \text{kN}\ (\rightarrow)$$
+<p>再用水平力平衡：</p>
+$$H_E=34\ \text{kN}\ (\leftarrow)$$
+<figure><img src="handout/img/s15.jpg" alt="第二步"><figcaption><span>左半 ABC（黃虛線框）對 C 取矩得 \(H_A=14\) →；\(\Sigma F_x=0\) 得 \(H_E=34\) ←</span><span class="ts">影片 5:13</span></figcaption></figure>
+
+<h3>第三步　柱頂彎矩＝水平反力 × 柱高</h3>
+$$M_B=14\times6=84\qquad M_D=34\times6=204$$
+<p>畫在哪一側？兩個柱腳都被水平反力往內推，<strong>柱子的外側受拉</strong>，所以柱的彎矩圖畫在外側，從柱腳的零線性長到柱頂。</p>
+<p>然後在節點 B 檢查。剛接節點本身也要平衡，所以梁端彎矩一定等於柱端彎矩：</p>
+$$\Sigma M_B=84-84=0\ \checkmark$$
+<p>受拉側也連續轉過角落，柱的外側接到梁的上側。D 點同理，兩邊都是 204。</p>
+<figure><img src="handout/img/s17.jpg" alt="柱 BMD 與節點平衡"><figcaption><span>柱 BMD 畫在外側（84、204）；節點 B 放大：柱端 84＝梁端 84，柱外側 → 梁上側受拉側連續；D 點 204＝204 ✓</span><span class="ts">影片 5:57</span></figcaption></figure>
+
+<h3>第四步　梁的彎矩方程式（x 從 B 量起）</h3>
+$$M(x)=-84+38x-4x^2=-2(2x-7)(x-6)$$
+<p>令它等於零，\(x=3.5\)，以及 \(x=6\)，也就是內鉸，又自動歸零了。再令剪力等於零：</p>
+$$V=38-8x=0\ \Rightarrow\ x=4.75,\qquad M^+_{max}=6.25\ \text{kN}\cdot\text{m}$$
+<figure><img src="handout/img/s18.jpg" alt="梁彎矩方程式"><figcaption><span>\(M(x)\) 因式分解；零點 3.5 m 與 6 m（內鉸）；\(M^+_{max}=6.25\) kN·m（黃框）；梁 BMD 畫上</span><span class="ts">影片 6:21</span></figcaption></figure>
+
+<p>6.25 有多小？同樣跨度的簡支梁，跨中彎矩是</p>
+$$\frac{wL^2}{8}=\frac{8\times12^2}{8}=144$$
+<div class="box key"><b class="h">拱效應：</b>內鉸加上兩個水平反力，把大部分彎矩換成梁的軸壓力，梁中段幾乎不受彎，代價是柱頂要扛 204。</div>
+<figure><img src="handout/img/s19.jpg" alt="拱效應"><figcaption><span>簡支梁 \(wL^2/8=144\) vs \(M^+_{max}=6.25\)；「拱效應：彎矩 → 軸壓力」</span><span class="ts">影片 6:42</span></figcaption></figure>
+</section>
+
+<!-- c4 -->
+<section id="c4">
+<h2><span class="no">4</span> 考場四步 SOP <button class="seek" data-t="403.08">▶ 6:43</button></h2>
+<table>
+<tr><th>步驟</th><th>做什麼</th></tr>
+<tr><td>① 靜定判定</td><td>用 \(d=r-3-c\) 確認靜定</td></tr>
+<tr><td>② 切內鉸</td><td>先解附屬結構，把傳遞力反向施加，再解主結構</td></tr>
+<tr><td>③ 畫 SFD</td><td>用面積法 \(\Delta V=-\int w\,dx\) 從左往右推，找剪力等於零的位置</td></tr>
+<tr><td>④ 畫 BMD</td><td>用面積法 \(\Delta M=\int V\,dx\) 推，畫在受拉側，剛架每個節點檢查彎矩平衡</td></tr>
+</table>
+<figure><img src="handout/img/s20.jpg" alt="考場四步 SOP"><figcaption><span>考場四步 SOP</span><span class="ts">影片 7:11</span></figcaption></figure>
+
+<div class="box ok"><b class="h">三個隨手檢查：</b><br>
+① 內鉸的彎矩一定算出零。<br>
+② 反力加起來要等於總載重。<br>
+③ 剛接節點：梁端等於柱端。</div>
+
+<p>這一集兩個例題的答案：</p>
+<table>
+<tr><th>例題</th><th>答案</th></tr>
+<tr><td>帶內鉸梁</td><td>\(R_A=90\) kN、\(M_A=400\) kN·m、\(R_D=10\) kN</td></tr>
+<tr><td>三鉸剛架</td><td>\(H_A=14\) kN、\(H_E=34\) kN；柱頂彎矩 \(M_B=84\)、\(M_D=204\) kN·m</td></tr>
+</table>
+<figure><img src="handout/img/s21.jpg" alt="總結"><figcaption><span>三個隨手檢查＋兩例題答案（黃框）</span><span class="ts">影片 7:33</span></figcaption></figure>
+</section>
+
+<div class="src">來源：<code>video/SA-U1-2.mp4</code>（7:34）、<code>video/segments.py</code>（逐字旁白，權威講稿）、<code>video/SA-U1-2.srt</code>（字幕時間軸）、<code>video/HANDOFF.md</code>（例題數值已複核）。黑板圖取自各段結束前 0.5 秒畫面。</div>
+</main>
+<script>
+document.addEventListener('DOMContentLoaded',()=>{
+  if(window.renderMathInElement) renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'\\(',right:'\\)',display:false}],throwOnError:false});
+  const v=document.getElementById('v');
+  document.querySelectorAll('.seek').forEach(b=>b.addEventListener('click',()=>{v.currentTime=+b.dataset.t;v.play();}));
+});
+</script>
+</body>
+</html>

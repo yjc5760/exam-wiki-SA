@@ -1,0 +1,391 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>位移計算與非外力成因｜影片講義</title>
+<link rel="stylesheet" href="../../study/assets/katex/katex.min.css">
+<script defer src="../../study/assets/katex/katex.min.js"></script>
+<script defer src="../../study/assets/katex/auto-render.min.js"></script>
+<style>
+:root{
+  --paper:#faf7f0; --ink:#262a26; --muted:#6b6f68; --board:#24382f; --board2:#2f4a3e; --chalk:#f3efe2;
+  --line:#ddd6c6; --blue:#2b6f9e; --pink:#c0446a; --amber:#a8740a; --green:#2f7d45; --red:#b8382b; --orange:#c96f1c;
+}
+*{box-sizing:border-box}
+html{background:var(--paper)}
+body{margin:0;background:var(--paper);color:var(--ink);
+  font-family:"Noto Sans TC","Microsoft JhengHei","PingFang TC",sans-serif;line-height:1.75;font-size:16px}
+main{max-width:860px;margin:0 auto;padding:28px 20px 60px}
+.cover{background:linear-gradient(160deg,var(--board),var(--board2));color:var(--chalk);border-radius:10px;padding:30px 30px 26px;margin-bottom:26px}
+.cover .tag{font-size:13px;letter-spacing:.08em;color:#cfe3c9;opacity:.9}
+.cover h1{margin:6px 0 4px;font-size:30px;line-height:1.3;color:#f6e7a8;font-weight:700}
+.cover .meta{font-size:14px;color:#cfd6cc}
+.cover .core{margin-top:16px;padding-top:14px;border-top:1px dashed rgba(243,239,226,.35);font-size:16.5px}
+.cover .core b{color:#f6e7a8}
+h2{font-size:21px;margin:40px 0 12px;padding-bottom:6px;border-bottom:2px solid var(--board);display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+h2 .no{background:var(--board);color:var(--chalk);font-size:13px;padding:2px 9px;border-radius:4px;font-weight:600}
+.toc{border:1px solid var(--line);border-radius:8px;padding:14px 18px;background:#fff}
+.toc h3{margin:0 0 6px;font-size:15px;color:var(--muted);font-weight:600}
+.toc ol{margin:0;padding-left:0;list-style:none;columns:2;column-gap:28px}
+.toc li{display:flex;justify-content:space-between;gap:10px;padding:3px 0;border-bottom:1px dotted var(--line);break-inside:avoid}
+.toc a{color:var(--ink);text-decoration:none}
+.toc a:hover{color:var(--blue)}
+.toc .t{font-variant-numeric:tabular-nums;color:var(--muted);font-size:14px}
+.player{margin:22px 0 6px;position:sticky;top:0;z-index:5;background:var(--paper);padding:6px 0}
+.player video{width:100%;border-radius:8px;background:#000;display:block;max-height:46vh}
+.player .hint{font-size:12.5px;color:var(--muted);margin-top:4px}
+button.seek{font:inherit;font-size:13px;background:#fff;border:1px solid var(--board);color:var(--board);border-radius:999px;padding:1px 10px;cursor:pointer}
+button.seek:hover{background:var(--board);color:var(--chalk)}
+figure{margin:18px 0;background:#fff;border:1px solid var(--line);border-radius:8px;overflow:hidden;break-inside:avoid}
+figure img{display:block;width:100%;height:auto}
+figcaption{display:flex;justify-content:space-between;gap:14px;font-size:13.5px;color:var(--muted);padding:7px 12px;border-top:1px solid var(--line)}
+figcaption .tm{white-space:nowrap;cursor:pointer;color:var(--board)}
+p{margin:10px 0}
+.katex-display{margin:12px 0;overflow-x:auto;overflow-y:hidden;padding:4px 0}
+.eq{background:#fff;border-left:4px solid var(--board);border-radius:0 6px 6px 0;padding:2px 14px;margin:12px 0}
+table{border-collapse:collapse;width:100%;margin:12px 0;background:#fff;font-size:15px}
+th,td{border:1px solid var(--line);padding:6px 10px;text-align:left;vertical-align:middle}
+th{background:#eef0ea;font-weight:600}
+td:first-child,th:first-child{white-space:nowrap}
+td.num{text-align:right;font-variant-numeric:tabular-nums}
+.box{border-radius:7px;padding:10px 14px;margin:14px 0;break-inside:avoid}
+.box .h{font-weight:700;margin-right:6px}
+.warn{background:#fbecea;border:1px solid #e5b3ac}.warn .h{color:var(--red)}
+.ok{background:#e9f4ec;border:1px solid #a9d3b4}.ok .h{color:var(--green)}
+.key{background:#fdf5d9;border:1px solid #e6cf82}.key .h{color:var(--amber)}
+.legend{font-size:13.5px;color:var(--muted)}
+.c-blue{color:var(--blue)}.c-pink{color:var(--pink)}.c-amber{color:var(--amber)}.c-green{color:var(--green)}.c-red{color:var(--red)}
+ol.sop{padding-left:1.4em}ol.sop li{margin:6px 0}
+footer{margin-top:44px;padding-top:12px;border-top:1px solid var(--line);font-size:13px;color:var(--muted)}
+code{font-family:Consolas,monospace;font-size:13px;background:#efece4;padding:1px 5px;border-radius:3px}
+@media (max-width:640px){
+  main{padding:18px 16px 48px}
+  .cover{padding:22px 18px}.cover h1{font-size:24px}
+  .toc ol{columns:1}
+  .player{position:static}
+  figcaption{flex-direction:column;gap:2px}
+  table{font-size:14px}
+}
+@media print{
+  @page{size:A4}
+  html,body{background:#fff}
+  main{max-width:none;padding:0}
+  .player,button.seek,.player .hint{display:none!important}
+  figcaption .tm{color:var(--muted)}
+  h2{break-after:avoid}
+  figure,.box,.eq,table,.toc{break-inside:avoid}
+  .cover{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+}
+</style>
+</head>
+<body>
+<main>
+
+<header class="cover">
+  <div class="tag">結構學 SA ｜ 命題大綱 U1-2 靜定結構之分析 ｜ 影片講義</div>
+  <h1>位移計算與非外力成因</h1>
+  <div class="meta">影片 8:32 ・ 6 章 ・ 21 段 ・ 例題⑤ 共軛梁法、例題⑥ 廣義虛功式四成因疊加</div>
+  <div class="core">靜定結構的內力只靠幾何＋平衡；到了位移側剛度才登場。<b>最大位移在 V* = 0 的地方；支承沉陷走左邊，不要寫進 e 裡面。</b></div>
+</header>
+
+<nav class="toc">
+  <h3>目錄</h3>
+  <ol>
+    <li><a href="#c0">0　開場：從內力跨到位移</a><span class="t">0:00</span></li>
+    <li><a href="#c1">1　共軛梁法：把 M/EI 當載重</a><span class="t">0:57</span></li>
+    <li><a href="#c2">2　例題⑤：端點轉角與最大位移</a><span class="t">2:03</span></li>
+    <li><a href="#c3">3　廣義虛功式：四個成因</a><span class="t">4:02</span></li>
+    <li><a href="#c4">4　例題⑥：四成因疊加</a><span class="t">4:55</span></li>
+    <li><a href="#c5">5　考場四步 SOP</a><span class="t">7:34</span></li>
+  </ol>
+</nav>
+
+<div class="player">
+  <video id="vid" controls preload="metadata" src="video/SA-U1-2-disp.mp4"></video>
+  <div class="hint">點章節旁的 ▶ 或圖說右側時間，可跳到影片該處。</div>
+</div>
+
+<!-- ───────── c0 ───────── -->
+<section id="c0">
+<h2><span class="no">0</span>開場：從內力跨到位移 <button class="seek" data-t="0">▶ 0:00</button></h2>
+
+<figure>
+  <img src="handout/img/s01.jpg" alt="黑板：內力側 → 位移側">
+  <figcaption><span>內力側（幾何＋平衡，E、I、A 沒出場）→ 位移側（e = NL/EA、φ = M/EI，沿桿件累加）</span><span class="tm" data-t="24.6">影片 0:24</span></figcaption>
+</figure>
+
+<p>這一集講位移計算，以及非外力成因。靜定結構的內力，只靠幾何跟平衡就算得出來，\(E\)、\(I\)、\(A\) 完全沒出場。</p>
+<p>到了位移側，剛度才正式登場：把已經解出的內力，換成桿件伸長 \(NL/EA\)，或曲率 \(M/EI\)，再沿著桿件累加，就得到位移跟轉角。</p>
+<div class="eq">$$e=\frac{NL}{EA},\qquad \phi=\frac{M}{EI}\quad\xrightarrow{\ \text{沿桿件累加}\ }\quad \delta,\ \theta$$</div>
+
+<figure>
+  <img src="handout/img/s02.jpg" alt="黑板：非外力成因內力為零、位移工具雙軌制">
+  <figcaption><span>非外力成因在靜定結構內力 = 0（誘餌題）；位移工具雙軌制</span><span class="tm" data-t="57.4">影片 0:57</span></figcaption>
+</figure>
+
+<p>由此有一個重要推論：支承沉陷、溫差、製造誤差，都不經由內力產生變形，所以在靜定結構裡，不生一絲內力，只造成剛體位移。</p>
+<div class="box warn"><span class="h">誘餌題</span>題目給了 \(E\) 跟 \(A\)，卻問靜定結構在沉陷或溫差下的內力——答案直接是 <b>0</b>。</div>
+<p>位移工具採雙軌制：</p>
+<table>
+  <tr><th>情況</th><th>工具</th></tr>
+  <tr><td>單一直梁、要找最大位移的位置</td><td class="c-blue"><b>共軛梁法</b></td></tr>
+  <tr><td>桁架、剛架，或含非外力成因（沉陷／溫差／誤差）</td><td class="c-pink"><b>廣義虛功式</b>（一律）</td></tr>
+</table>
+</section>
+
+<!-- ───────── c1 ───────── -->
+<section id="c1">
+<h2><span class="no">1</span>共軛梁法：把 M/EI 當載重 <button class="seek" data-t="57.86">▶ 0:57</button></h2>
+
+<p>先看共軛梁法。把真實梁的彎矩圖除以 \(EI\)，當成分布載重 \(w^*\)，加在共軛梁上，然後就只是算剪力跟彎矩。</p>
+<div class="eq">$$w^*=\frac{M}{EI}\qquad {\color{#2b6f9e}\theta=V^*}\ \ (\text{轉角}=\text{共軛梁剪力})\qquad {\color{#c0446a}y=M^*}\ \ (\text{位移}=\text{共軛梁彎矩})$$</div>
+<p class="legend">黑板用色：<span class="c-blue">藍＝轉角／剪力</span>、<span class="c-pink">粉紅＝位移／彎矩</span>。</p>
+<p>共軛梁的剪力 \(V^*\)，就是真實梁的轉角；共軛梁的彎矩 \(M^*\)，就是真實梁的位移。微積分問題，變成大家最熟的靜力學。</p>
+
+<figure>
+  <img src="handout/img/s04.jpg" alt="黑板：支承對偶轉換表">
+  <figcaption><span>θ = V*、y = M*，右側支承對偶轉換表</span><span class="tm" data-t="100.5">影片 1:40</span></figcaption>
+</figure>
+
+<p>支承要做對偶轉換：</p>
+<table>
+  <tr><th>實際梁</th><th>共軛梁</th></tr>
+  <tr><td>簡支（端）</td><td>簡支（端）</td></tr>
+  <tr><td>固定端</td><td>自由端</td></tr>
+  <tr><td>自由端</td><td>固定端</td></tr>
+  <tr><td>中間支承</td><td>內鉸</td></tr>
+  <tr><td>內鉸</td><td>中間支承</td></tr>
+</table>
+<div class="box warn"><span class="h">考場最常錯</span>忘了換，或換反。</div>
+
+<figure>
+  <img src="handout/img/s05.jpg" alt="黑板：用邊界條件說明為什麼要換">
+  <figcaption><span>為什麼這樣換？看邊界條件（固定端 ↔ 自由端）</span><span class="tm" data-t="123.2">影片 2:03</span></figcaption>
+</figure>
+
+<p>為什麼這樣換？看邊界條件。</p>
+<table>
+  <tr><th>實際梁</th><th>邊界條件</th><th>共軛梁需要</th><th>→ 換成</th></tr>
+  <tr><td>固定端</td><td>\(\theta=0,\ y=0\)</td><td>\(V^*=0,\ M^*=0\)</td><td class="c-green">自由端 ✓</td></tr>
+  <tr><td>自由端</td><td>\(\theta\neq0,\ y\neq0\)</td><td>要提供 \(V^*\)、\(M^*\)</td><td class="c-green">固定端 ✓</td></tr>
+</table>
+<p>固定端的轉角跟位移都是零，所以共軛梁那一點的 \(V^*\) 跟 \(M^*\) 也必須是零，那正是自由端。反過來，自由端的轉角跟位移都可以不為零，共軛梁就必須提供剪力跟彎矩，所以要換成固定端。</p>
+</section>
+
+<!-- ───────── c2 ───────── -->
+<section id="c2">
+<h2><span class="no">2</span>例題⑤：端點轉角與最大位移 <button class="seek" data-t="123.71">▶ 2:03</button></h2>
+
+<figure>
+  <img src="handout/img/s06.jpg" alt="黑板：例題⑤簡支梁與彎矩圖">
+  <figcaption><span>簡支梁 9 m，P = 60 kN 距 A 3 m；反力 40、20；三角形 M 圖峰值 120</span><span class="tm" data-t="146.8">影片 2:26</span></figcaption>
+</figure>
+
+<p>例題五：簡支梁跨度 9 m，距 A 點 3 m 處有一個 60 kN 的集中載重，\(EI=40{,}000\ \text{kN}\cdot\text{m}^2\)。</p>
+<p>第一步畫真實梁的彎矩圖：反力 \(R_A=40\)、\(R_B=20\)；彎矩圖是三角形，尖峰在載重點：</p>
+<div class="eq">$$M_{max}=40\times3=120\ \text{kN}\cdot\text{m}$$</div>
+
+<figure>
+  <img src="handout/img/s07.jpg" alt="黑板：M 圖拆成 A1、A2 兩塊彈性載重">
+  <figcaption><span>M/EI 圖拆成 <span class="c-blue">A₁</span>（形心距 A 2 m）與 <span class="c-pink">A₂</span>（形心距 A 5 m）</span><span class="tm" data-t="169.3">影片 2:49</span></figcaption>
+</figure>
+
+<p>把三角形拆成左右兩塊，當作彈性載重：</p>
+<div class="eq">$${\color{#2b6f9e}A_1=\tfrac12(3)(120)=\frac{180}{EI}}\ \ (\text{形心距 A 2 m})$$
+$${\color{#c0446a}A_2=\tfrac12(6)(120)=\frac{360}{EI}}\ \ (\text{形心距 A 5 m})$$</div>
+<div class="box key"><span class="h">支承</span>兩端簡支，共軛梁仍然是兩端簡支，支承不用換。</div>
+
+<figure>
+  <img src="handout/img/s08.jpg" alt="黑板：對 B 取矩求 V*A、V*B">
+  <figcaption><span>ΣM<sub>B</sub> = 0 求共軛梁反力 → 端點轉角</span><span class="tm" data-t="188.1">影片 3:08</span></figcaption>
+</figure>
+
+<p>對 B 點取矩：</p>
+<div class="eq">$$V^*_A\cdot 9=180(7)+360(4)\ \Rightarrow\ V^*_A=\frac{300}{EI},\qquad V^*_B=\frac{240}{EI}$$</div>
+<p>除以 40,000，A 端轉角是 7.5 mrad，B 端是 6.0 mrad：</p>
+<div class="eq">$$\theta_A=7.50\ \text{mrad},\qquad \theta_B=6.00\ \text{mrad}$$</div>
+
+<figure>
+  <img src="handout/img/s09.jpg" alt="黑板：V*=0 找最大位移位置">
+  <figcaption><span>共軛梁 V* = 0（綠虛線）處即最大位移位置；由 B 端量 a</span><span class="tm" data-t="214.8">影片 3:34</span></figcaption>
+</figure>
+
+<p>最大位移在哪裡？在共軛梁剪力等於零的地方。從 B 端往左看比較快：距 B 為 \(a\) 處的彈性載重是 \(20a\)，累積面積是 \(10a^2\)，令它等於 \(V^*_B=240\)：</p>
+<div class="eq">$$w^*(a)=20a,\qquad \tfrac12\,a\,(20a)=10a^2=240\ \Rightarrow\ a=\sqrt{24}=4.899\ \text{m}$$
+$$x=9-4.899=4.101\ \text{m}$$</div>
+<div class="box warn"><span class="h">注意</span>換回距 A，\(x=4.101\) m，<b>不在跨中</b>。</div>
+
+<figure>
+  <img src="handout/img/s10.jpg" alt="黑板：M* 求最大位移">
+  <figcaption><span>y<sub>max</sub> = M* = 160a → δ<sub>max</sub> = 19.60 mm；跨中 19.41 mm</span><span class="tm" data-t="241.9">影片 4:01</span></figcaption>
+</figure>
+
+<p>最大位移等於該點的 \(M^*\)：\(240a\) 減掉三角形載重 \(10a^2\) 乘 \(a/3\)，剛好化簡成 \(160a\)：</p>
+<div class="eq">$$y_{max}=M^*=240a-10a^2\cdot\frac a3=160a=\frac{783.8}{EI}\ \Rightarrow\ \delta_{max}=19.60\ \text{mm}$$</div>
+<div class="box key"><span class="h">估算 vs. 問位置</span>跨中位移是 19.41 mm，只差不到 1%，可以拿來估算；但題目問位置，就不能偷懶寫跨中。</div>
+</section>
+
+<!-- ───────── c3 ───────── -->
+<section id="c3">
+<h2><span class="no">3</span>廣義虛功式：四個成因 <button class="seek" data-t="242.39">▶ 4:02</button></h2>
+
+<p>第二個工具，廣義虛功式：</p>
+<div class="eq">$$1\cdot\Delta+\Sigma\bar R_j\,\Delta_j=\Sigma\bar n_i\,e_i$$</div>
+<p>左邊是虛擬力系做的外功：要求的位移，加上虛擬反力乘真實的支承移動。右邊是虛擬桿力，乘上真實的桿件伸長量。</p>
+<table>
+  <tr><th>項</th><th>意義</th></tr>
+  <tr><td>\(1\cdot\Delta\)</td><td>要求的位移</td></tr>
+  <tr><td>\(\Sigma\bar R_j\Delta_j\)</td><td>虛擬反力 × 真實支承移動</td></tr>
+  <tr><td>\(\Sigma\bar n_i e_i\)</td><td>虛擬桿力 × 真實伸長</td></tr>
+</table>
+
+<figure>
+  <img src="handout/img/s12.jpg" alt="黑板：e 的三個來源">
+  <figcaption><span>右邊 e 的三來源：外力（藍）、溫差（黃）、製造誤差（綠）</span><span class="tm" data-t="276.8">影片 4:36</span></figcaption>
+</figure>
+
+<p>右邊的真實伸長 \(e\)，有三個來源，三者相加才是總伸長：</p>
+<table>
+  <tr><th>來源</th><th>伸長 \(e\)</th></tr>
+  <tr><td class="c-blue">外力</td><td>\(e=\dfrac{NL}{EA}\)</td></tr>
+  <tr><td class="c-amber">溫差</td><td>\(e=\alpha\,\Delta T\,L\)</td></tr>
+  <tr><td class="c-green">製造誤差</td><td>\(e=\delta\)（題目直接給）</td></tr>
+</table>
+
+<figure>
+  <img src="handout/img/s13.jpg" alt="黑板：支承沉陷不進 e，走左邊">
+  <figcaption><span>支承沉陷 ✗ 不進 e → 走左邊 ΣR̄Δ；移項後 −ΣR̄Δ</span><span class="tm" data-t="295.3">影片 4:55</span></figcaption>
+</figure>
+
+<div class="box warn"><span class="h">考場最高頻陷阱</span>支承沉陷不屬於這三個，它<b>不進 \(e\)</b>，而是走左邊的 \(\Sigma\bar R\Delta\)。移項之後，沉陷的貢獻是 \(-\Sigma\bar R\Delta\)。</div>
+<div class="box ok"><span class="h">驗算</span>符號最容易錯，所以一定要用幾何獨立驗算一次。</div>
+</section>
+
+<!-- ───────── c4 ───────── -->
+<section id="c4">
+<h2><span class="no">4</span>例題⑥：四成因疊加 <button class="seek" data-t="295.8">▶ 4:55</button></h2>
+
+<figure>
+  <img src="handout/img/s14.jpg" alt="黑板：例題⑥三角桁架與條件">
+  <figcaption><span>三角桁架 A 鉸、B 滾，跨 6 m、高 4 m、斜桿 5 m；P = 100 kN↓ @ C，三個非外力成因</span><span class="tm" data-t="320.2">影片 5:20</span></figcaption>
+</figure>
+
+<p>例題六：三角形桁架，A 鉸支、B 滾支，相距 6 m，頂點 C 高 4 m，所以斜桿長 5 m。C 點受 100 kN 向下。另外三個非外力成因，求 C 點的垂直位移 \(\Delta_C\)：</p>
+<table>
+  <tr><th>條件</th><th>內容</th></tr>
+  <tr><td>外力</td><td>\(P=100\) kN ↓ @ C</td></tr>
+  <tr><td class="c-amber">溫差</td><td>AB 桿溫升 30°C，\(\alpha=1.2\times10^{-5}\)/°C</td></tr>
+  <tr><td class="c-green">製造誤差</td><td>BC 桿製造時短少 2 mm</td></tr>
+  <tr><td class="c-red">支承沉陷</td><td>A 支承下沉 5 mm</td></tr>
+  <tr><td>材料・斷面</td><td>\(E=200\ \text{kN/mm}^2\)；\(A_{diag}=1000\)、\(A_{AB}=800\ \text{mm}^2\)</td></tr>
+</table>
+
+<figure>
+  <img src="handout/img/s15.jpg" alt="黑板：真實桿力與虛擬桿力">
+  <figcaption><span>真實桿力：斜桿 −62.5（紅，受壓）、AB +37.5（綠，受拉）；n̄ = N/100</span><span class="tm" data-t="349.6">影片 5:49</span></figcaption>
+</figure>
+
+<p>先求真實桿力。節點 C 垂直平衡，兩根斜桿各負擔 50 的垂直分量，斜率 4 比 5，所以斜桿是 −62.5，受壓；節點 A 水平平衡，AB 等於 37.5，受拉。</p>
+<div class="eq">$$\Sigma F_y@C:\ 2N\cdot\tfrac45=100\ \Rightarrow\ {\color{#b8382b}N_{AC}=N_{BC}=-62.5\ \text{kN}}$$
+$$\Sigma F_x@A:\ {\color{#2f7d45}N_{AB}=62.5\cdot\tfrac35=+37.5}$$</div>
+<p>虛擬系統是在 C 點放一單位向下的力，方向跟原載重相同，所以虛擬桿力就是真實桿力除以 100：</p>
+<div class="eq">$$\bar n=\frac{N}{100}:\qquad \bar n_{AC}=\bar n_{BC}=-0.625,\quad \bar n_{AB}=+0.375$$</div>
+
+<figure>
+  <img src="handout/img/s16.jpg" alt="黑板：外力項">
+  <figcaption><span>外力項：Σn̄e = 1.953 + 0.527 = 2.480 mm↓</span><span class="tm" data-t="371.9">影片 6:11</span></figcaption>
+</figure>
+
+<p><b class="c-blue">外力項。</b>斜桿伸長等於 −62.5 乘 5000，除以 200 乘 1000，是 −1.5625 mm；下弦伸長 1.406 mm。乘上虛擬桿力加總：兩根斜桿貢獻 1.953，下弦 0.527，合計 2.480 mm，向下。</p>
+<div class="eq">$$e_{AC}=e_{BC}=\frac{-62.5(5000)}{200(1000)}=-1.5625,\qquad e_{AB}=\frac{37.5(6000)}{200(800)}=+1.406$$
+$$\Sigma\bar n e=2(-0.625)(-1.5625)+0.375(1.406)=1.953+0.527=2.480\ \text{mm}\downarrow$$</div>
+
+<figure>
+  <img src="handout/img/s17.jpg" alt="黑板：溫差項與製造誤差項">
+  <figcaption><span>溫差項 0.810 mm（黃框）、製造誤差項 1.250 mm（綠框）</span><span class="tm" data-t="396.4">影片 6:36</span></figcaption>
+</figure>
+
+<p><b class="c-amber">溫差項。</b>AB 溫升 30°C，熱膨脹係數 \(1.2\times10^{-5}\)/°C，桿長 6000 mm，伸長 2.16 mm，乘 0.375，得 0.810 mm。</p>
+<div class="eq">$$e_{AB}=1.2\times10^{-5}(30)(6000)=2.16\ \text{mm}\ \Rightarrow\ 0.375\times2.16=0.810\ \text{mm}$$</div>
+<p><b class="c-green">製造誤差項。</b>BC 短了 2 mm，\(e\) 是 −2，乘 −0.625，負負得正，1.250 mm。</p>
+<div class="eq">$$e_{BC}=-2\ \Rightarrow\ (-0.625)(-2)=1.250\ \text{mm}$$</div>
+
+<figure>
+  <img src="handout/img/s18.jpg" alt="黑板：沉陷項與幾何驗算">
+  <figcaption><span>沉陷項 +2.500 mm；右下剛體直線驗算：A 沉 5、B 不動 → C 在中點沉 2.5 ✓</span><span class="tm" data-t="422.7">影片 7:02</span></figcaption>
+</figure>
+
+<p><b class="c-red">沉陷項。</b>C 點單位力讓 A 的虛擬反力是 0.5，向上；A 卻向下沉 5 mm，方向相反，\(\Sigma\bar R\Delta\) 是 −2.5，移項後得 +2.5 mm。</p>
+<div class="eq">$$\bar R_A=0.5\uparrow,\quad \Delta_A=5\downarrow\ \Rightarrow\ \Sigma\bar R\Delta=0.5(-5)=-2.5$$
+$$\Rightarrow\ \Delta=-\Sigma\bar R\Delta=+2.500\ \text{mm}\downarrow$$</div>
+<div class="box ok"><span class="h">幾何驗算</span>純沉陷是一條剛體直線，A 沉 5、B 不動，C 在水平中點，剛好沉一半，2.5 mm，符號正確。</div>
+
+<figure>
+  <img src="handout/img/s19.jpg" alt="黑板：四項疊加長條圖與反解 Q">
+  <figcaption><span>四成因長條：2.480／0.810／1.250／2.500 → Δ<sub>C</sub> = 7.040 mm↓；反解 Q = 183.8 kN↑</span><span class="tm" data-t="454.5">影片 7:34</span></figcaption>
+</figure>
+
+<p>四項疊加：</p>
+<table>
+  <tr><th>成因</th><th>貢獻（mm↓）</th></tr>
+  <tr><td class="c-blue">外力 P</td><td class="num">2.480</td></tr>
+  <tr><td class="c-amber">溫差 ΔT</td><td class="num">0.810</td></tr>
+  <tr><td class="c-green">製造誤差 δ</td><td class="num">1.250</td></tr>
+  <tr><td class="c-red">支承沉陷</td><td class="num">2.500</td></tr>
+  <tr><th>合計 \(\Delta_C\)</th><th class="num">7.040 ↓</th></tr>
+</table>
+<div class="eq">$$\Delta_C=2.480+0.810+1.250+2.500=7.040\ \text{mm}\downarrow$$</div>
+<p>沉陷一項就佔了三分之一以上。</p>
+<p>如果要讓 C 點位移等於零呢？非外力成因合計 4.56 mm，跟載重無關；令向上的載重 \(Q\) 抵消它：</p>
+<div class="eq">$$0.810+1.250+2.500=4.56\ \text{mm}\ (\text{與 P 無關})$$
+$$\text{令}\ \Delta_C=0:\quad 2.4805\cdot\frac{Q}{100}=4.56\ \Rightarrow\ Q=183.8\ \text{kN}\uparrow$$</div>
+</section>
+
+<!-- ───────── c5 ───────── -->
+<section id="c5">
+<h2><span class="no">5</span>考場四步 SOP <button class="seek" data-t="454.95">▶ 7:34</button></h2>
+
+<figure>
+  <img src="handout/img/s20.jpg" alt="黑板：考場位移計算四步驟">
+  <figcaption><span>考場位移計算 4 步驟</span><span class="tm" data-t="487.1">影片 8:07</span></figcaption>
+</figure>
+
+<ol class="sop">
+  <li><b>確認靜定</b>（\(d=0\)），而且題目問的是位移或轉角。</li>
+  <li><b>解出真實外力下</b>的桿力 \(N\) 或彎矩 \(M\)。</li>
+  <li>在要求位移的點、沿要求的方向，<b>放一單位力</b>，求虛擬桿力與虛擬反力。</li>
+  <li><b>選公式</b>：直梁用共軛梁法，算 \(V^*\) 跟 \(M^*\)；桁架或多成因用廣義虛功式，<span class="c-red">右邊的 \(e\) 跟左邊的沉陷項分開算，再疊加</span>。</li>
+</ol>
+
+<figure>
+  <img src="handout/img/s21.jpg" alt="黑板：答案與兩句口訣">
+  <figcaption><span>本集答案與兩句話</span><span class="tm" data-t="511.0">影片 8:31</span></figcaption>
+</figure>
+
+<table>
+  <tr><th>例題</th><th>答案</th></tr>
+  <tr><td class="c-blue">例題⑤</td><td>\(\theta_A=7.50\) mrad；\(\delta_{max}=19.60\) mm，發生在距 A \(x=4.101\) m</td></tr>
+  <tr><td class="c-pink">例題⑥</td><td>\(\Delta_C=7.040\) mm ↓</td></tr>
+</table>
+<div class="box key"><span class="h">記住兩句話</span>① 最大位移在 \(V^*=0\) 的地方。　② 支承沉陷走左邊，不要寫進 \(e\) 裡面。</div>
+</section>
+
+<footer>
+  來源：<code>video/SA-U1-2-disp.mp4</code>（8:32）、<code>video/segments.py</code>（旁白逐字稿）、<code>video/SA-U1-2-disp.srt</code>（時間軸）。黑板圖為各段結束前 0.5 s 截圖；例題數值與 <code>HANDOFF.md</code> 複算結果一致。例題出處：study/SA-U1-2 靜定結構之分析 例題⑤、⑥。
+</footer>
+</main>
+<script>
+document.addEventListener('DOMContentLoaded',function(){
+  renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'\\(',right:'\\)',display:false}],throwOnError:false});
+  var v=document.getElementById('vid');
+  document.querySelectorAll('[data-t]').forEach(function(el){
+    el.addEventListener('click',function(){
+      if(!v)return; v.currentTime=parseFloat(el.dataset.t); v.play();
+      v.scrollIntoView({behavior:'smooth',block:'nearest'});
+    });
+  });
+});
+</script>
+</body>
+</html>
