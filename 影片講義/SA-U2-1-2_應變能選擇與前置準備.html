@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>應變能選擇與解題前置準備｜影片講義</title>
+<link rel="stylesheet" href="../study/assets/katex/katex.min.css">
+<script defer src="../study/assets/katex/katex.min.js"></script>
+<script defer src="../study/assets/katex/auto-render.min.js"></script>
+<style>
+:root{--paper:#faf7f0;--ink:#24302a;--board:#22382d;--board2:#2d4a3b;--muted:#6b756f;--line:#d9d3c4;
+--warn:#c0392b;--warnbg:#fdecea;--ok:#2e7d4f;--okbg:#e8f5ec;--key:#b8860b;--keybg:#fff6d9;}
+*{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--ink);font:16px/1.75 "Noto Sans TC","Microsoft JhengHei","PingFang TC",sans-serif}
+main{max-width:860px;margin:0 auto;padding:24px 18px 60px}
+.cover{background:linear-gradient(135deg,var(--board),var(--board2));color:#f3efe2;border-radius:14px;padding:28px 30px;margin-bottom:22px}
+.cover .tag{font-size:13px;letter-spacing:.08em;color:#e8cf7a}
+.cover h1{margin:6px 0 8px;font-size:30px;line-height:1.3;color:#f6d77a}
+.cover .meta{font-size:14px;color:#cfd8cf}
+.cover .core{margin-top:16px;padding:12px 16px;border-left:4px solid #f6d77a;background:rgba(255,255,255,.06);font-size:16px}
+nav.toc{border:1px solid var(--line);border-radius:10px;padding:12px 18px;background:#fff;margin-bottom:20px}
+nav.toc h2{margin:0 0 6px;font-size:16px;border:0;padding:0}
+nav.toc ol{margin:0;padding-left:0;list-style:none;columns:2;column-gap:28px}
+nav.toc li{display:flex;justify-content:space-between;gap:10px;break-inside:avoid}
+nav.toc a{color:var(--board);text-decoration:none}
+nav.toc .t{color:var(--muted);font-variant-numeric:tabular-nums}
+.vid{margin:0 0 26px}
+.vid video{width:100%;border-radius:10px;background:#000;display:block}
+h2{font-size:22px;color:var(--board);border-bottom:2px solid var(--board);padding-bottom:4px;margin:34px 0 14px;display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+h3{font-size:17px;margin:20px 0 6px;color:var(--board2)}
+button.seek{font:13px/1 inherit;font-family:inherit;padding:5px 10px;border-radius:999px;border:1px solid var(--board);background:#fff;color:var(--board);cursor:pointer}
+button.seek:hover{background:var(--board);color:#fff}
+figure{margin:16px 0;border:1px solid var(--line);border-radius:10px;overflow:hidden;background:#fff}
+figure img{width:100%;display:block}
+figcaption{display:flex;justify-content:space-between;gap:12px;padding:7px 12px;font-size:13px;color:var(--muted);border-top:1px solid var(--line)}
+figcaption .ts{white-space:nowrap;font-variant-numeric:tabular-nums}
+.box{border-radius:8px;padding:10px 14px;margin:14px 0;border-left:5px solid}
+.warn{background:var(--warnbg);border-color:var(--warn)}
+.ok{background:var(--okbg);border-color:var(--ok)}
+.key{background:var(--keybg);border-color:var(--key)}
+.box b.h{display:block;margin-bottom:2px}
+.box .src{float:right;font-size:12px;color:var(--muted)}
+table{border-collapse:collapse;margin:12px 0;width:100%;background:#fff;font-size:15px}
+th,td{border:1px solid var(--line);padding:6px 10px;text-align:left;vertical-align:top}
+th{background:#eef1ec}
+td:first-child,th:first-child{white-space:nowrap}
+.note{font-size:13px;color:var(--muted)}
+footer{margin-top:40px;padding-top:12px;border-top:1px solid var(--line);font-size:13px;color:var(--muted)}
+.katex-display{margin:.6em 0;overflow-x:auto;overflow-y:hidden}
+@media (max-width:600px){nav.toc ol{columns:1}.cover h1{font-size:24px}}
+@media print{
+ @page{size:A4;margin:14mm}
+ body{background:#fff;font-size:13.5px}
+ main{max-width:none;padding:0}
+ .vid,button.seek{display:none}
+ figure,.box,table,.katex-display{break-inside:avoid}
+ h2,h3{break-after:avoid}
+ figure img{width:80%;margin:0 auto}
+ .cover{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+}
+</style>
+</head>
+<body>
+<main>
+
+<header class="cover">
+  <div class="tag">SA 結構學 ・ 命題大綱 SA-U2-1 靜不定結構最小功法 ・ 影片講義</div>
+  <h1>應變能選擇與解題前置準備</h1>
+  <div class="meta">影片 5:54 ・ 6 章 ・ 18 段 ・ 例題①：A 端固定、B 端滾支承梁，\(w=24\) kN/m、\(L=6\) m</div>
+  <div class="core">看題目給的常數決定留哪幾項應變能；選讓彎矩式最短的多餘力，原點放在外力最少的那一端；遇到分段點就切刀。</div>
+</header>
+
+<nav class="toc">
+  <h2>目錄</h2>
+  <ol>
+    <li><a href="#c0">開場</a><span class="t">0:00</span></li>
+    <li><a href="#c1">一、應變能該留哪幾項</a><span class="t">0:21</span></li>
+    <li><a href="#c2">二、多餘力怎麼選</a><span class="t">2:18</span></li>
+    <li><a href="#c3">三、例題①完整結果</a><span class="t">3:53</span></li>
+    <li><a href="#c4">考場避坑</a><span class="t">4:55</span></li>
+    <li><a href="#c5">總結</a><span class="t">5:26</span></li>
+  </ol>
+</nav>
+
+<div class="vid"><video id="v" controls preload="metadata" src="video/SA-concept-應變能選擇與前置準備.mp4"></video></div>
+
+<!-- c0 -->
+<section id="c0">
+<h2>開場 <button class="seek" data-t="0">▶ 0:00</button></h2>
+<figure><img src="img/SA-U2-1-2/s01.jpg" alt="標題黑板"><figcaption><span>兩個考場卡關點：① U 裡該留哪幾項？② 多餘力・原點怎麼選？</span><span class="ts">影片 0:21</span></figcaption></figure>
+<p>這支影片是最小功法單元二：解題前置準備。考場最常卡在兩個地方：</p>
+<ol>
+<li>應變能公式裡到底要留哪幾項；</li>
+<li>多餘力和座標原點怎麼選，算式才不會爆開。</li>
+</ol>
+<p>這兩件事想清楚，後面代公式就是固定流程。</p>
+</section>
+
+<!-- c1 -->
+<section id="c1">
+<h2>一、應變能該留哪幾項 <button class="seek" data-t="21.93">▶ 0:21</button></h2>
+<figure><img src="img/SA-U2-1-2/s02.jpg" alt="應變能四項"><figcaption><span>完整應變能四項：彎曲、軸向、剪力、扭轉</span><span class="ts">影片 0:41</span></figcaption></figure>
+<p>完整的應變能有四項：彎曲、軸向、剪力、扭轉，分母分別是 \(EI\)、\(EA\)、\(GA\) 和 \(GJ\)：</p>
+$$U=\int\frac{M^2}{2EI}dx+\int\frac{N^2}{2EA}dx+\int\frac{f_sV^2}{2GA}dx+\int\frac{T^2}{2GJ}dx$$
+<p>四項全寫永遠是對的，但考場上不必全算。<strong>題目給了什麼常數，就是在暗示你留哪一項。</strong></p>
+
+<h3>只給 \(EI\) → 只留彎曲</h3>
+<figure><img src="img/SA-U2-1-2/s03.jpg" alt="只給EI只留彎曲"><figcaption><span>只給 EI ⇒ 只留彎曲；剪力能／彎曲能比值</span><span class="ts">影片 1:04</span></figcaption></figure>
+<p>只給 \(EI\)、沒給 \(A\) 和 \(G\)，就只留彎曲項 \(\displaystyle U=\int\frac{M^2}{2EI}dx\)。梁和剛架，九成以上的考題只需要它。</p>
+<p>其他項為什麼可以丟？看剪力能：懸臂梁端點載重、矩形斷面（\(E/G=2.6\)），剪力能和彎曲能的比值是</p>
+$$\frac{U_V}{U_M}=0.78\left(\frac{h}{L}\right)^2$$
+<figure><img src="img/SA-U2-1-2/s04.jpg" alt="剪力能佔比表"><figcaption><span>剪力能佔比表＋軸向能；細長桿件只留彎曲項</span><span class="ts">影片 1:28</span></figcaption></figure>
+<table>
+<tr><th>\(h/L\)</th><th>剪力能佔比 \(U_V/U_M\)</th></tr>
+<tr><td>1/5</td><td>3.12%（約百分之三）</td></tr>
+<tr><td>1/8</td><td>1.22%</td></tr>
+<tr><td>1/10</td><td>0.78%</td></tr>
+<tr><td>1/20</td><td>0.20%</td></tr>
+</table>
+<p>軸向能更小，長細比 \(L/h=10\) 的時候只有 0.25%。</p>
+<div class="box ok"><b class="h">結論</b>細長桿件只留彎曲項，就是標準答案；深梁、短跨才需要剪力項。</div>
+
+<h3>只給 \(EA\) → 桁架，積分退化成求和</h3>
+<figure><img src="img/SA-U2-1-2/s05.jpg" alt="桁架"><figcaption><span>只給 EA ⇒ 桁架；扭轉項出現的場合</span><span class="ts">影片 1:47</span></figcaption></figure>
+<p>只給 \(EA\)，是桁架。桿件只有軸力，而且每根桿內軸力 \(N\) 是常數，積分直接退化成求和：</p>
+$$\int\frac{N^2}{2EA}dx\;\Rightarrow\;U=\sum\frac{F^2L}{2EA}$$
+<p>至於扭轉項 \(\displaystyle\int\frac{T^2}{2GJ}dx\)，要到空間剛架、曲梁、格子梁才會出現。</p>
+
+<h3>\(EI\) 與 \(EA\) 同時給 → 混合結構</h3>
+<figure><img src="img/SA-U2-1-2/s06.jpg" alt="梁加吊桿"><figcaption><span>梁＋吊桿：兩項寫進同一條 U</span><span class="ts">影片 2:07</span></figcaption></figure>
+<p>最危險的是 \(EI\) 和 \(EA\) 同時給，也就是梁加吊桿的混合結構，兩項必須寫進同一條 \(U\)：</p>
+$$U=\int\frac{M^2}{2EI}dx+\sum\frac{F^2L}{2EA}$$
+<div class="box warn"><b class="h">陷阱</b>例題⑤裡，吊桿的軸向能佔總能量 36%。如果沿用「可以忽略」的習慣把它省掉，固端彎矩 \(M_A\) 會少算 12%。</div>
+
+<div class="box key"><span class="src">影片 2:08–2:18</span><b class="h">一句話記住</b>
+只給 \(EI\) ⇒ 只留彎曲；<br>只給 \(EA\) ⇒ 只留軸向；<br>\(EI+EA\) 同時給 ⇒ 兩項一起寫進同一條 \(U\)。</div>
+</section>
+
+<!-- c2 -->
+<section id="c2">
+<h2>二、多餘力怎麼選 <button class="seek" data-t="138.8">▶ 2:18</button></h2>
+<p>用例題①：A 端固定、B 端滾支承，跨長 \(L=6\) m，均布載重 \(w=24\) kN/m。</p>
+<figure><img src="img/SA-U2-1-2/s10.jpg" alt="選法A與選法B"><figcaption><span>左：選法 A（\(X=R_B\)，綠）；右：選法 B（\(X=M_A\)，紅）</span><span class="ts">影片 3:19</span></figcaption></figure>
+<table>
+<tr><th></th><th><span style="color:#2e7d4f">選法 A（建議）\(X=R_B\)</span></th><th><span style="color:#c0392b">選法 B　\(X=M_A\)</span></th></tr>
+<tr><td>釋放</td><td>拆掉 B 端滾支承</td><td>釋放固定端的彎矩</td></tr>
+<tr><td>基本結構</td><td>懸臂梁</td><td>簡支梁</td></tr>
+<tr><td>原點</td><td>自由端 B，\(s\) 從 B 往左量</td><td>A，\(x\) 從 A 往右量</td></tr>
+<tr><td>彎矩式</td><td>\(M(s)=Xs-\dfrac{ws^2}{2}\)<br>1 段・2 項</td><td>\(M(x)=\left(\dfrac{wL}{2}+\dfrac{X}{L}\right)x-\dfrac{wx^2}{2}-X\)<br>1 段・4 項</td></tr>
+<tr><td>\(\partial M/\partial X\)</td><td>\(s\)（乾淨好積）</td><td>\(\dfrac{x}{L}-1\)（帶分數，易錯）</td></tr>
+<tr><td>結果</td><td>\(X=R_B=54\) kN</td><td>\(X=M_A=108\) kN·m</td></tr>
+</table>
+<p>選法 A：自由體上只看得到 \(X\) 和載重，彎矩式只有兩項。選法 B：A 端反力要先寫成 \(X\) 的函數，彎矩式變成四項。</p>
+
+<figure><img src="img/SA-U2-1-2/s11.jpg" alt="兩種選法同一組內力"><figcaption><span>同一組內力；原點選取原則</span><span class="ts">影片 3:40</span></figcaption></figure>
+<p>兩種選法，答案一定相同：</p>
+$$M_A=-108\ \text{kN}\cdot\text{m},\qquad R_B=54\ \text{kN},\qquad R_A=90\ \text{kN}$$
+<p>但算式長度可以差一倍，考場上就是分數。</p>
+<div class="box key"><b class="h">原則</b>切開後，自由體上「看得到的外力最少」的那一端，當原點。</div>
+
+<h3>分段點：每遇到一個，就切一刀</h3>
+<figure><img src="img/SA-U2-1-2/s12.jpg" alt="分段點"><figcaption><span>① 載重起訖 ② 集中力 ③ EI 改變 ④ 桿件轉折</span><span class="ts">影片 3:53</span></figcaption></figure>
+<p>還要記住分段點：集中力作用點、分布載重起訖點、\(EI\) 改變處、桿件轉折點。每遇到一個，就切一刀，分段寫彎矩式。</p>
+</section>
+
+<!-- c3 -->
+<section id="c3">
+<h2>三、例題①完整結果 <button class="seek" data-t="233.68">▶ 3:53</button></h2>
+<figure><img src="img/SA-U2-1-2/s13.jpg" alt="例題①受力圖與反力"><figcaption><span>受力圖與反力</span><span class="ts">影片 4:13</span></figcaption></figure>
+$$R_B=\frac{3wL}{8}=54\ \text{kN},\qquad R_A=\frac{5wL}{8}=90\ \text{kN},\qquad M_A=-\frac{wL^2}{8}=-108\ \text{kN}\cdot\text{m}$$
+<p>固定端彎矩 \(M_A\) 上側受拉，是設計控制斷面。</p>
+
+<figure><img src="img/SA-U2-1-2/s15.jpg" alt="彎矩圖與變形曲線"><figcaption><span>彎矩圖（反曲點、最大正彎矩）＋變形曲線（最大下垂）</span><span class="ts">影片 4:55</span></figcaption></figure>
+<table>
+<tr><th>位置（距 A 端）</th><th>內容</th></tr>
+<tr><td>\(x=0\)</td><td>\(M=-108\) kN·m（彎矩圖起點）</td></tr>
+<tr><td>\(x=L/4=1.5\) m</td><td>彎矩過零＝反曲點</td></tr>
+<tr><td>\(x=5L/8=3.75\) m</td><td>剪力為零，最大正彎矩 \(+\dfrac{9wL^2}{128}=+60.75\) kN·m</td></tr>
+<tr><td>\(x\approx3.47\) m</td><td>最大下垂</td></tr>
+</table>
+<div class="box warn"><b class="h">注意</b>\(3L/8\) 是從 <strong>B 端</strong>量的；從 A 端量是 \(5L/8\)。</div>
+<p>變形形狀：固定端切線水平，靠 A 這一段上凸，過了反曲點變成下凹，<strong>曲率變號的地方就是彎矩零點</strong>。最大下垂在距 A 端約 3.47 m，和最大彎矩的位置並不相同。</p>
+</section>
+
+<!-- c4 -->
+<section id="c4">
+<h2>考場避坑 <button class="seek" data-t="295.6">▶ 4:55</button></h2>
+<figure><img src="img/SA-U2-1-2/s17.jpg" alt="考場避坑三條"><figcaption><span>三個考場避坑</span><span class="ts">影片 5:25</span></figcaption></figure>
+<div class="box warn"><b class="h">① 分段點漏切刀</b>有集中力或載重起訖點，卻一條式子從 0 積到 \(L\)，整題歸零。</div>
+<div class="box warn"><b class="h">② 混合結構漏了軸向項</b>吊桿的 \(\dfrac{X^2h}{2EA}\) 必須和梁的彎曲能寫在同一條 \(U\) 裡，一起偏微分：
+$$U=\int\frac{M^2}{2EI}dx+\frac{X^2h}{2EA}$$</div>
+<div class="box ok"><b class="h">③ 解題理由</b>寫「因為 B 點位移＝0」，比寫「因為能量要最小」更嚴謹、更扣題。</div>
+</section>
+
+<!-- c5 -->
+<section id="c5">
+<h2>總結 <button class="seek" data-t="326.45">▶ 5:26</button></h2>
+<figure><img src="img/SA-U2-1-2/s18.jpg" alt="總結"><figcaption><span>三條重點＋例題①答案</span><span class="ts">影片 5:53</span></figcaption></figure>
+<ol>
+<li>看題目給的常數，決定留哪幾項應變能。</li>
+<li>選讓彎矩式最短的多餘力，原點放在外力最少的那一端。</li>
+<li>集中力、載重起訖、\(EI\) 改變、桿件轉折 → 切刀分段。</li>
+</ol>
+<div class="box key"><b class="h">例題①</b>
+$$R_B=\frac{3wL}{8}=54\ \text{kN},\qquad M_A=-\frac{wL^2}{8}=-108\ \text{kN}\cdot\text{m}$$</div>
+</section>
+
+<footer>
+來源：<code>video/SA-concept-應變能選擇與前置準備.mp4</code>、<code>video/segments.py</code>（逐字旁白）、<code>video/SA-concept-應變能選擇與前置準備.srt</code>。黑板圖為各段結束前 0.5 秒的畫面。<br>
+符號約定：\(X=R_B\) 向上為正；\(s\) 從 B 端量起；\(x\) 從 A 端量起；彎矩下側受拉為正。<br>
+例題①數值已複算；例題⑤「吊桿軸向能 36%、\(M_A\) 少算 12%」沿用原圖解，未獨立驗算。
+</footer>
+</main>
+<script>
+document.addEventListener('DOMContentLoaded',function(){
+  if(window.renderMathInElement){renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'\\(',right:'\\)',display:false}],throwOnError:false});}
+  var v=document.getElementById('v');
+  document.querySelectorAll('button.seek').forEach(function(b){b.addEventListener('click',function(){v.currentTime=parseFloat(b.dataset.t);v.play();v.scrollIntoView({behavior:'smooth',block:'center'});});});
+});
+</script>
+</body>
+</html>

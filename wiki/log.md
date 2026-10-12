@@ -1,4 +1,4 @@
-# Wiki 操作紀錄
+﻿# Wiki 操作紀錄
 
 > append-only，請勿刪除已有紀錄
 
@@ -187,9 +187,9 @@ A wiki/code-ref/SA-code-matrix-displacement.md
 ### 下一步建議
 1. 在 wiki/index.md 中更新 Layer 5–7 導航連結（如有）
 2. 在 wiki/problems/*.md 題解中加入「相關公式來源」section，引用 [[SA-code-XXX]]
-3. 在 wiki/methods/ 與 wiki/philosophy/ 頁面底部加入�- 2026-07-10 08:16:52 : 執行 compile all 指令，重新編譯 wiki。
+3. 在 wiki/methods/ 與 wiki/philosophy/ 頁面底部加入�- 2026-07-10 08:16:52 : 執行 compile all 指令，重新編譯 wiki。
 - 2026-07-10 : 執行 study 指令（子項層級 ×5），生成 study/study-SA-U1-2.html、study-SA-U1-3.html、study-SA-U2-1.html、study-SA-U2-3.html、study-SA-U2-4.html（七區塊互動複習頁，資料來源 question_index.json，共涵蓋 63 題主考點考題）。
-�名為通用的 `sfd-bmd-viz.html`**，而非帶題號前綴（如 `SA-2025-3-sfd-bmd-viz.html`）
+�名為通用的 `sfd-bmd-viz.html`**，而非帶題號前綴（如 `SA-2025-3-sfd-bmd-viz.html`）
   - 導致多題共用同一檔名、相對路徑錯誤、題庫瀏覽頁面無法正確指向
   - 受影響：SA-2025-3, SA-2024-1, SA-2024-3, SA-2023-1, SA-2022-1/2, SA-2021-2, SA-2019-2, SA-2018-3, SA-2016-1/3, SA-2014-2, SA-2012-1/3, SA-2008-2/3/4, SA-2007-4, SA-2013-3
 
@@ -1213,3 +1213,10 @@ PDF 文字層檢查無殘留 LaTeX、無 emoji 豆腐方框。
   - U2-3 升溫（3 → 10）；U3-1 退燒（6 → 3）。
   - 冷凍（後半期 0 題主考點）：U1-1（最後 2010，但 2016／2019／2023 仍為副考點）、U2-5（最後 2006）。舊版「可以不讀：無」改為「放到最後（不是跳過）」。
   - 單元佔比變動最大：SA-U1 由前半 43.8% 降到後半 27.1%。
+
+## 2026-10-13 影片講義檔名規範化與資源補充
+
+- [refactor] 影片講義 21 份 HTML 檔名由空格改為底線命名規範（例如 SA-U1-2-1_靜定結構決策架構.html），並修正內部圖檔參照路徑至 img/<單元名稱>/sXX.jpg。
+- [add] 新增 影片講義/img/（共 343 張投影片截圖，42.4 MB），補齊各單元講義所需的板書與觀念插圖。
+- [media] 產出 21 支 MP4 概念影片於 影片講義/video/（約 503 MB）。
+- [note] 檢查無敏感資料；已確認影片檔納入 Git 版控。

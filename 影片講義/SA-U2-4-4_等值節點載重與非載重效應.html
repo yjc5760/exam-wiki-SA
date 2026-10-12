@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SA-U2-4-4 等值節點載重｜影片講義</title>
+<link rel="stylesheet" href="../study/assets/katex/katex.min.css">
+<script defer src="../study/assets/katex/katex.min.js"></script>
+<script defer src="../study/assets/katex/auto-render.min.js"></script>
+<style>
+:root{
+  --ink:#1d2421; --muted:#5b6661; --line:#d9dfdb; --paper:#fbfaf6; --card:#ffffff;
+  --board:#24382f; --chalk-y:#c9a227; --pink:#c2557a; --green:#3f8f5a; --blue:#3a78a8; --red:#c0453b; --orange:#c8742f;
+}
+*{box-sizing:border-box}
+html{background:var(--paper)}
+body{margin:0;color:var(--ink);background:var(--paper);
+  font-family:"Microsoft JhengHei","Noto Sans TC","Noto Sans CJK TC",-apple-system,sans-serif;
+  line-height:1.85;font-size:16.5px}
+.wrap{max-width:860px;margin:0 auto;padding:40px 16px 80px}
+header.cover{border-bottom:3px solid var(--board);padding-bottom:18px;margin-bottom:26px}
+.kicker{font-size:13px;letter-spacing:.12em;color:var(--muted)}
+h1{font-size:30px;margin:6px 0 6px;line-height:1.35}
+h3{font-size:17.5px;margin:26px 0 4px}
+.sub{color:var(--muted);margin:0}
+.meta{display:flex;flex-wrap:wrap;gap:8px 18px;font-size:13.5px;color:var(--muted);margin-top:12px}
+.thesis{margin:22px 0 8px;background:var(--board);color:#f3efe0;border-radius:10px;padding:18px 22px;text-align:center}
+.thesis b{color:#f0cf5a;font-size:22px;letter-spacing:.06em}
+.thesis div{font-size:14px;opacity:.85;margin-top:6px}
+nav.toc{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:14px 20px;margin:22px 0 30px}
+nav.toc h2{font-size:15px;margin:0 0 6px;color:var(--muted);border:0;padding:0}
+nav.toc ol{margin:0;padding-left:22px;columns:2;column-gap:28px}
+nav.toc li{font-size:14.5px;break-inside:avoid}
+nav.toc a{color:var(--ink);text-decoration:none}
+nav.toc a:hover{text-decoration:underline}
+.ts{font-variant-numeric:tabular-nums;font-size:12.5px;color:var(--muted);margin-left:6px}
+video{width:100%;border-radius:8px;background:#000;display:block}
+.video-box{margin:0 0 30px}
+.video-box p{font-size:13px;color:var(--muted);margin:6px 0 0}
+section.ch{margin:46px 0 0}
+section.ch > h2{font-size:22px;margin:0 0 4px;padding-bottom:6px;border-bottom:2px solid var(--line);display:flex;align-items:baseline;gap:10px;flex-wrap:wrap}
+.chno{display:inline-block;background:var(--board);color:#f0cf5a;font-size:14px;border-radius:6px;padding:1px 9px;font-weight:600}
+button.seek{font:inherit;font-size:12.5px;border:1px solid var(--line);background:var(--card);color:var(--muted);border-radius:999px;padding:1px 10px;cursor:pointer}
+button.seek:hover{border-color:var(--board);color:var(--ink)}
+figure{margin:18px 0 14px;break-inside:avoid}
+figure img{width:100%;border-radius:8px;display:block;border:1px solid #1a2a22}
+figcaption{font-size:13px;color:var(--muted);margin-top:6px;display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap}
+p{margin:10px 0}
+.eq{overflow-x:auto;margin:8px 0;padding:2px 0}
+.eq .katex-display{margin:.35em 0}
+.key{border-left:4px solid var(--chalk-y);background:#fdf6dd;padding:10px 16px;border-radius:0 8px 8px 0;margin:14px 0}
+.ok{border-left:4px solid var(--green);background:#eaf5ec;padding:10px 16px;border-radius:0 8px 8px 0;margin:14px 0}
+.warn{border-left:4px solid var(--red);background:#fbeceb;padding:10px 16px;border-radius:0 8px 8px 0;margin:14px 0}
+.key b,.ok b,.warn b{display:block;font-size:14px;margin-bottom:2px}
+table{border-collapse:collapse;width:100%;margin:12px 0;font-size:15px}
+th,td{border:1px solid var(--line);padding:6px 10px;text-align:left;vertical-align:top}
+td:first-child{white-space:nowrap}
+th{background:#eef1ef;font-weight:600}
+.c-pink{color:var(--pink)} .c-green{color:var(--green)} .c-blue{color:var(--blue)} .c-y{color:#a07f12} .c-red{color:var(--red)} .c-orange{color:var(--orange)}
+.legend{font-size:13.5px;color:var(--muted);background:var(--card);border:1px solid var(--line);border-radius:8px;padding:6px 14px;margin:10px 0}
+.summary{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:6px 20px 12px}
+.summary ol{padding-left:24px}
+.summary li{margin:8px 0}
+footer{margin-top:50px;padding-top:14px;border-top:1px solid var(--line);font-size:12.5px;color:var(--muted)}
+@media (max-width:640px){ nav.toc ol{columns:1} h1{font-size:25px} }
+@media print{
+  @page{size:A4;margin:14mm 14mm 16mm}
+  body{font-size:11pt;line-height:1.7}
+  .wrap{max-width:none;padding:0}
+  .video-box,button.seek{display:none}
+  section.ch > h2, h3{break-after:avoid}
+  figure{break-inside:avoid}
+  figure img{width:90%;margin:0 auto}
+  .key,.ok,.warn,table,.summary,.eq,.legend{break-inside:avoid}
+  a{color:inherit;text-decoration:none}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header class="cover">
+  <div class="kicker">結構學 SA ｜ 命題大綱 SA-U2-4 矩陣分析法 ｜ 單元四 ｜ 影片講義</div>
+  <h1>等值節點載重與非載重效應</h1>
+  <p class="sub">本講義依解題過程影片〈SA-U2-4-4 等值節點載重與非載重效應〉逐段整理，圖片皆為影片中的黑板畫面。</p>
+  <div class="meta"><span>影片長度 8:37</span><span>6 章 · 17 段</span><span>例題三：單元一例題一加跨內載重</span><span>接 SA-U2-4-1～3；下一集：靜態凝縮</span></div>
+  <div class="thesis"><b>先鎖住，再放開</b><div>先鎖住求固端力，再放開求位移，最後把固端力加回來。</div></div>
+</header>
+
+<nav class="toc">
+  <h2>目錄</h2>
+  <ol start="0">
+    <li><a href="#c0">開場</a><span class="ts">0:00</span></li>
+    <li><a href="#c1">先鎖住，再放開</a><span class="ts">0:28</span></li>
+    <li><a href="#c2">例題三：跨內載重</a><span class="ts">1:43</span></li>
+    <li><a href="#c3">非載重效應</a><span class="ts">4:54</span></li>
+    <li><a href="#c4">兩大陷阱</a><span class="ts">6:51</span></li>
+    <li><a href="#c5">總結</a><span class="ts">7:53</span></li>
+  </ol>
+</nav>
+
+<div class="video-box">
+  <video id="vid" controls preload="metadata" src="video/SA-U2-4-4.mp4"></video>
+  <p>各章標題旁的時間按鈕可直接跳到影片對應位置（需與 video/ 資料夾放在一起開啟）。</p>
+</div>
+
+<div class="legend">黑板配色：<span class="c-red"><strong>紅色</strong></span> = 階段 I（鎖住）的固端力 \(\textcolor{#c0453b}{\{f_F\}}\)；<span class="c-green"><strong>綠色</strong></span> = 階段 II（放開）／反號後加到節點的力；<span class="c-y"><strong>黃框</strong></span> = 要記住的公式或答案。下文公式沿用同色。</div>
+
+<!-- ───────────── c0 ───────────── -->
+<section class="ch" id="c0">
+  <h2><span class="chno">0</span>開場 <button class="seek" data-t="0">▶ 0:00</button></h2>
+  <figure>
+    <img src="img/SA-U2-4-4/s01.jpg" alt="黑板：[K]{D}={P} 黃框，只認得作用在節點上的力；左：跨內載重 力不在節點上；右：支承沉陷・溫度變化・製造誤差 沒有外力卻會變形、產生內力；底部：策略 先鎖住，再放開">
+    <figcaption><span>黑板：矩陣方程式只認得節點力；兩類「不在節點上」的情況</span><span>影片 0:28</span></figcaption>
+  </figure>
+  <p>矩陣方程式 \([K]\{D\}=\{P\}\) 有一個根本的限制：<strong>它只認得作用在節點上的力</strong>。</p>
+  <table>
+    <tr><th>情況</th><th>問題在哪</th></tr>
+    <tr><td>跨內載重</td><td>載重常常放在桿件中間，力不在節點上</td></tr>
+    <tr><td>支承沉陷、溫度變化、製造誤差</td><td>明明沒有外力，結構卻會變形、產生內力</td></tr>
+  </table>
+  <div class="key"><b>策略</b>這一集只用一個策略全部搞定：<strong>先鎖住，再放開</strong>。</div>
+</section>
+
+<!-- ───────────── c1 ───────────── -->
+<section class="ch" id="c1">
+  <h2><span class="chno">1</span>先鎖住，再放開 <button class="seek" data-t="28.9">▶ 0:28</button></h2>
+  <figure>
+    <img src="img/SA-U2-4-4/s02.jpg" alt="真實結構 = 階段 I 全部鎖死（節點紅色方塊、紅色固端彎矩弧）；節點鎖死 {D}=0；跨內載重在桿端擠出固端力 {f_F}；例 M^F = wL²/12">
+    <figcaption><span>黑板：階段 I——全部鎖死，跨內載重擠出固端力</span><span>影片 0:54</span></figcaption>
+  </figure>
+  <p>把真實結構拆成兩個階段相加。</p>
+  <p><span class="c-red"><strong>階段一</strong></span>：想像把所有節點全部鎖死，位移等於零，\(\{D\}=0\)。跨內的載重推不動節點，只能在桿件兩端擠出反力，這就是<strong>固端力</strong> \(\textcolor{#c0453b}{\{f_F\}}\)。我們熟悉的固端彎矩，例如</p>
+  <div class="eq">$$M^F=\frac{wL^2}{12}$$</div>
+  <p>就是它。</p>
+
+  <figure>
+    <img src="img/SA-U2-4-4/s03.jpg" alt="真實結構 = 階段 I 全部鎖死 + 階段 II 放開（綠色反號彎矩）；把鎖住的力反號加回節點；{P}={P外力}−{f_F} 黃框；[K]{D}={P} → 解出的 {D} 就是真實位移">
+    <figcaption><span>黑板：真實結構 ＝ 階段 I（紅）＋ 階段 II（綠）</span><span>影片 1:19</span></figcaption>
+  </figure>
+  <p><span class="c-green"><strong>階段二</strong></span>：把剛才鎖住節點的那些力<strong>反號</strong>，加回節點上，讓節點放開。所以等值節點力</p>
+  <div class="eq">$$\{P\}=\{P_{\text{外力}}\}-\textcolor{#c0453b}{\{f_F\}}$$</div>
+  <p>代進 \([K]\{D\}=\{P\}\) 解位移。因為階段一的位移是零，<strong>階段二解出來的 \(\{D\}\)，就是真實的節點位移</strong>。</p>
+
+  <figure>
+    <img src="img/SA-U2-4-4/s04.jpg" alt="{f}=[k]{d}+{f_F} 黃框；[k]{d} 下標 階段 II：放開產生；{f_F} 下標 階段 I：鎖住時已存在；底部 ①先鎖住→求固端力 ②再放開→求位移 ③把固端力加回來">
+    <figcaption><span>黑板：內力 ＝ 放開產生的 ＋ 鎖住時已存在的</span><span>影片 1:43</span></figcaption>
+  </figure>
+  <p>內力就不一樣了。階段一鎖住的時候，桿件裡已經有固端力；階段二放開，又多了 \([k]\{d\}\)。所以真實內力：</p>
+  <div class="eq">$$\{f\}=\underbrace{\textcolor{#3f8f5a}{[k]\{d\}}}_{\text{階段 II：放開產生}}+\underbrace{\textcolor{#c0453b}{\{f_F\}}}_{\text{階段 I：鎖住時已存在}}$$</div>
+  <div class="key"><b>一句話</b>① 先鎖住 → 求固端力　② 再放開 → 求位移　③ 最後把固端力加回來。</div>
+</section>
+
+<!-- ───────────── c2 ───────────── -->
+<section class="ch" id="c2">
+  <h2><span class="chno">2</span>例題三：跨內載重 <button class="seek" data-t="103.7">▶ 1:43</button></h2>
+  <figure>
+    <img src="img/SA-U2-4-4/s05.jpg" alt="兩跨梁：A 固定、B、C 滾支；AB 6 m、BC 8 m；AB 上 w=24 均佈，BC 跨中 P=40；θ_B、θ_C；右：[K]=EI[[1.1667,0.25],[0.25,0.5]] 沿用例題①，載重不改變 [K]">
+    <figcaption><span>黑板：例題三題目——沿用單元一例題一，加上跨內載重</span><span>影片 2:14</span></figcaption>
+  </figure>
+  <p>拿單元一的例題一來加載重：</p>
+  <table>
+    <tr><th>項目</th><th>內容</th></tr>
+    <tr><td>支承</td><td>A 端固定，B、C 是滾支承；\(EI\) 相同</td></tr>
+    <tr><td>跨長</td><td>AB 長 6 m、BC 長 8 m</td></tr>
+    <tr><td>載重</td><td>AB 上均佈載重 \(w=24\ \text{kN/m}\)；BC 跨中央集中力 \(P=40\ \text{kN}\)</td></tr>
+    <tr><td>自由度</td><td>一樣是 \(\theta_B\)、\(\theta_C\)</td></tr>
+  </table>
+  <p>載重不會改變勁度矩陣，\([K]\) 完全沿用：</p>
+  <div class="eq">$$[K]=EI\begin{bmatrix}1.1667 & 0.25\\ 0.25 & 0.5\end{bmatrix}$$</div>
+
+  <h3>階段一：全部鎖死，算固端彎矩（逆時針為正）</h3>
+  <figure>
+    <img src="img/SA-U2-4-4/s06.jpg" alt="梁上方，四個紅色固端彎矩弧：A +72、B −72、B +40、C −40；逆時針為正；AB: wL²/12 = 24×36/12 = 72；BC: PL/8 = 40×8/8 = 40">
+    <figcaption><span>黑板：AB、BC 兩跨的固端彎矩（紅色彎矩弧）</span><span>影片 2:51</span></figcaption>
+  </figure>
+  <div class="eq">$$AB:\ \frac{wL^2}{12}=\frac{24\times 36}{12}=72 \qquad BC:\ \frac{PL}{8}=\frac{40\times 8}{8}=40$$</div>
+  <table>
+    <tr><th>桿件</th><th>i 端</th><th>j 端</th></tr>
+    <tr><td>AB（均佈 \(w\)）</td><td>A 端 \(\textcolor{#c0453b}{+72}\)</td><td>B 端 \(\textcolor{#c0453b}{-72}\)</td></tr>
+    <tr><td>BC（跨中 \(P\)）</td><td>B 端 \(\textcolor{#c0453b}{+40}\)</td><td>C 端 \(\textcolor{#c0453b}{-40}\)</td></tr>
+  </table>
+
+  <figure>
+    <img src="img/SA-U2-4-4/s07.jpg" alt="節點 B：−72+40=−32；節點 C：−40；A：固定端吸收，不列入方程式；反號 → {P}={+32,+40} 綠框">
+    <figcaption><span>黑板：各節點加總 → 反號得到右手邊</span><span>影片 3:16</span></figcaption>
+  </figure>
+  <p>把每個節點上的固端彎矩加起來：</p>
+  <table>
+    <tr><th>節點</th><th>固端彎矩合計</th><th>反號 → \(\{P\}\)</th></tr>
+    <tr><td>B</td><td>\(-72+40=-32\)</td><td>\(\textcolor{#3f8f5a}{+32}\)</td></tr>
+    <tr><td>C</td><td>\(-40\)</td><td>\(\textcolor{#3f8f5a}{+40}\)</td></tr>
+    <tr><td>A</td><td colspan="2">固定端，被支承吸收，不列入方程式</td></tr>
+  </table>
+
+  <h3>解方程式</h3>
+  <figure>
+    <img src="img/SA-U2-4-4/s08.jpg" alt="EI[[1.1667,0.25],[0.25,0.5]]{θB,θC}={32,40}；det = 1.1667(0.5) − 0.25² = 0.5208；EIθ_B = 11.52、EIθ_C = 74.24 黃框">
+    <figcaption><span>黑板：列方程式與解</span><span>影片 3:44</span></figcaption>
+  </figure>
+  <div class="eq">$$EI\begin{bmatrix}1.1667 & 0.25\\ 0.25 & 0.5\end{bmatrix}\begin{Bmatrix}\theta_B\\ \theta_C\end{Bmatrix}=\begin{Bmatrix}\textcolor{#3f8f5a}{32}\\ \textcolor{#3f8f5a}{40}\end{Bmatrix}$$</div>
+  <div class="eq">$$\det=1.1667(0.5)-0.25^2=0.5208$$</div>
+  <div class="eq">$$\boxed{EI\theta_B=11.52}\qquad \boxed{EI\theta_C=74.24}$$</div>
+
+  <h3>回代求桿端彎矩：一定要加回固端力</h3>
+  <figure>
+    <img src="img/SA-U2-4-4/s10.jpg" alt="{f}=[k]{d}+{f_F}；AB 桿 M_A = 2EI/6 θ_B + 72 = 3.84+72 = 75.84；M_BA = 4EI/6 θ_B − 72 = 7.68 − 72 = −64.32；BC 桿 M_BC = 0.5(11.52)+0.25(74.24)+40 = 64.32；M_C = 0.25(11.52)+0.5(74.24) − 40 = 0 ✓ 滾支承；節點 B：−64.32+64.32=0 ✓；與傾角變位法答案相同，只差符號慣例">
+    <figcaption><span>黑板：四個桿端彎矩與平衡檢核（紅色 = 階段 I 的固端力）</span><span>影片 4:54</span></figcaption>
+  </figure>
+  <div class="eq">$$\{f\}=[k]\{d\}+\textcolor{#c0453b}{\{f_F\}}$$</div>
+  <div class="eq">$$\begin{aligned}
+\text{AB 桿}\quad M_A&=\frac{2EI}{6}\theta_B\textcolor{#c0453b}{+72}=3.84+72=\boxed{75.84}\\[4pt]
+M_{BA}&=\frac{4EI}{6}\theta_B\textcolor{#c0453b}{-72}=7.68-72=\boxed{-64.32}\\[8pt]
+\text{BC 桿}\quad M_{BC}&=0.5(11.52)+0.25(74.24)\textcolor{#c0453b}{+40}=64.32\\[4pt]
+M_C&=0.25(11.52)+0.5(74.24)\textcolor{#c0453b}{-40}=0
+\end{aligned}$$</div>
+  <div class="ok"><b>檢核</b>
+    \(M_C\) 剛好等於零——滾支承沒有彎矩 ✓<br>
+    節點 B：\(-64.32+64.32=0\)，平衡 ✓<br>
+    和傾角變位法的答案一樣，只差一個符號慣例。
+  </div>
+</section>
+
+<!-- ───────────── c3 ───────────── -->
+<section class="ch" id="c3">
+  <h2><span class="chno">3</span>非載重效應 <button class="seek" data-t="294.7">▶ 4:54</button></h2>
+  <figure>
+    <img src="img/SA-U2-4-4/s11.jpg" alt="四步流程：①鎖死 不讓任何自由度動 → ②算固端力 {f_F}（唯一要換公式）→ ③反號 {P}={P外力}−{f_F} → ④回代 {f}=[k]{d}+{f_F}；問自己：要把這個效應鎖住、不讓它發生，需要多大的力？→ 那個力就是 {f_F}，反號加到 {P}">
+    <figcaption><span>黑板：四步流程，只有第 ② 步要換公式</span><span>影片 5:21</span></figcaption>
+  </figure>
+  <p>接下來，沉陷、溫差、製造誤差，走的是同一條路。共同的動作是問自己：</p>
+  <div class="key"><b>關鍵問題</b>要把這個效應「鎖住、不讓它發生」，需要多大的力？<br>→ 那個力就是 \(\textcolor{#c0453b}{\{f_F\}}\)，反號加到 \(\{P\}\)。</div>
+  <table>
+    <tr><th>步驟</th><th>內容</th></tr>
+    <tr><td>① 鎖死</td><td>不讓任何自由度動</td></tr>
+    <tr><td class="c-y">② 算固端力</td><td>\(\textcolor{#c0453b}{\{f_F\}}\)——<strong>唯一要換公式</strong></td></tr>
+    <tr><td>③ 反號</td><td>\(\{P\}=\{P_{\text{外力}}\}-\{f_F\}\)</td></tr>
+    <tr><td>④ 回代</td><td>\(\{f\}=[k]\{d\}+\{f_F\}\)</td></tr>
+  </table>
+  <p>四個步驟裡，只有第二步算固端力要換公式，其他三步完全不動。</p>
+
+  <h3>① 支承沉陷 \(\Delta\)</h3>
+  <figure>
+    <img src="img/SA-U2-4-4/s12.jpg" alt="梁元素兩端固定，右端下沉 Δ，S 形曲線，兩端紅色同向彎矩弧；M^F = −6EIΔ/L² 黃框，兩端同號同值；Δ = v_j − v_i（向上為正）；|V^F| = 12EIΔ/L³ 兩端反向">
+    <figcaption><span>黑板：支承沉陷——桿件被剪成 S 形</span><span>影片 5:53</span></figcaption>
+  </figure>
+  <p>梁元素兩端產生相對垂直位移 \(\Delta=v_j-v_i\)（向上為正）。兩端轉角鎖住不准轉，桿件被剪成 S 形：</p>
+  <div class="eq">$$\boxed{M^F=-\frac{6EI\Delta}{L^2}}\quad\text{（兩端同號同值）}\qquad |V^F|=\frac{12EI\Delta}{L^3}\quad\text{（兩端方向相反）}$$</div>
+
+  <h3>② 溫度變化 \(\Delta T\)</h3>
+  <figure>
+    <img src="img/SA-U2-4-4/s13.jpg" alt="兩端固定桿，虛線 想伸長 αΔT L，被擋住 → 紅色壓力箭頭；N^F = −(EA/L)·αΔT L；N^F = −EAαΔT 黃框；L 消掉 → 與桿長無關">
+    <figcaption><span>黑板：溫度變化——想伸長卻被擋住 → 壓力</span><span>影片 6:21</span></figcaption>
+  </figure>
+  <p>桿件升溫 \(\Delta T\)，本來想自由伸長 \(\alpha\Delta T\,L\)，卻被兩端節點擋住，於是被擠出壓力：</p>
+  <div class="eq">$$N^F=-\frac{EA}{L}\cdot\alpha\Delta T\,L\quad\Rightarrow\quad\boxed{N^F=-EA\,\alpha\,\Delta T}$$</div>
+  <div class="key"><b>注意</b>長度 \(L\) 消掉了——固端軸力和桿長無關。</div>
+
+  <h3>③ 製造誤差 \(e_0\)</h3>
+  <figure>
+    <img src="img/SA-U2-4-4/s14.jpg" alt="桿件做長 e0，硬塞進去 → 壓力；N^F = −EA e0/L 黃框；e0 = αΔT L ⇒ N^F = −EAαΔT，溫差 = 製造誤差的特例；兩端固定、沒有自由度：{d}=0 ⇒ {f}={f_F}">
+    <figcaption><span>黑板：製造誤差——溫差是它的特例</span><span>影片 6:50</span></figcaption>
+  </figure>
+  <p>桿件做長了 \(e_0\)，要硬塞進鎖住的節點，同樣產生壓力：</p>
+  <div class="eq">$$\boxed{N^F=-\frac{EA\,e_0}{L}}$$</div>
+  <p>其實溫差就是 \(e_0=\alpha\Delta T\,L\) 的特例：</p>
+  <div class="eq">$$e_0=\alpha\Delta T\,L\ \Rightarrow\ N^F=-EA\,\alpha\,\Delta T$$</div>
+  <p>極端情況：兩端都固定的桿件沒有自由度，\(\{d\}=0\)，內力直接就是固端力，\(\{f\}=\{f_F\}\)。</p>
+
+  <h3>三種非載重效應對照</h3>
+  <table>
+    <tr><th>效應</th><th>鎖住時發生什麼</th><th>固端力（第 ② 步的公式）</th></tr>
+    <tr><td>① 支承沉陷 \(\Delta\)</td><td>轉角鎖住，桿件被剪成 S 形</td><td>\(M^F=-6EI\Delta/L^2\)（兩端同號同值）；\(|V^F|=12EI\Delta/L^3\)（兩端反向）</td></tr>
+    <tr><td>② 溫度變化 \(\Delta T\)</td><td>想伸長 \(\alpha\Delta T\,L\) 被擋住 → 壓力</td><td>\(N^F=-EA\,\alpha\,\Delta T\)（與 \(L\) 無關）</td></tr>
+    <tr><td>③ 製造誤差 \(e_0\)</td><td>做長了硬塞進去 → 壓力</td><td>\(N^F=-EA\,e_0/L\)</td></tr>
+  </table>
+</section>
+
+<!-- ───────────── c4 ───────────── -->
+<section class="ch" id="c4">
+  <h2><span class="chno">4</span>兩大陷阱 <button class="seek" data-t="411.3">▶ 6:51</button></h2>
+  <figure>
+    <img src="img/SA-U2-4-4/s15.jpg" alt="陷阱①：回代忘了加固端力；{f}=[k]{d}（紅）；只用 [k]{d}：M_A 3.84 打叉、M_BA 7.68 打叉；正確 75.84、−64.32 ← 連正負號都反了；黃框 {f}=[k]{d}+{f_F}">
+    <figcaption><span>黑板：陷阱 ①——只用 \([k]\{d\}\)</span><span>影片 7:19</span></figcaption>
+  </figure>
+  <div class="warn"><b>陷阱 ①：回代時忘了加固端力</b>
+    如果只用 \(\{f\}=[k]\{d\}\)，答案會差一大截：
+    <table>
+      <tr><th>桿端彎矩</th><th>只用 \([k]\{d\}\)（錯）</th><th>正確</th></tr>
+      <tr><td>\(M_A\)</td><td>\(3.84\)</td><td>\(75.84\)</td></tr>
+      <tr><td>\(M_{BA}\)</td><td>\(7.68\)</td><td>\(-64.32\)　← 連正負號都反了</td></tr>
+    </table>
+    只要跨內有載重，或有非載重效應，內力一定是 \(\{f\}=[k]\{d\}+\textcolor{#c0453b}{\{f_F\}}\)。
+  </div>
+
+  <figure>
+    <img src="img/SA-U2-4-4/s16.jpg" alt="陷阱②：固端力忘了反號；{P}={−32,−40} × 直接放固端力總和；⇒ EIθ_B = −11.52, EIθ_C = −74.24；M_C = 0.25(−11.52)+0.5(−74.24)−40 = −80 ≠ 0 打叉；滾支・鉸支的端彎矩 = 0 → 天然檢核">
+    <figcaption><span>黑板：陷阱 ②——忘了反號，\(M_C\neq 0\) 一眼看穿</span><span>影片 7:52</span></figcaption>
+  </figure>
+  <div class="warn"><b>陷阱 ②：固端力忘了反號</b>
+    \(\{f_F\}\) 是要維持鎖死所需的力，加到 \(\{P\}\) 的時候必須變號。如果直接把固端力總和 \(-32\)、\(-40\) 放進右手邊：
+    <div class="eq">$$\{P\}=\begin{Bmatrix}-32\\-40\end{Bmatrix}\ \times\ \Rightarrow\ EI\theta_B=-11.52,\quad EI\theta_C=-74.24$$</div>
+    <div class="eq">$$M_C=0.25(-11.52)+0.5(-74.24)-40=-80\neq 0$$</div>
+    位移整個反號，滾支承的彎矩不是零，一眼就知道錯了。
+  </div>
+  <div class="ok"><b>天然檢核</b>滾支承、鉸支承的端彎矩 \(=0\)，正好拿來當檢核。</div>
+</section>
+
+<!-- ───────────── c5 ───────────── -->
+<section class="ch" id="c5">
+  <h2><span class="chno">5</span>總結 <button class="seek" data-t="473.1">▶ 7:53</button></h2>
+  <figure>
+    <img src="img/SA-U2-4-4/s17.jpg" alt="單元四：四步走完；①把所有節點鎖死 ②算各桿固端力 {f_F}（唯一要查表）③反號 {P}={P外力}−{f_F}，解 [K]{D}={P} ④回代 {f}=[k]{d}+{f_F}；黃框 只有第②步換公式：跨內載重／沉陷／溫差／製造誤差；下一集：靜態凝縮（降低矩陣維度）">
+    <figcaption><span>黑板：單元四，四步走完</span><span>影片 8:35</span></figcaption>
+  </figure>
+  <div class="summary">
+    <ol>
+      <li>把所有節點<strong>鎖死</strong>。</li>
+      <li class="c-y">算各桿固端力 \(\textcolor{#c0453b}{\{f_F\}}\)——<strong>唯一要查表的一步</strong>。</li>
+      <li><strong>反號</strong>成等值節點力：\(\{P\}=\{P_{\text{外力}}\}-\{f_F\}\)，解 \([K]\{D\}=\{P\}\)。</li>
+      <li><strong>回代</strong>：\(\{f\}=[k]\{d\}+\textcolor{#c0453b}{\{f_F\}}\)。</li>
+    </ol>
+  </div>
+  <div class="thesis" style="margin-top:20px"><b>只有第 ② 步換公式</b><div>跨內載重、沉陷、溫差、製造誤差，其餘一套流程到底。</div></div>
+  <p>下一集：<strong>靜態凝縮</strong>，把矩陣的維度降下來。</p>
+</section>
+
+<footer>
+  來源：解題過程影片／SA-U2-4-4 等值節點載重與非載重效應／video（SA-U2-4-4.mp4、segments.py 講稿、SA-U2-4-4.srt）。文字依影片旁白整理，圖片為影片各段結束時的黑板畫面。例題三數值（\(EI\theta_B=11.52\)、\(EI\theta_C=74.24\)、\(M_A=75.84\)、\(M_{BA}=-64.32\)、\(M_{BC}=64.32\)、\(M_C=0\)；陷阱 ② \(M_C=-80\)）已依 HANDOFF.md 重新複算一致。
+</footer>
+</div>
+
+<script>
+document.addEventListener("DOMContentLoaded",function(){
+  if(window.renderMathInElement){
+    renderMathInElement(document.body,{delimiters:[
+      {left:"$$",right:"$$",display:true},{left:"\\(",right:"\\)",display:false}],throwOnError:false});
+  }
+  var v=document.getElementById("vid");
+  document.querySelectorAll("button.seek").forEach(function(b){
+    b.addEventListener("click",function(){
+      if(!v)return; v.currentTime=parseFloat(b.dataset.t)||0;
+      v.scrollIntoView({behavior:"smooth",block:"center"}); v.play().catch(function(){});
+    });
+  });
+});
+</script>
+</body>
+</html>

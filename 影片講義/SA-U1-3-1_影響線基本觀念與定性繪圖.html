@@ -1,0 +1,226 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>SA-U1-3-1 影響線基本觀念與定性繪圖｜影片講義</title>
+<link rel="stylesheet" href="../study/assets/katex/katex.min.css">
+<script defer src="../study/assets/katex/katex.min.js"></script>
+<script defer src="../study/assets/katex/auto-render.min.js"></script>
+<style>
+:root{--paper:#faf7f0;--ink:#24302a;--board:#2c4a3a;--board2:#1f3a2c;--chalk:#f3efe2;--muted:#6b726c;--line:#ddd6c6;
+--warn:#c0392b;--warnbg:#fdecea;--ok:#2e7d4f;--okbg:#e8f5ec;--key:#b8860b;--keybg:#fff6d9;--orange:#d9792b;--pink:#c2477a;--blue:#2f78b5}
+*{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--ink);font:16px/1.75 "Noto Sans TC","Microsoft JhengHei","PingFang TC",sans-serif}
+main{max-width:860px;margin:0 auto;padding:24px 16px 48px}
+.cover{background:linear-gradient(160deg,var(--board),var(--board2));color:var(--chalk);border-radius:14px;padding:28px 28px 24px;margin-bottom:24px}
+.cover .tag{font-size:13px;letter-spacing:.08em;color:#e8d27a}
+.cover h1{margin:6px 0 4px;font-size:30px;line-height:1.3}
+.cover .meta{font-size:14px;color:#c9d6cc}
+.cover .core{margin-top:16px;padding:12px 16px;border:1.5px solid #e8d27a;border-radius:10px;font-size:17px;color:#fff3c4}
+h2{font-size:22px;margin:40px 0 12px;padding-bottom:6px;border-bottom:2px solid var(--board);display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+h2 .no{color:var(--board);font-weight:700}
+h3{font-size:17px;margin:22px 0 6px;color:var(--board)}
+.toc{background:#fff;border:1px solid var(--line);border-radius:10px;padding:14px 18px}
+.toc ol{margin:0;padding-left:22px;columns:2;column-gap:28px}
+.toc li{break-inside:avoid}
+.toc a{color:var(--ink);text-decoration:none}.toc a:hover{text-decoration:underline}
+.toc .t{color:var(--muted);font-size:13px;margin-left:6px;font-variant-numeric:tabular-nums}
+.vid{margin:20px 0 4px;position:sticky;top:0;z-index:5;background:var(--paper);padding:6px 0}
+video{width:100%;border-radius:10px;background:#000;display:block}
+.seek{font:inherit;font-size:13px;border:1px solid var(--board);background:#fff;color:var(--board);border-radius:999px;padding:1px 10px;cursor:pointer}
+.seek:hover{background:var(--board);color:#fff}
+figure{margin:18px 0;background:#fff;border:1px solid var(--line);border-radius:10px;padding:8px;break-inside:avoid}
+figure img{width:100%;display:block;border-radius:6px}
+figcaption{display:flex;justify-content:space-between;gap:12px;font-size:13px;color:var(--muted);padding:6px 4px 0}
+figcaption .ts{white-space:nowrap;font-variant-numeric:tabular-nums}
+p{margin:8px 0}
+.box{border-radius:8px;padding:10px 14px;margin:14px 0;break-inside:avoid;border-left:5px solid}
+.warn{background:var(--warnbg);border-color:var(--warn)}.warn b.h{color:var(--warn)}
+.ok{background:var(--okbg);border-color:var(--ok)}.ok b.h{color:var(--ok)}
+.key{background:var(--keybg);border-color:var(--key)}.key b.h{color:var(--key)}
+table{border-collapse:collapse;width:100%;margin:12px 0;font-size:15px;background:#fff;break-inside:avoid}
+th,td{border:1px solid var(--line);padding:6px 10px;vertical-align:top;text-align:left}
+th{background:#eef2ee;color:var(--board)}
+td:first-child,th:first-child{white-space:nowrap}
+.katex-display{margin:10px 0;overflow-x:auto;overflow-y:hidden}
+.src{margin-top:40px;font-size:13px;color:var(--muted);border-top:1px solid var(--line);padding-top:10px}
+.src code{font-size:12px}
+@media (max-width:640px){.toc ol{columns:1}.cover h1{font-size:24px}.vid{position:static}}
+@media print{
+ @page{size:A4;margin:14mm 14mm 16mm}
+ body{background:#fff;font-size:12.5pt}
+ main{max-width:none;padding:0}
+ .vid,.seek{display:none!important}
+ .cover{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+ figure,.box,table{break-inside:avoid}
+ h2,h3{break-after:avoid}h2{margin-top:26px}
+ figure img{max-height:118mm;object-fit:contain}
+}
+</style>
+</head>
+<body>
+<main>
+
+<header class="cover">
+  <div class="tag">結構學 SA ｜ 命題大綱 U1-3 靜定及靜不定結構影響線 ｜ 影片講義</div>
+  <h1>SA-U1-3-1　影響線基本觀念與定性繪圖</h1>
+  <div class="meta">影片長度 8:32 ・ 7 章 ・ 19 段 ・ 簡支梁例題 \(L=10\) m、\(a=4\) m、\(b=6\) m</div>
+  <div class="core">整個單元只要抓住兩件事：① 影響線在問什麼——橫軸是「載重位置」；② Müller-Breslau 原理——拆束制 → 單位位移 → 變形曲線。不背公式，看一眼就畫出形狀。</div>
+</header>
+
+<nav class="toc">
+  <strong>目錄</strong>
+  <ol>
+    <li><a href="#c0">開場</a><span class="t">0:00</span></li>
+    <li><a href="#c1">影響線在問什麼</a><span class="t">0:23</span></li>
+    <li><a href="#c2">Müller-Breslau 原理</a><span class="t">2:05</span></li>
+    <li><a href="#c3">折線還是曲線</a><span class="t">3:45</span></li>
+    <li><a href="#c4">簡支梁三條錨點</a><span class="t">4:56</span></li>
+    <li><a href="#c5">常見錯誤與十秒檢查</a><span class="t">6:58</span></li>
+    <li><a href="#c6">總結</a><span class="t">7:57</span></li>
+  </ol>
+</nav>
+
+<div class="vid"><video id="v" controls preload="metadata" src="video/SA-U1-3-1.mp4"></video></div>
+
+<!-- c0 -->
+<section id="c0">
+<h2><span class="no">0</span> 開場 <button class="seek" data-t="0">▶ 0:00</button></h2>
+<p>影響線這個單元，公式看起來很多，但底層邏輯其實非常統一。只要抓住兩件事：第一，影響線到底在問什麼；第二，它的物理變形原理，也就是 Müller-Breslau 原理。抓住這兩件事，不用死背公式，看一眼就能把形狀畫出來。</p>
+<figure><img src="img/SA-U1-3-1/s01.jpg" alt="開場：兩件事"><figcaption><span>開場黑板：① 影響線在問什麼（橫軸是載重位置）② Müller-Breslau（拆束制 → 單位位移 → 變形曲線）</span><span class="ts">影片 0:22</span></figcaption></figure>
+</section>
+
+<!-- c1 -->
+<section id="c1">
+<h2><span class="no">1</span> 影響線在問什麼 <button class="seek" data-t="23.7">▶ 0:23</button></h2>
+<p>先講一句話定調：<strong>影響線不是新的分析方法，而是一次視角的切換。</strong></p>
+<p>以前畫彎矩圖，是把載重釘死在某個位置，問整根梁每一個斷面的彎矩。所以橫軸是斷面位置，一張圖給你整根梁的答案，縱座標是 kN·m，真的是彎矩。</p>
+<p>影響線反過來：把斷面 C 釘死不動，讓一個單位載重 \(P=1\) 從 A 一路走到 B。問的是：載重站在哪裡的時候，C 這一個斷面的反應最大。所以橫軸變成載重位置。一張影響線，只回答一個斷面的問題。</p>
+<table>
+<tr><th></th><th>① 彎矩圖 BMD</th><th>② 影響線 IL</th></tr>
+<tr><td>固定什麼</td><td>載重 P 固定不動</td><td>斷面 C 固定不動</td></tr>
+<tr><td>問什麼</td><td>整根梁每個斷面的彎矩</td><td>單位載重跑到哪，C 的反應多大</td></tr>
+<tr><td>橫軸</td><td>斷面位置 x</td><td>載重位置 x</td></tr>
+<tr><td>縱座標</td><td>kN·m（真的是彎矩），峰 \(PL/4\)</td><td>\(M_C\) 的 IL 峰 \(ab/L\)</td></tr>
+<tr><td>一張圖回答</td><td>整根梁</td><td>一個斷面</td></tr>
+</table>
+<p>橫軸換了，量綱也跟著換。反力和剪力的影響線，是力除以力，無因次。彎矩的影響線，是 kN·m / kN，單位是公尺：</p>
+$$\text{彎矩 IL}:\ \frac{\text{kN}\cdot\text{m}}{\text{kN}} = \text{m}$$
+<div class="box warn"><b class="h">陷阱：</b>C 點的峰值寫 <strong>2.4 m</strong>，不是 2.4 kN·m。算出來帶 kN，就是把影響線和彎矩圖搞混了。</div>
+<figure><img src="img/SA-U1-3-1/s04.jpg" alt="BMD 與 IL 對照"><figcaption><span>左：BMD（載重固定）；右：\(M_C\) 影響線（斷面固定），峰值 \(ab/L=2.4\) m ✓、2.4 kN·m ✗；下方量綱框</span><span class="ts">影片 1:40</span></figcaption></figure>
+
+<p>影響線的縱座標 \(y(x)\)，意思是：單位載重站在 \(x\) 的時候，那個固定斷面的反應值。它是內力對載重的<strong>敏感度</strong>，本身不是內力。要求真正的效應，就做乘法：集中力乘上它所在位置的縱座標，均佈載重乘上影響線的面積。</p>
+$$\text{效應} = \sum P_i\,y_i + \int w\,y\,dx$$
+<figure><img src="img/SA-U1-3-1/s05.jpg" alt="y(x) 定義與效應公式"><figcaption><span>\(y(x)\) 定義；影響線＝內力對載重的「敏感度」，本身不是內力；效應公式</span><span class="ts">影片 2:04</span></figcaption></figure>
+</section>
+
+<!-- c2 -->
+<section id="c2">
+<h2><span class="no">2</span> Müller-Breslau 原理 <button class="seek" data-t="125.3">▶ 2:05</button></h2>
+<p>要畫影響線的形狀，不需要逐點放載重去解結構。Müller-Breslau 原理一句話：</p>
+<div class="box key"><b class="h">一句話：</b>把要求反應的束制拆掉，沿著該反應的正方向，強迫一個單位廣義位移（\(\Delta=1\) 或 \(\theta=1\)），畫出來的變形曲線就是影響線。</div>
+<p>背後靠的是 Betti 互換定理 \(\delta_{ij}=\delta_{ji}\)，把無數次移動載重，壓縮成一次單位位移的撓曲線。</p>
+<figure><img src="img/SA-U1-3-1/s06.jpg" alt="Müller-Breslau 三步驟"><figcaption><span>① 拆掉要求反應的束制 → ② 沿正方向強迫單位廣義位移 → ③ 變形曲線＝影響線；物理根源 Betti 互換定理</span><span class="ts">影片 2:31</span></figcaption></figure>
+
+<h3>三種束制，三種拆法</h3>
+<table>
+<tr><th>求什麼</th><th>怎麼拆</th><th>給什麼位移</th><th>形狀特徵</th></tr>
+<tr><td>① 反力 R</td><td>把支承拿掉</td><td>沿反力方向平移 \(\Delta=1\)</td><td>該支承處縱座標必定是 1，其他沒動的支承必定是 0；靜定梁就是一條斜直線（無因次）</td></tr>
+<tr><td>② 剪力 V</td><td>在斷面切開</td><td>左右兩段相對錯動 1</td><td>兩段<strong>必須保持平行</strong>、不可相對轉動；斷面處一定跳躍 1，左側 \(-a/L\)、右側 \(+b/L\)</td></tr>
+<tr><td>③ 彎矩 M</td><td>在斷面插入一個鉸</td><td>左右兩段相對轉角 \(\theta=1\) rad</td><td>斷面處一定有折點（尖角），但曲線連續、不會跳；峰值 \(ab/L\)，帶長度單位</td></tr>
+</table>
+<figure><img src="img/SA-U1-3-1/s09.jpg" alt="三種拆法"><figcaption><span>三欄並列：① 反力平移 \(\Delta=1\)（B 處 1.0）② 剪力錯動 1、兩段平行（+0.6／−0.4）③ 彎矩轉角 \(\theta=1\) rad、峰值 \(ab/L=2.4\) m</span><span class="ts">影片 3:44</span></figcaption></figure>
+</section>
+
+<!-- c3 -->
+<section id="c3">
+<h2><span class="no">3</span> 折線還是曲線 <button class="seek" data-t="225">▶ 3:45</button></h2>
+<p>拆掉束制以後，問自己一句：<strong>結構還撐得住嗎？</strong></p>
+<p>靜定的簡支梁，拿掉 B 支承就變成機構，整根梁只能繞 A 剛體旋轉。所以影響線由直線段組成，是折線，轉折只發生在支承和內鉸。</p>
+<p>剛體旋轉跟材料剛度完全無關，所以靜定影響線和 EI 無關。題目不給 EI，是因為用不到；定量只需要靜力平衡，不必積分。</p>
+<p>換成靜不定：一端固定的 propped cantilever，同樣拿掉 B 支承，剩下的懸臂還撐得住，所以產生彈性彎曲，影響線是光滑曲線，跨中的縱座標是 \(5/16\)。它本質上是位移比值，EI 為常數時前後消掉：</p>
+$$IL_{R_B} = \frac{\delta(x)}{\delta_{BB}}$$
+<p style="font-size:14px;color:var(--muted)">（旁白念作 \(\delta(x)/\delta_{XX}\)，X 即被拆掉的 B 支承反力；黑板寫 \(\delta_{BB}\)。）</p>
+<table>
+<tr><th></th><th>① 靜定：簡支梁拿掉 B</th><th>② 靜不定：propped cantilever 拿掉 B</th></tr>
+<tr><td>拆掉後</td><td>機構 → 整根梁繞 A 剛體旋轉</td><td>固定端仍抓住轉角 → 彈性彎曲</td></tr>
+<tr><td>IL 形狀</td><td>直線（折線）</td><td>光滑曲線，跨中 5/16</td></tr>
+<tr><td>與 EI</td><td>無關；只需靜力平衡</td><td>位移比值，EI 常數時消掉</td></tr>
+</table>
+<div class="box key"><b class="h">反過來用：</b>看到曲線 → 就知道這題一定是靜不定。</div>
+<figure><img src="img/SA-U1-3-1/s12.jpg" alt="靜定折線 vs 靜不定曲線"><figcaption><span>左：靜定簡支梁拿掉 B → 機構 → 剛體 → 折線，與 EI 無關；右：propped cantilever 拿掉 B → 曲線，L/2 處 5/16</span><span class="ts">影片 4:55</span></figcaption></figure>
+</section>
+
+<!-- c4 -->
+<section id="c4">
+<h2><span class="no">4</span> 簡支梁三條錨點 <button class="seek" data-t="296.5">▶ 4:56</button></h2>
+<p>用簡支梁把三條錨點算一遍。跨度 \(L=10\) m，斷面 C 距左端 \(a=4\) m，距右端 \(b=6\) m。</p>
+<h3>\(R_A\)</h3>
+<p>拿掉 A 支承，A 端上抬 1，整根梁繞 B 旋轉。A 處 1.0，B 處 0，C 點是 \(b/L\)：</p>
+$$IL_{R_A}=\frac{L-x}{L},\qquad C:\ \frac{b}{L}=0.6$$
+<h3>\(V_C\)</h3>
+<p>在 C 切開，左段下沉、右段上抬，兩段斜率相同。左側 \(-a/L=-0.4\)；右側 \(+b/L=+0.6\)。跳躍量剛好等於 1，因為 \(a/L+b/L\) 恆等於 1：</p>
+$$-\frac{a}{L}=-0.4,\quad +\frac{b}{L}=+0.6,\qquad \text{跳躍}:\ 0.4+0.6=1$$
+<h3>\(M_C\)</h3>
+<p>在 C 插入鉸，轉 1 弧度，兩段直線在 C 相交，交點就是峰值：</p>
+$$\frac{ab}{L}=\frac{4\times 6}{10}=2.4\ \text{m}$$
+<p>如果斷面在跨中，就是 \(L/4=2.5\) m，是簡支梁能達到的最大值。</p>
+<table>
+<tr><th>影響線</th><th>A 處</th><th>C 處</th><th>B 處</th><th>單位</th></tr>
+<tr><td>\(R_A\)</td><td>1.0</td><td>0.6</td><td>0</td><td>無因次</td></tr>
+<tr><td>\(V_C\)</td><td>0</td><td>左 −0.4／右 +0.6（跳 1）</td><td>0</td><td>無因次</td></tr>
+<tr><td>\(M_C\)</td><td>0</td><td>2.4（折點）</td><td>0</td><td>m</td></tr>
+</table>
+<figure><img src="img/SA-U1-3-1/s15.jpg" alt="簡支梁三條影響線"><figcaption><span>同一根梁的 \(R_A\)、\(V_C\)、\(M_C\) 三條影響線與錨點值；跳躍 0.4+0.6=1；\(ab/L=2.4\) m，跨中 \(L/4=2.5\) m</span><span class="ts">影片 6:25</span></figcaption></figure>
+
+<h3>效應＝載重 × 縱座標</h3>
+<p>有了影響線，效應就是乘法。</p>
+<table>
+<tr><th>載重</th><th>計算</th><th>\(M_C\)</th></tr>
+<tr><td><span style="color:var(--pink)">P = 100 kN 在 C</span></td><td>\(100\times 2.4\)</td><td>240 kN·m</td></tr>
+<tr><td><span style="color:var(--blue)">w = 10 kN/m 全跨</span></td><td>面積 \(\tfrac12\times10\times2.4=12\ \text{m}^2\)；\(10\times 12\)</td><td>120 kN·m</td></tr>
+</table>
+<div class="box ok"><b class="h">驗證：</b>\(\displaystyle \frac{wab}{2}=\frac{10\times4\times6}{2}=120\) ✓，和影響線面積法完全一致。</div>
+<figure><img src="img/SA-U1-3-1/s16.jpg" alt="效應計算"><figcaption><span>P=100 kN 在 C → 240 kN·m（粉紅）；w=10 kN/m 全跨，\(M_C\) 影響線面積（藍色塗區）12 m² → 120 kN·m＝wab/2 ✓</span><span class="ts">影片 6:57</span></figcaption></figure>
+</section>
+
+<!-- c5 -->
+<section id="c5">
+<h2><span class="no">5</span> 常見錯誤與十秒檢查 <button class="seek" data-t="418.2">▶ 6:58</button></h2>
+<p>常見的錯誤有三個。</p>
+<div class="box warn"><b class="h">錯誤 ① 剪力 IL 畫成 V 字形：</b>兩段不平行，斷面處的跳躍就不等於 1，閱卷的人一眼就看得出來。正確：平行、跳躍＝1。</div>
+<div class="box warn"><b class="h">錯誤 ② 彎矩 IL 在斷面處畫成跳躍：</b>彎矩只能折、不能跳。</div>
+<div class="box warn"><b class="h">錯誤 ③ 乘錯東西：</b>用載重乘跨度，\(100\times10\)，會得到 1000 kN·m，是正確值 240 的 4 倍多。正確是載重 × 縱座標：\(100\times2.4=240\) kN·m。</div>
+<figure><img src="img/SA-U1-3-1/s17.jpg" alt="三種常見錯誤"><figcaption><span>紅 ✗＝錯誤示範、綠 ✓＝正確：① V 字形 vs 平行跳 1　② 跳躍 vs 只能折　③ 100×10=1000 vs 100×2.4=240</span><span class="ts">影片 7:32</span></figcaption></figure>
+
+<p>考場上十秒鐘自我檢查三件事：</p>
+<div class="box ok"><b class="h">十秒檢查：</b>
+① <strong>支承點</strong>：沒有移動的支承處，影響線一定是 0。<br>
+② <strong>剪力跳躍</strong>：斷面左右兩側相差一定是 1。<br>
+③ <strong>單位</strong>：反力、剪力無因次，彎矩的縱座標帶公尺。</div>
+<figure><img src="img/SA-U1-3-1/s18.jpg" alt="考場十秒自我檢查"><figcaption><span>考場 10 秒自我檢查三條</span><span class="ts">影片 7:56</span></figcaption></figure>
+</section>
+
+<!-- c6 -->
+<section id="c6">
+<h2><span class="no">6</span> 總結 <button class="seek" data-t="476.9">▶ 7:57</button></h2>
+<div class="box key"><b class="h">整理：</b><br>
+① 影響線的橫軸是載重位置，一張圖只回答一個斷面；彎矩影響線單位是公尺。<br>
+② Müller-Breslau：拆掉束制，給單位位移——反力平移 1、剪力錯動 1 保持平行、彎矩轉角 1 出現折點。<br>
+③ 拆掉後撐不住是折線、靜定；撐得住是曲線、靜不定。</div>
+<p>下一集，用這套觀念拆解 Gerber 梁的主從段。</p>
+<figure><img src="img/SA-U1-3-1/s19.jpg" alt="總結"><figcaption><span>總結三條；下一集預告：Gerber 梁的主從段拆解</span><span class="ts">影片 8:30</span></figcaption></figure>
+</section>
+
+<div class="src">來源：<code>video/SA-U1-3-1.mp4</code>（8:32）、<code>video/segments.py</code>（逐字旁白，權威講稿）、<code>video/SA-U1-3-1.srt</code>（字幕時間軸）、<code>video/HANDOFF.md</code>（例題數值已複核）。黑板圖取自各段結束前 0.5 秒畫面。</div>
+</main>
+<script>
+document.addEventListener('DOMContentLoaded',()=>{
+  if(window.renderMathInElement) renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'\\(',right:'\\)',display:false}],throwOnError:false});
+  const v=document.getElementById('v');
+  document.querySelectorAll('.seek').forEach(b=>b.addEventListener('click',()=>{v.currentTime=+b.dataset.t;v.play();}));
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>桁架內力分析講義</title>
+<link rel="stylesheet" href="../study/assets/katex/katex.min.css">
+<script defer src="../study/assets/katex/katex.min.js"></script>
+<script defer src="../study/assets/katex/auto-render.min.js"></script>
+<style>
+:root{
+  --paper:#faf7f0; --ink:#22302a; --muted:#5f6b64; --board:#2b4136; --board2:#1f3129;
+  --chalk:#f3efe2; --line:#ddd6c6;
+  --green:#2f8a4c; --red:#c8453b; --orange:#d9792b; --yellow:#c99a12; --blue:#3a7cb8; --pink:#c4527f;
+}
+*{box-sizing:border-box}
+html,body{margin:0;background:var(--paper);color:var(--ink)}
+body{font-family:"Noto Sans TC","PingFang TC","Microsoft JhengHei",system-ui,sans-serif;line-height:1.75;font-size:16.5px}
+.wrap{max-width:860px;margin:0 auto;padding:28px 16px 60px}
+.cover{background:linear-gradient(160deg,var(--board),var(--board2));color:var(--chalk);border-radius:14px;padding:28px 28px 24px;margin-bottom:26px}
+.cover .tag{font-size:14px;letter-spacing:.08em;color:#e8c95a}
+.cover h1{margin:6px 0 6px;font-size:32px;line-height:1.3}
+.cover .meta{font-size:14px;color:#cfd8cf}
+.cover .core{margin-top:18px;padding:12px 16px;border:2px solid #e8c95a;border-radius:8px;font-size:18px;color:#f6e7a8}
+h2{font-size:22px;margin:40px 0 12px;padding-bottom:6px;border-bottom:2px solid var(--board);display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+h2 .no{color:var(--muted);font-weight:500;font-size:15px}
+h3{font-size:17px;margin:22px 0 6px;color:var(--board)}
+.toc{border:1px solid var(--line);border-radius:10px;padding:14px 18px;background:#fff}
+.toc ol{margin:0;padding-left:0;list-style:none;columns:2;column-gap:28px}
+.toc li{display:flex;justify-content:space-between;gap:10px;padding:3px 0;break-inside:avoid}
+.toc a{color:var(--ink);text-decoration:none}
+.toc a:hover{text-decoration:underline}
+.toc .t{color:var(--muted);font-variant-numeric:tabular-nums}
+.player{margin:22px 0 6px;background:#000;border-radius:10px;overflow:hidden}
+.player video{display:block;width:100%;height:auto}
+.seek{font:inherit;font-size:13px;border:1px solid var(--board);background:#fff;color:var(--board);border-radius:999px;padding:2px 10px;cursor:pointer;font-variant-numeric:tabular-nums}
+.seek:hover{background:var(--board);color:#fff}
+figure{margin:16px 0 18px;break-inside:avoid}
+figure img{width:100%;display:block;border-radius:8px;border:1px solid #c9c2b1}
+figcaption{display:flex;justify-content:space-between;gap:12px;font-size:13.5px;color:var(--muted);margin-top:5px}
+figcaption .when{white-space:nowrap;font-variant-numeric:tabular-nums}
+p{margin:8px 0}
+.box{border-radius:8px;padding:10px 14px;margin:14px 0;break-inside:avoid}
+.box b.h{display:block;margin-bottom:2px}
+.warn{background:#fdeeec;border-left:5px solid var(--red)}
+.warn b.h{color:var(--red)}
+.ok{background:#eaf5ec;border-left:5px solid var(--green)}
+.ok b.h{color:var(--green)}
+.key{background:#fdf6dc;border-left:5px solid var(--yellow)}
+.key b.h{color:#8f6c00}
+table{border-collapse:collapse;width:100%;margin:12px 0;font-size:15px;background:#fff;break-inside:avoid}
+th,td{border:1px solid var(--line);padding:6px 10px;text-align:left;vertical-align:top}
+th{background:#eef1ec}
+td:first-child,th:first-child{white-space:nowrap}
+.T{color:var(--green);font-weight:600}.C{color:var(--red);font-weight:600}.Z{color:var(--muted);font-weight:600}
+.legend{font-size:13.5px;color:var(--muted)}
+.katex-display{margin:.6em 0;overflow-x:auto;overflow-y:hidden}
+footer{margin-top:44px;padding-top:12px;border-top:1px solid var(--line);font-size:13px;color:var(--muted)}
+@media (max-width:600px){
+  .toc ol{columns:1}
+  .cover h1{font-size:26px}
+  figcaption{flex-direction:column;gap:0}
+}
+@media print{
+  @page{size:A4}
+  body{font-size:12.5pt;background:#fff}
+  .wrap{max-width:none;padding:0}
+  .player,.seek{display:none!important}
+  .cover{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  h2{break-after:avoid}
+  h3{break-after:avoid}
+  figure,.box,table{break-inside:avoid}
+  figure img{width:78%;margin:0 auto}
+  figcaption{width:78%;margin-left:auto;margin-right:auto}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header class="cover">
+  <div class="tag">SA 結構學　｜　U1-2-4　｜　影片講義</div>
+  <h1>桁架之內力分析</h1>
+  <div class="meta">影片 6:51　·　6 章　·　17 段　·　例題④ Pratt 桁架（4@4 m、高 4 m、U1/U2/U3 各 40 kN）</div>
+  <div class="core">不從支承一路盲推：固定順序　① 反力 → ② 零力桿 → ③ 截面法 → ④ 節點法</div>
+</header>
+
+<nav class="toc" aria-label="目錄">
+  <ol>
+    <li><a href="#c0">0　開場</a><span class="t">0:00</span></li>
+    <li><a href="#c1">1　例題④：靜定判定與反力</a><span class="t">0:26</span></li>
+    <li><a href="#c2">2　第一招：先掃零力桿</a><span class="t">1:15</span></li>
+    <li><a href="#c3">3　第二招：截面法，一式解一桿</a><span class="t">3:03</span></li>
+    <li><a href="#c4">4　第三招：節點法與分量比</a><span class="t">5:01</span></li>
+    <li><a href="#c5">5　考場四步 SOP</a><span class="t">5:56</span></li>
+  </ol>
+</nav>
+
+<div class="player">
+  <video id="vid" controls preload="metadata" src="video/SA-U1-2-truss.mp4"></video>
+</div>
+<p class="legend">每章標題旁的 ▶ 按鈕會跳到影片該章的起點；圖說右側的時間是截圖所在的時間點。</p>
+
+<!-- c0 -->
+<section id="c0">
+  <h2><span class="no">0</span>開場 <button class="seek" data-t="0.15">▶ 0:00</button></h2>
+  <figure>
+    <img src="img/SA-U1-2-4/s01.jpg" alt="開場黑板：不從支承一路盲推、二力桿、四步順序">
+    <figcaption><span>二力桿只有軸力，每個節點只有兩條平衡式；解題順序四步</span><span class="when">影片 0:26</span></figcaption>
+  </figure>
+  <p>桁架的每一根桿都是<strong>二力桿</strong>，只有軸力，沒有剪力和彎矩，所以每個節點只給兩條平衡方程式：</p>
+  $$\Sigma F_x = 0,\qquad \Sigma F_y = 0$$
+  <p>解題最忌諱從支承開始，一個節點一個節點盲推。我們用固定順序加三招：</p>
+  <div class="box key"><b class="h">解題順序</b>先求反力，再掃零力桿，接著截面法，最後才用節點法補齊。</div>
+</section>
+
+<!-- c1 -->
+<section id="c1">
+  <h2><span class="no">1</span>例題④：靜定判定與反力 <button class="seek" data-t="26.9">▶ 0:26</button></h2>
+  <figure>
+    <img src="img/SA-U1-2-4/s02.jpg" alt="Pratt 桁架題目圖與靜定判定">
+    <figcaption><span>題目：Pratt 桁架，下弦 L0–L4 每格 4 m，高 4 m，U1、U2、U3 各 40 kN</span><span class="when">影片 0:53</span></figcaption>
+  </figure>
+  <p>例題是一座 Pratt 桁架。下弦有五個節點 L0 到 L4，每格 4 m；上弦三個節點 U1、U2、U3，桁架高 4 m，每個上弦節點各受 40 kN。</p>
+  <p>先判定靜定：13 根桿（\(m\)）、3 個反力（\(r\)）、8 個節點（\(j\)）：</p>
+  $$d = m + r - 2j = 13 + 3 - 2\times 8 = 0 \;\Rightarrow\; \text{靜定}$$
+
+  <h3>第一步：求整體反力</h3>
+  <figure>
+    <img src="img/SA-U1-2-4/s03.jpg" alt="兩支承反力各 60 kN">
+    <figcaption><span>綠色箭頭＝支承反力，L0、L4 各 60 kN</span><span class="when">影片 1:15</span></figcaption>
+  </figure>
+  <p>總載重 120 kN，而且載重對稱，左右支承各分一半：</p>
+  $$\Sigma P = 120,\ \text{對稱} \;\Rightarrow\; {\color{#2f8a4c}R = 60\ \text{kN}}$$
+  <p>不對稱的題目，就對其中一個支承取力矩。</p>
+  <div class="box key"><b class="h">反力一定要先求</b>後面截面法的自由體一定會用到它。</div>
+</section>
+
+<!-- c2 -->
+<section id="c2">
+  <h2><span class="no">2</span>第一招：先掃零力桿 <button class="seek" data-t="75.99">▶ 1:15</button></h2>
+  <figure>
+    <img src="img/SA-U1-2-4/s05.jpg" alt="零力桿規則一與規則二示意">
+    <figcaption><span>左：規則一（二桿節點）；右：規則二（三桿節點）。虛線＝零力桿</span><span class="when">影片 1:56</span></figcaption>
+  </figure>
+  <table>
+    <thead><tr><th>規則</th><th>適用條件</th><th>結論</th><th>理由</th></tr></thead>
+    <tbody>
+      <tr><td>規則一：二桿節點</td><td>節點只連兩根桿；無外力、無支承；兩桿不共線</td><td>兩根桿都是零：\(N=0\)</td><td>兩根桿方向不同，各自的分量找不到夥伴可以抵消，只能都等於零</td></tr>
+      <tr><td>規則二：三桿節點</td><td>三根桿裡兩根共線；無外力、無支承</td><td>不共線的第三桿 \(N_3=0\)；共線兩根 \(N_1=N_2\)</td><td>在垂直共線方向上只有第三桿有分量，沒有人能平衡它</td></tr>
+    </tbody>
+  </table>
+
+  <figure>
+    <img src="img/SA-U1-2-4/s06.jpg" alt="規則失效：節點有外力或為支承">
+    <figcaption><span>節點有外力 \(P\)：第三桿變實線，\(N_3 = P \neq 0\)</span><span class="when">影片 2:18</span></figcaption>
+  </figure>
+  <div class="box warn"><b class="h">高頻陷阱：規則失效</b>
+    ① 節點上有外力　② 節點本身是支承 → 規則立刻失效。<br>
+    外力和支承反力都會在平衡式裡多出一個分量，第三桿就必須出力去平衡它。考卷常常故意把載重放在看起來像三桿節點的地方。
+  </div>
+
+  <h3>套回例題</h3>
+  <figure>
+    <img src="img/SA-U1-2-4/s07.jpg" alt="L1、L3 為三桿節點，U1L1、U3L3 為零力桿">
+    <figcaption><span>黃圈：L1、L3 三桿節點；藍線：共線下弦 L0L1、L1L2</span><span class="when">影片 2:39</span></figcaption>
+  </figure>
+  <p>L1 和 L3 都是三桿節點，下弦兩根共線，而且沒有載重，所以豎桿 U1L1 和 U3L3 都是零力桿，同時</p>
+  $${\color{#3a7cb8}N_{L0L1} = N_{L1L2}}\quad(\text{共線傳遞})$$
+  <div class="box key"><b class="h">零力桿 ≠ 不存在</b>它負責穩定，只是在這組載重下不出力。</div>
+
+  <figure>
+    <img src="img/SA-U1-2-4/s08.jpg" alt="U2 有 40 kN，規則失效；U2L2 = 40 壓">
+    <figcaption><span>紅圈：U2（有載重）與 L2（5 根桿），兩者都不適用規則</span><span class="when">影片 3:02</span></figcaption>
+  </figure>
+  <p>那中間的 U2L2 呢？L2 節點連了 5 根桿，不適用規則；U2 雖然有兩根共線的上弦，但節點上有 40 kN，規則失效。直接看 U2 的垂直平衡：</p>
+  $$\Sigma F_y @U2:\quad {\color{#c8453b}N_{U2L2} = 40\ \text{kN}\ (\text{壓})}$$
+  <p>掃完以後，13 根桿只剩 <strong>11 根</strong>要算。</p>
+</section>
+
+<!-- c3 -->
+<section id="c3">
+  <h2><span class="no">3</span>第二招：截面法，一式解一桿 <button class="seek" data-t="183.39">▶ 3:03</button></h2>
+  <p>截面法又叫 Ritter 法。一刀切過三根未知桿，自由體有三條平衡式。</p>
+  <div class="box key"><b class="h">關鍵在矩心</b>矩心＝其餘兩根未知桿的交點。那兩根對矩心的力矩都是零，方程式裡只剩一個未知數，一式解一桿。</div>
+  <p>這裡在第二格切下截面 a-a，切過 U1U2、U1L2、L1L2（黑板上描橘色），取左半部。</p>
+
+  <h3>求下弦 L1L2：對 U1 取矩</h3>
+  <figure>
+    <img src="img/SA-U1-2-4/s10.jpg" alt="截面 a-a，對 U1 取矩">
+    <figcaption><span>橘虛線＝截面 a-a；黃圈＝矩心 U1</span><span class="when">影片 3:51</span></figcaption>
+  </figure>
+  <p>另外兩根未知桿 U1U2 和 U1L2 都通過 U1，所以對 U1 取矩。反力 60，力臂 4 m；U1 上的 40 通過矩心，不產生力矩。</p>
+  $$\Sigma M_{U1} = 0:\quad 60\times 4 = N\times 4 \;\Rightarrow\; {\color{#2f8a4c}N_{L1L2} = 60\ \text{kN}\ (\text{拉})}$$
+
+  <h3>求上弦 U1U2：對 L2 取矩</h3>
+  <figure>
+    <img src="img/SA-U1-2-4/s11.jpg" alt="對 L2 取矩求上弦">
+    <figcaption><span>黃圈＝矩心 L2</span><span class="when">影片 4:10</span></figcaption>
+  </figure>
+  <p>另外兩根都通過下弦的 L2，所以對 L2 取矩：反力 60 乘 8，減掉 40 乘 4，等於 320；上弦力臂是桁架高 4 m。</p>
+  $$\Sigma M_{L2} = 0:\quad 60\times 8 - 40\times 4 = N\times 4 \;\Rightarrow\; {\color{#c8453b}N_{U1U2} = 80\ \text{kN}\ (\text{壓})}$$
+
+  <h3>求斜桿 U1L2：用 ΣF<sub>y</sub></h3>
+  <figure>
+    <img src="img/SA-U1-2-4/s12.jpg" alt="以垂直平衡求斜桿">
+    <figcaption><span>斜桿旁標邊長比 4 : 4 : √32；右上累積三根桿力</span><span class="when">影片 4:35</span></figcaption>
+  </figure>
+  <p>上下弦都是水平，對垂直方向完全沒有貢獻，所以直接用 \(\Sigma F_y\)。60 減 40 等於 20，這就是斜桿的垂直分量。斜桿 4 乘 4，長度 \(\sqrt{32}\)：</p>
+  $$\Sigma F_y = 0:\quad 60 - 40 = N\cdot\frac{4}{\sqrt{32}} \;\Rightarrow\; {\color{#2f8a4c}N_{U1L2} = 20\sqrt{2} \approx 28.28\ \text{kN}\ (\text{拉})}$$
+
+  <h3>最常見的錯</h3>
+  <figure>
+    <img src="img/SA-U1-2-4/s13.jpg" alt="漏掉 U1 的 40 造成三倍錯誤">
+    <figcaption><span>紅字打叉＝漏掉 U1 載重的錯誤答案；右下：符號檢查</span><span class="when">影片 5:01</span></figcaption>
+  </figure>
+  <div class="box warn"><b class="h">漏掉 U1 上的 40</b>
+    它在自由體裡面，要算進去。漏掉的話：
+    <table>
+      <thead><tr><th>桿件</th><th>漏掉 40（錯）</th><th>正確</th></tr></thead>
+      <tbody>
+        <tr><td>上弦 U1U2</td><td>120</td><td class="C">80（壓）</td></tr>
+        <tr><td>斜桿 U1L2</td><td>\(60\sqrt{2} = 84.85\)</td><td class="T">\(20\sqrt{2} = 28.28\)（拉）</td></tr>
+      </tbody>
+    </table>
+    斜桿剛好是正確答案的 <strong>3 倍</strong>。
+  </div>
+  <div class="box ok"><b class="h">符號檢查</b>算完再用物理直覺檢查符號：簡支桁架受向下載重，<span class="T">下弦拉</span>、<span class="C">上弦壓</span>。</div>
+</section>
+
+<!-- c4 -->
+<section id="c4">
+  <h2><span class="no">4</span>第三招：節點法與分量比 <button class="seek" data-t="301.93">▶ 5:01</button></h2>
+  <figure>
+    <img src="img/SA-U1-2-4/s14.jpg" alt="節點 L0 自由體與邊長比三角形">
+    <figcaption><span>節點 L0 只有 2 根未知桿；右：邊長比三角形 a = 4、b = 4、L = 4√2</span><span class="when">影片 5:33</span></figcaption>
+  </figure>
+  <p>節點法用在未知數不超過兩個的節點，例如支承 L0：只有 L0U1 和 L0L1 兩根桿。</p>
+  <p>斜桿不要用三角函數，改用<strong>邊長比</strong>：</p>
+  $$\frac{N_x}{a} = \frac{N_y}{b} = \frac{N}{L}$$
+  <p>這根斜桿是 4、4、\(4\sqrt{2}\)，垂直分量要平衡反力 60，所以水平分量也是 60：</p>
+  $$N_y = 60 \;\Rightarrow\; N_x = 60 \;\Rightarrow\; {\color{#c8453b}N_{L0U1} = 60\sqrt{2} \approx 84.85\ \text{kN}\ (\text{壓})}$$
+
+  <figure>
+    <img src="img/SA-U1-2-4/s15.jpg" alt="交叉檢核與方法選擇">
+    <figcaption><span>L0L1 變綠（拉）；下方綠字＝交叉檢核</span><span class="when">影片 5:56</span></figcaption>
+  </figure>
+  <div class="box ok"><b class="h">交叉檢核</b>水平分量 60，正好就是 L0L1 的拉力，和零力桿規則推出的 L1L2 等於 60 完全一致：
+    $$N_x = 60 = N_{L0L1} = N_{L1L2}\ \checkmark$$
+  </div>
+  <table>
+    <thead><tr><th>情況</th><th>用哪個方法</th></tr></thead>
+    <tbody>
+      <tr><td>節點未知數 ≤ 2</td><td>節點法</td></tr>
+      <tr><td>未知數 &gt; 2（如 K 型桁架），或題目只問特定桿</td><td>截面法</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<!-- c5 -->
+<section id="c5">
+  <h2><span class="no">5</span>考場四步 SOP <button class="seek" data-t="356.81">▶ 5:56</button></h2>
+  <table>
+    <thead><tr><th>步驟</th><th>做什麼</th></tr></thead>
+    <tbody>
+      <tr><td>① 靜定判定</td><td>用 \(d = m + r - 2j\) 確認靜定</td></tr>
+      <tr><td>② 求反力</td><td>用整體平衡（\(\Sigma M = 0,\ \Sigma F_y = 0\)）求支承反力</td></tr>
+      <tr><td>③ 掃零力桿</td><td>用二桿和三桿規則掃掉零力桿，並且<strong style="color:var(--red)">留意有外力或支承的節點</strong></td></tr>
+      <tr><td>④ 一刀切三桿</td><td>矩心取在另外兩桿的交點，一式解出要的桿力，剩下的再用節點法補齊</td></tr>
+    </tbody>
+  </table>
+
+  <h3>本題答案</h3>
+  <figure>
+    <img src="img/SA-U1-2-4/s17.jpg" alt="全部桿力總圖">
+    <figcaption><span>綠＝拉、紅＝壓、虛線＝零力桿</span><span class="when">影片 6:50</span></figcaption>
+  </figure>
+  <table>
+    <thead><tr><th>桿件</th><th>軸力 (kN)</th><th>拉／壓</th><th>用哪一招</th></tr></thead>
+    <tbody>
+      <tr><td>U1L1、U3L3</td><td>0</td><td class="Z">零力桿</td><td>規則二（L1、L3 三桿節點）</td></tr>
+      <tr><td>U2L2</td><td>40</td><td class="C">壓</td><td>U2 的 \(\Sigma F_y\)（規則失效）</td></tr>
+      <tr><td>下弦 L1L2</td><td>60</td><td class="T">拉</td><td>截面 a-a，\(\Sigma M_{U1}\)</td></tr>
+      <tr><td>上弦 U1U2</td><td>80</td><td class="C">壓</td><td>截面 a-a，\(\Sigma M_{L2}\)</td></tr>
+      <tr><td>斜桿 U1L2</td><td>\(20\sqrt{2} \approx 28.28\)</td><td class="T">拉</td><td>截面 a-a，\(\Sigma F_y\)</td></tr>
+      <tr><td>端斜桿 L0U1</td><td>\(60\sqrt{2} \approx 84.85\)</td><td class="C">壓</td><td>節點 L0，邊長比</td></tr>
+    </tbody>
+  </table>
+  <div class="box key"><b class="h">記住順序</b>反力 → 零力桿 → 截面法 → 節點法</div>
+</section>
+
+<footer>
+  來源：影片 <code>video/SA-U1-2-truss.mp4</code>（6:51）；講稿 <code>video/segments.py</code>（17 段、6 章）；時間軸 <code>video/SA-U1-2-truss.srt</code>。
+  黑板截圖取自各段結束前 0.5 秒。例題數值與 <code>video/HANDOFF.md</code> 一致。
+</footer>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+  if (window.renderMathInElement) {
+    renderMathInElement(document.body, {
+      delimiters: [{left: '$$', right: '$$', display: true}, {left: '\\(', right: '\\)', display: false}],
+      throwOnError: false
+    });
+  }
+  var v = document.getElementById('vid');
+  document.querySelectorAll('.seek').forEach(function (b) {
+    b.addEventListener('click', function () {
+      v.currentTime = parseFloat(b.dataset.t);
+      v.scrollIntoView({behavior: 'smooth', block: 'center'});
+      var p = v.play(); if (p && p.catch) p.catch(function () {});
+    });
+  });
+});
+</script>
+</body>
+</html>
