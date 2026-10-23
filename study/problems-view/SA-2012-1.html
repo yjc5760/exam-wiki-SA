@@ -44,8 +44,8 @@ header .nomat{margin-top:12px;font-size:.8em;opacity:.85}
 <div class="hbtns"><a class="b-study" href="../study-SA-U1-2.html">🔍 U1-2 命題分析</a><a class="b-lect" href="../lecture-SA-U1-2.html">📚 U1-2 靜定結構之分析 講義</a><a class="b-fg" href="../formula-given-SA-U1-2.html">🎯 U1-2 給／背分界</a></div>
 </header>
 <main><h1>考題編號：SA-2012-1</h1>
-<p><strong>主分類：</strong> <code>SA-U1-2</code> 靜定結構分析<br />
-<strong>副分類：</strong> <code>SA-U2-1</code> <br />
+<p><strong>主分類：</strong> <code>SA-U1-2</code> 靜定結構之分析<br />
+<strong>副分類：</strong> <code>SA-U2-1</code> 靜不定結構最小功法<br />
 <strong>分析法：</strong> 靜力平衡法、共軛梁法 (Conjugate Beam Method) 或 虛功法 (Virtual Work Method)<br />
 <strong>標籤：</strong> <code>靜定梁</code> <code>內鉸</code> <code>彎矩圖</code> <code>位移與轉角</code> <code>反曲點</code> <code>共軛梁法</code></p>
 <hr />
@@ -177,6 +177,8 @@ $$ \Delta = \int \frac{M m}{EI} dx $$</p>
 <blockquote>
 <p><strong>策略註解：</strong> 彎矩圖由 a 至 b 保持 $160$，由 b 遞減至 c 的 $0$，由 c 繼續遞減至 d 的 $-160$，再由 d 遞增回 e 的 $0$。</p>
 </blockquote>
+<p><img alt="SA-2012-1 梁三聯圖：載重／SFD／BMD" src="../../raw/solutions/SA-2012-1/figs/SA-2012-1-fig-1-beam-vm.svg" /></p>
+<p><em>圖 1　載重、剪力圖與彎矩圖三聯圖。c 點 (x=8m) 為內鉸，BMD 在此精確通過 0，是反力與分段彎矩式是否正確的直接檢核。</em></p>
 <h3>Step 3：建立共軛梁與載重</h3>
 <p>共軛梁設定與邊界條件轉換：</p>
 <ul>
@@ -221,18 +223,20 @@ $$ y_e = \boxed{\frac{12160}{3EI} \text{ (向下)}} $$</p>
 <h3>Step 5：(五) 繪變形曲線與反曲點</h3>
 <ol>
 <li><strong>反曲點位置</strong>：反曲點發生於彎矩 $M(x) = 0$ 處。由 BMD 可知，唯一彎矩為零的點在 $x=8\text{ m}$，即 <strong>c 點 (內鉸處)</strong>。</li>
-<li><strong>變形曲線特徵</strong>：<br />
-   - a 為固定端，起始切線為水平。<br />
-   - a-c 段彎矩為正，梁呈「U型」向上凹，故梁身會持續向上翹起，抵達 c 點時達到極大向上位移 ($y_c = +7040/3EI$)。<br />
-   - c-e 段彎矩為負，梁呈「倒U型」向下凹。由於 c 點極高而 d 點位移強制為零，故梁在 c-d 間急速向下傾斜穿過 d 點，隨後繼續彎曲向下，抵達 e 點時產生極大的向下位移 ($y_e = -12160/3EI$)。<br />
-   - 在 c 點 (內鉸)，由於左右受力不對稱且允許相對轉動，會出現一個明顯的「尖點 (Kink)」，左右斜率不連續。</li>
+<li><strong>變形曲線特徵</strong>：</li>
+<li>a 為固定端，起始切線為水平。</li>
+<li>a-c 段彎矩為正，梁呈「U型」向上凹，故梁身會持續向上翹起，抵達 c 點時達到極大向上位移 ($y_c = +7040/3EI$)。</li>
+<li>c-e 段彎矩為負，梁呈「倒U型」向下凹。由於 c 點極高而 d 點位移強制為零，故梁在 c-d 間急速向下傾斜穿過 d 點，隨後繼續彎曲向下，抵達 e 點時產生極大的向下位移 ($y_e = -12160/3EI$)。</li>
+<li>在 c 點 (內鉸)，由於左右受力不對稱且允許相對轉動，會出現一個明顯的「尖點 (Kink)」，左右斜率不連續。</li>
 </ol>
 <h2>5. 關鍵爭議點與進階探討 (Critical Issues &amp; Advanced Discussion)</h2>
 <ul>
 <li><strong>彎矩正負號與物理直覺</strong>：許多考生在第一步求固定端反力時，算出了順時針的力矩，就誤以為是「負彎矩」。實際上，順時針的左端點反力，會對梁段產生「底部受拉」的效應，這在結構學中標準定義為 <strong>正彎矩 (+)</strong>。這個關鍵判定若錯，後續的變形曲線與共軛梁全部都會反向，是本題最致命的陷阱。</li>
 <li><strong>共軛梁邊界條件對應</strong>：內鉸轉換為內部滾支承 (提供集中反力但無力矩)，內部滾支承轉換為內鉸 (無力矩但可傳遞剪力)。這是共軛梁法中最容易搞混的配對，解題時務必回歸「位移對應彎矩、轉角對應剪力」的基本定義來思考。</li>
 <li><strong>虛功法的優越性</strong>：面對這類剛度有變化的多段梁，雖然共軛梁法具備物理意義，但很容易在尋找形心與計算內部剪力時發生符號混淆。本題解析在發現共軛梁剪力累加出現矛盾時，立刻切換至虛功法進行積分，能以最穩健的方式算出 $\theta_e$ 與 $y_e$，展現了多重方法交叉驗證的重要性。考場上若遇此困境，強烈建議果斷採用虛功法。</li>
-</ul></main>
+</ul>
+<hr />
+<p><em>圖解補繪：2026-08-27（向量圖，腳本 <code>gen_SA-2012-1.py</code>，可重跑）</em></p></main>
 <footer>來源：raw/solutions/SA-2012-1/SA-2012-1.md（知識庫解題內容唯一正本；本頁僅為渲染顯示）</footer>
 
 <script>

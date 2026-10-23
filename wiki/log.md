@@ -1249,3 +1249,5 @@ PDF 文字層檢查無殘留 LaTeX、無 emoji 豆腐方框。
 - `[add]` `scripts/gen_lecture_SA-U1-2_figs.py`：講義圖解腳本化產出，更新 `study/lecture-SA-U1-2.html` 並重產 PDF。
 - `[add]` `scripts/gen_lecture_SA-U2-1_figs.py`：講義圖解腳本化產出，更新 `study/lecture-SA-U2-1.html` 並重產 PDF。
 - `[update]` `study/lecture-SA-U2-3.html`：導航欄位與圖解結構優化，更新對應 PDF。
+- `[sync]` SA-2003-3：`scripts/md2view.py SA-2003-3` 重產 `study/problems-view/SA-2003-3.html`（原頁停在 2026-08-09，連 8/27 補的向量圖都未納入）；`wiki/problems/SA-2003-3.md` 同步圖 2 圖說與日期行。
+- `[sync]` 另有 6 題 problems-view 落後於解析正本，以 `md2view.py` 重產：SA-2012-1、SA-2015-1、SA-2024-2、SA-2025-1、SA-2025-3、SA-2025-4。`wiki/problems/SA-2025-3.md` 補同步 2026-08-16 的圖 1–4 與 §1.5 勘誤（保留檔尾互動預覽連結）；其餘 5 題 wiki 副本內容已一致。

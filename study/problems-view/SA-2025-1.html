@@ -52,7 +52,9 @@ header .nomat{margin-top:12px;font-size:.8em;opacity:.85}
 <h2>§1 題目重述</h2>
 <p>如圖1所示之一層樓單跨度剛構架（Rigid-jointed frame），梁及柱皆為垂直剛接，兩柱底為固定支承。梁柱之撓曲剛度均為 $EI$，長度均為 $L$。若忽略所有桿件之軸向變形，請推導對應側向作用力 $P$ 之<strong>側向勁度</strong>（提示：請先寫出結構之勁度矩陣）。（25 分）</p>
 <p><img alt="SA-2025-1 題目附圖：一層樓單跨剛構架，兩柱底固定支承，梁柱剛接，所有桿件 EI、L 相同，側向力 P 作用於節點" src="../../raw/solutions/SA-2025-1/SA-2025-1-fig-1.png" /></p>
-<p><em>圖說：門型剛構架。左柱底 A、右柱底 D 固定；頂部節點 B（左）、C（右）剛接連接水平梁 BC。所有桿件撓曲剛度 $EI$、長度 $L$。側向力 $P$ 作用於梁端（水平向右）。</em></p>
+<p><em>圖說（原卷截圖）：門型剛構架。左柱底 A、右柱底 D 固定；頂部節點 B（左）、C（右）剛接連接水平梁 BC。所有桿件撓曲剛度 $EI$、長度 $L$。側向力 $P$ 作用於梁端（水平向右）。</em></p>
+<p><img alt="向量重繪：門型剛構架，節點 A/B/C/D、EI 與 L 標註、固定支承符號、側向力 P" src="../../raw/solutions/SA-2025-1/figs/SA-2025-1-fig-1-frame.svg" /></p>
+<p><em>圖 1R　向量重繪版（作答時可照此比例快速描繪）</em></p>
 <hr />
 <h2>§2 核心精神與出題者意圖</h2>
 <p><strong>核心觀念：</strong> 以矩陣位移法系統化建立結構勁度矩陣，再透過<strong>靜態凝縮（Static Condensation）</strong>消去旋轉自由度，直接得到側向勁度 $k_{lateral} = P/\Delta$。</p>
@@ -65,7 +67,7 @@ header .nomat{margin-top:12px;font-size:.8em;opacity:.85}
 </ul>
 <hr />
 <h2>§3 解題戰略地圖</h2>
-<pre><code>忽略軸向變形
+<p><code>忽略軸向變形
     ↓
 辨識 DOF：θB、θC、Δ（3個）
     ↓
@@ -77,8 +79,7 @@ header .nomat{margin-top:12px;font-size:.8em;opacity:.85}
     ↓
 由對稱性知 θB = θC，解出 θ = 3Δ/(5L)
     ↓
-代入第三行，求出 k = P/Δ = 84EI/(5L³)
-</code></pre>
+代入第三行，求出 k = P/Δ = 84EI/(5L³)</code></p>
 <p><strong>陷阱分析：</strong></p>
 <table>
 <thead>
@@ -107,7 +108,7 @@ header .nomat{margin-top:12px;font-size:.8em;opacity:.85}
 <tr>
 <td>DOF 順序對勁度矩陣的影響</td>
 <td>組裝時必須統一 DOF 對應關係，不可混用</td>
-<td>統一用 $\{\theta_B,\,\theta_C,\,\Delta\}$</td>
+<td>統一用 ${\theta_B,\,\theta_C,\,\Delta}$</td>
 </tr>
 </tbody>
 </table>
@@ -118,7 +119,7 @@ header .nomat{margin-top:12px;font-size:.8em;opacity:.85}
 </blockquote>
 <h3>最終目標</h3>
 <p>$$k_{lateral} = \frac{P}{\Delta} = \frac{84EI}{5L^3}$$</p>
-<p><strong>推導路徑：</strong> 矩陣位移法建立 $[K]_{3\times3}$ → 建立 $[K]\{d\}=\{F\}$ → 對稱性推出 $\theta_B=\theta_C$ → 代入求 $\Delta$ → 得 $k$</p>
+<p><strong>推導路徑：</strong> 矩陣位移法建立 $[K]_{3\times3}$ → 建立 $[K]{d}={F}$ → 對稱性推出 $\theta_B=\theta_C$ → 代入求 $\Delta$ → 得 $k$</p>
 <hr />
 <h3>L1：題目直接給定</h3>
 <table>
@@ -198,7 +199,7 @@ header .nomat{margin-top:12px;font-size:.8em;opacity:.85}
 </table>
 <p><strong>Step 2：柱元素局部勁度（自由端子矩陣，DOF：$\theta_{top},\,\delta_{top}$）</strong></p>
 <p>基底固定端消去後，自由端 2×2 子矩陣：</p>
-<p>$$[\bar{k}]_{col} = \begin{bmatrix} \dfrac{4EI}{L} & -\dfrac{6EI}{L^2} \\[4pt] -\dfrac{6EI}{L^2} & \dfrac{12EI}{L^3} \end{bmatrix}$$</p>
+<p>$$[\bar{k}]_{col} = \begin{bmatrix} \dfrac{4EI}{L} &amp; -\dfrac{6EI}{L^2} \[4pt] -\dfrac{6EI}{L^2} &amp; \dfrac{12EI}{L^3} \end{bmatrix}$$</p>
 <table>
 <thead>
 <tr>
@@ -230,7 +231,7 @@ header .nomat{margin-top:12px;font-size:.8em;opacity:.85}
 </tbody>
 </table>
 <p><strong>Step 3：梁元素局部勁度（DOF：$\theta_B,\,\theta_C$，無側移）</strong></p>
-<p>$$[\bar{k}]_{beam} = \frac{EI}{L}\begin{bmatrix} 4 & 2 \\ 2 & 4 \end{bmatrix}$$</p>
+<p>$$[\bar{k}]_{beam} = \frac{EI}{L}\begin{bmatrix} 4 &amp; 2 \ 2 &amp; 4 \end{bmatrix}$$</p>
 <table>
 <thead>
 <tr>
@@ -359,7 +360,7 @@ header .nomat{margin-top:12px;font-size:.8em;opacity:.85}
 </tr>
 <tr>
 <td>靜態凝縮公式（Schur complement）</td>
-<td>$k_{eff}=K_{33}-\{K_{31},K_{32}\}[K_{\theta\theta}]^{-1}\{K_{13};K_{23}\}$，與代入消元等效</td>
+<td>$k_{eff}=K_{33}-{K_{31},K_{32}}[K_{\theta\theta}]^{-1}{K_{13};K_{23}}$，與代入消元等效</td>
 <td style="text-align: center;"></td>
 </tr>
 </tbody>
@@ -373,22 +374,24 @@ header .nomat{margin-top:12px;font-size:.8em;opacity:.85}
 <li><strong>梁 BC</strong> 不伸縮 → B、C 水平位移相同，設為 $\Delta$</li>
 </ul>
 <p><strong>有效自由度（DOF）：</strong></p>
-<p>$$\{d\} = \{\theta_B,\;\theta_C,\;\Delta\}^T$$</p>
+<p>$${d} = {\theta_B,\;\theta_C,\;\Delta}^T$$</p>
 <p>邊界條件：柱底 A、D 為固定端，三個自由度均為零（不貢獻 DOF）。</p>
+<p><img alt="自由度辨識圖解：保留 θB、θC、Δ 三個自由度，並標示被忽略軸向變形消去的垂直位移與水平位移耦合" src="../../raw/solutions/SA-2025-1/figs/SA-2025-1-fig-2-dof.svg" /></p>
+<p><em>圖 2　自由度辨識。「忽略軸向變形」不是可有可無的簡化，它直接決定勁度矩陣是 3×3 還是 6×6。</em></p>
 <hr />
 <h3>4.2 各構件局部勁度矩陣</h3>
 <p><strong>構件① 左柱 AB</strong>（A 固定，B 自由，垂直桿件，側向 = 水平方向）</p>
 <p>基底固定端消去後，自由端子矩陣（DOF 順序：$\theta_B,\,\Delta$）：</p>
-<p>$$[\bar{k}]_{AB} = \begin{bmatrix} \dfrac{4EI}{L} & -\dfrac{6EI}{L^2} \\[6pt] -\dfrac{6EI}{L^2} & \dfrac{12EI}{L^3} \end{bmatrix}$$</p>
+<p>$$[\bar{k}]_{AB} = \begin{bmatrix} \dfrac{4EI}{L} &amp; -\dfrac{6EI}{L^2} \[6pt] -\dfrac{6EI}{L^2} &amp; \dfrac{12EI}{L^3} \end{bmatrix}$$</p>
 <p><strong>構件② 右柱 DC</strong>（D 固定，C 自由，垂直桿件，側向 = 水平方向）</p>
-<p>$$[\bar{k}]_{DC} = \begin{bmatrix} \dfrac{4EI}{L} & -\dfrac{6EI}{L^2} \\[6pt] -\dfrac{6EI}{L^2} & \dfrac{12EI}{L^3} \end{bmatrix} \quad \text{（DOF 順序：}\theta_C,\,\Delta\text{）}$$</p>
+<p>$$[\bar{k}]_{DC} = \begin{bmatrix} \dfrac{4EI}{L} &amp; -\dfrac{6EI}{L^2} \[6pt] -\dfrac{6EI}{L^2} &amp; \dfrac{12EI}{L^3} \end{bmatrix} \quad \text{（DOF 順序：}\theta_C,\,\Delta\text{）}$$</p>
 <p><strong>構件③ 梁 BC</strong>（兩端無側移：$\psi_{BC}=0$，水平桿件，橫向 = 垂直方向）</p>
 <p>B、C 之垂直位移均為零（柱不縮短），梁無橫向端位移，故：</p>
-<p>$$[\bar{k}]_{BC} = \frac{EI}{L}\begin{bmatrix} 4 & 2 \\ 2 & 4 \end{bmatrix} \quad \text{（DOF 順序：}\theta_B,\,\theta_C\text{）}$$</p>
+<p>$$[\bar{k}]_{BC} = \frac{EI}{L}\begin{bmatrix} 4 &amp; 2 \ 2 &amp; 4 \end{bmatrix} \quad \text{（DOF 順序：}\theta_B,\,\theta_C\text{）}$$</p>
 <hr />
 <h3>4.3 整體勁度矩陣組裝</h3>
 <p>DOF 全域編號：1 = $\theta_B$，2 = $\theta_C$，3 = $\Delta$</p>
-<p>$$\boxed{[K] = \begin{bmatrix} \dfrac{8EI}{L} & \dfrac{2EI}{L} & -\dfrac{6EI}{L^2} \\[8pt] \dfrac{2EI}{L} & \dfrac{8EI}{L} & -\dfrac{6EI}{L^2} \\[8pt] -\dfrac{6EI}{L^2} & -\dfrac{6EI}{L^2} & \dfrac{24EI}{L^3} \end{bmatrix}}$$</p>
+<p>$$\boxed{[K] = \begin{bmatrix} \dfrac{8EI}{L} &amp; \dfrac{2EI}{L} &amp; -\dfrac{6EI}{L^2} \[8pt] \dfrac{2EI}{L} &amp; \dfrac{8EI}{L} &amp; -\dfrac{6EI}{L^2} \[8pt] -\dfrac{6EI}{L^2} &amp; -\dfrac{6EI}{L^2} &amp; \dfrac{24EI}{L^3} \end{bmatrix}}$$</p>
 <table>
 <thead>
 <tr>
@@ -423,10 +426,12 @@ header .nomat{margin-top:12px;font-size:.8em;opacity:.85}
 </tr>
 </tbody>
 </table>
+<p><img alt="勁度矩陣三行的物理意義：三個單位位移狀態及其所需節點力" src="../../raw/solutions/SA-2025-1/figs/SA-2025-1-fig-3-unit-states.svg" /></p>
+<p><em>圖 3　勁度矩陣每一行的物理意義。第 j 行 ＝ 讓第 j 個自由度產生單位位移、其餘全部鎖住時，各自由度上必須施加的力。核對矩陣正負號時直接看這張圖，不必重推公式。</em></p>
 <hr />
 <h3>4.4 建立方程組</h3>
-<p>外力向量：$\{F\} = \{0,\;0,\;P\}^T$（B、C 節點無外部彎矩；$\Delta$ 方向施加 $P$）</p>
-<p>$$[K]\{d\} = \{F\}$$</p>
+<p>外力向量：${F} = {0,\;0,\;P}^T$（B、C 節點無外部彎矩；$\Delta$ 方向施加 $P$）</p>
+<p>$$[K]{d} = {F}$$</p>
 <p>展開：</p>
 <p>$$\frac{8EI}{L}\,\theta_B + \frac{2EI}{L}\,\theta_C - \frac{6EI}{L^2}\,\Delta = 0 \qquad \cdots(1)$$</p>
 <p>$$\frac{2EI}{L}\,\theta_B + \frac{8EI}{L}\,\theta_C - \frac{6EI}{L^2}\,\Delta = 0 \qquad \cdots(2)$$</p>
@@ -442,18 +447,18 @@ header .nomat{margin-top:12px;font-size:.8em;opacity:.85}
 <p>將 (4) 代入方程 (3)：</p>
 <p>$$-\frac{6EI}{L^2}\cdot\frac{3\Delta}{5L} - \frac{6EI}{L^2}\cdot\frac{3\Delta}{5L} + \frac{24EI}{L^3}\,\Delta = P$$</p>
 <p>$$-\frac{18EI}{5L^3}\,\Delta - \frac{18EI}{5L^3}\,\Delta + \frac{24EI}{L^3}\,\Delta = P$$</p>
-<p>$$\frac{EI\,\Delta}{L^3}\!\left(-\frac{18}{5} - \frac{18}{5} + 24\right) = P$$</p>
-<p>$$\frac{EI\,\Delta}{L^3}\!\left(-\frac{36}{5} + \frac{120}{5}\right) = P$$</p>
+<p>$$\frac{EI\,\Delta}{L^3}!\left(-\frac{18}{5} - \frac{18}{5} + 24\right) = P$$</p>
+<p>$$\frac{EI\,\Delta}{L^3}!\left(-\frac{36}{5} + \frac{120}{5}\right) = P$$</p>
 <p>$$\frac{84\,EI}{5L^3}\,\Delta = P$$</p>
 <p>$$\therefore\;\boxed{k_{lateral} = \frac{P}{\Delta} = \frac{84EI}{5L^3}}$$</p>
 <hr />
 <h3>4.7 驗算：靜態凝縮公式（Schur Complement）</h3>
-<p>$$k_{eff} = K_{33} - \begin{bmatrix} K_{31} & K_{32} \end{bmatrix} [K_{\theta\theta}]^{-1} \begin{bmatrix} K_{13} \\ K_{23} \end{bmatrix}$$</p>
+<p>$$k_{eff} = K_{33} - \begin{bmatrix} K_{31} &amp; K_{32} \end{bmatrix} [K_{\theta\theta}]^{-1} \begin{bmatrix} K_{13} \ K_{23} \end{bmatrix}$$</p>
 <p>其中：</p>
-<p>$$[K_{\theta\theta}] = \frac{EI}{L}\begin{bmatrix} 8 & 2 \\ 2 & 8 \end{bmatrix},\qquad \det = \frac{(EI)^2}{L^2}(64-4) = \frac{60(EI)^2}{L^2}$$</p>
-<p>$$[K_{\theta\theta}]^{-1} = \frac{L}{60EI}\begin{bmatrix} 8 & -2 \\ -2 & 8 \end{bmatrix}$$</p>
-<p>$$[K_{\theta\theta}]^{-1}\!\begin{bmatrix} K_{13} \\ K_{23} \end{bmatrix} = \frac{L}{60EI}\begin{bmatrix} 8 & -2 \\ -2 & 8 \end{bmatrix}\!\begin{bmatrix} -6EI/L^2 \\ -6EI/L^2 \end{bmatrix} = \frac{L}{60EI}\!\begin{bmatrix} -36EI/L^2 \\ -36EI/L^2 \end{bmatrix} = \begin{bmatrix} -3/(5L) \\ -3/(5L) \end{bmatrix}$$</p>
-<p>$$\begin{bmatrix} K_{31} & K_{32} \end{bmatrix}\!\begin{bmatrix} -3/(5L) \\ -3/(5L) \end{bmatrix} = \left(-\frac{6EI}{L^2}\right)\!\left(-\frac{3}{5L}\right)\times 2 = \frac{36EI}{5L^3}$$</p>
+<p>$$[K_{\theta\theta}] = \frac{EI}{L}\begin{bmatrix} 8 &amp; 2 \ 2 &amp; 8 \end{bmatrix},\qquad \det = \frac{(EI)^2}{L^2}(64-4) = \frac{60(EI)^2}{L^2}$$</p>
+<p>$$[K_{\theta\theta}]^{-1} = \frac{L}{60EI}\begin{bmatrix} 8 &amp; -2 \ -2 &amp; 8 \end{bmatrix}$$</p>
+<p>$$[K_{\theta\theta}]^{-1}!\begin{bmatrix} K_{13} \ K_{23} \end{bmatrix} = \frac{L}{60EI}\begin{bmatrix} 8 &amp; -2 \ -2 &amp; 8 \end{bmatrix}!\begin{bmatrix} -6EI/L^2 \ -6EI/L^2 \end{bmatrix} = \frac{L}{60EI}!\begin{bmatrix} -36EI/L^2 \ -36EI/L^2 \end{bmatrix} = \begin{bmatrix} -3/(5L) \ -3/(5L) \end{bmatrix}$$</p>
+<p>$$\begin{bmatrix} K_{31} &amp; K_{32} \end{bmatrix}!\begin{bmatrix} -3/(5L) \ -3/(5L) \end{bmatrix} = \left(-\frac{6EI}{L^2}\right)!\left(-\frac{3}{5L}\right)\times 2 = \frac{36EI}{5L^3}$$</p>
 <p>$$k_{eff} = \frac{24EI}{L^3} - \frac{36EI}{5L^3} = \frac{120EI}{5L^3} - \frac{36EI}{5L^3} = \frac{84EI}{5L^3}\quad \checkmark$$</p>
 <hr />
 <h2>§5 進階探討</h2>
@@ -471,7 +476,7 @@ header .nomat{margin-top:12px;font-size:.8em;opacity:.85}
 <tbody>
 <tr>
 <td>左柱基底 A（$M_{AB}$）</td>
-<td>$\dfrac{2EI}{L}(\theta_B - 3\psi) = \dfrac{2EI}{L}\!\left(\dfrac{PL^2}{28EI}-\dfrac{3\Delta}{L}\right)$</td>
+<td>$\dfrac{2EI}{L}(\theta_B - 3\psi) = \dfrac{2EI}{L}!\left(\dfrac{PL^2}{28EI}-\dfrac{3\Delta}{L}\right)$</td>
 <td>$-\dfrac{2PL}{7}$</td>
 </tr>
 <tr>
@@ -508,13 +513,17 @@ header .nomat{margin-top:12px;font-size:.8em;opacity:.85}
 </ul>
 <p>樓層剪力驗算（V = 柱兩端彎矩之和除以柱長）：</p>
 <p>$$V_{left} + V_{right} = \frac{|M_{AB}|+|M_{BA}|}{L}\times 2 = \frac{\frac{2PL}{7}+\frac{3PL}{14}}{L}\times 2 = \frac{\frac{7PL}{14}}{L}\times 2 = P\;\checkmark$$</p>
+<p><img alt="變形形狀與彎矩圖：柱雙曲率、反曲點在距柱底 4L/7 處，梁反對稱、中點彎矩為零" src="../../raw/solutions/SA-2025-1/figs/SA-2025-1-fig-4-deflected-bmd.svg" /></p>
+<p><em>圖 4　左：側移模式之變形形狀，柱反曲點位於距柱底 $4L/7$（由 $M_{AB}:M_{BA}=2/7:3/14$ 線性內插得到），梁中點為反曲點。右：繪於受拉側之彎矩圖。兩張圖可作為答案的獨立檢核——若算出的反曲點不在 $4L/7$、或梁中點彎矩不為零，前面必有錯。</em></p>
 <h3>5.2 參數影響探討</h3>
 <p>若梁柱 EI 不同（梁：$EI_b$，柱：$EI_c$），柱長 $L_c$，梁長 $L_b$，則：</p>
 <p>$$K_{11} = \frac{4EI_c}{L_c} + \frac{4EI_b}{L_b},\quad K_{33} = \frac{24EI_c}{L_c^3}$$</p>
 <p>側向勁度隨梁剛度增大而增大（梁越剛，對節點旋轉的束縛越大，側向剛度越高）。梁無限剛（$EI_b \to \infty$）時，$\theta_B=\theta_C=0$，$k_{lateral} = 24EI_c/L_c^3$（雙固定柱的純剪切剛度）。</p>
 <p>本題梁柱剛度相同，凝縮效果使得：</p>
 <p>$$k_{lateral} = \frac{84EI}{5L^3} \approx 0.70\times\frac{12EI}{L^3}\times 2 = 0.70\times k_{cantilever}$$</p>
-<p>（相當於兩根懸臂柱側移剛度總和的 70%，其餘 30% 由節點旋轉造成剛度折減。）</p>
+<p>（相當於梁無限剛時之柱剪切勁度的 70%，其餘 30% 由節點旋轉造成剛度折減。）</p>
+<p><img alt="側向勁度光譜：梁無限剛 24EI/L³、本題 16.8EI/L³、梁無勁度 6EI/L³" src="../../raw/solutions/SA-2025-1/figs/SA-2025-1-fig-5-stiffness-spectrum.svg" /></p>
+<p><em>圖 5　側向勁度光譜。靜態凝縮扣掉的 $-36EI/5L^3$ 就是「節點被允許旋轉」的代價。本題答案必定落在 $6EI/L^3$（兩根獨立懸臂柱）與 $24EI/L^3$（梁無限剛）之間——這是最快的量級檢核。</em></p>
 <h3>5.3 與傾角變位法的等效性</h3>
 <p>本題亦可直接以傾角變位法建立：</p>
 <ul>
@@ -534,28 +543,28 @@ header .nomat{margin-top:12px;font-size:.8em;opacity:.85}
 <tbody>
 <tr>
 <td>勁度矩陣（梁元素）</td>
-<td><span style="background:#e3f2fd;color:#1565c0;border-radius:8px;padding:1px 7px;font-size:.88em;font-weight:600">STIFFNESS-MATRIX</span></td>
+<td>[[STIFFNESS-MATRIX]]</td>
 </tr>
 <tr>
 <td>矩陣位移法</td>
-<td><span style="background:#e3f2fd;color:#1565c0;border-radius:8px;padding:1px 7px;font-size:.88em;font-weight:600">MATRIX-DISPLACEMENT-METHOD</span></td>
+<td>[[MATRIX-DISPLACEMENT-METHOD]]</td>
 </tr>
 <tr>
 <td>傾角變位公式</td>
-<td><span style="background:#e3f2fd;color:#1565c0;border-radius:8px;padding:1px 7px;font-size:.88em;font-weight:600">SLOPE-DEFLECTION-EQUATION</span></td>
+<td>[[SLOPE-DEFLECTION-EQUATION]]</td>
 </tr>
 <tr>
 <td>弦轉角（Chord rotation）</td>
-<td><span style="background:#e3f2fd;color:#1565c0;border-radius:8px;padding:1px 7px;font-size:.88em;font-weight:600">CHORD-ROTATION</span></td>
+<td>[[CHORD-ROTATION]]</td>
 </tr>
 <tr>
 <td>靜態凝縮（Schur complement）</td>
-<td><span style="background:#e3f2fd;color:#1565c0;border-radius:8px;padding:1px 7px;font-size:.88em;font-weight:600">STIFFNESS-MATRIX</span></td>
+<td>[[STIFFNESS-MATRIX]]</td>
 </tr>
 </tbody>
 </table>
 <hr />
-<p><em>解析日期：2026-07-02</em></p></main>
+<p><em>解析日期：2026-07-02　｜　圖解補繪：2026-08-10（向量圖，產生腳本 <code>gen_sa2025_1.py</code> + <code>structdraw.py</code>，可重跑）</em></p></main>
 <footer>來源：raw/solutions/SA-2025-1/SA-2025-1.md（知識庫解題內容唯一正本；本頁僅為渲染顯示）</footer>
 
 <script>

@@ -53,6 +53,8 @@ header .nomat{margin-top:12px;font-size:.8em;opacity:.85}
 <p>圖 4 所示 $abcd$ 為一位於 $xy$ 平面上的構架，$a$ 及 $d$ 為固定端，$ab$ 及 $bc$ 桿垂直剛接於 $b$ 點，$bc$ 及 $cd$ 桿垂直剛接於 $c$ 點。$ab$、$bc$ 及 $cd$ 三根桿件皆為長度 $L$ 的實心圓桿，其彈性模數為 $E$，剪力模數為 $G$，慣性矩為 $I$。已知 $bc$ 桿件受到負 $z$ 軸方向的均布載重 $\omega$。若不考慮桿件的軸向變形，請以勁度法求所有自由度之變位（含位移及轉角），及 $a$、$d$ 兩支承之反力。（25 分）</p>
 <p><img alt="SA-2025-4 題目附圖：位於 xy 平面的 U 型格床結構，bc 桿受向下均布載重" src="../../raw/solutions/SA-2025-4/SA-2025-4-fig-1.png" /></p>
 <p><em>圖說：本題為立體平面構架（Grid），載重在負 $z$ 向。節點 $a, d$ 均為固定端。各桿件長度皆為 $L$。</em></p>
+<p><img alt="SA-2025-4 題目重繪：軸測圖，b 在原點、ab 沿 x、bc 沿 y、cd 沿 x，a 與 d 為固定端，ω 沿 −z 作用於 bc" src="../../raw/solutions/SA-2025-4/figs/SA-2025-4-fig-1-grid.svg" /></p>
+<p><em>圖 1　題目重繪（向量版）。把「桿件方向 ↔ 座標軸」的對應釘死：$ab$ 沿 $x$，所以繞 $x$ 的作用對它是</em><em>扭轉</em><em>、繞 $y$ 的是</em><em>彎曲</em><em>；$bc$ 沿 $y$ 則完全相反。這一組對應弄反，$GJ/L$ 與 $4EI/L$ 就會擺錯位置，整個 $3 \times 3$ 都失效。</em></p>
 <h2>2. 考題核心精神與出題者意圖 (Core Concepts &amp; Examiner's Intent)</h2>
 <p>本題測驗考生對於<strong>立體平面構架（Grid Frame / 格床結構）</strong>的矩陣位移法分析能力。<br />
 出題者的核心意圖包含：</p>
@@ -201,6 +203,8 @@ header .nomat{margin-top:12px;font-size:.8em;opacity:.85}
 <li>繞 $x$ 軸轉角：$\theta_{xb} = -\theta_{xc}$</li>
 <li>繞 $y$ 軸轉角：$\theta_{yb} = \theta_{yc}$</li>
 </ul>
+<p><img alt="SA-2025-4 自由度與對稱性：左為 b、c 各三個自由度共 6×6，右為對稱關係把獨立未知數降為三個" src="../../raw/solutions/SA-2025-4/figs/SA-2025-4-fig-2-dof-symmetry.svg" /></p>
+<p><em>圖 2　自由度辨識與對稱性降階。雙箭頭是力矩／轉角向量（右手定則），左圖 6 個自由度、右圖用對稱性降到 3 個。這張圖攔的是「$\theta_{xb} = -\theta_{xc}$ 寫成同號」——一寫錯，$bc$ 桿的貢獻就會從 $2EI/L$ 變成 $6EI/L$。</em></p>
 <p><strong>Step 2: 節點等效載重</strong><br />
 作用於 $bc$ 桿的均布載重 $\omega$ (方向向下)，在節點 $b$ 產生的等效節點載重為：</p>
 <ul>
@@ -238,6 +242,8 @@ $$ \boxed{ w_b = \frac{\omega L^4}{6EI} } \quad (\text{且 } w_c = \frac{\omega 
 $$ \boxed{ \theta_{yb} = \frac{3}{2L} \left( \frac{\omega L^4}{6EI} \right) = \frac{\omega L^3}{4EI} } \quad (\text{且 } \theta_{yc} = \frac{\omega L^3}{4EI}) $$</p>
 </li>
 </ol>
+<p><img alt="SA-2025-4 節點 b 的三條平衡方程：ΣMx 由 ab 扭轉加 bc 彎曲、ΣMy 只剩 ab 彎曲、ΣFz 由 ab 剪力" src="../../raw/solutions/SA-2025-4/figs/SA-2025-4-fig-3-node-b.svg" /></p>
+<p><em>圖 3　節點 $b$ 三條平衡方程的勁度來源，逐條標明「哪一根桿、以哪一種行為」提供。這張圖攔兩個最常見的失分：$J$ 沒換成 $2I$（實心圓桿 $J = I_x + I_y$），以及誤以為 $bc$ 桿有扭轉——$\theta_{yb} = \theta_{yc}$ 使它沿自身軸線的相對扭角為零。</em></p>
 <p><strong>Step 4: 計算支承反力</strong><br />
 求 $a$ 點之支承反力（固定端，對應 $ab$ 桿端點力）：</p>
 <ul>
@@ -259,7 +265,11 @@ $$ \boxed{ \theta_{yb} = \frac{3}{2L} \left( \frac{\omega L^4}{6EI} \right) = \f
 <ul>
 <li>若考場上未察覺 $w$ 與 $\theta_y$ 可解耦，可直接寫出完整的 $3 \times 3$ 勁度矩陣，聯立求解亦會得到完全相同的結果。</li>
 <li>$bc$ 桿無扭轉變形的結論非常優雅，這意味著就彎曲而言，$ab$ 桿形同自由端承受集中載重 $\omega L / 2$ 之懸臂梁，其位移 $PL^3/3EI$ 與旋轉 $PL^2/2EI$ 完全吻合。考場上若能以靜力概念快速驗算，便能保證答案無誤。</li>
-</ul></main>
+</ul>
+<p><img alt="SA-2025-4 等效懸臂梁驗核：左為 ab 桿側視圖與變形曲線，右為矩陣法與懸臂梁公式的四項數字對照" src="../../raw/solutions/SA-2025-4/figs/SA-2025-4-fig-4-cantilever-check.svg" /></p>
+<p><em>圖 4　用一條與矩陣完全無關的路徑重算 $w_b$、$\theta_{yb}$、$M_{ya}$、$R_{za}$ 四項。這張圖攔的是「量級錯而不自知」：矩陣法算完若不驗算，$L$ 的次方或係數錯了在紙面上看不出來；$M_{ya} = \omega L^2/2$ 恰等於懸臂梁根部彎矩 $P \cdot L$，不是巧合而是必然。</em></p>
+<hr />
+<p><em>圖解補繪：2026-08-16（向量圖，腳本 <code>gen_SA-2025-4.py</code>，可重跑；四張圖的符號式取自 §4，並在腳本中以一組具體數值逐條 assert）</em></p></main>
 <footer>來源：raw/solutions/SA-2025-4/SA-2025-4.md（知識庫解題內容唯一正本；本頁僅為渲染顯示）</footer>
 
 <script>

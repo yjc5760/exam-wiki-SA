@@ -44,14 +44,13 @@ header .nomat{margin-top:12px;font-size:.8em;opacity:.85}
 <div class="hbtns"><a class="b-study" href="../study-SA-U1-2.html">🔍 U1-2 命題分析</a><a class="b-lect" href="../lecture-SA-U1-2.html">📚 U1-2 靜定結構之分析 講義</a><a class="b-fg" href="../formula-given-SA-U1-2.html">🎯 U1-2 給／背分界</a></div>
 </header>
 <main><h1>考題編號：SA-2015-1</h1>
-<p><strong>主分類：</strong> <code>SA-U1-2</code> 靜定桁架分析<br />
-<strong>副分類：</strong><br />
+<p><strong>主分類：</strong> <code>SA-U1-2</code> 靜定結構之分析<br />
 <strong>分析法：</strong> 單位力法（虛功原理）<br />
 <strong>標籤：</strong> <code>靜定桁架</code> <code>單位力法</code> <code>製造誤差</code> <code>支承沉陷</code> <code>垂直位移</code></p>
 <hr />
 <h2>1. 原始題目</h2>
 <p>一平面桁架如圖一所示，點 A 為鉸支承，點 C 為滾支承，點 D 承受一往下垂直載重 $50 \text{ kN}$。若桿件 BD 較原設計縮短 $0.5 \text{ cm}$，點 C 支承下陷 $0.4 \text{ cm}$，假設所有桿件彈性模數與斷面積乘積 $EA = 2 \times 10^5 \text{ kN}$，為使點 D 垂直位移為零，試求點 B 所需施加之水平力量 T。（25 分）</p>
-<p><img alt="平面桁架幾何示意圖，A點為左側鉸支承，C點為中間滾支承，B點受向左拉力T，D點受向下50kN載重" src="../../raw/solutions/SA-2015-1/SA-2015-1-fig-1.png" /></p>
+<p><img alt="平面桁架幾何示意圖，A點為左側鉸支承，C點為中間滾支承，B點受向左拉力T，D點受向下50kN載重" src="../../raw/solutions/SA-2015-1/./SA-2015-1-fig-1.png" /></p>
 <p><em>圖說：A為鉸支承，C為滾支承。跨度AC=4m，CD=4m，高度BC=3m。BD桿有-0.5cm製造誤差，C點有-0.4cm支承沉陷。</em></p>
 <hr />
 <h2>2. 核心考點</h2>
@@ -223,6 +222,8 @@ $$ \sum F_y = 0 \quad \Rightarrow \quad A_y = 50 - C_y = -50 + 0.75T \text{ (向
 <li>$u_{BC} = -2$</li>
 <li>$u_{AC} = -\frac{4}{3}$</li>
 </ul>
+<p><img alt="SA-2015-1 虛設系統：D點施加單位力後之桿件內力 u_i" src="../../raw/solutions/SA-2015-1/figs/SA-2015-1-fig-1-virtual-truss.svg" /></p>
+<p><em>圖 1　虛設系統力流圖。紅色為拉力、藍色為壓力，數值即上列各 $u_i$；可交叉檢核節點法分量與力臂方向是否判斷正確。</em></p>
 <h3>步驟 3：虛功方程式計算 D 點垂直位移 ($\Delta_{Dy}$)</h3>
 <p>根據虛功原理：<br />
 $$ W_{ext} = W_{int} $$<br />
@@ -263,7 +264,9 @@ $$ T = \frac{7900}{3} \times \frac{12}{179} = \frac{31600}{179} \approx 176.54 \
 <hr />
 <h2>5. 結論</h2>
 <p>為使 D 點之垂直位移為零，B 點所需施加之向左水平力量為：<br />
-<strong>$T = \frac{31600}{179} \text{ kN} \approx 176.54 \text{ kN}$</strong></p></main>
+<strong>$T = \frac{31600}{179} \text{ kN} \approx 176.54 \text{ kN}$</strong></p>
+<hr />
+<p><em>圖解補繪：2026-08-27（向量圖，腳本 <code>gen_SA-2015-1.py</code>，可重跑）</em></p></main>
 <footer>來源：raw/solutions/SA-2015-1/SA-2015-1.md（知識庫解題內容唯一正本；本頁僅為渲染顯示）</footer>
 
 <script>

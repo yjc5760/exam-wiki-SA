@@ -44,8 +44,7 @@ header .nomat{margin-top:12px;font-size:.8em;opacity:.85}
 <div class="hbtns"><a class="b-study" href="../study-SA-U1-2.html">🔍 U1-2 命題分析</a><a class="b-lect" href="../lecture-SA-U1-2.html">📚 U1-2 靜定結構之分析 講義</a><a class="b-fg" href="../formula-given-SA-U1-2.html">🎯 U1-2 給／背分界</a></div>
 </header>
 <main><h1>考題編號：SA-2003-3</h1>
-<p><strong>主分類：</strong> <code>SA-1</code> 靜定結構分析<br />
-<strong>副分類：</strong> <br />
+<p><strong>主分類：</strong> <code>SA-U1-2</code> 靜定結構之分析<br />
 <strong>分析法：</strong> 靜定分析<br />
 <strong>標籤：</strong> <code>桁架分析</code> <code>K型桁架</code> <code>截面法</code> <code>節點法</code></p>
 <hr />
@@ -59,6 +58,8 @@ header .nomat{margin-top:12px;font-size:.8em;opacity:.85}
 </ul>
 <p><img alt="SA-2003-3 題目附圖：包含幾何尺寸、支承與載重條件之靜定桁架" src="../../raw/solutions/SA-2003-3/SA-2003-3-fig-1.png" /><br />
 <em>圖說：桁架跨度 32m 分為 4 個 8m 節間，高度 8m 分為上下各 4m，載重 2t 作用於左側兩個下弦節點，標示 a、b 桿件位置。</em></p>
+<p><img alt="SA-2003-3 題目重繪：標明桿件 a (M1-M2) 與 b (U1-M2) 之確切位置" src="../../raw/solutions/SA-2003-3/figs/SA-2003-3-fig-1-frame.svg" /></p>
+<p><em>圖 2　題目重繪（向量版）。K 型細分桁架節點眾多，本圖以顏色明確標出桿件 a、b 的確切位置，避免與其他斜桿混淆；全桁架 21 桿＋3 反力＝2×12 節點，為靜定穩定構架。</em></p>
 <h2>2. 考題核心精神與出題者意圖 (Core Concepts &amp; Examiner's Intent)</h2>
 <ul>
 <li><strong>核心觀念</strong>：本題測驗考生對於複雜桁架（Subdivided Truss / K-truss）的分析能力。這類桁架若單純依靠節點法從支承處逐一推進，會遭遇節點未知數過多而卡關的問題。</li>
@@ -66,11 +67,11 @@ header .nomat{margin-top:12px;font-size:.8em;opacity:.85}
 </ul>
 <h2>3. 解題戰略地圖與陷阱分析 (Strategic Roadmap &amp; Trap Analysis)</h2>
 <ul>
-<li><strong>步驟化作戰計畫</strong>：<br />
-  1. <strong>整體平衡求反力</strong>：將整個桁架視為剛體，取力矩平衡求出左、右支承反力。<br />
-  2. <strong>截面法求頂弦桿內力</strong>：切過桁架中央偏左的垂直截面，利用對下弦節點取力矩，快速求出頂弦桿 $U_1-U_2$ 內力。<br />
-  3. <strong>節點法求桿件 b</strong>：取頂部節點 $U_1$ 進行水平與垂直力平衡，求出桿件 b ($U_1-M_2$) 內力。<br />
-  4. <strong>節點法求桿件 a</strong>：從左支承 $L_0$ 出發推得 $L_0-M_1$ 內力後，再對節點 $M_1$ 進行力平衡，求出桿件 a ($M_1-M_2$) 內力。</li>
+<li><strong>步驟化作戰計畫</strong>：</li>
+<li><strong>整體平衡求反力</strong>：將整個桁架視為剛體，取力矩平衡求出左、右支承反力。</li>
+<li><strong>截面法求頂弦桿內力</strong>：切過桁架中央偏左的垂直截面，利用對下弦節點取力矩，快速求出頂弦桿 $U_1-U_2$ 內力。</li>
+<li><strong>節點法求桿件 b</strong>：取頂部節點 $U_1$ 進行水平與垂直力平衡，求出桿件 b ($U_1-M_2$) 內力。</li>
+<li><strong>節點法求桿件 a</strong>：從左支承 $L_0$ 出發推得 $L_0-M_1$ 內力後，再對節點 $M_1$ 進行力平衡，求出桿件 a ($M_1-M_2$) 內力。</li>
 <li><strong>關鍵陷阱與應對策略</strong>：</li>
 <li><strong>陷阱 1：節點未知數過多</strong>：若直接從 $L_0 \to L_1$ 或 $L_0 \to M_1 \to M_2$ 推進，會在 $M_1$ 或 $L_1$ 遇到超過 2 個未知力而無法求解。<ul>
 <li><em>策略</em>：先以截面法求出遠端的頂弦桿內力，再從頂節點逆向解回來，打破未知數的僵局。</li>
@@ -216,7 +217,9 @@ $$ \boxed{\text{桿件 a 內力 } S_a = -2\text{t} \text{ (壓力)}} $$</p>
 <ul>
 <li><strong>多種截面解法的等效性</strong>：本題桿件 a 亦可利用特定斜向力平衡或不同截面求得。例如取一平行於 $M_1-U_1$ 與 $M_2-L_1$ 斜率之正交方向（角度 $135^\circ$）進行力平衡，但幾何計算較為抽象。對於考場而言，<strong>逐次解節點</strong>（$L_0 \to M_1$）雖然步驟多了一項，但思緒最直觀、最不易出錯。</li>
 <li><strong>符號假設原則</strong>：強烈建議解桁架時，<strong>一律假設未知內力為拉力（向外）</strong>。計算結果若為正值即為拉力 (Tension)，若為負值即為壓力 (Compression)。本題計算中嚴格遵守此原則，有效避免了 $M_1$ 節點多達 4 根斜桿時極易發生的正負號混淆錯誤。</li>
-</ul></main>
+</ul>
+<hr />
+<p><em>圖解補繪：2026-08-27（向量圖，腳本 <code>gen_SA-2003-3.py</code>，可重跑）　｜　圖 2 修正：2026-10-23（依原題附圖更正右半桿件配置、補 U2–L2 直桿與 M2–L1 斜桿）</em></p></main>
 <footer>來源：raw/solutions/SA-2003-3/SA-2003-3.md（知識庫解題內容唯一正本；本頁僅為渲染顯示）</footer>
 
 <script>

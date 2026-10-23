@@ -44,15 +44,16 @@ header .nomat{margin-top:12px;font-size:.8em;opacity:.85}
 <div class="hbtns"><a class="b-study" href="../study-SA-U1-2.html">🔍 U1-2 命題分析</a><a class="b-lect" href="../lecture-SA-U1-2.html">📚 U1-2 靜定結構之分析 講義</a><a class="b-fg" href="../formula-given-SA-U1-2.html">🎯 U1-2 給／背分界</a></div>
 </header>
 <main><h1>考題編號：SA-2024-2</h1>
-<p><strong>主分類：</strong> <code>SA-U2</code> 結構變位分析<br />
-<strong>副分類：</strong> <code>SA-U1</code> 靜定結構分析<br />
+<p><strong>主分類：</strong> <code>SA-U1-2</code> 靜定結構之分析<br />
 <strong>分析法：</strong> 單位力法 (虛功法)<br />
 <strong>標籤：</strong> <code>靜定桁架</code>, <code>製造誤差</code>, <code>溫度變化</code>, <code>支承沉陷</code>, <code>多餘資訊陷阱</code></p>
 <hr />
 <h2>1. 原始題目重述 (Problem Restatement)</h2>
 <p>如圖二所示之桁架，已知支承 F 發生垂直向下沉陷 $v_F = 12\text{ mm}$，桿件 CD 有製造誤差 $\delta$，桿件 DE 有溫差 $\Delta T$。因以上三個原因，造成 C 點向下位移 4.8 mm，E 點向下位移 6.4 mm。試求上述製造誤差 $\delta = ?\text{ mm}$（註明過長或過短）及 $\Delta T = ?^\circ\text{C}$（註明升溫或降溫）；假設所有桁架桿件性質相同如下：熱膨脹係數 $\alpha = 1.5 \times 10^{-5} /^\circ\text{C}$，楊氏模數 $100\text{ GPa}$，斷面積 $A=150\text{ mm}^2$。（25 分）</p>
 <p><img alt="SA-2024-2 題目附圖：帶有懸臂段的 Pratt 桁架" src="../../raw/solutions/SA-2024-2/SA-2024-2-fig-1.png" /></p>
-<p><em>圖說：總跨度共 7 個節點 (A~G)，每節點間距 4m。支承位於 B (滾支承) 與 F (鉸支承)。上方節點 H~N 高度為 3m。斜桿呈現 Pratt 桁架配置 (V字型)。</em></p>
+<p><em>圖說：總跨度共 7 個節點 (A~G)，每節點間距 4m。支承位於 B (滾支承) 與 F (鉸支承)。上方節點 H~N 高度為 3m，且每個上弦節點正下方均有一垂直桿與下弦對應節點相連 (H-A、I-B、J-C、K-D、L-E、M-F、N-G，共 7 根)。斜桿另呈現 Pratt 桁架配置 (V字型)：H-B、B-J、J-D、D-L、L-F、F-N，共 6 根。</em></p>
+<p><img alt="SA-2024-2 完整桁架幾何重繪：下弦6＋上弦6＋垂直7＋斜桿6＝25根桿件" src="../../raw/solutions/SA-2024-2/figs/SA-2024-2-fig-1-frame.svg" /></p>
+<p><em>圖 2　題目重繪（向量版）。原圖說僅描述斜桿而漏提垂直桿，本圖將全部 25 根桿件明確畫出，並標示待求誤差桿 CD、DE 與量測點 C、E。</em></p>
 <h2>2. 考題核心精神與出題者意圖 (Core Concepts &amp; Examiner's Intent)</h2>
 <p>本題是一道極具鑑別度的「靜定結構運動學」考題。出題者主要測驗考生兩個核心觀念：</p>
 <ol>
@@ -61,32 +62,32 @@ header .nomat{margin-top:12px;font-size:.8em;opacity:.85}
 </ol>
 <h2>3. 解題戰略地圖與陷阱分析 (Strategic Roadmap &amp; Trap Analysis)</h2>
 <ol>
-<li><strong>支承反力與虛擬內力計算</strong>：<br />
-   - 本桁架為靜定結構，支承位於 B 點 ($x=4$) 與 F 點 ($x=20$)，跨距為 16m。<br />
-   - 分別在 C 點與 E 點施加單位虛擬向下力，利用「切面法」求出對應的 CD 桿與 DE 桿虛擬內力 ($u_{CD}$ 與 $u_{DE}$)。</li>
-<li><strong>建立虛功方程式</strong>：<br />
-   - 總位移 = 支承沉陷引起的剛體位移 + 桿件變形引起的位移。<br />
-   - 虛功方程式：$1 \cdot \Delta = \sum u_i \delta_i + \sum R_{vi} \cdot (\text{支承位移})$<br />
-   - 透過 C 點與 E 點的已知位移，建立包含未知數 $\delta_{CD}$ 與 $\delta_{DE}$ 的二元一次聯立方程式。</li>
-<li><strong>陷阱分析</strong>：<br />
-   - <strong>陷阱一（多餘參數）</strong>：絕對不可將 $E$ 與 $A$ 代入計算，因為內力 $P=0$。<br />
-   - <strong>陷阱二（虛擬功符號）</strong>：支承 F 實際向下沉陷，若虛擬反力向上，則該項虛功為負值，移項至位移側時相當於正向貢獻，需特別注意符號一致性。<br />
-   - <strong>陷阱三（斜桿方向判斷）</strong>：若未仔細觀察圖面採用正確的切面力矩中心，將求錯 $u$ 值。Pratt 桁架在 C-D 區段斜桿為 J-D，故力矩中心為 J；在 D-E 區段斜桿為 L-D，故力矩中心為 L。</li>
+<li><strong>支承反力與虛擬內力計算</strong>：</li>
+<li>本桁架為靜定結構，支承位於 B 點 ($x=4$) 與 F 點 ($x=20$)，跨距為 16m。</li>
+<li>分別在 C 點與 E 點施加單位虛擬向下力，利用「切面法」求出對應的 CD 桿與 DE 桿虛擬內力 ($u_{CD}$ 與 $u_{DE}$)。</li>
+<li><strong>建立虛功方程式</strong>：</li>
+<li>總位移 = 支承沉陷引起的剛體位移 + 桿件變形引起的位移。</li>
+<li>虛功方程式：$1 \cdot \Delta = \sum u_i \delta_i + \sum R_{vi} \cdot (\text{支承位移})$</li>
+<li>透過 C 點與 E 點的已知位移，建立包含未知數 $\delta_{CD}$ 與 $\delta_{DE}$ 的二元一次聯立方程式。</li>
+<li><strong>陷阱分析</strong>：</li>
+<li><strong>陷阱一（多餘參數）</strong>：絕對不可將 $E$ 與 $A$ 代入計算，因為內力 $P=0$。</li>
+<li><strong>陷阱二（虛擬功符號）</strong>：支承 F 實際向下沉陷，若虛擬反力向上，則該項虛功為負值，移項至位移側時相當於正向貢獻，需特別注意符號一致性。</li>
+<li><strong>陷阱三（斜桿方向判斷）</strong>：若未仔細觀察圖面採用正確的切面力矩中心，將求錯 $u$ 值。Pratt 桁架在 C-D 區段斜桿為 J-D，故力矩中心為 J；在 D-E 區段斜桿為 L-D，故力矩中心為 L。</li>
 </ol>
 <h2>3.5 變數層次分析 (Variable Hierarchy Analysis)</h2>
 <h3>最終目標</h3>
 <p>透過聯立虛功方程式，解出 CD 桿的製造誤差 $\delta$ 與 DE 桿的溫度變化 $\Delta T$。</p>
 <h3>本題關鍵公式（依計算順序）</h3>
-<p>$$
-1 \cdot \Delta_{C} = u_{CD}^C \cdot \delta_{CD} + u_{DE}^C \cdot \delta_{DE} + R_{vF}^C \cdot v_F
+<p>$$<br />
+1 \cdot \Delta_{C} = u_{CD}^C \cdot \delta_{CD} + u_{DE}^C \cdot \delta_{DE} + R_{vF}^C \cdot v_F<br />
 $$<br />
 （C點虛功方程式）</p>
-<p>$$
-1 \cdot \Delta_{E} = u_{CD}^E \cdot \delta_{CD} + u_{DE}^E \cdot \delta_{DE} + R_{vF}^E \cdot v_F
+<p>$$<br />
+1 \cdot \Delta_{E} = u_{CD}^E \cdot \delta_{CD} + u_{DE}^E \cdot \delta_{DE} + R_{vF}^E \cdot v_F<br />
 $$<br />
 （E點虛功方程式）</p>
-<p>$$
-\delta_{DE} = \alpha \cdot \Delta T \cdot L_{DE}
+<p>$$<br />
+\delta_{DE} = \alpha \cdot \Delta T \cdot L_{DE}<br />
 $$<br />
 （溫度變形公式）</p>
 <h3>L1：題目直接給定</h3>
@@ -245,29 +246,31 @@ $\frac{8}{3} \delta_{CD} = 8 \implies \delta_{CD} = 3\text{ mm}$<br />
 $3 + \frac{1}{3} \delta_{DE} = 1.8 \implies \frac{1}{3} \delta_{DE} = -1.2 \implies \delta_{DE} = -3.6\text{ mm}$</p>
 <p><strong>判斷製造誤差：</strong><br />
 計算結果 $\delta_{CD} = +3\text{ mm}$。因虛功法中定義拉力（伸長）為正，正號代表桿件實際長度比設計長度多出 3 mm。<br />
-$$
-\boxed{\text{製造誤差 } \delta = 3\text{ mm (過長)}}
+$$<br />
+\boxed{\text{製造誤差 } \delta = 3\text{ mm (過長)}}<br />
 $$</p>
 <p><strong>判斷溫度變化：</strong><br />
 計算結果 $\delta_{DE} = -3.6\text{ mm}$。負號代表桿件縮短。<br />
 利用熱變形公式：<br />
-$$
-\delta_{DE} = \alpha \cdot \Delta T \cdot L_{DE}
 $$<br />
-$$
--3.6 = (1.5 \times 10^{-5}) \times \Delta T \times 4000
+\delta_{DE} = \alpha \cdot \Delta T \cdot L_{DE}<br />
 $$<br />
-$$
--3.6 = 0.06 \times \Delta T \implies \Delta T = -60^\circ\text{C}
 $$<br />
-$$
-\boxed{\text{溫差 } \Delta T = 60^\circ\text{C} \text{ (降溫)}}
+-3.6 = (1.5 \times 10^{-5}) \times \Delta T \times 4000<br />
+$$<br />
+$$<br />
+-3.6 = 0.06 \times \Delta T \implies \Delta T = -60^\circ\text{C}<br />
+$$<br />
+$$<br />
+\boxed{\text{溫差 } \Delta T = 60^\circ\text{C} \text{ (降溫)}}<br />
 $$</p>
 <h2>5. 關鍵爭議點與進階探討 (Critical Issues &amp; Advanced Discussion)</h2>
 <ul>
 <li><strong>靜定結構的免受力特性</strong>：本題最大的陷阱在於提供了 $E$ 與 $A$。若考生未能一眼識破本桁架為靜定結構，可能會試圖將 $\delta = \frac{PL}{EA}$ 納入方程式中，這不僅浪費時間，更顯示對結構行為的誤解。考場上遇到這類給定大量似乎用不到的參數的題目，應先冷靜檢驗靜不定度。</li>
 <li><strong>支承沉陷的剛體位移直觀驗證</strong>：在虛功法外，其實可以直觀檢驗沉陷影響。B點不動，F點下沉12mm。C點距離B為總跨距的 1/4，剛體下沉 $12 \times \frac{1}{4} = 3$ mm。E點距離B為 3/4，剛體下沉 $12 \times \frac{3}{4} = 9$ mm。扣除剛體位移後，純因桿件變形造成的位移為 $\Delta_{C}' = 4.8 - 3 = 1.8$ mm，$\Delta_{E}' = 6.4 - 9 = -2.6$ mm，與我們方程式左側的數值完全一致。這種交叉驗證能在考場上提供極大的信心。</li>
-</ul></main>
+</ul>
+<hr />
+<p><em>圖解補繪：2026-08-27（向量圖，腳本 <code>gen_SA-2024-2.py</code>，可重跑）</em></p></main>
 <footer>來源：raw/solutions/SA-2024-2/SA-2024-2.md（知識庫解題內容唯一正本；本頁僅為渲染顯示）</footer>
 
 <script>

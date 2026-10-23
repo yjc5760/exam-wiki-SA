@@ -53,6 +53,94 @@ header .nomat{margin-top:12px;font-size:.8em;opacity:.85}
 <p>如圖1所示，桿件 AB 為<strong>非均勻斷面</strong>（Non-prismatic member），跨度中央（x = L/2）承受集中載重 P。端點 A 有旋轉角 $\theta_A$，端點 B 有旋轉角 $\theta_B$，兩端點之相對側移量為 $\Delta$（弦轉角 $\psi = \Delta/L$）。請推導使用<strong>傾角變位法</strong>時，桿件 AB 兩端彎矩 $M_{AB}$ 與 $M_{BA}$ 之傾角變位公式。（25 分）</p>
 <p><img alt="SA-2025-3 題目附圖：非均勻斷面桿件AB，中點受集中載重P" src="../../raw/solutions/SA-2025-3/SA-2025-3-fig-1.png" /></p>
 <p><em>圖說：桿件 AB，長度 L，斷面 EI 沿桿長變化（如圖所示之非均勻分布）。端點旋轉角 θA（A端）、θB（B端）逆時針為正；弦轉角 ψ = Δ/L（順時針為正）。跨中 x = L/2 處施加向下集中載重 P。</em></p>
+<p><img alt="SA-2025-3 題目重繪與符號約定：左為 L/3 三段 EI–2EI–EI 的桿件與兩個順時針桿端彎矩，右為 θA、θB、ψ 的正向定義" src="../../raw/solutions/SA-2025-3/figs/SA-2025-3-fig-1-member-sign.svg" /></p>
+<p><em>圖 1　題目重繪與符號約定。附圖把 $EI(x)$ 講死了：三段各 $L/3$，剛度依序 $EI$、$2EI$、$EI$。這張圖攔的是本題最大的失分點——正向沒先釘死就開始寫公式；$\theta$、$\psi$、$M$ 五個量必須同一個正向，否則 $-(k_{AA}+k_{AB})\psi$ 這一項的正負會反。</em></p>
+<hr />
+<h2>§1.5 ⚠ 勘誤與補算（2026-08-16）</h2>
+<blockquote>
+<p>本節為後補，原文一字未刪。以下兩點與 §1／§4.5 的原文不一致，以本節為準。</p>
+</blockquote>
+<h3>（一）符號約定：一律「順時針為正」</h3>
+<p>考卷附圖的 $M_{AB}$、$M_{BA}$ 兩個彎矩箭頭<strong>都是順時針</strong>；§4.6 的通式與 §5.1 的均勻梁驗核<br />
+$M_{AB} = \frac{2EI}{L}(2\theta_A + \theta_B - 3\psi) + M_F$ 也只有在「桿端彎矩、桿端轉角、弦轉角全部順時針為正」下才成立。</p>
+<p>§1 圖說寫的「$\theta_A$、$\theta_B$ 逆時針為正」與上述牴觸。若照字面採逆時針正，$\theta$ 項須整組改號。<strong>作答時先寫清楚自己的約定</strong>，比背哪一種慣例重要。</p>
+<h3>（二）$\Delta_B^{(P)}$ 應與 $\Delta_A^{(P)}$ 反號</h3>
+<p>單位順時針彎矩造成的彎矩圖（下垂為正）為</p>
+<p>$$\bar m_A(x) = +\left(1 - \frac{x}{L}\right), \qquad \bar m_B(x) = -\frac{x}{L}$$</p>
+<p>兩者<strong>一正一負</strong>。§4.5 Step D-3 把 $\bar m_A$ 也寫成負的，導致 $\Delta_A^{(P)}$ 與 $\Delta_B^{(P)}$ 同號。以均勻梁代入：</p>
+<p>$$\Delta_A^{(P)} = +\frac{PL^2}{16EI}, \qquad \Delta_B^{(P)} = -\frac{PL^2}{16EI}$$</p>
+<p>由反對稱性 $M_{F,BA} = -M_{F,AB}$，相容條件給</p>
+<p>$$\left(f_{AA} - f_{AB}\right)M_{F,AB} = -\Delta_A^{(P)} \;\Longrightarrow\; \left(\frac{L}{3EI} + \frac{L}{6EI}\right)M_{F,AB} = -\frac{PL^2}{16EI} \;\Longrightarrow\; M_{F,AB} = -\frac{PL}{8} \;\checkmark$$</p>
+<p>原文的同號版本會得到 $M_F = 3PL/8$（§4.5 Step D-5 的算式字面上就是這個結果，只是結論直接寫成 $PL/8$）。</p>
+<h3>（三）套入本題 $EI$ 分布後的實際數值</h3>
+<p>把 §4.6 的通式套進附圖的 $EI$–$2EI$–$EI$（各 $L/3$）分布，逐段精確積分得：</p>
+<table>
+<thead>
+<tr>
+<th>係數</th>
+<th style="text-align: right;">本題（$EI$–$2EI$–$EI$）</th>
+<th style="text-align: right;">均勻梁</th>
+<th>單位</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>$f_{AA} = f_{BB}$</td>
+<td style="text-align: right;">$\dfrac{47}{162} = 0.29012$</td>
+<td style="text-align: right;">$\dfrac{1}{3} = 0.33333$</td>
+<td>$L/EI$</td>
+</tr>
+<tr>
+<td>$f_{AB}$</td>
+<td style="text-align: right;">$-\dfrac{41}{324} = -0.12654$</td>
+<td style="text-align: right;">$-\dfrac{1}{6} = -0.16667$</td>
+<td>$L/EI$</td>
+</tr>
+<tr>
+<td>$k_{AA} = k_{BB}$</td>
+<td style="text-align: right;">$\dfrac{1128}{265} = 4.2566$</td>
+<td style="text-align: right;">$4$</td>
+<td>$EI/L$</td>
+</tr>
+<tr>
+<td>$k_{AB} = k_{BA}$</td>
+<td style="text-align: right;">$\dfrac{492}{265} = 1.8566$</td>
+<td style="text-align: right;">$2$</td>
+<td>$EI/L$</td>
+</tr>
+<tr>
+<td>$k_{A\psi} = -(k_{AA}+k_{AB})$</td>
+<td style="text-align: right;">$-\dfrac{324}{53} = -6.1132$</td>
+<td style="text-align: right;">$-6$</td>
+<td>$EI/L$</td>
+</tr>
+<tr>
+<td>$C_{AB} = C_{BA}$</td>
+<td style="text-align: right;">$\dfrac{41}{94} = 0.43617$</td>
+<td style="text-align: right;">$0.5$</td>
+<td>—</td>
+</tr>
+<tr>
+<td>$\theta_A^{(P)}$</td>
+<td style="text-align: right;">$\dfrac{13}{288} = 0.045139$</td>
+<td style="text-align: right;">$\dfrac{1}{16} = 0.0625$</td>
+<td>$PL^2/EI$</td>
+</tr>
+<tr>
+<td>$M_{F,AB}$</td>
+<td style="text-align: right;">$-\dfrac{13}{120} = -0.10833$</td>
+<td style="text-align: right;">$-\dfrac{1}{8} = -0.125$</td>
+<td>$PL$</td>
+</tr>
+</tbody>
+</table>
+<p>因此本題的傾角變位公式為</p>
+<p>$$\boxed{M_{AB} = \frac{1128}{265}\frac{EI}{L}\theta_A + \frac{492}{265}\frac{EI}{L}\theta_B - \frac{324}{53}\frac{EI}{L}\psi - \frac{13}{120}PL}$$</p>
+<p>$$\boxed{M_{BA} = \frac{492}{265}\frac{EI}{L}\theta_A + \frac{1128}{265}\frac{EI}{L}\theta_B - \frac{324}{53}\frac{EI}{L}\psi + \frac{13}{120}PL}$$</p>
+<blockquote>
+<p>值得注意的是 $C = 41/94 &lt; 1/2$：中央 $L/3$ 愈剛，兩端愈「各自為政」，傳遞過去的比例反而<strong>變低</strong>。<br />
+這與「斷面愈大傳得愈多」的直覺相反，是本題容易答錯方向的地方。</p>
+</blockquote>
 <hr />
 <h2>§2 核心精神與出題者意圖</h2>
 <p><strong>核心觀念：</strong> 非均勻斷面桿件不能直接套用均勻梁的傾角變位公式（$M_{AB} = \frac{2EI}{L}(2\theta_A+\theta_B-3\psi)+M_{F,AB}$），需重新以<strong>單位載重法（虛功法）</strong>或<strong>共軛樑法</strong>推導廣義勁度係數，再以疊加原理建立傾角變位公式。</p>
@@ -70,20 +158,18 @@ header .nomat{margin-top:12px;font-size:.8em;opacity:.85}
 </ul>
 <hr />
 <h2>§3 解題戰略地圖</h2>
-<pre><code>Step 1：定義廣義傾角變位公式的形式
-        M_AB = S_AB·(EI₀/L)·(θA + C_BA·θB) - 6·k_A·(EI₀/L²)·Δ + M̄_F,AB
-        M_BA = S_BA·(EI₀/L)·(θB + C_AB·θA) - 6·k_B·(EI₀/L²)·Δ + M̄_F,BA
-
-Step 2：以疊加法分解成 4 個子問題：
-        (a) θA = 1, θB = 0, Δ = 0, P = 0 → 求勁度係數 S_AA、傳遞係數 C_AB
-        (b) θA = 0, θB = 1, Δ = 0, P = 0 → 求勁度係數 S_BA、傳遞係數 C_BA  
-        (c) θA = 0, θB = 0, Δ = 1, P = 0 → 求側移剛度貢獻
-        (d) θA = 0, θB = 0, Δ = 0, P = P → 求固端彎矩 M_F,AB、M_F,BA
-
-Step 3：各子問題用共軛樑法（或虛功法）求解
-
-Step 4：組合成最終公式
-</code></pre>
+<p>```<br />
+Step 1：定義廣義傾角變位公式的形式<br />
+        M_AB = S_AB·(EI₀/L)·(θA + C_BA·θB) - 6·k_A·(EI₀/L²)·Δ + M̄_F,AB<br />
+        M_BA = S_BA·(EI₀/L)·(θB + C_AB·θA) - 6·k_B·(EI₀/L²)·Δ + M̄_F,BA</p>
+<p>Step 2：以疊加法分解成 4 個子問題：<br />
+        (a) θA = 1, θB = 0, Δ = 0, P = 0 → 求勁度係數 S_AA、傳遞係數 C_AB<br />
+        (b) θA = 0, θB = 1, Δ = 0, P = 0 → 求勁度係數 S_BA、傳遞係數 C_BA<br />
+        (c) θA = 0, θB = 0, Δ = 1, P = 0 → 求側移剛度貢獻<br />
+        (d) θA = 0, θB = 0, Δ = 0, P = P → 求固端彎矩 M_F,AB、M_F,BA</p>
+<p>Step 3：各子問題用共軛樑法（或虛功法）求解</p>
+<p>Step 4：組合成最終公式<br />
+```</p>
 <hr />
 <h2>§3.5 變數層次分析（Variable Hierarchy Analysis）</h2>
 <h3>最終目標</h3>
@@ -177,7 +263,7 @@ Step 4：組合成最終公式
 <td style="text-align: center;"></td>
 </tr>
 <tr>
-<td>柔度矩陣的反對稱性 $\delta_{AB} < 0$</td>
+<td>柔度矩陣的反對稱性 $\delta_{AB} &lt; 0$</td>
 <td>一端施加彎矩，另端轉向相反，故交叉柔度為負</td>
 <td style="text-align: center;"></td>
 </tr>
@@ -195,6 +281,8 @@ Step 4：組合成最終公式
 <p>$$\boxed{M_{AB} = k_{AA}\,\theta_A + k_{AB}\,\theta_B + k_{A\psi}\,\psi + M_{F,AB}}$$</p>
 <p>$$\boxed{M_{BA} = k_{BA}\,\theta_A + k_{BB}\,\theta_B + k_{B\psi}\,\psi + M_{F,BA}}$$</p>
 <p>其中各係數由以下四個子問題分別確定。</p>
+<p><img alt="SA-2025-3 四個子問題的疊加：θA=1、θB=1、ψ=1、跨中 P，各自的變形曲線與端點彎矩" src="../../raw/solutions/SA-2025-3/figs/SA-2025-3-fig-2-superposition.svg" /></p>
+<p><em>圖 2　四個子問題的疊加，各係數已套入本題的 $EI$–$2EI$–$EI$ 分布（見 §1.5）。藍線是由 $EI \cdot v'' = M(x)$ 逐段積分算出的</em><em>實際</em><em>變形曲線，不是示意——中央 $2EI$ 段的曲率明顯較兩端平緩。這張圖攔的是「公式只寫出一半」：漏掉側移項或固端彎矩項。</em></p>
 <hr />
 <h3>4.2 子問題（a）：$\theta_A = 1,\;\theta_B = 0,\;\psi = 0,\;P = 0$</h3>
 <p><strong>物理描述：</strong> A 端施加使 $\theta_A = 1$ 所需的彎矩，B 端固定（$\theta_B = 0$），無載重、無側移。</p>
@@ -202,19 +290,19 @@ Step 4：組合成最終公式
 <p><strong>Step A-1：建立原樑力系</strong></p>
 <p>設 A 端施加彎矩 $M_1$（待求），B 端反力彎矩 $M_2$（待求）。</p>
 <p>桿件無外加橫向載重，彎矩線性分布：</p>
-<p>$$M(x) = M_1\!\left(1 - \frac{x}{L}\right) + M_2\!\left(\frac{x}{L}\right)$$</p>
+<p>$$M(x) = M_1!\left(1 - \frac{x}{L}\right) + M_2!\left(\frac{x}{L}\right)$$</p>
 <p><strong>Step A-2：建立共軛樑</strong></p>
 <p>共軛樑以 $M(x)/EI(x)$ 為等效荷載（曲率圖），兩端的共軛樑支承條件 = 原樑端部旋轉角。</p>
 <p>對原樑端部條件 $(\theta_A = 1,\;\theta_B = 0)$，共軛樑的「反力」應滿足：</p>
-<p>$$\bar{R}_A^* = \theta_A = 1, \qquad \bar{R}_B^* = \theta_B = 0$$</p>
+<p>$$\bar{R}_A^<em> = \theta_A = 1, \qquad \bar{R}_B^</em> = \theta_B = 0$$</p>
 <p>（共軛樑中，支承反力 = 原樑端部旋轉角。）</p>
 <p><strong>Step A-3：共軛樑平衡</strong></p>
 <p>設共軛樑的等效荷載為 $q^*(x) = M(x)/EI(x)$，則共軛樑的平衡方程：</p>
-<p>$$\bar{R}_A^* + \bar{R}_B^* = \int_0^L \frac{M(x)}{EI(x)}\,dx \implies 1 + 0 = \int_0^L \frac{M(x)}{EI(x)}\,dx$$</p>
+<p>$$\bar{R}_A^<em> + \bar{R}_B^</em> = \int_0^L \frac{M(x)}{EI(x)}\,dx \implies 1 + 0 = \int_0^L \frac{M(x)}{EI(x)}\,dx$$</p>
 <p>$$\bar{R}_B^* \cdot L = \int_0^L \frac{M(x)}{EI(x)} \cdot x\,dx \implies 0 = \int_0^L \frac{M(x)}{EI(x)}\,x\,dx$$</p>
 <p><strong>定義柔度積分（以 $u = x/L$ 為積分變數）：</strong></p>
-<p>$$f_{AA} \equiv L\!\int_0^1 \frac{(1-u)^2}{EI(u)}\,du, \qquad f_{BB} \equiv L\!\int_0^1 \frac{u^2}{EI(u)}\,du$$</p>
-<p>$$f_{AB} \equiv -L\!\int_0^1 \frac{u(1-u)}{EI(u)}\,du \quad (\text{注意：}f_{AB} < 0)$$</p>
+<p>$$f_{AA} \equiv L!\int_0^1 \frac{(1-u)^2}{EI(u)}\,du, \qquad f_{BB} \equiv L!\int_0^1 \frac{u^2}{EI(u)}\,du$$</p>
+<p>$$f_{AB} \equiv -L!\int_0^1 \frac{u(1-u)}{EI(u)}\,du \quad (\text{注意：}f_{AB} &lt; 0)$$</p>
 <p>代入共軛樑方程後，可解出：</p>
 <p>$$M_1 = k_{AA}, \qquad M_2 = k_{BA} = C_{AB}\cdot k_{AA}$$</p>
 <p>其中勁度係數：</p>
@@ -224,6 +312,9 @@ Step 4：組合成最終公式
 <p>對均勻梁驗核（$EI = const$）：<br />
 $$f_{AA} = f_{BB} = \frac{L}{3EI},\quad f_{AB} = -\frac{L}{6EI}$$<br />
 $$k_{AA} = \frac{L/(3EI)}{(L/3EI)^2 - (L/6EI)^2} = \frac{4EI}{L},\quad k_{BA} = \frac{2EI}{L},\quad C_{AB} = \frac{1}{2}\;\checkmark$$</p>
+<hr />
+<p><img alt="SA-2025-3 柔度係數的三張圖：單位彎矩圖 mA 與 mB、權重 1/EI(u)、被積函數與其積分值" src="../../raw/solutions/SA-2025-3/figs/SA-2025-3-fig-3-flexibility.svg" /></p>
+<p><em>圖 3　柔度係數 $f_{ij} = \int \bar m_i \bar m_j / EI \, \mathrm{d}x$ 的三個組成。$\bar m_A$ 全段為正、$\bar m_B$ 全段為負，所以乘積全段 $\le 0$，$f_{AB}$ </em><em>必定是負的</em><em>。這張圖攔的就是 $f_{AB}$ 符號寫錯——一旦寫成正值，傳遞係數 $C = -f_{AB}/f_{AA}$ 會算成負數。</em></p>
 <hr />
 <h3>4.3 子問題（b）：$\theta_A = 0,\;\theta_B = 1,\;\psi = 0,\;P = 0$</h3>
 <p>由對稱性，僅需交換 A↔B：</p>
@@ -257,18 +348,18 @@ $$k_{A\psi} = -(4EI/L + 2EI/L) = -6EI/L$$</p>
 <p>$$\Delta_A^{(P)} = \int_0^{L} \frac{M_0(x)}{EI(x)}\bar{m}_A(x)\,dx, \qquad \Delta_B^{(P)} = \int_0^{L} \frac{M_0(x)}{EI(x)}\bar{m}_B(x)\,dx$$</p>
 <p>注意：$\bar{m}_A(x) = -(1-x/L)$，$\bar{m}_B(x) = -(x/L)$（單位彎矩效應）</p>
 <p><strong>Step D-4：分段積分（P 在 x = L/2）</strong></p>
-<p>$$\Delta_A^{(P)} = -\!\int_0^{L/2} \frac{(Px/2)(1-x/L)}{EI(x)}\,dx - \!\int_{L/2}^{L} \frac{P(L-x)/2\cdot(1-x/L)}{EI(x)}\,dx$$</p>
-<p>$$\Delta_B^{(P)} = -\!\int_0^{L/2} \frac{(Px/2)(x/L)}{EI(x)}\,dx - \!\int_{L/2}^{L} \frac{P(L-x)/2\cdot(x/L)}{EI(x)}\,dx$$</p>
+<p>$$\Delta_A^{(P)} = -!\int_0^{L/2} \frac{(Px/2)(1-x/L)}{EI(x)}\,dx - !\int_{L/2}^{L} \frac{P(L-x)/2\cdot(1-x/L)}{EI(x)}\,dx$$</p>
+<p>$$\Delta_B^{(P)} = -!\int_0^{L/2} \frac{(Px/2)(x/L)}{EI(x)}\,dx - !\int_{L/2}^{L} \frac{P(L-x)/2\cdot(x/L)}{EI(x)}\,dx$$</p>
 <p>對均勻梁（$EI = const$）驗核：</p>
-<p>$$\Delta_A^{(P)} = -\frac{P}{2EI}\!\int_0^{L/2}\! x(1-x/L)\,dx - \frac{P}{2EI}\!\int_{L/2}^{L}\!(L-x)(1-x/L)/L\,dx$$</p>
+<p>$$\Delta_A^{(P)} = -\frac{P}{2EI}!\int_0^{L/2}! x(1-x/L)\,dx - \frac{P}{2EI}!\int_{L/2}^{L}!(L-x)(1-x/L)/L\,dx$$</p>
 <p>計算：<br />
-$$= -\frac{P}{2EI}\left[\frac{x^2}{2}-\frac{x^3}{3L}\right]_0^{L/2} - \frac{P}{2EIL}\!\int_{L/2}^{L}\!(L-x)^2\,dx$$</p>
+$$= -\frac{P}{2EI}\left[\frac{x^2}{2}-\frac{x^3}{3L}\right]<em>0^{L/2} - \frac{P}{2EIL}!\int</em>{L/2}^{L}!(L-x)^2\,dx$$</p>
 <p>$$= -\frac{P}{2EI}\left(\frac{L^2}{8}-\frac{L^2}{24}\right) - \frac{P}{2EIL}\cdot\frac{L^3}{24} = -\frac{PL^2}{2EI}\cdot\frac{2}{24} - \frac{PL^2}{48EI} = -\frac{PL^2}{24EI} - \frac{PL^2}{48EI} = -\frac{PL^2}{16EI}$$</p>
 <p>（因為梁與荷載均對稱，$\Delta_A^{(P)} = \Delta_B^{(P)} = -PL^2/(16EI)$）</p>
 <p><strong>Step D-5：解固端彎矩（均勻梁驗核）</strong></p>
-<p>$$\begin{pmatrix}f_{AA} & f_{AB}\\ f_{AB} & f_{BB}\end{pmatrix}\begin{pmatrix}M_{F,AB}\\M_{F,BA}\end{pmatrix} = \begin{pmatrix}PL^2/(16EI)\\PL^2/(16EI)\end{pmatrix}$$</p>
+<p>$$\begin{pmatrix}f_{AA} &amp; f_{AB}\ f_{AB} &amp; f_{BB}\end{pmatrix}\begin{pmatrix}M_{F,AB}\M_{F,BA}\end{pmatrix} = \begin{pmatrix}PL^2/(16EI)\PL^2/(16EI)\end{pmatrix}$$</p>
 <p>對均勻梁：</p>
-<p>$$\begin{pmatrix}L/3EI & -L/6EI\\ -L/6EI & L/3EI\end{pmatrix}\begin{pmatrix}M_{F,AB}\\M_{F,BA}\end{pmatrix} = \begin{pmatrix}PL^2/16EI\\PL^2/16EI\end{pmatrix}$$</p>
+<p>$$\begin{pmatrix}L/3EI &amp; -L/6EI\ -L/6EI &amp; L/3EI\end{pmatrix}\begin{pmatrix}M_{F,AB}\M_{F,BA}\end{pmatrix} = \begin{pmatrix}PL^2/16EI\PL^2/16EI\end{pmatrix}$$</p>
 <p>因為右側相等，由對稱性 $M_{F,AB} = M_{F,BA} = M_F$：</p>
 <p>$$\left(\frac{L}{3EI} - \frac{L}{6EI}\right)M_F = \frac{PL^2}{16EI} \implies \frac{L}{6EI}\cdot M_F = \frac{PL^2}{16EI} \implies M_F = \frac{PL}{8}\;\checkmark$$</p>
 <hr />
@@ -280,10 +371,10 @@ $$= -\frac{P}{2EI}\left[\frac{x^2}{2}-\frac{x^3}{3L}\right]_0^{L/2} - \frac{P}{2
 <p>$$k_{AA} = \frac{f_{BB}}{D},\quad k_{BB} = \frac{f_{AA}}{D},\quad k_{AB} = k_{BA} = \frac{-f_{AB}}{D}$$</p>
 <p>$$D \equiv f_{AA}f_{BB} - f_{AB}^2 \quad (\text{柔度矩陣行列式})$$</p>
 <p>柔度係數（需依圖示 EI 分布積分）：</p>
-<p>$$f_{AA} = L\!\int_0^1 \frac{(1-u)^2}{EI(u)}\,du,\quad f_{BB} = L\!\int_0^1 \frac{u^2}{EI(u)}\,du,\quad f_{AB} = -L\!\int_0^1 \frac{u(1-u)}{EI(u)}\,du$$</p>
+<p>$$f_{AA} = L!\int_0^1 \frac{(1-u)^2}{EI(u)}\,du,\quad f_{BB} = L!\int_0^1 \frac{u^2}{EI(u)}\,du,\quad f_{AB} = -L!\int_0^1 \frac{u(1-u)}{EI(u)}\,du$$</p>
 <p>固端彎矩（兩端固定，P 在跨中）：</p>
-<p>$$\begin{pmatrix}M_{F,AB}\\M_{F,BA}\end{pmatrix} = \frac{1}{D}\begin{pmatrix}f_{BB} & -f_{AB}\\-f_{AB} & f_{AA}\end{pmatrix}\begin{pmatrix}-\Delta_A^{(P)}\\-\Delta_B^{(P)}\end{pmatrix}$$</p>
-<p>$$\Delta_A^{(P)} = -L\!\int_0^1 \frac{M_0(u)(1-u)}{EI(u)}\,du,\quad \Delta_B^{(P)} = -L\!\int_0^1 \frac{M_0(u)\cdot u}{EI(u)}\,du$$</p>
+<p>$$\begin{pmatrix}M_{F,AB}\M_{F,BA}\end{pmatrix} = \frac{1}{D}\begin{pmatrix}f_{BB} &amp; -f_{AB}\-f_{AB} &amp; f_{AA}\end{pmatrix}\begin{pmatrix}-\Delta_A^{(P)}\-\Delta_B^{(P)}\end{pmatrix}$$</p>
+<p>$$\Delta_A^{(P)} = -L!\int_0^1 \frac{M_0(u)(1-u)}{EI(u)}\,du,\quad \Delta_B^{(P)} = -L!\int_0^1 \frac{M_0(u)\cdot u}{EI(u)}\,du$$</p>
 <p>$$M_0(u) = \frac{PL}{2}\min(u,\,1-u) \quad \text{（簡支樑 P 在中點的彎矩圖）}$$</p>
 <hr />
 <h2>§5 進階探討</h2>
@@ -338,15 +429,18 @@ $$= -\frac{P}{2EI}\left[\frac{x^2}{2}-\frac{x^3}{3L}\right]_0^{L/2} - \frac{P}{2
 <p>代入廣義公式：</p>
 <p>$$M_{AB} = \frac{4EI}{L}\theta_A + \frac{2EI}{L}\theta_B - \frac{6EI}{L}\psi + \frac{PL}{8}$$</p>
 <p>$$= \frac{2EI}{L}(2\theta_A + \theta_B - 3\psi) + \frac{PL}{8}\;\checkmark$$</p>
+<p><img alt="SA-2025-3 通式退化檢核：本題與均勻梁的 |kAψ|、kAA、kAB 六根長條對照" src="../../raw/solutions/SA-2025-3/figs/SA-2025-3-fig-4-prismatic-check.svg" /></p>
+<p><em>圖 4　把通式的 $EI(x)$ 換成常數重算一遍，三個係數必須回到課本的 $4$、$2$、$6\,(EI/L)$，傳遞係數回到 $1/2$，固端彎矩回到 $-PL/8$。這張圖攔的是推導中途的積分或符號錯誤——特別是 §1.5（二）那個 $\Delta_B^{(P)}$ 的號：寫反的話這裡會得到 $-3PL/8$。</em></p>
+<hr />
 <h3>5.2 傳遞係數的意義</h3>
 <ul>
 <li>均勻梁：$C = 1/2$（近端施加彎矩，遠端承受一半的傳遞彎矩）</li>
 <li>非均勻梁：$C_{AB} = -f_{AB}/f_{BB}$，$C_{BA} = -f_{AB}/f_{AA}$</li>
-<li>若 A 端較 B 端剛（截面較大），則 $f_{AA} < f_{BB}$，故 $C_{BA} > C_{AB}$（B 傳遞到 A 的比例較大）</li>
+<li>若 A 端較 B 端剛（截面較大），則 $f_{AA} &lt; f_{BB}$，故 $C_{BA} &gt; C_{AB}$（B 傳遞到 A 的比例較大）</li>
 </ul>
 <h3>5.3 與矩陣位移法的等效性</h3>
 <p>廣義傾角變位方程即為矩陣位移法中<strong>局部勁度矩陣</strong>的 2×2 子矩陣：</p>
-<p>$$\begin{pmatrix}M_{AB}\\M_{BA}\end{pmatrix} = \begin{pmatrix}k_{AA} & k_{AB}\\k_{BA} & k_{BB}\end{pmatrix}\begin{pmatrix}\theta_A\\\theta_B\end{pmatrix} + \text{側移修正項} + \text{固端彎矩}$$</p>
+<p>$$\begin{pmatrix}M_{AB}\M_{BA}\end{pmatrix} = \begin{pmatrix}k_{AA} &amp; k_{AB}\k_{BA} &amp; k_{BB}\end{pmatrix}\begin{pmatrix}\theta_A\\theta_B\end{pmatrix} + \text{側移修正項} + \text{固端彎矩}$$</p>
 <hr />
 <h2>§6 本題知識點索引</h2>
 <table>
@@ -359,28 +453,28 @@ $$= -\frac{P}{2EI}\left[\frac{x^2}{2}-\frac{x^3}{3L}\right]_0^{L/2} - \frac{P}{2
 <tbody>
 <tr>
 <td>傾角變位方程</td>
-<td><span style="background:#e3f2fd;color:#1565c0;border-radius:8px;padding:1px 7px;font-size:.88em;font-weight:600">SLOPE-DEFLECTION-EQUATION</span></td>
+<td>[[SLOPE-DEFLECTION-EQUATION]]</td>
 </tr>
 <tr>
 <td>固端彎矩</td>
-<td><span style="background:#e3f2fd;color:#1565c0;border-radius:8px;padding:1px 7px;font-size:.88em;font-weight:600">FIXED-END-MOMENT</span></td>
+<td>[[FIXED-END-MOMENT]]</td>
 </tr>
 <tr>
 <td>勁度矩陣</td>
-<td><span style="background:#e3f2fd;color:#1565c0;border-radius:8px;padding:1px 7px;font-size:.88em;font-weight:600">STIFFNESS-MATRIX</span></td>
+<td>[[STIFFNESS-MATRIX]]</td>
 </tr>
 <tr>
 <td>傳遞係數</td>
-<td><span style="background:#e3f2fd;color:#1565c0;border-radius:8px;padding:1px 7px;font-size:.88em;font-weight:600">CARRY-OVER-FACTOR</span></td>
+<td>[[CARRY-OVER-FACTOR]]</td>
 </tr>
 <tr>
 <td>彎矩分配法</td>
-<td><span style="background:#e3f2fd;color:#1565c0;border-radius:8px;padding:1px 7px;font-size:.88em;font-weight:600">MOMENT-DISTRIBUTION-METHOD</span></td>
+<td>[[MOMENT-DISTRIBUTION-METHOD]]</td>
 </tr>
 </tbody>
 </table>
 <hr />
-<p><em>解析日期：2026-07-02</em></p></main>
+<p><em>解析日期：2026-07-02　｜　圖解補繪＋勘誤：2026-08-16（向量圖，腳本 <code>gen_SA-2025-3.py</code>，可重跑；改 <code>EI_PROFILE</code> 重跑，四張圖的數值與變形曲線會一起變）</em></p></main>
 <footer>來源：raw/solutions/SA-2025-3/SA-2025-3.md（知識庫解題內容唯一正本；本頁僅為渲染顯示）</footer>
 
 <script>
