@@ -75,13 +75,13 @@ exam-wiki-SA/
 │
 ├── study/                           ← 讀書筆記、講義、study 指令 HTML 輸出（study-SA-UN.html / study-SA-UN-n.html）
 │
-├── raw/                             ← 所有原始資料（預設唯讀，僅 ✏️ 兩處可改）
+├── raw/                             ← 所有原始資料（預設唯讀，僅 ✏️ 三處可改）
 │   ├── exams/                       ← 原始考卷 PDF（命名：SA-YYYY_結構學.pdf）
 │   ├── json/
 │   │   ├── concepts.json            ← 概念定義（供 compile-all）
 │   │   └── question_index.json      ← ⭐✏️ 題目總索引（唯一需要人工維護的 JSON）
 │   └── solutions/                   ← AI 解析 + 補充截圖（每題一個資料夾）
-│       ├── SA-YYYY-N/               ← 🔒 證據，不可修改（規則 1、2）
+│       ├── SA-YYYY-N/               ← ✏️ 個別題目解析（可修正，見規則 1）
 │       │   ├── SA-YYYY-N.md
 │       │   ├── SA-YYYY-N-fig-1.png
 │       │   ├── SA-YYYY-N-[內容碼]-viz.html
@@ -158,11 +158,12 @@ Wiki 導航依七層知識架構組織（前三層由 Cowork 透過 compile-all/
 
 ## 重要規則
 
-1. **`raw/` 目錄下所有檔案一律不可修改**，僅以下兩處例外：
+1. **`raw/` 目錄下所有檔案一律不可修改**，僅以下三處例外：
    - `raw/json/question_index.json`（索引唯一人工維護處）
    - `raw/solutions/methods/`（方法論文件，可修正公式錯誤與單位標註）
+   - `raw/solutions/SA-YYYY-N/`（個別題目解析，含 .md、附圖、產圖腳本）
 
-   > **為什麼 methods/ 是例外**：本規則要保護的是**證據**（考卷、AI 解析、驗證過的答案），
+   > **為什麼 methods/ 是例外**：本規則要保護的是**證據**（考卷、驗證過的答案），
    > 這些一旦被改就失去可追溯性。但 `raw/solutions/methods/` 存的是**可維護的知識整理**，
    > 且它是 `wiki/methods/` 的 compile 來源 —— 只改 wiki 副本的話，下次 `compile-all` 會被蓋回舊版。
    > 發現公式或係數錯誤時，必須改 raw 來源才算根治。
@@ -171,8 +172,6 @@ Wiki 導航依七層知識架構組織（前三層由 Cowork 透過 compile-all/
    > ① 修正前先做**數值驗算**（邊界代入、量綱檢查、與驗證解答交叉比對），不可憑印象改；
    > ② 改完**同步覆蓋** `wiki/methods/` 對應檔；
    > ③ 在 `wiki/log.md` 記錄**改了什麼、為什麼、怎麼驗證的**。
-   >
-   > ⚠️ `raw/solutions/SA-YYYY-N/`（個別題目解析）**不在例外內**，仍受規則 1 與規則 2 保護。
 
 2. **`verifiedSolution` 是最終答案，不可質疑或重新計算**
 3. **`wiki/log.md` 只可 append，不可刪除已有紀錄**
@@ -188,6 +187,7 @@ Wiki 導航依七層知識架構組織（前三層由 Cowork 透過 compile-all/
 
 | 日期 | 變更 | 原因 |
 |------|------|------|
+| 2026-10-23 | **規則 1 例外擴充**：`raw/solutions/SA-YYYY-N/`（個別題目解析）移出唯讀保護，可直接修正 | 題解附圖、圖說等錯誤需能在原處根治（例：SA-2003-3 向量重繪圖幾何畫錯） |
 | 2026-10-08 | **優化** `study/frequency-SA.html`（前／後半期比較、升溫／冷凍標記、可點熱圖連題目頁與影片、可排序排名表）；**新增** `scripts/build_frequency.py`（產生器 v1.1，進庫） | 舊版只看 24 年總數，低估近年升溫的 U3-2、未標出已冷凍的 U2-5／U1-1；格子只能 hover、手機無法用，也連不到 problems-view 與解題影片 |
 | 2026-08-20 | **新增** `study/frequency-SA.html`（全科出題頻率熱圖：10 子項 × 24 考年，可切換主考點／主＋副，含排名總表與單元權重） | `study-SA-Un-m.html` 一次只看一個子項，缺少「整科該從哪裡開始讀」的全貌；數字全由 `build_frequency.py` 從 `question_index.json` 算出，題庫更新後可無腦重跑 |
 | 2026-07-02 | 從 exam-wiki-RC 克隆，全面改寫為 SA 科目 | 建立結構學獨立知識庫 |
