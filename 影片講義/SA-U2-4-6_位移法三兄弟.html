@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SA-U2-4-6 位移法三兄弟 — 影片講義</title>
+<link rel="stylesheet" href="../study/assets/katex/katex.min.css">
+<script defer src="../study/assets/katex/katex.min.js"></script>
+<script defer src="../study/assets/katex/auto-render.min.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+  renderMathInElement(document.body, {
+    delimiters: [{left: '$$', right: '$$', display: true}, {left: '\\(', right: '\\)', display: false}],
+    throwOnError: false
+  });
+  var v = document.getElementById('vid');
+  document.querySelectorAll('.seek').forEach(function (b) {
+    b.addEventListener('click', function () {
+      v.currentTime = parseFloat(b.dataset.t);
+      v.scrollIntoView({behavior: 'smooth', block: 'center'});
+      v.play();
+    });
+  });
+});
+</script>
+<style>
+:root{--board:#2b3f35;--board2:#34493f;--paper:#faf7ef;--ink:#222;--muted:#666;--chalk:#f0e6c8;--yellow:#e8c95a;--line:#d8d2c2;
+  --sd:#c8506e;--gr:#3a7fc0;--ds:#a87a3c;}
+*{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:"Noto Sans TC","Microsoft JhengHei","PingFang TC",sans-serif;line-height:1.75;font-size:16px}
+.wrap{max-width:860px;margin:0 auto;padding:24px 16px 48px}
+.cover{background:var(--board);color:var(--chalk);border-radius:10px;padding:28px 28px 22px;margin-bottom:22px}
+.cover .tag{font-size:14px;letter-spacing:.06em;color:#b9cbbf}
+.cover h1{margin:6px 0 8px;font-size:28px;color:var(--yellow);line-height:1.35}
+.cover .meta{font-size:14px;color:#cfd8cf}
+.cover .core{margin-top:14px;padding:12px 14px;border:1px solid #6d8a78;border-radius:6px;background:var(--board2)}
+nav.toc{border:1px solid var(--line);border-radius:8px;padding:12px 18px;margin-bottom:20px;background:#fff}
+nav.toc h3{margin:0 0 6px;font-size:16px}
+nav.toc ol{margin:0;padding-left:22px;columns:2;column-gap:28px}
+nav.toc li{break-inside:avoid}
+nav.toc a{color:var(--board);text-decoration:none}
+nav.toc .t{color:var(--muted);font-size:13px;margin-left:6px}
+video{width:100%;border-radius:8px;background:#000;margin-bottom:8px}
+.vnote{font-size:13px;color:var(--muted);margin:0 0 22px}
+section{margin:30px 0}
+h2{font-size:22px;border-left:6px solid var(--board);padding-left:10px;margin:0 0 12px;display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+h2 .no{color:var(--board)}
+.seek{font-size:13px;border:1px solid var(--board);background:#fff;color:var(--board);border-radius:14px;padding:2px 10px;cursor:pointer;font-family:inherit}
+.seek:hover{background:var(--board);color:#fff}
+figure{margin:16px 0}
+figure img{width:100%;border-radius:6px;display:block;border:1px solid #1e2d26}
+figcaption{display:flex;justify-content:space-between;gap:12px;font-size:13px;color:var(--muted);margin-top:4px}
+figcaption .ts{white-space:nowrap}
+p{margin:8px 0}
+.key,.warn,.ok{border-radius:6px;padding:10px 14px;margin:12px 0}
+.key{background:#fff7d6;border-left:5px solid #d6a800}
+.warn{background:#fdecec;border-left:5px solid #d04545}
+.ok{background:#e9f6ec;border-left:5px solid #3c9a5a}
+.key>b:first-child,.warn>b:first-child,.ok>b:first-child{display:block;margin-bottom:2px}
+.sd{color:var(--sd);font-weight:bold}.gr{color:var(--gr);font-weight:bold}.ds{color:var(--ds);font-weight:bold}
+table{border-collapse:collapse;width:100%;margin:12px 0;font-size:15px;background:#fff}
+th,td{border:1px solid var(--line);padding:6px 10px;text-align:left;vertical-align:top}
+th{background:#eef2ee}
+td:first-child,th:first-child{white-space:nowrap}
+.src{font-size:12px;color:var(--muted);border-top:1px solid var(--line);margin-top:36px;padding-top:10px}
+.katex-display{margin:.6em 0;overflow-x:auto;overflow-y:hidden}
+@media (max-width:600px){nav.toc ol{columns:1}.cover h1{font-size:23px}}
+@media print{
+  @page{size:A4;margin:14mm 14mm 16mm}
+  body{background:#fff;font-size:12.5pt}
+  .wrap{max-width:none;padding:0}
+  video,.vnote,.seek{display:none}
+  figure,.key,.warn,.ok,table,.katex-display{break-inside:avoid}
+  h2{break-after:avoid}
+  figure img{width:80%;margin:0 auto}
+  figcaption{width:80%;margin:4px auto 0}
+  .cover,figure img{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header class="cover">
+  <div class="tag">結構學 SA ｜ SA-U2-4 靜不定結構之矩陣分析法 ｜ 影片講義</div>
+  <h1>位移法三兄弟：同一個 [K]，三種算法</h1>
+  <div class="meta">影片長度 6:28 ・ 8 章 ・ 19 段 ・ 例題 SA-2025-1 門型剛架</div>
+  <div class="core">傾角變位法一次一列、圖解單位位移法一次一直行、直接勁度法一次一根桿件——用的是同一組桿件數字 4、2、6、12，填的是同一張勁度矩陣。手算選哪一種，看結構幾何，不看矩陣大小。</div>
+</header>
+
+<nav class="toc">
+  <h3>目錄</h3>
+  <ol>
+    <li><a href="#c0">同一個 K，三種算法</a><span class="t">0:00</span></li>
+    <li><a href="#c1">共同的根：四個數字</a><span class="t">0:50</span></li>
+    <li><a href="#c2">傾角變位法：一次一列</a><span class="t">1:30</span></li>
+    <li><a href="#c3">圖解法：一次一直行</a><span class="t">2:28</span></li>
+    <li><a href="#c4">直接勁度法：一次一根桿件</a><span class="t">3:27</span></li>
+    <li><a href="#c5">手算只能用圖解法？</a><span class="t">4:18</span></li>
+    <li><a href="#c6">考場寫法</a><span class="t">5:19</span></li>
+    <li><a href="#c7">總結</a><span class="t">5:59</span></li>
+  </ol>
+</nav>
+
+<video id="vid" controls preload="metadata" src="video/SA-U2-4-6.mp4"></video>
+<p class="vnote">點各章標題旁的 ▶ 按鈕可直接跳到影片對應位置。本講義以黑板顏色標示三種算法：<span class="sd">粉紅＝傾角變位法</span>、<span class="gr">藍＝圖解單位位移法</span>、<span class="ds">棕＝直接勁度法</span>。</p>
+
+<!-- ── c0 ── -->
+<section id="c0">
+  <h2><span class="no">0</span> 同一個 K，三種算法 <button class="seek" data-t="0">▶ 0:00</button></h2>
+  <figure>
+    <img src="img/SA-U2-4-6/s01.jpg" alt="同一個 [K]，三種算法：三張標籤卡匯向 [K]">
+    <figcaption><span>三張標籤卡：傾角變位法／圖解單位位移法／直接勁度法，匯向同一個 [K]</span><span class="ts">影片 0:23</span></figcaption>
+  </figure>
+  <p>同一個門型剛架、同一個 3×3 勁度矩陣，教科書上卻有三種算法：<span class="sd">傾角變位法</span>、<span class="gr">圖解單位位移法</span>、<span class="ds">直接勁度法</span>。很多人以為它們是三套不同的理論，<b>其實它們是一家人</b>。這支影片就用 SA-2025-1，把三種算法並排算一次。</p>
+
+  <figure>
+    <img src="img/SA-U2-4-6/s02.jpg" alt="門型剛架與完整勁度矩陣">
+    <figcaption><span>左：門型剛架（A、D 固定）與自由度 θB、θC、Δ；右：完整 [K]</span><span class="ts">影片 0:49</span></figcaption>
+  </figure>
+  <p>題目是單跨門型剛架，柱底固定，三根桿件都是 \(EI\)、\(L\)，忽略軸向變形。自由度剩三個：\(\theta_B\)、\(\theta_C\)、\(\Delta\)。勁度矩陣的答案是：</p>
+  $$[K]=\begin{bmatrix}\dfrac{8EI}{L} & \dfrac{2EI}{L} & -\dfrac{6EI}{L^2}\\[8pt] \dfrac{2EI}{L} & \dfrac{8EI}{L} & -\dfrac{6EI}{L^2}\\[8pt] -\dfrac{6EI}{L^2} & -\dfrac{6EI}{L^2} & \dfrac{24EI}{L^3}\end{bmatrix}\qquad(\text{轉角順時針為正、}\Delta\text{ 向右為正})$$
+  <p>等一下三種算法，都要算出這九個數。</p>
+</section>
+
+<!-- ── c1 ── -->
+<section id="c1">
+  <h2><span class="no">1</span> 共同的根：四個數字 <button class="seek" data-t="50.0">▶ 0:50</button></h2>
+  <p>三兄弟用的是同一組桿件數字。兩端固定的桿件：</p>
+  <table>
+    <tr><th>變形</th><th>近端</th><th>遠端</th><th>剪力</th></tr>
+    <tr><td>一端轉動 1</td><td>\(4EI/L\)</td><td>\(2EI/L\)（傳一半）</td><td>—</td></tr>
+    <tr><td>兩端錯開 1</td><td>\(6EI/L^2\)</td><td>\(6EI/L^2\)</td><td>\(12EI/L^3\)</td></tr>
+  </table>
+  <figure>
+    <img src="img/SA-U2-4-6/s04.jpg" alt="兩端固定桿件的四個數字與傾角變位公式">
+    <figcaption><span>上：一端轉動 1、兩端錯開 1 的變形小圖；下：傾角變位公式展開，框出 4、2、6</span><span class="ts">影片 1:29</span></figcaption>
+  </figure>
+  <p>這四個數字，其實就藏在傾角變位公式裡：</p>
+  $$M_{nf}=\frac{2EI}{L}\left(2\theta_n+\theta_f-3\psi\right)=\boxed{\frac{4EI}{L}\theta_n}+\boxed{\frac{2EI}{L}\theta_f}-\boxed{\frac{6EI}{L^2}\Delta}$$
+  <p>展開來，4、2、6 都在；12，則是兩端各 6 的彎矩加起來、再除以 \(L\) 得到的剪力：</p>
+  $$\frac{12EI}{L^3}=\frac{6+6}{L}\cdot\frac{EI}{L^2}$$
+</section>
+
+<!-- ── c2 ── -->
+<section id="c2">
+  <h2><span class="no">2</span> <span><span class="sd">傾角變位法</span>：一次一列</span> <button class="seek" data-t="90.47">▶ 1:30</button></h2>
+  <p>第一種，傾角變位法。先把每個桿端彎矩，寫成三個未知數的函數：</p>
+  $$\text{左柱 B 端：}\;M_{BA}=\frac{EI}{L}\left(4\theta_B-6\frac{\Delta}{L}\right)\qquad \text{梁 B 端：}\;M_{BC}=\frac{EI}{L}\left(4\theta_B+2\theta_C\right)$$
+  <p>接著列平衡。B 點彎矩平衡 \(\Sigma M_B=0\)：\(M_{BA}+M_{BC}=0\)。把兩個式子加起來：</p>
+  $$\frac{EI}{L}\left(8\theta_B+2\theta_C-6\frac{\Delta}{L}\right)=0$$
+  <p>\(\theta_B\) 的係數是 4＋4＝8，\(\theta_C\) 是 2，\(\Delta\) 是 −6。這一條方程式，<b>正好就是勁度矩陣的第一列</b>。</p>
+  <figure>
+    <img src="img/SA-U2-4-6/s07.jpg" alt="傾角變位法逐列填入勁度矩陣">
+    <figcaption><span>B 點 ΣM＝0 → 第一列（粉紅橫框）；C 點 ΣM＝0 → 第二列；整層剪力平衡 → 第三列</span><span class="ts">影片 2:28</span></figcaption>
+  </figure>
+  <p>C 點彎矩平衡給第二列：2、8、−6；整層剪力平衡給第三列：−6、−6、24。</p>
+  <div class="key"><b>傾角變位法的節奏</b>一次寫出一條平衡方程式＝一次得到矩陣的<b>一列</b>。</div>
+</section>
+
+<!-- ── c3 ── -->
+<section id="c3">
+  <h2><span class="no">3</span> <span><span class="gr">圖解法</span>：一次一直行</span> <button class="seek" data-t="148.93">▶ 2:28</button></h2>
+  <p>第二種，圖解單位位移法，方向剛好反過來：<b>一次只讓一個自由度等於 1，其他全部鎖住</b>。</p>
+  <figure>
+    <img src="img/SA-U2-4-6/s08.jpg" alt="令 θB=1 的變形圖與桿件自由體圖">
+    <figcaption><span>令 θB＝1：變形小圖；左柱自由體（頂 4、底 2、剪力 6 向左）；梁自由體（4、2）。單位 EI/L、EI/L²</span><span class="ts">影片 2:46</span></figcaption>
+  </figure>
+  <p>令 \(\theta_B=1\)：左柱頂要 4、柱底傳過去 2，剪力向左 6；梁左端 4，傳到 C 端 2。</p>
+  <figure>
+    <img src="img/SA-U2-4-6/s09.jpg" alt="節點收集得到第一直行">
+    <figcaption><span>節點收集 8、2、−6 → [K] 第一直行（藍直框）</span><span class="ts">影片 3:04</span></figcaption>
+  </figure>
+  <p>回到節點收集：</p>
+  $$\text{B 點 } K_{11}=4+4=\frac{8EI}{L},\qquad \text{C 點 } K_{21}=\frac{2EI}{L},\qquad \text{水平 } K_{31}=-\frac{6EI}{L^2}$$
+  <p>這三個數由上往下排，就是勁度矩陣的第一直行。三場實驗做完，三個直行並排，矩陣就完成了。</p>
+  <div class="key"><b>圖解法的節奏</b>一次一場實驗＝一次得到矩陣的<b>一直行</b>。</div>
+
+  <figure>
+    <img src="img/SA-U2-4-6/s10.jpg" alt="同一張表：第一列橫框與第一直行直框">
+    <figcaption><span>粉紅橫框＝B 點 ΣM＝0 的係數（傾角變位法）；藍直框＝θB 在三條平衡式裡的係數（圖解法）；綠虛線＝對稱軸</span><span class="ts">影片 3:26</span></figcaption>
+  </figure>
+  <p>圖解法的第一直行，三個數分別是 \(\theta_B\) 出現在 B 點、C 點、水平這三條平衡方程式裡的係數。所以兩種方法填的是<b>同一張表</b>：<span class="sd">傾角變位法橫著填</span>，<span class="gr">圖解法直著填</span>。</p>
+  <p>直行和列的數字剛好一樣，是因為勁度矩陣對稱：</p>
+  $$\text{列}=\text{直行}\;\Longleftarrow\;K_{ij}=K_{ji}$$
+</section>
+
+<!-- ── c4 ── -->
+<section id="c4">
+  <h2><span class="no">4</span> <span><span class="ds">直接勁度法</span>：一次一根桿件</span> <button class="seek" data-t="207.07">▶ 3:27</button></h2>
+  <p>第三種，直接勁度法。這次不跑方程式，也不跑自由度，<b>改跑桿件</b>：每根桿件先寫出自己的小勁度矩陣，再把它直接加進整體矩陣的對應格子。</p>
+  <figure>
+    <img src="img/SA-U2-4-6/s12.jpg" alt="三根桿件的小矩陣加進整體矩陣">
+    <figcaption><span>左柱 AB（θB、Δ）、梁 BC（θB、θC）、右柱 DC（θC、Δ）的 2×2 小矩陣各自落進對應格子</span><span class="ts">影片 4:00</span></figcaption>
+  </figure>
+  <p>左柱只連到 \(\theta_B\) 和 \(\Delta\)，它的 2×2 矩陣 4、−6、−6、12，就加進第一和第三的行列。右柱加進第二和第三。梁連到兩個轉角，4、2、2、4，加進第一和第二。（黑板上只寫係數，\(EI\)、\(L\) 的次方省略。）</p>
+  $$\underbrace{\begin{bmatrix}4&-6\\-6&12\end{bmatrix}}_{\text{左柱 AB}:\ (\theta_B,\Delta)}\qquad
+    \underbrace{\begin{bmatrix}4&2\\2&4\end{bmatrix}}_{\text{梁 BC}:\ (\theta_B,\theta_C)}\qquad
+    \underbrace{\begin{bmatrix}4&-6\\-6&12\end{bmatrix}}_{\text{右柱 DC}:\ (\theta_C,\Delta)}$$
+  <figure>
+    <img src="img/SA-U2-4-6/s13.jpg" alt="疊加結果與答案一格不差">
+    <figcaption><span>疊加結果 8、2、−6／2、8、−6／−6、−6、24，與答案一格不差</span><span class="ts">影片 4:17</span></figcaption>
+  </figure>
+  <p>三張小矩陣疊起來：左上角 4＋4 得 8，右下角 12＋12 得 24，一格不差。</p>
+  $$[K]=\begin{bmatrix}8&2&-6\\2&8&-6\\-6&-6&24\end{bmatrix}\quad(\text{係數；}EI\text{、}L\text{ 的次方省略})$$
+  <div class="ok"><b>與圖解法對照</b>你在圖解法裡寫的「左柱 4＋梁 4」，其實就是這個疊加，只是改成照自由度的順序來加。</div>
+</section>
+
+<!-- ── c5 ── -->
+<section id="c5">
+  <h2><span class="no">5</span> 手算只能用圖解法？ <button class="seek" data-t="258.08">▶ 4:18</button></h2>
+  <figure>
+    <img src="img/SA-U2-4-6/s14.jpg" alt="程式 6×6 與手算 3×3 對照">
+    <figcaption><span>左：程式每節點 u、v、θ → 6×6；右：手算 θB、θC、Δ → 3×3；中間：忽略軸向變形＝運動束制</span><span class="ts">影片 4:41</span></figcaption>
+  </figure>
+  <div class="warn"><b>常見的誤會：「程式才用座標轉換再疊加，手算只能用圖解法」——只對一半</b>程式每個節點保留三個自由度，這題就是 6×6；手算用了忽略軸向變形，自由度直接降成三個。矩陣變小，是因為用了<b>運動束制</b>，不是因為手算算不動。</div>
+  <figure>
+    <img src="img/SA-U2-4-6/s15.jpg" alt="斜桿桁架與斜柱剛架">
+    <figcaption><span>左：斜桿桁架，c＝cos α、s＝sin α 手算直接填；右：斜柱剛架，圖解法要先畫位移幾何（瞬心）</span><span class="ts">影片 5:02</span></figcaption>
+  </figure>
+  <p>反過來，座標轉換也能手算。斜桿桁架的考題，算出每根桿的餘弦和正弦，就能直接把數字填進矩陣：</p>
+  $$c=\cos\alpha,\quad s=\sin\alpha,\qquad \frac{EA}{L}\begin{bmatrix}c^2 & cs\\ cs & s^2\end{bmatrix}$$
+  <p>而遇到斜柱剛架，圖解法要先畫出位移幾何，才知道每根桿怎麼變形，這時轉換矩陣反而比較不容易出錯。</p>
+  <figure>
+    <img src="img/SA-U2-4-6/s16.jpg" alt="手算方法選擇">
+    <figcaption><span>選擇表：正交剛架→圖解法最快；有斜桿→轉換矩陣最穩</span><span class="ts">影片 5:18</span></figcaption>
+  </figure>
+  <table>
+    <tr><th>結構</th><th>建議算法</th></tr>
+    <tr><td>正交剛架＋忽略軸向變形</td><td><span class="gr">圖解法</span>　最快</td></tr>
+    <tr><td>有斜桿（桁架或斜柱）</td><td><span class="ds">轉換矩陣</span>　最穩</td></tr>
+  </table>
+  <div class="key"><b>更精確的說法</b>兩種都能手算，選哪一種，看結構的幾何。</div>
+</section>
+
+<!-- ── c6 ── -->
+<section id="c6">
+  <h2><span class="no">6</span> 考場寫法 <button class="seek" data-t="319.07">▶ 5:19</button></h2>
+  <figure>
+    <img src="img/SA-U2-4-6/s17.jpg" alt="卷面要看得到的兩件事">
+    <figcaption><span>① 各桿件貢獻相加；② 列出矩陣方程式並求解</span><span class="ts">影片 5:39</span></figcaption>
+  </figure>
+  <p>題目要求直接勁度法時，圖解法可以用，但卷面要讓閱卷老師看得到兩件事：</p>
+  <p><b>① 每個係數寫成各桿件貢獻相加</b>，例如：</p>
+  $$K_{11}=\underbrace{\frac{4EI}{L}}_{\text{柱}}+\underbrace{\frac{4EI}{L}}_{\text{梁}}$$
+  <p><b>② 一定要列出矩陣方程式</b>，用它解出位移：</p>
+  $$[K]\{D\}=\{P\}\;\Rightarrow\;\{D\}$$
+  <div class="warn"><b>卷面陷阱</b>只寫一句「依單位位移實驗組裝」不能代替這兩步。</div>
+  <figure>
+    <img src="img/SA-U2-4-6/s18.jpg" alt="符號約定對照">
+    <figcaption><span>順時針為正 K₁₃＝−6EI/L² ⟺ 逆時針為正 K₁₃＝+6EI/L²</span><span class="ts">影片 5:58</span></figcaption>
+  </figure>
+  <p>另外注意符號約定。傾角變位法習慣順時針為正，矩陣教科書常用逆時針為正，兩者的耦合項正負號會整個反過來：</p>
+  <table>
+    <tr><th>約定</th><th>常見於</th><th>本題 \(K_{13}\)</th></tr>
+    <tr><td>順時針為正</td><td>傾角變位法</td><td>\(-6EI/L^2\)</td></tr>
+    <tr><td>逆時針為正</td><td>矩陣教科書</td><td>\(+6EI/L^2\)</td></tr>
+  </table>
+  <div class="key"><b>哪一種都可以</b>全題一致就好。</div>
+</section>
+
+<!-- ── c7 ── -->
+<section id="c7">
+  <h2><span class="no">7</span> 總結 <button class="seek" data-t="359.34">▶ 5:59</button></h2>
+  <figure>
+    <img src="img/SA-U2-4-6/s19.jpg" alt="總結三點與對照表">
+    <figcaption><span>三點總結與方法對照表；黃框「同一個 K，三種算法」</span><span class="ts">影片 6:27</span></figcaption>
+  </figure>
+  <p><b>第一</b>，三兄弟用同一組桿件數字：4、2、6、12。</p>
+  <p><b>第二</b>，傾角變位法一次一列，圖解法一次一直行，直接勁度法一次一根桿件，填的都是同一張勁度矩陣：</p>
+  <table>
+    <tr><th>方法</th><th>一次得到</th><th>填法</th></tr>
+    <tr><td><span class="sd">傾角變位法</span></td><td>一條平衡式</td><td>一列（橫）</td></tr>
+    <tr><td><span class="gr">圖解法</span></td><td>一場實驗</td><td>一直行（直）</td></tr>
+    <tr><td><span class="ds">直接勁度法</span></td><td>一根桿件</td><td>一塊小矩陣</td></tr>
+  </table>
+  <p><b>第三</b>，手算選哪一種，看結構幾何，不看矩陣大小。</p>
+  <div class="key"><b>一句話</b>同一個 K，三種算法。</div>
+</section>
+
+<p class="src">來源：<code>解題過程影片/SA-U2-4-6 位移法三兄弟/video/</code> 之 SA-U2-4-6.mp4（6:28）、segments.py（旁白講稿）、SA-U2-4-6.srt（字幕時間軸）。黑板截圖取自各段結束前 0.5 秒。勁度矩陣數值已依傾角變位公式複算，與影片一致。</p>
+
+</div>
+</body>
+</html>

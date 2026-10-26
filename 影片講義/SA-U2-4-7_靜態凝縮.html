@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SA-U2-4-7 靜態凝縮 — 影片講義</title>
+<link rel="stylesheet" href="../study/assets/katex/katex.min.css">
+<script defer src="../study/assets/katex/katex.min.js"></script>
+<script defer src="../study/assets/katex/auto-render.min.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+  renderMathInElement(document.body, {
+    delimiters: [{left: '$$', right: '$$', display: true}, {left: '\\(', right: '\\)', display: false}],
+    throwOnError: false
+  });
+  var v = document.getElementById('vid');
+  document.querySelectorAll('.seek').forEach(function (b) {
+    b.addEventListener('click', function () {
+      v.currentTime = parseFloat(b.dataset.t);
+      v.scrollIntoView({behavior: 'smooth', block: 'center'});
+      v.play();
+    });
+  });
+});
+</script>
+<style>
+:root{--board:#2b3f35;--board2:#34493f;--paper:#faf7ef;--ink:#222;--muted:#666;--chalk:#f0e6c8;--yellow:#e8c95a;--line:#d8d2c2;}
+*{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:"Noto Sans TC","Microsoft JhengHei","PingFang TC",sans-serif;line-height:1.75;font-size:16px}
+.wrap{max-width:860px;margin:0 auto;padding:24px 16px 48px}
+.cover{background:var(--board);color:var(--chalk);border-radius:10px;padding:28px 28px 22px;margin-bottom:22px}
+.cover .tag{font-size:14px;letter-spacing:.06em;color:#b9cbbf}
+.cover h1{margin:6px 0 8px;font-size:28px;color:var(--yellow);line-height:1.35}
+.cover .meta{font-size:14px;color:#cfd8cf}
+.cover .core{margin-top:14px;padding:12px 14px;border:1px solid #6d8a78;border-radius:6px;background:var(--board2)}
+nav.toc{border:1px solid var(--line);border-radius:8px;padding:12px 18px;margin-bottom:20px;background:#fff}
+nav.toc h3{margin:0 0 6px;font-size:16px}
+nav.toc ol{margin:0;padding-left:22px;columns:2;column-gap:28px}
+nav.toc li{break-inside:avoid}
+nav.toc a{color:var(--board);text-decoration:none}
+nav.toc .t{color:var(--muted);font-size:13px;margin-left:6px}
+video{width:100%;border-radius:8px;background:#000;margin-bottom:8px}
+.vnote{font-size:13px;color:var(--muted);margin:0 0 22px}
+section{margin:30px 0}
+h2{font-size:22px;border-left:6px solid var(--board);padding-left:10px;margin:0 0 12px;display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+h2 .no{color:var(--board)}
+.seek{font-size:13px;border:1px solid var(--board);background:#fff;color:var(--board);border-radius:14px;padding:2px 10px;cursor:pointer;font-family:inherit}
+.seek:hover{background:var(--board);color:#fff}
+figure{margin:16px 0}
+figure img{width:100%;border-radius:6px;display:block;border:1px solid #1e2d26}
+figcaption{display:flex;justify-content:space-between;gap:12px;font-size:13px;color:var(--muted);margin-top:4px}
+figcaption .ts{white-space:nowrap}
+p{margin:8px 0}
+.key,.warn,.ok{border-radius:6px;padding:10px 14px;margin:12px 0}
+.key{background:#fff7d6;border-left:5px solid #d6a800}
+.warn{background:#fdecec;border-left:5px solid #d04545}
+.ok{background:#e9f6ec;border-left:5px solid #3c9a5a}
+.key b,.warn b,.ok b{display:block;margin-bottom:2px}
+table{border-collapse:collapse;width:100%;margin:12px 0;font-size:15px;background:#fff}
+th,td{border:1px solid var(--line);padding:6px 10px;text-align:left;vertical-align:top}
+th{background:#eef2ee}
+td:first-child,th:first-child{white-space:nowrap}
+.src{font-size:12px;color:var(--muted);border-top:1px solid var(--line);margin-top:36px;padding-top:10px}
+.katex-display{margin:.6em 0;overflow-x:auto;overflow-y:hidden}
+@media (max-width:600px){nav.toc ol{columns:1}.cover h1{font-size:23px}}
+@media print{
+  @page{size:A4;margin:14mm 14mm 16mm}
+  body{background:#fff;font-size:12.5pt}
+  .wrap{max-width:none;padding:0}
+  video,.vnote,.seek{display:none}
+  figure,.key,.warn,.ok,table,.katex-display{break-inside:avoid}
+  h2{break-after:avoid}
+  figure img{width:80%;margin:0 auto}
+  figcaption{width:80%;margin:4px auto 0}
+  .cover,figure img{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header class="cover">
+  <div class="tag">結構學 SA ｜ SA-U2-4 靜不定結構之矩陣分析法 ｜ 影片講義</div>
+  <h1>靜態凝縮：不背公式（以 SA-2025-1 門型剛構架為例）</h1>
+  <div class="meta">影片長度 4:15 ・ 6 章 ・ 11 段</div>
+  <div class="core">靜態凝縮不是近似法，也不用背——它就是解聯立方程式的消去法：<b>先解出 b，再代回 a</b>。口訣：<b>原勁度 − 耦合² ÷ 被消那格</b>；答案再用「讓步範圍」檢核。</div>
+</header>
+
+<nav class="toc">
+  <h3>目錄</h3>
+  <ol>
+    <li><a href="#c0">凝縮不用背</a><span class="t">0:00</span></li>
+    <li><a href="#c1">三步心法　先解再代回</a><span class="t">0:24</span></li>
+    <li><a href="#c2">實戰　門型剛構架</a><span class="t">1:28</span></li>
+    <li><a href="#c3">十秒版　對稱降階</a><span class="t">2:33</span></li>
+    <li><a href="#c4">讓步直覺　檢查範圍</a><span class="t">3:00</span></li>
+    <li><a href="#c5">總結</a><span class="t">3:48</span></li>
+  </ol>
+</nav>
+
+<video id="vid" controls preload="metadata" src="video/SA-U2-4-7.mp4"></video>
+<p class="vnote">點各章標題旁的 ▶ 按鈕可直接跳到影片對應位置。本片是 SA-2025-1 完整解題片的姊妹觀念短片，不重講矩陣組裝。</p>
+
+<!-- ── c0 ── -->
+<section id="c0">
+  <h2><span class="no">0</span> 凝縮不用背 <button class="seek" data-t="0">▶ 0:00</button></h2>
+  <figure>
+    <img src="img/SA-U2-4-7/s01.jpg" alt="靜態凝縮公式與「不用背」">
+    <figcaption><span>公式看起來嚇人，但「不是近似法、不用背」＝國中解聯立的消去法</span><span class="ts">影片 0:24</span></figcaption>
+  </figure>
+  <p>靜態凝縮的公式</p>
+  $$K^*=K_{aa}-K_{ab}\,K_{bb}^{-1}\,K_{ba}$$
+  <p>看起來很嚇人。但它<b>不是近似法，也不用背</b>。它就是國中解聯立方程式的消去法：先把一個未知數解出來，再代回去。今天就用這個邏輯，十秒鐘自己把公式寫出來。</p>
+  <div class="key"><b>核心</b>① 先解出 b \(\Longrightarrow\) ② 再代回 a</div>
+</section>
+
+<!-- ── c1 ── -->
+<section id="c1">
+  <h2><span class="no">1</span> 三步心法　先解再代回 <button class="seek" data-t="24.72">▶ 0:24</button></h2>
+  <figure>
+    <img src="img/SA-U2-4-7/s02.jpg" alt="分塊矩陣切成四塊">
+    <figcaption><span>勁度矩陣切成四塊；a（粉紅）保留、b（藍）消掉</span><span class="ts">影片 0:42</span></figcaption>
+  </figure>
+  <p>先把自由度分成兩組：</p>
+  <table>
+    <tr><th>分組</th><th>角色</th><th>特徵</th><th>通常是</th></tr>
+    <tr><td><b style="color:#d0607a">a</b></td><td>要保留的</td><td>題目問的、有外力的</td><td>側移</td></tr>
+    <tr><td><b style="color:#3a7fc0">b</b></td><td>要消掉的</td><td>外力已知，多半是 \(F_b=0\)</td><td>節點轉角</td></tr>
+  </table>
+  <p>勁度矩陣就跟著切成四塊：</p>
+  $$\begin{bmatrix}\color{#d0607a}{K_{aa}} & K_{ab}\\ K_{ba} & \color{#3a7fc0}{K_{bb}}\end{bmatrix}\begin{Bmatrix}\color{#d0607a}{u_a}\\ \color{#3a7fc0}{u_b}\end{Bmatrix}=\begin{Bmatrix}\color{#d0607a}{F_a}\\ \color{#3a7fc0}{F_b}\end{Bmatrix}$$
+
+  <figure>
+    <img src="img/SA-U2-4-7/s03.jpg" alt="第一步看 b 那一列、第二步解出 b">
+    <figcaption><span>框起 b 那一列 → ① → ②；被消掉的自由度「自己讓步」</span><span class="ts">影片 1:04</span></figcaption>
+  </figure>
+  <p><b>第一步，看 b 的那一列。</b>b 上沒有外力，所以</p>
+  $$①\quad k_{ba}\,u_a+k_{bb}\,u_b=0$$
+  <p><b>第二步，把 \(u_b\) 解出來：</b></p>
+  $$②\quad \color{#3a7fc0}{u_b=-\frac{k_{ba}}{k_{bb}}\,u_a}$$
+  <p>物理意義是：被消掉的自由度，會順著 a 的變形，<b>自己讓步</b>。</p>
+
+  <figure>
+    <img src="img/SA-U2-4-7/s04.jpg" alt="第三步代回 a 那一列與口訣">
+    <figcaption><span>框起 a 那一列 → ③ 黃框；下方口訣卡片</span><span class="ts">影片 1:28</span></figcaption>
+  </figure>
+  <p><b>第三步，代回 a 的那一列：</b></p>
+  $$③\quad k^*=k_{aa}-\frac{k_{ab}\,k_{ba}}{k_{bb}}$$
+  <table>
+    <tr><th>項</th><th>意義</th></tr>
+    <tr><td>\(k_{aa}\)</td><td>b 被鎖死時的勁度</td></tr>
+    <tr><td>減號</td><td>放開 b，它會讓步，勁度只會變小</td></tr>
+    <tr><td>\(k_{ab}k_{ba}\)</td><td>耦合越強 → 扣越多</td></tr>
+    <tr><td>\(k_{bb}\)</td><td>b 自己越硬 → 扣越少</td></tr>
+  </table>
+  <div class="key"><b>口訣</b>原勁度 − 耦合² ÷ 被消那格</div>
+</section>
+
+<!-- ── c2 ── -->
+<section id="c2">
+  <h2><span class="no">2</span> 實戰　門型剛構架 <button class="seek" data-t="88.5">▶ 1:28</button></h2>
+  <figure>
+    <img src="img/SA-U2-4-7/s05.jpg" alt="SA-2025-1 門型剛構架與 3×3 勁度矩陣">
+    <figcaption><span>左：門型架（A、D 固定，P 作用於 B）；右：3×3 \([K]\)，θ 區（藍）與 Δ 區（粉紅）</span><span class="ts">影片 1:47</span></figcaption>
+  </figure>
+  <p>實戰看 SA-2025-1，門型剛構架求側向勁度。勁度矩陣由三場單位位移實驗得到，完整過程請看上一支影片：</p>
+  $$[K]=\frac{EI}{L^3}\begin{bmatrix}\color{#3a7fc0}{8L^2} & \color{#3a7fc0}{2L^2} & -6L\\ \color{#3a7fc0}{2L^2} & \color{#3a7fc0}{8L^2} & -6L\\ -6L & -6L & \color{#d0607a}{24}\end{bmatrix}$$
+  <p>分組：兩個轉角 \(\theta_B,\theta_C\) 是 <b style="color:#3a7fc0">b</b>，要消掉；側移 \(\Delta\) 是 <b style="color:#d0607a">a</b>，要保留。</p>
+
+  <figure>
+    <img src="img/SA-U2-4-7/s06.jpg" alt="先解轉角">
+    <figcaption><span>列①②（右邊 0）→ ①−② 得 \(\theta_B=\theta_C\) → \(\theta=3\Delta/5L\)</span><span class="ts">影片 2:10</span></figcaption>
+  </figure>
+  <p><b>先解。</b>第一列和第二列右邊都是零，因為節點沒有外加彎矩：</p>
+  $$①\;\;8\theta_B+2\theta_C-\frac{6\Delta}{L}=0\qquad ②\;\;2\theta_B+8\theta_C-\frac{6\Delta}{L}=0$$
+  <p>兩式相減：\(6\theta_B-6\theta_C=0\Rightarrow\theta_B=\theta_C=\theta\)。代回第一列，八加二：</p>
+  $$(8+2)\,\theta=10\,\theta=\frac{6\Delta}{L}\quad\Longrightarrow\quad \boxed{\theta=\frac{3\Delta}{5L}}$$
+  <p>轉角就這樣跟著側移讓步。</p>
+
+  <figure>
+    <img src="img/SA-U2-4-7/s07.jpg" alt="代回第三列求側向勁度">
+    <figcaption><span>列③代回 → \(k=84EI/5L^3\)，綠字「零近似 ✓」</span><span class="ts">影片 2:33</span></figcaption>
+  </figure>
+  <p><b>再代回第三列：</b></p>
+  $$③\quad -6L\,\theta_B-6L\,\theta_C+24\,\Delta=\frac{PL^3}{EI}$$
+  <p>每根柱扣掉 \(6L\cdot\dfrac{3\Delta}{5L}=\dfrac{18}{5}\Delta\)，兩根一共 \(\dfrac{36}{5}\Delta\)：</p>
+  $$24\Delta-2\times\frac{18}{5}\Delta=24\Delta-\frac{36}{5}\Delta=\frac{84}{5}\Delta$$
+  $$\boxed{k=\frac{P}{\Delta}=\frac{84\,EI}{5L^3}\approx 16.8\,\frac{EI}{L^3}}$$
+  <div class="ok"><b>零近似</b>這就是靜態凝縮，一點近似都沒有。</div>
+</section>
+
+<!-- ── c3 ── -->
+<section id="c3">
+  <h2><span class="no">3</span> 十秒版　對稱降階 <button class="seek" data-t="153.77">▶ 2:33</button></h2>
+  <figure>
+    <img src="img/SA-U2-4-7/s08.jpg" alt="對稱降階 3×3 → 2×2">
+    <figcaption><span>列 1＋列 2（黃框）、行 1＋行 2（綠框）→ 2×2；套口訣得 16.8</span><span class="ts">影片 3:00</span></figcaption>
+  </figure>
+  <p>還有更快的十秒版。既然兩個轉角相等（\(\theta_B=\theta_C=\theta\)），就合併成一個 \(\theta\)：<b>第一、二列相加，第一、二行也相加</b>，3×3 變成 2×2：</p>
+  $$\frac{EI}{L^3}\begin{bmatrix}20L^2 & -12L\\ -12L & 24\end{bmatrix}\qquad\begin{aligned}20&=8+2+2+8\\ -12&=-6-6\end{aligned}$$
+  <p>主對角是 20 和 24，耦合項是 −12。套口訣：</p>
+  $$k=24-\frac{12^2}{20}=24-7.2=16.8\,\frac{EI}{L^3}$$
+  <div class="ok"><b>答案一樣 ✓</b>與 3×3 完整消去的 \(84/5=16.8\) 相同。</div>
+</section>
+
+<!-- ── c4 ── -->
+<section id="c4">
+  <h2><span class="no">4</span> 讓步直覺　檢查範圍 <button class="seek" data-t="180.9">▶ 3:00</button></h2>
+  <figure>
+    <img src="img/SA-U2-4-7/s09.jpg" alt="讓步光譜：6 到 24">
+    <figcaption><span>讓步光譜：左端梁無勁度（藍點 6）、右端梁無限剛（粉紅點 24）</span><span class="ts">影片 3:26</span></figcaption>
+  </figure>
+  <p>最後用讓步的直覺檢查範圍（單位 \(EI/L^3\)）：</p>
+  <table>
+    <tr><th>極端</th><th>柱頂行為</th><th>每根柱</th><th>兩根合計</th></tr>
+    <tr><td>梁無限剛</td><td>轉角完全鎖死、不讓步 → 雙固定柱</td><td>\(12\)</td><td>\(12+12=24\)</td></tr>
+    <tr><td>梁完全沒有勁度</td><td>柱頂完全讓步 → 懸臂柱</td><td>\(12-\dfrac{6^2}{4}=3\)</td><td>\(3\times2=6\)</td></tr>
+  </table>
+  <div class="key"><b>串起來</b>梁無勁度那一端的 \(12-6^2/4=3\)，就是懸臂柱，也就是傾角變位法「遠端鉸接」的修正。</div>
+
+  <figure>
+    <img src="img/SA-U2-4-7/s10.jpg" alt="本題 16.8 落在範圍內；漏 K12 得 15">
+    <figcaption><span>黃點 16.8（本題）；藍括弧 −36/5＝節點轉動的代價；紅點 15＝漏掉梁傳遞項</span><span class="ts">影片 3:48</span></figcaption>
+  </figure>
+  <p>本題 16.8，落在 6 和 24 之間；扣掉的 \(\dfrac{36}{5}\)，就是<b>允許節點轉動的代價</b>。</p>
+  <div class="ok"><b>檢查</b>答案跑出 \(6\le k\le 24\) 這個範圍，一定是矩陣列錯了。</div>
+  <div class="warn"><b>但要小心</b>漏掉梁的傳遞項 2（\(K_{12}\)），會得到 15——還在範圍裡面，範圍檢核抓不到，組裝時要特別檢查。</div>
+</section>
+
+<!-- ── c5 ── -->
+<section id="c5">
+  <h2><span class="no">5</span> 總結 <button class="seek" data-t="228.62">▶ 3:48</button></h2>
+  <figure>
+    <img src="img/SA-U2-4-7/s11.jpg" alt="總結三點與答案">
+    <figcaption><span>三點條列＋答案黃框</span><span class="ts">影片 4:13</span></figcaption>
+  </figure>
+  <table>
+    <tr><th>#</th><th>重點</th></tr>
+    <tr><td>一</td><td>靜態凝縮就是高斯消去：<b style="color:#3a7fc0">先解出 b</b>，<b style="color:#d0607a">再代回 a</b></td></tr>
+    <tr><td>二</td><td>口訣：原勁度 − 耦合² ÷ 被消那格</td></tr>
+    <tr><td>三</td><td>用讓步範圍檢核：本題答案一定在 \(6\le k\le 24\;(EI/L^3)\)</td></tr>
+  </table>
+  $$\boxed{k=\frac{84\,EI}{5L^3}}$$
+</section>
+
+<p class="src">來源：<code>解題過程影片/SA-U2-4-7 靜態凝縮/video/</code> 之 SA-2025-1-凝縮.mp4、segments.py（逐字旁白）、SA-2025-1-凝縮.srt；例題數值對照 HANDOFF.md 已驗算數字並複算（θ＝3Δ/5L、k＝84/5、對稱降階 16.8、範圍 6／24、漏 K12 得 15）。黑板截圖取自各段結束前 0.5 秒。</p>
+
+</div>
+</body>
+</html>
