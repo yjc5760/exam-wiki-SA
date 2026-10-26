@@ -428,6 +428,83 @@ header .nomat{margin-top:12px;font-size:.8em;opacity:.85}
 </table>
 <p><img alt="勁度矩陣三行的物理意義：三個單位位移狀態及其所需節點力" src="../../raw/solutions/SA-2025-1/figs/SA-2025-1-fig-3-unit-states.svg" /></p>
 <p><em>圖 3　勁度矩陣每一行的物理意義。第 j 行 ＝ 讓第 j 個自由度產生單位位移、其餘全部鎖住時，各自由度上必須施加的力。核對矩陣正負號時直接看這張圖，不必重推公式。</em></p>
+<h4>4.3.1 圖解法：三場單位位移實驗，一次求一直行</h4>
+<p>$[K]$ 是<strong>一直行、一直行</strong>建出來的（台灣用語：列＝橫 row、行＝直 column）。因為 ${F}=[K]{d}$，代入 ${d}={1,0,0}^T$ 得到的是 ${K_{11},K_{21},K_{31}}^T$ ——第 1 <strong>直行</strong>。每一場實驗都走同樣四步：</p>
+<ol>
+<li><strong>變形</strong>：令第 $j$ 個自由度 $=1$，其餘全部鎖住，畫出變形。</li>
+<li><strong>桿端力</strong>：用傾角變位公式 $M_{nf}=\frac{2EI}{L}(2\theta_n+\theta_f-3\psi)$ 求每根桿件兩端的彎矩（作用在桿件上），再由該桿 $\Sigma M=0$ 求柱的剪力 $H=-(M_{\text{頂}}+M_{\text{底}})/L$。</li>
+<li><strong>節點平衡</strong>：把桿端力反過來就是桿件給節點的反作用力；節點要靠外力抵銷它，所以外力 ＝ 匯集到該節點的桿端力總和，方向與桿端力相同。</li>
+<li><strong>直行彙整與驗算</strong>：三個外力由上往下排成第 $j$ 直行；檢查主對角 $K_{jj}&gt;0$，並與其他直行比對 $K_{ij}=K_{ji}$。</li>
+</ol>
+<p>圖 3a–3c 每張四格依序對應這四步：① 變形 → ② 構件自由體圖（綠＝彎矩、琥珀＝剪力，附力偶驗算）→ ③ 節點平衡（細線＝反作用、紅＝外力）→ ④ 直行向量與驗算。</p>
+<blockquote>
+<p>關鍵：$K$ 等於「作用在<strong>桿件</strong>上的桿端力」，不是桿件對節點的反作用力（那個方向相反）。只要固定用桿端力，正負號就不會錯。</p>
+</blockquote>
+<p><strong>第 1 直行（$\theta_B=1$）</strong></p>
+<table>
+<thead>
+<tr>
+<th>桿件</th>
+<th>桿端彎矩（順時針＋）</th>
+<th>柱頂水平力（向右＋）</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>柱 AB</td>
+<td>$M_{BA}=4EI/L$，$M_{AB}=2EI/L$</td>
+<td>$H_B=-(4+2)EI/L^2=-6EI/L^2$</td>
+</tr>
+<tr>
+<td>梁 BC</td>
+<td>$M_{BC}=4EI/L$，$M_{CB}=2EI/L$</td>
+<td>—（梁端垂直剪力由柱軸力承擔，不進 $K$）</td>
+</tr>
+<tr>
+<td>柱 DC</td>
+<td>無變形</td>
+<td>0</td>
+</tr>
+</tbody>
+</table>
+<p>$K_{11}=M_{BA}+M_{BC}=8EI/L$，$K_{21}=M_{CB}=2EI/L$，$K_{31}=H_B=-6EI/L^2$。</p>
+<p><img alt="圖解法求第 1 直行：θB=1 的變形、各桿桿端力（含柱底 2EI/L）、節點外力 8EI/L、2EI/L、−6EI/L²" src="../../raw/solutions/SA-2025-1/figs/SA-2025-1-fig-3a-unit-thetaB.svg" /></p>
+<p><em>圖 3a　$\theta_B=1$ 的單位位移實驗。柱底的 $2EI/L$ 一定要畫：柱頂剪力 $6EI/L^2$ 是兩端彎矩合計除以 $L$，漏掉柱底彎矩就只剩 $4EI/L^2$；遇到柱底為鉸接時也靠這一格判斷剪力要改成 $3EI/L^2$。</em></p>
+<p><strong>第 2 直行（$\theta_C=1$）</strong>：與第 1 直行左右對稱。柱 DC：$M_{CD}=4EI/L$、$M_{DC}=2EI/L$、$H_C=-6EI/L^2$；梁：$M_{CB}=4EI/L$、$M_{BC}=2EI/L$。</p>
+<p>$K_{12}=2EI/L$，$K_{22}=8EI/L$，$K_{32}=-6EI/L^2$。</p>
+<p><img alt="圖解法求第 2 直行：θC=1 的變形、各桿桿端力、節點外力 2EI/L、8EI/L、−6EI/L²" src="../../raw/solutions/SA-2025-1/figs/SA-2025-1-fig-3b-unit-thetaC.svg" /></p>
+<p><em>圖 3b　$\theta_C=1$ 的單位位移實驗。梁傳到 B 的 $2EI/L$ 就是 $K_{12}$；把它漏掉正是陷阱二（$K_{12}=0$，最後得到 $15EI/L^3$）。</em></p>
+<p><strong>第 3 直行（$\Delta=1$）</strong>：兩柱弦轉角 $\psi=\Delta/L=1/L$（順時針），轉角全鎖。</p>
+<table>
+<thead>
+<tr>
+<th>桿件</th>
+<th>桿端彎矩（順時針＋）</th>
+<th>柱頂水平力（向右＋）</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>柱 AB</td>
+<td>$M_{BA}=M_{AB}=\frac{2EI}{L}(-3\cdot\frac1L)=-6EI/L^2$</td>
+<td>$H_B=-(-6-6)EI/L^3=+12EI/L^3$</td>
+</tr>
+<tr>
+<td>柱 DC</td>
+<td>$M_{CD}=M_{DC}=-6EI/L^2$</td>
+<td>$H_C=+12EI/L^3$</td>
+</tr>
+<tr>
+<td>梁 BC</td>
+<td>兩端都沒轉、沒相對位移 → 無桿端力</td>
+<td>—</td>
+</tr>
+</tbody>
+</table>
+<p>$K_{13}=M_{BA}=-6EI/L^2$，$K_{23}=M_{CD}=-6EI/L^2$，$K_{33}=H_B+H_C=24EI/L^3$。</p>
+<p><img alt="圖解法求第 3 直行：Δ=1 的變形（兩柱雙固定）、柱端彎矩 −6EI/L² 與剪力 12EI/L³、節點外力" src="../../raw/solutions/SA-2025-1/figs/SA-2025-1-fig-3c-unit-delta.svg" /></p>
+<p><em>圖 3c　$\Delta=1$ 的單位位移實驗。柱端彎矩是</em><em>逆時針</em><em>，所以 $K_{13}$、$K_{23}$ 為負；它和圖 3a 的 $K_{31}$（柱頂剪力向左）由兩場不同實驗得到卻數值相同，這就是 $K_{ij}=K_{ji}$ 的互易驗算——不對稱就是陷阱三。</em></p>
+<p><strong>彙整</strong>：三個直行並排即得前面的 $[K]$。橫著讀第 1 列 $(8,\,2,\,-6)$ 與直著建的第 1 直行相同，是因為 $[K]$ 對稱；觀念上要記「單位位移 → 直行」。</p>
 <hr />
 <h3>4.4 建立方程組</h3>
 <p>外力向量：${F} = {0,\;0,\;P}^T$（B、C 節點無外部彎矩；$\Delta$ 方向施加 $P$）</p>
@@ -564,7 +641,7 @@ header .nomat{margin-top:12px;font-size:.8em;opacity:.85}
 </tbody>
 </table>
 <hr />
-<p><em>解析日期：2026-07-02　｜　圖解補繪：2026-08-10（向量圖，產生腳本 <code>gen_sa2025_1.py</code> + <code>structdraw.py</code>，可重跑）</em></p></main>
+<p><em>解析日期：2026-07-02　｜　圖解補繪：2026-08-10（向量圖，產生腳本 <code>gen_sa2025_1.py</code> + <code>structdraw.py</code>，可重跑）　｜　圖解法單位位移圖 3a–3c：2026-10-25（腳本 <code>figs/gen_SA-2025-1-unit.py</code> + <code>structdraw_v2.py</code>，可重跑）</em></p></main>
 <footer>來源：raw/solutions/SA-2025-1/SA-2025-1.md（知識庫解題內容唯一正本；本頁僅為渲染顯示）</footer>
 
 <script>

@@ -1251,3 +1251,10 @@ PDF 文字層檢查無殘留 LaTeX、無 emoji 豆腐方框。
 - `[update]` `study/lecture-SA-U2-3.html`：導航欄位與圖解結構優化，更新對應 PDF。
 - `[sync]` SA-2003-3：`scripts/md2view.py SA-2003-3` 重產 `study/problems-view/SA-2003-3.html`（原頁停在 2026-08-09，連 8/27 補的向量圖都未納入）；`wiki/problems/SA-2003-3.md` 同步圖 2 圖說與日期行。
 - `[sync]` 另有 6 題 problems-view 落後於解析正本，以 `md2view.py` 重產：SA-2012-1、SA-2015-1、SA-2024-2、SA-2025-1、SA-2025-3、SA-2025-4。`wiki/problems/SA-2025-3.md` 補同步 2026-08-16 的圖 1–4 與 §1.5 勘誤（保留檔尾互動預覽連結）；其餘 5 題 wiki 副本內容已一致。
+
+## 2026-10-25 ingest SA-2025-1（圖解法求勁度矩陣三直行）
+- `[add]` `raw/solutions/SA-2025-1/SA-2025-1.md` §4.3.1「圖解法：三場單位位移實驗，一次求一直行」：說明單位位移產生的是**直行**（column），四步流程（變形 → 構件自由體圖 → 節點平衡 → 直行彙整與驗算），並列三場實驗的桿端力表。
+- `[add]` 圖 3a／3b／3c（`figs/SA-2025-1-fig-3{a,b,c}-unit-*.svg/png`）：每張四格——變形、構件 FBD（綠彎矩、琥珀剪力＋力偶驗算，含柱底 2EI/L）、節點平衡（反作用力 vs. 外力）、直行向量＋主對角恆正／互易對稱驗算。產生腳本 `figs/gen_SA-2025-1-unit.py`（依賴新版 `figs/structdraw_v2.py`；舊 `structdraw.py` 保留供 `gen_sa2025_1.py`）。
+- `[verify]` 腳本由傾角變位公式算桿端力、節點加總得 K，assert 三直行對稱且主對角為正，結果 [[8,2,−6],[2,8,−6],[−6,−6,24]] 與 §4.3 一致；render.py 溢出檢查 0 項；逐張目視檢查。
+- `[sync]` `wiki/problems/SA-2025-1.md` 由正本重產（圖片路徑改寫為 ../../raw/…，保留檔尾互動預覽連結）；`scripts/md2view.py SA-2025-1` 重產 `study/problems-view/SA-2025-1.html`。index.md／by-year.md 已有本題、tags 未變，無需改動。
+- `[note]` 同日另修 `解題過程影片/SA-2025-1/`（2026-10-24）：c3 組裝段改為直行建立、s08–s09 重配音、成片 8 分 01 秒。
