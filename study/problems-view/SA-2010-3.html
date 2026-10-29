@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="zh-Hant"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SA-2010-3 — 題目解析</title>
+<link rel="stylesheet" href="../assets/katex/katex.min.css">
+<script defer src="../assets/katex/katex.min.js"></script>
+<script defer src="../assets/katex/auto-render.min.js"
+  onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},
+  {left:'$',right:'$',display:false},{left:'\\(',right:'\\)',display:false}],throwOnError:false});"></script>
+<style>
+:root{--ac:#1565c0;--bg:#f7f9fb;--card:#fff;--ink:#263238;--mut:#607d8b;--bd:#dfe6ea}
+*{box-sizing:border-box}
+body{margin:0;font-family:"Microsoft JhengHei","Noto Sans TC",-apple-system,sans-serif;
+  background:var(--bg);color:var(--ink);line-height:1.75;font-size:15.5px}
+header{background:linear-gradient(135deg,#0d47a1,#1976d2 60%,#42a5f5);color:#fff;padding:22px 26px}
+header h1{margin:0;font-size:1.15em}
+header .back{display:inline-block;margin-top:10px;font-size:.82em;color:#fff;background:rgba(255,255,255,.18);
+  padding:4px 12px;border-radius:14px;text-decoration:none}
+main{max-width:880px;margin:0 auto;padding:26px 22px 70px}
+h1,h2,h3{color:#0d47a1} h2{font-size:1.2em;border-left:6px solid var(--ac);padding-left:12px;margin:34px 0 14px}
+table{width:100%;border-collapse:collapse;margin:14px 0;font-size:.92em;background:#fff}
+th,td{border:1px solid var(--bd);padding:7px 10px;text-align:left;vertical-align:top}
+th{background:#eceff1;font-weight:600} tbody tr:nth-child(even){background:#fafcfd}
+code{background:#eceff1;padding:1px 5px;border-radius:4px;font-size:.92em}
+img{max-width:100%;display:block;margin:14px auto;border:1px solid var(--bd);border-radius:8px}
+.katex-display{margin:12px 0!important;overflow-x:auto;overflow-y:hidden}
+footer{text-align:center;color:var(--mut);font-size:.8em;padding:22px;border-top:1px solid var(--bd)}
+
+header h1{color:#fff!important;font-size:1.25em;margin:0;letter-spacing:.5px}
+header .meta2{margin:8px 0 0;font-size:.84em;opacity:.93;line-height:1.6}
+header .meta2 b{background:rgba(255,255,255,.2);border-radius:4px;padding:1px 7px;font-weight:600}
+header .hbtns{display:flex;flex-wrap:wrap;gap:10px;margin-top:14px}
+header .hbtns a{font-size:.85em;text-decoration:none;padding:7px 17px;border-radius:22px;
+  font-weight:700;white-space:nowrap;line-height:1.4}
+header .b-study{background:#fff;color:#1565c0}
+header .b-lect{background:#6a1b9a;color:#fff}
+header .b-fg{background:#c62828;color:#fff}
+header .hbtns a:hover{filter:brightness(1.08)}
+header .nomat{margin-top:12px;font-size:.8em;opacity:.85}
+</style></head><body>
+<header>
+<h1>SA-2010-3　靜不定結構之傾角變位法</h1>
+<p class="meta2">主分類 <b>SA-U2-3</b> 靜不定結構之傾角變位法 ｜ 2010 年（民國 99） ｜ 傾角撓度法 (Slope-Deflection Method)</p>
+<div class="hbtns"><a class="b-study" href="../unit-SA-U2-3.html">🧭 U2-3 單元總覽</a><a class="b-lect" href="../lecture-SA-U2-3.html">📚 U2-3 靜不定結構之傾角變位法 講義</a></div>
+</header>
+<main><h1>考題編號：SA-2010-3</h1>
+<p><strong>主分類：</strong> <code>SA-U2-3</code> 靜不定結構之傾角變位法<br />
+<strong>副分類：</strong> 無<br />
+<strong>分析法：</strong> 傾角撓度法 (Slope-Deflection Method)<br />
+<strong>標籤：</strong> <code>傾角撓度法</code>, <code>側移</code>, <code>非正交剛架</code>, <code>虛功法</code>, <code>剛架</code></p>
+<hr />
+<h2>1. 原始題目重述 (Problem Restatement)</h2>
+<p>如圖所示之剛架，其支承點 A 與 D 均為固定端，同時每根構件之彈性模數與慣性矩乘積均為常數值 $EI$。當 B 點承受一水平載重 $P$ 且 E 點承受一垂直載重 $2P$ 時，請以傾角變位法（slope-deflection method）計算 A、B、C、D 各節點之彎矩。（若以其他方法計算不予計分）（25 分）</p>
+<p><em>(註：A(0,0)，D(2L,0)。B 與 C 之水平投影距離各為 L/2，構件高度為 $\sqrt{3}L/2$。E 為 BC 之中點)</em></p>
+<p><img alt="SA-2010-3 題目附圖：具側移非正交剛架，A、D為固定端，B受水平力P，BC中點E受垂直力2P" src="../../raw/solutions/SA-2010-3/SA-2010-3-fig-1.png" /></p>
+<p><em>圖說：剛架幾何條件為 A(0,0)，D(2L,0)。B 與 C 之水平投影距離各為 L/2，構件高度為 $\sqrt{3}L/2$。E 為 BC 之中點。A 與 D 為固定支承，所有桿件 EI 為常數。B 點承受向右水平載重 P，E 點承受向下垂直載重 2P。</em></p>
+<h2>2. 考題核心精神與出題者意圖 (Core Concepts &amp; Examiner's Intent)</h2>
+<p>本題為經典的<strong>具側移非正交剛架 (Non-orthogonal Sway Frame)</strong> 分析，指定使用傾角變位法。出題者的核心意圖在於：</p>
+<ol>
+<li><strong>側移幾何關係 (Kinematics of Sway) 的掌握</strong>：測試考生是否具備將整體單一側移 $\Delta$ 轉換為各非正交桿件弦切角（$\psi_{AB}, \psi_{BC}, \psi_{CD}$）的能力。在非正交剛架中，各桿的弦切角方向與大小極易出錯。</li>
+<li><strong>剪力方程式推導 (Shear Equation)</strong>：對於非正交剛架，傳統以自由體圖建立水平力平衡方程式非常複雜且易錯（牽涉到傾斜柱的軸力投影）。出題者希望考生能展現利用<strong>虛功法 (Principle of Virtual Work)</strong> 快速且正確建立額外剪力方程式的進階技巧。</li>
+<li><strong>載重效應的疊加與解耦觀察</strong>：幾何對稱結構承受對稱（垂直載重 $2P$）與反對稱（水平載重 $P$）的組合載重。能否看出節點旋轉主要受垂直載重影響，而側移主要受水平載重影響，是區分實力高低的關鍵。</li>
+</ol>
+<h2>3. 解題戰略地圖與陷阱分析 (Strategic Roadmap &amp; Trap Analysis)</h2>
+<p><strong>解題戰略：</strong></p>
+<ol>
+<li><strong>第一步：幾何分析與弦切角對應</strong>：計算各桿件長度，並假設結構發生一微小獨立側移 $\Delta$。利用幾何關係（或瞬心法）求出各桿件之弦切角 $\psi$ 與單一側移參數 $R$ 的比例關係。</li>
+<li><strong>第二步：固端彎矩與傾角變位方程式</strong>：計算 BC 桿因中點載重 $2P$ 產生的固端彎矩。寫出所有桿端的傾角變位方程式。</li>
+<li><strong>第三步：節點力矩平衡方程式</strong>：利用節點 B、C 的力矩平衡（$\Sigma M_B = 0$, $\Sigma M_C = 0$）建立兩條包含 $\theta_B, \theta_C, R$ 的方程式。</li>
+<li><strong>第四步：虛功法建立剪力方程式</strong>：給予系統一虛擬位移 $\delta\Delta$ 及其對應之虛擬弦切角 $\delta\psi$。利用虛功方程式 $\sum P \delta\Delta + \sum (M_{ij}+M_{ji}) \delta\psi = 0$ 建立第三條聯立方程式。</li>
+<li><strong>第五步：解聯立方程與端彎矩計算</strong>：解出未知位移量，代回傾角變位方程式求得各節點彎矩。</li>
+</ol>
+<p><strong>陷阱分析：</strong></p>
+<ul>
+<li>
+<p><strong>陷阱 1：非正交桿件的弦切角方向與比例</strong>。若直接假設各桿側移皆為 $\Delta$，將導致嚴重錯誤。必須以整體幾何變形圖分析各桿的相對端點垂直於桿軸方向的位移。特別是 BC 桿的弦切角方向（與 AB、CD 相反）最容易錯。<br />
+  → <strong>策略</strong>：畫出放大版的幾何變形圖，仔細確認水平與垂直方向的位移分量，或利用瞬心法檢驗。</p>
+</li>
+<li>
+<p><strong>陷阱 2：剪力方程式的推導方式</strong>。若試圖切斷柱子畫自由體圖取水平平衡，因柱軸傾斜會牽涉到軸力，推導極為繁瑣且易算錯符號。<br />
+  → <strong>策略</strong>：果斷放棄靜力平衡推導，全面改用虛功方程式 $\sum P \delta\Delta + \sum (M_{ij}+M_{ji}) \delta\psi = 0$ 建立關係。</p>
+</li>
+<li>
+<p><strong>陷阱 3：固端彎矩的符號</strong>。計算固端彎矩時，容易因載重向下而弄錯正負號。<br />
+  → <strong>策略</strong>：嚴格遵守傾角變位法的符號系統，順時針為正。左端（BC桿之B端）抵抗向下外力需逆時針（負），右端需順時針（正）。</p>
+</li>
+</ul>
+<h2>3.5 變數層次分析 (Variable Hierarchy Analysis)</h2>
+<h3>最終目標</h3>
+<p>計算 A、B、C、D 各節點之端彎矩 $M_{AB}, M_{BA}, M_{BC}, M_{CB}, M_{CD}, M_{DC}$。</p>
+<h3>本題關鍵公式（依計算順序）</h3>
+<ul>
+<li>
+<p>Step 1: 弦切角與側移關係 (Cord Rotation Kinematics)<br />
+  $$ \psi_{ij} = f(\Delta, \text{幾何}) $$</p>
+</li>
+<li>
+<p>Step 2: 固端彎矩 (Fixed-End Moments)<br />
+  $$ M^F_{ij} = \text{由外載重與桿長決定} $$</p>
+</li>
+<li>
+<p>Step 3: 傾角變位基本方程式 (Slope-Deflection Equations)<br />
+  $$ M_{ij} = 2k (2\theta_i + \theta_j - 3\boxed{\psi_{ij}}) + \boxed{M^F_{ij}} $$</p>
+</li>
+<li>
+<p>Step 4: 節點平衡方程式 (Joint Equilibrium)<br />
+  $$ \Sigma M_{\text{節點}} = \sum \boxed{M_{ij}} = 0 $$</p>
+</li>
+<li>
+<p>Step 5: 虛功方程式 (Virtual Work Equation for Sway)<br />
+  $$ \sum P \delta\Delta + \sum (\boxed{M_{ij}} + \boxed{M_{ji}}) \delta\boxed{\psi_{ij}} = 0 $$</p>
+</li>
+<li>
+<p>Step 6: 聯立求解與回代 (Solve and Back-substitute)<br />
+  $$ \text{求解 } \theta_B, \theta_C, R \text{，代回 } \boxed{M_{ij}} $$</p>
+</li>
+</ul>
+<h3>L1：題目直接給定</h3>
+<table>
+<thead>
+<tr>
+<th>符號</th>
+<th>數值</th>
+<th>說明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>$L_{AB}, L_{CD}, L_{BC}$</td>
+<td>$L$</td>
+<td>各桿件長度（由座標系統計算而得）</td>
+</tr>
+<tr>
+<td>$EI$</td>
+<td>常數</td>
+<td>各桿件抗彎剛度</td>
+</tr>
+<tr>
+<td>$P_B$</td>
+<td>$P$ (向右)</td>
+<td>B 點水平集中載重</td>
+</tr>
+<tr>
+<td>$P_E$</td>
+<td>$2P$ (向下)</td>
+<td>BC 桿中點 E 之垂直集中載重</td>
+</tr>
+<tr>
+<td>$\theta_A, \theta_D$</td>
+<td>$0$</td>
+<td>A、D 為固定端，無旋轉位移</td>
+</tr>
+</tbody>
+</table>
+<h3>L2：需知識點推導</h3>
+<p><strong>一、幾何與固端彎矩</strong><br />
+| 符號 | 公式／來源 | 卡關? |<br />
+|---|---|---|<br />
+| $k$ | $EI/L$ | |<br />
+| $\psi_{AB}, \psi_{CD}$ | $+R$ (順時針) | |<br />
+| $\psi_{BC}$ | $-R$ (逆時針) | |<br />
+| $M^F_{BC}$ | $-P_{E}L/8$ | |<br />
+| $M^F_{CB}$ | $+P_{E}L/8$ | |</p>
+<p><strong>二、傾角變位方程式系統</strong><br />
+| 符號 | 公式／來源 | 卡關? |<br />
+|---|---|---|<br />
+| $M_{ij}$ | $2k(2\theta_i + \theta_j - 3\psi) + M^F_{ij}$ | |<br />
+| 節點平衡 | $\Sigma M_B = 0, \Sigma M_C = 0$ | |<br />
+| 剪力方程式 | $\sum P \delta\Delta + \sum (M_{ij}+M_{ji})\delta\psi = 0$ | |</p>
+<h3>L3：深層知識（不懂就卡住）</h3>
+<table>
+<thead>
+<tr>
+<th>知識點</th>
+<th>說明</th>
+<th>卡關?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>非正交剛架弦切角分析</td>
+<td>必須考慮節點的水平與垂直位移分量，並投影至垂直桿軸方向以計算相對位移與弦切角。</td>
+<td></td>
+</tr>
+<tr>
+<td>虛功法建立剪力方程式</td>
+<td>利用 $\sum P \delta\Delta + \sum (M_{ij}+M_{ji})\delta\psi_{ij} = 0$ 避開複雜的靜力平衡分析。</td>
+<td></td>
+</tr>
+<tr>
+<td>變形模式的對稱性觀察</td>
+<td>對稱結構受反對稱載重（側移主導）與對稱載重（旋轉主導）組合，方程式解出後常有部分變數相消的現象。</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h2>4. 步驟化詳細計算過程 (Step-by-Step Detailed Calculation)</h2>
+<h3>步驟 1：幾何參數與弦切角 (Cord Rotations)</h3>
+<p>由座標幾何條件求桿件長度：</p>
+<ul>
+<li>桿件 AB 長度 = $\sqrt{(L/2)^2 + (\sqrt{3}L/2)^2} = L$</li>
+<li>桿件 CD 長度 = $\sqrt{(2L - 1.5L)^2 + (0 - \sqrt{3}L/2)^2} = L$</li>
+<li>桿件 BC 長度 = $1.5L - 0.5L = L$<br />
+令各構件之相對勁度為 $k = EI/L$。</li>
+</ul>
+<p>設結構整體發生一微小變形，使 B 點向右水平側移 $\Delta$（忽略桿件軸向變形）：</p>
+<ul>
+<li><strong>節點 B 變位</strong>：水平向右 $\Delta_{Bx} = \Delta$。因為 AB 桿長不變，B 點軌跡垂直於 AB 桿軸。由幾何比例可得垂直位移 $\Delta_{By} = \Delta / \tan 60^\circ = \Delta / \sqrt{3}$ (向下)。</li>
+<li><strong>節點 C 變位</strong>：同理，水平向右 $\Delta_{Cx} = \Delta$。垂直位移 $\Delta_{Cy} = \Delta / \sqrt{3}$ (向上)。</li>
+</ul>
+<p>弦切角（定義順時針為正）：</p>
+<ul>
+<li>
+<p><strong>AB 桿</strong>：位移向量為 $(\Delta, -\Delta/\sqrt{3})$。將此位移投影至垂直於 AB 桿軸之方向，其相對位移為 $\Delta \sin 60^\circ + (\Delta/\sqrt{3}) \cos 60^\circ = \frac{\sqrt{3}}{2}\Delta + \frac{1}{2\sqrt{3}}\Delta = \frac{2}{\sqrt{3}}\Delta$。<br />
+  $$ \psi_{AB} = +\frac{2}{\sqrt{3}} \frac{\Delta}{L} = R $$</p>
+</li>
+<li>
+<p><strong>CD 桿</strong>：因幾何對稱性，位移投影大小與方向相同，<br />
+  $$ \psi_{CD} = +\frac{2}{\sqrt{3}} \frac{\Delta}{L} = R $$</p>
+</li>
+<li>
+<p><strong>BC 桿</strong>：C 點相對於 B 點的垂直位移為 $\Delta/\sqrt{3} - (-\Delta/\sqrt{3}) = \frac{2}{\sqrt{3}}\Delta$ (向上)。此位移剛好垂直於水平的 BC 桿軸，造成逆時針旋轉。<br />
+  $$ \psi_{BC} = -\frac{2}{\sqrt{3}} \frac{\Delta}{L} = -R $$</p>
+</li>
+</ul>
+<blockquote>
+<p><strong>策略註解</strong>：正確找出 $\psi_{AB} = \psi_{CD} = - \psi_{BC} = R$ 是本題最核心的門檻，建議務必畫出變形示意圖輔助判斷。</p>
+</blockquote>
+<h3>步驟 2：固端彎矩 (FEM) 與 傾角撓度方程式</h3>
+<ul>
+<li>
+<p>構件 BC 承受中央集中載重 $2P$（向下）：<br />
+  $$ M_{BC}^F = -\frac{(2P)L}{8} = -\frac{PL}{4} $$<br />
+  $$ M_{CB}^F = +\frac{(2P)L}{8} = +\frac{PL}{4} $$</p>
+</li>
+<li>
+<p>A、D 為固定端，邊界條件：$\theta_A = 0, \theta_D = 0$。</p>
+</li>
+</ul>
+<p>傾角撓度基本方程式：</p>
+<ol>
+<li>$M_{AB} = 2k (\theta_B - 3R)$</li>
+<li>$M_{BA} = 2k (2\theta_B - 3R)$</li>
+<li>$M_{BC} = 2k (2\theta_B + \theta_C + 3R) - \frac{PL}{4}$</li>
+<li>$M_{CB} = 2k (2\theta_C + \theta_B + 3R) + \frac{PL}{4}$</li>
+<li>$M_{CD} = 2k (2\theta_C - 3R)$</li>
+<li>$M_{DC} = 2k (\theta_C - 3R)$</li>
+</ol>
+<h3>步驟 3：節點平衡方程式</h3>
+<ul>
+<li>
+<p><strong>節點 B 力矩平衡</strong>：$\Sigma M_B = M_{BA} + M_{BC} = 0$<br />
+  $$ 2k(2\theta_B - 3R) + 2k(2\theta_B + \theta_C + 3R) - \frac{PL}{4} = 0 $$<br />
+  整理得：<br />
+  $$ 8\theta_B + 2\theta_C = \frac{PL}{4k} \quad \text{--- (式 1)} $$</p>
+</li>
+<li>
+<p><strong>節點 C 力矩平衡</strong>：$\Sigma M_C = M_{CB} + M_{CD} = 0$<br />
+  $$ 2k(2\theta_C + \theta_B + 3R) + \frac{PL}{4} + 2k(2\theta_C - 3R) = 0 $$<br />
+  整理得：<br />
+  $$ 2\theta_B + 8\theta_C = -\frac{PL}{4k} \quad \text{--- (式 2)} $$</p>
+</li>
+</ul>
+<p>由 (式 1)、(式 2) 聯立可解得（側移參數 $R$ 剛好在平衡方程式中互相抵消，這是因垂直載重與結構對稱性之故）：<br />
+$$ \theta_B = \frac{PL}{24k}, \quad \theta_C = -\frac{PL}{24k} $$</p>
+<h3>步驟 4：剪力方程式 (以虛功法推導)</h3>
+<p>令系統產生一虛擬變形模式，其大小正比於前述側移，即 B 點虛擬水平側移量為 $\delta\Delta$，對應之各桿虛擬弦切角參數為 $\delta R$。<br />
+外力作功僅有水平力 $P$ 參與（因 E 點隨結構發生微小側移時，其垂直虛擬位移 $\delta\Delta_{Ey} = 0$）：<br />
+$$ \delta W_{ext} = \sum P_i \delta\Delta_i = P \times \delta\Delta = P \left( \frac{\sqrt{3}L}{2} \delta R \right) $$</p>
+<p>依據傾角變位法中慣用的虛功方程式 $\sum P_i \delta\Delta_i + \sum (M_{ij} + M_{ji}) \delta\psi_{ij} = 0$：<br />
+$$ P \left( \frac{\sqrt{3}L}{2} \delta R \right) + (M_{AB} + M_{BA}) \delta\psi_{AB} + (M_{BC} + M_{CB}) \delta\psi_{BC} + (M_{CD} + M_{DC}) \delta\psi_{CD} = 0 $$<br />
+代入 $\delta\psi_{AB} = \delta R, \delta\psi_{CD} = \delta R, \delta\psi_{BC} = -\delta R$，並消去公因數 $\delta R$：<br />
+$$ P \frac{\sqrt{3}L}{2} + (M_{AB} + M_{BA}) - (M_{BC} + M_{CB}) + (M_{CD} + M_{DC}) = 0 $$<br />
+移項可得剪力方程式：<br />
+$$ M_{AB} + M_{BA} - M_{BC} - M_{CB} + M_{CD} + M_{DC} = - \frac{\sqrt{3}}{2} PL \quad \text{--- (式 3)} $$</p>
+<p>將端彎矩代入 (式 3) 左邊展開：</p>
+<ul>
+<li>$M_{AB} + M_{BA} = 2k(3\theta_B - 6R)$</li>
+<li>$M_{BC} + M_{CB} = 2k(3\theta_B + 3\theta_C + 6R)$</li>
+<li>$M_{CD} + M_{DC} = 2k(3\theta_C - 6R)$</li>
+</ul>
+<p>$$ \text{左式} = 2k \left[ 3\theta_B - 6R - 3\theta_B - 3\theta_C - 6R + 3\theta_C - 6R \right] = 2k(-18R) = -36kR $$<br />
+代入 (式 3)：<br />
+$$ -36kR = - \frac{\sqrt{3}}{2} PL \implies R = \frac{\sqrt{3} PL}{72k} $$</p>
+<h3>步驟 5：計算各端彎矩</h3>
+<p>將 $\theta_B, \theta_C, R$ 代回原方程式：</p>
+<ul>
+<li>$M_{AB} = 2k \left( \frac{PL}{24k} - \frac{3\sqrt{3}PL}{72k} \right) = \mathbf{\frac{1-\sqrt{3}}{12} PL}$</li>
+<li>$M_{BA} = 2k \left( \frac{2PL}{24k} - \frac{3\sqrt{3}PL}{72k} \right) = \mathbf{\frac{2-\sqrt{3}}{12} PL}$</li>
+<li>$M_{BC} = 2k \left( \frac{2PL}{24k} - \frac{PL}{24k} + \frac{3\sqrt{3}PL}{72k} \right) - \frac{PL}{4} = \mathbf{\frac{-2+\sqrt{3}}{12} PL}$</li>
+<li>$M_{CB} = 2k \left( -\frac{2PL}{24k} + \frac{PL}{24k} + \frac{3\sqrt{3}PL}{72k} \right) + \frac{PL}{4} = \mathbf{\frac{2+\sqrt{3}}{12} PL}$</li>
+<li>$M_{CD} = 2k \left( -\frac{2PL}{24k} - \frac{3\sqrt{3}PL}{72k} \right) = \mathbf{\frac{-2-\sqrt{3}}{12} PL}$</li>
+<li>$M_{DC} = 2k \left( -\frac{PL}{24k} - \frac{3\sqrt{3}PL}{72k} \right) = \mathbf{\frac{-1-\sqrt{3}}{12} PL}$</li>
+</ul>
+<h2>5. 關鍵爭議點與進階探討 (Critical Issues &amp; Advanced Discussion)</h2>
+<ul>
+<li><strong>虛功法符號約定</strong>：在傾角變位法中，端彎矩順時針為正、弦切角順時針為正。推導剪力方程式時，最安全的方法是使用虛功方程式 $\sum P \delta\Delta + \sum (M_{ij} + M_{ji}) \delta\psi_{ij} = 0$。若正負號定義混淆，將導致側移參數 $R$ 方向錯誤，進而影響所有端彎矩的計算結果。</li>
+<li><strong>對稱性解耦</strong>：本題中，由節點平衡方程式可發現，側移參數 $R$ 剛好互相抵消，使得 $\theta_B, \theta_C$ 可直接解出。這是因為結構對稱，且垂直載重 $2P$ 為對稱載重。水平載重 $P$ 為反對稱載重，主要貢獻在側移 $R$ 上。若能在考場上敏銳觀察出這類對稱與反對稱載重疊加的獨立特性，可大幅提昇驗算與防錯能力。</li>
+</ul></main>
+<footer>來源：raw/solutions/SA-2010-3/SA-2010-3.md（知識庫解題內容唯一正本；本頁僅為渲染顯示）</footer>
+
+<script>
+/* 跟隨來源單元：若由 unit-/lecture-SA-Un-m.html（或舊的 study-/formula-given-）點進來，
+   兩顆按鈕改指向「來源那個單元」。靜態 href 保底，無 JS 或無 referrer 時仍可用。 */
+(function(){
+  var NAMES={"SA-U1-2": "靜定結構之分析", "SA-U1-3": "靜定及靜不定結構影響線", "SA-U2-1": "靜不定結構最小功法", "SA-U2-3": "靜不定結構之傾角變位法", "SA-U2-4": "靜不定結構之矩陣分析法"};
+  var m=(document.referrer||'').match(/\/(?:unit|study|lecture|formula-given)-(SA-U\d+-\d+)\.html/);
+  if(!m||!NAMES[m[1]])return;
+  var u=m[1], s=u.slice(3), box=document.querySelector('.hbtns');
+  if(!box)return;
+  box.innerHTML=
+    '<a class="b-study" href="../unit-'+u+'.html">\u{1F9ED} '+s+' \u55AE\u5143\u7E3D\u89BD</a>'+
+    '<a class="b-lect" href="../lecture-'+u+'.html">\u{1F4DA} '+s+' '+NAMES[u]+' \u8B1B\u7FA9</a>';
+  var n=document.querySelector('.nomat'); if(n)n.remove();
+})();
+</script>
+</body></html>

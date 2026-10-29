@@ -41,7 +41,7 @@ header .nomat{margin-top:12px;font-size:.8em;opacity:.85}
 <header>
 <h1>SA-2014-2　靜不定結構諧合變位</h1>
 <p class="meta2">主分類 <b>SA-U2-2</b> 靜不定結構諧合變位 ｜ 副分類 <b>SA-U2-1</b> 靜不定結構最小功法 ｜ 2014 年（民國 103） ｜ 諧合變位法</p>
-<div class="hbtns"><a class="b-study" href="../study-SA-U2-1.html">🔍 U2-1 命題分析</a><a class="b-lect" href="../lecture-SA-U2-1.html">📚 U2-1 靜不定結構最小功法 講義</a><a class="b-fg" href="../formula-given-SA-U2-1.html">🎯 U2-1 給／背分界</a></div><p class="nomat">本題主分類 SA-U2-2 目前尚無教材，按鈕指向有教材的副分類 SA-U2-1。</p>
+<div class="hbtns"><a class="b-study" href="../unit-SA-U2-1.html">🧭 U2-1 單元總覽</a><a class="b-lect" href="../lecture-SA-U2-1.html">📚 U2-1 靜不定結構最小功法 講義</a></div><p class="nomat">本題主分類 SA-U2-2 目前尚無教材，按鈕指向有教材的副分類 SA-U2-1。</p>
 </header>
 <main><h1>考題編號：SA-2014-2</h1>
 <p><strong>主分類：</strong> <code>SA-U2-2</code> 靜不定結構諧合變位<br />
@@ -301,18 +301,17 @@ A 點端彎矩：$M(0) = -28.8 \text{ kN-m}$。</p>
 <footer>來源：raw/solutions/SA-2014-2/SA-2014-2.md（知識庫解題內容唯一正本；本頁僅為渲染顯示）</footer>
 
 <script>
-/* 跟隨來源單元：若由 study-/lecture-/formula-given-SA-Un-m.html 點進來，
-   三顆按鈕改指向「來源那個單元」。靜態 href 保底，無 JS 或無 referrer 時仍可用。 */
+/* 跟隨來源單元：若由 unit-/lecture-SA-Un-m.html（或舊的 study-/formula-given-）點進來，
+   兩顆按鈕改指向「來源那個單元」。靜態 href 保底，無 JS 或無 referrer 時仍可用。 */
 (function(){
   var NAMES={"SA-U1-2": "靜定結構之分析", "SA-U1-3": "靜定及靜不定結構影響線", "SA-U2-1": "靜不定結構最小功法", "SA-U2-3": "靜不定結構之傾角變位法", "SA-U2-4": "靜不定結構之矩陣分析法"};
-  var m=(document.referrer||'').match(/\/(?:study|lecture|formula-given)-(SA-U\d+-\d+)\.html/);
+  var m=(document.referrer||'').match(/\/(?:unit|study|lecture|formula-given)-(SA-U\d+-\d+)\.html/);
   if(!m||!NAMES[m[1]])return;
   var u=m[1], s=u.slice(3), box=document.querySelector('.hbtns');
   if(!box)return;
   box.innerHTML=
-    '<a class="b-study" href="../study-'+u+'.html">\u{1F50D} '+s+' \u547D\u984C\u5206\u6790</a>'+
-    '<a class="b-lect" href="../lecture-'+u+'.html">\u{1F4DA} '+s+' '+NAMES[u]+' \u8B1B\u7FA9</a>'+
-    '<a class="b-fg" href="../formula-given-'+u+'.html">\u{1F3AF} '+s+' \u7D66\uFF0F\u80CC\u5206\u754C</a>';
+    '<a class="b-study" href="../unit-'+u+'.html">\u{1F9ED} '+s+' \u55AE\u5143\u7E3D\u89BD</a>'+
+    '<a class="b-lect" href="../lecture-'+u+'.html">\u{1F4DA} '+s+' '+NAMES[u]+' \u8B1B\u7FA9</a>';
   var n=document.querySelector('.nomat'); if(n)n.remove();
 })();
 </script>

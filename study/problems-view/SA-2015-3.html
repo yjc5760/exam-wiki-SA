@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="zh-Hant"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SA-2015-3 — 題目解析</title>
+<link rel="stylesheet" href="../assets/katex/katex.min.css">
+<script defer src="../assets/katex/katex.min.js"></script>
+<script defer src="../assets/katex/auto-render.min.js"
+  onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},
+  {left:'$',right:'$',display:false},{left:'\\(',right:'\\)',display:false}],throwOnError:false});"></script>
+<style>
+:root{--ac:#1565c0;--bg:#f7f9fb;--card:#fff;--ink:#263238;--mut:#607d8b;--bd:#dfe6ea}
+*{box-sizing:border-box}
+body{margin:0;font-family:"Microsoft JhengHei","Noto Sans TC",-apple-system,sans-serif;
+  background:var(--bg);color:var(--ink);line-height:1.75;font-size:15.5px}
+header{background:linear-gradient(135deg,#0d47a1,#1976d2 60%,#42a5f5);color:#fff;padding:22px 26px}
+header h1{margin:0;font-size:1.15em}
+header .back{display:inline-block;margin-top:10px;font-size:.82em;color:#fff;background:rgba(255,255,255,.18);
+  padding:4px 12px;border-radius:14px;text-decoration:none}
+main{max-width:880px;margin:0 auto;padding:26px 22px 70px}
+h1,h2,h3{color:#0d47a1} h2{font-size:1.2em;border-left:6px solid var(--ac);padding-left:12px;margin:34px 0 14px}
+table{width:100%;border-collapse:collapse;margin:14px 0;font-size:.92em;background:#fff}
+th,td{border:1px solid var(--bd);padding:7px 10px;text-align:left;vertical-align:top}
+th{background:#eceff1;font-weight:600} tbody tr:nth-child(even){background:#fafcfd}
+code{background:#eceff1;padding:1px 5px;border-radius:4px;font-size:.92em}
+img{max-width:100%;display:block;margin:14px auto;border:1px solid var(--bd);border-radius:8px}
+.katex-display{margin:12px 0!important;overflow-x:auto;overflow-y:hidden}
+footer{text-align:center;color:var(--mut);font-size:.8em;padding:22px;border-top:1px solid var(--bd)}
+
+header h1{color:#fff!important;font-size:1.25em;margin:0;letter-spacing:.5px}
+header .meta2{margin:8px 0 0;font-size:.84em;opacity:.93;line-height:1.6}
+header .meta2 b{background:rgba(255,255,255,.2);border-radius:4px;padding:1px 7px;font-weight:600}
+header .hbtns{display:flex;flex-wrap:wrap;gap:10px;margin-top:14px}
+header .hbtns a{font-size:.85em;text-decoration:none;padding:7px 17px;border-radius:22px;
+  font-weight:700;white-space:nowrap;line-height:1.4}
+header .b-study{background:#fff;color:#1565c0}
+header .b-lect{background:#6a1b9a;color:#fff}
+header .b-fg{background:#c62828;color:#fff}
+header .hbtns a:hover{filter:brightness(1.08)}
+header .nomat{margin-top:12px;font-size:.8em;opacity:.85}
+</style></head><body>
+<header>
+<h1>SA-2015-3　靜不定結構之傾角變位法</h1>
+<p class="meta2">主分類 <b>SA-U2-3</b> 靜不定結構之傾角變位法 ｜ 2015 年（民國 104） ｜ 傾角變位法 (Slope-deflection method)</p>
+<div class="hbtns"><a class="b-study" href="../unit-SA-U2-3.html">🧭 U2-3 單元總覽</a><a class="b-lect" href="../lecture-SA-U2-3.html">📚 U2-3 靜不定結構之傾角變位法 講義</a></div>
+</header>
+<main><h1>考題編號：SA-2015-3</h1>
+<p><strong>主分類：</strong> <code>SA-U2-3</code> 靜不定結構之傾角變位法<br />
+<strong>副分類：</strong><br />
+<strong>分析法：</strong> 傾角變位法 (Slope-deflection method)<br />
+<strong>標籤：</strong> <code>對稱剛架</code> <code>傾角變位法</code> <code>內部鉸</code> <code>相對位移</code></p>
+<hr />
+<h2>1. 原始題目</h2>
+<p>圖三為一平面構架，點 A、G 及 H 為固定支承，點 C 及 E 為鉸接，此構架點 B 至 F 間梁桿件承受一垂直均佈載重 $4 \text{ kN/m}$。設所有桿件 EI 為定值，且忽略桿件軸向變形，試用傾角變位法，求各桿件端點彎矩及支承 G 之反力，並繪出 B 至 F 間梁桿件之彎矩圖。（25 分）</p>
+<p><img alt="平面對稱構架，A、G、H固定，C、E鉸接，載重4kN/m" src="../../raw/solutions/SA-2015-3/./SA-2015-3-fig-1.png" /></p>
+<p><em>圖說：A、G、H為固定端柱底。AB=GD=HF=4m。上方梁B-C-D-E-F承受4kN/m均佈載重，其中C、E為內部鉸。BC=1m, CD=3m, DE=3m, EF=1m。</em></p>
+<hr />
+<h2>2. 核心考點</h2>
+<p>本題的核心在於<strong>處理對稱剛架中的內部鉸</strong>。利用對稱性可大幅減少未知數，但考生常犯的致命錯誤是「忽略內部鉸會產生垂直相對位移（下垂或上拱）」。必須引入鉸節點的垂直位移 $\delta$，並利用鉸接處的剪力平衡來建立方程式，才能得到正確解。</p>
+<hr />
+<h2>3. 解題戰略地圖</h2>
+<ol>
+<li><strong>對稱性簡化</strong>：結構與載重均完全對稱於中心柱 GD。因此無側移 ($\Delta = 0$)，且中心節點 D 不旋轉 ($\theta_D = 0$)。</li>
+<li><strong>定義未知數</strong>：因 C、E 為鉸接，其彎矩為零，可採用修正傾角變位方程式消去 $\theta_C$。真正獨立的未知數僅剩 B 點轉角 $\theta_B$，以及鉸 C 的垂直變位量 $\delta$（進而產生弦轉角 $\psi$）。</li>
+<li><strong>建立節點方程式</strong>：</li>
+<li>B 點力矩平衡：$\sum M_B = 0 \Rightarrow M_{BA} + M_{BC} = 0$</li>
+<li>C 點剪力平衡（鉸點無外加集中力）：左側 BC 傳遞的剪力與右側 CD 傳遞的剪力必須達成靜力平衡。</li>
+<li><strong>解聯立方程式</strong>：解出 $\theta_B$ 與 $\delta$，代回求得所有桿端彎矩。</li>
+<li><strong>求解反力 G</strong>：計算梁 CD 與 DE 在 D 點的剪力反力，加總即為中心柱 GD 所承受的軸力（即 $G_y$）。</li>
+<li><strong>繪製 BMD</strong>：依據求得之端彎矩，疊加均佈載重之拋物線，繪製 B~F 之彎矩圖。</li>
+</ol>
+<hr />
+<h2>3.5 變數層次分析（Variable Hierarchy Analysis）</h2>
+<blockquote>
+<p>複習提示：第一次解題後，在每個卡住的知識點旁標記 <code>⚠</code>；第二次複習時只看有 <code>⚠</code> 的項目。</p>
+</blockquote>
+<h3>最終目標</h3>
+<p>求得 $\theta_B$ 與 $\delta$，進而計算所有桿端彎矩與 G 點反力。</p>
+<h3>本題關鍵公式（依計算順序）</h3>
+<blockquote>
+<p>$\boxed{\cdot}$ = 需由前步驟推導，非題目直接給定的變數</p>
+</blockquote>
+<p>$$\text{Step 1: } M_{ij} = \frac{3EI}{L} (\theta_i - \psi) + FEM_{ij} \text{ (修正型方程式)}$$<br />
+$$\text{Step 2: } \sum M_B = 0 \Rightarrow \boxed{M_{BA}} + \boxed{M_{BC}} = 0$$<br />
+$$\text{Step 3: } \sum V_{C,up} = 0 \Rightarrow \boxed{V_{C, left}} + \boxed{V_{C, right}} = 0 \text{ (施加於鉸上的力量)}$$<br />
+$$\text{Step 4: 解聯立得 } \theta_B, \delta \Rightarrow \text{代回求 } M_{ij} \text{ 與 } G_y$$</p>
+<h3>L1：題目直接給定</h3>
+<table>
+<thead>
+<tr>
+<th>符號</th>
+<th>數值</th>
+<th>說明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>$w$</td>
+<td>$4 \text{ kN/m}$</td>
+<td>梁 B~F 的均佈載重</td>
+</tr>
+<tr>
+<td>$L_{AB}$</td>
+<td>$4 \text{ m}$</td>
+<td>左側柱高</td>
+</tr>
+<tr>
+<td>$L_{BC}$</td>
+<td>$1 \text{ m}$</td>
+<td>左外側梁長</td>
+</tr>
+<tr>
+<td>$L_{CD}$</td>
+<td>$3 \text{ m}$</td>
+<td>左內側梁長</td>
+</tr>
+</tbody>
+</table>
+<h3>L2：需知識點推導</h3>
+<p><strong>Step 1：固端彎矩 (FEM) 與弦轉角 ($\psi$)</strong></p>
+<table>
+<thead>
+<tr>
+<th>符號</th>
+<th>公式/來源</th>
+<th style="text-align: center;">卡關?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>$FEM_{BC}$</td>
+<td>$-\frac{w L_{BC}^2}{8} = -0.5$</td>
+<td style="text-align: center;">B固定C鉸接之固端彎矩 (逆時針為負)</td>
+</tr>
+<tr>
+<td>$FEM_{DC}$</td>
+<td>$+\frac{w L_{CD}^2}{8} = +4.5$</td>
+<td style="text-align: center;">D固定C鉸接之固端彎矩 (順時針為正)</td>
+</tr>
+<tr>
+<td>$\psi_{BC}$</td>
+<td>$\delta / 1 = \delta$</td>
+<td style="text-align: center;">C 點下陷 $\delta$，弦轉動為順時針(正)</td>
+</tr>
+<tr>
+<td>$\psi_{CD}$</td>
+<td>$-\delta / 3$</td>
+<td style="text-align: center;">C 點下陷 $\delta$，弦轉動為逆時針(負)</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Step 2 &amp; 3：彎矩與剪力表示式</strong></p>
+<table>
+<thead>
+<tr>
+<th>符號</th>
+<th>公式/來源</th>
+<th style="text-align: center;">卡關?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>$M_{BC}$</td>
+<td>$3EI(\theta_B - \delta) - 0.5$</td>
+<td style="text-align: center;">代入修正傾角方程式</td>
+</tr>
+<tr>
+<td>$M_{DC}$</td>
+<td>$EI(\delta/3) + 4.5$</td>
+<td style="text-align: center;">代入修正傾角方程式 ($\theta_D=0$)</td>
+</tr>
+<tr>
+<td>$V_{C,left}$</td>
+<td>$M_{BC} + 2$</td>
+<td style="text-align: center;">取 BC 段對 B 取力矩求得 (鉸施於左側梁之向上力)</td>
+</tr>
+<tr>
+<td>$V_{C,right}$</td>
+<td>$6 - M_{DC}/3$</td>
+<td style="text-align: center;">取 CD 段對 D 取力矩求得 (鉸施於右側梁之向上力)</td>
+</tr>
+</tbody>
+</table>
+<h3>L3：深層知識（不懂就卡住）</h3>
+<table>
+<thead>
+<tr>
+<th>知識點</th>
+<th>說明</th>
+<th style="text-align: center;">卡關?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>對稱性無側移</strong></td>
+<td>結構幾何與載重皆完全對稱於 GD 柱，故無側移 ($\Delta_x = 0$)，中心點 D 不旋轉 ($\theta_D = 0$)。</td>
+<td style="text-align: center;"></td>
+</tr>
+<tr>
+<td><strong>內部鉸的垂直位移</strong></td>
+<td>內部鉸 C 缺乏垂直支承，必然產生垂直位移 $\delta$，進而引發相鄰桿件的弦轉角 $\psi \neq 0$。這是本題最常掉入的陷阱。</td>
+<td style="text-align: center;"></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>4. 步驟化詳細計算過程</h2>
+<h3>步驟 1：建立傾角變位方程式</h3>
+<p>設順時針轉角與彎矩為正。C 點下陷量為 $\delta$ (向下為正)。</p>
+<ul>
+<li>
+<p><strong>AB 柱</strong> ($\theta_A = 0, \Delta = 0$):<br />
+  $M_{AB} = \frac{2EI}{4}(\theta_B) = 0.5 EI \theta_B$<br />
+  $M_{BA} = \frac{2EI}{4}(2\theta_B) = EI \theta_B$</p>
+</li>
+<li>
+<p><strong>BC 梁</strong> ($\theta_C$ 為鉸, 修正型):<br />
+  $\psi_{BC} = \frac{\delta - 0}{1} = \delta$<br />
+  $M_{BC} = \frac{3EI}{1}(\theta_B - \psi_{BC}) + FEM_{BC} = 3EI(\theta_B - \delta) - 0.5$</p>
+</li>
+<li>
+<p><strong>CD 梁</strong> ($\theta_D = 0, \theta_C$ 為鉸, 修正型):<br />
+  $\psi_{CD} = \frac{0 - \delta}{3} = -\frac{\delta}{3}$<br />
+  $M_{DC} = \frac{3EI}{3}(\theta_D - \psi_{CD}) + FEM_{DC} = EI\left(\frac{\delta}{3}\right) + 4.5$</p>
+</li>
+</ul>
+<h3>步驟 2：節點 B 彎矩平衡方程式</h3>
+<p>$$ \sum M_B = 0 \Rightarrow M_{BA} + M_{BC} = 0 $$<br />
+$$ EI\theta_B + 3EI\theta_B - 3EI\delta - 0.5 = 0 $$<br />
+$$ 4EI\theta_B - 3EI\delta = 0.5 \quad \text{--- (式 1)} $$</p>
+<h3>步驟 3：內部鉸 C 剪力平衡方程式</h3>
+<p>C 為內部鉸，其左右兩側傳遞之剪力必須平衡（即 C 點無不平衡外加集中力）。</p>
+<ol>
+<li>
+<p><strong>分析 BC 段 (取對 B 力矩)</strong>：<br />
+   設 $V_{C, left}$ 為內部鉸對 BC 段施加的向上力。<br />
+   $$ \sum M_B = 0 \Rightarrow V_{C, left} \times 1 - M_{BC} \text{ (順時針)} - 4 \times 1 \times 0.5 = 0 $$<br />
+   $$ \Rightarrow V_{C, left} = M_{BC} + 2 \text{ (向上)} $$</p>
+</li>
+<li>
+<p><strong>分析 CD 段 (取對 D 力矩)</strong>：<br />
+   設 $V_{C, right}$ 為內部鉸對 CD 段施加的向上力。<br />
+   $$ \sum M_D = 0 \Rightarrow V_{C, right} \times 3 - M_{DC} \text{ (順時針)} - 4 \times 3 \times 1.5 = 0 $$<br />
+   $$ \Rightarrow V_{C, right} = 6 - \frac{M_{DC}}{3} \text{ (向上)} $$</p>
+</li>
+<li>
+<p><strong>鉸接點本身平衡</strong>：<br />
+   梁施於鉸的力必須抵消，亦即鉸對左梁的向上力與鉸對右梁的向上力總和為零：<br />
+   $$ V_{C, left} + V_{C, right} = 0 \Rightarrow (M_{BC} + 2) + \left(6 - \frac{M_{DC}}{3}\right) = 0 $$<br />
+   $$ M_{BC} - \frac{M_{DC}}{3} = -8 $$<br />
+   代入傾角方程式：<br />
+   $$ (3EI\theta_B - 3EI\delta - 0.5) - \left( \frac{EI\delta}{9} + 1.5 \right) = -8 $$<br />
+   $$ 3EI\theta_B - \frac{28}{9}EI\delta = -6 \quad \text{--- (式 2)} $$</p>
+</li>
+</ol>
+<h3>步驟 4：解聯立方程式與求彎矩</h3>
+<p>由式 1 得：$EI\delta = \frac{4}{3}EI\theta_B - \frac{1}{6}$<br />
+代入式 2：<br />
+$$ 3EI\theta_B - \frac{28}{9}\left(\frac{4}{3}EI\theta_B - \frac{1}{6}\right) = -6 $$<br />
+$$ \left(3 - \frac{112}{27}\right)EI\theta_B = -6 - \frac{14}{27} $$<br />
+$$ -\frac{31}{27}EI\theta_B = -\frac{176}{27} \Rightarrow \mathbf{EI\theta_B = \frac{176}{31} \approx 5.677} $$<br />
+回代求 $\delta$：<br />
+$$ EI\delta = \frac{4}{3}\left(\frac{176}{31}\right) - \frac{1}{6} = \frac{704}{93} - \frac{1}{6} = \mathbf{\frac{459}{62} \approx 7.403} \text{ (正值表 C 點確實下陷)} $$</p>
+<p><strong>計算左半部桿端彎矩</strong>：</p>
+<ul>
+<li>$M_{AB} = 0.5 \times \frac{176}{31} = \mathbf{\frac{88}{31} \approx 2.84 \text{ kN-m (順)}}$</li>
+<li>$M_{BA} = 1.0 \times \frac{176}{31} = \mathbf{\frac{176}{31} \approx 5.68 \text{ kN-m (順)}}$</li>
+<li>$M_{BC} = 3\left(\frac{176}{31}\right) - 3\left(\frac{459}{62}\right) - 0.5 = \mathbf{-\frac{176}{31} \approx -5.68 \text{ kN-m (逆)}}$</li>
+<li>$M_{DC} = \frac{1}{3}\left(\frac{459}{62}\right) + 4.5 = \mathbf{\frac{216}{31} \approx 6.97 \text{ kN-m (順)}}$</li>
+</ul>
+<p>由對稱性直接寫出右半部彎矩：</p>
+<ul>
+<li>$M_{FE} = \mathbf{\frac{176}{31} \text{ kN-m (順)}}$</li>
+<li>$M_{FH} = \mathbf{-\frac{176}{31} \text{ (逆)}}$</li>
+<li>$M_{HF} = \mathbf{-\frac{88}{31} \text{ (逆)}}$</li>
+<li>$M_{DE} = \mathbf{-\frac{216}{31} \text{ kN-m (逆)}}$</li>
+<li>中心柱因 $\theta_D = 0, \Delta = 0$ 且無載重，故 $M_{GD} = M_{DG} = \mathbf{0}$</li>
+<li>鉸接點 $M_{CB} = M_{CD} = M_{ED} = M_{EF} = \mathbf{0}$</li>
+</ul>
+<h3>步驟 5：求 G 點反力</h3>
+<p>中心柱 GD 沒有彎矩與水平剪力，故 $G_x = 0, M_G = 0$。<br />
+垂直反力 $G_y$ 來自 D 點左右兩側梁傳遞的剪力：</p>
+<ol>
+<li>
+<p><strong>CD 段 D 點剪力 ($V_D$)</strong>：<br />
+   對 C 取力矩：$V_D \times 3 - M_{DC} - 12 \times 1.5 = 0 \Rightarrow V_D = 6 + \frac{216/31}{3} = \frac{258}{31} \text{ kN (向上)}$</p>
+</li>
+<li>
+<p><strong>總反力</strong>：<br />
+   對稱結構下，右半側 DE 段亦貢獻 $\frac{258}{31} \text{ kN}$ 壓於中心柱上。<br />
+   $$ G_y = 2 \times \frac{258}{31} = \mathbf{\frac{516}{31} \text{ kN} \approx 16.65 \text{ kN (向上)}} $$</p>
+</li>
+</ol>
+<h3>步驟 6：繪製彎矩圖 (BMD)</h3>
+<p>根據算出的桿端彎矩以及 4 kN/m 的均佈載重，疊加各段拋物線。</p>
+<p><img alt="梁 B~F 彎矩圖" src="../../raw/solutions/SA-2015-3/./BMD.png" /></p>
+<p><em>圖說：上方梁 B-C-D-E-F 的彎矩圖 (BMD)。於 B 點內彎矩為 -5.68 (上方受拉)，在鉸 C 點彎矩歸零，至 D 點達 -6.97 (上方受拉)。全段受 4 kN/m 均佈載重呈拋物線變化。</em></p>
+<hr />
+<h2>5. 關鍵爭議點與進階探討</h2>
+<p><strong>為什麼必須考慮 $\delta \neq 0$？</strong><br />
+初學者看到對稱與無側移 ($\Delta_x = 0$)，常誤以為內部所有節點的相對位移都是 0。但內部鉸 (Internal Hinge) 打破了梁的連續性，且底下<strong>沒有柱子支撐</strong>，這意味著它就像吊橋的中間節點一樣，在重力作用下必然產生下陷。如果不考慮 $\delta$，即預設 $\psi = 0$，算出來的 $V_{C, left}$ 與 $V_{C, right}$ 絕對不會平衡，會導致整個結構的自由體圖不滿足靜力平衡法則。這正是本題的核心考驗。</p></main>
+<footer>來源：raw/solutions/SA-2015-3/SA-2015-3.md（知識庫解題內容唯一正本；本頁僅為渲染顯示）</footer>
+
+<script>
+/* 跟隨來源單元：若由 unit-/lecture-SA-Un-m.html（或舊的 study-/formula-given-）點進來，
+   兩顆按鈕改指向「來源那個單元」。靜態 href 保底，無 JS 或無 referrer 時仍可用。 */
+(function(){
+  var NAMES={"SA-U1-2": "靜定結構之分析", "SA-U1-3": "靜定及靜不定結構影響線", "SA-U2-1": "靜不定結構最小功法", "SA-U2-3": "靜不定結構之傾角變位法", "SA-U2-4": "靜不定結構之矩陣分析法"};
+  var m=(document.referrer||'').match(/\/(?:unit|study|lecture|formula-given)-(SA-U\d+-\d+)\.html/);
+  if(!m||!NAMES[m[1]])return;
+  var u=m[1], s=u.slice(3), box=document.querySelector('.hbtns');
+  if(!box)return;
+  box.innerHTML=
+    '<a class="b-study" href="../unit-'+u+'.html">\u{1F9ED} '+s+' \u55AE\u5143\u7E3D\u89BD</a>'+
+    '<a class="b-lect" href="../lecture-'+u+'.html">\u{1F4DA} '+s+' '+NAMES[u]+' \u8B1B\u7FA9</a>';
+  var n=document.querySelector('.nomat'); if(n)n.remove();
+})();
+</script>
+</body></html>

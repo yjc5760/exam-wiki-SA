@@ -39,13 +39,13 @@ header .hbtns a:hover{filter:brightness(1.08)}
 header .nomat{margin-top:12px;font-size:.8em;opacity:.85}
 </style></head><body>
 <header>
-<h1>SA-2009-3　靜不定度與穩定性之判斷</h1>
-<p class="meta2">主分類 <b>SA-U1-1</b> 靜不定度與穩定性之判斷 ｜ 副分類 <b>SA-U2-3</b> 靜不定結構之傾角變位法 ｜ 2009 年（民國 98） ｜ 傾角變位法</p>
-<div class="hbtns"><a class="b-study" href="../study-SA-U2-3.html">🔍 U2-3 命題分析</a><a class="b-lect" href="../lecture-SA-U2-3.html">📚 U2-3 靜不定結構之傾角變位法 講義</a><a class="b-fg" href="../formula-given-SA-U2-3.html">🎯 U2-3 給／背分界</a></div><p class="nomat">本題主分類 SA-U1-1 目前尚無教材，按鈕指向有教材的副分類 SA-U2-3。</p>
+<h1>SA-2009-3　靜不定結構之傾角變位法</h1>
+<p class="meta2">主分類 <b>SA-U2-3</b> 靜不定結構之傾角變位法 ｜ 2009 年（民國 98） ｜ 傾角變位法</p>
+<div class="hbtns"><a class="b-study" href="../unit-SA-U2-3.html">🧭 U2-3 單元總覽</a><a class="b-lect" href="../lecture-SA-U2-3.html">📚 U2-3 靜不定結構之傾角變位法 講義</a></div><p class="nomat">本題主分類 SA-U1-1 目前尚無教材，按鈕指向有教材的副分類 SA-U2-3。</p>
 </header>
 <main><h1>考題編號：SA-2009-3</h1>
-<p><strong>主分類：</strong> <code>SA-U1-1</code> 剛架結構分析<br />
-<strong>副分類：</strong> <code>SA-U1-4</code> 傾角變位法 (Slope-Deflection Method)<br />
+<p><strong>主分類：</strong> <code>SA-U2-3</code> 靜不定結構之傾角變位法<br />
+<strong>副分類：</strong> 無<br />
 <strong>分析法：</strong> 傾角變位法<br />
 <strong>標籤：</strong> <code>側移剛架</code>, <code>水平勁度</code>, <code>對稱性</code></p>
 <hr />
@@ -61,7 +61,7 @@ header .nomat{margin-top:12px;font-size:.8em;opacity:.85}
 <li>計算此剛架結構之總體水平勁度 $K_H$。</li>
 <li>若給定 $P = 100\text{ kN}$，$L = 10\text{ m}$，請計算並標示各節點（各桿端）之彎矩。</li>
 </ol>
-<div style="background:#fff3e0;border-left:5px solid #ef6c00;padding:10px 14px;border-radius:0 8px 8px 0;font-size:.9em;color:#e65100">原始 .md 未內嵌附圖，以下為同資料夾之題目附圖（顯示層補上，未修改 raw/）</div><img src="../../raw/solutions/SA-2009-3/SA-2009-3-fig-1.png" alt="SA-2009-3 題目附圖"><h2>2. 考題核心精神與出題者意圖 (Core Concepts &amp; Examiner's Intent)</h2>
+<h2>2. 考題核心精神與出題者意圖 (Core Concepts &amp; Examiner's Intent)</h2>
 <p>本題的核心觀念在於<strong>具側移剛架的傾角變位法分析</strong>，以及對<strong>結構變形對稱性</strong>的敏銳度。<br />
 出題者意圖測驗考生以下幾項能力：</p>
 <ol>
@@ -180,30 +180,20 @@ header .nomat{margin-top:12px;font-size:.8em;opacity:.85}
 因為底端 e、f 為固定端，$\theta_e = \theta_f = 0$。</p>
 <p>各桿端彎矩如下：</p>
 <ul>
-<li>
-<p><strong>桿件 ab (a為鉸端):</strong><br />
-    $$ M_{ba} = 3K \theta_b $$</p>
-</li>
-<li>
-<p><strong>桿件 bc:</strong><br />
+<li><strong>桿件 ab (a為鉸端):</strong><br />
+    $$ M_{ba} = 3K \theta_b $$</li>
+<li><strong>桿件 bc:</strong><br />
     $$ M_{bc} = 2K(2\theta_b + \theta_c) $$<br />
-    $$ M_{cb} = 2K(2\theta_c + \theta_b) $$</p>
-</li>
-<li>
-<p><strong>桿件 cd (d為鉸端):</strong><br />
-    $$ M_{cd} = 3K \theta_c $$</p>
-</li>
-<li>
-<p><strong>桿件 be (e為固定端):</strong><br />
+    $$ M_{cb} = 2K(2\theta_c + \theta_b) $$</li>
+<li><strong>桿件 cd (d為鉸端):</strong><br />
+    $$ M_{cd} = 3K \theta_c $$</li>
+<li><strong>桿件 be (e為固定端):</strong><br />
     $$ M_{be} = 2K\left(2\theta_b + \theta_e - 3\frac{\Delta}{L}\right) = 2K\left(2\theta_b - 3\frac{\Delta}{L}\right) = 4K\theta_b - 6K\frac{\Delta}{L} $$<br />
-    $$ M_{eb} = 2K\left(\theta_b + 2\theta_e - 3\frac{\Delta}{L}\right) = 2K\left(\theta_b - 3\frac{\Delta}{L}\right) = 2K\theta_b - 6K\frac{\Delta}{L} $$</p>
-</li>
-<li>
-<p><strong>桿件 cf (f為固定端):</strong><br />
+    $$ M_{eb} = 2K\left(\theta_b + 2\theta_e - 3\frac{\Delta}{L}\right) = 2K\left(\theta_b - 3\frac{\Delta}{L}\right) = 2K\theta_b - 6K\frac{\Delta}{L} $$</li>
+<li><strong>桿件 cf (f為固定端):</strong><br />
     同理：<br />
     $$ M_{cf} = 4K\theta_c - 6K\frac{\Delta}{L} $$<br />
-    $$ M_{fc} = 2K\theta_c - 6K\frac{\Delta}{L} $$</p>
-</li>
+    $$ M_{fc} = 2K\theta_c - 6K\frac{\Delta}{L} $$</li>
 </ul>
 <p><strong>Step 2: 節點平衡方程式</strong><br />
 對節點 b 取力矩平衡 ($\sum M_b = 0$)：<br />
@@ -246,63 +236,46 @@ $$ K\theta = \frac{1000}{40} = 25\text{ kN-m} $$<br />
 $$ K\frac{\Delta}{L} = \frac{13 \times 1000}{240} = \frac{325}{6}\text{ kN-m} \approx 54.167\text{ kN-m} $$</p>
 <p>將上述數值代入 Step 1 的端彎矩方程式：</p>
 <ol>
-<li>
-<p><strong>梁 ab 桿:</strong><br />
+<li><strong>梁 ab 桿:</strong><br />
     $$ M_{ab} = 0 $$<br />
-    $$ M_{ba} = 3K\theta_b = 3 \times 25 = \boxed{75\text{ kN-m (順時針)}} $$</p>
-</li>
-<li>
-<p><strong>梁 bc 桿:</strong><br />
+    $$ M_{ba} = 3K\theta_b = 3 \times 25 = \boxed{75\text{ kN-m (順時針)}} $$</li>
+<li><strong>梁 bc 桿:</strong><br />
     $$ M_{bc} = 2K(2\theta_b + \theta_c) = 6K\theta_b = 6 \times 25 = \boxed{150\text{ kN-m (順時針)}} $$<br />
-    $$ M_{cb} = 2K(2\theta_c + \theta_b) = 6K\theta_c = \boxed{150\text{ kN-m (順時針)}} $$</p>
-</li>
-<li>
-<p><strong>梁 cd 桿:</strong><br />
+    $$ M_{cb} = 2K(2\theta_c + \theta_b) = 6K\theta_c = \boxed{150\text{ kN-m (順時針)}} $$</li>
+<li><strong>梁 cd 桿:</strong><br />
     $$ M_{cd} = 3K\theta_c = 3 \times 25 = \boxed{75\text{ kN-m (順時針)}} $$<br />
-    $$ M_{dc} = 0 $$</p>
-</li>
-<li>
-<p><strong>柱 be 桿:</strong><br />
+    $$ M_{dc} = 0 $$</li>
+<li><strong>柱 be 桿:</strong><br />
     $$ M_{be} = 4K\theta_b - 6K\frac{\Delta}{L} = 4(25) - 6\left(\frac{325}{6}\right) = 100 - 325 = \boxed{-225\text{ kN-m (逆時針)}} $$<br />
-    $$ M_{eb} = 2K\theta_b - 6K\frac{\Delta}{L} = 2(25) - 325 = 50 - 325 = \boxed{-275\text{ kN-m (逆時針)}} $$</p>
-</li>
-<li>
-<p><strong>柱 cf 桿:</strong> (與 be 桿完全對稱)<br />
+    $$ M_{eb} = 2K\theta_b - 6K\frac{\Delta}{L} = 2(25) - 325 = 50 - 325 = \boxed{-275\text{ kN-m (逆時針)}} $$</li>
+<li><strong>柱 cf 桿:</strong> (與 be 桿完全對稱)<br />
     $$ M_{cf} = \boxed{-225\text{ kN-m (逆時針)}} $$<br />
-    $$ M_{fc} = \boxed{-275\text{ kN-m (逆時針)}} $$</p>
-</li>
+    $$ M_{fc} = \boxed{-275\text{ kN-m (逆時針)}} $$</li>
 </ol>
 <p><em>(註：節點平衡檢查：$M_{ba} + M_{bc} + M_{be} = 75 + 150 - 225 = 0$，符合平衡條件，計算無誤。)</em></p>
 <h2>5. 關鍵爭議點與進階探討 (Critical Issues &amp; Advanced Discussion)</h2>
 <ul>
-<li>
-<p><strong>支承反力的物理意義與靜定性探討：</strong><br />
-    題目中特別設計 a、d 為「滾支承」，這表示這兩點只能提供垂直反力而無法提供水平力。若此處設計為鉸支承 (Hinged Support) 則它們將分擔部分水平推力，整體的樓層剪力方程就必須把 a、d 的水平反力也納入計算，計算複雜度將大幅提升。</p>
-</li>
-<li>
-<p><strong>分析方法的選擇：</strong><br />
-    有側移的剛架亦可採用「彎矩分配法」解題，但流程需分為兩階段：第一階段假設剛架無側移，計算因外載重產生的固端彎矩進行分配；第二階段強制剛架產生一單位側移（$\Delta'$），再進行一次彎矩分配；最後利用整體側推力比例找出真實側移。本題因為只有外推力無構件上之直接載重，且結構變形對稱未知數少（僅有 $\theta_b$ 與 $\Delta$ 本質上兩個獨立變數），使用<strong>傾角變位法</strong>建立聯立方程是最直接、最快速的應考策略。</p>
-</li>
-<li>
-<p><strong>軸向變形對實務的影響：</strong><br />
-    本題採取傳統手算分析的標準假設：不計桿件軸向變形（$AE = \infty$）。但在現代高層建築或大跨度構架中，柱的軸向變形（縮短或伸長）會導致節點的不均勻沉陷，進一步引發額外的 P-Delta 效應與節點旋轉。實務上若採用電腦軟體（如 SAP2000, ETABS）進行矩陣位移法分析時，會將軸力效應納入，所得彎矩將與手算結果有微小差異。</p>
-</li>
+<li><strong>支承反力的物理意義與靜定性探討：</strong><br />
+    題目中特別設計 a、d 為「滾支承」，這表示這兩點只能提供垂直反力而無法提供水平力。若此處設計為鉸支承 (Hinged Support) 則它們將分擔部分水平推力，整體的樓層剪力方程就必須把 a、d 的水平反力也納入計算，計算複雜度將大幅提升。</li>
+<li><strong>分析方法的選擇：</strong><br />
+    有側移的剛架亦可採用「彎矩分配法」解題，但流程需分為兩階段：第一階段假設剛架無側移，計算因外載重產生的固端彎矩進行分配；第二階段強制剛架產生一單位側移（$\Delta'$），再進行一次彎矩分配；最後利用整體側推力比例找出真實側移。本題因為只有外推力無構件上之直接載重，且結構變形對稱未知數少（僅有 $\theta_b$ 與 $\Delta$ 本質上兩個獨立變數），使用<strong>傾角變位法</strong>建立聯立方程是最直接、最快速的應考策略。</li>
+<li><strong>軸向變形對實務的影響：</strong><br />
+    本題採取傳統手算分析的標準假設：不計桿件軸向變形（$AE = \infty$）。但在現代高層建築或大跨度構架中，柱的軸向變形（縮短或伸長）會導致節點的不均勻沉陷，進一步引發額外的 P-Delta 效應與節點旋轉。實務上若採用電腦軟體（如 SAP2000, ETABS）進行矩陣位移法分析時，會將軸力效應納入，所得彎矩將與手算結果有微小差異。</li>
 </ul></main>
 <footer>來源：raw/solutions/SA-2009-3/SA-2009-3.md（知識庫解題內容唯一正本；本頁僅為渲染顯示）</footer>
 
 <script>
-/* 跟隨來源單元：若由 study-/lecture-/formula-given-SA-Un-m.html 點進來，
-   三顆按鈕改指向「來源那個單元」。靜態 href 保底，無 JS 或無 referrer 時仍可用。 */
+/* 跟隨來源單元：若由 unit-/lecture-SA-Un-m.html（或舊的 study-/formula-given-）點進來，
+   兩顆按鈕改指向「來源那個單元」。靜態 href 保底，無 JS 或無 referrer 時仍可用。 */
 (function(){
   var NAMES={"SA-U1-2": "靜定結構之分析", "SA-U1-3": "靜定及靜不定結構影響線", "SA-U2-1": "靜不定結構最小功法", "SA-U2-3": "靜不定結構之傾角變位法", "SA-U2-4": "靜不定結構之矩陣分析法"};
-  var m=(document.referrer||'').match(/\/(?:study|lecture|formula-given)-(SA-U\d+-\d+)\.html/);
+  var m=(document.referrer||'').match(/\/(?:unit|study|lecture|formula-given)-(SA-U\d+-\d+)\.html/);
   if(!m||!NAMES[m[1]])return;
   var u=m[1], s=u.slice(3), box=document.querySelector('.hbtns');
   if(!box)return;
   box.innerHTML=
-    '<a class="b-study" href="../study-'+u+'.html">\u{1F50D} '+s+' \u547D\u984C\u5206\u6790</a>'+
-    '<a class="b-lect" href="../lecture-'+u+'.html">\u{1F4DA} '+s+' '+NAMES[u]+' \u8B1B\u7FA9</a>'+
-    '<a class="b-fg" href="../formula-given-'+u+'.html">\u{1F3AF} '+s+' \u7D66\uFF0F\u80CC\u5206\u754C</a>';
+    '<a class="b-study" href="../unit-'+u+'.html">\u{1F9ED} '+s+' \u55AE\u5143\u7E3D\u89BD</a>'+
+    '<a class="b-lect" href="../lecture-'+u+'.html">\u{1F4DA} '+s+' '+NAMES[u]+' \u8B1B\u7FA9</a>';
   var n=document.querySelector('.nomat'); if(n)n.remove();
 })();
 </script>

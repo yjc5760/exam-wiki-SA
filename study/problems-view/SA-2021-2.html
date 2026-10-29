@@ -41,7 +41,7 @@ header .nomat{margin-top:12px;font-size:.8em;opacity:.85}
 <header>
 <h1>SA-2021-2　靜不定結構之傾角變位法</h1>
 <p class="meta2">主分類 <b>SA-U2-3</b> 靜不定結構之傾角變位法 ｜ 2021 年（民國 110） ｜ 傾角變位法</p>
-<div class="hbtns"><a class="b-study" href="../study-SA-U2-3.html">🔍 U2-3 命題分析</a><a class="b-lect" href="../lecture-SA-U2-3.html">📚 U2-3 靜不定結構之傾角變位法 講義</a><a class="b-fg" href="../formula-given-SA-U2-3.html">🎯 U2-3 給／背分界</a></div>
+<div class="hbtns"><a class="b-study" href="../unit-SA-U2-3.html">🧭 U2-3 單元總覽</a><a class="b-lect" href="../lecture-SA-U2-3.html">📚 U2-3 靜不定結構之傾角變位法 講義</a></div>
 </header>
 <main><h3>考題編號：SA-2021-2</h3>
 <p><strong>主分類：</strong> <code>SA-U2-3</code> 靜不定結構與位移<br />
@@ -228,18 +228,17 @@ $$\boxed{\Delta = \frac{162}{20000} = 0.0081 \text{ m} = 8.1 \text{ mm (向右)}
 <footer>來源：raw/solutions/SA-2021-2/SA-2021-2.md（知識庫解題內容唯一正本；本頁僅為渲染顯示）</footer>
 
 <script>
-/* 跟隨來源單元：若由 study-/lecture-/formula-given-SA-Un-m.html 點進來，
-   三顆按鈕改指向「來源那個單元」。靜態 href 保底，無 JS 或無 referrer 時仍可用。 */
+/* 跟隨來源單元：若由 unit-/lecture-SA-Un-m.html（或舊的 study-/formula-given-）點進來，
+   兩顆按鈕改指向「來源那個單元」。靜態 href 保底，無 JS 或無 referrer 時仍可用。 */
 (function(){
   var NAMES={"SA-U1-2": "靜定結構之分析", "SA-U1-3": "靜定及靜不定結構影響線", "SA-U2-1": "靜不定結構最小功法", "SA-U2-3": "靜不定結構之傾角變位法", "SA-U2-4": "靜不定結構之矩陣分析法"};
-  var m=(document.referrer||'').match(/\/(?:study|lecture|formula-given)-(SA-U\d+-\d+)\.html/);
+  var m=(document.referrer||'').match(/\/(?:unit|study|lecture|formula-given)-(SA-U\d+-\d+)\.html/);
   if(!m||!NAMES[m[1]])return;
   var u=m[1], s=u.slice(3), box=document.querySelector('.hbtns');
   if(!box)return;
   box.innerHTML=
-    '<a class="b-study" href="../study-'+u+'.html">\u{1F50D} '+s+' \u547D\u984C\u5206\u6790</a>'+
-    '<a class="b-lect" href="../lecture-'+u+'.html">\u{1F4DA} '+s+' '+NAMES[u]+' \u8B1B\u7FA9</a>'+
-    '<a class="b-fg" href="../formula-given-'+u+'.html">\u{1F3AF} '+s+' \u7D66\uFF0F\u80CC\u5206\u754C</a>';
+    '<a class="b-study" href="../unit-'+u+'.html">\u{1F9ED} '+s+' \u55AE\u5143\u7E3D\u89BD</a>'+
+    '<a class="b-lect" href="../lecture-'+u+'.html">\u{1F4DA} '+s+' '+NAMES[u]+' \u8B1B\u7FA9</a>';
   var n=document.querySelector('.nomat'); if(n)n.remove();
 })();
 </script>

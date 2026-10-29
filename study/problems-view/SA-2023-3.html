@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="zh-Hant"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SA-2023-3 — 題目解析</title>
+<link rel="stylesheet" href="../assets/katex/katex.min.css">
+<script defer src="../assets/katex/katex.min.js"></script>
+<script defer src="../assets/katex/auto-render.min.js"
+  onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},
+  {left:'$',right:'$',display:false},{left:'\\(',right:'\\)',display:false}],throwOnError:false});"></script>
+<style>
+:root{--ac:#1565c0;--bg:#f7f9fb;--card:#fff;--ink:#263238;--mut:#607d8b;--bd:#dfe6ea}
+*{box-sizing:border-box}
+body{margin:0;font-family:"Microsoft JhengHei","Noto Sans TC",-apple-system,sans-serif;
+  background:var(--bg);color:var(--ink);line-height:1.75;font-size:15.5px}
+header{background:linear-gradient(135deg,#0d47a1,#1976d2 60%,#42a5f5);color:#fff;padding:22px 26px}
+header h1{margin:0;font-size:1.15em}
+header .back{display:inline-block;margin-top:10px;font-size:.82em;color:#fff;background:rgba(255,255,255,.18);
+  padding:4px 12px;border-radius:14px;text-decoration:none}
+main{max-width:880px;margin:0 auto;padding:26px 22px 70px}
+h1,h2,h3{color:#0d47a1} h2{font-size:1.2em;border-left:6px solid var(--ac);padding-left:12px;margin:34px 0 14px}
+table{width:100%;border-collapse:collapse;margin:14px 0;font-size:.92em;background:#fff}
+th,td{border:1px solid var(--bd);padding:7px 10px;text-align:left;vertical-align:top}
+th{background:#eceff1;font-weight:600} tbody tr:nth-child(even){background:#fafcfd}
+code{background:#eceff1;padding:1px 5px;border-radius:4px;font-size:.92em}
+img{max-width:100%;display:block;margin:14px auto;border:1px solid var(--bd);border-radius:8px}
+.katex-display{margin:12px 0!important;overflow-x:auto;overflow-y:hidden}
+footer{text-align:center;color:var(--mut);font-size:.8em;padding:22px;border-top:1px solid var(--bd)}
+
+header h1{color:#fff!important;font-size:1.25em;margin:0;letter-spacing:.5px}
+header .meta2{margin:8px 0 0;font-size:.84em;opacity:.93;line-height:1.6}
+header .meta2 b{background:rgba(255,255,255,.2);border-radius:4px;padding:1px 7px;font-weight:600}
+header .hbtns{display:flex;flex-wrap:wrap;gap:10px;margin-top:14px}
+header .hbtns a{font-size:.85em;text-decoration:none;padding:7px 17px;border-radius:22px;
+  font-weight:700;white-space:nowrap;line-height:1.4}
+header .b-study{background:#fff;color:#1565c0}
+header .b-lect{background:#6a1b9a;color:#fff}
+header .b-fg{background:#c62828;color:#fff}
+header .hbtns a:hover{filter:brightness(1.08)}
+header .nomat{margin-top:12px;font-size:.8em;opacity:.85}
+</style></head><body>
+<header>
+<h1>SA-2023-3　靜不定結構之傾角變位法</h1>
+<p class="meta2">主分類 <b>SA-U2-3</b> 靜不定結構之傾角變位法 ｜ 2023 年（民國 112） ｜ 傾角變位法</p>
+<div class="hbtns"><a class="b-study" href="../unit-SA-U2-3.html">🧭 U2-3 單元總覽</a><a class="b-lect" href="../lecture-SA-U2-3.html">📚 U2-3 靜不定結構之傾角變位法 講義</a></div>
+</header>
+<main><h1>考題編號：SA-2023-3</h1>
+<p><strong>主分類：</strong> <code>SA-U2-3</code> 靜不定結構之傾角變位法<br />
+<strong>副分類：</strong> 無<br />
+<strong>分析法：</strong> 傾角變位法<br />
+<strong>標籤：</strong> <code>平面剛架</code> <code>無側移</code> <code>傾角變位法</code> <code>鉸端修正</code> <code>整體平衡</code></p>
+<hr />
+<h2>1. 原始題目重述 (Problem Restatement)</h2>
+<p>圖三為一平面構架，點 D 為固定支承，點 A 為鉸支承，點 C 為滾支承，此構架點 A 至 B 間梁桿件承受一水平向均佈載重 20 kN/m，且點 B 至 C 間梁桿件中央承受一垂直集中載重 50 kN。設所有桿件 EI 為定值，且忽略桿件軸向變形，試用傾角變位法，求各桿件端點彎矩及各支承之反力。（25 分）</p>
+<p><img alt="SA-2023-3 題目附圖：包含A,B,C,D四點的平面構架" src="../../raw/solutions/SA-2023-3/SA-2023-3-fig-1.png" /></p>
+<p><em>圖說：垂直桿 AB 長 6m，水平桿 BC 長 4m，水平桿 CD 長 4m。A 點在左下角（鉸支承），B 在左上角（剛節點），C 在中段（滾支承），D 在右端（固定支承）。AB 桿受向左 20 kN/m 均佈力，BC 桿中央受</em><em>向上</em><em> 50 kN 集中力。</em></p>
+<h2>2. 考題核心精神與出題者意圖 (Core Concepts &amp; Examiner's Intent)</h2>
+<p><strong>核心精神：</strong></p>
+<ol>
+<li><strong>側移判斷能力</strong>：考生必須首要判斷此剛架是否具有側移（Sway）。由於 A 點為鉸支承限制水平與垂直位移，D 點為固定端，C 點為滾支承限制垂直位移，在「忽略軸向變形」前提下，各節點皆無發生相對側移之可能（$\Delta=0$）。</li>
+<li><strong>傾角變位法基礎列式</strong>：熟練計算固端彎矩（FEM）並注意符號（向上的外力容易因粗心而算反）。運用修正傾角變位方程式以簡化 A 端為鉸接的問題。</li>
+<li><strong>自由體圖與反力求解</strong>：求出端彎矩後，能否正確拆解各桿件，繪製自由體圖 (FBD) 並透過靜力平衡求出所有支承反力，是本題的另一大區別出高分群的重點。</li>
+</ol>
+<h2>3. 解題戰略地圖與陷阱分析 (Strategic Roadmap &amp; Trap Analysis)</h2>
+<p><strong>戰略步驟：</strong></p>
+<ol>
+<li><strong>判斷自由度</strong>：無側移，未知轉角為 $\theta_B, \theta_C$。由於 A 點為鉸支承，利用修正傾角變位法可將 $\theta_A$ 提前消去。D 點固定，$\theta_D = 0$。</li>
+<li><strong>計算固端彎矩 (FEM)</strong>：採用順時針為正。特別注意 BC 桿上之 50 kN 是<strong>向上</strong>，FEM 方向需判斷正確。</li>
+<li><strong>建立傾角變位方程式</strong>：寫下 $M_{BA}$（修正後）、$M_{BC}$、$M_{CB}$、$M_{CD}$、$M_{DC}$ 的展開式。</li>
+<li><strong>節點平衡求解</strong>：利用 $\Sigma M_B = 0$ 及 $\Sigma M_C = 0$ 解出未知數 $EI\theta_B$ 與 $EI\theta_C$。</li>
+<li><strong>代回求端彎矩</strong>：將變位代回公式得到各桿端彎矩。</li>
+<li><strong>拆解求反力</strong>：將結構拆解為 AB、BC、CD 三段，加上節點 B、C 的平衡，逐一求得各支承（A, C, D）的 $x, y$ 方向反力與彎矩。</li>
+</ol>
+<p><strong>陷阱分析：</strong></p>
+<ul>
+<li><strong>陷阱一：BC 桿外力方向誤讀</strong>。50 kN 載重標示是<strong>向上</strong>的。若慣性思維誤看為向下，將導致 $FEM_{BC}$ 符號顛倒，後續全錯。</li>
+<li><strong>陷阱二：固端彎矩符號判定</strong>。垂直的 AB 桿受向左均佈力推擠，為了在兩端維持原垂直角度，A 端的固端彎矩需為順時針（正），B 端為逆時針（負）。</li>
+<li><strong>陷阱三：水平反力遺漏</strong>。水平桿 BCD 上方無外加水平力，容易誤以為 D 點水平反力 $D_x=0$。實際上 AB 桿頂端產生的水平剪力，會透過剛節點 B 轉化為軸力傳遞給水平桿，最後完全由 D 支承抵抗。</li>
+<li><strong>陷阱四：反力正負號解讀</strong>。C 支承與 A 支承垂直反力算出來與常理直覺相反（A 與 C 需提供向下拉力來抵抗 50kN向上推力造成的翻轉），計算後需忠實呈現數學結果並標明向下。</li>
+</ul>
+<h2>3.5 變數層次分析 (Variable Hierarchy Analysis)</h2>
+<blockquote>
+<p>複習提示：第一次解題後，在每個卡住的知識點旁標記 <code>⚠</code>；第二次複習時只看有 <code>⚠</code> 的項目。</p>
+</blockquote>
+<h3>最終目標</h3>
+<p><code>透過傾角變位法求算剛架各節點端彎矩與支承反力</code></p>
+<h3>本題關鍵公式（依計算順序）</h3>
+<blockquote>
+<p>$\boxed{\cdot}$ = 需由前步驟推導，非題目直接給定的變數</p>
+</blockquote>
+<p>$$\text{Step 1: } FEM = f(w, P, L)$$</p>
+<p>$$\text{Step 2: } M_{ij} = \frac{2EI}{L} (2\theta_i + \theta_j) + \boxed{FEM_{ij}}$$</p>
+<p>$$\text{Step 3: } M_{BA}^{mod} = \frac{3EI}{L} \theta_B + (\boxed{FEM_{BA}} - \frac{1}{2}\boxed{FEM_{AB}})$$</p>
+<p>$$\text{Step 4: } \sum M_{\text{node}} = 0 \Rightarrow \theta_B, \theta_C$$</p>
+<p>$$\text{Step 5: } F_x, F_y, M \text{ 平衡方程式} \Rightarrow \text{支承反力}$$</p>
+<h3>L1：題目直接給定</h3>
+<table>
+<thead>
+<tr>
+<th>符號</th>
+<th>數值</th>
+<th>說明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>$L_{AB}, L_{BC}, L_{CD}$</td>
+<td>$6, 4, 4 \text{ m}$</td>
+<td>各桿件長度</td>
+</tr>
+<tr>
+<td>$w_{AB}$</td>
+<td>$20 \text{ kN/m}$</td>
+<td>AB 桿向左均佈力</td>
+</tr>
+<tr>
+<td>$P_{BC}$</td>
+<td>$50 \text{ kN}$</td>
+<td>BC 桿中央向上集中力</td>
+</tr>
+<tr>
+<td>$EI$</td>
+<td>常數</td>
+<td>各桿撓曲剛度</td>
+</tr>
+</tbody>
+</table>
+<h3>L2：需知識點推導</h3>
+<p><strong>Step 1：固端彎矩</strong></p>
+<table>
+<thead>
+<tr>
+<th>符號</th>
+<th>公式/來源</th>
+<th style="text-align: center;">卡關?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>$FEM_{AB}, FEM_{BA}$</td>
+<td>$\pm wL^2/12$</td>
+<td style="text-align: center;"></td>
+</tr>
+<tr>
+<td>$FEM_{BC}, FEM_{CB}$</td>
+<td>$\pm PL/8$ (注意方向)</td>
+<td style="text-align: center;"></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Step 2：傾角變位與節點平衡</strong></p>
+<table>
+<thead>
+<tr>
+<th>符號</th>
+<th>公式/來源</th>
+<th style="text-align: center;">卡關?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>$\theta_B, \theta_C$</td>
+<td>節點力矩平衡 $\Sigma M = 0$ 聯立方程</td>
+<td style="text-align: center;"></td>
+</tr>
+<tr>
+<td>$M_{ij}$</td>
+<td>代回傾角變位方程式</td>
+<td style="text-align: center;"></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Step 3：整體力平衡與反力</strong></p>
+<table>
+<thead>
+<tr>
+<th>符號</th>
+<th>公式/來源</th>
+<th style="text-align: center;">卡關?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>$A_x, A_y$</td>
+<td>拆桿件取 $\Sigma M=0, \Sigma F=0$ 求剪力與軸力傳遞</td>
+<td style="text-align: center;"></td>
+</tr>
+<tr>
+<td>$C_y, D_x, D_y, M_D$</td>
+<td>同上拆解桿件與整體平衡</td>
+<td style="text-align: center;"></td>
+</tr>
+</tbody>
+</table>
+<h3>L3：深層知識（不懂就卡住）</h3>
+<table>
+<thead>
+<tr>
+<th>知識點</th>
+<th>說明</th>
+<th style="text-align: center;">卡關?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>側移判斷</td>
+<td>忽略軸向變形，依支承與幾何拘束判斷節點是否產生相對側向位移</td>
+<td style="text-align: center;"></td>
+</tr>
+<tr>
+<td>鉸端修正公式</td>
+<td>$M_{ij}^{mod} = \frac{3EI}{L}\theta_i + (FEM_{ij} - 0.5 FEM_{ji})$，可減少未知數</td>
+<td style="text-align: center;"></td>
+</tr>
+</tbody>
+</table>
+<h2>4. 步驟化詳細計算過程 (Step-by-Step Detailed Calculation)</h2>
+<p><strong>Step 1：側移判斷與自由度設定</strong><br />
+因 A 支承（限制 x, y）、D 支承（限制 x, y）及 C 支承（限制 y），加上忽略軸向變形，構架無法側移，即 $\Delta = 0$。<br />
+系統自由度為 $\theta_B$ 與 $\theta_C$。$\theta_D = 0$。A 為鉸端，應用修正傾角變位法即可避免將 $\theta_A$ 設為未知數。</p>
+<p><strong>Step 2：計算固端彎矩 (FEM)</strong> (約定順時針為正)</p>
+<ul>
+<li>
+<p><strong>AB 桿</strong>：載重 $w = 20 \text{ kN/m}$ 向左。<br />
+  $FEM_{AB} = + \frac{w L^2}{12} = + \frac{20 \times 6^2}{12} = +60 \text{ kN-m}$<br />
+  $FEM_{BA} = - \frac{w L^2}{12} = -60 \text{ kN-m}$</p>
+</li>
+<li>
+<p><strong>BC 桿</strong>：中央集中載重 $P = 50 \text{ kN}$ <strong>向上</strong>。<br />
+  $FEM_{BC} = + \frac{P L}{8} = + \frac{50 \times 4}{8} = +25 \text{ kN-m}$<br />
+  $FEM_{CB} = - \frac{P L}{8} = -25 \text{ kN-m}$</p>
+</li>
+<li>
+<p><strong>CD 桿</strong>：無載重。<br />
+  $FEM_{CD} = 0$，$FEM_{DC} = 0$</p>
+</li>
+</ul>
+<p><strong>Step 3：建立傾角變位方程式</strong></p>
+<ul>
+<li>
+<p><strong>AB 桿</strong> (A 為鉸，使用修正公式)：<br />
+  $M_{AB} = 0$<br />
+  $M_{BA} = \frac{3EI}{6} \theta_B + \left( FEM_{BA} - \frac{1}{2} FEM_{AB} \right) = 0.5 EI \theta_B + \left( -60 - 30 \right) = 0.5 EI \theta_B - 90$</p>
+</li>
+<li>
+<p><strong>BC 桿</strong>：<br />
+  $M_{BC} = \frac{2EI}{4} (2\theta_B + \theta_C) + FEM_{BC} = EI \theta_B + 0.5 EI \theta_C + 25$<br />
+  $M_{CB} = \frac{2EI}{4} (2\theta_C + \theta_B) + FEM_{CB} = 0.5 EI \theta_B + EI \theta_C - 25$</p>
+</li>
+<li>
+<p><strong>CD 桿</strong> ($\theta_D = 0$)：<br />
+  $M_{CD} = \frac{2EI}{4} (2\theta_C) = EI \theta_C$<br />
+  $M_{DC} = \frac{2EI}{4} (\theta_C) = 0.5 EI \theta_C$</p>
+</li>
+</ul>
+<p><strong>Step 4：節點平衡方程式與求解</strong></p>
+<ul>
+<li>
+<p><strong>節點 B</strong> ($\Sigma M_B = 0$)：<br />
+  $M_{BA} + M_{BC} = 0 \Rightarrow (0.5 EI \theta_B - 90) + (EI \theta_B + 0.5 EI \theta_C + 25) = 0$<br />
+  $1.5 EI \theta_B + 0.5 EI \theta_C = 65 \quad \dots \text{(式1)}$</p>
+</li>
+<li>
+<p><strong>節點 C</strong> ($\Sigma M_C = 0$)：<br />
+  $M_{CB} + M_{CD} = 0 \Rightarrow (0.5 EI \theta_B + EI \theta_C - 25) + EI \theta_C = 0$<br />
+  $0.5 EI \theta_B + 2 EI \theta_C = 25 \quad \dots \text{(式2)}$</p>
+</li>
+</ul>
+<p>解聯立方程式：<br />
+(式1)$\times 4 \Rightarrow 6 EI \theta_B + 2 EI \theta_C = 260$<br />
+與 (式2) 相減得 $5.5 EI \theta_B = 235 \Rightarrow EI \theta_B = \frac{470}{11} \approx 42.73$<br />
+代回 (式2) 得 $0.5(\frac{470}{11}) + 2 EI \theta_C = 25 \Rightarrow 2 EI \theta_C = \frac{275-235}{11} = \frac{40}{11} \Rightarrow EI \theta_C = \frac{20}{11} \approx 1.82$</p>
+<p><strong>Step 5：計算各桿端彎矩</strong><br />
+將位移代回原方程式：</p>
+<ul>
+<li>$\mathbf{M_{AB} = 0}$</li>
+<li>$\mathbf{M_{BA} = 0.5 (\frac{470}{11}) - 90 = -\frac{755}{11} \text{ kN-m} \approx -68.64 \text{ kN-m}}$</li>
+<li>$\mathbf{M_{BC} = \frac{470}{11} + 0.5 (\frac{20}{11}) + 25 = \frac{755}{11} \text{ kN-m} \approx 68.64 \text{ kN-m}}$</li>
+<li>$\mathbf{M_{CB} = 0.5 (\frac{470}{11}) + \frac{20}{11} - 25 = -\frac{20}{11} \text{ kN-m} \approx -1.82 \text{ kN-m}}$</li>
+<li>$\mathbf{M_{CD} = \frac{20}{11} \text{ kN-m} \approx 1.82 \text{ kN-m}}$</li>
+<li>$\mathbf{M_{DC} = 0.5 (\frac{20}{11}) = \frac{10}{11} \text{ kN-m} \approx 0.91 \text{ kN-m}}$</li>
+</ul>
+<p><strong>Step 6：拆解自由體圖求各支承反力</strong></p>
+<ol>
+<li>
+<p><strong>拆解 AB 桿</strong>（長 6m，受 20 kN/m 向左，端彎矩 $M_{BA}$ 逆時針 $755/11$）：<br />
+   $\Sigma M_A = 0 \Rightarrow B_x(6) - 120(3) - 755/11 = 0 \Rightarrow B_x = \frac{4715}{66} \text{ kN} (\rightarrow)$<br />
+   $\Sigma F_x = 0 \Rightarrow A_x + B_x - 120 = 0 \Rightarrow \mathbf{A_x = \frac{3205}{66} \text{ kN} \approx 48.56 \text{ kN} (\rightarrow)}$</p>
+</li>
+<li>
+<p><strong>拆解 CD 桿</strong>（長 4m，端彎矩 $M_{CD}=20/11, M_{DC}=10/11$ 均為順時針）：<br />
+   $\Sigma M_C = 0 \Rightarrow -D_y(4) + 20/11 + 10/11 = 0 \Rightarrow \mathbf{D_y = \frac{30}{44} = \frac{15}{22} \text{ kN} \approx 0.68 \text{ kN} (\uparrow)}$<br />
+   $\Sigma F_y = 0 \Rightarrow C_{y, CD} = \frac{15}{22} \text{ kN} (\downarrow)$</p>
+</li>
+<li>
+<p><strong>拆解 BC 桿</strong>（長 4m，中央受 50 kN 向上，端彎矩 $M_{BC}=755/11, M_{CB}=-20/11$）：<br />
+   $\Sigma M_B = 0 \Rightarrow -C_{y, BC}(4) - 50(2) + 755/11 - 20/11 = 0 \Rightarrow C_{y, BC} = -\frac{365}{44} \text{ kN} (\downarrow)$<br />
+   $\Sigma F_y = 0 \Rightarrow B_y + 50 + (-365/44) = 0 \Rightarrow B_y = -\frac{1835}{44} \text{ kN} (\downarrow)$</p>
+</li>
+<li>
+<p><strong>節點傳遞與支承總反力</strong>：</p>
+</li>
+<li><strong>A 支承</strong>：垂直反力由 AB 桿承擔 B 點之軸力 $B_y$ 傳遞，故 $\mathbf{A_y = \frac{1835}{44} \text{ kN} \approx 41.71 \text{ kN} (\downarrow)}$。</li>
+<li><strong>C 支承</strong>：滾支承提供垂直反力以平衡桿件傳來之剪力。$C_y = C_{y, BC} + C_{y, CD} = -365/44 - 30/44 = \mathbf{-\frac{395}{44} \text{ kN} \approx -8.98 \text{ kN} (\downarrow)}$。</li>
+<li><strong>D 支承</strong>：水平推力由 AB 桿上端 $B_x$ 沿水平桿剛性傳導至 D，故 $\mathbf{D_x = \frac{4715}{66} \text{ kN} \approx 71.44 \text{ kN} (\rightarrow)}$。固定端彎矩 $\mathbf{M_D = \frac{10}{11} \text{ kN-m} \text{ (順時針)}}$。</li>
+</ol>
+<blockquote>
+<p>整體驗算：$\Sigma F_x = 3205/66 + 4715/66 - 120 = 0$；$\Sigma F_y = -1835/44 - 395/44 + 30/44 + 50 = 0$；$\Sigma M_A = -120(3) - 50(2) + C_y(4) + D_y(8) + D_x(6) + M_D = -360 - 100 + 395/11 + 4715/11 - 60/11 + 10/11 = 0$。力系完全平衡。</p>
+</blockquote></main>
+<footer>來源：raw/solutions/SA-2023-3/SA-2023-3.md（知識庫解題內容唯一正本；本頁僅為渲染顯示）</footer>
+
+<script>
+/* 跟隨來源單元：若由 unit-/lecture-SA-Un-m.html（或舊的 study-/formula-given-）點進來，
+   兩顆按鈕改指向「來源那個單元」。靜態 href 保底，無 JS 或無 referrer 時仍可用。 */
+(function(){
+  var NAMES={"SA-U1-2": "靜定結構之分析", "SA-U1-3": "靜定及靜不定結構影響線", "SA-U2-1": "靜不定結構最小功法", "SA-U2-3": "靜不定結構之傾角變位法", "SA-U2-4": "靜不定結構之矩陣分析法"};
+  var m=(document.referrer||'').match(/\/(?:unit|study|lecture|formula-given)-(SA-U\d+-\d+)\.html/);
+  if(!m||!NAMES[m[1]])return;
+  var u=m[1], s=u.slice(3), box=document.querySelector('.hbtns');
+  if(!box)return;
+  box.innerHTML=
+    '<a class="b-study" href="../unit-'+u+'.html">\u{1F9ED} '+s+' \u55AE\u5143\u7E3D\u89BD</a>'+
+    '<a class="b-lect" href="../lecture-'+u+'.html">\u{1F4DA} '+s+' '+NAMES[u]+' \u8B1B\u7FA9</a>';
+  var n=document.querySelector('.nomat'); if(n)n.remove();
+})();
+</script>
+</body></html>

@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="zh-Hant"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SA-2010-2 — 題目解析</title>
+<link rel="stylesheet" href="../assets/katex/katex.min.css">
+<script defer src="../assets/katex/katex.min.js"></script>
+<script defer src="../assets/katex/auto-render.min.js"
+  onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},
+  {left:'$',right:'$',display:false},{left:'\\(',right:'\\)',display:false}],throwOnError:false});"></script>
+<style>
+:root{--ac:#1565c0;--bg:#f7f9fb;--card:#fff;--ink:#263238;--mut:#607d8b;--bd:#dfe6ea}
+*{box-sizing:border-box}
+body{margin:0;font-family:"Microsoft JhengHei","Noto Sans TC",-apple-system,sans-serif;
+  background:var(--bg);color:var(--ink);line-height:1.75;font-size:15.5px}
+header{background:linear-gradient(135deg,#0d47a1,#1976d2 60%,#42a5f5);color:#fff;padding:22px 26px}
+header h1{margin:0;font-size:1.15em}
+header .back{display:inline-block;margin-top:10px;font-size:.82em;color:#fff;background:rgba(255,255,255,.18);
+  padding:4px 12px;border-radius:14px;text-decoration:none}
+main{max-width:880px;margin:0 auto;padding:26px 22px 70px}
+h1,h2,h3{color:#0d47a1} h2{font-size:1.2em;border-left:6px solid var(--ac);padding-left:12px;margin:34px 0 14px}
+table{width:100%;border-collapse:collapse;margin:14px 0;font-size:.92em;background:#fff}
+th,td{border:1px solid var(--bd);padding:7px 10px;text-align:left;vertical-align:top}
+th{background:#eceff1;font-weight:600} tbody tr:nth-child(even){background:#fafcfd}
+code{background:#eceff1;padding:1px 5px;border-radius:4px;font-size:.92em}
+img{max-width:100%;display:block;margin:14px auto;border:1px solid var(--bd);border-radius:8px}
+.katex-display{margin:12px 0!important;overflow-x:auto;overflow-y:hidden}
+footer{text-align:center;color:var(--mut);font-size:.8em;padding:22px;border-top:1px solid var(--bd)}
+
+header h1{color:#fff!important;font-size:1.25em;margin:0;letter-spacing:.5px}
+header .meta2{margin:8px 0 0;font-size:.84em;opacity:.93;line-height:1.6}
+header .meta2 b{background:rgba(255,255,255,.2);border-radius:4px;padding:1px 7px;font-weight:600}
+header .hbtns{display:flex;flex-wrap:wrap;gap:10px;margin-top:14px}
+header .hbtns a{font-size:.85em;text-decoration:none;padding:7px 17px;border-radius:22px;
+  font-weight:700;white-space:nowrap;line-height:1.4}
+header .b-study{background:#fff;color:#1565c0}
+header .b-lect{background:#6a1b9a;color:#fff}
+header .b-fg{background:#c62828;color:#fff}
+header .hbtns a:hover{filter:brightness(1.08)}
+header .nomat{margin-top:12px;font-size:.8em;opacity:.85}
+</style></head><body>
+<header>
+<h1>SA-2010-2　靜不定結構之傾角變位法</h1>
+<p class="meta2">主分類 <b>SA-U2-3</b> 靜不定結構之傾角變位法 ｜ 2010 年（民國 99） ｜ 傾角撓度法 (Slope-Deflection Method)</p>
+<div class="hbtns"><a class="b-study" href="../unit-SA-U2-3.html">🧭 U2-3 單元總覽</a><a class="b-lect" href="../lecture-SA-U2-3.html">📚 U2-3 靜不定結構之傾角變位法 講義</a></div>
+</header>
+<main><h1>考題編號：SA-2010-2</h1>
+<p><strong>主分類：</strong> <code>SA-U2-3</code> 靜不定結構之傾角變位法<br />
+<strong>副分類：</strong> 無<br />
+<strong>分析法：</strong> 傾角撓度法 (Slope-Deflection Method)<br />
+<strong>標籤：</strong> <code>傾角撓度法</code>, <code>剛架</code>, <code>側移</code>, <code>固端彎矩</code>, <code>剪力方程式</code></p>
+<hr />
+<h2>1. 原始題目重述 (Problem Restatement)</h2>
+<p>如圖所示之剛架 (frame)，其支承點 A 為固定端 (fixed end)，而支承點 D 則為滾支承。另外，構件 AC 與構件 CD 之彈性模數與慣性矩乘積分別為 $EI$ 及 $2EI$，且 $EI = 1000\text{ kN-m}^2$。請計算：<br />
+(一) 當 B 點承受一水平向左載重 $200\text{ kN}$ 時，C 點之轉角。<br />
+(二) 當 C 點承受一逆時針方向力矩 $50\text{ kN-m}$ 時，B 點之水平變位。<br />
+（30 分）</p>
+<p><em>(註：圖中 AC 為垂直柱，高度 10m，B 為中點；CD 為水平梁，長度 10m)</em></p>
+<h2>2. 考題核心精神與出題者意圖 (Core Concepts &amp; Examiner's Intent)</h2>
+<p>本題的核心精神在於測驗考生對於<strong>具側移剛架 (Sway Frame) 的傾角撓度法</strong>分析能力。出題者透過改變支承條件及載重模式，考驗考生是否能靈活運用傾角撓度法的基礎原理：</p>
+<ol>
+<li><strong>靈活運用固端彎矩與側移判斷</strong>：透過不同載重條件（水平力與力矩），檢視考生能否正確判別何時會產生固端彎矩，以及結構是否存在共同側移。</li>
+<li><strong>掌握側移方程式（層剪力平衡）的建立</strong>：D 點設為滾支承（只能提供垂直反力，無水平反力）是本題的巧思，這代表全結構的水平反力僅由 A 點提供，藉此考驗考生利用分離體圖建立剪力方程式（即桿端彎矩與側移關係）的熟練度。</li>
+<li><strong>內力與變形量之轉換</strong>：第二小題透過純力矩載重計算中點水平位移，測驗考生能否在求得桿端彎矩後，利用彈性曲線方程式或共軛梁法推導構件內部某一點的實際位移量。</li>
+</ol>
+<h2>3. 解題戰略地圖與陷阱分析 (Strategic Roadmap &amp; Trap Analysis)</h2>
+<p><strong>解題策略：</strong></p>
+<ol>
+<li><strong>自由度與側移分析</strong>：首先釐清節點 A 為固定端 ($\theta_A=0, \Delta_A=0$)；節點 D 為滾支承，且 CD 假設無軸向變形，故 C、D 有共同的水平側移 $\Delta$；節點 C 有未知轉角 $\theta_C$。核心未知數為 $\theta_C$ 與 $\Delta$ 兩個。</li>
+<li><strong>建立雙方程式系統</strong>：</li>
+<li><strong>節點平衡方程式</strong>：以節點 C 為中心，桿端彎矩總和為零（無外加載重時）或等於外加力矩（第二小題）。</li>
+<li><strong>剪力方程式</strong>：取構件 AC 為分離體，以 A 點為旋轉中心取力矩平衡，得到 $M_{AC} + M_{CA}$ 與側移及外力力矩的關係。</li>
+<li><strong>變位推導</strong>：第二小題求 B 點位移時，由於 AC 桿件上無橫向載重，剪力為零，彎矩為常數，可直接利用材料力學的彈性曲線積分求得。</li>
+</ol>
+<p><strong>陷阱分析：</strong></p>
+<ul>
+<li>
+<p><strong>陷阱 1：固端彎矩的符號約定混淆</strong>。載重向左，容易混淆順、逆時針的符號定義。傾角撓度法中慣例設順時針彎矩為正，向左的載重在 AC 柱會產生順時針的 $M_{AC}^F$ 與逆時針的 $M_{CA}^F$。</p>
+<blockquote>
+<p><em>應對策略：畫出載重產生的變形趨勢，藉由固定端阻止變形的恢復力方向來判斷順/逆時針。</em></p>
+</blockquote>
+</li>
+<li>
+<p><strong>陷阱 2：剪力方程式的力臂與外力矩符號</strong>。取 A 點力矩時，務必畫出分離體圖，標明 $M_{AC}$ 與 $M_{CA}$ 皆為作用於桿件的順時針端彎矩，再加上外力的力矩，總和為零。</p>
+<blockquote>
+<p><em>應對策略：不依賴背公式，每次都畫出明確的分離體（FBD）進行 $\Sigma M_A = 0$ 檢核。</em></p>
+</blockquote>
+</li>
+<li>
+<p><strong>陷阱 3：D 點滾支承的誤判</strong>。D 點下方有水平斜線，代表只能在水平面上滾動，故 $D_x = 0$。若誤以為 D 點固定不動，會變成無側移結構，造成後續公式完全錯誤。</p>
+<blockquote>
+<p><em>應對策略：解題前先詳細確認各支承的力學性質，標出反力方向與允許變位。</em></p>
+</blockquote>
+</li>
+</ul>
+<h2>3.5 變數層次分析 (Variable Hierarchy Analysis)</h2>
+<h3>最終目標</h3>
+<p>利用傾角撓度方程式結合節點平衡與剪力平衡條件，求出節點未知轉角 $\theta_C$、側移 $\Delta$，進而計算特定節點的變位。</p>
+<h3>本題關鍵公式（依計算順序）</h3>
+<ol>
+<li>
+<p>傾角撓度方程式：<br />
+   $$ M_{ij} = \frac{2EI}{L} \left( 2\theta_i + \theta_j - 3\frac{\Delta}{L} \right) + M_{ij}^F $$</p>
+</li>
+<li>
+<p>修改形傾角撓度方程式（遠端鉸接）：<br />
+   $$ M_{ij} = \frac{3EI}{L} \left( \theta_i - \frac{\Delta}{L} \right) + \left( M_{ij}^F - \frac{1}{2} M_{ji}^F \right) $$</p>
+</li>
+<li>
+<p>節點 C 平衡方程式：<br />
+   $$ \boxed{M_{CA}} + \boxed{M_{CD}} = M_{ext} $$</p>
+</li>
+<li>
+<p>剪力方程式（對 A 點取矩平衡）：<br />
+   $$ \boxed{M_{AC}} + \boxed{M_{CA}} + \Sigma M_{P} = 0 $$</p>
+</li>
+<li>
+<p>彈性曲線積分方程式（第二小題）：<br />
+   $$ EI v''(y) = -M(y) $$</p>
+</li>
+</ol>
+<h3>L1：題目直接給定</h3>
+<table>
+<thead>
+<tr>
+<th>符號</th>
+<th>數值</th>
+<th>說明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>$L_{AC}$</td>
+<td>$10\text{ m}$</td>
+<td>柱 AC 之長度</td>
+</tr>
+<tr>
+<td>$L_{CD}$</td>
+<td>$10\text{ m}$</td>
+<td>梁 CD 之長度</td>
+</tr>
+<tr>
+<td>$EI_{AC}$</td>
+<td>$1000\text{ kN-m}^2$</td>
+<td>柱 AC 之抗彎剛度</td>
+</tr>
+<tr>
+<td>$EI_{CD}$</td>
+<td>$2000\text{ kN-m}^2$</td>
+<td>梁 CD 之抗彎剛度 ($2EI$)</td>
+</tr>
+<tr>
+<td>$P_B$</td>
+<td>$200\text{ kN}$ (向左)</td>
+<td>第一小題作用於 B 點之載重</td>
+</tr>
+<tr>
+<td>$M_C$</td>
+<td>$50\text{ kN-m}$ (逆時針)</td>
+<td>第二小題作用於 C 點之力矩</td>
+</tr>
+</tbody>
+</table>
+<h3>L2：需知識點推導</h3>
+<p><strong>1. 第一小題參數推導</strong><br />
+| 符號 | 公式／來源 | 卡關? |<br />
+|---|---|---|<br />
+| $M_{AC}^F$ | $+\frac{P L}{8}$ | |<br />
+| $M_{CA}^F$ | $-\frac{P L}{8}$ | |</p>
+<p><strong>2. 第二小題變形分析</strong><br />
+| 符號 | 公式／來源 | 卡關? |<br />
+|---|---|---|<br />
+| $M(y)$ | $M_{AC}$ | |<br />
+| $v(y)$ | $\iint \frac{-M(y)}{EI} dy$ | |</p>
+<h3>L3：深層知識（不懂就卡住）</h3>
+<table>
+<thead>
+<tr>
+<th>知識點</th>
+<th>說明</th>
+<th>卡關?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>剪力方程式的建立</td>
+<td>利用構件 AC 之自由體圖，配合 $D_x=0 \implies C_x=0$，對 A 取矩得 $M_{AC} + M_{CA} + M_{外} = 0$</td>
+<td></td>
+</tr>
+<tr>
+<td>彈性曲線積分邊界條件</td>
+<td>固定端 A 之邊界條件：$v(0) = 0$ 且 $v'(0) = 0$</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h2>4. 步驟化詳細計算過程 (Step-by-Step Detailed Calculation)</h2>
+<h3>(一) 當 B 點承受一水平向左載重 $200\text{ kN}$ 時，C 點之轉角</h3>
+<p><strong>Step 1: 基本參數與固端彎矩建立</strong></p>
+<ul>
+<li>構件 AC：長度 $L=10\text{m}$，剛度 $EI_{AC} = EI$。</li>
+<li>構件 CD：長度 $L=10\text{m}$，剛度 $EI_{CD} = 2EI$。</li>
+<li>符號慣例：順時針轉角與彎矩為正，側移 $\Delta$ 向右為正。</li>
+<li>B 點受向左集中載重 $200\text{ kN}$，產生的固端彎矩為：<br />
+  $$ M_{AC}^F = +\frac{P L}{8} = +\frac{200 \times 10}{8} = +250\text{ kN-m} $$<br />
+  $$ M_{CA}^F = -\frac{P L}{8} = -250\text{ kN-m} $$</li>
+</ul>
+<p><strong>Step 2: 建立傾角撓度方程式</strong></p>
+<ul>
+<li>
+<p>節點 A 為固定端，$\theta_A = 0$：<br />
+  $$ M_{AC} = \frac{2EI}{10} \left( \theta_C - \frac{3\Delta}{10} \right) + 250 = 0.2 EI \theta_C - 0.06 EI \Delta + 250 $$<br />
+  $$ M_{CA} = \frac{2EI}{10} \left( 2\theta_C - \frac{3\Delta}{10} \right) - 250 = 0.4 EI \theta_C - 0.06 EI \Delta - 250 $$</p>
+</li>
+<li>
+<p>構件 CD，由於 D 點為滾支承且可視為鉸接，採用修正公式（無相對側移 $\psi_{CD}=0$）：<br />
+  $$ M_{CD} = \frac{3(2EI)}{10} \theta_C = 0.6 EI \theta_C $$</p>
+</li>
+</ul>
+<p><strong>Step 3: 節點 C 平衡方程式</strong><br />
+節點 C 無外加載重力矩，故端彎矩總和為零：<br />
+$$ M_{CA} + M_{CD} = 0 $$<br />
+代入前述方程式：<br />
+$$ (0.4 EI \theta_C - 0.06 EI \Delta - 250) + 0.6 EI \theta_C = 0 $$<br />
+整理可得：<br />
+$$ 1.0 EI \theta_C - 0.06 EI \Delta = 250 \quad \text{--- (式 1)} $$</p>
+<p><strong>Step 4: 建立剪力方程式 (Shear Equation)</strong><br />
+因 D 為滾支承，沒有水平反力，故 $D_x = 0$。由全結構的水平力平衡 $\sum F_x = 0$ 可知，節點 C 的水平傳遞力 $C_x + D_x = 0 \implies C_x = 0$。<br />
+取整根 AC 柱為自由體，對 A 點取力矩平衡（設順時針為正）：<br />
+$$ M_{AC} + M_{CA} - C_x \times 10 + M_{\text{外力對A之矩}} = 0 $$<br />
+外力 $200\text{ kN}$ 向左作用於高度 $y=5\text{m}$ 處，對 A 產生逆時針力矩 $(-200 \times 5 = -1000)$：<br />
+$$ M_{AC} + M_{CA} - 1000 = 0 \implies M_{AC} + M_{CA} = 1000 $$<br />
+代入傾角撓度方程式：<br />
+$$ (0.2 EI \theta_C - 0.06 EI \Delta + 250) + (0.4 EI \theta_C - 0.06 EI \Delta - 250) = 1000 $$<br />
+整理可得：<br />
+$$ 0.6 EI \theta_C - 0.12 EI \Delta = 1000 \quad \text{--- (式 2)} $$</p>
+<p><strong>Step 5: 聯立求解 $\theta_C$</strong><br />
+將 (式 1) 乘以 2 減去 (式 2)：<br />
+$$ 2.0 EI \theta_C - 0.12 EI \Delta = 500 $$<br />
+$$ -) \quad 0.6 EI \theta_C - 0.12 EI \Delta = 1000 $$<br />
+$$ \implies 1.4 EI \theta_C = -500 $$<br />
+$$ EI \theta_C = -\frac{500}{1.4} = -\frac{2500}{7} $$<br />
+代入題目給定的 $EI = 1000\text{ kN-m}^2$：<br />
+$$ \theta_C = -\frac{2500}{7 \times 1000} = -\frac{5}{14}\text{ rad} $$</p>
+<p><strong>解答 (一)：</strong><br />
+$$ \boxed{ \theta_C = \frac{5}{14}\text{ rad} \ (\text{逆時針}) } $$</p>
+<hr />
+<h3>(二) 當 C 點承受一逆時針方向力矩 $50\text{ kN-m}$ 時，B 點之水平變位</h3>
+<p><strong>Step 1: 建立新載重下的方程式</strong><br />
+此時無橫向載重，固端彎矩 FEM 皆為 0。傾角撓度方程式改寫為：<br />
+$$ M_{AC} = 0.2 EI \theta_C - 0.06 EI \Delta $$<br />
+$$ M_{CA} = 0.4 EI \theta_C - 0.06 EI \Delta $$<br />
+$$ M_{CD} = 0.6 EI \theta_C $$</p>
+<p><strong>Step 2: 節點 C 平衡與剪力方程式</strong><br />
+節點 C 承受逆時針 $50\text{ kN-m}$ 之外加力矩（符號為負）：<br />
+$$ M_{CA} + M_{CD} = -50 $$<br />
+$$ 1.0 EI \theta_C - 0.06 EI \Delta = -50 \quad \text{--- (式 3)} $$<br />
+無橫向外力，剪力方程式簡化為：<br />
+$$ M_{AC} + M_{CA} = 0 $$<br />
+$$ 0.6 EI \theta_C - 0.12 EI \Delta = 0 \implies EI \Delta = 5 EI \theta_C \quad \text{--- (式 4)} $$</p>
+<p><strong>Step 3: 求解 $\theta_C$ 與 $\Delta$</strong><br />
+將 (式 4) 代入 (式 3)：<br />
+$$ 1.0 EI \theta_C - 0.06 (5 EI \theta_C) = -50 $$<br />
+$$ 1.0 EI \theta_C - 0.3 EI \theta_C = -50 \implies 0.7 EI \theta_C = -50 $$<br />
+$$ EI \theta_C = -\frac{500}{7} $$<br />
+再求 $EI \Delta$：<br />
+$$ EI \Delta = 5 \times \left(-\frac{500}{7}\right) = -\frac{2500}{7} $$</p>
+<p><strong>Step 4: 計算 B 點水平變位</strong><br />
+由 $M_{AC} + M_{CA} = 0$ 可知，構件 AC 兩端彎矩大小相等方向相反，且內部無橫向載重，故剪力 $V = 0$，內部彎矩為常數分布：<br />
+$$ M(y) = M_{AC} = 0.2\left(-\frac{500}{7}\right) - 0.06\left(-\frac{2500}{7}\right) = -\frac{100}{7} + \frac{150}{7} = \frac{50}{7}\text{ (順時針)} $$<br />
+利用積分法求位移方程式 $EI v''(y) = -M(y)$，因為此處彎矩是常數：<br />
+$$ EI v''(y) = -\frac{50}{7} $$<br />
+對 $y$ 積分兩次（$y$ 為自 A 點向上的座標），並代入固定端 A 之邊界條件 $v(0)=0, v'(0)=0$：<br />
+$$ v'(y) = -\frac{50}{7 EI} y $$<br />
+$$ v(y) = -\frac{25}{7 EI} y^2 $$<br />
+代入 B 點座標 $y=5\text{m}$，且 $EI = 1000\text{ kN-m}^2$：<br />
+$$ \Delta_{Bx} = v(5) = -\frac{25 \times 5^2}{7 \times 1000} = -\frac{625}{7000} = -\frac{5}{56}\text{ m} $$<br />
+結果為負號，表示變位方向向左。</p>
+<p><strong>解答 (二)：</strong><br />
+$$ \boxed{ \Delta_{Bx} = \frac{5}{56}\text{ m} \ (\text{向左}) } $$</p>
+<h2>5. 關鍵爭議點與進階探討 (Critical Issues &amp; Advanced Discussion)</h2>
+<ul>
+<li><strong>剪力方程式的替代推導方法</strong>：許多考生在處理具有剛性側移的傾角撓度法時，容易在「剪力方程式」卡關。除了本題展示的「分離體力矩平衡法」外，也可以利用「虛功原理（單位力法）」來推導層剪力方程式，但對於直柱且載重單純的題目，直接取整體自由體的力矩平衡是最直觀且不易出錯的做法。</li>
+<li><strong>計算位移的方法選擇</strong>：在第二小題中，由於構件 AC 上無橫向載重，其內力狀態屬於純彎曲（剪力為零），這是一個極為特殊的邊界條件。因此，利用彈性曲線的二重積分法（$EI v'' = -M$）能最快求得特定點位移。若使用共軛梁法，也必須正確轉換邊界條件，但過程可能會比直接積分多出一些手續。</li>
+<li><strong>符號慣例的一致性</strong>：本題極度仰賴符號定義的嚴謹性。不論是固端彎矩、端彎矩，或是外加力矩，皆建議統一採取「順時針為正」的慣例，只要在計算全過程中堅持不變，最終所得的負號就能毫無疑慮地解釋為逆時針或反向位移。</li>
+</ul></main>
+<footer>來源：raw/solutions/SA-2010-2/SA-2010-2.md（知識庫解題內容唯一正本；本頁僅為渲染顯示）</footer>
+
+<script>
+/* 跟隨來源單元：若由 unit-/lecture-SA-Un-m.html（或舊的 study-/formula-given-）點進來，
+   兩顆按鈕改指向「來源那個單元」。靜態 href 保底，無 JS 或無 referrer 時仍可用。 */
+(function(){
+  var NAMES={"SA-U1-2": "靜定結構之分析", "SA-U1-3": "靜定及靜不定結構影響線", "SA-U2-1": "靜不定結構最小功法", "SA-U2-3": "靜不定結構之傾角變位法", "SA-U2-4": "靜不定結構之矩陣分析法"};
+  var m=(document.referrer||'').match(/\/(?:unit|study|lecture|formula-given)-(SA-U\d+-\d+)\.html/);
+  if(!m||!NAMES[m[1]])return;
+  var u=m[1], s=u.slice(3), box=document.querySelector('.hbtns');
+  if(!box)return;
+  box.innerHTML=
+    '<a class="b-study" href="../unit-'+u+'.html">\u{1F9ED} '+s+' \u55AE\u5143\u7E3D\u89BD</a>'+
+    '<a class="b-lect" href="../lecture-'+u+'.html">\u{1F4DA} '+s+' '+NAMES[u]+' \u8B1B\u7FA9</a>';
+  var n=document.querySelector('.nomat'); if(n)n.remove();
+})();
+</script>
+</body></html>

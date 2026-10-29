@@ -41,7 +41,7 @@ header .nomat{margin-top:12px;font-size:.8em;opacity:.85}
 <header>
 <h1>SA-2022-3　靜定及靜不定結構影響線</h1>
 <p class="meta2">主分類 <b>SA-U1-3</b> 靜定及靜不定結構影響線 ｜ 2022 年（民國 111） ｜ 影響線（Influence Lines）、斷面法、細長拉桿（Counters）</p>
-<div class="hbtns"><a class="b-study" href="../study-SA-U1-3.html">🔍 U1-3 命題分析</a><a class="b-lect" href="../lecture-SA-U1-3.html">📚 U1-3 靜定及靜不定結構影響線 講義</a><a class="b-fg" href="../formula-given-SA-U1-3.html">🎯 U1-3 給／背分界</a></div>
+<div class="hbtns"><a class="b-study" href="../unit-SA-U1-3.html">🧭 U1-3 單元總覽</a><a class="b-lect" href="../lecture-SA-U1-3.html">📚 U1-3 靜定及靜不定結構影響線 講義</a></div>
 </header>
 <main><h1>考題編號：SA-2022-3</h1>
 <p><strong>主分類：</strong> <code>SA-U1-3</code> 靜定及靜不定結構影響線<br />
@@ -50,9 +50,12 @@ header .nomat{margin-top:12px;font-size:.8em;opacity:.85}
 <strong>標籤：</strong> <code>影響線</code> <code>桁架</code> <code>細長拉桿</code> <code>等效內鉸</code> <code>間接載重</code> <code>無斜桿嵌板</code></p>
 <hr />
 <h2>1. 原始題目重述 (Problem Restatement)</h2>
-<p>如圖 3 所示桁架結構，承受一下方行駛的單位移動載重，請繪出 $a$ 點反力以及 $km$ 桿、$kn$ 桿、$mn$ 桿內力的影響線。（25 分）</p>
+<p>如圖 3 所示桁架結構，$a$、$b$、$c$ 點為滾支承，$e$ 點為鉸支承，各桿件有相同彈性模數 $E$ 與斷面積 $A$。當單位載重在桁架底弦移動，分別求 $a$ 點反力、$b$ 點反力、$c$ 點反力、$mn$ 桿件軸力及 $nk$ 桿件軸力的影響線。（25 分）</p>
+<blockquote>
+<p><strong>勘誤（2026-10-28）</strong>：舊版重述誤寫為「$a$ 點反力以及 $km$、$kn$、$mn$ 桿」，已依考卷原文更正。題目要求的是 <strong>$R_a$、$R_b$、$R_c$、$N_{mn}$、$N_{nk}$ 五條</strong>；$nk$ 即 6–9 嵌板的單斜桿（本文沿用推導時的寫法 $N_{kn}$，兩者是同一根桿）。原本多算的 $N_{km}$ 保留為補充，不屬題目所求。</p>
+</blockquote>
 <p><img alt="SA-2022-3 題目附圖" src="../../raw/solutions/SA-2022-3/SA-2022-3-fig-1.png" /></p>
-<p><em>圖說：跨長 30 m，10 @ 3 m 嵌板，桁架高 4 m。下弦節點位於 $x = 0,3,\dots,30$；上弦節點位於 $x = 3\sim21$ 與 $x = 24,27$。支承：$a(0)$、$b(12)$、$c(18)$ 為滾支承，$e(30)$ 為鉸支承。所求桿件 $k(6,4)$、$m(6,0)$、$n(9,0)$。</em></p>
+<p><em>圖說：跨長 30 m，10 @ 3 m 嵌板，桁架高 4 m。下弦節點位於 $x = 0,3,\dots,30$；上弦節點位於 $x = 3\sim21$ 與 $x = 24,27$。支承：$a(0)$、$b(12)$、$c(18)$ 為滾支承，$e(30)$ 為鉸支承。所求桿件 $mn$（下弦 6–9）與 $nk$（6–9 嵌板斜桿），節點 $k(6,4)$、$m(6,0)$、$n(9,0)$。</em></p>
 <hr />
 <h2>1.5 ⚠ 附圖的三個判讀重點（本題成敗全在這裡）</h2>
 <p>考卷附圖線條密集，最容易看走眼。以下配置係對附圖<strong>逐像素掃描</strong>（取上弦所在列與半高列的暗像素分佈）確認，非目視推測：</p>
@@ -89,7 +92,7 @@ header .nomat{margin-top:12px;font-size:.8em;opacity:.85}
 <li><strong>$b$ 點沒有內部鉸</strong>，$0\sim12$ m 也<strong>不是</strong>一段獨立的簡支桁架。載重跑到 $x&gt;12$ 時 $R_a$ 仍然有值（而且會變號）。</li>
 </ol>
 <p><img alt="SA-2022-3 題目重繪：10@3m=30m、高4m，標出 6–9 單斜桿、12–15 無斜桿、21–24 無上弦與四格 X 型細長拉桿" src="../../raw/solutions/SA-2022-3/figs/SA-2022-3-fig-1-truss.svg" /></p>
-<p><em>圖 1　題目重繪（向量版，幾何由附圖像素掃描而來）。這張圖攔的是本題三個致命誤讀：把 6–9 當成交叉斜桿、把 12–15 當成有斜桿、在 $b$ 點捏造內部鉸 —— 任一項錯了，四條影響線全部作廢。</em></p>
+<p><em>圖 1　題目重繪（向量版，幾何由附圖像素掃描而來）。這張圖攔的是本題三個致命誤讀：把 6–9 當成交叉斜桿、把 12–15 當成有斜桿、在 $b$ 點捏造內部鉸 —— 任一項錯了，五條影響線全部作廢。</em></p>
 <hr />
 <h2>2. 考題核心精神與出題者意圖 (Core Concepts &amp; Examiner's Intent)</h2>
 <p><strong>核心精神：</strong></p>
@@ -109,8 +112,8 @@ header .nomat{margin-top:12px;font-size:.8em;opacity:.85}
 <ol>
 <li><strong>判定靜定性</strong>：數 $m$、$r$、$j$，確認 $m+r-2j$ 等於 X 型嵌板數。</li>
 <li><strong>找出兩個釋放條件</strong>：掃描每一格，找「無斜桿的嵌板」與「只切到兩根共點桿的斷面」。</li>
-<li><strong>解 $R_a$ 影響線</strong>：以兩個釋放條件加整體 $\Sigma F_y$、$\Sigma M$ 求四個垂直反力。</li>
-<li><strong>斷面法求三根桿</strong>：<ul>
+<li><strong>解 $R_a$、$R_b$、$R_c$ 影響線</strong>：以兩個釋放條件加整體 $\Sigma F_y$、$\Sigma M$ 求四個垂直反力。</li>
+<li><strong>斷面法求桿力</strong>（$N_{kn}$、$N_{mn}$ 為題目所求，$N_{km}$ 為補充）：<ul>
 <li>$N_{kn}$（斜桿）$\to$ 6–9 嵌板 $\Sigma F_y$；</li>
 <li>$N_{mn}$（下弦）$\to$ 對 $k(6,4)$ 取矩（上弦與斜桿都通過 $k$）；</li>
 <li>$N_{km}$（垂直桿）$\to$ 節點 $k$ 的 $\Sigma F_y$，須同時考慮 3–6 嵌板細長拉桿的作用狀態。</li>
@@ -135,7 +138,7 @@ header .nomat{margin-top:12px;font-size:.8em;opacity:.85}
 <tr>
 <td><strong>以為 $x&gt;12$ 後 $R_a=0$</strong></td>
 <td>承上，把左段當獨立結構</td>
-<td>$R_a$ 在 $x=15$ 回升到 $+1/4$、在 $x=21$ 變號到 $-1/4$（a 支承被拔起）</td>
+<td>$R_a$ 在 $x=15$ 回升到 $+1/4$、在 $x=21$ 變號到 $-1/4$（a 支承被拔起）；$R_b$ 在 $x=15$ 為 $-1/4$（b 支承被拔起）</td>
 </tr>
 <tr>
 <td><strong>把 $kn$ 當細長拉桿</strong></td>
@@ -157,7 +160,7 @@ header .nomat{margin-top:12px;font-size:.8em;opacity:.85}
 <hr />
 <h2>3.5 變數層次分析 (Variable Hierarchy Analysis)</h2>
 <h3>最終目標</h3>
-<p><code>繪製 R_a、N_km、N_kn、N_mn 四條影響線（載重沿下弦由 a 走到 e）</code></p>
+<p><code>繪製 R_a、R_b、R_c、N_mn、N_nk 五條影響線（載重沿下弦由 a 走到 e）；N_km 為補充</code></p>
 <h3>本題關鍵公式（依計算順序）</h3>
 <blockquote>
 <p>$\boxed{\cdot}$ ＝ 需由前步驟推導，非題目直接給定</p>
@@ -165,7 +168,7 @@ header .nomat{margin-top:12px;font-size:.8em;opacity:.85}
 <p>$$\text{Step 0: } m + r - 2j = \boxed{4} = \text{X 型嵌板數} \;\Rightarrow\; \text{靜定}$$</p>
 <p>$$\text{Step 1: } R_a + R_b = P_{\text{左}}\big|_{\text{12–15 斷面}} \quad\text{（無斜桿嵌板）}$$</p>
 <p>$$\text{Step 2: } 9\,R_e = \textstyle\sum P_{\text{右}}\,(x-21) \quad\text{（}d\text{ 等效內鉸）}$$</p>
-<p>$$\text{Step 3: } \boxed{R_a}\;\text{由 Step 1、2 加整體 } \Sigma F_y,\ \Sigma M_a \text{ 解出}$$</p>
+<p>$$\text{Step 3: } \boxed{R_a},\ \boxed{R_b},\ \boxed{R_c}\;\text{由 Step 1、2 加整體 } \Sigma F_y,\ \Sigma M_a \text{ 解出}$$</p>
 <p>$$\text{Step 4: } V(x) = \boxed{R_a} - P_{\text{左}}, \qquad N_{kn} = \tfrac{5}{4}\boxed{V}$$</p>
 <p>$$\text{Step 5: } 4\,N_{mn} = 6\boxed{R_a} - \textstyle\sum(\text{載重對 }k\text{ 的力矩})$$</p>
 <p>$$\text{Step 6: } N_{km} = \min(\boxed{V_{3\text{–}6}},\,0) - \boxed{V_{6\text{–}9}}$$</p>
@@ -324,7 +327,7 @@ header .nomat{margin-top:12px;font-size:.8em;opacity:.85}
 <p>$$\sum M_d^{\text{right}} = 0:\qquad 9\,R_e = \sum_{x_i&gt;21} P_i\,(x_i - 21) \;=\; \max(x-21,\,0)$$</p>
 <p>（節點傳遞不改變載重對任一點的力矩，故右式可直接寫成載重位置的函數。）</p>
 <hr />
-<h3>Step 3：$R_a$ 影響線</h3>
+<h3>Step 3：$R_a$、$R_b$、$R_c$ 影響線</h3>
 <p>以 ①、② 加整體 $\Sigma F_y = 1$ 與 $\Sigma M_a$：$12R_b + 18R_c + 30R_e = x$，逐段解得：</p>
 <table>
 <thead>
@@ -333,6 +336,7 @@ header .nomat{margin-top:12px;font-size:.8em;opacity:.85}
 <th>$R_e$</th>
 <th>$R_c$</th>
 <th>$R_a$</th>
+<th>$R_b = 1-R_a-R_c-R_e$</th>
 </tr>
 </thead>
 <tbody>
@@ -341,28 +345,34 @@ header .nomat{margin-top:12px;font-size:.8em;opacity:.85}
 <td>$0$</td>
 <td>$0$</td>
 <td>$\dfrac{12-x}{12}$</td>
+<td>$\dfrac{x}{12}$</td>
 </tr>
 <tr>
 <td>$12\le x\le 15$</td>
 <td>$0$</td>
 <td>$1-\dfrac{15-x}{3}$</td>
 <td>$\dfrac{x-12}{12}$</td>
+<td>$1-\dfrac{5(x-12)}{12}$</td>
 </tr>
 <tr>
 <td>$15\le x\le 21$</td>
 <td>$0$</td>
 <td>$1$</td>
 <td>$\dfrac{18-x}{12}$</td>
+<td>$\dfrac{x-18}{12}$</td>
 </tr>
 <tr>
 <td>$21\le x\le 30$</td>
 <td>$\dfrac{x-21}{9}$</td>
 <td>$1-\dfrac{x-21}{9}$</td>
 <td>$\dfrac{x-30}{36}$</td>
+<td>$\dfrac{30-x}{36}$</td>
 </tr>
 </tbody>
 </table>
 <p><strong>$R_a$ 縱距：</strong> $1@0$、$0@12$、$+\frac14@15$、$0@18$、$-\frac14@21$、$0@30$。</p>
+<p><strong>$R_b$ 縱距：</strong> $0@0$、$1@12$、$-\frac14@15$、$0@18$、$+\frac14@21$、$0@30$。載重在 $x\ge15$ 時由釋放條件 ① 得 $R_b=-R_a$，兩者鏡像；$x=15$ 時 $R_b&lt;0$，<strong>$b$ 支承被拔起</strong>。</p>
+<p><strong>$R_c$ 縱距：</strong> $0@0\sim12$、$1@15$、$1@21$（$15\sim21$ 恆為 $1$）、$0@30$。</p>
 <blockquote>
 <p><strong>驗算（載重在 $x=24$）：</strong> $R_e = \frac{3}{9} = \frac13$，$R_c = \frac23$，$R_a = -\frac16$，$R_b = +\frac16$。<br />
 $\Sigma F_y: -\frac16+\frac16+\frac23+\frac13 = 1$ ✓<br />
@@ -441,9 +451,9 @@ $\Sigma M_a: 12(\frac16)+18(\frac23)+30(\frac13) = 2+12+10 = 24$ ✓<br />
 </table>
 <p><strong>$x=4$ 是折點，而它不在節點上</strong> —— 那是 3–6 嵌板剪力變號、細長拉桿換手的位置。</p>
 <hr />
-<h3>4.7 四條影響線與縱距總表</h3>
-<p><img alt="SA-2022-3 四條影響線：R_a、N_km、N_kn、N_mn，含所有折點縱距" src="../../raw/solutions/SA-2022-3/figs/SA-2022-3-fig-4-influence-lines.svg" /></p>
-<p><em>圖 4　四條影響線。這張圖攔三件事：以為 $x&gt;12$ 之後全部歸零、以為 $N_{kn}$ 有恆為零的平台、以為折點一定落在節點上（$N_{km}$ 的 $x=4$ 就不是）。</em></p>
+<h3>4.7 影響線與縱距總表（題目所求五條＋補充 $N_{km}$）</h3>
+<p><img alt="SA-2022-3 影響線：題目所求 R_a、R_b、R_c、N_mn、N_nk，與補充的 N_km，含所有折點縱距" src="../../raw/solutions/SA-2022-3/figs/SA-2022-3-fig-4-influence-lines.svg" /></p>
+<p><em>圖 4　題目所求五條影響線（上五格）與補充的 $N_{km}$（最下格）。這張圖攔三件事：以為 $x&gt;12$ 之後 $R_a$、$R_b$ 全部歸零（其實 $x=15$ 時 $R_b=-\frac14$）、以為 $N_{nk}$ 有恆為零的平台、以為折點一定落在節點上（$N_{km}$ 的 $x=4$ 就不是）。</em></p>
 <table>
 <thead>
 <tr>
@@ -481,35 +491,35 @@ $\Sigma M_a: 12(\frac16)+18(\frac23)+30(\frac13) = 2+12+10 = 24$ ✓<br />
 <td style="text-align: center;">$0$</td>
 </tr>
 <tr>
-<td style="text-align: left;">$N_{km}$</td>
+<td style="text-align: left;">$R_b$</td>
 <td style="text-align: center;">$0$</td>
-<td style="text-align: center;">$0$</td>
+<td style="text-align: center;">$\frac14$</td>
 <td style="text-align: center;">$\frac13$</td>
 <td style="text-align: center;">$\frac12$</td>
-<td style="text-align: center;">$0$</td>
+<td style="text-align: center;">$\frac23$</td>
+<td style="text-align: center;">$\frac34$</td>
+<td style="text-align: center;">$1$</td>
 <td style="text-align: center;">$-\frac14$</td>
 <td style="text-align: center;">$0$</td>
-<td style="text-align: center;">$-\frac14$</td>
-<td style="text-align: center;">$0$</td>
-<td style="text-align: center;">$0$</td>
-<td style="text-align: center;">$0$</td>
-<td style="text-align: center;">$0$</td>
+<td style="text-align: center;">$\frac14$</td>
+<td style="text-align: center;">$\frac16$</td>
+<td style="text-align: center;">$\frac1{12}$</td>
 <td style="text-align: center;">$0$</td>
 </tr>
 <tr>
-<td style="text-align: left;">$N_{kn}$</td>
+<td style="text-align: left;">$R_c$</td>
 <td style="text-align: center;">$0$</td>
-<td style="text-align: center;">$-\frac5{16}$</td>
-<td style="text-align: center;">$-\frac5{12}$</td>
-<td style="text-align: center;">$-\frac58$</td>
 <td style="text-align: center;">$0$</td>
-<td style="text-align: center;">$\frac5{16}$</td>
 <td style="text-align: center;">$0$</td>
-<td style="text-align: center;">$\frac5{16}$</td>
 <td style="text-align: center;">$0$</td>
-<td style="text-align: center;">$-\frac5{16}$</td>
-<td style="text-align: center;">$-\frac5{24}$</td>
-<td style="text-align: center;">$-\frac5{48}$</td>
+<td style="text-align: center;">$0$</td>
+<td style="text-align: center;">$0$</td>
+<td style="text-align: center;">$0$</td>
+<td style="text-align: center;">$1$</td>
+<td style="text-align: center;">$1$</td>
+<td style="text-align: center;">$1$</td>
+<td style="text-align: center;">$\frac23$</td>
+<td style="text-align: center;">$\frac13$</td>
 <td style="text-align: center;">$0$</td>
 </tr>
 <tr>
@@ -528,6 +538,38 @@ $\Sigma M_a: 12(\frac16)+18(\frac23)+30(\frac13) = 2+12+10 = 24$ ✓<br />
 <td style="text-align: center;">$-\frac18$</td>
 <td style="text-align: center;">$0$</td>
 </tr>
+<tr>
+<td style="text-align: left;">$N_{nk}$</td>
+<td style="text-align: center;">$0$</td>
+<td style="text-align: center;">$-\frac5{16}$</td>
+<td style="text-align: center;">$-\frac5{12}$</td>
+<td style="text-align: center;">$-\frac58$</td>
+<td style="text-align: center;">$0$</td>
+<td style="text-align: center;">$\frac5{16}$</td>
+<td style="text-align: center;">$0$</td>
+<td style="text-align: center;">$\frac5{16}$</td>
+<td style="text-align: center;">$0$</td>
+<td style="text-align: center;">$-\frac5{16}$</td>
+<td style="text-align: center;">$-\frac5{24}$</td>
+<td style="text-align: center;">$-\frac5{48}$</td>
+<td style="text-align: center;">$0$</td>
+</tr>
+<tr>
+<td style="text-align: left;">$N_{km}$（補充）</td>
+<td style="text-align: center;">$0$</td>
+<td style="text-align: center;">$0$</td>
+<td style="text-align: center;">$\frac13$</td>
+<td style="text-align: center;">$\frac12$</td>
+<td style="text-align: center;">$0$</td>
+<td style="text-align: center;">$-\frac14$</td>
+<td style="text-align: center;">$0$</td>
+<td style="text-align: center;">$-\frac14$</td>
+<td style="text-align: center;">$0$</td>
+<td style="text-align: center;">$0$</td>
+<td style="text-align: center;">$0$</td>
+<td style="text-align: center;">$0$</td>
+<td style="text-align: center;">$0$</td>
+</tr>
 </tbody>
 </table>
 <p>（拉為正，壓為負；$R_a$ 向上為正。）</p>
@@ -535,26 +577,41 @@ $\Sigma M_a: 12(\frac16)+18(\frac23)+30(\frac13) = 2+12+10 = 24$ ✓<br />
 <table>
 <thead>
 <tr>
-<th>桿件</th>
-<th>最大拉力</th>
-<th>最大壓力</th>
+<th>量</th>
+<th>最大正值</th>
+<th>最大負值</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>$N_{km}$</td>
-<td>$+\frac12$（載重在 $m$，$x=6$）</td>
-<td>$-\frac14$（$x=9$ 或 $x=15$）</td>
+<td>$R_a$</td>
+<td>$+1$（$x=0$）</td>
+<td>$-\frac14$（$x=21$，a 被拔起）</td>
 </tr>
 <tr>
-<td>$N_{kn}$</td>
-<td>$+\frac5{16}$（$x=9$ 或 $x=15$）</td>
-<td>$-\frac58$（$x=6$）</td>
+<td>$R_b$</td>
+<td>$+1$（$x=12$）</td>
+<td>$-\frac14$（$x=15$，b 被拔起）</td>
+</tr>
+<tr>
+<td>$R_c$</td>
+<td>$+1$（$15\le x\le21$）</td>
+<td>無（恆 $\ge0$）</td>
 </tr>
 <tr>
 <td>$N_{mn}$</td>
-<td>$+\frac34$（$x=6$）</td>
-<td>$-\frac38$（$x=21$）</td>
+<td>$+\frac34$ 拉（$x=6$）</td>
+<td>$-\frac38$ 壓（$x=21$）</td>
+</tr>
+<tr>
+<td>$N_{nk}$</td>
+<td>$+\frac5{16}$ 拉（$x=9$ 或 $x=15$）</td>
+<td>$-\frac58$ 壓（$x=6$）</td>
+</tr>
+<tr>
+<td>$N_{km}$（補充）</td>
+<td>$+\frac12$ 拉（$x=6$）</td>
+<td>$-\frac14$ 壓（$x=9$ 或 $x=15$）</td>
 </tr>
 </tbody>
 </table>
@@ -619,22 +676,21 @@ $\Sigma M_a: 12(\frac16)+18(\frac23)+30(\frac13) = 2+12+10 = 24$ ✓<br />
 </tbody>
 </table>
 <hr />
-<p><em>解析日期：2026-07-02　｜　重算＋圖解補繪：2026-08-26（附圖幾何經逐像素掃描確認；四條影響線與獨立的「桁架有限元＋細長拉桿互補條件」在 121 個載重位置逐點比對相符；向量圖腳本 <code>gen_SA-2022-3.py</code>，可重跑）</em></p></main>
+<p><em>解析日期：2026-07-02　｜　2026-10-28 依考卷原文更正題目要求，補 $R_b$、$R_c$ 影響線（以獨立的桁架有限元＋細長拉桿疊代在 121 個載重位置逐點比對五條 IL，誤差 $&lt;10^{-14}$）　｜　重算＋圖解補繪：2026-08-26（附圖幾何經逐像素掃描確認；四條影響線與獨立的「桁架有限元＋細長拉桿互補條件」在 121 個載重位置逐點比對相符；向量圖腳本 <code>gen_SA-2022-3.py</code>，可重跑）</em></p></main>
 <footer>來源：raw/solutions/SA-2022-3/SA-2022-3.md（知識庫解題內容唯一正本；本頁僅為渲染顯示）</footer>
 
 <script>
-/* 跟隨來源單元：若由 study-/lecture-/formula-given-SA-Un-m.html 點進來，
-   三顆按鈕改指向「來源那個單元」。靜態 href 保底，無 JS 或無 referrer 時仍可用。 */
+/* 跟隨來源單元：若由 unit-/lecture-SA-Un-m.html（或舊的 study-/formula-given-）點進來，
+   兩顆按鈕改指向「來源那個單元」。靜態 href 保底，無 JS 或無 referrer 時仍可用。 */
 (function(){
   var NAMES={"SA-U1-2": "靜定結構之分析", "SA-U1-3": "靜定及靜不定結構影響線", "SA-U2-1": "靜不定結構最小功法", "SA-U2-3": "靜不定結構之傾角變位法", "SA-U2-4": "靜不定結構之矩陣分析法"};
-  var m=(document.referrer||'').match(/\/(?:study|lecture|formula-given)-(SA-U\d+-\d+)\.html/);
+  var m=(document.referrer||'').match(/\/(?:unit|study|lecture|formula-given)-(SA-U\d+-\d+)\.html/);
   if(!m||!NAMES[m[1]])return;
   var u=m[1], s=u.slice(3), box=document.querySelector('.hbtns');
   if(!box)return;
   box.innerHTML=
-    '<a class="b-study" href="../study-'+u+'.html">\u{1F50D} '+s+' \u547D\u984C\u5206\u6790</a>'+
-    '<a class="b-lect" href="../lecture-'+u+'.html">\u{1F4DA} '+s+' '+NAMES[u]+' \u8B1B\u7FA9</a>'+
-    '<a class="b-fg" href="../formula-given-'+u+'.html">\u{1F3AF} '+s+' \u7D66\uFF0F\u80CC\u5206\u754C</a>';
+    '<a class="b-study" href="../unit-'+u+'.html">\u{1F9ED} '+s+' \u55AE\u5143\u7E3D\u89BD</a>'+
+    '<a class="b-lect" href="../lecture-'+u+'.html">\u{1F4DA} '+s+' '+NAMES[u]+' \u8B1B\u7FA9</a>';
   var n=document.querySelector('.nomat'); if(n)n.remove();
 })();
 </script>

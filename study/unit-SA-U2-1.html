@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html lang="zh-Hant"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>SA-U2-1 最小功法｜單元總覽</title>
+<link rel="stylesheet" href="assets/katex/katex.min.css">
+<script defer src="assets/katex/katex.min.js"></script>
+<script defer src="assets/katex/auto-render.min.js"></script>
+<style>
+
+:root{--ac:#1565c0;--ac2:#e8f0fe;--ink:#26323a;--mut:#607d8b;--bd:#e0e6ea;--bg:#f4f6f8;
+ --must:#c62828;--must2:#fdecea;--half:#ef6c00;--half2:#fff4e5;--give:#2e7d32;--give2:#e9f5ec}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);
+ font-family:"Noto Sans TC","PingFang TC","Microsoft JhengHei",system-ui,sans-serif;line-height:1.7;-webkit-text-size-adjust:100%}
+main{max-width:1120px;margin:0 auto;padding:0 16px 60px}
+header{background:linear-gradient(135deg,#0d47a1,#1565c0 55%,#1976d2);color:#fff;padding:28px 22px 24px}
+header .in{max-width:1120px;margin:0 auto}
+header .eyebrow{font-size:.78rem;letter-spacing:.14em;opacity:.85;margin:0 0 6px}
+header h1{margin:0 0 8px;font-size:1.6rem;line-height:1.4}
+header p{margin:0;font-size:.93rem;opacity:.94;max-width:80ch}
+header code{background:rgba(255,255,255,.18);color:#fff}
+nav{position:sticky;top:0;z-index:20;background:#fff;border-bottom:1px solid #dde4ea;
+ padding:8px 12px;display:flex;flex-wrap:wrap;gap:6px;box-shadow:0 2px 8px rgba(0,0,0,.05)}
+nav a{font-size:.8rem;text-decoration:none;color:var(--ac);background:var(--ac2);padding:5px 12px;border-radius:20px;white-space:nowrap}
+nav a:hover{background:#d3e3fd}
+nav a.ext{background:#f3e5f5;color:#6a1b9a}
+section{margin:34px 0}
+h2{font-size:1.3rem;margin:0 0 6px;padding-left:11px;border-left:6px solid var(--ac);color:#0d47a1}
+h2 small{font-size:.8rem;color:var(--mut);font-weight:400;margin-left:6px}
+h3{font-size:1.04rem;margin:26px 0 8px;color:#37474f;padding-bottom:4px;border-bottom:2px solid var(--ac2)}
+p.lead{font-size:.93rem;color:#455a64;margin:6px 0 10px}
+code{font-size:.85em;background:#eceff1;padding:0 4px;border-radius:4px}
+a{color:var(--ac)}
+
+/* position strip */
+.pos{display:flex;flex-wrap:wrap;align-items:center;gap:8px 14px;background:#fff;border:1px solid var(--bd);
+ border-radius:12px;padding:12px 16px;margin:18px 0 0;font-size:.9rem}
+.pos .k{display:flex;align-items:baseline;gap:5px}
+.pos .k b{font-size:1.35rem;color:#0d47a1;font-variant-numeric:tabular-nums}
+.pos .k span{color:var(--mut);font-size:.8rem}
+.pos .go{margin-left:auto;font-size:.82rem}
+.btnbar{display:flex;flex-wrap:wrap;gap:8px;margin:12px 0 0}
+.btnbar a{padding:5px 14px;border-radius:6px;font-size:.86rem;text-decoration:none}
+.b-lec{background:#6a1b9a;color:#fff}.b-lecp{background:#f3e5f5;color:#6a1b9a;border:1px solid #ce93d8}
+.b-pdf{background:#eceff1;color:#37474f;border:1px solid #cfd8dc}
+
+/* cards / tables shared */
+.note,.warn{border-radius:10px;padding:11px 15px;margin:12px 0;font-size:.89rem}
+.note{background:var(--ac2);border-left:5px solid var(--ac)}
+.warn{background:var(--half2);border-left:5px solid var(--half)}
+.tw{overflow-x:auto;border:1px solid var(--bd);border-radius:10px;background:#fff}
+table{border-collapse:collapse;width:100%;font-size:.86rem;background:#fff}
+th,td{border-bottom:1px solid #eceff1;padding:7px 9px;text-align:left;vertical-align:top}
+th{background:#eceff1;color:#37474f;font-size:.8rem}
+td.num,th.num{text-align:center;font-variant-numeric:tabular-nums;white-space:nowrap}
+.up{color:#2e7d32;font-weight:700}.down{color:var(--must);font-weight:700}
+.dot{display:inline-block;width:10px;height:10px;border-radius:3px;margin-right:5px;vertical-align:baseline}
+#riskT td:nth-child(-n+5),#riskT th:nth-child(-n+5){white-space:nowrap}
+.risk-hi{background:#ffebee}.risk-md{background:#fff8e1}.risk-lo{background:#f1f8e9}
+
+/* §1 clusters */
+.cats{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:11px;margin-top:8px}
+.cat{background:#fff;border:1px solid var(--bd);border-left:6px solid;border-radius:10px;padding:11px 14px;cursor:pointer;text-align:left;font:inherit;color:inherit}
+.cat:hover{box-shadow:0 3px 10px rgba(0,0,0,.08)}
+.cat b{display:block;font-size:.98rem}.cat span{font-size:.8rem;color:var(--mut)}
+.chartbox{background:#fff;border:1px solid var(--bd);border-radius:10px;padding:12px 14px;margin-top:12px}
+.chartbox h4{margin:0 0 6px;font-size:.88rem;color:var(--mut);font-weight:600}
+.chartbox canvas{width:100%;height:auto;display:block}
+.legend-s{display:flex;flex-wrap:wrap;gap:4px 14px;font-size:.78rem;color:#455a64;margin-top:6px}
+
+/* §2 formula */
+.legend{display:flex;flex-wrap:wrap;gap:10px;margin:12px 0}
+.lg{flex:1 1 220px;border-radius:10px;padding:10px 13px;border:1px solid}
+.lg h4{margin:0 0 3px;font-size:.95rem}.lg p{margin:0;font-size:.82rem;line-height:1.6}
+.lg.must{background:var(--must2);border-color:#f5c6c2}.lg.must h4{color:var(--must)}
+.lg.half{background:var(--half2);border-color:#ffd9a8}.lg.half h4{color:var(--half)}
+.lg.give{background:var(--give2);border-color:#bcdfc6}.lg.give h4{color:var(--give)}
+.kpis{display:flex;flex-wrap:wrap;gap:10px;margin:12px 0}
+.kpi{flex:1 1 110px;background:#fff;border:1px solid var(--bd);border-radius:10px;padding:10px;text-align:center}
+.kpi .n{font-size:1.55em;font-weight:800;color:#0d47a1;line-height:1.15}
+.kpi .l{font-size:.73rem;color:var(--mut);margin-top:2px}
+.kpi.red .n{color:var(--must)}.kpi.org .n{color:var(--half)}.kpi.grn .n{color:var(--give)}
+details{background:#fff;border:1px solid var(--bd);border-radius:10px;margin:12px 0}
+details>summary{cursor:pointer;padding:10px 14px;font-weight:600;font-size:.92rem;color:#37474f}
+details>.db{padding:0 14px 12px}
+blockquote{margin:8px 0;padding:8px 14px;background:#fafbfc;border-left:4px solid #90a4ae;font-size:.87rem;color:#37474f}
+.ynote{font-size:.72rem;color:#78909c}
+.filters{display:flex;flex-wrap:wrap;gap:6px 12px;margin:12px 0;align-items:center}
+.filters .fg{display:flex;flex-wrap:wrap;gap:6px;align-items:center}
+.filters b{font-size:.76rem;color:var(--mut);margin-right:2px}
+.filters button,.filters select{font:inherit;font-size:.79rem;border:1px solid #cfd8dc;background:#fff;color:#455a64;border-radius:16px;padding:4px 12px;cursor:pointer}
+.filters select{max-width:100%}
+.filters button.on{background:var(--ac);border-color:var(--ac);color:#fff}
+.recallbar{display:flex;flex-wrap:wrap;align-items:center;gap:10px;margin:0 0 12px;padding:8px 12px;background:#fff;border:1px dashed #b0bec5;border-radius:10px;font-size:.83rem;color:#546e7a}
+.recallbar button{font:inherit;font-size:.8rem;border:1px solid var(--ac);background:#fff;color:var(--ac);border-radius:16px;padding:3px 12px;cursor:pointer}
+.recallbar button.on{background:var(--ac);color:#fff}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(440px,100%),1fr));gap:12px}
+.fc,.qrow>*{min-width:0}
+.fc{background:#fff;border:1px solid var(--bd);border-left:6px solid #90a4ae;border-radius:10px;padding:12px 15px;scroll-margin-top:70px;transition:box-shadow .3s}
+.fc.must{border-left-color:var(--must)}.fc.half{border-left-color:var(--half)}.fc.give{border-left-color:var(--give)}
+.fc.flash{box-shadow:0 0 0 3px #90caf9}
+.fc .top{display:flex;justify-content:space-between;align-items:flex-start;gap:8px;margin-bottom:4px}
+.fc .nm{font-weight:700;font-size:1rem}
+.tag{font-size:.71rem;font-weight:700;border-radius:14px;padding:2px 9px;white-space:nowrap}
+.tag.must{background:var(--must2);color:var(--must)}.tag.half{background:var(--half2);color:var(--half)}.tag.give{background:var(--give2);color:var(--give)}
+.fc .eq{background:#f7f9fb;border-radius:8px;padding:5px 10px;margin:6px 0;overflow-x:auto}
+.fc .meta{font-size:.86rem;color:#455a64;margin:6px 0 0;line-height:1.68}
+.fc .ev{font-size:.78rem;margin-top:8px;padding-top:7px;border-top:1px dashed #dde4ea;color:#607d8b}
+.fc .ev a{display:inline-block;border-radius:4px;padding:0 5px;margin:1px 2px 1px 0;text-decoration:none;font-size:.76rem;background:var(--must2);color:var(--must)}
+.fc .ev a.sec{background:#eceff1;color:#546e7a}
+.fc .ev .ok{display:inline-block;border-radius:4px;padding:0 5px;background:var(--give2);color:var(--give);font-size:.76rem}
+.fc .ev .uses{margin-left:4px;color:#455a64;cursor:pointer;text-decoration:underline dotted}
+.never{color:var(--must);font-weight:700}
+body.recall .fc .eq{position:relative;cursor:pointer;min-height:2.6em}
+body.recall .fc .eq>*{visibility:hidden}
+body.recall .fc .eq::after{content:"✍ 先默寫，再點這裡翻開";position:absolute;inset:0;display:flex;align-items:center;justify-content:center;color:#90a4ae;font-size:.83rem;background:repeating-linear-gradient(45deg,#eef2f5 0 8px,#f7f9fb 8px 16px);border-radius:8px}
+body.recall .fc.rev .eq>*{visibility:visible}
+body.recall .fc.rev .eq::after{display:none}
+body.recall .fc .meta .katex{filter:blur(4px)}
+body.recall .fc.rev .meta .katex{filter:none}
+#mx{min-width:900px;font-size:.8rem}
+#mx th{text-align:center;position:sticky;top:0}
+#mx th:first-child,#mx th:nth-child(2),#mx th:last-child{text-align:left}
+#mx td.c{text-align:center}
+#mx .y{color:var(--give);font-weight:800}#mx .x{color:var(--must);font-weight:800}#mx .n{color:#cfd8dc}
+#mx tr.hl{background:#f2f7fc}
+#mx td.qq{font-size:.8rem;font-weight:600;white-space:nowrap}
+#mx td.qq a{text-decoration:none;border-bottom:1px dotted #90a4ae}
+#mx td.rm{font-size:.76rem;color:#546e7a;line-height:1.55}
+#mx tfoot td{background:#f7f9fb;font-size:.74rem;color:#455a64;text-align:center;border-top:2px solid #cfd8dc}
+#mx tfoot td:first-child{text-align:left;font-weight:700}
+.lgd{display:inline-block;min-width:1.6em;text-align:center;font-weight:800;margin:0 3px 0 8px;border-radius:4px;background:#fff;border:1px solid var(--bd)}
+.lgd.y{color:var(--give)}.lgd.x{color:var(--must)}.lgd.n{color:#b0bec5}
+.strat h4{margin:16px 0 4px;font-size:.98rem;color:#37474f}
+.strat p{margin:0 0 6px;font-size:.9rem;color:#455a64}
+
+/* §3 question table */
+.qhead{display:grid;grid-template-columns:96px 58px 1fr 1.25fr 64px;gap:10px;padding:6px 12px;font-size:.76rem;color:var(--mut);font-weight:600}
+.qrow{display:grid;grid-template-columns:96px 58px 1fr 1.25fr 64px;gap:10px;align-items:start;background:#fff;border:1px solid var(--bd);border-left:6px solid;border-radius:9px;padding:9px 12px;margin-bottom:7px}
+.qrow.sec{background:#fafafa;border-style:dashed;border-left-style:solid}
+.qrow .id a{font-weight:700;text-decoration:none}
+.qrow .id .sub{display:block;font-size:.72rem;color:var(--mut);font-weight:400}
+.qrow .ty{font-size:.72rem;color:#fff;border-radius:10px;padding:1px 8px;text-align:center;justify-self:start;white-space:nowrap}
+.qrow .sum{font-size:.88rem}
+.qrow .sum .cl{display:block;font-size:.74rem;color:var(--mut)}
+.chips{display:flex;flex-wrap:wrap;gap:4px}
+.chip{font:inherit;font-size:.74rem;border-radius:12px;padding:1px 9px;border:1px solid;cursor:pointer;background:#fff;line-height:1.6}
+.chip.must{color:var(--must);border-color:#f5c6c2;background:var(--must2)}
+.chip.half{color:var(--half);border-color:#ffd9a8;background:var(--half2)}
+.chip.give{color:var(--give);border-color:#bcdfc6;background:var(--give2)}
+.chip.hit{outline:2px solid #1565c0}
+.chips .none{font-size:.76rem;color:var(--mut)}
+.qrow .ico{font-size:.85rem;white-space:nowrap;text-align:right}
+.qrow .ico a{text-decoration:none}
+.count{font-size:.82rem;color:var(--mut);margin:0 0 8px}
+@media(max-width:760px){
+ .qhead{display:none}
+ .qrow{grid-template-columns:auto 1fr auto;gap:6px 10px}
+ .qrow .id{grid-column:1;grid-row:1}.qrow .ty{grid-column:2;grid-row:1;align-self:center}.qrow .ico{grid-column:3;grid-row:1}
+ .tw table{min-width:620px}
+ .qrow .sum,.qrow .chips{grid-column:1/-1}
+ header h1{font-size:1.3rem}
+ .cards{grid-template-columns:1fr}
+ .pos .go{margin-left:0}
+}
+footer{margin-top:40px;padding-top:14px;border-top:1px solid #dde4ea;color:#78909c;font-size:.78rem}
+@media print{
+ nav,.filters,.recallbar,.btnbar,.pos .go{display:none!important}
+ body{background:#fff}header{padding:14px 0;color:#000;background:none;border-bottom:2px solid #0d47a1}
+ header .eyebrow,header p{opacity:1}
+ section{break-inside:auto}.fc,.qrow,.chartbox,tr{break-inside:avoid}
+ body.recall .fc .eq>*{visibility:visible}body.recall .fc .eq::after{display:none}
+ #mx{font-size:7pt;min-width:0}
+ .cards{grid-template-columns:1fr 1fr;gap:8px}.fc{padding:8px 10px}.fc .eq{font-size:.8em}.fc .meta{font-size:.78rem}
+ .qrow{padding:6px 10px;margin-bottom:4px}.chartbox{display:none}.cats{grid-template-columns:1fr 1fr}
+}
+.chip.gv{color:var(--give);border-color:#bcdfc6;background:#fff;border-style:dashed}
+</style>
+</head><body>
+
+<header><div class="in">
+  <p class="eyebrow">exam-wiki-SA｜結構學｜單元總覽</p>
+  <h1>SA-U2-1　靜不定結構最小功法</h1>
+  <p>一頁回答三件事：<b>這單元考什麼</b>、<b>哪些公式考卷會給、哪些要自己背</b>、<b>每一題要背哪幾條</b>。數字全部可由 <code>raw/json/question_index.json</code> 與題解重算；全科排第幾、哪年有考，看全科熱圖。</p>
+</div></header>
+
+<nav>
+  <a href="#s1">一、考什麼</a>
+  <a href="#s2">二、公式給／背</a>
+  <a href="#s3">三、考題總表</a>
+  <a href="#s4">四、只剩三天</a>
+  <a class="ext" href="lecture-SA-U2-1.html">觀念講義 ▶</a>
+  <a class="ext" href="frequency-SA.html#s-heat">全科熱圖 ▶</a>
+</nav>
+
+<main>
+
+<div class="pos"><div class="k"><b>#5</b><span>全科出題排名（10 子項）</span></div><div class="k"><b>10</b><span>主考點題數（＋副考點 3）</span></div><div class="k"><b>9/24</b><span>有出題的考年</span></div><div class="k"><b>1/6</b><span>近 6 考年（2020–25）共 1 題</span></div>
+  <a class="go" href="frequency-SA.html#s-heat">在全科熱圖看這一列 →</a>
+</div>
+<div class="btnbar">
+  <a class="b-lec" href="lecture-SA-U2-1.html">觀念講義 📘</a>
+  <a class="b-lecp" href="lecture-SA-U2-1.pdf" target="_blank">講義 PDF 🖨️</a>
+  <a class="b-pdf" href="unit-SA-U2-1.pdf" target="_blank">本頁 PDF 🖨️</a>
+</div>
+
+<!-- ============================================================ 一 -->
+<section id="s1">
+<h2>一、這單元考什麼</h2>
+<p class="lead">10 題主考點依「考點結構」分成 4 群，每題只歸一群。點卡片會跳到第三節、只列出那一群的題目。</p>
+<div class="cats" id="cats"></div>
+
+<h3 id="drift">考點漂移：前段 vs. 後段</h3>
+<p class="lead">把主考點依題號排序後對切：2005–2014（5 題）vs. 2016–2022（5 題）。</p>
+<div class="tw"><table>
+<thead><tr><th>考點結構</th><th class="num">前段</th><th class="num">後段</th><th class="num">變化</th><th>解讀</th></tr></thead>
+<tbody><tr><td><span class="dot" style="background:#d97706"></span> 📏 靜不定梁與固端彎矩</td><td class="num">0</td><td class="num">2</td><td class="num up">▲ +2</td><td>新形態：2017-2 要推固端彎矩通式、2022-1 直接給彎矩圖要你反算，都是「反過來做」</td></tr><tr><td><span class="dot" style="background:#2563eb"></span> 🔺 靜不定桁架與混合結構</td><td class="num">2</td><td class="num">2</td><td class="num ">－</td><td>題數持平但難度上升：從單純桁架（2005-4）、樑＋桁架混合（2006-1）走到纜索鬆弛（2018-3）與極限機構（2019-1）</td></tr><tr><td><span class="dot" style="background:#059669"></span> 📐 卡氏定理求位移與轉角</td><td class="num">2</td><td class="num">1</td><td class="num down">▼ −1</td><td>2013-2、2014-4、2016-3 三題都指定卡氏定理／最小功法求轉角或變位，最後一次是 2016-3</td></tr><tr><td><span class="dot" style="background:#dc2626"></span> 🏗️ 靜不定剛架解贅力</td><td class="num">1</td><td class="num">0</td><td class="num down">▼ −1</td><td>只剩 2005-1 一題（原列的 2007-2、2007-4 是傾角變位法，2026-10-29 已改歸 U2-3），已空窗 20 年</td></tr></tbody>
+</table></div>
+<div class="chartbox"><h4>年度分布（主考點 10 題，依考點結構堆疊）</h4><canvas id="cvBar" width="1000" height="230"></canvas><div class="legend-s" id="barLg"></div></div>
+<div class="note">📌 <b>一句話</b>：這個單元的重心從「<b>解贅力</b>」漂到「<b>求位移／反算／推通式</b>」。正統的「以最小功法解靜不定剛架」只有 2005-1 一題、20 年沒再出現；近十年真正在考的是卡氏定理求轉角、纜索與極限機構、給結果反推原因——用的是同一組應變能公式，但解題流程的方向常常相反。</div>
+
+<h3 id="type">題型走向</h3>
+<p class="lead">結構學沒有 LRFD／ASD 之分，全部是分析題。改看「產出什麼」：<b>計算</b>＝求數值、<b>繪圖</b>＝主要產出是 SFD／BMD／影響線／變形曲線、<b>推導</b>＝要求通式或符號解、<b>說明</b>＝判斷與定性論述。</p>
+<div class="tw"><table>
+<thead><tr><th>期間</th><th class="num">計算</th><th class="num">繪圖</th><th class="num">推導</th><th class="num">說明</th></tr></thead>
+<tbody><tr><td>2005–2014（前段 5 題）</td><td class="num">4</td><td class="num">0</td><td class="num">1</td><td class="num">0</td></tr><tr><td>2016–2022（後段 5 題）</td><td class="num">2</td><td class="num">2</td><td class="num">1</td><td class="num">0</td></tr><tr style="background:#fff8e1"><td>近 6 考年 2020–2025（1 題）</td><td class="num">1</td><td class="num">0</td><td class="num">0</td><td class="num">0</td></tr></tbody>
+</table></div>
+<div class="note">
+📌 <b>對複習的直接影響</b>：繪圖題的評分點在「圖形階數、正負號、關鍵斷面標值」，推導題的評分點在「通式能不能退化回標準情形」——
+兩者要練的東西不同，不能只練會算數字。公式在考卷上給不給，見第二節。
+</div>
+
+<h3 id="risk">命題風險排序</h3>
+<p class="lead">依「歷史頻率 × 空窗年數 × 近年趨勢」排序。<b>這是推測不是預言</b>，用途是決定練題順序，不是 all-in 單一考點。最右欄是這類題<b>必背的公式</b>，點了跳到第二節的卡片。</p>
+<div class="tw"><table id="riskT">
+<thead><tr><th>風險</th><th>考點</th><th class="num">歷史題數</th><th>最後出現</th><th class="num">空窗</th><th>理由</th><th>這類題的門票</th></tr></thead>
+<tbody><tr class="risk-hi"><td><b>高</b></td><td>卡氏定理求指定點轉角／位移</td><td class="num">3</td><td>2016-3</td><td class="num">9 年</td><td>2013-2、2014-4、2016-3 三題都明寫「使用其他方法不予給分」；空窗 9 年而本單元 2023–2025 連三年空白，回鍋壓力最大的就是這一型</td><td data-f="0,4,10"></td></tr><tr class="risk-hi"><td><b>高</b></td><td>給彎矩圖／給結果的反算題</td><td class="num">2</td><td>2022-1</td><td class="num">3 年</td><td>2016-3（給四個桿端彎矩求變位）、2022-1（給 BMD 求彈簧力與沉陷）都是這個模板；2016 年也在 U1-3 用過同一招，是命題者近十年偏好的包裝</td><td data-f="2,3,7"></td></tr><tr class="risk-md"><td><b>中高</b></td><td>纜索／僅受拉桿件的鬆弛判定</td><td class="num">1</td><td>2018-3</td><td class="num">7 年</td><td>只出現過 2018-3 一次，但它是「不先判斷就整題錯」的類型；成本只有一條規則，投報率高</td><td data-f="12,5"></td></tr><tr class="risk-md"><td><b>中高</b></td><td>固端彎矩通式推導（含內鉸）</td><td class="num">1</td><td>2017-2</td><td class="num">8 年</td><td>2017-2 以 m、n 表示的通式解，是本單元少數的純推導題；推導結果必須能退化回 wL²/12 才算對，正好與 U2-3 的固端彎矩表互為驗算</td><td data-f="13,1"></td></tr><tr class="risk-lo"><td><b>低</b></td><td>最小功法解靜不定剛架（正統型）</td><td class="num">1</td><td>2005-1</td><td class="num">20 年</td><td>只有 2005-1 一題（原列的 2007-2、2007-4 是傾角變位法，已改歸 U2-3），20 年未再出現；剛架多半改用 U2-3 傾角變位法或 U2-4 矩陣法命題，但基本功仍要會</td><td data-f="1,11,4"></td></tr></tbody>
+</table></div>
+</section>
+
+<!-- ============================================================ 二 -->
+<section id="s2">
+<h2>二、公式給／背</h2>
+<p class="lead">以 <b>2002–2025 共 24 份考卷原文</b>為證據，逐條判定哪些考卷會印給你、哪些必須自己寫得出來。這不是公式速查表，是<b>背誦資源的投放決策</b>。</p>
+<p class="lead">10 題主考點 + 3 題副考點。多數年份會明寫「若以其他方法計算不予計分」，方法被綁死、公式卻一條不給，是最需要肌肉記憶的單元之一。</p>
+<div class="warn">
+<b>SA 的判定結果非常極端：24 份考卷（91–114 年）沒有任何一年設過「參考公式」或「參考資料」區。</b>
+文字抽取（<code>pdftotext -layout</code>）＋ 2002–2007、2009 七年的逐頁目視判讀（該七年中文字型缺失，只靠文字抽取會誤判）都確認：集中式 0 次、隨題式 0 次。
+24 年裡唯一被印出來的力學公式，是 <b>2004 年第四題內文的「勁度 k = 12EI/L³」</b>——屬於 (c) 內文式，且只出現過那一次。
+</div>
+<details><summary>判定方法（展開）</summary><div class="db">
+<p class="lead">考卷交公式有三種擺法，三種都算「有給」：<b>(a) 集中式</b>——最後一題後另闢「※參考公式」區；<b>(b) 隨題式</b>——緊跟該題題目；<b>(c) 內文式</b>——混在題目敘述裡當已知條件。</p>
+<blockquote>「本試題之相關公式，請自行合理推知。」<br><span class="ynote">——100 年（2011）試題注意欄</span></blockquote>
+<blockquote>「本試題之相關公式、物理常數、符號意義及設計參數未提及時，請自行合理推斷與假設。」<br><span class="ynote">——101 年（2012）試題注意欄</span></blockquote>
+<p class="lead">106 年（2017）起注意欄多了一句「本科目除專門名詞或數理公式外，應使用本國文字作答」——那是<b>作答語言</b>的規定，不是要給你公式，不要看到「數理公式」四個字就誤會。</p>
+<p class="lead"><b>「用到」的判定</b>：該題題解實際寫出或套用了這條式子才算。卡片上的題號、第三節每題的公式標籤、下方逐年表的 ✗，全部由同一份逐題資料算出。</p>
+</div></details>
+
+<div class="legend">
+<div class="lg must"><h4>必背</h4><p>考卷從未印過；或曾「考了卻沒給」。自己要寫得出來，否則整題卡死。</p></div>
+<div class="lg half"><h4>別賭</h4><p>曾在某些年份印出，但多數年份沒有，或只給形式不給可用的式子。仍建議背。</p></div>
+<div class="lg give"><h4>通常會給</h4><p>需要用到時幾乎必定印在題幹，無「考了卻沒給」的先例。</p></div>
+</div>
+<p class="lead">採<b>保守標準</b>：拿不準就往上歸。把「必背」誤判成「會給」的代價，遠大於多背幾條。</p>
+<div class="kpis" id="fkpi"></div>
+
+<h3>公式逐條分界</h3>
+<p class="lead">每張卡底下列出「考了卻沒給」的<b>題號</b>（灰色＝副考點題），點題號開解析；點「看這幾題」會在第三節篩出用到這條的題目。</p>
+<div class="filters" id="flt"></div>
+<div class="recallbar"><button id="rcToggle" type="button">🙈 回想模式：關</button><span id="rcInfo"></span><button id="rcReset" type="button" hidden>全部蓋回</button></div>
+<div class="cards" id="cards"></div>
+
+<details id="mxBox"><summary>逐年證據表：24 考年 × 公式欄（展開）</summary><div class="db">
+<p class="lead">每格三種狀態：<span class="lgd y">✔</span> 該年考卷印出 <span class="lgd x">✗</span> 該年有本單元題目用到這欄的式子，<b>考卷卻沒印</b> <span class="lgd n">·</span> 該年沒用到。底色列＝該年有本單元題目。</p>
+<div class="tw"><table id="mx">
+<thead><tr><th>考卷年</th><th>單元題號</th><th>卡氏定理／最小功法</th><th>應變能表達式</th><th>單位力法等價式</th><th>圖乘法／積分表</th><th>固端彎矩表</th><th>材料／斷面數值</th><th>備註</th></tr></thead>
+<tbody></tbody><tfoot></tfoot></table></div>
+<p class="lead" id="mxsum" style="margin-top:10px"></p>
+</div></details>
+
+<h3>背誦策略</h3>
+<div class="strat" id="strat">
+<h4>1. 方法被指定、公式不給——這是本單元的常態</h4><p>2005 一、2013 二、2014 四、2017 二 都寫了「以其他方法計算不予計分」之類的字句，2018 三也指定以最小功法求解。也就是說：你不能換一條自己比較熟的路，只能把卡氏定理與應變能三式寫得出來。這兩張卡是本單元的門票。</p><h4>2. 「= 0」不是永遠成立</h4><p>2022 一的 e 點有支承沉陷，\(\partial U/\partial R = \delta\) 而非 0。本單元只出現過這一次，但那一題的成敗就在這裡。背的時候要連例外一起背。</p><h4>3. 圖乘法是時間投資報酬率最高的一張卡</h4><p>2 小時 4 題，本單元的題目動輒 3～5 段彎矩函數。背熟三角×三角、三角×常數、拋物線×三角這幾個乘積值，比多背一條理論公式省時得多。</p><h4>4. 用固端彎矩標準值自我驗算</h4><p>算完最小功法的答案，若結構退化成均勻梁的情形，結果必須回到 \(wL^2/12\)、\(PL/8\)。2017 二的正解在 m = n 時就會收斂到這些值。考卷不給檢核，只能靠自己記得的標準值。</p>
+</div>
+</section>
+
+<!-- ============================================================ 三 -->
+<section id="s3">
+<h2>三、考題總表 <small>主 10 ＋ 副 3 ＝ 13 題</small></h2>
+<p class="lead">每題列出題解用到的公式：紅／橘＝考卷沒給、要自己背；綠框虛線＝那年考卷有印。標籤點了會跳到第二節那張卡。虛線灰底＝副考點（主考點在別的子項）。</p>
+<div class="filters" id="qflt">
+  <div class="fg" id="qfCat"><b>考點群</b></div>
+  <div class="fg" id="qfPri"><b>範圍</b></div>
+  <div class="fg"><b>用到公式</b><select id="qfF"><option value="">（不限）</option></select></div>
+</div>
+<p class="count" id="qcount"></p>
+<div class="qhead"><span>題號</span><span>題型</span><span>考什麼</span><span>用到的式子</span><span style="text-align:right">解析／影片</span></div>
+<div id="qlist"></div>
+<div class="note">圖示：📄 解析頁（problems-view）、🎬 解題影片、📊 解析含互動圖、✅ 已驗證。本單元目前沒有 verificationStatus＝verified 的題目。</div>
+</section>
+
+<!-- ============================================================ 四 -->
+<section id="s4">
+<h2>四、只剩三天</h2>
+<div class="note" style="font-size:.92rem">
+本單元近 6 考年只出過 1 題（2022-1），已連三年空窗，排練題順序時可以放在傾角變位法與矩陣法之後；但真的要練，就先練「卡氏定理求轉角」與「給圖反算」這兩型，其餘用讀的即可。<br>逐題練習順序另見 <a href="lecture-SA-U2-1.html">觀念講義</a> 的精選必練題。
+</div>
+</section>
+
+<footer>
+SA-U2-1 單元總覽｜由 <code>scripts/build_unit_page.py</code> 從 <code>study/data/unit-SA-U2-1.json</code> 產生｜2026-10-29<br>
+資料來源：<code>raw/json/question_index.json</code>（96 題／24 考年）、<code>raw/exams/</code> 考卷原文、<code>raw/solutions/SA-YYYY-N/*.md</code>（本單元 13 份題解，逐題核對公式用途）。<br>
+相對於舊版給／背分界頁的證據更正：卡氏定理改列題解實際寫出 \(\partial U/\partial P\) 的題（補 2018-3，刪 2006、2012、2016、2022）；最小功法、靜不定度刪 2007（2007-2、2007-4 的題解是傾角變位法，2007-4 考卷明文指定；兩題已於 2026-10-29 改歸 U2-3）；單位力法刪 2017、2022，補 2019-1 與副考點 2012-1、2014-2；彎曲應變能刪 2022（2022-1 題解用共軛梁法）；圖乘法刪 2005、2013、2017、拋物線刪 2017（這幾題題解直接積分）；材料數值 2012 那格屬 U2-2 的 2012-2，不屬本單元。所有級別判定不變。
+</footer>
+</main>
+
+<script>
+const D={"Q": [{"id": "SA-2005-1", "cl": "FR", "sum": "一次靜不定剛架以最小功法解贅力，寫出分段彎矩函數", "ty": "計算", "f": [0, 1, 4, 10, 11, 15], "pri": 1, "secCat": "", "viz": 0, "ver": 0, "video": 0}, {"id": "SA-2005-4", "cl": "TR", "sum": "靜不定桁架以單位力法／柔度矩陣解贅力並求桿件應力", "ty": "計算", "f": [1, 2, 5, 11, 15], "pri": 1, "secCat": "", "viz": 0, "ver": 0, "video": 0}, {"id": "SA-2006-1", "cl": "TR", "sum": "桁架與梁混合結構，答案以 α = EI/EA 的參數形式表示", "ty": "推導", "f": [1, 2, 4, 5, 10, 11], "pri": 1, "secCat": "", "viz": 0, "ver": 0, "video": 1}, {"id": "SA-2013-2", "cl": "DP", "sum": "卡氏定理求 C 點支承反力與 C 點轉角（指定解法）", "ty": "計算", "f": [0, 1, 4, 10, 11], "pri": 1, "secCat": "", "viz": 0, "ver": 0, "video": 0}, {"id": "SA-2014-4", "cl": "DP", "sum": "最小功法求 C 點轉角，題目含多餘資訊陷阱", "ty": "計算", "f": [0, 1, 4, 10, 11, 15], "pri": 1, "secCat": "", "viz": 0, "ver": 0, "video": 1}, {"id": "SA-2016-3", "cl": "DP", "sum": "由已給的四個桿端彎矩，以虛功法／圖乘法反算 C 點變位", "ty": "計算", "f": [2, 8, 9], "pri": 1, "secCat": "", "viz": 1, "ver": 0, "video": 1}, {"id": "SA-2017-2", "cl": "BM", "sum": "含內鉸靜不定梁以最小功法推導兩端固定端彎矩通式", "ty": "推導", "f": [0, 1, 4, 10, 11, 13], "pri": 1, "secCat": "", "viz": 0, "ver": 0, "video": 1}, {"id": "SA-2018-3", "cl": "TR", "sum": "僅受拉纜索的靜不定結構，先判鬆弛再解索力並繪 BMD", "ty": "繪圖", "f": [0, 1, 4, 5, 6, 10, 11, 12, 15], "pri": 1, "secCat": "", "viz": 0, "ver": 0, "video": 0}, {"id": "SA-2019-1", "cl": "TR", "sum": "逐步加載至破壞機構，求極限外力並繪 P–U 定性關係圖", "ty": "繪圖", "f": [0, 1, 2, 5, 11, 14, 15], "pri": 1, "secCat": "", "viz": 0, "ver": 0, "video": 1}, {"id": "SA-2022-1", "cl": "BM", "sum": "由已給彎矩圖反求彈簧內力與 c、e 兩點垂直位移", "ty": "計算", "f": [3, 7, 15], "pri": 1, "secCat": "", "viz": 0, "ver": 0, "video": 0}, {"id": "SA-2012-1", "cl": "DP", "sum": "內鉸靜定梁求 e、c 兩點位移與轉角（單位力法）", "ty": "繪圖", "f": [2, 10], "pri": 0, "secCat": "U1-2 靜定結構之分析", "viz": 0, "ver": 0, "video": 1}, {"id": "SA-2014-2", "cl": "BM", "sum": "梁＋軸力桿複合結構以諧合變位法求最大彎矩", "ty": "計算", "f": [2, 11, 15], "pri": 0, "secCat": "U2-2 靜不定結構諧合變位", "viz": 0, "ver": 0, "video": 0}, {"id": "SA-2015-2", "cl": "BM", "sum": "靜不定連續梁剪力影響線，共軛梁法求縱距", "ty": "繪圖", "f": [11], "pri": 0, "secCat": "U1-3 靜定及靜不定結構影響線", "viz": 1, "ver": 0, "video": 1}], "F": [{"g": "能量原理", "lv": "must", "nm": "卡氏第二定理", "sh": "卡氏定理", "c": 0, "eq": "$$\\Delta_i = \\frac{\\partial U}{\\partial P_i}$$", "meta": "2013 二題目明寫「請應用卡氏定理」、2014 四明寫「以最小功法」，卻都沒印出定理本身。求「非多餘力方向」的位移時（如 2013 二的 C 點轉角、2014 四的 C 點轉角）必須虛設一個力再偏微分。", "ok": []}, {"g": "能量原理", "lv": "must", "nm": "最小功法", "sh": "∂U/∂X＝0", "c": 0, "eq": "$$\\frac{\\partial U}{\\partial R_i} = 0$$", "meta": "本單元的定義式。2005 一、2006 一、2013 二、2014 四、2017 二、2018 三、2019 一 全部靠它建立方程。「= 0」的前提是該多餘力方向位移為零——2022 一有支承沉陷，右邊就不是 0（見下一張卡）。", "ok": []}, {"g": "能量原理", "lv": "must", "nm": "單位力法（虛功法）等價式", "sh": "單位力法", "c": 2, "eq": "$$\\delta = \\int \\frac{m\\,M}{EI}\\,dx + \\sum \\frac{n\\,N\\,L}{EA}$$", "meta": "2016 三直接給四個桿端彎矩、要你求 C 點變位，走的就是單位力法（虛功），2006 一是桁架與梁的混合結構，兩項都不能漏。與最小功法本質等價，考場上哪個快用哪個——但兩條式子都得自己寫得出來。", "ok": []}, {"g": "能量原理", "lv": "must", "nm": "有支承位移時的修正", "sh": "沉陷修正", "c": 0, "eq": "$$\\frac{\\partial U}{\\partial R_i} = \\delta_i \\quad (\\delta_i = \\text{該多餘力方向的已知位移})$$", "meta": "2022 一的 e 點有向下沉陷 \\(\\Delta_e\\)，右邊就不是 0。直接照抄「= 0」是本單元最典型的整題歸零錯法，而考卷不會提醒你這一點。2022 一 的題解改走共軛梁法，但用的是同一個觀念：沉陷量要進諧合條件。", "ok": []}, {"g": "應變能表達式", "lv": "must", "nm": "彎曲應變能", "sh": "M²/2EI", "c": 1, "eq": "$$U = \\int \\frac{M^{2}}{2EI}\\,dx$$", "meta": "剛架／梁題的主體。2005 一、2013 二、2014 四、2017 二、2018 三、2022 一 都要先寫出分段 \\(M(x)\\) 再積分。考卷 24 年沒印過。", "ok": []}, {"g": "應變能表達式", "lv": "must", "nm": "軸力應變能", "sh": "N²L/2EA", "c": 1, "eq": "$$U = \\sum \\frac{N^{2}L}{2EA}$$", "meta": "桁架題（2005 四、2019 一）與混合結構（2006 一、2018 三 的纜索）用。2006 一的正解含 \\(\\alpha = EI/EA\\) 的參數比，就是因為兩種應變能同時存在。", "ok": []}, {"g": "應變能表達式", "lv": "must", "nm": "剪力與扭轉應變能", "sh": "剪力・扭轉能", "c": 1, "eq": "$$U_V = \\int \\frac{\\kappa V^{2}}{2GA}\\,dx,\\qquad U_T = \\int \\frac{T^{2}}{2GJ}\\,dx$$", "meta": "2018 三明寫「忽略軸向及剪切變形」——但你得先知道有這兩項，才知道題目是在幫你簡化。若某年不寫「忽略」（如 U2-4 的 2025 四的圓桿格床），漏掉就錯。", "ok": []}, {"g": "應變能表達式", "lv": "must", "nm": "彈簧應變能", "sh": "R²/2k", "c": 1, "eq": "$$U_s = \\frac{R^{2}}{2k}\\qquad(\\text{等效柔度 } 1/k)$$", "meta": "2022 一（k = 6000 kN/m）把彈簧塞進靜不定結構裡；U2-2 的 2012 二（Ks = 2500 kN/m）也明寫要以最小功法計算。題目給 k 的「數值」，但「彈簧要以 \\(R^2/2k\\) 併入應變能」這件事不會說。2022 一 的題解以 \\(\\delta=F/k\\) 把彈簧變形併入諧合條件，是同一件事的位移寫法。", "ok": []}, {"g": "積分與圖乘工具", "lv": "must", "nm": "圖乘法乘積積分表", "sh": "圖乘表", "c": 3, "eq": "$$\\int_0^L M_1 M_2\\,dx:\\ \\ \\text{三角}\\times\\text{三角}=\\tfrac{L}{3}M_1M_2,\\quad \\text{三角}\\times\\text{常數}=\\tfrac{L}{2}M_1M_2$$", "meta": "2016 三的解析就是用圖形積分法求 C 點變位。不背這張表，每一段都要重新硬積，2 小時 4 題根本做不完。SS、RC 有時會在題目附常用積分表，SA 從來沒有。", "ok": []}, {"g": "積分與圖乘工具", "lv": "must", "nm": "拋物線面積與形心", "sh": "拋物線面積", "c": 3, "eq": "$$A = \\frac{2}{3}bh,\\qquad \\bar{x} = \\frac{3}{8}b\\ (\\text{自頂點側量})$$", "meta": "均布載重段的 \\(M\\) 圖是二次拋物線，圖乘時必用。2016 三（BC 受 2 kN/m）、2017 二（全跨均布 w）都有均布段。記錯 \\(\\tfrac{2}{3}\\) 與 \\(\\tfrac{3}{8}\\) 的搭配是常見扣分。", "ok": []}, {"g": "積分與圖乘工具", "lv": "must", "nm": "分段彎矩函數與 Macaulay 括號", "sh": "分段 M(x)", "c": 3, "eq": "$$M(x) = R\\,x + M_0 - P\\langle x - a\\rangle$$", "meta": "2013 二、2014 四、2017 二 的解都寫成這個形式。分段點抓錯（尤其跨越內鉸、變斷面處）是本單元最常見的計算錯誤。", "ok": []}, {"g": "多餘力的選取與特殊條件", "lv": "must", "nm": "靜不定度與多餘力數", "sh": "贅力數", "c": 0, "eq": "$$n = i \\ \\Rightarrow\\ \\text{需 } n \\text{ 條 } \\partial U/\\partial R_i = 0$$", "meta": "選錯數量或選到讓基本結構變成機構，整題作廢。2019 一（破壞機構）、2018 三（纜索）尤其容易判錯。", "ok": []}, {"g": "多餘力的選取與特殊條件", "lv": "must", "nm": "僅受拉纜索的鬆弛判定", "sh": "纜索鬆弛", "c": 0, "eq": "$$N < 0 \\Rightarrow N = 0\\ (\\text{纜索退出工作，靜不定度下降})$$", "meta": "2018 三明寫「細虛線表示只承受拉力的纜索」。若不先判斷 AE、BF 兩索是否都受拉就直接列方程，答案必錯。這是「流程規則」，不是公式，考卷更不會印。", "ok": []}, {"g": "多餘力的選取與特殊條件", "lv": "must", "nm": "固端彎矩表", "sh": "固端彎矩", "c": 4, "eq": "$$M_F = \\frac{wL^{2}}{12},\\quad \\frac{PL}{8},\\quad \\frac{P a b^{2}}{L^{2}}$$", "meta": "2017 二整題就是「以最小功法求固定端彎矩」。用最小功法算出來的答案要能跟標準表對得上（均勻梁 \\(wL^2/12\\)）才敢交卷——這是自我驗算的唯一基準。", "ok": []}, {"g": "多餘力的選取與特殊條件", "lv": "must", "nm": "塑性破壞機構的判定", "sh": "破壞機構", "c": 0, "eq": "$$\\text{塑鉸數} = i + 1 \\Rightarrow \\text{機構形成}$$", "meta": "2019 一要求「求出破壞機構形成時對應之極限外力」，並畫 P–U 關係圖。題目給了各桿軸拉／軸壓強度數值，但「幾根桿件失效才成機構」要自己判。", "ok": []}, {"g": "多餘力的選取與特殊條件", "lv": "give", "nm": "材料與斷面數值（E、A、EI、EA、k、強度）", "sh": "給數值", "c": 5, "eq": "$$E,\\ A,\\ EI,\\ EA,\\ k,\\ F_y \\ \\text{(數值)}$$", "meta": "需要數值答案的年份一律有給：2005 一給 E = 10⁶ N/cm² 與邊長 20 cm 的方形截面、2005 四給 A = 10 cm²；U2-2 的 2012 二給 EA = 10000 kN、Ks = 2500 kN/m；2014 二給 EI = 10000、EA = 40000；2018 三給 EI = 1000 kN-m²、EA = 500 kN；2019 一給各桿軸拉／軸壓強度；2022 一給 EI = 250000、k = 6000。其餘年份（2006、2013、2016、2017）是符號解。這類東西背了純浪費。"}], "clusters": {"FR": {"icon": "🏗️", "name": "靜不定剛架解贅力", "desc": "分段彎矩函數・∂U/∂R=0・自由體圖", "color": "#dc2626"}, "TR": {"icon": "🔺", "name": "靜不定桁架與混合結構", "desc": "軸力應變能・纜索鬆弛判定・極限機構", "color": "#2563eb"}, "BM": {"icon": "📏", "name": "靜不定梁與固端彎矩", "desc": "內鉸條件・固端彎矩推導・彎矩圖反算", "color": "#d97706"}, "DP": {"icon": "📐", "name": "卡氏定理求位移與轉角", "desc": "虛設力・圖乘法・支承沉陷修正", "color": "#059669"}}, "MXR": {"2002": "無參考公式區。整份只有幾何、載重與「E、I 為常數」等敘述。", "2003": "無參考公式區。第一題連 EI 都只寫「為常數」。", "2004": "無參考公式區。第四題內文寫出「勁度 k = 12EI/L³」——24 年唯一被印出的力學公式。", "2005": "無參考公式區。第一題只給 E、斷面積數值。", "2006": "無參考公式區。第一題明寫「精度 0.1 kN-m」，公式一條也沒有。", "2007": "無參考公式區。第一題給 A、E 數值，第二題只寫 I、2I。", "2008": "無參考公式區。第二題指定用傾角變位法，傾角變位式本身沒印。", "2009": "無參考公式區。第三題以「若令 P = K_H·Δ」定義水平勁度符號，不是給公式。", "2010": "無參考公式區。第三、四題都指定解法且「以其他方法計算不予計分」。", "2011": "注意欄明寫「本試題之相關公式，請自行合理推知」。α 與 EA 有給數值。", "2012": "注意欄明寫「相關公式、物理常數、符號意義及設計參數未提及時，請自行合理推斷與假設」；第四題給勁度方程式形式 {R}=[K]{r}。", "2013": "無參考公式區。三題指定解法且「使用其他方法不予給分」。", "2014": "無參考公式區。第三題連 √3 I 這種斷面配置都要自己換算。", "2015": "無參考公式區。第四題給矩陣關係式 [R]=[K][r] 並說明 [r] 為位移矩陣。", "2016": "無參考公式區。第三題直接給四個桿端彎矩數值，反過來要你算變位。", "2017": "無參考公式區。本年起注意欄加「本科目除專門名詞或數理公式外，應使用本國文字作答」——那是語言規定，不是給公式。", "2018": "無參考公式區。第二題要求自行定義自由度編號並建立勁度矩陣。", "2019": "無參考公式區。第四題給平衡式形式 [K]{D}={P} 與旋轉彈簧勁度 10EI/L。", "2020": "無參考公式區。第四題以數值矩陣給出剪力牆的 {F}–{Δ} 關係（該題專屬數據）。", "2021": "無參考公式區。第四題連柱的雙向慣性矩都只給 EI 數值。", "2022": "無參考公式區。第一題直接給彎矩圖，要你反算彈簧內力與沉陷。", "2023": "無參考公式區。第三題指定傾角變位法，公式沒印。", "2024": "無參考公式區。第二題給 α、E、A 數值；第四題給 Mp 值，塑性分析流程要自己會。", "2025": "無參考公式區。第一題僅寫「提示：請先寫出結構之勁度矩陣」。"}, "mxCols": ["卡氏定理／最小功法", "應變能表達式", "單位力法等價式", "圖乘法／積分表", "固端彎矩表", "材料／斷面數值"], "base": [], "baseShort": "基本式", "mxNote": "力學欄一格 ✔ 都沒有：方法會被點名、數字會給，式子一條都不給——<b>給數不給式<\/b>。", "refAreaYears": 0, "NY": 24};
+const Q=D.Q, F=D.F, CAT=D.clusters, MXR=D.MXR, BASE=D.base||[];
+const TYC={"計算":"#1565c0","繪圖":"#f57c00","推導":"#6a1b9a","說明":"#546e7a"};
+const YEARS=Object.keys(MXR).map(Number).sort((a,b)=>a-b);
+const NCOL=D.mxCols.length, GIVECOL=NCOL-1;
+const CN=["","一","二","三","四","五","六"];
+const yr=id=>+id.split('-')[1], qn=id=>+id.split('-')[2];
+const lab=id=>yr(id)+'-'+qn(id);
+const pv=id=>'problems-view/'+id+'.html';
+const vid=id=>'../解題過程影片/'+id+'/video/'+id+'.mp4';
+const QM={};Q.forEach(q=>QM[q.id]=q);
+F.forEach((f,i)=>{
+  f.qs=Q.filter(q=>q.f.includes(i)).map(q=>q.id);
+  if(f.lv==='give'){f.ok=[...new Set(f.qs.map(yr))].sort();f.noQs=[];}
+  else{f.ok=f.ok||[];f.noQs=f.qs.filter(id=>!f.ok.includes(yr(id)));}
+  f.no=[...new Set(f.noQs.map(yr))].sort();
+});
+const isPri=id=>QM[id].pri;
+const LVN={must:'必背',half:'別賭',give:'通常會給'};
+function mathIn(el){if(window.renderMathInElement)renderMathInElement(el,{delimiters:[{left:'$$',right:'$$',display:true},{left:'\\(',right:'\\)',display:false}],throwOnError:false});}
+function chip(i,qid){const f=F[i];const given=qid&&f.lv!=='give'&&f.ok.includes(yr(qid));
+  return '<button class="chip '+(given?'gv':f.lv)+'" data-fi="'+i+'" title="'+f.nm+'（'+(given?'該年考卷有印':LVN[f.lv])+'）">'+f.sh+'</button>';}
+function bindChips(root){root.querySelectorAll('.chip').forEach(c=>c.onclick=()=>openCard(+c.dataset.fi));}
+function go(id){document.getElementById(id).scrollIntoView({behavior:'smooth'});}
+
+/* §1 */
+function drawCats(){
+  const box=document.getElementById('cats');
+  box.innerHTML=Object.keys(CAT).map(k=>{const c=CAT[k];
+    const n=Q.filter(q=>q.cl===k&&q.pri).length,s=Q.filter(q=>q.cl===k&&!q.pri).length;
+    return '<button class="cat" style="border-left-color:'+c.color+'" data-k="'+k+'"><b>'+c.icon+' '+c.name+'（主 '+n+(s?'＋副 '+s:'')+'）</b><span>'+c.desc+'</span></button>';}).join('');
+  box.querySelectorAll('.cat').forEach(b=>b.onclick=()=>{qf={cat:b.dataset.k,pri:'ALL',f:''};syncQF();renderQ();go('s3');});
+}
+function drawBar(){
+  const cv=document.getElementById('cvBar'),ctx=cv.getContext('2d'),W=cv.width,H=cv.height;
+  const P=Q.filter(q=>q.pri),ks=Object.keys(CAT),by={};
+  YEARS.forEach(y=>{by[y]={};ks.forEach(k=>by[y][k]=0);});P.forEach(q=>by[yr(q.id)][q.cl]++);
+  const max=Math.max(1,...YEARS.map(y=>ks.reduce((a,k)=>a+by[y][k],0)));
+  const L=34,B=30,T=12,bw=(W-L-10)/YEARS.length;
+  ctx.font='20px sans-serif';ctx.textAlign='right';
+  for(let i=0;i<=max;i++){const yy=H-B-(H-B-T)*i/max;ctx.fillStyle='#90a4ae';ctx.fillText(i,L-8,yy+6);
+    ctx.strokeStyle='#eceff1';ctx.lineWidth=1;ctx.beginPath();ctx.moveTo(L,yy);ctx.lineTo(W-10,yy);ctx.stroke();}
+  ctx.textAlign='center';
+  YEARS.forEach((y,i)=>{let acc=0;const x=L+i*bw+bw*.15;
+    ks.forEach(k=>{const v=by[y][k];if(!v)return;const h=(H-B-T)*v/max;ctx.fillStyle=CAT[k].color;ctx.fillRect(x,H-B-acc-h,bw*.7,h-2);acc+=h;});
+    ctx.fillStyle='#78909c';ctx.fillText("'"+String(y).slice(2),x+bw*.35,H-8);});
+  document.getElementById('barLg').innerHTML=ks.map(k=>'<span><span class="dot" style="background:'+CAT[k].color+'"></span>'+CAT[k].name+'</span>').join('');
+}
+function drawRisk(){document.querySelectorAll('td[data-f]').forEach(td=>{
+  td.innerHTML='<div class="chips">'+td.dataset.f.split(',').map(i=>chip(+i)).join('')+'</div>';});}
+
+/* §2 */
+const G=[...new Set(F.map(f=>f.g))];
+let fl={lv:'all',g:'all'};let recall=false;const rev=new Set();
+function openCard(i){
+  if(!(fl.lv==='all'||fl.lv===F[i].lv)||!(fl.g==='all'||fl.g===F[i].g)){fl={lv:'all',g:'all'};syncFlt();draw();}
+  const el=document.getElementById('fc'+i);if(!el)return;
+  el.scrollIntoView({behavior:'smooth',block:'center'});el.classList.add('flash');setTimeout(()=>el.classList.remove('flash'),1600);
+}
+function shown(){return F.map((f,i)=>[f,i]).filter(([f])=>(fl.lv==='all'||f.lv===fl.lv)&&(fl.g==='all'||f.g===fl.g));}
+function rcInfo(){const s=shown();const n=s.filter(([f])=>rev.has(f.nm)).length;
+  document.getElementById('rcInfo').textContent=recall?'已翻開 '+n+' / '+s.length+' 條——看名稱先默寫，再點式子對答案。':'開啟後式子會被蓋住：看卡片名稱先在紙上默寫，再點式子翻開。';}
+function qa(id){return '<a href="'+pv(id)+'" target="_blank" class="'+(isPri(id)?'':'sec')+'">'+lab(id)+'</a>';}
+function draw(){
+  const box=document.getElementById('cards');
+  box.innerHTML=shown().map(([f,i])=>{
+    let ev;
+    if(f.lv==='give'){ev='<b>考卷給過：</b>'+f.qs.map(id=>'<span class="ok">'+lab(id)+'</span>').join(' ');}
+    else{
+      ev='<b>考卷給過：</b>'+(f.ok.length?f.ok.map(y=>'<span class="ok">'+y+'</span>').join(' '):'<span class="never">從未</span>');
+      ev+='<br><b>考了卻沒給（'+f.noQs.length+' 題）：</b>'+(f.noQs.length?f.noQs.map(qa).join(''):'—');
+      const g=f.qs.filter(id=>!f.noQs.includes(id));
+      if(g.length)ev+='<br><b>考了、當年有印：</b>'+g.map(id=>'<span class="ok">'+lab(id)+'</span>').join(' ');
+    }
+    if(f.qs.length)ev+=' <span class="uses" data-fi="'+i+'">看這幾題 ↓</span>';
+    return '<div class="fc '+f.lv+(rev.has(f.nm)?' rev':'')+'" id="fc'+i+'" data-nm="'+f.nm+'"><div class="top"><span class="nm">'+f.nm+'</span><span class="tag '+f.lv+'">'+LVN[f.lv]+'</span></div>'+
+      '<div class="eq">'+f.eq+'</div><p class="meta">'+f.meta+'</p><div class="ev">'+ev+'</div></div>';}).join('')||'<p class="lead">（此組合下沒有公式）</p>';
+  mathIn(box);
+  box.querySelectorAll('.fc .eq').forEach(e=>e.onclick=()=>{if(!recall)return;const c=e.closest('.fc');c.classList.toggle('rev');
+    c.classList.contains('rev')?rev.add(c.dataset.nm):rev.delete(c.dataset.nm);rcInfo();});
+  box.querySelectorAll('.uses').forEach(u=>u.onclick=()=>{qf={cat:'ALL',pri:'ALL',f:u.dataset.fi};syncQF();renderQ();go('s3');});
+  rcInfo();
+}
+function syncFlt(){document.querySelectorAll('#flt button').forEach(b=>b.classList.toggle('on',fl[b.dataset.t]===b.dataset.v));}
+function drawFlt(){
+  const fb=document.getElementById('flt');const lvs=[['all','全部'],['must','必背'],['half','別賭'],['give','通常會給']].filter(([k])=>k==='all'||F.some(f=>f.lv===k));
+  fb.innerHTML='<div class="fg"><b>級別</b>'+lvs.map(([k,v])=>'<button data-t="lv" data-v="'+k+'">'+v+'</button>').join('')+
+    '</div><div class="fg"><b>主題</b>'+['all',...G].map(g=>'<button data-t="g" data-v="'+g+'">'+(g==='all'?'全部':g)+'</button>').join('')+'</div>';
+  fb.querySelectorAll('button').forEach(b=>b.onclick=()=>{fl[b.dataset.t]=b.dataset.v;syncFlt();draw();});syncFlt();
+}
+function drawKpi(){
+  const n=k=>F.filter(f=>f.lv===k).length;
+  const uy=new Set(Q.map(q=>yr(q.id))).size;
+  document.getElementById('fkpi').innerHTML=[['',F.length,'本單元條列公式'],['red',n('must'),'必背'],['org',n('half'),'別賭'],['grn',n('give'),'通常會給'],['',uy,'本單元出題年數（含副考點）'],['',D.refAreaYears,D.NY+' 年設參考公式區次數']]
+    .map(([c,v,l])=>'<div class="kpi '+c+'"><div class="n">'+v+'</div><div class="l">'+l+'</div></div>').join('');
+}
+function cell(y,col){
+  if(col===GIVECOL)return F.some(f=>f.c===col&&f.ok.includes(y))?1:0;
+  if(F.some(f=>f.c===col&&f.ok.includes(y)))return 1;
+  return F.some(f=>f.c===col&&f.no.includes(y))?2:0;
+}
+function drawMx(){
+  const ok=Array(NCOL).fill(0),no=Array(NCOL).fill(0);
+  document.querySelector('#mx tbody').innerHTML=YEARS.map(y=>{
+    const qs=Q.filter(q=>yr(q.id)===y).sort((a,b)=>qn(a.id)-qn(b.id));
+    const qq=qs.length?qs.map(q=>'<a href="'+pv(q.id)+'" target="_blank">'+CN[qn(q.id)]+'</a>'+(q.pri?'':'<span class="ynote">（副）</span>')).join('、'):'(—)';
+    let c='';for(let i=0;i<NCOL;i++){const s=cell(y,i);if(s===1)ok[i]++;if(s===2)no[i]++;
+      c+='<td class="c">'+(s===1?'<span class="y">✔</span>':s===2?'<span class="x">✗</span>':'<span class="n">·</span>')+'</td>';}
+    return '<tr class="'+(qs.length?'hl':'')+'"><td><b>'+y+'</b><br><span class="ynote">'+(y-1911)+'年</span></td><td class="qq">'+qq+'</td>'+c+'<td class="rm">'+MXR[y]+'</td></tr>';}).join('');
+  document.querySelector('#mx tfoot').innerHTML='<tr><td colspan="2">'+YEARS.length+' 年合計</td>'+ok.map((v,i)=>'<td>✔ '+v+'<br><span style="color:#c62828">✗ '+no[i]+'</span></td>').join('')+'<td>✗ 合計 '+no.reduce((a,b)=>a+b,0)+' 格</td></tr>';
+  const mOk=ok.slice(0,GIVECOL).reduce((a,b)=>a+b,0),mNo=no.slice(0,GIVECOL).reduce((a,b)=>a+b,0);
+  document.getElementById('mxsum').innerHTML='看表底合計：<b>'+GIVECOL+' 個力學欄 ✔ '+mOk+' 格、✗ '+mNo+' 格</b>；材料／斷面數值欄 ✔ '+ok[GIVECOL]+' 格、✗ '+no[GIVECOL]+' 格。'+(D.mxNote||'');
+}
+/* strategy placeholders: <span data-qs="2+3" data-count> → 同時用到 2 與 3 的題號 */
+function fillQs(root){root.querySelectorAll('[data-qs]').forEach(s=>{
+  const need=s.dataset.qs.split('+').map(Number);
+  const ids=Q.filter(q=>need.every(i=>q.f.includes(i))).map(q=>q.id).sort((a,b)=>(QM[b].pri-QM[a].pri)||a.localeCompare(b));
+  s.textContent=ids.map(id=>lab(id)+(QM[id].pri?'':'（副）')).join('、')+(s.hasAttribute('data-count')?' 共 '+ids.length+' 題':'');});}
+
+/* §3 */
+let qf={cat:'ALL',pri:'ALL',f:''};
+function drawQF(){
+  document.getElementById('qfCat').insertAdjacentHTML('beforeend',[['ALL','全部'],...Object.keys(CAT).map(k=>[k,CAT[k].name])].map(([k,v])=>'<button data-t="cat" data-v="'+k+'">'+v+'</button>').join(''));
+  document.getElementById('qfPri').insertAdjacentHTML('beforeend',[['ALL','主＋副'],['PRI','僅主考點'],['SEC','僅副考點']].map(([k,v])=>'<button data-t="pri" data-v="'+k+'">'+v+'</button>').join(''));
+  const sel=document.getElementById('qfF');
+  F.forEach((f,i)=>sel.insertAdjacentHTML('beforeend','<option value="'+i+'">'+f.nm+'（'+f.qs.length+' 題）</option>'));
+  document.querySelectorAll('#qflt button').forEach(b=>b.onclick=()=>{qf[b.dataset.t]=b.dataset.v;syncQF();renderQ();});
+  sel.onchange=()=>{qf.f=sel.value;renderQ();};syncQF();
+}
+function syncQF(){document.querySelectorAll('#qflt button').forEach(b=>b.classList.toggle('on',qf[b.dataset.t]===b.dataset.v));document.getElementById('qfF').value=qf.f;}
+function renderQ(){
+  const fi=qf.f===''?null:+qf.f;
+  const sel=Q.filter(q=>(qf.cat==='ALL'||q.cl===qf.cat)&&(qf.pri==='ALL'||(qf.pri==='PRI')===!!q.pri)&&(fi===null||q.f.includes(fi)))
+    .sort((a,b)=>(b.pri-a.pri)||a.id.localeCompare(b.id));
+  document.getElementById('qcount').textContent='顯示 '+sel.length+' / '+Q.length+' 題'+(fi!==null?'——用到「'+F[fi].nm+'」':'');
+  const box=document.getElementById('qlist');
+  box.innerHTML=sel.map(q=>{
+    const fs=q.f.filter(i=>!BASE.includes(i));const c=CAT[q.cl];
+    const chips=fs.length?fs.map(i=>chip(i,q.id).replace('class="chip','class="chip'+(i===fi?' hit':''))).join(''):'<span class="none">'+(q.f.length?'只需'+D.baseShort:(q.pri?'題解未用到本單元公式':'不用本單元公式（主解法見 '+q.secCat+'）'))+'</span>';
+    return '<div class="qrow'+(q.pri?'':' sec')+'" style="border-left-color:'+c.color+'">'+
+      '<span class="id"><a href="'+pv(q.id)+'" target="_blank">'+q.id+'</a>'+(q.pri?'':'<span class="sub">副・'+q.secCat+'</span>')+'</span>'+
+      '<span class="ty" style="background:'+TYC[q.ty]+'">'+q.ty+'</span>'+
+      '<span class="sum">'+q.sum+'<span class="cl">'+c.icon+' '+c.name+'</span></span>'+
+      '<span class="chips">'+chips+'</span>'+
+      '<span class="ico"><a href="'+pv(q.id)+'" target="_blank" title="解析">📄</a>'+(q.video?' <a href="'+vid(q.id)+'" target="_blank" title="解題影片">🎬</a>':'')+(q.viz?' <span title="含互動圖">📊</span>':'')+(q.ver?' <span title="已驗證">✅</span>':'')+'</span></div>';}).join('');
+  bindChips(box);
+}
+
+document.addEventListener('DOMContentLoaded',()=>{
+  drawCats();drawBar();drawRisk();drawFlt();drawKpi();draw();drawMx();drawQF();renderQ();
+  fillQs(document.getElementById('strat'));fillQs(document.getElementById('s1'));
+  bindChips(document.getElementById('s1'));
+  mathIn(document.getElementById('strat'));mathIn(document.getElementById('s1'));mathIn(document.getElementById('mxsum'));
+  const tg=document.getElementById('rcToggle'),rs=document.getElementById('rcReset');
+  tg.onclick=()=>{recall=!recall;document.body.classList.toggle('recall',recall);tg.classList.toggle('on',recall);tg.textContent=recall?'🙈 回想模式：開':'🙈 回想模式：關';rs.hidden=!recall;rcInfo();};
+  rs.onclick=()=>{rev.clear();document.querySelectorAll('.fc.rev').forEach(c=>c.classList.remove('rev'));rcInfo();};
+  window.addEventListener('beforeprint',()=>{document.getElementById('mxBox').open=true;});
+});
+</script>
+</body></html>

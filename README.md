@@ -29,7 +29,7 @@
 |----------|-------|
 | **視覺化瀏覽整個知識庫** | **雙擊 `index.html`**（題庫搜尋篩選、考點統計、進度追蹤、指令速查） |
 | 特定題目的解析 | `raw/solutions/SA-YYYY-N/SA-YYYY-N.md` |
-| 子項深度複習講義 | `study/study-SA-UN-n.html`（說 `study SA-UN-n` 生成） |
+| 子項單元總覽（考什麼＋公式給／背＋逐題要背哪幾條） | `study/unit-SA-UN-n.html`（說 `study SA-UN-n` 生成）；觀念講義 `study/lecture-SA-UN-n.html` |
 | wiki 題目頁（含標籤/考點） | `wiki/problems/SA-YYYY-N.md` |
 | 依年份瀏覽所有題目 | `wiki/by-year.md` |
 | 概念說明（彎矩分配、傾角變位等） | `wiki/concepts/` |

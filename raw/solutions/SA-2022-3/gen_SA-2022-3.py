@@ -16,7 +16,7 @@ SA-2022-3 桁架影響線 — 解題圖解產生腳本
 三條鐵則的落實：
   1. 圖上每個縱距都由下方 IL 函數算出；IL 函數再與「桁架有限元＋細長拉桿
      互補條件」在 121 個載重位置逐點對照過（見檔尾 _selftest）
-  2. 改 PANELS / SUP / 幾何常數重跑，四條影響線會一起變
+  2. 改 PANELS / SUP / 幾何常數重跑，所有影響線會一起變
   3. 每張圖攔一種特定誤讀，見各 fig 的 docstring
 """
 import sys, os
@@ -73,6 +73,27 @@ def Ra(x):
     return (x - 30) / 36
 
 
+def Re(x):
+    """e 點垂直反力：d 為等效內鉸 ⇒ 右半部對 d 取矩 9·R_e = max(x−21, 0)。"""
+    return max(x - XHINGE, 0.0) / (30 - XHINGE)
+
+
+def Rc(x):
+    """c 點反力（由釋放條件 ①② 與整體平衡解出，推導見 .md §4 Step 3）。"""
+    if x <= 12: return 0.0
+    if x <= 15: return (x - 12) / 3
+    if x <= 21: return 1.0
+    return 1 - (x - 21) / 9
+
+
+def Rb(x):
+    """b 點反力。x = 15 時為 −1/4（b 支承被拔起）。"""
+    if x <= 12: return x / 12
+    if x <= 15: return 1 - 5 * (x - 12) / 12
+    if x <= 21: return (x - 18) / 12
+    return (30 - x) / 36
+
+
 def _nodal(x):
     """下弦載重經由節點傳遞後的兩個節點分量 [(x_node, P)]"""
     i = min(int(x // PANEL), NPAN - 1)
@@ -123,6 +144,7 @@ def _selftest():
         # (2) 由 (1) 與整體平衡 + d 內鉸條件回推 R_c、R_e，再驗整體力矩
         Re = max(x - XHINGE, 0.0) / (30 - XHINGE)
         Rc = 1 - Ra(x) - Rb - Re
+        assert abs(Rb - globals()["Rb"](x)) < 1e-12 and abs(Rc - globals()["Rc"](x)) < 1e-12, x
         assert abs(Ra(x) + Rb + Rc + Re - 1) < 1e-12, x                 # ΣFy
         assert abs(Rb * 12 + Rc * 18 + Re * 30 - x) < 1e-9, (x, Rb, Rc, Re)   # ΣM_a
         # (3) 斷面法：mn 也可由「對 k 取矩」的右側自由體算出，兩者必須一致
@@ -140,11 +162,14 @@ def _selftest():
 
 _selftest()
 
+# 題目所求五條（考卷原文：a、b、c 點反力、mn 桿件軸力、nk 桿件軸力），N_km 為補充
 IL = [
     ("R_{a}", Ra,  [0, 12, 15, 18, 21, 30], "反力（向上為正）"),
-    ("N_{km}", Fkm, [0, 3, 4, 6, 8, 9, 12, 15, 18, 30], "桿力（拉為正）"),
-    ("N_{kn}", Fkn, [0, 6, 8, 9, 12, 15, 18, 21, 30], "桿力（拉為正）"),
+    ("R_{b}", Rb,  [0, 12, 15, 18, 21, 30], "反力（向上為正）"),
+    ("R_{c}", Rc,  [0, 12, 15, 21, 30], "反力（向上為正）"),
     ("N_{mn}", Fmn, [0, 6, 9, 12, 15, 18, 21, 30], "桿力（拉為正）"),
+    ("N_{nk}", Fkn, [0, 6, 8, 9, 12, 15, 18, 21, 30], "桿力（拉為正）"),
+    ("N_{km}", Fkm, [0, 3, 4, 6, 8, 9, 12, 15, 18, 30], "補充（非題目所求）　桿力（拉為正）"),
 ]
 
 
@@ -359,16 +384,15 @@ def il_panel(name, fn, brk, unit, pxu):
 
 
 def fig4_influence_lines():
-    """四條影響線。攔：以為 x > 12 之後全部為零、以為 N_kn 有一段恆為零、
+    """題目所求五條影響線＋補充的 N_km。攔：以為 x > 12 之後全部為零、以為 N_nk 有一段恆為零、
     以為 IL 的折點一定落在節點上（N_km 在 x = 4 就不是）。"""
     panels = []
     for name, fn, brk, unit in IL:
         rng = max(abs(fn(x)) for x in brk) or 1.0
         panels.append(il_panel(name, fn, brk, unit, 44.0 / rng))
     return compose(panels, cols=1,
-                   note="四條 IL 在 x = 12 之後都不為零（0~12 m 不是獨立簡支桁架）；"
-                        "N_{kn} 沒有任何一段恆為零（它不是細長拉桿）；"
-                        "N_{km} 的折點 x = 4 落在節點之間（3–6 嵌板細長拉桿換手處）",
+                   note="x > 12 後 R_a、R_b 仍不為零，R_b 在 x = 15 為 −1/4（b 被拔起）；"
+                        "N_nk 無恆零段；N_km 折點 x = 4 在節點之間",
                    path=f"{OUT}/{TAG}-fig-4-influence-lines.svg")
 
 
@@ -377,7 +401,7 @@ if __name__ == "__main__":
     for f in (fig1_truss, fig2_releases, fig3_section, fig4_influence_lines):
         f(); print("寫出", f.__name__)
     print("\n節點縱距")
-    print("  x  |   R_a  |  N_km  |  N_kn  |  N_mn")
+    print("  x  |   R_a  |   R_b  |   R_c  |  N_mn  |  N_nk  |  N_km")
     for x in [0, 3, 4, 6, 8, 9, 12, 15, 18, 21, 24, 27, 30]:
         print(f"{x:4g} | " + " | ".join(f"{_fs(v):>6s}"
-              for v in (Ra(x), Fkm(x), Fkn(x), Fmn(x))))
+              for v in (Ra(x), Rb(x), Rc(x), Fmn(x), Fkn(x), Fkm(x))))

@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="zh-Hant"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SA-2008-2 — 題目解析</title>
+<link rel="stylesheet" href="../assets/katex/katex.min.css">
+<script defer src="../assets/katex/katex.min.js"></script>
+<script defer src="../assets/katex/auto-render.min.js"
+  onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},
+  {left:'$',right:'$',display:false},{left:'\\(',right:'\\)',display:false}],throwOnError:false});"></script>
+<style>
+:root{--ac:#1565c0;--bg:#f7f9fb;--card:#fff;--ink:#263238;--mut:#607d8b;--bd:#dfe6ea}
+*{box-sizing:border-box}
+body{margin:0;font-family:"Microsoft JhengHei","Noto Sans TC",-apple-system,sans-serif;
+  background:var(--bg);color:var(--ink);line-height:1.75;font-size:15.5px}
+header{background:linear-gradient(135deg,#0d47a1,#1976d2 60%,#42a5f5);color:#fff;padding:22px 26px}
+header h1{margin:0;font-size:1.15em}
+header .back{display:inline-block;margin-top:10px;font-size:.82em;color:#fff;background:rgba(255,255,255,.18);
+  padding:4px 12px;border-radius:14px;text-decoration:none}
+main{max-width:880px;margin:0 auto;padding:26px 22px 70px}
+h1,h2,h3{color:#0d47a1} h2{font-size:1.2em;border-left:6px solid var(--ac);padding-left:12px;margin:34px 0 14px}
+table{width:100%;border-collapse:collapse;margin:14px 0;font-size:.92em;background:#fff}
+th,td{border:1px solid var(--bd);padding:7px 10px;text-align:left;vertical-align:top}
+th{background:#eceff1;font-weight:600} tbody tr:nth-child(even){background:#fafcfd}
+code{background:#eceff1;padding:1px 5px;border-radius:4px;font-size:.92em}
+img{max-width:100%;display:block;margin:14px auto;border:1px solid var(--bd);border-radius:8px}
+.katex-display{margin:12px 0!important;overflow-x:auto;overflow-y:hidden}
+footer{text-align:center;color:var(--mut);font-size:.8em;padding:22px;border-top:1px solid var(--bd)}
+
+header h1{color:#fff!important;font-size:1.25em;margin:0;letter-spacing:.5px}
+header .meta2{margin:8px 0 0;font-size:.84em;opacity:.93;line-height:1.6}
+header .meta2 b{background:rgba(255,255,255,.2);border-radius:4px;padding:1px 7px;font-weight:600}
+header .hbtns{display:flex;flex-wrap:wrap;gap:10px;margin-top:14px}
+header .hbtns a{font-size:.85em;text-decoration:none;padding:7px 17px;border-radius:22px;
+  font-weight:700;white-space:nowrap;line-height:1.4}
+header .b-study{background:#fff;color:#1565c0}
+header .b-lect{background:#6a1b9a;color:#fff}
+header .b-fg{background:#c62828;color:#fff}
+header .hbtns a:hover{filter:brightness(1.08)}
+header .nomat{margin-top:12px;font-size:.8em;opacity:.85}
+</style></head><body>
+<header>
+<h1>SA-2008-2　靜不定結構之傾角變位法</h1>
+<p class="meta2">主分類 <b>SA-U2-3</b> 靜不定結構之傾角變位法 ｜ 2008 年（民國 97） ｜ 傾角變位法</p>
+<div class="hbtns"><a class="b-study" href="../unit-SA-U2-3.html">🧭 U2-3 單元總覽</a><a class="b-lect" href="../lecture-SA-U2-3.html">📚 U2-3 靜不定結構之傾角變位法 講義</a></div>
+</header>
+<main><hr />
+<p>主分類: "SA-U2-3"<br />
+副分類: []<br />
+難易度: 3</p>
+<hr />
+<h1>97年結構工程技師高考 結構學 第二題</h1>
+<h2>1. 原始題目重述 (Problem Restatement)</h2>
+<p>試以傾角變位法 (slope-deflection method) 計算圖示連續梁各結點處之彎矩與剪力，並繪彎矩圖與剪力圖。圖中 A、H 兩點為固接 (fixed)，其餘支承均為滾支承 (roller)。已知梁之彈性模數 $E$ 與慣性矩 $I$ 為常數。(25 分)</p>
+<p><img alt="SA-2008-2 題目附圖：五跨連續梁，對稱結構與對稱載重" src="../../raw/solutions/SA-2008-2/SA-2008-2-fig-1.png" /></p>
+<p><em>圖說：(待補充說明)</em></p>
+<p><em>(註：連續梁共五跨，支承點為 A, C, D, E, F, H。A、H 為固定端，C, D, E, F 為滾支承。跨距分別為 $L_{AC}=6\text{m}$ (B 為中點), $L_{CD}=6\text{m}$, $L_{DE}=6\text{m}$, $L_{EF}=6\text{m}$, $L_{FH}=6\text{m}$ (G 為中點)。B、G 點各有向下集中載重 $10\text{ kN}$，CD 跨與 EF 跨有向下均佈載重 $1.2\text{ kN/m}$)</em></p>
+<h2>2. 考題核心精神與出題者意圖 (Core Concepts &amp; Examiner's Intent)</h2>
+<p>本題為典型的<strong>多跨連續梁 (Multi-span Continuous Beam)</strong> 分析，指定使用<strong>傾角變位法 (Slope-Deflection Method)</strong>。出題者的核心意圖在於：</p>
+<ol>
+<li><strong>對稱性的觀察與利用 (Symmetry Analysis)</strong>：本題的幾何結構、邊界條件與外加載重均對稱於中心點 (即 DE 跨之中點)。利用對稱性條件 $\theta_C = -\theta_F$ 與 $\theta_D = -\theta_E$，可將原本 4 個未知節點旋轉角 (C, D, E, F) 的聯立方程式大幅簡化為僅含 2 個未知數 ($\theta_C, \theta_D$) 的系統，這是本題最核心的解題鑰匙。</li>
+<li><strong>傾角變位法標準作業流程</strong>：測驗考生是否熟悉固端彎矩 (FEM) 的計算、基本傾角變位方程式的列式，以及透過節點力矩平衡 ($\Sigma M=0$) 建立聯立方程式。</li>
+<li><strong>內力圖繪製基本功</strong>：在求得各端彎矩後，利用分離體自由體圖 (FBD) 與靜力平衡計算各跨端剪力，最後繪製精確的剪力圖與彎矩圖。</li>
+</ol>
+<h2>3. 解題戰略地圖與陷阱分析 (Strategic Roadmap &amp; Trap Analysis)</h2>
+<p><strong>解題戰略：</strong></p>
+<ol>
+<li><strong>第一步：系統分析與對稱性確認</strong>：結構總長 $30\text{m}$，對稱軸位於 $x=15\text{m}$ (即 DE 跨中點)。載重完全對稱。由於對稱結構承受對稱載重，變形亦呈對稱。邊界條件 $\theta_A = \theta_H = 0$。對稱條件為 $\theta_C = -\theta_F, \theta_D = -\theta_E$。</li>
+<li><strong>第二步：計算固端彎矩 (FEM)</strong>：各跨分別計算：</li>
+<li>AC 跨、FH 跨受中央集中載重 $P=10\text{ kN}$，FEM 為 $\pm \frac{PL}{8}$。</li>
+<li>CD 跨、EF 跨受均佈載重 $w=1.2\text{ kN/m}$，FEM 為 $\pm \frac{wL^2}{12}$。</li>
+<li>DE 跨無外載重，FEM 為 $0$。</li>
+<li><strong>第三步：建立傾角變位方程式</strong>：令相對勁度 $K = \frac{EI}{L}$，對 C 節點與 D 節點相鄰的桿端彎矩列出方程式。</li>
+<li><strong>第四步：建立節點平衡方程式</strong>：利用 $\Sigma M_C = M_{CA} + M_{CD} = 0$ 與 $\Sigma M_D = M_{DC} + M_{DE} = 0$，解出 $\theta_C$ 與 $\theta_D$。</li>
+<li><strong>第五步：計算端彎矩與端剪力</strong>：將旋轉角代回傾角變位方程式求得所有端彎矩，並以各跨之分離體圖求得各端剪力。</li>
+</ol>
+<p><strong>陷阱分析：</strong></p>
+<ul>
+<li><strong>陷阱 1：忽視對稱性</strong>。若未看出對稱性，直接列出包含 $\theta_C, \theta_D, \theta_E, \theta_F$ 的四元一次聯立方程式，計算量極大且易算錯。</li>
+<li><strong>陷阱 2：固端彎矩的符號</strong>。傾角變位法標準符號系統約定<strong>順時針為正</strong>。受重力（向下）載重時，左端 FEM 為負，右端 FEM 為正。符號標錯將全盤皆輸。</li>
+<li><strong>陷阱 3：DE 跨無載重的錯覺</strong>。DE 跨雖無外載，但兩端節點受相鄰跨傳遞的彎矩影響，會產生旋轉 ($\theta_D \neq 0$)，故其端彎矩不為零。</li>
+</ul>
+<h2>3.5 變數層次分析 (Variable Hierarchy Analysis)</h2>
+<h3>最終目標</h3>
+<p>求出連續梁各結點處之彎矩 ($M_{AC}, M_{CA}, \dots, M_{HF}$) 與剪力 ($V_{A}, V_{C,L}, \dots, V_{H}$)。</p>
+<h3>本題關鍵公式（依計算順序）</h3>
+<ul>
+<li>固端彎矩 (FEM)：集中載重 $M^F = \pm \frac{PL}{8}$，均佈載重 $M^F = \pm \frac{wL^2}{12}$</li>
+<li>傾角變位方程式：$M_{ij} = \frac{2EI}{L} (2\theta_i + \theta_j) + M^F_{ij}$</li>
+<li>節點平衡方程式：$\Sigma M_{node} = \sum M_{ij} = 0$</li>
+<li>跨端剪力：$V_i = V_{0,i} + \frac{M_{ij} + M_{ji}}{L}$ ($V_{0,i}$ 為簡支梁剪力)</li>
+</ul>
+<h3>L1：題目直接給定</h3>
+<table>
+<thead>
+<tr>
+<th>符號</th>
+<th>數值</th>
+<th>說明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>$L$</td>
+<td>$6\text{ m}$</td>
+<td>所有跨距皆為 $6\text{ m}$ (AC, CD, DE, EF, FH)</td>
+</tr>
+<tr>
+<td>$P_B, P_G$</td>
+<td>$10\text{ kN}$</td>
+<td>AC、FH 跨中央集中載重</td>
+</tr>
+<tr>
+<td>$w_{CD}, w_{EF}$</td>
+<td>$1.2\text{ kN/m}$</td>
+<td>CD、EF 跨均佈載重</td>
+</tr>
+</tbody>
+</table>
+<h3>L2：需知識點推導</h3>
+<p><strong>一、變形條件與固端彎矩</strong><br />
+| 符號 | 公式／來源 | 卡關? |<br />
+|---|---|---|<br />
+| $K$ | $\frac{EI}{6}$ | 桿件相對勁度 |<br />
+| $\theta$ 關係 | $\theta_A = \theta_H = 0$, $\theta_F = -\theta_C$, $\theta_E = -\theta_D$ | 由對稱性得 |<br />
+| $M^F_{AC}$ | $-\frac{10 \times 6}{8} = -7.5\text{ kN-m}$ | |<br />
+| $M^F_{CD}$ | $-\frac{1.2 \times 6^2}{12} = -3.6\text{ kN-m}$ | |</p>
+<h2>4. 步驟化詳細計算過程 (Step-by-Step Detailed Calculation)</h2>
+<h3>步驟 1：固端彎矩 (Fixed-End Moments) 計算</h3>
+<p>約定順時針為正：</p>
+<ul>
+<li>
+<p><strong>AC 跨 (集中載重 $10\text{ kN}$ 於中央)</strong>：<br />
+  $FEM_{AC} = -\frac{P L}{8} = -\frac{10 \times 6}{8} = -7.5\text{ kN-m}$<br />
+  $FEM_{CA} = +\frac{P L}{8} = +7.5\text{ kN-m}$</p>
+</li>
+<li>
+<p><strong>CD 跨 (均佈載重 $1.2\text{ kN/m}$)</strong>：<br />
+  $FEM_{CD} = -\frac{w L^2}{12} = -\frac{1.2 \times 6^2}{12} = -3.6\text{ kN-m}$<br />
+  $FEM_{DC} = +\frac{w L^2}{12} = +3.6\text{ kN-m}$</p>
+</li>
+<li>
+<p><strong>DE 跨 (無載重)</strong>：<br />
+  $FEM_{DE} = 0$<br />
+  $FEM_{ED} = 0$</p>
+</li>
+<li>
+<p><strong>EF 跨與 FH 跨</strong> (由對稱性或直接計算)：<br />
+  $FEM_{EF} = -3.6\text{ kN-m}$, $FEM_{FE} = +3.6\text{ kN-m}$<br />
+  $FEM_{FH} = -7.5\text{ kN-m}$, $FEM_{HF} = +7.5\text{ kN-m}$</p>
+</li>
+</ul>
+<h3>步驟 2：建立傾角變位方程式</h3>
+<p>令各跨相對勁度為 $K = \frac{EI}{6}$，因此 $2K = \frac{EI}{3}$。已知邊界條件 $\theta_A = 0$。無支承沉陷 $\Delta = 0$。</p>
+<ul>
+<li>$M_{AC} = 2K(2\theta_A + \theta_C) - 7.5 = \frac{EI}{3}(\theta_C) - 7.5$</li>
+<li>$M_{CA} = 2K(2\theta_C + \theta_A) + 7.5 = \frac{EI}{3}(2\theta_C) + 7.5$</li>
+<li>$M_{CD} = 2K(2\theta_C + \theta_D) - 3.6 = \frac{EI}{3}(2\theta_C + \theta_D) - 3.6$</li>
+<li>$M_{DC} = 2K(2\theta_D + \theta_C) + 3.6 = \frac{EI}{3}(2\theta_D + \theta_C) + 3.6$</li>
+<li>$M_{DE} = 2K(2\theta_D + \theta_E) + 0 = \frac{EI}{3}(2\theta_D + \theta_E)$</li>
+</ul>
+<h3>步驟 3：建立並求解節點平衡方程式</h3>
+<p>利用結構對稱性，將右半部變數替換：$\theta_E = -\theta_D$。</p>
+<ul>
+<li>
+<p><strong>節點 C 力矩平衡</strong>：$\Sigma M_C = M_{CA} + M_{CD} = 0$<br />
+  $$ \frac{EI}{3}(2\theta_C) + 7.5 + \frac{EI}{3}(2\theta_C + \theta_D) - 3.6 = 0 $$<br />
+  $$ \frac{EI}{3}(4\theta_C + \theta_D) = -3.9 \implies 4\theta_C + \theta_D = -\frac{11.7}{EI} = -\frac{117}{10 EI} \quad \text{--- (式 1)} $$</p>
+</li>
+<li>
+<p><strong>節點 D 力矩平衡</strong>：$\Sigma M_D = M_{DC} + M_{DE} = 0$<br />
+  代入 $\theta_E = -\theta_D$：<br />
+  $M_{DE} = \frac{EI}{3}(2\theta_D - \theta_D) = \frac{EI}{3}(\theta_D)$<br />
+  $$ \frac{EI}{3}(2\theta_D + \theta_C) + 3.6 + \frac{EI}{3}(\theta_D) = 0 $$<br />
+  $$ \frac{EI}{3}(\theta_C + 3\theta_D) = -3.6 \implies \theta_C + 3\theta_D = -\frac{10.8}{EI} = -\frac{108}{10 EI} \quad \text{--- (式 2)} $$</p>
+</li>
+</ul>
+<p>解 (式 1) 與 (式 2) 之聯立方程式：<br />
+(式 1) $\times 3 \implies 12\theta_C + 3\theta_D = -\frac{351}{10 EI}$<br />
+減去 (式 2) $\implies 11\theta_C = -\frac{243}{10 EI} \implies \theta_C = -\frac{243}{110 EI}$<br />
+代回 (式 2) $\implies -\frac{243}{110 EI} + 3\theta_D = -\frac{1188}{110 EI} \implies 3\theta_D = -\frac{945}{110 EI} \implies \theta_D = -\frac{63}{22 EI}$</p>
+<h3>步驟 4：回代求各端彎矩</h3>
+<p>將 $\theta_C$ 與 $\theta_D$ 代回方程式，得確切端彎矩值：</p>
+<ul>
+<li>$M_{AC} = \frac{EI}{3}\left(-\frac{243}{110 EI}\right) - \frac{15}{2} = -\frac{81}{110} - \frac{825}{110} = -\frac{906}{110} = \mathbf{-\frac{453}{55} \approx -8.236\text{ kN-m}}$</li>
+<li>$M_{CA} = \frac{EI}{3}\left(2 \times -\frac{243}{110 EI}\right) + \frac{15}{2} = -\frac{162}{110} + \frac{825}{110} = \mathbf{\frac{663}{110} \approx 6.027\text{ kN-m}}$</li>
+<li>$M_{CD} = \frac{EI}{3}\left(2 \times -\frac{243}{110 EI} - \frac{63}{22 EI}\right) - 3.6 = \frac{EI}{3}\left(-\frac{486}{110 EI} - \frac{315}{110 EI}\right) - 3.6 = -\frac{801}{330} - \frac{1188}{330} = -\frac{1989}{330} = \mathbf{-\frac{663}{110} \approx -6.027\text{ kN-m}}$</li>
+<li>$M_{DC} = \frac{EI}{3}\left(2 \times -\frac{63}{22 EI} - \frac{243}{110 EI}\right) + 3.6 = \frac{EI}{3}\left(-\frac{630}{110} - \frac{243}{110}\right) + 3.6 = -\frac{873}{330} + \frac{1188}{330} = \frac{315}{330} = \mathbf{\frac{21}{22} \approx 0.955\text{ kN-m}}$</li>
+<li>$M_{DE} = \frac{EI}{3}\left(-\frac{63}{22 EI}\right) = \mathbf{-\frac{21}{22} \approx -0.955\text{ kN-m}}$</li>
+</ul>
+<p>依據對稱性，右半部彎矩大小相等且符號相反：</p>
+<ul>
+<li>$M_{ED} = -M_{DE} = \mathbf{\frac{21}{22} \approx 0.955\text{ kN-m}}$</li>
+<li>$M_{EF} = -M_{DC} = \mathbf{-\frac{21}{22} \approx -0.955\text{ kN-m}}$</li>
+<li>$M_{FE} = -M_{CD} = \mathbf{\frac{663}{110} \approx 6.027\text{ kN-m}}$</li>
+<li>$M_{FH} = -M_{CA} = \mathbf{-\frac{663}{110} \approx -6.027\text{ kN-m}}$</li>
+<li>$M_{HF} = -M_{AC} = \mathbf{\frac{453}{55} \approx 8.236\text{ kN-m}}$</li>
+</ul>
+<h3>步驟 5：跨端剪力計算</h3>
+<p>以各跨自由體圖與 $\Sigma M = 0$ 計算各端剪力 $V = V_0 + \frac{M_{left} + M_{right}}{L}$：</p>
+<ul>
+<li>
+<p><strong>AC 跨</strong>：$V_0 = 5\text{ kN}$<br />
+  $V_A = 5 + \frac{-453/55 + 663/110}{6} = \mathbf{\frac{1019}{220} \approx 4.632\text{ kN}}$<br />
+  $V_{C,left} = 10 - V_A = \mathbf{\frac{1181}{220} \approx 5.368\text{ kN}}$</p>
+</li>
+<li>
+<p><strong>CD 跨</strong>：$V_0 = \frac{1.2 \times 6}{2} = 3.6\text{ kN}$<br />
+  $V_{C,right} = 3.6 + \frac{-663/110 + 21/22}{6} = \mathbf{\frac{303}{110} \approx 2.755\text{ kN}}$<br />
+  $V_{D,left} = 7.2 - V_{C,right} = \mathbf{\frac{489}{110} \approx 4.445\text{ kN}}$</p>
+</li>
+<li>
+<p><strong>DE 跨</strong>：$V_0 = 0$<br />
+  $V_{D,right} = 0 + \frac{-21/22 + 21/22}{6} = \mathbf{0\text{ kN}}$<br />
+  $V_{E,left} = 0 - 0 = \mathbf{0\text{ kN}}$</p>
+</li>
+<li>
+<p><strong>EF 跨與 FH 跨</strong>：<br />
+  依據對稱性，剪力圖呈反對稱分佈：<br />
+  $V_{E,right} = V_{D,left} = \mathbf{\frac{489}{110} \approx 4.445\text{ kN}}$<br />
+  $V_{F,left} = V_{C,right} = \mathbf{\frac{303}{110} \approx 2.755\text{ kN}}$<br />
+  $V_{F,right} = V_{C,left} = \mathbf{\frac{1181}{220} \approx 5.368\text{ kN}}$<br />
+  $V_{H} = V_A = \mathbf{\frac{1019}{220} \approx 4.632\text{ kN}}$</p>
+</li>
+</ul>
+<h2>5. 關鍵爭議點與進階探討 (Critical Issues &amp; Advanced Discussion)</h2>
+<ul>
+<li><strong>對稱性的強大優勢</strong>：本題如果不使用對稱性，須解 $4 \times 4$ 矩陣，在沒有計算機輔助的考場上幾乎不可能精準算對。利用對稱性條件 $\theta_C = -\theta_F, \theta_D = -\theta_E$，方程式瞬間降階為 $2 \times 2$，極大降低了計算難度與犯錯機率。</li>
+<li><strong>無載重跨 (DE 跨) 的零剪力特徵</strong>：計算顯示 DE 跨的剪力處處為零（$V_{D,right} = V_{E,left} = 0$）。這是因為 DE 跨的兩端彎矩 $M_{DE}$ 與 $M_{ED}$ 數值互為相反數（大小相等、符號相反），且本身無外加載重。這意味著 DE 跨全段處於<strong>純彎矩 (Pure Bending)</strong> 狀態，無任何剪力存在，是非常優美的力學現象，可用作防呆檢查。</li>
+<li><strong>彎矩圖與剪力圖的繪製</strong>：由求得的端彎矩與剪力，可輕易繪製圖形。AC 跨與 FH 跨由於受集中力作用，彎矩圖呈三角形折線變化；CD 跨與 EF 跨受均佈載重，彎矩圖為二次拋物線；DE 跨則為水平直線（純彎矩），彎矩恆為 $0.955\text{ kN-m}$，剪力恆為零。</li>
+</ul></main>
+<footer>來源：raw/solutions/SA-2008-2/SA-2008-2.md（知識庫解題內容唯一正本；本頁僅為渲染顯示）</footer>
+
+<script>
+/* 跟隨來源單元：若由 unit-/lecture-SA-Un-m.html（或舊的 study-/formula-given-）點進來，
+   兩顆按鈕改指向「來源那個單元」。靜態 href 保底，無 JS 或無 referrer 時仍可用。 */
+(function(){
+  var NAMES={"SA-U1-2": "靜定結構之分析", "SA-U1-3": "靜定及靜不定結構影響線", "SA-U2-1": "靜不定結構最小功法", "SA-U2-3": "靜不定結構之傾角變位法", "SA-U2-4": "靜不定結構之矩陣分析法"};
+  var m=(document.referrer||'').match(/\/(?:unit|study|lecture|formula-given)-(SA-U\d+-\d+)\.html/);
+  if(!m||!NAMES[m[1]])return;
+  var u=m[1], s=u.slice(3), box=document.querySelector('.hbtns');
+  if(!box)return;
+  box.innerHTML=
+    '<a class="b-study" href="../unit-'+u+'.html">\u{1F9ED} '+s+' \u55AE\u5143\u7E3D\u89BD</a>'+
+    '<a class="b-lect" href="../lecture-'+u+'.html">\u{1F4DA} '+s+' '+NAMES[u]+' \u8B1B\u7FA9</a>';
+  var n=document.querySelector('.nomat'); if(n)n.remove();
+})();
+</script>
+</body></html>

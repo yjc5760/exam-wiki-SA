@@ -40,12 +40,12 @@ header .nomat{margin-top:12px;font-size:.8em;opacity:.85}
 </style></head><body>
 <header>
 <h1>SA-2014-3　靜不定結構之傾角變位法</h1>
-<p class="meta2">主分類 <b>SA-U2-3</b> 靜不定結構之傾角變位法 ｜ 副分類 <b>SA-U3-2</b> 建築結構系統分析 ｜ 2014 年（民國 103） ｜ 傾角變位法</p>
-<div class="hbtns"><a class="b-study" href="../study-SA-U2-3.html">🔍 U2-3 命題分析</a><a class="b-lect" href="../lecture-SA-U2-3.html">📚 U2-3 靜不定結構之傾角變位法 講義</a><a class="b-fg" href="../formula-given-SA-U2-3.html">🎯 U2-3 給／背分界</a></div>
+<p class="meta2">主分類 <b>SA-U2-3</b> 靜不定結構之傾角變位法 ｜ 2014 年（民國 103） ｜ 傾角變位法</p>
+<div class="hbtns"><a class="b-study" href="../unit-SA-U2-3.html">🧭 U2-3 單元總覽</a><a class="b-lect" href="../lecture-SA-U2-3.html">📚 U2-3 靜不定結構之傾角變位法 講義</a></div>
 </header>
 <main><h1>考題編號：SA-2014-3</h1>
 <p><strong>主分類：</strong> <code>SA-U2-3</code> 靜不定結構之傾角變位法<br />
-<strong>副分類：</strong> <code>SA-U3-2</code><br />
+<strong>副分類：</strong> 無<br />
 <strong>分析法：</strong> 傾角變位法<br />
 <strong>標籤：</strong> <code>傾角變位法</code> <code>有側移剛架</code> <code>虛功法</code> <code>斜桿側移</code></p>
 <hr />
@@ -64,21 +64,21 @@ AB、BC、BD 及 DE 四根構件之長度分別為 $L$、$L$、$\sqrt{3}L/2$ 與
 <h2>3. 解題戰略地圖與陷阱分析 (Strategic Roadmap &amp; Trap Analysis)</h2>
 <p><strong>解題策略：</strong></p>
 <ol>
-<li><strong>分析幾何位移與弦旋轉角 ($\psi$)</strong>：<br />
-   - 假設 B 點向右位移 $\Delta$。<br />
-   - 推導 D 點的水平與垂直位移，確保 BD 與 DE 桿長度不變。<br />
-   - 寫出各桿件的弦旋轉角 $\psi_{AB}, \psi_{BC}, \psi_{BD}, \psi_{DE}$（以 $\Delta/L$ 為單位 $R$）。</li>
-<li><strong>建立傾角變位方程式</strong>：<br />
-   - 定義各桿件相對勁度 $K_{ij}$，列出各桿端彎矩方程式，未知數為 $\theta_B, \theta_D, R$。</li>
-<li><strong>建立節點平衡方程式</strong>：<br />
-   - $\sum M_B = 0$<br />
-   - $\sum M_D = 0$</li>
-<li><strong>建立側移方程式（虛功法）</strong>：<br />
-   - 給予結構一虛擬側移 $\delta \Delta$，計算外力虛功 $W_{ext}$。<br />
-   - 計算內力虛功 $W_{int} = \sum (M_{ij} + M_{ji}) \delta \psi_{ij}$。<br />
-   - 令 $W_{ext} = W_{int}$ 得到第三條方程式。</li>
-<li><strong>解方程並計算彎矩</strong>：<br />
-   - 解出 $\theta_B, \theta_D, R$ 後，代回步驟 2 的方程式求出所有桿端彎矩。</li>
+<li><strong>分析幾何位移與弦旋轉角 ($\psi$)</strong>：</li>
+<li>假設 B 點向右位移 $\Delta$。</li>
+<li>推導 D 點的水平與垂直位移，確保 BD 與 DE 桿長度不變。</li>
+<li>寫出各桿件的弦旋轉角 $\psi_{AB}, \psi_{BC}, \psi_{BD}, \psi_{DE}$（以 $\Delta/L$ 為單位 $R$）。</li>
+<li><strong>建立傾角變位方程式</strong>：</li>
+<li>定義各桿件相對勁度 $K_{ij}$，列出各桿端彎矩方程式，未知數為 $\theta_B, \theta_D, R$。</li>
+<li><strong>建立節點平衡方程式</strong>：</li>
+<li>$\sum M_B = 0$</li>
+<li>$\sum M_D = 0$</li>
+<li><strong>建立側移方程式（虛功法）</strong>：</li>
+<li>給予結構一虛擬側移 $\delta \Delta$，計算外力虛功 $W_{ext}$。</li>
+<li>計算內力虛功 $W_{int} = \sum (M_{ij} + M_{ji}) \delta \psi_{ij}$。</li>
+<li>令 $W_{ext} = W_{int}$ 得到第三條方程式。</li>
+<li><strong>解方程並計算彎矩</strong>：</li>
+<li>解出 $\theta_B, \theta_D, R$ 後，代回步驟 2 的方程式求出所有桿端彎矩。</li>
 </ol>
 <p><strong>陷阱分析：</strong></p>
 <ul>
@@ -171,15 +171,15 @@ AB、BC、BD 及 DE 四根構件之長度分別為 $L$、$L$、$\sqrt{3}L/2$ 與
 <ol>
 <li><strong>AB 桿</strong>：A 點固定，B 點向右 $\Delta$。弦 AB 逆時針旋轉。$\psi_{AB} = -\Delta/L = -R$。</li>
 <li><strong>BC 桿</strong>：C 點固定，B 點向右 $\Delta$。弦 CB 順時針旋轉。$\psi_{BC} = +\Delta/L = +R$。</li>
-<li><strong>D 點位移</strong>：<br />
-   - BD 為水平桿，長 $\sqrt{3}L/2$。B 向右 $\Delta$，故 D 也必須向右 $\Delta$。<br />
-   - DE 桿長 $L$，E 點在 D 點右下方。水平距 $\sqrt{3}L/2$，垂直距 $L/2$。<br />
-   - D 點位移必須垂直於 DE 桿。若 D 向右位移 $\Delta$，其向上的垂直位移 $v$ 必須滿足 $-\sqrt{3}L \Delta + L v = 0$（位移向量與桿件向量內積為 0），解得 $v = \sqrt{3}\Delta$。</li>
-<li><strong>BD 桿</strong>：B 向右 $\Delta$；D 向右 $\Delta$ 且向上 $\sqrt{3}\Delta$。D 相對於 B 向上移動 $\sqrt{3}\Delta$。<br />
-   - $\psi_{BD} = - \frac{\sqrt{3}\Delta}{\sqrt{3}L/2} = - \frac{2\Delta}{L} = -2R$（逆時針）。</li>
-<li><strong>DE 桿</strong>：E 固定。D 向右 $\Delta$ 且向上 $\sqrt{3}\Delta$。<br />
-   - 位移量垂直於 DE 桿，總位移大小為 $\sqrt{\Delta^2 + (\sqrt{3}\Delta)^2} = 2\Delta$。<br />
-   - 旋轉方向為順時針，故 $\psi_{DE} = +\frac{2\Delta}{L} = +2R$。</li>
+<li><strong>D 點位移</strong>：</li>
+<li>BD 為水平桿，長 $\sqrt{3}L/2$。B 向右 $\Delta$，故 D 也必須向右 $\Delta$。</li>
+<li>DE 桿長 $L$，E 點在 D 點右下方。水平距 $\sqrt{3}L/2$，垂直距 $L/2$。</li>
+<li>D 點位移必須垂直於 DE 桿。若 D 向右位移 $\Delta$，其向上的垂直位移 $v$ 必須滿足 $-\sqrt{3}L \Delta + L v = 0$（位移向量與桿件向量內積為 0），解得 $v = \sqrt{3}\Delta$。</li>
+<li><strong>BD 桿</strong>：B 向右 $\Delta$；D 向右 $\Delta$ 且向上 $\sqrt{3}\Delta$。D 相對於 B 向上移動 $\sqrt{3}\Delta$。</li>
+<li>$\psi_{BD} = - \frac{\sqrt{3}\Delta}{\sqrt{3}L/2} = - \frac{2\Delta}{L} = -2R$（逆時針）。</li>
+<li><strong>DE 桿</strong>：E 固定。D 向右 $\Delta$ 且向上 $\sqrt{3}\Delta$。</li>
+<li>位移量垂直於 DE 桿，總位移大小為 $\sqrt{\Delta^2 + (\sqrt{3}\Delta)^2} = 2\Delta$。</li>
+<li>旋轉方向為順時針，故 $\psi_{DE} = +\frac{2\Delta}{L} = +2R$。</li>
 </ol>
 <h3>Step 2：建立桿端彎矩方程式</h3>
 <p>令 $K = \frac{EI}{L}$。依據公式 $M_{ij} = 2K_{ij} (2\theta_i + \theta_j - 3\psi_{ij})$：</p>
@@ -262,18 +262,17 @@ $$\boxed{\text{E 點彎矩 } M_{ED} = 5016/115 \text{ kN-m}}$$</p>
 <footer>來源：raw/solutions/SA-2014-3/SA-2014-3.md（知識庫解題內容唯一正本；本頁僅為渲染顯示）</footer>
 
 <script>
-/* 跟隨來源單元：若由 study-/lecture-/formula-given-SA-Un-m.html 點進來，
-   三顆按鈕改指向「來源那個單元」。靜態 href 保底，無 JS 或無 referrer 時仍可用。 */
+/* 跟隨來源單元：若由 unit-/lecture-SA-Un-m.html（或舊的 study-/formula-given-）點進來，
+   兩顆按鈕改指向「來源那個單元」。靜態 href 保底，無 JS 或無 referrer 時仍可用。 */
 (function(){
   var NAMES={"SA-U1-2": "靜定結構之分析", "SA-U1-3": "靜定及靜不定結構影響線", "SA-U2-1": "靜不定結構最小功法", "SA-U2-3": "靜不定結構之傾角變位法", "SA-U2-4": "靜不定結構之矩陣分析法"};
-  var m=(document.referrer||'').match(/\/(?:study|lecture|formula-given)-(SA-U\d+-\d+)\.html/);
+  var m=(document.referrer||'').match(/\/(?:unit|study|lecture|formula-given)-(SA-U\d+-\d+)\.html/);
   if(!m||!NAMES[m[1]])return;
   var u=m[1], s=u.slice(3), box=document.querySelector('.hbtns');
   if(!box)return;
   box.innerHTML=
-    '<a class="b-study" href="../study-'+u+'.html">\u{1F50D} '+s+' \u547D\u984C\u5206\u6790</a>'+
-    '<a class="b-lect" href="../lecture-'+u+'.html">\u{1F4DA} '+s+' '+NAMES[u]+' \u8B1B\u7FA9</a>'+
-    '<a class="b-fg" href="../formula-given-'+u+'.html">\u{1F3AF} '+s+' \u7D66\uFF0F\u80CC\u5206\u754C</a>';
+    '<a class="b-study" href="../unit-'+u+'.html">\u{1F9ED} '+s+' \u55AE\u5143\u7E3D\u89BD</a>'+
+    '<a class="b-lect" href="../lecture-'+u+'.html">\u{1F4DA} '+s+' '+NAMES[u]+' \u8B1B\u7FA9</a>';
   var n=document.querySelector('.nomat'); if(n)n.remove();
 })();
 </script>

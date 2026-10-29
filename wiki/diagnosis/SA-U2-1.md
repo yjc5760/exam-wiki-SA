@@ -8,9 +8,10 @@
 > ⟹ 駐點必為最小。真正在做的事情始終是**諧合條件**。
 >
 > 完整原理說明見觀念講義：[lecture-SA-U2-1.html](../../study/lecture-SA-U2-1.html)（[PDF](../../study/lecture-SA-U2-1.pdf)）
-> 出題統計與逐題索引見速查頁：[study-SA-U2-1.html](../../study/study-SA-U2-1.html)
+> 出題統計、公式給／背與逐題索引見單元總覽：[unit-SA-U2-1.html](../../study/unit-SA-U2-1.html)
 >
-> 題數：主分類 12 題、副分類 3 題（2005–2022）。**但其中 3 題分類存疑（見文末），真正的能量法題約 9 題。**
+> 題數：主分類 10 題、副分類 3 題（2005–2022）。**其中 [[SA-2022-1]] 分類存疑（見文末），真正的能量法題約 9 題。**
+> 2026-10-29 更正：[[SA-2007-2]]、[[SA-2007-4]]（傾角變位法）已改歸 SA-U2-3，本子項由 12 題改為 10 題。
 > 近 6 年（2020–2025）僅 2022 年出 1 題，2023–2025 全無 —— **明顯降溫，但底層觀念被 SA-U2-2 與 SA-U1-2 共用。**
 
 ---
@@ -211,7 +212,7 @@ $$\int_0^L M\,m\,dx=\frac{L}{6}\Big[M_1m_1+4M_cm_c+M_2m_2\Big]$$
 
 ## 索引異常提醒
 
-**① [[SA-2007-2]] 與 [[SA-2007-4]] 的 `primaryTopicId` 掛在 `SA-U2-1`，但實質是傾角變位法。**
+**① ✅ 已結案（2026-10-29 改歸 SA-U2-3）：[[SA-2007-2]] 與 [[SA-2007-4]] 的 `primaryTopicId` 原掛在 `SA-U2-1`，但實質是傾角變位法。**
 
 | 題號 | 題目要求 | 解析「分析法」欄 | 標籤 |
 |---|---|---|---|
@@ -231,17 +232,15 @@ $$\int_0^L M\,m\,dx=\frac{L}{6}\Big[M_1m_1+4M_cm_c+M_2m_2\Big]$$
 官方命題大綱只有 SA-U1～SA-U3，且 SA-U3 只有兩個子項。
 `question_index.json` 的 `primaryTopicId` 為 `SA-U2-1`，內容確為最小功法，以索引為準。
 
-> **綜合影響：** 本子項帳面主分類 12 題，扣掉 ①② 的 3 題後，
-> **真正的能量法題約 9 題**；同時 SA-U2-3 的真實出題量被低估 2 題。
-> `raw/solutions/` 受規則 1、2 保護不可修改，`question_index.json` 屬人工維護區，
-> 故此處僅記錄，未做更動。
+> **綜合影響：** ① 已於 2026-10-29 處理（索引、解析標頭、wiki、單元總覽同步），本子項主分類 10 題；
+> 若 ② 也改歸，真正的能量法題約 9 題。②、③ 仍僅記錄，未做更動。
 
 ---
 
 ## 相關頁面
 
 - 觀念講義：[lecture-SA-U2-1](../../study/lecture-SA-U2-1.html)（[PDF](../../study/lecture-SA-U2-1.pdf)）
-- 速查頁：[study-SA-U2-1](../../study/study-SA-U2-1.html)
+- 單元總覽：[unit-SA-U2-1](../../study/unit-SA-U2-1.html)
 - 方法論：[minimum-work-method](../methods/minimum-work-method.md)
 - 分析哲學：[force-method-philosophy](../philosophy/force-method-philosophy.md)
 - 公式來源：[SA-code-minimum-work](../code-ref/SA-code-minimum-work.md)、[SA-code-unit-2](../code-ref/SA-code-unit-2.md)

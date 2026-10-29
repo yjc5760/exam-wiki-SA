@@ -39,12 +39,12 @@ header .hbtns a:hover{filter:brightness(1.08)}
 header .nomat{margin-top:12px;font-size:.8em;opacity:.85}
 </style></head><body>
 <header>
-<h1>SA-2021-3　建築結構系統分析</h1>
-<p class="meta2">主分類 <b>SA-U3-2</b> 建築結構系統分析 ｜ 2021 年（民國 110） ｜ 單位力法 (柔軟度法)</p>
-<div class="hbtns"></div><p class="nomat">本題主分類 SA-U3-2 與副分類目前皆無對應教材，故不提供教材按鈕。</p>
+<h1>SA-2021-3　靜定及靜不定結構影響線</h1>
+<p class="meta2">主分類 <b>SA-U1-3</b> 靜定及靜不定結構影響線 ｜ 2021 年（民國 110） ｜ 單位力法 (柔軟度法)</p>
+<div class="hbtns"><a class="b-study" href="../unit-SA-U1-3.html">🧭 U1-3 單元總覽</a><a class="b-lect" href="../lecture-SA-U1-3.html">📚 U1-3 靜定及靜不定結構影響線 講義</a></div>
 </header>
 <main><h3>考題編號：SA-2021-3</h3>
-<p><strong>主分類：</strong> <code>SA-U3-2</code> 影響線與最大力<br />
+<p><strong>主分類：</strong> <code>SA-U1-3</code> 靜定及靜不定結構影響線<br />
 <strong>副分類：</strong> 無<br />
 <strong>分析法：</strong> 單位力法 (柔軟度法)<br />
 <strong>標籤：</strong> <code>影響線</code> <code>靜不定桁架</code> <code>單位力法</code> <code>柔軟度法</code> <code>Müller-Breslau</code></p>
@@ -72,9 +72,9 @@ header .nomat{margin-top:12px;font-size:.8em;opacity:.85}
 <li><strong>求柔軟度系數 $f_{ee}$</strong>：在 $e$ 點施加向右的單位水平力，求 $e$ 點水平位移。此時僅有底弦四根桿件受單位張力（$u=1$），其餘桿件內力為 0。</li>
 <li><strong>求垂直載重造成的位移 $\Delta_{e0}$</strong>：單位垂直載重在底弦移動時，$e$ 點的水平位移等於底弦桿件受該載重時的總伸長量（由虛功原理證明）。</li>
 <li><strong>計算 $H_a$ 影響線</strong>：由諧和條件 $H_e \cdot f_{ee} = \Delta_{e0}$ 求出推力 $H_{thrust}$，進而得到 $H_a$。</li>
-<li><strong>疊加法求桿件內力</strong>：$S = S^0 + H \cdot u$。<br />
-   - $S_{ab} = S_{ab}^0 - H_{thrust}$（因為贅力造成底弦受壓）。<br />
-   - $S_{bg} = S_{bg}^0$（因為 $u_{bg} = 0$，水平贅力不影響網桿）。</li>
+<li><strong>疊加法求桿件內力</strong>：$S = S^0 + H \cdot u$。</li>
+<li>$S_{ab} = S_{ab}^0 - H_{thrust}$（因為贅力造成底弦受壓）。</li>
+<li>$S_{bg} = S_{bg}^0$（因為 $u_{bg} = 0$，水平贅力不影響網桿）。</li>
 </ol>
 <p><strong>陷阱分析：</strong></p>
 <ul>
@@ -235,18 +235,17 @@ $$H_{thrust}^{(i)} = \frac{v_i}{f_{ee}}$$</p>
 <footer>來源：raw/solutions/SA-2021-3/SA-2021-3.md（知識庫解題內容唯一正本；本頁僅為渲染顯示）</footer>
 
 <script>
-/* 跟隨來源單元：若由 study-/lecture-/formula-given-SA-Un-m.html 點進來，
-   三顆按鈕改指向「來源那個單元」。靜態 href 保底，無 JS 或無 referrer 時仍可用。 */
+/* 跟隨來源單元：若由 unit-/lecture-SA-Un-m.html（或舊的 study-/formula-given-）點進來，
+   兩顆按鈕改指向「來源那個單元」。靜態 href 保底，無 JS 或無 referrer 時仍可用。 */
 (function(){
   var NAMES={"SA-U1-2": "靜定結構之分析", "SA-U1-3": "靜定及靜不定結構影響線", "SA-U2-1": "靜不定結構最小功法", "SA-U2-3": "靜不定結構之傾角變位法", "SA-U2-4": "靜不定結構之矩陣分析法"};
-  var m=(document.referrer||'').match(/\/(?:study|lecture|formula-given)-(SA-U\d+-\d+)\.html/);
+  var m=(document.referrer||'').match(/\/(?:unit|study|lecture|formula-given)-(SA-U\d+-\d+)\.html/);
   if(!m||!NAMES[m[1]])return;
   var u=m[1], s=u.slice(3), box=document.querySelector('.hbtns');
   if(!box)return;
   box.innerHTML=
-    '<a class="b-study" href="../study-'+u+'.html">\u{1F50D} '+s+' \u547D\u984C\u5206\u6790</a>'+
-    '<a class="b-lect" href="../lecture-'+u+'.html">\u{1F4DA} '+s+' '+NAMES[u]+' \u8B1B\u7FA9</a>'+
-    '<a class="b-fg" href="../formula-given-'+u+'.html">\u{1F3AF} '+s+' \u7D66\uFF0F\u80CC\u5206\u754C</a>';
+    '<a class="b-study" href="../unit-'+u+'.html">\u{1F9ED} '+s+' \u55AE\u5143\u7E3D\u89BD</a>'+
+    '<a class="b-lect" href="../lecture-'+u+'.html">\u{1F4DA} '+s+' '+NAMES[u]+' \u8B1B\u7FA9</a>';
   var n=document.querySelector('.nomat'); if(n)n.remove();
 })();
 </script>

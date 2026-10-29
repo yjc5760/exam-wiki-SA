@@ -62,7 +62,7 @@ footer{text-align:center;color:var(--mut);font-size:.83em;padding:26px;border-to
 <header>
 <h1>SA-U2-3　靜不定結構之傾角變位法</h1>
 <p class="sub">觀念講義 — 練題之前先建立物理直覺，不背公式</p>
-<p class="meta">結構工程技師｜結構學（SA）第二單元第 3 子項　主分類 13 題、副分類 5 題（2002–2025）　近 6 年出題率 5/6 年</p>
+<p class="meta">結構工程技師｜結構學（SA）第二單元第 3 子項　主分類 24 題、副分類 3 題（2002–2025）　近 6 年出題率 6/6 年</p>
 </header>
 <nav>
 <a href="#s0">§0 全景</a>
@@ -80,8 +80,7 @@ footer{text-align:center;color:var(--mut);font-size:.83em;padding:26px;border-to
 <a href="#s12">★ 精選 5 題</a>
 <span style="flex:1"></span>
 <a href="../index.html#md=wiki/diagnosis/SA-U2-3.md&amp;t=SA-U2-3 題型診斷" target="_blank" style="background:#eceff1;color:#455a64">🩺 診斷頁</a>
-<a href="study-SA-U2-3.html" title="命題分析：出題頻率、考點結構、考題清單、命題風險" style="background:#e3f2fd;color:#1565c0">📊 命題分析</a>
-<a href="formula-given-SA-U2-3.html" title="哪些公式考卷會給、哪些必須自己背" style="background:#ffebee;color:#c62828">🎯 給／背分界</a>
+<a href="unit-SA-U2-3.html" title="單元總覽：考什麼、公式給／背、每題要背哪幾條" style="background:#e3f2fd;color:#1565c0">🧭 U2-3 單元總覽</a>
 <a href="lecture-SA-U2-3.pdf" target="_blank" style="background:#eceff1;color:#455a64">🖨️ 本頁 PDF</a>
 </nav>
 <main>
@@ -197,13 +196,13 @@ $$\underbrace{M^F_{AB}}_{\text{① 鎖住：全當固定端}} \;+\; \underbrace{
 <table>
 <thead><tr><th>群</th><th>節</th><th>核心問題</th><th>權重（標籤次數）</th></tr></thead>
 <tbody>
-<tr><td>方程式本身</td><td>§1</td><td>公式怎麼來？符號怎麼定才不會錯？</td><td>傾角變位法　13</td></tr>
-<tr><td>未知量盤點</td><td>§2</td><td>自由度到底幾個？各種支承怎麼翻譯？</td><td>節點轉角／無軸向變形／垂直滾支承／剛性梁／彈簧　6</td></tr>
-<tr><td>固端彎矩</td><td>§3</td><td>FEM 要不要背？節點載重算不算？</td><td>固端彎矩／修正固端彎矩　2</td></tr>
-<tr><td>兩類方程式</td><td>§4</td><td>節點平衡 ＋ 側移方程，後者怎麼列才不錯號？</td><td>側移方程式／層剪力方程／剪力方程式／虛功法　5</td></tr>
-<tr><td>側移幾何</td><td>§5</td><td>\(\psi\) 從哪來？斜桿與垂直位移怎麼算？</td><td>有側移剛架／側移／斜桿側移　9</td></tr>
-<tr><td>對稱降維</td><td>§6</td><td>對稱與反對稱各給什麼？勁度怎麼折？</td><td>對稱性／對稱結構／反對稱／降維分析／連桿效應　7</td></tr>
-<tr><td>修正勁度</td><td>§7</td><td>遠端鉸接、非均勻斷面的 \(S\)、\(C\) 係數</td><td>非均勻斷面／勁度係數／傳遞係數　4</td></tr>
+<tr><td>方程式本身</td><td>§1</td><td>公式怎麼來？符號怎麼定才不會錯？</td><td>傾角變位法／傾角撓度法　21</td></tr>
+<tr><td>未知量盤點</td><td>§2</td><td>自由度到底幾個？各種支承怎麼翻譯？</td><td>節點轉角／無軸向變形／剛性梁／剛性矮牆／彈簧／彈簧支承　6</td></tr>
+<tr><td>固端彎矩</td><td>§3</td><td>FEM 要不要背？節點載重算不算？</td><td>固端彎矩／修正固端彎矩　4</td></tr>
+<tr><td>兩類方程式</td><td>§4</td><td>節點平衡 ＋ 側移方程，後者怎麼列才不錯號？</td><td>側移方程式／層剪力方程／剪力方程式／剪力平衡／虛功法　8</td></tr>
+<tr><td>側移幾何</td><td>§5</td><td>\(\psi\) 從哪來？斜桿與垂直位移怎麼算？</td><td>有側移剛架／側移剛架／側移／斜桿／斜桿側移／非正交剛架　16</td></tr>
+<tr><td>對稱降維</td><td>§6</td><td>對稱與反對稱各給什麼？勁度怎麼折？</td><td>對稱性／對稱結構／對稱剛架／反對稱／降維分析／連桿效應　9</td></tr>
+<tr><td>修正勁度</td><td>§7</td><td>遠端鉸接、非均勻斷面的 \(S\)、\(C\) 係數</td><td>非均勻斷面／勁度係數／傳遞係數／鉸端修正　5</td></tr>
 </tbody>
 </table>
 </section>
@@ -1232,7 +1231,7 @@ BD 因 D 上抬而逆時針轉 \(\psi_{BD}=-2R\)。最常見的錯誤是「認�
 <h2>§6　對稱降維：一眼看出來，計算量砍半</h2>
 
 <div class="lead">
-13 題主分類裡有 5 題可以用對稱性降維，其中 3 題不降維就幾乎做不完。
+24 題主分類裡至少 9 題可以用對稱性降維（2002-4、2008-2、2009-3、2012-3、2015-3、2020-2、2021-2、2024-3、2024-4），2010-3 則是「對稱 ＋ 反對稱」兩種載重疊加；像 2020-2 這種兩層三跨的題目，不降維就幾乎做不完。
 規則只有兩行，但<b>名稱容易讓人搞反</b>，所以先把定義釘死。
 </div>
 
@@ -1329,7 +1328,7 @@ BD 因 D 上抬而逆時針轉 \(\psi_{BD}=-2R\)。最常見的錯誤是「認�
 <div class="cap">圖 6-1｜兩種情形並排，變形由勁度法實算（柱、梁同 \(EI\)，\(L_b = 1.4L\)）後誇大顯示。注意<b>名稱的陷阱</b>：
 「對稱載重」給的是<b>反號</b>的轉角（\(\theta_C = -\theta_B\)），
 「反對稱載重」給的才是<b>同號</b>的轉角（\(\theta_C = +\theta_B\)）。
-名稱說的是<b>載重</b>與<b>變形形狀</b>的對稱性，不是轉角數值的正負。</div>
+名稱說的是<b>載重</b>與<b>變形形狀</b>的對稱性，不是轉角數值的正負。<br>實戰對照：對稱載重 → <a class="qlink" href="problems-view/SA-2008-2.html" target="_blank">SA-2008-2</a>、<a class="qlink" href="problems-view/SA-2012-3.html" target="_blank">SA-2012-3</a>、<a class="qlink" href="problems-view/SA-2015-3.html" target="_blank">SA-2015-3</a>；反對稱 → <a class="qlink" href="problems-view/SA-2024-4.html" target="_blank">SA-2024-4</a>；兩者疊加 → <a class="qlink" href="problems-view/SA-2010-3.html" target="_blank">SA-2010-3</a>。</div>
 </div>
 
 <div class="why">
@@ -1760,7 +1759,7 @@ $$\frac{V_{\text{短}}}{V_{\text{長}}} = \frac{1/2^3}{1/3^3} = \frac{27}{8}
 <section id="s9">
 <h2>§9　歷屆題 × 觀念對照表</h2>
 
-<h3>9.1 主分類 13 題</h3>
+<h3>9.1 主分類 24 題</h3>
 <table>
 <thead><tr><th>題號</th><th>考年</th><th>題目重點</th><th>對應節次</th><th>這題的獨門技能</th></tr></thead>
 <tbody>
@@ -1773,6 +1772,9 @@ $$\frac{V_{\text{短}}}{V_{\text{長}}} = \frac{1/2^3}{1/3^3} = \frac{27}{8}
 <tr><td><a class="qlink" href="problems-view/SA-2024-4.html" target="_blank">SA-2024-4</a></td><td>113</td>
 <td>剛架各桿 \(EI\)／長度不同，求 \(\Delta_B\)、\(M_C\)、\(M_D\)</td><td>§4.2 §6</td>
 <td>先化相對勁度發現三桿等值；反對稱 ⟹ \(\theta_B=\theta_C\)；答案 \(3PL/7\)、\(4PL/7\)</td></tr>
+<tr><td><a class="qlink" href="problems-view/SA-2023-3.html" target="_blank">SA-2023-3</a></td><td>112</td>
+<td>柱 AB 受水平 UDL、BC 跨中集中載重；A 鉸、C 滾、D 固定的無側移剛架</td><td>§2.1 §3 §7.1</td>
+<td>先判斷「無側移」（A 鉸＋忽略軸向變形鎖住水平位移）；A 鉸端用修正式消去 \(\theta_A\)；以整體平衡驗算</td></tr>
 <tr><td><a class="qlink" href="problems-view/SA-2022-2.html" target="_blank">SA-2022-2</a></td><td>111</td>
 <td>階梯型剛架，兩柱中點各受 30 kN，求 \(cd\) 梁 BMD 與 \(b\)、\(c\) 水平位移</td><td>§1.2 §3.2</td>
 <td>兩柱 \(\psi\) <b>反號</b>；修正 FEM \(3PL/16\)；\(b\) 點位移 = 弦位移 ＋ 彈性撓度</td></tr>
@@ -1788,12 +1790,42 @@ $$\frac{V_{\text{短}}}{V_{\text{長}}} = \frac{1/2^3}{1/3^3} = \frac{27}{8}
 <tr><td><a class="qlink" href="problems-view/SA-2020-2.html" target="_blank">SA-2020-2</a></td><td>109</td>
 <td>兩層三跨雙重對稱剛架，求 \(b\) 點垂直位移、轉角與 \(ab\) 端彎矩</td><td>§6</td>
 <td>左右＋上下雙重對稱降維；推出柱 \(bf\) <b>軸力為零</b></td></tr>
+<tr><td><a class="qlink" href="problems-view/SA-2015-3.html" target="_blank">SA-2015-3</a></td><td>104</td>
+<td>三柱固定、梁上 C、E 兩個內部鉸的對稱剛架，全跨受 UDL</td><td>§6 §7.1</td>
+<td>對稱降維 ＋ <b>內部鉸兩側的相對垂直位移</b>要列成未知量，漏掉就錯</td></tr>
 <tr><td><a class="qlink" href="problems-view/SA-2017-3.html" target="_blank">SA-2017-3</a></td><td>106</td>
 <td>門型剛架，兩柱底皆鉸，梁受 UDL＋右柱受兩個 60 kN，求端彎矩與 \(\theta_A\)、\(\theta_D\)</td><td>§2.1 §3.3 §7.1</td>
 <td>節點載重 vs 桿件載重的區別；\(H_D\) 含載重修正；<b>反求</b>鉸端轉角</td></tr>
 <tr><td><a class="qlink" href="problems-view/SA-2014-3.html" target="_blank">SA-2014-3</a></td><td>103</td>
 <td>含斜桿的有側移剛架，求 A–E 各點彎矩（限用傾角變位法）</td><td>§4.2 §5.2</td>
 <td>本單元最高難度；斜桿幾何連動；必須用虛功法建側移方程</td></tr>
+<tr><td><a class="qlink" href="problems-view/SA-2013-3.html" target="_blank">SA-2013-3</a></td><td>102</td>
+<td>A、D 固定、B 為鉸接，CD 為斜桿的有側移剛架，BC 受 UDL</td><td>§5.2 §7.1 §1.2</td>
+<td>斜桿側移幾何；鉸接端修正；符號慣例一致性</td></tr>
+<tr><td><a class="qlink" href="problems-view/SA-2012-3.html" target="_blank">SA-2012-3</a></td><td>101</td>
+<td>封閉矩形剛架，頂梁兩個對稱集中載重 \(P\)，求 BMD 與變形曲線</td><td>§6 §5</td>
+<td>載重對稱 ⟹ 無整體側移；封閉框只取半邊分析</td></tr>
+<tr><td><a class="qlink" href="problems-view/SA-2011-2.html" target="_blank">SA-2011-2</a></td><td>100</td>
+<td>A 固定、D、E 鉸接，B 懸空節點受 30 kN、CD 跨中 16 kN</td><td>§3.2 §5.1 §7.1</td>
+<td>B 點下陷造成弦轉角；修正 FEM；以剪力平衡補方程</td></tr>
+<tr><td><a class="qlink" href="problems-view/SA-2010-3.html" target="_blank">SA-2010-3</a></td><td>99</td>
+<td>A、D 固定的非正交（斜柱）剛架，B 受水平 \(P\)、BC 中點受 \(2P\)</td><td>§5.2 §4.2 §6</td>
+<td>非正交剛架的 \(\psi\) 連動；虛功法建側移方程；對稱／反對稱載重拆開看</td></tr>
+<tr><td><a class="qlink" href="problems-view/SA-2010-2.html" target="_blank">SA-2010-2</a></td><td>99</td>
+<td>D 為滾支承的有側移剛架；第二小題改受力矩載重，求桿件中點水平位移</td><td>§4.2 §2.1</td>
+<td>滾支承無水平反力 ⟹ 剪力方程只剩 A 點；由桿端彎矩回推桿內位移</td></tr>
+<tr><td><a class="qlink" href="problems-view/SA-2009-3.html" target="_blank">SA-2009-3</a></td><td>98</td>
+<td>\(\pi\) 型剛架，a 端受水平力 \(P\)，求整體水平勁度 \(K_H\)</td><td>§2 §4 §6 §7.1</td>
+<td>水平桿 \(\psi=0\)、兩柱 \(\psi=\Delta/L\)；鉸端修正；對稱 ⟹ \(\theta_b=\theta_c\)</td></tr>
+<tr><td><a class="qlink" href="problems-view/SA-2008-2.html" target="_blank">SA-2008-2</a></td><td>97</td>
+<td>五跨對稱連續梁、對稱載重，繪 SFD／BMD</td><td>§3 §6</td>
+<td>\(\theta_C=-\theta_F\)、\(\theta_D=-\theta_E\) 把未知量減半</td></tr>
+<tr><td><a class="qlink" href="problems-view/SA-2007-4.html" target="_blank">SA-2007-4</a></td><td>96</td>
+<td>斜桿 AC＋滾支承 B 的有側移剛架，C 點受水平力；明文指定傾角變位法，繪 SFD／BMD</td><td>§4 §5</td>
+<td>由軸向剛性定 \(\psi_{AC}\)、\(\psi_{BC}\)；以虛功法列側移方程（2026-10-29 由 SA-U2-1 改歸）</td></tr>
+<tr><td><a class="qlink" href="problems-view/SA-2007-2.html" target="_blank">SA-2007-2</a></td><td>96</td>
+<td>無側移剛架（A、B 固接、E 鉸接），AC 中點集中力＋CE 均布</td><td>§3 §7.1</td>
+<td>DE 桿用鉸端修正式消去 \(\theta_E\)，固端彎矩同步改為 \(wL^2/8\)（2026-10-29 由 SA-U2-1 改歸）</td></tr>
 <tr><td><a class="qlink" href="problems-view/SA-2006-4.html" target="_blank">SA-2006-4</a></td><td>95</td>
 <td>剪力房屋含剛性梁與剛性矮牆，求長柱／短柱的柱底彎矩比與剪力比</td><td>§2.1 §7.3</td>
 <td>剛性構件把 10 個 \(\theta\) 壓成 1 個 \(\Delta\)；\(M\propto 1/L^2\)、\(V\propto 1/L^3\)</td></tr>
@@ -1806,34 +1838,24 @@ $$\frac{V_{\text{短}}}{V_{\text{長}}} = \frac{1/2^3}{1/3^3} = \frac{27}{8}
 </tbody>
 </table>
 
-<h3>9.2 副分類 5 題（本單元只借用其中一部分）</h3>
+<h3>9.2 副分類 3 題（本單元只借用其中一部分）</h3>
 <table>
 <thead><tr><th>題號</th><th>主要歸屬</th><th>本單元該學什麼</th></tr></thead>
 <tbody>
-<tr><td><a class="qlink" href="problems-view/SA-2009-3.html" target="_blank">SA-2009-3</a></td><td>SA-U1-1 靜不定度與穩定性<br><span style="color:#c62828">（分類疑有誤，見下）</span></td>
-<td><b>非常值得完整做一次 —— 它其實整題都是本子項。</b>\(\pi\) 型剛架求整體水平勁度 \(K_H\)：
-水平桿 \(\psi=0\)、兩柱 \(\psi=\Delta/L\)、\(a\)、\(d\) 鉸端用修正式、對稱 ⟹ \(\theta_b=\theta_c\)。
-本單元 §2、§4、§6、§7.1 的技能全用到了，題目本身也明講用傾角變位法。
-它掛在 SA-U1-1（靜不定度與穩定性之判斷）名實不符。</td></tr>
 <tr><td><a class="qlink" href="problems-view/SA-2016-2.html" target="_blank">SA-2016-2</a></td><td>SA-U1-3 影響線</td>
 <td><b>「垂直載重也會側移」的最佳反例。</b>倒 L 型剛架、\(C\) 為滾支承，
 漏列側移方程就得到錯答案。可與 Müller-Breslau 原理對照學。</td></tr>
 <tr><td><a class="qlink" href="problems-view/SA-2012-4.html" target="_blank">SA-2012-4</a></td><td>SA-U2-4 矩陣分析法</td>
 <td>剛性桿件造成的<b>主從自由度</b>（master-slave）：剛性桿如蹺蹺板，
 帶動相鄰柔性桿產生弦轉角 \(\psi\)。與 §2.1 的「剛性構件」條目互為印證。</td></tr>
-<tr><td><a class="qlink" href="problems-view/SA-2011-1.html" target="_blank">SA-2011-1</a></td><td>SA-U2-2 諧合變位</td>
-<td>只看它「溫度變化／製造誤差／支承位移進入靜不定結構」的處理。
-提醒：靜不定結構這三者<b>會</b>生內力（與 SA-U1-2 的靜定情形相反）。</td></tr>
 <tr><td><a class="qlink" href="problems-view/SA-2012-2.html" target="_blank">SA-2012-2</a></td><td>SA-U2-2 諧合變位<br><span style="color:#607d8b">（標籤卻寫最小功法）</span></td>
 <td>只看彈性支承（彈簧）在能量法中的處理，與 §2.1 的彈簧條目對照。</td></tr>
 </tbody>
 </table>
 
 <div class="trap">
-<b>索引異常提醒（兩處）</b><br>
-① <a class="qlink" href="problems-view/SA-2009-3.html" target="_blank">SA-2009-3</a> 的 <code>primaryTopicId</code> 掛在
-<b>SA-U1-1</b>（靜不定度與穩定性之判斷），但題目明文要求傾角變位法、內容是有側移剛架求水平勁度，
-應歸 <b>SA-U2-3</b>。這使本子項的真實出題量被低估（帳面 13 題，實質 14 題）。<br>
+<b>索引異常提醒</b><br>
+① （已處理）<a class="qlink" href="problems-view/SA-2009-3.html" target="_blank">SA-2009-3</a> 原掛在 SA-U1-1，題目明文要求傾角變位法，已於 2026-10-29 改歸 <b>SA-U2-3</b>；<a class="qlink" href="problems-view/SA-2011-1.html" target="_blank">SA-2011-1</a> 的副分類 SA-U2-3 也已移除。<br>
 ② <a class="qlink" href="problems-view/SA-2012-2.html" target="_blank">SA-2012-2</a> 的 <code>primaryTopicId</code> 是
 <b>SA-U2-2</b>（諧合變位），但標籤寫「最小功法」（屬 SA-U2-1）。兩者其一有誤。
 </div>
@@ -1972,7 +1994,7 @@ D 必須沿<b>垂直於 DE</b> 的方向移動，於是同時被強迫產生垂�
 
 <h3>② <a class="qlink" href="problems-view/SA-2022-2.html" target="_blank">SA-2022-2</a>（111 年）｜\(\psi\) 反號 ＋ 修正 FEM ＋ 中點位移</h3>
 <div class="box">
-<p><b>為什麼選它：</b>覆蓋權重最高的一題（新增權重 22）。三個彼此無關的技能一次到位：
+<p><b>為什麼選它：</b>標籤覆蓋面最廣的題目之一。三個彼此無關的技能一次到位：
 兩柱 \(\psi\) <b>反號</b>（本單元最經典的一刀）、修正 FEM \(3PL/16\)、
 以及「桿件中點位移 = 弦位移 ＋ 彈性撓度」的疊加觀念。</p>
 <p><b>先讀：</b>§1.2（符號）→ §3.2（修正 FEM）→ §4.2</p>
@@ -2065,7 +2087,7 @@ SA-2020-1 只讓你碰到斜桿的邊，這題才是真正要你推導多節點�
 練完這五題，以下考點群<b>完全沒練到</b>，請自行補題：
 <ul>
 <li><b>對稱載重的那一半</b>（\(\theta_C = -\theta_B\)、梁勁度 \(2EI/L\)、\(\Delta = 0\)）→
-必補 <a class="qlink" href="problems-view/SA-2020-2.html" target="_blank">SA-2020-2</a>。
+必補 <a class="qlink" href="problems-view/SA-2020-2.html" target="_blank">SA-2020-2</a>（較短的替代：<a class="qlink" href="problems-view/SA-2008-2.html" target="_blank">SA-2008-2</a>、<a class="qlink" href="problems-view/SA-2012-3.html" target="_blank">SA-2012-3</a>）。
 這是最嚴重的缺口，五題全是反對稱不是我故意的，是這一子項的出題重心真的偏在側向載重。</li>
 <li><b>斜桿的完整虛功法</b>（多節點幾何連動）→ 補 <a class="qlink" href="problems-view/SA-2014-3.html" target="_blank">SA-2014-3</a></li>
 <li><b>非均勻斷面的 \(S\)、\(C\) 係數推導</b>（§7.2）→ 補 <a class="qlink" href="problems-view/SA-2025-3.html" target="_blank">SA-2025-3</a>。
@@ -2073,14 +2095,15 @@ SA-2020-1 只讓你碰到斜桿的邊，這題才是真正要你推導多節點�
 <li><b>彈簧支承 ＋ 內部鉸的連續梁</b>（§2.1）→ 補 <a class="qlink" href="problems-view/SA-2021-1.html" target="_blank">SA-2021-1</a>。
 順便學「懸臂段等效成彈簧」與「等跨 ⟹ \(\Delta_b\) 解耦」兩個技巧。</li>
 <li><b>連桿（實線）的識別</b>（§2.1）→ 補 <a class="qlink" href="problems-view/SA-2021-2.html" target="_blank">SA-2021-2</a>，5 分鐘就能看完圖與判斷。</li>
-<li><b>整體水平勁度 \(K_H\)</b> → 補 <a class="qlink" href="problems-view/SA-2009-3.html" target="_blank">SA-2009-3</a>（雖掛在 SA-U1-1，內容整題都是本子項）。</li>
+<li><b>整體水平勁度 \(K_H\)</b> → 補 <a class="qlink" href="problems-view/SA-2009-3.html" target="_blank">SA-2009-3</a>。</li>
 </ul>
 </div>
 </section>
 
 </main>
 <footer>
-SA-U2-3 觀念講義｜exam-wiki-SA｜資料來源：raw/solutions/ 已驗證解析 18 題<br>
+SA-U2-3 觀念講義｜exam-wiki-SA｜資料來源：raw/solutions/ 解析 27 題（主分類 24＋副分類 3）<br>
+2026-10-29 改版：依索引修正（10 題重新歸類＋SA-2009-3 改歸本子項、SA-2011-1 移除副分類）更新題數、§0.2 權重、§6 對稱題清單、§9 對照表<br>
 建議使用順序：觀念講義（練題前）→ 給／背分界（決定背誦優先序）→ 命題分析（考前排練題順序）<br>
 圖解皆由程式依座標與解題數值繪製：變形曲線為 Hermite 三次式或勁度法實算結果（誇大顯示），彎矩圖依實際桿端彎矩比例
 </footer>

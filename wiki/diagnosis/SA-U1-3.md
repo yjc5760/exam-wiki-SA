@@ -8,9 +8,11 @@
 > 根源是貝蒂／馬克士威互易定理。它的價值在於**把 $n$ 次計算壓縮成 1 次**。
 >
 > 完整原理說明見觀念講義：[lecture-SA-U1-3.html](../../study/lecture-SA-U1-3.html)（[PDF](../../study/lecture-SA-U1-3.pdf)）
-> 出題統計與逐題索引見速查頁：[study-SA-U1-3.html](../../study/study-SA-U1-3.html)
+> 出題統計、公式給／背與逐題索引見單元總覽：[unit-SA-U1-3.html](../../study/unit-SA-U1-3.html)
 >
-> 題數：主分類 9 題、副分類 4 題（2003–2025）。近 6 年（2020–2025）出 2 年 2 題。
+> 題數：主分類 11 題、副分類 4 題（2003–2025）。近 6 年（2020–2025）出 4 年 4 題。
+>
+> 2026-10-28 更正：[[SA-2020-3]]、[[SA-2021-3]] 原誤掛舊代碼 SA-U3-2，已改歸本子項，題數由 9 上修為 11。本頁內文的題型分析仍以原 9 題為主，尚未納入這兩題。
 > **從未連兩年出題，也從未超過 5 年空窗。**
 
 ---
@@ -194,7 +196,7 @@ $$\mathrm{IL}_{R_{\text{滾}}}(x)=\frac{x^2(3L-x)}{2L^3}$$
 | 靜定結構的 IL | 本子項；只需靜力平衡與運動學（SA-U1-2 的基本功） |
 | 靜不定結構的 IL | 本子項 ＋ 力法（SA-U2-1 最小功法／SA-U2-2 諧合變位）求撓曲線 |
 | 剛架 IL 且要用位移法 | 傾角變位法（SA-U2-3），但小心側移判斷 |
-| 靜不定桁架 IL | 柔度法；歸在 SA-U3-2（[[SA-2021-3]]），邏輯與本子項路線一相同 |
+| 靜不定桁架 IL | 柔度法（[[SA-2021-3]]，2026-10-28 由 SA-U3-2 改歸本子項），邏輯與本子項路線一相同 |
 
 ---
 
@@ -232,7 +234,7 @@ $$\mathrm{IL}_{R_{\text{滾}}}(x)=\frac{x^2(3L-x)}{2L^3}$$
 ## 相關頁面
 
 - 觀念講義：[lecture-SA-U1-3](../../study/lecture-SA-U1-3.html)（[PDF](../../study/lecture-SA-U1-3.pdf)）
-- 速查頁：[study-SA-U1-3](../../study/study-SA-U1-3.html)
+- 單元總覽：[unit-SA-U1-3](../../study/unit-SA-U1-3.html)
 - 公式來源：[SA-code-unit-1](../code-ref/SA-code-unit-1.md)
 - 相關概念：[[INFLUENCE-LINE]]、[[MULLER-BRESLAU-PRINCIPLE]]、[[UNIT-LOAD-METHOD]]、[[FLEXIBILITY-METHOD]]、[[DEGREE-OF-INDETERMINACY]]
 - 相關失敗模式：[符號錯誤](../failure-modes/符號錯誤.md)、[邊界條件](../failure-modes/邊界條件.md)、[公式應用](../failure-modes/公式應用.md)

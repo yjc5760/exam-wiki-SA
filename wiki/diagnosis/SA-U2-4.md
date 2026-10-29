@@ -8,7 +8,7 @@
 > 所有「特殊題型」（彈簧、剛性桿、半剛性接頭、跨間載重）都是同一場實驗換個道具。
 >
 > 完整原理說明見觀念講義：[lecture-SA-U2-4.html](../../study/lecture-SA-U2-4.html)（[PDF](../../study/lecture-SA-U2-4.pdf)）
-> 出題統計與逐題索引見速查頁：[study-SA-U2-4.html](../../study/study-SA-U2-4.html)
+> 出題統計、公式給／背與逐題索引見單元總覽：[unit-SA-U2-4.html](../../study/unit-SA-U2-4.html)
 >
 > 題數：主分類 12 題、副分類 3 題（2004–2025）。近 6 年（2020–2025）出題 **2/6 年、3 題**，全科 10 個子項並列第 3。
 
@@ -220,8 +220,8 @@ $$\{P\}=\{\text{節點直接外力}\}-\{\text{固端力在各自由度上的分�
 
 | 題號 | 主分類 | 與本子項的交集 |
 |---|---|---|
-| [[SA-2007-2]] | SA-U2-1 | 無側移剛架＋修正傾角撓度法 —— 修正勁度 $3EI/L$ 的另一個面貌（第三問） |
-| [[SA-2007-4]] | SA-U2-1 | 有側移剛架＋虛功法側移方程 —— 對照矩陣法如何把側移「自動」納入自由度，不必另列方程 |
+| [[SA-2007-2]] | SA-U2-3 | 無側移剛架＋修正傾角撓度法 —— 修正勁度 $3EI/L$ 的另一個面貌（第三問） |
+| [[SA-2007-4]] | SA-U2-3 | 有側移剛架＋虛功法側移方程 —— 對照矩陣法如何把側移「自動」納入自由度，不必另列方程 |
 | [[SA-2009-4]] | SA-U1-1（疑誤，見下） | 桁架直接勁度法，位移求解與內力回算（第二問） |
 
 ---
@@ -257,7 +257,7 @@ $$\{P\}=\{\text{節點直接外力}\}-\{\text{固端力在各自由度上的分�
 ## 相關頁面
 
 - 觀念講義：[lecture-SA-U2-4](../../study/lecture-SA-U2-4.html)（[PDF](../../study/lecture-SA-U2-4.pdf)）
-- 速查頁：[study-SA-U2-4](../../study/study-SA-U2-4.html)
+- 單元總覽：[unit-SA-U2-4](../../study/unit-SA-U2-4.html)
 - 方法論：[matrix-displacement-method](../methods/matrix-displacement-method.md)
 - 分析哲學：[matrix-method-philosophy](../philosophy/matrix-method-philosophy.md)
 - 公式來源：[SA-code-matrix-displacement](../code-ref/SA-code-matrix-displacement.md)、[SA-code-unit-2](../code-ref/SA-code-unit-2.md)

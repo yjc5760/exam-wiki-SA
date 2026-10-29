@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="zh-Hant"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SA-2013-3 — 題目解析</title>
+<link rel="stylesheet" href="../assets/katex/katex.min.css">
+<script defer src="../assets/katex/katex.min.js"></script>
+<script defer src="../assets/katex/auto-render.min.js"
+  onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},
+  {left:'$',right:'$',display:false},{left:'\\(',right:'\\)',display:false}],throwOnError:false});"></script>
+<style>
+:root{--ac:#1565c0;--bg:#f7f9fb;--card:#fff;--ink:#263238;--mut:#607d8b;--bd:#dfe6ea}
+*{box-sizing:border-box}
+body{margin:0;font-family:"Microsoft JhengHei","Noto Sans TC",-apple-system,sans-serif;
+  background:var(--bg);color:var(--ink);line-height:1.75;font-size:15.5px}
+header{background:linear-gradient(135deg,#0d47a1,#1976d2 60%,#42a5f5);color:#fff;padding:22px 26px}
+header h1{margin:0;font-size:1.15em}
+header .back{display:inline-block;margin-top:10px;font-size:.82em;color:#fff;background:rgba(255,255,255,.18);
+  padding:4px 12px;border-radius:14px;text-decoration:none}
+main{max-width:880px;margin:0 auto;padding:26px 22px 70px}
+h1,h2,h3{color:#0d47a1} h2{font-size:1.2em;border-left:6px solid var(--ac);padding-left:12px;margin:34px 0 14px}
+table{width:100%;border-collapse:collapse;margin:14px 0;font-size:.92em;background:#fff}
+th,td{border:1px solid var(--bd);padding:7px 10px;text-align:left;vertical-align:top}
+th{background:#eceff1;font-weight:600} tbody tr:nth-child(even){background:#fafcfd}
+code{background:#eceff1;padding:1px 5px;border-radius:4px;font-size:.92em}
+img{max-width:100%;display:block;margin:14px auto;border:1px solid var(--bd);border-radius:8px}
+.katex-display{margin:12px 0!important;overflow-x:auto;overflow-y:hidden}
+footer{text-align:center;color:var(--mut);font-size:.8em;padding:22px;border-top:1px solid var(--bd)}
+
+header h1{color:#fff!important;font-size:1.25em;margin:0;letter-spacing:.5px}
+header .meta2{margin:8px 0 0;font-size:.84em;opacity:.93;line-height:1.6}
+header .meta2 b{background:rgba(255,255,255,.2);border-radius:4px;padding:1px 7px;font-weight:600}
+header .hbtns{display:flex;flex-wrap:wrap;gap:10px;margin-top:14px}
+header .hbtns a{font-size:.85em;text-decoration:none;padding:7px 17px;border-radius:22px;
+  font-weight:700;white-space:nowrap;line-height:1.4}
+header .b-study{background:#fff;color:#1565c0}
+header .b-lect{background:#6a1b9a;color:#fff}
+header .b-fg{background:#c62828;color:#fff}
+header .hbtns a:hover{filter:brightness(1.08)}
+header .nomat{margin-top:12px;font-size:.8em;opacity:.85}
+</style></head><body>
+<header>
+<h1>SA-2013-3　靜不定結構之傾角變位法</h1>
+<p class="meta2">主分類 <b>SA-U2-3</b> 靜不定結構之傾角變位法 ｜ 2013 年（民國 102） ｜ 傾角變位法 (Slope-Deflection Method) 與 虛功原理 (Principle of Virtual Work)</p>
+<div class="hbtns"><a class="b-study" href="../unit-SA-U2-3.html">🧭 U2-3 單元總覽</a><a class="b-lect" href="../lecture-SA-U2-3.html">📚 U2-3 靜不定結構之傾角變位法 講義</a></div>
+</header>
+<main><h1>考題編號：SA-2013-3</h1>
+<p><strong>主分類：</strong> <code>SA-U2-3</code> 靜不定結構之傾角變位法<br />
+<strong>副分類：</strong> 無<br />
+<strong>分析法：</strong> 傾角變位法 (Slope-Deflection Method) 與 虛功原理 (Principle of Virtual Work)<br />
+<strong>標籤：</strong> <code>傾角變位法</code> <code>側移剛架</code> <code>斜桿</code> <code>半剛接</code> <code>符號慣例</code></p>
+<hr />
+<h2>1. 原始題目重述 (Problem Restatement)</h2>
+<p>所示剛架結構 A、D 為固接支承，B 點為鉸接。桿件 BC 承受垂直均佈載重 $w$，如圖三所示。各桿件之 $E$ 均相同。桿件 AB、CD 面積慣性矩為 $I$，桿件 BC 則為 $2I$。請以傾角變位法分析各桿件端點彎矩，並繪桿件 BC 剪力圖與彎矩圖。使用其他方法不予給分。（25 分）</p>
+<p><img alt="SA-2013-3 題目附圖：含斜桿之側移剛架" src="../../raw/solutions/SA-2013-3/SA-2013-3-fig-1.png" /></p>
+<p><em>圖說：A 為左下角固接支承，AB 桿為垂直桿（長度 L，慣性矩 I）。B 點為鉸接 (Hinge)。BC 桿為水平桿（長度 L，慣性矩 2I），承受向下均佈載重 $w$。C 點為剛接節點。CD 桿為斜桿（水平跨距 L，垂直落差 L，長度 $\sqrt{2}L$，慣性矩 I），D 為右下角固接支承。</em></p>
+<h2>2. 考題核心精神與出題者意圖 (Core Concepts &amp; Examiner's Intent)</h2>
+<p>本題是傾角變位法極具挑戰性的綜合題型，主考四大核心：</p>
+<ol>
+<li><strong>統一符號慣例的定力</strong>：傾角變位法的靈魂在於「端彎矩 $M$、節點轉角 $\theta$、弦位角 $\psi$」必須使用完全一致的正負號慣例（本解法統一採<strong>順時針為正</strong>）。一旦混用，在斜桿的側移關係中必定全盤皆輸。</li>
+<li><strong>斜桿側移幾何分析</strong>：剛架發生側移時，斜桿 CD 的弦位角 $\psi_{CD}$ 必須從 C 點的水平與垂直位移向量中推導，測驗考生對微小位移幾何的理解。</li>
+<li><strong>半剛接（一端鉸接）修正公式</strong>：B 點為鉸接，代表 $M_{BA} = M_{BC} = 0$。熟練的考生會直接套用修正勁度（$3EI/L$）與修正固端彎矩，減少未知數 $\theta_B$。</li>
+<li><strong>斜桿剛架的層剪力方程式</strong>：傳統垂直柱的 $\sum F_x = 0$ 在含斜桿的剛架中極易寫錯。出題者意圖測驗考生是否懂得使用<strong>虛功原理 (Virtual Work)</strong> 來建立絕對正確的側移方程式。</li>
+</ol>
+<h2>3. 解題戰略地圖與陷阱分析 (Strategic Roadmap &amp; Trap Analysis)</h2>
+<p><strong>解題策略：</strong></p>
+<ol>
+<li><strong>側移幾何分析</strong>：忽略軸向變形，B 點只能水平移動（設向右位移為 $u$）。因 BC 軸向剛硬，C 點亦向右移動 $u$。又 CD 桿軸向剛硬，由幾何協調可推得 C 點必須同時<strong>向上移動 $u$</strong>。</li>
+<li><strong>定義弦位角 $\psi$</strong>：統一以<strong>順時針為正</strong>。推導 $\psi_{AB}$、$\psi_{BC}$、$\psi_{CD}$ 與 $u$ 的關係式。令 $R = u/L$。</li>
+<li><strong>傾角變位方程式</strong>：寫出 $M_{AB}, M_{CB}, M_{CD}, M_{DC}$。代入 B 端鉸接的修正勁度與修正固端彎矩 (FEM)。</li>
+<li><strong>建立平衡方程式</strong>：</li>
+<li>節點 C 力矩平衡：$\sum M_C = M_{CB} + M_{CD} = 0$</li>
+<li>側移方程式（虛功法）：給予系統一向右的虛擬側移 $\delta u$，計算內力虛功與外力虛功相等，求得力矩間的關係式。</li>
+<li><strong>解聯立方程式</strong>：解出 $\theta_C$ 與 $R$，再代回求各端彎矩。</li>
+<li><strong>繪製 BC 桿 V、M 圖</strong>：取 BC 自由體，利用靜力平衡求出 $V_B, V_C$，找出剪力為零的位置求最大正彎矩。</li>
+</ol>
+<p><strong>陷阱分析：</strong></p>
+<ul>
+<li><strong>致命陷阱一：BC 桿固端彎矩符號</strong>。均佈載重向下，為使其兩端不轉動，B 端需施加逆時針力矩，C 端需施加順時針力矩。若統一採順時針為正，則 $FEM_{BC} = -wL^2/12$，$FEM_{CB} = +wL^2/12$。極多考生在此處弄錯正負號。</li>
+<li><strong>致命陷阱二：斜桿弦位角判斷</strong>。C 點向右又向上移動，CD 桿的弦位角究竟是順時針還是逆時針？必須利用相對位移向量與原桿件向量進行外積或幾何作圖確認。本題 $\psi_{CD}$ 為<strong>順時針</strong>。</li>
+<li><strong>致命陷阱三：虛功法中外力的虛功</strong>。C 點有向上的虛擬位移，導致 BC 桿產生向上的剛體位移，而均佈載重向下，因此外力作功為<strong>負值</strong>！</li>
+</ul>
+<h2>3.5 變數層次分析 (Variable Hierarchy Analysis)</h2>
+<h3>最終目標</h3>
+<p><code>求各端彎矩 M_AB, M_CB, M_CD, M_DC 並繪製 BC 桿 V, M 圖。</code></p>
+<h3>本題關鍵公式與聯立方程式</h3>
+<blockquote>
+<p>$\boxed{\cdot}$ = 需由前步驟推導，非題目直接給定的變數</p>
+</blockquote>
+<p>$$\text{節點 C 平衡: } M_{CB}(\boxed{\theta_C}, \boxed{R}) + M_{CD}(\boxed{\theta_C}, \boxed{R}) = 0$$<br />
+$$\text{虛功方程式: } M_{AB} - M_{CB} + M_{CD} + M_{DC} = -0.5 wL^2$$</p>
+<h3>L1：題目直接給定</h3>
+<table>
+<thead>
+<tr>
+<th>符號</th>
+<th>數值</th>
+<th>說明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>$K_{AB}, K_{BC}, K_{CD}$</td>
+<td>$EI/L, 2EI/L, EI/\sqrt{2}L$</td>
+<td>各桿件勁度</td>
+</tr>
+<tr>
+<td>$FEM_{BC}, FEM_{CB}$</td>
+<td>$-wL^2/12, +wL^2/12$</td>
+<td>BC 桿原始固端彎矩 (順時針為正)</td>
+</tr>
+</tbody>
+</table>
+<h3>L2：需知識點推導</h3>
+<table>
+<thead>
+<tr>
+<th>變數</th>
+<th>數值</th>
+<th>說明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>$\Delta_C$ 位移</td>
+<td>$(u, u)$</td>
+<td>C點向右移 $u$，向上移 $u$</td>
+</tr>
+<tr>
+<td>$\psi_{AB}, \psi_{BC}, \psi_{CD}$</td>
+<td>$R, -R, R$</td>
+<td>弦位角 (順時針為正)，$R=u/L$</td>
+</tr>
+<tr>
+<td>$FEM_{CB}^{mod}$</td>
+<td>$+wL^2/8$</td>
+<td>B 端鉸接修正後之 C 端固端彎矩</td>
+</tr>
+</tbody>
+</table>
+<h2>4. 步驟化詳細計算過程 (Step-by-Step Detailed Calculation)</h2>
+<h3>Step 1：側移幾何與弦位角分析 (全程遵守順時針為正)</h3>
+<p>設 B 點向右側移 $u$。因忽略軸向變形：</p>
+<ul>
+<li>$v_B = 0$ (AB不伸長)。</li>
+<li>$u_C = u_B = u$ (BC不伸長)。</li>
+<li>CD桿：$\Delta L_{CD} = u_C \cos(-45^\circ) + v_C \sin(-45^\circ) = 0 \Rightarrow u(\frac{1}{\sqrt{2}}) - v_C(\frac{1}{\sqrt{2}}) = 0 \Rightarrow v_C = u$ (C點向上移 $u$)。</li>
+</ul>
+<p>定義弦位角 $\psi = \frac{\text{相對橫向位移}}{\text{桿長}}$ (順時針為正)，令 $R = \frac{u}{L}$：</p>
+<ul>
+<li><strong>AB 桿</strong>：B 向右移 $u$，桿件順時針轉，$\psi_{AB} = +\frac{u}{L} = +R$。</li>
+<li><strong>BC 桿</strong>：C 相對於 B 向上移 $u$，桿件逆時針轉，$\psi_{BC} = -\frac{u}{L} = -R$。</li>
+<li><strong>CD 桿</strong>：C 向右且向上移 $(u,u)$，D 不動。相對於 C，D 往左且往下移 $(-u,-u)$。此位移向量使原指向右下的 CD 桿產生更陡的斜率，即順時針旋轉。嚴格計算 $\psi_{CD} = +\frac{u}{L} = +R$。</li>
+</ul>
+<h3>Step 2：傾角變位方程式建立</h3>
+<ul>
+<li>
+<p><strong>AB 桿</strong> (A 固接，B 鉸接)：$M_{BA} = 0$<br />
+  $$M_{AB} = \frac{3EI_{AB}}{L_{AB}} (\theta_A - \psi_{AB}) = \frac{3EI}{L} (0 - R) = -3 \frac{EI}{L} R$$</p>
+</li>
+<li>
+<p><strong>BC 桿</strong> (B 鉸接，C 剛接)：$M_{BC} = 0$<br />
+  修正固端彎矩：$FEM_{CB}^{mod} = FEM_{CB} - 0.5 FEM_{BC} = (+wL^2/12) - 0.5(-wL^2/12) = +wL^2/8$<br />
+  $$M_{CB} = \frac{3EI_{BC}}{L_{BC}} (\theta_C - \psi_{BC}) + FEM_{CB}^{mod} = \frac{6EI}{L} (\theta_C - (-R)) + \frac{wL^2}{8} = \frac{6EI}{L} (\theta_C + R) + \frac{wL^2}{8}$$</p>
+</li>
+<li>
+<p><strong>CD 桿</strong> (C 剛接，D 固接)：<br />
+  $$M_{CD} = \frac{2EI_{CD}}{L_{CD}} (2\theta_C + \theta_D - 3\psi_{CD}) = \frac{2EI}{\sqrt{2}L} (2\theta_C + 0 - 3R) = \frac{\sqrt{2}EI}{L} (2\theta_C - 3R)$$<br />
+  $$M_{DC} = \frac{\sqrt{2}EI}{L} (\theta_C - 3R)$$</p>
+</li>
+</ul>
+<h3>Step 3：聯立方程式與求解</h3>
+<p><strong>條件一：C 點力矩平衡</strong><br />
+$$M_{CB} + M_{CD} = 0$$<br />
+$$\frac{6EI}{L} (\theta_C + R) + \frac{wL^2}{8} + \frac{\sqrt{2}EI}{L} (2\theta_C - 3R) = 0$$<br />
+$$(6 + 2\sqrt{2}) \frac{EI}{L} \theta_C + (6 - 3\sqrt{2}) \frac{EI}{L} R = -0.125 wL^2 \quad \text{--- (Eq 1)}$$</p>
+<p><strong>條件二：側移虛功方程式</strong><br />
+給予系統向右虛擬側移 $\delta u$。各桿虛擬弦位角為 $\delta\psi_{AB} = \frac{\delta u}{L}$, $\delta\psi_{BC} = -\frac{\delta u}{L}$, $\delta\psi_{CD} = \frac{\delta u}{L}$。<br />
+內虛功 $\delta W_{int} = M_{AB} \delta\psi_{AB} + M_{CB} \delta\psi_{BC} + (M_{CD} + M_{DC}) \delta\psi_{CD}$<br />
+外虛功 $\delta W_{ext}$：載重 $w$ 向下，BC 桿作剛體向上虛擬位移，其形心位移為 $\frac{\delta u}{2}$ 向上。<br />
+$\delta W_{ext} = -(wL) \cdot (\frac{\delta u}{2}) = -0.5 wL^2 \delta u$ (作負功！)<br />
+令 $\delta W_{int} = \delta W_{ext}$ 並同除以 $\frac{\delta u}{L}$：<br />
+$$M_{AB} - M_{CB} + M_{CD} + M_{DC} = -0.5 wL^2 \quad \text{--- (Eq 2)}$$<br />
+將方程式代入 (Eq 2) 整理後得：<br />
+$$(6 - 3\sqrt{2}) \frac{EI}{L} \theta_C + (9 + 6\sqrt{2}) \frac{EI}{L} R = 0.375 wL^2 \quad \text{--- (Eq 2')}$$</p>
+<p><strong>解聯立 (Eq 1) &amp; (Eq 2')</strong><br />
+克拉瑪法則精確解得：<br />
+$$\theta_C = \frac{34 - 19\sqrt{2}}{992} \frac{wL^3}{EI} \approx 0.007187 \frac{wL^3}{EI}$$<br />
+$$R = \frac{21 + 22\sqrt{2}}{1488} \frac{wL^3}{EI} \approx 0.03502 \frac{wL^3}{EI}$$</p>
+<h3>Step 4：計算各端彎矩</h3>
+<p>將 $\theta_C, R$ 代回傾角變位方程式：<br />
+$$M_{AB} = \frac{3 - 174\sqrt{2}}{3472} wL^2 \approx -0.0699 wL^2$$<br />
+$$M_{CB} = \frac{626 - 69\sqrt{2}}{3472} wL^2 \approx 0.1522 wL^2$$<br />
+$$M_{CD} = \frac{69\sqrt{2} - 626}{3472} wL^2 \approx -0.1522 wL^2$$<br />
+$$M_{DC} = \frac{36\sqrt{2} - 487}{3472} wL^2 \approx -0.1256 wL^2$$<br />
+<em>(註：正值代表順時針，負值代表逆時針)</em></p>
+<h3>Step 5：繪製 BC 桿剪力圖 (V) 與彎矩圖 (M)</h3>
+<p>取 BC 桿自由體 (B、C 間距 L)，$M_{BC} = 0$，$M_{CB} = 0.1522 wL^2$ (順時針)。<br />
+由 $\sum M_C = 0$ 求 B 端剪力：<br />
+$$V_B \cdot L - wL \left(\frac{L}{2}\right) + M_{CB} = 0 \Rightarrow V_B = \frac{wL}{2} - \frac{M_{CB}}{L} = \frac{1110 + 69\sqrt{2}}{3472} wL \approx 0.3478 wL \text{ (向上)}$$<br />
+由 $\sum F_y = 0$ 求 C 端剪力：<br />
+$$V_C = wL - V_B = \frac{2362 - 69\sqrt{2}}{3472} wL \approx 0.6522 wL \text{ (向上)}$$</p>
+<p><strong>剪力圖 (V-Diagram)</strong>：</p>
+<ul>
+<li>自 B 點的 $+0.3478 wL$ 開始，呈直線下降。</li>
+<li>至 C 點降為 $-0.6522 wL$。</li>
+<li>剪力為零的位置發生在 $x_0 = \frac{V_B}{w} \approx 0.3478 L$ 處。</li>
+</ul>
+<p><strong>彎矩圖 (M-Diagram)</strong>：</p>
+<ul>
+<li>拋物線分佈。B 點彎矩為 $0$。</li>
+<li>最大正彎矩發生在 $x_0$ 處：$M_{max} = \frac{V_B^2}{2w} = \frac{13947 + 2158\sqrt{2}}{246016} wL^2 \approx 0.0605 wL^2$ (下側受拉)。</li>
+<li>C 點彎矩為負彎矩（上側受拉）：$M(L) = -M_{CB} \approx -0.1522 wL^2$。</li>
+</ul>
+<h2>5. 關鍵爭議點與進階探討 (Critical Issues &amp; Advanced Discussion)</h2>
+<ul>
+<li><strong>符號慣例的一致性</strong>：如果考生平時習慣「下側受拉為正彎矩，逆時針轉角為正」，遇到斜桿會非常容易混亂。傾角變位法最強的武器就是<strong>強制的順時針為正</strong>，所有項次都不必去想受拉側，純粹代數運算，最後再將負號轉譯為逆時針，這樣能將出錯率降到最低。</li>
+<li><strong>斜桿側移虛功法的無敵之處</strong>：許多參考書會教用幾何投影將桿件剪力投影到水平方向 $\sum F_x = 0$。這種作法在有載重且多斜桿的狀況下極易漏算載重的側向投影分量。採用<strong>虛功原理</strong>，只要位移場正確（C 點右上移），載重作功的符號就不會錯（載重向下、位移向上 $\rightarrow$ 負功），是解斜桿剛架的防呆神器。</li>
+</ul></main>
+<footer>來源：raw/solutions/SA-2013-3/SA-2013-3.md（知識庫解題內容唯一正本；本頁僅為渲染顯示）</footer>
+
+<script>
+/* 跟隨來源單元：若由 unit-/lecture-SA-Un-m.html（或舊的 study-/formula-given-）點進來，
+   兩顆按鈕改指向「來源那個單元」。靜態 href 保底，無 JS 或無 referrer 時仍可用。 */
+(function(){
+  var NAMES={"SA-U1-2": "靜定結構之分析", "SA-U1-3": "靜定及靜不定結構影響線", "SA-U2-1": "靜不定結構最小功法", "SA-U2-3": "靜不定結構之傾角變位法", "SA-U2-4": "靜不定結構之矩陣分析法"};
+  var m=(document.referrer||'').match(/\/(?:unit|study|lecture|formula-given)-(SA-U\d+-\d+)\.html/);
+  if(!m||!NAMES[m[1]])return;
+  var u=m[1], s=u.slice(3), box=document.querySelector('.hbtns');
+  if(!box)return;
+  box.innerHTML=
+    '<a class="b-study" href="../unit-'+u+'.html">\u{1F9ED} '+s+' \u55AE\u5143\u7E3D\u89BD</a>'+
+    '<a class="b-lect" href="../lecture-'+u+'.html">\u{1F4DA} '+s+' '+NAMES[u]+' \u8B1B\u7FA9</a>';
+  var n=document.querySelector('.nomat'); if(n)n.remove();
+})();
+</script>
+</body></html>

@@ -217,8 +217,8 @@
       "year": 2023,
       "rocYear": 112,
       "questionNumber": 3,
-      "primaryTopicId": "SA-U3-1",
-      "primaryTopicName": "建築結構系統之使用",
+      "primaryTopicId": "SA-U2-3",
+      "primaryTopicName": "靜不定結構之傾角變位法",
       "secondaryTopicIds": [],
       "verificationStatus": "unverified",
       "hasSolution": true,
@@ -377,7 +377,7 @@
     {
       "year": 2021,
       "moduleId": "SA-2021-3",
-      "primaryTopicName": "建築結構系統分析",
+      "primaryTopicName": "靜定及靜不定結構影響線",
       "questionNumber": 3,
       "rocYear": 110,
       "hasViz": true,
@@ -391,7 +391,7 @@
         "柔軟度法",
         "Müller-Breslau"
       ],
-      "primaryTopicId": "SA-U3-2",
+      "primaryTopicId": "SA-U1-3",
       "secondaryTopicIds": []
     },
     {
@@ -456,7 +456,7 @@
     {
       "year": 2020,
       "moduleId": "SA-2020-3",
-      "primaryTopicName": "建築結構系統分析",
+      "primaryTopicName": "靜定及靜不定結構影響線",
       "questionNumber": 3,
       "rocYear": 109,
       "hasViz": true,
@@ -469,7 +469,7 @@
         "最大值",
         "反力影響線"
       ],
-      "primaryTopicId": "SA-U3-2",
+      "primaryTopicId": "SA-U1-3",
       "secondaryTopicIds": []
     },
     {
@@ -859,8 +859,8 @@
       "year": 2015,
       "rocYear": 104,
       "questionNumber": 3,
-      "primaryTopicId": "SA-U3-1",
-      "primaryTopicName": "建築結構系統之使用",
+      "primaryTopicId": "SA-U2-3",
+      "primaryTopicName": "靜不定結構之傾角變位法",
       "secondaryTopicIds": [],
       "verificationStatus": "unverified",
       "hasSolution": true,
@@ -942,9 +942,7 @@
       "questionNumber": 3,
       "primaryTopicId": "SA-U2-3",
       "primaryTopicName": "靜不定結構之傾角變位法",
-      "secondaryTopicIds": [
-        "SA-U3-2"
-      ],
+      "secondaryTopicIds": [],
       "verificationStatus": "unverified",
       "hasSolution": true,
       "hasViz": false,
@@ -1025,11 +1023,9 @@
       "year": 2012,
       "rocYear": 101,
       "questionNumber": 3,
-      "primaryTopicId": "SA-U3-1",
-      "primaryTopicName": "建築結構系統之使用",
-      "secondaryTopicIds": [
-        "SA-U3-2"
-      ],
+      "primaryTopicId": "SA-U2-3",
+      "primaryTopicName": "靜不定結構之傾角變位法",
+      "secondaryTopicIds": [],
       "verificationStatus": "unverified",
       "hasSolution": true,
       "hasViz": false,
@@ -1102,11 +1098,9 @@
         "剪力方程式"
       ],
       "rocYear": 99,
-      "primaryTopicId": "SA-U3-1",
-      "primaryTopicName": "建築結構系統之使用",
-      "secondaryTopicIds": [
-        "SA-U3-2"
-      ]
+      "primaryTopicId": "SA-U2-3",
+      "primaryTopicName": "靜不定結構之傾角變位法",
+      "secondaryTopicIds": []
     },
     {
       "moduleId": "SA-2010-3",
@@ -1125,11 +1119,9 @@
         "剛架"
       ],
       "rocYear": 99,
-      "primaryTopicId": "SA-U3-1",
-      "primaryTopicName": "建築結構系統之使用",
-      "secondaryTopicIds": [
-        "SA-U3-2"
-      ]
+      "primaryTopicId": "SA-U2-3",
+      "primaryTopicName": "靜不定結構之傾角變位法",
+      "secondaryTopicIds": []
     },
     {
       "moduleId": "SA-2010-4",
@@ -1213,11 +1205,9 @@
         "對稱性"
       ],
       "rocYear": 98,
-      "primaryTopicId": "SA-U1-1",
-      "primaryTopicName": "靜不定度與穩定性之判斷",
-      "secondaryTopicIds": [
-        "SA-U2-3"
-      ],
+      "primaryTopicId": "SA-U2-3",
+      "primaryTopicName": "靜不定結構之傾角變位法",
+      "secondaryTopicIds": [],
       "questionNumber": 3
     },
     {
@@ -1268,8 +1258,8 @@
       "year": 2008,
       "rocYear": 97,
       "questionNumber": 2,
-      "primaryTopicId": "SA-U3-1",
-      "primaryTopicName": "建築結構系統之使用",
+      "primaryTopicId": "SA-U2-3",
+      "primaryTopicName": "靜不定結構之傾角變位法",
       "secondaryTopicIds": [],
       "verificationStatus": "unverified",
       "hasSolution": true,
@@ -1346,8 +1336,8 @@
       "year": 2007,
       "rocYear": 96,
       "questionNumber": 2,
-      "primaryTopicId": "SA-U2-1",
-      "primaryTopicName": "靜不定結構最小功法",
+      "primaryTopicId": "SA-U2-3",
+      "primaryTopicName": "靜不定結構之傾角變位法",
       "secondaryTopicIds": [
         "SA-U2-4"
       ],
@@ -1387,8 +1377,8 @@
       "year": 2007,
       "rocYear": 96,
       "questionNumber": 4,
-      "primaryTopicId": "SA-U2-1",
-      "primaryTopicName": "靜不定結構最小功法",
+      "primaryTopicId": "SA-U2-3",
+      "primaryTopicName": "靜不定結構之傾角變位法",
       "secondaryTopicIds": [
         "SA-U2-4"
       ],
@@ -1849,8 +1839,8 @@
       "verificationStatus": "unverified",
       "difficulty": 4,
       "rocYear": 102,
-      "primaryTopicId": "SA-U3-1",
-      "primaryTopicName": "建築結構系統之使用",
+      "primaryTopicId": "SA-U2-3",
+      "primaryTopicName": "靜不定結構之傾角變位法",
       "questionNumber": 3
     },
     {
@@ -1884,9 +1874,7 @@
       "topicCategories": [
         "SA-U2-2"
       ],
-      "subCategories": [
-        "SA-U2-3"
-      ],
+      "subCategories": [],
       "tags": [
         "靜不定桁架",
         "溫度變化",
@@ -1900,9 +1888,7 @@
       "rocYear": 100,
       "primaryTopicId": "SA-U2-2",
       "primaryTopicName": "靜不定結構諧合變位",
-      "secondaryTopicIds": [
-        "SA-U2-3"
-      ]
+      "secondaryTopicIds": []
     },
     {
       "moduleId": "SA-2011-2",
@@ -1911,11 +1897,9 @@
       "questionNumber": 2,
       "questionType": "calculation",
       "topicCategories": [
-        "SA-U3-1"
+        "SA-U2-3"
       ],
-      "subCategories": [
-        "SA-U3-2"
-      ],
+      "subCategories": [],
       "tags": [
         "傾角變位法",
         "有側移剛架",
@@ -1927,11 +1911,9 @@
       "verificationStatus": "unverified",
       "year": 2011,
       "rocYear": 100,
-      "primaryTopicId": "SA-U3-1",
-      "primaryTopicName": "建築結構系統之使用",
-      "secondaryTopicIds": [
-        "SA-U3-2"
-      ]
+      "primaryTopicId": "SA-U2-3",
+      "primaryTopicName": "靜不定結構之傾角變位法",
+      "secondaryTopicIds": []
     },
     {
       "moduleId": "SA-2011-3",

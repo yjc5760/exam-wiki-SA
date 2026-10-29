@@ -27,6 +27,9 @@ v1.1（2026-10-08）相對 v1.0 的變更：
     - 排名表可點欄位排序；新增「前→後半」「後半排名」欄；教材欄偵測 study/decks/ 的記憶片與
       解題過程影片/ 的單元影片、題目影片。
     - 頁面上的複算指令改指本檔（舊版指向不存在的 skills/ 路徑）。
+
+v1.2（2026-10-29）：教材欄改偵測 unit-XX-Un-m.html（單元總覽，整合舊的命題分析＋給／背分界兩頁），
+    子項名稱連結改指單元總覽；教材標籤由「命題分析／講義／給／背／記憶片」改為「單元總覽／講義／記憶片」。
 """
 
 import argparse
@@ -92,9 +95,9 @@ def scan_materials(study_dir, out_dir, tids):
     """掃描 study/，回傳 {子項id: {kind: 相對連結}}。不硬編任何清單。"""
     have = {t: {} for t in tids}
     for t in tids:
-        for kind, fn in (("study", f"study-{t}.html"),
-                         ("lecture", f"lecture-{t}.html"),
-                         ("formula", f"formula-given-{t}.html")):
+        # 單元總覽 unit-XX-Un-m.html（2026-10-29 起取代 study-／formula-given- 兩頁）
+        for kind, fn in (("unit", f"unit-{t}.html"),
+                         ("lecture", f"lecture-{t}.html")):
             p = os.path.join(study_dir, fn)
             if os.path.exists(p):
                 have[t][kind] = rel(p, out_dir)
@@ -486,9 +489,9 @@ function showCell(ri, yi){
     '<ul class="ql">' + c.p.map(m=>qItem(m,'p')).join('') + c.s.map(m=>qItem(m,'s')).join('') + '</ul>'
     + `<div class="hint" style="margin-top:6px">點左側子項名稱可看這個子項 ${YEARS.length} 年的全部題目</div>`);
 }
-const LBL = {study:'命題分析',lecture:'講義',formula:'給／背',deck:'記憶片'};
+const LBL = {unit:'單元總覽',lecture:'講義',deck:'記憶片'};
 function matTags(r){
-  return ['study','lecture','formula','deck'].map(m=> r.mat[m]
+  return ['unit','lecture','deck'].map(m=> r.mat[m]
      ? `<a class="tag t-y" href="${encodeURI(r.mat[m])}" target="_blank">${LBL[m]}</a>`
      : `<span class="tag t-n">${LBL[m]}</span>`).join('');
 }
@@ -547,8 +550,8 @@ function drawRank(){
     const ri = D.rows.indexOf(r);
     const w = r.p/maxA*150, w2 = r.s/maxA*150;
     const pos = Object.entries(r.pos).map(([k,v])=>`第${k}題×${v}`).join('、') || '—';
-    const nm = r.mat.study
-        ? `<a href="${encodeURI(r.mat.study)}" target="_blank" style="color:var(--ac);text-decoration:none"><b>${r.short}</b> ${esc(r.name)}</a>`
+    const nm = r.mat.unit
+        ? `<a href="${encodeURI(r.mat.unit)}" target="_blank" style="color:var(--ac);text-decoration:none"><b>${r.short}</b> ${esc(r.name)}</a>`
         : `<b>${r.short}</b> ${esc(r.name)}`;
     const dr = DR[r.drift];
     const nv = r.vids.length + r.qvids;
@@ -652,14 +655,14 @@ def build_html(subject, subj_name, A, today, script_rel):
     # ---- 讀書順序表（全部由資料生成）----
     chain = lambda ids: " → ".join(by_id[i]["short"] for i in ids)
     n5 = min(5, len(ordered))
-    full5 = sum(1 for i in topN(n5) if len(by_id[i]["mat"]) == 4)
+    full5 = sum(1 for i in topN(n5) if len(by_id[i]["mat"]) == 3)
     late3 = late_order[:3]
     late3_sum = sum(r["late"] for r in late3)
     read = ""
     if ordered:
         read += (f'<tr><td><b>時間充裕，要拿高分</b></td><td>{chain(topN(n5))}</td>'
                  f'<td>全期前 {n5} 名，合計 {sumN(n5)} 題、佔 {pct(sumN(n5), N)}%'
-                 f'{f"；其中 {full5} 個四種教材都已備齊" if full5 else ""}。</td></tr>\n')
+                 f'{f"；其中 {full5} 個三種教材都已備齊" if full5 else ""}。</td></tr>\n')
     if late3:
         read += (f'<tr><td><b>只剩一個月</b></td><td>'
                  + "、".join(f'{r["short"]}（後半 {r["late"]} 題）' for r in late3) + '</td>'
@@ -734,7 +737,7 @@ def build_html(subject, subj_name, A, today, script_rel):
 📊 <b>這張表只回答一件事：整科該從哪裡開始讀。</b>
 它把 {N} 題逐題攤在「{len(rows)} 個子項 × {len(years)} 個考年」的格子上，
 並把考年切成前半（{span(E)}）與後半（{span(L)}）比較，讓你同時看到「誰一直重要」與「誰最近才重要」。
-各子項的細節（考點結構、風險排序）看該子項的 <code>study-{subject}-Un-m.html</code> 命題分析頁。<br>
+各子項的細節（考點結構、公式給／背、逐題要背哪幾條）看該子項的 <code>unit-{subject}-Un-m.html</code> 單元總覽頁。<br>
 本頁由 <code>python {script_rel}</code> 從題庫自動產生；題庫或教材更新後重跑即可，請勿手改。
 </div>
 
@@ -795,10 +798,9 @@ def build_html(subject, subj_name, A, today, script_rel):
 </table>
 </div>
 <div class="note">
-📌 <b>一句話</b>：這張表告訴你「該讀哪裡」，<code>study-{subject}-Un-m.html</code> 告訴你「那裡該先練哪幾題」，
-<code>formula-given-{subject}-Un-m.html</code> 告訴你「那裡哪些公式非背不可」。<br>
+📌 <b>一句話</b>：這張表告訴你「該讀哪裡」，<code>unit-{subject}-Un-m.html</code> 告訴你「那裡該先練哪幾題、哪些公式非背不可」。<br>
 ⚠️ <b>使用提醒</b>：頻率高不等於一定會再考，冷凍也不等於不會回來——這張表的用途是<b>分配時間</b>，不是預測考題。
-押題請看各子項命題分析頁的「命題風險排序」。
+押題請看各子項單元總覽頁的「命題風險排序」。
 </div>
 
 </main>
@@ -860,7 +862,7 @@ def main():
     print("副>主 的工具型子項：" + ("、".join(f"{r['short']}({r['p']}/{r['s']})" for r in tools) or "無"))
     print("0 題子項：" + ("、".join(r["short"] for r in A["rows"] if r["p"] == 0) or "無"))
     print("冷凍子項（後半期 0 題）：" + ("、".join(f"{r['short']}(最後 {r['last']})" for r in A["rows"] if r["drift"] == "frozen") or "無"))
-    print(f"教材齊全（四種都有）：{'、'.join(r['short'] for r in A['rows'] if len(r['mat']) == 4) or '無'}")
+    print(f"教材齊全（三種都有）：{'、'.join(r['short'] for r in A['rows'] if len(r['mat']) == 3) or '無'}")
     print(f"影片：單元 {A['nTvid']} 支、題目 {A['nQvid']} 支｜problems-view 頁 {len(views & qids)} 題｜已驗證 {A['nVerified']} 題")
 
     for w in warns:

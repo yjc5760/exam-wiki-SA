@@ -1,3 +1,5 @@
 解題過程影片/
 scripts/__pycache__/
+**/__pycache__/
+*.pyc
 Claude outputs/

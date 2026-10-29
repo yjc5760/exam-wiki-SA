@@ -73,7 +73,8 @@ exam-wiki-SA/
 ├── CLAUDE-CODE.md                   ← Claude Code 操作指令（Runbook）
 ├── CLAUDE-SPEC.md                   ← 規格驗證層（格式、命名、完成標準）
 │
-├── study/                           ← 讀書筆記、講義、study 指令 HTML 輸出（study-SA-UN.html / study-SA-UN-n.html）
+├── study/                           ← 讀書筆記、講義、study 指令 HTML 輸出（study-SA-UN.html / unit-SA-UN-n.html 單元總覽）
+│   └── data/                        ← 單元總覽資料檔 unit-SA-UN-n.json（scripts/build_unit_page.py 的輸入）
 │
 ├── raw/                             ← 所有原始資料（預設唯讀，僅 ✏️ 三處可改）
 │   ├── exams/                       ← 原始考卷 PDF（命名：SA-YYYY_結構學.pdf）
@@ -187,6 +188,10 @@ Wiki 導航依七層知識架構組織（前三層由 Cowork 透過 compile-all/
 
 | 日期 | 變更 | 原因 |
 |------|------|------|
+| 2026-10-29 | **索引分類更正（三）**：SA-2007-2、SA-2007-4 由 SA-U2-1 改歸 SA-U2-3（U2-3 主 24 題、U2-1 主 10 題）；同步 wiki、單元總覽、講義、熱圖；刪除舊 `formula-given-*.pdf` | 兩題題解皆為傾角變位法，2007-4 考卷明文指定；舊 PDF 已被單元總覽取代且證據有誤，詳見 wiki/log.md |
+| 2026-10-29 | **單元總覽**：五個子項的命題分析（`study-SA-Un-m`）與給／背分界（`formula-given-SA-Un-m`）合併為 `study/unit-SA-Un-m.html`（＋PDF），由 `scripts/build_unit_page.py` 從 `study/data/unit-SA-Un-m.json` 產生；舊十頁改轉址；逐題核對題解後更正多處給／背年份證據；熱圖、problems-view、講義、診斷頁連結同步 | 兩頁逐年列同一批題目、出題概況與全科熱圖重複；逐題標出「這題要背哪幾條」才看得出舊證據的錯，詳見 wiki/log.md |
+| 2026-10-29 | **索引分類更正（續）**：SA-2009-3 由 SA-U1-1 改歸 SA-U2-3、SA-2011-1 移除副分類 SA-U2-3；同步 wiki、頻率熱圖、U2-3 給背分界與命題分析頁；`lecture-SA-U1-3`／`U2-3` 觀念講義改版（題數、對照表、權重） | 2009-3 考卷明文指定傾角變位法；2011-1 是柔度法桁架題、與傾角變位法無關；講義仍寫 13／9 題舊數字，詳見 wiki/log.md |
+| 2026-10-28 | **索引分類更正**：10 題舊代碼改歸（8 題 SA-U3-1→SA-U2-3、2 題 SA-U3-2→SA-U1-3）；同步解析標頭、wiki、頻率熱圖、U1-3／U2-3 給背分界與命題分析頁，新建 9 頁 problems-view；`formula-given-SA-*` 五頁升級 unit-formula-map v2；SA-2022-3 依考卷原文補 R_b、R_c 影響線 | 舊代碼使 U2-3 帳面少 8 題、U3 多 10 題，全科排名與「U3-2 近年升溫」結論都是假的；SA-2022-3 原解答的題目要求與考卷不符，詳見 wiki/log.md |
 | 2026-10-23 | **規則 1 例外擴充**：`raw/solutions/SA-YYYY-N/`（個別題目解析）移出唯讀保護，可直接修正 | 題解附圖、圖說等錯誤需能在原處根治（例：SA-2003-3 向量重繪圖幾何畫錯） |
 | 2026-10-08 | **優化** `study/frequency-SA.html`（前／後半期比較、升溫／冷凍標記、可點熱圖連題目頁與影片、可排序排名表）；**新增** `scripts/build_frequency.py`（產生器 v1.1，進庫） | 舊版只看 24 年總數，低估近年升溫的 U3-2、未標出已冷凍的 U2-5／U1-1；格子只能 hover、手機無法用，也連不到 problems-view 與解題影片 |
 | 2026-08-20 | **新增** `study/frequency-SA.html`（全科出題頻率熱圖：10 子項 × 24 考年，可切換主考點／主＋副，含排名總表與單元權重） | `study-SA-Un-m.html` 一次只看一個子項，缺少「整科該從哪裡開始讀」的全貌；數字全由 `build_frequency.py` 從 `question_index.json` 算出，題庫更新後可無腦重跑 |

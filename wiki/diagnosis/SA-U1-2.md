@@ -4,7 +4,7 @@
 > 剛度只在要算「位移」時才登場。
 >
 > 完整原理說明見觀念講義：[lecture-SA-U1-2.html](../../study/lecture-SA-U1-2.html)（[PDF](../../study/lecture-SA-U1-2.pdf)）
-> 出題統計與逐題索引見速查頁：[study-SA-U1-2.html](../../study/study-SA-U1-2.html)
+> 出題統計、公式給／背與逐題索引見單元總覽：[unit-SA-U1-2.html](../../study/unit-SA-U1-2.html)
 >
 > 題數：主分類 17 題、副分類 3 題（2002–2024），為全科 10 個子項中出題最多者。
 
