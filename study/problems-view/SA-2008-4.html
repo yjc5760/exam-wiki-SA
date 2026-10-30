@@ -44,8 +44,8 @@ header .nomat{margin-top:12px;font-size:.8em;opacity:.85}
 <div class="hbtns"><a class="b-study" href="../unit-SA-U2-4.html">🧭 U2-4 單元總覽</a><a class="b-lect" href="../lecture-SA-U2-4.html">📚 U2-4 靜不定結構之矩陣分析法 講義</a></div>
 </header>
 <main><hr />
-<p>主分類: "SA-U5-1"<br />
-副分類: ["SA-U5-2"]<br />
+<p>主分類: "SA-U2-4"<br />
+副分類: []<br />
 難易度: 3</p>
 <hr />
 <h1>97年結構工程技師高考 結構學 第四題</h1>
@@ -58,33 +58,33 @@ header .nomat{margin-top:12px;font-size:.8em;opacity:.85}
 <p>本題為基本的<strong>無側移剛架</strong>分析，但明確限制必須使用<strong>矩陣直接勁度法</strong>求解。出題者的核心意圖在於：</p>
 <ol>
 <li><strong>矩陣勁度法的標準化流程</strong>：測驗考生是否能有條理地定義自由度 (Degree of Freedom, DOF)，並組裝元素勁度矩陣 (Element Stiffness Matrix) 與整體勁度矩陣 (Global Stiffness Matrix)。</li>
-<li><strong>載重向量的處理</strong>：測驗考生如何計算固端力向量 (Fixed End Forces, $\{P_F\}$) 並將其轉換為等效節點載重。</li>
+<li><strong>載重向量的處理</strong>：測驗考生如何計算固端力向量 (Fixed End Forces, ${P_F}$) 並將其轉換為等效節點載重。</li>
 <li><strong>內力回算與彎矩極值</strong>：在求得節點變位後，考驗考生能否正確回算各桿端彎矩，並利用剪力為零的條件找出均佈載重跨的最大彎矩。</li>
 </ol>
 <h2>3. 解題戰略地圖與陷阱分析 (Strategic Roadmap &amp; Trap Analysis)</h2>
 <p><strong>解題戰略：</strong></p>
 <ol>
-<li><strong>第一步：定義系統自由度 (DOF)</strong>：<br />
-   - A 點固接，無位移與旋轉。<br />
-   - B 點為剛性節點，忽略軸向變形下，水平與垂直位移皆受制於 A、C 支承 ($u_B = v_B = 0$)。僅剩旋轉自由度 $\theta_B$。<br />
-   - C 點為鉸支承，允許旋轉，故有旋轉自由度 $\theta_C$。<br />
-   - 定義系統未作束制之自由度向量 $\{D\} = \begin{bmatrix} \theta_B \\ \theta_C \end{bmatrix}$。</li>
-<li><strong>第二步：建立元素勁度矩陣 ($k$)</strong>：<br />
-   - 桿件 1 (AB)：長度 $L=4$，考慮 $\theta_A, \theta_B$。<br />
-   - 桿件 2 (BC)：長度 $L=6$，考慮 $\theta_B, \theta_C$。</li>
+<li><strong>第一步：定義系統自由度 (DOF)</strong>：</li>
+<li>A 點固接，無位移與旋轉。</li>
+<li>B 點為剛性節點，忽略軸向變形下，水平與垂直位移皆受制於 A、C 支承 ($u_B = v_B = 0$)。僅剩旋轉自由度 $\theta_B$。</li>
+<li>C 點為鉸支承，允許旋轉，故有旋轉自由度 $\theta_C$。</li>
+<li>定義系統未作束制之自由度向量 ${D} = \begin{bmatrix} \theta_B \ \theta_C \end{bmatrix}$。</li>
+<li><strong>第二步：建立元素勁度矩陣 ($k$)</strong>：</li>
+<li>桿件 1 (AB)：長度 $L=4$，考慮 $\theta_A, \theta_B$。</li>
+<li>桿件 2 (BC)：長度 $L=6$，考慮 $\theta_B, \theta_C$。</li>
 <li>
 <p><strong>第三步：組裝整體勁度矩陣 ($K$)</strong>：<br />
    根據 DOF 定義，將元素矩陣之對應項疊加，形成 $2 \times 2$ 的整體勁度矩陣 $K$。</p>
 </li>
 <li>
-<p><strong>第四步：建立載重向量 ($\{P\}$ 與 $\{P_F\}$)</strong>：<br />
-   計算 BC 桿因均佈載重產生的固端彎矩 (FEM)，並依 DOF 方向填入 $\{P_F\}$ 向量。節點無外加力矩，故 $\{P\} = \{0\}$。</p>
+<p><strong>第四步：建立載重向量 (${P}$ 與 ${P_F}$)</strong>：<br />
+   計算 BC 桿因均佈載重產生的固端彎矩 (FEM)，並依 DOF 方向填入 ${P_F}$ 向量。節點無外加力矩，故 ${P} = {0}$。</p>
 </li>
 <li>
-<p><strong>第五步：求解未知變位與桿端彎矩</strong>：<br />
-   - 解 $K \{D\} + \{P_F\} = \{P\}$ 得到 $\theta_B$ 與 $\theta_C$。<br />
-   - 利用元素勁度方程式 $\{m\} = k \{d\} + \{m_F\}$ 求得 $M_{AB}, M_{BA}, M_{BC}, M_{CB}$。</p>
+<p><strong>第五步：求解未知變位與桿端彎矩</strong>：</p>
 </li>
+<li>解 $K {D} + {P_F} = {P}$ 得到 $\theta_B$ 與 $\theta_C$。</li>
+<li>利用元素勁度方程式 ${m} = k {d} + {m_F}$ 求得 $M_{AB}, M_{BA}, M_{BC}, M_{CB}$。</li>
 <li><strong>第六步：尋找跨中彎矩極值並繪圖</strong>：<br />
    利用 B 點端彎矩求出 BC 跨之剪力，找出剪力為零的位置，計算最大正彎矩。</li>
 </ol>
@@ -99,9 +99,9 @@ header .nomat{margin-top:12px;font-size:.8em;opacity:.85}
 <p>求出各桿件之彎矩值，特別是 BC 跨的最大彎矩，並繪製彎矩圖。</p>
 <h3>本題關鍵公式（依計算順序）</h3>
 <ul>
-<li>元素勁度矩陣 (僅考慮抗彎)：$k = \frac{EI}{L} \begin{bmatrix} 4 & 2 \\ 2 & 4 \end{bmatrix}$</li>
-<li>整體平衡方程式：$K \{D\} = \{P\} - \{P_F\}$</li>
-<li>桿端力回算方程式：$\{m\} = k \{d\} + \{m_F\}$</li>
+<li>元素勁度矩陣 (僅考慮抗彎)：$k = \frac{EI}{L} \begin{bmatrix} 4 &amp; 2 \ 2 &amp; 4 \end{bmatrix}$</li>
+<li>整體平衡方程式：$K {D} = {P} - {P_F}$</li>
+<li>桿端力回算方程式：${m} = k {d} + {m_F}$</li>
 </ul>
 <h3>L1：題目直接給定</h3>
 <table>
@@ -129,9 +129,9 @@ header .nomat{margin-top:12px;font-size:.8em;opacity:.85}
 <p><strong>一、矩陣與向量組裝</strong><br />
 | 符號 | 公式／來源 | 卡關? |<br />
 |---|---|---|<br />
-| $\{D\}$ | $\begin{bmatrix} \theta_B & \theta_C \end{bmatrix}^T$ | 系統獨立自由度 |<br />
+| ${D}$ | $\begin{bmatrix} \theta_B &amp; \theta_C \end{bmatrix}^T$ | 系統獨立自由度 |<br />
 | $K$ | $\Sigma k_{global}$ | 系統整體勁度矩陣 |<br />
-| $\{P_F\}$ | 由 $FEM$ 組成之向量 | $FEM = \pm wL^2 / 12$ |</p>
+| ${P_F}$ | 由 $FEM$ 組成之向量 | $FEM = \pm wL^2 / 12$ |</p>
 <h2>4. 步驟化詳細計算過程 (Step-by-Step Detailed Calculation)</h2>
 <h3>步驟 1：定義自由度與建立元素勁度矩陣</h3>
 <p>忽略軸向變形，節點 B 無平移。定義未作束制之自由度為：$D_1 = \theta_B, D_2 = \theta_C$。<br />
@@ -139,11 +139,11 @@ header .nomat{margin-top:12px;font-size:.8em;opacity:.85}
 <ul>
 <li>
 <p><strong>桿件 1 (AB 桿)</strong>：$L_1 = 4\text{ m}$<br />
-  $$ k_1 = \frac{EI}{4} \begin{bmatrix} 4 & 2 \\ 2 & 4 \end{bmatrix} \begin{array}{l} \leftarrow \theta_A \\ \leftarrow \theta_B \end{array} $$</p>
+  $$ k_1 = \frac{EI}{4} \begin{bmatrix} 4 &amp; 2 \ 2 &amp; 4 \end{bmatrix} \begin{array}{l} \leftarrow \theta_A \ \leftarrow \theta_B \end{array} $$</p>
 </li>
 <li>
 <p><strong>桿件 2 (BC 桿)</strong>：$L_2 = 6\text{ m}$<br />
-  $$ k_2 = \frac{EI}{6} \begin{bmatrix} 4 & 2 \\ 2 & 4 \end{bmatrix} \begin{array}{l} \leftarrow \theta_B \\ \leftarrow \theta_C \end{array} = EI \begin{bmatrix} 2/3 & 1/3 \\ 1/3 & 2/3 \end{bmatrix} \begin{array}{l} \leftarrow \theta_B \\ \leftarrow \theta_C \end{array} $$</p>
+  $$ k_2 = \frac{EI}{6} \begin{bmatrix} 4 &amp; 2 \ 2 &amp; 4 \end{bmatrix} \begin{array}{l} \leftarrow \theta_B \ \leftarrow \theta_C \end{array} = EI \begin{bmatrix} 2/3 &amp; 1/3 \ 1/3 &amp; 2/3 \end{bmatrix} \begin{array}{l} \leftarrow \theta_B \ \leftarrow \theta_C \end{array} $$</p>
 </li>
 </ul>
 <h3>步驟 2：組裝整體勁度矩陣 $K$</h3>
@@ -154,28 +154,28 @@ header .nomat{margin-top:12px;font-size:.8em;opacity:.85}
 <li>$K_{21} = k_{2(2,1)} = \frac{1}{3}EI$</li>
 <li>$K_{22} = k_{2(2,2)} = \frac{4EI}{6} = \frac{2}{3}EI$</li>
 </ul>
-<p>$$ K = EI \begin{bmatrix} 5/3 & 1/3 \\ 1/3 & 2/3 \end{bmatrix} $$</p>
+<p>$$ K = EI \begin{bmatrix} 5/3 &amp; 1/3 \ 1/3 &amp; 2/3 \end{bmatrix} $$</p>
 <h3>步驟 3：建立載重向量</h3>
 <p>計算 BC 桿均佈載重之固端彎矩 (順時針為正)：</p>
 <ul>
 <li>$FEM_{BC} = -\frac{wL^2}{12} = -\frac{1 \times 6^2}{12} = -3\text{ kN-m}$</li>
 <li>$FEM_{CB} = +\frac{wL^2}{12} = +3\text{ kN-m}$</li>
 </ul>
-<p>固端力向量 $\{P_F\}$ (對應 $D_1, D_2$)：<br />
-$$ \{P_F\} = \begin{bmatrix} FEM_{BC} \\ FEM_{CB} \end{bmatrix} = \begin{bmatrix} -3 \\ 3 \end{bmatrix} $$<br />
-節點外加載重向量 $\{P\}$：<br />
-$$ \{P\} = \begin{bmatrix} 0 \\ 0 \end{bmatrix} $$</p>
+<p>固端力向量 ${P_F}$ (對應 $D_1, D_2$)：<br />
+$$ {P_F} = \begin{bmatrix} FEM_{BC} \ FEM_{CB} \end{bmatrix} = \begin{bmatrix} -3 \ 3 \end{bmatrix} $$<br />
+節點外加載重向量 ${P}$：<br />
+$$ {P} = \begin{bmatrix} 0 \ 0 \end{bmatrix} $$</p>
 <h3>步驟 4：解矩陣方程式求變位</h3>
-<p>利用 $K \{D\} = \{P\} - \{P_F\}$：<br />
-$$ EI \begin{bmatrix} 5/3 & 1/3 \\ 1/3 & 2/3 \end{bmatrix} \begin{bmatrix} \theta_B \\ \theta_C \end{bmatrix} = \begin{bmatrix} 0 \\ 0 \end{bmatrix} - \begin{bmatrix} -3 \\ 3 \end{bmatrix} = \begin{bmatrix} 3 \\ -3 \end{bmatrix} $$<br />
+<p>利用 $K {D} = {P} - {P_F}$：<br />
+$$ EI \begin{bmatrix} 5/3 &amp; 1/3 \ 1/3 &amp; 2/3 \end{bmatrix} \begin{bmatrix} \theta_B \ \theta_C \end{bmatrix} = \begin{bmatrix} 0 \ 0 \end{bmatrix} - \begin{bmatrix} -3 \ 3 \end{bmatrix} = \begin{bmatrix} 3 \ -3 \end{bmatrix} $$<br />
 兩邊同乘 3：<br />
-$$ EI \begin{bmatrix} 5 & 1 \\ 1 & 2 \end{bmatrix} \begin{bmatrix} \theta_B \\ \theta_C \end{bmatrix} = \begin{bmatrix} 9 \\ -9 \end{bmatrix} $$<br />
+$$ EI \begin{bmatrix} 5 &amp; 1 \ 1 &amp; 2 \end{bmatrix} \begin{bmatrix} \theta_B \ \theta_C \end{bmatrix} = \begin{bmatrix} 9 \ -9 \end{bmatrix} $$<br />
 矩陣反轉：<br />
-$$ \begin{bmatrix} \theta_B \\ \theta_C \end{bmatrix} = \frac{1}{EI (10-1)} \begin{bmatrix} 2 & -1 \\ -1 & 5 \end{bmatrix} \begin{bmatrix} 9 \\ -9 \end{bmatrix} = \frac{1}{9 EI} \begin{bmatrix} 18 + 9 \\ -9 - 45 \end{bmatrix} = \frac{1}{9 EI} \begin{bmatrix} 27 \\ -54 \end{bmatrix} $$<br />
+$$ \begin{bmatrix} \theta_B \ \theta_C \end{bmatrix} = \frac{1}{EI (10-1)} \begin{bmatrix} 2 &amp; -1 \ -1 &amp; 5 \end{bmatrix} \begin{bmatrix} 9 \ -9 \end{bmatrix} = \frac{1}{9 EI} \begin{bmatrix} 18 + 9 \ -9 - 45 \end{bmatrix} = \frac{1}{9 EI} \begin{bmatrix} 27 \ -54 \end{bmatrix} $$<br />
 得出：<br />
 $$ \theta_B = \frac{3}{EI}, \quad \theta_C = -\frac{6}{EI} $$</p>
 <h3>步驟 5：回算各端彎矩</h3>
-<p>利用 $\{m\} = k \{d\} + \{m_F\}$ 求桿端力：</p>
+<p>利用 ${m} = k {d} + {m_F}$ 求桿端力：</p>
 <ul>
 <li>
 <p><strong>AB 桿</strong> ($\theta_A = 0, \theta_B = 3/EI$)：<br />

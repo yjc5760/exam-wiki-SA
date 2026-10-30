@@ -43,9 +43,9 @@ header .nomat{margin-top:12px;font-size:.8em;opacity:.85}
 <p class="meta2">主分類 <b>SA-U2-1</b> 靜不定結構最小功法 ｜ 2018 年（民國 107） ｜ 最小功法 (Castigliano's 2nd Theorem)</p>
 <div class="hbtns"><a class="b-study" href="../unit-SA-U2-1.html">🧭 U2-1 單元總覽</a><a class="b-lect" href="../lecture-SA-U2-1.html">📚 U2-1 靜不定結構最小功法 講義</a></div>
 </header>
-<main><div style="background:#fff;border:1px solid #dfe6ea;border-radius:10px;padding:12px 14px;margin:0 0 18px"><p style="margin:0 0 6px;font-size:.88em;color:#607d8b">題目附圖（原始 .md 未內嵌，由 raw/solutions/ 自動補上）</p><img src="../../raw/solutions/SA-2018-3/SA-2018-3-fig-1.png" alt="SA-2018-3 附圖"></div><h1>考題編號：SA-2018-3</h1>
-<p><strong>主分類：</strong> 結構系統定性分析與能量法 (SA-U3-4)<br />
-<strong>副分類：</strong> <br />
+<main><h1>考題編號：SA-2018-3</h1>
+<p><strong>主分類：</strong> <code>SA-U2-1</code> 靜不定結構最小功法<br />
+<strong>副分類：</strong> 無<br />
 <strong>分析法：</strong> 最小功法 (Castigliano's 2nd Theorem)<br />
 <strong>標籤：</strong> <code>最小功法</code>, <code>靜不定結構</code>, <code>纜索無壓力</code>, <code>彎矩圖</code></p>
 <hr />
@@ -60,7 +60,7 @@ header .nomat{margin-top:12px;font-size:.8em;opacity:.85}
 </ul>
 <p>若無纜索作用，D 點 $100\text{ kN}$ 向下的載重會對 C 點產生巨大的順時針彎矩 $M_C = 100 \times 5 = 500 \text{ kN-m}$。此彎矩由柱 CG 抵抗，導致柱頂 C 點發生順時針旋轉角 $\theta_C = \frac{M L}{EI} = \frac{500 \times 5}{1000} = 2.5 \text{ rad}$。<br />
 這會使得 A、B 兩點產生極大的向上位移（$v_A \approx 25\text{m}, v_B \approx 12.5\text{m}$）。因此，纜索勢必會被拉伸以抵抗此位移。</p>
-<p>然而，若我們同時將 AE ($X_1$) 與 BF ($X_2$) 設為冗力並列出最小功聯立方程式，會解得 $X_1 < 0$，代表 AE 處於壓力狀態。由於纜索<strong>無法承受壓力</strong>，因此 <strong>AE 必定鬆弛，其內力 $X_1 = 0$</strong>。以下我們直接以 $X_1 = 0$、僅 $X_2$（BF拉力）為冗力進行分析，並在事後驗證 A 點位移。</p>
+<p>然而，若我們同時將 AE ($X_1$) 與 BF ($X_2$) 設為冗力並列出最小功聯立方程式，會解得 $X_1 &lt; 0$，代表 AE 處於壓力狀態。由於纜索<strong>無法承受壓力</strong>，因此 <strong>AE 必定鬆弛，其內力 $X_1 = 0$</strong>。以下我們直接以 $X_1 = 0$、僅 $X_2$（BF拉力）為冗力進行分析，並在事後驗證 A 點位移。</p>
 <hr />
 <h2>2. 最小功法解析 (單一冗力 $X_2$)</h2>
 <p>去除鬆弛的纜索 AE，設纜索 BF 的拉力為 $X_2$ (冗力)。</p>
@@ -101,7 +101,7 @@ $$ X_2 = \frac{37500}{530} = \frac{3750}{53} \approx 70.755 \text{ kN} $$</p>
 $$ v_A = \int_0^5 \frac{M_{BC} m_{BC}}{EI} dx + \int_0^5 \frac{M_{CG} m_{CG}}{EI} dy $$<br />
 $$ v_A = \int_0^5 \frac{(-70.755 x)(-(x+5))}{1000} dx + \int_0^5 \frac{(500 - 5(70.755))(-10)}{1000} dy $$<br />
 $$ v_A = \frac{70.755}{1000} \left( \frac{125}{3} + \frac{125}{2} \right) - \frac{50}{1000}(146.225) = 7.370 - 7.311 = 0.059 \text{ m} \text{ (向下)} $$<br />
-因為 $v_A > 0$ (A 點向下位移)，纜索 AE 受壓縮而發生鬆弛，驗證 $X_1 = 0$ 完全正確！</li>
+因為 $v_A &gt; 0$ (A 點向下位移)，纜索 AE 受壓縮而發生鬆弛，驗證 $X_1 = 0$ 完全正確！</li>
 </ul>
 <hr />
 <h2>3. 彎矩圖 (梁 A~D)</h2>

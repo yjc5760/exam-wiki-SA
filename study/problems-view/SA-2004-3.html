@@ -44,8 +44,8 @@ header .nomat{margin-top:12px;font-size:.8em;opacity:.85}
 <div class="hbtns"><a class="b-study" href="../unit-SA-U1-2.html">🧭 U1-2 單元總覽</a><a class="b-lect" href="../lecture-SA-U1-2.html">📚 U1-2 靜定結構之分析 講義</a></div>
 </header>
 <main><h1>考題編號：SA-2004-3</h1>
-<p><strong>主分類：</strong> <code>SA-U1-2</code> 結構變位分析<br />
-<strong>副分類：</strong> <code>SA-U2</code> 靜定結構分析<br />
+<p><strong>主分類：</strong> <code>SA-U1-2</code> 靜定結構之分析<br />
+<strong>副分類：</strong> 無<br />
 <strong>分析法：</strong> 單位力法 / 虛功法<br />
 <strong>標籤：</strong> <code>內部鉸</code> <code>彈簧支承</code> <code>剛體位移</code> <code>懸臂梁</code> <code>複合梁</code></p>
 <hr />
@@ -74,12 +74,12 @@ header .nomat{margin-top:12px;font-size:.8em;opacity:.85}
 <p><strong>戰略步驟：</strong></p>
 <ol>
 <li><strong>靜力平衡</strong>：取右段梁 $BCD$ 為自由體，對 $B$ 點取力矩平衡，直接求出彈簧反力 $R_C$，進而求得 $B$ 點鉸接剪力 $V_B$。</li>
-<li><strong>支承變位計算</strong>：<br />
-   - 取左段梁 $AB$，$B$ 點受載重與傳遞剪力共同作用，計算 $B$ 點下陷量 $\Delta_B$。<br />
-   - 利用彈簧反力 $R_C$ 及彈簧常數 $k$，計算 $C$ 點下陷量 $\Delta_C$。</li>
-<li><strong>彈性位移與剛體位移疊加</strong>：<br />
-   - 將 $BCD$ 視為具有支承變位 ($\Delta_B, \Delta_C$) 的結構。<br />
-   - 使用單位力法計算 $C$、$D$ 點的絕對傾角及 $D$ 點的絕對垂直變位時，外力虛功必須包含反力在支承變位上所作的功 ($1 \cdot \Delta + \sum r_i \Delta_i = \int \frac{Mm}{EI}dx$)。</li>
+<li><strong>支承變位計算</strong>：</li>
+<li>取左段梁 $AB$，$B$ 點受載重與傳遞剪力共同作用，計算 $B$ 點下陷量 $\Delta_B$。</li>
+<li>利用彈簧反力 $R_C$ 及彈簧常數 $k$，計算 $C$ 點下陷量 $\Delta_C$。</li>
+<li><strong>彈性位移與剛體位移疊加</strong>：</li>
+<li>將 $BCD$ 視為具有支承變位 ($\Delta_B, \Delta_C$) 的結構。</li>
+<li>使用單位力法計算 $C$、$D$ 點的絕對傾角及 $D$ 點的絕對垂直變位時，外力虛功必須包含反力在支承變位上所作的功 ($1 \cdot \Delta + \sum r_i \Delta_i = \int \frac{Mm}{EI}dx$)。</li>
 </ol>
 <p><strong>陷阱分析：</strong></p>
 <ul>
@@ -165,7 +165,7 @@ $$ V_{B,\text{left}} = 72 - 60 = 12\text{ t} (\uparrow) $$<br />
   切面取左側自由體：$M(x) + 24x = 0 \Rightarrow M(x) = -24x$</p>
 </li>
 <li>
-<p>$18 < x \le 30$ ($CD$ 段)：<br />
+<p>$18 &lt; x \le 30$ ($CD$ 段)：<br />
   設 $x'$ 為自 $C$ 向右之座標 ($x' = x - 18$)。<br />
   切面取右側自由體：$M(x') + 36(12 - x') = 0 \Rightarrow M(x') = -36(12 - x')$<br />
 全段均為負彎矩 (Hogging，上端受拉)。</p>

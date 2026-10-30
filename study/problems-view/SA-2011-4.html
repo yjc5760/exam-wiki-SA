@@ -44,8 +44,8 @@ header .nomat{margin-top:12px;font-size:.8em;opacity:.85}
 <div class="hbtns"><a class="b-study" href="../unit-SA-U2-4.html">🧭 U2-4 單元總覽</a><a class="b-lect" href="../lecture-SA-U2-4.html">📚 U2-4 靜不定結構之矩陣分析法 講義</a></div>
 </header>
 <main><h1>考題編號：SA-2011-4</h1>
-<p><strong>主分類：</strong> <code>SA-U4-1</code> 矩陣勁度法<br />
-<strong>副分類：</strong> <code>SA-U4-2</code> 桁架矩陣分析<br />
+<p><strong>主分類：</strong> <code>SA-U2-4</code> 靜不定結構之矩陣分析法<br />
+<strong>副分類：</strong> 無<br />
 <strong>分析法：</strong> 矩陣直接勁度法 (Direct Stiffness Method)<br />
 <strong>標籤：</strong> <code>矩陣勁度法</code> <code>桁架</code> <code>製造誤差</code> <code>等效節點載重</code></p>
 <hr />
@@ -66,8 +66,8 @@ header .nomat{margin-top:12px;font-size:.8em;opacity:.85}
 <ol>
 <li><strong>建立座標與自由度</strong>：定義各節點全域座標，確認系統只有節點 A 存在兩個未知自由度 $D_1$ (水平)、$D_2$ (垂直)。</li>
 <li><strong>組裝整體勁度矩陣 $[K]$</strong>：計算 AB、AC、AD 三桿對節點 A 的勁度貢獻並疊加，得 $2 \times 2$ 的 $K_{AA}$ 矩陣。</li>
-<li><strong>計算等效節點載重 $\{P_{eq}\}$</strong>：鎖定 A 點，計算強行將短少的 AC 桿拉至 A 點所需的初始力，再將此拉力轉換至全域座標形成等效載重。</li>
-<li><strong>解聯立方程式</strong>：利用 $[K]\{D\} = \{P_{eq}\}$ 求解節點 A 的位移 $D_1$ 與 $D_2$。</li>
+<li><strong>計算等效節點載重 ${P_{eq}}$</strong>：鎖定 A 點，計算強行將短少的 AC 桿拉至 A 點所需的初始力，再將此拉力轉換至全域座標形成等效載重。</li>
+<li><strong>解聯立方程式</strong>：利用 $[K]{D} = {P_{eq}}$ 求解節點 A 的位移 $D_1$ 與 $D_2$。</li>
 <li><strong>回算真實內力</strong>：以 $F = \frac{EA}{L} e + F_{fixed}$ 求各桿內力，注意 AC 桿必須包含初始張力 $F_{fixed}$。</li>
 </ol>
 <p><strong>關鍵陷阱分析：</strong></p>
@@ -80,13 +80,13 @@ header .nomat{margin-top:12px;font-size:.8em;opacity:.85}
 <p><code>求出節點 A 的水平與垂直位移，並回算 AB、AC、AD 三根桿件的最終真實內力。</code></p>
 <h3>本題關鍵公式（依計算順序）</h3>
 <p><strong>Step 1: 桿件勁度矩陣貢獻</strong><br />
-$$ k_{AA}^{(i)} = \frac{EA}{L} \begin{bmatrix} c^2 & cs \\ cs & s^2 \end{bmatrix} $$</p>
+$$ k_{AA}^{(i)} = \frac{EA}{L} \begin{bmatrix} c^2 &amp; cs \ cs &amp; s^2 \end{bmatrix} $$</p>
 <p><strong>Step 2: 整體勁度矩陣組裝</strong><br />
 $$ [K] = \sum k_{AA}^{(i)} $$</p>
 <p><strong>Step 3: 等效節點載重計算</strong><br />
-$$ \{P_{eq}\} = T_0 \begin{bmatrix} c \\ s \end{bmatrix} = \left( \frac{EA}{L_{AC}} \Delta \right) \begin{bmatrix} c \\ s \end{bmatrix} $$</p>
+$$ {P_{eq}} = T_0 \begin{bmatrix} c \ s \end{bmatrix} = \left( \frac{EA}{L_{AC}} \Delta \right) \begin{bmatrix} c \ s \end{bmatrix} $$</p>
 <p><strong>Step 4: 節點位移求解</strong><br />
-$$ \{D\} = \boxed{[K]}^{-1} \boxed{\{P_{eq}\}} $$</p>
+$$ {D} = \boxed{[K]}^{-1} \boxed{{P_{eq}}} $$</p>
 <p><strong>Step 5: 桿件內力回算</strong><br />
 $$ F_i = \frac{EA}{L_i} ( -\boxed{D_1} c - \boxed{D_2} s ) + F_{fixed, i} $$</p>
 <h3>L1：題目直接給定</h3>
@@ -116,13 +116,13 @@ $$ F_i = \frac{EA}{L_i} ( -\boxed{D_1} c - \boxed{D_2} s ) + F_{fixed, i} $$</p>
 | 符號 | 公式／來源 | 卡關? |<br />
 |---|---|---|<br />
 | $c, s$ | 桿件由起點至終點的方向餘弦 | |<br />
-| $K_{AA}$ | $\sum \frac{EA}{L} \begin{bmatrix} c^2 & cs \\ cs & s^2 \end{bmatrix}$ | |<br />
+| $K_{AA}$ | $\sum \frac{EA}{L} \begin{bmatrix} c^2 &amp; cs \ cs &amp; s^2 \end{bmatrix}$ | |<br />
 | $T_0$ | $\frac{EA}{L_{AC}} \Delta$ | |<br />
-| $\{P_{eq}\}$ | $T_0 \begin{bmatrix} c_{A \to C} \\ s_{A \to C} \end{bmatrix}$ | |</p>
+| ${P_{eq}}$ | $T_0 \begin{bmatrix} c_{A \to C} \ s_{A \to C} \end{bmatrix}$ | |</p>
 <p><strong>最終解答</strong><br />
 | 符號 | 公式／來源 | 卡關? |<br />
 |---|---|---|<br />
-| $\{D\}$ | $[K]\{D\} = \{P_{eq}\}$ 解聯立 | |<br />
+| ${D}$ | $[K]{D} = {P_{eq}}$ 解聯立 | |<br />
 | $F_i$ | $\frac{EA}{L_i} e_i + F_{fixed, i}$ | |</p>
 <h3>L3：深層知識（不懂就卡住）</h3>
 <table>
@@ -158,31 +158,31 @@ $$ F_i = \frac{EA}{L_i} ( -\boxed{D_1} c - \boxed{D_2} s ) + F_{fixed, i} $$</p>
 </ul>
 <h3>步驟 2：組裝 A 點整體勁度矩陣 $[K]$</h3>
 <p>對於連接到點 A 的各桿件 $i$，其對 A 節點的勁度貢獻為：<br />
-$$ k_{AA}^{(i)} = \frac{EA}{L} \begin{bmatrix} c^2 & cs \\ cs & s^2 \end{bmatrix} $$<br />
+$$ k_{AA}^{(i)} = \frac{EA}{L} \begin{bmatrix} c^2 &amp; cs \ cs &amp; s^2 \end{bmatrix} $$<br />
 其中 $c, s$ 為桿件由 A 指向他端之方向餘弦。</p>
 <p><strong>1. 桿件 AB</strong> ($L = 3\text{ m}$)：<br />
 向量 $\vec{AB} = (-3, 0)$，方向餘弦 $c = -1, s = 0$。<br />
-$$ k_{AA}^{(AB)} = \frac{10000}{3} \begin{bmatrix} (-1)^2 & 0 \\ 0 & 0 \end{bmatrix} = \begin{bmatrix} 3333.33 & 0 \\ 0 & 0 \end{bmatrix} $$</p>
+$$ k_{AA}^{(AB)} = \frac{10000}{3} \begin{bmatrix} (-1)^2 &amp; 0 \ 0 &amp; 0 \end{bmatrix} = \begin{bmatrix} 3333.33 &amp; 0 \ 0 &amp; 0 \end{bmatrix} $$</p>
 <p><strong>2. 桿件 AC</strong> ($L = \sqrt{3^2+4^2} = 5\text{ m}$)：<br />
 向量 $\vec{AC} = (-3, -4)$，方向餘弦 $c = -0.6, s = -0.8$。<br />
-$$ k_{AA}^{(AC)} = \frac{10000}{5} \begin{bmatrix} (-0.6)^2 & (-0.6)(-0.8) \\ (-0.6)(-0.8) & (-0.8)^2 \end{bmatrix} = 2000 \begin{bmatrix} 0.36 & 0.48 \\ 0.48 & 0.64 \end{bmatrix} = \begin{bmatrix} 720 & 960 \\ 960 & 1280 \end{bmatrix} $$</p>
+$$ k_{AA}^{(AC)} = \frac{10000}{5} \begin{bmatrix} (-0.6)^2 &amp; (-0.6)(-0.8) \ (-0.6)(-0.8) &amp; (-0.8)^2 \end{bmatrix} = 2000 \begin{bmatrix} 0.36 &amp; 0.48 \ 0.48 &amp; 0.64 \end{bmatrix} = \begin{bmatrix} 720 &amp; 960 \ 960 &amp; 1280 \end{bmatrix} $$</p>
 <p><strong>3. 桿件 AD</strong> ($L = \sqrt{3^2+4^2} = 5\text{ m}$)：<br />
 向量 $\vec{AD} = (3, -4)$，方向餘弦 $c = 0.6, s = -0.8$。<br />
-$$ k_{AA}^{(AD)} = \frac{10000}{5} \begin{bmatrix} (0.6)^2 & (0.6)(-0.8) \\ (0.6)(-0.8) & (-0.8)^2 \end{bmatrix} = 2000 \begin{bmatrix} 0.36 & -0.48 \\ -0.48 & 0.64 \end{bmatrix} = \begin{bmatrix} 720 & -960 \\ -960 & 1280 \end{bmatrix} $$</p>
+$$ k_{AA}^{(AD)} = \frac{10000}{5} \begin{bmatrix} (0.6)^2 &amp; (0.6)(-0.8) \ (0.6)(-0.8) &amp; (-0.8)^2 \end{bmatrix} = 2000 \begin{bmatrix} 0.36 &amp; -0.48 \ -0.48 &amp; 0.64 \end{bmatrix} = \begin{bmatrix} 720 &amp; -960 \ -960 &amp; 1280 \end{bmatrix} $$</p>
 <p><strong>整體勁度矩陣 $[K]$</strong>：<br />
 將三桿勁度貢獻相加：<br />
-$$ [K] = k_{AA}^{(AB)} + k_{AA}^{(AC)} + k_{AA}^{(AD)} = \begin{bmatrix} 3333.33+720+720 & 0+960-960 \\ 0+960-960 & 0+1280+1280 \end{bmatrix} = \begin{bmatrix} 4773.33 & 0 \\ 0 & 2560 \end{bmatrix} $$</p>
+$$ [K] = k_{AA}^{(AB)} + k_{AA}^{(AC)} + k_{AA}^{(AD)} = \begin{bmatrix} 3333.33+720+720 &amp; 0+960-960 \ 0+960-960 &amp; 0+1280+1280 \end{bmatrix} = \begin{bmatrix} 4773.33 &amp; 0 \ 0 &amp; 2560 \end{bmatrix} $$</p>
 <blockquote>
 <p><strong>策略註解</strong>：因結構幾何對稱性，非對角線元素剛好相消為零，矩陣解耦合解題大幅簡化。</p>
 </blockquote>
-<h3>步驟 3：計算等效節點載重向量 $\{P_{eq}\}$</h3>
+<h3>步驟 3：計算等效節點載重向量 ${P_{eq}}$</h3>
 <p>桿件 AC 短缺 $\Delta = 0.02\text{ m}$。若將節點 A 鎖定於原位，強行將 AC 桿拉長連接至 A 點，AC 桿將產生初始張力：<br />
 $$ T_0 = \frac{EA}{L_{AC}} \Delta = \frac{10000}{5} \times 0.02 = 40\text{ kN} $$<br />
 此張力對節點 A 的作用力方向為由 A 指向 C (即向量方向 $c = -0.6, s = -0.8$)：<br />
-$$ \{P_{eq}\} = \begin{bmatrix} P_{x} \\ P_{y} \end{bmatrix} = T_0 \begin{bmatrix} c_{A \to C} \\ s_{A \to C} \end{bmatrix} = 40 \begin{bmatrix} -0.6 \\ -0.8 \end{bmatrix} = \begin{bmatrix} -24 \\ -32 \end{bmatrix} \text{ kN} $$</p>
-<h3>步驟 4：解節點位移 $\{D\}$</h3>
-<p>由矩陣方程式 $[K]\{D\} = \{P_{eq}\}$ 求位移：<br />
-$$ \begin{bmatrix} 14320/3 & 0 \\ 0 & 2560 \end{bmatrix} \begin{bmatrix} D_1 \\ D_2 \end{bmatrix} = \begin{bmatrix} -24 \\ -32 \end{bmatrix} $$</p>
+$$ {P_{eq}} = \begin{bmatrix} P_{x} \ P_{y} \end{bmatrix} = T_0 \begin{bmatrix} c_{A \to C} \ s_{A \to C} \end{bmatrix} = 40 \begin{bmatrix} -0.6 \ -0.8 \end{bmatrix} = \begin{bmatrix} -24 \ -32 \end{bmatrix} \text{ kN} $$</p>
+<h3>步驟 4：解節點位移 ${D}$</h3>
+<p>由矩陣方程式 $[K]{D} = {P_{eq}}$ 求位移：<br />
+$$ \begin{bmatrix} 14320/3 &amp; 0 \ 0 &amp; 2560 \end{bmatrix} \begin{bmatrix} D_1 \ D_2 \end{bmatrix} = \begin{bmatrix} -24 \ -32 \end{bmatrix} $$</p>
 <p>解得：<br />
 $$ \boxed{D_1 = -24 \times \frac{3}{14320} = -\frac{9}{1790} \approx -0.00503\text{ m} \text{ (向左)}} $$<br />
 $$ \boxed{D_2 = \frac{-32}{2560} = -0.0125\text{ m} \text{ (向下)}} $$</p>

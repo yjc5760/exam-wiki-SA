@@ -39,13 +39,13 @@ header .hbtns a:hover{filter:brightness(1.08)}
 header .nomat{margin-top:12px;font-size:.8em;opacity:.85}
 </style></head><body>
 <header>
-<h1>SA-2007-2　靜不定結構最小功法</h1>
-<p class="meta2">主分類 <b>SA-U2-3</b> 靜不定結構之傾角變位法 ｜ 副分類 <b>SA-U2-4</b> 靜不定結構之矩陣分析法 ｜ 2007 年（民國 96） ｜ 傾角變位法</p>
+<h1>SA-2007-2　靜不定結構之傾角變位法</h1>
+<p class="meta2">主分類 <b>SA-U2-3</b> 靜不定結構之傾角變位法 ｜ 2007 年（民國 96） ｜ 傾角變位法</p>
 <div class="hbtns"><a class="b-study" href="../unit-SA-U2-3.html">🧭 U2-3 單元總覽</a><a class="b-lect" href="../lecture-SA-U2-3.html">📚 U2-3 靜不定結構之傾角變位法 講義</a></div>
 </header>
 <main><h1>考題編號：[SA-2007-2]</h1>
-<p><strong>主分類：</strong> <code>SA-U2-3</code><br />
-<strong>副分類：</strong> <code>SA-U2-4</code><br />
+<p><strong>主分類：</strong> <code>SA-U2-3</code> 靜不定結構之傾角變位法<br />
+<strong>副分類：</strong> 無<br />
 <strong>分析法：</strong> 傾角變位法<br />
 <strong>標籤：</strong> <code>無側移剛架</code> <code>修正傾角撓度法</code> <code>固端彎矩</code></p>
 <hr />
@@ -209,49 +209,33 @@ header .nomat{margin-top:12px;font-size:.8em;opacity:.85}
 <h3>Step 1: 計算固端彎矩 (FEM)</h3>
 <p>設順時針彎矩為正。</p>
 <ul>
-<li>
-<p><strong>桿件 AC:</strong> 中點集中載重 $8 \text{ kN}$向右。<br />
+<li><strong>桿件 AC:</strong> 中點集中載重 $8 \text{ kN}$向右。<br />
     $FEM_{AC} = -\frac{PL}{8} = -\frac{8 \times 4}{8} = -4 \text{ kN-m}$<br />
-    $FEM_{CA} = +\frac{PL}{8} = +\frac{8 \times 4}{8} = +4 \text{ kN-m}$</p>
-</li>
-<li>
-<p><strong>桿件 BD:</strong> 無橫向載重。<br />
-    $FEM_{BD} = FEM_{DB} = 0$</p>
-</li>
-<li>
-<p><strong>桿件 CD:</strong> 均佈載重 $2 \text{ kN/m}$向下。<br />
+    $FEM_{CA} = +\frac{PL}{8} = +\frac{8 \times 4}{8} = +4 \text{ kN-m}$</li>
+<li><strong>桿件 BD:</strong> 無橫向載重。<br />
+    $FEM_{BD} = FEM_{DB} = 0$</li>
+<li><strong>桿件 CD:</strong> 均佈載重 $2 \text{ kN/m}$向下。<br />
     $FEM_{CD} = -\frac{wL^2}{12} = -\frac{2 \times 6^2}{12} = -6 \text{ kN-m}$<br />
-    $FEM_{DC} = +\frac{wL^2}{12} = +\frac{2 \times 6^2}{12} = +6 \text{ kN-m}$</p>
-</li>
-<li>
-<p><strong>桿件 DE:</strong> 均佈載重 $2 \text{ kN/m}$向下。因 E 點為鉸接，使用修正固端彎矩。<br />
-    $FEM'_{DE} = -\frac{wL^2}{8} = -\frac{2 \times 6^2}{8} = -9 \text{ kN-m}$</p>
-</li>
+    $FEM_{DC} = +\frac{wL^2}{12} = +\frac{2 \times 6^2}{12} = +6 \text{ kN-m}$</li>
+<li><strong>桿件 DE:</strong> 均佈載重 $2 \text{ kN/m}$向下。因 E 點為鉸接，使用修正固端彎矩。<br />
+    $FEM'_{DE} = -\frac{wL^2}{8} = -\frac{2 \times 6^2}{8} = -9 \text{ kN-m}$</li>
 </ul>
 <h3>Step 2: 建立傾角變位方程式</h3>
 <p>已知 $\theta_A = 0, \theta_B = 0$ (固定端)，且無側移 ($\psi = 0$)。</p>
 <ul>
-<li>
-<p><strong>桿件 AC ($L=4, I$):</strong><br />
+<li><strong>桿件 AC ($L=4, I$):</strong><br />
     $M_{CA} = FEM_{CA} + \frac{2EI}{4}(2\theta_C + \theta_A) = 4 + EI\theta_C$<br />
-    $M_{AC} = FEM_{AC} + \frac{2EI}{4}(2\theta_A + \theta_C) = -4 + 0.5 EI\theta_C$</p>
-</li>
-<li>
-<p><strong>桿件 CD ($L=6, 2I$):</strong><br />
+    $M_{AC} = FEM_{AC} + \frac{2EI}{4}(2\theta_A + \theta_C) = -4 + 0.5 EI\theta_C$</li>
+<li><strong>桿件 CD ($L=6, 2I$):</strong><br />
     $M_{CD} = FEM_{CD} + \frac{2E(2I)}{6}(2\theta_C + \theta_D) = -6 + \frac{2}{3}EI(2\theta_C + \theta_D) = -6 + \frac{4}{3}EI\theta_C + \frac{2}{3}EI\theta_D$<br />
-    $M_{DC} = FEM_{DC} + \frac{2E(2I)}{6}(2\theta_D + \theta_C) = 6 + \frac{4}{3}EI\theta_D + \frac{2}{3}EI\theta_C$</p>
-</li>
-<li>
-<p><strong>桿件 BD ($L=4, I$):</strong><br />
+    $M_{DC} = FEM_{DC} + \frac{2E(2I)}{6}(2\theta_D + \theta_C) = 6 + \frac{4}{3}EI\theta_D + \frac{2}{3}EI\theta_C$</li>
+<li><strong>桿件 BD ($L=4, I$):</strong><br />
     $M_{DB} = 0 + \frac{2EI}{4}(2\theta_D + \theta_B) = EI\theta_D$<br />
-    $M_{BD} = 0 + \frac{2EI}{4}(2\theta_B + \theta_D) = 0.5 EI\theta_D$</p>
-</li>
-<li>
-<p><strong>桿件 DE ($L=6, 2I$, E端鉸接):</strong><br />
+    $M_{BD} = 0 + \frac{2EI}{4}(2\theta_B + \theta_D) = 0.5 EI\theta_D$</li>
+<li><strong>桿件 DE ($L=6, 2I$, E端鉸接):</strong><br />
 <em>策略註解：使用修正公式 $M_{ij} = FEM' + \frac{3EK}{L}\theta_i$</em><br />
-    $M_{DE} = FEM'_{DE} + \frac{3E(2I)}{6}(\theta_D) = -9 + EI\theta_D$<br />
-    $M_{ED} = 0 \text{ kN-m}$ (鉸接端條件)</p>
-</li>
+    $M_{DE} = FEM'<em>{DE} + \frac{3E(2I)}{6}(\theta_D) = -9 + EI\theta_D$<br />
+    $M</em>{ED} = 0 \text{ kN-m}$ (鉸接端條件)</li>
 </ul>
 <h3>Step 3: 節點平衡與解聯立方程式</h3>
 <ul>

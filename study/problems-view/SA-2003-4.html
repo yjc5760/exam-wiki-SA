@@ -44,8 +44,8 @@ header .nomat{margin-top:12px;font-size:.8em;opacity:.85}
 <div class="hbtns"><a class="b-study" href="../unit-SA-U1-3.html">🧭 U1-3 單元總覽</a><a class="b-lect" href="../lecture-SA-U1-3.html">📚 U1-3 靜定及靜不定結構影響線 講義</a></div>
 </header>
 <main><h1>考題編號：[SA-2003-4]</h1>
-<p><strong>主分類：</strong> <code>SA-U1</code> 影響線<br />
-<strong>副分類：</strong> <code>SA-U2</code> 諧合變位法（靜不定結構影響線）<br />
+<p><strong>主分類：</strong> <code>SA-U1-3</code> 靜定及靜不定結構影響線<br />
+<strong>副分類：</strong> <code>SA-U2-2</code> 靜不定結構諧合變位<br />
 <strong>分析法：</strong> 影響線 / 諧合變位法<br />
 <strong>標籤：</strong> <code>靜不定影響線</code> <code>Müller-Breslau</code> <code>柔度法</code> <code>彎矩影響線</code> <code>剪力影響線</code></p>
 <hr />
@@ -64,21 +64,13 @@ header .nomat{margin-top:12px;font-size:.8em;opacity:.85}
 </ul>
 <h2>3. 解題戰略地圖與陷阱分析 (Strategic Roadmap &amp; Trap Analysis)</h2>
 <ul>
-<li>
-<p><strong>Step 1：解除支承，建立基本結構</strong><br />
-     選擇 C 點的垂直反力 $C_y$ 作為多餘力，將結構退化為 A 端固定的懸臂梁基本結構。</p>
-</li>
-<li>
-<p><strong>Step 2：計算多餘力 $C_y$ 的影響線</strong><br />
-     將單位載重 $P=1$ 放置於距 A 點 $x$ 處，計算此時 C 點的變位 $\Delta_{C0}$。再計算 $C_y=1$ 作用下的 C 點變位 $\Delta_{CC}$。利用諧合條件 $\Delta_{C0} + \Delta_{CC} = 0$ 求出 $C_y$ 關於 $x$ 的函數。</p>
-</li>
-<li>
-<p><strong>Step 3：分段建立 $V_B$ 與 $M_B$ 的影響線方程式</strong><br />
-     利用靜力平衡，以 B 點為界，將梁分為 $0 \le x \le 5$ (單位力在左段) 與 $5 < x \le 10$ (單位力在右段)。取右側自由體 (BC段) 計算 B 點的剪力 $V_B$ 與彎矩 $M_B$。</p>
-</li>
-<li>
-<p><strong>陷阱分析</strong>：</p>
-<ul>
+<li><strong>Step 1：解除支承，建立基本結構</strong><br />
+     選擇 C 點的垂直反力 $C_y$ 作為多餘力，將結構退化為 A 端固定的懸臂梁基本結構。</li>
+<li><strong>Step 2：計算多餘力 $C_y$ 的影響線</strong><br />
+     將單位載重 $P=1$ 放置於距 A 點 $x$ 處，計算此時 C 點的變位 $\Delta_{C0}$。再計算 $C_y=1$ 作用下的 C 點變位 $\Delta_{CC}$。利用諧合條件 $\Delta_{C0} + \Delta_{CC} = 0$ 求出 $C_y$ 關於 $x$ 的函數。</li>
+<li><strong>Step 3：分段建立 $V_B$ 與 $M_B$ 的影響線方程式</strong><br />
+     利用靜力平衡，以 B 點為界，將梁分為 $0 \le x \le 5$ (單位力在左段) 與 $5 &lt; x \le 10$ (單位力在右段)。取右側自由體 (BC段) 計算 B 點的剪力 $V_B$ 與彎矩 $M_B$。</li>
+<li><strong>陷阱分析</strong>：<ul>
 <li><strong>符號約定陷阱</strong>：在推導內力時，需嚴格遵守正剪力與正彎矩的符號約定（正彎矩：下緣受拉；正剪力：左下右上）。</li>
 <li><strong>分段函數</strong>：載重越過 B 點時，自由體的受力條件會改變，因此方程式會分為兩段，必須小心處理。</li>
 </ul>
@@ -89,26 +81,16 @@ header .nomat{margin-top:12px;font-size:.8em;opacity:.85}
 <code>求出B點剪力與彎矩隨單位力位置x變化的影響線函數，並計算關鍵點數值。</code></p>
 <p>### 本題關鍵公式（依計算順序）</p>
 <ul>
-<li>
-<p>懸臂梁受載重 $P$ 之端點變位公式：<br />
-     $$ \Delta_{C0} = -\frac{Px^2}{6EI}(3L - x) $$</p>
-</li>
-<li>
-<p>多餘力位移公式：<br />
-     $$ \Delta_{CC} = \frac{C_y L^3}{3EI} $$</p>
-</li>
-<li>
-<p>位移諧合條件：<br />
-     $$ \Delta_{C0} + \Delta_{CC} = 0 \Rightarrow \boxed{C_y(x)} $$</p>
-</li>
-<li>
-<p>B點剪力影響線 ($x \le 5$)：<br />
-     $$ V_B = -\boxed{C_y(x)} $$</p>
-</li>
-<li>
-<p>B點彎矩影響線 ($x \le 5$)：<br />
-     $$ M_B = \overline{BC} \cdot \boxed{C_y(x)} $$</p>
-</li>
+<li>懸臂梁受載重 $P$ 之端點變位公式：<br />
+     $$ \Delta_{C0} = -\frac{Px^2}{6EI}(3L - x) $$</li>
+<li>多餘力位移公式：<br />
+     $$ \Delta_{CC} = \frac{C_y L^3}{3EI} $$</li>
+<li>位移諧合條件：<br />
+     $$ \Delta_{C0} + \Delta_{CC} = 0 \Rightarrow \boxed{C_y(x)} $$</li>
+<li>B點剪力影響線 ($x \le 5$)：<br />
+     $$ V_B = -\boxed{C_y(x)} $$</li>
+<li>B點彎矩影響線 ($x \le 5$)：<br />
+     $$ M_B = \overline{BC} \cdot \boxed{C_y(x)} $$</li>
 </ul>
 <p>### L1：題目直接給定</p>
 <ul>
@@ -155,7 +137,7 @@ $$ \boxed{ C_y(x) = \frac{30x^2 - x^3}{2000} } \quad (0 \le x \le 10) $$</p>
 $$ \sum F_y = 0 \Rightarrow V_B + C_y = 0 \Rightarrow V_B(x) = -C_y(x) $$<br />
 代入 $C_y(x)$：<br />
 $$ V_B(x) = -\frac{30x^2 - x^3}{2000} $$</p>
-<p><strong>情況 (b)：單位力位於 B 點右側 ($5 < x \le 10$)</strong><br />
+<p><strong>情況 (b)：單位力位於 B 點右側 ($5 &lt; x \le 10$)</strong><br />
 此時單位力在 BC 自由體上。<br />
 $$ \sum F_y = 0 \Rightarrow V_B + C_y - 1 = 0 \Rightarrow V_B(x) = 1 - C_y(x) $$<br />
 代入 $C_y(x)$：<br />
@@ -174,7 +156,7 @@ $$ V_B(x) = 1 - \frac{30x^2 - x^3}{2000} $$</p>
 $$ \sum M_B = 0 \Rightarrow M_B - C_y \times 5 = 0 \Rightarrow M_B(x) = 5 C_y(x) $$<br />
 代入 $C_y(x)$：<br />
 $$ M_B(x) = \frac{5(30x^2 - x^3)}{2000} = \frac{30x^2 - x^3}{400} $$</p>
-<p><strong>情況 (b)：單位力位於 B 點右側 ($5 < x \le 10$)</strong><br />
+<p><strong>情況 (b)：單位力位於 B 點右側 ($5 &lt; x \le 10$)</strong><br />
 單位力距 B 點距離為 $(x-5)$。<br />
 $$ \sum M_B = 0 \Rightarrow M_B - C_y \times 5 + 1 \times (x - 5) = 0 \Rightarrow M_B(x) = 5 C_y(x) - (x - 5) $$<br />
 代入 $C_y(x)$：<br />
@@ -189,24 +171,24 @@ $$ M_B(x) = \frac{30x^2 - x^3}{400} - x + 5 $$</p>
 <p>💡 <strong>策略註解</strong>：在繪製影響線時，保留分數 $\frac{5}{16}$、$\frac{11}{16}$、$\frac{25}{16}$ 能幫助圖形標示更精確。彎矩影響線在 B 點達到最大值。</p>
 </blockquote>
 <p><strong>最終結果整理：</strong><br />
-$$
-\boxed{
-V_B \text{ 影響線} :
-\begin{cases}
--\frac{30x^2 - x^3}{2000} & (0 \le x \le 5) \\
-1 - \frac{30x^2 - x^3}{2000} & (5 < x \le 10)
-\end{cases}
-}
+$$<br />
+\boxed{<br />
+V_B \text{ 影響線} :<br />
+\begin{cases}<br />
+-\frac{30x^2 - x^3}{2000} &amp; (0 \le x \le 5) \<br />
+1 - \frac{30x^2 - x^3}{2000} &amp; (5 &lt; x \le 10)<br />
+\end{cases}<br />
+}<br />
 $$<br />
 (關鍵影響值：$V_B(5^-) = -\frac{5}{16}$, $V_B(5^+) = \frac{11}{16}$)</p>
-<p>$$
-\boxed{
-M_B \text{ 影響線} :
-\begin{cases}
-\frac{30x^2 - x^3}{400} & (0 \le x \le 5) \\
-\frac{30x^2 - x^3}{400} - x + 5 & (5 < x \le 10)
-\end{cases}
-}
+<p>$$<br />
+\boxed{<br />
+M_B \text{ 影響線} :<br />
+\begin{cases}<br />
+\frac{30x^2 - x^3}{400} &amp; (0 \le x \le 5) \<br />
+\frac{30x^2 - x^3}{400} - x + 5 &amp; (5 &lt; x \le 10)<br />
+\end{cases}<br />
+}<br />
 $$<br />
 (關鍵影響值：$M_B(5) = \frac{25}{16}$)</p>
 <h2>5. 關鍵爭議點與進階探討 (Critical Issues &amp; Advanced Discussion)</h2>
@@ -214,7 +196,7 @@ $$<br />
 <li>利用 Müller-Breslau 原理可快速驗證圖形形狀：</li>
 <li><strong>剪力影響線</strong>：在 B 點切斷並施加單位相對剪切位移，左側因固定端A的限制，曲線為切線水平開始的三次曲線；右側有支承C，因此形成兩段相連的變形曲線，且在 B 點有 1 的跳躍（$11/16 - (-5/16) = 1$），完全與計算相符。</li>
 <li><strong>彎矩影響線</strong>：在 B 點加入鉸接並施加單位相對旋轉角，左側從A點開始彎曲向上，右側亦向上彎曲至C點歸零，B 點處形成尖點，無位移跳躍，符合計算出的 $\frac{25}{16}$ 峰值特徵。</li>
-<li>考場上應清楚列出 $x \le 5$ 與 $x > 5$ 兩段的方程式，並明確標示 $x=5$ 處的影響值（峰值與跳躍值）。</li>
+<li>考場上應清楚列出 $x \le 5$ 與 $x &gt; 5$ 兩段的方程式，並明確標示 $x=5$ 處的影響值（峰值與跳躍值）。</li>
 </ul></main>
 <footer>來源：raw/solutions/SA-2003-4/SA-2003-4.md（知識庫解題內容唯一正本；本頁僅為渲染顯示）</footer>
 

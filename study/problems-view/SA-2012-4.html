@@ -44,8 +44,8 @@ header .nomat{margin-top:12px;font-size:.8em;opacity:.85}
 <div class="hbtns"><a class="b-study" href="../unit-SA-U2-4.html">🧭 U2-4 單元總覽</a><a class="b-lect" href="../lecture-SA-U2-4.html">📚 U2-4 靜不定結構之矩陣分析法 講義</a></div>
 </header>
 <main><h1>考題編號：SA-2012-4</h1>
-<p><strong>主分類：</strong> <code>SA-U4-1</code> 直接勁度法<br />
-<strong>副分類：</strong> <code>SA-U4-2</code> <br />
+<p><strong>主分類：</strong> <code>SA-U2-4</code> 靜不定結構之矩陣分析法<br />
+<strong>副分類：</strong> <code>SA-U2-3</code> 靜不定結構之傾角變位法<br />
 <strong>分析法：</strong> 直接勁度法 (Direct Stiffness Method) / 傾角變位法原理<br />
 <strong>標籤：</strong> <code>直接勁度法</code>, <code>勁度矩陣</code>, <code>剛性桿件</code>, <code>內部約束</code></p>
 <hr />
@@ -217,7 +217,7 @@ header .nomat{margin-top:12px;font-size:.8em;opacity:.85}
 </li>
 <li>
 <p><strong>求剪力</strong>：桿件兩端承受順時針彎矩，故需逆時針的剪力力偶平衡。梁左端 b 需受向下力，右端 c 需受向上力。<br />
-  $$ V_{c,\text{on\_beam}} = \frac{M_{bc} + M_{cb}}{L/2} = \frac{12EI/L}{L/2} = \frac{24EI}{L^2} \quad (\text{向上}) $$</p>
+  $$ V_{c,\text{on_beam}} = \frac{M_{bc} + M_{cb}}{L/2} = \frac{12EI/L}{L/2} = \frac{24EI}{L^2} \quad (\text{向上}) $$</p>
 </li>
 </ul>
 <p><strong>3. 組裝 $K_{11}$ 與 $K_{21}$</strong></p>
@@ -263,7 +263,7 @@ header .nomat{margin-top:12px;font-size:.8em;opacity:.85}
 </li>
 <li>
 <p><strong>求剪力</strong>：梁上總順時針彎矩 $= 36EI/L$。平衡需逆時針剪力力偶 $\Rightarrow$ b 端向下，c 端向上。<br />
-  $$ V_{c,\text{on\_beam}} = \frac{36EI/L}{L/2} = \frac{72EI}{L^2} \quad (\text{向上}) $$</p>
+  $$ V_{c,\text{on_beam}} = \frac{36EI/L}{L/2} = \frac{72EI}{L^2} \quad (\text{向上}) $$</p>
 </li>
 </ul>
 <p><strong>3. 組裝 $K_{12}$ 與 $K_{22}$</strong></p>
@@ -288,9 +288,9 @@ header .nomat{margin-top:12px;font-size:.8em;opacity:.85}
 </ul>
 <h3>Step 4：統整結構勁度矩陣 $[K]$</h3>
 <p>將四個元素組合，得到最終結構勁度矩陣：<br />
-$$ [K] = \begin{bmatrix} K_{11} & K_{12} \\ K_{21} & K_{22} \end{bmatrix} = \begin{bmatrix} \frac{12EI}{L} & \frac{16EI}{L} \\ \frac{16EI}{L} & \frac{56EI}{L} \end{bmatrix} $$</p>
+$$ [K] = \begin{bmatrix} K_{11} &amp; K_{12} \ K_{21} &amp; K_{22} \end{bmatrix} = \begin{bmatrix} \frac{12EI}{L} &amp; \frac{16EI}{L} \ \frac{16EI}{L} &amp; \frac{56EI}{L} \end{bmatrix} $$</p>
 <p>提出公因式 $\frac{4EI}{L}$，可寫為更簡潔的形式：<br />
-$$ \mathbf{[K] = \frac{4EI}{L} \begin{bmatrix} 3 & 4 \\ 4 & 14 \end{bmatrix}} $$</p>
+$$ \mathbf{[K] = \frac{4EI}{L} \begin{bmatrix} 3 &amp; 4 \ 4 &amp; 14 \end{bmatrix}} $$</p>
 <h2>5. 關鍵爭議點與進階探討 (Critical Issues &amp; Advanced Discussion)</h2>
 <ul>
 <li>

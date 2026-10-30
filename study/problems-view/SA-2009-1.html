@@ -39,13 +39,13 @@ header .hbtns a:hover{filter:brightness(1.08)}
 header .nomat{margin-top:12px;font-size:.8em;opacity:.85}
 </style></head><body>
 <header>
-<h1>SA-2009-1　靜不定度與穩定性之判斷</h1>
-<p class="meta2">主分類 <b>SA-U1-1</b> 靜不定度與穩定性之判斷 ｜ 副分類 <b>SA-U1-2</b> 靜定結構之分析 ｜ 2009 年（民國 98） ｜ 單位力法 (Force Method) / 最小功法</p>
-<div class="hbtns"><a class="b-study" href="../unit-SA-U1-2.html">🧭 U1-2 單元總覽</a><a class="b-lect" href="../lecture-SA-U1-2.html">📚 U1-2 靜定結構之分析 講義</a></div><p class="nomat">本題主分類 SA-U1-1 目前尚無教材，按鈕指向有教材的副分類 SA-U1-2。</p>
+<h1>SA-2009-1　靜不定結構諧合變位</h1>
+<p class="meta2">主分類 <b>SA-U2-2</b> 靜不定結構諧合變位 ｜ 2009 年（民國 98） ｜ 單位力法 (Force Method) / 最小功法</p>
+<div class="hbtns"></div><p class="nomat">本題主分類 SA-U2-2 目前尚無教材，故不提供教材按鈕。</p>
 </header>
 <main><h1>考題編號：SA-2009-1</h1>
-<p><strong>主分類：</strong> <code>SA-U1-1</code> 桁架結構分析<br />
-<strong>副分類：</strong> <code>SA-U1-2</code> 支承沉陷反力計算<br />
+<p><strong>主分類：</strong> <code>SA-U2-2</code> 靜不定結構諧合變位<br />
+<strong>副分類：</strong> 無<br />
 <strong>分析法：</strong> 單位力法 (Force Method) / 最小功法<br />
 <strong>標籤：</strong> <code>靜不定桁架</code>, <code>支承沉陷</code>, <code>柔度法</code></p>
 <hr />
@@ -58,7 +58,7 @@ header .nomat{margin-top:12px;font-size:.8em;opacity:.85}
 </ul>
 <p>已知所有桿件的軸向剛度為 $AE = 10^4\text{ kN}$。<br />
 題目要求計算在此支承沉陷作用下，結構各支承點的最終反力。</p>
-<div style="background:#fff3e0;border-left:5px solid #ef6c00;padding:10px 14px;border-radius:0 8px 8px 0;font-size:.9em;color:#e65100">原始 .md 未內嵌附圖，以下為同資料夾之題目附圖（顯示層補上，未修改 raw/）</div><img src="../../raw/solutions/SA-2009-1/SA-2009-1-fig-1.png" alt="SA-2009-1 題目附圖"><h2>2. 考題核心精神與出題者意圖 (Core Concepts &amp; Examiner's Intent)</h2>
+<h2>2. 考題核心精神與出題者意圖 (Core Concepts &amp; Examiner's Intent)</h2>
 <p>本題的核心精神在於評量考生對<strong>一次靜不定桁架</strong>在「<strong>無外力、僅有支承沉陷</strong>」作用下的內力與反力分析能力。<br />
 出題者的意圖包含：</p>
 <ol>
@@ -194,18 +194,12 @@ $$ \Delta_{10} + \left(-\frac{3}{8}\right) \times (-0.1) = 0 \implies \Delta_{10
 在基本結構 d 點施加向左的單位水平力（$X_1 = 1$）。<br />
 首先計算 1-系統的支承反力：</p>
 <ul>
-<li>
-<p>對 c 點取力矩平衡 ($\sum M_c = 0$)：<br />
-    $R_{ay}^{(u)} \times (4\text{ m} + 4\text{ m}) + 1 \times 3\text{ m} = 0 \implies R_{ay}^{(u)} = -\frac{3}{8}$ （即向下）</p>
-</li>
-<li>
-<p>水平力平衡 ($\sum F_x = 0$)：<br />
-    $R_{cx}^{(u)} - 1 = 0 \implies R_{cx}^{(u)} = 1$ （向右）</p>
-</li>
-<li>
-<p>垂直力平衡 ($\sum F_y = 0$)：<br />
-    $R_{cy}^{(u)} + R_{ay}^{(u)} = 0 \implies R_{cy}^{(u)} = \frac{3}{8}$ （向上）</p>
-</li>
+<li>對 c 點取力矩平衡 ($\sum M_c = 0$)：<br />
+    $R_{ay}^{(u)} \times (4\text{ m} + 4\text{ m}) + 1 \times 3\text{ m} = 0 \implies R_{ay}^{(u)} = -\frac{3}{8}$ （即向下）</li>
+<li>水平力平衡 ($\sum F_x = 0$)：<br />
+    $R_{cx}^{(u)} - 1 = 0 \implies R_{cx}^{(u)} = 1$ （向右）</li>
+<li>垂直力平衡 ($\sum F_y = 0$)：<br />
+    $R_{cy}^{(u)} + R_{ay}^{(u)} = 0 \implies R_{cy}^{(u)} = \frac{3}{8}$ （向上）</li>
 </ul>
 <p>接下來，使用節點法求出各桿件內力 $u_i$：</p>
 <ul>
@@ -259,19 +253,13 @@ $$ X_1 = \frac{0.0375 \times 640000}{661} = \frac{24000}{661} \approx 36.3086\te
 <p><strong>Step 5: 計算最終反力</strong><br />
 利用疊加原理 $R = R^{(0)} + R^{(u)} X_1$ 計算所有反力：</p>
 <ol>
-<li>
-<p><strong>d 點反力：</strong><br />
-    $$ R_{dx} = \boxed{36.31\text{ kN} (\leftarrow)} $$</p>
-</li>
-<li>
-<p><strong>a 點反力：</strong><br />
-    $$ R_{ay} = 0 + \left(-\frac{3}{8}\right) \times \left(\frac{24000}{661}\right) = -\frac{9000}{661}\text{ kN} \implies \boxed{13.62\text{ kN} (\downarrow)} $$</p>
-</li>
-<li>
-<p><strong>c 點反力：</strong><br />
+<li><strong>d 點反力：</strong><br />
+    $$ R_{dx} = \boxed{36.31\text{ kN} (\leftarrow)} $$</li>
+<li><strong>a 點反力：</strong><br />
+    $$ R_{ay} = 0 + \left(-\frac{3}{8}\right) \times \left(\frac{24000}{661}\right) = -\frac{9000}{661}\text{ kN} \implies \boxed{13.62\text{ kN} (\downarrow)} $$</li>
+<li><strong>c 點反力：</strong><br />
     $$ R_{cx} = 0 + 1 \times \frac{24000}{661} = \frac{24000}{661}\text{ kN} \implies \boxed{36.31\text{ kN} (\rightarrow)} $$<br />
-    $$ R_{cy} = 0 + \frac{3}{8} \times \left(\frac{24000}{661}\right) = \frac{9000}{661}\text{ kN} \implies \boxed{13.62\text{ kN} (\uparrow)} $$</p>
-</li>
+    $$ R_{cy} = 0 + \frac{3}{8} \times \left(\frac{24000}{661}\right) = \frac{9000}{661}\text{ kN} \implies \boxed{13.62\text{ kN} (\uparrow)} $$</li>
 </ol>
 <h2>5. 關鍵爭議點與進階探討 (Critical Issues &amp; Advanced Discussion)</h2>
 <ul>

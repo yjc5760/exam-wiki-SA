@@ -40,12 +40,12 @@ header .nomat{margin-top:12px;font-size:.8em;opacity:.85}
 </style></head><body>
 <header>
 <h1>SA-2013-1　靜定結構之分析</h1>
-<p class="meta2">主分類 <b>SA-U1-2</b> 靜定結構之分析 ｜ 副分類 <b>SA-U1-3</b> 靜定及靜不定結構影響線 ｜ 2013 年（民國 102） ｜ 三鉸拱原理 / 節點法 / 截面法</p>
+<p class="meta2">主分類 <b>SA-U1-2</b> 靜定結構之分析 ｜ 2013 年（民國 102） ｜ 三鉸拱原理 / 節點法 / 截面法</p>
 <div class="hbtns"><a class="b-study" href="../unit-SA-U1-2.html">🧭 U1-2 單元總覽</a><a class="b-lect" href="../lecture-SA-U1-2.html">📚 U1-2 靜定結構之分析 講義</a></div>
 </header>
 <main><h1>考題編號：SA-2013-1</h1>
-<p><strong>主分類：</strong> <code>SA-U1-2</code> 靜定桁架分析<br />
-<strong>副分類：</strong> <code>SA-U1-3</code> 三鉸拱<br />
+<p><strong>主分類：</strong> <code>SA-U1-2</code> 靜定結構之分析<br />
+<strong>副分類：</strong> 無<br />
 <strong>分析法：</strong> 三鉸拱原理 / 節點法 / 截面法<br />
 <strong>標籤：</strong> <code>桁架</code> <code>三鉸拱</code> <code>靜定</code> <code>零力桿</code> <code>隱藏條件</code></p>
 <hr />
@@ -64,15 +64,15 @@ header .nomat{margin-top:12px;font-size:.8em;opacity:.85}
 <p><strong>解題策略：</strong></p>
 <ol>
 <li><strong>座標系統建立</strong>：以 a 點為原點 $(0,0)$。依據尺寸標示，得出各節點座標：$l(5,10)$、$k(10,20)$、$b(0,20)$、$c(0,30)$、$d(10,30)$、$e(20,30)$、$i(40,10)$ 等。</li>
-<li><strong>支承判斷與整體反力</strong>：判斷為三鉸拱（鉸點 a, e, i）。<br />
-   - 左半部自由體對 e 取力矩 $\sum M_e = 0 \Rightarrow 2 Ay - 3 Ax = 20$<br />
-   - 右半部自由體對 e 取力矩 $\sum M_e = 0 \Rightarrow Iy + Ix = 10$<br />
-   - 加上全局平衡 $\sum F_x = 0, \sum F_y = 0$，解出 $Ax, Ay, Ix, Iy$。</li>
+<li><strong>支承判斷與整體反力</strong>：判斷為三鉸拱（鉸點 a, e, i）。</li>
+<li>左半部自由體對 e 取力矩 $\sum M_e = 0 \Rightarrow 2 Ay - 3 Ax = 20$</li>
+<li>右半部自由體對 e 取力矩 $\sum M_e = 0 \Rightarrow Iy + Ix = 10$</li>
+<li>加上全局平衡 $\sum F_x = 0, \sum F_y = 0$，解出 $Ax, Ay, Ix, Iy$。</li>
 <li><strong>截面法求 $F_{ke}$</strong>：於 x=10~20 之間作垂直截面，切斷 d-e 與 k-e，取左半部自由體，由 $\sum F_y = 0$ 直接求出 $F_{ke}$。</li>
-<li><strong>節點法求其餘桿件</strong>：<br />
-   - <strong>節點 d</strong>：無其他斜桿，直接由垂直平衡求出 $F_{kd}$。<br />
-   - <strong>節點 a、l、b</strong>：連鎖推導出零力桿 $F_{lb}=0$、$F_{kb}=0$，並求出 $F_{kl}$。<br />
-   - <strong>節點 c</strong>：求出 $F_{kc}$。</li>
+<li><strong>節點法求其餘桿件</strong>：</li>
+<li><strong>節點 d</strong>：無其他斜桿，直接由垂直平衡求出 $F_{kd}$。</li>
+<li><strong>節點 a、l、b</strong>：連鎖推導出零力桿 $F_{lb}=0$、$F_{kb}=0$，並求出 $F_{kl}$。</li>
+<li><strong>節點 c</strong>：求出 $F_{kc}$。</li>
 <li><strong>節點 k 總體驗算</strong>：最後以 k 點作 $x, y$ 方向力平衡檢驗，確保所有解答互相吻合。</li>
 </ol>
 <p><strong>陷阱分析：</strong></p>

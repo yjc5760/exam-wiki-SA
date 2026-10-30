@@ -39,13 +39,13 @@ header .hbtns a:hover{filter:brightness(1.08)}
 header .nomat{margin-top:12px;font-size:.8em;opacity:.85}
 </style></head><body>
 <header>
-<h1>SA-2007-3　靜不定度與穩定性之判斷</h1>
-<p class="meta2">主分類 <b>SA-U1-1</b> 靜不定度與穩定性之判斷 ｜ 副分類 <b>SA-U1-3</b> 靜定及靜不定結構影響線 ｜ 2007 年（民國 96） ｜ 影響線</p>
-<div class="hbtns"><a class="b-study" href="../unit-SA-U1-3.html">🧭 U1-3 單元總覽</a><a class="b-lect" href="../lecture-SA-U1-3.html">📚 U1-3 靜定及靜不定結構影響線 講義</a></div><p class="nomat">本題主分類 SA-U1-1 目前尚無教材，按鈕指向有教材的副分類 SA-U1-3。</p>
+<h1>SA-2007-3　靜定及靜不定結構影響線</h1>
+<p class="meta2">主分類 <b>SA-U1-3</b> 靜定及靜不定結構影響線 ｜ 2007 年（民國 96） ｜ 影響線</p>
+<div class="hbtns"><a class="b-study" href="../unit-SA-U1-3.html">🧭 U1-3 單元總覽</a><a class="b-lect" href="../lecture-SA-U1-3.html">📚 U1-3 靜定及靜不定結構影響線 講義</a></div>
 </header>
 <main><h1>考題編號：[SA-2007-3]</h1>
-<p><strong>主分類：</strong> <code>SA-U1-1</code><br />
-<strong>副分類：</strong> <code>SA-U1-4</code><br />
+<p><strong>主分類：</strong> <code>SA-U1-3</code> 靜定及靜不定結構影響線<br />
+<strong>副分類：</strong> 無<br />
 <strong>分析法：</strong> 影響線<br />
 <strong>標籤：</strong> <code>三鉸拱桁架</code> <code>移動載重</code> <code>極值分析</code> <code>卡車載重</code></p>
 <hr />
@@ -165,7 +165,7 @@ header .nomat{margin-top:12px;font-size:.8em;opacity:.85}
 | 符號 | 公式／來源 | 卡關? |<br />
 |---|---|---|<br />
 | $A_y(x)$ | $\frac{48-x}{48}$ | |<br />
-| $A_x(x)$ | $\frac{x}{34}$ ($x \le 24$), $\frac{48-x}{34}$ ($x > 24$) | |</p>
+| $A_x(x)$ | $\frac{x}{34}$ ($x \le 24$), $\frac{48-x}{34}$ ($x &gt; 24$) | |</p>
 <p><strong>桿件內力影響線</strong><br />
 | 符號 | 公式／來源 | 卡關? |<br />
 |---|---|---|<br />
@@ -196,24 +196,16 @@ header .nomat{margin-top:12px;font-size:.8em;opacity:.85}
 <h3>Step 1: 建立支承反力影響線</h3>
 <p>設單位載重 (1 kN) 作用於頂部弦桿，座標 $x$ 自最左端 E 點 ($x=0$) 向右起算至 I 點 ($x=48$)。</p>
 <ul>
-<li>
-<p><strong>垂直反力 $A_y$：</strong><br />
+<li><strong>垂直反力 $A_y$：</strong><br />
     整體對 B 點取力矩：<br />
-    $A_y \cdot 48 - 1 \cdot (48 - x) = 0 \implies \boxed{A_y(x) = \frac{48 - x}{48}}$</p>
-</li>
-<li>
-<p><strong>水平反力 $A_x$：</strong><br />
-    利用 G 點 $(x=24, y=17)$ 為內部鉸之特性。</p>
-<ul>
-<li>
-<p>當載重在 G 點右側 ($x > 24$)：取左半自由體對 G 點取力矩<br />
-    $A_y(24) - A_x(17) = 0 \implies A_x = \frac{24}{17} A_y = \frac{24}{17} \left( \frac{48 - x}{48} \right) = \frac{48 - x}{34}$</p>
-</li>
-<li>
-<p>當載重在 G 點左側 ($x \le 24$)：取右半自由體對 G 點取力矩<br />
+    $A_y \cdot 48 - 1 \cdot (48 - x) = 0 \implies \boxed{A_y(x) = \frac{48 - x}{48}}$</li>
+<li><strong>水平反力 $A_x$：</strong><br />
+    利用 G 點 $(x=24, y=17)$ 為內部鉸之特性。<ul>
+<li>當載重在 G 點右側 ($x &gt; 24$)：取左半自由體對 G 點取力矩<br />
+    $A_y(24) - A_x(17) = 0 \implies A_x = \frac{24}{17} A_y = \frac{24}{17} \left( \frac{48 - x}{48} \right) = \frac{48 - x}{34}$</li>
+<li>當載重在 G 點左側 ($x \le 24$)：取右半自由體對 G 點取力矩<br />
     $-B_y(24) + B_x(17) = 0 \implies B_x = \frac{24}{17} B_y = \frac{24}{17} \left( \frac{x}{48} \right) = \frac{x}{34}$<br />
-    由整體 $\sum F_x = 0$ 得 $\boxed{A_x = B_x = \frac{x}{34}}$</p>
-</li>
+    由整體 $\sum F_x = 0$ 得 $\boxed{A_x = B_x = \frac{x}{34}}$</li>
 </ul>
 </li>
 </ul>
@@ -223,7 +215,7 @@ header .nomat{margin-top:12px;font-size:.8em;opacity:.85}
 <li>$A_y$ 向上，力臂 12m，造成順時針力矩 (取順時針為負)：$-12 A_y$</li>
 <li>$A_x$ 向右，力臂 12m，造成逆時針力矩 (取逆時針為正)：$+12 A_x$</li>
 <li>$F_{FG}$ (設為拉力向右) 在 F(12, 17) 處，力臂 5m，造成順時針力矩：$-5 F_{FG}$</li>
-<li>外力 1 kN 產生的力矩 $M_C$：若 $x \le 12$，力矩為 $+1 \cdot (12 - x)$；若 $x > 12$，載重不在左半自由體上，力矩為 0。<br />
+<li>外力 1 kN 產生的力矩 $M_C$：若 $x \le 12$，力矩為 $+1 \cdot (12 - x)$；若 $x &gt; 12$，載重不在左半自由體上，力矩為 0。<br />
 平衡方程式：$\sum M_C = 12 A_x - 12 A_y + M_C - 5 F_{FG} = 0 \implies F_{FG} = \frac{12 A_x - 12 A_y + M_C}{5}$</li>
 </ul>
 <p>計算各節點縱距：</p>
@@ -248,31 +240,23 @@ header .nomat{margin-top:12px;font-size:.8em;opacity:.85}
 影響線在 F 點 ($x=12$) 有負最大值 $-81/85$。嘗試將主重輪 $P_3$ 置於 $x=12$：</p>
 <ul>
 <li>輪軸位置：$x_1=8.1$, $x_2=10.5$, $x_3=12$, $x_4=13.5$</li>
-<li>
-<p>計算對應之影響線縱距 $IL_i$：<br />
+<li>計算對應之影響線縱距 $IL_i$：<br />
     $IL_1 = (\frac{8.1}{12})(-\frac{81}{85}) = -\frac{54.675}{85}$<br />
     $IL_2 = (\frac{10.5}{12})(-\frac{81}{85}) = -\frac{70.875}{85}$<br />
     $IL_3 = -\frac{81}{85}$<br />
-    $IL_4 = -\frac{81}{85} + (\frac{13.5-12}{12})(\frac{42 - (-81)}{85}) = -\frac{65.625}{85}$</p>
-</li>
-<li>
-<p>$F_{FG,\text{comp}} = \frac{1}{85} [20(-54.675) + 40(-70.875) + 40(-81) + 40(-65.625)] = \frac{-9793.5}{85} = \boxed{-115.22 \text{ kN}}$</p>
-</li>
+    $IL_4 = -\frac{81}{85} + (\frac{13.5-12}{12})(\frac{42 - (-81)}{85}) = -\frac{65.625}{85}$</li>
+<li>$F_{FG,\text{comp}} = \frac{1}{85} [20(-54.675) + 40(-70.875) + 40(-81) + 40(-65.625)] = \frac{-9793.5}{85} = \boxed{-115.22 \text{ kN}}$</li>
 </ul>
 <p><strong>C. FG 桿件最大拉力</strong><br />
 影響線在 G 點 ($x=24$) 有正最大值 $42/85$。嘗試將主重輪 $P_2$ 置於 $x=24$：</p>
 <ul>
 <li>輪軸位置：$x_1=21.6$, $x_2=24$, $x_3=25.5$, $x_4=27.0$</li>
-<li>
-<p>計算對應之影響線縱距 $IL_i$：<br />
+<li>計算對應之影響線縱距 $IL_i$：<br />
     $IL_1 = \frac{42}{85} - (\frac{24-21.6}{12})(\frac{81+42}{85}) = \frac{17.4}{85}$<br />
     $IL_2 = \frac{42}{85}$<br />
     $IL_3 = \frac{42}{85} - (\frac{25.5-24}{12})(\frac{42-21}{85}) = \frac{39.375}{85}$<br />
-    $IL_4 = \frac{42}{85} - (\frac{27-24}{12})(\frac{21}{85}) = \frac{36.75}{85}$</p>
-</li>
-<li>
-<p>$F_{FG,\text{tens}} = \frac{1}{85} [20(17.4) + 40(42) + 40(39.375) + 40(36.75)] = \frac{5073}{85} = \boxed{59.68 \text{ kN}}$</p>
-</li>
+    $IL_4 = \frac{42}{85} - (\frac{27-24}{12})(\frac{21}{85}) = \frac{36.75}{85}$</li>
+<li>$F_{FG,\text{tens}} = \frac{1}{85} [20(17.4) + 40(42) + 40(39.375) + 40(36.75)] = \frac{5073}{85} = \boxed{59.68 \text{ kN}}$</li>
 </ul>
 <h2>5. 關鍵爭議點與進階探討 (Critical Issues &amp; Advanced Discussion)</h2>
 <ul>

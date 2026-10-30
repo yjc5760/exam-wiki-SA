@@ -44,8 +44,8 @@ header .nomat{margin-top:12px;font-size:.8em;opacity:.85}
 <div class="hbtns"><a class="b-study" href="../unit-SA-U1-2.html">🧭 U1-2 單元總覽</a><a class="b-lect" href="../lecture-SA-U1-2.html">📚 U1-2 靜定結構之分析 講義</a></div>
 </header>
 <main><h1>考題編號：SA-2024-1</h1>
-<p><strong>主分類：</strong> <code>SA-U1</code> 靜定結構分析<br />
-<strong>副分類：</strong> <code>SA-U2</code> 變位分析<br />
+<p><strong>主分類：</strong> <code>SA-U1-2</code> 靜定結構之分析<br />
+<strong>副分類：</strong> 無<br />
 <strong>分析法：</strong> 靜定分析 / 共軛梁法<br />
 <strong>標籤：</strong> <code>靜定梁</code>, <code>內部鉸</code>, <code>最大位移</code>, <code>共軛梁法</code>, <code>懸臂梁</code></p>
 <hr />
@@ -58,13 +58,13 @@ header .nomat{margin-top:12px;font-size:.8em;opacity:.85}
 <h2>3. 解題戰略地圖與陷阱分析 (Strategic Roadmap &amp; Trap Analysis)</h2>
 <ol>
 <li><strong>靜定分析拆解</strong>：從內部鉸 C 點將結構拆開。先解左側 AC 梁（附屬結構），求出 C 點的內力（剪力），再將其反向施加於右側 CD 梁（主要結構）。</li>
-<li><strong>位移計算策略</strong>：<br />
-   - 先計算懸臂梁 CD 在 C 點的垂直位移 $\Delta_C$。<br />
-   - AC 梁的總位移等於「AC 兩端點連線的剛體位移」加上「AC 梁相對連線的彈性變形」。<br />
-   - 利用共軛梁法求出 AC 梁的彈性變形與斜率方程式。</li>
-<li><strong>陷阱分析</strong>：<br />
-   - <strong>符號與方向判斷</strong>：A 點的 200 kN-m 為逆時針彎矩，若方向判斷錯誤，整個彎矩圖將顛倒。<br />
-   - <strong>最大位移位置判斷</strong>：最大位移不一定在載重點 B 或鉸接點 C。必須寫出 AC 梁的位移方程式並令斜率為零，找出極值點，再與 C 點的位移進行比較，取絕對值最大者。</li>
+<li><strong>位移計算策略</strong>：</li>
+<li>先計算懸臂梁 CD 在 C 點的垂直位移 $\Delta_C$。</li>
+<li>AC 梁的總位移等於「AC 兩端點連線的剛體位移」加上「AC 梁相對連線的彈性變形」。</li>
+<li>利用共軛梁法求出 AC 梁的彈性變形與斜率方程式。</li>
+<li><strong>陷阱分析</strong>：</li>
+<li><strong>符號與方向判斷</strong>：A 點的 200 kN-m 為逆時針彎矩，若方向判斷錯誤，整個彎矩圖將顛倒。</li>
+<li><strong>最大位移位置判斷</strong>：最大位移不一定在載重點 B 或鉸接點 C。必須寫出 AC 梁的位移方程式並令斜率為零，找出極值點，再與 C 點的位移進行比較，取絕對值最大者。</li>
 </ol>
 <h2>3.5 變數層次分析 (Variable Hierarchy Analysis)</h2>
 <h3>最終目標</h3>
@@ -201,9 +201,9 @@ AC 段兩端位移為 $\Delta_A = 0$, $\Delta_C = \frac{1600}{3EI} (\downarrow)$
 $$ \rho = \frac{\Delta_C - \Delta_A}{8} = \frac{200}{3EI} \text{ (順時針)} $$</p>
 <h3>Step 4: 利用共軛梁法求 AC 段彈性變形</h3>
 <p>建立 AC 段之共軛梁，載重 $q(x) = M(x)/EI$。<br />
-求共軛梁 A 點之反力 $R_A^*$ (代表 A 點相對連線之斜率 $\theta_A$)：<br />
+求共軛梁 A 點之反力 $R_A^<em>$ (代表 A 點相對連線之斜率 $\theta_A$)：<br />
 對 C 點取彎矩 $\Sigma M_C = 0$：<br />
-$$ R_A^* \times 8 - \int_0^8 \frac{M(x)}{EI} (8-x) dx = 0 $$<br />
+$$ R_A^</em> \times 8 - \int_0^8 \frac{M(x)}{EI} (8-x) dx = 0 $$<br />
 分段積分：<br />
 $$ \int_0^4 (-200 + 75x)(8-x) dx = \int_0^4 (-1600 + 800x - 75x^2) dx = \left[ -1600x + 400x^2 - 25x^3 \right]_0^4 = -1600 $$<br />
 $$ \int_4^8 (200 - 25x)(8-x) dx = \int_4^8 (1600 - 400x + 25x^2) dx = \left[ 1600x - 200x^2 + \frac{25}{3}x^3 \right]_4^8 = \frac{1600}{3} $$<br />
@@ -220,7 +220,7 @@ $$ EI y(x) = \frac{12.5}{3}x^3 - 100x^2 + \frac{2200}{3}x - \frac{3200}{3} $$</p
 <h3>Step 6: 尋求最大位移位置與數值</h3>
 <p>令 $y'(x) = 0$ 找極值：<br />
 $$ 12.5x^2 - 200x + \frac{2200}{3} = 0 \implies x^2 - 16x + \frac{176}{3} = 0 $$<br />
-解得 $x = 8 - \frac{4}{\sqrt{3}} \approx 5.691 \text{ m}$ (另一根 $>8$ 不合)。</p>
+解得 $x = 8 - \frac{4}{\sqrt{3}} \approx 5.691 \text{ m}$ (另一根 $&gt;8$ 不合)。</p>
 <p><strong>【巧算技巧】</strong><br />
 為避免直接代入 $x$ 產生繁雜計算，令 $u = 8-x$ (即自 C 點向左之局部坐標)，將位移函數對 $x=8$ (即 C 點) 進行泰勒展開：<br />
 $$ EI y(8-u) = EI y(8) - EI y'(8) u + \frac{EI y''(8)}{2} u^2 - \frac{EI y'''(8)}{6} u^3 $$<br />

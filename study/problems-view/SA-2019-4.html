@@ -44,7 +44,8 @@ header .nomat{margin-top:12px;font-size:.8em;opacity:.85}
 <div class="hbtns"><a class="b-study" href="../unit-SA-U2-4.html">🧭 U2-4 單元總覽</a><a class="b-lect" href="../lecture-SA-U2-4.html">📚 U2-4 靜不定結構之矩陣分析法 講義</a></div>
 </header>
 <main><h1>考題編號：SA-2019-4</h1>
-<p><strong>主分類：</strong> <code>SA-U4-1</code> 矩陣位移法<br />
+<p><strong>主分類：</strong> <code>SA-U2-4</code> 靜不定結構之矩陣分析法<br />
+<strong>副分類：</strong> 無<br />
 <strong>標籤：</strong> <code>勁度矩陣</code> <code>半剛性接頭</code> <code>旋轉彈簧</code> <code>節點載重向量</code></p>
 <hr />
 <h2>1. 原始題目重述 (Problem Restatement)</h2>
@@ -57,126 +58,130 @@ header .nomat{margin-top:12px;font-size:.8em;opacity:.85}
 特別加入了「旋轉彈簧」與「靜定外伸端 (梁 DE)」的處理：</p>
 <ol>
 <li><strong>旋轉彈簧</strong>：作為連接兩個旋轉自由度 ($d_2, d_3$) 的元素，其勁度直接反映在矩陣的對角線與非對角線元素上。</li>
-<li><strong>節點等效載重向量 $\{P\}$</strong>：測驗學生將桿件上的載重 (點載重 P、Q，均佈載重 w) 轉換為固端彎矩與固端剪力，再反號成為節點等效載重的能力。</li>
+<li><strong>節點等效載重向量 ${P}$</strong>：測驗學生將桿件上的載重 (點載重 P、Q，均佈載重 w) 轉換為固端彎矩與固端剪力，再反號成為節點等效載重的能力。</li>
 <li><strong>靜定端靜態凝聚 (Static Condensation)</strong>：右側 E 點為滾支承且未配給旋轉自由度，因此 DE 梁必須使用「修正勁度矩陣 ($3EI/L$)」來組裝。</li>
 </ol>
 <h2>3. 解題戰略地圖與陷阱分析 (Strategic Roadmap &amp; Trap Analysis)</h2>
 <ol>
-<li><strong>確立自由度 (DOFs)</strong>：<br />
-   - 題目已指定 $\{D\} = [d_1, d_2, d_3, d_4]^T$。<br />
-   - $d_1$：全構架水平側移 (向右為正)。<br />
-   - $d_2$：B 點柱端 (彈簧左側) 旋轉 (順時針為正)。<br />
-   - $d_3$：B 點梁端 (彈簧右側) 旋轉 (順時針為正)。<br />
-   - $d_4$：D 點旋轉 (順時針為正)。</li>
-<li><strong>元素拆解與局部勁度矩陣 $[k^{(e)}]$</strong>：<br />
-   - <strong>(1) 柱 AB</strong>：對應 DOF $[d_1, d_2]^T$。<br />
-   - <strong>(2) 柱 CD</strong>：對應 DOF $[d_1, d_4]^T$。<br />
-   - <strong>(3) 彈簧 B</strong>：對應 DOF $[d_2, d_3]^T$。<br />
-   - <strong>(4) 梁 BD</strong>：對應 DOF $[d_3, d_4]^T$。<br />
-   - <strong>(5) 梁 DE</strong>：對應 DOF $[d_4]^T$ (E 端鉸接，使用 $3EI/L$)。</li>
+<li><strong>確立自由度 (DOFs)</strong>：</li>
+<li>題目已指定 ${D} = [d_1, d_2, d_3, d_4]^T$。</li>
+<li>$d_1$：全構架水平側移 (向右為正)。</li>
+<li>$d_2$：B 點柱端 (彈簧左側) 旋轉 (順時針為正)。</li>
+<li>$d_3$：B 點梁端 (彈簧右側) 旋轉 (順時針為正)。</li>
+<li>$d_4$：D 點旋轉 (順時針為正)。</li>
+<li><strong>元素拆解與局部勁度矩陣 $[k^{(e)}]$</strong>：</li>
+<li><strong>(1) 柱 AB</strong>：對應 DOF $[d_1, d_2]^T$。</li>
+<li><strong>(2) 柱 CD</strong>：對應 DOF $[d_1, d_4]^T$。</li>
+<li><strong>(3) 彈簧 B</strong>：對應 DOF $[d_2, d_3]^T$。</li>
+<li><strong>(4) 梁 BD</strong>：對應 DOF $[d_3, d_4]^T$。</li>
+<li><strong>(5) 梁 DE</strong>：對應 DOF $[d_4]^T$ (E 端鉸接，使用 $3EI/L$)。</li>
 <li>
 <p><strong>組裝全域勁度矩陣 $[K]$</strong>：<br />
    依據各元素的 DOF 標籤，將係數累加至 $4 \times 4$ 的 $[K]$ 矩陣對應位置。</p>
 </li>
 <li>
-<p><strong>計算節點載重向量 $\{P\}$</strong>：<br />
-   $\{P\} = \{P_{direct}\} - \{FEM_{equivalent}\}$</p>
+<p><strong>計算節點載重向量 ${P}$</strong>：<br />
+   ${P} = {P_{direct}} - {FEM_{equivalent}}$</p>
 </li>
-</ol>
-<ul>
-<li>$P_1$：側移自由度。由水平直接外力 $R$ 加上柱 AB、CD 的固端水平剪力轉換而來。</li>
+<li>
+<p>$P_1$：側移自由度。由水平直接外力 $R$ 加上柱 AB、CD 的固端水平剪力轉換而來。</p>
+</li>
 <li>$P_2 \sim P_4$：由桿件上的載重產生的固端彎矩 (FEM) 反號求得。</li>
-</ul>
+</ol>
 <h2>4. 步驟化詳細計算過程 (Step-by-Step Detailed Calculation)</h2>
 <h3>Step 1：寫出各元素之勁度矩陣</h3>
 <p>依題意，所有桿件長度皆為 $L$，勁度為 $EI$。忽略軸向變形，並令所有順時針旋轉與向右位移為正。</p>
 <p><strong>1. 元素 (1) - 柱 AB</strong><br />
 包含自由度：$[d_1, d_2]^T$ (A 端固定)<br />
-$$[k^{(1)}] = \begin{bmatrix}
-\frac{12EI}{L^3} & -\frac{6EI}{L^2} \\
--\frac{6EI}{L^2} & \frac{4EI}{L}
+$$[k^{(1)}] = \begin{bmatrix}<br />
+\frac{12EI}{L^3} &amp; -\frac{6EI}{L^2} \<br />
+-\frac{6EI}{L^2} &amp; \frac{4EI}{L}<br />
 \end{bmatrix}$$</p>
 <p><strong>2. 元素 (2) - 柱 CD</strong><br />
 包含自由度：$[d_1, d_4]^T$ (C 端固定)<br />
-$$[k^{(2)}] = \begin{bmatrix}
-\frac{12EI}{L^3} & -\frac{6EI}{L^2} \\
--\frac{6EI}{L^2} & \frac{4EI}{L}
+$$[k^{(2)}] = \begin{bmatrix}<br />
+\frac{12EI}{L^3} &amp; -\frac{6EI}{L^2} \<br />
+-\frac{6EI}{L^2} &amp; \frac{4EI}{L}<br />
 \end{bmatrix}$$</p>
 <p><strong>3. 元素 (3) - 旋轉彈簧</strong><br />
 包含自由度：$[d_2, d_3]^T$，彈簧常數 $k_s = \frac{10EI}{L}$<br />
-$$[k^{(3)}] = \begin{bmatrix}
-k_s & -k_s \\
--k_s & k_s
-\end{bmatrix} = \begin{bmatrix}
-\frac{10EI}{L} & -\frac{10EI}{L} \\
--\frac{10EI}{L} & \frac{10EI}{L}
+$$[k^{(3)}] = \begin{bmatrix}<br />
+k_s &amp; -k_s \<br />
+-k_s &amp; k_s<br />
+\end{bmatrix} = \begin{bmatrix}<br />
+\frac{10EI}{L} &amp; -\frac{10EI}{L} \<br />
+-\frac{10EI}{L} &amp; \frac{10EI}{L}<br />
 \end{bmatrix}$$</p>
 <p><strong>4. 元素 (4) - 梁 BD</strong><br />
 包含自由度：$[d_3, d_4]^T$<br />
-$$[k^{(4)}] = \begin{bmatrix}
-\frac{4EI}{L} & \frac{2EI}{L} \\
-\frac{2EI}{L} & \frac{4EI}{L}
+$$[k^{(4)}] = \begin{bmatrix}<br />
+\frac{4EI}{L} &amp; \frac{2EI}{L} \<br />
+\frac{2EI}{L} &amp; \frac{4EI}{L}<br />
 \end{bmatrix}$$</p>
 <p><strong>5. 元素 (5) - 梁 DE</strong><br />
 包含自由度：$[d_4]^T$ (右端 E 為滾支承，且未賦予旋轉自由度，需使用修正勁度)<br />
 $$[k^{(5)}] = \begin{bmatrix} \frac{3EI}{L} \end{bmatrix}$$</p>
 <h3>Step 2：組合結構勁度矩陣 $[K]$</h3>
 <p>將各局部矩陣疊加至 $4 \times 4$ 之全域矩陣：<br />
-$$[K] = \frac{EI}{L} \begin{bmatrix}
-\frac{12}{L^2} + \frac{12}{L^2} & -\frac{6}{L} & 0 & -\frac{6}{L} \\
--\frac{6}{L} & 4 + 10 & -10 & 0 \\
-0 & -10 & 10 + 4 & 2 \\
--\frac{6}{L} & 0 & 2 & 4 + 4 + 3
+$$[K] = \frac{EI}{L} \begin{bmatrix}<br />
+\frac{12}{L^2} + \frac{12}{L^2} &amp; -\frac{6}{L} &amp; 0 &amp; -\frac{6}{L} \<br />
+-\frac{6}{L} &amp; 4 + 10 &amp; -10 &amp; 0 \<br />
+0 &amp; -10 &amp; 10 + 4 &amp; 2 \<br />
+-\frac{6}{L} &amp; 0 &amp; 2 &amp; 4 + 4 + 3<br />
 \end{bmatrix}$$</p>
 <p>整理可得：<br />
-$$[K] = \frac{EI}{L} \begin{bmatrix}
-\frac{24}{L^2} & -\frac{6}{L} & 0 & -\frac{6}{L} \\
--\frac{6}{L} & 14 & -10 & 0 \\
-0 & -10 & 14 & 2 \\
--\frac{6}{L} & 0 & 2 & 11
+$$[K] = \frac{EI}{L} \begin{bmatrix}<br />
+\frac{24}{L^2} &amp; -\frac{6}{L} &amp; 0 &amp; -\frac{6}{L} \<br />
+-\frac{6}{L} &amp; 14 &amp; -10 &amp; 0 \<br />
+0 &amp; -10 &amp; 14 &amp; 2 \<br />
+-\frac{6}{L} &amp; 0 &amp; 2 &amp; 11<br />
 \end{bmatrix}$$</p>
-<h3>Step 3：計算外力向量 $\{P\}$</h3>
-<p>$\{P\}$ 為等效節點載重向量，等於直接作用於節點之載重，減去桿件固端反力 (Fixed End Actions)。</p>
+<h3>Step 3：計算外力向量 ${P}$</h3>
+<p>${P}$ 為等效節點載重向量，等於直接作用於節點之載重，減去桿件固端反力 (Fixed End Actions)。</p>
 <ol>
+<li><strong>水平自由度 $d_1$ 對應之載重 $P_1$</strong>：</li>
+<li>節點直接外力：$R$ (向右)。</li>
+<li>柱 AB 受點載重 P，A、B 兩端之固端水平剪力皆為 $P/2$ (向左，以抵抗外力)。等效節點載重為反向，即 $+P/2$。</li>
 <li>
-<p><strong>水平自由度 $d_1$ 對應之載重 $P_1$</strong>：<br />
-   - 節點直接外力：$R$ (向右)。<br />
-   - 柱 AB 受點載重 P，A、B 兩端之固端水平剪力皆為 $P/2$ (向左，以抵抗外力)。等效節點載重為反向，即 $+P/2$。<br />
-   - 柱 CD 受點載重 Q，等效節點載重為 $+Q/2$。<br />
+<p>柱 CD 受點載重 Q，等效節點載重為 $+Q/2$。<br />
    $$P_1 = R + \frac{P}{2} + \frac{Q}{2}$$</p>
 </li>
 <li>
-<p><strong>旋轉自由度 $d_2$ 對應之載重 $P_2$</strong>：<br />
-   - 柱 AB 中央受向右力 P，B 端固端彎矩為順時針 $FEM_{BA} = +PL/8$。<br />
-   - 等效節點載重為反號：<br />
+<p><strong>旋轉自由度 $d_2$ 對應之載重 $P_2$</strong>：</p>
+</li>
+<li>柱 AB 中央受向右力 P，B 端固端彎矩為順時針 $FEM_{BA} = +PL/8$。</li>
+<li>
+<p>等效節點載重為反號：<br />
    $$P_2 = -\frac{PL}{8}$$</p>
 </li>
 <li>
-<p><strong>旋轉自由度 $d_3$ 對應之載重 $P_3$</strong>：<br />
-   - 梁 BD 受向下均佈載重 w，左端 B 之固端彎矩為逆時針 $FEM_{BD} = -wL^2/12$。<br />
-   - 等效節點載重為反號：<br />
+<p><strong>旋轉自由度 $d_3$ 對應之載重 $P_3$</strong>：</p>
+</li>
+<li>梁 BD 受向下均佈載重 w，左端 B 之固端彎矩為逆時針 $FEM_{BD} = -wL^2/12$。</li>
+<li>
+<p>等效節點載重為反號：<br />
    $$P_3 = \frac{wL^2}{12}$$</p>
 </li>
 <li>
-<p><strong>旋轉自由度 $d_4$ 對應之載重 $P_4$</strong>：<br />
-   - 柱 CD 頂端之固端彎矩：$FEM_{DC} = +QL/8$ (順時針)。<br />
-   - 梁 BD 右端之固端彎矩：$FEM_{DB} = +wL^2/12$ (順時針)。<br />
-   - 梁 DE 無載重。<br />
-   - 等效節點載重為反號：<br />
-   $$P_4 = -\left(\frac{QL}{8} + \frac{wL^2}{12}\right)$$</p>
+<p><strong>旋轉自由度 $d_4$ 對應之載重 $P_4$</strong>：</p>
 </li>
+<li>柱 CD 頂端之固端彎矩：$FEM_{DC} = +QL/8$ (順時針)。</li>
+<li>梁 BD 右端之固端彎矩：$FEM_{DB} = +wL^2/12$ (順時針)。</li>
+<li>梁 DE 無載重。</li>
+<li>等效節點載重為反號：<br />
+   $$P_4 = -\left(\frac{QL}{8} + \frac{wL^2}{12}\right)$$</li>
 </ol>
 <p><strong>答：</strong><br />
-$$[K] = \frac{EI}{L} \begin{bmatrix}
-\frac{24}{L^2} & -\frac{6}{L} & 0 & -\frac{6}{L} \\
--\frac{6}{L} & 14 & -10 & 0 \\
-0 & -10 & 14 & 2 \\
--\frac{6}{L} & 0 & 2 & 11
-\end{bmatrix}, \quad \{P\} = \begin{Bmatrix}
-R + \frac{P+Q}{2} \\
--\frac{PL}{8} \\
-\frac{wL^2}{12} \\
--\frac{QL}{8} - \frac{wL^2}{12}
+$$[K] = \frac{EI}{L} \begin{bmatrix}<br />
+\frac{24}{L^2} &amp; -\frac{6}{L} &amp; 0 &amp; -\frac{6}{L} \<br />
+-\frac{6}{L} &amp; 14 &amp; -10 &amp; 0 \<br />
+0 &amp; -10 &amp; 14 &amp; 2 \<br />
+-\frac{6}{L} &amp; 0 &amp; 2 &amp; 11<br />
+\end{bmatrix}, \quad {P} = \begin{Bmatrix}<br />
+R + \frac{P+Q}{2} \<br />
+-\frac{PL}{8} \<br />
+\frac{wL^2}{12} \<br />
+-\frac{QL}{8} - \frac{wL^2}{12}<br />
 \end{Bmatrix}$$</p></main>
 <footer>來源：raw/solutions/SA-2019-4/SA-2019-4.md（知識庫解題內容唯一正本；本頁僅為渲染顯示）</footer>
 

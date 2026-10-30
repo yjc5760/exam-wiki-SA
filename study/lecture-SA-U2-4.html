@@ -62,7 +62,7 @@ footer{text-align:center;color:var(--mut);font-size:.83em;padding:26px;border-to
 <header>
 <h1>SA-U2-4　靜不定結構之矩陣分析法</h1>
 <p class="sub">觀念講義 — 練題之前先建立物理直覺，不背矩陣</p>
-<p class="meta">結構工程技師｜結構學（SA）第二單元第 4 子項　主分類 12 題、副分類 3 題（2004–2025）　近 6 年（2020–2025）出題 2 年 3 題</p>
+<p class="meta">結構工程技師｜結構學（SA）第二單元第 4 子項　主分類 14 題、副分類 0 題（2004–2025）　近 6 年（2020–2025）出題 3 年 4 題</p>
 </header>
 <nav>
 <a href="#s0">§0 全景</a>
@@ -729,13 +729,14 @@ $$k=K_{33}-7.2\frac{EI}{L^3}=24\frac{EI}{L^3}-7.2\frac{EI}{L^3}=16.8\frac{EI}{L^
 <section id="s12">
 <h2>§12　歷屆題 × 觀念對照表</h2>
 
-<h3>主分類（12 題）</h3>
+<h3>主分類（14 題）</h3>
 
 <table>
 <thead><tr><th>題號</th><th>年</th><th>結構型式</th><th>真正在考的東西</th><th>先讀本講義</th></tr></thead>
 <tbody>
 <tr><td><a class="qlink" href="problems-view/SA-2004-4.html" target="_blank">SA-2004-4</a></td><td>2004</td><td>連續梁＋彈簧支承</td><td>修正勁度降維、彈簧疊加到對角線、\(wL^2/8\) 與 \(wL^2/12\) 的分辨</td><td>§6 §7 §8</td></tr>
 <tr><td><a class="qlink" href="problems-view/SA-2008-4.html" target="_blank">SA-2008-4</a></td><td>2008</td><td>L 型剛架（無側移）</td><td>標準組裝流程、固端力、剪力為零處的最大彎矩</td><td>§5 §6 §9</td></tr>
+<tr><td><a class="qlink" href="problems-view/SA-2009-4.html" target="_blank">SA-2009-4</a></td><td>2009</td><td>三桿共點桁架</td><td>方向餘弦、\(2\times2\) 組裝、位移回算桿力（2026-10-30 由 SA-U1-1 改歸）</td><td>§4</td></tr>
 <tr><td><a class="qlink" href="problems-view/SA-2010-4.html" target="_blank">SA-2010-4</a></td><td>2010</td><td>三桿桁架</td><td>方向餘弦、交叉項抵消的設計、拉壓符號</td><td>§4</td></tr>
 <tr><td><a class="qlink" href="problems-view/SA-2011-4.html" target="_blank">SA-2011-4</a></td><td>2011</td><td>三桿桁架＋製造誤差</td><td>非載重效應 → 等效節點載重；回代要加回初始力</td><td>§4 §6</td></tr>
 <tr><td><a class="qlink" href="problems-view/SA-2012-4.html" target="_blank">SA-2012-4</a></td><td>2012</td><td>含 \(EI=\infty\) 剛性桿的剛架</td><td>主從自由度、剛性桿的蹺蹺板效應（\(v_c=\theta\cdot r\)）、弦角</td><td>§2 §8</td></tr>
@@ -744,23 +745,23 @@ $$k=K_{33}-7.2\frac{EI}{L^3}=24\frac{EI}{L^3}-7.2\frac{EI}{L^3}=16.8\frac{EI}{L^
 <tr><td><a class="qlink" href="problems-view/SA-2018-2.html" target="_blank">SA-2018-2</a></td><td>2018</td><td>Z 型剛架（有側移）</td><td>側移自由度合併、\(K_{12}\) 與 \(K_{13}\) 符號一正一負、BMD</td><td>§2 §5 §9</td></tr>
 <tr><td><a class="qlink" href="problems-view/SA-2019-4.html" target="_blank">SA-2019-4</a></td><td>2019</td><td>剛架＋半剛性接頭</td><td>節點拆兩個轉角、彈簧當獨立元素、外伸端用 \(3EI/L\)</td><td>§2 §7 §8</td></tr>
 <tr><td><a class="qlink" href="problems-view/SA-2022-4.html" target="_blank">SA-2022-4</a></td><td>2022</td><td>三層樓剪力棟架</td><td>梁 \(EI=\infty\) 的自由度壓縮、挑高柱 \(k/8\)、樓層剪力平衡</td><td>§2</td></tr>
+<tr><td><a class="qlink" href="problems-view/SA-2024-4.html" target="_blank">SA-2024-4</a></td><td>2024</td><td>門型剛架側推（塑鉸）</td><td>以勁度矩陣法逐次形成塑鉸、修改 [K] 求側推曲線 \(P\)–\(\Delta\) 至極限承載力（2026-10-30 由 SA-U2-3 改歸；⚠ 現行題解只做彈性階段，待重解）</td><td>§7 §10</td></tr>
 <tr><td><a class="qlink" href="problems-view/SA-2025-1.html" target="_blank">SA-2025-1</a></td><td>2025</td><td>門型剛架</td><td>靜態凝縮求側向勁度、對稱降維（本講義 §10 全解）</td><td>§7 §10</td></tr>
 <tr><td><a class="qlink" href="problems-view/SA-2025-4.html" target="_blank">SA-2025-4</a></td><td>2025</td><td>U 型格床（Grid）</td><td>彎曲＋扭轉同時、\(J=2I\)、對稱把 6×6 砍成 3×3</td><td>§3 §7 §8</td></tr>
 </tbody>
 </table>
 
-<h3>副分類（3 題，主考點在別的子項但用得到本單元觀念）</h3>
+<h3>對照題（2026-10-30 起已非本單元副分類，保留作方法對照）</h3>
 
 <table>
 <thead><tr><th>題號</th><th>年</th><th>與本單元的關聯</th></tr></thead>
 <tbody>
 <tr><td><a class="qlink" href="problems-view/SA-2007-2.html" target="_blank">SA-2007-2</a></td><td>2007</td><td>無側移剛架、修正傾角撓度法 —— 修正勁度 \(3EI/L\) 的另一個面貌（§7）</td></tr>
 <tr><td><a class="qlink" href="problems-view/SA-2007-4.html" target="_blank">SA-2007-4</a></td><td>2007</td><td>有側移剛架、側移方程式 —— 對照矩陣法如何「自動」把側移納入（§0）</td></tr>
-<tr><td><a class="qlink" href="problems-view/SA-2009-4.html" target="_blank">SA-2009-4</a></td><td>2009</td><td>桁架直接勁度法、位移求解與內力計算（§4）</td></tr>
 </tbody>
 </table>
 
-<div class="box"><b>出題節奏：</b>2004–2025 共 22 年，本子項出現 12 次主分類，約<b>兩年一題</b>。近年（2018 起）明顯偏向「非標準元素」：半剛性接頭（2019）、剪力棟架（2022）、格床（2025）。<b>標準桁架與標準剛架反而是 2013 以前的題型</b> —— 但那些是基本功，不練沒辦法應付變形題。</div>
+<div class="box"><b>出題節奏：</b>2004–2025 共 22 年，本子項出現 14 次主分類，約<b>兩年一題</b>。近年（2018 起）明顯偏向「非標準元素」：半剛性接頭（2019）、剪力棟架（2022）、塑鉸側推（2024）、格床（2025）。<b>標準桁架與標準剛架反而是 2013 以前的題型</b> —— 但那些是基本功，不練沒辦法應付變形題。</div>
 </section>
 
 <section id="s13">
@@ -860,7 +861,7 @@ $$k=K_{33}-7.2\frac{EI}{L^3}=24\frac{EI}{L^3}-7.2\frac{EI}{L^3}=16.8\frac{EI}{L^
 <section id="s16">
 <h2>★ §16　精選 5 題：時間只夠練五題就練這五題</h2>
 
-<p class="lead">選題標準不是「覆蓋率最高」，而是<b>一題能練到最多互相獨立的技能、彼此重疊最少</b>。下面五題涵蓋本子項 12 題主分類中的絕大多數判斷點。</p>
+<p class="lead">選題標準不是「覆蓋率最高」，而是<b>一題能練到最多互相獨立的技能、彼此重疊最少</b>。下面五題涵蓋本子項 14 題主分類中的絕大多數判斷點。</p>
 
 <div class="box">
 <h3>① <a class="qlink" href="problems-view/SA-2025-1.html" target="_blank">SA-2025-1</a>（2025）門型剛架的側向勁度</h3>

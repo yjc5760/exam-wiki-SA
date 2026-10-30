@@ -62,7 +62,7 @@ footer{text-align:center;color:var(--mut);font-size:.83em;padding:26px;border-to
 <header>
 <h1>SA-U1-2　靜定結構之分析</h1>
 <p class="sub">觀念講義 — 練題之前先建立物理直覺，不背公式</p>
-<p class="meta">結構工程技師｜結構學（SA）第一單元第 2 子項　主分類 17 題、副分類 3 題（2002–2024）</p>
+<p class="meta">結構工程技師｜結構學（SA）第一單元第 2 子項　主分類 17 題、副分類 0 題（2002–2024）</p>
 </header>
 <nav>
 <a href="#s0">§0 全景</a>
@@ -886,9 +886,9 @@ $$\frac{8P}{3EI} = 0.00375\ \text{m} \;\Rightarrow\; P = \frac{3(20{,}000)(0.003
 <tr><td><a class="qlink" href="problems-view/SA-2012-1.html" target="_blank">SA-2012-1</a></td><td>101</td>
 <td>含內鉸、剛度 2EI/EI 分段的梁：BMD、\(\theta_e\)、\(y_e\)、\(y_c\)、反曲點</td><td>§2 §4 §5</td>
 <td>共軛梁支承轉換；剛度分段；反曲點由受拉側直接讀</td></tr>
-<tr><td><a class="qlink" href="problems-view/SA-2008-3.html" target="_blank">SA-2008-3</a></td><td>97</td>
-<td>斜桿剛架，指定用<b>最小功法</b>求彎矩（一度靜不定）</td><td>§4（＋SA-U2-1）</td>
-<td>斜桿 \(ds = \tfrac53 dx\) 轉換；\(B\) 點彎矩連續性檢查</td></tr>
+<tr><td><a class="qlink" href="problems-view/SA-2010-1.html" target="_blank">SA-2010-1</a></td><td>99</td>
+<td>靜定桁架，B 滾支承靠垂直牆、G 鉸支承，求 AC、BF、DE 三桿軸力</td><td>§1.3 §3.1 §3.3</td>
+<td>零力桿掃蕩；<b>滾支承靠垂直牆</b>（反力只有水平）；節點法／斷面法混合（2026-10-30 由 SA-U1-1 改歸本子項）</td></tr>
 <tr><td><a class="qlink" href="problems-view/SA-2004-1.html" target="_blank">SA-2004-1</a></td><td>93</td>
 <td>固定端＋內鉸＋滾支承剛架，繪 SFD/BMD</td><td>§2.1 §4</td>
 <td>\(B_x = 0\) ⟹ 柱上半段零內力；令 \(V=0\) 定位最大正彎矩</td></tr>
@@ -911,18 +911,18 @@ $$\frac{8P}{3EI} = 0.00375\ \text{m} \;\Rightarrow\; P = \frac{3(20{,}000)(0.003
 </table>
 
 <div class="trap">
-<b>索引提醒｜<a class="qlink" href="problems-view/SA-2008-3.html" target="_blank">SA-2008-3</a> 名實不符。</b>
+<b>索引提醒（已處理，2026-10-30）｜<a class="qlink" href="problems-view/SA-2008-3.html" target="_blank">SA-2008-3</a> 名實不符，已改歸 SA-U2-1。</b>
 它的 <code>primaryTopicId</code> 掛在 SA-U1-2，但題目明文要求「以最小功法計算」，
 結構本身是<b>一度外靜不定</b>剛架（A 滾支承 1 ＋ C 固接 3 = 4 個反力，\(d = 4-3 = 1\)）。
 讀它時請把它當 <b>SA-U2-1（最小功法）</b>的題目；它對本單元唯一的貢獻是「斜桿段 \(ds\) 與 \(dx\) 的轉換」
 與「剛節點彎矩連續性檢查」這兩個技術動作。
 </div>
 
-<h3>8.2 副分類 3 題（本單元只借用其中一部分）</h3>
+<h3>8.2 對照題（2026-10-30 起已非本單元副分類，只借用其中一部分）</h3>
 <table>
 <thead><tr><th>題號</th><th>主要歸屬</th><th>本單元該學什麼</th></tr></thead>
 <tbody>
-<tr><td><a class="qlink" href="problems-view/SA-2010-1.html" target="_blank">SA-2010-1</a></td><td>SA-U1-1 靜不定度與穩定性</td>
+<tr><td><a class="qlink" href="problems-view/SA-2010-1.html" target="_blank">SA-2010-1</a></td><td>本單元主分類（見 8.1）</td>
 <td>零力桿掃蕩 ＋ <b>滾支承靠垂直牆</b>（反力只有水平）＋ 節點法／斷面法混合戰術。這題其實非常適合本單元，值得完整做一次。</td></tr>
 <tr><td><a class="qlink" href="problems-view/SA-2007-1.html" target="_blank">SA-2007-1</a></td><td>SA-U2-2 諧合變位</td>
 <td>只看它的「靜定基本結構」如何選、單位力法怎麼列。贅力部分留給 U2。</td></tr>

@@ -39,20 +39,20 @@ header .hbtns a:hover{filter:brightness(1.08)}
 header .nomat{margin-top:12px;font-size:.8em;opacity:.85}
 </style></head><body>
 <header>
-<h1>SA-2010-1　靜不定度與穩定性之判斷</h1>
-<p class="meta2">主分類 <b>SA-U1-1</b> 靜不定度與穩定性之判斷 ｜ 副分類 <b>SA-U1-2</b> 靜定結構之分析 ｜ 2010 年（民國 99） ｜ 節點法 (Method of Joints) / 斷面法 (Method of Sections)</p>
-<div class="hbtns"><a class="b-study" href="../unit-SA-U1-2.html">🧭 U1-2 單元總覽</a><a class="b-lect" href="../lecture-SA-U1-2.html">📚 U1-2 靜定結構之分析 講義</a></div><p class="nomat">本題主分類 SA-U1-1 目前尚無教材，按鈕指向有教材的副分類 SA-U1-2。</p>
+<h1>SA-2010-1　靜定結構之分析</h1>
+<p class="meta2">主分類 <b>SA-U1-2</b> 靜定結構之分析 ｜ 2010 年（民國 99） ｜ 節點法 (Method of Joints) / 斷面法 (Method of Sections)</p>
+<div class="hbtns"><a class="b-study" href="../unit-SA-U1-2.html">🧭 U1-2 單元總覽</a><a class="b-lect" href="../lecture-SA-U1-2.html">📚 U1-2 靜定結構之分析 講義</a></div>
 </header>
 <main><h1>考題編號：SA-2010-1</h1>
-<p><strong>主分類：</strong> <code>SA-U1-1</code> 靜定桁架分析<br />
-<strong>副分類：</strong> <code>SA-U1-2</code> 節點法與斷面法<br />
+<p><strong>主分類：</strong> <code>SA-U1-2</code> 靜定結構之分析<br />
+<strong>副分類：</strong> 無<br />
 <strong>分析法：</strong> 節點法 (Method of Joints) / 斷面法 (Method of Sections)<br />
 <strong>標籤：</strong> <code>零力桿件</code>, <code>節點法</code>, <code>斷面法</code>, <code>靜定桁架</code></p>
 <hr />
 <h2>1. 原始題目重述 (Problem Restatement)</h2>
 <p>如圖所示之靜定桁架（truss）結構，包含節點 A 至 H。幾何尺寸為水平方向每格 $2\text{ m}$，垂直方向每格 $2\text{ m}$。在支承條件方面，支承點 B 為滾支承（roller），且其支承面為垂直牆面；而支承點 G 則為鉸支承（hinge）。當 H 點承受一垂直向下的集中載重 $P = 30\text{ kN}$ 時，請計算 AC、BF 與 DE 三根桿件之軸力。（20 分）</p>
 <p><em>(註：本結構 G 點位於左下方，B 點位於右側垂直牆面，H 點位於下方承載外力。詳細幾何配置請參考原卷圖示。)</em></p>
-<div style="background:#fff3e0;border-left:5px solid #ef6c00;padding:10px 14px;border-radius:0 8px 8px 0;font-size:.9em;color:#e65100">原始 .md 未內嵌附圖，以下為同資料夾之題目附圖（顯示層補上，未修改 raw/）</div><img src="../../raw/solutions/SA-2010-1/SA-2010-1-fig-1.png" alt="SA-2010-1 題目附圖"><h2>2. 考題核心精神與出題者意圖 (Core Concepts &amp; Examiner's Intent)</h2>
+<h2>2. 考題核心精神與出題者意圖 (Core Concepts &amp; Examiner's Intent)</h2>
 <p>本題的核心精神在於測驗考生處理<strong>靜定桁架分析的破局能力</strong>，具體而言，即「零力桿件（Zero-Force Members）判斷」與「選擇最適解題法（節點法 vs. 斷面法）」的綜合應用。</p>
 <p>出題者刻意畫出看似複雜的多節點桁架結構，意圖嚇退考生或誘使考生從不恰當的節點開始解聯立方程式。然而，只要考生具備清晰的靜力學觀念，從邊界條件（支承反力）著手，並敏銳地找出零力桿件，即可迅速化繁為簡，如庖丁解牛般切入要害。此題為典型的「防守型」題目，只要不誤判反力方向並合理選用斷面法，即可穩拿滿分。</p>
 <h2>3. 解題戰略地圖與陷阱分析 (Strategic Roadmap &amp; Trap Analysis)</h2>
@@ -60,10 +60,10 @@ header .nomat{margin-top:12px;font-size:.8em;opacity:.85}
 <ol>
 <li><strong>全域平衡（Global Equilibrium）</strong>：將桁架視為一剛體，對 G 點取力矩平衡，求出 B 點的水平反力；接著利用水平與垂直力平衡求出 G 點反力。</li>
 <li><strong>零力桿件掃蕩（Zero-Force Member Identification）</strong>：從受力單純的節點（如 G 點、C 點、A 點）出發，透過節點法快速辨識出零力桿件（如 CG、AC、AB、AE），大幅簡化結構。</li>
-<li><strong>混合戰術求解（Mixed Method Application）</strong>：<br />
-   - 桿件 <strong>AC</strong>：透過 C 點的節點平衡即可直接確認為零力桿。<br />
-   - 桿件 <strong>BF</strong>：從簡化後的 B 點使用節點法直接求解。<br />
-   - 桿件 <strong>DE</strong>：切一垂直斷面貫穿結構，取左半自由體對 H 點取力矩平衡，即可使用斷面法秒殺。</li>
+<li><strong>混合戰術求解（Mixed Method Application）</strong>：</li>
+<li>桿件 <strong>AC</strong>：透過 C 點的節點平衡即可直接確認為零力桿。</li>
+<li>桿件 <strong>BF</strong>：從簡化後的 B 點使用節點法直接求解。</li>
+<li>桿件 <strong>DE</strong>：切一垂直斷面貫穿結構，取左半自由體對 H 點取力矩平衡，即可使用斷面法秒殺。</li>
 </ol>
 <p><strong>陷阱分析與應對策略：</strong></p>
 <ul>

@@ -44,8 +44,8 @@ header .nomat{margin-top:12px;font-size:.8em;opacity:.85}
 <div class="hbtns"><a class="b-study" href="../unit-SA-U1-3.html">🧭 U1-3 單元總覽</a><a class="b-lect" href="../lecture-SA-U1-3.html">📚 U1-3 靜定及靜不定結構影響線 講義</a></div>
 </header>
 <main><h1>考題編號：[SA-2005-3]</h1>
-<p><strong>主分類：</strong> <code>SA-U1</code> 影響線與靜定結構<br />
-<strong>副分類：</strong> <code>SA-U2</code> 靜不定結構分析<br />
+<p><strong>主分類：</strong> <code>SA-U1-3</code> 靜定及靜不定結構影響線<br />
+<strong>副分類：</strong> 無<br />
 <strong>分析法：</strong> 影響線 / 三彎矩方程式<br />
 <strong>標籤：</strong> <code>影響線</code>, <code>連續梁</code>, <code>三彎矩方程式</code>, <code>Müller-Breslau原理</code></p>
 <hr />
@@ -66,9 +66,9 @@ header .nomat{margin-top:12px;font-size:.8em;opacity:.85}
 <ol>
 <li><strong>建立模型</strong>：考慮單位載重 $P=1$ 在距離 A 點 $x$ 處移動。</li>
 <li><strong>計算 $M_B$</strong>：利用三彎矩方程式，分別針對載重在 AB 跨 ($0 \le x \le 10$) 與 BC 跨 ($10 \le x \le 20$) 列式，求出 $M_B$ 隨 $x$ 變化的函數。</li>
-<li><strong>計算 $M_D$</strong>：<br />
-   - 當 $P=1$ 在 AB 跨時，BC 跨無外力，D 點彎矩僅由 $M_B$ 貢獻，即 $M_D = M_B / 2$。<br />
-   - 當 $P=1$ 在 BC 跨時，D 點彎矩等於「簡支梁 BC 受載重時 D 點的彎矩 $M_{D,simple}$」加上「$M_B$ 產生的彎矩 $M_B / 2$」。</li>
+<li><strong>計算 $M_D$</strong>：</li>
+<li>當 $P=1$ 在 AB 跨時，BC 跨無外力，D 點彎矩僅由 $M_B$ 貢獻，即 $M_D = M_B / 2$。</li>
+<li>當 $P=1$ 在 BC 跨時，D 點彎矩等於「簡支梁 BC 受載重時 D 點的彎矩 $M_{D,simple}$」加上「$M_B$ 產生的彎矩 $M_B / 2$」。</li>
 <li><strong>計算縱座標</strong>：代入 $x = 0, 2.5, 5, 7.5, 10, 12.5, 15, 17.5, 20$，求出各點的 $M_D$ 值，並整理成表。</li>
 </ol>
 <p><strong>陷阱分析：</strong></p>
@@ -157,7 +157,7 @@ $$ M_D = M_{D,simple} + \frac{M_B}{2} $$<br />
 <li>若載重在 B、D 之間 ($0 \le x' \le 5$)：$M_{D,simple} = R_C \cdot 5 = \frac{x'}{10} \cdot 5 = \frac{x'}{2}$</li>
 <li>若載重在 D、C 之間 ($5 \le x' \le 10$)：$M_{D,simple} = R_B \cdot 5 = \frac{10-x'}{10} \cdot 5 = \frac{10-x'}{2}$</li>
 </ul>
-<p>各點縱座標計算 ($10 < x \le 20$)：</p>
+<p>各點縱座標計算 ($10 &lt; x \le 20$)：</p>
 <ul>
 <li>
 <p>$x = 12.5$ ($x'=2.5$)：<br />

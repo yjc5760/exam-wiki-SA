@@ -39,13 +39,13 @@ header .hbtns a:hover{filter:brightness(1.08)}
 header .nomat{margin-top:12px;font-size:.8em;opacity:.85}
 </style></head><body>
 <header>
-<h1>SA-2008-3　靜定結構之分析</h1>
-<p class="meta2">主分類 <b>SA-U1-2</b> 靜定結構之分析 ｜ 2008 年（民國 97）</p>
-<div class="hbtns"><a class="b-study" href="../unit-SA-U1-2.html">🧭 U1-2 單元總覽</a><a class="b-lect" href="../lecture-SA-U1-2.html">📚 U1-2 靜定結構之分析 講義</a></div>
+<h1>SA-2008-3　靜不定結構最小功法</h1>
+<p class="meta2">主分類 <b>SA-U2-1</b> 靜不定結構最小功法 ｜ 2008 年（民國 97）</p>
+<div class="hbtns"><a class="b-study" href="../unit-SA-U2-1.html">🧭 U2-1 單元總覽</a><a class="b-lect" href="../lecture-SA-U2-1.html">📚 U2-1 靜不定結構最小功法 講義</a></div>
 </header>
 <main><hr />
-<p>主分類: "SA-U1-1"<br />
-副分類: ["SA-U1-2"]<br />
+<p>主分類: "SA-U2-1"<br />
+副分類: []<br />
 難易度: 3</p>
 <hr />
 <h1>97年結構工程技師高考 結構學 第三題</h1>
@@ -65,16 +65,18 @@ header .nomat{margin-top:12px;font-size:.8em;opacity:.85}
 <p><strong>解題戰略：</strong></p>
 <ol>
 <li><strong>第一步：靜不定度分析與贅力選定</strong>：A 點滾支承提供 1 個垂直反力 $A_y$，C 點固接提供 3 個反力 ($C_x, C_y, M_C$)。總反力數為 4，靜不定度為 1。選定 A 點垂直反力 $A_y$ 為贅力 $R$ (設向上為正)。</li>
-<li><strong>第二步：建立全區段彎矩函數 $M(x)$</strong>：<br />
-   以 A 點為原點，定義向右為 $x$。</li>
+<li>
+<p><strong>第二步：建立全區段彎矩函數 $M(x)$</strong>：<br />
+   以 A 點為原點，定義向右為 $x$。</p>
+</li>
+<li>
+<p><strong>AB 段</strong> ($0 \le x \le 6$)：考慮 $x$ 左側自由體，彎矩由贅力 $R$ 與均佈載重貢獻。</p>
+</li>
+<li><strong>BC 段</strong> ($6 \le x \le 10.5$)：同樣考慮 $x$ 左側自由體，均佈載重此時為定值總力，力臂為 $(x-3)$。</li>
+<li><strong>第三步：計算偏微分 $\frac{\partial M}{\partial R}$</strong>：對各段彎矩函數求偏微。</li>
+<li><strong>第四步：利用最小功法列式</strong>：$\frac{\partial U}{\partial R} = \int \frac{M}{EI} \frac{\partial M}{\partial R} ds = 0$。注意 BC 段的斜率，需將 $ds$ 轉換為 $dx$ 以利積分計算。</li>
+<li><strong>第五步：求解贅力與各端彎矩</strong>：解出 $R$ 後，代回 $M(x)$ 求得 B 點與 C 點彎矩，並找出 AB 段最大正彎矩位置以繪製精確的彎矩圖。</li>
 </ol>
-<ul>
-<li><strong>AB 段</strong> ($0 \le x \le 6$)：考慮 $x$ 左側自由體，彎矩由贅力 $R$ 與均佈載重貢獻。</li>
-<li><strong>BC 段</strong> ($6 \le x \le 10.5$)：同樣考慮 $x$ 左側自由體，均佈載重此時為定值總力，力臂為 $(x-3)$。<br />
-3. <strong>第三步：計算偏微分 $\frac{\partial M}{\partial R}$</strong>：對各段彎矩函數求偏微。<br />
-4. <strong>第四步：利用最小功法列式</strong>：$\frac{\partial U}{\partial R} = \int \frac{M}{EI} \frac{\partial M}{\partial R} ds = 0$。注意 BC 段的斜率，需將 $ds$ 轉換為 $dx$ 以利積分計算。<br />
-5. <strong>第五步：求解贅力與各端彎矩</strong>：解出 $R$ 後，代回 $M(x)$ 求得 B 點與 C 點彎矩，並找出 AB 段最大正彎矩位置以繪製精確的彎矩圖。</li>
-</ul>
 <p><strong>陷阱分析：</strong></p>
 <ul>
 <li><strong>陷阱 1：斜桿段的 $ds$ 轉換</strong>。斜桿 BC 上積分時的微小長度為 $ds$，若直接把 $ds$ 當成 $dx$ 積分將導致錯誤。必須透過勾股定理計算 $ds = \sqrt{1 + (dy/dx)^2} dx$。</li>

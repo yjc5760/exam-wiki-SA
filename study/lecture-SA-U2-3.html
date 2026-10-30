@@ -62,7 +62,7 @@ footer{text-align:center;color:var(--mut);font-size:.83em;padding:26px;border-to
 <header>
 <h1>SA-U2-3　靜不定結構之傾角變位法</h1>
 <p class="sub">觀念講義 — 練題之前先建立物理直覺，不背公式</p>
-<p class="meta">結構工程技師｜結構學（SA）第二單元第 3 子項　主分類 24 題、副分類 3 題（2002–2025）　近 6 年出題率 6/6 年</p>
+<p class="meta">結構工程技師｜結構學（SA）第二單元第 3 子項　主分類 24 題、副分類 2 題（2002–2025）　近 6 年出題率 6/6 年</p>
 </header>
 <nav>
 <a href="#s0">§0 全景</a>
@@ -926,6 +926,7 @@ $$M_{AB} + M_{BA} + M_{ED} + M_{DE} - M_{BC} = -40$$
 </div>
 
 <h4>手算範例 5：完整走一遍（<a class="qlink" href="problems-view/SA-2024-4.html" target="_blank">SA-2024-4</a>）</h4>
+<p class="lead" style="font-size:.9em;color:#607d8b">註（2026-10-30）：SA-2024-4 已改歸 SA-U2-4——考卷實際要求以結構勁度矩陣法逐次形成塑鉸、求側推曲線 P–Δ；這裡只借用它的門型剛架幾何，示範彈性階段的傾角變位法。</p>
 <div class="box">
 <p>剛架：左柱 \(AB\) 長 \(2L\)、剛度 \(2EI\)；橫梁 \(BC\) 長 \(L\)、剛度 \(EI\)；右柱 \(CD\) 長 \(2L\)、剛度 \(2EI\)。
 \(A\)、\(D\) 固定端，\(B\) 點受向右集中力 \(P\)。求 \(\Delta_B\)、\(M_C\)、\(M_D\)。</p>
@@ -1231,7 +1232,7 @@ BD 因 D 上抬而逆時針轉 \(\psi_{BD}=-2R\)。最常見的錯誤是「認�
 <h2>§6　對稱降維：一眼看出來，計算量砍半</h2>
 
 <div class="lead">
-24 題主分類裡至少 9 題可以用對稱性降維（2002-4、2008-2、2009-3、2012-3、2015-3、2020-2、2021-2、2024-3、2024-4），2010-3 則是「對稱 ＋ 反對稱」兩種載重疊加；像 2020-2 這種兩層三跨的題目，不降維就幾乎做不完。
+24 題主分類裡至少 9 題可以用對稱性降維（2002-4、2008-2、2009-3、2012-3、2015-3、2019-3、2020-2、2021-2、2024-3），2010-3 則是「對稱 ＋ 反對稱」兩種載重疊加；像 2020-2 這種兩層三跨的題目，不降維就幾乎做不完。
 規則只有兩行，但<b>名稱容易讓人搞反</b>，所以先把定義釘死。
 </div>
 
@@ -1323,12 +1324,12 @@ BD 因 D 上抬而逆時針轉 \(\psi_{BD}=-2R\)。最常見的錯誤是「認�
 <text x="675" y="354" font-size="12.5" fill="#263238" text-anchor="middle">M_BC = (2EI/Lb)(2θB + θC) = (6EI/Lb)·θB</text>
 <text x="675" y="378" font-size="12.5" fill="#b71c1c" text-anchor="middle" font-weight="bold">跨對稱軸的梁有效勁度 6EI/Lb（4EI/L 的 1.5 倍）</text>
 <text x="675" y="402" font-size="12.5" fill="#607d8b" text-anchor="middle">Δ ≠ 0，兩柱均分層剪力</text>
-<text x="675" y="428" font-size="12" fill="#b71c1c" text-anchor="middle" font-weight="bold">SA-2002-4、2009-3、2021-2、2024-3、2024-4</text>
+<text x="675" y="428" font-size="12" fill="#b71c1c" text-anchor="middle" font-weight="bold">SA-2002-4、2009-3、2021-2、2024-3</text>
 </svg>
 <div class="cap">圖 6-1｜兩種情形並排，變形由勁度法實算（柱、梁同 \(EI\)，\(L_b = 1.4L\)）後誇大顯示。注意<b>名稱的陷阱</b>：
 「對稱載重」給的是<b>反號</b>的轉角（\(\theta_C = -\theta_B\)），
 「反對稱載重」給的才是<b>同號</b>的轉角（\(\theta_C = +\theta_B\)）。
-名稱說的是<b>載重</b>與<b>變形形狀</b>的對稱性，不是轉角數值的正負。<br>實戰對照：對稱載重 → <a class="qlink" href="problems-view/SA-2008-2.html" target="_blank">SA-2008-2</a>、<a class="qlink" href="problems-view/SA-2012-3.html" target="_blank">SA-2012-3</a>、<a class="qlink" href="problems-view/SA-2015-3.html" target="_blank">SA-2015-3</a>；反對稱 → <a class="qlink" href="problems-view/SA-2024-4.html" target="_blank">SA-2024-4</a>；兩者疊加 → <a class="qlink" href="problems-view/SA-2010-3.html" target="_blank">SA-2010-3</a>。</div>
+名稱說的是<b>載重</b>與<b>變形形狀</b>的對稱性，不是轉角數值的正負。<br>實戰對照：對稱載重 → <a class="qlink" href="problems-view/SA-2008-2.html" target="_blank">SA-2008-2</a>、<a class="qlink" href="problems-view/SA-2012-3.html" target="_blank">SA-2012-3</a>、<a class="qlink" href="problems-view/SA-2015-3.html" target="_blank">SA-2015-3</a>；反對稱 → <a class="qlink" href="problems-view/SA-2002-4.html" target="_blank">SA-2002-4</a>、<a class="qlink" href="problems-view/SA-2009-3.html" target="_blank">SA-2009-3</a>；兩者疊加 → <a class="qlink" href="problems-view/SA-2010-3.html" target="_blank">SA-2010-3</a>。</div>
 </div>
 
 <div class="why">
@@ -1769,9 +1770,6 @@ $$\frac{V_{\text{短}}}{V_{\text{長}}} = \frac{1/2^3}{1/3^3} = \frac{27}{8}
 <tr><td><a class="qlink" href="problems-view/SA-2024-3.html" target="_blank">SA-2024-3</a></td><td>113</td>
 <td>對稱門型剛架，由「柱:梁最大彎矩 = 2:1」反求 \(L_b/L\)</td><td>§6 §8</td>
 <td>反向工程；純代數推導；必須自行判斷柱最大彎矩在頂或底</td></tr>
-<tr><td><a class="qlink" href="problems-view/SA-2024-4.html" target="_blank">SA-2024-4</a></td><td>113</td>
-<td>剛架各桿 \(EI\)／長度不同，求 \(\Delta_B\)、\(M_C\)、\(M_D\)</td><td>§4.2 §6</td>
-<td>先化相對勁度發現三桿等值；反對稱 ⟹ \(\theta_B=\theta_C\)；答案 \(3PL/7\)、\(4PL/7\)</td></tr>
 <tr><td><a class="qlink" href="problems-view/SA-2023-3.html" target="_blank">SA-2023-3</a></td><td>112</td>
 <td>柱 AB 受水平 UDL、BC 跨中集中載重；A 鉸、C 滾、D 固定的無側移剛架</td><td>§2.1 §3 §7.1</td>
 <td>先判斷「無側移」（A 鉸＋忽略軸向變形鎖住水平位移）；A 鉸端用修正式消去 \(\theta_A\)；以整體平衡驗算</td></tr>
@@ -1793,6 +1791,9 @@ $$\frac{V_{\text{短}}}{V_{\text{長}}} = \frac{1/2^3}{1/3^3} = \frac{27}{8}
 <tr><td><a class="qlink" href="problems-view/SA-2015-3.html" target="_blank">SA-2015-3</a></td><td>104</td>
 <td>三柱固定、梁上 C、E 兩個內部鉸的對稱剛架，全跨受 UDL</td><td>§6 §7.1</td>
 <td>對稱降維 ＋ <b>內部鉸兩側的相對垂直位移</b>要列成未知量，漏掉就錯</td></tr>
+<tr><td><a class="qlink" href="problems-view/SA-2019-3.html" target="_blank">SA-2019-3</a></td><td>108</td>
+<td>三跨連續梁 B、C 等量沉陷，求使 A 反力增加 \(0.1wL\) 的沉陷量（限用傾角變位法）</td><td>§3 §6</td>
+<td>沉陷 ⟹ 邊跨弦轉角 \(\psi=\Delta/L\)、中跨 \(\psi=0\)；對稱 ⟹ \(\theta_B=-\theta_C\)；反力由桿端剪力回推（2026-10-30 由 SA-U2-2 改歸）</td></tr>
 <tr><td><a class="qlink" href="problems-view/SA-2017-3.html" target="_blank">SA-2017-3</a></td><td>106</td>
 <td>門型剛架，兩柱底皆鉸，梁受 UDL＋右柱受兩個 60 kN，求端彎矩與 \(\theta_A\)、\(\theta_D\)</td><td>§2.1 §3.3 §7.1</td>
 <td>節點載重 vs 桿件載重的區別；\(H_D\) 含載重修正；<b>反求</b>鉸端轉角</td></tr>
@@ -1838,7 +1839,7 @@ $$\frac{V_{\text{短}}}{V_{\text{長}}} = \frac{1/2^3}{1/3^3} = \frac{27}{8}
 </tbody>
 </table>
 
-<h3>9.2 副分類 3 題（本單元只借用其中一部分）</h3>
+<h3>9.2 副分類 2 題（本單元只借用其中一部分）</h3>
 <table>
 <thead><tr><th>題號</th><th>主要歸屬</th><th>本單元該學什麼</th></tr></thead>
 <tbody>
@@ -1848,16 +1849,13 @@ $$\frac{V_{\text{短}}}{V_{\text{長}}} = \frac{1/2^3}{1/3^3} = \frac{27}{8}
 <tr><td><a class="qlink" href="problems-view/SA-2012-4.html" target="_blank">SA-2012-4</a></td><td>SA-U2-4 矩陣分析法</td>
 <td>剛性桿件造成的<b>主從自由度</b>（master-slave）：剛性桿如蹺蹺板，
 帶動相鄰柔性桿產生弦轉角 \(\psi\)。與 §2.1 的「剛性構件」條目互為印證。</td></tr>
-<tr><td><a class="qlink" href="problems-view/SA-2012-2.html" target="_blank">SA-2012-2</a></td><td>SA-U2-2 諧合變位<br><span style="color:#607d8b">（標籤卻寫最小功法）</span></td>
-<td>只看彈性支承（彈簧）在能量法中的處理，與 §2.1 的彈簧條目對照。</td></tr>
 </tbody>
 </table>
 
 <div class="trap">
 <b>索引異常提醒</b><br>
 ① （已處理）<a class="qlink" href="problems-view/SA-2009-3.html" target="_blank">SA-2009-3</a> 原掛在 SA-U1-1，題目明文要求傾角變位法，已於 2026-10-29 改歸 <b>SA-U2-3</b>；<a class="qlink" href="problems-view/SA-2011-1.html" target="_blank">SA-2011-1</a> 的副分類 SA-U2-3 也已移除。<br>
-② <a class="qlink" href="problems-view/SA-2012-2.html" target="_blank">SA-2012-2</a> 的 <code>primaryTopicId</code> 是
-<b>SA-U2-2</b>（諧合變位），但標籤寫「最小功法」（屬 SA-U2-1）。兩者其一有誤。
+② （已處理，2026-10-30）<a class="qlink" href="problems-view/SA-2012-2.html" target="_blank">SA-2012-2</a> 考卷明文「試以最小功法」，已改歸 SA-U2-1 並移除本子項副分類；同日 <a class="qlink" href="problems-view/SA-2019-3.html" target="_blank">SA-2019-3</a>（明文傾角變位法）由 SA-U2-2 改歸本子項，<a class="qlink" href="problems-view/SA-2024-4.html" target="_blank">SA-2024-4</a>（明文勁度矩陣法求側推曲線）改歸 SA-U2-4，主分類維持 24 題。
 </div>
 </section>
 <section id="s10">
@@ -2102,7 +2100,7 @@ SA-2020-1 只讓你碰到斜桿的邊，這題才是真正要你推導多節點�
 
 </main>
 <footer>
-SA-U2-3 觀念講義｜exam-wiki-SA｜資料來源：raw/solutions/ 解析 27 題（主分類 24＋副分類 3）<br>
+SA-U2-3 觀念講義｜exam-wiki-SA｜資料來源：raw/solutions/ 解析 26 題（主分類 24＋副分類 2）<br>
 2026-10-29 改版：依索引修正（10 題重新歸類＋SA-2009-3 改歸本子項、SA-2011-1 移除副分類）更新題數、§0.2 權重、§6 對稱題清單、§9 對照表<br>
 建議使用順序：觀念講義（練題前）→ 給／背分界（決定背誦優先序）→ 命題分析（考前排練題順序）<br>
 圖解皆由程式依座標與解題數值繪製：變形曲線為 Hermite 三次式或勁度法實算結果（誇大顯示），彎矩圖依實際桿端彎矩比例

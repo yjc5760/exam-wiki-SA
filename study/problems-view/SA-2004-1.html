@@ -44,8 +44,8 @@ header .nomat{margin-top:12px;font-size:.8em;opacity:.85}
 <div class="hbtns"><a class="b-study" href="../unit-SA-U1-2.html">🧭 U1-2 單元總覽</a><a class="b-lect" href="../lecture-SA-U1-2.html">📚 U1-2 靜定結構之分析 講義</a></div>
 </header>
 <main><h1>考題編號：[SA-2004-1]</h1>
-<p><strong>主分類：</strong> <code>SA-U1</code> 靜定結構分析<br />
-<strong>副分類：</strong> <br />
+<p><strong>主分類：</strong> <code>SA-U1-2</code> 靜定結構之分析<br />
+<strong>副分類：</strong> 無<br />
 <strong>分析法：</strong> 靜定分析<br />
 <strong>標籤：</strong> <code>靜定剛架</code> <code>剪力圖</code> <code>彎矩圖</code> <code>內部鉸</code></p>
 <hr />
@@ -157,7 +157,7 @@ $$ M(x) = \int \boxed{V(x)} dx $$</p>
 設 $x$ 為自 B 點向右之距離 ($0 \le x \le 6\text{ m}$)：</p>
 <ul>
 <li>
-<p><strong>BC 段 ($0 \le x < 4$)</strong>：<br />
+<p><strong>BC 段 ($0 \le x &lt; 4$)</strong>：<br />
   $$ V(x) = B_y - wx = 3 - 2x $$<br />
   $$ M(x) = B_y x - \frac{1}{2}wx^2 = 3x - x^2 $$<br />
   當 $V(x) = 0$ 時發生最大正彎矩：<br />
@@ -168,7 +168,7 @@ $$ M(x) = \int \boxed{V(x)} dx $$</p>
   $$ M_C = 3(4) - 4^2 = -4\text{ t-m} \text{ (上側受拉)} $$</p>
 </li>
 <li>
-<p><strong>CD 外伸段 ($4 < x \le 6$)</strong>：<br />
+<p><strong>CD 外伸段 ($4 &lt; x \le 6$)</strong>：<br />
   $$ V(x) = V_C^{\text{左}} + C_y - w(x-4) = -5 + 9 - 2(x-4) = 12 - 2x $$<br />
   端點檢核：於 $x=6$ 時 $V(6) = 12 - 12 = 0$，符合自由端條件。<br />
   此段亦可由自由端 D 向左計算，設 $x'$ 為距 D 點向左之距離：<br />
@@ -181,13 +181,13 @@ $$ M(x) = \int \boxed{V(x)} dx $$</p>
 設 $y$ 為自 A 點向上之距離 ($0 \le y \le 4\text{ m}$)：</p>
 <ul>
 <li>
-<p><strong>下半段 ($0 \le y < 2$)</strong>：<br />
+<p><strong>下半段 ($0 \le y &lt; 2$)</strong>：<br />
   剪力 $V(y) = 4\text{ t}$ (左側推力產生之剪力)<br />
   彎矩 $M(y) = M_A - A_x y = 8 - 4y$ (左側受拉為正)<br />
   在受力點 ($y=2\text{ m}$)：$M(2) = 8 - 8 = 0$</p>
 </li>
 <li>
-<p><strong>上半段 ($2 < y \le 4$)</strong>：<br />
+<p><strong>上半段 ($2 &lt; y \le 4$)</strong>：<br />
   剪力 $V(y) = 4 - 4 = 0$<br />
   彎矩 $M(y) = 0$</p>
 <blockquote>

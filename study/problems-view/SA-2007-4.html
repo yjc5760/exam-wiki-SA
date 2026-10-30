@@ -39,13 +39,13 @@ header .hbtns a:hover{filter:brightness(1.08)}
 header .nomat{margin-top:12px;font-size:.8em;opacity:.85}
 </style></head><body>
 <header>
-<h1>SA-2007-4　靜不定結構最小功法</h1>
-<p class="meta2">主分類 <b>SA-U2-3</b> 靜不定結構之傾角變位法 ｜ 副分類 <b>SA-U2-4</b> 靜不定結構之矩陣分析法 ｜ 2007 年（民國 96） ｜ 傾角變位法</p>
+<h1>SA-2007-4　靜不定結構之傾角變位法</h1>
+<p class="meta2">主分類 <b>SA-U2-3</b> 靜不定結構之傾角變位法 ｜ 2007 年（民國 96） ｜ 傾角變位法</p>
 <div class="hbtns"><a class="b-study" href="../unit-SA-U2-3.html">🧭 U2-3 單元總覽</a><a class="b-lect" href="../lecture-SA-U2-3.html">📚 U2-3 靜不定結構之傾角變位法 講義</a></div>
 </header>
-<main><div style="background:#fff;border:1px solid #dfe6ea;border-radius:10px;padding:12px 14px;margin:0 0 18px"><p style="margin:0 0 6px;font-size:.88em;color:#607d8b">題目附圖（原始 .md 未內嵌，由 raw/solutions/ 自動補上）</p><img src="../../raw/solutions/SA-2007-4/SA-2007-4-fig-1.png" alt="SA-2007-4 附圖"></div><h1>考題編號：[SA-2007-4]</h1>
-<p><strong>主分類：</strong> <code>SA-U2-3</code><br />
-<strong>副分類：</strong> <code>SA-U2-4</code><br />
+<main><h1>考題編號：[SA-2007-4]</h1>
+<p><strong>主分類：</strong> <code>SA-U2-3</code> 靜不定結構之傾角變位法<br />
+<strong>副分類：</strong> 無<br />
 <strong>分析法：</strong> 傾角變位法<br />
 <strong>標籤：</strong> <code>有側移剛架</code> <code>虛功原理</code> <code>側移方程式</code></p>
 <hr />
@@ -196,20 +196,16 @@ header .nomat{margin-top:12px;font-size:.8em;opacity:.85}
 </ul>
 <h3>Step 3: 節點平衡與關係簡化</h3>
 <ul>
-<li>
-<p><strong>節點 B 平衡 (滾支承鉸接)：</strong><br />
+<li><strong>節點 B 平衡 (滾支承鉸接)：</strong><br />
     $\sum M_B = 0 \implies M_{BC} = 0 \implies 2\theta_B + \theta_C - 3R = 0 \implies \boxed{\theta_B = 1.5R - 0.5\theta_C}$<br />
     代回 $M_{CB}$：<br />
-    $M_{CB} = 0.5EI \left( 2\theta_C + (1.5R - 0.5\theta_C) - 3R \right) = \boxed{\frac{3EI}{4} (\theta_C - R)}$</p>
-</li>
-<li>
-<p><strong>節點 C 平衡：</strong><br />
+    $M_{CB} = 0.5EI \left( 2\theta_C + (1.5R - 0.5\theta_C) - 3R \right) = \boxed{\frac{3EI}{4} (\theta_C - R)}$</li>
+<li><strong>節點 C 平衡：</strong><br />
     $\sum M_C = 0 \implies M_{CB} + M_{CA} = 0$<br />
     $\frac{3EI}{4} (\theta_C - R) + \frac{\sqrt{2}EI}{4} (2\theta_C - 3R) = 0$<br />
     同乘 $4/EI$：<br />
     $3(\theta_C - R) + \sqrt{2}(2\theta_C - 3R) = 0$<br />
-    $(3 + 2\sqrt{2})\theta_C = (3 + 3\sqrt{2})R \implies \theta_C = \frac{3+3\sqrt{2}}{3+2\sqrt{2}} R = \boxed{3(\sqrt{2}-1)R}$</p>
-</li>
+    $(3 + 2\sqrt{2})\theta_C = (3 + 3\sqrt{2})R \implies \theta_C = \frac{3+3\sqrt{2}}{3+2\sqrt{2}} R = \boxed{3(\sqrt{2}-1)R}$</li>
 </ul>
 <h3>Step 4: 虛功法建立側移平衡方程式</h3>
 <p><em>策略註解：施加一符合機制之虛位移 $\delta\Delta$。</em><br />
@@ -231,7 +227,7 @@ $0 + (M_{CB} + M_{CA}) + M_{AC} = 80 \implies \boxed{M_{AC} = 80 \text{ N-m}}$ (
 $\implies M_{BC}+M_{CB}+M_{AC}+M_{CA} = 80 \implies \boxed{M_{AC} = 80}$ (順時針)。<br />
 然而，代回 $M_{AC}$ 的運算式：<br />
 $M_{AC} = \frac{\sqrt{2}EI}{4}(\theta_C - 3R) = \frac{\sqrt{2}EI}{4}(3\sqrt{2}R - 3R - 3R) = \frac{3(1-\sqrt{2})EI}{2} R$<br />
-因 $1-\sqrt{2}$ 為負，若 $\Delta > 0$ ($R>0$)，則 $M_{AC}$ 必為負值。<br />
+因 $1-\sqrt{2}$ 為負，若 $\Delta &gt; 0$ ($R&gt;0$)，則 $M_{AC}$ 必為負值。<br />
 <em>結論：</em> 外力向右，導致系統向右側移。要抵抗此外力作功，內力產生的作功總和必須是負的。因此虛功方程式實為 $M_{BC}+M_{CB}+M_{AC}+M_{CA} = -80$。<br />
 $\implies \boxed{M_{AC} = -80 \text{ N-m}}$ (逆時針)。</p>
 <p>求解 $R$：<br />

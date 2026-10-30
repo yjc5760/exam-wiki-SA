@@ -39,13 +39,13 @@ header .hbtns a:hover{filter:brightness(1.08)}
 header .nomat{margin-top:12px;font-size:.8em;opacity:.85}
 </style></head><body>
 <header>
-<h1>SA-2007-1　靜不定度與穩定性之判斷</h1>
-<p class="meta2">主分類 <b>SA-U1-1</b> 靜不定度與穩定性之判斷 ｜ 副分類 <b>SA-U1-2</b> 靜定結構之分析 ｜ 2007 年（民國 96） ｜ 最小功法</p>
-<div class="hbtns"><a class="b-study" href="../unit-SA-U1-2.html">🧭 U1-2 單元總覽</a><a class="b-lect" href="../lecture-SA-U1-2.html">📚 U1-2 靜定結構之分析 講義</a></div><p class="nomat">本題主分類 SA-U1-1 目前尚無教材，按鈕指向有教材的副分類 SA-U1-2。</p>
+<h1>SA-2007-1　靜不定結構諧合變位</h1>
+<p class="meta2">主分類 <b>SA-U2-2</b> 靜不定結構諧合變位 ｜ 2007 年（民國 96） ｜ 最小功法</p>
+<div class="hbtns"></div><p class="nomat">本題主分類 SA-U2-2 目前尚無教材，故不提供教材按鈕。</p>
 </header>
 <main><h1>考題編號：[SA-2007-1]</h1>
-<p><strong>主分類：</strong> <code>SA-U1-1</code><br />
-<strong>副分類：</strong> <code>SA-U1-2</code><br />
+<p><strong>主分類：</strong> <code>SA-U2-2</code> 靜不定結構諧合變位<br />
+<strong>副分類：</strong> 無<br />
 <strong>分析法：</strong> 最小功法<br />
 <strong>標籤：</strong> <code>靜不定桁架</code> <code>單位力法</code> <code>柔度矩陣法</code> <code>相容方程式</code></p>
 <hr />
@@ -178,39 +178,27 @@ header .nomat{margin-top:12px;font-size:.8em;opacity:.85}
 <h3>Step 2: 計算基本結構外力內力 ($F_0$)</h3>
 <p>基本結構在 E 點承受水平向右 $60 \text{ kN}$，左側結構無受力。</p>
 <ul>
-<li>
-<p><strong>右側桁架 (節點 E 平衡)：</strong><br />
+<li><strong>右側桁架 (節點 E 平衡)：</strong><br />
     斜桿 BE 長度 $L_{BE} = \sqrt{4.5^2 + 6^2} = 7.5 \text{ m}$。<br />
     $\sum F_x = 0 \implies 60 - F_{0,BE} \cdot (\frac{4.5}{7.5}) = 0 \implies F_{0,BE} = 100 \text{ kN} \quad (\text{拉力})$<br />
-    $\sum F_y = 0 \implies -F_{0,CE} - F_{0,BE} \cdot (\frac{6}{7.5}) = 0 \implies F_{0,CE} = -100(0.8) = -80 \text{ kN} \quad (\text{壓力})$</p>
-</li>
-<li>
-<p><strong>左側桁架 (節點 D)：</strong> 無外力。<br />
+    $\sum F_y = 0 \implies -F_{0,CE} - F_{0,BE} \cdot (\frac{6}{7.5}) = 0 \implies F_{0,CE} = -100(0.8) = -80 \text{ kN} \quad (\text{壓力})$</li>
+<li><strong>左側桁架 (節點 D)：</strong> 無外力。<br />
     $F_{0,AD} = 0 \text{ kN}$<br />
-    $F_{0,DB} = 0 \text{ kN}$</p>
-</li>
-<li>
-<p><strong>DE 桿件：</strong> $F_{0,DE} = 0 \text{ kN}$</p>
-</li>
+    $F_{0,DB} = 0 \text{ kN}$</li>
+<li><strong>DE 桿件：</strong> $F_{0,DE} = 0 \text{ kN}$</li>
 </ul>
 <h3>Step 3: 計算單位贅力內力 ($f_1$)</h3>
 <p>在切斷的 DE 兩端施加一單位對向拉力，即 E 點受向左 $1 \text{ kN}$，D 點受向右 $1 \text{ kN}$。</p>
 <ul>
-<li>
-<p><strong>右側桁架 (節點 E 受向左 $1 \text{ kN}$)：</strong><br />
+<li><strong>右側桁架 (節點 E 受向左 $1 \text{ kN}$)：</strong><br />
     其受力狀態與 Step 2 方向相反，大小為 $1/60$。<br />
     $f_{1,BE} = -\frac{1}{0.6} = -\frac{5}{3} \text{ kN} \quad (\text{壓力})$<br />
-    $f_{1,CE} = -f_{1,BE} \cdot 0.8 = -(-\frac{5}{3}) \cdot 0.8 = \frac{4}{3} \text{ kN} \quad (\text{拉力})$</p>
-</li>
-<li>
-<p><strong>左側桁架 (節點 D 受向右 $1 \text{ kN}$)：</strong><br />
+    $f_{1,CE} = -f_{1,BE} \cdot 0.8 = -(-\frac{5}{3}) \cdot 0.8 = \frac{4}{3} \text{ kN} \quad (\text{拉力})$</li>
+<li><strong>左側桁架 (節點 D 受向右 $1 \text{ kN}$)：</strong><br />
     斜桿 DB 長度 $L_{DB} = 7.5 \text{ m}$。<br />
     $\sum F_x = 0 \implies 1 + f_{1,DB} \cdot (\frac{4.5}{7.5}) = 0 \implies f_{1,DB} = -\frac{5}{3} \text{ kN} \quad (\text{壓力})$<br />
-    $\sum F_y = 0 \implies -f_{1,AD} + f_{1,DB} \cdot (\frac{-6}{7.5}) = 0 \implies f_{1,AD} = (-\frac{5}{3})(-0.8) = \frac{4}{3} \text{ kN} \quad (\text{拉力})$</p>
-</li>
-<li>
-<p><strong>DE 桿件：</strong> $f_{1,DE} = 1 \text{ kN} \quad (\text{拉力})$</p>
-</li>
+    $\sum F_y = 0 \implies -f_{1,AD} + f_{1,DB} \cdot (\frac{-6}{7.5}) = 0 \implies f_{1,AD} = (-\frac{5}{3})(-0.8) = \frac{4}{3} \text{ kN} \quad (\text{拉力})$</li>
+<li><strong>DE 桿件：</strong> $f_{1,DE} = 1 \text{ kN} \quad (\text{拉力})$</li>
 </ul>
 <h3>Step 4: 建立相容方程式並求解贅力 $X$</h3>
 <p>由於 $EA$ 均為常數，可將其提出：<br />
@@ -233,18 +221,13 @@ $$ -\frac{1890}{EA} + \frac{72}{EA} X = 0 \implies \boxed{X = \frac{1890}{72} = 
 <h3>Step 6: 求解支承反力</h3>
 <p>取節點平衡，設向右、向上為正。</p>
 <ul>
-<li>
-<p><strong>節點 A (僅連接垂直桿 AD)：</strong><br />
+<li><strong>節點 A (僅連接垂直桿 AD)：</strong><br />
     $\sum F_x = 0 \implies \boxed{A_x = 0 \text{ kN}}$<br />
-    $\sum F_y = 0 \implies A_y + F_{AD} = 0 \implies \boxed{A_y = -35 \text{ kN} \quad (\text{向下})}$</p>
-</li>
-<li>
-<p><strong>節點 C (僅連接垂直桿 CE)：</strong><br />
+    $\sum F_y = 0 \implies A_y + F_{AD} = 0 \implies \boxed{A_y = -35 \text{ kN} \quad (\text{向下})}$</li>
+<li><strong>節點 C (僅連接垂直桿 CE)：</strong><br />
     $\sum F_x = 0 \implies \boxed{C_x = 0 \text{ kN}}$<br />
-    $\sum F_y = 0 \implies C_y + F_{CE} = 0 \implies C_y - 45 = 0 \implies \boxed{C_y = 45 \text{ kN} \quad (\text{向上})}$</p>
-</li>
-<li>
-<p><strong>節點 B (連接斜桿 DB, BE)：</strong><br />
+    $\sum F_y = 0 \implies C_y + F_{CE} = 0 \implies C_y - 45 = 0 \implies \boxed{C_y = 45 \text{ kN} \quad (\text{向上})}$</li>
+<li><strong>節點 B (連接斜桿 DB, BE)：</strong><br />
     $\sum F_x = 0 \implies B_x + F_{DB}(\frac{4.5}{7.5}) + F_{BE}(\frac{-4.5}{7.5}) = 0$<br />
     $B_x + (-43.75)(0.6) + (56.25)(-0.6) = 0 \implies B_x - 26.25 - 33.75 = 0 \implies \boxed{B_x = 60 \text{ kN} \quad (\text{向左})}$ <br />
 <em>(註：反力方向為負，代表向左。解為 $B_x = +60$ 向右為正？ 重新檢視：$B_x$ 抵銷桿件水平推力，桿件水平推力總和為左向 60，故反力 $B_x$ 為向右 60？ 等等，$F_{DB}$ 壓力推 B 向右，$F_{BE}$ 拉力拉 B 往右上？不對，BE 桿件在 B 點，往右上拉，水平分力向右；DB 桿在 B 點，往左上壓，對 B 節點的作用力向右下？不，DB 為壓力，推向 B 節點，所以是右下方。兩者對 B 的水平力皆向右！故 $B_x$ 反力必向左！)</em><br />
@@ -254,8 +237,7 @@ $$ -\frac{1890}{EA} + \frac{72}{EA} X = 0 \implies \boxed{X = \frac{1890}{72} = 
     BE 在 B 點的單位向量為 $(4.5/7.5, 6/7.5) = (0.6, 0.8)$。$F_{BE} = 56.25$，所以作用力為 $(56.25)(0.6, 0.8) = (33.75, 45)$。<br />
     $\sum F_x = B_x + 26.25 + 33.75 = 0 \implies B_x = -60 \text{ kN}$ (向左)。<br />
     $\sum F_y = B_y - 35 + 45 = 0 \implies B_y = -10 \text{ kN}$ (向下)。<br />
-    故 $\boxed{B_x = 60 \text{ kN} \quad (\text{向左})}$，$\boxed{B_y = 10 \text{ kN} \quad (\text{向下})}$。</p>
-</li>
+    故 $\boxed{B_x = 60 \text{ kN} \quad (\text{向左})}$，$\boxed{B_y = 10 \text{ kN} \quad (\text{向下})}$。</li>
 </ul>
 <p><em>(整體平衡驗證：$\sum F_x = 60 + (-60) = 0$ OK。$\sum F_y = -35 + (-10) + 45 = 0$ OK。)</em></p>
 <h2>5. 關鍵爭議點與進階探討 (Critical Issues &amp; Advanced Discussion)</h2>
