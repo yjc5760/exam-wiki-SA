@@ -65,13 +65,13 @@ header .nomat{margin-top:12px;font-size:.8em;opacity:.85}
 <p><strong>解題策略：</strong></p>
 <ol>
 <li><strong>求支承反力</strong>：將整體結構視為剛體，針對 $P$ 作用於 C 點時，利用 $\sum M_G = 0$ 求得 A 點垂直反力 $R_{Ay}$。</li>
-<li><strong>截面法（切開 CD、ID、IJ）</strong>：取左側自由體進行分析。<br />
-   - 求 $F_{CD}$：對 I 點取力矩 $\sum M_I = 0$。<br />
-   - 求 $F_{IJ}$：對 D 點取力矩 $\sum M_D = 0$（需先求出 IJ 線段到 D 點的垂直距離）。<br />
-   - 求 $F_{ID}$：利用垂直方向力平衡 $\sum F_y = 0$ 求解，最為直接。</li>
-<li><strong>影響線分析</strong>：<br />
-   - 設定 $P$ 在不同節點移動，當 $P$ 在截面右側時（D, E, F），取左側自由體對 I 點取力矩；當 $P$ 在截面左側時（B, C），取右側自由體對 I 點取力矩。<br />
-   - 比較各節點作用下的 $F_{CD}$ 值，找出最大值及其發生位置。</li>
+<li><strong>截面法（切開 CD、ID、IJ）</strong>：取左側自由體進行分析。</li>
+<li>求 $F_{CD}$：對 I 點取力矩 $\sum M_I = 0$。</li>
+<li>求 $F_{IJ}$：對 D 點取力矩 $\sum M_D = 0$（需先求出 IJ 線段到 D 點的垂直距離）。</li>
+<li>求 $F_{ID}$：利用垂直方向力平衡 $\sum F_y = 0$ 求解，最為直接。</li>
+<li><strong>影響線分析</strong>：</li>
+<li>設定 $P$ 在不同節點移動，當 $P$ 在截面右側時（D, E, F），取左側自由體對 I 點取力矩；當 $P$ 在截面左側時（B, C），取右側自由體對 I 點取力矩。</li>
+<li>比較各節點作用下的 $F_{CD}$ 值，找出最大值及其發生位置。</li>
 </ol>
 <p><strong>陷阱分析：</strong></p>
 <ul>
@@ -91,7 +91,7 @@ header .nomat{margin-top:12px;font-size:.8em;opacity:.85}
 <p>$$\text{Step 1: } R_{Ay} = \frac{72 - x_P}{72} P$$</p>
 <p>$$\text{Step 2: } \sum M_I = 0 \Rightarrow - \boxed{R_{Ay}} \times 24 + \boxed{F_{CD}} \times 17 = 0$$</p>
 <p>$$\text{Step 3: } \sum M_D = 0 \Rightarrow - \boxed{R_{Ay}} \times 36 + P \times 12 - F_{IJ} \times d_{D\to IJ} = 0$$</p>
-<p>$$\text{Step 4: } F_{CD}(x_P) = \begin{cases} \frac{48}{17} R_{Gy} & (x_P \le 24) \\ \frac{24}{17} R_{Ay} & (x_P \ge 36) \end{cases}$$</p>
+<p>$$\text{Step 4: } F_{CD}(x_P) = \begin{cases} \frac{48}{17} R_{Gy} &amp; (x_P \le 24) \\ \frac{24}{17} R_{Ay} &amp; (x_P \ge 36) \end{cases}$$</p>
 <h3>L1：題目直接給定</h3>
 <p><em>看到題目就能讀出的數字，不需要任何公式。</em></p>
 <table>

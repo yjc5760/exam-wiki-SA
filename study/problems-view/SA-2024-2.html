@@ -78,16 +78,16 @@ header .nomat{margin-top:12px;font-size:.8em;opacity:.85}
 <h3>最終目標</h3>
 <p>透過聯立虛功方程式，解出 CD 桿的製造誤差 $\delta$ 與 DE 桿的溫度變化 $\Delta T$。</p>
 <h3>本題關鍵公式（依計算順序）</h3>
-<p>$$<br />
-1 \cdot \Delta_{C} = u_{CD}^C \cdot \delta_{CD} + u_{DE}^C \cdot \delta_{DE} + R_{vF}^C \cdot v_F<br />
+<p>$$
+1 \cdot \Delta_{C} = u_{CD}^C \cdot \delta_{CD} + u_{DE}^C \cdot \delta_{DE} + R_{vF}^C \cdot v_F
 $$<br />
 （C點虛功方程式）</p>
-<p>$$<br />
-1 \cdot \Delta_{E} = u_{CD}^E \cdot \delta_{CD} + u_{DE}^E \cdot \delta_{DE} + R_{vF}^E \cdot v_F<br />
+<p>$$
+1 \cdot \Delta_{E} = u_{CD}^E \cdot \delta_{CD} + u_{DE}^E \cdot \delta_{DE} + R_{vF}^E \cdot v_F
 $$<br />
 （E點虛功方程式）</p>
-<p>$$<br />
-\delta_{DE} = \alpha \cdot \Delta T \cdot L_{DE}<br />
+<p>$$
+\delta_{DE} = \alpha \cdot \Delta T \cdot L_{DE}
 $$<br />
 （溫度變形公式）</p>
 <h3>L1：題目直接給定</h3>
@@ -246,23 +246,23 @@ $\frac{8}{3} \delta_{CD} = 8 \implies \delta_{CD} = 3\text{ mm}$<br />
 $3 + \frac{1}{3} \delta_{DE} = 1.8 \implies \frac{1}{3} \delta_{DE} = -1.2 \implies \delta_{DE} = -3.6\text{ mm}$</p>
 <p><strong>判斷製造誤差：</strong><br />
 計算結果 $\delta_{CD} = +3\text{ mm}$。因虛功法中定義拉力（伸長）為正，正號代表桿件實際長度比設計長度多出 3 mm。<br />
-$$<br />
-\boxed{\text{製造誤差 } \delta = 3\text{ mm (過長)}}<br />
+$$
+\boxed{\text{製造誤差 } \delta = 3\text{ mm (過長)}}
 $$</p>
 <p><strong>判斷溫度變化：</strong><br />
 計算結果 $\delta_{DE} = -3.6\text{ mm}$。負號代表桿件縮短。<br />
 利用熱變形公式：<br />
+$$
+\delta_{DE} = \alpha \cdot \Delta T \cdot L_{DE}
 $$<br />
-\delta_{DE} = \alpha \cdot \Delta T \cdot L_{DE}<br />
+$$
+-3.6 = (1.5 \times 10^{-5}) \times \Delta T \times 4000
 $$<br />
+$$
+-3.6 = 0.06 \times \Delta T \implies \Delta T = -60^\circ\text{C}
 $$<br />
--3.6 = (1.5 \times 10^{-5}) \times \Delta T \times 4000<br />
-$$<br />
-$$<br />
--3.6 = 0.06 \times \Delta T \implies \Delta T = -60^\circ\text{C}<br />
-$$<br />
-$$<br />
-\boxed{\text{溫差 } \Delta T = 60^\circ\text{C} \text{ (降溫)}}<br />
+$$
+\boxed{\text{溫差 } \Delta T = 60^\circ\text{C} \text{ (降溫)}}
 $$</p>
 <h2>5. 關鍵爭議點與進階探討 (Critical Issues &amp; Advanced Discussion)</h2>
 <ul>

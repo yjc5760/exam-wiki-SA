@@ -43,8 +43,7 @@ header .nomat{margin-top:12px;font-size:.8em;opacity:.85}
 <p class="meta2">主分類 <b>SA-U2-1</b> 靜不定結構最小功法 ｜ 2014 年（民國 103） ｜ 最小功法 (Method of Least Work) / 卡氏第二定理</p>
 <div class="hbtns"><a class="b-study" href="../unit-SA-U2-1.html">🧭 U2-1 單元總覽</a><a class="b-lect" href="../lecture-SA-U2-1.html">📚 U2-1 靜不定結構最小功法 講義</a></div>
 </header>
-<main>
-<h1>考題編號：SA-2014-4</h1>
+<main><h1>考題編號：SA-2014-4</h1>
 <p><strong>主分類：</strong> <code>SA-U2-1</code> 靜不定結構之能量法<br />
 <strong>副分類：</strong> 無<br />
 <strong>分析法：</strong> 最小功法 (Method of Least Work) / 卡氏第二定理<br />
@@ -67,13 +66,13 @@ header .nomat{margin-top:12px;font-size:.8em;opacity:.85}
 <p><strong>解題策略：</strong></p>
 <ol>
 <li><strong>靜不定度與基本系統</strong>：A 為固接 (3)，D 為水平面滾支承 (1)，共 4 個未知反力，為一次靜不定。取 D 點垂直反力 $D_y = R$（向上）為多餘力。</li>
-<li><strong>彎矩方程式建立</strong>：<br />
-   - CD 桿：無水平外力與支承力，$M_{CD} = 0$。<br />
-   - AC 桿：以 C 點為原點向左設座標 $x$。考慮 C 點施加逆時針虛擬彎矩 $M_0$（為求 $\theta_C$ 準備），寫出 $M_{AC}(x)$。</li>
-<li><strong>最小功法求反力</strong>：<br />
-   - $\frac{\partial U}{\partial R} = \int \frac{M}{EI} \frac{\partial M}{\partial R} dx = 0$。將 $M_0 = 0$ 代入解出 $R$。</li>
-<li><strong>卡氏第二定理求轉角</strong>：<br />
-   - $\theta_C = \frac{\partial U}{\partial M_0} = \int \frac{M}{EI} \frac{\partial M}{\partial M_0} dx$。代入已知的 $R$ 與 $M_0 = 0$ 積分即可得解。</li>
+<li><strong>彎矩方程式建立</strong>：</li>
+<li>CD 桿：無水平外力與支承力，$M_{CD} = 0$。</li>
+<li>AC 桿：以 C 點為原點向左設座標 $x$。考慮 C 點施加逆時針虛擬彎矩 $M_0$（為求 $\theta_C$ 準備），寫出 $M_{AC}(x)$。</li>
+<li><strong>最小功法求反力</strong>：</li>
+<li>$\frac{\partial U}{\partial R} = \int \frac{M}{EI} \frac{\partial M}{\partial R} dx = 0$。將 $M_0 = 0$ 代入解出 $R$。</li>
+<li><strong>卡氏第二定理求轉角</strong>：</li>
+<li>$\theta_C = \frac{\partial U}{\partial M_0} = \int \frac{M}{EI} \frac{\partial M}{\partial M_0} dx$。代入已知的 $R$ 與 $M_0 = 0$ 積分即可得解。</li>
 </ol>
 <p><strong>陷阱分析：</strong></p>
 <ul>
@@ -136,7 +135,7 @@ header .nomat{margin-top:12px;font-size:.8em;opacity:.85}
 </thead>
 <tbody>
 <tr>
-<td>C-B ($0 \le x < 6$)</td>
+<td>C-B ($0 \le x &lt; 6$)</td>
 <td>$Rx + M_0$</td>
 <td>$x$</td>
 <td>$1$</td>
@@ -178,7 +177,7 @@ header .nomat{margin-top:12px;font-size:.8em;opacity:.85}
 建立 AC 桿的彎矩方程式（以 C 點為原點，向左為 $x$ 軸正向，$0 \le x \le 12$）。</p>
 <ul>
 <li>
-<p><strong>區間 C-B ($0 \le x < 6$)</strong>：<br />
+<p><strong>區間 C-B ($0 \le x &lt; 6$)</strong>：<br />
   取 $x$ 處的切面，右側受力為向上的 $R$ 與逆時針的 $M_0$。<br />
   $M(x) = Rx + M_0$</p>
 </li>
@@ -227,8 +226,7 @@ $$\theta_C = \frac{90}{1000} = 0.09 \text{ rad}$$<br />
 <li><strong>如果 D 點是鉸支承 (Pin) 呢？</strong> 若考題將 D 點改為鉸支承，則 $D_x$ 不為零，此時為二次靜不定，必須設定兩個多餘力（$D_x, D_y$），CD 桿的 $2EI$ 剛度就會進入應變能方程式中。這是備考時可以自行延伸練習的絕佳變體題。</li>
 </ul>
 <hr />
-<p><em>圖解補繪：2026-08-28（向量圖，腳本 <code>gen_SA-2014-4.py</code>，可重跑）</em></p>
-</main>
+<p><em>圖解補繪：2026-08-28（向量圖，腳本 <code>gen_SA-2014-4.py</code>，可重跑）</em></p></main>
 <footer>來源：raw/solutions/SA-2014-4/SA-2014-4.md（知識庫解題內容唯一正本；本頁僅為渲染顯示）</footer>
 
 <script>

@@ -369,12 +369,12 @@ header .nomat{margin-top:12px;font-size:.8em;opacity:.85}
 <p><img alt="SA-2017-3 右柱固端彎矩符號判定：把柱順時針轉90度攤平後，向左的載重變成向上，標準式要整組變號" src="../../raw/solutions/SA-2017-3/figs/SA-2017-3-fig-2-fem-sign.svg" /></p>
 <p><em>圖 2　右柱固端彎矩的符號判定。這張圖攔的就是本題唯一、但會讓九個答案全錯的那個錯：$\mp PL/8$ 是為「向下」寫的，右柱的載重攤平後朝</em><em>上</em><em>，兩端符號整組相反。</em></p>
 <p><strong>梁 $BC$（$L = 6$ m，$w = 45$ kN/m ↓）：</strong> 桿軸本來就水平、載重本來就向下，直接套表：</p>
-<p>$$M_F^{BC} = -\frac{wL^2}{12} = -135\ \text{kN·m},\qquad M_F^{CB} = +\frac{wL^2}{12} = +135\ \text{kN·m}$$</p>
+<p>$$M_F^{BC} = -\frac{wL^2}{12} = -135\ \text{kN}\cdot\text{m},\qquad M_F^{CB} = +\frac{wL^2}{12} = +135\ \text{kN}\cdot\text{m}$$</p>
 <p><strong>右柱 $DC$（$L = 4$ m，$P = 60$ kN ← 在中點）：</strong></p>
 <p>局部座標的桿軸為 $D \to C$（朝上）。把它順時針轉 $90^\circ$ 攤平，桿軸變成朝右，而<strong>向左的 $(-1,0)$ 轉成 $(0,+1)$ ＝ 朝上</strong>。標準式為「向下」寫的，故：</p>
-<p>$$\boxed{M_F^{DC} = +\frac{PL}{8} = +30\ \text{kN·m},\qquad M_F^{CD} = -\frac{PL}{8} = -30\ \text{kN·m}}$$</p>
+<p>$$\boxed{M_F^{DC} = +\frac{PL}{8} = +30\ \text{kN}\cdot\text{m},\qquad M_F^{CD} = -\frac{PL}{8} = -30\ \text{kN}\cdot\text{m}}$$</p>
 <p>$D$ 為鉸，修正固端彎矩：</p>
-<p>$$M_F^{CD,\text{mod}} = M_F^{CD} - \tfrac12 M_F^{DC} = -30 - 15 = \boxed{-45\ \text{kN·m}}$$</p>
+<p>$$M_F^{CD,\text{mod}} = M_F^{CD} - \tfrac12 M_F^{DC} = -30 - 15 = \boxed{-45\ \text{kN}\cdot\text{m}}$$</p>
 <h3>4.3 修正傾角變位方程式</h3>
 <p>$$M_{AB} = 0,\qquad M_{BA} = \frac{3EI}{4}(\theta_B - \psi)$$<br />
 $$M_{BC} = \frac{EI}{3}(2\theta_B + \theta_C) - 135,\qquad M_{CB} = \frac{EI}{3}(2\theta_C + \theta_B) + 135$$<br />
@@ -403,10 +403,10 @@ $$M_{CD} = \frac{3EI}{4}(\theta_C - \psi) - 45,\qquad M_{DC} = 0$$</p>
 <p>$\psi &lt; 0$ $\Rightarrow$ 框架<strong>向左</strong>側移 ✓（與兩個向左的 60 kN 一致）</p>
 <h3>4.6 各桿端彎矩</h3>
 <p>$$M_{AB} = 0$$<br />
-$$M_{BA} = \frac34!\left(-\frac{990}{13} + 450\right) = \frac{3645}{13} \approx \mathbf{+280.38}\ \text{kN·m}$$<br />
-$$M_{BC} = -\frac{3645}{13} \approx \mathbf{-280.38}\ \text{kN·m}\qquad(\text{節點 } B:\ M_{BA} + M_{BC} = 0\ \checkmark)$$<br />
-$$M_{CB} = -\frac{1035}{13} \approx \mathbf{-79.62}\ \text{kN·m}$$<br />
-$$M_{CD} = \frac34!\left(-\frac{3690}{13} + 450\right) - 45 = \frac{1035}{13} \approx \mathbf{+79.62}\ \text{kN·m}$$<br />
+$$M_{BA} = \frac34\!\left(-\frac{990}{13} + 450\right) = \frac{3645}{13} \approx \mathbf{+280.38}\ \text{kN}\cdot\text{m}$$<br />
+$$M_{BC} = -\frac{3645}{13} \approx \mathbf{-280.38}\ \text{kN}\cdot\text{m}\qquad(\text{節點 } B:\ M_{BA} + M_{BC} = 0\ \checkmark)$$<br />
+$$M_{CB} = -\frac{1035}{13} \approx \mathbf{-79.62}\ \text{kN}\cdot\text{m}$$<br />
+$$M_{CD} = \frac34\!\left(-\frac{3690}{13} + 450\right) - 45 = \frac{1035}{13} \approx \mathbf{+79.62}\ \text{kN}\cdot\text{m}$$<br />
 $$M_{DC} = 0$$</p>
 <blockquote>
 <p><strong>層剪力檢核：</strong> $M_{BA} + M_{CD} = \dfrac{3645 + 1035}{13} = \dfrac{4680}{13} = 360$ ✓<br />

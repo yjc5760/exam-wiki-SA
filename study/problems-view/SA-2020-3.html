@@ -188,9 +188,6 @@ header .nomat{margin-top:12px;font-size:.8em;opacity:.85}
 </table>
 <hr />
 <h2>4. 步驟化詳細計算過程 (Step-by-Step Detailed Calculation)</h2>
-<blockquote>
-<p>📊 互動圖：<code>SA-2020-3-influence-line-viz.html</code></p>
-</blockquote>
 <p><strong>Step 1: 建立基本結構與彎矩方程式</strong><br />
 移除 $b$ 點垂直支承。結構變為 $a$ (鉸支承) 至 $c$ (內部鉸) 的簡支梁，搭載於 $c$ (自由端) 至 $d$ (固定端) 的懸臂梁上。<br />
 在 $b$ 點 ($x=2$) 施加向上單位力 $F_b = 1$。</p>
@@ -228,7 +225,7 @@ header .nomat{margin-top:12px;font-size:.8em;opacity:.85}
   (1) $v(0) = 0 \Rightarrow C_4 = 0$<br />
   (2) $v(4) = v_c = \frac{3}{EI} \Rightarrow \frac{64}{12} - 16 + 4C_5 + C_6 = 3 \Rightarrow 4C_5 + C_6 = 19 - \frac{16}{3} = \frac{41}{3}$<br />
   (3) $b$ 點位移連續 $v_{ab}(2) = v_{bc}(2) \Rightarrow -\frac{8}{12} + 2C_3 = \frac{8}{12} - 4 + 2C_5 + C_6 \Rightarrow 2C_3 = -\frac{8}{3} + 2C_5 + C_6$<br />
-  (4) $b$ 點斜率連續 $v'<em>{ab}(2) = v'</em>{bc}(2) \Rightarrow -1 + C_3 = 1 - 4 + C_5 \Rightarrow C_3 = -2 + C_5$<br />
+  (4) $b$ 點斜率連續 $v'_{ab}(2) = v'_{bc}(2) \Rightarrow -1 + C_3 = 1 - 4 + C_5 \Rightarrow C_3 = -2 + C_5$<br />
   解聯立：<br />
   將 $C_3$ 代入 (3): $2(-2 + C_5) = -\frac{8}{3} + 2C_5 + C_6 \Rightarrow -4 = -\frac{8}{3} + C_6 \Rightarrow C_6 = -4 + \frac{8}{3} = -\frac{4}{3}$<br />
   代入 (2): $4C_5 - \frac{4}{3} = \frac{41}{3} \Rightarrow 4C_5 = 15 \Rightarrow C_5 = \frac{15}{4}$<br />

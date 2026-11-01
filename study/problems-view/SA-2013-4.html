@@ -65,20 +65,20 @@ header .nomat{margin-top:12px;font-size:.8em;opacity:.85}
 <h2>3. 解題戰略地圖與陷阱分析 (Strategic Roadmap &amp; Trap Analysis)</h2>
 <p><strong>解題策略：</strong></p>
 <ol>
-<li><strong>單位統一</strong>：本題計算牽涉到微小的位移 (mm) 與極大的彈性模數 (GPa)，最佳策略是<strong>全程使用 N, mm 或 kN, mm 為單位</strong>。本解析採用 <strong>kN, mm</strong>。<br />
-   - $E = 200\text{ GPa} = 200\text{ kN/mm}^2$<br />
-   - $A = 10,000\text{ mm}^2$<br />
-   - $EA = 2 \times 10^6\text{ kN}$</li>
-<li><strong>建立節點與桿件幾何資訊</strong>：<br />
-   - 找出各桿件的長度 $L$、方向餘弦 $c = \cos\theta, s = \sin\theta$。</li>
-<li><strong>計算各桿件勁度貢獻</strong>：<br />
-   - $k = \frac{EA}{L}$，並建立各桿件的位移轉換矩陣 $[c^2, cs; cs, s^2]$。</li>
-<li><strong>組裝總體勁度矩陣 $\mathbf{K} (3 \times 3)$</strong>：<br />
-   - 將對應於 $d_1$ (節點 B 水平)、$d_2$ (節點 D 水平)、$d_3$ (節點 D 垂直) 的元素疊加。</li>
-<li><strong>矩陣乘法求外力 $\mathbf{P}$</strong>：<br />
-   - 執行 $\mathbf{P} = \mathbf{K} \mathbf{d}$ 找出 $P_1, P_2, P_3$。由於位移是給定的近似小數，算出的力會趨近於整數。</li>
-<li><strong>桿件內力計算</strong>：<br />
-   - $F = \frac{EA}{L} [ c(u_j - u_i) + s(v_j - v_i) ]$，將給定之節點位移代入即可得內力。</li>
+<li><strong>單位統一</strong>：本題計算牽涉到微小的位移 (mm) 與極大的彈性模數 (GPa)，最佳策略是<strong>全程使用 N, mm 或 kN, mm 為單位</strong>。本解析採用 <strong>kN, mm</strong>。</li>
+<li>$E = 200\text{ GPa} = 200\text{ kN/mm}^2$</li>
+<li>$A = 10,000\text{ mm}^2$</li>
+<li>$EA = 2 \times 10^6\text{ kN}$</li>
+<li><strong>建立節點與桿件幾何資訊</strong>：</li>
+<li>找出各桿件的長度 $L$、方向餘弦 $c = \cos\theta, s = \sin\theta$。</li>
+<li><strong>計算各桿件勁度貢獻</strong>：</li>
+<li>$k = \frac{EA}{L}$，並建立各桿件的位移轉換矩陣 $[c^2, cs; cs, s^2]$。</li>
+<li><strong>組裝總體勁度矩陣 $\mathbf{K} (3 \times 3)$</strong>：</li>
+<li>將對應於 $d_1$ (節點 B 水平)、$d_2$ (節點 D 水平)、$d_3$ (節點 D 垂直) 的元素疊加。</li>
+<li><strong>矩陣乘法求外力 $\mathbf{P}$</strong>：</li>
+<li>執行 $\mathbf{P} = \mathbf{K} \mathbf{d}$ 找出 $P_1, P_2, P_3$。由於位移是給定的近似小數，算出的力會趨近於整數。</li>
+<li><strong>桿件內力計算</strong>：</li>
+<li>$F = \frac{EA}{L} [ c(u_j - u_i) + s(v_j - v_i) ]$，將給定之節點位移代入即可得內力。</li>
 </ol>
 <p><strong>陷阱分析：</strong></p>
 <ul>
@@ -92,7 +92,7 @@ header .nomat{margin-top:12px;font-size:.8em;opacity:.85}
 <blockquote>
 <p>$\boxed{\cdot}$ = 需由前步驟推導，非題目直接給定的變數</p>
 </blockquote>
-<p>$$\text{矩陣方程式: } \begin{Bmatrix} P_1 \\ P_2 \\ P_3 \end{Bmatrix} = \begin{bmatrix} K_{11} & K_{12} & K_{13} \\ K_{21} & K_{22} & K_{23} \\ K_{31} & K_{32} & K_{33} \end{bmatrix} \begin{Bmatrix} \boxed{d_1} \\ \boxed{d_2} \\ \boxed{d_3} \end{Bmatrix}$$<br />
+<p>$$\text{矩陣方程式: } \begin{Bmatrix} P_1 \\ P_2 \\ P_3 \end{Bmatrix} = \begin{bmatrix} K_{11} &amp; K_{12} &amp; K_{13} \\ K_{21} &amp; K_{22} &amp; K_{23} \\ K_{31} &amp; K_{32} &amp; K_{33} \end{bmatrix} \begin{Bmatrix} \boxed{d_1} \\ \boxed{d_2} \\ \boxed{d_3} \end{Bmatrix}$$<br />
 $$\text{桿件內力: } F = \frac{EA}{L} \left[ c(u_j - u_i) + s(v_j - v_i) \right]$$</p>
 <h3>L1：題目直接給定</h3>
 <table>
@@ -219,14 +219,14 @@ $$\text{桿件內力: } F = \frac{EA}{L} \left[ c(u_j - u_i) + s(v_j - v_i) \rig
    $K_{23}^{(CD)} = K_{32}^{(CD)} = 0$</p>
 </li>
 <li>
-<p><strong>桿件 BD</strong> (關聯 DOF 1, 2, 3)：<br />
-   - DOF 1 自交：$K_{11}^{(BD)} = k_{BD} \cdot c^2 = 200 (-0.8)^2 = 128$<br />
-   - DOF 2 自交：$K_{22}^{(BD)} = k_{BD} \cdot c^2 = 200 (-0.8)^2 = 128$<br />
-   - DOF 3 自交：$K_{33}^{(BD)} = k_{BD} \cdot s^2 = 200 (0.6)^2 = 72$<br />
-   - DOF 1, 2 耦合：$K_{12}^{(BD)} = K_{21}^{(BD)} = k_{BD} \cdot (-c^2) = 200 (-0.64) = -128$<br />
-   - DOF 1, 3 耦合：$K_{13}^{(BD)} = K_{31}^{(BD)} = k_{BD} \cdot (-cs) = 200 [-(-0.8)(0.6)] = 96$<br />
-   - DOF 2, 3 耦合：$K_{23}^{(BD)} = K_{32}^{(BD)} = k_{BD} \cdot (cs) = 200 (-0.8)(0.6) = -96$</p>
+<p><strong>桿件 BD</strong> (關聯 DOF 1, 2, 3)：</p>
 </li>
+<li>DOF 1 自交：$K_{11}^{(BD)} = k_{BD} \cdot c^2 = 200 (-0.8)^2 = 128$</li>
+<li>DOF 2 自交：$K_{22}^{(BD)} = k_{BD} \cdot c^2 = 200 (-0.8)^2 = 128$</li>
+<li>DOF 3 自交：$K_{33}^{(BD)} = k_{BD} \cdot s^2 = 200 (0.6)^2 = 72$</li>
+<li>DOF 1, 2 耦合：$K_{12}^{(BD)} = K_{21}^{(BD)} = k_{BD} \cdot (-c^2) = 200 (-0.64) = -128$</li>
+<li>DOF 1, 3 耦合：$K_{13}^{(BD)} = K_{31}^{(BD)} = k_{BD} \cdot (-cs) = 200 [-(-0.8)(0.6)] = 96$</li>
+<li>DOF 2, 3 耦合：$K_{23}^{(BD)} = K_{32}^{(BD)} = k_{BD} \cdot (cs) = 200 (-0.8)(0.6) = -96$</li>
 </ol>
 <h3>Step 3：組裝整體勁度矩陣 $\mathbf{K}$</h3>
 <p>疊加上述貢獻：</p>
@@ -239,10 +239,10 @@ $$\text{桿件內力: } F = \frac{EA}{L} \left[ c(u_j - u_i) + s(v_j - v_i) \rig
 <li>$K_{23} = 117.851 + 0 - 96 = 21.851$</li>
 </ul>
 <p>整體勁度矩陣 (單位：kN/mm)：<br />
-$$ \mathbf{K} = \begin{bmatrix} 270.857 & -128.000 & 96.000 \\ -128.000 & 579.184 & 21.851 \\ 96.000 & 21.851 & 189.851 \end{bmatrix} $$</p>
+$$ \mathbf{K} = \begin{bmatrix} 270.857 &amp; -128.000 &amp; 96.000 \\ -128.000 &amp; 579.184 &amp; 21.851 \\ 96.000 &amp; 21.851 &amp; 189.851 \end{bmatrix} $$</p>
 <h3>Step 4：求施加外力 $P_1, P_2, P_3$</h3>
 <p>由 $\mathbf{P} = \mathbf{K}\mathbf{d}$，代入給定位移：<br />
-$$ \begin{bmatrix} P_1 \\ P_2 \\ P_3 \end{bmatrix} = \begin{bmatrix} 270.857 & -128 & 96 \\ -128 & 579.184 & 21.851 \\ 96 & 21.851 & 189.851 \end{bmatrix} \begin{Bmatrix} 0.1277 \\ 0.1743 \\ 0.7055 \end{Bmatrix} $$</p>
+$$ \begin{bmatrix} P_1 \\ P_2 \\ P_3 \end{bmatrix} = \begin{bmatrix} 270.857 &amp; -128 &amp; 96 \\ -128 &amp; 579.184 &amp; 21.851 \\ 96 &amp; 21.851 &amp; 189.851 \end{bmatrix} \begin{Bmatrix} 0.1277 \\ 0.1743 \\ 0.7055 \end{Bmatrix} $$</p>
 <p>執行矩陣乘法：</p>
 <ul>
 <li>$P_1 = 270.857(0.1277) - 128(0.1743) + 96(0.7055) = 34.588 - 22.310 + 67.728 \approx \mathbf{80.01 \text{ kN}}$</li>
@@ -265,13 +265,13 @@ $$ \begin{bmatrix} P_1 \\ P_2 \\ P_3 \end{bmatrix} = \begin{bmatrix} 270.857 & -
 </li>
 </ol>
 <h3>補充：桿件 AB、BD 內力（供節點 D 平衡驗算，非題目必答）</h3>
-<p>同一公式代入，取 A 點 $d=0$ 為參考：</p>
-<p>$$F_{AB} = \frac{2 \times 10^6}{14000} \left[ 1(0.1277 - 0) \right] = 142.857 \times 0.1277 \approx \mathbf{18.24 \text{ kN (拉力)}}$$</p>
-<p>由 B 指向 D，$c=-0.8, s=0.6$：</p>
-<p>$$F_{BD} = 200 \left[ -0.8(0.1743 - 0.1277) + 0.6(0.7055 - 0) \right] = 200(-0.03728 + 0.42330) \approx \mathbf{77.20 \text{ kN (拉力)}}$$</p>
-<p>節點 D 力平衡驗算（各桿拉力方向由節點指向外，故對節點的作用力方向相反）：</p>
-<p>$$\Sigma F_x = -F_{CD} - F_{AD}\cos45° + F_{BD}\cdot0.8 = -58.10 - 103.68 + 61.76 \approx -100.0 \approx -P_2 \checkmark$$</p>
-<p>$$\Sigma F_y = -F_{AD}\sin45° - F_{BD}\cdot0.6 = -103.68 - 46.32 \approx -150.0 \approx -P_3 \checkmark$$</p>
+<p>同一公式代入，取 A 點 $d=0$ 為參考：<br />
+$$F_{AB} = \frac{2 \times 10^6}{14000} \left[ 1(0.1277 - 0) \right] = 142.857 \times 0.1277 \approx \mathbf{18.24 \text{ kN (拉力)}}$$<br />
+由 B 指向 D，$c=-0.8, s=0.6$：<br />
+$$F_{BD} = 200 \left[ -0.8(0.1743 - 0.1277) + 0.6(0.7055 - 0) \right] = 200(-0.03728 + 0.42330) \approx \mathbf{77.20 \text{ kN (拉力)}}$$</p>
+<p>節點 D 力平衡驗算（各桿拉力方向由節點指向外，故對節點的作用力方向相反）：<br />
+$$\Sigma F_x = -F_{CD} - F_{AD}\cos45° + F_{BD}\cdot0.8 = -58.10 - 103.68 + 61.76 \approx -100.0 \approx -P_2 \checkmark$$<br />
+$$\Sigma F_y = -F_{AD}\sin45° - F_{BD}\cdot0.6 = -103.68 - 46.32 \approx -150.0 \approx -P_3 \checkmark$$</p>
 <p><img alt="SA-2013-4 桁架力流圖：AD、CD 為題目所求內力，AB、BD 為節點 D 平衡之補充驗算" src="../../raw/solutions/SA-2013-4/figs/SA-2013-4-fig-2-forces.svg" /></p>
 <p><em>圖 2　桁架力流圖（單位：kN），紅色受拉、藍色受壓，線寬隨內力大小變化。這張圖攔的是 AD／CD 內力拉壓正負號判斷錯誤——若 $F_{AD}$ 或 $F_{CD}$ 算成壓力，節點 D 的平衡驗算會直接對不上 $P_2, P_3$。</em></p>
 <h2>5. 關鍵爭議點與進階探討 (Critical Issues &amp; Advanced Discussion)</h2>

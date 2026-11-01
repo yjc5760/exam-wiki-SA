@@ -61,9 +61,9 @@ header .nomat{margin-top:12px;font-size:.8em;opacity:.85}
 <p><strong>舊版結論</strong> $IL(F_{\text{left}}) = +\dfrac{79}{128}$、$IL(F_{\text{right}}) = -\dfrac{49}{128}$ <strong>正負與大小皆錯</strong>。</p>
 </blockquote>
 <p>錯誤位於共軛梁彎矩的計算：舊版寫</p>
-<p>$$M^<em>(15^-) = \boxed{-}\,R^</em>_A \cdot 15 + \dots = -(-950)(15) + 562.5 = +14812.5 \quad\text{✗}$$</p>
+<p>$$M^*(15^-) = \boxed{-}\,R^*_A \cdot 15 + \dots = -(-950)(15) + 562.5 = +14812.5 \quad\text{✗}$$</p>
 <p>共軛梁彎矩應為「斷面左側各作用力對斷面取矩」，反力<strong>不必再變號</strong>：</p>
-<p>$$M^<em>(15^-) = R^</em>_A \cdot 15 + 562.5 = (-950)(15) + 562.5 = -13687.5 \quad\text{✓}$$</p>
+<p>$$M^*(15^-) = R^*_A \cdot 15 + 562.5 = (-950)(15) + 562.5 = -13687.5 \quad\text{✓}$$</p>
 <table>
 <thead>
 <tr>
@@ -113,7 +113,7 @@ header .nomat{margin-top:12px;font-size:.8em;opacity:.85}
 <ol>
 <li><strong>靜不定度與釋放的搭配。</strong> 反力 5 個（A 為 2）、平衡 3 式、內鉸 C 提供 1 式 $\Rightarrow$ <strong>1 度靜不定</strong>。再解除 F 點剪力（1 個釋放）$\Rightarrow$ 基本結構<strong>恰為靜定</strong>。這個「剛好」不是巧合，是題目設計好讓共軛梁法能用。</li>
 <li><strong>Müller-Breslau 的定量版本。</strong> 在基本結構上施加<strong>單位剪力對</strong>，其變形曲線 $y(x)$ 除以 F 處的相對位移 $\Delta_F$，就是影響線。</li>
-<li><strong>共軛梁的邊界轉換與剪力釋放的處理。</strong> 滾支承 $\leftrightarrow$ 內部鉸、內部鉸 $\leftrightarrow$ 內部支承；而<strong>剪力釋放（$y$ 跳、$\theta$ 連續）在共軛梁上等效於一個集中力矩 $M_0$</strong>，它是未知數，靠 $M^<em>(B) = M^</em>(D) = 0$ 補足方程。</li>
+<li><strong>共軛梁的邊界轉換與剪力釋放的處理。</strong> 滾支承 $\leftrightarrow$ 內部鉸、內部鉸 $\leftrightarrow$ 內部支承；而<strong>剪力釋放（$y$ 跳、$\theta$ 連續）在共軛梁上等效於一個集中力矩 $M_0$</strong>，它是未知數，靠 $M^*(B) = M^*(D) = 0$ 補足方程。</li>
 </ol>
 <hr />
 <h2>3. 解題戰略地圖</h2>
@@ -135,7 +135,7 @@ header .nomat{margin-top:12px;font-size:.8em;opacity:.85}
 <tbody>
 <tr>
 <td><strong>共軛梁彎矩的反力符號</strong></td>
-<td>$M^<em>(x) = \sum_{\text{左}} F_i (x - x_i)$，反力直接代入其符號，</em><em>不再冠負號</em>*。舊版就錯在這裡</td>
+<td>$M^*(x) = \sum_{\text{左}} F_i (x - x_i)$，反力直接代入其符號，<strong>不再冠負號</strong>。舊版就錯在這裡</td>
 </tr>
 <tr>
 <td>漏掉 $M_0$</td>
@@ -168,7 +168,7 @@ header .nomat{margin-top:12px;font-size:.8em;opacity:.85}
 </blockquote>
 <p>$$\text{Step 1: } M(x)\;\text{（基本結構，由 }V_F\text{ 單位剪力對的靜力平衡求得）}$$</p>
 <p>$$\text{Step 2: } q^*(x) = \frac{\boxed{M(x)}}{EI}\;\text{（向上為正）}, \qquad \text{F 處另加未知 } M_0$$</p>
-<p>$$\text{Step 3: } y(x) = \boxed{M^<em>(x)}, \qquad \theta(x) = \boxed{V^</em>(x)}$$</p>
+<p>$$\text{Step 3: } y(x) = \boxed{M^*(x)}, \qquad \theta(x) = \boxed{V^*(x)}$$</p>
 <p>$$\text{Step 4: } IL_{V_F}(x) = \frac{\boxed{y(x)}}{\boxed{\Delta_F}}, \qquad \Delta_F = y(F^+) - y(F^-)$$</p>
 <h3>L1：題目直接給定</h3>
 <table>
@@ -279,7 +279,7 @@ header .nomat{margin-top:12px;font-size:.8em;opacity:.85}
 </tr>
 <tr>
 <td>剪力釋放的共軛對應</td>
-<td>真實梁 $y$ 跳、$\theta$ 連續 $\Rightarrow$ 共軛梁 $M^<em>$ 跳、$V^</em>$ 連續 $\Rightarrow$ <strong>集中力矩</strong></td>
+<td>真實梁 $y$ 跳、$\theta$ 連續 $\Rightarrow$ 共軛梁 $M^*$ 跳、$V^*$ 連續 $\Rightarrow$ <strong>集中力矩</strong></td>
 <td style="text-align: center;"></td>
 </tr>
 <tr>
@@ -296,9 +296,6 @@ header .nomat{margin-top:12px;font-size:.8em;opacity:.85}
 </table>
 <hr />
 <h2>4. 步驟化詳細計算</h2>
-<blockquote>
-<p>📊 影響線互動圖（可拖動載重讀縱距）：<code>SA-2015-2-influence-line-viz.html</code></p>
-</blockquote>
 <h3>步驟 0：靜不定度</h3>
 <p>$$\text{反力 } 5 \;-\; \text{平衡 } 3 \;-\; \text{內鉸 C } 1 \;=\; 1 \text{ 度靜不定}$$</p>
 <p>再解除 F 點剪力（1 個釋放）$\Rightarrow$ 基本結構為靜定。</p>
@@ -312,10 +309,10 @@ header .nomat{margin-top:12px;font-size:.8em;opacity:.85}
 <p><strong>其餘反力：</strong> 由 $\Sigma F_y = 0$、$\Sigma M_A = 0$ 與 $M(C) = 0$ 解得</p>
 <p>$$B_y = -4,\qquad D_y = +4,\qquad E_y = -1$$</p>
 <p><strong>彎矩分段式</strong>（下凹為正，由左側自由體 $\sum R_i(x-x_i)$）：</p>
-<p>$$M(x) = \begin{cases}<br />
-x &amp; 0 \le x \le 30 \quad (M(30) = 30)\[2pt]<br />
-120 - 3x &amp; 30 \le x \le 50 \quad (M(40) = 0\ \checkmark,\ M(50) = -30)\[2pt]<br />
-x - 80 &amp; 50 \le x \le 80 \quad (M(80) = 0\ \checkmark)<br />
+<p>$$M(x) = \begin{cases}
+x &amp; 0 \le x \le 30 \quad (M(30) = 30)\\[2pt]
+120 - 3x &amp; 30 \le x \le 50 \quad (M(40) = 0\ \checkmark,\ M(50) = -30)\\[2pt]
+x - 80 &amp; 50 \le x \le 80 \quad (M(80) = 0\ \checkmark)
 \end{cases}$$</p>
 <blockquote>
 <p><strong>驗算：</strong> $M(40) = 120 - 120 = 0$ —— C 是內部鉸，這一項必須為零。若不為零，反力就算錯了。</p>
@@ -323,7 +320,7 @@ x - 80 &amp; 50 \le x \le 80 \quad (M(80) = 0\ \checkmark)<br />
 <hr />
 <h3>步驟 2：共軛梁法求變形</h3>
 <p><img alt="SA-2015-2 共軛梁：A/E端鉸，B/D轉為內部鉸，C轉為內部支承，F處加集中力矩M0，並列出四個未知數與四條方程" src="../../raw/solutions/SA-2015-2/figs/SA-2015-2-fig-3-conjugate.svg" /></p>
-<p><em>圖 3　共軛梁的邊界轉換與 F 處的集中力矩。這張圖攔兩件事：邊界轉換記反（滾支承→內部鉸，不是→支承），以及漏掉 $M_0$ —— 沒有它，共軛梁的 $M^</em>$ 無法在 F 產生跳躍，$\Delta_F$ 就無從算起。*</p>
+<p><em>圖 3　共軛梁的邊界轉換與 F 處的集中力矩。這張圖攔兩件事：邊界轉換記反（滾支承→內部鉸，不是→支承），以及漏掉 $M_0$ —— 沒有它，共軛梁的 $M^*$ 無法在 F 產生跳躍，$\Delta_F$ 就無從算起。</em></p>
 <p><strong>共軛梁的建立</strong>（載重 $q^*(x) = M(x)/EI$，向上為正）：</p>
 <table>
 <thead>
@@ -339,7 +336,7 @@ x - 80 &amp; 50 \le x \le 80 \quad (M(80) = 0\ \checkmark)<br />
 </tr>
 <tr>
 <td><strong>F（剪力釋放：$y$ 跳、$\theta$ 連續）</strong></td>
-<td><strong>外加集中力矩 $M_0$（$M^<em>$ 跳、$V^</em>$ 連續）</strong></td>
+<td><strong>外加集中力矩 $M_0$（$M^*$ 跳、$V^*$ 連續）</strong></td>
 </tr>
 <tr>
 <td>B、D（內部滾支承，$y=0$）</td>
@@ -347,7 +344,7 @@ x - 80 &amp; 50 \le x \le 80 \quad (M(80) = 0\ \checkmark)<br />
 </tr>
 <tr>
 <td>C（內部鉸，$\theta$ 跳）</td>
-<td>內部支承（$V^<em>$ 跳，有反力 $R^</em>_C$）</td>
+<td>內部支承（$V^*$ 跳，有反力 $R^*_C$）</td>
 </tr>
 <tr>
 <td>E（端滾支承）</td>
@@ -355,8 +352,8 @@ x - 80 &amp; 50 \le x \le 80 \quad (M(80) = 0\ \checkmark)<br />
 </tr>
 </tbody>
 </table>
-<p><strong>未知數 4 個：</strong> $R^<em>_A$、$R^</em>_C$、$R^<em>_E$、$M_0$<br />
-</em><em>方程 4 條：</em><em> $\Sigma F_y^</em> = 0$、$\Sigma M^<em> = 0$、$M^</em>(30) = 0$、$M^*(50) = 0$</p>
+<p><strong>未知數 4 個：</strong> $R^*_A$、$R^*_C$、$R^*_E$、$M_0$<br />
+<strong>方程 4 條：</strong> $\Sigma F_y^* = 0$、$\Sigma M^* = 0$、$M^*(30) = 0$、$M^*(50) = 0$</p>
 <p>共軛載重（四塊三角形）：</p>
 <table>
 <thead>
@@ -368,22 +365,22 @@ x - 80 &amp; 50 \le x \le 80 \quad (M(80) = 0\ \checkmark)<br />
 </thead>
 <tbody>
 <tr>
-<td>$0!-!30$</td>
+<td>$0\!-\!30$</td>
 <td>$+450$</td>
 <td>$x = 20$</td>
 </tr>
 <tr>
-<td>$30!-!40$</td>
+<td>$30\!-\!40$</td>
 <td>$+150$</td>
 <td>$x = 100/3$</td>
 </tr>
 <tr>
-<td>$40!-!50$</td>
+<td>$40\!-\!50$</td>
 <td>$-150$</td>
 <td>$x = 140/3$</td>
 </tr>
 <tr>
-<td>$50!-!80$</td>
+<td>$50\!-\!80$</td>
 <td>$-450$</td>
 <td>$x = 60$</td>
 </tr>
@@ -397,9 +394,9 @@ x - 80 &amp; 50 \le x \le 80 \quad (M(80) = 0\ \checkmark)<br />
 <p>解得（以下皆已乘 $EI$）：</p>
 <p>$$EI\,R^*_A = EI\,\theta_A = -950, \qquad EI\,M_0 = EI\,\Delta_F = 24\,000$$</p>
 <p><strong>（一）F 點左側</strong></p>
-<p>$$EI\,y(F^-) = M^<em>(15^-) = R^</em><em>A \cdot 15 + \underbrace{\int_0^{15}! \xi\,(15-\xi)\,d\xi}</em>{=\,562.5} = (-950)(15) + 562.5 = \boxed{-13\,687.5}$$</p>
+<p>$$EI\,y(F^-) = M^*(15^-) = R^*_A \cdot 15 + \underbrace{\int_0^{15}\! \xi\,(15-\xi)\,d\xi}_{=\,562.5} = (-950)(15) + 562.5 = \boxed{-13\,687.5}$$</p>
 <blockquote>
-<p>⚠ 這裡就是舊版失分處：$R^<em>_A$ 已經是 $-950$，代入時</em><em>不再冠負號</em>*。</p>
+<p>⚠ 這裡就是舊版失分處：$R^*_A$ 已經是 $-950$，代入時<strong>不再冠負號</strong>。</p>
 </blockquote>
 <p><strong>（二）F 點右側</strong></p>
 <p>$$EI\,y(F^+) = M^*(15^-) + M_0 = -13\,687.5 + 24\,000 = \boxed{+10\,312.5}$$</p>
@@ -421,12 +418,12 @@ x - 80 &amp; 50 \le x \le 80 \quad (M(80) = 0\ \checkmark)<br />
 <p><img alt="SA-2015-2 V_F影響線全曲線：F處由-73/128跳至+55/128，C點-1/6，DE跨最大+0.0722" src="../../raw/solutions/SA-2015-2/figs/SA-2015-2-fig-4-influence-line.svg" /></p>
 <p><em>圖 4　$V_F$ 影響線。這張圖攔兩件事：把靜不定結構的影響線畫成折線（每一段其實是三次曲線），以及把 F 兩側的正負號畫反 —— 左負右正才是剪力影響線的樣子。</em></p>
 <p>各段影響線方程（$x$ 由 A 起算，單位 m）：</p>
-<p>$$IL_{V_F}(x) = \begin{cases}<br />
-\dfrac{x\,(x^2 - 5700)}{144\,000} &amp; 0 \le x \le 15\[10pt]<br />
-\dfrac{(x-30)(x^2 + 30x - 4800)}{144\,000} &amp; 15 \le x \le 30\[10pt]<br />
--\dfrac{(x-30)(x^2 - 90x + 2800)}{48\,000} &amp; 30 \le x \le 40\[10pt]<br />
--\dfrac{(x-50)(x^2 - 70x + 400)}{48\,000} &amp; 40 \le x \le 50\[10pt]<br />
-\dfrac{(x-110)(x-80)(x-50)}{144\,000} &amp; 50 \le x \le 80<br />
+<p>$$IL_{V_F}(x) = \begin{cases}
+\dfrac{x\,(x^2 - 5700)}{144\,000} &amp; 0 \le x \le 15\\[10pt]
+\dfrac{(x-30)(x^2 + 30x - 4800)}{144\,000} &amp; 15 \le x \le 30\\[10pt]
+-\dfrac{(x-30)(x^2 - 90x + 2800)}{48\,000} &amp; 30 \le x \le 40\\[10pt]
+-\dfrac{(x-50)(x^2 - 70x + 400)}{48\,000} &amp; 40 \le x \le 50\\[10pt]
+\dfrac{(x-110)(x-80)(x-50)}{144\,000} &amp; 50 \le x \le 80
 \end{cases}$$</p>
 <p><strong>關鍵縱距：</strong></p>
 <table>

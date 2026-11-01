@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="zh-Hant"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SA-2019-2 — 題目解析</title>
+<link rel="stylesheet" href="../assets/katex/katex.min.css">
+<script defer src="../assets/katex/katex.min.js"></script>
+<script defer src="../assets/katex/auto-render.min.js"
+  onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},
+  {left:'$',right:'$',display:false},{left:'\\(',right:'\\)',display:false}],throwOnError:false});"></script>
+<style>
+:root{--ac:#1565c0;--bg:#f7f9fb;--card:#fff;--ink:#263238;--mut:#607d8b;--bd:#dfe6ea}
+*{box-sizing:border-box}
+body{margin:0;font-family:"Microsoft JhengHei","Noto Sans TC",-apple-system,sans-serif;
+  background:var(--bg);color:var(--ink);line-height:1.75;font-size:15.5px}
+header{background:linear-gradient(135deg,#0d47a1,#1976d2 60%,#42a5f5);color:#fff;padding:22px 26px}
+header h1{margin:0;font-size:1.15em}
+header .back{display:inline-block;margin-top:10px;font-size:.82em;color:#fff;background:rgba(255,255,255,.18);
+  padding:4px 12px;border-radius:14px;text-decoration:none}
+main{max-width:880px;margin:0 auto;padding:26px 22px 70px}
+h1,h2,h3{color:#0d47a1} h2{font-size:1.2em;border-left:6px solid var(--ac);padding-left:12px;margin:34px 0 14px}
+table{width:100%;border-collapse:collapse;margin:14px 0;font-size:.92em;background:#fff}
+th,td{border:1px solid var(--bd);padding:7px 10px;text-align:left;vertical-align:top}
+th{background:#eceff1;font-weight:600} tbody tr:nth-child(even){background:#fafcfd}
+code{background:#eceff1;padding:1px 5px;border-radius:4px;font-size:.92em}
+img{max-width:100%;display:block;margin:14px auto;border:1px solid var(--bd);border-radius:8px}
+.katex-display{margin:12px 0!important;overflow-x:auto;overflow-y:hidden}
+footer{text-align:center;color:var(--mut);font-size:.8em;padding:22px;border-top:1px solid var(--bd)}
+
+header h1{color:#fff!important;font-size:1.25em;margin:0;letter-spacing:.5px}
+header .meta2{margin:8px 0 0;font-size:.84em;opacity:.93;line-height:1.6}
+header .meta2 b{background:rgba(255,255,255,.2);border-radius:4px;padding:1px 7px;font-weight:600}
+header .hbtns{display:flex;flex-wrap:wrap;gap:10px;margin-top:14px}
+header .hbtns a{font-size:.85em;text-decoration:none;padding:7px 17px;border-radius:22px;
+  font-weight:700;white-space:nowrap;line-height:1.4}
+header .b-study{background:#fff;color:#1565c0}
+header .b-lect{background:#6a1b9a;color:#fff}
+header .b-fg{background:#c62828;color:#fff}
+header .hbtns a:hover{filter:brightness(1.08)}
+header .nomat{margin-top:12px;font-size:.8em;opacity:.85}
+</style></head><body>
+<header>
+<h1>SA-2019-2　建築結構系統分析</h1>
+<p class="meta2">主分類 <b>SA-U3-2</b> 建築結構系統分析 ｜ 2019 年（民國 108） ｜ 近似分析法 (反曲點法)</p>
+<div class="hbtns"></div><p class="nomat">本題主分類 SA-U3-2 目前尚無教材，故不提供教材按鈕。</p>
+</header>
+<main><h1>考題編號：SA-2019-2</h1>
+<p><strong>主分類：</strong> <code>SA-U3-2</code> 建築結構系統分析<br />
+<strong>分析法：</strong> 近似分析法 (反曲點法)<br />
+<strong>標籤：</strong> <code>范倫迪爾桁架</code> <code>近似分析</code> <code>反曲點</code> <code>彎矩圖</code> <code>軸力圖</code></p>
+<hr />
+<h2>1. 原始題目重述 (Problem Restatement)</h2>
+<p>二、范倫迪爾桁架（Vierendeel Truss）實際上受力行為像是構架，因為構件彼此接合為剛接。考慮圖二之范倫迪爾桁架，其受力後各構件受彎矩之變形為一雙曲率變形，採近似分析時可假設反曲點位於各構件之中點，據此假設，分析該桁架，並繪出上下弦桿之彎矩圖、軸力圖及腹桿之彎矩圖、軸力圖。（25 分）</p>
+<p><img alt="SA-2019-2 題目附圖：4跨范倫迪爾桁架" src="../../raw/solutions/SA-2019-2/SA-2019-2-fig-1.png" /></p>
+<p><em>圖說：4跨范倫迪爾桁架，節點 A 到 E 為下弦，F 到 J 為上弦。每跨寬 4m，總寬 16m；高 6m。支承 A 為鉸接，E 為滾支承。節點 B、C、D 各受向下 100 kN 之集中載重。</em></p>
+<h2>2. 考題核心精神與出題者意圖 (Core Concepts &amp; Examiner's Intent)</h2>
+<p>本題測驗考生對<strong>剛接構架（范倫迪爾桁架）之近似分析法</strong>的掌握。<br />
+出題者直接給定關鍵假設：「反曲點位於各構件之中點」，此條件提供了足夠的靜力平衡方程式（中點處彎矩 $M=0$），使原本高次靜不定的剛架退化為靜定結構。考生需利用全域剪力與彎矩，搭配各節點與半桿件的自由體圖，有系統地解出所有桿件的軸力、剪力與端點彎矩。</p>
+<h2>3. 解題戰略地圖與陷阱分析 (Strategic Roadmap &amp; Trap Analysis)</h2>
+<ol>
+<li><strong>全域分析：</strong></li>
+<li>由於結構與載重皆對稱，直接求出外部反力 $R_A = R_E = 150\text{ kN}$。</li>
+<li>計算各跨段（Panel）中點位置的全域剪力 $V_i$ 與全域彎矩 $M_i$。</li>
+<li><strong>弦桿軸力分析：</strong></li>
+<li>於各跨段中點切開，由 $\sum M = 0$ 求出上下弦桿的軸力（形成力偶抵抗全域彎矩）。</li>
+<li><strong>腹桿剪力與弦桿剪力分配：</strong></li>
+<li>隔離各頂部節點（包含半段桿件），利用 $\sum F_x = 0$ 由弦桿軸力差求出腹桿剪力。</li>
+<li>藉由節點的 $\sum M = 0$ 證明並求出上下弦桿平分全域剪力（即 $V_{top} = V_{bot} = V_{panel}/2$）。</li>
+<li><strong>腹桿軸力分析：</strong></li>
+<li>隔離頂部節點，利用 $\sum F_y = 0$ 由弦桿剪力差求出腹桿軸力。</li>
+<li><strong>彎矩圖繪製：</strong></li>
+<li>各桿端彎矩為其剪力乘上「半桿長度」（$M_{max} = V \times L/2$），且皆為雙曲率分佈（過中點為零）。</li>
+</ol>
+<blockquote>
+<p>[!TIP] <strong>陷阱警告</strong><br />
+1. <strong>剪力平分假設的必要性：</strong> 許多考生會憑直覺直接假設上下弦桿剪力平分。雖然結果正確，但在本題中，這其實是<strong>由節點彎矩平衡所推導出的必然結果</strong>，若能寫出推導過程，將可展現更清晰的力學觀念。<br />
+2. <strong>符號與方向的統一：</strong> 桿件眾多，強烈建議畫出節點自由體圖（包含切開至反曲點的半桿），嚴格遵守平衡方程式，避免軸力拉壓或彎矩方向錯亂。</p>
+</blockquote>
+<h2>3.5 變數層次分析 (Variable Hierarchy Analysis)</h2>
+<blockquote>
+<p>複習提示：第一次解題後，在每個卡住的知識點旁標記 <code>⚠</code>；第二次複習時只看有 <code>⚠</code> 的項目。</p>
+</blockquote>
+<h3>最終目標</h3>
+<p><code>利用反曲點假設解出所有桿件之 M、V、N 並繪製圖別</code></p>
+<h3>本題關鍵公式（依計算順序）</h3>
+<blockquote>
+<p>$\boxed{\cdot}$ = 需由前步驟推導，非題目直接給定的變數</p>
+</blockquote>
+<p>$$\text{Step 1: } N_{top} = -\frac{M_{global}}{h}, \quad N_{bot} = \frac{M_{global}}{h}$$</p>
+<p>$$\text{Step 2: } V_{vert} = \Delta \boxed{N_{top}}$$</p>
+<p>$$\text{Step 3: } V_{top} = V_{bot} = \frac{V_{global}}{2}$$</p>
+<p>$$\text{Step 4: } N_{vert} = \Delta \boxed{V_{top}} - P_{ext}$$</p>
+<p>$$\text{Step 5: } M_{end} = \boxed{V_{member}} \times \frac{L_{member}}{2}$$</p>
+<h3>L1：題目直接給定</h3>
+<table>
+<thead>
+<tr>
+<th>符號</th>
+<th>數值</th>
+<th>說明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>$L$</td>
+<td>$4\text{ m}$</td>
+<td>弦桿跨距 (各跨)</td>
+</tr>
+<tr>
+<td>$h$</td>
+<td>$6\text{ m}$</td>
+<td>腹桿高度</td>
+</tr>
+<tr>
+<td>$P_B, P_C, P_D$</td>
+<td>$100\text{ kN} (\downarrow)$</td>
+<td>外加載重</td>
+</tr>
+</tbody>
+</table>
+<h3>L2：需知識點推導</h3>
+<p><strong>Step 1：弦桿軸力</strong></p>
+<table>
+<thead>
+<tr>
+<th>符號</th>
+<th>公式/來源</th>
+<th style="text-align: center;">卡關?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>$N_{top}$</td>
+<td>切面力偶平衡：$-M_{global} / h$</td>
+<td style="text-align: center;"></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Step 2：腹桿剪力</strong></p>
+<table>
+<thead>
+<tr>
+<th>符號</th>
+<th>公式/來源</th>
+<th style="text-align: center;">卡關?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>$V_{vert}$</td>
+<td>頂部節點 $\sum F_x = 0$</td>
+<td style="text-align: center;"></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Step 3：腹桿軸力</strong></p>
+<table>
+<thead>
+<tr>
+<th>符號</th>
+<th>公式/來源</th>
+<th style="text-align: center;">卡關?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>$N_{vert}$</td>
+<td>頂部節點 $\sum F_y = 0$</td>
+<td style="text-align: center;"></td>
+</tr>
+</tbody>
+</table>
+<h3>L3：深層知識（不懂就卡住）</h3>
+<table>
+<thead>
+<tr>
+<th>知識點</th>
+<th>說明</th>
+<th style="text-align: center;">卡關?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>反曲點的力學意義</td>
+<td>彎矩為零，可視為鉸接。取包含反曲點的自由體圖即可避開彎矩未知數。</td>
+<td style="text-align: center;"></td>
+</tr>
+</tbody>
+</table>
+<h2>4. 步驟化詳細計算過程 (Step-by-Step Detailed Calculation)</h2>
+<h3>Step 1：全域反力與各跨段截面力</h3>
+<p>由對稱性，支承反力為：<br />
+$$R_A = R_E = \frac{100 \times 3}{2} = 150\text{ kN} (\uparrow)$$</p>
+<p>各跨段 (Panel) 之中點 (反曲點) 處，計算全域剪力 $V$ 與全域彎矩 $M$：</p>
+<ul>
+<li>
+<p><strong>Panel 1 (AB, FG)</strong>, $x=2\text{m}$：<br />
+  $V_1 = 150\text{ kN}$<br />
+  $M_1 = 150 \times 2 = 300\text{ kNm}$</p>
+</li>
+<li>
+<p><strong>Panel 2 (BC, GH)</strong>, $x=6\text{m}$：<br />
+  $V_2 = 150 - 100 = 50\text{ kN}$<br />
+  $M_2 = 150 \times 6 - 100 \times 2 = 700\text{ kNm}$</p>
+</li>
+<li>
+<p><strong>Panel 3 (CD, HI)</strong>, $x=10\text{m}$：<br />
+  $V_3 = -50\text{ kN}$<br />
+  $M_3 = 700\text{ kNm}$</p>
+</li>
+<li>
+<p><strong>Panel 4 (DE, IJ)</strong>, $x=14\text{m}$：<br />
+  $V_4 = -150\text{ kN}$<br />
+  $M_4 = 300\text{ kNm}$</p>
+</li>
+</ul>
+<h3>Step 2：弦桿軸力計算</h3>
+<p>在各跨段中點作垂直切面，反曲點彎矩為零，全域彎矩由上下弦桿之軸力偶抵抗：<br />
+$N_{top} \times h + M_i = 0 \Rightarrow N_{top} = -M_i / 6$ (壓為負)<br />
+$N_{bot} \times h - M_i = 0 \Rightarrow N_{bot} = M_i / 6$ (拉為正)</p>
+<ul>
+<li><strong>Panel 1</strong>: $N_{FG} = -50\text{ kN}$, $N_{AB} = 50\text{ kN}$</li>
+<li><strong>Panel 2</strong>: $N_{GH} = -116.67\text{ kN}$, $N_{BC} = 116.67\text{ kN}$</li>
+<li><strong>Panel 3</strong>: $N_{HI} = -116.67\text{ kN}$, $N_{CD} = 116.67\text{ kN}$</li>
+<li><strong>Panel 4</strong>: $N_{IJ} = -50\text{ kN}$, $N_{DE} = 50\text{ kN}$</li>
+</ul>
+<h3>Step 3：腹桿剪力與弦桿剪力計算</h3>
+<p>隔離頂部各節點（切斷點均在相鄰桿件中點）：</p>
+<ul>
+<li>
+<p><strong>節點 F</strong>：$\sum F_x = 0 \Rightarrow V_{FA} = -N_{FG} = 50\text{ kN}$<br />
+  $\sum M_F = 0 \Rightarrow V_{FG} \times 2 - V_{FA} \times 3 = 0 \Rightarrow V_{FG} = 75\text{ kN}$<br />
+  （由於 $V_1 = 150\text{ kN}$，可知 $V_{AB} = 150 - 75 = 75\text{ kN}$。上下弦桿平分剪力得證）</p>
+</li>
+<li>
+<p><strong>節點 G</strong>：$\sum F_x = 0 \Rightarrow V_{GB} = N_{FG} - N_{GH} = -50 - (-116.67) = 66.67\text{ kN}$<br />
+  $\sum M_G = 0 \Rightarrow V_{FG} \times 2 + V_{GH} \times 2 - V_{GB} \times 3 = 0 \Rightarrow 150 + 2V_{GH} - 200 = 0 \Rightarrow V_{GH} = 25\text{ kN}$<br />
+  （$V_{BC} = 50 - 25 = 25\text{ kN}$）</p>
+</li>
+<li>
+<p><strong>節點 H</strong>：$\sum F_x = 0 \Rightarrow V_{HC} = N_{GH} - N_{HI} = 0\text{ kN}$<br />
+  對稱性知 $V_{HI} = V_{CD} = -25\text{ kN}$</p>
+</li>
+<li>
+<p><strong>節點 I</strong>：$\sum F_x = 0 \Rightarrow V_{ID} = N_{HI} - N_{IJ} = -116.67 - (-50) = -66.67\text{ kN}$<br />
+  $V_{IJ} = V_{DE} = -75\text{ kN}$</p>
+</li>
+<li>
+<p><strong>節點 J</strong>：$\sum F_x = 0 \Rightarrow V_{JE} = N_{IJ} - 0 = -50\text{ kN}$</p>
+</li>
+</ul>
+<h3>Step 4：腹桿軸力計算</h3>
+<p>對頂部節點取 $\sum F_y = 0$（向下為負，各剪力定義為左/上部受力）：</p>
+<ul>
+<li><strong>節點 F</strong>：$N_{FA} = -V_{FG} = -75\text{ kN}$ (C)</li>
+<li><strong>節點 G</strong>：$N_{GB} = V_{FG} - V_{GH} = 75 - 25 = 50\text{ kN}$ (T)</li>
+<li><strong>節點 H</strong>：$N_{HC} = V_{GH} - V_{HI} = 25 - (-25) = 50\text{ kN}$ (T)</li>
+<li><strong>節點 I</strong>：$N_{ID} = V_{HI} - V_{IJ} = -25 - (-75) = 50\text{ kN}$ (T)</li>
+<li><strong>節點 J</strong>：$N_{JE} = V_{IJ} - 0 = -75\text{ kN}$ (C)</li>
+</ul>
+<h3>Step 5：各桿端彎矩 (繪圖依據)</h3>
+<p>各桿件皆為雙曲率，彎矩圖呈漏斗狀交於中點。端點最大彎矩 $M = V \times (L_{member}/2)$：</p>
+<ul>
+<li>
+<p><strong>上下弦桿 ($L/2 = 2\text{ m}$)</strong>：<br />
+  $M_{FG} = M_{AB} = 75 \times 2 = 150\text{ kNm}$<br />
+  $M_{GH} = M_{BC} = 25 \times 2 = 50\text{ kNm}$<br />
+  $M_{HI} = M_{CD} = 50\text{ kNm}$<br />
+  $M_{IJ} = M_{DE} = 150\text{ kNm}$</p>
+</li>
+<li>
+<p><strong>腹桿 ($h/2 = 3\text{ m}$)</strong>：<br />
+  $M_{FA} = M_{JE} = 50 \times 3 = 150\text{ kNm}$<br />
+  $M_{GB} = M_{ID} = 66.67 \times 3 = 200\text{ kNm}$<br />
+  $M_{HC} = 0\text{ kNm}$</p>
+</li>
+</ul>
+<p><strong>繪圖指示：</strong></p>
+<ul>
+<li><strong>軸力圖 (AFD)</strong>：弦桿依力學分析，上弦全壓、下弦全拉，且在中間跨段絕對值最大 ($116.67$)；腹桿中，外側受壓 ($-75$)，內部受拉 ($+50$)。</li>
+<li><strong>彎矩圖 (BMD)</strong>：各桿皆畫成 X 型或平行四邊形交錯，中點數值標示為 0，端點數值依 Step 5 標示。</li>
+</ul>
+<hr />
+<h2>5. 關鍵爭議點與進階探討 (Critical Issues &amp; Advanced Discussion)</h2>
+<ul>
+<li>
+<p><strong>反曲點假設的精確度：</strong><br />
+  真實結構中，只有在所有弦桿勁度相等、所有腹桿勁度相等，且各跨段均勻對稱時，反曲點才會精確落於各桿中點。本題為典型的「門架法 (Portal Method)」應用，出題者直接指示假設反曲點於中點，是為了將高次靜不定結構簡化成靜定問題，考驗學生的靜力平衡操作能力。</p>
+</li>
+<li>
+<p><strong>剛接與鉸接的差異：</strong><br />
+  范倫迪爾桁架無斜撐桿件，完全依賴節點的剛接（提供彎矩抵抗能力）來承受剪力。這也是為何它的剪力與彎矩分佈會呈現類似剛架的特徵，與一般桁架僅受軸力截然不同。</p>
+</li>
+</ul></main>
+<footer>來源：raw/solutions/SA-2019-2/SA-2019-2.md（知識庫解題內容唯一正本；本頁僅為渲染顯示）</footer>
+
+<script>
+/* 跟隨來源單元：若由 unit-/lecture-SA-Un-m.html（或舊的 study-/formula-given-）點進來，
+   兩顆按鈕改指向「來源那個單元」。靜態 href 保底，無 JS 或無 referrer 時仍可用。 */
+(function(){
+  var NAMES={"SA-U1-2": "靜定結構之分析", "SA-U1-3": "靜定及靜不定結構影響線", "SA-U2-1": "靜不定結構最小功法", "SA-U2-3": "靜不定結構之傾角變位法", "SA-U2-4": "靜不定結構之矩陣分析法"};
+  var m=(document.referrer||'').match(/\/(?:unit|study|lecture|formula-given)-(SA-U\d+-\d+)\.html/);
+  if(!m||!NAMES[m[1]])return;
+  var u=m[1], s=u.slice(3), box=document.querySelector('.hbtns');
+  if(!box)return;
+  box.innerHTML=
+    '<a class="b-study" href="../unit-'+u+'.html">\u{1F9ED} '+s+' \u55AE\u5143\u7E3D\u89BD</a>'+
+    '<a class="b-lect" href="../lecture-'+u+'.html">\u{1F4DA} '+s+' '+NAMES[u]+' \u8B1B\u7FA9</a>';
+  var n=document.querySelector('.nomat'); if(n)n.remove();
+})();
+</script>
+</body></html>

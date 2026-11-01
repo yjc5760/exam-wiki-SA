@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="zh-Hant"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SA-2008-1 — 題目解析</title>
+<link rel="stylesheet" href="../assets/katex/katex.min.css">
+<script defer src="../assets/katex/katex.min.js"></script>
+<script defer src="../assets/katex/auto-render.min.js"
+  onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},
+  {left:'$',right:'$',display:false},{left:'\\(',right:'\\)',display:false}],throwOnError:false});"></script>
+<style>
+:root{--ac:#1565c0;--bg:#f7f9fb;--card:#fff;--ink:#263238;--mut:#607d8b;--bd:#dfe6ea}
+*{box-sizing:border-box}
+body{margin:0;font-family:"Microsoft JhengHei","Noto Sans TC",-apple-system,sans-serif;
+  background:var(--bg);color:var(--ink);line-height:1.75;font-size:15.5px}
+header{background:linear-gradient(135deg,#0d47a1,#1976d2 60%,#42a5f5);color:#fff;padding:22px 26px}
+header h1{margin:0;font-size:1.15em}
+header .back{display:inline-block;margin-top:10px;font-size:.82em;color:#fff;background:rgba(255,255,255,.18);
+  padding:4px 12px;border-radius:14px;text-decoration:none}
+main{max-width:880px;margin:0 auto;padding:26px 22px 70px}
+h1,h2,h3{color:#0d47a1} h2{font-size:1.2em;border-left:6px solid var(--ac);padding-left:12px;margin:34px 0 14px}
+table{width:100%;border-collapse:collapse;margin:14px 0;font-size:.92em;background:#fff}
+th,td{border:1px solid var(--bd);padding:7px 10px;text-align:left;vertical-align:top}
+th{background:#eceff1;font-weight:600} tbody tr:nth-child(even){background:#fafcfd}
+code{background:#eceff1;padding:1px 5px;border-radius:4px;font-size:.92em}
+img{max-width:100%;display:block;margin:14px auto;border:1px solid var(--bd);border-radius:8px}
+.katex-display{margin:12px 0!important;overflow-x:auto;overflow-y:hidden}
+footer{text-align:center;color:var(--mut);font-size:.8em;padding:22px;border-top:1px solid var(--bd)}
+
+header h1{color:#fff!important;font-size:1.25em;margin:0;letter-spacing:.5px}
+header .meta2{margin:8px 0 0;font-size:.84em;opacity:.93;line-height:1.6}
+header .meta2 b{background:rgba(255,255,255,.2);border-radius:4px;padding:1px 7px;font-weight:600}
+header .hbtns{display:flex;flex-wrap:wrap;gap:10px;margin-top:14px}
+header .hbtns a{font-size:.85em;text-decoration:none;padding:7px 17px;border-radius:22px;
+  font-weight:700;white-space:nowrap;line-height:1.4}
+header .b-study{background:#fff;color:#1565c0}
+header .b-lect{background:#6a1b9a;color:#fff}
+header .b-fg{background:#c62828;color:#fff}
+header .hbtns a:hover{filter:brightness(1.08)}
+header .nomat{margin-top:12px;font-size:.8em;opacity:.85}
+</style></head><body>
+<header>
+<h1>SA-2008-1　靜不定結構諧合變位</h1>
+<p class="meta2">主分類 <b>SA-U2-2</b> 靜不定結構諧合變位 ｜ 2008 年（民國 97） ｜ </p>
+<div class="hbtns"></div><p class="nomat">本題主分類 SA-U2-2 目前尚無教材，故不提供教材按鈕。</p>
+</header>
+<main><hr />
+<p>主分類: "SA-U2-2"<br />
+副分類: []<br />
+難易度: 3</p>
+<hr />
+<h1>97年結構工程技師高考 結構學 第一題</h1>
+<h2>1. 原始題目重述 (Problem Restatement)</h2>
+<p>如圖所示桁架 (truss)，A、D 兩點為滾支承 (roller)，E 點為鉸接 (hinge)。若每根桿件的彈性模數 $E$ 與斷面積 $A$ 為常數，當 B 點有一垂直載重 $10\text{ kN}$ 時，計算支承之反力及各桿件內力。(25 分)</p>
+<p><img alt="SA-2008-1 題目附圖：包含A、D滾支承與E鉸接的一度靜不定桁架" src="../../raw/solutions/SA-2008-1/SA-2008-1-fig-1.png" /></p>
+<p><em>圖說：(待補充說明)</em></p>
+<p><em>(註：節點 A 為原點 (0,0)，C(10,0)，E(20,0)。B(10,5)，D(20,10)。A 為水平滾支承，E 為鉸支承，D 為靠於垂直牆面之水平滾支承)</em></p>
+<h2>2. 考題核心精神與出題者意圖 (Core Concepts &amp; Examiner's Intent)</h2>
+<p>本題為經典的<strong>一度靜不定桁架 (Statically Indeterminate Truss)</strong> 分析。出題者的核心意圖在於：</p>
+<ol>
+<li><strong>支承條件與靜不定度判別</strong>：要求考生正確辨識支承條件。A 為水平滾支承 (1 個反力)，E 為鉸支承 (2 個反力)，D 為靠在垂直牆面上的滾支承 (限制水平位移，提供 1 個水平反力)。系統總反力數為 4，可用平衡方程式為 3，故為<strong>一度外靜不定結構</strong>。</li>
+<li><strong>單位力法 (Unit Force Method) / 柔度法</strong>：測驗考生以單位力法解靜不定桁架的標準作業流程。包含選定贅力 (Redundant force)、計算基本結構 (Primary structure) 之桿件內力 $F_0$、施加單位贅力計算內力 $u$，以及利用變形相容條件 $\Delta_{10} + X f_{11} = 0$ 求出贅力。</li>
+<li><strong>無載桿件 (Zero-Force Members) 的觀察</strong>：在基本結構狀態下，有部分構件受力為零（例如外載系統中的 BD、DE 桿，以及單位力系統中的 BE、BC 桿），能精準抓出零力桿可大幅減輕計算負擔。</li>
+</ol>
+<h2>3. 解題戰略地圖與陷阱分析 (Strategic Roadmap &amp; Trap Analysis)</h2>
+<p><strong>解題戰略：</strong></p>
+<ol>
+<li><strong>第一步：靜不定度分析與贅力選定</strong>：總反力 $r=4$，外靜不定度 $= 4-3=1$。桁架本身組成（節點 $j=5$，桿件 $m=7$），$m+r-2j = 7+4-10=1$。選定 D 點之水平支承反力 $D_x$ 為贅力 $X$（假設向右為正）。</li>
+<li><strong>第二步：建立基本結構 (Primary Structure)</strong>：移除 D 點水平支承限制，使結構降階為以 A 滾支承、E 鉸支承為基礎的靜定桁架。</li>
+<li><strong>第三步：計算外載內力 $F_0$</strong>：在基本結構上施加 B 點垂直載重 $10\text{ kN}$，求出各桿件內力 $F_0$。</li>
+<li><strong>第四步：計算單位力內力 $u$</strong>：在基本結構之 D 點施加向右之單位力 $X=1$，求出各桿件內力 $u$。</li>
+<li><strong>第五步：變形相容條件</strong>：利用 $\Delta_{10} = \sum \frac{F_0 u L}{EA}$ 與 $f_{11} = \sum \frac{u^2 L}{EA}$，由變形相容方程式 $X = -\frac{\Delta_{10}}{f_{11}}$ 解出贅力 $D_x$。</li>
+<li><strong>第六步：疊加求最終反力與內力</strong>：利用 $F = F_0 + X \cdot u$ 求得所有桿件真實內力，並以靜力平衡求出最終所有支承反力。</li>
+</ol>
+<p><strong>陷阱分析：</strong></p>
+<ul>
+<li><strong>陷阱 1：D 點支承判斷錯誤</strong>。圖中 D 點的滾支承是靠在垂直牆面上，因此提供的是<strong>水平反力</strong> $D_x$。若誤認為垂直反力，將導致計算全盤皆錯。</li>
+<li><strong>陷阱 2：斜桿長度與分力比例</strong>。斜桿 AB、BE、BD 的水平投影與垂直投影比皆為 $2:1$，長度皆為 $5\sqrt{5}\text{ m}$。內力在水平與垂直方向的分解常因疏忽漏掉比例係數而算錯。</li>
+<li><strong>陷阱 3：計算量大導致數值錯誤</strong>。本題的贅力 $X$ 計算結果帶有無理數 $\sqrt{5}$，在未得到最終結果前，建議保留根號運算，避免過早化為小數而累積截斷誤差。</li>
+</ul>
+<h2>3.5 變數層次分析 (Variable Hierarchy Analysis)</h2>
+<h3>最終目標</h3>
+<p>求出支承反力 $A_y, D_x, E_x, E_y$ 以及 7 根桿件的最終內力 $F$。</p>
+<h3>本題關鍵公式（依計算順序）</h3>
+<ul>
+<li>桿件長度：$L = \sqrt{\Delta x^2 + \Delta y^2}$</li>
+<li>虛功法計算位移：$\Delta = \sum \frac{F u L}{EA}$</li>
+<li>變形相容方程式：$\Delta_{10} + X \cdot f_{11} = 0 \implies X = -\frac{\sum F_0 u L}{\sum u^2 L}$</li>
+<li>最終內力疊加：$F = F_0 + X \cdot u$</li>
+</ul>
+<h3>L1：題目直接給定</h3>
+<table>
+<thead>
+<tr>
+<th>符號</th>
+<th>數值</th>
+<th>說明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>$P_B$</td>
+<td>$10\text{ kN}$ (向下)</td>
+<td>B 點外加垂直載重</td>
+</tr>
+<tr>
+<td>$EA$</td>
+<td>常數</td>
+<td>每根桿件之軸向剛度</td>
+</tr>
+</tbody>
+</table>
+<h3>L2：需知識點推導</h3>
+<p><strong>一、幾何與基本結構</strong><br />
+| 符號 | 公式／來源 | 卡關? |<br />
+|---|---|---|<br />
+| $L_{AC}, L_{CE}, L_{DE}$ | $10\text{ m}$ | 水平或垂直直桿 |<br />
+| $L_{BC}$ | $5\text{ m}$ | 垂直中柱 |<br />
+| $L_{AB}, L_{BE}, L_{BD}$ | $\sqrt{10^2+5^2} = 5\sqrt{5}\text{ m}$ | 傾斜桿件 |</p>
+<p><strong>二、內力狀態 ($F_0$ 與 $u$)</strong><br />
+| 符號 | 公式／來源 | 卡關? |<br />
+|---|---|---|<br />
+| $F_0$ | 僅受外載 $10\text{ kN}$ 作用於基本結構時的桿件內力 | |<br />
+| $u$ | 僅受贅力 $X=1$ 作用於基本結構時的桿件內力 | |<br />
+| $X$ (即 $D_x$) | $-\frac{\sum F_0 u L}{\sum u^2 L}$ | |</p>
+<h2>4. 步驟化詳細計算過程 (Step-by-Step Detailed Calculation)</h2>
+<h3>步驟 1：建立基本結構與幾何性質</h3>
+<p>移除 D 點水平支承（設 $D_x$ 為贅力 $X$，向右為正），成為 A 滾支承、E 鉸支承的靜定桁架。<br />
+各桿件長度 $L$ 如下：</p>
+<ul>
+<li>水平桿：$L_{AC} = 10\text{ m}$，$L_{CE} = 10\text{ m}$</li>
+<li>垂直桿：$L_{BC} = 5\text{ m}$，$L_{DE} = 10\text{ m}$</li>
+<li>斜桿：$L_{AB} = L_{BE} = L_{BD} = \sqrt{10^2+5^2} = 5\sqrt{5}\text{ m}$<br />
+斜桿的斜率比例為 水平：垂直：斜邊 = $2 : 1 : \sqrt{5}$。</li>
+</ul>
+<h3>步驟 2：計算外載內力 $F_0$ (Primary Structure with $10\text{ kN}$)</h3>
+<p>外載為 B 點向下 $10\text{ kN}$，贅力 $X=0$。</p>
+<ul>
+<li>
+<p><strong>整體平衡</strong>：<br />
+  $\Sigma M_E = 0 \implies -A_y \times 20 + 10 \times 10 = 0 \implies A_y = 5\text{ kN} (\uparrow)$<br />
+  $\Sigma F_y = 0 \implies 5 - 10 + E_y = 0 \implies E_y = 5\text{ kN} (\uparrow)$<br />
+  $\Sigma F_x = 0 \implies E_x = 0$</p>
+</li>
+<li>
+<p><strong>節點 A</strong>：<br />
+  $\Sigma F_y = 0 \implies F_{AB} \times \frac{1}{\sqrt{5}} + 5 = 0 \implies F_{AB} = -5\sqrt{5}\text{ kN}$<br />
+  $\Sigma F_x = 0 \implies F_{AC} + F_{AB} \times \frac{2}{\sqrt{5}} = 0 \implies F_{AC} = -(-5\sqrt{5}) \times \frac{2}{\sqrt{5}} = 10\text{ kN}$</p>
+</li>
+<li>
+<p><strong>節點 C</strong>：<br />
+  無水平外力，$F_{CE} = F_{AC} = 10\text{ kN}$。<br />
+  無垂直外力，$F_{BC} = 0$。</p>
+</li>
+<li>
+<p><strong>節點 E</strong>：<br />
+  $\Sigma F_x = 0 \implies -F_{CE} - F_{BE} \times \frac{2}{\sqrt{5}} = 0 \implies -10 - F_{BE} \times \frac{2}{\sqrt{5}} = 0 \implies F_{BE} = -5\sqrt{5}\text{ kN}$<br />
+  $\Sigma F_y = 0 \implies E_y + F_{DE} + F_{BE} \times \frac{1}{\sqrt{5}} = 0 \implies 5 + F_{DE} - 5 = 0 \implies F_{DE} = 0$</p>
+</li>
+<li>
+<p><strong>節點 D</strong>：<br />
+  外力與支承皆無，可判斷 $F_{BD} = 0$。</p>
+</li>
+</ul>
+<h3>步驟 3：計算單位虛力內力 $u$ (Primary Structure with $X=1$)</h3>
+<p>於 D 點施加向右 $X=1$，無其他外載。</p>
+<ul>
+<li>
+<p><strong>整體平衡</strong>：<br />
+  $\Sigma M_E = 0 \implies -A_y \times 20 + 1 \times 10 = 0 \implies A_y = 0.5 (\uparrow)$<br />
+  $\Sigma F_y = 0 \implies A_y + E_y = 0 \implies E_y = -0.5 (\downarrow)$<br />
+  $\Sigma F_x = 0 \implies 1 + E_x = 0 \implies E_x = -1 (\leftarrow)$</p>
+</li>
+<li>
+<p><strong>節點 A</strong>：<br />
+  $\Sigma F_y = 0 \implies F_{AB} \times \frac{1}{\sqrt{5}} + 0.5 = 0 \implies F_{AB} = -0.5\sqrt{5}$<br />
+  $\Sigma F_x = 0 \implies F_{AC} + F_{AB} \times \frac{2}{\sqrt{5}} = 0 \implies F_{AC} = 1$</p>
+</li>
+<li>
+<p><strong>節點 C</strong>：<br />
+  $F_{CE} = F_{AC} = 1$，$F_{BC} = 0$。</p>
+</li>
+<li>
+<p><strong>節點 D</strong>：<br />
+  $\Sigma F_x = 0 \implies 1 - F_{BD} \times \frac{2}{\sqrt{5}} = 0 \implies F_{BD} = \frac{\sqrt{5}}{2}$<br />
+  $\Sigma F_y = 0 \implies -F_{DE} - F_{BD} \times \frac{1}{\sqrt{5}} = 0 \implies F_{DE} = -0.5$</p>
+</li>
+<li>
+<p><strong>節點 E</strong>：<br />
+  $\Sigma F_x = 0 \implies -F_{CE} - F_{BE} \times \frac{2}{\sqrt{5}} + E_x = 0 \implies -1 - F_{BE} \times \frac{2}{\sqrt{5}} - 1 = 0 \implies F_{BE} = -\sqrt{5}$ (此為一開始的符號推導錯誤，正解為0，見下方修正)</p>
+</li>
+</ul>
+<p><em>(正確的 $u$ 內力)</em>：<br />
+$A_y = -0.5, E_y = 0.5, E_x = -1$</p>
+<ul>
+<li>$u_{AB} = \frac{\sqrt{5}}{2}$</li>
+<li>$u_{AC} = -1$</li>
+<li>$u_{CE} = -1$</li>
+<li>$u_{BE} = 0$</li>
+<li>$u_{BD} = \frac{\sqrt{5}}{2}$</li>
+<li>$u_{DE} = -0.5$</li>
+</ul>
+<h3>步驟 4：變形相容條件與求贅力 $X$</h3>
+<p>列表計算 $\Delta_{10} = \sum F_0 u L$ 與 $f_{11} = \sum u^2 L$（提出 $EA$）：</p>
+<table>
+<thead>
+<tr>
+<th>桿件</th>
+<th>$L$</th>
+<th>$F_0$</th>
+<th>$u$</th>
+<th>$F_0 u L$</th>
+<th>$u^2 L$</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>AC</td>
+<td>$10$</td>
+<td>$10$</td>
+<td>$-1$</td>
+<td>$-100$</td>
+<td>$10$</td>
+</tr>
+<tr>
+<td>CE</td>
+<td>$10$</td>
+<td>$10$</td>
+<td>$-1$</td>
+<td>$-100$</td>
+<td>$10$</td>
+</tr>
+<tr>
+<td>AB</td>
+<td>$5\sqrt{5}$</td>
+<td>$-5\sqrt{5}$</td>
+<td>$0.5\sqrt{5}$</td>
+<td>$-62.5\sqrt{5}$</td>
+<td>$6.25\sqrt{5}$</td>
+</tr>
+<tr>
+<td>BC</td>
+<td>$5$</td>
+<td>$0$</td>
+<td>$0$</td>
+<td>$0$</td>
+<td>$0$</td>
+</tr>
+<tr>
+<td>BE</td>
+<td>$5\sqrt{5}$</td>
+<td>$-5\sqrt{5}$</td>
+<td>$0$</td>
+<td>$0$</td>
+<td>$0$</td>
+</tr>
+<tr>
+<td>BD</td>
+<td>$5\sqrt{5}$</td>
+<td>$0$</td>
+<td>$0.5\sqrt{5}$</td>
+<td>$0$</td>
+<td>$6.25\sqrt{5}$</td>
+</tr>
+<tr>
+<td>DE</td>
+<td>$10$</td>
+<td>$0$</td>
+<td>$-0.5$</td>
+<td>$0$</td>
+<td>$2.5$</td>
+</tr>
+<tr>
+<td><strong>Sum</strong></td>
+<td></td>
+<td></td>
+<td></td>
+<td>$\Delta_{10} = -200 - 62.5\sqrt{5}$</td>
+<td>$f_{11} = 22.5 + 12.5\sqrt{5}$</td>
+</tr>
+</tbody>
+</table>
+<p>代入變形相容方程式 $X = -\frac{\Delta_{10}}{f_{11}}$：<br />
+$$ X = -\frac{-200 - 62.5\sqrt{5}}{22.5 + 12.5\sqrt{5}} = \frac{400 + 125\sqrt{5}}{45 + 25\sqrt{5}} = \frac{80 + 25\sqrt{5}}{9 + 5\sqrt{5}} $$<br />
+上下同乘 $(5\sqrt{5} - 9)$ 有理化：<br />
+$$ X = \frac{(25\sqrt{5} + 80)(5\sqrt{5} - 9)}{125 - 81} = \frac{625 - 225\sqrt{5} + 400\sqrt{5} - 720}{44} = \frac{175\sqrt{5} - 95}{44} \approx 6.734\text{ kN} $$<br />
+即 $D_x = \frac{175\sqrt{5} - 95}{44} \text{ kN} (\rightarrow)$</p>
+<h3>步驟 5：求最終支承反力與各桿件內力</h3>
+<p>最終內力疊加公式 $F = F_0 + X \cdot u$：</p>
+<p><strong>支承反力：</strong></p>
+<ul>
+<li>$D_x = X = \mathbf{\frac{175\sqrt{5} - 95}{44} \approx 6.734\text{ kN}} (\rightarrow)$</li>
+<li>$A_y = 5 - 0.5 X \approx \mathbf{1.633\text{ kN}} (\uparrow)$</li>
+<li>$E_y = 5 + 0.5 X \approx \mathbf{8.367\text{ kN}} (\uparrow)$</li>
+<li>$E_x = 0 - 1 \cdot X = -X \approx \mathbf{6.734\text{ kN}} (\leftarrow)$</li>
+</ul>
+<p><strong>桿件內力 (正值為拉力，負值為壓力)：</strong></p>
+<ul>
+<li>$F_{AC} = 10 - X \approx \mathbf{3.266\text{ kN}}$ (拉力)</li>
+<li>$F_{CE} = 10 - X \approx \mathbf{3.266\text{ kN}}$ (拉力)</li>
+<li>$F_{AB} = -5\sqrt{5} + 0.5\sqrt{5} X \approx \mathbf{-3.651\text{ kN}}$ (壓力)</li>
+<li>$F_{BC} = 0 + 0 = \mathbf{0}$</li>
+<li>$F_{BE} = -5\sqrt{5} + 0 \cdot X = \mathbf{-5\sqrt{5} \approx -11.180\text{ kN}}$ (壓力)</li>
+<li>$F_{BD} = 0 + 0.5\sqrt{5} X \approx \mathbf{7.529\text{ kN}}$ (拉力)</li>
+<li>$F_{DE} = 0 - 0.5 X \approx \mathbf{-3.367\text{ kN}}$ (壓力)</li>
+</ul>
+<h2>5. 關鍵爭議點與進階探討 (Critical Issues &amp; Advanced Discussion)</h2>
+<ul>
+<li><strong>冗餘度選擇的影響</strong>：本題選定 $D_x$ 為贅力，由於 D 點位於結構邊界上，可使得單位力 $u$ 的計算最為直觀。若選取桁架內部構件（如斜桿）為贅力，基本結構將變為內部包含四邊形面板的結構，計算會複雜許多。</li>
+<li><strong>單位力狀態的防呆檢查</strong>：在步驟 3 計算 $u$ 時，極易發生正負號失誤（如支承反力方向假設顛倒），導致整個 $f_{11}$ 偏離。建議在求得 $u$ 內力後，務必使用整體力矩平衡（例如對 A 點取力矩）進行二次確認。</li>
+<li><strong>無載桿（零桿）的物理意義</strong>：$BC$ 桿在此載重下為絕對的零桿（不受外載且未做為贅力受力點），這在實務上稱為<strong>穩定桿</strong>。它的存在雖然對承擔 $10\text{ kN}$ 的重力沒有直接貢獻，但能防止長柱屈曲並維持桁架整體幾何形狀穩定。</li>
+</ul></main>
+<footer>來源：raw/solutions/SA-2008-1/SA-2008-1.md（知識庫解題內容唯一正本；本頁僅為渲染顯示）</footer>
+
+<script>
+/* 跟隨來源單元：若由 unit-/lecture-SA-Un-m.html（或舊的 study-/formula-given-）點進來，
+   兩顆按鈕改指向「來源那個單元」。靜態 href 保底，無 JS 或無 referrer 時仍可用。 */
+(function(){
+  var NAMES={"SA-U1-2": "靜定結構之分析", "SA-U1-3": "靜定及靜不定結構影響線", "SA-U2-1": "靜不定結構最小功法", "SA-U2-3": "靜不定結構之傾角變位法", "SA-U2-4": "靜不定結構之矩陣分析法"};
+  var m=(document.referrer||'').match(/\/(?:unit|study|lecture|formula-given)-(SA-U\d+-\d+)\.html/);
+  if(!m||!NAMES[m[1]])return;
+  var u=m[1], s=u.slice(3), box=document.querySelector('.hbtns');
+  if(!box)return;
+  box.innerHTML=
+    '<a class="b-study" href="../unit-'+u+'.html">\u{1F9ED} '+s+' \u55AE\u5143\u7E3D\u89BD</a>'+
+    '<a class="b-lect" href="../lecture-'+u+'.html">\u{1F4DA} '+s+' '+NAMES[u]+' \u8B1B\u7FA9</a>';
+  var n=document.querySelector('.nomat'); if(n)n.remove();
+})();
+</script>
+</body></html>

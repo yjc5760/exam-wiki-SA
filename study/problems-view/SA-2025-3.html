@@ -290,19 +290,19 @@ Step 1：定義廣義傾角變位公式的形式<br />
 <p><strong>Step A-1：建立原樑力系</strong></p>
 <p>設 A 端施加彎矩 $M_1$（待求），B 端反力彎矩 $M_2$（待求）。</p>
 <p>桿件無外加橫向載重，彎矩線性分布：</p>
-<p>$$M(x) = M_1!\left(1 - \frac{x}{L}\right) + M_2!\left(\frac{x}{L}\right)$$</p>
+<p>$$M(x) = M_1\!\left(1 - \frac{x}{L}\right) + M_2\!\left(\frac{x}{L}\right)$$</p>
 <p><strong>Step A-2：建立共軛樑</strong></p>
 <p>共軛樑以 $M(x)/EI(x)$ 為等效荷載（曲率圖），兩端的共軛樑支承條件 = 原樑端部旋轉角。</p>
 <p>對原樑端部條件 $(\theta_A = 1,\;\theta_B = 0)$，共軛樑的「反力」應滿足：</p>
-<p>$$\bar{R}_A^<em> = \theta_A = 1, \qquad \bar{R}_B^</em> = \theta_B = 0$$</p>
+<p>$$\bar{R}_A^* = \theta_A = 1, \qquad \bar{R}_B^* = \theta_B = 0$$</p>
 <p>（共軛樑中，支承反力 = 原樑端部旋轉角。）</p>
 <p><strong>Step A-3：共軛樑平衡</strong></p>
 <p>設共軛樑的等效荷載為 $q^*(x) = M(x)/EI(x)$，則共軛樑的平衡方程：</p>
-<p>$$\bar{R}_A^<em> + \bar{R}_B^</em> = \int_0^L \frac{M(x)}{EI(x)}\,dx \implies 1 + 0 = \int_0^L \frac{M(x)}{EI(x)}\,dx$$</p>
+<p>$$\bar{R}_A^* + \bar{R}_B^* = \int_0^L \frac{M(x)}{EI(x)}\,dx \implies 1 + 0 = \int_0^L \frac{M(x)}{EI(x)}\,dx$$</p>
 <p>$$\bar{R}_B^* \cdot L = \int_0^L \frac{M(x)}{EI(x)} \cdot x\,dx \implies 0 = \int_0^L \frac{M(x)}{EI(x)}\,x\,dx$$</p>
 <p><strong>定義柔度積分（以 $u = x/L$ 為積分變數）：</strong></p>
-<p>$$f_{AA} \equiv L!\int_0^1 \frac{(1-u)^2}{EI(u)}\,du, \qquad f_{BB} \equiv L!\int_0^1 \frac{u^2}{EI(u)}\,du$$</p>
-<p>$$f_{AB} \equiv -L!\int_0^1 \frac{u(1-u)}{EI(u)}\,du \quad (\text{注意：}f_{AB} &lt; 0)$$</p>
+<p>$$f_{AA} \equiv L\!\int_0^1 \frac{(1-u)^2}{EI(u)}\,du, \qquad f_{BB} \equiv L\!\int_0^1 \frac{u^2}{EI(u)}\,du$$</p>
+<p>$$f_{AB} \equiv -L\!\int_0^1 \frac{u(1-u)}{EI(u)}\,du \quad (\text{注意：}f_{AB} &lt; 0)$$</p>
 <p>代入共軛樑方程後，可解出：</p>
 <p>$$M_1 = k_{AA}, \qquad M_2 = k_{BA} = C_{AB}\cdot k_{AA}$$</p>
 <p>其中勁度係數：</p>
@@ -348,18 +348,18 @@ $$k_{A\psi} = -(4EI/L + 2EI/L) = -6EI/L$$</p>
 <p>$$\Delta_A^{(P)} = \int_0^{L} \frac{M_0(x)}{EI(x)}\bar{m}_A(x)\,dx, \qquad \Delta_B^{(P)} = \int_0^{L} \frac{M_0(x)}{EI(x)}\bar{m}_B(x)\,dx$$</p>
 <p>注意：$\bar{m}_A(x) = -(1-x/L)$，$\bar{m}_B(x) = -(x/L)$（單位彎矩效應）</p>
 <p><strong>Step D-4：分段積分（P 在 x = L/2）</strong></p>
-<p>$$\Delta_A^{(P)} = -!\int_0^{L/2} \frac{(Px/2)(1-x/L)}{EI(x)}\,dx - !\int_{L/2}^{L} \frac{P(L-x)/2\cdot(1-x/L)}{EI(x)}\,dx$$</p>
-<p>$$\Delta_B^{(P)} = -!\int_0^{L/2} \frac{(Px/2)(x/L)}{EI(x)}\,dx - !\int_{L/2}^{L} \frac{P(L-x)/2\cdot(x/L)}{EI(x)}\,dx$$</p>
+<p>$$\Delta_A^{(P)} = -\!\int_0^{L/2} \frac{(Px/2)(1-x/L)}{EI(x)}\,dx - \!\int_{L/2}^{L} \frac{P(L-x)/2\cdot(1-x/L)}{EI(x)}\,dx$$</p>
+<p>$$\Delta_B^{(P)} = -\!\int_0^{L/2} \frac{(Px/2)(x/L)}{EI(x)}\,dx - \!\int_{L/2}^{L} \frac{P(L-x)/2\cdot(x/L)}{EI(x)}\,dx$$</p>
 <p>對均勻梁（$EI = const$）驗核：</p>
-<p>$$\Delta_A^{(P)} = -\frac{P}{2EI}!\int_0^{L/2}! x(1-x/L)\,dx - \frac{P}{2EI}!\int_{L/2}^{L}!(L-x)(1-x/L)/L\,dx$$</p>
+<p>$$\Delta_A^{(P)} = -\frac{P}{2EI}\!\int_0^{L/2}\! x(1-x/L)\,dx - \frac{P}{2EI}\!\int_{L/2}^{L}\!(L-x)(1-x/L)/L\,dx$$</p>
 <p>計算：<br />
-$$= -\frac{P}{2EI}\left[\frac{x^2}{2}-\frac{x^3}{3L}\right]<em>0^{L/2} - \frac{P}{2EIL}!\int</em>{L/2}^{L}!(L-x)^2\,dx$$</p>
+$$= -\frac{P}{2EI}\left[\frac{x^2}{2}-\frac{x^3}{3L}\right]_0^{L/2} - \frac{P}{2EIL}\!\int_{L/2}^{L}\!(L-x)^2\,dx$$</p>
 <p>$$= -\frac{P}{2EI}\left(\frac{L^2}{8}-\frac{L^2}{24}\right) - \frac{P}{2EIL}\cdot\frac{L^3}{24} = -\frac{PL^2}{2EI}\cdot\frac{2}{24} - \frac{PL^2}{48EI} = -\frac{PL^2}{24EI} - \frac{PL^2}{48EI} = -\frac{PL^2}{16EI}$$</p>
 <p>（因為梁與荷載均對稱，$\Delta_A^{(P)} = \Delta_B^{(P)} = -PL^2/(16EI)$）</p>
 <p><strong>Step D-5：解固端彎矩（均勻梁驗核）</strong></p>
-<p>$$\begin{pmatrix}f_{AA} &amp; f_{AB}\ f_{AB} &amp; f_{BB}\end{pmatrix}\begin{pmatrix}M_{F,AB}\M_{F,BA}\end{pmatrix} = \begin{pmatrix}PL^2/(16EI)\PL^2/(16EI)\end{pmatrix}$$</p>
+<p>$$\begin{pmatrix}f_{AA} &amp; f_{AB}\\ f_{AB} &amp; f_{BB}\end{pmatrix}\begin{pmatrix}M_{F,AB}\\M_{F,BA}\end{pmatrix} = \begin{pmatrix}PL^2/(16EI)\\PL^2/(16EI)\end{pmatrix}$$</p>
 <p>對均勻梁：</p>
-<p>$$\begin{pmatrix}L/3EI &amp; -L/6EI\ -L/6EI &amp; L/3EI\end{pmatrix}\begin{pmatrix}M_{F,AB}\M_{F,BA}\end{pmatrix} = \begin{pmatrix}PL^2/16EI\PL^2/16EI\end{pmatrix}$$</p>
+<p>$$\begin{pmatrix}L/3EI &amp; -L/6EI\\ -L/6EI &amp; L/3EI\end{pmatrix}\begin{pmatrix}M_{F,AB}\\M_{F,BA}\end{pmatrix} = \begin{pmatrix}PL^2/16EI\\PL^2/16EI\end{pmatrix}$$</p>
 <p>因為右側相等，由對稱性 $M_{F,AB} = M_{F,BA} = M_F$：</p>
 <p>$$\left(\frac{L}{3EI} - \frac{L}{6EI}\right)M_F = \frac{PL^2}{16EI} \implies \frac{L}{6EI}\cdot M_F = \frac{PL^2}{16EI} \implies M_F = \frac{PL}{8}\;\checkmark$$</p>
 <hr />
@@ -371,10 +371,10 @@ $$= -\frac{P}{2EI}\left[\frac{x^2}{2}-\frac{x^3}{3L}\right]<em>0^{L/2} - \frac{P
 <p>$$k_{AA} = \frac{f_{BB}}{D},\quad k_{BB} = \frac{f_{AA}}{D},\quad k_{AB} = k_{BA} = \frac{-f_{AB}}{D}$$</p>
 <p>$$D \equiv f_{AA}f_{BB} - f_{AB}^2 \quad (\text{柔度矩陣行列式})$$</p>
 <p>柔度係數（需依圖示 EI 分布積分）：</p>
-<p>$$f_{AA} = L!\int_0^1 \frac{(1-u)^2}{EI(u)}\,du,\quad f_{BB} = L!\int_0^1 \frac{u^2}{EI(u)}\,du,\quad f_{AB} = -L!\int_0^1 \frac{u(1-u)}{EI(u)}\,du$$</p>
+<p>$$f_{AA} = L\!\int_0^1 \frac{(1-u)^2}{EI(u)}\,du,\quad f_{BB} = L\!\int_0^1 \frac{u^2}{EI(u)}\,du,\quad f_{AB} = -L\!\int_0^1 \frac{u(1-u)}{EI(u)}\,du$$</p>
 <p>固端彎矩（兩端固定，P 在跨中）：</p>
-<p>$$\begin{pmatrix}M_{F,AB}\M_{F,BA}\end{pmatrix} = \frac{1}{D}\begin{pmatrix}f_{BB} &amp; -f_{AB}\-f_{AB} &amp; f_{AA}\end{pmatrix}\begin{pmatrix}-\Delta_A^{(P)}\-\Delta_B^{(P)}\end{pmatrix}$$</p>
-<p>$$\Delta_A^{(P)} = -L!\int_0^1 \frac{M_0(u)(1-u)}{EI(u)}\,du,\quad \Delta_B^{(P)} = -L!\int_0^1 \frac{M_0(u)\cdot u}{EI(u)}\,du$$</p>
+<p>$$\begin{pmatrix}M_{F,AB}\\M_{F,BA}\end{pmatrix} = \frac{1}{D}\begin{pmatrix}f_{BB} &amp; -f_{AB}\\-f_{AB} &amp; f_{AA}\end{pmatrix}\begin{pmatrix}-\Delta_A^{(P)}\\-\Delta_B^{(P)}\end{pmatrix}$$</p>
+<p>$$\Delta_A^{(P)} = -L\!\int_0^1 \frac{M_0(u)(1-u)}{EI(u)}\,du,\quad \Delta_B^{(P)} = -L\!\int_0^1 \frac{M_0(u)\cdot u}{EI(u)}\,du$$</p>
 <p>$$M_0(u) = \frac{PL}{2}\min(u,\,1-u) \quad \text{（簡支樑 P 在中點的彎矩圖）}$$</p>
 <hr />
 <h2>§5 進階探討</h2>
@@ -440,7 +440,7 @@ $$= -\frac{P}{2EI}\left[\frac{x^2}{2}-\frac{x^3}{3L}\right]<em>0^{L/2} - \frac{P
 </ul>
 <h3>5.3 與矩陣位移法的等效性</h3>
 <p>廣義傾角變位方程即為矩陣位移法中<strong>局部勁度矩陣</strong>的 2×2 子矩陣：</p>
-<p>$$\begin{pmatrix}M_{AB}\M_{BA}\end{pmatrix} = \begin{pmatrix}k_{AA} &amp; k_{AB}\k_{BA} &amp; k_{BB}\end{pmatrix}\begin{pmatrix}\theta_A\\theta_B\end{pmatrix} + \text{側移修正項} + \text{固端彎矩}$$</p>
+<p>$$\begin{pmatrix}M_{AB}\\M_{BA}\end{pmatrix} = \begin{pmatrix}k_{AA} &amp; k_{AB}\\k_{BA} &amp; k_{BB}\end{pmatrix}\begin{pmatrix}\theta_A\\\theta_B\end{pmatrix} + \text{側移修正項} + \text{固端彎矩}$$</p>
 <hr />
 <h2>§6 本題知識點索引</h2>
 <table>

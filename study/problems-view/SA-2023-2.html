@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="zh-Hant"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SA-2023-2 — 題目解析</title>
+<link rel="stylesheet" href="../assets/katex/katex.min.css">
+<script defer src="../assets/katex/katex.min.js"></script>
+<script defer src="../assets/katex/auto-render.min.js"
+  onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},
+  {left:'$',right:'$',display:false},{left:'\\(',right:'\\)',display:false}],throwOnError:false});"></script>
+<style>
+:root{--ac:#1565c0;--bg:#f7f9fb;--card:#fff;--ink:#263238;--mut:#607d8b;--bd:#dfe6ea}
+*{box-sizing:border-box}
+body{margin:0;font-family:"Microsoft JhengHei","Noto Sans TC",-apple-system,sans-serif;
+  background:var(--bg);color:var(--ink);line-height:1.75;font-size:15.5px}
+header{background:linear-gradient(135deg,#0d47a1,#1976d2 60%,#42a5f5);color:#fff;padding:22px 26px}
+header h1{margin:0;font-size:1.15em}
+header .back{display:inline-block;margin-top:10px;font-size:.82em;color:#fff;background:rgba(255,255,255,.18);
+  padding:4px 12px;border-radius:14px;text-decoration:none}
+main{max-width:880px;margin:0 auto;padding:26px 22px 70px}
+h1,h2,h3{color:#0d47a1} h2{font-size:1.2em;border-left:6px solid var(--ac);padding-left:12px;margin:34px 0 14px}
+table{width:100%;border-collapse:collapse;margin:14px 0;font-size:.92em;background:#fff}
+th,td{border:1px solid var(--bd);padding:7px 10px;text-align:left;vertical-align:top}
+th{background:#eceff1;font-weight:600} tbody tr:nth-child(even){background:#fafcfd}
+code{background:#eceff1;padding:1px 5px;border-radius:4px;font-size:.92em}
+img{max-width:100%;display:block;margin:14px auto;border:1px solid var(--bd);border-radius:8px}
+.katex-display{margin:12px 0!important;overflow-x:auto;overflow-y:hidden}
+footer{text-align:center;color:var(--mut);font-size:.8em;padding:22px;border-top:1px solid var(--bd)}
+
+header h1{color:#fff!important;font-size:1.25em;margin:0;letter-spacing:.5px}
+header .meta2{margin:8px 0 0;font-size:.84em;opacity:.93;line-height:1.6}
+header .meta2 b{background:rgba(255,255,255,.2);border-radius:4px;padding:1px 7px;font-weight:600}
+header .hbtns{display:flex;flex-wrap:wrap;gap:10px;margin-top:14px}
+header .hbtns a{font-size:.85em;text-decoration:none;padding:7px 17px;border-radius:22px;
+  font-weight:700;white-space:nowrap;line-height:1.4}
+header .b-study{background:#fff;color:#1565c0}
+header .b-lect{background:#6a1b9a;color:#fff}
+header .b-fg{background:#c62828;color:#fff}
+header .hbtns a:hover{filter:brightness(1.08)}
+header .nomat{margin-top:12px;font-size:.8em;opacity:.85}
+</style></head><body>
+<header>
+<h1>SA-2023-2　靜不定結構諧合變位</h1>
+<p class="meta2">主分類 <b>SA-U2-2</b> 靜不定結構諧合變位 ｜ 副分類 <b>SA-U1-1</b> 靜不定度與穩定性之判斷 ｜ 2023 年（民國 112） ｜ 諧合變位法 / 最小功法</p>
+<div class="hbtns"></div><p class="nomat">本題主分類 SA-U2-2 目前尚無教材，故不提供教材按鈕。</p>
+</header>
+<main><h1>考題編號：SA-2023-2</h1>
+<p><strong>主分類：</strong> <code>SA-U2-2</code> 靜不定結構諧合變位<br />
+<strong>副分類：</strong> <code>SA-U1-1</code> 靜不定度與穩定性之判斷<br />
+<strong>分析法：</strong> 諧合變位法 / 最小功法<br />
+<strong>標籤：</strong> <code>靜不定桁架</code> <code>諧合變位法</code> <code>多餘力</code> <code>節點法</code> <code>單位力法</code></p>
+<hr />
+<h2>1. 原始題目重述 (Problem Restatement)</h2>
+<p>試分析一平面桁架如圖二所示，點 A 為鉸支承，點 D 為滾支承，假設所有桿件之彈性模數與斷面積乘積為 $EA=200,000 \text{ kN}$。若桁架中點 B 承受一垂直載重 $30 \text{ kN}$，試求桿件 BD 中之內力並標註受壓或受拉。（25 分）</p>
+<p><img alt="SA-2023-2 題目附圖：包含 4 個節點、6 根桿件的四邊形交叉斜撐平面桁架" src="../../raw/solutions/SA-2023-2/SA-2023-2-fig-1.png" /></p>
+<p><em>圖說：節點配置為 A 在左上，B 在右上，D 在左下，C 在右下。各段水平距離：A 至 D 為 3m，D 至 C 為 2m，C 至 B 為 3m。A 點為鉸支承，D 點為滾支承。垂直高度為 4m。B 點受一向下 30 kN 之垂直載重。</em></p>
+<h2>2. 考題核心精神與出題者意圖 (Core Concepts &amp; Examiner's Intent)</h2>
+<p><strong>核心精神：</strong></p>
+<ol>
+<li><strong>靜不定桁架解析</strong>：考驗考生對靜不定度判斷及多餘力的選擇能力。經判斷此為一階內部靜不定桁架。</li>
+<li><strong>諧合變位法（或最小功法）應用</strong>：需熟練地拆解結構為「原載重作用之靜定結構（$S$ 系統）」與「單位多餘力作用之靜定結構（$u$ 系統）」，並利用疊加原理求解。</li>
+<li><strong>計算細心度</strong>：本題幾何不完全對稱，各桿長度與角度皆不同，節點力平衡的計算工作量大，考驗考生的計算穩定度。</li>
+</ol>
+<h2>3. 解題戰略地圖與陷阱分析 (Strategic Roadmap &amp; Trap Analysis)</h2>
+<p><strong>戰略步驟：</strong></p>
+<ol>
+<li><strong>靜不定度判斷</strong>：計算 $i = m + r - 2j = 6 + 3 - 8 = 1$，確認為一階靜不定。</li>
+<li><strong>選擇多餘力</strong>：題目直接詢問 BD 桿內力，故直接選定 BD 桿內力為多餘力 $X$（假設為拉力），將 BD 切斷形成靜定基本結構。</li>
+<li><strong>計算 $S$ 系統</strong>：在無 BD 桿的基本結構上施加 30 kN 載重，利用節點法求出各桿內力 $S$。</li>
+<li><strong>計算 $u$ 系統</strong>：在無 BD 桿的基本結構之 BD 兩節點，施加互相靠近的單位拉力 $1$，求出各桿內力 $u$。</li>
+<li><strong>諧合方程式求解</strong>：利用 $X = -\frac{\sum S \cdot u \cdot L / EA}{\sum u^2 \cdot L / EA}$ 求解。由於 $EA$ 均同，可直接消去不影響結果。</li>
+</ol>
+<p><strong>陷阱分析：</strong></p>
+<ul>
+<li><strong>陷阱一：反力計算錯誤</strong>。A 與 D 水平位置不同，A 點為鉸支承、D 為垂直滾支承，取力矩時力臂容易看錯。</li>
+<li><strong>陷阱二：$u$ 系統的外部反力</strong>。單位多餘力為一對內部自平衡力，對整體不產生外部支承反力，若誤算反力將導致後續全錯。</li>
+<li><strong>陷阱三：多餘力目標選擇</strong>。若不以 BD 為多餘力（例如以 AC 為多餘力），算完後還必須進行一次疊加（$F_{BD} = S'_{BD} + u'_{BD} \cdot X$）才能得出答案，多了一步且容易忘記。</li>
+</ul>
+<h2>3.5 變數層次分析 (Variable Hierarchy Analysis)</h2>
+<blockquote>
+<p>複習提示：第一次解題後，在每個卡住的知識點旁標記 <code>⚠</code>；第二次複習時只看有 <code>⚠</code> 的項目。</p>
+</blockquote>
+<h3>最終目標</h3>
+<p><code>透過諧合變位法計算一階靜不定桁架之多餘桿件 BD 內力</code></p>
+<h3>本題關鍵公式（依計算順序）</h3>
+<blockquote>
+<p>$\boxed{\cdot}$ = 需由前步驟推導，非題目直接給定的變數</p>
+</blockquote>
+<p>$$\text{Step 1: } i = m + r - 2j$$</p>
+<p>$$\text{Step 2: } \Sigma F_x = 0, \Sigma F_y = 0 \Rightarrow \text{各桿 } S \text{ 與 } u$$</p>
+<p>$$\text{Step 3: } \Delta_{10} = \sum \boxed{S} \cdot \boxed{u} \cdot L$$</p>
+<p>$$\text{Step 4: } \delta_{11} = \sum \boxed{u}^2 \cdot L$$</p>
+<p>$$\text{Step 5: } F_{BD} = - \frac{\boxed{\Delta_{10}}}{\boxed{\delta_{11}}}$$</p>
+<h3>L1：題目直接給定</h3>
+<table>
+<thead>
+<tr>
+<th>符號</th>
+<th>數值</th>
+<th>說明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>$L_{AB}, L_{CD}, \dots$</td>
+<td>$8, 2, 5, \dots$</td>
+<td>各桿長度由幾何求得</td>
+</tr>
+<tr>
+<td>$P$</td>
+<td>$30 \text{ kN}$</td>
+<td>B 點外加向下集中載重</td>
+</tr>
+<tr>
+<td>$EA$</td>
+<td>$200,000 \text{ kN}$</td>
+<td>軸向剛度（本題中可約掉）</td>
+</tr>
+</tbody>
+</table>
+<h3>L2：需知識點推導</h3>
+<p><strong>Step 1：靜定基本結構分析 (S 系統)</strong></p>
+<table>
+<thead>
+<tr>
+<th>符號</th>
+<th>公式/來源</th>
+<th style="text-align: center;">卡關?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>$D_y, A_y, A_x$</td>
+<td>整體力矩與力平衡</td>
+<td style="text-align: center;"></td>
+</tr>
+<tr>
+<td>$S_{ij}$</td>
+<td>各節點 $\Sigma F_x=0, \Sigma F_y=0$</td>
+<td style="text-align: center;"></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Step 2：單位多餘力分析 (u 系統)</strong></p>
+<table>
+<thead>
+<tr>
+<th>符號</th>
+<th>公式/來源</th>
+<th style="text-align: center;">卡關?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>$u_{ij}$</td>
+<td>切斷 BD 桿，施加單位內力，以節點法求解</td>
+<td style="text-align: center;"></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Step 3：諧合方程式</strong></p>
+<table>
+<thead>
+<tr>
+<th>符號</th>
+<th>公式/來源</th>
+<th style="text-align: center;">卡關?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>$F_{BD}$</td>
+<td>$X = -\Delta_{10} / \delta_{11}$</td>
+<td style="text-align: center;"></td>
+</tr>
+</tbody>
+</table>
+<h3>L3：深層知識（不懂就卡住）</h3>
+<table>
+<thead>
+<tr>
+<th>知識點</th>
+<th>說明</th>
+<th style="text-align: center;">卡關?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>諧合變位法精神</td>
+<td>將內部多餘力視為外力，強制切斷處之相對位移為零</td>
+<td style="text-align: center;"></td>
+</tr>
+<tr>
+<td>自平衡系統反力</td>
+<td>一對作用於同一直線上、大小相等方向相反的內力，支承反力為 0</td>
+<td style="text-align: center;"></td>
+</tr>
+</tbody>
+</table>
+<h2>4. 步驟化詳細計算過程 (Step-by-Step Detailed Calculation)</h2>
+<p><strong>Step 1：確認靜不定度與基本結構</strong></p>
+<ul>
+<li>節點數 $j=4$</li>
+<li>桿件數 $m=6$</li>
+<li>反力數 $r=3$ (A 鉸:2, D 滾:1)<br />
+靜不定度 $i = 6 + 3 - 2(4) = 1$。<br />
+選擇欲求的 <strong>BD 桿內力為多餘力 $X$</strong>，將其切斷，形成靜定基本結構。</li>
+</ul>
+<p><strong>Step 2：計算外力作用下的內力 ($S$ 系統)</strong><br />
+切斷 BD 桿，外力 30 kN 作用於 B 點向下。</p>
+<ol>
+<li>
+<p><strong>求支承反力</strong>：<br />
+   $\Sigma M_A = 0 \Rightarrow D_y \times 3 - 30 \times 8 = 0 \Rightarrow D_y = 80 \text{ kN} (\uparrow)$<br />
+   $\Sigma F_y = 0 \Rightarrow A_y + 80 - 30 = 0 \Rightarrow A_y = -50 \text{ kN} (\downarrow)$<br />
+   $\Sigma F_x = 0 \Rightarrow A_x = 0$</p>
+</li>
+<li>
+<p><strong>節點法求內力 $S$</strong> (設拉力為正)：</p>
+</li>
+<li><strong>節點 B</strong> (連接 AB, BC)：<br />
+     $\Sigma F_y = 0 \Rightarrow -S_{BC}(4/5) - 30 = 0 \Rightarrow S_{BC} = -37.5 \text{ kN}$<br />
+     $\Sigma F_x = 0 \Rightarrow -S_{AB} - S_{BC}(3/5) = 0 \Rightarrow S_{AB} = 22.5 \text{ kN}$</li>
+<li><strong>節點 C</strong> (連接 AC, BC, CD)：<br />
+     $\Sigma F_y = 0 \Rightarrow S_{AC}(4/\sqrt{41}) + S_{BC}(4/5) = 0 \Rightarrow S_{AC} = 7.5\sqrt{41} \text{ kN}$<br />
+     $\Sigma F_x = 0 \Rightarrow -S_{CD} - S_{AC}(5/\sqrt{41}) + S_{BC}(3/5) = 0 \Rightarrow -S_{CD} - 37.5 - 22.5 = 0 \Rightarrow S_{CD} = -60 \text{ kN}$</li>
+<li><strong>節點 D</strong> (連接 AD, CD，有反力 $D_y=80$)：<br />
+     $\Sigma F_y = 0 \Rightarrow S_{AD}(4/5) + 80 = 0 \Rightarrow S_{AD} = -100 \text{ kN}$</li>
+<li>桿件 BD 已切斷，故 $S_{BD} = 0$。</li>
+</ol>
+<p><strong>Step 3：計算單位多餘力作用下的內力 ($u$ 系統)</strong><br />
+在切斷的 BD 桿兩端，施加互相靠近的單位拉力 $1$。由於為內部自平衡力，支承反力皆為 0。<br />
+以節點法求內力 $u$：</p>
+<ul>
+<li>
+<p><strong>節點 B</strong> (受沿 DB 方向，向內拉力 $1$，分力為 $x=-5/\sqrt{41}, y=-4/\sqrt{41}$)：<br />
+  $\Sigma F_y = 0 \Rightarrow -u_{BC}(4/5) - 4/\sqrt{41} = 0 \Rightarrow u_{BC} = -5/\sqrt{41}$<br />
+  $\Sigma F_x = 0 \Rightarrow -u_{AB} - u_{BC}(3/5) - 5/\sqrt{41} = 0 \Rightarrow u_{AB} = -2/\sqrt{41}$</p>
+</li>
+<li>
+<p><strong>節點 C</strong>：<br />
+  $\Sigma F_y = 0 \Rightarrow u_{AC}(4/\sqrt{41}) + u_{BC}(4/5) = 0 \Rightarrow u_{AC} = 1$<br />
+  $\Sigma F_x = 0 \Rightarrow -u_{CD} - u_{AC}(5/\sqrt{41}) + u_{BC}(3/5) = 0 \Rightarrow u_{CD} = -8/\sqrt{41}$</p>
+</li>
+<li>
+<p><strong>節點 D</strong>：<br />
+  $\Sigma F_y = 0 \Rightarrow u_{AD}(4/5) + 4/\sqrt{41} = 0 \Rightarrow u_{AD} = -5/\sqrt{41}$</p>
+</li>
+<li>
+<p>桿件 BD 本身單位拉力：$u_{BD} = 1$。</p>
+</li>
+</ul>
+<p><strong>Step 4：運用諧合方程式求解</strong><br />
+計算 $\Delta_{10} = \sum S \cdot u \cdot L$ 及 $\delta_{11} = \sum u^2 \cdot L$ (消去常數 EA)：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;">桿件</th>
+<th style="text-align: center;">$L$ (m)</th>
+<th style="text-align: center;">$S$ (kN)</th>
+<th style="text-align: center;">$u$</th>
+<th style="text-align: center;">$S \cdot u \cdot L$</th>
+<th style="text-align: center;">$u^2 \cdot L$</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;">AB</td>
+<td style="text-align: center;">8</td>
+<td style="text-align: center;">22.5</td>
+<td style="text-align: center;">$-2/\sqrt{41}$</td>
+<td style="text-align: center;">$-360/\sqrt{41}$</td>
+<td style="text-align: center;">$32/41$</td>
+</tr>
+<tr>
+<td style="text-align: center;">BC</td>
+<td style="text-align: center;">5</td>
+<td style="text-align: center;">-37.5</td>
+<td style="text-align: center;">$-5/\sqrt{41}$</td>
+<td style="text-align: center;">$937.5/\sqrt{41}$</td>
+<td style="text-align: center;">$125/41$</td>
+</tr>
+<tr>
+<td style="text-align: center;">AC</td>
+<td style="text-align: center;">$\sqrt{41}$</td>
+<td style="text-align: center;">$7.5\sqrt{41}$</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">$307.5$</td>
+<td style="text-align: center;">$\sqrt{41}$</td>
+</tr>
+<tr>
+<td style="text-align: center;">CD</td>
+<td style="text-align: center;">2</td>
+<td style="text-align: center;">-60</td>
+<td style="text-align: center;">$-8/\sqrt{41}$</td>
+<td style="text-align: center;">$960/\sqrt{41}$</td>
+<td style="text-align: center;">$128/41$</td>
+</tr>
+<tr>
+<td style="text-align: center;">AD</td>
+<td style="text-align: center;">5</td>
+<td style="text-align: center;">-100</td>
+<td style="text-align: center;">$-5/\sqrt{41}$</td>
+<td style="text-align: center;">$2500/\sqrt{41}$</td>
+<td style="text-align: center;">$125/41$</td>
+</tr>
+<tr>
+<td style="text-align: center;">BD</td>
+<td style="text-align: center;">$\sqrt{41}$</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">$\sqrt{41}$</td>
+</tr>
+</tbody>
+</table>
+<p><strong>總和加總：</strong><br />
+$$\Delta_{10} = \frac{4037.5}{\sqrt{41}} + 307.5 \approx 938.05$$<br />
+$$\delta_{11} = \frac{410}{41} + 2\sqrt{41} = 10 + 2\sqrt{41} \approx 22.806$$</p>
+<p><strong>代入諧合方程式：</strong><br />
+$$X = F_{BD} = - \frac{\Delta_{10}}{\delta_{11}} = - \frac{\frac{4037.5}{\sqrt{41}} + 307.5}{10 + 2\sqrt{41}} = - \frac{4037.5 + 307.5\sqrt{41}}{82 + 10\sqrt{41}}$$<br />
+將上下同乘 $(82 - 10\sqrt{41})$ 進行化簡可得：<br />
+$$F_{BD} = - \frac{25625 - 1895\sqrt{41}}{328} \approx -41.131 \text{ kN}$$<br />
+因計算結果為負號，表示實際受力方向與假設（拉力）相反，故為壓力。</p>
+<p>$$\boxed{F_{BD} = 41.13 \text{ kN} \text{ (壓力)}}$$</p>
+<h2>5. 關鍵爭議點與進階探討 (Critical Issues &amp; Advanced Discussion)</h2>
+<ul>
+<li><strong>多餘桿的選擇策略</strong>：本題直接選擇題目要求的 BD 桿作為多餘力是最直觀的做法。若為了簡化計算，也可選擇 AC 桿作為多餘力。若切斷 AC 桿，則 BC 與 CD 在 $S$ 系統中將成為零力桿，可大幅減少計算量；解出 $F_{AC}$ 後，再透過疊加原理（$F_{BD} = S'_{BD} + u'_{BD} \cdot F_{AC}$）求得 BD 桿內力，兩者答案完全一致。</li>
+</ul></main>
+<footer>來源：raw/solutions/SA-2023-2/SA-2023-2.md（知識庫解題內容唯一正本；本頁僅為渲染顯示）</footer>
+
+<script>
+/* 跟隨來源單元：若由 unit-/lecture-SA-Un-m.html（或舊的 study-/formula-given-）點進來，
+   兩顆按鈕改指向「來源那個單元」。靜態 href 保底，無 JS 或無 referrer 時仍可用。 */
+(function(){
+  var NAMES={"SA-U1-2": "靜定結構之分析", "SA-U1-3": "靜定及靜不定結構影響線", "SA-U2-1": "靜不定結構最小功法", "SA-U2-3": "靜不定結構之傾角變位法", "SA-U2-4": "靜不定結構之矩陣分析法"};
+  var m=(document.referrer||'').match(/\/(?:unit|study|lecture|formula-given)-(SA-U\d+-\d+)\.html/);
+  if(!m||!NAMES[m[1]])return;
+  var u=m[1], s=u.slice(3), box=document.querySelector('.hbtns');
+  if(!box)return;
+  box.innerHTML=
+    '<a class="b-study" href="../unit-'+u+'.html">\u{1F9ED} '+s+' \u55AE\u5143\u7E3D\u89BD</a>'+
+    '<a class="b-lect" href="../lecture-'+u+'.html">\u{1F4DA} '+s+' '+NAMES[u]+' \u8B1B\u7FA9</a>';
+  var n=document.querySelector('.nomat'); if(n)n.remove();
+})();
+</script>
+</body></html>

@@ -201,9 +201,9 @@ AC 段兩端位移為 $\Delta_A = 0$, $\Delta_C = \frac{1600}{3EI} (\downarrow)$
 $$ \rho = \frac{\Delta_C - \Delta_A}{8} = \frac{200}{3EI} \text{ (順時針)} $$</p>
 <h3>Step 4: 利用共軛梁法求 AC 段彈性變形</h3>
 <p>建立 AC 段之共軛梁，載重 $q(x) = M(x)/EI$。<br />
-求共軛梁 A 點之反力 $R_A^<em>$ (代表 A 點相對連線之斜率 $\theta_A$)：<br />
+求共軛梁 A 點之反力 $R_A^*$ (代表 A 點相對連線之斜率 $\theta_A$)：<br />
 對 C 點取彎矩 $\Sigma M_C = 0$：<br />
-$$ R_A^</em> \times 8 - \int_0^8 \frac{M(x)}{EI} (8-x) dx = 0 $$<br />
+$$ R_A^* \times 8 - \int_0^8 \frac{M(x)}{EI} (8-x) dx = 0 $$<br />
 分段積分：<br />
 $$ \int_0^4 (-200 + 75x)(8-x) dx = \int_0^4 (-1600 + 800x - 75x^2) dx = \left[ -1600x + 400x^2 - 25x^3 \right]_0^4 = -1600 $$<br />
 $$ \int_4^8 (200 - 25x)(8-x) dx = \int_4^8 (1600 - 400x + 25x^2) dx = \left[ 1600x - 200x^2 + \frac{25}{3}x^3 \right]_4^8 = \frac{1600}{3} $$<br />

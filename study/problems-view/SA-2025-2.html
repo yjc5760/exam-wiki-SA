@@ -142,11 +142,11 @@ $$\text{超靜定度} = 5 - 3 - 2 = 0 \quad\checkmark\ \text{（靜定）}$$</p>
 <h3>最終目標</h3>
 <p>繪製 5 條影響線，橫軸為載重位置 $x$，各段為直線。</p>
 <h3>本題關鍵公式（依計算順序）</h3>
-<p>$$R_E = \frac{(x-12)^+}{4}, \qquad<br />
-R_C = \frac{(x-4)^+ - 12\,\boxed{R_E}}{4}, \qquad<br />
+<p>$$R_E = \frac{(x-12)^+}{4}, \qquad
+R_C = \frac{(x-4)^+ - 12\,\boxed{R_E}}{4}, \qquad
 R_A = 1 - \boxed{R_C} - \boxed{R_E}$$</p>
-<p>$$M_A = x - 8\,\boxed{R_C} - 16\,\boxed{R_E}, \qquad<br />
-V_F = \boxed{R_A} - \begin{cases}1 &amp; x &lt; 6\ 0 &amp; x &gt; 6\end{cases}$$</p>
+<p>$$M_A = x - 8\,\boxed{R_C} - 16\,\boxed{R_E}, \qquad
+V_F = \boxed{R_A} - \begin{cases}1 &amp; x &lt; 6\\ 0 &amp; x &gt; 6\end{cases}$$</p>
 <p>（$(\cdot)^+$ 表示取正部，即 $\max(\cdot,0)$。）</p>
 <h3>L1：題目直接給定</h3>
 <table>
@@ -315,15 +315,12 @@ V_F = \boxed{R_A} - \begin{cases}1 &amp; x &lt; 6\ 0 &amp; x &gt; 6\end{cases}$$
 </table>
 <hr />
 <h2>§4 詳細計算過程</h2>
-<blockquote>
-<p>📊 影響線互動圖（可拖動載重讀縱距）：<code>SA-2025-2-influence-line-viz.html</code></p>
-</blockquote>
 <p><img alt="SA-2025-2 三段載重位置的鉸右側自由體：載重在 A–B、B–D、D–E 三種情形，切斷面標出 N、V、M=0" src="../../raw/solutions/SA-2025-2/figs/SA-2025-2-fig-3-hinge-fbd.svg" /></p>
 <p><em>圖 3　內鉸條件的用法：取「鉸右側」自由體對鉸取矩，把固定端的三個未知力全部排除在外。切斷面同時標出 $N$、$V$、$M$（$M=0$ 才是鉸提供的那條方程）。這張圖攔的是最容易錯的一步 —— 載重落在鉸左側時，右側自由體的載重項為 0。</em></p>
 <h3>4.1 鉸 D 條件求 $R_E$</h3>
 <p><strong>D 右側自由體</strong> ＝ 從 $D(12)$ 到 $E(16)$。對 D 取矩：</p>
 <p>$$\sum M_D^{\text{right}} = 0:\quad R_E\,(16-12) - P\cdot\max(x-12,\,0) = 0$$</p>
-<p>$$\therefore\ R_E = \begin{cases}0 &amp; x &lt; 12\[4pt] \dfrac{x-12}{4} &amp; x \ge 12\end{cases}$$</p>
+<p>$$\therefore\ R_E = \begin{cases}0 &amp; x &lt; 12\\[4pt] \dfrac{x-12}{4} &amp; x \ge 12\end{cases}$$</p>
 <h3>4.2 鉸 B 條件求 $R_C$</h3>
 <p><strong>B 右側自由體</strong> ＝ 從 $B(4)$ 到 $E(16)$。對 B 取矩：</p>
 <p>$$\sum M_B^{\text{right}} = 0:\quad R_C\,(8-4) + R_E\,(16-4) - P\cdot\max(x-4,\,0) = 0$$</p>
@@ -336,7 +333,7 @@ V_F = \boxed{R_A} - \begin{cases}1 &amp; x &lt; 6\ 0 &amp; x &gt; 6\end{cases}$$
 $$\sum M_A = 0:\quad M_A + 8R_C + 16R_E - x = 0 \;\Rightarrow\; M_A = x - 8R_C - 16R_E$$</p>
 <h3>4.4 剪力斷面 F（$x_F = 6$，位於 B–C 之間）</h3>
 <p>取 A–F 左側自由體（A 到 F 之間只有固定端反力，以及可能落在該區的載重）：</p>
-<p>$$V_F = R_A - \begin{cases}1 &amp; \text{載重在 F 左方}\ 0 &amp; \text{載重在 F 右方}\end{cases}$$</p>
+<p>$$V_F = R_A - \begin{cases}1 &amp; \text{載重在 F 左方}\\ 0 &amp; \text{載重在 F 右方}\end{cases}$$</p>
 <hr />
 <h3>4.5 分段直線式</h3>
 <table>

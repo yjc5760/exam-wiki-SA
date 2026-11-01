@@ -43,8 +43,7 @@ header .nomat{margin-top:12px;font-size:.8em;opacity:.85}
 <p class="meta2">主分類 <b>SA-U2-1</b> 靜不定結構最小功法 ｜ 2017 年（民國 106） ｜ 最小功法（Castigliano's 2nd Theorem）</p>
 <div class="hbtns"><a class="b-study" href="../unit-SA-U2-1.html">🧭 U2-1 單元總覽</a><a class="b-lect" href="../lecture-SA-U2-1.html">📚 U2-1 靜不定結構最小功法 講義</a></div>
 </header>
-<main>
-<h1>考題編號：SA-2017-2</h1>
+<main><h1>考題編號：SA-2017-2</h1>
 <p><strong>主分類：</strong> 靜不定結構分析—力法 (SA-U2-1)<br />
 <strong>副分類：</strong> <br />
 <strong>分析法：</strong> 最小功法（Castigliano's 2nd Theorem）<br />
@@ -347,7 +346,7 @@ $R_a \cdot m + M_a - \frac{wm^2}{2} = 0$<br />
 <p>$$R_a m + X - \frac{wm^2}{2} = 0$$<br />
 $$\boxed{R_a = \frac{wm}{2} - \frac{X}{m}} \qquad \cdots (1)$$</p>
 <p><strong>整體 $\sum F_y = 0$：</strong></p>
-<p>$$\boxed{R_b = wL - R_a = w!\left(n + \frac{m}{2}\right) + \frac{X}{m}} \qquad \cdots (2)$$</p>
+<p>$$\boxed{R_b = wL - R_a = w\!\left(n + \frac{m}{2}\right) + \frac{X}{m}} \qquad \cdots (2)$$</p>
 <p><strong>b 端彎矩（把 $x = L$ 代回同一條 $M(x)$，不需另外取矩）：</strong></p>
 <p>$$M_b = M(L) = R_a L + X - \frac{wL^2}{2}$$</p>
 <p>$w$ 項：$\dfrac{wm}{2}(m+n) - \dfrac{w(m+n)^2}{2} = \dfrac{w(m+n)}{2}\big[m - (m+n)\big] = -\dfrac{wnL}{2}$</p>
@@ -405,7 +404,7 @@ $$I_R = \frac{n^3 X}{3m^2} + \frac{wn^3(3n+4m)}{24m}$$</p>
 <p>$$\boxed{M_a = -\frac{wm(m^3 - m^2n + mn^2 + 3n^3)}{8(m^2 - mn + n^2)}}$$</p>
 <p>分子可再提出 $(m+n) = L$，得到較易記的等價形式：</p>
 <p>$$M_a = -\frac{w\,m\,L\,(m^2 - 2mn + 3n^2)}{8(m^2 - mn + n^2)}$$</p>
-<p><strong>方向：</strong> $M_a < 0$，代表 hogging（<strong>a 端上側受拉</strong>，即固定端彎矩使梁上緣受拉，為標準均布載重下固定端行為）。</p>
+<p><strong>方向：</strong> $M_a &lt; 0$，代表 hogging（<strong>a 端上側受拉</strong>，即固定端彎矩使梁上緣受拉，為標準均布載重下固定端行為）。</p>
 <h3>4.6 求 $M_b$</h3>
 <p>代入 $M_b = -\frac{wnL}{2} - \frac{nX}{m}$：</p>
 <p>$$M_b = -\frac{wn(m+n)}{2} + \frac{n}{m}\cdot\frac{wm(m^3-m^2n+mn^2+3n^3)}{8(m^2-mn+n^2)}$$</p>
@@ -416,7 +415,7 @@ $$I_R = \frac{n^3 X}{3m^2} + \frac{wn^3(3n+4m)}{24m}$$</p>
 <p>同樣提出 $(m+n) = L$：</p>
 <p>$$M_b = -\frac{w\,n\,L\,(3m^2 - 2mn + n^2)}{8(m^2 - mn + n^2)}$$</p>
 <p>兩式互為 $m \leftrightarrow n$ 對調，可作為抄寫錯誤的快速檢查。</p>
-<p><strong>方向：</strong> $M_b < 0$，代表 hogging（<strong>b 端上側受拉</strong>）。</p>
+<p><strong>方向：</strong> $M_b &lt; 0$，代表 hogging（<strong>b 端上側受拉</strong>）。</p>
 <h3>4.7 最終結果彙整</h3>
 <p>$$\boxed{M_a = -\frac{wm(m^3 - m^2n + mn^2 + 3n^3)}{8(m^2 - mn + n^2)}} \quad (\text{hogging，a 端上側受拉})$$</p>
 <p>$$\boxed{M_b = -\frac{wn(3m^3 + m^2n - mn^2 + n^3)}{8(m^2 - mn + n^2)}} \quad (\text{hogging，b 端上側受拉})$$</p>
@@ -440,7 +439,7 @@ $$M_b = -\frac{wm(3m^3+m^3-m^3+m^3)}{8m^2} = -\frac{wm \cdot 4m^3}{8m^2} = -\fra
 <p><strong>與傾角變位法結果比較：</strong><br />
 本題題目明令「採用其他方法計算不予計分」，但實務驗算可用傾角變位法或彎矩分配法確認。兩者應給出相同結果，差異代表計算錯誤。</p>
 <p><strong>分母 $m^2 - mn + n^2$ 恆正：</strong><br />
-$(m-n)^2 = m^2 - 2mn + n^2 \ge 0 \implies m^2 - mn + n^2 \ge mn > 0$（m, n &gt; 0），故分母不為零，公式在任意正值 m, n 下均有定義。</p>
+$(m-n)^2 = m^2 - 2mn + n^2 \ge 0 \implies m^2 - mn + n^2 \ge mn &gt; 0$（m, n &gt; 0），故分母不為零，公式在任意正值 m, n 下均有定義。</p>
 <p><strong>物理意義（常見的直覺陷阱）：</strong> 很多人直覺認為「多一個鉸 → 束制變鬆 → 固端彎矩變小」，<br />
 <strong>這是錯的</strong>。內鉸沒有放鬆任何<strong>支承</strong>，它切斷的是<strong>梁跨越 c 點傳遞彎矩的能力</strong>。<br />
 原本連續的固端梁，是靠 c 附近的負彎矩把兩端「拉住」；這條路徑被切斷後，<br />
@@ -476,8 +475,7 @@ $(m-n)^2 = m^2 - 2mn + n^2 \ge 0 \implies m^2 - mn + n^2 \ge mn > 0$（m, n &gt;
 考場上若想用「小於 $wL^2/12$」來自我驗算，會把正確答案判成錯的。<br />
 真正可用的驗算是 §4.6 的對稱性檢查與 $m \leftrightarrow n$ 對調檢查。</p>
 <hr />
-<p><em>圖解補繪：2026-08-28（向量圖，腳本 <code>gen_SA-2017-2.py</code>，可重跑）</em></p>
-</main>
+<p><em>圖解補繪：2026-08-28（向量圖，腳本 <code>gen_SA-2017-2.py</code>，可重跑）</em></p></main>
 <footer>來源：raw/solutions/SA-2017-2/SA-2017-2.md（知識庫解題內容唯一正本；本頁僅為渲染顯示）</footer>
 
 <script>

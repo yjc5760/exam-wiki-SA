@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="zh-Hant"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SA-2023-4 — 題目解析</title>
+<link rel="stylesheet" href="../assets/katex/katex.min.css">
+<script defer src="../assets/katex/katex.min.js"></script>
+<script defer src="../assets/katex/auto-render.min.js"
+  onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},
+  {left:'$',right:'$',display:false},{left:'\\(',right:'\\)',display:false}],throwOnError:false});"></script>
+<style>
+:root{--ac:#1565c0;--bg:#f7f9fb;--card:#fff;--ink:#263238;--mut:#607d8b;--bd:#dfe6ea}
+*{box-sizing:border-box}
+body{margin:0;font-family:"Microsoft JhengHei","Noto Sans TC",-apple-system,sans-serif;
+  background:var(--bg);color:var(--ink);line-height:1.75;font-size:15.5px}
+header{background:linear-gradient(135deg,#0d47a1,#1976d2 60%,#42a5f5);color:#fff;padding:22px 26px}
+header h1{margin:0;font-size:1.15em}
+header .back{display:inline-block;margin-top:10px;font-size:.82em;color:#fff;background:rgba(255,255,255,.18);
+  padding:4px 12px;border-radius:14px;text-decoration:none}
+main{max-width:880px;margin:0 auto;padding:26px 22px 70px}
+h1,h2,h3{color:#0d47a1} h2{font-size:1.2em;border-left:6px solid var(--ac);padding-left:12px;margin:34px 0 14px}
+table{width:100%;border-collapse:collapse;margin:14px 0;font-size:.92em;background:#fff}
+th,td{border:1px solid var(--bd);padding:7px 10px;text-align:left;vertical-align:top}
+th{background:#eceff1;font-weight:600} tbody tr:nth-child(even){background:#fafcfd}
+code{background:#eceff1;padding:1px 5px;border-radius:4px;font-size:.92em}
+img{max-width:100%;display:block;margin:14px auto;border:1px solid var(--bd);border-radius:8px}
+.katex-display{margin:12px 0!important;overflow-x:auto;overflow-y:hidden}
+footer{text-align:center;color:var(--mut);font-size:.8em;padding:22px;border-top:1px solid var(--bd)}
+
+header h1{color:#fff!important;font-size:1.25em;margin:0;letter-spacing:.5px}
+header .meta2{margin:8px 0 0;font-size:.84em;opacity:.93;line-height:1.6}
+header .meta2 b{background:rgba(255,255,255,.2);border-radius:4px;padding:1px 7px;font-weight:600}
+header .hbtns{display:flex;flex-wrap:wrap;gap:10px;margin-top:14px}
+header .hbtns a{font-size:.85em;text-decoration:none;padding:7px 17px;border-radius:22px;
+  font-weight:700;white-space:nowrap;line-height:1.4}
+header .b-study{background:#fff;color:#1565c0}
+header .b-lect{background:#6a1b9a;color:#fff}
+header .b-fg{background:#c62828;color:#fff}
+header .hbtns a:hover{filter:brightness(1.08)}
+header .nomat{margin-top:12px;font-size:.8em;opacity:.85}
+</style></head><body>
+<header>
+<h1>SA-2023-4　建築結構系統分析</h1>
+<p class="meta2">主分類 <b>SA-U3-2</b> 建築結構系統分析 ｜ 2023 年（民國 112） ｜ 機構分析與剛度比例分配</p>
+<div class="hbtns"></div><p class="nomat">本題主分類 SA-U3-2 目前尚無教材，故不提供教材按鈕。</p>
+</header>
+<main><h1>考題編號：SA-2023-4</h1>
+<p><strong>主分類：</strong> <code>SA-U3-2</code> 建築結構系統分析<br />
+<strong>副分類：</strong> 無<br />
+<strong>分析法：</strong> 機構分析與剛度比例分配<br />
+<strong>標籤：</strong> <code>偏心斜撐構架</code> <code>EBF</code> <code>剛性區域</code> <code>連梁旋轉角</code> <code>層剪力</code> <code>層間位移</code></p>
+<hr />
+<h2>1. 原始題目重述 (Problem Restatement)</h2>
+<p>如圖四所示之三層樓平面結構，各樓層樓板承受不同的水平力，由下而上依序為 300、450 及 600 kN 分別施加於各樓層樓板之兩端。構架中配置斜撐桿件，斜撐與梁桿件於梁桿件中央處連接位置留有間距，並定義此部分為「連梁」桿件，連梁與梁桿件之斷面相同且為連續。構架中梁、柱與斜撐所形成之三角型區域勁度相對較大，可視為剛性區域，而各樓層連梁桿件之剛度皆為 $EI$。若於該受力情況下構架頂端之水平側向位移為 6 cm 時，不需經過精確分析，試推估各樓層連梁桿件端部旋轉變形角為何？（25 分）</p>
+<p><img alt="SA-2023-4 題目附圖：三層偏心斜撐構架 EBF，具中央連梁與兩側剛性三角區域" src="../../raw/solutions/SA-2023-4/SA-2023-4-fig-1.png" /></p>
+<p><em>圖說：這是一個三層偏心斜撐構架 (EBF)。每層高度 $h = 4\text{ m}$，總高 $12\text{ m}$。連梁位於中央，長度 $e = 0.6\text{ m}$。兩側剛性區域之底寬 $L_1 = L_2 = 4\text{ m}$，總跨度 $L = 4+0.6+4 = 8.6\text{ m}$。外力由圖示可知，每層左右兩端均有同向箭頭標示推力。</em></p>
+<h2>2. 考題核心精神與出題者意圖 (Core Concepts &amp; Examiner's Intent)</h2>
+<p><strong>核心精神：</strong></p>
+<ol>
+<li><strong>偏心斜撐構架 (EBF) 的運動學機理</strong>：本題為典型的 EBF 考題，出題者透過將兩側梁、柱、斜撐視為「剛性區域」，引導考生運用純幾何關係推導出層間漂移角（Story drift angle）與連梁旋轉角（Link rotation angle）之間的放大關係（$\gamma = \frac{L}{e}\theta$）。</li>
+<li><strong>側向勁度的串聯模型分配</strong>：由於各樓層之剛性區域幾何尺寸完全相同，且連梁剛度均為 $EI$，因此各樓層的側向抗推勁度（Lateral stiffness）為一個常數。考生需領悟此特點，並將總位移依據「層間位移與層剪力成正比」的觀念進行比例分配，這就是題目所提示的「不需經過精確分析」之真義。</li>
+</ol>
+<h2>3. 解題戰略地圖與陷阱分析 (Strategic Roadmap &amp; Trap Analysis)</h2>
+<p><strong>戰略步驟：</strong></p>
+<ol>
+<li><strong>運動學關係推導</strong>：透過幾何關係，分析當樓層發生層間漂移 $\Delta_i$ 時，兩側剛性三角形的轉角 $\theta_i = \Delta_i / h$。推導出連梁兩端的相對垂直位移，進而求出連梁旋轉變形角 $\gamma_i = \frac{L}{e} \theta_i$。</li>
+<li><strong>計算各層層剪力</strong>：依據給定之外力，由上至下累加計算出各層之樓層剪力 $V_1, V_2, V_3$。</li>
+<li><strong>分配層間位移</strong>：已知各樓層側向勁度相同，故層間位移 $\Delta_i$ 與層剪力 $V_i$ 成正比。利用比例關係，將頂層總位移 $\Delta_{roof} = 6\text{ cm}$ 分配給各層，求出各層真實的 $\Delta_i$ 與 $\theta_i$。</li>
+<li><strong>計算連梁變形角</strong>：將求得的 $\theta_i$ 代入步驟一的運動學公式中，得出各樓層連梁的旋轉變形角。</li>
+</ol>
+<p><strong>陷阱分析：</strong></p>
+<ul>
+<li><strong>陷阱一：盲目建立矩陣分析</strong>。若忽略「不需經過精確分析」及「剛性區域」的提示，試圖以傾角變位法或直接勁度法建立全結構矩陣，將會耗盡時間且無法求解（因未給定 $EI$ 絕對值）。</li>
+<li><strong>陷阱二：錯估外力總和</strong>。圖示中各樓板兩側皆有標示外力（例如左側推 600，右側推 600），若只取單邊計算層剪力，雖不影響最終「位移比例分配」的正確結果，但概念上容易使人困惑。</li>
+<li><strong>陷阱三：連梁旋轉角定義</strong>。需清楚連梁的「端部旋轉變形角 $\gamma$」是由弦轉角與剛體轉角疊加而成，切勿僅將其當作 $\theta_i$。</li>
+</ul>
+<h2>3.5 變數層次分析 (Variable Hierarchy Analysis)</h2>
+<blockquote>
+<p>複習提示：第一次解題後，在每個卡住的知識點旁標記 <code>⚠</code>；第二次複習時只看有 <code>⚠</code> 的項目。</p>
+</blockquote>
+<h3>最終目標</h3>
+<p><code>推估各樓層連梁桿件之端部旋轉變形角</code> $\gamma_i$</p>
+<h3>本題關鍵公式（依計算順序）</h3>
+<blockquote>
+<p>$\boxed{\cdot}$ = 需由前步驟推導，非題目直接給定的變數</p>
+</blockquote>
+<p>$$\text{Step 1: } \gamma_i = \frac{L}{e} \theta_i$$</p>
+<p>$$\text{Step 2: } V_i = \sum_{j=i}^{n} F_j$$</p>
+<p>$$\text{Step 3: } \Delta_i \propto \boxed{V_i} \Rightarrow \Delta_i = \Delta_{roof} \times \frac{\boxed{V_i}}{\sum \boxed{V_i}}$$</p>
+<p>$$\text{Step 4: } \theta_i = \frac{\boxed{\Delta_i}}{h}$$</p>
+<p>$$\text{Step 5: } \gamma_i = \frac{L}{e} \boxed{\theta_i}$$</p>
+<h3>L1：題目直接給定</h3>
+<table>
+<thead>
+<tr>
+<th>符號</th>
+<th>數值</th>
+<th>說明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>$h$</td>
+<td>$4\text{ m}$</td>
+<td>每層樓高</td>
+</tr>
+<tr>
+<td>$e$</td>
+<td>$0.6\text{ m}$</td>
+<td>連梁長度</td>
+</tr>
+<tr>
+<td>$L_1, L_2$</td>
+<td>$4\text{ m}, 4\text{ m}$</td>
+<td>剛性三角形底寬</td>
+</tr>
+<tr>
+<td>$\Delta_{roof}$</td>
+<td>$6\text{ cm} = 0.06\text{ m}$</td>
+<td>頂層總位移</td>
+</tr>
+</tbody>
+</table>
+<h3>L2：需知識點推導</h3>
+<table>
+<thead>
+<tr>
+<th>符號</th>
+<th>公式/來源</th>
+<th style="text-align: center;">卡關?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>$L$</td>
+<td>$L_1 + e + L_2 = 8.6\text{ m}$</td>
+<td style="text-align: center;">總跨距</td>
+</tr>
+<tr>
+<td>$V_i$</td>
+<td>各層剪力 (由外力累加)</td>
+<td style="text-align: center;"></td>
+</tr>
+<tr>
+<td>$\Delta_i$</td>
+<td>層剪力比例分配總位移</td>
+<td style="text-align: center;"></td>
+</tr>
+<tr>
+<td>$\theta_i$</td>
+<td>$\Delta_i / h$</td>
+<td style="text-align: center;"></td>
+</tr>
+</tbody>
+</table>
+<h3>L3：深層知識（不懂就卡住）</h3>
+<table>
+<thead>
+<tr>
+<th>知識點</th>
+<th>說明</th>
+<th style="text-align: center;">卡關?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>EBF 連梁變形角公式</td>
+<td>$\gamma = \frac{L}{e} \theta$。由剛性三角形旋轉產生連梁相對垂直沉陷，再轉換為端點轉角推導而來。</td>
+<td style="text-align: center;">⚠</td>
+</tr>
+<tr>
+<td>側向勁度比例不變性</td>
+<td>各樓層幾何與剛度條件完全相同，樓層抗推剛度 (Lateral stiffness) 為常數，故位移分配僅與層剪力成正比。</td>
+<td style="text-align: center;"></td>
+</tr>
+</tbody>
+</table>
+<h2>4. 步驟化詳細計算過程 (Step-by-Step Detailed Calculation)</h2>
+<p><strong>Step 1：推導連梁旋轉變形角 $\gamma_i$ 之幾何關係</strong><br />
+當第 $i$ 層發生層間位移 $\Delta_i$ 時，層間漂移角 $\theta_i = \Delta_i / h$。<br />
+因兩側三角形為剛性區域，故將整體繞其底部節點發生剛體轉角 $\theta_i$。</p>
+<ul>
+<li>左側剛性三角形旋轉 $\theta_i$，連梁左端點產生向下之相對位移 $\delta_L = L_1 \cdot \theta_i$。</li>
+<li>右側剛性三角形旋轉 $\theta_i$，連梁右端點產生向上之相對位移 $\delta_R = L_2 \cdot \theta_i$。<br />
+連梁兩端之相對垂直位移為 $\Delta_v = \delta_L + \delta_R = (L_1 + L_2)\theta_i$。<br />
+連梁之弦轉角 (Chord rotation) 為 $\alpha = \Delta_v / e = \frac{L_1+L_2}{e}\theta_i$。<br />
+加上端點隨剛性區域共同旋轉之角度 $\theta_i$，連梁相對於未變形軸線之端部總旋轉變形角 $\gamma_i$ 為：<br />
+$$\gamma_i = \alpha + \theta_i = \frac{L_1 + L_2}{e}\theta_i + \frac{e}{e}\theta_i = \frac{L_1 + L_2 + e}{e}\theta_i = \frac{L}{e}\theta_i$$<br />
+代入數值：$L = 4 + 0.6 + 4 = 8.6\text{ m}$，$e = 0.6\text{ m}$，得放大倍率：<br />
+$$\gamma_i = \frac{8.6}{0.6}\theta_i = \frac{43}{3}\theta_i$$</li>
+</ul>
+<p><strong>Step 2：計算各層層剪力 $V_i$</strong><br />
+依據圖示，每樓層樓板兩端皆標示同向推力，設該層總外力為 $F_i$。<br />
+頂層（第 3 層）：$F_3 = 600 + 600 = 1200\text{ kN}$<br />
+中層（第 2 層）：$F_2 = 450 + 450 = 900\text{ kN}$<br />
+底層（第 1 層）：$F_1 = 300 + 300 = 600\text{ kN}$<br />
+<em>(註：若視為圖示兩端合力為 600, 450, 300，後續分配比例依然不變)</em><br />
+各層層剪力：</p>
+<ul>
+<li>$V_3 = F_3 = 1200\text{ kN}$</li>
+<li>$V_2 = F_3 + F_2 = 1200 + 900 = 2100\text{ kN}$</li>
+<li>$V_1 = F_3 + F_2 + F_1 = 2100 + 600 = 2700\text{ kN}$</li>
+</ul>
+<p><strong>Step 3：依層剪力比例分配層間位移</strong><br />
+由於各層剛性區域尺寸及連梁剛度 $EI$ 皆相同，各層之側向勁度（Lateral stiffness）為常數 $K_0$。<br />
+層間位移 $\Delta_i = V_i / K_0 \propto V_i$。<br />
+層間位移比例 $\Delta_1 : \Delta_2 : \Delta_3 = V_1 : V_2 : V_3 = 2700 : 2100 : 1200 = 9 : 7 : 4$。<br />
+已知頂端總位移 $\Delta_{roof} = \Delta_1 + \Delta_2 + \Delta_3 = 6\text{ cm} = 0.06\text{ m}$。<br />
+比例總和 $= 9 + 7 + 4 = 20$ 份。<br />
+分配各層層間位移：</p>
+<ul>
+<li>$\Delta_1 = 0.06\text{ m} \times \frac{9}{20} = 0.027\text{ m}$</li>
+<li>$\Delta_2 = 0.06\text{ m} \times \frac{7}{20} = 0.021\text{ m}$</li>
+<li>$\Delta_3 = 0.06\text{ m} \times \frac{4}{20} = 0.012\text{ m}$</li>
+</ul>
+<p><strong>Step 4：推估各樓層連梁旋轉變形角 $\gamma_i$</strong><br />
+先求各層層間漂移角 $\theta_i = \Delta_i / h$ ($h = 4\text{ m}$)：</p>
+<ul>
+<li>$\theta_1 = 0.027 / 4 = 0.00675\text{ rad}$</li>
+<li>$\theta_2 = 0.021 / 4 = 0.00525\text{ rad}$</li>
+<li>$\theta_3 = 0.012 / 4 = 0.003\text{ rad}$</li>
+</ul>
+<p>代入幾何放大公式 $\gamma_i = \frac{43}{3}\theta_i$：</p>
+<ul>
+<li>
+<p>第 1 層 (底層) 連梁 1：<br />
+  $$\gamma_1 = \frac{43}{3} \times 0.00675 = \mathbf{0.09675 \text{ rad}}$$</p>
+</li>
+<li>
+<p>第 2 層 (中層) 連梁 2：<br />
+  $$\gamma_2 = \frac{43}{3} \times 0.00525 = \mathbf{0.07525 \text{ rad}}$$</p>
+</li>
+<li>
+<p>第 3 層 (頂層) 連梁 3：<br />
+  $$\gamma_3 = \frac{43}{3} \times 0.00300 = \mathbf{0.04300 \text{ rad}}$$</p>
+</li>
+</ul>
+<p><em>(若需轉換為角度：$\gamma_1 \approx 5.54^\circ, \gamma_2 \approx 4.31^\circ, \gamma_3 \approx 2.46^\circ$)</em></p>
+<h2>5. 關鍵爭議點與進階探討 (Critical Issues &amp; Advanced Discussion)</h2>
+<ul>
+<li><strong>外力解讀差異的影響</strong>：部分考生可能將樓板兩端標示的數值解讀為該層的單一總力（例如頂層總推力就是 600 kN），這樣算出的層剪力會是 $V_3=600, V_2=1050, V_1=1350$。可以發現其比例 $1350:1050:600$ 依然是 $9:7:4$。因為位移是依據比例來分配 $\Delta_{roof}$，所以無論如何解讀外力總和的絕對值，只要相對比例正確，解出的 $\gamma_i$ 答案皆完全一致。此為出題者精心設計的巧思。</li>
+</ul></main>
+<footer>來源：raw/solutions/SA-2023-4/SA-2023-4.md（知識庫解題內容唯一正本；本頁僅為渲染顯示）</footer>
+
+<script>
+/* 跟隨來源單元：若由 unit-/lecture-SA-Un-m.html（或舊的 study-/formula-given-）點進來，
+   兩顆按鈕改指向「來源那個單元」。靜態 href 保底，無 JS 或無 referrer 時仍可用。 */
+(function(){
+  var NAMES={"SA-U1-2": "靜定結構之分析", "SA-U1-3": "靜定及靜不定結構影響線", "SA-U2-1": "靜不定結構最小功法", "SA-U2-3": "靜不定結構之傾角變位法", "SA-U2-4": "靜不定結構之矩陣分析法"};
+  var m=(document.referrer||'').match(/\/(?:unit|study|lecture|formula-given)-(SA-U\d+-\d+)\.html/);
+  if(!m||!NAMES[m[1]])return;
+  var u=m[1], s=u.slice(3), box=document.querySelector('.hbtns');
+  if(!box)return;
+  box.innerHTML=
+    '<a class="b-study" href="../unit-'+u+'.html">\u{1F9ED} '+s+' \u55AE\u5143\u7E3D\u89BD</a>'+
+    '<a class="b-lect" href="../lecture-'+u+'.html">\u{1F4DA} '+s+' '+NAMES[u]+' \u8B1B\u7FA9</a>';
+  var n=document.querySelector('.nomat'); if(n)n.remove();
+})();
+</script>
+</body></html>

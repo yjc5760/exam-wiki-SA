@@ -68,9 +68,9 @@ header .nomat{margin-top:12px;font-size:.8em;opacity:.85}
 <li><strong>設定基本系統與多餘力</strong>：移除 B 點滾支承與 CD 桿件的支撐，將原結構退化為<strong>懸臂梁（A 點固接，自由端為 B）</strong>的基本系統。選擇 B 點向上反力 $R_B$ ($X_2$) 與 CD 桿件的向上拉力 $F_{CD}$ ($X_1$) 作為兩個多餘力。</li>
 <li><strong>計算基本變位（載重造成）</strong>：計算懸臂梁在 8 kN/m 均佈載重下，D 點與 B 點的向下撓度 $\Delta_{D0}$ 與 $\Delta_{B0}$。</li>
 <li><strong>計算柔度係數（單位力造成）</strong>：分別在 D 點與 B 點施加單位向上力，求出 $f_{11}, f_{21}, f_{12}, f_{22}$。</li>
-<li><strong>建立諧合方程式</strong>：<br />
-   - B 點滾支承，最終位移為 0：$\Delta_{B0} - f_{21} X_1 - f_{22} X_2 = 0$<br />
-   - D 點與 CD 桿相連，最終向下位移等於 CD 桿的伸長量：$\Delta_{D0} - f_{11} X_1 - f_{12} X_2 = \frac{X_1 L_{CD}}{EA_{CD}}$</li>
+<li><strong>建立諧合方程式</strong>：</li>
+<li>B 點滾支承，最終位移為 0：$\Delta_{B0} - f_{21} X_1 - f_{22} X_2 = 0$</li>
+<li>D 點與 CD 桿相連，最終向下位移等於 CD 桿的伸長量：$\Delta_{D0} - f_{11} X_1 - f_{12} X_2 = \frac{X_1 L_{CD}}{EA_{CD}}$</li>
 <li><strong>求解與繪製彎矩圖</strong>：解出 $X_1, X_2$ 後，求出 A 點反力，並找出 AB 梁上剪力為零的位置，計算各極大彎矩與端點彎矩，比較求得絕對值最大者。</li>
 </ol>
 <p><strong>陷阱分析：</strong></p>

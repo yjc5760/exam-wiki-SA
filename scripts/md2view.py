@@ -13,6 +13,7 @@ header／footer／KaTeX 設定一律沿用該檔既有內容，不重建模板�
   markdown(extensions=['tables','nl2br']) ＋「清單前補空行」的前處理。
 圖片相對路徑改寫為 ../../raw/solutions/<ID>/…（HTML 在 study/problems-view/ 下）。
 """
+import html
 import os
 import re
 import sys
@@ -44,12 +45,24 @@ def render(mid: str, root: str = ROOT) -> str:
     dst = os.path.join(root, 'study', 'problems-view', mid + '.html')
     md = open(src, encoding='utf-8').read()
 
+    # 數學式先保護再還原：否則 markdown 會吞掉 \\（矩陣換行）、\{ \}、\!、_…_ 等（2026-11-01）
+    store = []
+
+    def keep(m):
+        store.append(m.group(0))
+        return f'\u0000M{len(store) - 1}\u0000'
+
+    md = md.replace('\x00', '')
+    md = re.sub(r'\$\$.+?\$\$', keep, md, flags=re.S)
+    md = re.sub(r'(?<![\\$])\$(?!\$)[^\n$]+?\$', keep, md)
     body = markdown.markdown(pre(md), extensions=['tables', 'nl2br'])
+    body = re.sub('\u0000M(\\d+)\u0000',
+                  lambda g: html.escape(store[int(g.group(1))], quote=False), body)
     body = re.sub(r'src="(?!\.\./|https?:|data:)([^"]+)"',
                   rf'src="../../raw/solutions/{mid}/\1"', body)
 
-    html = open(dst, encoding='utf-8').read()
-    head, rest = html.split('<main>', 1)
+    page = open(dst, encoding='utf-8').read()
+    head, rest = page.split('<main>', 1)
     _, tail = rest.rsplit('</main>', 1)
 
     m = re.search(r'^\*\*分析法：\*\*\s*(.+?)\s*$', md, re.M)   # 同步 header 的分析法

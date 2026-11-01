@@ -156,28 +156,20 @@ header .nomat{margin-top:12px;font-size:.8em;opacity:.85}
 <p><strong>Step 3：計算 $c$ 點的垂直位移 $\Delta_c$</strong><br />
 $c$ 點的位移包含剛體位移與彈性位移：$\Delta_c = \Delta_{c,rigid} + \Delta_{c,elastic}$。</p>
 <ol>
-<li><strong>剛體位移</strong> $\Delta_{c,rigid}$：<br />
-   - $b$ 點為懸臂梁 $b-a$ 的端點，其向下變形量為：<br />
+<li><strong>剛體位移</strong> $\Delta_{c,rigid}$：</li>
+<li>$b$ 點為懸臂梁 $b-a$ 的端點，其向下變形量為：<br />
      $$\Delta_b = \frac{R_b L_{ba}^3}{3EI} = \frac{96 \times 5^3}{3 \times 250000} = \frac{12000}{750000} = 0.016 \text{ m} = 16 \text{ mm}$$</li>
-</ol>
-<ul>
 <li>$d-c-b$ 梁兩端分別沉陷 $\Delta_d = 0$ 與 $\Delta_b = 16\text{ mm}$。$c$ 點位於中點，故其剛體位移為：<br />
      $$\Delta_{c,rigid} = \frac{0 + 16}{2} = 8 \text{ mm (向下)}$$</li>
-</ul>
-<ol start="2">
-<li><strong>彈性位移</strong> $\Delta_{c,elastic}$：<br />
-   - 視 $d-c-b$ 為簡支梁，受正彎矩作用，彎矩圖為一三角形，峰值在 $c$ 點為 120 kN-m。<br />
-   - 使用共軛梁法，共軛簡支梁受向下三角形載重 $M/EI$。<br />
-   - 共軛梁總載重 $W = \frac{1}{2} \times 10 \times \frac{120}{EI} = \frac{600}{EI}$。<br />
-   - 由對稱性，共軛梁兩端反力 $V_d^* = V_b^* = \frac{300}{EI}$。<br />
-   - $c$ 點的共軛彎矩即為彈性位移：<br />
+<li><strong>彈性位移</strong> $\Delta_{c,elastic}$：</li>
+<li>視 $d-c-b$ 為簡支梁，受正彎矩作用，彎矩圖為一三角形，峰值在 $c$ 點為 120 kN-m。</li>
+<li>使用共軛梁法，共軛簡支梁受向下三角形載重 $M/EI$。</li>
+<li>共軛梁總載重 $W = \frac{1}{2} \times 10 \times \frac{120}{EI} = \frac{600}{EI}$。</li>
+<li>由對稱性，共軛梁兩端反力 $V_d^* = V_b^* = \frac{300}{EI}$。</li>
+<li>$c$ 點的共軛彎矩即為彈性位移：<br />
      $$M_c^* = V_d^* \times 5 - (\frac{1}{2} \times 5 \times \frac{120}{EI}) \times \frac{5}{3} = \frac{1500}{EI} - \frac{500}{EI} = \frac{1000}{EI}$$</li>
-</ol>
-<ul>
 <li>代入 $EI = 250000$：<br />
      $$\Delta_{c,elastic} = \frac{1000}{250000} = 0.004 \text{ m} = 4 \text{ mm (向下)}$$</li>
-</ul>
-<ol start="3">
 <li><strong>總位移</strong>：<br />
    $$\Delta_c = 8 \text{ mm} + 4 \text{ mm} = \mathbf{12 \text{ mm (向下)}}$$</li>
 </ol>

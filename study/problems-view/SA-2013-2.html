@@ -63,18 +63,20 @@ header .nomat{margin-top:12px;font-size:.8em;opacity:.85}
 <h2>3. 解題戰略地圖與陷阱分析 (Strategic Roadmap &amp; Trap Analysis)</h2>
 <p><strong>解題策略：</strong></p>
 <ol>
-<li><strong>設定未知數與座標系</strong>：<br />
-   - 令 $C_x$ 向左為正，$C_y$ 向上為正。<br />
-   - BC 桿：以 C 為原點，向左為 $x$ ($0 \le x \le 10$)。<br />
-   - AB 桿：以 B 為原點，向下為 $y$ ($0 \le y \le 10$)。</li>
+<li><strong>設定未知數與座標系</strong>：</li>
+<li>令 $C_x$ 向左為正，$C_y$ 向上為正。</li>
+<li>BC 桿：以 C 為原點，向左為 $x$ ($0 \le x \le 10$)。</li>
+<li>AB 桿：以 B 為原點，向下為 $y$ ($0 \le y \le 10$)。</li>
 <li>
 <p><strong>建立彎矩方程式 $M(x), M(y)$</strong>：<br />
    切開自由體圖，將內部彎矩以 $C_x, C_y$ 表示。若要在後續求 $\theta_C$，可一併在 C 點加上逆時針的虛擬彎矩 $M_C$ 寫入方程式中。</p>
 </li>
 <li>
-<p><strong>偏微分與能量積分</strong>：<br />
-   - 條件一：$\frac{\partial U}{\partial C_x} = \int \frac{M}{EI} \frac{\partial M}{\partial C_x} ds = 0$<br />
-   - 條件二：$\frac{\partial U}{\partial C_y} = \int \frac{M}{EI} \frac{\partial M}{\partial C_y} ds = 0$<br />
+<p><strong>偏微分與能量積分</strong>：</p>
+</li>
+<li>條件一：$\frac{\partial U}{\partial C_x} = \int \frac{M}{EI} \frac{\partial M}{\partial C_x} ds = 0$</li>
+<li>
+<p>條件二：$\frac{\partial U}{\partial C_y} = \int \frac{M}{EI} \frac{\partial M}{\partial C_y} ds = 0$<br />
    解此二元一次聯立方程式，得 $C_x$ 與 $C_y$。</p>
 </li>
 <li>
@@ -168,7 +170,7 @@ $$\text{AB 桿彎矩: } M_{AB}(y) = \boxed{C_x} y + 10 \boxed{C_y} - 100 + M_C$$
 <p><strong>BC 桿 ($0 \le x \le 10$，從 C 向 B)</strong>：<br />
    取右側自由體，內部彎矩設為使底層受拉為正。<br />
    $M_{BC}(x) = C_y \cdot x + M_C - 20\langle x-5 \rangle$<br />
-<em>(註：$\langle x-5 \rangle$ 在 $x<5$ 時為 0，在 $x \ge 5$ 時為 $(x-5)$)</em></p>
+<em>(註：$\langle x-5 \rangle$ 在 $x&lt;5$ 時為 0，在 $x \ge 5$ 時為 $(x-5)$)</em></p>
 </li>
 <li>
 <p><strong>AB 桿 ($0 \le y \le 10$，從 B 向 A)</strong>：<br />

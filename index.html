@@ -35,7 +35,6 @@
   .qid{font-weight:700;font-size:1.05rem}
   .badge{font-size:.75rem;padding:2px 8px;border-radius:20px;color:#fff}
   .badge.method{background:#64748b}
-  .badge.viz{background:#0e7490}
   .roc{color:var(--muted);font-size:.8rem}
   .topic{font-size:.85rem;color:var(--muted)}
   .tags{margin-top:6px;display:flex;flex-wrap:wrap;gap:5px}
@@ -44,12 +43,6 @@
   .links{margin-top:8px;display:flex;flex-wrap:wrap;gap:8px}
   .links a,.links button.openmd{font-size:.83rem;text-decoration:none;color:var(--accent);border:1px solid var(--accent);border-radius:6px;padding:3px 10px;background:#fff;cursor:pointer;font-family:inherit}
   .links a:hover,.links button.openmd:hover{background:var(--accent);color:#fff}
-  .links button.openpdf{font-size:.83rem;color:#b45309;border:1px solid #b45309;border-radius:6px;padding:3px 10px;background:#fff;cursor:pointer;font-family:inherit}
-  .links button.openpdf:hover{background:#b45309;color:#fff}
-  .pdf-drop{position:absolute;background:#fff;border:1px solid var(--line);border-radius:8px;padding:4px 0;z-index:200;box-shadow:0 4px 16px rgba(0,0,0,.15);min-width:220px;left:0;top:calc(100% + 4px)}
-  .pdf-drop button{display:block;width:100%;text-align:left;padding:6px 14px;border:none;background:none;cursor:pointer;font-size:.82rem;font-family:inherit;white-space:nowrap}
-  .pdf-drop button:hover{background:#f1f5f9}
-  .pdf-drop .no-pdf{padding:7px 14px;font-size:.82rem;color:var(--muted)}
   .prog{margin-left:auto;cursor:pointer;user-select:none;font-size:.8rem;border-radius:6px;padding:3px 10px;border:1px dashed var(--muted);color:var(--muted)}
   .prog.s1{border:1px solid #059669;color:#059669;background:#ecfdf5}
   .prog.s2{border:1px solid #dc2626;color:#dc2626;background:#fef2f2}
@@ -74,6 +67,22 @@
   table.cmd code{background:#eef2f7;padding:1px 6px;border-radius:4px;font-size:.85rem}
   .unitchip{display:inline-block;width:10px;height:10px;border-radius:3px;margin-right:5px}
   .empty{text-align:center;color:var(--muted);padding:30px}
+  .resultbar{display:flex;align-items:center;gap:10px;margin:-4px 0 10px;font-size:.85rem;color:var(--muted)}
+  .resultbar button{border:1px solid var(--line);background:#fff;border-radius:6px;padding:2px 10px;cursor:pointer;font-family:inherit;font-size:.8rem;color:var(--ink)}
+  .resultbar button:hover{border-color:var(--accent);color:var(--accent)}
+  .navsec{font-size:.92rem;margin:14px 0 8px;color:var(--muted)}
+  .navcard p a{color:var(--accent);text-decoration:none}
+  .navcard p a:hover{text-decoration:underline}
+  :focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+  body.reading{overflow:hidden}
+  @media (max-width:640px){
+    .wrap{padding:12px}
+    .chartrow{flex-wrap:wrap}
+    .chartrow .lbl{width:100%}
+    .chartrow .bar{max-width:80%}
+    #readerBody{padding:14px 14px 30px}
+    #reader{inset:0;transform:none;width:100vw;height:100vh;border-radius:0}
+  }
   footer{margin-top:20px;color:var(--muted);font-size:.78rem;text-align:center}
 
   /* ---- 解析閱讀器（modal） ---- */
@@ -140,25 +149,22 @@
     <button class="on" data-p="browse">🔍 題庫瀏覽</button>
     <button data-p="charts">📊 考點統計</button>
     <button data-p="nav">🗺️ 知識庫導覽</button>
-    <button data-p="cmd">⌨️ 指令速查</button>
     <button data-p="exams">📑 歷年考卷</button>
   </nav>
 
   <!-- 題庫瀏覽 -->
   <section class="panel on" id="p-browse">
     <div class="toolbar">
-      <input type="search" id="q" placeholder="搜尋題號、考點、標籤…（如：P-M互制、T形梁、摩擦損失）">
+      <input type="search" id="q" placeholder="搜尋題號、考點、標籤…（如：影響線、傾角變位、彎矩分配、矩陣勁度法）">
       <select id="fYear"><option value="">全部年份</option></select>
       <select id="fUnit"><option value="">全部單元</option></select>
       <select id="fTopic"><option value="">全部考點</option></select>
-      <select id="fMethod"><option value="">全部設計法</option>
-        <option>USD</option><option>WSD</option><option>概念題</option><option>混合</option></select>
       <select id="fProg"><option value="">全部進度</option>
         <option value="0">⬜ 未練習</option><option value="1">✅ 已練習</option><option value="2">🔁 需複習</option></select>
-      <select id="fViz"><option value="">互動圖（全部）</option><option value="1">有互動圖</option></select>
       <select id="sort"><option value="desc">新→舊</option><option value="asc">舊→新</option></select>
-      <div class="hint">「📄 完整解析」在站內閱讀器開啟（Markdown＋LaTeX 渲染；首次使用需選擇一次知識庫資料夾）。點題卡右上角循環標記進度，點標籤快速搜尋。有「📎 補充筆記 PDF」的題目會直接顯示按鈕（點擊時同樣需授權讀取資料夾）。</div>
+      <div class="hint">「📄 完整解析」在新分頁開啟該題解析頁（study/problems-view，含公式渲染與圖解）。點題卡右上角循環標記進度，點標籤快速搜尋；按「/」可直接跳到搜尋框。</div>
     </div>
+    <div class="resultbar"><span id="resultCount"></span><button id="btnReset" type="button">清除篩選</button></div>
     <div class="qlist" id="list"></div>
   </section>
 
@@ -175,30 +181,26 @@
   <!-- 知識庫導覽 -->
   <section class="panel" id="p-nav">
     <div class="card" style="margin-bottom:12px">
-      <h2>七層知識架構入口</h2>
+      <h2>知識庫導覽</h2>
       <p style="font-size:.85rem;color:var(--muted);margin-bottom:10px">點擊卡片在站內閱讀器開啟（Markdown＋LaTeX 渲染）。</p>
       <div class="navgrid">
-        <button class="navcard" data-md="wiki/index.md" data-t="wiki 主導航"><b>📖 wiki 主導航</b><p>七層架構總目錄，依命題大綱分類所有題目</p></button>
-        <button class="navcard" data-md="wiki/by-year.md" data-t="依年份瀏覽"><b>📅 依年份瀏覽</b><p>2002–2025 歷年考題索引</p></button>
-        <button class="navcard" data-md="wiki/concepts/GLOSSARY.md" data-t="概念辭典"><b>💡 概念辭典</b><p>Whitney 應力塊、P-M 圖、有效慣性矩等核心概念</p></button>
-        <button class="navcard" data-md="wiki/diagnosis/index.md" data-t="題型診斷"><b>🩺 題型診斷</b><p>拿到考題如何判斷題型的決策樹</p></button>
-        <button class="navcard" data-md="wiki/traps/index.md" data-t="陷阱總表"><b>⚠️ 陷阱總表</b><p>13 個常見出題陷阱（φ 過渡區、T 梁有效寬…）</p></button>
-        <button class="navcard" data-md="wiki/philosophy/index.md" data-t="設計哲學"><b>🏛️ 設計哲學</b><p>USD 折減、韌性、耐震能力設計的「為什麼」</p></button>
-        <button class="navcard" data-md="wiki/failure-modes/index.md" data-t="失敗模式"><b>💥 失敗模式</b><p>彎曲/剪力/壓碎/撓度/裂縫五大破壞類別</p></button>
-        <button class="navcard" data-md="wiki/materials/index.md" data-t="材料行為"><b>🧱 材料行為</b><p>混凝土應力應變、鋼筋降伏、潛變收縮、預力鋼絞線</p></button>
-        <button class="navcard" data-md="wiki/code-ref/index.md" data-t="規範條文"><b>📜 規範條文</b><p>ACI 318、CNS 1480、耐震規範對應</p></button>
-        <button class="navcard" data-md="wiki/queries/出題頻率分析.md" data-t="出題頻率分析"><b>📈 出題頻率分析</b><p>歷年考點頻率統計報告</p></button>
-        <button class="navcard" data-md="wiki/queries/題庫缺口報告-2026-06-07.md" data-t="題庫缺口報告"><b>🕳️ 題庫缺口報告</b><p>尚未覆蓋的考點與待補項目</p></button>
+        <button class="navcard" data-md="wiki/queries/index.md" data-t="稽核與分析報告"><b>🔍 稽核與分析報告</b><p>分類稽核、xcheck、健檢報告等（wiki/queries）</p></button>
+        <button class="navcard" data-md="wiki/queries/log.md" data-t="變更紀錄"><b>📝 變更紀錄</b><p>每次勘誤與改版改了什麼、為什麼、怎麼驗證</p></button>
+        <a class="navcard" href="study/frequency-SA.html" target="_blank"><b>🔥 全科出題頻率熱圖</b><p>子項 × 考年熱圖、升溫／冷凍考點、讀書順序建議</p></a>
         <button class="navcard" data-md="README.md" data-t="README"><b>🚀 README</b><p>知識庫冷啟動導覽與工作流程</p></button>
+        <button class="navcard" data-md="CLAUDE-CODE.md" data-t="指令清單"><b>⌨️ 指令清單</b><p>可對 Cowork 下的指令與用途（CLAUDE-CODE.md，唯一正本）</p></button>
       </div>
+      <h3 class="navsec">📘 單元教材（新分頁開啟）</h3>
+      <div class="navgrid" id="unitList"></div>
     </div>
     <div class="card">
       <h2>核心工作流程</h2>
+      <p style="font-size:.82rem;color:var(--muted);margin-bottom:6px">完整指令與停用狀態以 CLAUDE-CODE.md 為準（上方「⌨️ 指令清單」）。</p>
       <table class="cmd">
         <tr><th>想做什麼</th><th>怎麼做</th></tr>
         <tr><td>解一套新考卷</td><td>對 Cowork 說 <code>解析 XXXX 年考卷</code> → 依提醒截圖 → 說 <code>截圖完成，請開始解題</code>（一次解一題）</td></tr>
-        <tr><td>驗算後入庫</td><td>人工驗算 → 說 <code>將 SA-XXXX-N 的 verificationStatus 改為 verified</code> → 說 <code>ingest SA-XXXX-N</code></td></tr>
-        <tr><td>查詢知識</td><td>直接對 Cowork 提問，結果會存入 wiki/queries/</td></tr>
+        <tr><td>驗算完成</td><td>人工驗算 → 說 <code>將 SA-XXXX-N 的 verificationStatus 改為 verified</code> → 說 <code>更新儀表板資料</code></td></tr>
+        <tr><td>查詢知識</td><td>直接對 Cowork 提問；要保留結果就說「請存檔」，存入 wiki/queries/</td></tr>
         <tr><td>更新本儀表板</td><td>索引變動後，對 Cowork 說 <code>更新儀表板資料</code>（重新生成 dashboard-data.js）</td></tr>
       </table>
     </div>
@@ -213,43 +215,6 @@
     </div>
   </section>
 
-  <!-- 指令速查 -->
-  <section class="panel" id="p-cmd">
-    <div class="card">
-      <h2>📦 wiki 編譯與維護</h2>
-      <table class="cmd">
-        <tr><th>觸發語句</th><th>用途</th></tr>
-        <tr><td><code>ingest SA-XXXX-N</code></td><td>將一道已驗證（verified）題目寫入 wiki，同步更新 index 與 by-year</td></tr>
-        <tr><td><code>compile all</code></td><td>從 raw/ 重建整個 wiki（concepts、methods、problems、index）</td></tr>
-        <tr><td><code>lint wiki</code></td><td>16 項健檢：斷鏈、孤頁、概念缺口、圖說缺漏、數量一致性…</td></tr>
-        <tr><td><code>status</code></td><td>驗證進度統計、各狀態題目清單、常見標籤排行</td></tr>
-        <tr><td><code>reindex</code></td><td>掃描 solutions/ 修正 hasSolution 欄位不一致</td></tr>
-        <tr><td><code>add concept [概念名]</code></td><td>新增概念至 concepts.json 並建立 wiki 概念頁</td></tr>
-        <tr><td><code>add method [方法名]</code></td><td>新增解題方法論（raw + wiki 雙寫）</td></tr>
-        <tr><td><code>更新儀表板資料</code></td><td>question_index.json 變動後重新生成 dashboard-data.js</td></tr>
-      </table>
-    </div>
-    <div class="card">
-      <h2>📊 備考分析</h2>
-      <table class="cmd">
-        <tr><th>觸發語句</th><th>用途</th></tr>
-        <tr><td><code>frequency</code></td><td>統計各考點歷年出現次數與單元比例</td></tr>
-        <tr><td><code>analyze YYYY</code></td><td>分析某年考卷的考點分布、難度與歷年異同</td></tr>
-        <tr><td><code>predict</code></td><td>依近 3/5/10 年趨勢推測下次考試最可能考點</td></tr>
-        <tr><td><code>study SA-UN</code></td><td>彙整某單元所有題目與重點（如 <code>study SA-U2</code>）</td></tr>
-      </table>
-    </div>
-    <div class="card">
-      <h2>🔍 查詢快捷</h2>
-      <table class="cmd">
-        <tr><th>觸發語句</th><th>用途</th></tr>
-        <tr><td><code>find [關鍵字]</code></td><td>快速搜尋含某關鍵字的題目</td></tr>
-        <tr><td><code>related SA-XXXX-N</code></td><td>找出考點相似的其他題目</td></tr>
-        <tr><td><code>unverified</code></td><td>列出有解析但尚未驗證的題目</td></tr>
-        <tr><td>直接提問</td><td>自由查詢知識庫，結果存入 wiki/queries/</td></tr>
-      </table>
-    </div>
-  </section>
 
   <footer>exam-wiki-SA 儀表板｜資料來源：raw/json/question_index.json（dashboard-data.js 快照）｜索引更新後請對 Cowork 說「更新儀表板資料」</footer>
 </div>
@@ -271,84 +236,100 @@
 <script>
 (function(){
   if(!window.SA_QUESTIONS){document.getElementById('list').innerHTML='<div class="empty">找不到 dashboard-data.js，請確認檔案與本頁在同一資料夾。</div>';return;}
-  const Q = SA_QUESTIONS.map(r=>({id:r[0],year:+r[0].split('-')[1],num:+r[0].split('-')[2],roc:+r[0].split('-')[1]-1911,topic:r[1],sec:r[2],viz:r[3],tags:r[4],pdf:r[5]||[]}));
+  // 欄位：[id, topic, sec, tags]（舊版 6 欄含 viz／pdf 時自動相容）
+  const Q = SA_QUESTIONS.map(r=>{const t=r.length>=6?r[4]:r[3];const [,y,n]=r[0].split('-');
+    return {id:r[0],year:+y,num:+n,roc:+y-1911,topic:r[1],sec:r[2]||[],tags:t||[]};});
   const TOPICS=SA_TOPICS, UNITS=SA_UNITS;
   const UCOLOR={U1:'var(--u1)',U2:'var(--u2)',U3:'var(--u3)',U4:'var(--u4)'};
+  const ucol=u=>UCOLOR[u]||'var(--muted)';
+  const tname=t=>TOPICS[t]||t;
+  const escH=s=>String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
   const unitOf=t=>t.split('-')[0];
   const PKEY='rcwiki-progress';
   let prog={}; try{prog=JSON.parse(localStorage.getItem(PKEY)||'{}')}catch(e){}
-  const saveProg=()=>localStorage.setItem(PKEY,JSON.stringify(prog));
+  const saveProg=()=>{try{localStorage.setItem(PKEY,JSON.stringify(prog))}catch(e){}};
 
   // ---- 統計卡 ----
   function renderStats(){
     const done=Q.filter(q=>prog[q.id]===1).length, rev=Q.filter(q=>prog[q.id]===2).length;
     const years=[...new Set(Q.map(q=>q.year))];
     document.getElementById('stats').innerHTML=`
-      <div class="stat"><div class="n">${Q.length}</div><div class="l">已收錄題目（全部 verified ✅）</div></div>
+      <div class="stat"><div class="n">${Q.length}</div><div class="l">已收錄題目</div></div>
       <div class="stat"><div class="n">${Math.min(...years)}–${Math.max(...years)}</div><div class="l">收錄年份（共 ${years.length} 年）</div></div>
-      <div class="stat"><div class="n">${Q.filter(q=>q.viz.length).length}</div><div class="l">附互動圖題數</div></div>
+      <div class="stat"><div class="n">${new Set(Q.map(q=>q.topic)).size} / ${Object.keys(TOPICS).length}</div><div class="l">有考題的命題大綱子項</div></div>
       <div class="stat"><div class="n">${done} / ${Q.length}</div><div class="l">已練習${rev?`（另有 ${rev} 題需複習）`:''}
         <div class="progressbar"><div class="done" style="width:${done/Q.length*100}%"></div><div class="review" style="width:${rev/Q.length*100}%"></div></div></div></div>`;
   }
 
   // ---- 篩選器 ----
   const fYear=document.getElementById('fYear'),fUnit=document.getElementById('fUnit'),
-        fTopic=document.getElementById('fTopic'),fMethod=document.getElementById('fMethod'),
-        fProg=document.getElementById('fProg'),fViz=document.getElementById('fViz'),
+        fTopic=document.getElementById('fTopic'),
+        fProg=document.getElementById('fProg'),
         sortSel=document.getElementById('sort'),qIn=document.getElementById('q');
   [...new Set(Q.map(q=>q.year))].sort((a,b)=>b-a).forEach(y=>{
     fYear.insertAdjacentHTML('beforeend',`<option value="${y}">${y}（民國 ${y-1911}）</option>`)});
   Object.entries(UNITS).forEach(([u,n])=>fUnit.insertAdjacentHTML('beforeend',`<option value="${u}">${n}</option>`));
   Object.entries(TOPICS).forEach(([t,n])=>fTopic.insertAdjacentHTML('beforeend',`<option value="${t}">${t}｜${n}</option>`));
+  // 搜尋用小寫文字（主副考點名稱＋標籤），只算一次
+  Q.forEach(q=>{q.hay=[q.id,q.topic,tname(q.topic),...q.sec.map(tname),...q.tags].join(' ').toLowerCase();});
 
   // ---- 題目清單 ----
   function render(){
+    const kws=qIn.value.trim().toLowerCase().split(/\s+/).filter(Boolean);
     let list=Q.filter(q=>{
-      const kw=qIn.value.trim().toLowerCase();
-      if(kw && !(q.id.toLowerCase().includes(kw)||TOPICS[q.topic].toLowerCase().includes(kw)||q.tags.some(t=>t.toLowerCase().includes(kw)))) return false;
+      if(kws.length && !kws.every(k=>q.hay.includes(k))) return false;
       if(fYear.value && q.year!=fYear.value) return false;
       if(fUnit.value && unitOf(q.topic)!=fUnit.value && !q.sec.some(s=>unitOf(s)==fUnit.value)) return false;
       if(fTopic.value && q.topic!=fTopic.value && !q.sec.includes(fTopic.value)) return false;
-      if(fMethod.value && q.method!=fMethod.value) return false;
       if(fProg.value!=='' && (prog[q.id]||0)!=fProg.value) return false;
-      if(fViz.value && !q.viz.length) return false;
       return true;});
     list.sort((a,b)=>sortSel.value==='desc'?(b.year-a.year||a.num-b.num):(a.year-b.year||a.num-b.num));
     const el=document.getElementById('list');
+    const filtered=kws.length||[fYear,fUnit,fTopic,fProg].some(x=>x.value!=='');
+    document.getElementById('resultCount').textContent=`顯示 ${list.length} / ${Q.length} 題`;
+    document.getElementById('btnReset').style.display=filtered?'':'none';
     if(!list.length){el.innerHTML='<div class="empty">沒有符合條件的題目</div>';return;}
     el.innerHTML=list.map(q=>{
       const u=unitOf(q.topic), p=prog[q.id]||0;
       const pTxt=p===1?'✅ 已練習':p===2?'🔁 需複習':'⬜ 未練習';
-      const vizLinks=q.viz.map(v=>`<a href="raw/solutions/${q.id}/${v}" target="_blank">🎛️ 互動圖</a>`).join('');
-      const secTxt=q.sec.length?`｜副：${q.sec.map(s=>TOPICS[s]||s).join('、')}`:'';
-      const pdfBtn=q.pdf.length?`<button class="openpdf" data-id="${q.id}">📎 補充筆記 PDF${q.pdf.length>1?`（${q.pdf.length}）`:''}</button>`:'';
-      return `<div class="qcard" data-qid="${q.id}" style="border-left:4px solid ${UCOLOR[u]}">
+      const secTxt=q.sec.length?`｜副：${q.sec.map(tname).join('、')}`:'';
+      return `<div class="qcard" data-qid="${q.id}" style="border-left:4px solid ${ucol(u)}">
         <div class="qhead">
           <span class="qid">${q.id}</span><span class="roc">民國 ${q.roc} 年 第 ${q.num} 題</span>
-          <span class="badge" style="background:${UCOLOR[u]}">${q.topic}</span>
-          ${q.method ? `<span class="badge method">${q.method}</span>` : ""}
-          ${q.viz.length?'<span class="badge viz">互動圖</span>':''}
-          <span class="prog s${p}" data-id="${q.id}">${pTxt}</span>
+          <span class="badge" style="background:${ucol(u)}">${q.topic}</span>
+          <span class="prog s${p}" data-id="${q.id}" role="button" tabindex="0" title="點擊切換：未練習 → 已練習 → 需複習">${pTxt}</span>
         </div>
-        <div class="topic">${TOPICS[q.topic] || q.topic}${secTxt}</div>
-        <div class="tags">${q.tags.map(t=>`<span class="tag" data-t="${t}">${t}</span>`).join('')}</div>
-        <div class="links" style="position:relative">
-          <button class="openmd" data-md="raw/solutions/${q.id}/${q.id}.md" data-t="${q.id} 完整解析">📄 完整解析</button>
-          ${vizLinks}
-          ${pdfBtn}
+        <div class="topic">${tname(q.topic)}${secTxt}</div>
+        <div class="tags">${q.tags.map(t=>`<span class="tag" data-t="${escH(t)}">${escH(t)}</span>`).join('')}</div>
+        <div class="links">
+          <a class="openview" href="study/problems-view/${q.id}.html" target="_blank">📄 完整解析</a>
         </div></div>`;}).join('');
   }
   document.getElementById('list').addEventListener('click',e=>{
     const pr=e.target.closest('.prog');
-    if(pr){const id=pr.dataset.id;prog[id]=((prog[id]||0)+1)%3;if(!prog[id])delete prog[id];saveProg();renderStats();render();return;}
+    if(pr){cycleProg(pr);return;}
     const tg=e.target.closest('.tag');
-    if(tg){qIn.value=tg.dataset.t;render();return;}
-    const om=e.target.closest('.openmd');
-    if(om){openMd(om.dataset.md,om.dataset.t);return;}
-    const op=e.target.closest('.openpdf');
-    if(op){openPdfs(op.dataset.id,op);}
+    if(tg){qIn.value=tg.dataset.t;render();qIn.scrollIntoView({behavior:'smooth',block:'center'});return;}
   });
-  [qIn,fYear,fUnit,fTopic,fMethod,fProg,fViz,sortSel].forEach(el=>el.addEventListener('input',render));
+  // 進度切換只更新該張卡片（不重繪整個清單，保留捲動位置）
+  function cycleProg(pr){
+    const id=pr.dataset.id;prog[id]=((prog[id]||0)+1)%3;if(!prog[id])delete prog[id];saveProg();renderStats();
+    if(fProg.value!==''){render();return;}
+    const p=prog[id]||0;pr.className='prog s'+p;pr.textContent=p===1?'✅ 已練習':p===2?'🔁 需複習':'⬜ 未練習';
+  }
+  document.getElementById('list').addEventListener('keydown',e=>{
+    const pr=e.target.closest('.prog');
+    if(pr&&(e.key==='Enter'||e.key===' ')){e.preventDefault();cycleProg(pr);}
+  });
+  let tmr=0;
+  qIn.addEventListener('input',()=>{clearTimeout(tmr);tmr=setTimeout(render,150);});
+  [fYear,fUnit,fTopic,fProg,sortSel].forEach(el=>el.addEventListener('change',render));
+  document.getElementById('btnReset').addEventListener('click',()=>{
+    qIn.value='';[fYear,fUnit,fTopic,fProg].forEach(x=>x.value='');render();});
+  // 「/」快速聚焦搜尋框
+  document.addEventListener('keydown',e=>{
+    if(e.key==='/'&&!document.getElementById('reader').classList.contains('on')&&!/INPUT|SELECT|TEXTAREA/.test(document.activeElement.tagName)){e.preventDefault();qIn.focus();}
+  });
 
   // ---- 統計圖 ----
   function bar(label,count,max,color){
@@ -366,14 +347,14 @@
     const top10=computeTopicFreq().slice(0,10);
     const tmax=top10.length?top10[0].total:1;
     document.getElementById('chartFreqTop').innerHTML=top10.map((e,idx)=>
-      bar(`<b>${idx+1}.</b> <span class="unitchip" style="background:${UCOLOR[unitOf(e.t)]}"></span>${e.t}｜${TOPICS[e.t]||e.t}（主 ${e.p}＋副 ${e.s}）`,e.total,tmax,UCOLOR[unitOf(e.t)])
+      bar(`<b>${idx+1}.</b> <span class="unitchip" style="background:${ucol(unitOf(e.t))}"></span>${e.t}｜${tname(e.t)}（主 ${e.p}＋副 ${e.s}）`,e.total,tmax,ucol(unitOf(e.t)))
     ).join('');
 
     // 【各單元命題比例】（依主考點）
     const uc={};Q.forEach(q=>{const u=unitOf(q.topic);uc[u]=(uc[u]||0)+1});
     const umax=Math.max(...Object.values(uc));
     document.getElementById('chartUnit').innerHTML=Object.entries(UNITS)
-      .map(([u,n])=>bar(`<span class="unitchip" style="background:${UCOLOR[u]}"></span>${n}（${(uc[u]/Q.length*100).toFixed(0)}%）`,uc[u]||0,umax,UCOLOR[u])).join('');
+      .map(([u,n])=>bar(`<span class="unitchip" style="background:${ucol(u)}"></span>${n}（${((uc[u]||0)/Q.length*100).toFixed(0)}%）`,uc[u]||0,umax,ucol(u))).join('');
 
     // 【近5年趨勢】（依實際收錄年份動態取最近 5 年）
     const yearsDesc=[...new Set(Q.map(q=>q.year))].sort((a,b)=>b-a);
@@ -386,8 +367,8 @@
     const recent=Q.filter(q=>recentSet.has(q.year)).sort((a,b)=>b.year-a.year||a.num-b.num);
     let html='',yr=0;
     recent.forEach(q=>{if(q.year!==yr){yr=q.year;html+=`<div style="margin-top:8px;font-weight:700">${yr}（民國 ${yr-1911}）</div>`;}
-      const secTxt=q.sec.length?`（副：${q.sec.map(s=>TOPICS[s]||s).join('、')}）`:'';
-      html+=`<div style="font-size:.85rem;margin-left:8px"><span class="unitchip" style="background:${UCOLOR[unitOf(q.topic)]}"></span>第${q.num}題：${TOPICS[q.topic] || q.topic}${secTxt}</div>`;});
+      const secTxt=q.sec.length?`（副：${q.sec.map(tname).join('、')}）`:'';
+      html+=`<div style="font-size:.85rem;margin-left:8px"><span class="unitchip" style="background:${ucol(unitOf(q.topic))}"></span>第${q.num}題：${tname(q.topic)}${secTxt}</div>`;});
     document.getElementById('recent').innerHTML=html;
   }
 
@@ -395,7 +376,9 @@
   document.querySelectorAll('nav.tabs button').forEach(b=>b.addEventListener('click',()=>{
     document.querySelectorAll('nav.tabs button').forEach(x=>x.classList.remove('on'));
     document.querySelectorAll('.panel').forEach(x=>x.classList.remove('on'));
-    b.classList.add('on');document.getElementById('p-'+b.dataset.p).classList.add('on');}));
+    b.classList.add('on');document.getElementById('p-'+b.dataset.p).classList.add('on');
+    try{sessionStorage.setItem('sawiki-tab',b.dataset.p)}catch(e){}}));
+  try{const t=sessionStorage.getItem('sawiki-tab');const b=t&&document.querySelector(`nav.tabs button[data-p="${t}"]`);if(b)b.click();}catch(e){}
 
   document.getElementById('p-nav').addEventListener('click',e=>{
     const nc=e.target.closest('.navcard');
@@ -411,9 +394,16 @@
         <b>📄 ${y} 年考卷</b><p>民國 ${y-1911} 年｜已收錄 ${n} 題解析</p></a>`;}).join('');
   }
 
-  renderStats();render();renderCharts();renderExams();
-  // 靜默恢復上次的資料夾授權（僅限本機環境）
-  if(location.protocol === 'file:') ensureDir(false);
+  // ---- 單元教材（單元總覽／觀念講義）----
+  function renderUnits(){
+    // 已產生 study/unit-SA-*.html 與 lecture-SA-*.html 的子項（新增單元教材時一併更新）
+    const UNIT_PAGES=['U1-2','U1-3','U2-1','U2-3','U2-4'];
+    document.getElementById('unitList').innerHTML=UNIT_PAGES.filter(t=>TOPICS[t]).map(t=>`<div class="navcard" style="cursor:default">
+      <b><span class="unitchip" style="background:${ucol(unitOf(t))}"></span>SA-${t}｜${tname(t)}</b>
+      <p><a href="study/unit-SA-${t}.html" target="_blank">單元總覽</a>｜<a href="study/lecture-SA-${t}.html" target="_blank">觀念講義</a></p></div>`).join('');
+  }
+
+  renderStats();render();renderCharts();renderExams();renderUnits();
 
   /* ================= 解析閱讀器 ================= */
   const overlay=document.getElementById('overlay'),reader=document.getElementById('reader'),
@@ -421,11 +411,11 @@
         mathHint=document.getElementById('mathHint');
   let currentPath='';
   let blobUrls=[];
-  function closeReader(){overlay.classList.remove('on');reader.classList.remove('on');
+  function closeReader(){overlay.classList.remove('on');reader.classList.remove('on');document.body.classList.remove('reading');
     blobUrls.forEach(u=>URL.revokeObjectURL(u));blobUrls=[];rBody.innerHTML='';}
   document.getElementById('btnClose').addEventListener('click',closeReader);
   overlay.addEventListener('click',closeReader);
-  document.addEventListener('keydown',e=>{if(e.key==='Escape')closeReader();});
+  document.addEventListener('keydown',e=>{if(e.key==='Escape'&&reader.classList.contains('on'))closeReader();});
   document.getElementById('btnRawOpen').addEventListener('click',()=>{if(currentPath)window.open(currentPath,'_blank');});
   document.getElementById('btnPdf').addEventListener('click',()=>{
     if(!rBody.querySelector('.md')){alert('內容尚未載入完成，請稍候再匯出。');return;}
@@ -453,7 +443,9 @@
     (function chk(){if(katexState!=='loading'||Date.now()-t0>ms)return res();setTimeout(chk,100);})();});}
 
   // ---- File System Access：資料夾授權 ----
-  const IDB='rcwiki-fs';let dirHandle=null;
+  // 注意：file:// 下各知識庫共用同一個 origin，資料庫名稱必須各科不同，否則會讀到別科資料夾
+  const IDB='sawiki-fs';let dirHandle=null;
+  async function isSADir(h){try{const r=await h.getDirectoryHandle('raw');const so=await r.getDirectoryHandle('solutions');await so.getDirectoryHandle(Q[0].id);return true;}catch(e){return false;}}
   function idbGet(){return new Promise(res=>{const r=indexedDB.open(IDB,1);
     r.onupgradeneeded=()=>r.result.createObjectStore('kv');
     r.onerror=()=>res(null);
@@ -470,13 +462,15 @@
     let h=await idbGet();
     if(h){let p=await h.queryPermission({mode:'read'});
       if(p==='prompt'&&interactive)p=await h.requestPermission({mode:'read'});
-      if(p==='granted'){dirHandle=h;return h;}}
+      if(p==='granted'&&await isSADir(h)){dirHandle=h;return h;}}
     if(!interactive)return null;
-    try{h=await showDirectoryPicker({mode:'read'});}catch(e){return null;}
-    try{await h.getDirectoryHandle('raw');}catch(e){
-      alert('選擇的資料夾內找不到 raw/，請選擇 exam-wiki-SA 資料夾本身。');return null;}
+    try{h=await showDirectoryPicker({mode:'read',id:'exam-wiki-sa',startIn:'downloads'});}catch(e){return null;}
+    if(!await isSADir(h)){
+      alert('選擇的資料夾不是結構學知識庫（找不到 raw/solutions/'+Q[0].id+'），請選擇 exam-wiki-SA 資料夾本身。');return null;}
     dirHandle=h;await idbSet(h);return h;
   }
+  // 靜默恢復上次的資料夾授權（僅限本機環境；須在 dirHandle 宣告之後呼叫）
+  if(location.protocol === 'file:') ensureDir(false);
   async function readFileByPath(relPath){
     const parts=relPath.split('/').filter(Boolean);
     let d=dirHandle;
@@ -504,6 +498,8 @@
     src=src.replace(/`([^`\n]+?)`/g,(m,c)=>keep(`<code class="inline">${esc(c)}</code>`));
     // 5. 圖片（路徑稍後解析）
     src=src.replace(/!\[([^\]]*)\]\(([^)]+)\)/g,(m,alt,p)=>keep(`<img alt="${esc(alt)}" data-mdsrc="${esc(p)}">`));
+    // 5.5 wiki 連結 [[id]] 或 [[id|文字]]
+    src=src.replace(/\[\[([^\]|]+)(?:\|([^\]]+))?\]\]/g,(m,id,txt)=>keep(`<a href="#" data-wikilink="${esc(id.trim())}">${esc((txt||id).trim())}</a>`));
     // 6. 連結
     src=src.replace(/\[([^\]]+)\]\(([^)]+)\)/g,(m,txt,p)=>{
       if(/\.md($|#)/i.test(p))return keep(`<a href="#" data-mdlink="${esc(p)}">${esc(txt)}</a>`);
@@ -552,7 +548,7 @@
   async function openMd(relPath,title){
     currentPath=relPath;
     rTitle.textContent=title||relPath;
-    overlay.classList.add('on');reader.classList.add('on');
+    overlay.classList.add('on');reader.classList.add('on');document.body.classList.add('reading');
     rBody.innerHTML='<div class="rmsg">讀取中…</div>';
     const isLocal = location.protocol === 'file:';
     if(isLocal && !window.showDirectoryPicker){
@@ -627,66 +623,39 @@
   }
   window.openMd=openMd;
 
+  // [[id]] 解析：題號 → 解析頁；其餘先找目前資料夾，再找 wiki/queries 與封存的舊 wiki
+  const WIKI_DIRS=['wiki/queries','archive/wiki/problems','archive/wiki/concepts','archive/wiki/methods','archive/wiki/traps','archive/wiki/diagnosis','archive/wiki/philosophy','archive/wiki/failure-modes','archive/wiki/materials','archive/wiki/code-ref','archive/wiki'];
+  async function exists(rel){
+    try{ if(location.protocol==='file:'){await readFileByPath(rel);return true;}
+      const r=await fetch(rel,{method:'HEAD'});return r.ok;}catch(e){return false;}
+  }
+  rBody.addEventListener('click',async ev=>{
+    const a=ev.target.closest('a[data-wikilink]');if(!a)return;
+    ev.preventDefault();
+    const id=a.dataset.wikilink, base=currentPath.split('/').slice(0,-1).join('/');
+    if(/^SA-\d{4}-\d+$/.test(id)){window.open(`study/problems-view/${id}.html`,'_blank');return;}
+    const cands=[...(base?[base]:[]),...WIKI_DIRS].map(d=>d+'/'+id+'.md');
+    for(const c of [...new Set(cands)]){if(await exists(c)){openMd(c,a.textContent);return;}}
+    alert('找不到 [['+id+']] 對應的頁面');
+  });
+
   /* ================= Hash 深度連結（study 頁考題連結） ================= */
   // 支援 index.html#md=raw/solutions/SA-YYYY-N/SA-YYYY-N.md&t=SA-YYYY-N
+  // 題解正本路徑 → 預先渲染的解析頁
+  function toView(md){const m=/^raw\/solutions\/(SA-\d{4}-\d+)\/\1\.md$/.exec(md);return m?`study/problems-view/${m[1]}.html`:null;}
   (function handleHashLink(){
     const h=location.hash;
     if(!h.startsWith('#md='))return;
     const p=new URLSearchParams(h.slice(1));
     const mdPath=p.get('md'), title=p.get('t')||mdPath;
+    if(mdPath&&toView(mdPath)){location.replace(toView(mdPath));return;}
     if(mdPath)openMd(mdPath,title);
   })();
+  window.addEventListener('hashchange',()=>{const h=location.hash;if(!h.startsWith('#md='))return;
+    const p=new URLSearchParams(h.slice(1));const md=p.get('md');if(!md)return;
+    if(toView(md)){location.replace(toView(md));return;}
+    openMd(md,p.get('t')||md);});
 
-  /* ================= 補充筆記 PDF ================= */
-  // PDF 檔名清單由 dashboard-data.js（q.pdf，REFRESH-DASHBOARD 指令掃描寫入）提供，
-  // 不再於前端即時掃描資料夾，因此按鈕在 render() 時即已依資料直接顯示。
-
-  async function openPdfFile(relPath){
-    try{
-      if(location.protocol !== 'file:'){
-        window.open(relPath, '_blank');
-      }else{
-        const f=await readFileByPath(relPath);
-        const u=URL.createObjectURL(f);
-        window.open(u,'_blank');
-        setTimeout(()=>URL.revokeObjectURL(u),120000);
-      }
-    }catch(e){alert('無法開啟 PDF：'+e.message);}
-  }
-
-  function closePdfDrops(){ document.querySelectorAll('.pdf-drop').forEach(d=>d.remove()); }
-
-  function showPdfDrop(btn, pdfs, qId){
-    closePdfDrops();
-    const wrap=btn.closest('.links');
-    if(!wrap) return;
-    const drop=document.createElement('div');
-    drop.className='pdf-drop';
-    pdfs.forEach(name=>{
-      const b=document.createElement('button');
-      b.textContent='📄 '+name;
-      b.addEventListener('click',()=>{ openPdfFile('raw/solutions/'+qId+'/'+name); closePdfDrops(); });
-      drop.appendChild(b);
-    });
-    const btnRect=btn.getBoundingClientRect(), wrapRect=wrap.getBoundingClientRect();
-    drop.style.left=(btnRect.left-wrapRect.left)+'px';
-    wrap.appendChild(drop);
-    function outside(e){ if(!drop.contains(e.target)&&e.target!==btn){closePdfDrops();document.removeEventListener('click',outside,true);} }
-    setTimeout(()=>document.addEventListener('click',outside,true),0);
-  }
-
-  // 點擊「📎 補充筆記 PDF」按鈕：pdf 清單直接取自 Q（dashboard-data.js 靜態資料）
-  async function openPdfs(qId, btn){
-    const q=Q.find(x=>x.id===qId);
-    const pdfs=q?q.pdf:[];
-    if(!pdfs.length) return;
-    if(location.protocol === 'file:' && !dirHandle){
-      const h=await ensureDir(true);
-      if(!h) return;
-    }
-    if(pdfs.length===1){ openPdfFile('raw/solutions/'+qId+'/'+pdfs[0]); return; }
-    showPdfDrop(btn, pdfs, qId);
-  }
 })();
 </script>
 </body>

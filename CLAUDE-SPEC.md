@@ -16,7 +16,7 @@
    - 4.3 圖片引用規範（雙重保險）
    - 4.4 [變數層次分析（Variable Hierarchy Analysis）](#4-4-vha)
 5. [PNG 靜態截圖規範](#5-png)
-6. [viz HTML 互動圖規範](#6-viz-html)
+6. [viz HTML 互動圖規範（已廢止）](#6-viz-html)
 7. [Wiki 頁面格式模板](#7-wiki-templates)
 8. [標籤分類系統](#8-tags)
 9. [question_index.json 欄位規範](#9-json)
@@ -90,10 +90,7 @@ raw/solutions/SA-YYYY-N/
 | 設計圖表 | `SA-YYYY-N-chart-N.png` | 彎矩圖截圖、影響線圖等 | 使用者 |
 | 參考公式 | `SA-YYYY-N-eqn-N.png` | 題目給的公式截圖 | 使用者 |
 | 手寫補充 | `SA-YYYY-N-hand-N.png` | 手寫推導截圖 | 使用者 |
-| 互動圖 | `SA-YYYY-N-[內容碼]-viz.html` | 互動計算圖 | Cowork |
-| 補充筆記 | `*.pdf`（任意檔名） | 補充講義、手寫筆記掃描等 | 使用者 |
-
-> **補充筆記 PDF：** 使用者可將任意 `.pdf` 放入此資料夾，命名無強制規範。Cowork 執行 `更新儀表板資料`（REFRESH-DASHBOARD）時會掃描並將檔名寫入 `dashboard-data.js`（q.pdf 欄位）；`index.html` 題庫瀏覽頁依此資料直接顯示「📎 補充筆記 PDF」按鈕。線上環境點擊將直接開啟 PDF；本機環境下則會要求資料夾讀取授權。新增或移除 PDF 後須重新執行 `更新儀表板資料` 才會反映。
+| 向量圖解 | `figs/*.svg`（附 `gen_*.py`） | 程式產生之彎矩圖、影響線、變形圖等 | Cowork |
 
 方法論另建：
 
@@ -241,39 +238,17 @@ SA-YYYY-N-[類型碼]-[序號].png
 ---
 
 <a id="6-viz-html"></a>
-## 6　viz HTML 互動圖規範
+## 6　viz HTML 互動圖規範——已廢止
 
-### 格式
-
-```
-SA-YYYY-N-[內容碼]-viz.html
-```
-
-### 內容碼對照表
-
-| 內容碼 | 說明 | 觸發條件 | 範例 |
-|--------|------|---------|------|
-| `sfd-bmd` | 剪力圖 + 彎矩圖 | 題目要求繪製 SFD/BMD | `SA-2015-2-sfd-bmd-viz.html` |
-| `influence-line` | 影響線圖 | 影響線題目（SA-U1-3） | `SA-2015-3-influence-line-viz.html` |
-| `moment-dist` | 彎矩分配迭代過程 | 彎矩分配法題目（SA-U2-5） | `SA-2016-2-moment-dist-viz.html` |
-| `slope-deflect` | 傾角變位結果圖 | 傾角變位法題目（SA-U2-3） | `SA-2017-1-slope-deflect-viz.html` |
-| `frame` | 剛架幾何與內力示意 | 剛架分析題目 | `SA-2018-3-frame-viz.html` |
-| `truss` | 桁架幾何與桿力示意 | 桁架分析題目（SA-U1-2） | `SA-2019-1-truss-viz.html` |
-| `matrix` | 勁度矩陣與自由度示意 | 矩陣分析題目（SA-U2-4） | `SA-2020-2-matrix-viz.html` |
-
-### HTML 規格要求
-
-| 項目 | 規格 |
-|------|------|
-| 寬度 | 580px |
-| 繪圖技術 | Canvas 或 SVG，不依賴外部函式庫 |
-| 必須標注 | 關鍵數值、座標軸單位、各節點彎矩值 |
-| 執行方式 | 直接瀏覽器開啟，無需伺服器 |
+- 2026-11-01 起不再產生 `*-viz.html`，既有 40 份已全數刪除（產生腳本 `scripts/mkviz_influence_line.py` 一併移除）。
+- 需要圖解時，改用 struct-diagram 產生 `figs/*.svg` 向量圖（附 `gen_*.py` 可重跑），並以 `![...](figs/xxx.svg)` 插回 .md。
 
 ---
 
 <a id="7-wiki-templates"></a>
 ## 7　Wiki 頁面格式模板
+
+> **已停用（2026-11-01 wiki 封存）**：7.1、7.2 與 7.3 中除 `wiki/queries/` 外的目錄已移至 `archive/wiki/`，不再新建或維護；以下保留作歷史參考。
 
 ### 7.1 題目頁：`wiki/problems/SA-YYYY-N.md`
 
@@ -382,7 +357,6 @@ SA-YYYY-N-[內容碼]-viz.html
 | `secondaryTopicIds` | `[]` 或 `["SA-UN-n"]` | 跨子項時填入，可多個 |
 | `verificationStatus` | `verified` / `unverified` / `needs-review` | 驗證狀態 |
 | `hasSolution` | `true` / `false` | 是否已有解析 `.md` |
-| `hasViz` | `true` / `false` | 是否有互動圖 |
 | `tags` | 字串陣列（中文，3–8 個） | 核心考點標籤 |
 
 ### `verificationStatus` 說明
@@ -409,7 +383,7 @@ SA-YYYY-N-[內容碼]-viz.html
 | `question_index.json` 中 `hasSolution: true` | JSON 確認 |
 | `tags` ≥ 3 個 | JSON 確認 |
 
-### 一道題「ingest 完成」的標準
+### ~~一道題「ingest 完成」的標準~~（已停用：2026-11-01 wiki 封存，ingest 不再執行）
 
 | 項目 | 檢查方式 |
 |------|---------|
@@ -431,7 +405,6 @@ SA-YYYY-N-[內容碼]-viz.html
 | 考卷 PDF | `SA-2015結構學.pdf` | `SA-2015_結構學.pdf` | 年份後缺底線 |
 | PNG | `SA-2015-1-fig1.png` | `SA-2015-1-fig-1.png` | 類型碼與序號間缺連字號 |
 | PNG | `SA-2015-1-eqn.png` | `SA-2015-1-eqn-1.png` | 缺序號（單張也要寫 `-1`） |
-| viz HTML | `SA-2015-1-sfd-bmd.html` | `SA-2015-1-sfd-bmd-viz.html` | 缺 `-viz` 後綴 |
 | tags | `彎矩分配` | `彎矩分配法` | 標籤應含完整中文說明 |
 | 公式 | `MAB = 2EI/L(2θA + θB)` | `$M_{AB} = \frac{2EI}{L}(2\theta_A + \theta_B)$` | 禁止純文字公式 |
 | verificationStatus | `Verified` | `verified` | 狀態值全小寫 |

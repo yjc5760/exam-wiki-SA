@@ -30,12 +30,11 @@
 | **視覺化瀏覽整個知識庫** | **雙擊 `index.html`**（題庫搜尋篩選、考點統計、進度追蹤、指令速查） |
 | 特定題目的解析 | `raw/solutions/SA-YYYY-N/SA-YYYY-N.md` |
 | 子項單元總覽（考什麼＋公式給／背＋逐題要背哪幾條） | `study/unit-SA-UN-n.html`（說 `study SA-UN-n` 生成）；觀念講義 `study/lecture-SA-UN-n.html` |
-| wiki 題目頁（含標籤/考點） | `wiki/problems/SA-YYYY-N.md` |
-| 依年份瀏覽所有題目 | `wiki/by-year.md` |
-| 概念說明（彎矩分配、傾角變位等） | `wiki/concepts/` |
-| 解題策略（拿到考題怎麼判斷） | `wiki/diagnosis/` |
-| 公式來源對應 | `wiki/code-ref/` |
-| 操作紀錄 | `wiki/log.md` |
+| 題目瀏覽頁（KaTeX 排版） | `study/problems-view/SA-YYYY-N.html` |
+| 方法論（彎矩分配、傾角變位、矩陣法等） | `raw/solutions/methods/` |
+| 查詢、稽核報告 | `wiki/queries/` |
+| 變更紀錄 | `wiki/queries/log.md` |
+| 舊 wiki 各層（2026-11-01 封存，唯讀參考） | `archive/wiki/` |
 
 ---
 
@@ -56,16 +55,12 @@ exam-wiki-SA/
 ├── raw/               ← 原始資料（唯讀）
 │   ├── exams/         ← 考卷 PDF（SA-YYYY_結構學.pdf）
 │   ├── json/          ← question_index.json、concepts.json
-│   └── solutions/     ← 每題一個資料夾，含 .md + 截圖 + 補充筆記 PDF
+│   └── solutions/     ← 每題一個資料夾，含 .md + 截圖
 │
-└── wiki/              ← 知識庫（七層架構）
-    ├── problems/      ← 所有題目頁
-    ├── concepts/      ← 概念頁
-    ├── methods/       ← 解題方法論（彎矩分配、傾角變位、矩陣法等）
-    ├── diagnosis/     ← 題型診斷決策樹
-    ├── failure-modes/ ← 常見錯誤模式
-    ├── materials/     ← 材料特性補充
-    └── code-ref/      ← 公式來源對應
+├── wiki/
+│   └── queries/       ← 查詢、稽核報告、log.md（變更紀錄）
+│
+└── archive/wiki/      ← 2026-11-01 封存的舊 wiki 各層（唯讀參考，不再維護）
 ```
 
 ---
@@ -88,7 +83,7 @@ exam-wiki-SA/
 
 - 年份用**西元**（SA-2018-1，不是 SA-107-1）
 - PNG 截圖必須加序號（`fig-1.png`，不可寫 `fig.png`）
-- 互動圖後綴必須是 `-viz.html`（`sfd-bmd-viz.html`，不是 `sfd-bmd.html`）
+- 不產生互動圖 `*-viz.html`（2026-11-01 廢止）；圖解一律用 `figs/*.svg` 向量圖
 - 公式必須用 LaTeX（`$M_{AB}$`，不可寫純文字）
 - ingest 前確認 `verificationStatus = "verified"`
 

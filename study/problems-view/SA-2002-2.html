@@ -54,17 +54,17 @@ header .nomat{margin-top:12px;font-size:.8em;opacity:.85}
 <p><em>圖說：桁架跨度共 4 段 8m（總跨度 32m），高度 2 段 6m（總高度 12m）。A 端為鉸支承，B 端為滾支承。A、B 之間有虛線相連，代表底部為繫索 (tie rod)。頂部節點受力為：D 點受水平向右 16T 及垂直向下 20T；F、C、H、I 點各受垂直向下 20T。求 a(DF)、b(DE)、c(AE)、d(CH)、e(CG) 桿件內力。</em></p>
 <h2>2. 考題核心精神與出題者意圖 (Core Concepts &amp; Examiner's Intent)</h2>
 <ul>
-<li><strong>虛線的物理意義</strong>：本題最大的陷阱在於 A、B 之間的虛線。若視為無構件，則該桁架機構不穩定（$m+r < 2j$）；出題者以虛線暗示此為<strong>帶繫索桁架 (Tied Arch/Truss)</strong>，底部的虛線 AB 是一根承受拉力的繫索，使結構滿足靜定條件，這考驗考生對結構穩定性的判斷。</li>
+<li><strong>虛線的物理意義</strong>：本題最大的陷阱在於 A、B 之間的虛線。若視為無構件，則該桁架機構不穩定（$m+r &lt; 2j$）；出題者以虛線暗示此為<strong>帶繫索桁架 (Tied Arch/Truss)</strong>，底部的虛線 AB 是一根承受拉力的繫索，使結構滿足靜定條件，這考驗考生對結構穩定性的判斷。</li>
 <li><strong>截面法與節點法的靈活切換</strong>：本題無法單純從支承節點 A 開始節點法（因為有 $A_x, A_y, F_{AD}, F_{AE}, F_{AB}$ 共 5 個未知數，超出平衡方程式數量）。出題者意在測驗考生能否先利用<strong>截面法</strong>切開整體結構，求出底部繫索 AB 的內力後，再回到各節點使用<strong>節點法</strong>逐步解出各桿內力。</li>
 </ul>
 <h2>3. 解題戰略地圖與陷阱分析 (Strategic Roadmap &amp; Trap Analysis)</h2>
 <ol>
 <li><strong>整體平衡求反力</strong>：將整個桁架視為剛體，求出支承 A、B 之反力。</li>
 <li><strong>截面法求繫索 AB 內力</strong>：於 F、E 節點與 C 節點之間作一垂直截面，取左半部（或右半部）為自由體，取 C 點為彎矩中心，可直接求出繫索 AB 之張力。</li>
-<li><strong>節點法依序推導</strong>：<br />
-   - 具有 $F_{AB}$ 後，取節點 A 建立平衡，求出 c 桿 (AE)。<br />
-   - 取節點 D 建立平衡，求出 a 桿 (DF) 與 b 桿 (DE)。<br />
-   - 利用截面法（切 C、H 之間），取 G 點求 d 桿 (CH) 及 e 桿 (CG) 內力，或直接由右側進行節點法推導。</li>
+<li><strong>節點法依序推導</strong>：</li>
+<li>具有 $F_{AB}$ 後，取節點 A 建立平衡，求出 c 桿 (AE)。</li>
+<li>取節點 D 建立平衡，求出 a 桿 (DF) 與 b 桿 (DE)。</li>
+<li>利用截面法（切 C、H 之間），取 G 點求 d 桿 (CH) 及 e 桿 (CG) 內力，或直接由右側進行節點法推導。</li>
 </ol>
 <p><strong>陷阱警告 (Traps)</strong>：</p>
 <ul>

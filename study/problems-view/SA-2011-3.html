@@ -116,7 +116,7 @@ header .nomat{margin-top:12px;font-size:.8em;opacity:.85}
 <tr>
 <td>忘記檢查 $M_C$ 的最小值</td>
 <td>只算正的</td>
-<td>$M_{min,C} = -56.25\text{ kN·m}$（載重只佈 AB 跨）；量體小於正值，故「最大彎矩」仍是 $168.75$</td>
+<td>$M_{min,C} = -56.25\text{ kN}\cdot\text{m}$（載重只佈 AB 跨）；量體小於正值，故「最大彎矩」仍是 $168.75$</td>
 </tr>
 </tbody>
 </table>
@@ -128,10 +128,10 @@ header .nomat{margin-top:12px;font-size:.8em;opacity:.85}
 <blockquote>
 <p>$\boxed{\cdot}$ ＝ 需由前步驟推導，非題目直接給定</p>
 </blockquote>
-<p>$$\text{Step 1: } M_B(u) = -\frac{u\,(L^2 - u^2)}{4L^2}<br />
+<p>$$\text{Step 1: } M_B(u) = -\frac{u\,(L^2 - u^2)}{4L^2}
 \quad (u = \text{載重距「所在跨外側支承」的距離})$$</p>
 <p>$$\text{Step 2: } M_C(x) = M_C^{\text{simp}}(x) + \tfrac12\,\boxed{M_B(x)}$$</p>
-<p>$$\text{Step 3: } A_1 = \tfrac12 \cdot L \cdot \tfrac{L}{4} = \tfrac{L^2}{8},<br />
+<p>$$\text{Step 3: } A_1 = \tfrac12 \cdot L \cdot \tfrac{L}{4} = \tfrac{L^2}{8},
 \qquad A_2 = \int_0^L \boxed{M_B(u)}\,du = -\tfrac{L^2}{16}$$</p>
 <p>$$\text{Step 4: } \text{Area}^+_{M_C} = \boxed{A_1} + \tfrac12 \boxed{A_2} = \tfrac{3L^2}{32}$$</p>
 <p>$$\text{Step 5: } M_{max,C} = w \times \boxed{\text{Area}^+_{M_C}}$$</p>
@@ -199,7 +199,7 @@ header .nomat{margin-top:12px;font-size:.8em;opacity:.85}
 </tr>
 <tr>
 <td>$M_{max,C}$</td>
-<td>$w \times \text{Area}^+ = 168.75\text{ kN·m}$</td>
+<td>$w \times \text{Area}^+ = 168.75\text{ kN}\cdot\text{m}$</td>
 <td style="text-align: center;"></td>
 </tr>
 </tbody>
@@ -245,16 +245,16 @@ header .nomat{margin-top:12px;font-size:.8em;opacity:.85}
 <h2>4. 步驟化詳細計算過程 (Step-by-Step Detailed Calculation)</h2>
 <h3>第一部分：五條影響線（第 (1) 小題）</h3>
 <p><strong>贅力選擇：</strong> 取 B 點彎矩 $M_B$ 為贅力，基本結構為兩根獨立的簡支梁 AB、BD。由 B 處的轉角諧合條件：</p>
-<p>$$\frac{2 M_B L}{3EI} = \frac{u\,(L^2 - u^2)}{6LEI}<br />
-\quad\Longrightarrow\quad<br />
+<p>$$\frac{2 M_B L}{3EI} = \frac{u\,(L^2 - u^2)}{6LEI}
+\quad\Longrightarrow\quad
 \boxed{M_B(u) = -\frac{u\,(L^2 - u^2)}{4L^2}}$$</p>
 <p>其中 $u$ 為載重距<strong>所在跨外側支承</strong>的距離（載重在 AB 跨時 $u=x$；在 BD 跨時 $u = 60-x$）。</p>
 <p>由此可寫出其餘四條：</p>
-<p>$$R_A = \underbrace{\frac{L-x}{L}\Big|<em>{\text{僅 AB 跨}}}</em>{\text{簡支值}} + \frac{M_B}{L},<br />
-\qquad R_D(x) = R_A(60-x)\ \text{（對稱）},<br />
+<p>$$R_A = \underbrace{\frac{L-x}{L}\Big|_{\text{僅 AB 跨}}}_{\text{簡支值}} + \frac{M_B}{L},
+\qquad R_D(x) = R_A(60-x)\ \text{（對稱）},
 \qquad R_B = 1 - R_A - R_D$$</p>
-<p>$$M_C = M_C^{\text{simp}} + \frac{M_B}{2},<br />
-\qquad V_C = R_A + R_B - \begin{cases}1 &amp; x &lt; 45\ 0 &amp; x &gt; 45\end{cases}$$</p>
+<p>$$M_C = M_C^{\text{simp}} + \frac{M_B}{2},
+\qquad V_C = R_A + R_B - \begin{cases}1 &amp; x &lt; 45\\ 0 &amp; x &gt; 45\end{cases}$$</p>
 <p><img alt="SA-2011-3 五條影響線：RA、RB、MB、MC、VC，全為曲線，標出關鍵縱距與極值位置" src="../../raw/solutions/SA-2011-3/figs/SA-2011-3-fig-2-influence-lines.svg" /></p>
 <p><em>圖 2　五條影響線（穆勒法的定量版本）。這張圖攔兩件事：把靜不定結構的影響線畫成折線，以及漏掉 $V_C$ 在 AB 跨的</em><em>正值</em><em>（蹺蹺板效應）—— 那一小塊 $+0.0962$ 的面積，正是「BC 段被壓下去、AB 跨被翹起來」的直接證據。</em></p>
 <p><strong>各條影響線的穆勒法解讀與關鍵縱距：</strong></p>
@@ -312,7 +312,7 @@ $R_A$、$M_C$（AB 跨）、$V_C$（AB 跨）都正比於 $M_B$，所以極值�
 <h3>第二部分：計算 C 點之最大彎矩（第 (2) 小題）</h3>
 <p>要使 C 點產生最大正彎矩，$w = 2\text{ kN/m}$ 應<strong>僅佈置於 $M_C$ 影響線為正的區域</strong>。由第一部分可知：<strong>僅 BD 跨（30 m）為正</strong>，AB 跨全為負。</p>
 <p><img alt="SA-2011-3 M_C影響線的載重佈置與面積分解：w只佈BD跨，正面積84.375 m²，M_max=168.75 kN·m" src="../../raw/solutions/SA-2011-3/figs/SA-2011-3-fig-3-mc-loading.svg" /></p>
-<p><em>圖 3　載重佈置與面積分解。這張圖攔的是最貴的一個錯：把 $2\text{ kN/m}$ 佈滿 60 m —— 那會把 AB 跨的 $-28.125\text{ m}^2$ 一併計入，得到 $112.5\text{ kN·m}$，比真正的最大值少了三分之一。</em></p>
+<p><em>圖 3　載重佈置與面積分解。這張圖攔的是最貴的一個錯：把 $2\text{ kN/m}$ 佈滿 60 m —— 那會把 AB 跨的 $-28.125\text{ m}^2$ 一併計入，得到 $112.5\text{ kN}\cdot\text{m}$，比真正的最大值少了三分之一。</em></p>
 <p><strong>1. 疊加分解</strong></p>
 <p>$$M_C(x) = M_C^{\text{simp}}(x) + \tfrac12 M_B(x)$$</p>
 <p>（BD 跨的端彎矩為 B 端 $M_B$、D 端 $0$，線性內插到中點即 $M_B/2$。）</p>
@@ -324,22 +324,22 @@ $R_A$、$M_C$（AB 跨）、$V_C$（AB 跨）都正比於 $M_B$，所以極值�
 <ul>
 <li><strong>贅力部分 $A_2$</strong>：$M_B$ 影響線在單跨內的面積</li>
 </ul>
-<p>$$A_2 = \int_0^L -\frac{u(L^2-u^2)}{4L^2}\,du<br />
-= -\frac{1}{4L^2}\left[\frac{L^2u^2}{2} - \frac{u^4}{4}\right]_0^L<br />
+<p>$$A_2 = \int_0^L -\frac{u(L^2-u^2)}{4L^2}\,du
+= -\frac{1}{4L^2}\left[\frac{L^2u^2}{2} - \frac{u^4}{4}\right]_0^L
 = -\frac{1}{4L^2}\cdot\frac{L^4}{4} = -\frac{L^2}{16} = -56.25\text{ m}^2$$</p>
 <p><strong>3. $M_C$ 影響線的正面積</strong></p>
-<p>$$\text{Area}^+_{M_C} = A_1 + \tfrac12 A_2 = \frac{L^2}{8} - \frac{L^2}{32} = \frac{3L^2}{32}<br />
+<p>$$\text{Area}^+_{M_C} = A_1 + \tfrac12 A_2 = \frac{L^2}{8} - \frac{L^2}{32} = \frac{3L^2}{32}
 = \frac{3 \times 900}{32} = 84.375\text{ m}^2$$</p>
 <p><strong>4. 最大正彎矩</strong></p>
-<p>$$\boxed{M_{max,C} = w \times \text{Area}^+_{M_C} = 2 \times 84.375 = 168.75\text{ kN·m}}$$</p>
+<p>$$\boxed{M_{max,C} = w \times \text{Area}^+_{M_C} = 2 \times 84.375 = 168.75\text{ kN}\cdot\text{m}}$$</p>
 <p><strong>5.（補充）最小彎矩</strong> —— 載重只佈 AB 跨時：</p>
-<p>$$\text{Area}^-<em>{M_C} = \tfrac12 A_2 = -\frac{L^2}{32} = -28.125\text{ m}^2<br />
-\quad\Longrightarrow\quad<br />
-M</em>{min,C} = 2 \times (-28.125) = -56.25\text{ kN·m}$$</p>
-<p>$|{-56.25}| &lt; 168.75$，故「C 點之最大彎矩」為 $\mathbf{168.75\text{ kN·m}}$（正彎矩）。</p>
+<p>$$\text{Area}^-_{M_C} = \tfrac12 A_2 = -\frac{L^2}{32} = -28.125\text{ m}^2
+\quad\Longrightarrow\quad
+M_{min,C} = 2 \times (-28.125) = -56.25\text{ kN}\cdot\text{m}$$</p>
+<p>$|{-56.25}| &lt; 168.75$，故「C 點之最大彎矩」為 $\mathbf{168.75\text{ kN}\cdot\text{m}}$（正彎矩）。</p>
 <blockquote>
 <p><strong>若載重佈滿全長 60 m</strong>（題目沒問，但常被誤答）：<br />
-$M_C = 2 \times (84.375 - 28.125) = 112.5\text{ kN·m}$ —— 比真正的最大值少 $33\%$。</p>
+$M_C = 2 \times (84.375 - 28.125) = 112.5\text{ kN}\cdot\text{m}$ —— 比真正的最大值少 $33\%$。</p>
 </blockquote>
 <hr />
 <h2>5. 關鍵爭議點與進階探討 (Critical Issues &amp; Advanced Discussion)</h2>
@@ -393,7 +393,7 @@ $M_C = 2 \times (84.375 - 28.125) = 112.5\text{ kN·m}$ —— 比真正的最�
 </tr>
 <tr>
 <td>2026-08-26</td>
-<td><strong>修正分類</strong>：<code>SA-U5-1</code>／<code>SA-U5-2</code> → <code>SA-U1-3</code>；<strong>補上第 (1) 小題的影響線圖與關鍵縱距</strong>（原文只有文字描述、無縱距、無圖）；補 $M_{min,C} = -56.25\text{ kN·m}$</td>
+<td><strong>修正分類</strong>：<code>SA-U5-1</code>／<code>SA-U5-2</code> → <code>SA-U1-3</code>；<strong>補上第 (1) 小題的影響線圖與關鍵縱距</strong>（原文只有文字描述、無縱距、無圖）；補 $M_{min,C} = -56.25\text{ kN}\cdot\text{m}$</td>
 <td>SA 命題大綱只有 U1～U3，沒有 U5（<code>question_index.json</code> 原本就記為 <code>SA-U1-3</code>，是 .md 標頭與索引不一致）；第 (1) 小題要求「繪出」五條影響線，原文以「請依上述定性描述繪製平滑曲線」帶過，等於沒答</td>
 </tr>
 <tr>
@@ -404,7 +404,7 @@ $M_C = 2 \times (84.375 - 28.125) = 112.5\text{ kN·m}$ —— 比真正的最�
 </tbody>
 </table>
 <hr />
-<p><em>解析日期：2026-07-02　｜　分類修正＋圖解補繪：2026-08-26（$M_{max,C} = 168.75\text{ kN·m}$ 經梁有限元在 241 個載重位置獨立驗證；向量圖腳本 <code>gen_SA-2011-3.py</code>，可重跑）</em></p></main>
+<p><em>解析日期：2026-07-02　｜　分類修正＋圖解補繪：2026-08-26（$M_{max,C} = 168.75\text{ kN}\cdot\text{m}$ 經梁有限元在 241 個載重位置獨立驗證；向量圖腳本 <code>gen_SA-2011-3.py</code>，可重跑）</em></p></main>
 <footer>來源：raw/solutions/SA-2011-3/SA-2011-3.md（知識庫解題內容唯一正本；本頁僅為渲染顯示）</footer>
 
 <script>

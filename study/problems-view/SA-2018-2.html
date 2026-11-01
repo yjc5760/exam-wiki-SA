@@ -60,7 +60,7 @@ header .nomat{margin-top:12px;font-size:.8em;opacity:.85}
 <ol>
 <li>正確選定並編號系統的獨立自由度（需判斷忽略軸向變形下的側移自由度）。</li>
 <li>組裝整體勁度矩陣 $[K]$（特別考驗左右兩根垂直柱因節點位置不同，對側移與旋轉耦合項 $K_{12}, K_{13}$ 的正負號判斷）。</li>
-<li>計算等效節點外力向量 ${P}$。</li>
+<li>計算等效節點外力向量 $\{P\}$。</li>
 <li>解方程式求得位移後，回代求端彎矩並繪製精確的 BMD。</li>
 </ol>
 <h2>3. 解題戰略地圖與陷阱分析 (Strategic Roadmap &amp; Trap Analysis)</h2>
@@ -70,8 +70,8 @@ header .nomat{margin-top:12px;font-size:.8em;opacity:.85}
   忽略軸向變形，A、D 固定，故 $v_B = v_A = 0$，$v_C = v_D = 0$。水平樑 BC 不可伸長，故 $u_B = u_C = u$。系統共有 3 個獨立自由度：側移 $u$、節點 B 旋轉 $\theta_B$、節點 C 旋轉 $\theta_C$。</p>
 </li>
 <li>
-<p><strong>戰略二：建立 $[K]$ 與 ${P}$</strong><br />
-  分別計算 AB 柱、BC 樑、CD 柱對各自由度的勁度貢獻，並利用 BC 跨中載重求固端彎矩，反向施加於節點得 ${P}$。</p>
+<p><strong>戰略二：建立 $[K]$ 與 $\{P\}$</strong><br />
+  分別計算 AB 柱、BC 樑、CD 柱對各自由度的勁度貢獻，並利用 BC 跨中載重求固端彎矩，反向施加於節點得 $\{P\}$。</p>
 </li>
 <li>
 <p><strong>陷阱</strong>：</p>
@@ -81,15 +81,15 @@ header .nomat{margin-top:12px;font-size:.8em;opacity:.85}
 </ul>
 <h2>3.5 變數層次分析 (Variable Hierarchy Analysis)</h2>
 <h3>最終目標</h3>
-<p>建立 $[K]{D} = {P}$ 並求解位移 $D_1, D_2, D_3$，進而繪製全結構 BMD。</p>
+<p>建立 $[K]\{D\} = \{P\}$ 並求解位移 $D_1, D_2, D_3$，進而繪製全結構 BMD。</p>
 <h3>本題關鍵公式（依計算順序）</h3>
-<p>$$ [K] = \sum [K]<em>{member} $$<br />
+<p>$$ [K] = \sum [K]_{member} $$<br />
 （組裝整體勁度矩陣）<br />
-$$ \boxed{{P}} = -{FEM} $$<br />
+$$ \boxed{\{P\}} = -\{FEM\} $$<br />
 （等效節點外力向量）<br />
-$$ {D} = \boxed{[K]}^{-1} \boxed{{P}} $$<br />
+$$ \{D\} = \boxed{[K]}^{-1} \boxed{\{P\}} $$<br />
 （求解節點位移向量）<br />
-$$ M</em>{end} = M_{FEM} + \sum K_{ij} D_j $$<br />
+$$ M_{end} = M_{FEM} + \sum K_{ij} D_j $$<br />
 （回代求桿端彎矩）</p>
 <h3>L1：題目直接給定</h3>
 <ul>
@@ -149,12 +149,12 @@ $$ M</em>{end} = M_{FEM} + \sum K_{ij} D_j $$<br />
 <li>$K_{33} = \frac{4EI}{L} + \frac{4EI}{L} = \frac{8EI}{L}$</li>
 </ol>
 <p>組裝得整體勁度矩陣：<br />
-$$ [K] = \begin{bmatrix} <br />
-\frac{24EI}{L^3} &amp; -\frac{6EI}{L^2} &amp; \frac{6EI}{L^2} \ <br />
--\frac{6EI}{L^2} &amp; \frac{8EI}{L} &amp; \frac{2EI}{L} \ <br />
-\frac{6EI}{L^2} &amp; \frac{2EI}{L} &amp; \frac{8EI}{L} <br />
+$$ [K] = \begin{bmatrix} 
+\frac{24EI}{L^3} &amp; -\frac{6EI}{L^2} &amp; \frac{6EI}{L^2} \\ 
+-\frac{6EI}{L^2} &amp; \frac{8EI}{L} &amp; \frac{2EI}{L} \\ 
+\frac{6EI}{L^2} &amp; \frac{2EI}{L} &amp; \frac{8EI}{L} 
 \end{bmatrix} $$</p>
-<h3>Step 3: 建立節點外力向量 ${P}$</h3>
+<h3>Step 3: 建立節點外力向量 $\{P\}$</h3>
 <p>BC 樑中點受向下力 P，其固端彎矩為：</p>
 <ul>
 <li>$FEM_{BC} = +\frac{PL}{8}$ (逆時針)</li>
@@ -169,9 +169,9 @@ $$ [K] = \begin{bmatrix} <br />
 <li>$P_2 = -FEM_{BC} = -\frac{PL}{8}$</li>
 <li>$P_3 = -FEM_{CB} = +\frac{PL}{8}$</li>
 </ul>
-<p>$$ {P} = \begin{bmatrix} 0 \ -\frac{PL}{8} \ \frac{PL}{8} \end{bmatrix} $$</p>
+<p>$$ \{P\} = \begin{bmatrix} 0 \\ -\frac{PL}{8} \\ \frac{PL}{8} \end{bmatrix} $$</p>
 <h3>Step 4: 求解各自由度位移</h3>
-<p>解矩陣方程式 $[K]{D} = {P}$：</p>
+<p>解矩陣方程式 $[K]\{D\} = \{P\}$：</p>
 <p>1) $\frac{24EI}{L^3} D_1 - \frac{6EI}{L^2} D_2 + \frac{6EI}{L^2} D_3 = 0 \implies D_1 = \frac{L}{4}(D_2 - D_3)$<br />
 2) $-\frac{6EI}{L^2} D_1 + \frac{8EI}{L} D_2 + \frac{2EI}{L} D_3 = -\frac{PL}{8}$<br />
 3) $\frac{6EI}{L^2} D_1 + \frac{2EI}{L} D_2 + \frac{8EI}{L} D_3 = \frac{PL}{8}$</p>
@@ -200,8 +200,7 @@ $M_{mid} = \frac{PL}{4} - \frac{PL}{24} = \frac{5PL}{24}$ (下方受拉)</p>
 <p>📊 <strong>彎矩圖 (BMD) 標示說明：</strong><br />
 - <strong>AB 柱</strong>：全段均勻彎矩 $PL/24$，畫於柱<strong>右側</strong> (內側，與梁 B 端上緣受拉連續)。<br />
 - <strong>CD 柱</strong>：全段均勻彎矩 $PL/24$，畫於柱<strong>右側</strong> (外側，與梁 C 端上緣受拉連續)。<br />
-- <strong>BC 樑</strong>：B、C 兩端彎矩為 $PL/24$ 畫於樑<strong>上方</strong>；跨中最大正彎矩為 $5PL/24$ 畫於樑<strong>下方</strong>，呈兩段直線折線。<br />
-<em>(請參見系統生成的互動圖 SA-2018-2-sfd-bmd-viz.html)</em></p>
+- <strong>BC 樑</strong>：B、C 兩端彎矩為 $PL/24$ 畫於樑<strong>上方</strong>；跨中最大正彎矩為 $5PL/24$ 畫於樑<strong>下方</strong>，呈兩段直線折線。</p>
 </blockquote>
 <p><img alt="SA-2018-2 變形形狀與彎矩圖互相檢核：左圖側移模式，右圖彎矩圖（柱端全為 PL/24、梁跨中 5PL/24）" src="../../raw/solutions/SA-2018-2/figs/SA-2018-2-fig-3-deflected-bmd.svg" /></p>
 <p><em>圖 3　變形形狀與彎矩圖的互相檢核。左圖顯示側移向左、兩柱皆為單曲率（純彎曲、剪力為零）、梁對稱下垂（B 順時針、C 逆時針）；右圖標出梁的彎矩在端點（上方受拉）與跨中（下方受拉）異號、圖形需穿越梁軸線。這張圖攔三種最常見的錯誤：固端彎矩正負號寫反（側移方向與柱受拉側整組顛倒）、柱端彎矩正負號寫反（導致柱出現不存在的剪力），以及把梁的彎矩圖畫成不變號的單邊三角形（跨中 $5PL/24$ 算成與端點同側）。</em></p>

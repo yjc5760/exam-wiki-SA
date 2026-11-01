@@ -8,17 +8,17 @@
 
 ## 指令索引
 
-### 📦 wiki 編譯與維護
+### 📦 wiki 編譯與維護（2026-11-01 wiki 封存後，會寫 wiki 的指令已停用）
 
 | 指令 | 觸發語句 | 用途 |
 |------|---------|------|
-| [INGEST](#ingest) | `ingest SA-XXXX-N` | 將一道已驗證題目寫入 wiki |
-| [COMPILE-ALL](#compile-all) | `compile all` | 從零初始化整個 wiki |
-| [LINT](#lint) | `lint wiki` | 健檢 wiki 完整性（16 項） |
+| ~~[INGEST](#ingest)~~ | ~~`ingest SA-XXXX-N`~~ | 已停用（2026-11-01 wiki 封存） |
+| ~~[COMPILE-ALL](#compile-all)~~ | ~~`compile all`~~ | 已停用（2026-11-01 wiki 封存） |
+| ~~[LINT](#lint)~~ | ~~`lint wiki`~~ | 已停用（2026-11-01 wiki 封存） |
 | [STATUS](#status) | `status` | 查看驗證進度與統計 |
 | [REINDEX](#reindex) | `reindex` | 掃描 solutions/，修正 hasSolution 不一致 |
-| [ADD-CONCEPT](#add-concept) | `add concept [概念名]` | 新增概念到 concepts.json |
-| [ADD-METHOD](#add-method) | `add method [方法名]` | 新增解題方法論頁面 |
+| [ADD-CONCEPT](#add-concept) | `add concept [概念名]` | 新增概念到 concepts.json（不再建 wiki 概念頁） |
+| [ADD-METHOD](#add-method) | `add method [方法名]` | 新增解題方法論（只建 raw/solutions/methods/） |
 | [REFRESH-DASHBOARD](#refresh-dashboard) | `更新儀表板資料` | 從 question_index.json 重新生成 dashboard-data.js |
 
 ### 📊 備考分析類
@@ -43,6 +43,8 @@
 
 ## INGEST
 
+> **已停用（2026-11-01 wiki 封存）**：wiki/ 只保留 `queries/`，其餘各層已移至 `archive/wiki/`，本指令不再執行；以下保留作歷史參考。
+
 **觸發語句：** `ingest SA-2018-1`（Cowork 直接執行）
 
 **前置檢查（強制）：**
@@ -59,11 +61,11 @@
 ```
 1. 讀取 raw/solutions/SA-XXXX-N/SA-XXXX-N.md
 2. 讀取 raw/json/question_index.json 中該題的完整條目
-   → 取得 primaryTopicId、secondaryTopicIds、tags、hasViz
+   → 取得 primaryTopicId、secondaryTopicIds、tags
 3. 掃描 raw/solutions/SA-XXXX-N/ 下的所有附屬檔案：
    → *-fig-*.png、*-chart-*.png、*-eqn-*.png（靜態截圖）
    → *-hand-*.png（手寫補充）
-   → *-sfd-bmd-viz.html、*-influence-line-viz.html 等（互動圖）
+   → figs/*.svg（程式產生之向量圖解）
 4. 建立或更新 wiki/problems/SA-XXXX-N.md
 5. 從 .md 萃取涉及的概念 → 更新 wiki/concepts/ 相關頁面的「出現題目」表格
 6. 從 .md 萃取涉及的陷阱 → 更新 wiki/traps/ 相關頁面的「出現題目」表格
@@ -83,6 +85,8 @@
 ---
 
 ## COMPILE-ALL
+
+> **已停用（2026-11-01 wiki 封存）**：wiki/ 只保留 `queries/`，其餘各層已移至 `archive/wiki/`，本指令不再執行；以下保留作歷史參考。
 
 **觸發語句：** `compile all`（Cowork 直接執行）
 
@@ -105,6 +109,8 @@
 
 ## LINT
 
+> **已停用（2026-11-01 wiki 封存）**：wiki/ 只保留 `queries/`，其餘各層已移至 `archive/wiki/`，本指令不再執行；以下保留作歷史參考。
+
 **觸發語句：** `lint wiki`（Cowork 直接執行）
 
 **檢查項目：**
@@ -113,8 +119,8 @@
 2.  斷開連結（[[id]] 但對應頁面不存在）
 3.  概念缺口（concepts.json 有 related_concept_ids 但頁面未建立）
 4.  手寫補充未登錄（raw/solutions/ 有 hand-*.png 但 problems/ 頁面未標注）
-5.  圖形未登錄（raw/solutions/ 有 *-viz.html 但 problems/ 頁面無圖形區塊）
-6.  SFD/BMD 圖缺口（SA-U1-2 靜定結構分析題目但要求繪圖卻無 sfd-bmd-viz.html）
+5.  圖形未登錄（raw/solutions/SA-XXXX-N/figs/ 有 *.svg 但 problems/ 頁面圖形區塊未列）
+6.  殘留互動圖（raw/solutions/ 出現 *-viz.html，或 .md 仍引用 -viz.html；互動圖已於 2026-11-01 廢止）
 7.  方法論缺口（raw/solutions/methods/ 有資料夾但 wiki/methods/ 無對應頁面）
 8.  圖片圖說缺漏（.md 中有 ![...](*.png) 但下方無 *圖說：* 的題目）
 9.  eqn.png 圖說未文字化（有 *-eqn.png 但圖說未包含公式 LaTeX）
@@ -174,7 +180,7 @@ solutions/ 已有解析但未驗證：[列出題號]
 
 **觸發語句：** `add concept [概念名]`（例：`add concept 彎矩分配法分配因子`）
 
-**用途：** 在 `raw/json/concepts.json` 新增一個概念條目，並建立對應的 `wiki/concepts/[id].md`。
+**用途：** 在 `raw/json/concepts.json` 新增一個概念條目（2026-11-01 起不再建立 wiki 概念頁）。
 
 **執行步驟：**
 ```
@@ -185,8 +191,8 @@ solutions/ 已有解析但未驗證：[列出題號]
    - 簡短定義（1-2句）
    - 相關概念 related_concept_ids（可留空）
 2. 寫入 raw/json/concepts.json
-3. 建立 wiki/concepts/[id].md（含定義、公式、相關題目表格）
-4. 在 wiki/log.md 追加紀錄
+3. ~~建立 wiki/concepts/[id].md~~（已停用：2026-11-01 wiki 封存）
+4. 在 wiki/queries/log.md 追加紀錄
 ```
 
 ---
@@ -195,7 +201,7 @@ solutions/ 已有解析但未驗證：[列出題號]
 
 **觸發語句：** `add method [方法名]`（例：`add method 傾角變位法`）
 
-**用途：** 在 `raw/solutions/methods/` 新增一個解題方法論文件，並建立 `wiki/methods/[id].md`。
+**用途：** 在 `raw/solutions/methods/` 新增一個解題方法論文件（2026-11-01 起不再建立 wiki 方法頁）。
 
 **執行步驟：**
 ```
@@ -204,8 +210,8 @@ solutions/ 已有解析但未驗證：[列出題號]
    - 適用題型、適用單元
    - 核心公式、步驟摘要
 2. 建立 raw/solutions/methods/[method_id]/[method_id].md
-3. 建立 wiki/methods/[method_id].md
-4. 在 wiki/log.md 追加紀錄
+3. ~~建立 wiki/methods/[method_id].md~~（已停用：2026-11-01 wiki 封存）
+4. 在 wiki/queries/log.md 追加紀錄
 ```
 
 ---
@@ -218,9 +224,8 @@ solutions/ 已有解析但未驗證：[列出題號]
 1. 驗算：邊界代入、量綱檢查、與 verified 題目解答交叉比對
    （只憑印象或單一參考書就改 = 不合格）
 2. 改 raw/solutions/methods/[id]/[id].md
-3. cp 覆蓋 wiki/methods/[id].md（不可只改 wiki，compile-all 會蓋回）
-4. 全庫 grep 同一個錯誤係數，其他頁面一併修正
-5. wiki/log.md 追加紀錄：改了什麼、為什麼、怎麼驗證的
+3. 全庫 grep 同一個錯誤係數，其他頁面（study/ 講義等）一併修正（wiki/methods/ 已封存，不必同步）
+4. wiki/queries/log.md 追加紀錄：改了什麼、為什麼、怎麼驗證的
 ```
 
 > **單位是最常見的錯誤來源**。同一條規範式在不同單位制下係數完全不同，
@@ -239,21 +244,14 @@ solutions/ 已有解析但未驗證：[列出題號]
 ```
 1. 讀取 raw/json/question_index.json 全部條目
 2. 轉換為精簡陣列格式寫入 dashboard-data.js：
-   [moduleId, primaryTopicId縮寫(去SA-前綴), secondaryTopicIds縮寫, viz檔名前綴陣列, tags, pdf補充筆記檔名陣列]
-   - viz 前綴：掃描 raw/solutions/SA-XXXX-N/ 下 *-viz.html，
-     取檔名中 moduleId 與 -viz.html 之間的字段（如 sfd-bmd、influence-line）
-   - pdf 補充筆記：掃描 raw/solutions/SA-XXXX-N/ 下所有 *.pdf，取原始檔名（含副檔名）存入陣列；
-     無 PDF 的題目寫入空陣列 []
+   [moduleId, primaryTopicId縮寫(去SA-前綴), secondaryTopicIds縮寫, tags]
+   - （2026-11-01 起移除 viz 與 pdf 補充筆記欄位；index.html 依此 4 欄格式讀取）
 3. 讀取 `raw/json/syllabus_taxonomy.json`，提取出 `subject.id === "SA"` 的分類樹，並自動轉換成 `window.SA_TOPICS` 與 `window.SA_UNITS` 寫入 `dashboard-data.js` 中。
-4. 在 wiki/log.md 追加紀錄
+4. 在 wiki/queries/log.md 追加紀錄
 注意：index.html 本身不需改動；僅當需求變更時才修改 UI。
 ```
 
-**補充說明：補充筆記 PDF**
-- 使用者可將任意 `.pdf` 檔案放入 `raw/solutions/SA-YYYY-N/` 資料夾，命名無強制規範
-- PDF 檔名清單由 REFRESH-DASHBOARD 指令掃描並寫入 dashboard-data.js（q.pdf 欄位），不再於前端即時掃描資料夾
-- index.html 題庫瀏覽頁會依 dashboard-data.js 資料，對有 PDF 的題目卡片直接顯示「📎 補充筆記 PDF」按鈕；無 PDF 者不顯示
-- 使用者新增或移除 PDF 後，需對 Cowork 說「更新儀表板資料」才會反映在按鈕上
+**補充說明：** 補充筆記 PDF 功能已於 2026-11-01 移除（儀表板按鈕與篩選一併刪除）。
 
 ---
 
@@ -345,8 +343,8 @@ SA-U3（建築結構系統）：XX%
 
 ③ 考題清單（互動篩選）
   - 篩選按鈕（全部 + 各子項）
-  - 每題顯示：題號/年度、題型摘要、關鍵 tags（前5個）、解析/互動圖/驗證狀態 icon
-  - 【重要】點擊題號或標題時，必須以 `<a href="../index.html#md=raw/solutions/SA-XXXX-N/SA-XXXX-N.md&t=SA-XXXX-N" target="_blank">` 格式連結至 markdown 渲染器，確保公式能透過 KaTeX 呈現，且相對路徑的附圖（png）與補充檔（pdf）皆可正常載入。
+  - 每題顯示：題號/年度、題型摘要、關鍵 tags（前5個）、解析/驗證狀態 icon
+  - 【重要】點擊題號或標題時，必須以 `<a href="../index.html#md=raw/solutions/SA-XXXX-N/SA-XXXX-N.md&t=SA-XXXX-N" target="_blank">` 格式連結（index.html 會自動導向預先渲染的 `study/problems-view/SA-XXXX-N.html`）；新頁面請直接連 `problems-view/SA-XXXX-N.html`。
 
 ④ 核心公式速查（KaTeX 渲染）
   - 每個子項一張公式卡，含主要計算公式與注意事項
@@ -375,7 +373,7 @@ SA-U3（建築結構系統）：XX%
 二、公式給／背：判定方法、三級圖例、公式卡（回想模式；卡底列「考了卻沒給」的題號）、
 　　逐年證據表（可展開）、背誦策略
 三、考題總表：主＋副逐題一列——題型、考點群、題解用到的公式標籤（紅／橘＝要背、
-　　綠框＝當年有印、綠底＝給數值）、解析頁／影片／互動圖連結；可依考點群、主副、公式篩選
+　　綠框＝當年有印、綠底＝給數值）、解析頁／影片連結；可依考點群、主副、公式篩選
 四、只剩三天
 ```
 
@@ -383,7 +381,7 @@ SA-U3（建築結構系統）：XX%
 ```
 study/data/unit-SA-UN-n.json        ← 唯一需要維護的資料：考點群、逐題用到哪幾條公式（Q[].f）、
                                        公式卡（F[]，含 ok＝考卷印出的年份）、逐年備註、文字段落
-raw/json/question_index.json        ← 題數、主副考點、排名、viz、verified 一律由此計算
+raw/json/question_index.json        ← 題數、主副考點、排名、verified 一律由此計算
 解題過程影片/<題號>/video/*.mp4       ← 有影片就加 🎬
         ↓  python scripts/build_unit_page.py SA-UN-n   （或 --all；--check 只檢查不寫檔）
 study/unit-SA-UN-n.html             ← 產出；請勿手改
@@ -466,4 +464,5 @@ SA-2018-2：桁架影響線分析
 | 日期 | 變更 | 原因 |
 |------|------|------|
 | 2026-07-02 | 從 exam-wiki-RC 克隆改寫，全面替換為 SA 科目 | 建立結構學獨立知識庫 |
+| 2026-11-01 | wiki 封存：INGEST、COMPILE-ALL、LINT 停用；ADD-CONCEPT／ADD-METHOD／FIX-METHOD 不再寫 wiki；log 改為 `wiki/queries/log.md` | wiki 各層移至 `archive/wiki/`（比照 SS） |
 | 2026-10-29 | STUDY 子項層級改為「單元總覽」`unit-SA-UN-n.html`（`scripts/build_unit_page.py` ＋ `study/data/unit-SA-UN-n.json`），取代命題分析與給／背分界兩頁 | 兩頁逐年列同一批題目、出題概況又與全科熱圖重複；逐題標公式用途後才發現舊給／背頁的年份證據有多處錯誤 |

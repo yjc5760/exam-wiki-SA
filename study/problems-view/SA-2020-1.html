@@ -301,9 +301,6 @@ header .nomat{margin-top:12px;font-size:.8em;opacity:.85}
 </table>
 <hr />
 <h2>4. 步驟化詳細計算過程 (Step-by-Step Detailed Calculation)</h2>
-<blockquote>
-<p>📊 互動圖：<code>SA-2020-1-slope-deflect-viz.html</code></p>
-</blockquote>
 <h3>4.0 幾何與靜不定度</h3>
 <p><img alt="SA-2020-1 題目重繪：ab 水平桿 4m、bc 斜桿 5m、68kN 在 bc 中點、c 為可轉動滾支承" src="../../raw/solutions/SA-2020-1/figs/SA-2020-1-fig-1-frame.svg" /></p>
 <p><em>圖 1　題目重繪（向量版，幾何由附圖像素掃描而來）。這張圖攔本題最致命的三個誤讀：哪一根是斜桿、68 kN 在節點還是桿件中間、$c$ 是可轉動的滾支承還是不可轉動的滑軌——任一項錯了，整份答案作廢。</em></p>
@@ -327,7 +324,7 @@ header .nomat{margin-top:12px;font-size:.8em;opacity:.85}
 <p>$$P_\perp = 68 \times \tfrac45 = 54.4\ \text{kN}\ \text{（法向，產生彎矩）}$$<br />
 $$P_\parallel = 68 \times \tfrac35 = 40.8\ \text{kN}\ \text{（軸向，不產生彎矩）}$$</p>
 <p>法向載重落在 5 m 桿的<strong>中點</strong>：</p>
-<p>$$M_F^{bc} = -\frac{P_\perp L_{bc}}{8} = -34\ \text{kN·m},\qquad M_F^{cb} = +34\ \text{kN·m}$$</p>
+<p>$$M_F^{bc} = -\frac{P_\perp L_{bc}}{8} = -34\ \text{kN}\cdot\text{m},\qquad M_F^{cb} = +34\ \text{kN}\cdot\text{m}$$</p>
 <h3>4.3 傾角變位方程式</h3>
 <p>以順時針為正，$EI$ 為共同係數：</p>
 <p>$$M_{ab} = \frac{2EI}{4}\left(\theta_b - 3\tfrac{\Delta}{4}\right) = 0.5EI\,\theta_b - 0.375EI\,\Delta$$<br />
@@ -340,7 +337,7 @@ $$M_{cb} = \frac{2EI}{5}\left(2\theta_c + \theta_b\right) + 34 = 0.8EI\,\theta_c
 <p><strong>（2）滾支承：$c$ 可自由轉動 $\Rightarrow M_{cb} = 0$</strong></p>
 <p>$$0.4\,EI\theta_b + 0.8\,EI\theta_c = -34 \tag{2}$$</p>
 <p><strong>（3）側移方程（虛功法）：</strong> 給機構虛位移 $\delta\Delta$（$b$、$c$ 同時下移），則 $\delta\psi_{ab} = \delta\Delta/4$、$\delta\psi_{bc} = 0$，而 68 kN 隨 $bc$ 剛體平移下降 $\delta\Delta$：</p>
-<p>$$(M_{ab} + M_{ba})\cdot\frac{\delta\Delta}{4} + 68\,\delta\Delta = 0<br />
+<p>$$(M_{ab} + M_{ba})\cdot\frac{\delta\Delta}{4} + 68\,\delta\Delta = 0
 \;\Longrightarrow\; \boxed{M_{ab} + M_{ba} = -272} \tag{3}$$</p>
 <p>展開 (3)：$1.5\,EI\theta_b - 0.75\,EI\Delta = -272$</p>
 <h3>4.5 解聯立</h3>
@@ -350,9 +347,9 @@ $$M_{cb} = \frac{2EI}{5}\left(2\theta_c + \theta_b\right) + 34 = 0.8EI\,\theta_c
 <p>$$EI\Delta = \frac{1.5(220) + 272}{0.75} = \frac{602}{0.75} = \frac{2408}{3} \approx 802.67$$<br />
 $$EI\theta_c = -42.5 - 110 = -152.5$$</p>
 <h3>4.6 端點彎矩與反力</h3>
-<p>$$\boxed{M_{ab} = 0.5(220) - 0.375!\left(\tfrac{2408}{3}\right) = 110 - 301 = -191\ \text{kN·m}}$$<br />
-$$\boxed{M_{ba} = 220 - 301 = -81\ \text{kN·m}}$$<br />
-$$M_{bc} = +81\ \text{kN·m}\quad(\text{節點 } b \text{ 平衡 ✓}),\qquad M_{cb} = 0\ \checkmark$$</p>
+<p>$$\boxed{M_{ab} = 0.5(220) - 0.375\!\left(\tfrac{2408}{3}\right) = 110 - 301 = -191\ \text{kN}\cdot\text{m}}$$<br />
+$$\boxed{M_{ba} = 220 - 301 = -81\ \text{kN}\cdot\text{m}}$$<br />
+$$M_{bc} = +81\ \text{kN}\cdot\text{m}\quad(\text{節點 } b \text{ 平衡 ✓}),\qquad M_{cb} = 0\ \checkmark$$</p>
 <p>（順時針為正。$M_{ab} = -191$ 代表固定端 $a$ 對桿件施加 191 kN·m 的<strong>逆時針</strong>彎矩。）</p>
 <p><strong>$c$ 點反力：</strong> $c$ 是貼<strong>垂直</strong>牆的滾支承，反力方向為<strong>水平</strong>。由整體對 $a$ 取矩（逆時針正）：</p>
 <p>$$M_a + 3C_x - 68 \times 6 = 0,\qquad M_a = 191\ \text{（逆時針）}$$<br />

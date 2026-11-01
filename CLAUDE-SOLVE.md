@@ -36,7 +36,7 @@
    → 圖形說明（如有）
 ```
 
-**wiki/methods/[method-id].md 格式：**
+**~~wiki/methods/[method-id].md 格式~~（已停用：2026-11-01 wiki 封存，方法論只維護 raw/solutions/methods/；以下格式僅供參考）：**
 ```markdown
 # [方法名稱]
 
@@ -98,8 +98,8 @@
    → 直接存入 raw/solutions/SA-XXXX-N/SA-XXXX-N.md
 9. 所有數學公式使用 LaTeX 格式
 10. 每份解析開頭必須包含標籤區塊
-11. 判斷是否需要輸出互動圖（依「圖形觸發條件」）：
-    → 直接存入 raw/solutions/SA-XXXX-N/SA-XXXX-N-[內容碼]-viz.html
+11. 不輸出互動圖 *-viz.html（2026-11-01 起廢止）；
+    → 需要圖解時以 struct-diagram 產生 figs/*.svg 向量圖並插回 .md
 ```
 
 ---
@@ -158,7 +158,7 @@ raw/solutions/SA-YYYY-N/SA-YYYY-N-fig-2.png   ← 第二張（同題有多圖時
 **第三層：內在掃描**
 ```
 [核心] 這題最重要的一個觀念是什麼？（力法/位移法選擇哲學、影響線的物理意義）
-[線索] 特殊用字給了什麼暗示？（「繪製彎矩圖」→需輸出 sfd-bmd-viz、「影響線」→influence-line-viz）
+[線索] 特殊用字給了什麼暗示？（「繪製彎矩圖」→需附彎矩圖、「影響線」→需附影響線圖；皆以 figs/*.svg 向量圖呈現）
 ```
 
 ---
@@ -312,7 +312,6 @@ raw/solutions/SA-YYYY-N/SA-YYYY-N-fig-2.png   ← 第二張（同題有多圖時
    - 欄位：**知識點 ∣ 說明 ∣ 卡關?**
 
 ## 4. 步驟化詳細計算過程 (Step-by-Step Detailed Calculation)
-   > 📊 互動圖（如有）：`SA-XXXX-N-sfd-bmd-viz.html`
    - 完整計算過程，含公式、單位、中間結果
    - 關鍵步驟加「策略註解」說明為何這樣做
    - 最終答案用 \boxed{} 標示
@@ -397,8 +396,8 @@ N    = 題號（1、2、3、4，部分年份有 5）
 
 **執行流程：**
 ```
-1. Cowork 讀取 wiki/index.md 定位相關分類
-2. Cowork 讀取相關 concepts/、problems/、traps/、methods/ 頁面
+1. Cowork 讀取 raw/json/question_index.json 定位相關分類（wiki/index.md 已於 2026-11-01 封存）
+2. Cowork 讀取相關 raw/solutions/ 題解、raw/solutions/methods/、study/ 講義
 3. Cowork 合成跨頁面的分析答案
 4. 你說「把這個答案存進知識庫」
 5. Cowork 存成 wiki/queries/[主題]-[日期].md

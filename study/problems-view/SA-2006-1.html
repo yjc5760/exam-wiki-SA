@@ -43,8 +43,7 @@ header .nomat{margin-top:12px;font-size:.8em;opacity:.85}
 <p class="meta2">主分類 <b>SA-U2-1</b> 靜不定結構最小功法 ｜ 2006 年（民國 95） ｜ 最小功法 / 虛功法 (單位力法)</p>
 <div class="hbtns"><a class="b-study" href="../unit-SA-U2-1.html">🧭 U2-1 單元總覽</a><a class="b-lect" href="../lecture-SA-U2-1.html">📚 U2-1 靜不定結構最小功法 講義</a></div>
 </header>
-<main>
-<h1>考題編號：[SA-2006-1]</h1>
+<main><h1>考題編號：[SA-2006-1]</h1>
 <p><strong>主分類：</strong> <code>SA-U2-1</code> 靜不定結構分析<br />
 <strong>副分類：</strong> 無<br />
 <strong>分析法：</strong> 最小功法 / 虛功法 (單位力法)<br />
@@ -61,10 +60,10 @@ header .nomat{margin-top:12px;font-size:.8em;opacity:.85}
 <h2>2. 考題核心精神與出題者意圖 (Core Concepts &amp; Examiner's Intent)</h2>
 <ol>
 <li><strong>結構系統解構能力</strong>：本題為「樑」與「桁架」的混合結構。由於樑與桁架之間透過滾支承 (B, D) 連接，代表樑僅傳遞「垂直力」給桁架，不會傳遞彎矩與水平力。</li>
-<li><strong>靜不定度判別與處理</strong>：<br />
-   - 樑構件 AE 具備 A, B, D 三個垂直支承，屬於一階靜不定。<br />
-   - 桁架構件具備 F, G 兩個鉸支承（共4個反力），內部雖無多餘桿件，但因外支承條件，屬於外部一階靜不定。<br />
-   - 整體系統為「二階靜不定」。</li>
+<li><strong>靜不定度判別與處理</strong>：</li>
+<li>樑構件 AE 具備 A, B, D 三個垂直支承，屬於一階靜不定。</li>
+<li>桁架構件具備 F, G 兩個鉸支承（共4個反力），內部雖無多餘桿件，但因外支承條件，屬於外部一階靜不定。</li>
+<li>整體系統為「二階靜不定」。</li>
 <li><strong>未給定斷面性質數值之參數推導</strong>：題目僅聲明 E, I, A 為常數，並未給予具體數值或相對比例（如 EI/EA）。這考驗考生能否將未知數一路帶入代數運算，並利用最小功法求得參數解。</li>
 <li><strong>虛功法（單位力法）之靈活應用</strong>：求 J 點變位時，若使用完整的靜不定系統施加單位力將極度繁雜。巧妙選取「靜定基本結構」（切斷贅力）作為虛力系統，可使樑的虛彎矩 $m=0$，大幅簡化計算！</li>
 </ol>
@@ -321,8 +320,7 @@ $$ \boxed{ \Delta_J = \frac{20(1+\sqrt{2})}{EA} \left[ \frac{1187.5 + \alpha(30 
 <li><strong>虛功法虛力系統之選取</strong>：許多考生會使用原靜不定結構來求解虛功，這會導致虛力系統也產生 $r_d, h$ 等虛贅力，使得計算量翻倍。本題完美展示了「虛功法允許使用任意滿足平衡之基本結構」的強大威力，直接將樑的積分項歸零。</li>
 </ul>
 <hr />
-<p><em>圖解補繪：2026-08-28（向量圖，腳本 <code>gen_SA-2006-1.py</code>，可重跑）</em></p>
-</main>
+<p><em>圖解補繪：2026-08-28（向量圖，腳本 <code>gen_SA-2006-1.py</code>，可重跑）</em></p></main>
 <footer>來源：raw/solutions/SA-2006-1/SA-2006-1.md（知識庫解題內容唯一正本；本頁僅為渲染顯示）</footer>
 
 <script>

@@ -50,7 +50,7 @@ header .nomat{margin-top:12px;font-size:.8em;opacity:.85}
 <strong>標籤：</strong> <code>傾角變位法</code>, <code>門型剛構架</code>, <code>對稱性</code>, <code>極值比例</code></p>
 <hr />
 <h2>1. 原始題目重述 (Problem Restatement)</h2>
-<p>如圖三所示之門型構架，梁與柱之斷面 EI 皆相同，但梁長大於柱長，也就是 $L_b / L > 1$。已知兩根柱最大彎矩的數值大小與梁最大彎矩的數值大小其比為 2：1，試求此時 $L_b / L = ?$ 本題限以傾角變位法作答，分析時可忽略軸向變形。（25 分）</p>
+<p>如圖三所示之門型構架，梁與柱之斷面 EI 皆相同，但梁長大於柱長，也就是 $L_b / L &gt; 1$。已知兩根柱最大彎矩的數值大小與梁最大彎矩的數值大小其比為 2：1，試求此時 $L_b / L = ?$ 本題限以傾角變位法作答，分析時可忽略軸向變形。（25 分）</p>
 <p><img alt="SA-2024-3 題目附圖：承受側向載重的門型剛構架" src="../../raw/solutions/SA-2024-3/SA-2024-3-fig-1.png" /></p>
 <p><em>圖說：對稱門型剛構架，柱 AB 與 CD 長度為 L，梁 BC 長度為 Lb。底部 A 與 D 均為固定端。節點 B 承受向右之水平力 P。</em></p>
 <h2>2. 考題核心精神與出題者意圖 (Core Concepts &amp; Examiner's Intent)</h2>
@@ -63,19 +63,19 @@ header .nomat{margin-top:12px;font-size:.8em;opacity:.85}
 </ol>
 <h2>3. 解題戰略地圖與陷阱分析 (Strategic Roadmap &amp; Trap Analysis)</h2>
 <ol>
-<li><strong>設定未知數與變形條件</strong>：<br />
-   - 令 $k = L_b / L$。<br />
-   - 因為結構對稱、載重反對稱，變形亦呈反對稱，故 $\theta_B = \theta_C = \theta$。<br />
-   - 側移角 $\psi_{AB} = \psi_{CD} = \psi$。</li>
+<li><strong>設定未知數與變形條件</strong>：</li>
+<li>令 $k = L_b / L$。</li>
+<li>因為結構對稱、載重反對稱，變形亦呈反對稱，故 $\theta_B = \theta_C = \theta$。</li>
+<li>側移角 $\psi_{AB} = \psi_{CD} = \psi$。</li>
 <li><strong>建立傾角變位方程式</strong>：寫出 $M_{AB}$、$M_{BA}$ 與 $M_{BC}$ 關於 $\theta$ 與 $\psi$ 的函數。</li>
 <li><strong>節點平衡與代換</strong>：利用 $\Sigma M_B = 0$，找出 $\theta$ 與 $\psi$ 的比例關係，並代回彎矩方程式中，使所有彎矩皆表示為 $\psi$ 的倍數。</li>
-<li><strong>極值判斷與求解</strong>：<br />
-   - 梁無跨中載重，最大彎矩必在端點 $|M_{BC}|$。<br />
-   - 柱無跨中載重，需比較 $|M_{AB}|$ 與 $|M_{BA}|$。利用題目給定 $k > 1$ 判斷出 $|M_{AB}| > |M_{BA}|$。<br />
-   - 依據 $|M_{AB}| / |M_{BC}| = 2$，解出 $k$。</li>
-<li><strong>陷阱分析</strong>：<br />
-   - 未判斷 $|M_{AB}|$ 與 $|M_{BA}|$ 孰大孰小，若誤用 $|M_{BA}|$ 計算，會發現 $|M_{BA}| = |M_{BC}|$，永遠比例為 1:1，無法解出答案而卡住。<br />
-   - 忘記 $\theta_B = \theta_C$ 雖不會算錯，但會多花一倍時間解聯立方程式。</li>
+<li><strong>極值判斷與求解</strong>：</li>
+<li>梁無跨中載重，最大彎矩必在端點 $|M_{BC}|$。</li>
+<li>柱無跨中載重，需比較 $|M_{AB}|$ 與 $|M_{BA}|$。利用題目給定 $k &gt; 1$ 判斷出 $|M_{AB}| &gt; |M_{BA}|$。</li>
+<li>依據 $|M_{AB}| / |M_{BC}| = 2$，解出 $k$。</li>
+<li><strong>陷阱分析</strong>：</li>
+<li>未判斷 $|M_{AB}|$ 與 $|M_{BA}|$ 孰大孰小，若誤用 $|M_{BA}|$ 計算，會發現 $|M_{BA}| = |M_{BC}|$，永遠比例為 1:1，無法解出答案而卡住。</li>
+<li>忘記 $\theta_B = \theta_C$ 雖不會算錯，但會多花一倍時間解聯立方程式。</li>
 </ol>
 <h2>3.5 變數層次分析 (Variable Hierarchy Analysis)</h2>
 <h3>最終目標</h3>
@@ -151,7 +151,7 @@ $$ \frac{|M_{col,max}|}{|M_{beam,max}|} = 2 \quad \text{(題設條件)} $$</p>
 <tbody>
 <tr>
 <td>極值判斷</td>
-<td>必須知道證明 $|M_{AB}| > |M_{BA}|$ 才能確定柱的最大彎矩位置，進而列出正確的等式。</td>
+<td>必須知道證明 $|M_{AB}| &gt; |M_{BA}|$ 才能確定柱的最大彎矩位置，進而列出正確的等式。</td>
 <td></td>
 </tr>
 </tbody>
@@ -190,10 +190,10 @@ $$ |M_{AB}| = \frac{6(k+3)K_c}{2k+3}|\psi| $$</p>
 <h3>Step 5: 判斷極值並求解 $k$</h3>
 <p>柱 AB 無跨中載重，最大彎矩必定在兩端（A點或B點）之中。<br />
 比較 $|M_{AB}|$ 與 $|M_{BA}|$：<br />
-因為題目已知 $L_b / L > 1$，即 $k > 1$。<br />
-$|M_{AB}|$ 分子常數部分：$6(k+3) > 6(1+3) = 24$<br />
+因為題目已知 $L_b / L &gt; 1$，即 $k &gt; 1$。<br />
+$|M_{AB}|$ 分子常數部分：$6(k+3) &gt; 6(1+3) = 24$<br />
 $|M_{BA}|$ 分子常數部分：$18$<br />
-顯然 $6(k+3) > 18$，故 $|M_{AB}| > |M_{BA}|$，柱的最大彎矩發生在柱底。<br />
+顯然 $6(k+3) &gt; 18$，故 $|M_{AB}| &gt; |M_{BA}|$，柱的最大彎矩發生在柱底。<br />
 $$ |M_{col,max}| = |M_{AB}| = \frac{6(k+3)K_c}{2k+3}|\psi| $$</p>
 <p>依據題目給定條件「兩根柱最大彎矩與梁最大彎矩大小其比為 2：1」：<br />
 $$ \frac{|M_{col,max}|}{|M_{beam,max}|} = 2 $$<br />

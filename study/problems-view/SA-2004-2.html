@@ -229,17 +229,17 @@ $$ \boxed{R_{a,\max} = 128.3 \text{ kN} \ (\uparrow)} $$</p>
 <p><strong>2. 尋求最大反應位置（載重判定準則）：</strong><br />
 卡車向左行駛，令載重 $P_k$ 通過峰值 $x=10$。反應變化率為：<br />
 $$ \frac{dF}{dx} = \sum P_{\text{left}} \cdot m_1 + \sum P_{\text{right}} \cdot m_2 $$<br />
-因為卡車向左，位置變數 $dx < 0$，我們需找到 $\frac{dF}{dx}$ 由負轉正的瞬間（即 $dF$ 由正變負，代表越過極大值）。</p>
+因為卡車向左，位置變數 $dx &lt; 0$，我們需找到 $\frac{dF}{dx}$ 由負轉正的瞬間（即 $dF$ 由正變負，代表越過極大值）。</p>
 <ul>
 <li>
 <p><strong>當 $P_1$ 越過 $x=10$ (僅 $P_1$ 在左)：</strong><br />
   $\frac{dF}{dx} = 20(3/40) + 120(-1/40) = (60 - 120)/40 = -1.5$ <br />
-  ($dx < 0 \implies dF > 0$，內力持續增加)</p>
+  ($dx &lt; 0 \implies dF &gt; 0$，內力持續增加)</p>
 </li>
 <li>
 <p><strong>當 $P_2$ 越過 $x=10$ ($P_1, P_2$ 在左)：</strong><br />
   $\frac{dF}{dx} = 60(3/40) + 80(-1/40) = (180 - 80)/40 = +2.5$ <br />
-  ($dx < 0 \implies dF < 0$，內力開始減少)</p>
+  ($dx &lt; 0 \implies dF &lt; 0$，內力開始減少)</p>
 </li>
 </ul>
 <p><strong>結論：最大值發生在載重 $P_2 (40\text{kN})$ 剛好位於 $x=10$ 時。</strong></p>

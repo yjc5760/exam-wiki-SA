@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="zh-Hant"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SA-2020-4 — 題目解析</title>
+<link rel="stylesheet" href="../assets/katex/katex.min.css">
+<script defer src="../assets/katex/katex.min.js"></script>
+<script defer src="../assets/katex/auto-render.min.js"
+  onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},
+  {left:'$',right:'$',display:false},{left:'\\(',right:'\\)',display:false}],throwOnError:false});"></script>
+<style>
+:root{--ac:#1565c0;--bg:#f7f9fb;--card:#fff;--ink:#263238;--mut:#607d8b;--bd:#dfe6ea}
+*{box-sizing:border-box}
+body{margin:0;font-family:"Microsoft JhengHei","Noto Sans TC",-apple-system,sans-serif;
+  background:var(--bg);color:var(--ink);line-height:1.75;font-size:15.5px}
+header{background:linear-gradient(135deg,#0d47a1,#1976d2 60%,#42a5f5);color:#fff;padding:22px 26px}
+header h1{margin:0;font-size:1.15em}
+header .back{display:inline-block;margin-top:10px;font-size:.82em;color:#fff;background:rgba(255,255,255,.18);
+  padding:4px 12px;border-radius:14px;text-decoration:none}
+main{max-width:880px;margin:0 auto;padding:26px 22px 70px}
+h1,h2,h3{color:#0d47a1} h2{font-size:1.2em;border-left:6px solid var(--ac);padding-left:12px;margin:34px 0 14px}
+table{width:100%;border-collapse:collapse;margin:14px 0;font-size:.92em;background:#fff}
+th,td{border:1px solid var(--bd);padding:7px 10px;text-align:left;vertical-align:top}
+th{background:#eceff1;font-weight:600} tbody tr:nth-child(even){background:#fafcfd}
+code{background:#eceff1;padding:1px 5px;border-radius:4px;font-size:.92em}
+img{max-width:100%;display:block;margin:14px auto;border:1px solid var(--bd);border-radius:8px}
+.katex-display{margin:12px 0!important;overflow-x:auto;overflow-y:hidden}
+footer{text-align:center;color:var(--mut);font-size:.8em;padding:22px;border-top:1px solid var(--bd)}
+
+header h1{color:#fff!important;font-size:1.25em;margin:0;letter-spacing:.5px}
+header .meta2{margin:8px 0 0;font-size:.84em;opacity:.93;line-height:1.6}
+header .meta2 b{background:rgba(255,255,255,.2);border-radius:4px;padding:1px 7px;font-weight:600}
+header .hbtns{display:flex;flex-wrap:wrap;gap:10px;margin-top:14px}
+header .hbtns a{font-size:.85em;text-decoration:none;padding:7px 17px;border-radius:22px;
+  font-weight:700;white-space:nowrap;line-height:1.4}
+header .b-study{background:#fff;color:#1565c0}
+header .b-lect{background:#6a1b9a;color:#fff}
+header .b-fg{background:#c62828;color:#fff}
+header .hbtns a:hover{filter:brightness(1.08)}
+header .nomat{margin-top:12px;font-size:.8em;opacity:.85}
+</style></head><body>
+<header>
+<h1>SA-2020-4　建築結構系統分析</h1>
+<p class="meta2">主分類 <b>SA-U3-2</b> 建築結構系統分析 ｜ 2020 年（民國 109） ｜ 矩陣位移法 / 剛架與剪力牆互制</p>
+<div class="hbtns"></div><p class="nomat">本題主分類 SA-U3-2 目前尚無教材，故不提供教材按鈕。</p>
+</header>
+<main><h1>考題編號：SA-2020-4</h1>
+<p><strong>主分類：</strong> <code>SA-U3-2</code> 建築結構系統分析<br />
+<strong>副分類：</strong> 無<br />
+<strong>分析法：</strong> 矩陣位移法 / 剛架與剪力牆互制<br />
+<strong>標籤：</strong> <code>剛架與剪力牆互制</code> <code>矩陣分析</code> <code>剪力建築</code></p>
+<hr />
+<h2>1. 原始題目重述 (Problem Restatement)</h2>
+<p>如圖 4(a) 所示之二層樓平面結構，各樓層承受相同的水平力 60 kN，梁柱構架與剪力牆在各樓層之間設置 $bc$ 及 $ef$ 連桿傳遞水平軸力。構架梁柱桿件的彈性模數都為 $E$，另構架之柱桿件斷面慣性矩都為 $I$，且 $EI = 81920 \text{ kN-m}^2$，而構架之梁桿件斷面慣性矩為無限大。如圖 4(b) 所示剪力牆有二個自由度，已知剪力牆之力 $\{F_1, F_2\}$ 與位移 $\{\Delta_1, \Delta_2\}$ 關係式，採用勁度矩陣表示如下：<br />
+$$ \begin{Bmatrix} F_1 \\ F_2 \end{Bmatrix} = (30000 \text{ kN/m}) \begin{bmatrix} 1 &amp; -2 \\ -2 &amp; 6 \end{bmatrix} \begin{Bmatrix} \Delta_1 \\ \Delta_2 \end{Bmatrix} $$<br />
+不考慮連桿及構架梁柱桿件的軸向變形，求圖 4(a) 二層樓結構之各連桿的軸力、一樓剪力牆的基底剪力、$eh$ 柱桿件的端點彎矩及剪力。（25分）</p>
+<p><img alt="SA-2020-4 題目附圖：二層樓平面結構，剛架與剪力牆並聯，受樓層水平載重" src="../../raw/solutions/SA-2020-4/SA-2020-4-fig-1.png" /></p>
+<p><em>圖說：左側為雙層單跨剛架，節點 $a, b, d, e, g, h$，$a-b$ 與 $d-e$ 為無限剛性梁，$a-d-g$ 與 $b-e-h$ 為柱，柱高與梁寬皆為 $3.2\text{m}$。右側為剪力牆，由水平連桿 $b-c$ 及 $e-f$ 連接。各樓層均受 $60\text{ kN}$ 向右之水平載重。</em></p>
+<hr />
+<h2>2. 考題核心精神與出題者意圖 (Core Concepts &amp; Examiner's Intent)</h2>
+<p>這是一道設計極度巧妙的<strong>「剛架與剪力牆互制 (Frame-Shear Wall Interaction)」</strong>考題。<br />
+由於題目特別聲明「構架之梁桿件斷面慣性矩為無限大」，這表示剛架的行為是標準的<strong>剪力建築 (Shear Building)</strong>。<br />
+出題者給定了剪力牆的勁度矩陣，並暗示我們透過組合剛架與剪力牆的系統勁度矩陣來求解各樓層的側移量。<br />
+最令人驚豔的是這題的數字設計：當你算出剛架與剪力牆的整體位移後，會發現系統的變形特徵讓某個連桿的受力直接歸零！這正是出題老師精心調配參數的結果，藉此考驗考生對側力分配與矩陣力學的掌握程度。</p>
+<hr />
+<h2>3. 解題戰略地圖與陷阱分析 (Strategic Roadmap &amp; Trap Analysis)</h2>
+<p><strong>解題步驟：</strong></p>
+<ol>
+<li><strong>建立剛架勁度矩陣：</strong> 利用剪力建築公式 $k = \sum 12EI/h^3$ 計算剛架各樓層的側向勁度，並組裝出剛架勁度矩陣 $[K_f]$。</li>
+<li><strong>組裝總勁度矩陣：</strong> 系統總勁度矩陣 $[K] = [K_f] + [K_w]$。</li>
+<li><strong>求解樓層位移：</strong> 建立系統位移方程式 $[K]\{\Delta\} = \{P\}$，解出二樓位移 $\Delta_1$ 與一樓位移 $\Delta_2$。</li>
+<li><strong>回推各構件受力：</strong></li>
+<li><strong>連桿軸力</strong>：計算剪力牆在各樓層分擔的水平力 $[K_w]\{\Delta\}$，即為連桿傳遞的軸力。</li>
+<li><strong>牆基底剪力</strong>：剪力牆各層受力之總和。</li>
+<li><strong>柱端彎矩剪力</strong>：利用柱兩端的相對側移計算單一柱的剪力與彎矩。</li>
+</ol>
+<p><strong>陷阱分析：</strong></p>
+<ul>
+<li><strong>陷阱一：樓層標號混淆。</strong> 題目給的剪力牆勁度矩陣，對角線數值為 $1$ 與 $6$。根據結構常識，底層的勁度必定遠大於頂層，因此可判斷 $\Delta_1, F_1$ 代表頂層 (2樓)，$\Delta_2, F_2$ 代表底層 (1樓)。若標號顛倒將無法得分。</li>
+<li><strong>陷阱二：忽視「每層樓有兩根柱子」。</strong> 剛架的樓層側向勁度是該層所有柱子側向勁度的總和。本題單跨剛架每層有兩根柱子，故 $K_i = 2 \times (12EI/h^3)$，漏乘 2 會導致後續所有計算全錯。</li>
+<li><strong>陷阱三：柱端彎矩的分配與方向。</strong> 剪力建築的柱兩端不旋轉，彎矩公式為 $M = 6EI\Delta/h^2$（非 $3EI/h^2$ 或傾角變位公式），且兩端彎矩大小相等、方向相同，以抵抗側移產生之轉角。</li>
+</ul>
+<hr />
+<h2>3.5 變數層次分析 (Variable Hierarchy Analysis)</h2>
+<blockquote>
+<p>複習提示：第一次解題後，在每個卡住的知識點旁標記 <code>⚠</code>；第二次複習時只看有 <code>⚠</code> 的項目。</p>
+</blockquote>
+<h3>最終目標</h3>
+<p><code>求出各連桿軸力、牆基底剪力、特定柱的端點剪力與彎矩</code></p>
+<h3>本題關鍵公式（依計算順序）</h3>
+<blockquote>
+<p>$\boxed{\cdot}$ = 需由前步驟推導，非題目直接給定的變數</p>
+</blockquote>
+<p>$$\text{Step 1 (剛架勁度): } K_{fi} = 2 \times \frac{12EI}{h^3} \Rightarrow [K_f] = \begin{bmatrix} K_{f2} &amp; -K_{f2} \\ -K_{f2} &amp; K_{f1}+K_{f2} \end{bmatrix}$$</p>
+<p>$$\text{Step 2 (系統矩陣): } [K_{total}] = \boxed{[K_f]} + [K_w]$$</p>
+<p>$$\text{Step 3 (求解位移): } \boxed{[K_{total}]} \begin{Bmatrix} \Delta_1 \\ \Delta_2 \end{Bmatrix} = \begin{Bmatrix} P_1 \\ P_2 \end{Bmatrix} \Rightarrow \text{解出 } \boxed{\Delta_1}, \boxed{\Delta_2}$$</p>
+<p>$$\text{Step 4 (目標力): } \begin{Bmatrix} F_{w1} \\ F_{w2} \end{Bmatrix} = [K_w] \begin{Bmatrix} \boxed{\Delta_1} \\ \boxed{\Delta_2} \end{Bmatrix} \text{ (連桿軸力)}, \quad V_{eh} = \frac{12EI}{h^3}\boxed{\Delta_2}, \quad M_e = \frac{6EI}{h^2}\boxed{\Delta_2}$$</p>
+<h3>L1：題目直接給定</h3>
+<p><em>看到題目就能讀出的數字，不需要任何公式。</em></p>
+<table>
+<thead>
+<tr>
+<th>符號</th>
+<th>數值</th>
+<th>說明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>$EI$</td>
+<td>81920</td>
+<td>柱彈性模數與慣性矩乘積</td>
+</tr>
+<tr>
+<td>$h$</td>
+<td>3.2m</td>
+<td>樓層高度</td>
+</tr>
+<tr>
+<td>$P_1, P_2$</td>
+<td>60 kN</td>
+<td>各樓層外加水平載重</td>
+</tr>
+<tr>
+<td>$[K_w]$</td>
+<td>30000 $\begin{bmatrix} 1 &amp; -2 \\ -2 &amp; 6 \end{bmatrix}$</td>
+<td>剪力牆勁度矩陣</td>
+</tr>
+</tbody>
+</table>
+<h3>L2：需知識點推導</h3>
+<p><em>需要知道公式名稱與適用條件，套入 L1 即可算出。</em></p>
+<p><strong>Step 1：單柱與樓層側向勁度</strong></p>
+<table>
+<thead>
+<tr>
+<th>符號</th>
+<th>公式/來源</th>
+<th style="text-align: center;">卡關?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>$k_c$</td>
+<td>$12EI/h^3$ (因梁無限剛，為剪力建築柱)</td>
+<td style="text-align: center;"></td>
+</tr>
+<tr>
+<td>$K_{fi}$</td>
+<td>$2 \times k_c$ (每層有 2 根柱)</td>
+<td style="text-align: center;"></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Step 4：內力計算</strong></p>
+<table>
+<thead>
+<tr>
+<th>符號</th>
+<th>公式/來源</th>
+<th style="text-align: center;">卡關?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>$V_{w\_base}$</td>
+<td>$F_{w1} + F_{w2}$ (牆基底剪力)</td>
+<td style="text-align: center;"></td>
+</tr>
+<tr>
+<td>$M_e, M_h$</td>
+<td>$6EI\Delta_2/h^2$ (剪力建築柱端彎矩)</td>
+<td style="text-align: center;"></td>
+</tr>
+</tbody>
+</table>
+<h3>L3：深層知識（不懂就卡住）</h3>
+<table>
+<thead>
+<tr>
+<th>知識點</th>
+<th>說明</th>
+<th style="text-align: center;">卡關?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>自由度編號判斷</td>
+<td>$[K_w]$ 中 $K_{22} = 6 &gt; K_{11} = 1$，底部牆剛度必大於頂部，故 $\Delta_1$ 為二樓，$\Delta_2$ 為一樓。</td>
+<td style="text-align: center;"></td>
+</tr>
+<tr>
+<td>連桿受力意義</td>
+<td>連桿即為牆與剛架的介面。連桿受力 = 牆在該層分配到的側力 $F_w$。</td>
+<td style="text-align: center;"></td>
+</tr>
+<tr>
+<td>側移方向與彎矩符號</td>
+<td>結構受向右側移，柱向右傾倒 (S型)，為維持端點零旋轉，兩端均須提供逆時針 (CCW) 之束制彎矩。</td>
+<td style="text-align: center;"></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>4. 步驟化詳細計算過程 (Step-by-Step Detailed Calculation)</h2>
+<p><strong>Step 1: 建立剛架的勁度矩陣 $[K_f]$</strong><br />
+已知柱的 $EI = 81920 \text{ kN-m}^2$，樓層高度 $h = 3.2 \text{ m}$。<br />
+對於剪力建築，單根兩端不旋轉的柱側向勁度為：<br />
+$$ k_c = \frac{12 EI}{h^3} = \frac{12 \times 81920}{3.2^3} = \frac{983040}{32.768} = 30000 \text{ kN/m} $$<br />
+每層樓有兩根柱子 (例如 2 樓有 $ad, be$；1 樓有 $dg, eh$)，故各樓層的側向勁度為：<br />
+$$ K_{f1} = 2 \times 30000 = 60000 \text{ kN/m} \quad (\text{1樓側向勁度})$$<br />
+$$ K_{f2} = 2 \times 30000 = 60000 \text{ kN/m} \quad (\text{2樓側向勁度})$$<br />
+定義 $\Delta_1$ 為 2 樓位移 (頂層)，$\Delta_2$ 為 1 樓位移 (底層)。<br />
+剛架的勁度矩陣 $[K_f]$ 建立規則為：$K_{11} = K_{f2}$ (頂層自身)，$K_{22} = K_{f1} + K_{f2}$ (底層承受兩層)，非對角線為 $-K_{f2}$：<br />
+$$ [K_f] = \begin{bmatrix} 60000 &amp; -60000 \\ -60000 &amp; 120000 \end{bmatrix} = 30000 \begin{bmatrix} 2 &amp; -2 \\ -2 &amp; 4 \end{bmatrix} \text{ kN/m} $$</p>
+<p><strong>Step 2: 組合整體系統勁度矩陣 $[K_{total}]$</strong><br />
+題目已知剪力牆的勁度矩陣 $[K_w]$ 為：<br />
+$$ [K_w] = 30000 \begin{bmatrix} 1 &amp; -2 \\ -2 &amp; 6 \end{bmatrix} \text{ kN/m} $$<br />
+整體系統勁度矩陣為剛架與剪力牆之和：<br />
+$$ [K_{total}] = [K_f] + [K_w] = 30000 \left( \begin{bmatrix} 2 &amp; -2 \\ -2 &amp; 4 \end{bmatrix} + \begin{bmatrix} 1 &amp; -2 \\ -2 &amp; 6 \end{bmatrix} \right) = 30000 \begin{bmatrix} 3 &amp; -4 \\ -4 &amp; 10 \end{bmatrix} \text{ kN/m} $$</p>
+<p><strong>Step 3: 求解各樓層側移量</strong><br />
+系統承受的外力向量 $\{P\}$ 為 (2樓與1樓皆受 60 kN 向右力)：<br />
+$$ \begin{Bmatrix} P_1 \\ P_2 \end{Bmatrix} = \begin{Bmatrix} 60 \\ 60 \end{Bmatrix} \text{ kN} $$<br />
+建立系統方程式 $[K_{total}] \{\Delta\} = \{P\}$：<br />
+$$ 30000 \begin{bmatrix} 3 &amp; -4 \\ -4 &amp; 10 \end{bmatrix} \begin{Bmatrix} \Delta_1 \\ \Delta_2 \end{Bmatrix} = \begin{Bmatrix} 60 \\ 60 \end{Bmatrix} $$<br />
+化簡 (兩邊同除以 60)：<br />
+$$ 500 \begin{bmatrix} 3 &amp; -4 \\ -4 &amp; 10 \end{bmatrix} \begin{Bmatrix} \Delta_1 \\ \Delta_2 \end{Bmatrix} = \begin{Bmatrix} 1 \\ 1 \end{Bmatrix} $$<br />
+解聯立方程式：<br />
+行列式 $det = 3 \times 10 - (-4 \times -4) = 30 - 16 = 14$<br />
+$$ \begin{Bmatrix} \Delta_1 \\ \Delta_2 \end{Bmatrix} = \frac{1}{500 \times 14} \begin{bmatrix} 10 &amp; 4 \\ 4 &amp; 3 \end{bmatrix} \begin{Bmatrix} 1 \\ 1 \end{Bmatrix} = \frac{1}{7000} \begin{Bmatrix} 14 \\ 7 \end{Bmatrix} = \begin{Bmatrix} 0.002 \text{ m} \\ 0.001 \text{ m} \end{Bmatrix} $$<br />
+得知側移量為：<strong>2樓 $\Delta_1 = 2 \text{ mm}$，1樓 $\Delta_2 = 1 \text{ mm}$</strong>。</p>
+<p><strong>Step 4: 目標力與彎矩計算</strong></p>
+<p><strong>(1) 各連桿的軸力 ($bc$ 及 $ef$)</strong><br />
+連桿傳遞的軸力，即為剪力牆在各樓層分配到的水平載重 $\{F_w\}$：<br />
+$$ \begin{Bmatrix} F_{w1} \\ F_{w2} \end{Bmatrix} = [K_w] \begin{Bmatrix} \Delta_1 \\ \Delta_2 \end{Bmatrix} = 30000 \begin{bmatrix} 1 &amp; -2 \\ -2 &amp; 6 \end{bmatrix} \begin{Bmatrix} 0.002 \\ 0.001 \end{Bmatrix} $$</p>
+<ul>
+<li>頂層 (2樓) 剪力牆受力：$F_{w1} = 30000 (1 \times 0.002 - 2 \times 0.001) = \mathbf{0 \text{ kN}}$</li>
+<li>底層 (1樓) 剪力牆受力：$F_{w2} = 30000 (-2 \times 0.002 + 6 \times 0.001) = 30000 (0.002) = \mathbf{60 \text{ kN}}$ (向右)</li>
+</ul>
+<p>這意味著外力 60 kN 在頂部全由剛架承受，在底部全由剪力牆承受！<br />
+因此 $bc$ 連桿不傳遞任何力量；而 $ef$ 連桿將剛架上的力傳遞給剪力牆，使得連桿自身承受壓力。</p>
+<ul>
+<li>答案：$\boxed{bc \text{ 連桿軸力： } 0 \text{ kN}}, \quad \boxed{ef \text{ 連桿軸力： } 60 \text{ kN} \text{ (壓力)}}$</li>
+</ul>
+<p><strong>(2) 一樓剪力牆的基底剪力</strong><br />
+剪力牆的基底剪力即為其所承受的所有水平外力總和：</p>
+<ul>
+<li>答案：$\boxed{V_{base\_wall} = F_{w1} + F_{w2} = 0 + 60 = \mathbf{60 \text{ kN}}}$</li>
+</ul>
+<p><strong>(3) $eh$ 柱桿件的端點彎矩及剪力</strong><br />
+$eh$ 柱位於 1 樓，其兩端點的相對側移為 $\Delta_2 = 0.001 \text{ m}$。因梁慣性矩無限大，柱兩端皆無旋轉。</p>
+<ul>
+<li>
+<p><strong>剪力 ($V_{eh}$)</strong>：<br />
+  $$ \boxed{V_{eh} = k_c \times \Delta_2 = 30000 \times 0.001 = \mathbf{30 \text{ kN}}}$$</p>
+</li>
+<li>
+<p><strong>端點彎矩 ($M_e, M_h$)</strong>：<br />
+  柱受側移變形呈現反曲點在中央的 S 型，兩端需施加逆時針的束制彎矩以維持零轉角：<br />
+  $$ \boxed{M_e = M_h = \frac{6 EI \Delta_2}{h^2} = \frac{V_{eh} \times h}{2} = \frac{30 \times 3.2}{2} = \mathbf{48 \text{ kN-m} \text{ (逆時針 CCW)}}}$$</p>
+</li>
+</ul>
+<p><em>(驗算：1樓剛架的基底總剪力為 2 根柱子 $2 \times 30 = 60 \text{ kN}$；加上剪力牆的 $60 \text{ kN}$，剛好等於總外力 $60+60=120 \text{ kN}$，平衡無誤！)</em></p>
+<hr />
+<h2>5. 關鍵爭議點與進階探討 (Critical Issues &amp; Advanced Discussion)</h2>
+<ul>
+<li><strong>連桿軸力為零的神奇現象</strong>：為什麼 $bc$ 連桿軸力為 0？這是因為，當你「單獨」對剪力牆的 1樓 施加 60 kN 水平力時，其變形量剛好就是頂樓 2mm、底樓 1mm。而這個變形量，又「剛好」等於你「單獨」對剛架的 2樓 施加 60 kN 水平力時的變形量！既然兩者在各自分擔極端載重的情況下，自然呈現出完全相同的變形曲線，把他們接在一起時，當然就不會有互相拉扯的內力（在頂層）。這顯示了出題者在調配剛度矩陣參數時的極度用心。</li>
+</ul></main>
+<footer>來源：raw/solutions/SA-2020-4/SA-2020-4.md（知識庫解題內容唯一正本；本頁僅為渲染顯示）</footer>
+
+<script>
+/* 跟隨來源單元：若由 unit-/lecture-SA-Un-m.html（或舊的 study-/formula-given-）點進來，
+   兩顆按鈕改指向「來源那個單元」。靜態 href 保底，無 JS 或無 referrer 時仍可用。 */
+(function(){
+  var NAMES={"SA-U1-2": "靜定結構之分析", "SA-U1-3": "靜定及靜不定結構影響線", "SA-U2-1": "靜不定結構最小功法", "SA-U2-3": "靜不定結構之傾角變位法", "SA-U2-4": "靜不定結構之矩陣分析法"};
+  var m=(document.referrer||'').match(/\/(?:unit|study|lecture|formula-given)-(SA-U\d+-\d+)\.html/);
+  if(!m||!NAMES[m[1]])return;
+  var u=m[1], s=u.slice(3), box=document.querySelector('.hbtns');
+  if(!box)return;
+  box.innerHTML=
+    '<a class="b-study" href="../unit-'+u+'.html">\u{1F9ED} '+s+' \u55AE\u5143\u7E3D\u89BD</a>'+
+    '<a class="b-lect" href="../lecture-'+u+'.html">\u{1F4DA} '+s+' '+NAMES[u]+' \u8B1B\u7FA9</a>';
+  var n=document.querySelector('.nomat'); if(n)n.remove();
+})();
+</script>
+</body></html>

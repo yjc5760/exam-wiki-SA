@@ -73,10 +73,10 @@ header .nomat{margin-top:12px;font-size:.8em;opacity:.85}
 <ol>
 <li><strong>右段簡化</strong>：先單獨分析 $cd$ 段，將其對 $c$ 點的支撐效果轉化為等效彈簧常數 $k_c$。</li>
 <li><strong>傾角變位法</strong>：對 $a-b-c$ 段列出傾角變位方程式。因 $a, c$ 彎矩為零，直接使用修正版傾角變位公式（鉸端修正）。</li>
-<li><strong>節點平衡</strong>：<br />
-   - $b$ 點彎矩平衡（求 $\theta_b$ 與 $\Delta_c$ 關係）<br />
-   - $b$ 點垂直力平衡（可獨立求出 $\Delta_b$）<br />
-   - $c$ 點垂直力平衡（求 $\Delta_c$ 與 $M_{bc}$ 關係）</li>
+<li><strong>節點平衡</strong>：</li>
+<li>$b$ 點彎矩平衡（求 $\theta_b$ 與 $\Delta_c$ 關係）</li>
+<li>$b$ 點垂直力平衡（可獨立求出 $\Delta_b$）</li>
+<li>$c$ 點垂直力平衡（求 $\Delta_c$ 與 $M_{bc}$ 關係）</li>
 <li><strong>解聯立並繪圖</strong>：求出所有未知變位後，代回求端彎矩並繪製 BMD。</li>
 </ol>
 <p><strong>陷阱分析：</strong></p>
@@ -183,9 +183,6 @@ header .nomat{margin-top:12px;font-size:.8em;opacity:.85}
 </tbody>
 </table>
 <h2>4. 步驟化詳細計算過程 (Step-by-Step Detailed Calculation)</h2>
-<blockquote>
-<p>📊 互動圖：<code>SA-2021-1-sfd-bmd-viz.html</code></p>
-</blockquote>
 <p><strong>Step 1：處理右側懸臂段 $cd$</strong><br />
 $c-d$ 為長度 $L_{cd}=2\text{ m}$ 的桿件，$d$ 端固定。$c$ 點受垂直向下力 $V_c$ 時的位移為 $\Delta_c = \frac{V_c L_{cd}^3}{3EI}$。<br />
 將其視為 $c$ 點的等效彈簧支承，其彈簧常數為：<br />

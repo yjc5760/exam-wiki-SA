@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="zh-Hant"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SA-2018-1 — 題目解析</title>
+<link rel="stylesheet" href="../assets/katex/katex.min.css">
+<script defer src="../assets/katex/katex.min.js"></script>
+<script defer src="../assets/katex/auto-render.min.js"
+  onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},
+  {left:'$',right:'$',display:false},{left:'\\(',right:'\\)',display:false}],throwOnError:false});"></script>
+<style>
+:root{--ac:#1565c0;--bg:#f7f9fb;--card:#fff;--ink:#263238;--mut:#607d8b;--bd:#dfe6ea}
+*{box-sizing:border-box}
+body{margin:0;font-family:"Microsoft JhengHei","Noto Sans TC",-apple-system,sans-serif;
+  background:var(--bg);color:var(--ink);line-height:1.75;font-size:15.5px}
+header{background:linear-gradient(135deg,#0d47a1,#1976d2 60%,#42a5f5);color:#fff;padding:22px 26px}
+header h1{margin:0;font-size:1.15em}
+header .back{display:inline-block;margin-top:10px;font-size:.82em;color:#fff;background:rgba(255,255,255,.18);
+  padding:4px 12px;border-radius:14px;text-decoration:none}
+main{max-width:880px;margin:0 auto;padding:26px 22px 70px}
+h1,h2,h3{color:#0d47a1} h2{font-size:1.2em;border-left:6px solid var(--ac);padding-left:12px;margin:34px 0 14px}
+table{width:100%;border-collapse:collapse;margin:14px 0;font-size:.92em;background:#fff}
+th,td{border:1px solid var(--bd);padding:7px 10px;text-align:left;vertical-align:top}
+th{background:#eceff1;font-weight:600} tbody tr:nth-child(even){background:#fafcfd}
+code{background:#eceff1;padding:1px 5px;border-radius:4px;font-size:.92em}
+img{max-width:100%;display:block;margin:14px auto;border:1px solid var(--bd);border-radius:8px}
+.katex-display{margin:12px 0!important;overflow-x:auto;overflow-y:hidden}
+footer{text-align:center;color:var(--mut);font-size:.8em;padding:22px;border-top:1px solid var(--bd)}
+
+header h1{color:#fff!important;font-size:1.25em;margin:0;letter-spacing:.5px}
+header .meta2{margin:8px 0 0;font-size:.84em;opacity:.93;line-height:1.6}
+header .meta2 b{background:rgba(255,255,255,.2);border-radius:4px;padding:1px 7px;font-weight:600}
+header .hbtns{display:flex;flex-wrap:wrap;gap:10px;margin-top:14px}
+header .hbtns a{font-size:.85em;text-decoration:none;padding:7px 17px;border-radius:22px;
+  font-weight:700;white-space:nowrap;line-height:1.4}
+header .b-study{background:#fff;color:#1565c0}
+header .b-lect{background:#6a1b9a;color:#fff}
+header .b-fg{background:#c62828;color:#fff}
+header .hbtns a:hover{filter:brightness(1.08)}
+header .nomat{margin-top:12px;font-size:.8em;opacity:.85}
+</style></head><body>
+<header>
+<h1>SA-2018-1　建築結構系統分析</h1>
+<p class="meta2">主分類 <b>SA-U3-2</b> 建築結構系統分析 ｜ 2018 年（民國 107） ｜ 結構系統定性分析</p>
+<div class="hbtns"></div><p class="nomat">本題主分類 SA-U3-2 目前尚無教材，故不提供教材按鈕。</p>
+</header>
+<main><h1>考題編號：SA-2018-1</h1>
+<p><strong>主分類：</strong> 建築結構系統分析 (SA-U3-2)<br />
+<strong>副分類：</strong> <br />
+<strong>分析法：</strong> 結構系統定性分析<br />
+<strong>標籤：</strong> <code>剛架與剪力牆互制</code> <code>變形模態</code> <code>剪力型與彎曲型</code> <code>水平力分配</code></p>
+<hr />
+<h2>1. 原始題目重述 (Problem Restatement)</h2>
+<p>一、8 層樓平面構架以貫通全樓高的剪力牆加勁，假設剪力牆提供的樓層水平勁度為構架的 5 倍，且構架與剪力牆之間使用只能承受軸力的連桿連接。若各樓層承受相等的水平力 $F$ 作用。<br />
+(一) 不需經過精確分析，請分別繪出構架與剪力牆所受的樓層水平力分布示意圖，圖中請以虛線畫上外力 $F$，並依此比例標畫水平力大小，以資比較。<br />
+(二) 請解釋題(一)中水平力分布圖的理由。（25 分）</p>
+<p><img alt="SA-2018-1 題目附圖：8層樓平面構架與剪力牆藉由連桿連接，各樓層受水平力F" src="../../raw/solutions/SA-2018-1/SA-2018-1-fig-1.png" /></p>
+<p><em>圖說：8層樓平面剛架與剪力牆並聯系統，各樓層鉸接連桿傳遞水平力，外部各樓層均受水平向右之集中力 F。</em></p>
+<h2>2. 考題核心精神與出題者意圖 (Core Concepts &amp; Examiner's Intent)</h2>
+<p>本題測驗的核心觀念為<strong>「剛架與剪力牆的互制作用 (Wall-Frame Interaction)」</strong>。<br />
+出題者希望考生突破「依勁度比例固定分配水平力」的盲點（例如誤以為每層樓剛架分擔 $\frac{1}{6}F$，剪力牆分擔 $\frac{5}{6}F$）。事實上，剛架屬於「剪力型結構 (Shear Mode)」，而剪力牆屬於「彎曲型結構 (Flexural Mode)」，兩者因為連桿的束制必須維持相同的側向位移，這會導致兩者在高度方向產生強烈的互制力，進而改變水平力的分配，甚至在某些樓層出現反向的水平力。</p>
+<h2>3. 解題戰略地圖與陷阱分析 (Strategic Roadmap &amp; Trap Analysis)</h2>
+<ul>
+<li>
+<p><strong>戰略一：分析各自的變形模態</strong><br />
+  剪力牆若單獨受載，變形曲線如懸臂梁呈「下凹 (Concave)」，頂部斜率最大；剛架若單獨受載，變形曲線呈「上凸 (Convex)」，底部斜率最大。</p>
+</li>
+<li>
+<p><strong>戰略二：推導互制力的方向</strong><br />
+  為了迫使兩者位移一致，在結構下半部，剛架會拉住變形較小的剪力牆（剛架受負向力，牆受大於 $F$ 的正向力）；在結構上半部，剪力牆頂部位移增長迅速，剛架會試圖拉回剪力牆，導致剛架頂層承受極大的正向水平力，而剪力牆在頂部則承受反向水平力。</p>
+</li>
+<li>
+<p><strong>陷阱</strong>：直接按樓層勁度比 1:5 畫出均勻等比例的分布圖，將會完全錯失本題的測驗核心，得 0 分。</p>
+</li>
+</ul>
+<h2>3.5 變數層次分析 (Variable Hierarchy Analysis)</h2>
+<h3>最終目標</h3>
+<p>定性繪製出因變形模態互制而產生的剛架與剪力牆水平力高度分布圖，並合理解釋。</p>
+<h3>本題關鍵公式（依計算順序）</h3>
+<p>$$ \boxed{F_{ext}} = \boxed{F_{frame}} + \boxed{F_{wall}} = F $$<br />
+（各樓層水平力總和）<br />
+$$ y_{frame}(x) = y_{wall}(x) $$<br />
+（位移諧合條件）</p>
+<h3>L1：題目直接給定</h3>
+<ul>
+<li>樓層數 ∣ $n = 8$ ∣ 8層樓</li>
+<li>勁度比 ∣ $K_{wall} = 5 K_{frame}$ ∣ 單層等效水平勁度</li>
+<li>外力 ∣ $F$ ∣ 各層外力相同（均勻分布）</li>
+</ul>
+<h3>L2：需知識點推導</h3>
+<p><strong>互制力分配</strong></p>
+<ul>
+<li>$F_{frame}$ ∣ 模態疊加 ∣ </li>
+<li>$F_{wall}$ ∣ $F - F_{frame}$ ∣ </li>
+</ul>
+<h3>L3：深層知識（不懂就卡住）</h3>
+<ul>
+<li>剛架與剪力牆互制作用 ∣ 必須理解剪力型與彎曲型結構強迫位移一致時，水平力分配不會是常數，且在頂層與底層會產生反向載重。 ∣</li>
+</ul>
+<h2>4. 步驟化詳細計算過程 (Step-by-Step Detailed Calculation)</h2>
+<h3>(一) 水平力分布示意圖</h3>
+<blockquote>
+<p>📊 <strong>繪圖說明：</strong><br />
+- <strong>外力 $F$</strong>：各樓層為定值，以等長虛線表示。<br />
+- <strong>剛架受力 ($F_{frame}$)</strong>：中低樓層承受向左的力（負值，與外力反向）；頂樓承受巨大的向右力（大於 $F$）。<br />
+- <strong>剪力牆受力 ($F_{wall}$)</strong>：中低樓層承受巨大的向右力（大於 $F$）；頂樓承受向左的力（負值，與外力反向）。</p>
+</blockquote>
+<p>由於剛架與剪力牆間由連桿連結，各樓層的水平位移必須完全一致。其受力分布規律如下圖特徵：</p>
+<ul>
+<li><strong>剪力牆 (Wall)</strong>：底部 1~5 樓受力遠大於 $F$，6 樓附近接近 $F$，7~8 樓受力逐漸變小，<strong>第 8 樓出現反向（向左）的水平力</strong>。</li>
+<li><strong>剛架 (Frame)</strong>：底部 1~5 樓受力為<strong>反向（向左）</strong>，6 樓附近受力約為 0，7~8 樓受力為正向，<strong>第 8 樓承受極大正向水平力（遠大於 $F$）</strong>。</li>
+</ul>
+<h3>(二) 水平力分布圖的理由</h3>
+<p><strong>1. 變形模態的差異：</strong></p>
+<ul>
+<li><strong>剪力牆</strong>屬於「彎曲型變形 (Flexural mode)」：如同一根直立的懸臂梁，受水平力時其變形曲線在底部曲率最大，且位移增加率（斜率）會隨著高度越來越大，呈現下凹形狀。</li>
+<li><strong>構架</strong>屬於「剪力型變形 (Shear mode)」：其變形主要來自樓層間的相對層次剪力變形，變形曲線在底部斜率最大，隨著高度增加斜率逐漸減小，呈現上凸形狀。</li>
+</ul>
+<p><strong>2. 位移諧合與互制作用 (Interaction)：</strong><br />
+本題中兩者透過連桿連接，強制兩者在各樓層的位移必須相等（$y_{frame} = y_{wall}$），形成一個「反曲」的綜合彈性曲線（底部下凹、頂部上凸）。<br />
+為了達成此一妥協形狀，兩者之間會產生巨大的內部互制力：</p>
+<ul>
+<li><strong>在結構中下半部</strong>：剪力牆自身剛度極大且變形小，而構架較易變形。為了把構架「拉住」以配合剪力牆的較小位移，剪力牆必須施加向左的力給構架。對外力平衡而言，意味著<strong>構架承受了反向（負）的水平力</strong>，而<strong>剪力牆則必須承擔大於外力 $F$ 的水平力</strong>。</li>
+<li><strong>在結構上半部（特別是頂層）</strong>：剪力牆若自由變形，其頂部位移會非常大；而構架的剪力變形特性使其頂部增量較緩。為了將剪力牆「拉回」以配合構架，構架必須對剪力牆施加向左的拉力。因此在頂層，<strong>剪力牆承受了反向（負）的水平力</strong>，而<strong>構架則承擔了極大的正向水平力</strong>（遠大於外部施加的 $F$）。</li>
+</ul>
+<p><strong>結論：</strong><br />
+因兩者變形特性的根本差異，雖然剪力牆提供的平均樓層勁度為構架的 5 倍，但水平力分配絕非各層固定的 5:1，而是底部牆受載大於外力，頂部構架受載大於外力，且兩者在不同高度區段均會出現與外力相反的反向載重。</p>
+<h2>5. 關鍵爭議點與進階探討 (Critical Issues &amp; Advanced Discussion)</h2>
+<ul>
+<li><strong>錯誤作法</strong>：若直接將外力 $F$ 依勁度比分配為：構架受力 $F/6$、剪力牆受力 $5F/6$，這僅適用於兩者皆為「純剪力型」或「純彎曲型」結構且勁度比例沿高度恆定之極端情況。對於混合系統而言，此假設完全失效。</li>
+<li><strong>高層建築設計實務</strong>：這種「剛架－剪力牆」雙重系統 (Dual System) 是高層建築抗震設計的經典型式。工程師正是利用頂部剛架能拉住剪力牆、底部剪力牆能限制剛架變形的互補特性，使得整體結構在頂部的側移大幅減少，從而獲得極佳的整體剛度。</li>
+</ul></main>
+<footer>來源：raw/solutions/SA-2018-1/SA-2018-1.md（知識庫解題內容唯一正本；本頁僅為渲染顯示）</footer>
+
+<script>
+/* 跟隨來源單元：若由 unit-/lecture-SA-Un-m.html（或舊的 study-/formula-given-）點進來，
+   兩顆按鈕改指向「來源那個單元」。靜態 href 保底，無 JS 或無 referrer 時仍可用。 */
+(function(){
+  var NAMES={"SA-U1-2": "靜定結構之分析", "SA-U1-3": "靜定及靜不定結構影響線", "SA-U2-1": "靜不定結構最小功法", "SA-U2-3": "靜不定結構之傾角變位法", "SA-U2-4": "靜不定結構之矩陣分析法"};
+  var m=(document.referrer||'').match(/\/(?:unit|study|lecture|formula-given)-(SA-U\d+-\d+)\.html/);
+  if(!m||!NAMES[m[1]])return;
+  var u=m[1], s=u.slice(3), box=document.querySelector('.hbtns');
+  if(!box)return;
+  box.innerHTML=
+    '<a class="b-study" href="../unit-'+u+'.html">\u{1F9ED} '+s+' \u55AE\u5143\u7E3D\u89BD</a>'+
+    '<a class="b-lect" href="../lecture-'+u+'.html">\u{1F4DA} '+s+' '+NAMES[u]+' \u8B1B\u7FA9</a>';
+  var n=document.querySelector('.nomat'); if(n)n.remove();
+})();
+</script>
+</body></html>

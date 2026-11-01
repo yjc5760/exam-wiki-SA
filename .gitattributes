@@ -2,4 +2,5 @@
 exports/**  linguist-generated=true linguist-detectable=false
 raw/**      linguist-generated=true linguist-detectable=false
 wiki/**     linguist-generated=true linguist-detectable=false
+archive/**  linguist-generated=true linguist-detectable=false
 *.html      linguist-generated=true linguist-detectable=false

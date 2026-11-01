@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="zh-Hant"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SA-2002-3 — 題目解析</title>
+<link rel="stylesheet" href="../assets/katex/katex.min.css">
+<script defer src="../assets/katex/katex.min.js"></script>
+<script defer src="../assets/katex/auto-render.min.js"
+  onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},
+  {left:'$',right:'$',display:false},{left:'\\(',right:'\\)',display:false}],throwOnError:false});"></script>
+<style>
+:root{--ac:#1565c0;--bg:#f7f9fb;--card:#fff;--ink:#263238;--mut:#607d8b;--bd:#dfe6ea}
+*{box-sizing:border-box}
+body{margin:0;font-family:"Microsoft JhengHei","Noto Sans TC",-apple-system,sans-serif;
+  background:var(--bg);color:var(--ink);line-height:1.75;font-size:15.5px}
+header{background:linear-gradient(135deg,#0d47a1,#1976d2 60%,#42a5f5);color:#fff;padding:22px 26px}
+header h1{margin:0;font-size:1.15em}
+header .back{display:inline-block;margin-top:10px;font-size:.82em;color:#fff;background:rgba(255,255,255,.18);
+  padding:4px 12px;border-radius:14px;text-decoration:none}
+main{max-width:880px;margin:0 auto;padding:26px 22px 70px}
+h1,h2,h3{color:#0d47a1} h2{font-size:1.2em;border-left:6px solid var(--ac);padding-left:12px;margin:34px 0 14px}
+table{width:100%;border-collapse:collapse;margin:14px 0;font-size:.92em;background:#fff}
+th,td{border:1px solid var(--bd);padding:7px 10px;text-align:left;vertical-align:top}
+th{background:#eceff1;font-weight:600} tbody tr:nth-child(even){background:#fafcfd}
+code{background:#eceff1;padding:1px 5px;border-radius:4px;font-size:.92em}
+img{max-width:100%;display:block;margin:14px auto;border:1px solid var(--bd);border-radius:8px}
+.katex-display{margin:12px 0!important;overflow-x:auto;overflow-y:hidden}
+footer{text-align:center;color:var(--mut);font-size:.8em;padding:22px;border-top:1px solid var(--bd)}
+
+header h1{color:#fff!important;font-size:1.25em;margin:0;letter-spacing:.5px}
+header .meta2{margin:8px 0 0;font-size:.84em;opacity:.93;line-height:1.6}
+header .meta2 b{background:rgba(255,255,255,.2);border-radius:4px;padding:1px 7px;font-weight:600}
+header .hbtns{display:flex;flex-wrap:wrap;gap:10px;margin-top:14px}
+header .hbtns a{font-size:.85em;text-decoration:none;padding:7px 17px;border-radius:22px;
+  font-weight:700;white-space:nowrap;line-height:1.4}
+header .b-study{background:#fff;color:#1565c0}
+header .b-lect{background:#6a1b9a;color:#fff}
+header .b-fg{background:#c62828;color:#fff}
+header .hbtns a:hover{filter:brightness(1.08)}
+header .nomat{margin-top:12px;font-size:.8em;opacity:.85}
+</style></head><body>
+<header>
+<h1>SA-2002-3　靜不定結構諧合變位</h1>
+<p class="meta2">主分類 <b>SA-U2-2</b> 靜不定結構諧合變位 ｜ 2002 年（民國 91） ｜ 諧合變位法</p>
+<div class="hbtns"></div><p class="nomat">本題主分類 SA-U2-2 目前尚無教材，故不提供教材按鈕。</p>
+</header>
+<main><h1>考題編號：[SA-2002-3]</h1>
+<p><strong>主分類：</strong> <code>SA-U2-2</code> 靜不定結構分析<br />
+<strong>副分類：</strong> 無<br />
+<strong>分析法：</strong> 諧合變位法<br />
+<strong>標籤：</strong> <code>靜不定結構</code> <code>諧合變位法</code> <code>勁度法</code> <code>複合結構</code></p>
+<hr />
+<h2>1. 原始題目重述 (Problem Restatement)</h2>
+<ul>
+<li>題幹：如圖所示之梁，B 點用相同材料之桿吊掛。試求 B 點垂直位移。（25 分）</li>
+<li>結構型式：複合結構（由懸臂梁與吊桿組成）。</li>
+<li>幾何尺寸與材料性質：<ul>
+<li>梁 AB：長度 $\lambda$，撓曲剛度 $EI$ 為常數。</li>
+<li>吊桿 CB：長度 $\lambda$，軸向剛度 $AE$ 為常數。</li>
+</ul>
+</li>
+<li>支撐條件：<ul>
+<li>A 點：固定端。</li>
+<li>C 點：鉸接或固定端（因吊桿僅承受軸力，支承型式對結果無影響）。</li>
+</ul>
+</li>
+<li>載重：B 點受一向下垂直集中載重 $P$。</li>
+<li>圖片引用：<br />
+<img alt="SA-2002-3 題目附圖：懸臂梁AB端點B由吊桿CB支撐，並承受向下集中力P" src="../../raw/solutions/SA-2002-3/SA-2002-3-fig-1.png" /><br />
+<em>圖說：梁 AB 與桿 CB 長度皆標示為 $\lambda$。梁之撓曲剛度為 $EI$，桿之軸向剛度為 $AE$。節點 B 點受向下集中載重 $P$。</em></li>
+</ul>
+<h2>2. 考題核心精神與出題者意圖 (Core Concepts &amp; Examiner's Intent)</h2>
+<ul>
+<li>核心觀念：複合結構（梁與軸力桿結合）的變位諧合（位移一致性）。梁承受彎矩變形，桿承受軸力變形，兩者在節點 B 處的垂直位移必須相同。</li>
+<li>出題者意圖：測驗考生能否正確運用諧合變位法（力法）或節點勁度法（位移法）來解析一次靜不定結構，並理解兩者之等效關係與適用情境。</li>
+</ul>
+<h2>3. 解題戰略地圖與陷阱分析 (Strategic Roadmap &amp; Trap Analysis)</h2>
+<ul>
+<li><strong>作戰計畫</strong>：<ol>
+<li>方法一（諧合變位法）：將結構於 B 點切開，以吊桿張力 $T$ 為多餘力。分別寫出梁在 B 點因載重 $P$ 及多餘力 $T$ 產生的變位，以及桿因張力 $T$ 產生的伸長量，由兩者位移相等求得 $T$，再代回求 B 點位移。</li>
+<li>方法二（直接勁度法）：將 B 點視為單一自由度系統（僅考慮垂直位移）。分別計算梁在 B 點的垂直抗推勁度與桿的軸向勁度，相加後以公式 $P=K_{total}\Delta$ 直接求解位移。</li>
+</ol>
+</li>
+<li><strong>陷阱分析</strong>：<ul>
+<li>符號混淆：題目中長度符號使用 $\lambda$（lambda）而非慣用的 $L$，計算與書寫時需注意代數符號不要習慣性寫成 $L$ 導致閱卷者誤判。</li>
+<li>剛度組合：梁的彎曲變形與 $EI$ 有關，桿的軸向變形與 $AE$ 有關，最終答案必然同時包含此二項參數。若公式推導錯誤，可能會將兩者剛度錯誤相加或量綱不對。</li>
+</ul>
+</li>
+</ul>
+<h2>3.5 變數層次分析 (Variable Hierarchy Analysis)</h2>
+<p>### 最終目標<br />
+<code>求出節點 B 在受力 P 作用下的垂直向下位移量 \Delta_B</code></p>
+<p>### 本題關鍵公式（依計算順序）</p>
+<ul>
+<li>B 點的梁結構垂直抗推勁度：$K_b = \frac{3EI}{\lambda^3}$</li>
+<li>B 點的桿結構軸向勁度：$K_r = \frac{AE}{\lambda}$</li>
+<li>總節點勁度：$\boxed{K_{total}} = K_b + K_r$</li>
+<li>位移求解：$\Delta_B = \frac{P}{\boxed{K_{total}}}$</li>
+</ul>
+<p>### L1：題目直接給定<br />
+   | 符號 | 數值 | 說明 |<br />
+   |:---|:---|:---|<br />
+   | $P$ | $P$ | B 點向下集中載重 |<br />
+   | $L_b$ | $\lambda$ | 梁 AB 長度 |<br />
+   | $L_r$ | $\lambda$ | 桿 CB 長度 |<br />
+   | $EI$ | $EI$ | 梁 AB 撓曲剛度 |<br />
+   | $AE$ | $AE$ | 桿 CB 軸向剛度 |</p>
+<p>### L2：需知識點推導<br />
+<strong>節點等效勁度</strong><br />
+   | 符號 | 公式／來源 | 卡關? |<br />
+   |:---|:---|:---|<br />
+   | $K_b$ | $\frac{3EI}{L_b^3}$ | |<br />
+   | $K_r$ | $\frac{AE}{L_r}$ | |<br />
+   | $\Delta_B$ | $\frac{P}{K_b + K_r}$ | |</p>
+<p>### L3：深層知識（不懂就卡住）<br />
+   | 知識點 | 說明 | 卡關? |<br />
+   |:---|:---|:---|<br />
+   | 複合結構諧合變形 | 梁的彎曲撓度與桿的軸向伸長量在交接點必須一致 | |<br />
+   | 單一自由度等效勁度 | 若節點只有一個方向的變位，其勁度可視為各並聯構件之勁度相加 | |</p>
+<h2>4. 步驟化詳細計算過程 (Step-by-Step Detailed Calculation)</h2>
+<h3>方法一：諧合變位法（力法）</h3>
+<p><strong>Step 1：選擇多餘力</strong><br />
+將結構於 B 點解開，設吊桿 CB 承受之軸向拉力為 $T$。<br />
+此拉力 $T$ 將向上作用於懸臂梁 AB 的端點 B，並向下作用於吊桿 CB 的端點 B。</p>
+<p><strong>Step 2：計算梁結構之 B 點變位</strong><br />
+懸臂梁 AB 端點 B 受向下集中外力 $P$ 與向上吊桿拉力 $T$ 作用，故向下的總淨載重為 $(P - T)$。<br />
+依據懸臂梁端點受集中力之撓度公式 $\delta = \frac{FL^3}{3EI}$，<br />
+梁 AB 在 B 點的向下垂直變位為：<br />
+$$ \Delta_{B, beam} = \frac{(P - T)\lambda^3}{3EI} $$</p>
+<p><strong>Step 3：計算桿結構之 B 點變位</strong><br />
+吊桿 CB 受拉力 $T$ 作用，依據軸向變形公式 $\delta = \frac{NL}{AE}$，<br />
+桿 CB 之伸長量（即 B 點向下位移）為：<br />
+$$ \Delta_{B, rod} = \frac{T\lambda}{AE} $$</p>
+<p><strong>Step 4：建立諧合方程式並求解多餘力</strong><br />
+由於梁與桿在 B 點物理連接，兩者產生之變位必須一致（變位諧合條件）：<br />
+$$ \Delta_{B, beam} = \Delta_{B, rod} $$<br />
+$$ \frac{(P - T)\lambda^3}{3EI} = \frac{T\lambda}{AE} $$</p>
+<p>將方程式兩邊同除以 $\lambda$，並將含有 $T$ 的項移至等號右邊整理：<br />
+$$ \frac{P\lambda^2}{3EI} - \frac{T\lambda^2}{3EI} = \frac{T}{AE} $$<br />
+$$ \frac{P\lambda^2}{3EI} = T \left( \frac{1}{AE} + \frac{\lambda^2}{3EI} \right) $$<br />
+通分右式括號內項目：<br />
+$$ \frac{P\lambda^2}{3EI} = T \left( \frac{3EI + AE\lambda^2}{3EI \cdot AE} \right) $$<br />
+交叉相乘解得拉力 $T$：<br />
+$$ T = \frac{P\lambda^2}{3EI} \cdot \frac{3EI \cdot AE}{3EI + AE\lambda^2} = \frac{P\lambda^2 \cdot AE}{3EI + AE\lambda^2} $$</p>
+<p><strong>Step 5：計算 B 點垂直位移</strong><br />
+將 $T$ 代回桿 CB 的變形公式，可得 B 點垂直向下位移 $\Delta_B$：<br />
+$$ \Delta_B = \frac{T\lambda}{AE} = \frac{\frac{P\lambda^2 \cdot AE}{3EI + AE\lambda^2} \cdot \lambda}{AE} $$<br />
+$$ \boxed{ \Delta_B = \frac{P\lambda^3}{3EI + AE\lambda^2} } \quad (\text{向下}) $$</p>
+<hr />
+<h3>方法二：直接勁度法（位移法）</h3>
+<p><strong>Step 1：建立單一自由度系統</strong><br />
+結構僅在 B 點有未知的垂直位移 $\Delta_B$（不考慮 B 點微小轉角對軸力桿的影響），故可將 B 點視為單一自由度節點，求其總勁度 $K_{total}$。</p>
+<p><strong>Step 2：計算各構件對 B 點之垂直勁度</strong></p>
+<ul>
+<li>
+<p>懸臂梁 AB 對端點垂直位移之抗推勁度（彈簧常數）：<br />
+  $$ K_b = \frac{3EI}{\lambda^3} $$</p>
+</li>
+<li>
+<p>吊桿 CB 對端點垂直位移之軸向勁度（彈簧常數）：<br />
+  $$ K_r = \frac{AE}{\lambda} $$</p>
+</li>
+</ul>
+<p><strong>Step 3：組裝總勁度並求解位移</strong><br />
+兩構件在 B 點為並聯關係，總勁度 $K_{total}$ 為兩者之和：<br />
+$$ K_{total} = K_b + K_r = \frac{3EI}{\lambda^3} + \frac{AE}{\lambda} = \frac{3EI + AE\lambda^2}{\lambda^3} $$</p>
+<p>根據力與變位關係式 $P = K_{total} \cdot \Delta_B$，可直接求得：<br />
+$$ \Delta_B = \frac{P}{K_{total}} = \frac{P}{\frac{3EI + AE\lambda^2}{\lambda^3}} $$<br />
+$$ \boxed{ \Delta_B = \frac{P\lambda^3}{3EI + AE\lambda^2} } \quad (\text{向下}) $$</p>
+<h2>5. 關鍵爭議點與進階探討 (Critical Issues &amp; Advanced Discussion)</h2>
+<ul>
+<li>本題完美展現了力法（諧合變位法）與位移法（勁度法）的殊途同歸。對於單一節點自由度的複合結構，使用<strong>位移法（直接相加勁度）</strong>通常較為直觀且不易計算錯誤。</li>
+<li>在考場上，若題目未指定分析方法，強烈建議使用直接勁度法（方法二）秒殺此題，但也可將諧合變位法（方法一）列出作為驗算工具，確保滿分萬無一失。</li>
+<li>需再次提醒，題目給的長度符號為 $\lambda$。遇到非慣用符號時，應仔細對應量綱與單位，例如 $EI/\lambda^3$ 與 $AE/\lambda$ 兩者量綱皆為「力量/長度」，確認單位一致無誤後即可放心作答。</li>
+</ul></main>
+<footer>來源：raw/solutions/SA-2002-3/SA-2002-3.md（知識庫解題內容唯一正本；本頁僅為渲染顯示）</footer>
+
+<script>
+/* 跟隨來源單元：若由 unit-/lecture-SA-Un-m.html（或舊的 study-/formula-given-）點進來，
+   兩顆按鈕改指向「來源那個單元」。靜態 href 保底，無 JS 或無 referrer 時仍可用。 */
+(function(){
+  var NAMES={"SA-U1-2": "靜定結構之分析", "SA-U1-3": "靜定及靜不定結構影響線", "SA-U2-1": "靜不定結構最小功法", "SA-U2-3": "靜不定結構之傾角變位法", "SA-U2-4": "靜不定結構之矩陣分析法"};
+  var m=(document.referrer||'').match(/\/(?:unit|study|lecture|formula-given)-(SA-U\d+-\d+)\.html/);
+  if(!m||!NAMES[m[1]])return;
+  var u=m[1], s=u.slice(3), box=document.querySelector('.hbtns');
+  if(!box)return;
+  box.innerHTML=
+    '<a class="b-study" href="../unit-'+u+'.html">\u{1F9ED} '+s+' \u55AE\u5143\u7E3D\u89BD</a>'+
+    '<a class="b-lect" href="../lecture-'+u+'.html">\u{1F4DA} '+s+' '+NAMES[u]+' \u8B1B\u7FA9</a>';
+  var n=document.querySelector('.nomat'); if(n)n.remove();
+})();
+</script>
+</body></html>

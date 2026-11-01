@@ -6,7 +6,7 @@
 
 資料來源
   study/data/unit-XX-Un-m.json   單元資料（人工／Claude 維護：考點群、逐題公式用途、公式卡、逐年備註、文字段落）
-  raw/json/question_index.json   題目索引（題數、主副考點、排名、viz、verified 一律由此計算）
+  raw/json/question_index.json   題目索引（題數、主副考點、排名、verified 一律由此計算）
   解題過程影片/<題號>/video/*.mp4  有影片就在題目列加 🎬
 
 用法
@@ -80,7 +80,6 @@ def build(unit, check=False):
         x = byid[q["id"]]
         q["pri"] = 1 if q["id"] in pri_ids else 0
         q["secCat"] = "" if q["pri"] else f"{x['primaryTopicId'].split('-',1)[1]} {x.get('primaryTopicName','')}".strip()
-        q["viz"] = 1 if x.get("hasViz") else 0
         q["ver"] = 1 if x.get("verificationStatus") == "verified" else 0
         q["video"] = 1 if glob.glob(os.path.join(vdir, q["id"], "video", "*.mp4")) else 0
 

@@ -241,9 +241,6 @@ header .nomat{margin-top:12px;font-size:.8em;opacity:.85}
 </table>
 <hr />
 <h2>4. 步驟化詳細計算過程 (Step-by-Step Detailed Calculation)</h2>
-<blockquote>
-<p>📊 影響線互動圖：<code>SA-2016-2-influence-line-viz.html</code></p>
-</blockquote>
 <p><strong>坐標系設定：</strong></p>
 <ul>
 <li>BC 梁：以 B 為原點，向右為 $x$ 軸正向（$0 \le x \le L$）</li>
@@ -263,9 +260,9 @@ header .nomat{margin-top:12px;font-size:.8em;opacity:.85}
 <h3>Step 2：計算 C 點柔度係數 $f_{CC}$</h3>
 <p><img alt="SA-2016-2 柔度法的兩張彎矩圖：m_C（單位贅力）與 m′（x處單位虛力），標出 f_CC 的梁段與柱段組成" src="../../raw/solutions/SA-2016-2/figs/SA-2016-2-fig-3-flexibility.svg" /></p>
 <p><em>圖 3　$m_C$ 與 $m'$ 兩張彎矩圖，以及 $f_{CC}$ 的組成。這張圖攔的是「只算梁段」：柱段那塊矩形（$m_C = L$ 定值）貢獻 $L^3/EI$，佔 $f_{CC}$ 的 </em><em>75%</em><em> —— 漏掉它，$f_{CC}$ 直接小 4 倍。右格也順帶說明了柔度法為什麼自動含側移：$v(x)$ 裡的 $L^2 x$ 就是柱段的貢獻。</em></p>
-<p>$$f_{CC} = \int \frac{m_C^2}{EI}ds<br />
-= \underbrace{\int_0^L \frac{(L-x')^2}{EI}dx'}<em>{\text{梁段}} + \underbrace{\int_0^L \frac{L^2}{EI}dy}</em>{\text{柱段}}$$</p>
-<p>$$= \frac{1}{EI}\left[-\frac{(L-x')^3}{3}\right]_0^L + \frac{L^3}{EI}<br />
+<p>$$f_{CC} = \int \frac{m_C^2}{EI}ds
+= \underbrace{\int_0^L \frac{(L-x')^2}{EI}dx'}_{\text{梁段}} + \underbrace{\int_0^L \frac{L^2}{EI}dy}_{\text{柱段}}$$</p>
+<p>$$= \frac{1}{EI}\left[-\frac{(L-x')^3}{3}\right]_0^L + \frac{L^3}{EI}
 = \frac{L^3}{3EI} + \frac{L^3}{EI} = \boxed{\frac{4L^3}{3EI}}$$</p>
 <blockquote>
 <p><strong>柱段 $\dfrac{L^3}{EI}$ 是梁段 $\dfrac{L^3}{3EI}$ 的三倍</strong> —— 這個結構的柔度主要來自柱，不是梁。</p>
@@ -276,10 +273,10 @@ header .nomat{margin-top:12px;font-size:.8em;opacity:.85}
 <li><strong>BC 梁：</strong> $x' \in [0, x]$：$m'(x') = 1 \cdot (x - x')$；$x' \in (x, L]$：$m' = 0$</li>
 <li><strong>AB 柱：</strong> $m'(y) = 1 \cdot x = x$（定值）</li>
 </ul>
-<p>$$v(x) = \int \frac{m_C \cdot m'}{EI}ds<br />
+<p>$$v(x) = \int \frac{m_C \cdot m'}{EI}ds
 = \int_0^x \frac{(L-x')(x-x')}{EI}dx' + \int_0^L \frac{L \cdot x}{EI}dy$$</p>
 <p><strong>第一項：</strong></p>
-<p>$$\int_0^x (L-x')(x-x')dx' = \int_0^x \left(Lx - Lx' - xx' + x'^2\right)dx'<br />
+<p>$$\int_0^x (L-x')(x-x')dx' = \int_0^x \left(Lx - Lx' - xx' + x'^2\right)dx'
 = Lx^2 - \frac{Lx^2 + x^3}{2} + \frac{x^3}{3} = \frac{L}{2}x^2 - \frac{1}{6}x^3$$</p>
 <p><strong>第二項：</strong> $\displaystyle\int_0^L \frac{Lx}{EI}dy = \frac{L^2 x}{EI}$</p>
 <p><strong>合併：</strong></p>
@@ -287,10 +284,10 @@ header .nomat{margin-top:12px;font-size:.8em;opacity:.85}
 <h3>Step 4：求影響線方程式</h3>
 <p>當移動載重 $P = 1$（向下）作用於 $x$ 處時，依 Maxwell 互易定理，C 點下沉量即為 $v(x)$；再由 $V_C$ 頂回：</p>
 <p>$$V_C \cdot f_{CC} = v(x) \quad\Longrightarrow\quad V_C(x) = \frac{v(x)}{f_{CC}}$$</p>
-<p>$$IL_{V_C}(x)<br />
-= \frac{\frac{1}{EI}\left(L^2 x + \frac{L}{2}x^2 - \frac{1}{6}x^3\right)}{\frac{4L^3}{3EI}}<br />
+<p>$$IL_{V_C}(x)
+= \frac{\frac{1}{EI}\left(L^2 x + \frac{L}{2}x^2 - \frac{1}{6}x^3\right)}{\frac{4L^3}{3EI}}
 = \frac{3}{4L^3}\left(L^2 x + \frac{L}{2}x^2 - \frac{1}{6}x^3\right)$$</p>
-<p>$$\boxed{\;IL_{V_C}(x) = \frac{6L^2 x + 3Lx^2 - x^3}{8L^3}\;}<br />
+<p>$$\boxed{\;IL_{V_C}(x) = \frac{6L^2 x + 3Lx^2 - x^3}{8L^3}\;}
 \qquad (0 \le x \le L,\ x \text{ 由 B 向右起算})$$</p>
 <h3>Step 5：影響線圖與特例檢驗</h3>
 <p><img alt="SA-2016-2 IL of V_C 曲線，含 L/4、L/2、3L/4 的縱距，並與簡支情形的直線 x/L 對照" src="../../raw/solutions/SA-2016-2/figs/SA-2016-2-fig-4-influence-line.svg" /></p>
@@ -341,7 +338,7 @@ header .nomat{margin-top:12px;font-size:.8em;opacity:.85}
 <li>$M_{BA} = \dfrac{2EI}{L}(2\theta_B - 3\psi) = \dfrac{EI}{L}\theta_B$</li>
 <li>C 為滾支承，使用修正傾角變位式：$M_{BC} = \dfrac{3EI}{L}\theta_B + FEM'_{BC}$</li>
 <li>$FEM'_{BC} = -\dfrac{x(L-x)(2L-x)}{2L^2}$（$x$ 為載重距 B 的距離）</li>
-<li>節點 B 平衡：$M_{BA} + M_{BC} = 0 \Rightarrow \dfrac{4EI}{L}\theta_B = -FEM'<em>{BC} \Rightarrow \theta_B = -\dfrac{L}{4EI}FEM'</em>{BC}$</li>
+<li>節點 B 平衡：$M_{BA} + M_{BC} = 0 \Rightarrow \dfrac{4EI}{L}\theta_B = -FEM'_{BC} \Rightarrow \theta_B = -\dfrac{L}{4EI}FEM'_{BC}$</li>
 <li>$M_{BC} = \dfrac{1}{4}FEM'_{BC} = -\dfrac{x(L-x)(2L-x)}{8L^2}$</li>
 <li>BC 桿對 B 取矩：$M_{BC} + 1\cdot x - V_C \cdot L = 0 \Rightarrow V_C = \dfrac{x + M_{BC}}{L}$</li>
 <li>代入化簡：</li>

@@ -108,7 +108,7 @@ header .nomat{margin-top:12px;font-size:.8em;opacity:.85}
 <tr>
 <td>DOF 順序對勁度矩陣的影響</td>
 <td>組裝時必須統一 DOF 對應關係，不可混用</td>
-<td>統一用 ${\theta_B,\,\theta_C,\,\Delta}$</td>
+<td>統一用 $\{\theta_B,\,\theta_C,\,\Delta\}$</td>
 </tr>
 </tbody>
 </table>
@@ -119,7 +119,7 @@ header .nomat{margin-top:12px;font-size:.8em;opacity:.85}
 </blockquote>
 <h3>最終目標</h3>
 <p>$$k_{lateral} = \frac{P}{\Delta} = \frac{84EI}{5L^3}$$</p>
-<p><strong>推導路徑：</strong> 矩陣位移法建立 $[K]_{3\times3}$ → 建立 $[K]{d}={F}$ → 對稱性推出 $\theta_B=\theta_C$ → 代入求 $\Delta$ → 得 $k$</p>
+<p><strong>推導路徑：</strong> 矩陣位移法建立 $[K]_{3\times3}$ → 建立 $[K]\{d\}=\{F\}$ → 對稱性推出 $\theta_B=\theta_C$ → 代入求 $\Delta$ → 得 $k$</p>
 <hr />
 <h3>L1：題目直接給定</h3>
 <table>
@@ -199,7 +199,7 @@ header .nomat{margin-top:12px;font-size:.8em;opacity:.85}
 </table>
 <p><strong>Step 2：柱元素局部勁度（自由端子矩陣，DOF：$\theta_{top},\,\delta_{top}$）</strong></p>
 <p>基底固定端消去後，自由端 2×2 子矩陣：</p>
-<p>$$[\bar{k}]_{col} = \begin{bmatrix} \dfrac{4EI}{L} &amp; -\dfrac{6EI}{L^2} \[4pt] -\dfrac{6EI}{L^2} &amp; \dfrac{12EI}{L^3} \end{bmatrix}$$</p>
+<p>$$[\bar{k}]_{col} = \begin{bmatrix} \dfrac{4EI}{L} &amp; -\dfrac{6EI}{L^2} \\[4pt] -\dfrac{6EI}{L^2} &amp; \dfrac{12EI}{L^3} \end{bmatrix}$$</p>
 <table>
 <thead>
 <tr>
@@ -231,7 +231,7 @@ header .nomat{margin-top:12px;font-size:.8em;opacity:.85}
 </tbody>
 </table>
 <p><strong>Step 3：梁元素局部勁度（DOF：$\theta_B,\,\theta_C$，無側移）</strong></p>
-<p>$$[\bar{k}]_{beam} = \frac{EI}{L}\begin{bmatrix} 4 &amp; 2 \ 2 &amp; 4 \end{bmatrix}$$</p>
+<p>$$[\bar{k}]_{beam} = \frac{EI}{L}\begin{bmatrix} 4 &amp; 2 \\ 2 &amp; 4 \end{bmatrix}$$</p>
 <table>
 <thead>
 <tr>
@@ -360,7 +360,7 @@ header .nomat{margin-top:12px;font-size:.8em;opacity:.85}
 </tr>
 <tr>
 <td>靜態凝縮公式（Schur complement）</td>
-<td>$k_{eff}=K_{33}-{K_{31},K_{32}}[K_{\theta\theta}]^{-1}{K_{13};K_{23}}$，與代入消元等效</td>
+<td>$k_{eff}=K_{33}-\{K_{31},K_{32}\}[K_{\theta\theta}]^{-1}\{K_{13};K_{23}\}$，與代入消元等效</td>
 <td style="text-align: center;"></td>
 </tr>
 </tbody>
@@ -374,7 +374,7 @@ header .nomat{margin-top:12px;font-size:.8em;opacity:.85}
 <li><strong>梁 BC</strong> 不伸縮 → B、C 水平位移相同，設為 $\Delta$</li>
 </ul>
 <p><strong>有效自由度（DOF）：</strong></p>
-<p>$${d} = {\theta_B,\;\theta_C,\;\Delta}^T$$</p>
+<p>$$\{d\} = \{\theta_B,\;\theta_C,\;\Delta\}^T$$</p>
 <p>邊界條件：柱底 A、D 為固定端，三個自由度均為零（不貢獻 DOF）。</p>
 <p><img alt="自由度辨識圖解：保留 θB、θC、Δ 三個自由度，並標示被忽略軸向變形消去的垂直位移與水平位移耦合" src="../../raw/solutions/SA-2025-1/figs/SA-2025-1-fig-2-dof.svg" /></p>
 <p><em>圖 2　自由度辨識。「忽略軸向變形」不是可有可無的簡化，它直接決定勁度矩陣是 3×3 還是 6×6。</em></p>
@@ -382,16 +382,16 @@ header .nomat{margin-top:12px;font-size:.8em;opacity:.85}
 <h3>4.2 各構件局部勁度矩陣</h3>
 <p><strong>構件① 左柱 AB</strong>（A 固定，B 自由，垂直桿件，側向 = 水平方向）</p>
 <p>基底固定端消去後，自由端子矩陣（DOF 順序：$\theta_B,\,\Delta$）：</p>
-<p>$$[\bar{k}]_{AB} = \begin{bmatrix} \dfrac{4EI}{L} &amp; -\dfrac{6EI}{L^2} \[6pt] -\dfrac{6EI}{L^2} &amp; \dfrac{12EI}{L^3} \end{bmatrix}$$</p>
+<p>$$[\bar{k}]_{AB} = \begin{bmatrix} \dfrac{4EI}{L} &amp; -\dfrac{6EI}{L^2} \\[6pt] -\dfrac{6EI}{L^2} &amp; \dfrac{12EI}{L^3} \end{bmatrix}$$</p>
 <p><strong>構件② 右柱 DC</strong>（D 固定，C 自由，垂直桿件，側向 = 水平方向）</p>
-<p>$$[\bar{k}]_{DC} = \begin{bmatrix} \dfrac{4EI}{L} &amp; -\dfrac{6EI}{L^2} \[6pt] -\dfrac{6EI}{L^2} &amp; \dfrac{12EI}{L^3} \end{bmatrix} \quad \text{（DOF 順序：}\theta_C,\,\Delta\text{）}$$</p>
+<p>$$[\bar{k}]_{DC} = \begin{bmatrix} \dfrac{4EI}{L} &amp; -\dfrac{6EI}{L^2} \\[6pt] -\dfrac{6EI}{L^2} &amp; \dfrac{12EI}{L^3} \end{bmatrix} \quad \text{（DOF 順序：}\theta_C,\,\Delta\text{）}$$</p>
 <p><strong>構件③ 梁 BC</strong>（兩端無側移：$\psi_{BC}=0$，水平桿件，橫向 = 垂直方向）</p>
 <p>B、C 之垂直位移均為零（柱不縮短），梁無橫向端位移，故：</p>
-<p>$$[\bar{k}]_{BC} = \frac{EI}{L}\begin{bmatrix} 4 &amp; 2 \ 2 &amp; 4 \end{bmatrix} \quad \text{（DOF 順序：}\theta_B,\,\theta_C\text{）}$$</p>
+<p>$$[\bar{k}]_{BC} = \frac{EI}{L}\begin{bmatrix} 4 &amp; 2 \\ 2 &amp; 4 \end{bmatrix} \quad \text{（DOF 順序：}\theta_B,\,\theta_C\text{）}$$</p>
 <hr />
 <h3>4.3 整體勁度矩陣組裝</h3>
 <p>DOF 全域編號：1 = $\theta_B$，2 = $\theta_C$，3 = $\Delta$</p>
-<p>$$\boxed{[K] = \begin{bmatrix} \dfrac{8EI}{L} &amp; \dfrac{2EI}{L} &amp; -\dfrac{6EI}{L^2} \[8pt] \dfrac{2EI}{L} &amp; \dfrac{8EI}{L} &amp; -\dfrac{6EI}{L^2} \[8pt] -\dfrac{6EI}{L^2} &amp; -\dfrac{6EI}{L^2} &amp; \dfrac{24EI}{L^3} \end{bmatrix}}$$</p>
+<p>$$\boxed{[K] = \begin{bmatrix} \dfrac{8EI}{L} &amp; \dfrac{2EI}{L} &amp; -\dfrac{6EI}{L^2} \\[8pt] \dfrac{2EI}{L} &amp; \dfrac{8EI}{L} &amp; -\dfrac{6EI}{L^2} \\[8pt] -\dfrac{6EI}{L^2} &amp; -\dfrac{6EI}{L^2} &amp; \dfrac{24EI}{L^3} \end{bmatrix}}$$</p>
 <table>
 <thead>
 <tr>
@@ -429,7 +429,7 @@ header .nomat{margin-top:12px;font-size:.8em;opacity:.85}
 <p><img alt="勁度矩陣三行的物理意義：三個單位位移狀態及其所需節點力" src="../../raw/solutions/SA-2025-1/figs/SA-2025-1-fig-3-unit-states.svg" /></p>
 <p><em>圖 3　勁度矩陣每一行的物理意義。第 j 行 ＝ 讓第 j 個自由度產生單位位移、其餘全部鎖住時，各自由度上必須施加的力。核對矩陣正負號時直接看這張圖，不必重推公式。</em></p>
 <h4>4.3.1 圖解法：三場單位位移實驗，一次求一直行</h4>
-<p>$[K]$ 是<strong>一直行、一直行</strong>建出來的（台灣用語：列＝橫 row、行＝直 column）。因為 ${F}=[K]{d}$，代入 ${d}={1,0,0}^T$ 得到的是 ${K_{11},K_{21},K_{31}}^T$ ——第 1 <strong>直行</strong>。每一場實驗都走同樣四步：</p>
+<p>$[K]$ 是<strong>一直行、一直行</strong>建出來的（台灣用語：列＝橫 row、行＝直 column）。因為 $\{F\}=[K]\{d\}$，代入 $\{d\}=\{1,0,0\}^T$ 得到的是 $\{K_{11},K_{21},K_{31}\}^T$ ——第 1 <strong>直行</strong>。每一場實驗都走同樣四步：</p>
 <ol>
 <li><strong>變形</strong>：令第 $j$ 個自由度 $=1$，其餘全部鎖住，畫出變形。</li>
 <li><strong>桿端力</strong>：用傾角變位公式 $M_{nf}=\frac{2EI}{L}(2\theta_n+\theta_f-3\psi)$ 求每根桿件兩端的彎矩（作用在桿件上），再由該桿 $\Sigma M=0$ 求柱的剪力 $H=-(M_{\text{頂}}+M_{\text{底}})/L$。</li>
@@ -507,8 +507,8 @@ header .nomat{margin-top:12px;font-size:.8em;opacity:.85}
 <p><strong>彙整</strong>：三個直行並排即得前面的 $[K]$。橫著讀第 1 列 $(8,\,2,\,-6)$ 與直著建的第 1 直行相同，是因為 $[K]$ 對稱；觀念上要記「單位位移 → 直行」。</p>
 <hr />
 <h3>4.4 建立方程組</h3>
-<p>外力向量：${F} = {0,\;0,\;P}^T$（B、C 節點無外部彎矩；$\Delta$ 方向施加 $P$）</p>
-<p>$$[K]{d} = {F}$$</p>
+<p>外力向量：$\{F\} = \{0,\;0,\;P\}^T$（B、C 節點無外部彎矩；$\Delta$ 方向施加 $P$）</p>
+<p>$$[K]\{d\} = \{F\}$$</p>
 <p>展開：</p>
 <p>$$\frac{8EI}{L}\,\theta_B + \frac{2EI}{L}\,\theta_C - \frac{6EI}{L^2}\,\Delta = 0 \qquad \cdots(1)$$</p>
 <p>$$\frac{2EI}{L}\,\theta_B + \frac{8EI}{L}\,\theta_C - \frac{6EI}{L^2}\,\Delta = 0 \qquad \cdots(2)$$</p>
@@ -524,18 +524,18 @@ header .nomat{margin-top:12px;font-size:.8em;opacity:.85}
 <p>將 (4) 代入方程 (3)：</p>
 <p>$$-\frac{6EI}{L^2}\cdot\frac{3\Delta}{5L} - \frac{6EI}{L^2}\cdot\frac{3\Delta}{5L} + \frac{24EI}{L^3}\,\Delta = P$$</p>
 <p>$$-\frac{18EI}{5L^3}\,\Delta - \frac{18EI}{5L^3}\,\Delta + \frac{24EI}{L^3}\,\Delta = P$$</p>
-<p>$$\frac{EI\,\Delta}{L^3}!\left(-\frac{18}{5} - \frac{18}{5} + 24\right) = P$$</p>
-<p>$$\frac{EI\,\Delta}{L^3}!\left(-\frac{36}{5} + \frac{120}{5}\right) = P$$</p>
+<p>$$\frac{EI\,\Delta}{L^3}\!\left(-\frac{18}{5} - \frac{18}{5} + 24\right) = P$$</p>
+<p>$$\frac{EI\,\Delta}{L^3}\!\left(-\frac{36}{5} + \frac{120}{5}\right) = P$$</p>
 <p>$$\frac{84\,EI}{5L^3}\,\Delta = P$$</p>
 <p>$$\therefore\;\boxed{k_{lateral} = \frac{P}{\Delta} = \frac{84EI}{5L^3}}$$</p>
 <hr />
 <h3>4.7 驗算：靜態凝縮公式（Schur Complement）</h3>
-<p>$$k_{eff} = K_{33} - \begin{bmatrix} K_{31} &amp; K_{32} \end{bmatrix} [K_{\theta\theta}]^{-1} \begin{bmatrix} K_{13} \ K_{23} \end{bmatrix}$$</p>
+<p>$$k_{eff} = K_{33} - \begin{bmatrix} K_{31} &amp; K_{32} \end{bmatrix} [K_{\theta\theta}]^{-1} \begin{bmatrix} K_{13} \\ K_{23} \end{bmatrix}$$</p>
 <p>其中：</p>
-<p>$$[K_{\theta\theta}] = \frac{EI}{L}\begin{bmatrix} 8 &amp; 2 \ 2 &amp; 8 \end{bmatrix},\qquad \det = \frac{(EI)^2}{L^2}(64-4) = \frac{60(EI)^2}{L^2}$$</p>
-<p>$$[K_{\theta\theta}]^{-1} = \frac{L}{60EI}\begin{bmatrix} 8 &amp; -2 \ -2 &amp; 8 \end{bmatrix}$$</p>
-<p>$$[K_{\theta\theta}]^{-1}!\begin{bmatrix} K_{13} \ K_{23} \end{bmatrix} = \frac{L}{60EI}\begin{bmatrix} 8 &amp; -2 \ -2 &amp; 8 \end{bmatrix}!\begin{bmatrix} -6EI/L^2 \ -6EI/L^2 \end{bmatrix} = \frac{L}{60EI}!\begin{bmatrix} -36EI/L^2 \ -36EI/L^2 \end{bmatrix} = \begin{bmatrix} -3/(5L) \ -3/(5L) \end{bmatrix}$$</p>
-<p>$$\begin{bmatrix} K_{31} &amp; K_{32} \end{bmatrix}!\begin{bmatrix} -3/(5L) \ -3/(5L) \end{bmatrix} = \left(-\frac{6EI}{L^2}\right)!\left(-\frac{3}{5L}\right)\times 2 = \frac{36EI}{5L^3}$$</p>
+<p>$$[K_{\theta\theta}] = \frac{EI}{L}\begin{bmatrix} 8 &amp; 2 \\ 2 &amp; 8 \end{bmatrix},\qquad \det = \frac{(EI)^2}{L^2}(64-4) = \frac{60(EI)^2}{L^2}$$</p>
+<p>$$[K_{\theta\theta}]^{-1} = \frac{L}{60EI}\begin{bmatrix} 8 &amp; -2 \\ -2 &amp; 8 \end{bmatrix}$$</p>
+<p>$$[K_{\theta\theta}]^{-1}\!\begin{bmatrix} K_{13} \\ K_{23} \end{bmatrix} = \frac{L}{60EI}\begin{bmatrix} 8 &amp; -2 \\ -2 &amp; 8 \end{bmatrix}\!\begin{bmatrix} -6EI/L^2 \\ -6EI/L^2 \end{bmatrix} = \frac{L}{60EI}\!\begin{bmatrix} -36EI/L^2 \\ -36EI/L^2 \end{bmatrix} = \begin{bmatrix} -3/(5L) \\ -3/(5L) \end{bmatrix}$$</p>
+<p>$$\begin{bmatrix} K_{31} &amp; K_{32} \end{bmatrix}\!\begin{bmatrix} -3/(5L) \\ -3/(5L) \end{bmatrix} = \left(-\frac{6EI}{L^2}\right)\!\left(-\frac{3}{5L}\right)\times 2 = \frac{36EI}{5L^3}$$</p>
 <p>$$k_{eff} = \frac{24EI}{L^3} - \frac{36EI}{5L^3} = \frac{120EI}{5L^3} - \frac{36EI}{5L^3} = \frac{84EI}{5L^3}\quad \checkmark$$</p>
 <hr />
 <h2>§5 進階探討</h2>
@@ -553,7 +553,7 @@ header .nomat{margin-top:12px;font-size:.8em;opacity:.85}
 <tbody>
 <tr>
 <td>左柱基底 A（$M_{AB}$）</td>
-<td>$\dfrac{2EI}{L}(\theta_B - 3\psi) = \dfrac{2EI}{L}!\left(\dfrac{PL^2}{28EI}-\dfrac{3\Delta}{L}\right)$</td>
+<td>$\dfrac{2EI}{L}(\theta_B - 3\psi) = \dfrac{2EI}{L}\!\left(\dfrac{PL^2}{28EI}-\dfrac{3\Delta}{L}\right)$</td>
 <td>$-\dfrac{2PL}{7}$</td>
 </tr>
 <tr>

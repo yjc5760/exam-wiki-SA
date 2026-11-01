@@ -71,10 +71,10 @@ header .nomat{margin-top:12px;font-size:.8em;opacity:.85}
 <p><strong>戰略地圖：</strong></p>
 <ol>
 <li><strong>定義自由度：</strong> 選擇 C 點的垂直位移 $D_1$（向上為正）及旋轉角 $D_2$（逆時針為正）作為未知自由度。</li>
-<li><strong>建立單元勁度矩陣：</strong><br />
-   - AC 桿：標準固端-固端梁元素（考慮右端自由度）。<br />
-   - CB 桿：右端為滾支承，採用固端-鉸端之修正式勁度矩陣。<br />
-   - 彈簧：直接疊加至 $K_{11}$。</li>
+<li><strong>建立單元勁度矩陣：</strong></li>
+<li>AC 桿：標準固端-固端梁元素（考慮右端自由度）。</li>
+<li>CB 桿：右端為滾支承，採用固端-鉸端之修正式勁度矩陣。</li>
+<li>彈簧：直接疊加至 $K_{11}$。</li>
 <li><strong>計算等效節點載重：</strong> 將 AC 與 CB 的均布載重轉換為固端反力，並取負號作為節點外力。</li>
 <li><strong>解聯立方程式：</strong> 解出 $D_1, D_2$。</li>
 <li><strong>回代求內力：</strong> 依單元勁度方程式回推各桿端彎矩，並計算彈簧力 $F_s = k \cdot D_1$。</li>
@@ -172,17 +172,17 @@ $$ F_{s} = k \cdot \boxed{D_1} $$</p>
 <p><strong>Step 2：計算各單元之局部勁度矩陣 (對應 $D_1, D_2$)</strong><br />
 (1) <strong>AC 桿單元 (長度 $L$，剛度 $EI$)</strong><br />
 A 端固定，C 端對應 $D_1, D_2$。對應矩陣為：<br />
-$$ [k^{(AC)}] = \begin{bmatrix} \frac{12EI}{L^3} & -\frac{6EI}{L^2} \\ -\frac{6EI}{L^2} & \frac{4EI}{L} \end{bmatrix} $$</p>
+$$ [k^{(AC)}] = \begin{bmatrix} \frac{12EI}{L^3} &amp; -\frac{6EI}{L^2} \\ -\frac{6EI}{L^2} &amp; \frac{4EI}{L} \end{bmatrix} $$</p>
 <p>(2) <strong>CB 桿單元 (長度 $2L$，剛度 $3EI$)</strong><br />
 右端 B 為滾支承 (鉸)，使用修正式勁度矩陣 (只取左端 C 對應的自由度)：<br />
-$$ [k_{mod}^{(CB)}] = \begin{bmatrix} \frac{3(3EI)}{(2L)^3} & \frac{3(3EI)}{(2L)^2} \\ \frac{3(3EI)}{(2L)^2} & \frac{3(3EI)}{(2L)} \end{bmatrix} = \begin{bmatrix} \frac{9EI}{8L^3} & \frac{9EI}{4L^2} \\ \frac{9EI}{4L^2} & \frac{9EI}{2L} \end{bmatrix} = \begin{bmatrix} 1.125 \frac{EI}{L^3} & 2.25 \frac{EI}{L^2} \\ 2.25 \frac{EI}{L^2} & 4.5 \frac{EI}{L} \end{bmatrix} $$</p>
+$$ [k_{mod}^{(CB)}] = \begin{bmatrix} \frac{3(3EI)}{(2L)^3} &amp; \frac{3(3EI)}{(2L)^2} \\ \frac{3(3EI)}{(2L)^2} &amp; \frac{3(3EI)}{(2L)} \end{bmatrix} = \begin{bmatrix} \frac{9EI}{8L^3} &amp; \frac{9EI}{4L^2} \\ \frac{9EI}{4L^2} &amp; \frac{9EI}{2L} \end{bmatrix} = \begin{bmatrix} 1.125 \frac{EI}{L^3} &amp; 2.25 \frac{EI}{L^2} \\ 2.25 \frac{EI}{L^2} &amp; 4.5 \frac{EI}{L} \end{bmatrix} $$</p>
 <p>(3) <strong>彈簧支承</strong><br />
 C 點彈簧貢獻垂直勁度 $k = 12 \frac{EI}{L^3}$，直接疊加至 $K_{11}$。</p>
 <p><strong>Step 3：組裝整體勁度矩陣 $[K]$</strong><br />
 $$ K_{11} = 12\frac{EI}{L^3} + 1.125\frac{EI}{L^3} + 12\frac{EI}{L^3} = 25.125\frac{EI}{L^3} = \frac{201}{8}\frac{EI}{L^3} $$<br />
 $$ K_{12} = K_{21} = -6\frac{EI}{L^2} + 2.25\frac{EI}{L^2} = -3.75\frac{EI}{L^2} = -\frac{15}{4}\frac{EI}{L^2} $$<br />
 $$ K_{22} = 4\frac{EI}{L} + 4.5\frac{EI}{L} = 8.5\frac{EI}{L} = \frac{17}{2}\frac{EI}{L} $$<br />
-$$ [K] = \begin{bmatrix} \frac{201}{8} \frac{EI}{L^3} & -\frac{15}{4} \frac{EI}{L^2} \\ -\frac{15}{4} \frac{EI}{L^2} & \frac{17}{2} \frac{EI}{L} \end{bmatrix} $$</p>
+$$ [K] = \begin{bmatrix} \frac{201}{8} \frac{EI}{L^3} &amp; -\frac{15}{4} \frac{EI}{L^2} \\ -\frac{15}{4} \frac{EI}{L^2} &amp; \frac{17}{2} \frac{EI}{L} \end{bmatrix} $$</p>
 <p><strong>Step 4：計算等效節點載重 $\{P_{eq}\}$</strong><br />
 均布載重 $w$ 向下。先求各桿於 C 點的固端反力 (Fixed-End Forces, $F_{FEM}$)：</p>
 <ul>
@@ -203,7 +203,7 @@ $$ P_1 = - (V_C^{(AC)} + V_C^{(CB)}) = - (0.5 wL + 1.25 wL) = -1.75 wL = -\frac{
 $$ P_2 = - (M_C^{(AC)} + M_C^{(CB)}) = - \left(-\frac{1}{12} wL^2 + \frac{1}{2} wL^2\right) = -\frac{5}{12} wL^2 $$<br />
 $$ \{P_{eq}\} = \begin{bmatrix} -\frac{7}{4} wL \\ -\frac{5}{12} wL^2 \end{bmatrix} $$</p>
 <p><strong>Step 5：解矩陣方程式</strong><br />
-$$ \begin{bmatrix} \frac{201}{8} \frac{EI}{L^3} & -\frac{15}{4} \frac{EI}{L^2} \\ -\frac{15}{4} \frac{EI}{L^2} & \frac{17}{2} \frac{EI}{L} \end{bmatrix} \begin{bmatrix} D_1 \\ D_2 \end{bmatrix} = \begin{bmatrix} -\frac{7}{4} wL \\ -\frac{5}{12} wL^2 \end{bmatrix} $$<br />
+$$ \begin{bmatrix} \frac{201}{8} \frac{EI}{L^3} &amp; -\frac{15}{4} \frac{EI}{L^2} \\ -\frac{15}{4} \frac{EI}{L^2} &amp; \frac{17}{2} \frac{EI}{L} \end{bmatrix} \begin{bmatrix} D_1 \\ D_2 \end{bmatrix} = \begin{bmatrix} -\frac{7}{4} wL \\ -\frac{5}{12} wL^2 \end{bmatrix} $$<br />
 提取出 $EI, L$，簡化係數矩陣的行列式值：<br />
 $$ \Delta = \det[K] = \left(\frac{201}{8}\right)\left(\frac{17}{2}\right) - \left(-\frac{15}{4}\right)^2 = \frac{3417}{16} - \frac{225}{16} = \frac{3192}{16} = \frac{399}{2} $$<br />
 由 Cramer's Rule 求 $D_1, D_2$：<br />

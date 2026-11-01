@@ -184,17 +184,21 @@ header .nomat{margin-top:12px;font-size:.8em;opacity:.85}
 <h3>Step 2: 分析 $P$ 系統 (實際載重作用於原結構)</h3>
 <p>將 $24\text{ N}$ 載重作用於靜定之原結構 (B 點無水平反力)，計算各桿內力 $F_0$：</p>
 <ol>
-<li><strong>求支承反力</strong>：<br />
-   - $\sum M_A = 0 \Rightarrow B_{y0} \times 6 - 24 \times 8 = 0 \Rightarrow B_{y0} = 32\text{ N} (\uparrow)$<br />
-   - $\sum F_y = 0 \Rightarrow A_{y0} + 32 = 0 \Rightarrow A_{y0} = -32\text{ N} (\downarrow)$<br />
-   - $\sum F_x = 0 \Rightarrow A_{x0} + 24 = 0 \Rightarrow A_{x0} = -24\text{ N} (\leftarrow)$</li>
-<li><strong>節點法求內力 $F_0$</strong>：<br />
-   - <strong>節點 B</strong> ($B_{x0}=0, B_{y0}=32$)：<ul>
+<li><strong>求支承反力</strong>：</li>
+<li>$\sum M_A = 0 \Rightarrow B_{y0} \times 6 - 24 \times 8 = 0 \Rightarrow B_{y0} = 32\text{ N} (\uparrow)$</li>
+<li>$\sum F_y = 0 \Rightarrow A_{y0} + 32 = 0 \Rightarrow A_{y0} = -32\text{ N} (\downarrow)$</li>
+<li>$\sum F_x = 0 \Rightarrow A_{x0} + 24 = 0 \Rightarrow A_{x0} = -24\text{ N} (\leftarrow)$</li>
+<li><strong>節點法求內力 $F_0$</strong>：</li>
+<li><strong>節點 B</strong> ($B_{x0}=0, B_{y0}=32$)：<ul>
 <li>$\sum F_x = -F_{BC0} \times \frac{6}{10} = 0 \Rightarrow F_{BC0} = 0$</li>
 <li>$\sum F_y = 32 + F_{BD0} + F_{BC0} \times \frac{8}{10} = 0 \Rightarrow F_{BD0} = -32\text{ N (C)}$</li>
-<li><strong>節點 C</strong> ($F_{BC0}=0$)：</li>
+</ul>
+</li>
+<li><strong>節點 C</strong> ($F_{BC0}=0$)：<ul>
 <li>$\sum F_x = F_{CD0} + F_{BC0} \times \frac{6}{10} = 0 \Rightarrow F_{CD0} = 0$</li>
-<li><strong>節點 A</strong> ($A_{x0}=-24, A_{y0}=-32$)：</li>
+</ul>
+</li>
+<li><strong>節點 A</strong> ($A_{x0}=-24, A_{y0}=-32$)：<ul>
 <li>$\sum F_x = -24 + F_{AD0} \times \frac{6}{10} = 0 \Rightarrow F_{AD0} = 40\text{ N (T)}$</li>
 <li>$\sum F_y = -32 + F_{AC0} + F_{AD0} \times \frac{8}{10} = 0 \Rightarrow -32 + F_{AC0} + 32 = 0 \Rightarrow F_{AC0} = 0$<br />
 <em>(檢核節點 D：$\sum F_x = 24 - F_{AD0} \times 0.6 = 0$；$\sum F_y = -F_{BD0} - F_{AD0} \times 0.8 = -(-32) - 32 = 0$，符合平衡)</em></li>
@@ -204,18 +208,22 @@ header .nomat{margin-top:12px;font-size:.8em;opacity:.85}
 <h3>Step 3: 分析 $u$ 系統 (單位載重作用於贅力方向)</h3>
 <p>移除外部載重，僅於 B 點施加向右之單位水平力 $B_x = 1$，計算各桿內力 $u$：</p>
 <ol>
-<li><strong>求支承反力</strong>：<br />
-   - $\sum M_A = 0 \Rightarrow B_{yu} \times 6 = 0 \Rightarrow B_{yu} = 0$<br />
-   - $\sum F_y = 0 \Rightarrow A_{yu} = 0$<br />
-   - $\sum F_x = 0 \Rightarrow A_{xu} + 1 = 0 \Rightarrow A_{xu} = -1 (\leftarrow)$</li>
-<li><strong>節點法求內力 $u$</strong>：<br />
-   - <strong>節點 B</strong> ($B_{xu}=1, B_{yu}=0$)：<ul>
+<li><strong>求支承反力</strong>：</li>
+<li>$\sum M_A = 0 \Rightarrow B_{yu} \times 6 = 0 \Rightarrow B_{yu} = 0$</li>
+<li>$\sum F_y = 0 \Rightarrow A_{yu} = 0$</li>
+<li>$\sum F_x = 0 \Rightarrow A_{xu} + 1 = 0 \Rightarrow A_{xu} = -1 (\leftarrow)$</li>
+<li><strong>節點法求內力 $u$</strong>：</li>
+<li><strong>節點 B</strong> ($B_{xu}=1, B_{yu}=0$)：<ul>
 <li>$\sum F_x = 1 - u_{BC} \times \frac{6}{10} = 0 \Rightarrow u_{BC} = \frac{5}{3}$</li>
 <li>$\sum F_y = u_{BD} + u_{BC} \times \frac{8}{10} = 0 \Rightarrow u_{BD} = -(\frac{5}{3}) \times \frac{8}{10} = -\frac{4}{3}$</li>
-<li><strong>節點 C</strong> ($u_{BC}=\frac{5}{3}$)：</li>
+</ul>
+</li>
+<li><strong>節點 C</strong> ($u_{BC}=\frac{5}{3}$)：<ul>
 <li>$\sum F_x = u_{CD} + u_{BC} \times \frac{6}{10} = 0 \Rightarrow u_{CD} = -(\frac{5}{3}) \times \frac{6}{10} = -1$</li>
 <li>$\sum F_y = -u_{AC} - u_{BC} \times \frac{8}{10} = 0 \Rightarrow u_{AC} = -(\frac{5}{3}) \times \frac{8}{10} = -\frac{4}{3}$</li>
-<li><strong>節點 A</strong> ($A_{xu}=-1, A_{yu}=0$)：</li>
+</ul>
+</li>
+<li><strong>節點 A</strong> ($A_{xu}=-1, A_{yu}=0$)：<ul>
 <li>$\sum F_x = -1 + u_{AD} \times \frac{6}{10} = 0 \Rightarrow u_{AD} = \frac{5}{3}$<br />
 <em>(檢核 Y 方向：$u_{AC} + u_{AD} \times 0.8 = -4/3 + 4/3 = 0$，符合平衡)</em></li>
 </ul>
