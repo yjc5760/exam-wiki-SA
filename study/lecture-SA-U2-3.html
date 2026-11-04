@@ -451,7 +451,7 @@ $$M_{AB} = \frac{2EI}{L}\big[2(\alpha-\alpha) + (\alpha-\alpha)\big] = 0 \quad\c
 <tbody>
 <tr><td>固定端</td><td>\(\theta = 0,\ \Delta = 0\)</td><td>直接消掉一個 \(\theta\)</td><td>大多數題</td></tr>
 <tr><td>鉸支承／滾支承（端點）</td><td>\(\theta \ne 0\) 但<b>該端彎矩 \(= 0\)</b></td><td>用修正式（§7.1）消掉這個 \(\theta\)，<b>不是</b>把它當零</td><td><a class="qlink" href="problems-view/SA-2017-3.html" target="_blank">SA-2017-3</a> <a class="qlink" href="problems-view/SA-2009-3.html" target="_blank">SA-2009-3</a></td></tr>
-<tr><td>內部鉸</td><td>該斷面 \(M = 0\)</td><td>把結構在此處斷開，兩側各自寫方程</td><td><a class="qlink" href="problems-view/SA-2021-1.html" target="_blank">SA-2021-1</a></td></tr>
+<tr><td>內部鉸</td><td>該斷面 \(M = 0\)</td><td>把結構在此處斷開，兩側各自寫方程</td><td><a class="qlink" href="problems-view/SA-2021-1.html" target="_blank">SA-2021-1</a> <a class="qlink" href="problems-view/SA-2024-3.html" target="_blank">SA-2024-3</a></td></tr>
 <tr><td>彈簧支承（常數 \(k\)）</td><td>\(\Delta \ne 0\)，但 \(R = k\Delta\)</td><td><b>多一個位移未知量</b>，並多一條垂直力平衡</td><td><a class="qlink" href="problems-view/SA-2021-1.html" target="_blank">SA-2021-1</a></td></tr>
 <tr><td>剛性梁 \(EI = \infty\)</td><td>其上各節點 \(\theta = 0\)（梁不彎，節點不能轉）</td><td><b>一次消掉好幾個 \(\theta\)</b></td><td><a class="qlink" href="problems-view/SA-2006-4.html" target="_blank">SA-2006-4</a></td></tr>
 <tr><td>剛性矮牆／基座</td><td>牆上各節點視同固定端（\(\theta = 0,\ \Delta = 0\)）</td><td>柱的有效長度被縮短</td><td><a class="qlink" href="problems-view/SA-2006-4.html" target="_blank">SA-2006-4</a></td></tr>
@@ -1232,7 +1232,7 @@ BD 因 D 上抬而逆時針轉 \(\psi_{BD}=-2R\)。最常見的錯誤是「認�
 <h2>§6　對稱降維：一眼看出來，計算量砍半</h2>
 
 <div class="lead">
-24 題主分類裡至少 9 題可以用對稱性降維（2002-4、2008-2、2009-3、2012-3、2015-3、2019-3、2020-2、2021-2、2024-3），2010-3 則是「對稱 ＋ 反對稱」兩種載重疊加；像 2020-2 這種兩層三跨的題目，不降維就幾乎做不完。
+24 題主分類裡至少 8 題可以用對稱性降維（2002-4、2008-2、2009-3、2012-3、2015-3、2019-3、2020-2、2021-2；2024-3 看起來也是門型對稱，但 C 角是內鉸，不能用，見手算範例 6），2010-3 則是「對稱 ＋ 反對稱」兩種載重疊加；像 2020-2 這種兩層三跨的題目，不降維就幾乎做不完。
 規則只有兩行，但<b>名稱容易讓人搞反</b>，所以先把定義釘死。
 </div>
 
@@ -1324,7 +1324,7 @@ BD 因 D 上抬而逆時針轉 \(\psi_{BD}=-2R\)。最常見的錯誤是「認�
 <text x="675" y="354" font-size="12.5" fill="#263238" text-anchor="middle">M_BC = (2EI/Lb)(2θB + θC) = (6EI/Lb)·θB</text>
 <text x="675" y="378" font-size="12.5" fill="#b71c1c" text-anchor="middle" font-weight="bold">跨對稱軸的梁有效勁度 6EI/Lb（4EI/L 的 1.5 倍）</text>
 <text x="675" y="402" font-size="12.5" fill="#607d8b" text-anchor="middle">Δ ≠ 0，兩柱均分層剪力</text>
-<text x="675" y="428" font-size="12" fill="#b71c1c" text-anchor="middle" font-weight="bold">SA-2002-4、2009-3、2021-2、2024-3</text>
+<text x="675" y="428" font-size="12" fill="#b71c1c" text-anchor="middle" font-weight="bold">SA-2002-4、2009-3、2021-2</text>
 </svg>
 <div class="cap">圖 6-1｜兩種情形並排，變形由勁度法實算（柱、梁同 \(EI\)，\(L_b = 1.4L\)）後誇大顯示。注意<b>名稱的陷阱</b>：
 「對稱載重」給的是<b>反號</b>的轉角（\(\theta_C = -\theta_B\)），
@@ -1341,40 +1341,45 @@ BD 因 D 上抬而逆時針轉 \(\psi_{BD}=-2R\)。最常見的錯誤是「認�
 兩個數字都是<b>三秒鐘的代數</b>，比背表可靠得多，也不會記反。
 </div>
 
-<h4>手算範例 6：反解幾何比（<a class="qlink" href="problems-view/SA-2024-3.html" target="_blank">SA-2024-3</a>）</h4>
+<h4>手算範例 6：看似對稱、其實不能用對稱——反解幾何比（<a class="qlink" href="problems-view/SA-2024-3.html" target="_blank">SA-2024-3</a>）</h4>
 <div class="box">
-<p>對稱門型剛架：柱 \(AB\)、\(CD\) 長 \(L\)，梁 \(BC\) 長 \(L_b\)，全段 \(EI\) 相同，\(A\)、\(D\) 固定端，\(B\) 點受向右 \(P\)。
+<p>門型構架：柱 \(AB\)、\(DC\) 長 \(L\)，梁 \(BC\) 長 \(L_b\)，全段 \(EI\) 相同，\(A\)、\(D\) 固定端，\(B\) 點受向右 \(P\)。
+<b>附圖 C 角畫了空心圓（B 角沒有）⟹ 梁 \(BC\) 與柱 \(CD\) 在 C 鉸接</b>（題文沒寫，只畫在圖上）。
 已知「兩柱最大彎矩 : 梁最大彎矩 \(= 2 : 1\)」且 \(L_b/L > 1\)，求 \(L_b/L\)。</p>
 
-<p><b>Step 1 令 \(k = L_b/L\)</b>。對稱結構＋反對稱載重 ⟹ \(\theta_B = \theta_C = \theta\)，\(\psi_{AB}=\psi_{CD}=\psi\)，\(\psi_{BC}=0\)，FEM 全零。</p>
+<p><b>Step 0 先判斷能不能用對稱</b>：兩根柱的上端一剛一鉸，結構<b>不對稱</b>，\(\theta_B = \theta_C\) 不成立。
+C 端彎矩為零，改用 §7.1 的遠端鉸接修正式，未知量只剩 \(\theta_B = \theta\) 與 \(\psi\)。</p>
 
-$$M_{AB} = \frac{2EI}{L}(\theta - 3\psi),\qquad M_{BA} = \frac{2EI}{L}(2\theta - 3\psi),\qquad
-M_{BC} = \frac{2EI}{kL}(3\theta)$$
+<p><b>Step 1 令 \(k = L_b/L\)、\(K_c = EI/L\)</b>。\(\psi_{AB}=\psi_{DC}=\psi\)，\(\psi_{BC}=0\)，FEM 全零。</p>
+$$M_{AB} = 2K_c(\theta - 3\psi),\qquad M_{BA} = 2K_c(2\theta - 3\psi),\qquad
+M_{BC} = \frac{3K_c}{k}\,\theta,\qquad M_{DC} = -3K_c\psi,\qquad M_{CB}=M_{CD}=0$$
 
-<p><b>Step 2 節點 B 平衡</b>（\(M_{BA} + M_{BC} = 0\)），除以 \(2EI/L\)：</p>
-$$(2\theta - 3\psi) + \frac{3\theta}{k} = 0 \;\Rightarrow\; \theta\Big(2 + \frac3k\Big) = 3\psi \;\Rightarrow\; \theta = \frac{3k\,\psi}{2k+3}$$
+<p><b>Step 2 節點 B 平衡</b>（\(M_{BA} + M_{BC} = 0\)）：</p>
+$$2(2\theta - 3\psi) + \frac{3\theta}{k} = 0 \;\Rightarrow\; \theta = \frac{6k\,\psi}{4k+3}$$
 
-<p><b>Step 3 用 \(\psi\) 表示三個彎矩</b></p>
-$$M_{BC} = \frac{2EI}{L}\cdot\frac{3\theta}{k} = \frac{2EI}{L}\cdot\frac{9\psi}{2k+3}$$
-$$M_{BA} = \frac{2EI}{L}\Big(\frac{6k\psi}{2k+3} - 3\psi\Big) = \frac{2EI}{L}\cdot\frac{6k - 6k - 9}{2k+3}\psi = -\frac{2EI}{L}\cdot\frac{9\psi}{2k+3}$$
-$$M_{AB} = \frac{2EI}{L}\Big(\frac{3k\psi}{2k+3} - 3\psi\Big) = -\frac{2EI}{L}\cdot\frac{3(k+3)}{2k+3}\psi$$
+<p><b>Step 3 用 \(\psi\) 表示各端彎矩</b>（共同因子 \(K_c\psi/(4k+3)\)）</p>
+$$M_{BC} = -M_{BA} = \frac{18K_c\psi}{4k+3},\qquad M_{AB} = -\frac{6(2k+3)K_c\psi}{4k+3},\qquad M_{DC} = -\frac{3(4k+3)K_c\psi}{4k+3}$$
 
-<p><b>Step 4 判斷柱的最大彎矩在頂還是底</b></p>
-$$\frac{|M_{AB}|}{|M_{BA}|} = \frac{3(k+3)}{9} = \frac{k+3}{3}$$
-<p>\(k > 1\) ⟹ 比值 \(> 4/3 > 1\) ⟹ <b>柱底 \(|M_{AB}|\) 較大</b>。
-（\(|M_{BA}| = |M_{BC}|\) 是節點平衡的必然，若誤用 \(M_{BA}\) 當柱的最大值，比例永遠是 1:1，永遠解不出來。）</p>
+<p><b>Step 4 找柱的最大彎矩</b>：分子 \(|M_{AB}| : |M_{BA}| : |M_{DC}| = (12k+18) : 18 : (12k+9)\)，
+\(k>0\) 時 <b>左柱底 \(|M_{AB}|\) 恆為最大</b>；梁的最大值是 \(|M_{BC}|\)（C 端為零）。</p>
 
 <p><b>Step 5 套條件</b></p>
-$$\frac{|M_{AB}|}{|M_{BC}|} = \frac{3(k+3)}{9} = \frac{k+3}{3} = 2 \;\Rightarrow\; k + 3 = 6 \;\Rightarrow\; \boxed{\frac{L_b}{L} = 3}$$
+$$\frac{|M_{AB}|}{|M_{BC}|} = \frac{6(2k+3)}{18} = \frac{2k+3}{3} = 2 \;\Rightarrow\; \boxed{\frac{L_b}{L} = \frac32}$$
 
 <div class="why" style="margin-top:12px">
 <b>三個檢查：</b><br>
-① \(k = 3 > 1\) \(\checkmark\) 符合題目前提<br>
-② \(|M_{BA}| = |M_{BC}|\) \(\checkmark\) 節點 B 只有兩根桿，平衡必然如此<br>
-③ <b>反證柱底一定是固定端</b>：若 \(A\)、\(D\) 是鉸支承則 \(M_{AB}=0\)，
-柱最大彎矩只能是 \(M_{BA}\)，而 \(|M_{BA}|=|M_{BC}|\) ⟹ 比值恆為 1:1，
-不可能是 2:1。所以題目的支承條件與答案是自洽的 \(\checkmark\)
+① \(k = 1.5 > 1\) \(\checkmark\) 符合題目前提<br>
+② 代回層剪力方程 \(PL = 9K_c\psi\)：\(M_{AB} = -\tfrac49PL\)、\(M_{BA} = -\tfrac29PL\)、\(M_{BC} = \tfrac29PL\)、\(M_{DC} = -\tfrac13PL\)；
+柱 \(\tfrac49\) ÷ 梁 \(\tfrac29\) = 2，且 \(\tfrac49+\tfrac29+\tfrac13 = 1\) 剛好平衡 \(P\) \(\checkmark\)<br>
+③ <b>對照錯誤讀法</b>：若漏看 C 角圓圈、照對稱門型剛架令 \(\theta_B=\theta_C\)，比值變成 \((k+3)/3\)，會得到 \(L_b/L = 3\)——
+本題舊版解析就是這樣錯的（2026-11-05 勘誤）。
 </div>
+</div>
+
+<div class="trap">
+<b>陷阱｜門型構架看起來對稱，就直接令 \(\theta_B = \theta_C\)。</b><br>
+對稱降維之前，先逐一核對兩側的<b>支承與接頭</b>：<a class="qlink" href="problems-view/SA-2024-3.html" target="_blank">SA-2024-3</a> 只在 C 角畫了一個小圓圈，
+題文一個字都沒提——這個圓圈讓答案差了一倍（\(3/2\) vs \(3\)）。
 </div>
 
 <div class="trap">
@@ -1768,8 +1773,8 @@ $$\frac{V_{\text{短}}}{V_{\text{長}}} = \frac{1/2^3}{1/3^3} = \frac{27}{8}
 <td>非均勻斷面桿件，<b>推導</b>廣義傾角變位公式</td><td>§1.1 §7.2</td>
 <td>四個子問題疊加；\(S\)、\(C\) 係數的柔度定義；與矩陣法的等價性</td></tr>
 <tr><td><a class="qlink" href="problems-view/SA-2024-3.html" target="_blank">SA-2024-3</a></td><td>113</td>
-<td>對稱門型剛架，由「柱:梁最大彎矩 = 2:1」反求 \(L_b/L\)</td><td>§6 §8</td>
-<td>反向工程；純代數推導；必須自行判斷柱最大彎矩在頂或底</td></tr>
+<td>C 角為內鉸的門型構架，由「柱:梁最大彎矩 = 2:1」反求 \(L_b/L\)（＝3/2）</td><td>§6 §7.1 §8</td>
+<td>看出 C 角內鉸 ⟹ 不能用反對稱；鉸端用 \(3EI/L\) 修正式；比較兩柱四個端點找最大值</td></tr>
 <tr><td><a class="qlink" href="problems-view/SA-2023-3.html" target="_blank">SA-2023-3</a></td><td>112</td>
 <td>柱 AB 受水平 UDL、BC 跨中集中載重；A 鉸、C 滾、D 固定的無側移剛架</td><td>§2.1 §3 §7.1</td>
 <td>先判斷「無側移」（A 鉸＋忽略軸向變形鎖住水平位移）；A 鉸端用修正式消去 \(\theta_A\)；以整體平衡驗算</td></tr>
@@ -1887,7 +1892,7 @@ $$\frac{V_{\text{短}}}{V_{\text{長}}} = \frac{1/2^3}{1/3^3} = \frac{27}{8}
 <tr><td>5</td><td>斜桿＋節點側移</td><td>「D 只跟著 B 水平平移」</td><td>那會拉長斜桿。位移方向必須<b>垂直於斜桿軸</b>，於是被強迫產生垂直分量</td><td><a class="qlink" href="problems-view/SA-2014-3.html" target="_blank">SA-2014-3</a></td></tr>
 <tr><td>6</td><td>集中力剛好畫在剛節點上</td><td>「有載重就算 FEM」</td><td>節點載重 FEM = 0；不進節點彎矩平衡；<b>只</b>進側移方程</td><td><a class="qlink" href="problems-view/SA-2017-3.html" target="_blank">SA-2017-3</a></td></tr>
 <tr><td>7</td><td>柱上有跨內集中力，要列層剪力</td><td>\(V = (M_{top}+M_{bot})/L\)</td><td>柱有跨內載重時這條式子<b>不成立</b>，必須另畫自由體推導</td><td><a class="qlink" href="problems-view/SA-2017-3.html" target="_blank">SA-2017-3</a></td></tr>
-<tr><td>8</td><td>「對稱載重」四個字</td><td>「所以 \(\theta_C = +\theta_B\)」</td><td>反了。<b>對稱</b>載重 ⟹ \(\theta_C = -\theta_B\)、梁勁度 \(2EI/L\)；<b>反對稱</b>載重 ⟹ \(\theta_C = +\theta_B\)、梁勁度 \(6EI/L\)</td><td><a class="qlink" href="problems-view/SA-2020-2.html" target="_blank">SA-2020-2</a> vs <a class="qlink" href="problems-view/SA-2024-3.html" target="_blank">SA-2024-3</a></td></tr>
+<tr><td>8</td><td>「對稱載重」四個字</td><td>「所以 \(\theta_C = +\theta_B\)」</td><td>反了。<b>對稱</b>載重 ⟹ \(\theta_C = -\theta_B\)、梁勁度 \(2EI/L\)；<b>反對稱</b>載重 ⟹ \(\theta_C = +\theta_B\)、梁勁度 \(6EI/L\)</td><td><a class="qlink" href="problems-view/SA-2020-2.html" target="_blank">SA-2020-2</a> vs <a class="qlink" href="problems-view/SA-2002-4.html" target="_blank">SA-2002-4</a></td></tr>
 <tr><td>9</td><td>對稱結構受側向力</td><td>老實設兩個 \(\theta\) 解聯立</td><td>直接令 \(\theta_B = \theta_C\)，未知量少一個，時間省一半</td><td><a class="qlink" href="problems-view/SA-2002-4.html" target="_blank">SA-2002-4</a> <a class="qlink" href="problems-view/SA-2024-4.html" target="_blank">SA-2024-4</a></td></tr>
 <tr><td>10</td><td>多層對稱剛架</td><td>只看左右對稱</td><td>再檢查層與層之間是否也對稱；\(v_b = v_f\) 可推出連接柱<b>軸力為零</b></td><td><a class="qlink" href="problems-view/SA-2020-2.html" target="_blank">SA-2020-2</a></td></tr>
 <tr><td>11</td><td>各桿 \(EI\)、\(L\) 都不一樣</td><td>「這是不對稱結構」</td><td>先算相對勁度 \(2EI/L\)。<a class="qlink" href="problems-view/SA-2024-4.html" target="_blank">SA-2024-4</a> 三桿的相對勁度<b>完全相同</b></td><td><a class="qlink" href="problems-view/SA-2024-4.html" target="_blank">SA-2024-4</a></td></tr>
@@ -1896,12 +1901,13 @@ $$\frac{V_{\text{短}}}{V_{\text{長}}} = \frac{1/2^3}{1/3^3} = \frac{27}{8}
 <tr><td>14</td><td>某構件標 \(EI = \infty\)</td><td>不知道怎麼處理</td><td>剛性梁 ⟹ 其上節點 \(\theta = 0\)；剛性矮牆 ⟹ 牆上節點視同固定端</td><td><a class="qlink" href="problems-view/SA-2006-4.html" target="_blank">SA-2006-4</a> <a class="qlink" href="problems-view/SA-2012-4.html" target="_blank">SA-2012-4</a></td></tr>
 <tr><td>15</td><td>剛架的梁 BMD 通過柱節點</td><td>平滑連線（沿用連續梁習慣）</td><td>柱會分掉彎矩 ⟹ BMD 在節點<b>跳躍</b>，左右分開標示</td><td><a class="qlink" href="problems-view/SA-2021-2.html" target="_blank">SA-2021-2</a></td></tr>
 <tr><td>16</td><td>要求桿件<b>中點</b>的位移</td><td>「頂端位移的一半」</td><td>那只是弦（剛體）位移。必須疊加「桿相對於弦的彈性撓度」</td><td><a class="qlink" href="problems-view/SA-2022-2.html" target="_blank">SA-2022-2</a></td></tr>
-<tr><td>17</td><td>柱底皆為鉸支承</td><td>「跟固定端一樣列式」</td><td>用 \(3EI/L\) 修正式；且柱最大彎矩必在柱頂，不在柱底</td><td><a class="qlink" href="problems-view/SA-2024-3.html" target="_blank">SA-2024-3</a></td></tr>
+<tr><td>17</td><td>柱底皆為鉸支承</td><td>「跟固定端一樣列式」</td><td>用 \(3EI/L\) 修正式；且柱最大彎矩必在柱頂，不在柱底</td><td><a class="qlink" href="problems-view/SA-2017-3.html" target="_blank">SA-2017-3</a></td></tr>
 <tr><td>18</td><td>遠端鉸接，要改 FEM</td><td>另外背一張表</td><td>一條規則吃下全部：\(\bar M^F_{AB} = M^F_{AB} - \tfrac12 M^F_{BA}\)（修正後<b>變大</b>）</td><td><a class="qlink" href="problems-view/SA-2022-2.html" target="_blank">SA-2022-2</a></td></tr>
 <tr><td>19</td><td>斜桿題要列側移方程</td><td>硬用層剪力自由體法</td><td>斜桿剪力不水平也不垂直，投影會爆。<b>改用虛功法</b></td><td><a class="qlink" href="problems-view/SA-2014-3.html" target="_blank">SA-2014-3</a> <a class="qlink" href="problems-view/SA-2020-1.html" target="_blank">SA-2020-1</a></td></tr>
 <tr><td>20</td><td>非均勻斷面桿件</td><td>直接套 \(2EI/L(2\theta_A+\theta_B-3\psi)\)</td><td>\(EI\) 隨 \(x\) 變，必須重新推 \(S\)、\(C\) 係數（疊加四個子問題）</td><td><a class="qlink" href="problems-view/SA-2025-3.html" target="_blank">SA-2025-3</a></td></tr>
 <tr><td>21</td><td>最後解出難看的分數</td><td>照抄交卷</td><td>國考題的數字會收斂。分母沒乾淨消去 ⟹ 回頭查 \(\psi\) 的幾何與符號</td><td><a class="qlink" href="problems-view/SA-2014-3.html" target="_blank">SA-2014-3</a> <a class="qlink" href="problems-view/SA-2021-2.html" target="_blank">SA-2021-2</a></td></tr>
 <tr><td>22</td><td>題目問「比值」卻給了外力數值</td><td>認真代入外力算</td><td>比值只跟幾何與勁度分布有關，外力是誘餌</td><td><a class="qlink" href="problems-view/SA-2006-4.html" target="_blank">SA-2006-4</a></td></tr>
+<tr><td>23</td><td>門型構架只有一個角畫了小圓圈</td><td>當成節點記號，照對稱做 \(\theta_B=\theta_C\)</td><td>那是梁柱內鉸：兩桿在該端彎矩為零、結構不對稱，用 \(3EI/L\) 修正式</td><td><a class="qlink" href="problems-view/SA-2024-3.html" target="_blank">SA-2024-3</a></td></tr>
 </tbody>
 </table>
 </section>

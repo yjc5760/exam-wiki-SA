@@ -177,12 +177,12 @@
     "report": "wiki/queries/盲解比對-SA-U2-3a-2026-11-04.md",
     "scope": "SA-U2-3 第一批（2002–2013）",
     "human": "",
-    "fixed": "",
+    "fixed": "2026-11-05",
     "recheck": {
-      "date": "",
-      "result": "",
-      "report": "",
-      "note": ""
+      "date": "2026-11-05",
+      "result": "落實",
+      "report": "wiki/queries/log.md（FIX-SA-2012-3）",
+      "note": "§1 已指向題目正本、EA 虛構條件段落無殘留、弦位角方向用語已改；6 桿端彎矩＋3 轉角＋R 勁度法重算 MISMATCHES: 0；同一工作階段，非獨立"
     },
     "history": []
   },

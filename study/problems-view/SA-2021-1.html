@@ -43,7 +43,146 @@ header .nomat{margin-top:12px;font-size:.8em;opacity:.85}
 <p class="meta2">主分類 <b>SA-U2-3</b> 靜不定結構之傾角變位法 ｜ 2021 年（民國 110） ｜ 傾角變位法</p>
 <div class="hbtns"><a class="b-study" href="../unit-SA-U2-3.html">🧭 U2-3 單元總覽</a><a class="b-lect" href="../lecture-SA-U2-3.html">📚 U2-3 靜不定結構之傾角變位法 講義</a></div>
 </header>
-<main><h3>考題編號：SA-2021-1</h3>
+<main><details class="problem-src" open><summary><b>📄 題目正本</b>（考卷原文、附圖與判讀清單；不含解法）</summary>
+<h1>SA-2021-1 題目正本</h1>
+<blockquote>
+<p>本檔只記錄考卷上寫了什麼、圖上畫了什麼，不含任何解法。解析見同資料夾 <code>SA-2021-1.md</code>。<br />
+判讀清單經使用者確認前，狀態為「待確認」；確認後本檔原則上不再修改（改動須回考卷原圖並記 log）。</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>項目</th>
+<th>內容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>考卷</td>
+<td><code>raw/exams/SA-2021_結構學.pdf</code>，第 1 頁上半，第一題（圖 1）</td>
+</tr>
+<tr>
+<td>考年</td>
+<td>2021（民國 110 年）專技高考結構工程技師「結構學」</td>
+</tr>
+<tr>
+<td>配分</td>
+<td>25 分</td>
+</tr>
+<tr>
+<td>附圖</td>
+<td><code>SA-2021-1-fig-1.png</code>、<code>SA-2021-1-fig-2.png</code></td>
+</tr>
+<tr>
+<td>判讀狀態</td>
+<td><strong>待確認</strong>（2026-11-05 轉錄；PyMuPDF 110 dpi 整頁＋400–500 dpi 局部放大；盲讀於開啟解析前完成）</td>
+</tr>
+</tbody>
+</table>
+<h2>1. 考卷原文（逐字）</h2>
+<p>一、如圖示結構，a 點為滾支承，c 點為鉸接，d 點為固定端，彈簧係數 k = 15000 kN/m，梁桿件有相同彈性模數 E 與慣性矩 I，且 EI = 10000 kN-m²。求梁桿件的彎矩圖、b 點轉角及垂直位移。（25 分）</p>
+<h2>2. 考卷給的公式、附表與參數</h2>
+<ul>
+<li>考卷沒有給任何參考公式或附表。</li>
+<li>k = 15000 kN/m、EI = 10000 kN-m²（題文）。</li>
+<li>卷首注意事項：㈠可以使用電子計算器。㈡不必抄題，作答時請將試題題號及答案依照順序寫在試卷上，於本試題上作答者，不予計分。㈢本科目除專門名詞或數理公式外，應使用本國文字作答。</li>
+<li>考試時間：2 小時。</li>
+</ul>
+<h2>3. 附圖</h2>
+<p><img alt="SA-2021-1 考卷附圖原截圖（含滑鼠游標；內容同下圖）" src="../../raw/solutions/SA-2021-1/SA-2021-1-fig-1.png" /><br />
+<em>證據圖 SA-2021-1-fig-1.png</em></p>
+<p><img alt="SA-2021-1 考卷附圖：水平梁 a–b–c–d，a 為圓圈滾支承，b 下方垂直線性彈簧 k 接地，c 為梁上空心圓內鉸，d 貼右側垂直牆固定；下方尺寸 2 m、2 m、4 m、2 m；距 a 2 m 處與 b 點各有 36 kN 向下" src="../../raw/solutions/SA-2021-1/SA-2021-1-fig-2.png" /><br />
+<em>證據圖 SA-2021-1-fig-2.png（2026-11-05 自考卷重新擷取 500 dpi，無游標）</em></p>
+<p>圖面文字照錄：36 kN、36 kN、a、b、c、d、k、2 m、2 m、4 m、2 m、圖 1</p>
+<h2>4. 判讀清單</h2>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>項目</th>
+<th>判讀</th>
+<th>圖上／題文依據</th>
+<th>把握</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>a</td>
+<td>滾支承（垂直反力）</td>
+<td>圓圈下接地剖線；題文</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>2</td>
+<td>b</td>
+<td>梁上一點，下方接垂直線性彈簧 k（另一端接地）</td>
+<td>鋸齒彈簧符號；題文 k</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>3</td>
+<td>c</td>
+<td>梁上內鉸</td>
+<td>空心圓；題文「c 點為鉸接」</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>4</td>
+<td>d</td>
+<td>固定端（右側垂直牆）</td>
+<td>剖線牆；題文</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>5</td>
+<td>尺寸</td>
+<td>a 至第 1 載重 2 m、至 b 2 m、b–c 4 m、c–d 2 m（全長 10 m）</td>
+<td>下方尺寸刻度；b 對齊第 2 刻度</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>6</td>
+<td>載重</td>
+<td>36 kN 向下於距 a 2 m 處（ab 中點）；36 kN 向下於 b</td>
+<td>箭頭位置對齊刻度</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>7</td>
+<td>剛度</td>
+<td>梁 EI = 10000 kN-m²；k = 15000 kN/m</td>
+<td>題文</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>8</td>
+<td>所求</td>
+<td>梁彎矩圖、b 點轉角及垂直位移</td>
+<td>題文</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>9</td>
+<td>考卷沒有給</td>
+<td>指定方法（題文未限定）</td>
+<td>題文</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>10</td>
+<td>證據圖</td>
+<td>舊 fig-1 有滑鼠游標壓在 a 支承剖線上；新增 fig-2（500 dpi）</td>
+<td>—</td>
+<td>確定</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p><em>轉錄：2026-11-05（SA-U2-3 題目正本推廣・批 2）</em></p>
+</details>
+<hr>
+<h3>考題編號：SA-2021-1</h3>
 <p><strong>主分類：</strong> <code>SA-U2-3</code> 靜不定結構與位移<br />
 <strong>副分類：</strong> 無<br />
 <strong>分析法：</strong> 傾角變位法<br />

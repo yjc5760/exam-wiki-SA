@@ -40,50 +40,194 @@ header .nomat{margin-top:12px;font-size:.8em;opacity:.85}
 </style></head><body>
 <header>
 <h1>SA-2024-3　靜不定結構之傾角變位法</h1>
-<p class="meta2">主分類 <b>SA-U2-3</b> 靜不定結構之傾角變位法 ｜ 2024 年（民國 113） ｜ 傾角變位法</p>
+<p class="meta2">主分類 <b>SA-U2-3</b> 靜不定結構之傾角變位法 ｜ 2024 年（民國 113） ｜ 傾角變位法（含遠端鉸接修正式）</p>
 <div class="hbtns"><a class="b-study" href="../unit-SA-U2-3.html">🧭 U2-3 單元總覽</a><a class="b-lect" href="../lecture-SA-U2-3.html">📚 U2-3 靜不定結構之傾角變位法 講義</a></div>
 </header>
-<main><h1>考題編號：SA-2024-3</h1>
+<main><details class="problem-src" open><summary><b>📄 題目正本</b>（考卷原文、附圖與判讀清單；不含解法）</summary>
+<h1>SA-2024-3 題目正本</h1>
+<blockquote>
+<p>本檔只記錄考卷上寫了什麼、圖上畫了什麼，不含任何解法。解析見同資料夾 <code>SA-2024-3.md</code>。<br />
+判讀清單經使用者確認前，狀態為「待確認」；確認後本檔原則上不再修改（改動須回考卷原圖並記 log）。</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>項目</th>
+<th>內容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>考卷</td>
+<td><code>raw/exams/SA-2024_結構學.pdf</code>，第 2 頁上半，第三題（圖三）</td>
+</tr>
+<tr>
+<td>考年</td>
+<td>2024（民國 113 年）專技高考結構工程技師「結構學」</td>
+</tr>
+<tr>
+<td>配分</td>
+<td>25 分</td>
+</tr>
+<tr>
+<td>附圖</td>
+<td><code>SA-2024-3-fig-1.png</code></td>
+</tr>
+<tr>
+<td>判讀狀態</td>
+<td><strong>待確認</strong>（2026-11-05 轉錄；PyMuPDF 110 dpi 整頁＋500 dpi 局部放大；盲讀於開啟解析前完成）</td>
+</tr>
+</tbody>
+</table>
+<h2>1. 考卷原文（逐字）</h2>
+<p>三、如圖三所示之門型構架，梁與柱之斷面 EI 皆相同，但梁長大於柱長，也就是 Lb / L &gt; 1。已知兩根柱最大彎矩的數值大小與梁最大彎矩的數值大小其比為 2：1，試求此時 Lb / L = ？本題限以傾角變位法作答，分析時可忽略軸向變形。（25 分）</p>
+<h2>2. 考卷給的公式、附表與參數</h2>
+<ul>
+<li>考卷沒有給任何參考公式或附表。</li>
+<li>P、L、EI 皆無數值；所求為比值。</li>
+<li>題文沒有提到 C 點的接合型式，只能由附圖判讀。</li>
+<li>卷首注意事項：㈠可以使用電子計算器。㈡不必抄題，作答時請將試題題號及答案依照順序寫在試卷上，於本試題上作答者，不予計分。㈢本科目除專門名詞或數理公式外，應使用本國文字作答。</li>
+<li>考試時間：2 小時。</li>
+</ul>
+<h2>3. 附圖</h2>
+<p><img alt="SA-2024-3 考卷附圖：門型構架，柱 AB、DC 高 L、EI；梁 BC 長 Lb、EI；A、D 柱底剖線固定；B 為剛接角點並受向右水平力 P；C 角點畫一空心圓（梁 BC 與柱 CD 鉸接）" src="../../raw/solutions/SA-2024-3/SA-2024-3-fig-1.png" /><br />
+<em>證據圖 SA-2024-3-fig-1.png</em></p>
+<p>圖面文字照錄：P、B、EI、Lb、C、EI、L、L、EI、A、D、圖三</p>
+<h2>4. 判讀清單</h2>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>項目</th>
+<th>判讀</th>
+<th>圖上／題文依據</th>
+<th>把握</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>A、D</td>
+<td>固定支承（柱底）</td>
+<td>柱底水平線下斜剖線，無三角形</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>2</td>
+<td>B</td>
+<td>剛接角點</td>
+<td>無鉸圈</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>3</td>
+<td>C</td>
+<td>內鉸：梁 BC 與柱 CD 在 C 點鉸接</td>
+<td>C 角點畫空心圓（B 角沒有）；題文未提</td>
+<td>確定（解讀）（影響答案，請確認）</td>
+</tr>
+<tr>
+<td>4</td>
+<td>幾何</td>
+<td>柱 AB、DC 長 L；梁 BC 長 Lb，Lb/L &gt; 1</td>
+<td>圖標；題文</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>5</td>
+<td>剛度</td>
+<td>三桿 EI 相同</td>
+<td>圖標；題文</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>6</td>
+<td>載重</td>
+<td>B 點水平力 P 向右</td>
+<td>箭頭指向 B</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>7</td>
+<td>條件</td>
+<td>兩柱最大彎矩（數值）：梁最大彎矩（數值）＝ 2：1</td>
+<td>題文</td>
+<td>確定（解讀）：取兩根柱中最大者與梁中最大者相比</td>
+</tr>
+<tr>
+<td>8</td>
+<td>軸向變形</td>
+<td>可忽略</td>
+<td>題文</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>9</td>
+<td>指定方法</td>
+<td>傾角變位法（限用）</td>
+<td>題文</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>10</td>
+<td>所求</td>
+<td>Lb/L</td>
+<td>題文</td>
+<td>確定</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p><em>轉錄：2026-11-05（SA-U2-3 題目正本推廣・批 2）</em></p>
+</details>
+<hr>
+<h1>考題編號：SA-2024-3</h1>
 <p><strong>主分類：</strong> <code>SA-U2-3</code> 靜不定結構分析<br />
 <strong>副分類：</strong> 無<br />
-<strong>分析法：</strong> 傾角變位法<br />
-<strong>標籤：</strong> <code>傾角變位法</code>, <code>門型剛構架</code>, <code>對稱性</code>, <code>極值比例</code></p>
+<strong>分析法：</strong> 傾角變位法（含遠端鉸接修正式）<br />
+<strong>標籤：</strong> <code>傾角變位法</code>, <code>門型剛構架</code>, <code>對稱性</code>, <code>極值比例</code>, <code>內鉸</code>, <code>修正勁度</code></p>
 <hr />
 <h2>1. 原始題目重述 (Problem Restatement)</h2>
 <p>如圖三所示之門型構架，梁與柱之斷面 EI 皆相同，但梁長大於柱長，也就是 $L_b / L &gt; 1$。已知兩根柱最大彎矩的數值大小與梁最大彎矩的數值大小其比為 2：1，試求此時 $L_b / L = ?$ 本題限以傾角變位法作答，分析時可忽略軸向變形。（25 分）</p>
-<p><img alt="SA-2024-3 題目附圖：承受側向載重的門型剛構架" src="../../raw/solutions/SA-2024-3/SA-2024-3-fig-1.png" /></p>
-<p><em>圖說：對稱門型剛構架，柱 AB 與 CD 長度為 L，梁 BC 長度為 Lb。底部 A 與 D 均為固定端。節點 B 承受向右之水平力 P。</em></p>
+<p><img alt="SA-2024-3 題目附圖：承受側向載重的門型構架，C 角為內鉸" src="../../raw/solutions/SA-2024-3/SA-2024-3-fig-1.png" /></p>
+<p><em>圖說：門型構架，柱 AB 與 DC 長度為 L，梁 BC 長度為 Lb，三桿 EI 相同。柱底 A、D 為固定端。B 為剛接角點，承受向右之水平力 P；</em><em>C 角畫空心圓，是梁 BC 與柱 CD 之間的內鉸</em><em>（題文沒寫，只畫在圖上；判讀見題目正本 #3）。</em></p>
+<blockquote>
+<p><strong>常見誤讀（本題舊版解析曾犯）</strong>：沒看到 C 角的空心圓，把構架當成左右對稱的門型剛架，令 $\theta_B=\theta_C$ 反對稱求解，得 $L_b/L = 3$。C 為內鉸時結構<strong>不對稱</strong>，$M_{BC}=M_{CB}=M_{CD}=0$ 的那一端要用 $3EI/L$ 修正式，答案是 $L_b/L = 3/2$。<br />
+<strong>本解記號</strong>：桿端彎矩、節點轉角、弦轉角一律順時針為正；$\psi = \Delta/L$，$\Delta$ 為柱頂向右側移；$K_c = EI/L$，$k = L_b/L$。</p>
+</blockquote>
 <h2>2. 考題核心精神與出題者意圖 (Core Concepts &amp; Examiner's Intent)</h2>
-<p>本題是相當經典的「反向工程」題型。有別於傳統題目給定所有幾何尺寸求內力，本題是給定<strong>內力比例條件</strong>要求反推<strong>幾何參數</strong>。<br />
+<p>本題是「反向工程」題型：給定<strong>內力比例條件</strong>，要求反推<strong>幾何參數</strong>。<br />
 出題者旨在測驗考生：</p>
 <ol>
-<li><strong>反對稱變形條件</strong>：能否利用對稱結構受反對稱載重的特性，直接判定 $\theta_B = \theta_C$，大幅減少未知數。</li>
-<li><strong>傾角變位法的代數操作</strong>：在不具體代入數值的情況下，以符號推導出各端點彎矩的表示式。</li>
-<li><strong>彎矩極值的邏輯判斷</strong>：必須透過代數比較 $|M_{AB}|$ 與 $|M_{BA}|$ 的大小，自行判斷柱的最大彎矩是發生在柱頂還是柱底，進而套用題目給定的比例條件。</li>
+<li><strong>看圖判讀邊界</strong>：門型構架看起來左右對稱，但 C 角畫了內鉸，B 角沒有——兩根柱的上端條件不同，<strong>不能用反對稱變形 $\theta_B=\theta_C$</strong>。</li>
+<li><strong>遠端鉸接修正式</strong>：梁 BC 的 C 端、柱 DC 的 C 端都是鉸，用 $3EI/L$ 修正式把未知轉角消掉，未知數只剩 $\theta_B$ 與 $\psi$。</li>
+<li><strong>傾角變位法的代數操作</strong>：在不代數值的情況下，以符號推導出各端點彎矩。</li>
+<li><strong>彎矩極值的邏輯判斷</strong>：比較兩根柱四個端點彎矩的大小，自行判斷「兩根柱最大彎矩」出現在哪裡，再套比例條件。</li>
 </ol>
 <h2>3. 解題戰略地圖與陷阱分析 (Strategic Roadmap &amp; Trap Analysis)</h2>
 <ol>
-<li><strong>設定未知數與變形條件</strong>：</li>
-<li>令 $k = L_b / L$。</li>
-<li>因為結構對稱、載重反對稱，變形亦呈反對稱，故 $\theta_B = \theta_C = \theta$。</li>
-<li>側移角 $\psi_{AB} = \psi_{CD} = \psi$。</li>
-<li><strong>建立傾角變位方程式</strong>：寫出 $M_{AB}$、$M_{BA}$ 與 $M_{BC}$ 關於 $\theta$ 與 $\psi$ 的函數。</li>
-<li><strong>節點平衡與代換</strong>：利用 $\Sigma M_B = 0$，找出 $\theta$ 與 $\psi$ 的比例關係，並代回彎矩方程式中，使所有彎矩皆表示為 $\psi$ 的倍數。</li>
+<li><strong>設定未知數</strong>：</li>
+<li>令 $k = L_b / L$、$K_c = EI/L$，梁的線剛度 $EI/L_b = K_c/k$。</li>
+<li>未知量：$\theta_B$、側移角 $\psi$（兩柱等長、梁不計軸向變形，$\psi_{AB}=\psi_{DC}=\psi$，$\psi_{BC}=0$）。</li>
+<li>C 為內鉸：$M_{BC}$ 的遠端、$M_{DC}$ 的遠端都是鉸 → 用修正式，不必設 $\theta_C$。</li>
+<li><strong>建立傾角變位方程式</strong>：$M_{AB}$、$M_{BA}$（一般式）、$M_{BC}$、$M_{DC}$（修正式），$M_{CB}=M_{CD}=0$。</li>
+<li><strong>節點 B 平衡</strong>：$\Sigma M_B = 0$，得 $\theta_B$ 與 $\psi$ 的比例，代回使所有彎矩皆為 $\psi$ 的倍數。</li>
 <li><strong>極值判斷與求解</strong>：</li>
-<li>梁無跨中載重，最大彎矩必在端點 $|M_{BC}|$。</li>
-<li>柱無跨中載重，需比較 $|M_{AB}|$ 與 $|M_{BA}|$。利用題目給定 $k &gt; 1$ 判斷出 $|M_{AB}| &gt; |M_{BA}|$。</li>
-<li>依據 $|M_{AB}| / |M_{BC}| = 2$，解出 $k$。</li>
+<li>梁無跨中載重，最大彎矩在端點：$|M_{BC}|$（C 端為 0）。</li>
+<li>柱無跨中載重，比較 $|M_{AB}|$、$|M_{BA}|$、$|M_{DC}|$（$M_{CD}=0$），找出最大者。</li>
+<li>比值條件只需要 $\theta$–$\psi$ 比例，<strong>不需要</strong>層剪力方程（$P$ 只決定 $\psi$ 的大小，比值與 $P$ 無關）。</li>
 <li><strong>陷阱分析</strong>：</li>
-<li>未判斷 $|M_{AB}|$ 與 $|M_{BA}|$ 孰大孰小，若誤用 $|M_{BA}|$ 計算，會發現 $|M_{BA}| = |M_{BC}|$，永遠比例為 1:1，無法解出答案而卡住。</li>
-<li>忘記 $\theta_B = \theta_C$ 雖不會算錯，但會多花一倍時間解聯立方程式。</li>
+<li><strong>漏看 C 角內鉸</strong>：照對稱門型剛架做 $\theta_B=\theta_C$，得 $L_b/L = 3$（舊版解析的錯誤）。</li>
+<li>誤用 $|M_{BA}|$ 當柱的最大值：節點 B 只有兩根桿，$|M_{BA}| = |M_{BC}|$ 必然成立，比例永遠 1:1，解不出來。</li>
+<li>只看左柱：右柱 $|M_{DC}|$ 也要比較；本題 $|M_{AB}| &gt; |M_{DC}|$，最大值仍在左柱底。</li>
 </ol>
 <h2>3.5 變數層次分析 (Variable Hierarchy Analysis)</h2>
 <h3>最終目標</h3>
 <p>以傾角變位法導出柱與梁最大彎矩的代數式，並透過其比例為 2，反求 $k = L_b/L$。</p>
 <h3>本題關鍵公式（依計算順序）</h3>
 <p>$$ M_{ij} = \frac{2EI}{L} (2\theta_i + \theta_j - 3\psi) + FEM_{ij} \quad \text{(傾角變位法基本式)} $$<br />
+$$ M_{ij} = \frac{3EI}{L} (\theta_i - \psi) + \overline{FEM}_{ij} \quad \text{(遠端 j 為鉸接之修正式)} $$<br />
 $$ \Sigma M_B = M_{BA} + M_{BC} = 0 \quad \text{(節點平衡)} $$<br />
-$$ \theta_B = \theta_C \quad \text{(反對稱變形條件)} $$<br />
 $$ \frac{|M_{col,max}|}{|M_{beam,max}|} = 2 \quad \text{(題設條件)} $$</p>
 <h3>L1：題目直接給定</h3>
 <table>
@@ -101,8 +245,8 @@ $$ \frac{|M_{col,max}|}{|M_{beam,max}|} = 2 \quad \text{(題設條件)} $$</p>
 <td>柱線剛度</td>
 </tr>
 <tr>
-<td>$K_b$</td>
 <td>$EI/L_b$</td>
+<td>$K_c/k$</td>
 <td>梁線剛度</td>
 </tr>
 <tr>
@@ -111,9 +255,14 @@ $$ \frac{|M_{col,max}|}{|M_{beam,max}|} = 2 \quad \text{(題設條件)} $$</p>
 <td>固定端邊界條件</td>
 </tr>
 <tr>
+<td>$M_{CB}, M_{CD}$</td>
+<td>$0$</td>
+<td>C 為內鉸（附圖空心圓）</td>
+</tr>
+<tr>
 <td>$FEM_{ij}$</td>
 <td>$0$</td>
-<td>桿件上無載重</td>
+<td>桿件上無載重（P 為節點載重）</td>
 </tr>
 </tbody>
 </table>
@@ -128,12 +277,17 @@ $$ \frac{|M_{col,max}|}{|M_{beam,max}|} = 2 \quad \text{(題設條件)} $$</p>
 </thead>
 <tbody>
 <tr>
-<td>$M_{AB}, M_{BA}, M_{BC}$</td>
-<td>傾角變位方程式</td>
+<td>$M_{AB}, M_{BA}$</td>
+<td>一般傾角變位式</td>
 <td></td>
 </tr>
 <tr>
-<td>$\theta$ 與 $\psi$ 關係</td>
+<td>$M_{BC}, M_{DC}$</td>
+<td>遠端鉸接修正式 $3EI/L$</td>
+<td></td>
+</tr>
+<tr>
+<td>$\theta_B$ 與 $\psi$ 關係</td>
 <td>節點 B 彎矩平衡方程式</td>
 <td></td>
 </tr>
@@ -150,62 +304,99 @@ $$ \frac{|M_{col,max}|}{|M_{beam,max}|} = 2 \quad \text{(題設條件)} $$</p>
 </thead>
 <tbody>
 <tr>
+<td>圖上的空心圓</td>
+<td>C 角空心圓＝梁柱內鉸，兩桿在 C 端彎矩皆為零；結構因此不對稱，反對稱條件 $\theta_B=\theta_C$ 不成立</td>
+<td></td>
+</tr>
+<tr>
 <td>極值判斷</td>
-<td>必須知道證明 $|M_{AB}| &gt; |M_{BA}|$ 才能確定柱的最大彎矩位置，進而列出正確的等式。</td>
+<td>要比較兩根柱共四個端點（其中 $M_{CD}=0$），證明 $|M_{AB}|$ 最大，才能列出正確的等式</td>
 <td></td>
 </tr>
 </tbody>
 </table>
 <h2>4. 步驟化詳細計算過程 (Step-by-Step Detailed Calculation)</h2>
 <h3>Step 1: 參數設定與變形條件</h3>
-<p>令比值 $k = \frac{L_b}{L}$。<br />
-柱之線剛度 $K_c = \frac{EI}{L}$，梁之線剛度 $K_b = \frac{EI}{L_b} = \frac{EI}{kL} = \frac{K_c}{k}$。<br />
-因結構幾何對稱、受力為側向反對稱載重，故產生反對稱變形：<br />
-節點旋轉角：$\theta_B = \theta_C = \theta$<br />
-柱側移角：$\psi_{AB} = \psi_{CD} = \psi$<br />
-梁側移角：$\psi_{BC} = 0$<br />
-邊界條件：$\theta_A = \theta_D = 0$</p>
+<p>令比值 $k = \frac{L_b}{L}$，柱之線剛度 $K_c = \frac{EI}{L}$，梁之線剛度 $\frac{EI}{L_b} = \frac{K_c}{k}$。<br />
+未知量：節點 B 轉角 $\theta_B = \theta$、柱側移角 $\psi_{AB} = \psi_{DC} = \psi$；梁 $\psi_{BC} = 0$。<br />
+邊界條件：$\theta_A = \theta_D = 0$；C 為內鉸，$M_{CB} = M_{CD} = 0$。</p>
 <h3>Step 2: 建立傾角變位方程式</h3>
-<p>$$ M_{AB} = 2K_c (\theta_B - 3\psi) = 2K_c (\theta - 3\psi) $$<br />
-$$ M_{BA} = 2K_c (2\theta_B - 3\psi) = 2K_c (2\theta - 3\psi) $$<br />
-$$ M_{BC} = 2K_b (2\theta_B + \theta_C) = 2\left(\frac{K_c}{k}\right) (3\theta) = \frac{6K_c}{k}\theta $$</p>
+<p>$$ M_{AB} = 2K_c (\theta - 3\psi) $$<br />
+$$ M_{BA} = 2K_c (2\theta - 3\psi) $$<br />
+$$ M_{BC} = 3\left(\frac{K_c}{k}\right)\theta \quad \text{（C 端鉸接修正式）} $$<br />
+$$ M_{DC} = 3K_c (0 - \psi) = -3K_c\psi \quad \text{（C 端鉸接修正式）} $$<br />
+$$ M_{CB} = M_{CD} = 0 $$</p>
 <h3>Step 3: 節點平衡與代換</h3>
 <p>於節點 B 取力矩平衡：<br />
 $$ \Sigma M_B = 0 \implies M_{BA} + M_{BC} = 0 $$<br />
-$$ 2K_c (2\theta - 3\psi) + \frac{6K_c}{k}\theta = 0 $$<br />
-消去 $2K_c$：<br />
-$$ 2\theta - 3\psi + \frac{3}{k}\theta = 0 $$<br />
-$$ \left(2 + \frac{3}{k}\right)\theta = 3\psi \implies \left(\frac{2k+3}{k}\right)\theta = 3\psi $$<br />
-$$ \theta = \frac{3k}{2k+3}\psi $$</p>
-<h3>Step 4: 找出各端點彎矩的相對大小</h3>
-<p>將 $\theta$ 關係式代回彎矩方程式中：<br />
-$$ M_{BC} = \frac{6K_c}{k} \left( \frac{3k}{2k+3}\psi \right) = \frac{18K_c}{2k+3}\psi $$<br />
-梁 BC 無跨中載重，彎矩圖呈直線，故梁的最大彎矩為端點彎矩：<br />
-$$ |M_{beam,max}| = |M_{BC}| = \frac{18K_c}{2k+3}|\psi| $$</p>
-<p>由 $\Sigma M_B = 0$ 知 $M_{BA} = -M_{BC}$：<br />
-$$ |M_{BA}| = \frac{18K_c}{2k+3}|\psi| $$</p>
-<p>計算柱底彎矩 $M_{AB}$：<br />
-$$ M_{AB} = 2K_c \left( \frac{3k}{2k+3}\psi - 3\psi \right) = 2K_c \left( \frac{3k - 3(2k+3)}{2k+3} \right)\psi = 2K_c \left( \frac{-3k - 9}{2k+3} \right)\psi = -\frac{6(k+3)K_c}{2k+3}\psi $$<br />
-$$ |M_{AB}| = \frac{6(k+3)K_c}{2k+3}|\psi| $$</p>
-<h3>Step 5: 判斷極值並求解 $k$</h3>
-<p>柱 AB 無跨中載重，最大彎矩必定在兩端（A點或B點）之中。<br />
-比較 $|M_{AB}|$ 與 $|M_{BA}|$：<br />
-因為題目已知 $L_b / L &gt; 1$，即 $k &gt; 1$。<br />
-$|M_{AB}|$ 分子常數部分：$6(k+3) &gt; 6(1+3) = 24$<br />
-$|M_{BA}|$ 分子常數部分：$18$<br />
-顯然 $6(k+3) &gt; 18$，故 $|M_{AB}| &gt; |M_{BA}|$，柱的最大彎矩發生在柱底。<br />
-$$ |M_{col,max}| = |M_{AB}| = \frac{6(k+3)K_c}{2k+3}|\psi| $$</p>
-<p>依據題目給定條件「兩根柱最大彎矩與梁最大彎矩大小其比為 2：1」：<br />
-$$ \frac{|M_{col,max}|}{|M_{beam,max}|} = 2 $$<br />
-$$ \frac{\frac{6(k+3)K_c}{2k+3}|\psi|}{\frac{18K_c}{2k+3}|\psi|} = 2 $$<br />
-$$ \frac{6(k+3)}{18} = 2 $$<br />
-$$ \frac{k+3}{3} = 2 \implies k+3 = 6 \implies k = 3 $$<br />
-$$ \boxed{\frac{L_b}{L} = 3} $$</p>
+$$ 2K_c (2\theta - 3\psi) + \frac{3K_c}{k}\theta = 0 $$<br />
+$$ \left(4 + \frac{3}{k}\right)\theta = 6\psi \implies \theta = \frac{6k}{4k+3}\psi $$</p>
+<h3>Step 4: 用 $\psi$ 表示各端點彎矩</h3>
+<p>$$ M_{BC} = \frac{3K_c}{k} \cdot \frac{6k}{4k+3}\psi = \frac{18K_c}{4k+3}\psi, \qquad M_{BA} = -M_{BC} = -\frac{18K_c}{4k+3}\psi $$<br />
+$$ M_{AB} = 2K_c \left( \frac{6k}{4k+3} - 3 \right)\psi = -\frac{6(2k+3)K_c}{4k+3}\psi $$<br />
+$$ M_{DC} = -3K_c\psi = -\frac{3(4k+3)K_c}{4k+3}\psi $$</p>
+<p>梁 BC 無跨中載重，彎矩圖為直線且 C 端為零，故梁的最大彎矩為：<br />
+$$ |M_{beam,max}| = |M_{BC}| = \frac{18K_c}{4k+3}|\psi| $$</p>
+<h3>Step 5: 判斷柱的最大彎矩並求解 $k$</h3>
+<p>兩根柱無跨中載重，最大彎矩在端點。比較分子（共同分母 $4k+3$）：</p>
+<ul>
+<li>左柱底 $|M_{AB}|$：$6(2k+3) = 12k + 18$</li>
+<li>左柱頂 $|M_{BA}|$：$18$</li>
+<li>右柱底 $|M_{DC}|$：$3(4k+3) = 12k + 9$</li>
+<li>右柱頂 $M_{CD} = 0$</li>
+</ul>
+<p>$k &gt; 0$ 時 $12k + 18$ 恆為最大，故兩根柱的最大彎矩發生在<strong>左柱底 A</strong>：<br />
+$$ |M_{col,max}| = |M_{AB}| = \frac{6(2k+3)K_c}{4k+3}|\psi| $$</p>
+<p>依據題目條件「兩根柱最大彎矩與梁最大彎矩大小其比為 2：1」：<br />
+$$ \frac{|M_{AB}|}{|M_{BC}|} = \frac{6(2k+3)}{18} = \frac{2k+3}{3} = 2 \implies 2k + 3 = 6 \implies k = \frac{3}{2} $$<br />
+$$ \boxed{\frac{L_b}{L} = \frac{3}{2} = 1.5} $$</p>
+<h3>Step 6: 驗算（補上層剪力方程求實際彎矩值）</h3>
+<p>不計軸向變形，梁 BC 為兩柱頂共同的水平繫桿；取柱頂以上自由體，水平力平衡：<br />
+$$ P = -\frac{M_{AB}+M_{BA}}{L} - \frac{M_{DC}+M_{CD}}{L} \implies PL = \frac{3(8k+15)}{4k+3}K_c\psi $$<br />
+代入 $k = 3/2$：$PL = 9K_c\psi$，即 $K_c\psi = PL/9$，各端點彎矩：</p>
+<table>
+<thead>
+<tr>
+<th>端點</th>
+<th>彎矩</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>$M_{AB}$</td>
+<td>$-\tfrac{4}{9}PL$</td>
+</tr>
+<tr>
+<td>$M_{BA}$</td>
+<td>$-\tfrac{2}{9}PL$</td>
+</tr>
+<tr>
+<td>$M_{BC}$</td>
+<td>$+\tfrac{2}{9}PL$</td>
+</tr>
+<tr>
+<td>$M_{CB}$、$M_{CD}$</td>
+<td>$0$</td>
+</tr>
+<tr>
+<td>$M_{DC}$</td>
+<td>$-\tfrac{1}{3}PL$</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>柱最大 $\tfrac49 PL$ ÷ 梁最大 $\tfrac29 PL$ $= 2$ ✓</li>
+<li>節點 B：$M_{BA} + M_{BC} = 0$ ✓</li>
+<li>層剪力：$-(M_{AB}+M_{BA}+M_{DC})/L = (\tfrac49+\tfrac29+\tfrac13)P = P$ ✓</li>
+<li>$k = 1.5 &gt; 1$ ✓ 符合題目前提</li>
+</ul>
 <h2>5. 關鍵爭議點與進階探討 (Critical Issues &amp; Advanced Discussion)</h2>
 <ul>
-<li><strong>固定端與鉸支承的影響</strong>：若本題的柱底 (A、D) 為鉸支承，則 $M_{AB} = 0$，柱的最大彎矩必然是 $M_{BA}$。但在節點平衡下 $|M_{BA}| = |M_{BC}|$，會導致柱與梁的最大彎矩比值恆為 1:1，不可能滿足題目 2:1 的條件。因此，透過代數邏輯也能反證底端必須是固定端。</li>
-<li><strong>對稱性的強大威力</strong>：處理此類具有對稱幾何配置的剛構架時，若能第一眼看出側向載重會引發反對稱變形 ($\theta_B = \theta_C$)，將原本兩個旋轉自由度降為一個，計算時間至少能節省一半以上，是考場上搶分的關鍵技巧。</li>
-</ul></main>
+<li><strong>C 角是內鉸還是剛接</strong>：題文沒提，只有附圖 C 角的空心圓（B 角沒有）。若誤當成剛接的對稱門型剛架，反對稱條件 $\theta_B = \theta_C$ 成立，比值為 $(k+3)/3$，得 $L_b/L = 3$；本解依附圖取內鉸，比值為 $(2k+3)/3$，得 $L_b/L = 3/2$。兩種讀法答案差一倍，作答時應先寫明判讀。</li>
+<li><strong>「兩根柱最大彎矩」的讀法</strong>：內鉸使兩根柱的彎矩不再相同。本解取兩根柱中最大者（左柱底 $|M_{AB}|$）；若改取右柱的最大值 $|M_{DC}|$ 與梁比，則 $(4k+3)/6 = 2$，得 $k = 9/4$。前者是較自然的讀法。</li>
+<li><strong>柱底若為鉸支承</strong>：A、D 改為鉸支承時，結構成為三鉸構架（A、C、D 三鉸），右柱 CD 為二力桿、彎矩為零；左柱最大彎矩只能是 $|M_{BA}| = |M_{BC}|$，比值恆為 1:1，不可能滿足 2:1。題目的固定端條件與答案自洽。</li>
+</ul>
+<p><em>修正日期：2026-11-05（解析勘誤：考卷附圖 C 角為內鉸（題目正本判讀 #3，使用者確認），舊版漏讀、當成對稱門型剛架以 θ_B = θ_C 反對稱求解；§1 圖說與常見誤讀、§2–§5 依內鉸重寫，答案 L_b/L 由 3 改為 3/2；驗證：符號推導與 2D 勁度法數值掃描 k = 1、1.5、2、3、10 逐點一致，比值 (2k+3)/3，k = 3/2 時各端點彎矩以層剪力方程回代，MISMATCHES: 0）</em></p></main>
 <footer>來源：raw/solutions/SA-2024-3/SA-2024-3.md（知識庫解題內容唯一正本；本頁僅為渲染顯示）</footer>
 
 <script>

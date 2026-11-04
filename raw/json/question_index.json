@@ -56,6 +56,7 @@
       "primaryTopicName": "靜不定結構之傾角變位法",
       "secondaryTopicIds": [],
       "verificationStatus": "unverified",
+      "problemStatus": "draft",
       "hasSolution": true,
       "hasHandwritten": false,
       "tags": [
@@ -134,13 +135,16 @@
       "primaryTopicName": "靜不定結構之傾角變位法",
       "secondaryTopicIds": [],
       "verificationStatus": "unverified",
+      "problemStatus": "draft",
       "hasSolution": true,
       "hasHandwritten": false,
       "tags": [
         "傾角變位法",
         "門型剛構架",
         "對稱性",
-        "極值比例"
+        "極值比例",
+        "內鉸",
+        "修正勁度"
       ]
     },
     {
@@ -212,6 +216,7 @@
       "primaryTopicName": "靜不定結構之傾角變位法",
       "secondaryTopicIds": [],
       "verificationStatus": "unverified",
+      "problemStatus": "draft",
       "hasSolution": true,
       "hasHandwritten": false,
       "tags": [
@@ -270,6 +275,7 @@
       "primaryTopicName": "靜不定結構之傾角變位法",
       "secondaryTopicIds": [],
       "verificationStatus": "unverified",
+      "problemStatus": "draft",
       "hasSolution": true,
       "hasHandwritten": false,
       "tags": [
@@ -327,6 +333,7 @@
       "rocYear": 110,
       "hasHandwritten": false,
       "verificationStatus": "unverified",
+      "problemStatus": "draft",
       "hasSolution": true,
       "tags": [
         "傾角變位法",
@@ -346,6 +353,7 @@
       "rocYear": 110,
       "hasHandwritten": false,
       "verificationStatus": "unverified",
+      "problemStatus": "draft",
       "hasSolution": true,
       "tags": [
         "傾角變位法",
@@ -403,6 +411,7 @@
       "rocYear": 109,
       "hasHandwritten": false,
       "verificationStatus": "unverified",
+      "problemStatus": "draft",
       "hasSolution": true,
       "tags": [
         "傾角變位法",
@@ -422,6 +431,7 @@
       "rocYear": 109,
       "hasHandwritten": false,
       "verificationStatus": "unverified",
+      "problemStatus": "draft",
       "hasSolution": true,
       "tags": [
         "傾角變位法",
@@ -516,6 +526,7 @@
       "primaryTopicName": "靜不定結構之傾角變位法",
       "secondaryTopicIds": [],
       "verificationStatus": "unverified",
+      "problemStatus": "draft",
       "hasSolution": true,
       "hasHandwritten": false,
       "tags": [
@@ -662,6 +673,7 @@
       "primaryTopicName": "靜不定結構之傾角變位法",
       "secondaryTopicIds": [],
       "verificationStatus": "unverified",
+      "problemStatus": "draft",
       "hasSolution": true,
       "hasHandwritten": false,
       "tags": [
@@ -822,6 +834,7 @@
       "primaryTopicName": "靜不定結構之傾角變位法",
       "secondaryTopicIds": [],
       "verificationStatus": "unverified",
+      "problemStatus": "draft",
       "hasSolution": true,
       "hasHandwritten": false,
       "tags": [

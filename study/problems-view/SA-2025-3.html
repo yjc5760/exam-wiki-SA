@@ -43,7 +43,124 @@ header .nomat{margin-top:12px;font-size:.8em;opacity:.85}
 <p class="meta2">主分類 <b>SA-U2-3</b> 靜不定結構之傾角變位法 ｜ 2025 年（民國 114） ｜ 傾角變位法（Slope-Deflection Method）+ 共軛樑法（Conjugate Beam）</p>
 <div class="hbtns"><a class="b-study" href="../unit-SA-U2-3.html">🧭 U2-3 單元總覽</a><a class="b-lect" href="../lecture-SA-U2-3.html">📚 U2-3 靜不定結構之傾角變位法 講義</a></div>
 </header>
-<main><h1>考題編號：SA-2025-3</h1>
+<main><details class="problem-src" open><summary><b>📄 題目正本</b>（考卷原文、附圖與判讀清單；不含解法）</summary>
+<h1>SA-2025-3 題目正本</h1>
+<blockquote>
+<p>本檔只記錄考卷上寫了什麼、圖上畫了什麼，不含任何解法。解析見同資料夾 <code>SA-2025-3.md</code>。<br />
+判讀清單經使用者確認前，狀態為「待確認」；確認後本檔原則上不再修改（改動須回考卷原圖並記 log）。</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>項目</th>
+<th>內容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>考卷</td>
+<td><code>raw/exams/SA-2025_結構學.pdf</code>，第 2 頁上半，第三題（圖 3）</td>
+</tr>
+<tr>
+<td>考年</td>
+<td>2025（民國 114 年）專技高考結構工程技師「結構學」</td>
+</tr>
+<tr>
+<td>配分</td>
+<td>25 分</td>
+</tr>
+<tr>
+<td>附圖</td>
+<td><code>SA-2025-3-fig-1.png</code></td>
+</tr>
+<tr>
+<td>判讀狀態</td>
+<td><strong>待確認</strong>（2026-11-05 轉錄；PyMuPDF 110 dpi 整頁＋500 dpi 局部放大；盲讀於開啟解析前完成）</td>
+</tr>
+</tbody>
+</table>
+<h2>1. 考卷原文（逐字）</h2>
+<p>三、一非均勻斷面之桿件 AB，跨度中央承受集中載重 P，桿件各段之長度及撓曲剛度如圖 3 所示。請推導使用傾角變位法（Slope-deflection method）時，AB 桿件兩端彎矩 MAB 及 MBA 之傾角變位公式。（25 分）</p>
+<h2>2. 考卷給的公式、附表與參數</h2>
+<ul>
+<li>考卷沒有給任何參考公式或附表。</li>
+<li>沒有畫支承（為單一桿件的自由體）。</li>
+<li>題文沒有說明公式是否要含弦轉角（兩端相對側移）項。</li>
+<li>卷首注意事項：㈠可以使用電子計算器。㈡不必抄題，作答時請將試題題號及答案依照順序寫在試卷上，於本試題上作答者，不予計分。㈢本科目除專門名詞或數理公式外，應使用本國文字作答。</li>
+<li>考試時間：2 小時。</li>
+</ul>
+<h2>3. 附圖</h2>
+<p><img alt="SA-2025-3 考卷附圖：水平桿 AB 分三段，左段 EI、中段 2EI（畫較粗）、右段 EI，各長 L/3；P 向下作用於跨中；A 端左側弧形箭頭 MAB 順時針，B 端右側弧形箭頭 MBA 順時針；無支承" src="../../raw/solutions/SA-2025-3/SA-2025-3-fig-1.png" /><br />
+<em>證據圖 SA-2025-3-fig-1.png</em></p>
+<p>圖面文字照錄：P、MAB、A、B、MBA、EI、2EI、EI、L/3、L/3、L/3、圖 3</p>
+<h2>4. 判讀清單</h2>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>項目</th>
+<th>判讀</th>
+<th>圖上／題文依據</th>
+<th>把握</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>分段</td>
+<td>A 端起三段各 L/3：EI、2EI、EI（對稱）</td>
+<td>下方三段尺寸線與剛度標示；中段畫較粗</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>2</td>
+<td>載重</td>
+<td>P 向下，作用於跨中（中段中點）</td>
+<td>箭頭在中段中央</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>3</td>
+<td>MAB</td>
+<td>作用於 A 端，順時針</td>
+<td>A 左側弧形箭頭由下往上繞向右（500 dpi）</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>4</td>
+<td>MBA</td>
+<td>作用於 B 端，順時針</td>
+<td>B 右側弧形箭頭由上往下繞</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>5</td>
+<td>支承</td>
+<td>沒有畫支承（單桿自由體）</td>
+<td>圖面</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>6</td>
+<td>所求</td>
+<td>MAB、MBA 的傾角變位公式</td>
+<td>題文</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>7</td>
+<td>考卷沒有給</td>
+<td>公式是否含弦轉角 ψ（兩端相對側移）；θ、ψ 的正向</td>
+<td>題文、圖面</td>
+<td>確定（解讀）：採一般式（含 θA、θB、ψ 與固端彎矩），正向與附圖彎矩箭頭一致取順時針</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p><em>轉錄：2026-11-05（SA-U2-3 題目正本推廣・批 2）</em></p>
+</details>
+<hr>
+<h1>考題編號：SA-2025-3</h1>
 <p><strong>主分類：</strong> <code>SA-U2-3</code> 靜不定結構之傾角變位法<br />
 <strong>副分類：</strong> （無）<br />
 <strong>分析法：</strong> 傾角變位法（Slope-Deflection Method）+ 共軛樑法（Conjugate Beam）<br />

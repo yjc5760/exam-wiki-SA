@@ -43,7 +43,164 @@ header .nomat{margin-top:12px;font-size:.8em;opacity:.85}
 <p class="meta2">主分類 <b>SA-U2-3</b> 靜不定結構之傾角變位法 ｜ 2014 年（民國 103） ｜ 傾角變位法</p>
 <div class="hbtns"><a class="b-study" href="../unit-SA-U2-3.html">🧭 U2-3 單元總覽</a><a class="b-lect" href="../lecture-SA-U2-3.html">📚 U2-3 靜不定結構之傾角變位法 講義</a></div>
 </header>
-<main><h1>考題編號：SA-2014-3</h1>
+<main><details class="problem-src" open><summary><b>📄 題目正本</b>（考卷原文、附圖與判讀清單；不含解法）</summary>
+<h1>SA-2014-3 題目正本</h1>
+<blockquote>
+<p>本檔只記錄考卷上寫了什麼、圖上畫了什麼，不含任何解法。解析見同資料夾 <code>SA-2014-3.md</code>。<br />
+判讀清單經使用者確認前，狀態為「待確認」；確認後本檔原則上不再修改（改動須回考卷原圖並記 log）。</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>項目</th>
+<th>內容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>考卷</td>
+<td><code>raw/exams/SA-2014_結構學.pdf</code>，第 2 頁上半，第三題（圖三）</td>
+</tr>
+<tr>
+<td>考年</td>
+<td>2014（民國 103 年）專技高考結構工程技師「結構學」</td>
+</tr>
+<tr>
+<td>配分</td>
+<td>25 分</td>
+</tr>
+<tr>
+<td>附圖</td>
+<td><code>SA-2014-3-fig-1.png</code></td>
+</tr>
+<tr>
+<td>判讀狀態</td>
+<td><strong>待確認</strong>（2026-11-05 轉錄；PyMuPDF 110 dpi 整頁＋450 dpi 局部放大；盲讀於開啟解析前完成）</td>
+</tr>
+</tbody>
+</table>
+<h2>1. 考卷原文（逐字）</h2>
+<p>三、如圖三所示之剛架結構，其 A、C 與 E 點均為固接支承，同時每根構件之彈性模數均為常數值 E； AB、BC、BD 及 DE 四根構件之長度分別為 L、L、√3L/2 與 L（L = 8m），而慣性矩分別為 2I、2I、√3I 與 I。當 B 點承受水平向右集中載重 P = 66 kN 時，請以傾角變位法計算 A、B、C、D、E 各點彎矩。（若以其他方法計算不予計分）（25 分）</p>
+<h2>2. 考卷給的公式、附表與參數</h2>
+<ul>
+<li>考卷沒有給任何參考公式或附表。</li>
+<li>卷首注意事項：㈠可以使用電子計算器。㈡不必抄題，作答時請將試題題號及答案依照順序寫在試卷上，於本試題上作答者，不予計分。</li>
+<li>考試時間：2 小時。</li>
+</ul>
+<h2>3. 附圖</h2>
+<p><img alt="SA-2014-3 考卷附圖：A 在 B 正上方 L（2I）、C 在 B 正下方 L（2I），A、C 斜線固接；B 受水平力 P 向右；BD 水平 √3L/2（√3I）；DE 斜向下至 E（I），E 斜置固接；下方尺寸 √3L/2、√3L/2，右側 L/2" src="../../raw/solutions/SA-2014-3/SA-2014-3-fig-1.png" /><br />
+<em>證據圖 SA-2014-3-fig-1.png</em></p>
+<p>圖面文字照錄：A、L、2I、P、B、√3 I、D、I、E、L/2、L、2I、C、√3L/2、√3L/2、圖三</p>
+<h2>4. 判讀清單</h2>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>項目</th>
+<th>判讀</th>
+<th>圖上／題文依據</th>
+<th>把握</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>A</td>
+<td>固接支承，在 B 正上方</td>
+<td>頂端斜線塊；題文「A、C 與 E 點均為固接支承」</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>2</td>
+<td>C</td>
+<td>固接支承，在 B 正下方</td>
+<td>底端斜線塊</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>3</td>
+<td>E</td>
+<td>固接支承，斜置（剖線垂直於 DE 桿軸）</td>
+<td>斜線塊與 DE 垂直</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>4</td>
+<td>B、D</td>
+<td>剛接節點（無鉸圈）</td>
+<td>圖上無空心圓</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>5</td>
+<td>AB、BC</td>
+<td>垂直，各長 L，慣性矩 2I</td>
+<td>左側尺寸 L＋L；桿旁標 2I；題文</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>6</td>
+<td>BD</td>
+<td>水平，長 √3L/2，慣性矩 √3I</td>
+<td>下方尺寸 √3L/2（B 至 D）；桿上標 √3 I</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>7</td>
+<td>DE</td>
+<td>水平投影 √3L/2、E 比 D 低 L/2，實長 L，慣性矩 I</td>
+<td>下方第二段 √3L/2（D 至 E）、右側 L/2；題文長 L 與投影吻合（(√3/2)²＋(1/2)²＝1）</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>8</td>
+<td>L</td>
+<td>L = 8 m</td>
+<td>題文</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>9</td>
+<td>E</td>
+<td>各桿 E 相同</td>
+<td>題文</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>10</td>
+<td>載重</td>
+<td>B 點水平集中力 P = 66 kN 向右</td>
+<td>箭頭由左指向 B；題文「水平向右」</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>11</td>
+<td>指定方法</td>
+<td>傾角變位法（他法不計分）</td>
+<td>題文</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>12</td>
+<td>所求</td>
+<td>A、B、C、D、E 各點彎矩</td>
+<td>題文</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>13</td>
+<td>考卷沒有給</td>
+<td>軸向變形是否忽略（未提）</td>
+<td>題文</td>
+<td>確定（解讀）：照剛架傾角變位法慣例忽略軸向變形</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p><em>轉錄：2026-11-05（SA-U2-3 題目正本推廣・批 2）</em></p>
+</details>
+<hr>
+<h1>考題編號：SA-2014-3</h1>
 <p><strong>主分類：</strong> <code>SA-U2-3</code> 靜不定結構之傾角變位法<br />
 <strong>副分類：</strong> 無<br />
 <strong>分析法：</strong> 傾角變位法<br />

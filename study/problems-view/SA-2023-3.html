@@ -43,7 +43,168 @@ header .nomat{margin-top:12px;font-size:.8em;opacity:.85}
 <p class="meta2">主分類 <b>SA-U2-3</b> 靜不定結構之傾角變位法 ｜ 2023 年（民國 112） ｜ 傾角變位法</p>
 <div class="hbtns"><a class="b-study" href="../unit-SA-U2-3.html">🧭 U2-3 單元總覽</a><a class="b-lect" href="../lecture-SA-U2-3.html">📚 U2-3 靜不定結構之傾角變位法 講義</a></div>
 </header>
-<main><h1>考題編號：SA-2023-3</h1>
+<main><details class="problem-src" open><summary><b>📄 題目正本</b>（考卷原文、附圖與判讀清單；不含解法）</summary>
+<h1>SA-2023-3 題目正本</h1>
+<blockquote>
+<p>本檔只記錄考卷上寫了什麼、圖上畫了什麼，不含任何解法。解析見同資料夾 <code>SA-2023-3.md</code>。<br />
+判讀清單經使用者確認前，狀態為「待確認」；確認後本檔原則上不再修改（改動須回考卷原圖並記 log）。</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>項目</th>
+<th>內容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>考卷</td>
+<td><code>raw/exams/SA-2023_結構學.pdf</code>，第 2 頁上半，第三題（圖三）</td>
+</tr>
+<tr>
+<td>考年</td>
+<td>2023（民國 112 年）專技高考結構工程技師「結構學」</td>
+</tr>
+<tr>
+<td>配分</td>
+<td>25 分</td>
+</tr>
+<tr>
+<td>附圖</td>
+<td><code>SA-2023-3-fig-1.png</code>、<code>SA-2023-3-fig-2.png</code></td>
+</tr>
+<tr>
+<td>判讀狀態</td>
+<td><strong>待確認</strong>（2026-11-05 轉錄；PyMuPDF 110 dpi 整頁＋500 dpi 局部放大（附圖在 PDF 內為點陣圖，原始 462×419 像素）；盲讀於開啟解析前完成）</td>
+</tr>
+</tbody>
+</table>
+<h2>1. 考卷原文（逐字）</h2>
+<p>三、圖三為一平面構架，點 D 為固定支承，點 A 為鉸支承，點 C 為滾支承，此構架點 A 至 B 間梁桿件承受一水平向均佈載重 20 kN/m，且點 B 至 C 間梁桿件中央承受一垂直集中載重 50 kN。設所有桿件 EI 為定值，且忽略桿件軸向變形，試用傾角變位法，求各桿件端點彎矩及各支承之反力。（25 分）</p>
+<h2>2. 考卷給的公式、附表與參數</h2>
+<ul>
+<li>考卷沒有給任何參考公式或附表。</li>
+<li>題文稱 AB 為「梁桿件」，實為垂直柱（照考卷原文）。</li>
+<li>題文只說 50 kN 為「垂直」載重，沒有寫向上或向下。</li>
+<li>卷首注意事項：㈠可以使用電子計算器。㈡不必抄題，作答時請將試題題號及答案依照順序寫在試卷上，於本試題上作答者，不予計分。㈢本科目除專門名詞或數理公式外，應使用本國文字作答。</li>
+<li>考試時間：2 小時。</li>
+</ul>
+<h2>3. 附圖</h2>
+<p><img alt="SA-2023-3 考卷附圖原截圖（含滑鼠游標；內容同下圖）" src="../../raw/solutions/SA-2023-3/SA-2023-3-fig-1.png" /><br />
+<em>證據圖 SA-2023-3-fig-1.png</em></p>
+<p><img alt="SA-2023-3 考卷附圖：A 在左下以三角形鉸接於左側垂直牆；AB 垂直 6 m；B 剛接水平桿 B–C–D，BC 4 m、CD 4 m；C 為梁下圓圈滾支承；D 貼右側垂直牆固定；AB 全高受 20 kN/m 向左（箭頭指向柱）；距 B 2 m 處梁下一空心箭頭向上指向梁，標 50 kN" src="../../raw/solutions/SA-2023-3/SA-2023-3-fig-2.png" /><br />
+<em>證據圖 SA-2023-3-fig-2.png（2026-11-05 自考卷重新擷取 500 dpi，無游標）</em></p>
+<p>圖面文字照錄：4 m、4 m、2 m、B、C、D、6 m、50 kN、20 kN/m、A、圖三</p>
+<h2>4. 判讀清單</h2>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>項目</th>
+<th>判讀</th>
+<th>圖上／題文依據</th>
+<th>把握</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>A</td>
+<td>鉸支承（三角形接左側垂直牆）</td>
+<td>三角形尖端指向 A、底邊貼剖線牆；題文</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>2</td>
+<td>C</td>
+<td>滾支承（垂直反力）</td>
+<td>梁下圓圈＋水平剖線；題文</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>3</td>
+<td>D</td>
+<td>固定支承（右側垂直牆）</td>
+<td>剖線牆；題文</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>4</td>
+<td>B</td>
+<td>剛接節點</td>
+<td>無鉸圈</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>5</td>
+<td>幾何</td>
+<td>AB 垂直 6 m；BC 水平 4 m；CD 水平 4 m</td>
+<td>左側 6 m；上方 4 m＋4 m 尺寸線</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>6</td>
+<td>剛度</td>
+<td>所有桿件 EI 相同</td>
+<td>題文</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>7</td>
+<td>均布載重</td>
+<td>20 kN/m 水平向左，A 至 B 全高</td>
+<td>箭頭由右側指向柱、箭頭頭部在柱上</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>8</td>
+<td>集中載重位置</td>
+<td>距 B 2 m（BC 中點）</td>
+<td>上方 2 m 尺寸線右端對齊箭頭</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>9</td>
+<td>集中載重方向</td>
+<td>50 kN 向上（空心箭頭在梁下方、箭頭頭部朝上頂住梁）</td>
+<td>500 dpi：箭頭尖端在上、貼梁底；題文只說「垂直」</td>
+<td>不確定（影響答案，請確認）</td>
+</tr>
+<tr>
+<td>10</td>
+<td>軸向變形</td>
+<td>忽略</td>
+<td>題文</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>11</td>
+<td>指定方法</td>
+<td>傾角變位法</td>
+<td>題文（未寫他法不給分）</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>12</td>
+<td>所求</td>
+<td>各桿件端點彎矩；各支承反力</td>
+<td>題文</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>13</td>
+<td>證據圖</td>
+<td>舊 fig-1 有滑鼠游標（空白處）；新增 fig-2（500 dpi）</td>
+<td>—</td>
+<td>確定</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p><em>轉錄：2026-11-05（SA-U2-3 題目正本推廣・批 2）</em></p>
+</details>
+<hr>
+<h1>考題編號：SA-2023-3</h1>
 <p><strong>主分類：</strong> <code>SA-U2-3</code> 靜不定結構之傾角變位法<br />
 <strong>副分類：</strong> 無<br />
 <strong>分析法：</strong> 傾角變位法<br />

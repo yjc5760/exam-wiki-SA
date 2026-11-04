@@ -43,7 +43,139 @@ header .nomat{margin-top:12px;font-size:.8em;opacity:.85}
 <p class="meta2">主分類 <b>SA-U2-3</b> 靜不定結構之傾角變位法 ｜ 2020 年（民國 109） ｜ 傾角變位法 / 對稱性利用</p>
 <div class="hbtns"><a class="b-study" href="../unit-SA-U2-3.html">🧭 U2-3 單元總覽</a><a class="b-lect" href="../lecture-SA-U2-3.html">📚 U2-3 靜不定結構之傾角變位法 講義</a></div>
 </header>
-<main><h1>考題編號：SA-2020-2</h1>
+<main><details class="problem-src" open><summary><b>📄 題目正本</b>（考卷原文、附圖與判讀清單；不含解法）</summary>
+<h1>SA-2020-2 題目正本</h1>
+<blockquote>
+<p>本檔只記錄考卷上寫了什麼、圖上畫了什麼，不含任何解法。解析見同資料夾 <code>SA-2020-2.md</code>。<br />
+判讀清單經使用者確認前，狀態為「待確認」；確認後本檔原則上不再修改（改動須回考卷原圖並記 log）。</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>項目</th>
+<th>內容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>考卷</td>
+<td><code>raw/exams/SA-2020_結構學.pdf</code>，第 1 頁下半，第二題（圖 2）</td>
+</tr>
+<tr>
+<td>考年</td>
+<td>2020（民國 109 年）專技高考結構工程技師「結構學」</td>
+</tr>
+<tr>
+<td>配分</td>
+<td>25 分</td>
+</tr>
+<tr>
+<td>附圖</td>
+<td><code>SA-2020-2-fig-1.png</code>、<code>SA-2020-2-fig-2.png</code></td>
+</tr>
+<tr>
+<td>判讀狀態</td>
+<td><strong>待確認</strong>（2026-11-05 轉錄；PyMuPDF 110 dpi 整頁＋350–500 dpi 局部放大；盲讀於開啟解析前完成）</td>
+</tr>
+</tbody>
+</table>
+<h2>1. 考卷原文（逐字）</h2>
+<p>二、如圖 2 所示之平面剛架結構，a、d、e、h 點為固定端，b、c、f、g 點為剛性接頭，各桿件有相同之彈性模數 E 與慣性矩 I，且 EI = 20000 kN-m²。不考慮各桿件的軸向變形，求 b 點垂直位移、轉角及 ab 桿件的端點彎矩。（25 分）</p>
+<h2>2. 考卷給的公式、附表與參數</h2>
+<ul>
+<li>考卷沒有給任何參考公式或附表。</li>
+<li>EI = 20000 kN-m²（題文）。</li>
+<li>卷首注意事項：㈠可以使用電子計算器。㈡不必抄題，作答時請將試題題號及答案依照順序寫在試卷上，於本試題上作答者，不予計分。㈢本科目除專門名詞或數理公式外，應使用本國文字作答。</li>
+<li>考試時間：2 小時。</li>
+</ul>
+<h2>3. 附圖</h2>
+<p><img alt="SA-2020-2 考卷附圖原截圖（含滑鼠游標；內容同下圖）" src="../../raw/solutions/SA-2020-2/SA-2020-2-fig-1.png" /><br />
+<em>證據圖 SA-2020-2-fig-1.png</em></p>
+<p><img alt="SA-2020-2 考卷附圖：上梁 a–b–c–d、下梁 e–f–g–h，兩梁端 a、d、e、h 貼垂直牆固定；柱 bf、cg 連接上下梁，高 4 m；下方尺寸 4 m、2 m、2 m、4 m；上梁 bc 中點與下梁 fg 中點各受 12 kN 向下" src="../../raw/solutions/SA-2020-2/SA-2020-2-fig-2.png" /><br />
+<em>證據圖 SA-2020-2-fig-2.png（2026-11-05 自考卷重新擷取 500 dpi，無游標）</em></p>
+<p>圖面文字照錄：12 kN、a、b、c、d、12 kN、4 m、f、g、e、h、4 m、2 m、2 m、4 m、圖 2</p>
+<h2>4. 判讀清單</h2>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>項目</th>
+<th>判讀</th>
+<th>圖上／題文依據</th>
+<th>把握</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>a、d、e、h</td>
+<td>固定端（垂直牆）</td>
+<td>剖線牆；題文</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>2</td>
+<td>b、c、f、g</td>
+<td>剛性接頭</td>
+<td>題文</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>3</td>
+<td>水平尺寸</td>
+<td>a–b 4 m、b–c 4 m（2 m＋2 m）、c–d 4 m；下梁 e–f、f–g、g–h 同</td>
+<td>下方尺寸刻度 4、2、2、4 m；b、c 柱線分別對齊第 1、3 個刻度，中間刻度只標載重位置</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>4</td>
+<td>柱</td>
+<td>bf、cg 垂直，高 4 m</td>
+<td>右側 4 m 尺寸線（上梁至下梁）</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>5</td>
+<td>剛度</td>
+<td>各桿 EI = 20000 kN-m²</td>
+<td>題文</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>6</td>
+<td>載重</td>
+<td>上梁 bc 中點、下梁 fg 中點各 12 kN 向下</td>
+<td>箭頭對齊中間 2 m｜2 m 刻度</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>7</td>
+<td>軸向變形</td>
+<td>不考慮</td>
+<td>題文</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>8</td>
+<td>所求</td>
+<td>b 點垂直位移、b 點轉角、ab 桿端點彎矩</td>
+<td>題文</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>9</td>
+<td>證據圖</td>
+<td>舊 fig-1 有滑鼠游標（e 點附近）；新增 fig-2（500 dpi）</td>
+<td>—</td>
+<td>確定</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p><em>轉錄：2026-11-05（SA-U2-3 題目正本推廣・批 2）</em></p>
+</details>
+<hr>
+<h1>考題編號：SA-2020-2</h1>
 <p><strong>主分類：</strong> <code>SA-U2-3</code> 靜不定結構分析<br />
 <strong>副分類：</strong> 無<br />
 <strong>分析法：</strong> 傾角變位法 / 對稱性利用<br />
@@ -52,7 +184,11 @@ header .nomat{margin-top:12px;font-size:.8em;opacity:.85}
 <h2>1. 原始題目重述 (Problem Restatement)</h2>
 <p>如圖 2 所示之平面剛架結構，$a, d, e, h$ 點為固定端，$b, c, f, g$ 點為剛性接頭，各桿件有相同之彈性模數 $E$ 與慣性矩 $I$，且 $EI = 20000 \text{ kN-m}^2$。不考慮各桿件的軸向變形，求 $b$ 點垂直位移、轉角及 $ab$ 桿件的端點彎矩。（25 分）</p>
 <p><img alt="SA-2020-2 題目附圖：包含雙層的剛架結構，呈左右對稱，上下梁受集中載重" src="../../raw/solutions/SA-2020-2/SA-2020-2-fig-1.png" /></p>
-<p><em>圖說：此結構為上下兩層、左右三跨的對稱平面剛架。上層梁 $a-b-c-d$ 中，$b, c$ 為剛接點，$a, d$ 為固定端；下層梁 $e-f-g-h$ 中，$f, g$ 為剛接點，$e, h$ 為固定端。中間由柱 $bf$ 及 $cg$ 連接。梁跨度分別為 4m, 2m, 4m，柱高 4m。上層梁中央 $bc$ 段及下層梁中央 $fg$ 段各有向下集中載重 12 kN。</em></p>
+<p><em>圖說：此結構為上下兩層、左右三跨的對稱平面剛架。上層梁 $a-b-c-d$ 中，$b, c$ 為剛接點，$a, d$ 為固定端；下層梁 $e-f-g-h$ 中，$f, g$ 為剛接點，$e, h$ 為固定端。中間由柱 $bf$ 及 $cg$ 連接。梁 $ab$、$bc$、$cd$（及 $ef$、$fg$、$gh$）</em><em>各長 4 m</em><em>——下方尺寸標 4 m、2 m、2 m、4 m，中間的刻度只是標出載重位置，$bc$ 是 2 m＋2 m；柱高 4m。上層梁 $bc$ 中點及下層梁 $fg$ 中點各有向下集中載重 12 kN。</em></p>
+<blockquote>
+<p><strong>常見誤讀（本題舊版解析曾犯）</strong>：把下方尺寸 4、2、2、4 m 讀成三跨 4、2、4 m，$bc$ 只取 2 m，固端彎矩算成 $PL/8 = 3$、梁 $bc$ 勁度用 $2EI/2$。$bc$ 實為 4 m（b、c 兩柱對齊第 1、3 個刻度），$M^F_{bc} = -6$ kN·m，答案 $v_b$ 由 2.145 mm 變為 2.400 mm。<br />
+<strong>本解記號</strong>：桿端彎矩、節點轉角、弦轉角一律順時針為正；$\Delta$ 為 $b$ 點向下位移（正值）。</p>
+</blockquote>
 <hr />
 <h2>2. 考題核心精神與出題者意圖 (Core Concepts &amp; Examiner's Intent)</h2>
 <p>本題考驗考生是否具備<strong>「觀察對稱性」</strong>的慧眼。<br />
@@ -107,8 +243,8 @@ header .nomat{margin-top:12px;font-size:.8em;opacity:.85}
 </tr>
 <tr>
 <td>$L_{ab}, L_{bc}, L_{bf}$</td>
-<td>4m, 2m, 4m</td>
-<td>各桿件長度</td>
+<td>4 m, 4 m, 4 m</td>
+<td>各桿件長度（$bc$ = 2 m＋2 m）</td>
 </tr>
 <tr>
 <td>$P$</td>
@@ -131,7 +267,7 @@ header .nomat{margin-top:12px;font-size:.8em;opacity:.85}
 <tbody>
 <tr>
 <td>$M_{Fbc}$</td>
-<td>$-PL/8 = -(12 \times 2)/8 = -3$</td>
+<td>$-PL/8 = -(12 \times 4)/8 = -6$</td>
 <td style="text-align: center;"></td>
 </tr>
 <tr>
@@ -204,23 +340,23 @@ header .nomat{margin-top:12px;font-size:.8em;opacity:.85}
 <p><strong>Step 2: 建立傾角變位方程式</strong></p>
 <ul>
 <li>
-<p>固端彎矩 (僅 $bc$ 桿有外載，於中點施加 12 kN)：<br />
-  $M_{Fbc} = \frac{-PL}{8} = \frac{-12 \times 2}{8} = -3 \text{ kN-m}$<br />
-  $M_{Fcb} = \frac{+PL}{8} = +3 \text{ kN-m}$</p>
+<p>固端彎矩 (僅 $bc$ 桿有外載，於中點施加 12 kN，$L_{bc} = 4$ m)：<br />
+  $M_{Fbc} = \frac{-PL}{8} = \frac{-12 \times 4}{8} = -6 \text{ kN-m}$<br />
+  $M_{Fcb} = \frac{+PL}{8} = +6 \text{ kN-m}$</p>
 </li>
 <li>
 <p>桿端彎矩方程式：<br />
   $$M_{ab} = \frac{2EI}{4}(2(0) + \theta_b - 3(\Delta/4)) = 0.5EI\theta_b - 0.375EI\Delta$$<br />
   $$M_{ba} = \frac{2EI}{4}(2\theta_b + 0 - 3(\Delta/4)) = 1.0EI\theta_b - 0.375EI\Delta$$<br />
-  $$M_{bc} = \frac{2EI}{2}(2\theta_b + (-\theta_b) - 3(0)) - 3 = 1.0EI\theta_b - 3$$<br />
+  $$M_{bc} = \frac{2EI}{4}(2\theta_b + (-\theta_b) - 3(0)) - 6 = 0.5EI\theta_b - 6$$<br />
   $$M_{bf} = \frac{2EI}{4}(2\theta_b + \theta_b - 3(0)) = 1.5EI\theta_b$$</p>
 </li>
 </ul>
 <p><strong>Step 3: 節點旋轉平衡方程式</strong><br />
 取 $b$ 點彎矩平衡：<br />
 $$ \Sigma M_b = 0 \Rightarrow M_{ba} + M_{bc} + M_{bf} = 0 $$<br />
-$$ (1.0EI\theta_b - 0.375EI\Delta) + (1.0EI\theta_b - 3) + 1.5EI\theta_b = 0 $$<br />
-$$ \mathbf{3.5EI\theta_b - 0.375EI\Delta = 3} \quad \text{--- (式1)} $$</p>
+$$ (1.0EI\theta_b - 0.375EI\Delta) + (0.5EI\theta_b - 6) + 1.5EI\theta_b = 0 $$<br />
+$$ \mathbf{3.0EI\theta_b - 0.375EI\Delta = 6} \quad \text{--- (式1)} $$</p>
 <p><strong>Step 4: 節點垂直力（剪力）平衡方程式</strong><br />
 取節點 $b$ 為分離體進行垂直力平衡。因為柱 $bf$ 的軸力為 0，所以 $b$ 點的垂直平衡僅與 $ab$ 桿和 $bc$ 桿的端點剪力有關：<br />
 $$ \Sigma F_y = 0 \Rightarrow V_{ba} + V_{bc} = 0 $$<br />
@@ -232,10 +368,10 @@ $$ \Sigma F_y = 0 \Rightarrow V_{ba} + V_{bc} = 0 $$<br />
   代入：$V_{ba} = \frac{1.5EI\theta_b - 0.75EI\Delta}{4} = 0.375EI\theta_b - 0.1875EI\Delta$</p>
 </li>
 <li>
-<p><strong>計算 $V_{bc}$</strong>：取 $bc$ 半桿分離體。<br />
+<p><strong>計算 $V_{bc}$</strong>：取 $bc$ 桿分離體（長 4 m）。<br />
   載重分配到 $b$ 端的固端剪力為 $12/2 = 6 \text{ kN}$ (向上抗力)。<br />
-  考量兩端彎矩修正，向上剪力 $V_{bc} = 6 - \frac{M_{bc} + M_{cb}}{2}$。<br />
-  但因對稱，$\theta_c = -\theta_b$，故 $M_{cb} = 1.0EI\theta_c + 3 = -1.0EI\theta_b + 3 = -M_{bc}$。<br />
+  考量兩端彎矩修正，向上剪力 $V_{bc} = 6 - \frac{M_{bc} + M_{cb}}{4}$。<br />
+  但因對稱，$\theta_c = -\theta_b$，故 $M_{cb} = 0.5EI\theta_c + 6 = -0.5EI\theta_b + 6 = -M_{bc}$。<br />
   因此 $M_{bc} + M_{cb} = 0$，也就是彎矩不改變 $bc$ 桿的剪力分配。<br />
   所以 $V_{bc} = 6 \text{ kN}$ (向上)。</p>
 </li>
@@ -247,26 +383,28 @@ $$ \mathbf{0.375EI\theta_b - 0.1875EI\Delta = -6} \quad \text{--- (式2)} $$</p>
 由 (式2) 乘以 2：<br />
 $$ 0.75EI\theta_b - 0.375EI\Delta = -12 \quad \text{--- (式2')} $$<br />
 將 (式1) 減去 (式2')：<br />
-$$ (3.5 - 0.75)EI\theta_b = 3 - (-12) $$<br />
-$$ 2.75EI\theta_b = 15 \Rightarrow EI\theta_b = \frac{15}{2.75} = \frac{60}{11} \approx 5.4545 $$<br />
+$$ (3.0 - 0.75)EI\theta_b = 6 - (-12) $$<br />
+$$ 2.25EI\theta_b = 18 \Rightarrow EI\theta_b = 8 $$<br />
 代回 (式2') 求 $\Delta$：<br />
-$$ 0.75\left(\frac{60}{11}\right) - 0.375EI\Delta = -12 $$<br />
-$$ \frac{45}{11} + 12 = 0.375EI\Delta \Rightarrow \frac{177}{11} = \frac{3}{8}EI\Delta \Rightarrow EI\Delta = \frac{177 \times 8}{33} = \frac{59 \times 8}{11} = \frac{472}{11} \approx 42.909 $$</p>
+$$ 0.75(8) - 0.375EI\Delta = -12 \Rightarrow 0.375EI\Delta = 18 \Rightarrow EI\Delta = 48 $$</p>
 <p>代入已知 $EI = 20000$：</p>
 <ul>
-<li>$b$ 點轉角：$\boxed{\theta_b = \frac{60}{11 \times 20000} = \frac{3}{11000} \approx \mathbf{0.0002727 \text{ rad (逆時針)}}}$</li>
-<li>$b$ 點垂直位移：$\boxed{v_b = \Delta = \frac{472}{11 \times 20000} = \frac{59}{27500} \text{ m} \approx \mathbf{0.002145 \text{ m} = 2.145 \text{ mm} \text{ (向下)}}}$</li>
+<li>$b$ 點轉角：$\boxed{\theta_b = \frac{8}{20000} = \mathbf{4.0 \times 10^{-4} \text{ rad（順時針）}}}$</li>
+<li>$b$ 點垂直位移：$\boxed{v_b = \Delta = \frac{48}{20000} \text{ m} = \mathbf{0.0024 \text{ m} = 2.40 \text{ mm（向下）}}}$</li>
 </ul>
+<p>（$EI\theta_b = +8$ 在順時針為正的約定下即順時針：$bc$ 梁中央下垂，$b$ 端切線向右下傾。）</p>
 <p><strong>Step 6: 計算 $ab$ 桿端點彎矩</strong><br />
 代入求得之 $EI\theta_b$ 與 $EI\Delta$：<br />
-$$ \boxed{M_{ab}} = 0.5\left(\frac{60}{11}\right) - 0.375\left(\frac{472}{11}\right) = \frac{30 - 177}{11} = \frac{-147}{11} \approx \mathbf{-13.36 \text{ kN-m}} $$<br />
-$$ \boxed{M_{ba}} = 1.0\left(\frac{60}{11}\right) - 0.375\left(\frac{472}{11}\right) = \frac{60 - 177}{11} = \frac{-117}{11} \approx \mathbf{-10.64 \text{ kN-m}} $$</p>
+$$ \boxed{M_{ab}} = 0.5(8) - 0.375(48) = 4 - 18 = \mathbf{-14 \text{ kN-m}} $$<br />
+$$ \boxed{M_{ba}} = 1.0(8) - 0.375(48) = 8 - 18 = \mathbf{-10 \text{ kN-m}} $$</p>
+<p><strong>驗算</strong>：$M_{bc} = 0.5(8) - 6 = -2$、$M_{bf} = 1.5(8) = 12$ kN-m，節點 $b$：$-10 - 2 + 12 = 0$ ✓；$V_{ba} = (M_{ab}+M_{ba})/4 = -6$ kN，與 $V_{bc} = 6$ kN 相加為零 ✓。</p>
 <hr />
 <h2>5. 關鍵爭議點與進階探討 (Critical Issues &amp; Advanced Discussion)</h2>
 <ul>
 <li><strong>能否不利用上下層對稱性解題？</strong> 可以，但必須多設一個變數。若只用左右對稱，會有 $\theta_b, \theta_f, v_b, v_f$ 四個未知數，配合垂直方向的柱軸向力平衡，將導致聯立方程式暴增，大大增加計算錯誤的風險。在國考中，這種「幾何與載重雙重對稱」的題目，直接運用對稱性降維是必須具備的直覺。</li>
 <li><strong>對稱軸的切法</strong>：對於偶數跨的結構，對稱軸會切過中間跨的中央。這使得我們在處理 $bc$ 桿時，可以利用 $\theta_c = -\theta_b$ 來簡化其彎矩式，這是分析對稱結構時極為標準且強大的技巧。</li>
-</ul></main>
+</ul>
+<p><em>修正日期：2026-11-05（解析勘誤：考卷附圖下方尺寸為 4、2、2、4 m，b、c 兩柱對齊第 1、3 個刻度，bc 長 4 m（題目正本判讀 #3，使用者確認），舊版讀成 2 m；§1 圖說與常見誤讀、§3.5 L1／L2、§4 Step 2–6 重算：M_Fbc −3 → −6 kN-m，θ_b 2.727×10⁻⁴ → 4.0×10⁻⁴ rad 並更正轉向為順時針（舊版誤標逆時針），v_b 2.145 → 2.40 mm，M_ab −13.36 → −14.00 kN-m，M_ba −10.64 → −10.00 kN-m；驗證：傾角變位閉合解與 2D 勁度法兩路徑一致，MISMATCHES: 0）</em></p></main>
 <footer>來源：raw/solutions/SA-2020-2/SA-2020-2.md（知識庫解題內容唯一正本；本頁僅為渲染顯示）</footer>
 
 <script>

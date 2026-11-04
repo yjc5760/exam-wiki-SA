@@ -371,7 +371,7 @@ header .nomat{margin-top:12px;font-size:.8em;opacity:.85}
 <tbody>
 <tr>
 <td>懸臂變位與弦位角</td>
-<td>a 點因柱子傳來的壓力而下沉，形成順時針的弦位角 $R$，必須在 $M_{ab}, M_{ba}$ 的方程式中加入 $+3R$ 的項（定義順時針位移角時，公式內為 $-3(-R) = +3R$）。</td>
+<td>a 點因柱子傳來的壓力而下沉、b 點不動，弦 a→b 逆時針轉動；令 $R = \Delta_a/L$（取正值），順時針為正的弦位角為 $\psi_{ab} = -R$，代入公式 $-3\psi_{ab} = +3R$，所以 $M_{ab}, M_{ba}$ 的方程式中加入 $+3R$。</td>
 <td></td>
 </tr>
 <tr>
@@ -401,7 +401,7 @@ $$FEM_{eh} = - \left( \frac{P(L)(3L)^2}{(4L)^2} + \frac{P(3L)(L)^2}{(4L)^2} \rig
 </li>
 <li>
 <p><strong>底梁懸臂段 a-b (長 $L$)</strong>：<br />
-   a 點下沉 $\Delta_a$，弦位角為順時針，定義 $R = \Delta_a / L$ (順時針為負，代入公式為 $-3(-R) = +3R$)：<br />
+   a 點下沉 $\Delta_a$、b 點不動，弦 a→b 逆時針轉動。定義 $R = \Delta_a / L$（取正值），順時針為正的弦位角 $\psi_{ab} = -R$，代入公式為 $-3\psi_{ab} = -3(-R) = +3R$：<br />
    $$M_{ab} = \frac{2EI}{L} (2\theta_a + \theta_b + 3R) = \mathbf{2k (2\theta_a + \theta_b + 3R)}$$<br />
    $$M_{ba} = \frac{2EI}{L} (2\theta_b + \theta_a + 3R) = \mathbf{2k (2\theta_b + \theta_a + 3R)}$$</p>
 </li>
@@ -485,7 +485,8 @@ $$FEM_{eh} = - \left( \frac{P(L)(3L)^2}{(4L)^2} + \frac{P(3L)(L)^2}{(4L)^2} \rig
 <li><strong>柱體外擴</strong>：因柱承受恆定彎矩 (外側受拉)，兩側柱 ea 與 hd 會像燈籠般向外側膨脹彎曲。</li>
 <li><strong>底部隆起</strong>：載重 P 經由柱體將 a, d 兩端向下壓。由於 b, c 點被支承托住，底梁如同蹺蹺板，a, d 下沉導致中央 b-c 段向上隆起彎曲 (頂部受拉，呈倒 U 型)。a-b 與 c-d 懸臂段呈 S 型彎曲，各有 1 個反曲點。</li>
 </ol>
-<p><em>修正日期：2026-11-04（§1 改為指向題目正本並放重繪附圖（figs/SA-2012-3-fig-1-problem.svg）、加常見誤讀；§5 補解題圖解 figs/SA-2012-3-fig-2-deflected-bmd.svg；刪除建立在虛構「EA 相同」條件上的 §2 第 3 點、§3 陷阱三與 §5(三)；§4 Step 3 第 (4) 式結尾的雙錢號改為單錢號（行內數學式開頭、結尾不配對，渲染不完整）；圖由 gen_SA-2012-3.py 產生，可重跑）</em></p></main>
+<p><em>修正日期：2026-11-04（§1 改為指向題目正本並放重繪附圖（figs/SA-2012-3-fig-1-problem.svg）、加常見誤讀；§5 補解題圖解 figs/SA-2012-3-fig-2-deflected-bmd.svg；刪除建立在虛構「EA 相同」條件上的 §2 第 3 點、§3 陷阱三與 §5(三)；§4 Step 3 第 (4) 式結尾的雙錢號改為單錢號（行內數學式開頭、結尾不配對，渲染不完整）；圖由 gen_SA-2012-3.py 產生，可重跑）</em><br />
+<em>修正日期：2026-11-05（解析勘誤，數值不變：§3.5 L3 與 §4 Step 2(3) 把 a–b 弦位角方向寫成「順時針」，改為逆時針（a 下沉、b 不動），+3R 項與全部答案不變；驗證：2D 勁度法獨立重算 6 個桿端彎矩、3 個節點轉角與 R，MISMATCHES: 0，另以 a–b、e–f 段剪力等於 P 及支承反力各 P 交叉檢核）</em></p></main>
 <footer>來源：raw/solutions/SA-2012-3/SA-2012-3.md（知識庫解題內容唯一正本；本頁僅為渲染顯示）</footer>
 
 <script>

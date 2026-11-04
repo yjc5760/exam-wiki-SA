@@ -43,7 +43,144 @@ header .nomat{margin-top:12px;font-size:.8em;opacity:.85}
 <p class="meta2">主分類 <b>SA-U2-3</b> 靜不定結構之傾角變位法 ｜ 2017 年（民國 106） ｜ 傾角變位法（Slope-Deflection Method）</p>
 <div class="hbtns"><a class="b-study" href="../unit-SA-U2-3.html">🧭 U2-3 單元總覽</a><a class="b-lect" href="../lecture-SA-U2-3.html">📚 U2-3 靜不定結構之傾角變位法 講義</a></div>
 </header>
-<main><h1>考題編號：SA-2017-3</h1>
+<main><details class="problem-src" open><summary><b>📄 題目正本</b>（考卷原文、附圖與判讀清單；不含解法）</summary>
+<h1>SA-2017-3 題目正本</h1>
+<blockquote>
+<p>本檔只記錄考卷上寫了什麼、圖上畫了什麼，不含任何解法。解析見同資料夾 <code>SA-2017-3.md</code>。<br />
+判讀清單經使用者確認前，狀態為「待確認」；確認後本檔原則上不再修改（改動須回考卷原圖並記 log）。</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>項目</th>
+<th>內容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>考卷</td>
+<td><code>raw/exams/SA-2017_結構學.pdf</code>，第 2 頁上半，第三題（圖三）</td>
+</tr>
+<tr>
+<td>考年</td>
+<td>2017（民國 106 年）專技高考結構工程技師「結構學」</td>
+</tr>
+<tr>
+<td>配分</td>
+<td>30 分</td>
+</tr>
+<tr>
+<td>附圖</td>
+<td><code>SA-2017-3-fig-1.png</code></td>
+</tr>
+<tr>
+<td>判讀狀態</td>
+<td><strong>待確認</strong>（2026-11-05 轉錄；PyMuPDF 110 dpi 整頁＋250 dpi 局部放大；盲讀於開啟解析前完成）</td>
+</tr>
+</tbody>
+</table>
+<h2>1. 考卷原文（逐字）</h2>
+<p>三、圖三為剛架結構，尺寸和載重如圖所示，點 A 和點 D 為鉸支承，點 B 和點 C 為固接，所有桿件的彈性模數 E 與斷面慣性矩 I 皆為定值。試以傾角變位法求各桿件端點之彎矩，以及點 A 和點 D 之轉角（需註明方向，採用其它方法計算不予計分）。（30 分）</p>
+<h2>2. 考卷給的公式、附表與參數</h2>
+<ul>
+<li>考卷沒有給任何參考公式或附表。</li>
+<li>附圖為鋼構照片式插圖（柱腳底板、梁柱螺栓接頭），支承型式以題文為準。</li>
+<li>卷首注意事項：㈠可以使用電子計算器。㈡不必抄題，作答時請將試題題號及答案依照順序寫在試卷上，於本試題上作答者，不予計分。㈢本科目除專門名詞或數理公式外，應使用本國文字作答。</li>
+<li>考試時間：2 小時。</li>
+</ul>
+<h2>3. 附圖</h2>
+<p><img alt="SA-2017-3 考卷附圖：門型鋼構架照片式插圖，左柱 AB、右柱 DC 高 4 m，梁 BC 跨 6 m，梁上 45 kN/m 向下均布；右柱外側 C 點與 C 下方 2 m 處各有 60 kN 向左水平力；柱腳為底板與地坪" src="../../raw/solutions/SA-2017-3/SA-2017-3-fig-1.png" /><br />
+<em>證據圖 SA-2017-3-fig-1.png</em></p>
+<p>圖面文字照錄：45 kN/m、B、C、60 kN、2 m、4 m、60 kN、2 m、A、D、6 m、圖三</p>
+<h2>4. 判讀清單</h2>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>項目</th>
+<th>判讀</th>
+<th>圖上／題文依據</th>
+<th>把握</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>A、D</td>
+<td>鉸支承（柱底）</td>
+<td>題文「點 A 和點 D 為鉸支承」；圖為柱腳底板插圖</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>2</td>
+<td>B、C</td>
+<td>剛接節點</td>
+<td>題文「點 B 和點 C 為固接」（指梁柱剛接，非支承）</td>
+<td>確定（解讀）</td>
+</tr>
+<tr>
+<td>3</td>
+<td>幾何</td>
+<td>柱 AB、DC 各高 4 m；梁 BC 跨 6 m</td>
+<td>左側 4 m、下方 6 m 尺寸線</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>4</td>
+<td>剛度</td>
+<td>所有桿件 EI 相同</td>
+<td>題文</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>5</td>
+<td>均布載重</td>
+<td>45 kN/m 向下，梁 BC 全跨</td>
+<td>箭頭範圍 B 至 C</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>6</td>
+<td>水平載重 1</td>
+<td>60 kN 向左，作用於 C 點（梁頂高程）</td>
+<td>箭頭指向 C，與右側尺寸線上端（C）同高</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>7</td>
+<td>水平載重 2</td>
+<td>60 kN 向左，作用於右柱中點（距 C、距 D 各 2 m）</td>
+<td>右側尺寸 2 m＋2 m，箭頭對齊中間刻度</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>8</td>
+<td>指定方法</td>
+<td>傾角變位法（他法不計分）</td>
+<td>題文</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>9</td>
+<td>所求</td>
+<td>各桿件端點彎矩；A、D 轉角（註明方向）</td>
+<td>題文</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>10</td>
+<td>考卷沒有給</td>
+<td>軸向變形是否忽略（未提）</td>
+<td>題文</td>
+<td>確定（解讀）：照慣例忽略</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p><em>轉錄：2026-11-05（SA-U2-3 題目正本推廣・批 2）</em></p>
+</details>
+<hr>
+<h1>考題編號：SA-2017-3</h1>
 <p><strong>主分類：</strong> <code>SA-U2-3</code> 靜不定結構之傾角變位法<br />
 <strong>副分類：</strong> 無<br />
 <strong>分析法：</strong> 傾角變位法（Slope-Deflection Method）<br />

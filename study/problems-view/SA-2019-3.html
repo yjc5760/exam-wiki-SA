@@ -43,7 +43,132 @@ header .nomat{margin-top:12px;font-size:.8em;opacity:.85}
 <p class="meta2">主分類 <b>SA-U2-3</b> 靜不定結構之傾角變位法 ｜ 2019 年（民國 108） ｜ </p>
 <div class="hbtns"><a class="b-study" href="../unit-SA-U2-3.html">🧭 U2-3 單元總覽</a><a class="b-lect" href="../lecture-SA-U2-3.html">📚 U2-3 靜不定結構之傾角變位法 講義</a></div>
 </header>
-<main><h1>考題編號：SA-2019-3</h1>
+<main><details class="problem-src" open><summary><b>📄 題目正本</b>（考卷原文、附圖與判讀清單；不含解法）</summary>
+<h1>SA-2019-3 題目正本</h1>
+<blockquote>
+<p>本檔只記錄考卷上寫了什麼、圖上畫了什麼，不含任何解法。解析見同資料夾 <code>SA-2019-3.md</code>。<br />
+判讀清單經使用者確認前，狀態為「待確認」；確認後本檔原則上不再修改（改動須回考卷原圖並記 log）。</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>項目</th>
+<th>內容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>考卷</td>
+<td><code>raw/exams/SA-2019_結構學.pdf</code>，第 2 頁下半，第三題（圖三）</td>
+</tr>
+<tr>
+<td>考年</td>
+<td>2019（民國 108 年）專技高考結構工程技師「結構學」</td>
+</tr>
+<tr>
+<td>配分</td>
+<td>25 分</td>
+</tr>
+<tr>
+<td>附圖</td>
+<td><code>SA-2019-3-fig-1.png</code>、<code>SA-2019-3-fig-2.png</code></td>
+</tr>
+<tr>
+<td>判讀狀態</td>
+<td><strong>待確認</strong>（2026-11-05 轉錄；PyMuPDF 110 dpi 整頁＋400–500 dpi 局部放大；盲讀於開啟解析前完成）</td>
+</tr>
+</tbody>
+</table>
+<h2>1. 考卷原文（逐字）</h2>
+<p>三、如圖三所示受均布載重 w 之三跨連續梁，考慮支承 B 及支承 C 都向下沉陷，且沉陷量相同。當沉陷量增加時，支承 A 及 D 垂直反力會增加，而支承 B 及 C 垂直反力會減少。試問當沉陷量為多少時，支承 A 垂直反力會增加 0.1 wL？試以傾角變位法求解。以其他方法作答者一律不予以計分。（25 分）</p>
+<h2>2. 考卷給的公式、附表與參數</h2>
+<ul>
+<li>考卷沒有給任何參考公式或附表。</li>
+<li>沉陷量以 w、L、EI 表示（題目未給數值）。</li>
+<li>卷首注意事項：㈠可以使用電子計算器。㈡不必抄題，作答時請將試題題號及答案依照順序寫在試卷上，於本試題上作答者，不予計分。㈢本科目除專門名詞或數理公式外，應使用本國文字作答。</li>
+<li>考試時間：2 小時。</li>
+</ul>
+<h2>3. 附圖</h2>
+<p><img alt="SA-2019-3 考卷附圖原截圖（含滑鼠游標；內容同下圖）" src="../../raw/solutions/SA-2019-3/SA-2019-3-fig-1.png" /><br />
+<em>證據圖 SA-2019-3-fig-1.png</em></p>
+<p><img alt="SA-2019-3 考卷附圖：三跨連續梁 A–B–C–D，A 為鉸支承（三角形），B、C、D 為滾支承（三角形下加滾輪）；三跨皆標 EI, L；全長受均布 w 向下" src="../../raw/solutions/SA-2019-3/SA-2019-3-fig-2.png" /><br />
+<em>證據圖 SA-2019-3-fig-2.png（2026-11-05 自考卷重新擷取 500 dpi，無游標）</em></p>
+<p>圖面文字照錄：w、A、B、C、D、EI, L、EI, L、EI, L、圖三</p>
+<h2>4. 判讀清單</h2>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>項目</th>
+<th>判讀</th>
+<th>圖上／題文依據</th>
+<th>把握</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>A</td>
+<td>鉸支承</td>
+<td>三角形、無滾輪（500 dpi）</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>2</td>
+<td>B、C、D</td>
+<td>滾支承</td>
+<td>三角形下有兩個滾輪</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>3</td>
+<td>跨長與剛度</td>
+<td>三跨各長 L、EI 相同</td>
+<td>每跨標 EI, L</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>4</td>
+<td>載重</td>
+<td>均布 w 向下，A 至 D 全長</td>
+<td>箭頭範圍 A 至 D；題文</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>5</td>
+<td>沉陷</td>
+<td>B、C 同量向下沉陷 Δ（未知，為所求）</td>
+<td>題文</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>6</td>
+<td>所求</td>
+<td>使 A 垂直反力增加 0.1wL 的沉陷量</td>
+<td>題文</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>7</td>
+<td>指定方法</td>
+<td>傾角變位法（他法不計分）</td>
+<td>題文</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>8</td>
+<td>證據圖</td>
+<td>舊 fig-1 左上角有滑鼠游標；新增 fig-2（500 dpi）</td>
+<td>—</td>
+<td>確定</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p><em>轉錄：2026-11-05（SA-U2-3 題目正本推廣・批 2）</em></p>
+</details>
+<hr>
+<h1>考題編號：SA-2019-3</h1>
 <p><strong>主分類：</strong> <code>SA-U2-3</code> 靜不定結構之傾角變位法<br />
 <strong>副分類：</strong> 無<br />
 <strong>標籤：</strong> <code>傾角變位法</code> <code>連續梁</code> <code>支承沉陷</code> <code>對稱性</code></p>
