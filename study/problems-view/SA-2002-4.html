@@ -43,23 +43,171 @@ header .nomat{margin-top:12px;font-size:.8em;opacity:.85}
 <p class="meta2">主分類 <b>SA-U2-3</b> 靜不定結構之傾角變位法 ｜ 2002 年（民國 91） ｜ 傾角變位法</p>
 <div class="hbtns"><a class="b-study" href="../unit-SA-U2-3.html">🧭 U2-3 單元總覽</a><a class="b-lect" href="../lecture-SA-U2-3.html">📚 U2-3 靜不定結構之傾角變位法 講義</a></div>
 </header>
-<main><h1>考題編號：[SA-2002-4]</h1>
+<main><details class="problem-src" open><summary><b>📄 題目正本</b>（考卷原文、附圖與判讀清單；不含解法）</summary>
+<h1>SA-2002-4 題目正本</h1>
+<blockquote>
+<p>本檔只記錄考卷上寫了什麼、圖上畫了什麼，不含任何解法。解析見同資料夾 <code>SA-2002-4.md</code>。<br />
+判讀清單經使用者確認前，狀態為「待確認」；確認後本檔原則上不再修改（改動須回考卷原圖並記 log）。</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>項目</th>
+<th>內容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>考卷</td>
+<td><code>raw/exams/SA-2002_結構學.pdf</code>，第 1 頁（全一頁）最下方，第四題</td>
+</tr>
+<tr>
+<td>考年</td>
+<td>2002（民國 91 年）專技高考結構工程技師「結構學」</td>
+</tr>
+<tr>
+<td>配分</td>
+<td>25 分</td>
+</tr>
+<tr>
+<td>附圖</td>
+<td><code>SA-2002-4-fig-1.png</code></td>
+</tr>
+<tr>
+<td>判讀狀態</td>
+<td><strong>已確認</strong>（2026-11-04 使用者確認。原轉錄：2026-11-04 轉錄；PyMuPDF 150 dpi 整頁＋350–500 dpi 局部放大；盲讀於開啟解析前完成）</td>
+</tr>
+</tbody>
+</table>
+<h2>1. 考卷原文（逐字）</h2>
+<p>四、試用傾角變位法(Slope-deflection method)解此剛架，並作彎矩圖。E＝常數。（25 分）</p>
+<h2>2. 考卷給的公式、附表與參數</h2>
+<ul>
+<li>考卷沒有給任何參考公式或附表；所需公式須自備。</li>
+<li>卷首注意事項：㈠可以使用電子計算器，使用電子計算器計算之試題，需詳列解答過程。㈡不必抄題，作答時請將試題題號及答案依照順序寫在試卷上，於本試題上作答者，不予計分。</li>
+<li>考試時間：2 小時。</li>
+</ul>
+<h2>3. 附圖</h2>
+<p><img alt="SA-2002-4 考卷附圖：門型剛架 A-B-C-D：A、D 柱底固接；B 點水平向右 13kN；梁 BC 標 2I、6m；柱 AB 標 I、6m，柱 CD 標 6m、I" src="../../raw/solutions/SA-2002-4/SA-2002-4-fig-1.png" /><br />
+<em>證據圖 SA-2002-4-fig-1.png</em></p>
+<p>圖面文字照錄：13kN、B、C、2I、6m、I、6m、6m、I、A、D</p>
+<h2>4. 判讀清單</h2>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>項目</th>
+<th>判讀</th>
+<th>圖上／題文依據</th>
+<th>把握</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>A、D 支承</td>
+<td>固接</td>
+<td>柱底水平短線＋斜線（400 dpi）</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>2</td>
+<td>B、C 接合</td>
+<td>剛接</td>
+<td>梁柱交角無鉸圈</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>3</td>
+<td>柱 AB</td>
+<td>長 6 m、慣性矩 I</td>
+<td>柱旁標「I」「6m」</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>4</td>
+<td>柱 CD</td>
+<td>長 6 m、慣性矩 I</td>
+<td>柱旁標「6m」「I」</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>5</td>
+<td>梁 BC</td>
+<td>長 6 m、慣性矩 2I</td>
+<td>梁上標「2I」、下標「6m」</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>6</td>
+<td>E</td>
+<td>常數</td>
+<td>題文「E＝常數」</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>7</td>
+<td>載重</td>
+<td>B 點水平 13 kN 向右</td>
+<td>箭頭指向 B 點、向右</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>8</td>
+<td>指定方法</td>
+<td>傾角變位法</td>
+<td>題文明寫</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>9</td>
+<td>所求</td>
+<td>解剛架（各桿端彎矩）並作彎矩圖</td>
+<td>題文</td>
+<td>確定</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p><em>轉錄：2026-11-04（SA-U2-3 題目正本推廣・批 1；判讀沿用同日盲解稽核紀錄 wiki/queries/盲解紀錄-SA-U2-3a-2026-11-04.md，並回考卷原圖核對）</em><br />
+<em>確認：2026-11-04 使用者確認</em></p>
+</details>
+<hr>
+<h1>考題編號：[SA-2002-4]</h1>
 <p><strong>主分類：</strong> <code>SA-U2-3</code> 結構靜不定分析<br />
 <strong>副分類：</strong> 無<br />
 <strong>分析法：</strong> 傾角變位法<br />
 <strong>標籤：</strong> <code>傾角變位法</code> <code>有側移剛架</code> <code>反對稱變形</code></p>
 <hr />
-<h2>1. 原始題目重述 (Problem Restatement)</h2>
-<p><strong>四、試用傾角變位法(Slope-deflection method)解此剛架，並作彎矩圖。E＝常數。（25 分）</strong></p>
-<p>本題為一單層單跨平面剛架，承受節點水平集中載重：</p>
-<ul>
-<li><strong>幾何尺寸</strong>：柱 $AB$ 長度 $6\text{ m}$，梁 $BC$ 長度 $6\text{ m}$，柱 $CD$ 長度 $6\text{ m}$。</li>
-<li><strong>邊界條件</strong>：節點 A 與 D 為固定端 (Fixed supports)。</li>
-<li><strong>斷面性質</strong>：柱 $AB$ 與 $CD$ 之慣性矩為 $I$，梁 $BC$ 之慣性矩為 $2I$；彈性模數 $E$ 為常數。</li>
-<li><strong>外加載重</strong>：節點 B 承受向右之水平集中載重 $13\text{ kN}$。</li>
-</ul>
-<p><img alt="SA-2002-4 題目附圖：單層單跨剛架，承受節點水平載重" src="../../raw/solutions/SA-2002-4/SA-2002-4-fig-1.png" /></p>
-<p><em>圖說：剛架 ABCD，A、D固定，柱高6m、梁長6m，B點受13kN向右水平力，梁斷面為2I，柱為I。</em></p>
+<h2>1. 題目（考卷原文見題目正本）</h2>
+<blockquote>
+<p>考卷原文、公式／附表、附圖與判讀清單（已確認）見 <a href="SA-2002-4-problem.md"><code>SA-2002-4-problem.md</code></a>。本節只列解題時最容易讀錯的地方與本解使用的記號；題意以題目正本為準。</p>
+</blockquote>
+<p><img alt="SA-2002-4 重繪題目附圖：門型剛架，A、D 固接，B 點水平 13 kN，柱 I、梁 2I，各 6 m" src="../../raw/solutions/SA-2002-4/figs/SA-2002-4-fig-1-problem.svg" /><br />
+<em>重繪自考卷附圖，依判讀清單 #1–#7 重繪。攔：A、D 支承誤讀、梁柱慣性矩 I／2I 標反。</em></p>
+<h3>常見誤讀</h3>
+<table>
+<thead>
+<tr>
+<th>項目</th>
+<th>正確判讀</th>
+<th>常見誤讀</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>A、D 支承</td>
+<td>固接</td>
+<td>鉸接</td>
+</tr>
+<tr>
+<td>彎矩圖受拉側</td>
+<td>柱底外側（迎風側）、柱頂內側；梁 B 端下側、C 端上側</td>
+<td>四處全部畫反（本題舊版解析）</td>
+</tr>
+</tbody>
+</table>
+<p><strong>本解記號：</strong> 桿端彎矩、節點轉角、弦位角一律順時針為正（傾角變位法慣例）。</p>
 <h2>2. 考題核心精神與出題者意圖 (Core Concepts &amp; Examiner's Intent)</h2>
 <ul>
 <li><strong>有側移分析</strong>：本題承受非對稱之水平載重，結構必然發生側移（Sway）。出題者主要測驗考生是否能正確建立並解出包含側移角 $\psi$ 的層剪力方程式（Shear condition）。</li>
@@ -233,17 +381,25 @@ $$ \boxed{M_{DC}} = \frac{EI}{3} \left( \frac{9}{EI} - 3\left(\frac{24}{EI}\righ
 <blockquote>
 <p>📊 彎矩圖繪製詳見文字說明或手寫補充。</p>
 </blockquote>
-<p>依據算出的彎矩值繪製 BMD（彎矩畫在受拉側）：</p>
+<p>依據算出的彎矩值繪製 BMD（彎矩畫在受拉側）：<br />
+桿端彎矩（順時針為正）換成受拉側的規則：沿桿軸 $i\to j$ 看，$M_{ij}&gt;0$ 表示 $i$ 端「下側」（桿軸右手邊）受拉、$M_{ji}&gt;0$ 表示 $j$ 端「上側」（桿軸左手邊）受拉；負值相反。</p>
 <ul>
-<li><strong>柱 AB</strong>：A 端彎矩為負 (逆時針)，受拉側在右側 (內側)，值為 $21\text{ kN-m}$。B 端彎矩為負 (逆時針)，受拉側在左側 (外側)，值為 $18\text{ kN-m}$。</li>
-<li><strong>梁 BC</strong>：B 端彎矩為正 (順時針)，受拉側在上側，值為 $18\text{ kN-m}$。C 端彎矩為正 (順時針)，受拉側在下側，值為 $18\text{ kN-m}$。</li>
-<li><strong>柱 CD</strong>：C 端彎矩為負 (逆時針)，受拉側在左側 (內側)，值為 $18\text{ kN-m}$。D 端彎矩為負 (逆時針)，受拉側在右側 (外側)，值為 $21\text{ kN-m}$。</li>
+<li><strong>柱 AB</strong>（桿軸由 A 往上，右手邊＝右側）：$M_{AB}=-21$ → A 端<strong>左側（外側）受拉</strong> $21\text{ kN-m}$；$M_{BA}=-18$ → B 端<strong>右側（內側）受拉</strong> $18\text{ kN-m}$。兩端異號 → 雙曲率，反曲點距 A $\dfrac{21}{6.5}=3.23\text{ m}$。</li>
+<li><strong>梁 BC</strong>（桿軸由 B 往右，右手邊＝下側）：$M_{BC}=+18$ → B 端<strong>下側受拉</strong> $18\text{ kN-m}$；$M_{CB}=+18$ → C 端<strong>上側受拉</strong> $18\text{ kN-m}$。反曲點在梁中點（距 B 3 m）。</li>
+<li><strong>柱 CD</strong>（桿軸由 D 往上）：$M_{DC}=-21$ → D 端<strong>左側（內側）受拉</strong> $21\text{ kN-m}$；$M_{CD}=-18$ → C 端<strong>右側（外側）受拉</strong> $18\text{ kN-m}$。反曲點距 D 3.23 m。</li>
+<li><strong>角隅連續性檢核</strong>：B 點柱頂內側與梁 B 端下側（內側）同為受拉側 ✓；C 點柱頂外側與梁 C 端上側（外側）同為受拉側 ✓。</li>
+<li><strong>變形形狀檢核</strong>：$\theta_B=\theta_C=9/EI$（順時針）、$\Delta=144/EI$（向右）。柱底切線鉛直、柱頂弦角 $\Delta/6 = 24/EI$ 大於柱頂轉角 $9/EI$ → 柱下段凸向左（左側受拉）、上段凸向右；梁兩端同向順時針轉 → S 形，B 端下凹（下側受拉）。這就是側推門型剛架的標準反對稱 BMD：柱底迎風側、柱頂與梁接合處內側受拉。</li>
 </ul>
 <h2>5. 關鍵爭議點與進階探討 (Critical Issues &amp; Advanced Discussion)</h2>
+<p><img alt="SA-2002-4 變形形狀與彎矩圖：柱雙曲率、梁反對稱" src="../../raw/solutions/SA-2002-4/figs/SA-2002-4-fig-2-deflected-bmd.svg" /><br />
+<em>圖解：左：側推下兩柱雙曲率、梁反對稱，反曲點在柱距底 3.23 m 與梁中點；右：彎矩畫在受拉側。攔：受拉側畫反（柱底畫成內側、梁 B 端畫成上側）。</em></p>
 <ul>
 <li><strong>結構對稱性之利用</strong>：本題剛架在幾何配置與桿件勁度上完全對稱，但承受了反對稱的側向載重 $13\text{ kN}$。因此結構的變形會呈現反對稱（Anti-symmetric）模態。由結果可以看出 $\theta_B = \theta_C$，且 $M_{AB} = M_{DC}$、$M_{BA} = M_{CD}$、$M_{BC} = M_{CB}$。若在考場上熟悉對稱結構承受反對稱載重的特性，可直接假設 $\theta_B = \theta_C$，從而減少一個未知數，大幅加快解題速度。</li>
 <li><strong>層剪力方向判斷</strong>：建立 $M_{AB} + M_{BA} + M_{CD} + M_{DC} = -78$ 此一方程式時，符號正負號極易出錯。建議一律依照「圖解自由體」並堅守靜力平衡方程式，不可死背公式，以避免等號右邊的正負號錯置。</li>
-</ul></main>
+</ul>
+<hr />
+<p><em>修正日期：2026-11-04（數值未變。Step 6 彎矩圖受拉側全部更正：柱 AB 底 右側→左側、頂 左側→右側；梁 B 端 上側→下側、C 端 下側→上側；柱 CD 頂 左側→右側、底 右側→左側；補反曲點位置與角隅、變形形狀檢核。驗證：平面剛架勁度法（EA→∞）重算端彎矩與節點轉角，並由 θ、Δ 變形形狀判定受拉側，MISMATCHES: 0；來源：wiki/queries/盲解比對-SA-U2-3a-2026-11-04.md）</em></p>
+<p><em>修正日期：2026-11-04（§1 改為指向題目正本並放重繪附圖（figs/SA-2002-4-fig-1-problem.svg）、加常見誤讀；§5 補解題圖解 figs/SA-2002-4-fig-2-deflected-bmd.svg；圖由 gen_SA-2002-4.py 產生，可重跑）</em></p></main>
 <footer>來源：raw/solutions/SA-2002-4/SA-2002-4.md（知識庫解題內容唯一正本；本頁僅為渲染顯示）</footer>
 
 <script>

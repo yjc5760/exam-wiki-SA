@@ -43,23 +43,178 @@ header .nomat{margin-top:12px;font-size:.8em;opacity:.85}
 <p class="meta2">主分類 <b>SA-U2-3</b> 靜不定結構之傾角變位法 ｜ 2011 年（民國 100） ｜ 傾角變位法 (Slope-Deflection Method)</p>
 <div class="hbtns"><a class="b-study" href="../unit-SA-U2-3.html">🧭 U2-3 單元總覽</a><a class="b-lect" href="../lecture-SA-U2-3.html">📚 U2-3 靜不定結構之傾角變位法 講義</a></div>
 </header>
-<main><h1>考題編號：SA-2011-2</h1>
+<main><details class="problem-src" open><summary><b>📄 題目正本</b>（考卷原文、附圖與判讀清單；不含解法）</summary>
+<h1>SA-2011-2 題目正本</h1>
+<blockquote>
+<p>本檔只記錄考卷上寫了什麼、圖上畫了什麼，不含任何解法。解析見同資料夾 <code>SA-2011-2.md</code>。<br />
+判讀清單經使用者確認前，狀態為「待確認」；確認後本檔原則上不再修改（改動須回考卷原圖並記 log）。</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>項目</th>
+<th>內容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>考卷</td>
+<td><code>raw/exams/SA-2011_結構學.pdf</code>，第 1 頁中下，第二題</td>
+</tr>
+<tr>
+<td>考年</td>
+<td>2011（民國 100 年）專技高考結構工程技師「結構學」</td>
+</tr>
+<tr>
+<td>配分</td>
+<td>25 分</td>
+</tr>
+<tr>
+<td>附圖</td>
+<td><code>SA-2011-2-fig-1.png</code></td>
+</tr>
+<tr>
+<td>判讀狀態</td>
+<td><strong>已確認</strong>（2026-11-04 使用者確認。原轉錄：2026-11-04 轉錄；PyMuPDF 150 dpi 整頁＋350–500 dpi 局部放大；盲讀於開啟解析前完成）</td>
+</tr>
+</tbody>
+</table>
+<h2>1. 考卷原文（逐字）</h2>
+<p>二、如圖所示之剛架，支承 A 為固定端（fixed）、D 與 E 為鉸接。各桿件之彈性模數與慣性矩乘積（EI）如圖所示，且 EI＝10000 kN-m²。當 B 點承受一 30 kN 垂直載重，CD 桿件之中點亦承受一 16 kN 之垂直載重作用時，試以傾角變位法計算各端點彎矩，並繪出彎矩圖。（若以其他方法計算不予計分）（25 分）</p>
+<h2>2. 考卷給的公式、附表與參數</h2>
+<ul>
+<li>考卷沒有給任何參考公式或附表；所需公式須自備。</li>
+<li>卷首注意事項：㈠可以使用電子計算器。㈡不必抄題，作答時請將試題題號及答案依照順序寫在試卷上，於本試題上作答者，不予計分。㈢本試題之相關公式，請自行合理推知。</li>
+<li>考試時間：2 小時。</li>
+</ul>
+<h2>3. 附圖</h2>
+<p><img alt="SA-2011-2 考卷附圖：梁 A-B-C-D（各 3 m；AB 2EI、BC EI、CD EI），A 左端固接、D 右端鉸支；柱 CE 3 m、EI，E 鉸支；B 點 30 kN 向下；CD 中點 16 kN 向下（距 C 1.5 m）" src="../../raw/solutions/SA-2011-2/SA-2011-2-fig-1.png" /><br />
+<em>證據圖 SA-2011-2-fig-1.png</em></p>
+<p>圖面文字照錄：30 kN、16 kN、A、B、C、D、2EI、EI、EI、EI、1.5 m、E、3 m、3 m、3 m、3 m</p>
+<h2>4. 判讀清單</h2>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>項目</th>
+<th>判讀</th>
+<th>圖上／題文依據</th>
+<th>把握</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>A</td>
+<td>梁左端固接</td>
+<td>牆面</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>2</td>
+<td>D</td>
+<td>梁右端鉸支</td>
+<td>三角形支承</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>3</td>
+<td>E</td>
+<td>柱底鉸支</td>
+<td>三角形支承</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>4</td>
+<td>B</td>
+<td>AB 與 BC 斷面變化點，剛接連續</td>
+<td>粗細線交界，無鉸圈</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>5</td>
+<td>C</td>
+<td>梁與柱 CE 剛接</td>
+<td>節點</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>6</td>
+<td>尺寸</td>
+<td>AB = BC = CD = 3 m；CE = 3 m</td>
+<td>尺寸線</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>7</td>
+<td>剛度</td>
+<td>AB 2EI；BC、CD、CE EI；EI = 10000 kN-m²</td>
+<td>圖標＋題文</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>8</td>
+<td>載重</td>
+<td>B 點 30 kN 向下；CD 中點（距 C 1.5 m）16 kN 向下</td>
+<td>箭頭＋1.5 m 尺寸</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>9</td>
+<td>指定方法</td>
+<td>傾角變位法（他法不計分）</td>
+<td>題文</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>10</td>
+<td>所求</td>
+<td>各端點彎矩並繪彎矩圖</td>
+<td>題文</td>
+<td>確定</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p><em>轉錄：2026-11-04（SA-U2-3 題目正本推廣・批 1；判讀沿用同日盲解稽核紀錄 wiki/queries/盲解紀錄-SA-U2-3a-2026-11-04.md，並回考卷原圖核對）</em><br />
+<em>確認：2026-11-04 使用者確認</em></p>
+</details>
+<hr>
+<h1>考題編號：SA-2011-2</h1>
 <p><strong>主分類：</strong> <code>SA-U2-3</code> 靜不定結構之傾角變位法<br />
 <strong>副分類：</strong> 無<br />
 <strong>分析法：</strong> 傾角變位法 (Slope-Deflection Method)<br />
 <strong>標籤：</strong> <code>傾角變位法</code>, <code>有側移剛架</code>, <code>修正固端彎矩</code>, <code>剪力平衡</code></p>
 <hr />
-<h2>1. 原始題目重述 (Problem Restatement)</h2>
-<p>如圖所示之剛架，支承 A 為固定端 (fixed)、D 與 E 為鉸接。各桿件之彈性模數與慣性矩乘積 ($EI$) 如圖所示，且 $EI = 10000\text{ kN-m}^2$。當 B 點承受一 $30\text{ kN}$ 垂直載重，CD 桿件之中點亦承受一 $16\text{ kN}$ 之垂直載重作用時，試以<strong>傾角變位法</strong>計算各端點彎矩，並繪出彎矩圖。(若以其他方法計算不予計分) (25 分)</p>
-<ul>
-<li><strong>桿件長度與勁度：</strong></li>
-<li>AB 桿：$L = 3\text{ m}, EI_{AB} = 2EI$</li>
-<li>BC 桿：$L = 3\text{ m}, EI_{BC} = EI$</li>
-<li>CD 桿：$L = 3\text{ m}, EI_{CD} = EI$</li>
-<li>CE 桿：$L = 3\text{ m}, EI_{CE} = EI$</li>
-</ul>
-<p><img alt="SA-2011-2 題目附圖：包含A點固定端、D、E點鉸接，B點有集中載重30kN向下，CD桿有中點集中載重16kN向下" src="../../raw/solutions/SA-2011-2/SA-2011-2-fig-1.png" /></p>
-<p><em>圖說：結構幾何與載重示意圖。A(固定)、B(無支承)、C(無支承但與D, E連接)、D(鉸接)、E(鉸接)。AB、BC、CD、CE 桿長均為 3m。B點受 30kN 垂直向下力，CD中點受 16kN 垂直向下力。</em></p>
+<h2>1. 題目（考卷原文見題目正本）</h2>
+<blockquote>
+<p>考卷原文、公式／附表、附圖與判讀清單（已確認）見 <a href="SA-2011-2-problem.md"><code>SA-2011-2-problem.md</code></a>。本節只列解題時最容易讀錯的地方與本解使用的記號；題意以題目正本為準。</p>
+</blockquote>
+<p><img alt="SA-2011-2 重繪題目附圖：剛架 A 固接、D、E 鉸支，AB 2EI，B 點 30 kN，CD 中點 16 kN" src="../../raw/solutions/SA-2011-2/figs/SA-2011-2-fig-1-problem.svg" /><br />
+<em>重繪自考卷附圖，依判讀清單 #1–#8 重繪。攔：AB 慣性矩、16 kN 作用點、D／E 支承誤讀。</em></p>
+<h3>常見誤讀</h3>
+<table>
+<thead>
+<tr>
+<th>項目</th>
+<th>正確判讀</th>
+<th>常見誤讀</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>AB 剛度</td>
+<td>2EI</td>
+<td>EI</td>
+</tr>
+<tr>
+<td>16 kN 作用點</td>
+<td>CD 中點（距 C 1.5 m）</td>
+<td>D 點</td>
+</tr>
+</tbody>
+</table>
+<p><strong>本解記號：</strong> 桿端彎矩、節點轉角、弦位角一律順時針為正（傾角變位法慣例）。</p>
 <h2>2. 考題核心精神與出題者意圖 (Core Concepts &amp; Examiner's Intent)</h2>
 <p>本題測驗考生使用<strong>傾角變位法</strong>分析具局部變位剛架的標準作業流程。出題者刻意設計了幾個關鍵考點：</p>
 <ol>
@@ -301,6 +456,8 @@ $$14x + 12\left( 15 - \frac{11}{3}x \right) = 27 \Rightarrow 14x + 180 - 44x = 2
 </ul>
 <p><em>(平衡驗算：$M_{BA}+M_{BC} = -22.27+22.27=0$；$M_{CB}+M_{CD}+M_{CE} = 16.40-12.70-3.70=0$。計算無誤！)</em></p>
 <h2>5. 關鍵爭議點與進階探討 (Critical Issues &amp; Advanced Discussion)</h2>
+<p><img alt="SA-2011-2 變形形狀與彎矩圖" src="../../raw/solutions/SA-2011-2/figs/SA-2011-2-fig-2-deflected-bmd.svg" /><br />
+<em>圖解：無側移剛架；C 節點 16.40 − 12.70 − 3.70 = 0。攔：C 節點彎矩不平衡、AB 段畫成單一斜率。</em></p>
 <ul>
 <li>
 <p><strong>剪力平衡式的正負號爭議</strong>：<br />
@@ -315,7 +472,8 @@ $$14x + 12\left( 15 - \frac{11}{3}x \right) = 27 \Rightarrow 14x + 180 - 44x = 2
 <p><strong>固端彎矩的分配與修正</strong>：<br />
   在計算 CD 桿的 FEM 時，可以直接背誦單端固定、單端鉸接的固端彎矩公式 ($-\frac{3PL}{16}$)，但如果不熟練，利用「雙端固定公式再疊加一半釋放彎矩」的推導方法 ($FEM_C^{mod} = FEM_{CD} - 0.5 FEM_{DC}$) 是考場上最不容易出錯的策略。</p>
 </li>
-</ul></main>
+</ul>
+<p><em>修正日期：2026-11-04（§1 改為指向題目正本並放重繪附圖（figs/SA-2011-2-fig-1-problem.svg）、加常見誤讀；§5 補解題圖解 figs/SA-2011-2-fig-2-deflected-bmd.svg；圖由 gen_SA-2011-2.py 產生，可重跑）</em></p></main>
 <footer>來源：raw/solutions/SA-2011-2/SA-2011-2.md（知識庫解題內容唯一正本；本頁僅為渲染顯示）</footer>
 
 <script>

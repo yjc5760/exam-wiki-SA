@@ -43,18 +43,178 @@ header .nomat{margin-top:12px;font-size:.8em;opacity:.85}
 <p class="meta2">主分類 <b>SA-U2-3</b> 靜不定結構之傾角變位法 ｜ 2010 年（民國 99） ｜ 傾角撓度法 (Slope-Deflection Method)</p>
 <div class="hbtns"><a class="b-study" href="../unit-SA-U2-3.html">🧭 U2-3 單元總覽</a><a class="b-lect" href="../lecture-SA-U2-3.html">📚 U2-3 靜不定結構之傾角變位法 講義</a></div>
 </header>
-<main><h1>考題編號：SA-2010-2</h1>
+<main><details class="problem-src" open><summary><b>📄 題目正本</b>（考卷原文、附圖與判讀清單；不含解法）</summary>
+<h1>SA-2010-2 題目正本</h1>
+<blockquote>
+<p>本檔只記錄考卷上寫了什麼、圖上畫了什麼，不含任何解法。解析見同資料夾 <code>SA-2010-2.md</code>。<br />
+判讀清單經使用者確認前，狀態為「待確認」；確認後本檔原則上不再修改（改動須回考卷原圖並記 log）。</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>項目</th>
+<th>內容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>考卷</td>
+<td><code>raw/exams/SA-2010_結構學.pdf</code>，第 1 頁下方，第二題</td>
+</tr>
+<tr>
+<td>考年</td>
+<td>2010（民國 99 年）專技高考結構工程技師「結構學」</td>
+</tr>
+<tr>
+<td>配分</td>
+<td>30 分</td>
+</tr>
+<tr>
+<td>附圖</td>
+<td><code>SA-2010-2-fig-1.png</code></td>
+</tr>
+<tr>
+<td>判讀狀態</td>
+<td><strong>已確認</strong>（2026-11-04 使用者確認。原轉錄：2026-11-04 轉錄；PyMuPDF 150 dpi 整頁＋350–500 dpi 局部放大；盲讀於開啟解析前完成）</td>
+</tr>
+</tbody>
+</table>
+<h2>1. 考卷原文（逐字）</h2>
+<p>二、如圖所示之剛架（frame），其支承點A為固定端（fixed end），而支承點D則為滾支承。另外，構件AC與構件CD之彈性模數與慣性矩乘積分別為EI及 2EI，且EI = 1000 kN-m²。請計算：㈠當B點承受一水平向左載重 200 kN時，C點之轉角；㈡當C點承受一逆時針方向力矩 50 kN-m時，B點之水平變位。（30 分）</p>
+<h2>2. 考卷給的公式、附表與參數</h2>
+<ul>
+<li>考卷沒有給任何參考公式或附表；所需公式須自備。</li>
+<li>卷首注意事項：㈠可以使用電子計算器。㈡不必抄題，作答時請將試題題號及答案依照順序寫在試卷上，於本試題上作答者，不予計分。</li>
+<li>考試時間：2 小時。</li>
+</ul>
+<h2>3. 附圖</h2>
+<p><img alt="SA-2010-2 考卷附圖：L 形剛架：柱 A-B-C 高 10 m（B 為中點實心點），A 柱底固接；梁 C-D 10 m（2EI），D 左端滾支" src="../../raw/solutions/SA-2010-2/SA-2010-2-fig-1.png" /><br />
+<em>證據圖 SA-2010-2-fig-1.png</em></p>
+<p>圖面文字照錄：10 m、D、C、2EI、5 m、EI、B、5 m、A</p>
+<h2>4. 判讀清單</h2>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>項目</th>
+<th>判讀</th>
+<th>圖上／題文依據</th>
+<th>把握</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>A</td>
+<td>柱底固接</td>
+<td>400 dpi</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>2</td>
+<td>D</td>
+<td>滾支承於水平面（僅垂直反力）</td>
+<td>圓形滾輪</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>3</td>
+<td>B</td>
+<td>柱中點（實心點，非鉸）</td>
+<td>實心小圓點</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>4</td>
+<td>C</td>
+<td>剛接角點</td>
+<td>無鉸圈</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>5</td>
+<td>AC</td>
+<td>10 m，EI</td>
+<td>5 m＋5 m、標 EI</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>6</td>
+<td>CD</td>
+<td>10 m，2EI</td>
+<td>標 10 m、2EI</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>7</td>
+<td>EI</td>
+<td>1000 kN-m²</td>
+<td>題文</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>8</td>
+<td>載重</td>
+<td>㈠ B 點水平 200 kN 向左；㈡ C 點逆時針 50 kN-m（兩個獨立載重情況）</td>
+<td>題文</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>9</td>
+<td>指定方法</td>
+<td>未指定</td>
+<td>題文</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>10</td>
+<td>所求</td>
+<td>㈠ θ_C；㈡ B 點水平變位</td>
+<td>題文</td>
+<td>確定</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p><em>轉錄：2026-11-04（SA-U2-3 題目正本推廣・批 1；判讀沿用同日盲解稽核紀錄 wiki/queries/盲解紀錄-SA-U2-3a-2026-11-04.md，並回考卷原圖核對）</em><br />
+<em>確認：2026-11-04 使用者確認</em></p>
+</details>
+<hr>
+<h1>考題編號：SA-2010-2</h1>
 <p><strong>主分類：</strong> <code>SA-U2-3</code> 靜不定結構之傾角變位法<br />
 <strong>副分類：</strong> 無<br />
 <strong>分析法：</strong> 傾角撓度法 (Slope-Deflection Method)<br />
 <strong>標籤：</strong> <code>傾角撓度法</code>, <code>剛架</code>, <code>側移</code>, <code>固端彎矩</code>, <code>剪力方程式</code></p>
 <hr />
-<h2>1. 原始題目重述 (Problem Restatement)</h2>
-<p>如圖所示之剛架 (frame)，其支承點 A 為固定端 (fixed end)，而支承點 D 則為滾支承。另外，構件 AC 與構件 CD 之彈性模數與慣性矩乘積分別為 $EI$ 及 $2EI$，且 $EI = 1000\text{ kN-m}^2$。請計算：<br />
-(一) 當 B 點承受一水平向左載重 $200\text{ kN}$ 時，C 點之轉角。<br />
-(二) 當 C 點承受一逆時針方向力矩 $50\text{ kN-m}$ 時，B 點之水平變位。<br />
-（30 分）</p>
-<p><em>(註：圖中 AC 為垂直柱，高度 10m，B 為中點；CD 為水平梁，長度 10m)</em></p>
+<h2>1. 題目（考卷原文見題目正本）</h2>
+<blockquote>
+<p>考卷原文、公式／附表、附圖與判讀清單（已確認）見 <a href="SA-2010-2-problem.md"><code>SA-2010-2-problem.md</code></a>。本節只列解題時最容易讀錯的地方與本解使用的記號；題意以題目正本為準。</p>
+</blockquote>
+<p><img alt="SA-2010-2 重繪題目附圖：L 形剛架，A 固接、柱 AC 10 m（EI）、B 為中點，梁 CD 10 m（2EI）、D 滾支" src="../../raw/solutions/SA-2010-2/figs/SA-2010-2-fig-1-problem.svg" /><br />
+<em>重繪自考卷附圖，依判讀清單 #1–#7 重繪（考卷附圖未畫載重）。攔：B 讀成鉸、D 讀成鉸支。</em></p>
+<h3>常見誤讀</h3>
+<table>
+<thead>
+<tr>
+<th>項目</th>
+<th>正確判讀</th>
+<th>常見誤讀</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>B</td>
+<td>柱中點（實心點，非鉸）</td>
+<td>內鉸</td>
+</tr>
+<tr>
+<td>D</td>
+<td>滾支承（只有垂直反力）</td>
+<td>鉸支承</td>
+</tr>
+</tbody>
+</table>
+<p><strong>本解記號：</strong> 桿端彎矩、節點轉角、弦位角一律順時針為正（傾角變位法慣例）。</p>
 <h2>2. 考題核心精神與出題者意圖 (Core Concepts &amp; Examiner's Intent)</h2>
 <p>本題的核心精神在於測驗考生對於<strong>具側移剛架 (Sway Frame) 的傾角撓度法</strong>分析能力。出題者透過改變支承條件及載重模式，考驗考生是否能靈活運用傾角撓度法的基礎原理：</p>
 <ol>
@@ -282,7 +442,8 @@ $$ \boxed{ \Delta_{Bx} = \frac{5}{56}\text{ m} \ (\text{向左}) } $$</p>
 <li><strong>剪力方程式的替代推導方法</strong>：許多考生在處理具有剛性側移的傾角撓度法時，容易在「剪力方程式」卡關。除了本題展示的「分離體力矩平衡法」外，也可以利用「虛功原理（單位力法）」來推導層剪力方程式，但對於直柱且載重單純的題目，直接取整體自由體的力矩平衡是最直觀且不易出錯的做法。</li>
 <li><strong>計算位移的方法選擇</strong>：在第二小題中，由於構件 AC 上無橫向載重，其內力狀態屬於純彎曲（剪力為零），這是一個極為特殊的邊界條件。因此，利用彈性曲線的二重積分法（$EI v'' = -M$）能最快求得特定點位移。若使用共軛梁法，也必須正確轉換邊界條件，但過程可能會比直接積分多出一些手續。</li>
 <li><strong>符號慣例的一致性</strong>：本題極度仰賴符號定義的嚴謹性。不論是固端彎矩、端彎矩，或是外加力矩，皆建議統一採取「順時針為正」的慣例，只要在計算全過程中堅持不變，最終所得的負號就能毫無疑慮地解釋為逆時針或反向位移。</li>
-</ul></main>
+</ul>
+<p><em>修正日期：2026-11-04（§1 改為指向題目正本並放重繪附圖（figs/SA-2010-2-fig-1-problem.svg）、加常見誤讀；圖由 gen_SA-2010-2.py 產生，可重跑）</em></p></main>
 <footer>來源：raw/solutions/SA-2010-2/SA-2010-2.md（知識庫解題內容唯一正本；本頁僅為渲染顯示）</footer>
 
 <script>

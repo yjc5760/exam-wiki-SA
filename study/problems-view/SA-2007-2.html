@@ -43,24 +43,164 @@ header .nomat{margin-top:12px;font-size:.8em;opacity:.85}
 <p class="meta2">主分類 <b>SA-U2-3</b> 靜不定結構之傾角變位法 ｜ 2007 年（民國 96） ｜ 傾角變位法</p>
 <div class="hbtns"><a class="b-study" href="../unit-SA-U2-3.html">🧭 U2-3 單元總覽</a><a class="b-lect" href="../lecture-SA-U2-3.html">📚 U2-3 靜不定結構之傾角變位法 講義</a></div>
 </header>
-<main><h1>考題編號：[SA-2007-2]</h1>
+<main><details class="problem-src" open><summary><b>📄 題目正本</b>（考卷原文、附圖與判讀清單；不含解法）</summary>
+<h1>SA-2007-2 題目正本</h1>
+<blockquote>
+<p>本檔只記錄考卷上寫了什麼、圖上畫了什麼，不含任何解法。解析見同資料夾 <code>SA-2007-2.md</code>。<br />
+判讀清單經使用者確認前，狀態為「待確認」；確認後本檔原則上不再修改（改動須回考卷原圖並記 log）。</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>項目</th>
+<th>內容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>考卷</td>
+<td><code>raw/exams/SA-2007_結構學.pdf</code>，第 1 頁下半，第二題</td>
+</tr>
+<tr>
+<td>考年</td>
+<td>2007（民國 96 年）專技高考結構工程技師「結構學」</td>
+</tr>
+<tr>
+<td>配分</td>
+<td>25 分</td>
+</tr>
+<tr>
+<td>附圖</td>
+<td><code>SA-2007-2-fig-1.png</code></td>
+</tr>
+<tr>
+<td>判讀狀態</td>
+<td><strong>已確認</strong>（2026-11-04 使用者確認。原轉錄：2026-11-04 轉錄；PyMuPDF 150 dpi 整頁＋350–500 dpi 局部放大；盲讀於開啟解析前完成）</td>
+</tr>
+</tbody>
+</table>
+<h2>1. 考卷原文（逐字）</h2>
+<p>二、如圖所示之剛架（frame），其構架高 4 m，跨距為 12 m，點 A、B 為固接（fixed），E 點為鉸接（hinge）。若每根桿件之彈性模數 E 為常數；各桿件之慣性矩（I 或 2I）分別標示如圖示，且 I 值亦為常數。則在圖示載重下，試求出每根桿件之結點彎矩。（25 分）</p>
+<h2>2. 考卷給的公式、附表與參數</h2>
+<ul>
+<li>考卷沒有給任何參考公式或附表；所需公式須自備。</li>
+<li>卷首注意事項：㈠可以使用電子計算器。㈡不必抄題，作答時請將試題題號及答案依照順序寫在試卷上，於本試題上作答者，不予計分。</li>
+<li>考試時間：2 小時。</li>
+</ul>
+<h2>3. 附圖</h2>
+<p><img alt="SA-2007-2 考卷附圖：剛架：梁 C-D-E（各 6m、2I），柱 AC、BD（高 4m、I），A、B 柱底固接，E 梁右端三角形支承；梁全長 2 kN/m 向下；8 kN 水平向右作用於 AC 柱中點" src="../../raw/solutions/SA-2007-2/SA-2007-2-fig-1.png" /><br />
+<em>證據圖 SA-2007-2-fig-1.png</em></p>
+<p>圖面文字照錄：2 kN/m、C、2I、D、2I、E、2 m、8 kN、I、I、2 m、A、B、6 m、6 m</p>
+<h2>4. 判讀清單</h2>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>項目</th>
+<th>判讀</th>
+<th>圖上／題文依據</th>
+<th>把握</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>A、B</td>
+<td>柱底固接</td>
+<td>400 dpi</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>2</td>
+<td>E</td>
+<td>梁右端鉸支承</td>
+<td>三角形支承＋題文</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>3</td>
+<td>梁</td>
+<td>CD = DE = 6 m，2I</td>
+<td>圖標</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>4</td>
+<td>柱</td>
+<td>AC、BD 高 4 m，I</td>
+<td>圖標「I」；左側 2 m＋2 m</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>5</td>
+<td>均布載重</td>
+<td>2 kN/m 向下，C 至 E 全長</td>
+<td>箭頭範圍由 C 至 E</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>6</td>
+<td>集中載重</td>
+<td>8 kN 水平向右，作用於 AC 距 A 2 m</td>
+<td>左側尺寸 2 m＋2 m</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>7</td>
+<td>指定方法</td>
+<td>未指定</td>
+<td>題文</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>8</td>
+<td>所求</td>
+<td>每根桿件之結點彎矩</td>
+<td>題文</td>
+<td>確定</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p><em>轉錄：2026-11-04（SA-U2-3 題目正本推廣・批 1；判讀沿用同日盲解稽核紀錄 wiki/queries/盲解紀錄-SA-U2-3a-2026-11-04.md，並回考卷原圖核對）</em><br />
+<em>確認：2026-11-04 使用者確認</em></p>
+</details>
+<hr>
+<h1>考題編號：[SA-2007-2]</h1>
 <p><strong>主分類：</strong> <code>SA-U2-3</code> 靜不定結構之傾角變位法<br />
 <strong>副分類：</strong> 無<br />
 <strong>分析法：</strong> 傾角變位法<br />
 <strong>標籤：</strong> <code>無側移剛架</code> <code>修正傾角撓度法</code> <code>固端彎矩</code></p>
 <hr />
-<h2>1. 原始題目重述 (Problem Restatement)</h2>
-<p>如圖所示之剛架 (frame)，其構架高 $4 \text{ m}$，跨距為 $12 \text{ m}$，點 A、B 為固接 (fixed)，E 點為鉸接 (hinge)。若每根桿件之彈性模數 $E$ 為常數；各桿件之慣性矩 ($I$ 或 $2I$) 分別標示如圖示，且 $I$ 值亦為常數。則在圖示載重下，試求出每根桿件之結點彎矩。(25分)</p>
-<p><img alt="SA-2007-2 題目附圖：包含垂直與水平桿件之無側移剛架" src="../../raw/solutions/SA-2007-2/SA-2007-2-fig-1.png" /></p>
-<p><em>圖說：</em></p>
-<ul>
-<li><em>A 點與 B 點為底部固定端，上方垂直桿件 AC 長度 $4 \text{ m}$ ($I$)，BD 長度 $4 \text{ m}$ ($I$)。</em></li>
-<li><em>AC 桿件中點承受水平向右 $8 \text{ kN}$ 集中載重。</em></li>
-<li><em>頂部水平桿件 CE 總長 $12 \text{ m}$。CD 長度 $6 \text{ m}$ ($2I$)，DE 長度 $6 \text{ m}$ ($2I$)。</em></li>
-<li><em>C 點為 AC 與 CD 剛接點；D 點為 BD 與 CD、DE 剛接點。</em></li>
-<li><em>E 點為最右側鉸接支承 (hinge support)。</em></li>
-<li><em>水平桿件 CE 承受向下均佈載重 $2 \text{ kN/m}$。</em></li>
-</ul>
+<h2>1. 題目（考卷原文見題目正本）</h2>
+<blockquote>
+<p>考卷原文、公式／附表、附圖與判讀清單（已確認）見 <a href="SA-2007-2-problem.md"><code>SA-2007-2-problem.md</code></a>。本節只列解題時最容易讀錯的地方與本解使用的記號；題意以題目正本為準。</p>
+</blockquote>
+<p><img alt="SA-2007-2 重繪題目附圖：剛架 A、B 固接、E 鉸支承，梁 C–E 2 kN/m，AC 中點 8 kN" src="../../raw/solutions/SA-2007-2/figs/SA-2007-2-fig-1-problem.svg" /><br />
+<em>重繪自考卷附圖，依判讀清單 #1–#6 重繪。攔：均布載重範圍、8 kN 作用點、E 支承誤讀。</em></p>
+<h3>常見誤讀</h3>
+<table>
+<thead>
+<tr>
+<th>項目</th>
+<th>正確判讀</th>
+<th>常見誤讀</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>8 kN 作用點</td>
+<td>AC 柱中點（距 A 2 m）</td>
+<td>柱頂 C</td>
+</tr>
+<tr>
+<td>均布載重範圍</td>
+<td>C 至 E 全長 12 m</td>
+<td>只在 CD 跨</td>
+</tr>
+</tbody>
+</table>
+<p><strong>本解記號：</strong> 桿端彎矩、節點轉角、弦位角一律順時針為正（傾角變位法慣例）。</p>
 <h2>2. 考題核心精神與出題者意圖 (Core Concepts &amp; Examiner's Intent)</h2>
 <ul>
 <li><strong>無側移剛架之判定：</strong> 考驗考生對於邊界條件的敏銳度。最右側的 E 點為鉸接支承，提供了水平與垂直方向的拘束。加上忽略桿件軸向變形的假設，剛架將無側移 ($\Delta = 0$)。</li>
@@ -280,7 +420,8 @@ $\implies \boxed{EI\theta_D = \frac{85}{110} = \frac{17}{22} \approx 0.7727}$</p
 <ul>
 <li><strong>無側移假設之成立要件：</strong> 剛架的無側移特性除了依靠 E 點的鉸接支承提供約束外，還基於「忽略桿件軸向變形」的假設。實務上高層建築或大跨徑結構若軸向力極大，仍會產生微小側移；但在國考中，若無特別註明，皆視橫樑具無窮大軸向勁度。</li>
 <li><strong>不使用修正公式的解法比較：</strong> 若不使用修正公式，則 $M_{DE} = -6 + \frac{2}{3}EI(2\theta_D + \theta_E)$，$M_{ED} = 6 + \frac{2}{3}EI(2\theta_E + \theta_D) = 0$。由 $\sum M_E = 0$ 得到 $\theta_E = -0.5\theta_D - \frac{9}{EI}$。將其代回 $M_{DE}$ 同樣可得到 $M_{DE} = -9 + EI\theta_D$。雖然結果完全一致，但在考場上徒增一個未知數 $\theta_E$ 會增加聯立方程式的維度與計算出錯率，強烈建議直接熟記修正傾角撓度公式。</li>
-</ul></main>
+</ul>
+<p><em>修正日期：2026-11-04（§1 改為指向題目正本並放重繪附圖（figs/SA-2007-2-fig-1-problem.svg）、加常見誤讀；圖由 gen_SA-2007-2.py 產生，可重跑）</em></p></main>
 <footer>來源：raw/solutions/SA-2007-2/SA-2007-2.md（知識庫解題內容唯一正本；本頁僅為渲染顯示）</footer>
 
 <script>

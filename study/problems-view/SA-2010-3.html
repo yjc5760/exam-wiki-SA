@@ -43,17 +43,159 @@ header .nomat{margin-top:12px;font-size:.8em;opacity:.85}
 <p class="meta2">主分類 <b>SA-U2-3</b> 靜不定結構之傾角變位法 ｜ 2010 年（民國 99） ｜ 傾角撓度法 (Slope-Deflection Method)</p>
 <div class="hbtns"><a class="b-study" href="../unit-SA-U2-3.html">🧭 U2-3 單元總覽</a><a class="b-lect" href="../lecture-SA-U2-3.html">📚 U2-3 靜不定結構之傾角變位法 講義</a></div>
 </header>
-<main><h1>考題編號：SA-2010-3</h1>
+<main><details class="problem-src" open><summary><b>📄 題目正本</b>（考卷原文、附圖與判讀清單；不含解法）</summary>
+<h1>SA-2010-3 題目正本</h1>
+<blockquote>
+<p>本檔只記錄考卷上寫了什麼、圖上畫了什麼，不含任何解法。解析見同資料夾 <code>SA-2010-3.md</code>。<br />
+判讀清單經使用者確認前，狀態為「待確認」；確認後本檔原則上不再修改（改動須回考卷原圖並記 log）。</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>項目</th>
+<th>內容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>考卷</td>
+<td><code>raw/exams/SA-2010_結構學.pdf</code>，第 2 頁上半，第三題</td>
+</tr>
+<tr>
+<td>考年</td>
+<td>2010（民國 99 年）專技高考結構工程技師「結構學」</td>
+</tr>
+<tr>
+<td>配分</td>
+<td>25 分</td>
+</tr>
+<tr>
+<td>附圖</td>
+<td><code>SA-2010-3-fig-1.png</code>、<code>SA-2010-3-fig-2.png</code></td>
+</tr>
+<tr>
+<td>判讀狀態</td>
+<td><strong>已確認</strong>（2026-11-04 使用者確認。原轉錄：2026-11-04 轉錄；PyMuPDF 150 dpi 整頁＋350–500 dpi 局部放大；盲讀於開啟解析前完成）</td>
+</tr>
+</tbody>
+</table>
+<h2>1. 考卷原文（逐字）</h2>
+<p>三、如圖所示之剛架，其支承點 A 與 D 均為固定端，同時每根構件之彈性模數與慣性矩乘積均為常數值 EI。當 B 點承受一水平載重 P 且 E 點承受一垂直載重 2P 時，請以傾角變位法（slope-deflection method）計算 A、B、C、D 各節點之彎矩。（若以其他方法計算不予計分）（25 分）</p>
+<h2>2. 考卷給的公式、附表與參數</h2>
+<ul>
+<li>考卷沒有給任何參考公式或附表；所需公式須自備。</li>
+<li>卷首注意事項：㈠可以使用電子計算器。㈡不必抄題，作答時請將試題題號及答案依照順序寫在試卷上，於本試題上作答者，不予計分。</li>
+<li>考試時間：2 小時。</li>
+</ul>
+<h2>3. 附圖</h2>
+<p><img alt="SA-2010-3 考卷附圖：梯形剛架：A、D 固接，斜柱 AB、CD，梁 BC，E 為 BC 中點；B 點 P 向右、E 點 2P 向下；水平 4 段 L/2、高 √3L/2" src="../../raw/solutions/SA-2010-3/SA-2010-3-fig-1.png" /><br />
+<em>證據圖 SA-2010-3-fig-1.png</em></p>
+<p><img alt="SA-2010-3 考卷附圖：梯形剛架：A、D 固接，斜柱 AB、CD，梁 BC，E 為 BC 中點；B 點 P 向右、E 點 2P 向下；水平 4 段 L/2、高 √3L/2" src="../../raw/solutions/SA-2010-3/SA-2010-3-fig-2.png" /><br />
+<em>證據圖 SA-2010-3-fig-2.png（2026-11-04 由考卷重新擷取 500 dpi；原 fig-1 截圖含游標圖示）</em></p>
+<p>圖面文字照錄：P、2P、B、E、C、√3L/2、A、D、L/2、L/2、L/2、L/2</p>
+<h2>4. 判讀清單</h2>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>項目</th>
+<th>判讀</th>
+<th>圖上／題文依據</th>
+<th>把握</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>A、D</td>
+<td>固接</td>
+<td>斜線填充</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>2</td>
+<td>幾何</td>
+<td>A(0,0)、B(L/2, √3L/2)、C(3L/2, √3L/2)、D(2L,0)；AB、CD 長 L（傾角 60°），BC 長 L</td>
+<td>水平 4 段 L/2、高 √3L/2</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>3</td>
+<td>E</td>
+<td>BC 中點</td>
+<td>E 位於第二、三段 L/2 交界</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>4</td>
+<td>EI</td>
+<td>各桿相同</td>
+<td>題文</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>5</td>
+<td>載重</td>
+<td>B 點水平 P 向右；E 點垂直 2P 向下</td>
+<td>箭頭</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>6</td>
+<td>指定方法</td>
+<td>傾角變位法（他法不計分）</td>
+<td>題文</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>7</td>
+<td>所求</td>
+<td>A、B、C、D 各節點之彎矩（桿端彎矩）</td>
+<td>題文</td>
+<td>確定</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p><em>轉錄：2026-11-04（SA-U2-3 題目正本推廣・批 1；判讀沿用同日盲解稽核紀錄 wiki/queries/盲解紀錄-SA-U2-3a-2026-11-04.md，並回考卷原圖核對）</em><br />
+<em>確認：2026-11-04 使用者確認</em></p>
+</details>
+<hr>
+<h1>考題編號：SA-2010-3</h1>
 <p><strong>主分類：</strong> <code>SA-U2-3</code> 靜不定結構之傾角變位法<br />
 <strong>副分類：</strong> 無<br />
 <strong>分析法：</strong> 傾角撓度法 (Slope-Deflection Method)<br />
 <strong>標籤：</strong> <code>傾角撓度法</code>, <code>側移</code>, <code>非正交剛架</code>, <code>虛功法</code>, <code>剛架</code></p>
 <hr />
-<h2>1. 原始題目重述 (Problem Restatement)</h2>
-<p>如圖所示之剛架，其支承點 A 與 D 均為固定端，同時每根構件之彈性模數與慣性矩乘積均為常數值 $EI$。當 B 點承受一水平載重 $P$ 且 E 點承受一垂直載重 $2P$ 時，請以傾角變位法（slope-deflection method）計算 A、B、C、D 各節點之彎矩。（若以其他方法計算不予計分）（25 分）</p>
-<p><em>(註：A(0,0)，D(2L,0)。B 與 C 之水平投影距離各為 L/2，構件高度為 $\sqrt{3}L/2$。E 為 BC 之中點)</em></p>
-<p><img alt="SA-2010-3 題目附圖：具側移非正交剛架，A、D為固定端，B受水平力P，BC中點E受垂直力2P" src="../../raw/solutions/SA-2010-3/SA-2010-3-fig-1.png" /></p>
-<p><em>圖說：剛架幾何條件為 A(0,0)，D(2L,0)。B 與 C 之水平投影距離各為 L/2，構件高度為 $\sqrt{3}L/2$。E 為 BC 之中點。A 與 D 為固定支承，所有桿件 EI 為常數。B 點承受向右水平載重 P，E 點承受向下垂直載重 2P。</em></p>
+<h2>1. 題目（考卷原文見題目正本）</h2>
+<blockquote>
+<p>考卷原文、公式／附表、附圖與判讀清單（已確認）見 <a href="SA-2010-3-problem.md"><code>SA-2010-3-problem.md</code></a>。本節只列解題時最容易讀錯的地方與本解使用的記號；題意以題目正本為準。</p>
+</blockquote>
+<p><img alt="SA-2010-3 重繪題目附圖：梯形剛架，A、D 固接，斜柱長 L、傾角 60°，B 點 P、BC 中點 E 2P" src="../../raw/solutions/SA-2010-3/figs/SA-2010-3-fig-1-problem.svg" /><br />
+<em>重繪自考卷附圖，依判讀清單 #1–#5 重繪。攔：斜柱長度與傾角、E 位置誤讀。</em></p>
+<h3>常見誤讀</h3>
+<table>
+<thead>
+<tr>
+<th>項目</th>
+<th>正確判讀</th>
+<th>常見誤讀</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>斜柱 AB、CD</td>
+<td>長 L、傾角 60°（水平投影 L/2）</td>
+<td>長 √3L/2</td>
+</tr>
+<tr>
+<td>E</td>
+<td>BC 中點</td>
+<td>B、C 之間任一點</td>
+</tr>
+</tbody>
+</table>
+<p><strong>本解記號：</strong> 桿端彎矩、節點轉角、弦位角一律順時針為正（傾角變位法慣例）。</p>
 <h2>2. 考題核心精神與出題者意圖 (Core Concepts &amp; Examiner's Intent)</h2>
 <p>本題為經典的<strong>具側移非正交剛架 (Non-orthogonal Sway Frame)</strong> 分析，指定使用傾角變位法。出題者的核心意圖在於：</p>
 <ol>
@@ -296,7 +438,8 @@ $$ -36kR = - \frac{\sqrt{3}}{2} PL \implies R = \frac{\sqrt{3} PL}{72k} $$</p>
 <ul>
 <li><strong>虛功法符號約定</strong>：在傾角變位法中，端彎矩順時針為正、弦切角順時針為正。推導剪力方程式時，最安全的方法是使用虛功方程式 $\sum P \delta\Delta + \sum (M_{ij} + M_{ji}) \delta\psi_{ij} = 0$。若正負號定義混淆，將導致側移參數 $R$ 方向錯誤，進而影響所有端彎矩的計算結果。</li>
 <li><strong>對稱性解耦</strong>：本題中，由節點平衡方程式可發現，側移參數 $R$ 剛好互相抵消，使得 $\theta_B, \theta_C$ 可直接解出。這是因為結構對稱，且垂直載重 $2P$ 為對稱載重。水平載重 $P$ 為反對稱載重，主要貢獻在側移 $R$ 上。若能在考場上敏銳觀察出這類對稱與反對稱載重疊加的獨立特性，可大幅提昇驗算與防錯能力。</li>
-</ul></main>
+</ul>
+<p><em>修正日期：2026-11-04（§1 改為指向題目正本並放重繪附圖（figs/SA-2010-3-fig-1-problem.svg）、加常見誤讀；圖由 gen_SA-2010-3.py 產生，可重跑）</em></p></main>
 <footer>來源：raw/solutions/SA-2010-3/SA-2010-3.md（知識庫解題內容唯一正本；本頁僅為渲染顯示）</footer>
 
 <script>

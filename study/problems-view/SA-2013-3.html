@@ -43,16 +43,171 @@ header .nomat{margin-top:12px;font-size:.8em;opacity:.85}
 <p class="meta2">主分類 <b>SA-U2-3</b> 靜不定結構之傾角變位法 ｜ 2013 年（民國 102） ｜ 傾角變位法 (Slope-Deflection Method) 與 虛功原理 (Principle of Virtual Work)</p>
 <div class="hbtns"><a class="b-study" href="../unit-SA-U2-3.html">🧭 U2-3 單元總覽</a><a class="b-lect" href="../lecture-SA-U2-3.html">📚 U2-3 靜不定結構之傾角變位法 講義</a></div>
 </header>
-<main><h1>考題編號：SA-2013-3</h1>
+<main><details class="problem-src" open><summary><b>📄 題目正本</b>（考卷原文、附圖與判讀清單；不含解法）</summary>
+<h1>SA-2013-3 題目正本</h1>
+<blockquote>
+<p>本檔只記錄考卷上寫了什麼、圖上畫了什麼，不含任何解法。解析見同資料夾 <code>SA-2013-3.md</code>。<br />
+判讀清單經使用者確認前，狀態為「待確認」；確認後本檔原則上不再修改（改動須回考卷原圖並記 log）。</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>項目</th>
+<th>內容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>考卷</td>
+<td><code>raw/exams/SA-2013_結構學.pdf</code>，第 2 頁上半，第三題（圖三）</td>
+</tr>
+<tr>
+<td>考年</td>
+<td>2013（民國 102 年）專技高考結構工程技師「結構學」</td>
+</tr>
+<tr>
+<td>配分</td>
+<td>25 分</td>
+</tr>
+<tr>
+<td>附圖</td>
+<td><code>SA-2013-3-fig-1.png</code></td>
+</tr>
+<tr>
+<td>判讀狀態</td>
+<td><strong>已確認</strong>（2026-11-04 使用者確認。原轉錄：2026-11-04 轉錄；PyMuPDF 150 dpi 整頁＋350–500 dpi 局部放大；盲讀於開啟解析前完成）</td>
+</tr>
+</tbody>
+</table>
+<h2>1. 考卷原文（逐字）</h2>
+<p>三、所示剛架結構 A、D 為固接支承，B 點為鉸接。桿件 BC 承受垂直均佈載重 w，如圖三所示。各桿件之 E 均相同。桿件 AB、CD 面積慣性矩為 I，桿件 BC 則為 2I。請以傾角變位法分析各桿件端點彎矩，並繪桿件 BC 剪力圖與彎矩圖。使用其他方法不予給分。（25 分）</p>
+<h2>2. 考卷給的公式、附表與參數</h2>
+<ul>
+<li>考卷沒有給任何參考公式或附表；所需公式須自備。</li>
+<li>卷首注意事項：㈠可以使用電子計算器。㈡不必抄題，作答時請將試題題號及答案依照順序寫在試卷上，於本試題上作答者，不予計分。</li>
+<li>考試時間：2 小時。</li>
+</ul>
+<h2>3. 附圖</h2>
+<p><img alt="SA-2013-3 考卷附圖：A 柱底固接、柱 AB 高 L（EI）；B 柱頂空心圓（內鉸）；梁 BC 長 L（2EI）全長均布 w；斜桿 CD 至 D 斜置固接（水平 L、垂直 L）" src="../../raw/solutions/SA-2013-3/SA-2013-3-fig-1.png" /><br />
+<em>證據圖 SA-2013-3-fig-1.png</em></p>
+<p>圖面文字照錄：w、B、2EI、C、EI、EI、L、A、D、L、L、圖三</p>
+<h2>4. 判讀清單</h2>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>項目</th>
+<th>判讀</th>
+<th>圖上／題文依據</th>
+<th>把握</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>A</td>
+<td>柱底固接</td>
+<td>斜線填充（400 dpi）</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>2</td>
+<td>D</td>
+<td>斜桿底端固接</td>
+<td>垂直於桿軸的斜線填充</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>3</td>
+<td>B</td>
+<td>內鉸（AB 柱頂與 BC 梁鉸接）</td>
+<td>空心圓圈</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>4</td>
+<td>C</td>
+<td>剛接</td>
+<td>無鉸圈</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>5</td>
+<td>幾何</td>
+<td>AB 垂直 L；BC 水平 L；CD 由 (L, L) 至 (2L, 0)，長 √2L</td>
+<td>水平 L＋L、右側高 L</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>6</td>
+<td>剛度</td>
+<td>AB、CD：EI（I）；BC：2EI（2I）</td>
+<td>圖標＋題文</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>7</td>
+<td>載重</td>
+<td>BC 全長均布 w 向下</td>
+<td>箭頭範圍 B 至 C</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>8</td>
+<td>指定方法</td>
+<td>傾角變位法（他法不給分）</td>
+<td>題文</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>9</td>
+<td>所求</td>
+<td>各桿件端點彎矩；BC 剪力圖與彎矩圖</td>
+<td>題文</td>
+<td>確定</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p><em>轉錄：2026-11-04（SA-U2-3 題目正本推廣・批 1；判讀沿用同日盲解稽核紀錄 wiki/queries/盲解紀錄-SA-U2-3a-2026-11-04.md，並回考卷原圖核對）</em><br />
+<em>確認：2026-11-04 使用者確認</em></p>
+</details>
+<hr>
+<h1>考題編號：SA-2013-3</h1>
 <p><strong>主分類：</strong> <code>SA-U2-3</code> 靜不定結構之傾角變位法<br />
 <strong>副分類：</strong> 無<br />
 <strong>分析法：</strong> 傾角變位法 (Slope-Deflection Method) 與 虛功原理 (Principle of Virtual Work)<br />
 <strong>標籤：</strong> <code>傾角變位法</code> <code>側移剛架</code> <code>斜桿</code> <code>半剛接</code> <code>符號慣例</code></p>
 <hr />
-<h2>1. 原始題目重述 (Problem Restatement)</h2>
-<p>所示剛架結構 A、D 為固接支承，B 點為鉸接。桿件 BC 承受垂直均佈載重 $w$，如圖三所示。各桿件之 $E$ 均相同。桿件 AB、CD 面積慣性矩為 $I$，桿件 BC 則為 $2I$。請以傾角變位法分析各桿件端點彎矩，並繪桿件 BC 剪力圖與彎矩圖。使用其他方法不予給分。（25 分）</p>
-<p><img alt="SA-2013-3 題目附圖：含斜桿之側移剛架" src="../../raw/solutions/SA-2013-3/SA-2013-3-fig-1.png" /></p>
-<p><em>圖說：A 為左下角固接支承，AB 桿為垂直桿（長度 L，慣性矩 I）。B 點為鉸接 (Hinge)。BC 桿為水平桿（長度 L，慣性矩 2I），承受向下均佈載重 $w$。C 點為剛接節點。CD 桿為斜桿（水平跨距 L，垂直落差 L，長度 $\sqrt{2}L$，慣性矩 I），D 為右下角固接支承。</em></p>
+<h2>1. 題目（考卷原文見題目正本）</h2>
+<blockquote>
+<p>考卷原文、公式／附表、附圖與判讀清單（已確認）見 <a href="SA-2013-3-problem.md"><code>SA-2013-3-problem.md</code></a>。本節只列解題時最容易讀錯的地方與本解使用的記號；題意以題目正本為準。</p>
+</blockquote>
+<p><img alt="SA-2013-3 重繪題目附圖：剛架 A、D 固接，B 內鉸，梁 BC 2EI 受均布 w，斜桿 CD" src="../../raw/solutions/SA-2013-3/figs/SA-2013-3-fig-1-problem.svg" /><br />
+<em>重繪自考卷附圖，依判讀清單 #1–#9 重繪。攔：B 內鉸、CD 斜桿方向與固接面誤讀。</em></p>
+<h3>常見誤讀</h3>
+<table>
+<thead>
+<tr>
+<th>項目</th>
+<th>正確判讀</th>
+<th>常見誤讀</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>B</td>
+<td>內鉸（空心圓）</td>
+<td>剛接</td>
+</tr>
+<tr>
+<td>側移虛功式</td>
+<td>桿端彎矩虛功＋載重虛功＝0，右端 $+0.5wL^2$</td>
+<td>內虛功＝外虛功，右端 $-0.5wL^2$（本題舊版解析）</td>
+</tr>
+</tbody>
+</table>
+<p><strong>本解記號：</strong> 桿端彎矩、節點轉角、弦位角一律順時針為正（傾角變位法慣例）。$R=u/L$，$u$ 為 B 點水平位移（假設向右為正，解出負值即向左）。</p>
 <h2>2. 考題核心精神與出題者意圖 (Core Concepts &amp; Examiner's Intent)</h2>
 <p>本題是傾角變位法極具挑戰性的綜合題型，主考四大核心：</p>
 <ol>
@@ -77,7 +232,8 @@ header .nomat{margin-top:12px;font-size:.8em;opacity:.85}
 <ul>
 <li><strong>致命陷阱一：BC 桿固端彎矩符號</strong>。均佈載重向下，為使其兩端不轉動，B 端需施加逆時針力矩，C 端需施加順時針力矩。若統一採順時針為正，則 $FEM_{BC} = -wL^2/12$，$FEM_{CB} = +wL^2/12$。極多考生在此處弄錯正負號。</li>
 <li><strong>致命陷阱二：斜桿弦位角判斷</strong>。C 點向右又向上移動，CD 桿的弦位角究竟是順時針還是逆時針？必須利用相對位移向量與原桿件向量進行外積或幾何作圖確認。本題 $\psi_{CD}$ 為<strong>順時針</strong>。</li>
-<li><strong>致命陷阱三：虛功法中外力的虛功</strong>。C 點有向上的虛擬位移，導致 BC 桿產生向上的剛體位移，而均佈載重向下，因此外力作功為<strong>負值</strong>！</li>
+<li><strong>致命陷阱三：虛功法中外力的虛功與移項</strong>。假設向右側移 $\delta u$ 時 C 點虛位移向上，BC 桿作向上的剛體位移，而均佈載重向下，因此載重作功為<strong>負值</strong> $-0.5wL\,\delta u$。寫方程式時要記得：桿端彎矩與載重<strong>同時作用在桿件上</strong>，兩者虛功相加為零，$\sum M\,\delta\psi - 0.5wL\,\delta u = 0$，移項後右端是 <strong>$+0.5wL^2$</strong>。若誤寫成「內虛功＝外虛功」，右端變成 $-0.5wL^2$，所有彎矩都會錯。</li>
+<li><strong>致命陷阱四：側移方向</strong>。實際上載重向下，C 點會<strong>向下</strong>移（CD 不伸長 → 同時向左），所以解出的 $R$ 為負值；假設向右只是代數上的方向，不影響結果。</li>
 </ul>
 <h2>3.5 變數層次分析 (Variable Hierarchy Analysis)</h2>
 <h3>最終目標</h3>
@@ -87,7 +243,7 @@ header .nomat{margin-top:12px;font-size:.8em;opacity:.85}
 <p>$\boxed{\cdot}$ = 需由前步驟推導，非題目直接給定的變數</p>
 </blockquote>
 <p>$$\text{節點 C 平衡: } M_{CB}(\boxed{\theta_C}, \boxed{R}) + M_{CD}(\boxed{\theta_C}, \boxed{R}) = 0$$<br />
-$$\text{虛功方程式: } M_{AB} - M_{CB} + M_{CD} + M_{DC} = -0.5 wL^2$$</p>
+$$\text{虛功方程式: } M_{AB} - M_{CB} + M_{CD} + M_{DC} = +0.5 wL^2$$</p>
 <h3>L1：題目直接給定</h3>
 <table>
 <thead>
@@ -135,6 +291,30 @@ $$\text{虛功方程式: } M_{AB} - M_{CB} + M_{CD} + M_{DC} = -0.5 wL^2$$</p>
 <td>$+wL^2/8$</td>
 <td>B 端鉸接修正後之 C 端固端彎矩</td>
 </tr>
+<tr>
+<td>載重虛功</td>
+<td>$-0.5wL\,\delta u$</td>
+<td>向右虛側移時 BC 形心向上 $\delta u/2$，載重作負功</td>
+</tr>
+</tbody>
+</table>
+<h3>L3：深層知識</h3>
+<table>
+<thead>
+<tr>
+<th>知識</th>
+<th>說明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>剛體虛位移原理</td>
+<td>每根桿件作剛體虛位移時，作用其上的桿端彎矩與載重虛功總和為零：$\sum M\,\delta\psi + \delta W_{\text{載重}} = 0$</td>
+</tr>
+<tr>
+<td>斜桿位移相容</td>
+<td>CD 不伸長：C 點位移必須垂直於 CD，得 $v_C=u_C=u$</td>
+</tr>
 </tbody>
 </table>
 <h2>4. 步驟化詳細計算過程 (Step-by-Step Detailed Calculation)</h2>
@@ -175,47 +355,66 @@ $$\frac{6EI}{L} (\theta_C + R) + \frac{wL^2}{8} + \frac{\sqrt{2}EI}{L} (2\theta_
 $$(6 + 2\sqrt{2}) \frac{EI}{L} \theta_C + (6 - 3\sqrt{2}) \frac{EI}{L} R = -0.125 wL^2 \quad \text{--- (Eq 1)}$$</p>
 <p><strong>條件二：側移虛功方程式</strong><br />
 給予系統向右虛擬側移 $\delta u$。各桿虛擬弦位角為 $\delta\psi_{AB} = \frac{\delta u}{L}$, $\delta\psi_{BC} = -\frac{\delta u}{L}$, $\delta\psi_{CD} = \frac{\delta u}{L}$。<br />
-內虛功 $\delta W_{int} = M_{AB} \delta\psi_{AB} + M_{CB} \delta\psi_{BC} + (M_{CD} + M_{DC}) \delta\psi_{CD}$<br />
-外虛功 $\delta W_{ext}$：載重 $w$ 向下，BC 桿作剛體向上虛擬位移，其形心位移為 $\frac{\delta u}{2}$ 向上。<br />
-$\delta W_{ext} = -(wL) \cdot (\frac{\delta u}{2}) = -0.5 wL^2 \delta u$ (作負功！)<br />
-令 $\delta W_{int} = \delta W_{ext}$ 並同除以 $\frac{\delta u}{L}$：<br />
-$$M_{AB} - M_{CB} + M_{CD} + M_{DC} = -0.5 wL^2 \quad \text{--- (Eq 2)}$$<br />
-將方程式代入 (Eq 2) 整理後得：<br />
-$$(6 - 3\sqrt{2}) \frac{EI}{L} \theta_C + (9 + 6\sqrt{2}) \frac{EI}{L} R = 0.375 wL^2 \quad \text{--- (Eq 2')}$$</p>
+把每根桿件視為剛體，作用在桿件上的力有兩組：</p>
+<ul>
+<li>桿端彎矩（順時針為正）隨桿件轉動 $\delta\psi$ 所作的虛功：$M_{AB} \delta\psi_{AB} + M_{CB} \delta\psi_{BC} + (M_{CD} + M_{DC}) \delta\psi_{CD}$（$M_{BA}=M_{BC}=0$）</li>
+<li>載重虛功：BC 桿作剛體運動，B 端垂直不動、C 端向上 $\delta u$，形心向上 $\frac{\delta u}{2}$，而載重向下：$\delta W_{載重} = -(wL) \cdot \frac{\delta u}{2} = -0.5 wL\,\delta u$（負功）</li>
+</ul>
+<p>剛體虛位移時兩者總和為零：<br />
+$$M_{AB}\frac{\delta u}{L} - M_{CB}\frac{\delta u}{L} + (M_{CD}+M_{DC})\frac{\delta u}{L} - 0.5wL\,\delta u = 0$$<br />
+同乘 $\frac{L}{\delta u}$：<br />
+$$M_{AB} - M_{CB} + M_{CD} + M_{DC} = +0.5 wL^2 \quad \text{--- (Eq 2)}$$<br />
+將方程式代入 (Eq 2)：左式 $= -(6 - 3\sqrt{2}) \frac{EI}{L} \theta_C - (9 + 6\sqrt{2}) \frac{EI}{L} R - 0.125wL^2$，整理後得：<br />
+$$(6 - 3\sqrt{2}) \frac{EI}{L} \theta_C + (9 + 6\sqrt{2}) \frac{EI}{L} R = -0.625 wL^2 \quad \text{--- (Eq 2')}$$</p>
 <p><strong>解聯立 (Eq 1) &amp; (Eq 2')</strong><br />
 克拉瑪法則精確解得：<br />
-$$\theta_C = \frac{34 - 19\sqrt{2}}{992} \frac{wL^3}{EI} \approx 0.007187 \frac{wL^3}{EI}$$<br />
-$$R = \frac{21 + 22\sqrt{2}}{1488} \frac{wL^3}{EI} \approx 0.03502 \frac{wL^3}{EI}$$</p>
+$$\theta_C = -\frac{34 - 19\sqrt{2}}{992} \frac{wL^3}{EI} \approx -0.007187 \frac{wL^3}{EI}\ (\text{逆時針})$$<br />
+$$R = -\frac{21 + 22\sqrt{2}}{1488} \frac{wL^3}{EI} \approx -0.03502 \frac{wL^3}{EI}$$<br />
+$R&lt;0$：B、C 實際<strong>向左</strong>移 $0.03502\,wL^4/EI$，C 同時<strong>向下</strong>移同量，與載重方向一致。</p>
 <h3>Step 4：計算各端彎矩</h3>
 <p>將 $\theta_C, R$ 代回傾角變位方程式：<br />
-$$M_{AB} = \frac{3 - 174\sqrt{2}}{3472} wL^2 \approx -0.0699 wL^2$$<br />
-$$M_{CB} = \frac{626 - 69\sqrt{2}}{3472} wL^2 \approx 0.1522 wL^2$$<br />
-$$M_{CD} = \frac{69\sqrt{2} - 626}{3472} wL^2 \approx -0.1522 wL^2$$<br />
-$$M_{DC} = \frac{36\sqrt{2} - 487}{3472} wL^2 \approx -0.1256 wL^2$$<br />
+$$M_{AB} = -3\frac{EI}{L}R = \frac{21 + 22\sqrt{2}}{496} wL^2 \approx +0.1051 wL^2$$<br />
+$$M_{CB} = \frac{13\sqrt{2} - 82}{496} wL^2 \approx -0.1283 wL^2$$<br />
+$$M_{CD} = \frac{82 - 13\sqrt{2}}{496} wL^2 \approx +0.1283 wL^2$$<br />
+$$M_{DC} = \frac{63 + 4\sqrt{2}}{496} wL^2 \approx +0.1384 wL^2$$<br />
+$$M_{BA} = M_{BC} = 0$$<br />
 <em>(註：正值代表順時針，負值代表逆時針)</em></p>
+<p><strong>檢核</strong>：</p>
+<ul>
+<li>節點 C：$M_{CB} + M_{CD} = 0$ ✓；側移式：$0.1051 + 0.1283 + 0.1283 + 0.1384 = 0.5001 \approx 0.5$ ✓</li>
+<li>AB 柱只受剪力 $A_x = M_{AB}/L \approx 0.1051\,wL$（向右），CD 底部水平反力 $D_x = -0.1051\,wL$，水平平衡 ✓</li>
+<li>全結構對 A 取矩：$-0.5wL^2 + D_y(2L) + M_A + M_D = 0$，$D_y = 0.3717\,wL$ ✓（與下式 $V_C$ 相同）</li>
+</ul>
 <h3>Step 5：繪製 BC 桿剪力圖 (V) 與彎矩圖 (M)</h3>
-<p>取 BC 桿自由體 (B、C 間距 L)，$M_{BC} = 0$，$M_{CB} = 0.1522 wL^2$ (順時針)。<br />
+<p>取 BC 桿自由體 (B、C 間距 L)，$M_{BC} = 0$，$M_{CB} = -0.1283 wL^2$（作用在桿端為<strong>逆時針</strong>）。<br />
 由 $\sum M_C = 0$ 求 B 端剪力：<br />
-$$V_B \cdot L - wL \left(\frac{L}{2}\right) + M_{CB} = 0 \Rightarrow V_B = \frac{wL}{2} - \frac{M_{CB}}{L} = \frac{1110 + 69\sqrt{2}}{3472} wL \approx 0.3478 wL \text{ (向上)}$$<br />
+$$V_B \cdot L - wL \left(\frac{L}{2}\right) + M_{CB} = 0 \Rightarrow V_B = \frac{wL}{2} - \frac{M_{CB}}{L} = \frac{330 - 13\sqrt{2}}{496} wL \approx 0.6283 wL \text{ (向上)}$$<br />
 由 $\sum F_y = 0$ 求 C 端剪力：<br />
-$$V_C = wL - V_B = \frac{2362 - 69\sqrt{2}}{3472} wL \approx 0.6522 wL \text{ (向上)}$$</p>
+$$V_C = wL - V_B = \frac{166 + 13\sqrt{2}}{496} wL \approx 0.3717 wL \text{ (向上)}$$</p>
 <p><strong>剪力圖 (V-Diagram)</strong>：</p>
 <ul>
-<li>自 B 點的 $+0.3478 wL$ 開始，呈直線下降。</li>
-<li>至 C 點降為 $-0.6522 wL$。</li>
-<li>剪力為零的位置發生在 $x_0 = \frac{V_B}{w} \approx 0.3478 L$ 處。</li>
+<li>自 B 點的 $+0.6283 wL$ 開始，呈直線下降。</li>
+<li>至 C 點降為 $-0.3717 wL$。</li>
+<li>剪力為零的位置發生在 $x_0 = \frac{V_B}{w} \approx 0.6283 L$ 處。</li>
 </ul>
 <p><strong>彎矩圖 (M-Diagram)</strong>：</p>
 <ul>
-<li>拋物線分佈。B 點彎矩為 $0$。</li>
-<li>最大正彎矩發生在 $x_0$ 處：$M_{max} = \frac{V_B^2}{2w} = \frac{13947 + 2158\sqrt{2}}{246016} wL^2 \approx 0.0605 wL^2$ (下側受拉)。</li>
-<li>C 點彎矩為負彎矩（上側受拉）：$M(L) = -M_{CB} \approx -0.1522 wL^2$。</li>
+<li>拋物線分佈，$M(x) = V_B x - \frac{wx^2}{2}$。B 點彎矩為 $0$。</li>
+<li>最大正彎矩發生在 $x_0$ 處：$M_{max} = \frac{V_B^2}{2w} \approx 0.1974 wL^2$（下側受拉）。</li>
+<li>C 點彎矩仍為<strong>正彎矩</strong>（下側受拉）：$M(L) = -M_{CB} \approx +0.1283 wL^2$。BC 全跨 $M(x)\ge 0$，無反曲點、無負彎矩。</li>
+<li>物理意義：C 點向下沉陷而 B 端垂直不動，BC 弦線順時針轉動，C 端被斜桿 CD 拉著逆時針轉回，故 C 端是正彎矩而非一般連續梁的負彎矩。</li>
 </ul>
 <h2>5. 關鍵爭議點與進階探討 (Critical Issues &amp; Advanced Discussion)</h2>
+<p><img alt="SA-2013-3 變形形狀與彎矩圖" src="../../raw/solutions/SA-2013-3/figs/SA-2013-3-fig-2-deflected-bmd.svg" /><br />
+<em>圖解：載重向下，C 往左下移；BC 全跨正彎矩，C 端 +0.128wL²。攔：側移方向反（C 往右上）、C 端畫成負彎矩。</em></p>
 <ul>
 <li><strong>符號慣例的一致性</strong>：如果考生平時習慣「下側受拉為正彎矩，逆時針轉角為正」，遇到斜桿會非常容易混亂。傾角變位法最強的武器就是<strong>強制的順時針為正</strong>，所有項次都不必去想受拉側，純粹代數運算，最後再將負號轉譯為逆時針，這樣能將出錯率降到最低。</li>
-<li><strong>斜桿側移虛功法的無敵之處</strong>：許多參考書會教用幾何投影將桿件剪力投影到水平方向 $\sum F_x = 0$。這種作法在有載重且多斜桿的狀況下極易漏算載重的側向投影分量。採用<strong>虛功原理</strong>，只要位移場正確（C 點右上移），載重作功的符號就不會錯（載重向下、位移向上 $\rightarrow$ 負功），是解斜桿剛架的防呆神器。</li>
-</ul></main>
+<li><strong>斜桿側移虛功法的無敵之處</strong>：許多參考書會教用幾何投影將桿件剪力投影到水平方向 $\sum F_x = 0$。這種作法在有載重且多斜桿的狀況下極易漏算載重的側向投影分量。採用<strong>虛功原理</strong>，只要位移場正確（假設向右側移時 C 點右上移），載重作功的符號就不會錯（載重向下、位移向上 $\rightarrow$ 負功），是解斜桿剛架的防呆神器。但方程式要寫成「桿端彎矩虛功＋載重虛功＝0」，不是「內虛功＝外虛功」——兩者差一個負號，本題舊版解析就是因此全部算錯。</li>
+<li><strong>結果自我檢查</strong>：解出側移方向後，回頭問「載重往下，結構應往哪邊動？」本題 C 應下沉，若解出 C 往上（$R&gt;0$ 搭配右上位移），就是虛功式符號錯了。</li>
+</ul>
+<hr />
+<p><em>修正日期：2026-11-04（側移虛功式右端由 $-0.5wL^2$ 更正為 $+0.5wL^2$，連帶更正 Eq 2'、$\theta_C$、$R$、四個桿端彎矩、BC 剪力圖與彎矩圖、§3.5；原答 $M_{AB}=-0.0699$、$M_{CB}=0.1522$、$M_{DC}=-0.1256\,wL^2$，新答 $M_{AB}=+0.1051$、$M_{CB}=-0.1283$、$M_{CD}=+0.1283$、$M_{DC}=+0.1384\,wL^2$；驗證：sympy 傾角變位式精確解與平面剛架勁度法（EA→∞）兩條路徑一致，MISMATCHES: 0；來源：wiki/queries/盲解比對-SA-U2-3a-2026-11-04.md）</em></p>
+<p><em>修正日期：2026-11-04（§1 改為指向題目正本並放重繪附圖（figs/SA-2013-3-fig-1-problem.svg）、加常見誤讀；§5 補解題圖解 figs/SA-2013-3-fig-2-deflected-bmd.svg；圖由 gen_SA-2013-3.py 產生，可重跑）</em></p></main>
 <footer>來源：raw/solutions/SA-2013-3/SA-2013-3.md（知識庫解題內容唯一正本；本頁僅為渲染顯示）</footer>
 
 <script>

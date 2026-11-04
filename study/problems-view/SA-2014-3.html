@@ -55,6 +55,10 @@ AB、BC、BD 及 DE 四根構件之長度分別為 $L$、$L$、$\sqrt{3}L/2$ 與
 當 B 點承受水平向右集中載重 $P = 66 \text{ kN}$ 時，請以<strong>傾角變位法</strong>計算 A、B、C、D、E 各點彎矩。（若以其他方法計算不予計分）（25 分）</p>
 <p><img alt="SA-2014-3 題目附圖：複雜剛架受水平力" src="../../raw/solutions/SA-2014-3/SA-2014-3-fig-1.png" /></p>
 <p><em>圖說：A 點為上方固接支承，C 點為下方固接支承，AB 與 BC 均為垂直桿長 L。B 點受向右水平力 P。D 點在 B 點右方，BD 長 $\sqrt{3}L/2$ 為水平桿。E 點在 D 點右下方，為固接支承。DE 桿斜向，長度 L，其水平跨距為 $\sqrt{3}L/2$，垂直高差為 L/2。</em></p>
+<blockquote>
+<p><strong>常見誤讀（本題舊版解析曾犯）</strong>：側移虛功式寫成「外力虛功＝內力虛功」$P\,\delta\Delta = \sum(M_{ij}+M_{ji})\,\delta\psi_{ij}$，少一個負號，八個桿端彎矩大小正確、正負號全部相反。正確的是把每根桿件當剛體，桿端彎矩與外力的虛功總和為零：$P\,\delta\Delta + \sum(M_{ij}+M_{ji})\,\delta\psi_{ij} = 0$。<br />
+<strong>本解記號</strong>：桿端彎矩、節點轉角、弦位角一律順時針為正；$R=\Delta/L$，$\Delta$ 為 B 點向右位移。</p>
+</blockquote>
 <h2>2. 考題核心精神與出題者意圖 (Core Concepts &amp; Examiner's Intent)</h2>
 <p>本題是傾角變位法中<strong>最高難度</strong>的題型之一（斜桿有側移剛架）。</p>
 <ol>
@@ -75,8 +79,8 @@ AB、BC、BD 及 DE 四根構件之長度分別為 $L$、$L$、$\sqrt{3}L/2$ 與
 <li>$\sum M_D = 0$</li>
 <li><strong>建立側移方程式（虛功法）</strong>：</li>
 <li>給予結構一虛擬側移 $\delta \Delta$，計算外力虛功 $W_{ext}$。</li>
-<li>計算內力虛功 $W_{int} = \sum (M_{ij} + M_{ji}) \delta \psi_{ij}$。</li>
-<li>令 $W_{ext} = W_{int}$ 得到第三條方程式。</li>
+<li>計算桿端彎矩（作用在桿件上）隨桿件轉動所作的虛功 $\sum (M_{ij} + M_{ji}) \delta \psi_{ij}$。</li>
+<li>兩者相加為零 $P\,\delta\Delta + \sum (M_{ij} + M_{ji}) \delta \psi_{ij} = 0$，得到第三條方程式。</li>
 <li><strong>解方程並計算彎矩</strong>：</li>
 <li>解出 $\theta_B, \theta_D, R$ 後，代回步驟 2 的方程式求出所有桿端彎矩。</li>
 </ol>
@@ -84,6 +88,7 @@ AB、BC、BD 及 DE 四根構件之長度分別為 $L$、$L$、$\sqrt{3}L/2$ 與
 <ul>
 <li><strong>D 點位移方向的誤判</strong>：許多考生會認為 D 點只跟著 B 點向右水平移動，忽略了 E 點是固定端，DE 桿若只做水平移動長度會改變。D 點必須沿著垂直於 DE 桿的方向移動。</li>
 <li><strong>弦旋轉角正負號</strong>：傾角變位法的標準慣例為「順時針弦旋轉為正」。由於幾何複雜，各桿件的弦旋轉方向必須仔細畫圖判定，錯一個符號全盤皆輸。</li>
+<li><strong>虛功式少一個負號</strong>：寫成「外功＝內功」$P\delta\Delta = \sum M\delta\psi$ 會讓所有彎矩正負號全反。自我檢查：B 向右推時，下柱固定端 C 對柱施加的應是逆時針（負值）彎矩。</li>
 <li><strong>剛度 $K$ 的定義</strong>：題目給的慣性矩不同，需正確轉換為相對勁度。例如 BD 桿長度為 $\sqrt{3}L/2$，慣性矩為 $\sqrt{3}I$，其 $EI/L$ 必須精確計算。</li>
 </ul>
 <h2>3.5 變數層次分析 (Variable Hierarchy Analysis)</h2>
@@ -99,7 +104,7 @@ AB、BC、BD 及 DE 四根構件之長度分別為 $L$、$L$、$\sqrt{3}L/2$ 與
 <p>$$\text{Step 1: } \psi_{ij} = f(\Delta)$$</p>
 <p>$$\text{Step 2: } M_{ij} = \frac{2EI_{ij}}{L_{ij}} (2\theta_i + \theta_j - 3 \boxed{\psi_{ij}})$$</p>
 <p>$$\text{Step 3: } \sum M_B = 0 \Rightarrow \boxed{M_{BA}} + \boxed{M_{BC}} + \boxed{M_{BD}} = 0$$</p>
-<p>$$\text{Step 4: } W_{ext} = W_{int} \Rightarrow P \delta\Delta = \sum (\boxed{M_{ij}} + \boxed{M_{ji}}) \delta\psi_{ij}$$</p>
+<p>$$\text{Step 4: } P \delta\Delta + \sum (\boxed{M_{ij}} + \boxed{M_{ji}}) \delta\psi_{ij} = 0$$</p>
 <h3>L1：題目直接給定</h3>
 <p><em>看到題目就能讀出的數字，不需要任何公式。</em></p>
 <table>
@@ -159,7 +164,7 @@ AB、BC、BD 及 DE 四根構件之長度分別為 $L$、$L$、$\sqrt{3}L/2$ 與
 </tr>
 <tr>
 <td>虛功法建立側移方程式</td>
-<td>對系統施加虛位移 $\delta\Delta$ 及其對應的 $\delta\psi$，令外力虛功 $P\Delta$ 等於內力虛功 $\sum(M_{ij}+M_{ji})\delta\psi$。</td>
+<td>對系統施加虛位移 $\delta\Delta$ 及其對應的 $\delta\psi$；每根桿件作剛體運動，作用其上的外力與桿端彎矩虛功總和為零：$P\,\delta\Delta + \sum(M_{ij}+M_{ji})\delta\psi = 0$。</td>
 <td style="text-align: center;"></td>
 </tr>
 </tbody>
@@ -219,46 +224,63 @@ AB、BC、BD 及 DE 四根構件之長度分別為 $L$、$L$、$\sqrt{3}L/2$ 與
 </li>
 </ul>
 <h3>Step 4：虛功法建立側移方程式</h3>
-<p>對結構施加虛擬側移 $\delta R$，外力虛功等於內力虛功：<br />
-$$W_{ext} = P \times (L \delta R) = PL \delta R$$<br />
-$$W_{int} = (M_{AB} + M_{BA})\delta\psi_{AB} + (M_{BC} + M_{CB})\delta\psi_{BC} + (M_{BD} + M_{DB})\delta\psi_{BD} + (M_{DE} + M_{ED})\delta\psi_{DE}$$<br />
-$$PL \delta R = (M_{AB} + M_{BA})(-\delta R) + (M_{BC} + M_{CB})(+\delta R) + (M_{BD} + M_{DB})(-2\delta R) + (M_{DE} + M_{ED})(+2\delta R)$$<br />
+<p>對結構施加虛擬側移 $\delta R$（B 向右 $L\,\delta R$），把每根桿件當剛體，外力與桿端彎矩（作用在桿上、順時針為正）的虛功總和為零：<br />
+$$P \times (L \delta R) + (M_{AB} + M_{BA})\delta\psi_{AB} + (M_{BC} + M_{CB})\delta\psi_{BC} + (M_{BD} + M_{DB})\delta\psi_{BD} + (M_{DE} + M_{ED})\delta\psi_{DE} = 0$$<br />
+$$PL \delta R + (M_{AB} + M_{BA})(-\delta R) + (M_{BC} + M_{CB})(+\delta R) + (M_{BD} + M_{DB})(-2\delta R) + (M_{DE} + M_{ED})(+2\delta R) = 0$$<br />
 消去 $\delta R$：<br />
-$$PL = -(M_{AB} + M_{BA}) + (M_{BC} + M_{CB}) - 2(M_{BD} + M_{DB}) + 2(M_{DE} + M_{ED})$$<br />
-將彎矩展開代入並化簡（過程略，見分析）：<br />
-$$PL = -24K\theta_B - 12K\theta_D - 192KR$$<br />
+$$-(M_{AB} + M_{BA}) + (M_{BC} + M_{CB}) - 2(M_{BD} + M_{DB}) + 2(M_{DE} + M_{ED}) = -PL$$<br />
+將彎矩展開代入並化簡：</p>
+<ul>
+<li>$-(M_{AB}+M_{BA}) = -12K\theta_B - 24KR$</li>
+<li>$+(M_{BC}+M_{CB}) = 12K\theta_B - 24KR$</li>
+<li>$-2(M_{BD}+M_{DB}) = -24K\theta_B - 24K\theta_D - 96KR$</li>
+<li>$+2(M_{DE}+M_{ED}) = 12K\theta_D - 48KR$</li>
+</ul>
+<p>合計：<br />
+$$-24K\theta_B - 12K\theta_D - 192KR = -PL$$<br />
 同除以 $-12K$：<br />
-$$2\theta_B + \theta_D + 16R = - \frac{PL}{12K} \quad \text{--- (式 3)}$$</p>
+$$2\theta_B + \theta_D + 16R = \frac{PL}{12K} \quad \text{--- (式 3)}$$</p>
 <h3>Step 5：解聯立方程式與代入數值</h3>
 <p>由 (式 2) 得 $\theta_B = -3\theta_D - 3R$。<br />
 代入 (式 1)：$6(-3\theta_D - 3R) + \theta_D + 6R = 0 \Rightarrow -17\theta_D - 12R = 0 \Rightarrow \theta_D = - \frac{12}{17} R$。<br />
 代回得 $\theta_B = - \frac{15}{17} R$。<br />
 將兩者代入 (式 3)：<br />
-$$2\left(- \frac{15}{17} R\right) + \left(- \frac{12}{17} R\right) + 16R = - \frac{PL}{12K} \Rightarrow \frac{230}{17} R = - \frac{PL}{12K} \Rightarrow KR = - \frac{17 PL}{2760}$$<br />
+$$2\left(- \frac{15}{17} R\right) + \left(- \frac{12}{17} R\right) + 16R = \frac{PL}{12K} \Rightarrow \frac{230}{17} R = \frac{PL}{12K} \Rightarrow KR = \frac{17 PL}{2760}$$<br />
 代入已知數值 $P = 66, L = 8 \Rightarrow PL = 528$：<br />
-$$KR = - \frac{17 \times 528}{2760} = - \frac{17 \times 22}{115}$$</p>
+$$KR = \frac{17 \times 528}{2760} = \frac{17 \times 22}{115} \approx 3.252\ \text{kN-m}$$<br />
+$R&gt;0$：B 確實向右側移；$\theta_B$、$\theta_D$ 為負（逆時針）。</p>
 <p>將 $KR$, $\theta_B$, $\theta_D$ 關係代回 Step 2 的桿端彎矩公式（注意 17 的因數完美消去）：</p>
 <ul>
-<li>$M_{AB} = 4(-\frac{15}{17} R)K + 12KR = \frac{144}{17} KR = \frac{144}{17} \left( -\frac{17 \times 22}{115} \right) = -\frac{3168}{115} \approx -27.55 \text{ kN-m}$</li>
-<li>$M_{BA} = 8(-\frac{15}{17} R)K + 12KR = \frac{84}{17} KR = \frac{84}{17} \left( -\frac{17 \times 22}{115} \right) = -\frac{1848}{115} \approx -16.07 \text{ kN-m}$</li>
-<li>$M_{BC} = 8(-\frac{15}{17} R)K - 12KR = -\frac{324}{17} KR = -\frac{324}{17} \left( -\frac{17 \times 22}{115} \right) = \frac{7128}{115} \approx +61.98 \text{ kN-m}$</li>
-<li>$M_{CB} = 4(-\frac{15}{17} R)K - 12KR = -\frac{264}{17} KR = -\frac{264}{17} \left( -\frac{17 \times 22}{115} \right) = \frac{5808}{115} \approx +50.50 \text{ kN-m}$</li>
-<li>$M_{BD} = 8(-\frac{15}{17} R)K + 4(-\frac{12}{17} R)K + 24KR = \frac{240}{17} KR = -\frac{5280}{115} \approx -45.91 \text{ kN-m}$</li>
-<li>$M_{DB} = 8(-\frac{12}{17} R)K + 4(-\frac{15}{17} R)K + 24KR = \frac{252}{17} KR = -\frac{5544}{115} \approx -48.21 \text{ kN-m}$</li>
-<li>$M_{DE} = 4(-\frac{12}{17} R)K - 12KR = -\frac{252}{17} KR = \frac{5544}{115} \approx +48.21 \text{ kN-m}$</li>
-<li>$M_{ED} = 2(-\frac{12}{17} R)K - 12KR = -\frac{228}{17} KR = \frac{5016}{115} \approx +43.62 \text{ kN-m}$</li>
+<li>$M_{AB} = 4(-\frac{15}{17} R)K + 12KR = \frac{144}{17} KR = \frac{144}{17} \left( \frac{17 \times 22}{115} \right) = \frac{3168}{115} \approx +27.55 \text{ kN-m}$</li>
+<li>$M_{BA} = 8(-\frac{15}{17} R)K + 12KR = \frac{84}{17} KR = \frac{1848}{115} \approx +16.07 \text{ kN-m}$</li>
+<li>$M_{BC} = 8(-\frac{15}{17} R)K - 12KR = -\frac{324}{17} KR = -\frac{7128}{115} \approx -61.98 \text{ kN-m}$</li>
+<li>$M_{CB} = 4(-\frac{15}{17} R)K - 12KR = -\frac{264}{17} KR = -\frac{5808}{115} \approx -50.50 \text{ kN-m}$</li>
+<li>$M_{BD} = 8(-\frac{15}{17} R)K + 4(-\frac{12}{17} R)K + 24KR = \frac{240}{17} KR = \frac{5280}{115} \approx +45.91 \text{ kN-m}$</li>
+<li>$M_{DB} = 8(-\frac{12}{17} R)K + 4(-\frac{15}{17} R)K + 24KR = \frac{252}{17} KR = \frac{5544}{115} \approx +48.21 \text{ kN-m}$</li>
+<li>$M_{DE} = 4(-\frac{12}{17} R)K - 12KR = -\frac{252}{17} KR = -\frac{5544}{115} \approx -48.21 \text{ kN-m}$</li>
+<li>$M_{ED} = 2(-\frac{12}{17} R)K - 12KR = -\frac{228}{17} KR = -\frac{5016}{115} \approx -43.62 \text{ kN-m}$</li>
 </ul>
 <p>正號代表順時針，負號代表逆時針。</p>
-<p>$$\boxed{\text{A 點彎矩 } M_{AB} = -3168/115 \text{ kN-m}}$$<br />
-$$\boxed{\text{B 點彎矩 } M_{BA} = -1848/115 \text{, } M_{BC} = 7128/115 \text{, } M_{BD} = -5280/115 \text{ kN-m}}$$<br />
-$$\boxed{\text{C 點彎矩 } M_{CB} = 5808/115 \text{ kN-m}}$$<br />
-$$\boxed{\text{D 點彎矩 } M_{DB} = -5544/115 \text{, } M_{DE} = 5544/115 \text{ kN-m}}$$<br />
-$$\boxed{\text{E 點彎矩 } M_{ED} = 5016/115 \text{ kN-m}}$$</p>
+<p><strong>檢核</strong>：</p>
+<ul>
+<li>節點 B：$16.07 - 61.98 + 45.91 = 0$ ✓；節點 D：$48.21 - 48.21 = 0$ ✓</li>
+<li>側移式：$-(27.55+16.07) + (-61.98-50.50) - 2(45.91+48.21) + 2(-48.21-43.62) = -528.0 = -PL$ ✓</li>
+<li>物理方向：B 向右推，下柱 BC 的固定端 C 對柱施加逆時針彎矩（$M_{CB}&lt;0$）、上柱 AB 的固定端 A 對柱施加順時針彎矩（$M_{AB}&gt;0$）✓</li>
+<li>剪力：上柱 $(27.55+16.07)/8 = 5.45$ kN、下柱 $(61.98+50.50)/8 = 14.06$ kN，兩柱合計 19.51 kN；其餘 46.49 kN 由 BD–DE 路徑傳到 E 的水平反力，$5.45+14.06+46.49 = 66$ ✓（與勁度法 $R_{Ax}$、$R_{Cx}$、$R_{Ex}$ 一致）</li>
+</ul>
+<p>$$\boxed{\text{A 點彎矩 } M_{AB} = +3168/115 \approx 27.55 \text{ kN-m}}$$<br />
+$$\boxed{\text{B 點彎矩 } M_{BA} = +1848/115 \text{, } M_{BC} = -7128/115 \text{, } M_{BD} = +5280/115 \text{ kN-m}}$$<br />
+$$\boxed{\text{C 點彎矩 } M_{CB} = -5808/115 \approx -50.50 \text{ kN-m}}$$<br />
+$$\boxed{\text{D 點彎矩 } M_{DB} = +5544/115 \text{, } M_{DE} = -5544/115 \text{ kN-m}}$$<br />
+$$\boxed{\text{E 點彎矩 } M_{ED} = -5016/115 \approx -43.62 \text{ kN-m}}$$</p>
 <h2>5. 關鍵爭議點與進階探討 (Critical Issues &amp; Advanced Discussion)</h2>
 <ul>
 <li><strong>層剪力方程式的容錯率</strong>：面對此類多重斜桿與節點的複雜幾何，若強行使用傳統的自由體截面法（FBD）來推導 $\sum F_x = 0$ 會非常痛苦且極易出錯。本題完美示範了「虛功法（Principle of Virtual Work）」在建立層剪力方程式上的優勢，只要確實寫對各桿件的虛擬弦旋轉角 $\delta\psi$，便能以一套機械化的公式取代複雜的幾何投影計算。</li>
 <li><strong>計算收斂性設計</strong>：在最後將 $P$ 與 $L$ 代入時，分母的 $17$ 完美消去，這是考題設計者特意留下的計算收斂設計。如果在推導過程的最後一步沒有看到數字俐落地消去，考生應立刻警覺可能在前面的 $\psi$ 幾何推導或虛功法正負號出現了失誤。</li>
-</ul></main>
+<li><strong>正負號的最後一道防線</strong>：大小對、正負全反是虛功式少一個負號的典型症狀。解完後用「柱頂往右推、柱底固定端彎矩應為逆時針」或直接檢查 $\sum F_x = 0$（各桿剪力與斜桿水平分量）確認方向。</li>
+</ul>
+<hr />
+<p><em>修正日期：2026-11-04（側移虛功式由 $P\delta\Delta = \sum M\delta\psi$ 更正為 $P\delta\Delta + \sum M\delta\psi = 0$，式 3 右端 $-PL/12K \to +PL/12K$，$KR = -374/115 \to +374/115$；八個桿端彎矩大小不變、正負號全部更正（如 $M_{AB}$ −27.55 → +27.55、$M_{CB}$ +50.50 → −50.50 kN-m）；§3、§3.5 同步，Step 4 補展開過程，新增檢核。驗證：平面剛架勁度法（EA→∞）獨立重算八個桿端彎矩與三支承水平反力，MISMATCHES: 0；幾何與弦旋轉角經考卷第 2 頁圖三 450 dpi 判讀確認無誤；來源：study/lecture-SA-U2-3.html §4.2 附註、wiki/queries/盲解比對-SA-U2-3a-2026-11-04.md 同類問題）</em></p></main>
 <footer>來源：raw/solutions/SA-2014-3/SA-2014-3.md（知識庫解題內容唯一正本；本頁僅為渲染顯示）</footer>
 
 <script>

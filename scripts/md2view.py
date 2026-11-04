@@ -12,6 +12,7 @@ header／footer／KaTeX 設定一律沿用該檔既有內容，不重建模板�
 轉換設定是逆推自既有 74 個頁面的輸出風格：
   markdown(extensions=['tables','nl2br']) ＋「清單前補空行」的前處理。
 圖片相對路徑改寫為 ../../raw/solutions/<ID>/…（HTML 在 study/problems-view/ 下）。
+有題目正本 <ID>-problem.md 時，渲染成「📄 題目正本」區塊放在解析之前（2026-11-04）。
 """
 import html
 import os
@@ -40,12 +41,8 @@ def pre(md: str) -> str:
     return '\n'.join(out)
 
 
-def render(mid: str, root: str = ROOT) -> str:
-    src = os.path.join(root, 'raw', 'solutions', mid, mid + '.md')
-    dst = os.path.join(root, 'study', 'problems-view', mid + '.html')
-    md = open(src, encoding='utf-8').read()
-
-    # 數學式先保護再還原：否則 markdown 會吞掉 \\（矩陣換行）、\{ \}、\!、_…_ 等（2026-11-01）
+def md2html(md: str, mid: str) -> str:
+    """markdown → HTML（數學式保護、圖片路徑改寫）。"""
     store = []
 
     def keep(m):
@@ -58,8 +55,24 @@ def render(mid: str, root: str = ROOT) -> str:
     body = markdown.markdown(pre(md), extensions=['tables', 'nl2br'])
     body = re.sub('\u0000M(\\d+)\u0000',
                   lambda g: html.escape(store[int(g.group(1))], quote=False), body)
-    body = re.sub(r'src="(?!\.\./|https?:|data:)([^"]+)"',
+    return re.sub(r'src="(?!\.\./|https?:|data:)([^"]+)"',
                   rf'src="../../raw/solutions/{mid}/\1"', body)
+
+
+def render(mid: str, root: str = ROOT) -> str:
+    src = os.path.join(root, 'raw', 'solutions', mid, mid + '.md')
+    dst = os.path.join(root, 'study', 'problems-view', mid + '.html')
+    md = open(src, encoding='utf-8').read()
+    prob = os.path.join(root, 'raw', 'solutions', mid, mid + '-problem.md')
+    prob_html = ''
+    if os.path.exists(prob):   # 題目正本（2026-11-04 起）：插在解析之前
+        prob_html = ('<details class="problem-src" open><summary><b>📄 題目正本</b>'
+                     '（考卷原文、附圖與判讀清單；不含解法）</summary>\n'
+                     + md2html(open(prob, encoding='utf-8').read(), mid)
+                     + '\n</details>\n<hr>\n')
+
+    # 數學式先保護再還原：否則 markdown 會吞掉 \\（矩陣換行）、\{ \}、\!、_…_ 等（2026-11-01）
+    body = prob_html + md2html(md, mid)
 
     page = open(dst, encoding='utf-8').read()
     head, rest = page.split('<main>', 1)

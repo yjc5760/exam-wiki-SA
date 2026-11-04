@@ -50,6 +50,7 @@ raw/solutions/ ＋ question_index      ──→  study/lecture-*（講義，Cow
 Cowork 查詢、稽核、盲解報告            ──→  wiki/queries/        （Cowork 直接存入）
 變更紀錄                               ──→  wiki/queries/log.md  （append only）
 
+題意唯一來源：raw/solutions/SA-YYYY-N/SA-YYYY-N-problem.md（題目正本：考卷原文、附圖、判讀清單；確認後凍結）
 解題內容唯一來源：raw/solutions/ 下的 .md 檔案
 索引資訊唯一來源：raw/json/question_index.json
 方法論唯一來源：raw/solutions/methods/（可修正，須驗算＋記 log，見規則 1）
@@ -78,8 +79,10 @@ exam-wiki-SA/
 │   │   └── question_index.json      ← ⭐✏️ 題目總索引（唯一需要人工維護的 JSON）
 │   └── solutions/                   ← AI 解析 + 補充截圖（每題一個資料夾）
 │       ├── SA-YYYY-N/               ← ✏️ 個別題目解析（可修正，見規則 1）
+│       │   ├── SA-YYYY-N-problem.md   ← 題目正本（考卷原文＋判讀清單，確認後凍結）
 │       │   ├── SA-YYYY-N.md
-│       │   └── SA-YYYY-N-fig-1.png
+│       │   ├── SA-YYYY-N-fig-1.png    ← 考卷附圖證據圖（不修改）
+│       │   └── figs/SA-YYYY-N-fig-N-problem.svg ← 依判讀清單重繪的題目附圖
 │       └── methods/                 ← ✏️ 解題方法論（可修正公式／單位，見規則 1）
 │
 ├── wiki/
@@ -134,6 +137,7 @@ exam-wiki-SA/
    - `raw/json/question_index.json`（索引唯一人工維護處）
    - `raw/solutions/methods/`（方法論文件，可修正公式錯誤與單位標註）
    - `raw/solutions/SA-YYYY-N/`（個別題目解析，含 .md、附圖、產圖腳本）
+     - 其中題目正本 `SA-YYYY-N-problem.md`：建立時判讀狀態為「待確認」，使用者確認後改「已確認」並凍結；凍結後要改須回考卷原圖判讀並記 log（題意勘誤）。考卷證據圖 `-fig-*.png` 不修改，重繪圖一律另存 `figs/SA-YYYY-N-fig-N-problem.*`
 
    > **為什麼 methods/ 是例外**：本規則要保護的是**證據**（考卷、驗證過的答案），
    > 這些一旦被改就失去可追溯性。但 `raw/solutions/methods/` 存的是**可維護的知識整理**，
@@ -158,6 +162,9 @@ exam-wiki-SA/
 
 | 日期 | 變更 | 原因 |
 |------|------|------|
+| 2026-11-04 | **題目正本導入**：新增 `raw/solutions/SA-YYYY-N/SA-YYYY-N-problem.md`（題目與解析拆分，確認後凍結）與重繪附圖 `figs/*-problem.svg`；規則 1、資料流、資料夾結構補列；`md2view.py` 渲染「📄 題目正本」區塊；索引新增 `problemStatus`（draft／confirmed）；首批 SA-U2-3 12 題 | 題意先單獨驗證，讀錯題在動解答前就被抓到（比照 SS） |
+| 2026-11-04 | **虛功式少負號同類勘誤**：SA-2014-3 八個桿端彎矩正負號全部更正（M_AB −27.55→+27.55 kN-m 等）；SA-2005-2 §5 虛功驗算更正（主解不變）；lecture-SA-U2-3 §4.2 附註改為已勘誤並重出 PDF | 講義 §4.2 已註記的錯誤；與 SA-2013-3 同為「外功＝內功」寫法，詳見 wiki/queries/log.md |
+| 2026-11-04 | **盲解比對後勘誤三題**：SA-2013-3 側移虛功式符號錯，四個桿端彎矩與 BC 剪力圖、彎矩圖全改（M_AB −0.0699→+0.1051 wL² 等）；SA-2007-4 AC 桿改為雙曲率有反曲點、SA-2002-4 彎矩圖受拉側全部更正（兩題數值不變）；三題新增題目正本（待確認） | wiki/queries/盲解比對-SA-U2-3a-2026-11-04.md 發現；詳見 wiki/queries/log.md |
 | 2026-11-01 | **儀表板與題解渲染整理（比照 SS）**：刪除 40 份 `*-viz.html` 與 `mkviz_influence_line.py`，清除 .md／problems-view 引用、`hasViz`、dashboard viz／pdf 欄；`md2view.py` 加數學式保護並重新產生 96 頁 problems-view（修復 232 個被 markdown 改壞的數學式、50 處 `\cdotp`）；`index.html` 完整解析改連 problems-view、刪指令速查分頁、修導覽死連結與資料夾授權 | 互動圖維護成本高且易與 .md 不同步；舊渲染器未保護數學式，頁面公式與正本不一致 |
 | 2026-11-01 | **wiki 封存**：wiki/ 只保留 queries/，其餘各層與 index.md、by-year.md 移至 `archive/wiki/`；`wiki/log.md` 改為 `wiki/queries/log.md`；ingest／compile-all 等會寫 wiki 的指令停用；補齊 13 題 problems-view | 舊 wiki 未逐頁核對、與 raw／study 重複，維護成本高（比照 SS 科） |
 | 2026-10-30 | **全科分類稽核＋索引分類更正（四）**：14 題改分類（2008-3、2012-2→U2-1；2019-3→U2-3；2009-4、2024-4→U2-4；2007-1、2008-1、2009-1、2009-2→U2-2；2007-3→U1-3；2010-1→U1-2；刪 2013-1、2007-2、2007-4 副分類），U1-1 主分類歸零；33 題解析標頭的失效代碼對齊索引；wiki 導航、code-ref、diagnosis、單元總覽、講義、熱圖、儀表板同步 | 逐題比對考卷原文：5 題考卷明文指定的方法與分類不符，U1-1 七題全是靜不定桁架／矩陣／影響線被舊代碼誤歸；另發現 SA-2024-4 題解答錯題（待重解），詳見 wiki/log.md 與 wiki/queries/audit-classification-SA-2026-10-30.md |

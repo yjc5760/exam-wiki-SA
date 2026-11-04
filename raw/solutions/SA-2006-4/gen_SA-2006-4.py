@@ -216,9 +216,40 @@ def fig2_short_column():
     return compose([cv1, cv2], cols=1, path=f"{OUT}/{TAG}-fig-2-short-column.svg")
 
 
+
+def fig3_problem():
+    """題目附圖重繪（2026-11-04，exam-problem-split）：只畫考卷給的東西，不含解題推論。
+    逐項對應 SA-2006-4-problem.md §4 判讀清單：#1 柱位 5 m、#2 長柱 3 m（落地）、#3 短柱 2 m（落於矮牆頂）、
+    #4 尺寸 2 m 量自梁下緣、#5 柱底固接（使用者 2026-11-04 確認）、#8 A 點 100 kN 向右。
+    攔：長柱高度看成 2 m、短柱與長柱位置對調。"""
+    H = 470
+    cv = fcanvas(H, bg="#FFFFFF")
+    draw_structure(cv)
+    for x, h, nm in COLS:                     # 柱頂 A–E 在梁上方；柱底 F、G 在地面下方、J、K、L 在矮牆頂左上方（同考卷）
+        cv.text_px(cv.X(x), cv.Y(H_ROOF) - 20, nm[0], 17, C["text"], weight="700", italic=True)
+        if h == H_LONG:
+            cv.text_px(cv.X(x), cv.Y(0.0) + 26, nm[1], 16, C["text"], weight="700", italic=True)
+        else:
+            cv.text_px(cv.X(x) - 14, cv.Y(H_WALL) - 16, nm[1], 16, C["text"], weight="700", italic=True)
+    for x, h, _ in COLS:                      # #5 柱底固接（地面 F、G；矮牆頂 J、K、L 嵌入剛性矮牆）
+        if h == H_LONG:
+            cv.fixed_support((x, 0.0), 0, 16)
+    cv.arrow((-1.9, H_ROOF), (-0.10, H_ROOF), C["load"], 3.6, 13)
+    cv.text_px(cv.X(-2.0), cv.Y(H_ROOF), f"{P:g} kN", 16, C["load"], "end", weight="700")
+    cv.text_px(cv.X(2.5), cv.Y(H_ROOF) + 22, "剛性梁 I = ∞", 13.5, C["muted"], weight="700")
+    cv.text_px(cv.X(17.5), cv.Y(H_WALL * 0.35), "剛性矮牆 I = ∞", 13.5, C["muted"], weight="700")
+    for x, nm in ((X_WALL, "H"), (SPAN, "M")):
+        cv.text_px(cv.X(x) + (-12 if nm == "H" else 14), cv.Y(0.0) + 22, nm, 16, C["text"], weight="700", italic=True)
+    cv.dim((SPAN, 0.0), (SPAN, H_WALL), f"{H_WALL:g} m", off=54, label_off=14)
+    cv.dim((SPAN, H_WALL), (SPAN, H_ROOF), f"{H_SHORT:g} m", off=54, label_off=14)
+    cv.dim((0.0, 0.0), (SPAN, 0.0), f"{N_BAY} @ {BAY:g} m = {SPAN:g} m", off=86, label_off=15)
+    cv.text_px(W / 2, H - 22, "各柱 E、I 相同；柱底固接（F、G 於地面，J、K、L 於剛性矮牆頂）；不計自重",
+               13, C["muted"])
+    return cv.save(f"{OUT}/{TAG}-fig-1-problem.svg")
+
 if __name__ == "__main__":
     os.makedirs(OUT, exist_ok=True)
-    for f in (fig1_frame, fig2_short_column):
+    for f in (fig1_frame, fig2_short_column, fig3_problem):
         f(); print("寫出", f.__name__)
     print(f"\nEIΔ = {EID:.6f} kN·m²   （= 1800/97 = {1800 / 97:.6f}）")
     print(f"長柱（{H_LONG:g} m）：M = {M_LONG:.4f} kN·m   V = {V_LONG:.4f} kN")

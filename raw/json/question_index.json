@@ -1,9 +1,10 @@
 {
   "description": "SA 科目考題總索引。科目：結構學（第一科）。verificationStatus 和 tags 是主要人工維護欄位。",
   "tagSystem": {
-    "primaryTopicId": "å‘½é¡Œå¤§ç¶±ä¸»åˆ†é¡žï¼ˆSA-UN-nï¼Œä¾å®˜æ–¹å‘½é¡Œå¤§ç¶±ä¸‰å–®å…ƒï¼‰",
-    "secondaryTopicIds": "å‘½é¡Œå¤§ç¶±å‰¯åˆ†é¡žï¼ˆè·¨å­é …æ™‚ä½¿ç”¨ï¼‰",
-    "tags": "è‡ªç”±æ¨™ç±¤ï¼ˆ3-8å€‹ï¼Œè¦‹ CLAUDE-SPEC.md Â§8ï¼‰"
+    "primaryTopicId": "命題大綱主分類（SA-UN-n，依官方命題大綱三單元）",
+    "secondaryTopicIds": "命題大綱副分類（跨子項時使用）",
+    "tags": "自由標籤（3-8個，見 CLAUDE-SPEC.md §8）",
+    "problemStatus": "題目正本狀態：draft（已建立、待使用者確認）／confirmed（已確認並凍結）；欄位不存在＝尚未建立題目正本"
   },
   "questions": [
     {
@@ -897,7 +898,7 @@
       "primaryTopicId": "SA-U2-3",
       "primaryTopicName": "靜不定結構之傾角變位法",
       "secondaryTopicIds": [],
-      "verificationStatus": "unverified",
+      "verificationStatus": "unverified", "problemStatus": "draft",
       "hasSolution": true,
       "hasHandwritten": false,
       "tags": [
@@ -974,7 +975,7 @@
       "primaryTopicId": "SA-U2-3",
       "primaryTopicName": "靜不定結構之傾角變位法",
       "secondaryTopicIds": [],
-      "verificationStatus": "unverified",
+      "verificationStatus": "unverified", "problemStatus": "confirmed",
       "hasSolution": true,
       "hasHandwritten": false,
       "tags": [
@@ -1033,7 +1034,7 @@
       "subCategory": "待分類",
       "analysisMethod": "待分類",
       "hasSolution": true,
-      "verificationStatus": "unverified",
+      "verificationStatus": "unverified", "problemStatus": "confirmed",
       "tags": [
         "傾角撓度法",
         "剛架",
@@ -1054,7 +1055,7 @@
       "subCategory": "待分類",
       "analysisMethod": "待分類",
       "hasSolution": true,
-      "verificationStatus": "unverified",
+      "verificationStatus": "unverified", "problemStatus": "confirmed",
       "tags": [
         "傾角撓度法",
         "側移",
@@ -1138,7 +1139,7 @@
       "subCategory": "SA-U3-2",
       "method": "傾角撓度法 (Slope-Deflection Method)",
       "hasSolution": true,
-      "verificationStatus": "unverified",
+      "verificationStatus": "unverified", "problemStatus": "confirmed",
       "tags": [
         "側移剛架",
         "水平勁度",
@@ -1198,7 +1199,7 @@
       "primaryTopicId": "SA-U2-3",
       "primaryTopicName": "靜不定結構之傾角變位法",
       "secondaryTopicIds": [],
-      "verificationStatus": "unverified",
+      "verificationStatus": "unverified", "problemStatus": "confirmed",
       "hasSolution": true,
       "hasHandwritten": false,
       "tags": [
@@ -1270,7 +1271,7 @@
       "primaryTopicId": "SA-U2-3",
       "primaryTopicName": "靜不定結構之傾角變位法",
       "secondaryTopicIds": [],
-      "verificationStatus": "unverified",
+      "verificationStatus": "unverified", "problemStatus": "confirmed",
       "hasSolution": true,
       "hasHandwritten": false,
       "tags": [
@@ -1305,7 +1306,7 @@
       "primaryTopicId": "SA-U2-3",
       "primaryTopicName": "靜不定結構之傾角變位法",
       "secondaryTopicIds": [],
-      "verificationStatus": "unverified",
+      "verificationStatus": "unverified", "problemStatus": "confirmed",
       "hasSolution": true,
       "hasHandwritten": false,
       "tags": [
@@ -1378,7 +1379,7 @@
       "primaryTopicId": "SA-U2-3",
       "primaryTopicName": "靜不定結構之傾角變位法",
       "secondaryTopicIds": [],
-      "verificationStatus": "unverified",
+      "verificationStatus": "unverified", "problemStatus": "confirmed",
       "hasSolution": true,
       "hasHandwritten": false,
       "tags": [
@@ -1413,7 +1414,7 @@
       "primaryTopicId": "SA-U2-3",
       "primaryTopicName": "靜不定結構之傾角變位法",
       "secondaryTopicIds": [],
-      "verificationStatus": "unverified",
+      "verificationStatus": "unverified", "problemStatus": "confirmed",
       "hasSolution": true,
       "hasHandwritten": false,
       "tags": [
@@ -1669,7 +1670,7 @@
       "primaryTopicId": "SA-U2-3",
       "primaryTopicName": "靜不定結構之傾角變位法",
       "secondaryTopicIds": [],
-      "verificationStatus": "unverified",
+      "verificationStatus": "unverified", "problemStatus": "confirmed",
       "hasSolution": true,
       "hasHandwritten": false,
       "tags": [
@@ -1733,7 +1734,7 @@
         "符號慣例"
       ],
       "hasSolution": true,
-      "verificationStatus": "unverified",
+      "verificationStatus": "unverified", "problemStatus": "confirmed",
       "difficulty": 4,
       "rocYear": 102,
       "primaryTopicId": "SA-U2-3",
@@ -1804,7 +1805,7 @@
       ],
       "hasSolution": true,
       "difficulty": 4,
-      "verificationStatus": "unverified",
+      "verificationStatus": "unverified", "problemStatus": "confirmed",
       "year": 2011,
       "rocYear": 100,
       "primaryTopicId": "SA-U2-3",

@@ -43,23 +43,178 @@ header .nomat{margin-top:12px;font-size:.8em;opacity:.85}
 <p class="meta2">主分類 <b>SA-U2-3</b> 靜不定結構之傾角變位法 ｜ 2005 年（民國 94） ｜ 傾角變位法</p>
 <div class="hbtns"><a class="b-study" href="../unit-SA-U2-3.html">🧭 U2-3 單元總覽</a><a class="b-lect" href="../lecture-SA-U2-3.html">📚 U2-3 靜不定結構之傾角變位法 講義</a></div>
 </header>
-<main><h1>考題編號：[SA-2005-2]</h1>
+<main><details class="problem-src" open><summary><b>📄 題目正本</b>（考卷原文、附圖與判讀清單；不含解法）</summary>
+<h1>SA-2005-2 題目正本</h1>
+<blockquote>
+<p>本檔只記錄考卷上寫了什麼、圖上畫了什麼，不含任何解法。解析見同資料夾 <code>SA-2005-2.md</code>。<br />
+判讀清單經使用者確認前，狀態為「待確認」；確認後本檔原則上不再修改（改動須回考卷原圖並記 log）。</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>項目</th>
+<th>內容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>考卷</td>
+<td><code>raw/exams/SA-2005_結構學.pdf</code>，第 1 頁中段，第二題（圖二）</td>
+</tr>
+<tr>
+<td>考年</td>
+<td>2005（民國 94 年）專技高考結構工程技師「結構學」</td>
+</tr>
+<tr>
+<td>配分</td>
+<td>25 分</td>
+</tr>
+<tr>
+<td>附圖</td>
+<td><code>SA-2005-2-fig-1.png</code></td>
+</tr>
+<tr>
+<td>判讀狀態</td>
+<td><strong>已確認</strong>（2026-11-04 使用者確認。原轉錄：2026-11-04 轉錄；PyMuPDF 150 dpi 整頁＋350–500 dpi 局部放大；盲讀於開啟解析前完成）</td>
+</tr>
+</tbody>
+</table>
+<h2>1. 考卷原文（逐字）</h2>
+<p>二、剛架（frame）如圖二，其構架高為 4m，跨距為 8 m，A、E 兩點為固接（fixed），C 點為鉸接（hinge）。若每根桿件之慣性矩 I 及楊氏係數 E 為常數，則當 B 點有一垂直載重 10 N 時，計算每根桿件之彎矩。（25 分）</p>
+<h2>2. 考卷給的公式、附表與參數</h2>
+<ul>
+<li>考卷沒有給任何參考公式或附表；所需公式須自備。</li>
+<li>卷首注意事項：㈠不必抄題，作答時請將試題題號及答案依照順序寫在試卷上，於本試題紙上作答者，不予計分。㈡可以使用電子計算器，但需詳列解答過程。</li>
+<li>考試時間：2 小時。</li>
+</ul>
+<h2>3. 附圖</h2>
+<p><img alt="SA-2005-2 考卷附圖：剛架：上梁 A-B-C、柱 BD、下梁 E-D；A、E 左側牆面固接，C 右端三角形支承；B 點 10 N 向下；高 4m、水平 4m＋4m" src="../../raw/solutions/SA-2005-2/SA-2005-2-fig-1.png" /><br />
+<em>證據圖 SA-2005-2-fig-1.png</em></p>
+<p>圖面文字照錄：10 N、A、B、C、4m、E、D、4m、4m、圖二</p>
+<h2>4. 判讀清單</h2>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>項目</th>
+<th>判讀</th>
+<th>圖上／題文依據</th>
+<th>把握</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>A</td>
+<td>左上固接（牆面斜線）</td>
+<td>400 dpi</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>2</td>
+<td>E</td>
+<td>左下固接（牆面斜線）</td>
+<td>400 dpi</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>3</td>
+<td>C</td>
+<td>鉸支承</td>
+<td>題文「C 點為鉸接（hinge）」＋圖上三角形支承</td>
+<td>確定（解讀）；使用者確認</td>
+</tr>
+<tr>
+<td>4</td>
+<td>B</td>
+<td>梁 A-B-C 上距 A 4 m，與柱 BD 剛接</td>
+<td>圖面節點</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>5</td>
+<td>D</td>
+<td>柱 BD 與下梁 ED 之剛接角點</td>
+<td>BD 線條略超出 D，判為繪圖誤差</td>
+<td>確定（解讀）；使用者確認</td>
+</tr>
+<tr>
+<td>6</td>
+<td>尺寸</td>
+<td>AB = BC = 4 m、BD = 4 m、ED = 4 m</td>
+<td>高 4m、下方 4m＋4m 尺寸線</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>7</td>
+<td>E、I</td>
+<td>各桿相同</td>
+<td>題文</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>8</td>
+<td>載重</td>
+<td>B 點 10 N 向下</td>
+<td>箭頭</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>9</td>
+<td>指定方法</td>
+<td>未指定</td>
+<td>題文</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>10</td>
+<td>所求</td>
+<td>每根桿件之彎矩</td>
+<td>題文</td>
+<td>確定</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p><em>轉錄：2026-11-04（SA-U2-3 題目正本推廣・批 1；判讀沿用同日盲解稽核紀錄 wiki/queries/盲解紀錄-SA-U2-3a-2026-11-04.md，並回考卷原圖核對）</em><br />
+<em>確認：2026-11-04 使用者確認</em></p>
+</details>
+<hr>
+<h1>考題編號：[SA-2005-2]</h1>
 <p><strong>主分類：</strong> <code>SA-U2-3</code> 靜不定結構分析<br />
 <strong>副分類：</strong> 無<br />
 <strong>分析法：</strong> 傾角變位法<br />
 <strong>標籤：</strong> <code>剛架分析</code> <code>側移</code> <code>傾角變位法</code> <code>剪力方程式</code></p>
 <hr />
-<h2>1. 原始題目重述 (Problem Restatement)</h2>
-<p>本題為一受垂直載重之剛架結構，幾何及邊界條件如下：</p>
-<ul>
-<li><strong>節點與支承</strong>：A、E 兩點為固端支承（Fixed），C 點為鉸支承（Hinge）。B、D 為剛節點。</li>
-<li><strong>桿件配置與長度</strong>：AB、ED、BC 為水平桿，BD 為垂直桿。各桿件長度皆為 4m。</li>
-<li><strong>斷面性質</strong>：每根桿件之抗彎剛度 $EI$ 均為常數。</li>
-<li><strong>載重</strong>：B 點承受一垂直向下之集中載重 $P = 10\text{ N}$。</li>
-<li><strong>求</strong>：各桿件之桿端彎矩。</li>
-</ul>
-<p><img alt="SA-2005-2 題目附圖：剛架，A、E固接，C鉸接，B點有10N垂直載重" src="../../raw/solutions/SA-2005-2/SA-2005-2-fig-1.png" /><br />
-<em>圖說：構架高為4m，水平跨距各段為4m。A點與E點為固端，C點為鉸支承。B點承受垂直向下的10 N載重。</em></p>
+<h2>1. 題目（考卷原文見題目正本）</h2>
+<blockquote>
+<p>考卷原文、公式／附表、附圖與判讀清單（已確認）見 <a href="SA-2005-2-problem.md"><code>SA-2005-2-problem.md</code></a>。本節只列解題時最容易讀錯的地方與本解使用的記號；題意以題目正本為準。</p>
+</blockquote>
+<p><img alt="SA-2005-2 重繪題目附圖：剛架 A、E 固接、C 鉸支承，B 點 10 N 向下" src="../../raw/solutions/SA-2005-2/figs/SA-2005-2-fig-1-problem.svg" /><br />
+<em>重繪自考卷附圖，依判讀清單 #1–#8 重繪。攔：C 讀成內鉸、D 讀成鉸接。</em></p>
+<h3>常見誤讀</h3>
+<table>
+<thead>
+<tr>
+<th>項目</th>
+<th>正確判讀</th>
+<th>常見誤讀</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>C</td>
+<td>鉸支承（三角形支承）</td>
+<td>框身內鉸</td>
+</tr>
+<tr>
+<td>D</td>
+<td>BD 與 ED 剛接之角點</td>
+<td>鉸接</td>
+</tr>
+</tbody>
+</table>
+<p><strong>本解記號：</strong> 桿端彎矩、節點轉角、弦位角一律順時針為正（傾角變位法慣例）。</p>
 <h2>2. 考題核心精神與出題者意圖 (Core Concepts &amp; Examiner's Intent)</h2>
 <p>本題測驗考生對<strong>剛架側移（Sway）自由度</strong>的判斷及<strong>剪力方程式（Sway Equation）</strong>的建立。<br />
 核心意圖包含：</p>
@@ -305,9 +460,18 @@ $$M_{DB} = 4\left(\frac{50}{39}\right) + 2\left(\frac{10}{39}\right) = \frac{200
 <em>(註：正值代表順時針，負值代表逆時針)</em></p>
 <h2>5. 關鍵爭議點與進階探討 (Critical Issues &amp; Advanced Discussion)</h2>
 <ul>
-<li><strong>虛功原理推導剪力方程式</strong>：剪力方程式亦可由虛功原理快速獲得。給定一虛擬向下位移 $\delta\Delta$，外力作功 $W_{ext} = 10 \cdot \delta\Delta$。內力作功（桿端彎矩乘以弦切角）為 $W_{int} = (M_{AB}+M_{BA})(\frac{\delta\Delta}{4}) + (M_{ED}+M_{DE})(\frac{\delta\Delta}{4}) + (M_{BC})(-\frac{\delta\Delta}{4})$。令 $W_{ext} = W_{int}$，同樣可得 $40 = M_{AB} + M_{BA} + M_{ED} + M_{DE} - M_{BC}$。兩種方法結果完全一致，唯虛功法更能檢視符號設定是否統一。</li>
-<li><strong>結構水平平衡 ($\sum F_x = 0$)</strong>：計算結果中水平桿端彎矩會產生柱 BD 之層剪力。為平衡此剪力，固定端 A 與鉸接端 C 必然產生一組水平反力。由於水平桿件假設為軸向剛性（Axially rigid），這屬於內部軸力靜不定問題，但這組力並不影響各桿件之彎矩分佈，故在本題中無須解出個別的水平反力 $H_A, H_C$。</li>
-</ul></main>
+<li>
+<p><strong>虛功原理推導剪力方程式</strong>：剪力方程式亦可由虛功原理快速獲得。給定一虛擬向下位移 $\delta\Delta$（B、D 同時下移），把每根桿件當剛體：外力作功 $10 \cdot \delta\Delta$；桿端彎矩作用在桿件上（順時針為正），隨桿件轉動 $\delta\psi$ 作功，其中 $\delta\psi_{AB}=\delta\psi_{ED}=+\frac{\delta\Delta}{4}$、$\delta\psi_{BC}=-\frac{\delta\Delta}{4}$（$M_{CB}=0$）。剛體虛位移時<strong>兩者總和為零</strong>：<br />
+  $$10\,\delta\Delta + (M_{AB}+M_{BA})\frac{\delta\Delta}{4} + (M_{ED}+M_{DE})\frac{\delta\Delta}{4} - M_{BC}\frac{\delta\Delta}{4} = 0 \;\Rightarrow\; M_{AB} + M_{BA} + M_{ED} + M_{DE} - M_{BC} = -40$$<br />
+  與 Step 3 的剪力方程式完全一致。代回驗算：$\frac{-400-380-320-220-240}{39} = -\frac{1560}{39} = -40$ ✓。注意不可寫成「外功＝內功」$W_{ext} = \sum M\delta\psi$，那樣右端會變成 $+40$，正負號全反（SA-2013-3、SA-2014-3 舊版解析即犯此錯）。</p>
+</li>
+<li>
+<p><strong>結構水平平衡 ($\sum F_x = 0$)</strong>：計算結果中水平桿端彎矩會產生柱 BD 之層剪力。為平衡此剪力，固定端 A 與鉸接端 C 必然產生一組水平反力。由於水平桿件假設為軸向剛性（Axially rigid），這屬於內部軸力靜不定問題，但這組力並不影響各桿件之彎矩分佈，故在本題中無須解出個別的水平反力 $H_A, H_C$。</p>
+</li>
+</ul>
+<hr />
+<p><em>修正日期：2026-11-04（數值未變。§5「虛功原理推導剪力方程式」原寫 $W_{ext}=W_{int}$ 得 $+40$ 並稱與主解一致，實際少一個負號；更正為外力虛功與桿端彎矩虛功總和為零，得 $-40$，與 Step 3 一致，並補代回驗算。驗證：代入最終桿端彎矩，左式 $=-1560/39=-40$；八個桿端彎矩經平面剛架勁度法獨立重算一致，MISMATCHES: 0；來源：study/lecture-SA-U2-3.html §4.2 附註）</em></p>
+<p><em>修正日期：2026-11-04（§1 改為指向題目正本並放重繪附圖（figs/SA-2005-2-fig-1-problem.svg）、加常見誤讀；圖由 gen_SA-2005-2.py 產生，可重跑）</em></p></main>
 <footer>來源：raw/solutions/SA-2005-2/SA-2005-2.md（知識庫解題內容唯一正本；本頁僅為渲染顯示）</footer>
 
 <script>

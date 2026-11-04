@@ -43,17 +43,157 @@ header .nomat{margin-top:12px;font-size:.8em;opacity:.85}
 <p class="meta2">主分類 <b>SA-U2-3</b> 靜不定結構之傾角變位法 ｜ 2008 年（民國 97） ｜ 傾角變位法</p>
 <div class="hbtns"><a class="b-study" href="../unit-SA-U2-3.html">🧭 U2-3 單元總覽</a><a class="b-lect" href="../lecture-SA-U2-3.html">📚 U2-3 靜不定結構之傾角變位法 講義</a></div>
 </header>
-<main><hr />
+<main><details class="problem-src" open><summary><b>📄 題目正本</b>（考卷原文、附圖與判讀清單；不含解法）</summary>
+<h1>SA-2008-2 題目正本</h1>
+<blockquote>
+<p>本檔只記錄考卷上寫了什麼、圖上畫了什麼，不含任何解法。解析見同資料夾 <code>SA-2008-2.md</code>。<br />
+判讀清單經使用者確認前，狀態為「待確認」；確認後本檔原則上不再修改（改動須回考卷原圖並記 log）。</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>項目</th>
+<th>內容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>考卷</td>
+<td><code>raw/exams/SA-2008_結構學.pdf</code>，第 1 頁中下，第二題</td>
+</tr>
+<tr>
+<td>考年</td>
+<td>2008（民國 97 年）專技高考結構工程技師「結構學」</td>
+</tr>
+<tr>
+<td>配分</td>
+<td>25 分</td>
+</tr>
+<tr>
+<td>附圖</td>
+<td><code>SA-2008-2-fig-1.png</code></td>
+</tr>
+<tr>
+<td>判讀狀態</td>
+<td><strong>已確認</strong>（2026-11-04 使用者確認。原轉錄：2026-11-04 轉錄；PyMuPDF 150 dpi 整頁＋350–500 dpi 局部放大；盲讀於開啟解析前完成）</td>
+</tr>
+</tbody>
+</table>
+<h2>1. 考卷原文（逐字）</h2>
+<p>二、試以傾角變位法（slope-deflection method）計算圖示連續梁各結點處之彎矩與剪力，並繪彎矩圖與剪力圖。圖中 A、H 兩點為固接（fixed），其餘支承均為滾支承（roller）。已知梁之彈性模數 E 與慣性矩 I 為常數。（25 分）</p>
+<h2>2. 考卷給的公式、附表與參數</h2>
+<ul>
+<li>考卷沒有給任何參考公式或附表；所需公式須自備。</li>
+<li>卷首注意事項：㈠不必抄題，作答時請將試題題號及答案依照順序寫在試卷上，於本試題上作答者，不予計分。㈡可以使用電子計算器，但需詳列解答過程。</li>
+<li>考試時間：2 小時。</li>
+</ul>
+<h2>3. 附圖</h2>
+<p><img alt="SA-2008-2 考卷附圖：連續梁 A–H：A、H 固接；C、D、E、F 滾支；B、G 各 10 kN 向下；CD、EF 全跨 1.2 kN/m" src="../../raw/solutions/SA-2008-2/SA-2008-2-fig-1.png" /><br />
+<em>證據圖 SA-2008-2-fig-1.png</em></p>
+<p>圖面文字照錄：10 kN、1.2 kN/m、1.2 kN/m、10 kN、A、B、C、D、E、F、G、H、3 m、3 m、6 m、6 m、6 m、3 m、3 m</p>
+<h2>4. 判讀清單</h2>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>項目</th>
+<th>判讀</th>
+<th>圖上／題文依據</th>
+<th>把握</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>支承</td>
+<td>A、H 固接；C、D、E、F 滾支</td>
+<td>350 dpi</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>2</td>
+<td>跨距</td>
+<td>AB 3、BC 3、CD 6、DE 6、EF 6、FG 3、GH 3 m</td>
+<td>尺寸線</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>3</td>
+<td>集中載重</td>
+<td>B、G 各 10 kN 向下</td>
+<td>箭頭</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>4</td>
+<td>均布載重</td>
+<td>CD、EF 全跨 1.2 kN/m；DE 無載重</td>
+<td>箭頭範圍兩端對齊支承</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>5</td>
+<td>E、I</td>
+<td>常數</td>
+<td>題文</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>6</td>
+<td>指定方法</td>
+<td>傾角變位法</td>
+<td>題文</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>7</td>
+<td>所求</td>
+<td>各結點彎矩與剪力，繪彎矩圖、剪力圖</td>
+<td>題文</td>
+<td>確定</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p><em>轉錄：2026-11-04（SA-U2-3 題目正本推廣・批 1；判讀沿用同日盲解稽核紀錄 wiki/queries/盲解紀錄-SA-U2-3a-2026-11-04.md，並回考卷原圖核對）</em><br />
+<em>確認：2026-11-04 使用者確認</em></p>
+</details>
+<hr>
+<hr />
 <p>主分類: "SA-U2-3"<br />
 副分類: []<br />
 難易度: 3</p>
 <hr />
 <h1>97年結構工程技師高考 結構學 第二題</h1>
-<h2>1. 原始題目重述 (Problem Restatement)</h2>
-<p>試以傾角變位法 (slope-deflection method) 計算圖示連續梁各結點處之彎矩與剪力，並繪彎矩圖與剪力圖。圖中 A、H 兩點為固接 (fixed)，其餘支承均為滾支承 (roller)。已知梁之彈性模數 $E$ 與慣性矩 $I$ 為常數。(25 分)</p>
-<p><img alt="SA-2008-2 題目附圖：五跨連續梁，對稱結構與對稱載重" src="../../raw/solutions/SA-2008-2/SA-2008-2-fig-1.png" /></p>
-<p><em>圖說：(待補充說明)</em></p>
-<p><em>(註：連續梁共五跨，支承點為 A, C, D, E, F, H。A、H 為固定端，C, D, E, F 為滾支承。跨距分別為 $L_{AC}=6\text{m}$ (B 為中點), $L_{CD}=6\text{m}$, $L_{DE}=6\text{m}$, $L_{EF}=6\text{m}$, $L_{FH}=6\text{m}$ (G 為中點)。B、G 點各有向下集中載重 $10\text{ kN}$，CD 跨與 EF 跨有向下均佈載重 $1.2\text{ kN/m}$)</em></p>
+<h2>1. 題目（考卷原文見題目正本）</h2>
+<blockquote>
+<p>考卷原文、公式／附表、附圖與判讀清單（已確認）見 <a href="SA-2008-2-problem.md"><code>SA-2008-2-problem.md</code></a>。本節只列解題時最容易讀錯的地方與本解使用的記號；題意以題目正本為準。</p>
+</blockquote>
+<p><img alt="SA-2008-2 重繪題目附圖：五跨連續梁 A–H，A、H 固接、C～F 滾支，B、G 10 kN，CD、EF 1.2 kN/m" src="../../raw/solutions/SA-2008-2/figs/SA-2008-2-fig-1-problem.svg" /><br />
+<em>重繪自考卷附圖，依判讀清單 #1–#4 重繪。攔：均布載重範圍、跨距與支承誤讀。</em></p>
+<h3>常見誤讀</h3>
+<table>
+<thead>
+<tr>
+<th>項目</th>
+<th>正確判讀</th>
+<th>常見誤讀</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>均布載重範圍</td>
+<td>CD、EF 全跨；DE 無載重</td>
+<td>DE 也有均布載重</td>
+</tr>
+<tr>
+<td>集中載重位置</td>
+<td>B、G，距固端 3 m</td>
+<td>跨中</td>
+</tr>
+</tbody>
+</table>
+<p><strong>本解記號：</strong> 桿端彎矩、節點轉角、弦位角一律順時針為正（傾角變位法慣例）。</p>
 <h2>2. 考題核心精神與出題者意圖 (Core Concepts &amp; Examiner's Intent)</h2>
 <p>本題為典型的<strong>多跨連續梁 (Multi-span Continuous Beam)</strong> 分析，指定使用<strong>傾角變位法 (Slope-Deflection Method)</strong>。出題者的核心意圖在於：</p>
 <ol>
@@ -223,11 +363,14 @@ header .nomat{margin-top:12px;font-size:.8em;opacity:.85}
 </li>
 </ul>
 <h2>5. 關鍵爭議點與進階探討 (Critical Issues &amp; Advanced Discussion)</h2>
+<p><img alt="SA-2008-2 載重、剪力圖與彎矩圖" src="../../raw/solutions/SA-2008-2/figs/SA-2008-2-fig-2-vm.svg" /><br />
+<em>圖解：剪力圖反對稱、彎矩圖對稱；DE 跨剪力為 0、彎矩為常數 −0.955 kN·m。攔：不對稱或 DE 跨剪力不為零 → 前面必有錯。</em></p>
 <ul>
 <li><strong>對稱性的強大優勢</strong>：本題如果不使用對稱性，須解 $4 \times 4$ 矩陣，在沒有計算機輔助的考場上幾乎不可能精準算對。利用對稱性條件 $\theta_C = -\theta_F, \theta_D = -\theta_E$，方程式瞬間降階為 $2 \times 2$，極大降低了計算難度與犯錯機率。</li>
 <li><strong>無載重跨 (DE 跨) 的零剪力特徵</strong>：計算顯示 DE 跨的剪力處處為零（$V_{D,right} = V_{E,left} = 0$）。這是因為 DE 跨的兩端彎矩 $M_{DE}$ 與 $M_{ED}$ 數值互為相反數（大小相等、符號相反），且本身無外加載重。這意味著 DE 跨全段處於<strong>純彎矩 (Pure Bending)</strong> 狀態，無任何剪力存在，是非常優美的力學現象，可用作防呆檢查。</li>
 <li><strong>彎矩圖與剪力圖的繪製</strong>：由求得的端彎矩與剪力，可輕易繪製圖形。AC 跨與 FH 跨由於受集中力作用，彎矩圖呈三角形折線變化；CD 跨與 EF 跨受均佈載重，彎矩圖為二次拋物線；DE 跨則為水平直線（純彎矩），彎矩恆為 $0.955\text{ kN-m}$，剪力恆為零。</li>
-</ul></main>
+</ul>
+<p><em>修正日期：2026-11-04（§1 改為指向題目正本並放重繪附圖（figs/SA-2008-2-fig-1-problem.svg）、加常見誤讀；§5 補解題圖解 figs/SA-2008-2-fig-2-vm.svg；圖由 gen_SA-2008-2.py 產生，可重跑）</em></p></main>
 <footer>來源：raw/solutions/SA-2008-2/SA-2008-2.md（知識庫解題內容唯一正本；本頁僅為渲染顯示）</footer>
 
 <script>
