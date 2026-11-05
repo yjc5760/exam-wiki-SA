@@ -43,17 +43,180 @@ header .nomat{margin-top:12px;font-size:.8em;opacity:.85}
 <p class="meta2">主分類 <b>SA-U2-4</b> 靜不定結構之矩陣分析法 ｜ 2008 年（民國 97）</p>
 <div class="hbtns"><a class="b-study" href="../unit-SA-U2-4.html">🧭 U2-4 單元總覽</a><a class="b-lect" href="../lecture-SA-U2-4.html">📚 U2-4 靜不定結構之矩陣分析法 講義</a></div>
 </header>
-<main><hr />
+<main><details class="problem-src" open><summary><b>📄 題目正本</b>（考卷原文、附圖與判讀清單；不含解法）</summary>
+<h1>SA-2008-4 題目正本</h1>
+<blockquote>
+<p>本檔只記錄考卷上寫了什麼、圖上畫了什麼，不含任何解法。解析見同資料夾 <code>SA-2008-4.md</code>。<br />
+判讀清單經使用者確認前，狀態為「待確認」；確認後本檔原則上不再修改（改動須回考卷原圖並記 log）。</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>項目</th>
+<th>內容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>考卷</td>
+<td><code>raw/exams/SA-2008_結構學.pdf</code>，第 2 頁（背面）下半，第四題</td>
+</tr>
+<tr>
+<td>考年</td>
+<td>2008（民國 97 年）專技高考結構工程技師「結構學」</td>
+</tr>
+<tr>
+<td>配分</td>
+<td>25 分</td>
+</tr>
+<tr>
+<td>附圖</td>
+<td><code>SA-2008-4-fig-1.png</code>、<code>SA-2008-4-fig-2.png</code></td>
+</tr>
+<tr>
+<td>判讀狀態</td>
+<td><strong>已確認</strong>（2026-11-05 使用者確認。原轉錄：2026-11-05 轉錄；PyMuPDF 110 dpi 整頁＋250–800 dpi 局部放大、PDF 向量座標；盲讀於開啟解析前完成）</td>
+</tr>
+</tbody>
+</table>
+<h2>1. 考卷原文（逐字）</h2>
+<p>四、如圖所示剛架（frame），A 點為固接（fixed），C 點為鉸接（hinge）。若每根桿件的彈性模數 E 與慣性矩 I 為常數，當 BC 桿件有一垂直均佈載重 1 kN/m 時，以矩陣直接勁度法計算各桿件之彎矩，繪彎矩圖並標示最大與最小值。（25 分）</p>
+<h2>2. 考卷給的公式、附表與參數</h2>
+<ul>
+<li>考卷沒有給任何參考公式或附表。</li>
+<li>考卷沒有給 E、I 的數值（只說常數）。</li>
+<li>考卷沒有說是否忽略軸向變形，也沒有給 A（斷面積）。</li>
+<li>卷首注意事項：不必抄題，作答時請將試題題號及答案依照順序寫在試卷上，於本試題上作答者，不予計分。可以使用電子計算器，但需詳列解答過程。</li>
+<li>考試時間：2 小時。</li>
+</ul>
+<h2>3. 附圖</h2>
+<p><img alt="SA-2008-4 考卷附圖原截圖（滑鼠游標（手形）在 C 右方空白處，未壓到圖；內容同下圖）" src="../../raw/solutions/SA-2008-4/SA-2008-4-fig-1.png" /><br />
+<em>證據圖 SA-2008-4-fig-1.png</em></p>
+<p><img alt="SA-2008-4 考卷附圖：A 在左下為固定端；AB 為垂直柱 4 m；B 為剛接角點；BC 為水平梁 6 m；C 在右端為鉸支承（三角形＋剖線）；BC 全長受 1 kN/m 向下均佈載重" src="../../raw/solutions/SA-2008-4/SA-2008-4-fig-2.png" /><br />
+<em>證據圖 SA-2008-4-fig-2.png（2026-11-05 自考卷重新擷取 500 dpi，無游標）</em></p>
+<p>圖面文字照錄：1 kN/m、B、C、4 m、A、6 m</p>
+<h2>4. 判讀清單</h2>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>項目</th>
+<th>判讀</th>
+<th>圖上／題文依據</th>
+<th>把握</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>座標（A 為原點）</td>
+<td>A(0,0)、B(0,4)、C(6,4)</td>
+<td>PDF 向量座標；4 m 與 6 m 尺寸線</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>2</td>
+<td>構件</td>
+<td>AB（柱）、BC（梁），B 剛接</td>
+<td>附圖 B 角無鉸圈</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>3</td>
+<td>支承 A</td>
+<td>固定端</td>
+<td>題文；剖線方塊</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>4</td>
+<td>支承 C</td>
+<td>鉸支承（三角形）</td>
+<td>題文；附圖</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>5</td>
+<td>載重</td>
+<td>1 kN/m 向下，BC 全長</td>
+<td>附圖箭頭 B 到 C</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>6</td>
+<td>EI</td>
+<td>各桿 EI 為常數（相同）</td>
+<td>題文</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>7</td>
+<td>所求</td>
+<td>各桿彎矩、彎矩圖並標示最大與最小值；限矩陣直接勁度法</td>
+<td>題文</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>8</td>
+<td>考卷沒有給</td>
+<td>E、I 數值；軸向變形條件（是否忽略）</td>
+<td>—</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>9</td>
+<td>證據圖</td>
+<td>舊截圖 fig-1：滑鼠游標（手形）在 C 右方空白處，未壓到圖；新增 fig-2（2026-11-05 自考卷重新擷取 500 dpi）</td>
+<td>—</td>
+<td>確定</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p><em>轉錄：2026-11-05（SA-U2-4 題目正本推廣・批 1）</em><br />
+<em>確認：2026-11-05 使用者確認</em></p>
+</details>
+<hr>
+<hr />
 <p>主分類: "SA-U2-4"<br />
 副分類: []<br />
 難易度: 3</p>
 <hr />
 <h1>97年結構工程技師高考 結構學 第四題</h1>
-<h2>1. 原始題目重述 (Problem Restatement)</h2>
-<p>如圖所示剛架 (frame)，A 點為固接 (fixed)，C 點為鉸接 (hinge)。若每根桿件的彈性模數 $E$ 與慣性矩 $I$ 為常數，當 BC 桿件有一垂直均佈載重 $1\text{ kN/m}$ 時，以<strong>矩陣直接勁度法 (Matrix Direct Stiffness Method)</strong> 計算各桿件之彎矩，繪彎矩圖並標示最大與最小值。(25 分)</p>
-<p><img alt="SA-2008-4 題目附圖：包含A固接與C鉸接的剛架" src="../../raw/solutions/SA-2008-4/SA-2008-4-fig-1.png" /></p>
-<p><em>圖說：(待補充說明)</em></p>
-<p><em>(註：A 為固定端，AB 為垂直桿長 $4\text{ m}$；BC 為水平桿長 $6\text{ m}$，C 為鉸支承。BC 桿承受向下均佈載重 $1\text{ kN/m}$。考題未給定斷面積 $A$，依慣例不計軸向與剪力變形)</em></p>
+<h2>1. 題目（考卷原文見題目正本）</h2>
+<blockquote>
+<p>考卷原文、公式／附表、附圖與判讀清單（已確認）見 <a href="SA-2008-4-problem.md"><code>SA-2008-4-problem.md</code></a>。本節只列解題時最容易讀錯的地方與本解使用的記號；題意以題目正本為準。</p>
+</blockquote>
+<p><img alt="SA-2008-4 重繪題目附圖：剛架 A 固定、AB 柱 4 m、B 剛接、BC 梁 6 m、C 鉸支承；BC 全長 1 kN/m" src="../../raw/solutions/SA-2008-4/figs/SA-2008-4-fig-1-problem.svg" /><br />
+<em>重繪自考卷附圖，依判讀清單 #1–#7 重繪。攔：C 讀成滾支承、均布載重範圍讀錯。</em></p>
+<h3>常見誤讀</h3>
+<table>
+<thead>
+<tr>
+<th>項目</th>
+<th>正確判讀</th>
+<th>常見誤讀</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>C 支承</td>
+<td>鉸支承（水平、垂直皆束制）</td>
+<td>滾支承</td>
+</tr>
+<tr>
+<td>軸向變形</td>
+<td>考卷沒寫；考卷也沒給 A</td>
+<td>當成題目條件</td>
+</tr>
+<tr>
+<td>BC 端剪力</td>
+<td>B 端負彎矩使 V_B = 3 + 0.5 = 3.5 kN</td>
+<td>方向弄反得 2.5 kN（極值錯成 0.125 kN-m @ 2.5 m）</td>
+</tr>
+</tbody>
+</table>
+<p><strong>本解記號：</strong> 本解假設不計軸向與剪力變形（考卷未寫，也沒給斷面積 A，只能如此假設）；記號與正負號約定沿用 §4。</p>
 <h2>2. 考題核心精神與出題者意圖 (Core Concepts &amp; Examiner's Intent)</h2>
 <p>本題為基本的<strong>無側移剛架</strong>分析，但明確限制必須使用<strong>矩陣直接勁度法</strong>求解。出題者的核心意圖在於：</p>
 <ol>
@@ -175,55 +338,56 @@ $$ \begin{bmatrix} \theta_B \\ \theta_C \end{bmatrix} = \frac{1}{EI (10-1)} \beg
 得出：<br />
 $$ \theta_B = \frac{3}{EI}, \quad \theta_C = -\frac{6}{EI} $$</p>
 <h3>步驟 5：回算各端彎矩</h3>
-<p>利用 $\{m\} = k \{d\} + \{m_F\}$ 求桿端力：</p>
+<p>利用 $\{m\} = k \{d\} + \{m_F\}$（順時針為正），$\frac{2EI}{L}(2\theta_i + \theta_j) + FEM_{ij}$：</p>
 <ul>
 <li>
-<p><strong>AB 桿</strong> ($\theta_A = 0, \theta_B = 3/EI$)：<br />
-  $$ M_{AB} = \frac{EI}{4} [ 2(0) + (3/EI) ] = \mathbf{0.75\text{ kN-m}} $$<br />
-  $$ M_{BA} = \frac{EI}{4} [ 2(3/EI) + 0 ] = \mathbf{1.5\text{ kN-m}} $$</p>
+<p><strong>AB 桿</strong> ($\theta_A = 0, \theta_B = 3/EI$，$2EI/L = EI/2$)：<br />
+  $$ M_{AB} = \frac{EI}{2} \left[ 2(0) + \frac{3}{EI} \right] = \mathbf{1.5\text{ kN-m}} \ (\text{順時針}) $$<br />
+  $$ M_{BA} = \frac{EI}{2} \left[ 2\cdot\frac{3}{EI} + 0 \right] = \mathbf{3.0\text{ kN-m}} \ (\text{順時針}) $$</p>
 </li>
 <li>
-<p><strong>BC 桿</strong> ($\theta_B = 3/EI, \theta_C = -6/EI$)：<br />
-  $$ M_{BC} = \frac{EI}{6} [ 2(3/EI) + (-6/EI) ] - 3 = 0 - 3 = \mathbf{-3\text{ kN-m}} $$<br />
-  $$ M_{CB} = \frac{EI}{6} [ 2(-6/EI) + (3/EI) ] + 3 = \frac{1}{6}(-9) + 3 = -1.5 + 3 = \mathbf{1.5\text{ kN-m}} \quad \text{Wait, } M_{CB} \text{ should be 0!} $$</p>
+<p><strong>BC 桿</strong> ($\theta_B = 3/EI, \theta_C = -6/EI$，$2EI/L = EI/3$)：<br />
+  $$ M_{BC} = \frac{EI}{3} \left[ 2\cdot\frac{3}{EI} - \frac{6}{EI} \right] - 3 = 0 - 3 = \mathbf{-3.0\text{ kN-m}} \ (\text{逆時針}) $$<br />
+  $$ M_{CB} = \frac{EI}{3} \left[ 2\left(-\frac{6}{EI}\right) + \frac{3}{EI} \right] + 3 = -3 + 3 = \mathbf{0} $$</p>
+</li>
+<li>
+<p><strong>檢核</strong>：節點 B $M_{BA} + M_{BC} = 3.0 - 3.0 = 0$ ✓；C 為鉸 $M_{CB} = 0$ ✓。</p>
 </li>
 </ul>
-<p><em>(勘誤計算：$M_{CB}$ 展開有誤)</em><br />
-重新展開 $M_{CB}$ 公式：<br />
-$$ M_{CB} = \frac{2EI}{L} \theta_B + \frac{4EI}{L} \theta_C + FEM_{CB} $$<br />
-$$ M_{CB} = \frac{EI}{6} [ 2 \times (3/EI) + 4 \times (-6/EI) ] + 3 = \frac{1}{6} (6 - 24) + 3 = -3 + 3 = \mathbf{0\text{ kN-m}} $$<br />
-(符合 C 點為鉸支承，無外加彎矩之物理邊界條件)。</p>
 <h3>步驟 6：計算彎矩極值</h3>
-<p>BC 桿彎矩呈拋物線分佈，需找剪力 $V=0$ 處。<br />
-取 BC 桿自由體圖，對 C 點取力矩求 $V_B$：<br />
-$$ \Sigma M_C = 0 \implies V_B \times 6 + M_{BC} + M_{CB} - 1 \times 6 \times 3 = 0 $$<br />
-$$ 6 V_B + (-3) + 0 - 18 = 0 \implies V_B = \frac{21}{6} = 3.5\text{ kN} $$<br />
-<em>(Wait, 再次勘誤：前述 $V_B$ 應為 $3.5\text{ kN}$)</em><br />
-Let's check Python code logic: <code>V_B = 1*6/2 + (-3+0)/6 = 3 - 0.5 = 2.5</code>.<br />
-Wait, the formula is $V_B \times 6 + M_{BC} + M_{CB} - 1 \times 6 \times 3 = 0$?<br />
-No. $M_{BC}$ is clockwise positive on the LEFT end?<br />
-By standard sign convention:<br />
-$V_{B(right)} \times 6 = M_{BC} + M_{CB} + \text{Load Moment}$.<br />
-Here $M_{BC}$ (clockwise) and $M_{CB}$ (clockwise).<br />
-Sum of moments at C (counter-clockwise positive):<br />
-$-V_B \times 6 + M_{BC} + M_{CB} + 1 \times 6 \times 3 = 0$<br />
-$-6 V_B - 3 + 0 + 18 = 0 \implies 6 V_B = 15 \implies V_B = 2.5\text{ kN}$.<br />
-(Python script result $2.5\text{ kN}$ 是正確的，此處手算公式符號需修正)。</p>
-<p><strong>正確之極值計算：</strong></p>
+<p><strong>BC 桿剪力</strong>：B 端彎矩 $M_{BC} = -3$（作用在梁左端為逆時針，即負彎矩、梁頂受拉）。取 BC 桿自由體，對 C 取力矩（逆時針為正）：<br />
+$$ \Sigma M_C = 0:\quad -6V_B + 3 + (1\times6)\times3 + 0 = 0 \implies V_B = \frac{21}{6} = \mathbf{3.5\text{ kN}}\ (\uparrow),\qquad V_C = 6 - 3.5 = 2.5\text{ kN}\ (\uparrow) $$<br />
+（簡支剪力 3 kN，加上端彎矩造成的 $3/6 = 0.5$ kN：B 端負彎矩使 B 端剪力<strong>變大</strong>。）</p>
+<p><img alt="SA-2008-4 BC 桿自由體、剪力圖與彎矩圖：V_B = 3.5 kN、剪力零點距 B 3.5 m、最大正彎矩 3.125 kN-m、反曲點距 B 1 m、B 端 −3 kN-m" src="../../raw/solutions/SA-2008-4/figs/SA-2008-4-fig-2-bc-vm.svg" /></p>
+<p><em>圖 2　BC 桿自由體、剪力圖與彎矩圖。B 端 3 kN-m 為負彎矩，使 B 端剪力由簡支的 3 kN 增為 $V_B = 3.5$ kN，剪力零點與最大正彎矩都落在距 B 3.5 m。這張圖攔的是端彎矩對剪力的正負號帶反——帶反時剪力零點左移、極值變得很小，且 C 點彎矩算不回 0。</em></p>
+<p><strong>梁的彎矩式</strong>（距 B 為 $x$，正彎矩下側受拉）：<br />
+$$ M(x) = -3 + 3.5x - \frac{1}{2}x^2 $$</p>
 <ul>
-<li>$V_B = 2.5\text{ kN}$ (向上)。剪力方程式：$V(x) = 2.5 - 1 \cdot x = 0 \implies x = 2.5\text{ m}$ (自 B 點向右)。</li>
-<li>該處彎矩值為：<br />
-  $$ M(x) = M_{BC} + V_B \cdot x - \frac{1}{2} w x^2 = -3 + 2.5(2.5) - \frac{1}{2}(1)(2.5)^2 $$<br />
-  $$ M_{max} = -3 + 6.25 - 3.125 = \mathbf{0.125\text{ kN-m}} $$</li>
+<li>檢核：$M(0) = -3$、$M(6) = -3 + 21 - 18 = 0$ ✓（C 鉸）。</li>
+<li>剪力零點：$V(x) = 3.5 - x = 0 \implies x = \mathbf{3.5\text{ m}}$（自 B 點向右）。</li>
+<li>
+<p>最大正彎矩：<br />
+  $$ M_{max} = -3 + 3.5(3.5) - \frac{1}{2}(3.5)^2 = -3 + 12.25 - 6.125 = \mathbf{3.125\text{ kN-m}} $$</p>
+</li>
+<li>
+<p>梁的反曲點：$M(x) = 0 \implies x^2 - 7x + 6 = 0 \implies x = 1\text{ m}$（另一根 6 m 即 C）。</p>
+</li>
 </ul>
+<p><strong>柱 AB</strong>（無橫向載重，直線分佈）：柱頂 B 3.0 kN-m（外側／左側受拉，與梁 B 端梁頂受拉在角點連續）、柱底 A 1.5 kN-m（內側／右側受拉）；兩端反向，反曲點距 A $\frac{1.5}{1.5+3.0}\times4 = \frac{4}{3}\text{ m}$。柱剪力 $(1.5+3.0)/4 = 1.125$ kN，A 與 C 的水平反力各 1.125 kN、方向相反。</p>
+<p><img alt="SA-2008-4 剛架彎矩圖畫在受拉側：柱底 1.5 內側受拉、柱頂 3.0 外側受拉、柱反曲點距 A 4/3 m；梁 B 端 3.0 梁頂受拉、跨內最大 3.125 梁底受拉、反曲點距 B 1 m" src="../../raw/solutions/SA-2008-4/figs/SA-2008-4-fig-3-frame-bmd.svg" /></p>
+<p><em>圖 3　剛架彎矩圖（畫在受拉側）。B 角的柱外側與梁頂受拉在角點連續，柱底改為內側受拉、柱身有一個反曲點。這張圖攔的是受拉側畫反，以及把柱頂與柱底畫在同一側（柱兩端彎矩反向，不是同號）。</em></p>
 <h2>5. 關鍵爭議點與進階探討 (Critical Issues &amp; Advanced Discussion)</h2>
 <ul>
-<li><strong>自由度縮減 (Static Condensation) 技巧</strong>：本題中 C 點為鉸接，彎矩必為零。在實務或考場上，若想加速計算，可直接宣告 DOF 僅有 $\theta_B$ ($1 \times 1$ 矩陣)，並將 BC 桿改用修正勁度 $k'_{BC} = 3EI/L$，FEM 修正為 $wL^2/8$。此做法能得出完全一樣的 $\theta_B = 3/EI$。然而，題目特別要求「矩陣直接勁度法」，完整表列包含 $\theta_C$ 的 $2 \times 2$ 矩陣能最嚴謹地展示該方法的精神，避免被批改委員認為在「偷吃步」。</li>
+<li><strong>自由度縮減 (Static Condensation) 技巧</strong>：本題中 C 點為鉸接，彎矩必為零。若想加速計算，可直接宣告 DOF 僅有 $\theta_B$ ($1 \times 1$ 矩陣)，並將 BC 桿改用修正勁度 $k'_{BC} = 3EI/L = EI/2$，FEM 修正為 $wL^2/8 = 4.5$：$(EI + EI/2)\theta_B = 4.5 \implies \theta_B = 3/EI$，與上面兩自由度解相同。</li>
+<li><strong>端彎矩對剪力的影響（本題最易錯處）</strong>：梁端負彎矩 $M$ 使該端剪力增加 $M/L$、另一端減少 $M/L$。方向弄反時極值的大小與位置都會錯（見 §1 常見誤讀）；用 $M(6) = 0$ 一檢就能發現。</li>
 <li><strong>彎矩圖的繪製細節</strong>：</li>
-<li>AB 桿：頂部 $3.0\text{ kN-m}$，底部 $1.5\text{ kN-m}$，兩端受彎矩且無橫向載重，故呈<strong>直線形狀</strong> (梯形)。</li>
-<li>BC 桿：兩端分別為 $-3.0\text{ kN-m}$ 與 $0\text{ kN-m}$。因均佈載重呈現<strong>開口向上之拋物線</strong>。其頂點 (極值) 發生在距 B 點 $2.5\text{ m}$ 處，最大正彎矩為 $0.125\text{ kN-m}$。</li>
-<li>圖形標示必須清楚呈現 $1.5, 3.0, 0.125, 0$ 這四個關鍵數值，且拐點或極值點的距離 ($2.5\text{ m}$) 也是計分的重點。</li>
-</ul></main>
+<li>AB 桿：頂部 $3.0\text{ kN-m}$（外側受拉）、底部 $1.5\text{ kN-m}$（內側受拉），直線、反曲點距 A 4/3 m。</li>
+<li>BC 桿：B 端 $-3.0\text{ kN-m}$（梁頂受拉）、C 端 0，拋物線；反曲點距 B 1 m；<strong>最大正彎矩 $3.125\text{ kN-m}$ 於距 B $3.5\text{ m}$</strong>（梁底受拉）。</li>
+<li><strong>最大值 +3.125 kN-m（BC 跨內）；最小值 −3.0 kN-m（B 點）</strong>。圖上須標 1.5、3.0、3.125、0 及 3.5 m、反曲點位置。</li>
+</ul>
+<p><em>修正日期：2026-11-05（§1 改為指向題目正本並放重繪附圖（figs/SA-2008-4-fig-1-problem.svg）、加常見誤讀；圖由 gen_SA-2008-4.py 產生，可重跑）</em></p>
+<p><em>修正日期：2026-11-05（勘誤：§4 步驟 5 柱端彎矩 M_AB、M_BA 0.75、1.5 → 1.5、3.0 kN-m（2EI/L 係數誤寫為 EI/4）；步驟 6 BC 桿 V_B 2.5 → 3.5 kN、最大正彎矩 0.125 kN-m @ 距 B 2.5 m → 3.125 kN-m @ 3.5 m（端彎矩對剪力的正負號帶反）；刪除生成殘留文字；§5 彎矩圖數值與受拉側改寫；§1 常見誤讀加一列。驗證：勁度法回算與靜力 M(x) 兩條路徑、腳本重算 14 個數值 MISMATCHES: 0（wiki/queries/勘誤驗算-SA-U2-4-批1/errata_check.py）；來源 wiki/queries/盲解比對-SA-U2-4-批1-2026-11-05.md）</em></p>
+<p><em>圖解補繪：2026-11-05（向量圖，腳本 <code>gen_SA-2008-4_bmd.py</code>，以 2×2 勁度矩陣重解後 assert 解析數值，可重跑）</em></p></main>
 <footer>來源：raw/solutions/SA-2008-4/SA-2008-4.md（知識庫解題內容唯一正本；本頁僅為渲染顯示）</footer>
 
 <script>

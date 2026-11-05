@@ -43,14 +43,161 @@ header .nomat{margin-top:12px;font-size:.8em;opacity:.85}
 <p class="meta2">主分類 <b>SA-U2-4</b> 靜不定結構之矩陣分析法 ｜ 2010 年（民國 99） ｜ 直接勁度法 (Direct Stiffness Method)</p>
 <div class="hbtns"><a class="b-study" href="../unit-SA-U2-4.html">🧭 U2-4 單元總覽</a><a class="b-lect" href="../lecture-SA-U2-4.html">📚 U2-4 靜不定結構之矩陣分析法 講義</a></div>
 </header>
-<main><h1>考題編號：SA-2010-4</h1>
+<main><details class="problem-src" open><summary><b>📄 題目正本</b>（考卷原文、附圖與判讀清單；不含解法）</summary>
+<h1>SA-2010-4 題目正本</h1>
+<blockquote>
+<p>本檔只記錄考卷上寫了什麼、圖上畫了什麼，不含任何解法。解析見同資料夾 <code>SA-2010-4.md</code>。<br />
+判讀清單經使用者確認前，狀態為「待確認」；確認後本檔原則上不再修改（改動須回考卷原圖並記 log）。</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>項目</th>
+<th>內容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>考卷</td>
+<td><code>raw/exams/SA-2010_結構學.pdf</code>，第 2 頁（背面）下半，第四題</td>
+</tr>
+<tr>
+<td>考年</td>
+<td>2010（民國 99 年）專技高考結構工程技師「結構學」</td>
+</tr>
+<tr>
+<td>配分</td>
+<td>25 分</td>
+</tr>
+<tr>
+<td>附圖</td>
+<td><code>SA-2010-4-fig-1.png</code>、<code>SA-2010-4-fig-2.png</code></td>
+</tr>
+<tr>
+<td>判讀狀態</td>
+<td><strong>已確認</strong>（2026-11-05 使用者確認。原轉錄：2026-11-05 轉錄；PyMuPDF 110 dpi 整頁＋250–800 dpi 局部放大、PDF 向量座標；盲讀於開啟解析前完成）</td>
+</tr>
+</tbody>
+</table>
+<h2>1. 考卷原文（逐字）</h2>
+<p>四、如圖所示之桁架結構，其三個支承點 B、C、D 均為鉸支承，且 A 點承受一垂直向下載重 225 kN 及一水平向右載重 100 kN。假設各桿件之彈性模數與斷面積乘積均為常數值 EA = 10000 kN，請以直接勁度法（direct stiffness method）計算 A 點之水平變位與垂直變位，並解出桿件 BA 之軸力。（若以其他方法計算不予計分）（25 分）</p>
+<h2>2. 考卷給的公式、附表與參數</h2>
+<ul>
+<li>考卷沒有給任何參考公式或附表。</li>
+<li>EA = 10000 kN，各桿相同。</li>
+<li>考卷沒有標 AC 桿長度（見判讀清單 #2）。</li>
+<li>卷首注意事項：可以使用電子計算器。不必抄題，作答時請將試題題號及答案依照順序寫在試卷上，於本試題上作答者，不予計分。</li>
+<li>考試時間：2 小時。</li>
+</ul>
+<h2>3. 附圖</h2>
+<p><img alt="SA-2010-4 考卷附圖原截圖（滑鼠游標（手形）在 D 右上方空白處，未壓到圖；內容同下圖）" src="../../raw/solutions/SA-2010-4/SA-2010-4-fig-1.png" /><br />
+<em>證據圖 SA-2010-4-fig-1.png</em></p>
+<p><img alt="SA-2010-4 考卷附圖：A 為頂部節點，受 225 kN 向下、100 kN 向右；B 在 A 左方 3 m、下方 4 m；C 在 A 正下方、與 B 同高程；D 在 A 右方 4 m、下方 3 m；B、C、D 皆為鉸支承" src="../../raw/solutions/SA-2010-4/SA-2010-4-fig-2.png" /><br />
+<em>證據圖 SA-2010-4-fig-2.png（2026-11-05 自考卷重新擷取 500 dpi，無游標）</em></p>
+<p>圖面文字照錄：225 kN、A、100 kN、4 m、3 m、D、B、C、3 m、4 m</p>
+<h2>4. 判讀清單</h2>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>項目</th>
+<th>判讀</th>
+<th>圖上／題文依據</th>
+<th>把握</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>座標（A 為原點）</td>
+<td>B(−3,−4)、C(0,−4)、D(4,−3)</td>
+<td>尺寸線 3 m｜4 m（水平）、左側 4 m 由 A 到 B、右側 3 m 由 A 到 D；PDF 向量座標依比例（約 28.4 pt/m）</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>2</td>
+<td>AC 桿長度</td>
+<td>附圖沒有直接標註；C 支承與 B 同高程（PDF 向量座標 B、C 下端 y 同為 722.2 pt）→ AC = 4 m</td>
+<td>PDF 向量座標</td>
+<td>確定（解讀）；使用者確認</td>
+</tr>
+<tr>
+<td>3</td>
+<td>構件</td>
+<td>AB、AC、AD 三桿</td>
+<td>附圖</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>4</td>
+<td>支承</td>
+<td>B、C、D 皆為鉸支承</td>
+<td>題文；附圖三角形</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>5</td>
+<td>載重</td>
+<td>A 點 225 kN 向下、100 kN 向右</td>
+<td>題文；附圖</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>6</td>
+<td>所求</td>
+<td>A 點水平、垂直變位；BA 軸力；限直接勁度法</td>
+<td>題文</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>7</td>
+<td>證據圖</td>
+<td>舊截圖 fig-1：滑鼠游標（手形）在 D 右上方空白處，未壓到圖；新增 fig-2（2026-11-05 自考卷重新擷取 500 dpi）</td>
+<td>—</td>
+<td>確定</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p><em>轉錄：2026-11-05（SA-U2-4 題目正本推廣・批 1）</em><br />
+<em>確認：2026-11-05 使用者確認</em></p>
+</details>
+<hr>
+<h1>考題編號：SA-2010-4</h1>
 <p><strong>主分類：</strong> <code>SA-U2-4</code> 靜不定結構之矩陣分析法<br />
 <strong>副分類：</strong> 無<br />
 <strong>分析法：</strong> 直接勁度法 (Direct Stiffness Method)<br />
 <strong>標籤：</strong> <code>直接勁度法</code>, <code>桁架</code>, <code>節點變位</code>, <code>勁度矩陣</code></p>
 <hr />
-<h2>1. 原始題目重述 (Problem Restatement)</h2>
-<p>如圖所示之桁架結構，其三個支承點 B、C、D 均為鉸支承，且 A 點承受一垂直向下載重 225 kN 及一水平向右載重 100 kN。假設各桿件之彈性模數與斷面積乘積均為常數值 $EA = 10000\text{ kN}$，請以直接勁度法（direct stiffness method）計算 A 點之水平變位與垂直變位，並解出桿件 BA 之軸力。（若以其他方法計算不予計分）（25 分）</p>
+<h2>1. 題目（考卷原文見題目正本）</h2>
+<blockquote>
+<p>考卷原文、公式／附表、附圖與判讀清單（已確認）見 <a href="SA-2010-4-problem.md"><code>SA-2010-4-problem.md</code></a>。本節只列解題時最容易讀錯的地方與本解使用的記號；題意以題目正本為準。</p>
+</blockquote>
+<p><img alt="SA-2010-4 重繪題目附圖：三桿桁架 A 為頂點，受 225 kN 向下、100 kN 向右；B(−3,−4)、C(0,−4)、D(4,−3) 皆鉸支承" src="../../raw/solutions/SA-2010-4/figs/SA-2010-4-fig-1-problem.svg" /><br />
+<em>重繪自考卷附圖，依判讀清單 #1–#6 重繪。攔：C 高程讀錯（AC 長度）、載重方向讀反。</em></p>
+<h3>常見誤讀</h3>
+<table>
+<thead>
+<tr>
+<th>項目</th>
+<th>正確判讀</th>
+<th>常見誤讀</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>AC 長度</td>
+<td>4 m（C 與 B 同高；考卷未直接標）</td>
+<td>3 m</td>
+</tr>
+<tr>
+<td>D 位置</td>
+<td>A 右方 4 m、下方 3 m</td>
+<td>與 B、C 同高</td>
+</tr>
+</tbody>
+</table>
+<p><strong>本解記號：</strong> 記號與正負號約定沿用 §4。</p>
 <h2>2. 考題核心精神與出題者意圖 (Core Concepts &amp; Examiner's Intent)</h2>
 <p>本題為純粹的<strong>直接勁度法 (Direct Stiffness Method)</strong> 手算題，測驗考生對於手算矩陣位移法的熟練度。<br />
 出題者的意圖在於：</p>
@@ -232,7 +379,8 @@ $$ F_{AB} = 2000 \times \left[ 0.03 - 0.04 \right] = 2000 \times (-0.01) = \boxe
 <li><strong>自由度選取的簡化</strong>：本題只有一個活動節點 A，其餘皆為鉸支承。若不熟悉直接勁度法組裝總體矩陣的疊加原理，可能會想要列出包含所有節點的 $8 \times 8$ 矩陣，這在手算考試中是極度浪費時間且容易出錯的。應直接針對未知自由度建立簡化之總體剛度矩陣。</li>
 <li><strong>對角矩陣之物理意義</strong>：本題的 $\mathbf{K}_A$ 出現非對角線元素為零的情況，這意味著結構在 A 點的水平與垂直勁度是「解耦 (uncoupled)」的。在工程實務上，這種設計（利用斜撐使得勁度矩陣交叉項消失）可以避免結構產生非預期的耦合位移。</li>
 <li><strong>單位檢查</strong>：計算出的位移為 $0.05 \text{ m}$，在土木結構中位移達 $50 \text{ mm}$ 算是合理偏大，但作為考試數值設計相當平易近人。軸力計算中若未將 $EA$ 的單位（kN）與長度單位（m）對齊，容易差三個數量級，考生在此需特別留意單位的一致性。</li>
-</ul></main>
+</ul>
+<p><em>修正日期：2026-11-05（§1 改為指向題目正本並放重繪附圖（figs/SA-2010-4-fig-1-problem.svg）、加常見誤讀；圖由 gen_SA-2010-4.py 產生，可重跑）</em></p></main>
 <footer>來源：raw/solutions/SA-2010-4/SA-2010-4.md（知識庫解題內容唯一正本；本頁僅為渲染顯示）</footer>
 
 <script>

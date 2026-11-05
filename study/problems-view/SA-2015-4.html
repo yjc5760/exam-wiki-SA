@@ -43,19 +43,179 @@ header .nomat{margin-top:12px;font-size:.8em;opacity:.85}
 <p class="meta2">主分類 <b>SA-U2-4</b> 靜不定結構之矩陣分析法 ｜ 2015 年（民國 104） ｜ 直接勁度法 (Direct Stiffness Method)</p>
 <div class="hbtns"><a class="b-study" href="../unit-SA-U2-4.html">🧭 U2-4 單元總覽</a><a class="b-lect" href="../lecture-SA-U2-4.html">📚 U2-4 靜不定結構之矩陣分析法 講義</a></div>
 </header>
-<main><h1>考題編號：SA-2015-4</h1>
+<main><details class="problem-src" open><summary><b>📄 題目正本</b>（考卷原文、附圖與判讀清單；不含解法）</summary>
+<h1>SA-2015-4 題目正本</h1>
+<blockquote>
+<p>本檔只記錄考卷上寫了什麼、圖上畫了什麼，不含任何解法。解析見同資料夾 <code>SA-2015-4.md</code>。<br />
+判讀清單經使用者確認前，狀態為「待確認」；確認後本檔原則上不再修改（改動須回考卷原圖並記 log）。</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>項目</th>
+<th>內容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>考卷</td>
+<td><code>raw/exams/SA-2015_結構學.pdf</code>，第 2 頁（背面），第四題（圖四）</td>
+</tr>
+<tr>
+<td>考年</td>
+<td>2015（民國 104 年）專技高考結構工程技師「結構學」</td>
+</tr>
+<tr>
+<td>配分</td>
+<td>25 分</td>
+</tr>
+<tr>
+<td>附圖</td>
+<td><code>SA-2015-4-fig-1.png</code>、<code>SA-2015-4-fig-2.png</code></td>
+</tr>
+<tr>
+<td>判讀狀態</td>
+<td><strong>已確認</strong>（2026-11-05 使用者確認。原轉錄：2026-11-05 轉錄；PyMuPDF 110 dpi 整頁＋250–800 dpi 局部放大、PDF 向量座標；盲讀於開啟解析前完成）</td>
+</tr>
+</tbody>
+</table>
+<h2>1. 考卷原文（逐字）</h2>
+<p>四、一平面構架承受載重如圖四所示，點 A、C 及 D 為固定支承，桿件 AB 與 BC 在 B 點為剛接，與桿件 BD 的接合是以一抗扭彈簧及一水平線性彈簧來連結，分別模擬彎矩及水平力的傳遞，但無垂直力傳遞。抗扭彈簧及線性彈簧的力與位移關係皆為線彈性。設桿件 AB、BC 與 BD 之 EI 及 EA 都為定值，桿長皆為 L，且忽略其軸向變形，抗扭彈簧及線性彈簧之彈簧常數分別為 kθ 和 ks。試標示此結構之位移自由度（完全束制之位移自由度不計），然後求對應這些自由度之勁度矩陣[K]及外力矩陣[R]。（[R]=[K][r]，[r]為位移矩陣）（25 分）</p>
+<h2>2. 考卷給的公式、附表與參數</h2>
+<ul>
+<li>考卷沒有給任何參考公式或附表。</li>
+<li>彈簧常數 kθ（抗扭）、ks（水平線性）；EI、EA 定值；桿長皆 L；忽略軸向變形（題文）。</li>
+<li>題文明寫 B 與 BD 的接合「無垂直力傳遞」。</li>
+<li>考卷沒有給數值。</li>
+<li>卷首注意事項：可以使用電子計算器。不必抄題，作答時請將試題題號及答案依照順序寫在試卷上，於本試題上作答者，不予計分。</li>
+<li>考試時間：2 小時。</li>
+</ul>
+<h2>3. 附圖</h2>
+<p><img alt="SA-2015-4 考卷附圖原截圖（滑鼠游標（手形）在 AB 下方空白處，未壓到圖；內容同下圖）" src="../../raw/solutions/SA-2015-4/SA-2015-4-fig-1.png" /><br />
+<em>證據圖 SA-2015-4-fig-1.png</em></p>
+<p><img alt="SA-2015-4 考卷附圖（圖四）：A 左端固定（牆）；AB 水平 L，全長受均佈 w；B 下接垂直柱 BC，長 L，C 底部固定；B 右側經抗扭彈簧（半圓）與線性彈簧（鋸齒）接水平桿 BD，長 L；P 向下作用於 BD 中點（距 B 為 L/2）；D 右端固定（牆）" src="../../raw/solutions/SA-2015-4/SA-2015-4-fig-2.png" /><br />
+<em>證據圖 SA-2015-4-fig-2.png（2026-11-05 自考卷重新擷取 500 dpi，無游標）</em></p>
+<p>圖面文字照錄：w、線性彈簧、P、A、B、D、抗扭彈簧、L、C、L、L/2、L/2、圖四</p>
+<h2>4. 判讀清單</h2>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>項目</th>
+<th>判讀</th>
+<th>圖上／題文依據</th>
+<th>把握</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>座標（B 為原點）</td>
+<td>A(−L,0)、C(0,−L)、D(L,0)</td>
+<td>尺寸線 L｜L/2｜L/2（下方）、L（右側）</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>2</td>
+<td>構件</td>
+<td>AB、BC（B 剛接）；BD 經彈簧接 B</td>
+<td>題文；附圖</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>3</td>
+<td>支承</td>
+<td>A、C、D 皆固定</td>
+<td>題文；剖線</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>4</td>
+<td>B–BD 接合</td>
+<td>抗扭彈簧 kθ（彎矩）＋水平線性彈簧 ks（水平力），無垂直力傳遞</td>
+<td>題文；附圖彈簧符號在 B 右側</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>5</td>
+<td>載重 w</td>
+<td>均佈，向下，A 到 B 全長（AB 段）</td>
+<td>PDF 向量座標：載重線 x = 257.5–365.6 pt，AB 桿 258.1–366.8 pt</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>6</td>
+<td>載重 P</td>
+<td>向下集中力，BD 上距 B 為 L/2（中點）</td>
+<td>PDF 向量座標：P 箭頭 x = 425.8 pt，尺寸刻度 366.8｜425.6｜478.4 pt</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>7</td>
+<td>剛度</td>
+<td>EI、EA 定值；忽略軸向變形</td>
+<td>題文</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>8</td>
+<td>所求</td>
+<td>標示自由度、[K]、[R]</td>
+<td>題文</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>9</td>
+<td>證據圖</td>
+<td>舊截圖 fig-1：滑鼠游標（手形）在 AB 下方空白處，未壓到圖；新增 fig-2（2026-11-05 自考卷重新擷取 500 dpi）</td>
+<td>—</td>
+<td>確定</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p><em>轉錄：2026-11-05（SA-U2-4 題目正本推廣・批 1）</em><br />
+<em>確認：2026-11-05 使用者確認</em></p>
+</details>
+<hr>
+<h1>考題編號：SA-2015-4</h1>
 <p><strong>主分類：</strong> <code>SA-U2-4</code> 靜不定結構之矩陣分析法<br />
 <strong>副分類：</strong> 無<br />
 <strong>分析法：</strong> 直接勁度法 (Direct Stiffness Method)<br />
 <strong>標籤：</strong> <code>矩陣位移法</code> <code>彈簧接頭</code> <code>自由度判定</code> <code>固端彎矩</code> <code>無軸向變形</code></p>
 <hr />
-<h2>1. 原始題目</h2>
-<p>一平面構架承受載重如圖四所示，點 A、C 及 D 為固定支承，桿件 AB 與 BC 在 B 點為剛接，與桿件 BD 的接合是以一抗扭彈簧及一水平線性彈簧來連結，分別模擬彎矩及水平力的傳遞，但無垂直力傳遞。抗扭彈簧及線性彈簧的力與位移關係皆為線彈性。設桿件 AB、BC 與 BD 之 EI 及 EA 都為定值，桿長皆為 L，且忽略其軸向變形，抗扭彈簧及線性彈簧之彈簧常數分別為 $k_\theta$ 和 $k_s$。試標示此結構之位移自由度（完全束制之位移自由度不計），然後求對應這些自由度之勁度矩陣 $[K]$ 及外力矩陣 $[R]$。（$[R]=[K][r]$，$[r]$ 為位移矩陣）（25 分）</p>
-<p><img alt="平面構架矩陣分析" src="../../raw/solutions/SA-2015-4/./SA-2015-4-fig-1.png" /></p>
-<p><em>圖說：構架 A-B-C-D。A、C、D為固定端。AB(長L)受向下均佈載重w，BC(長L)為直柱，BD(長L)於中央受向下集中力P。B節點處，AB與BC剛接，並透過抗扭彈簧與水平線性彈簧連接BD桿左端。</em></p>
+<h2>1. 題目（考卷原文見題目正本）</h2>
+<blockquote>
+<p>考卷原文、公式／附表、附圖與判讀清單（已確認）見 <a href="SA-2015-4-problem.md"><code>SA-2015-4-problem.md</code></a>。本節只列解題時最容易讀錯的地方與本解使用的記號；題意以題目正本為準。</p>
+</blockquote>
+<p><img alt="SA-2015-4 重繪題目附圖：構架 A、C、D 固定；AB、BC 在 B 剛接，BD 以抗扭彈簧與水平線性彈簧接 B；w 作用於 AB 全長，P 作用於 BD 中點；各桿長 L" src="../../raw/solutions/SA-2015-4/figs/SA-2015-4-fig-1-problem.svg" /><br />
+<em>重繪自考卷附圖，依判讀清單 #1–#9 重繪。攔：B–BD 接合讀成剛接或鉸接、P 作用點與 w 範圍讀錯。</em></p>
+<h3>常見誤讀</h3>
+<table>
+<thead>
+<tr>
+<th>項目</th>
+<th>正確判讀</th>
+<th>常見誤讀</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>B–BD 接合</td>
+<td>抗扭彈簧 kθ＋水平線性彈簧 ks，無垂直力傳遞</td>
+<td>剛接或鉸接</td>
+</tr>
+<tr>
+<td>P 位置</td>
+<td>BD 中點（距 B 為 L/2）</td>
+<td>D 點或 B 點</td>
+</tr>
+</tbody>
+</table>
+<p><strong>本解記號：</strong> 記號與正負號約定沿用 §4。</p>
+<h3>判讀圖解（解析自繪）</h3>
 <p><img alt="SA-2015-4 題目重繪：A-B-C-D 構架向量圖，B 點以線性彈簧 ks 與抗扭彈簧 kθ 連接 BD 左端" src="../../raw/solutions/SA-2015-4/figs/SA-2015-4-fig-1-frame.svg" /></p>
 <p><em>圖 1　題目重繪（向量版），把彈簧接頭型式（線性彈簧 $k_s$／抗扭彈簧 $k_\theta$）與各段跨距 $L$、$L/2$、$L/2$ 釘死。這張圖攔的是把彈簧接頭誤看成剛接或鉸接，或跨距標錯，導致邊界條件與後續 FEM 全盤皆錯。</em></p>
-<hr />
 <h2>2. 核心考點</h2>
 <p>本題旨在測驗考生對於<strong>直接勁度法中「系統自由度 (DOF)」的精準判定</strong>，以及包含彈簧元件的勁度矩陣組裝。<br />
 最大陷阱在於：題目給定了水平線性彈簧 $k_s$，但同時又宣告「忽略桿件軸向變形」。考生必須具備清晰的物理觀念，判斷出 $k_s$ 兩端的水平位移其實皆為零，進而將其從獨立自由度中排除，而非盲目列入矩陣。</p>
@@ -230,7 +390,8 @@ $$ [R] = \begin{bmatrix}
 \frac{PL}{8}
 \end{bmatrix} $$</p>
 <p><em>(註：若學生自定義之自由度方向與本解相反，矩陣內元素正負號會依循對應邏輯改變，但矩陣主對角線元素恆正。)</em></p>
-<p><em>圖解補繪：2026-08-27（向量圖，腳本 <code>gen_SA-2015-4.py</code>，可重跑）</em></p></main>
+<p><em>圖解補繪：2026-08-27（向量圖，腳本 <code>gen_SA-2015-4.py</code>，可重跑）</em></p>
+<p><em>修正日期：2026-11-05（§1 改為指向題目正本並放重繪附圖（figs/SA-2015-4-fig-1-problem.svg）、加常見誤讀；原 §1 解析自繪圖移至「判讀圖解（解析自繪）」；圖由 gen_SA-2015-4_problem.py 產生，可重跑）</em></p></main>
 <footer>來源：raw/solutions/SA-2015-4/SA-2015-4.md（知識庫解題內容唯一正本；本頁僅為渲染顯示）</footer>
 
 <script>

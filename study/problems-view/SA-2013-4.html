@@ -43,16 +43,170 @@ header .nomat{margin-top:12px;font-size:.8em;opacity:.85}
 <p class="meta2">主分類 <b>SA-U2-4</b> 靜不定結構之矩陣分析法 ｜ 2013 年（民國 102） ｜ 直接勁度法 (Direct Stiffness Method)</p>
 <div class="hbtns"><a class="b-study" href="../unit-SA-U2-4.html">🧭 U2-4 單元總覽</a><a class="b-lect" href="../lecture-SA-U2-4.html">📚 U2-4 靜不定結構之矩陣分析法 講義</a></div>
 </header>
-<main><h1>考題編號：SA-2013-4</h1>
+<main><details class="problem-src" open><summary><b>📄 題目正本</b>（考卷原文、附圖與判讀清單；不含解法）</summary>
+<h1>SA-2013-4 題目正本</h1>
+<blockquote>
+<p>本檔只記錄考卷上寫了什麼、圖上畫了什麼，不含任何解法。解析見同資料夾 <code>SA-2013-4.md</code>。<br />
+判讀清單經使用者確認前，狀態為「待確認」；確認後本檔原則上不再修改（改動須回考卷原圖並記 log）。</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>項目</th>
+<th>內容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>考卷</td>
+<td><code>raw/exams/SA-2013_結構學.pdf</code>，第 2 頁（背面）下半，第四題（圖四）</td>
+</tr>
+<tr>
+<td>考年</td>
+<td>2013（民國 102 年）專技高考結構工程技師「結構學」</td>
+</tr>
+<tr>
+<td>配分</td>
+<td>25 分</td>
+</tr>
+<tr>
+<td>附圖</td>
+<td><code>SA-2013-4-fig-1.png</code>、<code>SA-2013-4-fig-2.png</code></td>
+</tr>
+<tr>
+<td>判讀狀態</td>
+<td><strong>已確認</strong>（2026-11-05 使用者確認。原轉錄：2026-11-05 轉錄；PyMuPDF 110 dpi 整頁＋250–800 dpi 局部放大、PDF 向量座標；盲讀於開啟解析前完成）</td>
+</tr>
+</tbody>
+</table>
+<h2>1. 考卷原文（逐字）</h2>
+<p>四、如圖四所示桁架結構，請應用直接勁度法組成對應位移(d₁、d₂、d₃)之勁度矩陣。若所得位移(d₁、d₂、d₃)為(0.1277，0.1743，0.7055)mm，求所對應施加外力(P₁、P₂、P₃)值，並求桿件 AD、CD 之內力。所有桿件 E＝200 GPa，A＝10×10³ mm²。使用其他方法不予給分。（25 分）</p>
+<h2>2. 考卷給的公式、附表與參數</h2>
+<ul>
+<li>考卷沒有給任何參考公式或附表。</li>
+<li>E = 200 GPa、A = 10×10³ mm²。</li>
+<li>位移 (d₁, d₂, d₃) = (0.1277, 0.1743, 0.7055) mm（題目給定）。</li>
+<li>考卷沒有標 CD 桿長度（見判讀清單 #2）。</li>
+<li>卷首注意事項：可以使用電子計算器。不必抄題，作答時請將試題題號及答案依照順序寫在試卷上，於本試題上作答者，不予計分。</li>
+<li>考試時間：2 小時。</li>
+</ul>
+<h2>3. 附圖</h2>
+<p><img alt="SA-2013-4 考卷附圖原截圖（滑鼠游標（手形）在 A 左下方空白處，未壓到圖；內容同下圖）" src="../../raw/solutions/SA-2013-4/SA-2013-4-fig-1.png" /><br />
+<em>證據圖 SA-2013-4-fig-1.png</em></p>
+<p><img alt="SA-2013-4 考卷附圖（圖四）：A(0,0) 鉸支承；B 在 A 右方 14 m（6 m＋8 m），滾支承，P₁,d₁ 水平向右；D 在 A 右方 6 m、上方 6 m，P₂,d₂ 向右、P₃,d₃ 向上；C 在 A 正上方 6 m，鉸支承；桿件 CD、AD、DB、AB" src="../../raw/solutions/SA-2013-4/SA-2013-4-fig-2.png" /><br />
+<em>證據圖 SA-2013-4-fig-2.png（2026-11-05 自考卷重新擷取 500 dpi，無游標）</em></p>
+<p>圖面文字照錄：P₃,d₃、C、P₂,d₂、D、6 m、A、B、P₁,d₁、6 m、8 m、圖四</p>
+<h2>4. 判讀清單</h2>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>項目</th>
+<th>判讀</th>
+<th>圖上／題文依據</th>
+<th>把握</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>座標（A 為原點）</td>
+<td>A(0,0)、B(14,0)、D(6,6)、C(0,6)</td>
+<td>尺寸線 6 m｜8 m（水平）、6 m（左側，由 C／D 高程到 A）；垂直向未依比例</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>2</td>
+<td>CD 桿長度</td>
+<td>附圖沒有直接標註；C 支承與 A 同一垂直線（PDF 向量座標 x 同為 288.8 pt）→ CD = 6 m</td>
+<td>PDF 向量座標</td>
+<td>確定（解讀）；使用者確認</td>
+</tr>
+<tr>
+<td>3</td>
+<td>構件</td>
+<td>CD、AD、DB、AB 四桿（AB 在圖上略斜，兩端 y 差 1.7 pt，視為水平）</td>
+<td>附圖；向量座標</td>
+<td>確定（解讀）；使用者確認</td>
+</tr>
+<tr>
+<td>4</td>
+<td>支承</td>
+<td>A、C 鉸支承；B 滾支承（水平可動）</td>
+<td>附圖三角形／圓</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>5</td>
+<td>自由度</td>
+<td>d₁：B 水平（+x）；d₂：D 水平（+x）；d₃：D 垂直（+y）</td>
+<td>附圖箭頭</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>6</td>
+<td>材料</td>
+<td>E = 200 GPa、A = 10×10³ mm²（各桿相同）</td>
+<td>題文</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>7</td>
+<td>所求</td>
+<td>3×3 勁度矩陣、P₁–P₃、AD 與 CD 內力；限直接勁度法</td>
+<td>題文</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>8</td>
+<td>證據圖</td>
+<td>舊截圖 fig-1：滑鼠游標（手形）在 A 左下方空白處，未壓到圖；新增 fig-2（2026-11-05 自考卷重新擷取 500 dpi）</td>
+<td>—</td>
+<td>確定</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p><em>轉錄：2026-11-05（SA-U2-4 題目正本推廣・批 1）</em><br />
+<em>確認：2026-11-05 使用者確認</em></p>
+</details>
+<hr>
+<h1>考題編號：SA-2013-4</h1>
 <p><strong>主分類：</strong> <code>SA-U2-4</code> 靜不定結構之矩陣分析法<br />
 <strong>副分類：</strong> 無<br />
 <strong>分析法：</strong> 直接勁度法 (Direct Stiffness Method)<br />
 <strong>標籤：</strong> <code>直接勁度法</code>, <code>桁架</code>, <code>勁度矩陣</code>, <code>節點位移</code>, <code>內力</code></p>
 <hr />
-<h2>1. 原始題目重述 (Problem Restatement)</h2>
-<p>如圖四所示桁架結構，請應用直接勁度法組成對應位移 $(d_1, d_2, d_3)$ 之勁度矩陣。若所得位移 $(d_1, d_2, d_3)$ 為 $(0.1277, 0.1743, 0.7055)\text{ mm}$，求所對應施加外力 $(P_1, P_2, P_3)$ 值，並求桿件 AD、CD 之內力。所有桿件 $E = 200\text{ GPa}$，$A = 10 \times 10^3\text{ mm}^2$。使用其他方法不予給分。（25 分）</p>
-<p><img alt="SA-2013-4 題目附圖：直接勁度法分析桁架" src="../../raw/solutions/SA-2013-4/SA-2013-4-fig-1.png" /></p>
-<p><em>圖說：A 點為左下鉸支承 (0,0)，B 點為右下滾支承 (14,0)，C 點為左上鉸支承 (0,6)，D 點為自由節點 (6,6)。各桿件連接情形如圖。$P_1, d_1$ 為 B 點水平向右自由度；$P_2, d_2$ 為 D 點水平向右自由度；$P_3, d_3$ 為 D 點垂直向上自由度。</em></p>
+<h2>1. 題目（考卷原文見題目正本）</h2>
+<blockquote>
+<p>考卷原文、公式／附表、附圖與判讀清單（已確認）見 <a href="SA-2013-4-problem.md"><code>SA-2013-4-problem.md</code></a>。本節只列解題時最容易讀錯的地方與本解使用的記號；題意以題目正本為準。</p>
+</blockquote>
+<p><img alt="SA-2013-4 重繪題目附圖：桁架 A 鉸、B 滾（14 m 處）、C 鉸（A 正上方 6 m）、D(6,6)；d₁ 為 B 水平、d₂、d₃ 為 D 水平與垂直" src="../../raw/solutions/SA-2013-4/figs/SA-2013-4-fig-1-problem.svg" /><br />
+<em>重繪自考卷附圖，依判讀清單 #1–#8 重繪。攔：CD 長度讀錯、d₁ 位置或 d₂、d₃ 方向對錯。</em></p>
+<h3>常見誤讀</h3>
+<table>
+<thead>
+<tr>
+<th>項目</th>
+<th>正確判讀</th>
+<th>常見誤讀</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>CD 長度</td>
+<td>6 m（C 在 A 正上方；考卷未直接標）</td>
+<td>量圖比例</td>
+</tr>
+<tr>
+<td>d₁</td>
+<td>B 點水平（B 為滾支承）</td>
+<td>D 點</td>
+</tr>
+</tbody>
+</table>
+<p><strong>本解記號：</strong> 記號與正負號約定沿用 §4。</p>
+<h3>判讀圖解（解析自繪）</h3>
 <p><img alt="SA-2013-4 題目重繪：桁架節點座標、支承型式與三個自由度方向" src="../../raw/solutions/SA-2013-4/figs/SA-2013-4-fig-1-frame.svg" /></p>
 <p><em>圖 1　題目重繪（向量版），取代低解析度截圖，把節點座標、支承型式（A、C 為鉸支承，B 為滾支承）與 $d_1, d_2, d_3$ 三個自由度的方向釘死。這張圖攔的是自由度方向與節點對應弄錯，導致整個 $\mathbf{K}$ 矩陣行列錯位。</em></p>
 <h2>2. 考題核心精神與出題者意圖 (Core Concepts &amp; Examiner's Intent)</h2>
@@ -279,7 +433,8 @@ $$\Sigma F_y = -F_{AD}\sin45° - F_{BD}\cdot0.6 = -103.68 - 46.32 \approx -150.0
 <li><strong>直接勁度法與傳統節點法的互證</strong>：本題給定位移反求外力，是一個「反向操作」的經典題型。算出 $P_1=80, P_2=100, P_3=150$ 後，我們也可以將剛才算出的各桿件內力投影到節點 D 上驗證：$P_2 = F_{CD} + F_{AD}\cos 45^\circ - F_{BD}\cos\theta_{BD}$，此一平衡條件必然成立，展現了有限元素矩陣方法的嚴密性與自洽性。</li>
 <li><strong>單位系統的最佳實踐</strong>：強烈建議在直接勁度法中，遇到 $\text{GPa}$（$10^9\text{ N/m}^2$）與截面積 $\text{mm}^2$ 時，一律轉換為 $\text{N}, \text{mm}$ 或 $\text{kN}, \text{mm}$ 系統。如此一來，$E=200\text{ kN/mm}^2$，$L$ 帶入 mm，$d$ 帶入 mm，算出的力直接就是 $\text{kN}$，完全不需要擔心數量級轉換錯誤。</li>
 </ul>
-<p><em>圖解補繪：2026-08-27（向量圖，腳本 <code>gen_SA-2013-4.py</code>，可重跑）</em></p></main>
+<p><em>圖解補繪：2026-08-27（向量圖，腳本 <code>gen_SA-2013-4.py</code>，可重跑）</em></p>
+<p><em>修正日期：2026-11-05（§1 改為指向題目正本並放重繪附圖（figs/SA-2013-4-fig-1-problem.svg）、加常見誤讀；原 §1 解析自繪圖移至「判讀圖解（解析自繪）」；圖由 gen_SA-2013-4_problem.py 產生，可重跑）</em></p></main>
 <footer>來源：raw/solutions/SA-2013-4/SA-2013-4.md（知識庫解題內容唯一正本；本頁僅為渲染顯示）</footer>
 
 <script>

@@ -43,19 +43,166 @@ header .nomat{margin-top:12px;font-size:.8em;opacity:.85}
 <p class="meta2">主分類 <b>SA-U2-4</b> 靜不定結構之矩陣分析法 ｜ 2025 年（民國 114） ｜ 矩陣位移法（Direct Stiffness Method）</p>
 <div class="hbtns"><a class="b-study" href="../unit-SA-U2-4.html">🧭 U2-4 單元總覽</a><a class="b-lect" href="../lecture-SA-U2-4.html">📚 U2-4 靜不定結構之矩陣分析法 講義</a></div>
 </header>
-<main><h1>考題編號：SA-2025-1</h1>
+<main><details class="problem-src" open><summary><b>📄 題目正本</b>（考卷原文、附圖與判讀清單；不含解法）</summary>
+<h1>SA-2025-1 題目正本</h1>
+<blockquote>
+<p>本檔只記錄考卷上寫了什麼、圖上畫了什麼，不含任何解法。解析見同資料夾 <code>SA-2025-1.md</code>。<br />
+判讀清單經使用者確認前，狀態為「待確認」；確認後本檔原則上不再修改（改動須回考卷原圖並記 log）。</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>項目</th>
+<th>內容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>考卷</td>
+<td><code>raw/exams/SA-2025_結構學.pdf</code>，第 1 頁，第一題（圖 1）</td>
+</tr>
+<tr>
+<td>考年</td>
+<td>2025（民國 114 年）專技高考結構工程技師「結構學」</td>
+</tr>
+<tr>
+<td>配分</td>
+<td>25 分</td>
+</tr>
+<tr>
+<td>附圖</td>
+<td><code>SA-2025-1-fig-1.png</code>、<code>SA-2025-1-fig-2.png</code></td>
+</tr>
+<tr>
+<td>判讀狀態</td>
+<td><strong>已確認</strong>（2026-11-05 使用者確認。原轉錄：2026-11-05 轉錄；PyMuPDF 110 dpi 整頁＋250–800 dpi 局部放大、PDF 向量座標；盲讀於開啟解析前完成）</td>
+</tr>
+</tbody>
+</table>
+<h2>1. 考卷原文（逐字）</h2>
+<p>一、如圖 1 所示之一層樓單跨度剛構架（Rigid-jointed frame），梁及柱皆為垂直剛接，兩柱底為固定支承。梁柱之撓曲剛度均為 EI，長度均為 L。若忽略所有桿件之軸向變形，請推導對應側向作用力 P 之側向勁度（提示：請先寫出結構之勁度矩陣）。（25 分）</p>
+<h2>2. 考卷給的公式、附表與參數</h2>
+<ul>
+<li>考卷沒有給任何參考公式或附表。</li>
+<li>梁柱 EI、長度 L 相同；忽略軸向變形（題文）。</li>
+<li>附圖為點陣圖（PDF 內嵌），節點沒有字母標示。</li>
+<li>卷首注意事項：可以使用電子計算器。不必抄題，作答時請將試題題號及答案依照順序寫在試卷上，於本試題上作答者，不予計分。本科目除專門名詞或數理公式外，應使用本國文字作答。</li>
+<li>考試時間：2 小時。</li>
+</ul>
+<h2>3. 附圖</h2>
+<p><img alt="SA-2025-1 考卷附圖原截圖（滑鼠游標（箭頭）在框架內部空白處，未壓到圖；內容同下圖）" src="../../raw/solutions/SA-2025-1/SA-2025-1-fig-1.png" /><br />
+<em>證據圖 SA-2025-1-fig-1.png</em></p>
+<p><img alt="SA-2025-1 考卷附圖（圖 1）：門型剛構架，兩柱高 L、梁長 L，皆標 EI；兩柱底固定；P 水平向右作用於右上角點" src="../../raw/solutions/SA-2025-1/SA-2025-1-fig-2.png" /><br />
+<em>證據圖 SA-2025-1-fig-2.png（2026-11-05 自考卷重新擷取 500 dpi，無游標）</em></p>
+<p>圖面文字照錄：P、EI、EI、EI、L、L、L、圖 1</p>
+<h2>4. 判讀清單</h2>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>項目</th>
+<th>判讀</th>
+<th>圖上／題文依據</th>
+<th>把握</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>幾何</td>
+<td>柱高 L（左右兩側尺寸線）、梁長 L（下方尺寸線）</td>
+<td>附圖</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>2</td>
+<td>撓曲剛度</td>
+<td>梁、柱皆 EI</td>
+<td>圖上標註；題文</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>3</td>
+<td>梁柱接點</td>
+<td>剛接</td>
+<td>題文「垂直剛接」</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>4</td>
+<td>支承</td>
+<td>兩柱底固定</td>
+<td>題文；附圖剖線</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>5</td>
+<td>載重</td>
+<td>P 水平向右，作用於右上角點</td>
+<td>附圖箭頭由右上角點向右</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>6</td>
+<td>節點標示</td>
+<td>考卷附圖<strong>沒有</strong>節點字母</td>
+<td>附圖</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>7</td>
+<td>所求</td>
+<td>對應 P 的側向勁度（提示先寫結構勁度矩陣）</td>
+<td>題文</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>8</td>
+<td>證據圖</td>
+<td>舊截圖 fig-1：滑鼠游標（箭頭）在框架內部空白處，未壓到圖；新增 fig-2（2026-11-05 自考卷重新擷取 500 dpi）</td>
+<td>—</td>
+<td>確定</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p><em>轉錄：2026-11-05（SA-U2-4 題目正本推廣・批 1）</em><br />
+<em>確認：2026-11-05 使用者確認</em></p>
+</details>
+<hr>
+<h1>考題編號：SA-2025-1</h1>
 <p><strong>主分類：</strong> <code>SA-U2-4</code> 靜不定結構之矩陣分析法<br />
 <strong>副分類：</strong> （無）<br />
 <strong>分析法：</strong> 矩陣位移法（Direct Stiffness Method）<br />
 <strong>標籤：</strong> <code>矩陣勁度法</code> <code>側向勁度</code> <code>門型剛構架</code> <code>固定端</code> <code>靜態凝縮</code> <code>忽略軸向變形</code>  </p>
 <hr />
-<h2>§1 題目重述</h2>
-<p>如圖1所示之一層樓單跨度剛構架（Rigid-jointed frame），梁及柱皆為垂直剛接，兩柱底為固定支承。梁柱之撓曲剛度均為 $EI$，長度均為 $L$。若忽略所有桿件之軸向變形，請推導對應側向作用力 $P$ 之<strong>側向勁度</strong>（提示：請先寫出結構之勁度矩陣）。（25 分）</p>
-<p><img alt="SA-2025-1 題目附圖：一層樓單跨剛構架，兩柱底固定支承，梁柱剛接，所有桿件 EI、L 相同，側向力 P 作用於節點" src="../../raw/solutions/SA-2025-1/SA-2025-1-fig-1.png" /></p>
-<p><em>圖說（原卷截圖）：門型剛構架。左柱底 A、右柱底 D 固定；頂部節點 B（左）、C（右）剛接連接水平梁 BC。所有桿件撓曲剛度 $EI$、長度 $L$。側向力 $P$ 作用於梁端（水平向右）。</em></p>
+<h2>§1 題目（考卷原文見題目正本）</h2>
+<blockquote>
+<p>考卷原文、公式／附表、附圖與判讀清單（已確認）見 <a href="SA-2025-1-problem.md"><code>SA-2025-1-problem.md</code></a>。本節只列解題時最容易讀錯的地方與本解使用的記號；題意以題目正本為準。</p>
+</blockquote>
+<p><img alt="SA-2025-1 重繪題目附圖：門型剛構架，兩柱底固定、梁柱垂直剛接，梁柱 EI、L 相同；P 水平向右作用於右上角點" src="../../raw/solutions/SA-2025-1/figs/SA-2025-1-fig-1-problem.svg" /><br />
+<em>重繪自考卷附圖，依判讀清單 #1–#8 重繪（考卷附圖無節點字母，重繪不加）。攔：P 作用點或柱底支承讀錯。</em></p>
+<h3>常見誤讀</h3>
+<table>
+<thead>
+<tr>
+<th>項目</th>
+<th>正確判讀</th>
+<th>常見誤讀</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>節點字母</td>
+<td>考卷附圖沒有</td>
+<td>當成考卷給的記號</td>
+</tr>
+</tbody>
+</table>
+<p><strong>本解記號：</strong> 考卷附圖沒有節點字母，本解記左柱底 A、左上 B、右上 C、右柱底 D；記號與正負號約定沿用 §4。</p>
+<h3>判讀圖解（解析自繪）</h3>
 <p><img alt="向量重繪：門型剛構架，節點 A/B/C/D、EI 與 L 標註、固定支承符號、側向力 P" src="../../raw/solutions/SA-2025-1/figs/SA-2025-1-fig-1-frame.svg" /></p>
 <p><em>圖 1R　向量重繪版（作答時可照此比例快速描繪）</em></p>
-<hr />
 <h2>§2 核心精神與出題者意圖</h2>
 <p><strong>核心觀念：</strong> 以矩陣位移法系統化建立結構勁度矩陣，再透過<strong>靜態凝縮（Static Condensation）</strong>消去旋轉自由度，直接得到側向勁度 $k_{lateral} = P/\Delta$。</p>
 <p><strong>出題者意圖：</strong></p>
@@ -641,7 +788,8 @@ header .nomat{margin-top:12px;font-size:.8em;opacity:.85}
 </tbody>
 </table>
 <hr />
-<p><em>解析日期：2026-07-02　｜　圖解補繪：2026-08-10（向量圖，產生腳本 <code>gen_sa2025_1.py</code> + <code>structdraw.py</code>，可重跑）　｜　圖解法單位位移圖 3a–3c：2026-10-25（腳本 <code>figs/gen_SA-2025-1-unit.py</code> + <code>structdraw_v2.py</code>，可重跑）</em></p></main>
+<p><em>解析日期：2026-07-02　｜　圖解補繪：2026-08-10（向量圖，產生腳本 <code>gen_sa2025_1.py</code> + <code>structdraw.py</code>，可重跑）　｜　圖解法單位位移圖 3a–3c：2026-10-25（腳本 <code>figs/gen_SA-2025-1-unit.py</code> + <code>structdraw_v2.py</code>，可重跑）</em></p>
+<p><em>修正日期：2026-11-05（§1 改為指向題目正本並放重繪附圖（figs/SA-2025-1-fig-1-problem.svg）、加常見誤讀；原 §1 解析自繪圖移至「判讀圖解（解析自繪）」；圖由 gen_SA-2025-1_problem.py 產生，可重跑）</em></p></main>
 <footer>來源：raw/solutions/SA-2025-1/SA-2025-1.md（知識庫解題內容唯一正本；本頁僅為渲染顯示）</footer>
 
 <script>

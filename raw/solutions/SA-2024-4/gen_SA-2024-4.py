@@ -150,7 +150,7 @@ def fig2_antisym_bmd():
     cv1.text_px(cv1.X(DELTA_B * amp / 2), cv1.Y(HC + 0.38), "Δ_{B}", 15,
                 C["accent"], weight="700")
     cv1.text_px(Wp2 / 2, Hp - 50,
-                "兩柱皆為雙曲率、變形模式完全相同（不是鏡像）—— 這就是反對稱",
+                "兩柱皆為雙曲率、變形模式完全相同（不是鏡像）—— 彎矩圖受拉側也相同",
                 13.5, C["deform"], weight="700")
     cv1.text_px(Wp2 / 2, Hp - 22,
                 f"兩柱平分層剪力：H_{{A}} = H_{{D}} = P/2", 13.5, C["muted"])
@@ -162,18 +162,26 @@ def fig2_antisym_bmd():
     draw_frame(cv2, w=5.0)
     node_labels(cv2)
     k = 0.42
-    for x0, mtop, mbot, sgn in ((0.0, M_BA, M_AB, -1), (LB, M_CD, M_DC, +1)):
-        cv2.polygon([(x0, 0.0), (x0 + sgn * abs(mbot) * k, 0.0),
-                     (x0 - sgn * abs(mtop) * k, HC), (x0, HC)],
+    # 受拉側由變形曲率決定（不手填）：柱以 Hermite 形狀函數算端點曲率 d''，
+    # 曲率 > 0（凹向 +x）⇒ −x 側受拉；梁以端轉角算 v''，v'' > 0（凹向上）⇒ 梁底受拉。
+    for x0, mtop, mbot, th in ((0.0, M_BA, M_AB, TH_B), (LB, M_CD, M_DC, TH_C)):
+        kb = 6 * DELTA_B / HC ** 2 + 2 * th / HC        # 柱底曲率（順時針 θ 為正）
+        kt = -6 * DELTA_B / HC ** 2 - 4 * th / HC       # 柱頂曲率
+        sb, st = (-1 if kb > 0 else 1), (-1 if kt > 0 else 1)   # 受拉側方向
+        cv2.polygon([(x0, 0.0), (x0 + sb * abs(mbot) * k, 0.0),
+                     (x0 + st * abs(mtop) * k, HC), (x0, HC)],
                     C["fill_m"], C["bmd"], 2.2)
-        cv2.text_px(cv2.X(x0 + sgn * abs(mbot) * k) + sgn * 10, cv2.Y(0.0) - 8,
+        cv2.text_px(cv2.X(x0 + sb * abs(mbot) * k) + sb * 10, cv2.Y(0.0) - 8,
                     f"{_fr(abs(mbot))} PL", 14, C["bmd"],
-                    "start" if sgn > 0 else "end", weight="700")
-        cv2.text_px(cv2.X(x0 - sgn * abs(mtop) * k) - sgn * 10, cv2.Y(HC) + 22,
+                    "start" if sb > 0 else "end", weight="700")
+        cv2.text_px(cv2.X(x0 + st * abs(mtop) * k) + st * 10, cv2.Y(HC) - 24,
                     f"{_fr(abs(mtop))} PL", 14, C["bmd"],
-                    "end" if sgn > 0 else "start", weight="700")
-    cv2.polygon([B_, (0.0, HC + abs(M_BC) * k * 0.6),
-                 (LB, HC - abs(M_CB) * k * 0.6), CC_], C["fill_m"], C["bmd"], 2.2)
+                    "start" if st > 0 else "end", weight="700")
+    vb = 4 * TH_B / LB + 2 * TH_C / LB                  # 梁 B 端 v''（v 向上、θ 順時針為正）
+    vc = -2 * TH_B / LB - 4 * TH_C / LB                 # 梁 C 端 v''
+    assert vb > 0 and vc < 0, "反對稱側推：梁 B 端梁底受拉、C 端梁頂受拉"
+    cv2.polygon([B_, (0.0, HC - abs(M_BC) * k * 0.6),
+                 (LB, HC + abs(M_CB) * k * 0.6), CC_], C["fill_m"], C["bmd"], 2.2)
     cv2.dot((LB / 2, HC), 5.2, fill="#FFFFFF", stroke=C["accent"], w=2.6)
     cv2.text_px(cv2.X(LB / 2), cv2.Y(HC) - 40, "梁的反曲點", 12.5,
                 C["accent"], weight="700")

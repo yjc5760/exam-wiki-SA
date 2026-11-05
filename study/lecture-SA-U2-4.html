@@ -415,7 +415,7 @@ $$\{f\}_{glo}=[T]^T\{f\}_{loc}=[T]^T[k]_{loc}\{d\}_{loc}=\underbrace{[T]^T[k]_{l
 <thead><tr><th>效應</th><th>狀態 I 產生什麼</th><th>考題</th></tr></thead>
 <tbody>
 <tr><td>跨間均佈載重 \(w\)</td><td>\(FEM=wL^2/12\)（兩端固定）或 \(wL^2/8\)（一端鉸）</td><td>SA-2004-4、SA-2008-4、SA-2015-4、SA-2025-4</td></tr>
-<tr><td>跨中集中力 \(P\)</td><td>\(FEM=PL/8\)</td><td>SA-2018-2、SA-2019-4</td></tr>
+<tr><td>跨中集中力 \(P\)</td><td>\(FEM=PL/8\)（兩端固定）或 \(3PL/16\)（一端鉸）</td><td>SA-2018-2、SA-2019-4（柱 AB 用 \(PL/8\)、下端鉸的柱 CD 用 \(3QL/16\)）</td></tr>
 <tr><td>製造誤差（桿短了 \(\Delta\)）</td><td>硬把它接上所需的初始張力 \(T_0=\dfrac{EA}{L}\Delta\)</td><td>SA-2011-4</td></tr>
 <tr><td>溫度變化、支承沉陷</td><td>同上，先算「不准它動」需要多大的力</td><td>（本單元未直接考，但邏輯完全相同）</td></tr>
 </tbody>
@@ -474,7 +474,7 @@ $$K^*=\frac{12EI}{L^3}-\frac{6EI}{L^2}\cdot\frac{L}{4EI}\cdot\frac{6EI}{L^2}=\fr
 <div class="box"><b>三題用到修正勁度</b>
 <ul>
 <li><b>SA-2004-4：</b>CB 桿右端是滾支承 → 用 \(\frac{3(3EI)}{2L}\) 等，把 3×3 降成 2×2。同時固端彎矩要換成 \(wL_{CB}^2/8\)（§6）。</li>
-<li><b>SA-2019-4：</b>梁 DE 右端 E 是滾支承且題目沒給該處自由度 → \([k^{(5)}]=[3EI/L]\)，一個 1×1 元素。</li>
+<li><b>SA-2019-4：</b>梁 DE 右端 E 是滾支承、柱 CD 底端 C 是鉸支承，兩處轉角題目都沒給自由度 → \([k^{(5)}]=[3EI/L]\)，一個 1×1 元素；柱 ② 用一端鉸的修正勁度 \(\begin{bmatrix}3EI/L^3 & 3EI/L^2\\ 3EI/L^2 & 3EI/L\end{bmatrix}\)（對應 \(d_1, d_4\)）。C 讀成固定端是本題最常見的錯（2026-11-05 題解勘誤）。</li>
 <li><b>SA-2008-4：</b>C 點鉸支承。官方解<b>沒有</b>凝縮，而是老實把 \(\theta_C\) 列成自由度，解 2×2。<b>兩種都對</b>：列出來比較符合「標準矩陣法」的形式（本題要求矩陣法），凝縮則比較快。若題目沒指定，建議<b>列出來但在旁邊註明也可用 \(3EI/L\) 凝縮</b>，兩邊分數都拿。</li>
 </ul></div>
 
@@ -745,7 +745,7 @@ $$k=K_{33}-7.2\frac{EI}{L^3}=24\frac{EI}{L^3}-7.2\frac{EI}{L^3}=16.8\frac{EI}{L^
 <tr><td><a class="qlink" href="problems-view/SA-2018-2.html" target="_blank">SA-2018-2</a></td><td>2018</td><td>Z 型剛架（有側移）</td><td>側移自由度合併、\(K_{12}\) 與 \(K_{13}\) 符號一正一負、BMD</td><td>§2 §5 §9</td></tr>
 <tr><td><a class="qlink" href="problems-view/SA-2019-4.html" target="_blank">SA-2019-4</a></td><td>2019</td><td>剛架＋半剛性接頭</td><td>節點拆兩個轉角、彈簧當獨立元素、外伸端用 \(3EI/L\)</td><td>§2 §7 §8</td></tr>
 <tr><td><a class="qlink" href="problems-view/SA-2022-4.html" target="_blank">SA-2022-4</a></td><td>2022</td><td>三層樓剪力棟架</td><td>梁 \(EI=\infty\) 的自由度壓縮、挑高柱 \(k/8\)、樓層剪力平衡</td><td>§2</td></tr>
-<tr><td><a class="qlink" href="problems-view/SA-2024-4.html" target="_blank">SA-2024-4</a></td><td>2024</td><td>門型剛架側推（塑鉸）</td><td>以勁度矩陣法逐次形成塑鉸、修改 [K] 求側推曲線 \(P\)–\(\Delta\) 至極限承載力（2026-10-30 由 SA-U2-3 改歸；⚠ 現行題解只做彈性階段，待重解）</td><td>§7 §10</td></tr>
+<tr><td><a class="qlink" href="problems-view/SA-2024-4.html" target="_blank">SA-2024-4</a></td><td>2024</td><td>門型剛架側推（塑鉸）</td><td>以勁度矩陣法逐次形成塑鉸、修改 [K] 求側推曲線 \(P\)–\(\Delta\) 至極限承載力（2026-10-30 由 SA-U2-3 改歸；2026-11-05 題解整題重解：梁端 B、C 於 100 kN 先形成塑鉸，柱底 A、D 於 125.71 kN 形成側移機構）</td><td>§7 §10</td></tr>
 <tr><td><a class="qlink" href="problems-view/SA-2025-1.html" target="_blank">SA-2025-1</a></td><td>2025</td><td>門型剛架</td><td>靜態凝縮求側向勁度、對稱降維（本講義 §10 全解）</td><td>§7 §10</td></tr>
 <tr><td><a class="qlink" href="problems-view/SA-2025-4.html" target="_blank">SA-2025-4</a></td><td>2025</td><td>U 型格床（Grid）</td><td>彎曲＋扭轉同時、\(J=2I\)、對稱把 6×6 砍成 3×3</td><td>§3 §7 §8</td></tr>
 </tbody>

@@ -43,16 +43,181 @@ header .nomat{margin-top:12px;font-size:.8em;opacity:.85}
 <p class="meta2">主分類 <b>SA-U2-4</b> 靜不定結構之矩陣分析法 ｜ 2022 年（民國 111） ｜ 剪力棟架法 (Shear Building Method)</p>
 <div class="hbtns"><a class="b-study" href="../unit-SA-U2-4.html">🧭 U2-4 單元總覽</a><a class="b-lect" href="../lecture-SA-U2-4.html">📚 U2-4 靜不定結構之矩陣分析法 講義</a></div>
 </header>
-<main><h1>考題編號：SA-2022-4</h1>
+<main><details class="problem-src" open><summary><b>📄 題目正本</b>（考卷原文、附圖與判讀清單；不含解法）</summary>
+<h1>SA-2022-4 題目正本</h1>
+<blockquote>
+<p>本檔只記錄考卷上寫了什麼、圖上畫了什麼，不含任何解法。解析見同資料夾 <code>SA-2022-4.md</code>。<br />
+判讀清單經使用者確認前，狀態為「待確認」；確認後本檔原則上不再修改（改動須回考卷原圖並記 log）。</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>項目</th>
+<th>內容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>考卷</td>
+<td><code>raw/exams/SA-2022_結構學.pdf</code>，第 3 頁，第四題（圖 4）</td>
+</tr>
+<tr>
+<td>考年</td>
+<td>2022（民國 111 年）專技高考結構工程技師「結構學」</td>
+</tr>
+<tr>
+<td>配分</td>
+<td>25 分</td>
+</tr>
+<tr>
+<td>附圖</td>
+<td><code>SA-2022-4-fig-1.png</code>、<code>SA-2022-4-fig-2.png</code></td>
+</tr>
+<tr>
+<td>判讀狀態</td>
+<td><strong>已確認</strong>（2026-11-05 使用者確認。原轉錄：2026-11-05 轉錄；PyMuPDF 110 dpi 整頁＋250–800 dpi 局部放大、PDF 向量座標；盲讀於開啟解析前完成）</td>
+</tr>
+</tbody>
+</table>
+<h2>1. 考卷原文（逐字）</h2>
+<p>四、如圖 4 所示三層樓構架，各樓層承受水平外力，構架梁柱桿件的彈性模數都為 E，另構架之柱桿件斷面慣性矩都為 I，且 EI = 97200 kN-m²，而構架之梁桿件斷面慣性矩為無限大。不考慮構架梁柱桿件的軸向變形，求 c 點水平位移、b 點水平位移、a 點及 m 點固定端的水平反力與彎矩。（25 分）</p>
+<h2>2. 考卷給的公式、附表與參數</h2>
+<ul>
+<li>考卷沒有給任何參考公式或附表。</li>
+<li>柱 EI = 97200 kN-m²；梁 I 無限大；不考慮軸向變形（題文）。</li>
+<li>卷首注意事項：可以使用電子計算器。不必抄題，作答時請將試題題號及答案依照順序寫在試卷上，於本試題上作答者，不予計分。本科目除專門名詞或數理公式外，應使用本國文字作答。</li>
+<li>考試時間：2 小時。</li>
+</ul>
+<h2>3. 附圖</h2>
+<p><img alt="SA-2022-4 考卷附圖原截圖（滑鼠游標（I 形）在 200 kN 箭頭尾端左側；內容同下圖）" src="../../raw/solutions/SA-2022-4/SA-2022-4-fig-1.png" /><br />
+<em>證據圖 SA-2022-4-fig-1.png</em></p>
+<p><img alt="SA-2022-4 考卷附圖（圖 4）：四根柱線 a、e、m、n 間距 4 m，柱底皆固定；第一層（3.6 m）只有 a–e 一跨梁（b 在 a 柱線上，100 kN 向右）；第二層（7.2 m）梁跨全寬（c，200 kN 向右）；第三層（10.8 m）梁跨全寬（d，300 kN 向右）；m、n 兩柱由地面直通第二層，第一層無梁" src="../../raw/solutions/SA-2022-4/SA-2022-4-fig-2.png" /><br />
+<em>證據圖 SA-2022-4-fig-2.png（2026-11-05 自考卷重新擷取 500 dpi，無游標）</em></p>
+<p>圖面文字照錄：300 kN、d、200 kN、c、100 kN、b、a、e、m、n、3.6 m（×3）、4 m（×3）、圖 4</p>
+<h2>4. 判讀清單</h2>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>項目</th>
+<th>判讀</th>
+<th>圖上／題文依據</th>
+<th>把握</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>柱線與跨距</td>
+<td>a、e、m、n 柱線，間距 4 m（共 12 m）</td>
+<td>下方尺寸線</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>2</td>
+<td>樓高</td>
+<td>每層 3.6 m（右側尺寸線三段）</td>
+<td>右側尺寸線</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>3</td>
+<td>第一層梁</td>
+<td>只有 a–e 一跨（b 在 a 柱線頂），m、n 柱在此高程沒有梁</td>
+<td>附圖粗線只畫到 e 柱</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>4</td>
+<td>m、n 柱</td>
+<td>由地面連續到第二層梁（無中間節點），一根長 7.2 m</td>
+<td>附圖細線連續</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>5</td>
+<td>第二、三層梁</td>
+<td>全寬 a–n 柱線；c、d 在 a 柱線</td>
+<td>附圖粗線</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>6</td>
+<td>支承</td>
+<td>a、e、m、n 柱底皆固定</td>
+<td>附圖剖線</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>7</td>
+<td>剛度</td>
+<td>柱 EI = 97200 kN-m²（全部相同）；梁 EI = ∞；不考慮軸向變形</td>
+<td>題文</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>8</td>
+<td>載重</td>
+<td>b 100 kN、c 200 kN、d 300 kN，皆向右</td>
+<td>附圖</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>9</td>
+<td>所求</td>
+<td>c、b 水平位移；a、m 柱底水平反力與彎矩</td>
+<td>題文</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>10</td>
+<td>證據圖</td>
+<td>舊截圖 fig-1：滑鼠游標（I 形）在 200 kN 箭頭尾端左側；新增 fig-2（2026-11-05 自考卷重新擷取 500 dpi）</td>
+<td>—</td>
+<td>確定</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p><em>轉錄：2026-11-05（SA-U2-4 題目正本推廣・批 1）</em><br />
+<em>確認：2026-11-05 使用者確認</em></p>
+</details>
+<hr>
+<h1>考題編號：SA-2022-4</h1>
 <p><strong>主分類：</strong> <code>SA-U2-4</code> 靜不定結構與位移<br />
 <strong>副分類：</strong> 無<br />
 <strong>分析法：</strong> 剪力棟架法 (Shear Building Method)<br />
 <strong>標籤：</strong> <code>剪力棟架</code> <code>剛性樓板</code> <code>側移剛度</code> <code>不規則構架</code> <code>挑高柱</code></p>
 <hr />
-<h2>1. 原始題目重述 (Problem Restatement)</h2>
-<p>如圖 4 所示三層樓構架，各樓層承受水平外力，構架梁柱桿件的彈性模數都為 $E$，另構架之柱桿件斷面慣性矩都為 $I$，且 $EI = 97200 \text{ kN-m}^2$，而構架之梁桿件斷面慣性矩為無限大。不考慮構架梁柱桿件的軸向變形，求 $c$ 點水平位移、$b$ 點水平位移、$a$ 點及 $m$ 點固定端的水平反力與彎矩。（25 分）</p>
-<p><img alt="SA-2022-4 題目附圖" src="../../raw/solutions/SA-2022-4/SA-2022-4-fig-1.png" /></p>
-<p><em>圖說：(待補充說明)</em></p>
+<h2>1. 題目（考卷原文見題目正本）</h2>
+<blockquote>
+<p>考卷原文、公式／附表、附圖與判讀清單（已確認）見 <a href="SA-2022-4-problem.md"><code>SA-2022-4-problem.md</code></a>。本節只列解題時最容易讀錯的地方與本解使用的記號；題意以題目正本為準。</p>
+</blockquote>
+<p><img alt="SA-2022-4 重繪題目附圖：三層構架四根柱線 a、e、m、n 間距 4 m，樓高各 3.6 m；第一層只有 a–e 一跨梁，m、n 柱直通第二層；梁 EI = ∞；b、c、d 受 100、200、300 kN" src="../../raw/solutions/SA-2022-4/figs/SA-2022-4-fig-1-problem.svg" /><br />
+<em>重繪自考卷附圖，依判讀清單 #1–#10 重繪。攔：誤以為 m、n 柱在第一層有梁（實為 7.2 m 長柱）。</em></p>
+<h3>常見誤讀</h3>
+<table>
+<thead>
+<tr>
+<th>項目</th>
+<th>正確判讀</th>
+<th>常見誤讀</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>m、n 柱</td>
+<td>由地面直通第二層，長 7.2 m</td>
+<td>每層 3.6 m</td>
+</tr>
+<tr>
+<td>第一層梁</td>
+<td>只有 a–e 一跨</td>
+<td>全寬</td>
+</tr>
+</tbody>
+</table>
+<p><strong>本解記號：</strong> 記號與正負號約定沿用 §4。</p>
 <h2>2. 考題核心精神與出題者意圖 (Core Concepts &amp; Examiner's Intent)</h2>
 <p><strong>核心精神：</strong></p>
 <ol>
@@ -204,7 +369,8 @@ $$50\Delta_1 + 0.11 = 0.6 \implies 50\Delta_1 = 0.49 \implies \Delta_1 = \mathbf
 <li><strong>$m$ 點固定端反力與彎矩</strong>：</li>
 <li>水平反力：$55 \text{ kN}$，方向向左。</li>
 <li>彎矩：$198 \text{ kN-m}$，逆時針方向。</li>
-</ol></main>
+</ol>
+<p><em>修正日期：2026-11-05（§1 改為指向題目正本並放重繪附圖（figs/SA-2022-4-fig-1-problem.svg）、加常見誤讀；圖由 gen_SA-2022-4.py 產生，可重跑）</em></p></main>
 <footer>來源：raw/solutions/SA-2022-4/SA-2022-4.md（知識庫解題內容唯一正本；本頁僅為渲染顯示）</footer>
 
 <script>

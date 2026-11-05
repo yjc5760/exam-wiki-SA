@@ -40,188 +40,336 @@ header .nomat{margin-top:12px;font-size:.8em;opacity:.85}
 </style></head><body>
 <header>
 <h1>SA-2024-4　靜不定結構之矩陣分析法</h1>
-<p class="meta2">主分類 <b>SA-U2-4</b> 靜不定結構之矩陣分析法 ｜ 2024 年（民國 113） ｜ 傾角變位法</p>
+<p class="meta2">主分類 <b>SA-U2-4</b> 靜不定結構之矩陣分析法 ｜ 2024 年（民國 113） ｜ 結構勁度矩陣法（彈塑性側推，逐次形成塑鉸）</p>
 <div class="hbtns"><a class="b-study" href="../unit-SA-U2-4.html">🧭 U2-4 單元總覽</a><a class="b-lect" href="../lecture-SA-U2-4.html">📚 U2-4 靜不定結構之矩陣分析法 講義</a></div>
 </header>
-<main><h1>考題編號：SA-2024-4</h1>
-<p><strong>主分類：</strong> <code>SA-U2-4</code> 靜不定結構之矩陣分析法<br />
-<strong>副分類：</strong> 無<br />
-<strong>分析法：</strong> 傾角變位法<br />
-<strong>標籤：</strong> <code>傾角變位法</code>, <code>剛架</code>, <code>側移</code>, <code>集中力</code>, <code>反對稱</code>, <code>非均勻斷面</code></p>
-<hr />
-<h2>1. 原始題目重述 (Problem Restatement)</h2>
-<p>圖四為一剛架，A、D 皆為固定端，節點 B 承受一向右之集中力 $P$。請求出 B 點的水平位移及 C、D 節點的彎矩值。</p>
-<p><img alt="SA-2024-4 題目附圖：門型剛架，A、D 固定端，柱 AB 與 CD 長 2L、剛度 2EI，梁 BC 長 L、剛度 EI，P 作用於 B 點向右" src="../../raw/solutions/SA-2024-4/SA-2024-4-fig-1.png" /></p>
-<p><em>圖說：門型剛架。$A$、$D$ 為固定端。左柱 $AB$ 與右柱 $CD$ </em><em>長 $2L$、剛度 $2EI$</em><em>；橫梁 $BC$ </em><em>長 $L$、剛度 $EI$</em><em>。集中力 $P$ 作用於節點 $B$，方向向右。（以上幾何與剛度皆由考卷附圖直接標註讀出。）</em></p>
-<p><img alt="SA-2024-4 題目重繪：三根桿的相對勁度 K = EI/L 完全相等" src="../../raw/solutions/SA-2024-4/figs/SA-2024-4-fig-1-frame.svg" /></p>
-<p><em>圖 1　題目重繪（向量版）。這張圖攔的是「柱 $2EI$、梁 $EI$ 看起來不對稱」的第一印象：換算成相對勁度 $K = EI/L$ 之後，三根桿完全相等 —— 這是出題者刻意的設計，先看出來就能少算一半。</em></p>
-<h2>2. 考題核心精神與出題者意圖 (Core Concepts &amp; Examiner's Intent)</h2>
-<p>本題是測試學生處理「有側移」剛架之傾角變位法，並且加入了「桿件 $EI$ 不同」的變化。核心測驗重點有二：</p>
-<ol>
-<li><strong>相對剛度的計算與反對稱變形之利用</strong>：雖然各桿件 $EI$ 與長度不同，但經過相對剛度 $K=EI/L$ 換算後，三根桿件的 $K$ 值完全相等。由於結構剛度對稱，且承受反對稱的集中側向力，可預知兩柱之變形模式相同，即 $\theta_B = \theta_C$。</li>
-<li><strong>層剪力方程式 (Shear Equation)</strong>：節點承受集中側向力時，固端彎矩 (FEM) 為零，所有的側向推力皆由層剪力平衡方程式來吸收。</li>
-</ol>
-<h2>3. 解題戰略地圖與陷阱分析 (Strategic Roadmap &amp; Trap Analysis)</h2>
-<ol>
-<li><strong>定義自由度與相對剛度</strong>：</li>
-<li>A, D 為固定端，$\theta_A = \theta_D = 0$。未知自由度為 $\theta_B, \theta_C, \psi$。</li>
-<li>計算各桿剛度 $K_{AB} = \frac{2EI}{2L} = \frac{EI}{L}$，梁剛度 $K_{BC} = \frac{EI}{L}$。令 $K = \frac{EI}{L}$，則 $K_{AB} = K_{BC} = K_{CD} = K$。</li>
-<li><strong>判斷固端彎矩 (FEM)</strong>：</li>
-<li>由於無桿件載重，僅有節點載重 $P$，故所有桿件之 $FEM = 0$。</li>
-<li><strong>建立三大平衡方程式</strong>：</li>
-<li>節點 B 彎矩平衡：$\Sigma M_B = 0 \implies 4\theta_B + \theta_C - 3\psi = 0$</li>
-<li>節點 C 彎矩平衡：$\Sigma M_C = 0 \implies \theta_B + 4\theta_C - 3\psi = 0$</li>
-<li>層剪力平衡：取剛架水平力平衡導出 $M_{AB} + M_{BA} + M_{CD} + M_{DC} = 2PL$。</li>
-<li><strong>陷阱分析</strong>：</li>
-<li><strong>EI 值陷阱</strong>：題目給的 $EI$ 不同，若未先化簡為相對剛度 $K$，會以為這是不對稱結構，導致算式冗長且易錯。</li>
-<li><strong>符號法則混淆</strong>：若約定弦旋轉逆時針為正 $\psi$，則向右位移 $\Delta$ 會造成順時針旋轉，代入公式 $\psi$ 必為負值。推導層剪力時必須嚴格遵守自己設定的符號法則。</li>
-</ol>
-<h2>3.5 變數層次分析 (Variable Hierarchy Analysis)</h2>
-<h3>最終目標</h3>
-<p><code>求解 B 點水平位移與 C、D 節點的內部彎矩值</code></p>
-<h3>本題關鍵公式（依計算順序）</h3>
-<ol>
-<li>定義桿件相對剛度：$$K_{ij} = \frac{EI_{ij}}{L_{ij}}$$</li>
-<li>傾角變位方程式（無固端彎矩）：$$M_{ij} = 2\boxed{K_{ij}} \left(2\theta_i + \theta_j - 3\psi\right)$$</li>
-<li>節點彎矩平衡：$$\sum M_{node} = 0 \implies \boxed{M_{ij}} + \boxed{M_{ik}} = 0$$</li>
-<li>層剪力平衡（由自由體圖推導）：$$\sum H_{col} = P \implies \frac{\sum \boxed{M_{col\_top}} + \sum \boxed{M_{col\_bot}}}{h} = P$$</li>
-<li>水平側移換算：$$\Delta = -h \cdot \boxed{\psi}$$</li>
-</ol>
-<h3>L1：題目直接給定</h3>
-<ul>
-<li><strong>符號 ∣ 數值 ∣ 說明</strong></li>
-<li>$L_{AB}, L_{CD}$ ∣ $2L$ ∣ 左、右柱高度</li>
-<li>$L_{BC}$ ∣ $L$ ∣ 橫梁長度</li>
-<li>$EI_{AB}, EI_{CD}$ ∣ $2EI$ ∣ 左、右柱彎曲剛度</li>
-<li>$EI_{BC}$ ∣ $EI$ ∣ 橫梁彎曲剛度</li>
-<li>$P$ ∣ $P$ (向右) ∣ 節點 B 所受之側向集中力</li>
-</ul>
-<h3>L2：需知識點推導</h3>
-<p><strong>剛度與方程式初始化</strong></p>
-<ul>
-<li><strong>符號 ∣ 公式／來源 ∣ 卡關?</strong></li>
-<li>$K_{AB}, K_{CD}$ ∣ $\frac{2EI}{2L} = \frac{EI}{L} = K$ ∣ </li>
-<li>$K_{BC}$ ∣ $\frac{EI}{L} = K$ ∣ </li>
-<li>$FEM$ ∣ $0$ (無構件載重) ∣ </li>
-</ul>
-<p><strong>聯立求解參數</strong></p>
-<ul>
-<li><strong>符號 ∣ 公式／來源 ∣ 卡關?</strong></li>
-<li>$\theta_B, \theta_C$ ∣ 節點力矩平衡 $\Sigma M = 0$ 且利用反對稱性 $\theta_B = \theta_C$ ∣ </li>
-<li>$\psi$ ∣ 層剪力方程式 $\Sigma F_x = 0$ ∣ </li>
-</ul>
-<p><strong>最終目標運算</strong></p>
-<ul>
-<li><strong>符號 ∣ 公式／來源 ∣ 卡關?</strong></li>
-<li>$\Delta_B$ ∣ $\Delta_B = -2L \cdot \psi$ ∣ </li>
-<li>$M_C, M_D$ ∣ 傾角變位公式代回 $\theta, \psi$ 值 ∣ </li>
-</ul>
-<h3>L3：深層知識（不懂就卡住）</h3>
-<ul>
-<li><strong>知識點 ∣ 說明 ∣ 卡關?</strong></li>
-<li>反對稱變形 ∣ 剛架對稱但受反對稱側向力時，兩柱變形模式相同，必然發生 $\theta_B = \theta_C$，可直接使用此條件減少未知數。 ∣ </li>
-<li>層剪力方程式與符號法則 ∣ 若約定逆時針弦旋轉為正 $\psi$，則向右位移會導致 $\psi &lt; 0$。推導層剪力需從自由體圖確實取力矩平衡，避免正負號錯亂導致算錯位移方向。 ∣ </li>
-</ul>
-<h2>4. 步驟化詳細計算過程 (Step-by-Step Detailed Calculation)</h2>
-<h3>Step 1: 參數設定與傾角變位方程式</h3>
-<p>未知數：$\theta_B, \theta_C, \psi$。<br />
-令 $\psi = -\frac{\Delta_B}{2L}$ （約定逆時針弦旋轉為正，向右位移 $\Delta_B$ 會造成順時針弦旋轉，故加負號）。<br />
-由前述推導，$K_{AB} = K_{BC} = K_{CD} = K = \frac{EI}{L}$。所有 $FEM = 0$。</p>
-<p>$$ M_{AB} = 2K(\theta_B - 3\psi) $$<br />
-$$ M_{BA} = 2K(2\theta_B - 3\psi) $$<br />
-$$ M_{BC} = 2K(2\theta_B + \theta_C) $$<br />
-$$ M_{CB} = 2K(2\theta_C + \theta_B) $$<br />
-$$ M_{CD} = 2K(2\theta_C - 3\psi) $$<br />
-$$ M_{DC} = 2K(\theta_C - 3\psi) $$</p>
-<h3>Step 2: 建立節點平衡方程式</h3>
-<p><strong>節點 B ($\Sigma M_B = 0$)：</strong><br />
-$$ M_{BA} + M_{BC} = 0 \implies 2K(2\theta_B - 3\psi) + 2K(2\theta_B + \theta_C) = 0 $$<br />
-同除 2K，得：<br />
-$$ 4\theta_B + \theta_C - 3\psi = 0 \quad \text{--- (式 1)} $$</p>
-<p><strong>節點 C ($\Sigma M_C = 0$)：</strong><br />
-$$ M_{CB} + M_{CD} = 0 \implies 2K(2\theta_C + \theta_B) + 2K(2\theta_C - 3\psi) = 0 $$<br />
-同除 2K，得：<br />
-$$ \theta_B + 4\theta_C - 3\psi = 0 \quad \text{--- (式 2)} $$</p>
-<p><em>(註：由式 1 與式 2 可直接觀察出 $\theta_B = \theta_C$，此即反對稱載重作用於對稱剛度結構之必然結果)</em><br />
-代入 $\theta_C = \theta_B$ 至式 1：<br />
-$$ 5\theta_B - 3\psi = 0 \implies \theta_B = \frac{3}{5}\psi \quad \text{--- (式 A)} $$</p>
-<h3>Step 3: 建立層剪力平衡方程式</h3>
-<p>取整棟剛架（含梁）為自由體，柱底剪力分別為 $H_A, H_D$（假設向左以平衡向右之 $P$）。</p>
-<ul>
-<li>$H_A(2L) = M_{AB} + M_{BA} \implies H_A = \frac{M_{AB} + M_{BA}}{2L}$</li>
-<li>$H_D(2L) = M_{CD} + M_{DC} \implies H_D = \frac{M_{CD} + M_{DC}}{2L}$</li>
-<li>水平力平衡：$H_A + H_D = P \implies \frac{M_{AB} + M_{BA}}{2L} + \frac{M_{CD} + M_{DC}}{2L} = P$<br />
-$$ M_{AB} + M_{BA} + M_{CD} + M_{DC} = 2PL $$</li>
-</ul>
-<p>將傾角方程式代入：<br />
-$$ 2K(\theta_B - 3\psi + 2\theta_B - 3\psi + 2\theta_C - 3\psi + \theta_C - 3\psi) = 2PL $$<br />
-$$ 2K(3\theta_B + 3\theta_C - 12\psi) = 2PL \implies 3K(\theta_B + \theta_C - 4\psi) = PL $$<br />
-$$ \theta_B + \theta_C - 4\psi = \frac{PL}{3K} \quad \text{--- (式 3)} $$</p>
-<h3>Step 4: 聯立求解</h3>
-<p>將 $\theta_C = \theta_B = \frac{3}{5}\psi$ 代入式 3：<br />
-$$ \frac{3}{5}\psi + \frac{3}{5}\psi - 4\psi = \frac{PL}{3K} $$<br />
-$$ \left( 1.2 - 4 \right)\psi = \frac{PL}{3K} \implies -2.8\psi = \frac{PL}{3K} \implies -\frac{14}{5}\psi = \frac{PL}{3K} $$<br />
-$$ \psi = -\frac{5}{42}\frac{PL}{K} $$<br />
-再解得：<br />
-$$ \theta_B = \theta_C = \frac{3}{5} \left( -\frac{5}{42}\frac{PL}{K} \right) = -\frac{3}{42}\frac{PL}{K} = -\frac{1}{14}\frac{PL}{K} $$</p>
-<h3>Step 5: 計算最終要求之位移與彎矩</h3>
-<p><strong>B 點水平位移 ($\Delta_B$)：</strong><br />
-根據約定 $\psi = -\frac{\Delta_B}{2L}$，故 $\Delta_B = -2L\psi$。<br />
-$$ \Delta_B = -2L \left( -\frac{5}{42}\frac{PL}{K} \right) = \frac{10}{42}\frac{PL^2}{K} = \frac{5}{21}\frac{PL^2}{K} $$<br />
-將 $K = \frac{EI}{L}$ 代回：<br />
-$$ \boxed{ \Delta_B = \frac{5}{21} \frac{PL^3}{EI} \quad \text{(向右)} } $$</p>
-<p><strong>C 點彎矩 ($M_{CD}, M_{CB}$)：</strong><br />
-$$ \boxed{ M_{CD} = 2K(2\theta_C - 3\psi) = 2K \left( 2\left(-\frac{3}{42}\right) - 3\left(-\frac{5}{42}\right) \right)\frac{PL}{K} = 2 \left( \frac{-6 + 15}{42} \right)PL = \frac{18}{42}PL = \frac{3}{7}PL \quad \text{(逆時針)} } $$<br />
-$$ M_{CB} = 2K(2\theta_C + \theta_B) = 2K \left( 3\left(-\frac{3}{42}\right) \right)\frac{PL}{K} = -\frac{18}{42}PL = -\frac{3}{7}PL \quad \text{(順時針)} $$<br />
-<em>(驗算 $M_{CB} + M_{CD} = 0$，符合節點平衡)</em></p>
-<p><strong>D 點彎矩 ($M_{DC}$)：</strong><br />
-$$ \boxed{ M_{DC} = 2K(\theta_C - 3\psi) = 2K \left( -\frac{3}{42} - 3\left(-\frac{5}{42}\right) \right)\frac{PL}{K} = 2 \left( \frac{-3 + 15}{42} \right)PL = \frac{24}{42}PL = \frac{4}{7}PL \quad \text{(逆時針)} } $$</p>
-<h3>Step 6: 結果彙整與彎矩圖</h3>
-<p><img alt="SA-2024-4 反對稱變形與彎矩圖：兩柱皆為雙曲率且變形模式相同，柱底 4/7 PL 是柱頂 3/7 PL 的 4/3 倍" src="../../raw/solutions/SA-2024-4/figs/SA-2024-4-fig-2-antisym-bmd.svg" /></p>
-<p><em>圖 2　反對稱變形與彎矩圖。這張圖攔兩件事：以為柱頂與柱底的彎矩一樣大（柱底 $\frac47 PL$ 是柱頂 $\frac37 PL$ 的 $\frac43$ 倍，因為柱頂還要跟梁分攤節點彎矩），以及把「反對稱」誤畫成鏡像 —— 兩柱的變形模式是</em><em>完全相同</em><em>，不是左右對照。</em></p>
+<main><details class="problem-src" open><summary><b>📄 題目正本</b>（考卷原文、附圖與判讀清單；不含解法）</summary>
+<h1>SA-2024-4 題目正本</h1>
+<blockquote>
+<p>本檔只記錄考卷上寫了什麼、圖上畫了什麼，不含任何解法。解析見同資料夾 <code>SA-2024-4.md</code>。<br />
+判讀清單經使用者確認前，狀態為「待確認」；確認後本檔原則上不再修改（改動須回考卷原圖並記 log）。</p>
+</blockquote>
 <table>
 <thead>
 <tr>
-<th>量</th>
-<th>值</th>
-<th>說明</th>
+<th>項目</th>
+<th>內容</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>$\Delta_B$</td>
-<td>$\dfrac{5}{21}\dfrac{PL^3}{EI}$（向右）</td>
-<td>B、C 同一個側移</td>
+<td>考卷</td>
+<td><code>raw/exams/SA-2024_結構學.pdf</code>，第 2 頁下半，第四題（圖四）</td>
 </tr>
 <tr>
-<td>$\theta_B = \theta_C$</td>
-<td>$\dfrac{1}{14}\dfrac{PL^2}{EI}$（順時針）</td>
-<td>反對稱 $\Rightarrow$ 兩節點轉角相同</td>
+<td>考年</td>
+<td>2024（民國 113 年）專技高考結構工程技師「結構學」</td>
 </tr>
 <tr>
-<td>$M_{AB} = M_{DC}$</td>
-<td>$\dfrac47 PL$</td>
-<td><strong>柱底</strong></td>
+<td>配分</td>
+<td>25 分</td>
 </tr>
 <tr>
-<td>$M_{BA} = M_{CD} = M_{BC} = M_{CB}$</td>
-<td>$\dfrac37 PL$</td>
-<td><strong>柱頂與梁端</strong></td>
+<td>附圖</td>
+<td><code>SA-2024-4-fig-1.png</code>、<code>SA-2024-4-fig-2.png</code></td>
 </tr>
 <tr>
-<td>$H_A = H_D$</td>
-<td>$P/2$</td>
-<td>剛度相同 $\Rightarrow$ 平分層剪力</td>
+<td>判讀狀態</td>
+<td><strong>已確認</strong>（2026-11-05 使用者確認；影響答案項目定案：解析答錯題，使用者決定依考卷整題重解（P−Δ 側推曲線，階段 C）。原轉錄：2026-11-05 轉錄；PyMuPDF 110 dpi 整頁＋250–800 dpi 局部放大、PDF 向量座標；盲讀於開啟解析前完成）</td>
 </tr>
 </tbody>
 </table>
+<h2>1. 考卷原文（逐字）</h2>
+<p>四、如圖四所示之門型構架，試以結構勁度矩陣法求取側推曲線 P−Δ 圖，直至結構到達極限承載力，其中 Δ 為受力點之側向（水平）位移。假設 EI = 425,000 kN-m²，L = 7 m，梁斷面塑性彎矩強度 Mpb = 300 kN-m，柱斷面塑性彎矩強度 Mpc = 580 kN-m，上述梁、柱之彎矩強度不論正負彎矩都相同。分析時可忽略軸向變形，且當桿件之斷面到達彎矩強度前，桿件維持彈性；當桿件之斷面到達彎矩強度時，該斷面以塑鉸模擬且斷面之彎矩維持不變（具韌性但不考慮應變硬化）。（25 分）</p>
+<h2>2. 考卷給的公式、附表與參數</h2>
+<ul>
+<li>考卷沒有給任何參考公式或附表。</li>
+<li>EI = 425,000 kN-m²、L = 7 m、Mpb = 300 kN-m、Mpc = 580 kN-m（正負彎矩相同）；忽略軸向變形（題文）。</li>
+<li>彈塑性模型：未達強度前彈性；到達後以塑鉸模擬、彎矩不變，不考慮應變硬化（題文）。</li>
+<li>卷首注意事項：可以使用電子計算器。不必抄題，作答時請將試題題號及答案依照順序寫在試卷上，於本試題上作答者，不予計分。本科目除專門名詞或數理公式外，應使用本國文字作答。</li>
+<li>考試時間：2 小時。</li>
+</ul>
+<h2>3. 附圖</h2>
+<p><img alt="SA-2024-4 考卷附圖原截圖（滑鼠游標（I 形）壓在柱 AB 中段；內容同下圖）" src="../../raw/solutions/SA-2024-4/SA-2024-4-fig-1.png" /><br />
+<em>證據圖 SA-2024-4-fig-1.png</em></p>
+<p><img alt="SA-2024-4 考卷附圖（圖四）：A、D 柱底固定；柱 AB、DC 標 2EI、2L；梁 BC 標 EI、L；P 水平向右作用於 B" src="../../raw/solutions/SA-2024-4/SA-2024-4-fig-2.png" /><br />
+<em>證據圖 SA-2024-4-fig-2.png（2026-11-05 自考卷重新擷取 500 dpi，無游標）</em></p>
+<p>圖面文字照錄：P、B、EI、C、L、2EI、2L、2L、2EI、A、D、圖四</p>
+<h2>4. 判讀清單</h2>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>項目</th>
+<th>判讀</th>
+<th>圖上／題文依據</th>
+<th>把握</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>幾何</td>
+<td>柱 AB、DC 高 2L = 14 m；梁 BC 長 L = 7 m</td>
+<td>圖上標註＋題文 L = 7 m</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>2</td>
+<td>撓曲剛度</td>
+<td>柱 2EI、梁 EI；EI = 425,000 kN-m²</td>
+<td>圖上標註；題文</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>3</td>
+<td>節點 B、C</td>
+<td>剛接</td>
+<td>附圖</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>4</td>
+<td>支承 A、D</td>
+<td>固定端</td>
+<td>附圖剖線</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>5</td>
+<td>載重</td>
+<td>P 水平向右，作用於 B（梁柱接點）</td>
+<td>附圖箭頭指向 B</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>6</td>
+<td>塑性彎矩</td>
+<td>梁 Mpb = 300、柱 Mpc = 580 kN-m</td>
+<td>題文</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>7</td>
+<td>所求</td>
+<td>P−Δ 側推曲線至極限承載力（逐次形成塑鉸）；限結構勁度矩陣法</td>
+<td>題文</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>8</td>
+<td>證據圖</td>
+<td>舊截圖 fig-1：滑鼠游標（I 形）<strong>壓在柱 AB 中段</strong>；新增 fig-2（2026-11-05 自考卷重新擷取 500 dpi）</td>
+<td>—</td>
+<td>確定</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p><em>轉錄：2026-11-05（SA-U2-4 題目正本推廣・批 1）</em><br />
+<em>確認：2026-11-05 使用者確認</em></p>
+</details>
+<hr>
+<h1>考題編號：SA-2024-4</h1>
+<p><strong>主分類：</strong> <code>SA-U2-4</code> 靜不定結構之矩陣分析法<br />
+<strong>副分類：</strong> 無<br />
+<strong>分析法：</strong> 結構勁度矩陣法（彈塑性側推，逐次形成塑鉸）<br />
+<strong>標籤：</strong> <code>傾角變位法</code>, <code>剛架</code>, <code>側移</code>, <code>集中力</code>, <code>反對稱</code>, <code>非均勻斷面</code>, <code>側推分析</code>, <code>塑鉸</code>, <code>極限承載力</code></p>
+<hr />
+<h2>1. 題目（考卷原文見題目正本）</h2>
 <blockquote>
-<p><strong>驗算：</strong> 節點 $B$、$C$ 的力矩平衡皆為 0；層剪力 $\dfrac{M_{AB}+M_{BA}}{2L} + \dfrac{M_{CD}+M_{DC}}{2L} = \dfrac{4/7+3/7}{2} P \times 2 = P$ ✓</p>
+<p>考卷原文、公式／附表、附圖與判讀清單（已確認）見 <a href="SA-2024-4-problem.md"><code>SA-2024-4-problem.md</code></a>。本節只列解題時最容易讀錯的地方與本解使用的記號；題意以題目正本為準。</p>
+<p><strong>勘誤（2026-11-05）</strong>：舊版 §2–§5 只做彈性階段（求 B 點位移與 C、D 彎矩），沒有回答考卷所求的 P−Δ 側推曲線，且未使用考卷給的 EI、L、Mpb、Mpc；已依題目正本整題重解（詳見頁尾修正日期）。</p>
 </blockquote>
+<p><img alt="SA-2024-4 重繪題目附圖：門型構架 A、D 固定；柱 2EI、長 2L，梁 EI、長 L；P 水平向右作用於 B" src="../../raw/solutions/SA-2024-4/figs/SA-2024-4-fig-1-problem.svg" /><br />
+<em>重繪自考卷附圖，依判讀清單 #1–#8 重繪。攔：柱、梁的剛度或長度讀反、P 作用點讀錯。</em></p>
+<h3>常見誤讀</h3>
+<table>
+<thead>
+<tr>
+<th>項目</th>
+<th>正確判讀</th>
+<th>常見誤讀</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>所求</td>
+<td>以結構勁度矩陣法求 P−Δ 側推曲線至極限承載力（逐次形成塑鉸）</td>
+<td>只求彈性階段的 B 點位移與 C、D 彎矩</td>
+</tr>
+<tr>
+<td>考卷數值</td>
+<td>EI = 425,000 kN-m²、L = 7 m、Mpb = 300、Mpc = 580 kN-m</td>
+<td>未使用</td>
+</tr>
+</tbody>
+</table>
+<p><strong>本解記號：</strong> 自由度 Δ（B、C 共同水平位移，向右為正）、θ_B、θ_C（節點轉角，逆時針為正）；桿端彎矩以作用在桿端、逆時針為正，表中另註受拉側。數值單位 kN、m。</p>
+<h3>判讀圖解（解析自繪）</h3>
+<p><img alt="SA-2024-4 題目重繪：三根桿的相對勁度 K = EI/L 完全相等" src="../../raw/solutions/SA-2024-4/figs/SA-2024-4-fig-1-frame.svg" /></p>
+<p><em>圖 1　題目重繪（向量版）。這張圖攔的是「柱 $2EI$、梁 $EI$ 看起來不對稱」的第一印象：換算成相對勁度 $K = EI/L$ 之後，三根桿完全相等 —— 這是出題者刻意的設計，先看出來就能少算一半。</em></p>
+<h2>2. 考題核心精神與出題者意圖 (Core Concepts &amp; Examiner's Intent)</h2>
+<p>本題是<strong>彈塑性側推（pushover）分析</strong>的入門題：用結構勁度矩陣法，從彈性開始逐步加載，每當某一斷面的彎矩到達塑性彎矩強度，就在該處放一個塑鉸、修改勁度矩陣再繼續，直到結構形成機構（勁度矩陣奇異）為止。核心測驗重點：</p>
+<ol>
+<li><strong>相對勁度巧合</strong>：柱 $2EI$、高 $2L$，梁 $EI$、長 $L$，三桿 $EI/L$ 完全相同；結構對稱、載重（忽略軸向變形）反對稱，B、C 轉角相同，塑鉸成對出現。</li>
+<li><strong>塑鉸的位置判斷</strong>：節點 B（C）只連兩根桿，柱頂彎矩恆等於梁端彎矩；梁的 $M_{pb}=300$ 小於柱的 $M_{pc}=580$，所以<strong>節點處的塑鉸出現在梁端</strong>，柱頂到不了 580。</li>
+<li><strong>塑鉸後的勁度修正</strong>：塑鉸以「桿端轉角釋放、彎矩維持 $M_p$」模擬——增量分析時，該桿端的彎矩增量為 0，相當於把該端改成鉸接。</li>
+<li><strong>P−Δ 曲線</strong>：每一段是直線（切線勁度為常數），折點就是塑鉸形成點；最後一段勁度為 0 即極限承載力。</li>
+</ol>
+<h2>3. 解題戰略地圖與陷阱分析 (Strategic Roadmap &amp; Trap Analysis)</h2>
+<ol>
+<li><strong>自由度</strong>：A、D 固定；忽略軸向變形 → B、C 只有共同水平位移 Δ 與各自轉角 θ_B、θ_C，共 3 個。</li>
+<li><strong>階段 1（彈性）</strong>：組 $3\times3$ 結構勁度矩陣，解單位 P 下的 Δ 與各斷面彎矩；求「哪一個斷面最先到 $M_p$」及對應的 P。</li>
+<li><strong>階段 2</strong>：在第一批塑鉸處釋放桿端轉角（彎矩固定在 $M_p$），以新勁度矩陣求增量；再找下一批塑鉸。</li>
+<li><strong>階段 3</strong>：勁度矩陣奇異 → 機構，P 不能再增加，即極限承載力。</li>
+<li><strong>檢核</strong>：以塑性機構法（虛功）驗算極限載重。</li>
+</ol>
+<p><strong>陷阱分析：</strong></p>
+<ul>
+<li><strong>陷阱 1：只做彈性分析。</strong> 考卷要的是到極限承載力為止的整條 P−Δ 曲線，彈性階段只是第一段。</li>
+<li><strong>陷阱 2：在柱頂放塑鉸。</strong> 節點只連兩根桿時，柱頂與梁端彎矩相等；梁 300 &lt; 柱 580，塑鉸必在梁端。柱頂彎矩在梁端降伏後停在 300。</li>
+<li><strong>陷阱 3：塑鉸後仍用原勁度。</strong> 第二段的切線勁度要用「梁兩端鉸接」後的結構重新組，否則斜率與 Δ 都會錯。</li>
+<li><strong>陷阱 4：累加錯。</strong> 第二段算的是增量（ΔP、ΔΔ、ΔM），要加回第一段終點；柱底彎矩是 400 + 增量，不是從 0 算。</li>
+</ul>
+<h2>3.5 變數層次分析 (Variable Hierarchy Analysis)</h2>
+<h3>最終目標</h3>
+<p><code>以結構勁度矩陣法求 P−Δ 側推曲線（各折點的 P、Δ 與塑鉸位置），直至極限承載力</code></p>
+<h3>本題關鍵公式（依計算順序）</h3>
+<ol>
+<li>柱（兩端固定）元素對應 (Δ, θ)：$$\frac{12EI_c}{h^3},\ \frac{6EI_c}{h^2},\ \frac{4EI_c}{h},\ \frac{2EI_c}{h}$$</li>
+<li>梁元素對應 (θ_B, θ_C)：$$\frac{4EI_b}{L},\ \frac{2EI_b}{L}$$</li>
+<li>平衡：$$[K_t]\{\delta d\} = \{\delta P\}$$</li>
+<li>下一個塑鉸的載重增量：$$\delta P = \min_i \frac{M_{p,i} - |M_i|}{|m_i|}$$（$m_i$ 為單位 P 下斷面 i 的彎矩增量）</li>
+<li>機構法檢核：$$P_u\,\Delta = \sum M_p\,\theta_{hinge}$$</li>
+</ol>
+<h3>L1：題目直接給定</h3>
+<ul>
+<li><strong>符號 ∣ 數值 ∣ 說明</strong></li>
+<li>$EI$ ∣ 425,000 kN-m² ∣ 梁撓曲剛度；柱為 $2EI$ = 850,000 kN-m²</li>
+<li>$L$ ∣ 7 m ∣ 梁長；柱高 $2L$ = 14 m</li>
+<li>$M_{pb}$ ∣ 300 kN-m ∣ 梁塑性彎矩（正負相同）</li>
+<li>$M_{pc}$ ∣ 580 kN-m ∣ 柱塑性彎矩（正負相同）</li>
+<li>彈塑性模型 ∣ 彈性—完全塑性 ∣ 到達強度即形成塑鉸、彎矩維持不變</li>
+</ul>
+<h3>L2：需知識點推導</h3>
+<ul>
+<li><strong>符號 ∣ 公式／來源 ∣ 卡關?</strong></li>
+<li>$EI/L^3$ ∣ 425000/343 = 1239.07 kN/m ∣</li>
+<li>柱 $12EI_c/h^3$ ∣ $12(2EI)/(2L)^3 = 3EI/L^3$ ∣</li>
+<li>柱 $6EI_c/h^2$ ∣ $6(2EI)/(2L)^2 = 3EI/L^2$ ∣</li>
+<li>柱 $4EI_c/h$ ∣ $4(2EI)/(2L) = 4EI/L$（與梁 $4EI_b/L$ 相同） ∣</li>
+<li>$K_{t1}$ ∣ 彈性側向勁度 $4.2EI/L^3$ = 5204.1 kN/m ∣</li>
+<li>$K_{t2}$ ∣ 梁端塑鉸後 $1.5EI/L^3$ = 1858.6 kN/m ∣ ⚠</li>
+<li>$P_1$、$P_u$ ∣ 100 kN、880/7 = 125.71 kN ∣</li>
+</ul>
+<h3>L3：深層知識（不懂就卡住）</h3>
+<ul>
+<li><strong>知識點 ∣ 說明 ∣ 卡關?</strong></li>
+<li>塑鉸的勁度法表示 ∣ 塑鉸處桿端轉角與節點轉角脫鉤（另給一個自由度或改用一端鉸接的修正勁度），增量階段該斷面彎矩增量為 0 ∣ ⚠</li>
+<li>節點兩桿的彎矩相等 ∣ 節點只連兩根桿時，兩桿端彎矩大小相等、方向相反，塑鉸出現在 $M_p$ 較小的那根桿 ∣ ⚠</li>
+<li>事件到事件分析 ∣ 每段切線勁度為常數，P−Δ 為折線；機構形成時 $[K_t]$ 奇異 ∣</li>
+<li>下限＝上限 ∣ 逐次塑鉸法得到的極限載重與正確機構的虛功解相同 ∣</li>
+</ul>
+<h2>4. 步驟化詳細計算過程 (Step-by-Step Detailed Calculation)</h2>
+<h3>Step 1：自由度與元素勁度</h3>
+<p>自由度 $\{d\} = \{\Delta,\ \theta_B,\ \theta_C\}^T$（Δ 向右、轉角逆時針為正）。三桿 $EI/L$ 相同，以 $EI/L^3 = 1239.07$ kN/m 為單位：</p>
+<ul>
+<li>
+<p>柱 AB、DC（A、D 固定，頂端對應 Δ 與 θ）：<br />
+$$k_{col} = \frac{EI}{L^3}\begin{bmatrix} 3 &amp; 3L \\ 3L &amp; 4L^2 \end{bmatrix}\quad(\text{對應 } \Delta,\ \theta_{頂})$$<br />
+  柱頂向右平移 Δ 時弦轉角為順時針，柱端所需逆時針彎矩為 $+\frac{6EI_c}{h^2}\Delta = +\frac{3EI}{L^2}\Delta$，故耦合項為正。</p>
+</li>
+<li>
+<p>梁 BC（兩端無相對側移）：<br />
+$$k_{beam} = \frac{EI}{L}\begin{bmatrix} 4 &amp; 2 \\ 2 &amp; 4 \end{bmatrix}\quad(\text{對應 } \theta_B,\ \theta_C)$$</p>
+</li>
+</ul>
+<h3>Step 2：階段 1——彈性</h3>
+<p>$$[K_1] = \frac{EI}{L^3}\begin{bmatrix} 6 &amp; 3L &amp; 3L \\ 3L &amp; 8L^2 &amp; 2L^2 \\ 3L &amp; 2L^2 &amp; 8L^2 \end{bmatrix},\qquad \{P\} = \begin{Bmatrix} P \\ 0 \\ 0 \end{Bmatrix}$$</p>
+<p>由第 2、3 列（反對稱 θ_B = θ_C = θ）：$3L\Delta + 10L^2\theta = 0 \Rightarrow \theta = -0.3\,\Delta/L$（順時針）。代入第 1 列：<br />
+$$\frac{EI}{L^3}(6 - 2\times3\times0.3)\Delta = 4.2\frac{EI}{L^3}\Delta = P \quad\Rightarrow\quad K_{t1} = 4.2\times1239.07 = \mathbf{5204.1\ kN/m}$$</p>
+<p>單位 P 下的斷面彎矩（$\Delta = PL^3/4.2EI$）：<br />
+| 斷面 | 桿端彎矩式 | 單位 P 的值 | 受拉側（P 向右） |<br />
+|---|---|---|---|<br />
+| 柱底 A、D | $\frac{2EI}{L}\theta + \frac{3EI}{L^2}\Delta = 2.4\frac{EI}{L^2}\Delta = \frac{4}{7}PL$ | <strong>4.0 P</strong> | 兩柱皆<strong>左側</strong>受拉（A 為外側、D 為內側；兩柱變形相同，不是鏡像） |<br />
+| 柱頂 B、C | $\frac{4EI}{L}\theta + \frac{3EI}{L^2}\Delta = 1.8\frac{EI}{L^2}\Delta = \frac37 PL$ | <strong>3.0 P</strong> | 兩柱皆<strong>右側</strong>受拉（B 為內側、C 為外側），與梁端在角點連續 |<br />
+| 梁端 B、C | $\frac{6EI}{L}\theta = -1.8\frac{EI}{L^2}\Delta = -\frac37 PL$ | <strong>3.0 P</strong> | B 端梁底、C 端梁頂 |</p>
+<p>到達強度的載重：梁端 $300/3 = 100$ kN；柱底 $580/4 = 145$ kN；柱頂 $580/3 = 193$ kN。<strong>梁端最先降伏</strong>：<br />
+$$P_1 = 100\ \text{kN},\qquad \Delta_1 = \frac{100}{5204.1} = 0.019216\ \text{m} = \mathbf{19.22\ mm}$$<br />
+此時：梁端 B、C = 300（<strong>形成塑鉸</strong>）、柱頂 = 300、柱底 A、D = 400 kN-m；節點轉角 $\theta_1 = -0.3\Delta_1/L = -8.24\times10^{-4}$ rad。</p>
+<p><img alt="SA-2024-4 彈性階段（階段 1）反對稱變形與彎矩圖：兩柱皆為雙曲率且變形模式相同，柱底 4/7 PL 是柱頂 3/7 PL 的 4/3 倍" src="../../raw/solutions/SA-2024-4/figs/SA-2024-4-fig-2-antisym-bmd.svg" /></p>
+<p><em>圖 2　階段 1（彈性）的反對稱變形與彎矩圖。以 L = 7 m 代入：柱底 $\frac47 PL = 4P$、柱頂與梁端 $\frac37 PL = 3P$；P = 100 kN 時梁端先到 300。這張圖攔兩件事：以為柱頂與柱底彎矩一樣大，以及把「反對稱」誤畫成鏡像——兩柱的變形模式完全相同。</em></p>
+<h3>Step 3：階段 2——梁兩端塑鉸（B、C）</h3>
+<p>梁端彎矩固定在 300，增量分析時梁兩端相當於鉸接、梁不再提供轉動勁度：<br />
+$$[K_2] = \frac{EI}{L^3}\begin{bmatrix} 6 &amp; 3L &amp; 3L \\ 3L &amp; 4L^2 &amp; 0 \\ 3L &amp; 0 &amp; 4L^2 \end{bmatrix}$$<br />
+第 2、3 列：$\delta\theta = -0.75\,\delta\Delta/L$；代入第 1 列：<br />
+$$\frac{EI}{L^3}(6 - 2\times3\times0.75)\,\delta\Delta = 1.5\frac{EI}{L^3}\delta\Delta \quad\Rightarrow\quad K_{t2} = 1.5\times1239.07 = \mathbf{1858.6\ kN/m}$$<br />
+（等同兩根「底固定、頂鉸接」柱：$2\times3EI_c/h^3 = 2\times0.75EI/L^3$。）</p>
+<p>增量彎矩（每單位 δP）：柱頂 $\frac{4EI}{L}\delta\theta + \frac{3EI}{L^2}\delta\Delta = 0$（柱頂維持 300）；柱底 $\frac{2EI}{L}\delta\theta + \frac{3EI}{L^2}\delta\Delta = 1.5\frac{EI}{L^2}\delta\Delta = L\,\delta P = 7\,\delta P$。</p>
+<p>柱底由 400 增到 580：<br />
+$$\delta P_2 = \frac{580 - 400}{7} = \frac{180}{7} = 25.71\ \text{kN},\qquad \delta\Delta_2 = \frac{25.71}{1858.6} = 0.013835\ \text{m}$$<br />
+$$P_2 = 100 + 25.71 = \mathbf{125.71\ kN},\qquad \Delta_2 = 19.22 + 13.83 = \mathbf{33.05\ mm}$$<br />
+此時柱底 A、D = 580（<strong>形成塑鉸</strong>）；梁端塑鉸的塑性轉角 $|\delta\theta| = 0.75\times0.013835/7 = 1.48\times10^{-3}$ rad。</p>
+<h3>Step 4：階段 3——機構</h3>
+<p>柱底再釋放後，每根柱兩端都是塑鉸，側向勁度為 0：<br />
+$$K_{t3} = 0 \quad\Rightarrow\quad [K_3]\ \text{奇異，形成側移機構（梁端 B、C 與柱底 A、D 四個塑鉸）}$$<br />
+P 無法再增加：<strong>極限承載力 $P_u = 880/7 = 125.71$ kN</strong>。</p>
+<h3>Step 5：機構法檢核</h3>
+<p>側移機構：柱轉角 $\phi = \Delta/14$；塑鉸轉角：柱底 A、D 各 φ（580），梁端 B、C 各 φ（300，梁不轉、柱轉 φ，塑鉸在梁端）。<br />
+$$P_u\,\Delta = (2\times580 + 2\times300)\frac{\Delta}{14} \Rightarrow P_u = \frac{1760}{14} = 125.71\ \text{kN}\ \checkmark$$<br />
+另兩種機構：梁機構不適用（梁上無載重）；柱頂柱底皆塑鉸的機構需柱頂到 580，但柱頂受梁端 300 限制，不會發生。</p>
+<h3>Step 6：P−Δ 側推曲線</h3>
+<table>
+<thead>
+<tr>
+<th>點</th>
+<th>P (kN)</th>
+<th>Δ (mm)</th>
+<th>該段切線勁度</th>
+<th>事件</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>O</td>
+<td>0</td>
+<td>0</td>
+<td>—</td>
+<td>—</td>
+</tr>
+<tr>
+<td>1</td>
+<td><strong>100.00</strong></td>
+<td><strong>19.22</strong></td>
+<td>5204.1 kN/m</td>
+<td>梁端 B、C 形成塑鉸（M = 300）</td>
+</tr>
+<tr>
+<td>2</td>
+<td><strong>125.71</strong></td>
+<td><strong>33.05</strong></td>
+<td>1858.6 kN/m</td>
+<td>柱底 A、D 形成塑鉸（M = 580）</td>
+</tr>
+<tr>
+<td>之後</td>
+<td>125.71</td>
+<td>→ ∞</td>
+<td>0</td>
+<td>側移機構，極限承載力</td>
+</tr>
+</tbody>
+</table>
+<p>P−Δ 曲線為三段折線：O→1 斜率 5204.1 kN/m，1→2 斜率 1858.6 kN/m，2 之後水平（P = 125.71 kN）。</p>
+<p><img alt="SA-2024-4 P−Δ 側推曲線：三段折線，(19.22 mm, 100 kN) 梁端塑鉸、(33.05 mm, 125.71 kN) 柱底塑鉸，之後水平；右為各事件塑鉸位置" src="../../raw/solutions/SA-2024-4/figs/SA-2024-4-fig-3-pushover.svg" /></p>
+<p><em>圖 3　P−Δ 側推曲線與各事件的塑鉸位置。第一段彈性、第二段在梁端塑鉸後勁度降為約 36%，柱底塑鉸形成後成為側移機構，平台高度與機構法虛功解相同。這張圖攔的是只畫彈性直線就停、把節點塑鉸放在柱頂（柱頂受梁端 300 限制，到不了 580），以及第二段仍用彈性勁度。</em></p>
 <h2>5. 關鍵爭議點與進階探討 (Critical Issues &amp; Advanced Discussion)</h2>
 <ul>
-<li><strong>剛度巧合</strong>：出題者特意將柱子設定為 $2L$ 高、$2EI$ 剛度，梁設定為 $L$ 長、$EI$ 剛度。這讓三段桿件的相對剛度 $K$ 完全相等，這是標準的「放水」設計，用來獎勵有先觀察整體結構剛度的考生，能極大化地減少計算量。</li>
-<li><strong>單位與參數</strong>：本解析以通用代數 $P$ 求解。若題目圖面有給定具體數值（例如 $P = 10\text{tf}$），直接代入 $P$ 即可獲得精確值。</li>
+<li><strong>剛度巧合</strong>：柱 $2EI$／$2L$、梁 $EI$／$L$ 讓三桿 $EI/L$ 相同，彈性階段的閉合解 $\Delta = \frac{5}{21}\frac{PL^3}{EI}$、柱底 $\frac47PL$、柱頂與梁端 $\frac37PL$ 很乾淨；代 L = 7 m 得 4P、3P，判斷降伏順序只需比 300/3 與 580/4。</li>
+<li><strong>為什麼柱頂不降伏</strong>：節點 B 只連柱 AB 與梁 BC，兩桿端彎矩必相等；梁端在 300 降伏後節點已無法傳更大彎矩，柱頂就停在 300。若柱頂另有其他桿件（如多跨構架），結論才會不同。</li>
+<li><strong>反對稱與軸向變形</strong>：忽略軸向變形時，P 作用在 B 或 C 結果相同（梁軸向剛性傳力），兩柱受力完全相同、塑鉸成對出現。若計入軸向變形或 P−Δ 二階效應，兩柱會略有差異，塑鉸不再同時形成；本題明文忽略。</li>
+<li><strong>韌性</strong>：極限位移只算到機構形成點 33.05 mm；題文假設完全韌性，機構形成後曲線水平延伸，不再有勁度。</li>
 </ul>
 <hr />
 <h2>CHANGELOG</h2>
@@ -244,10 +392,18 @@ $$ \boxed{ M_{DC} = 2K(\theta_C - 3\psi) = 2K \left( -\frac{3}{42} - 3\left(-\fr
 <td><strong>補上 §1 缺漏的考卷附圖引用與圖說</strong>（原文以「（註：經確認幾何配置與剛度為…）」帶過，未引用 <code>SA-2024-4-fig-1.png</code>）；補兩張向量圖；主分類名稱與 <code>question_index.json</code> 對齊</td>
 <td>附圖上的 <code>2EI / 2L / EI / L</code> 標註本來就清楚，不需要「經確認」的括號註記。所有數值（$\Delta_B = \frac{5}{21}\frac{PL^3}{EI}$、$M_{CD} = \frac37 PL$、$M_{DC} = \frac47 PL$）經剛架有限元驗證<strong>全部正確</strong></td>
 </tr>
+<tr>
+<td>2026-11-05</td>
+<td><strong>整題重解</strong>：舊版只做彈性階段，未回答 P−Δ 側推曲線；改以結構勁度矩陣法逐次形成塑鉸求至極限承載力</td>
+<td>題目正本確認時發現讀題錯誤；盲解比對 2026-11-05</td>
+</tr>
 </tbody>
 </table>
 <hr />
-<p><em>解析日期：2026-07-02　｜　補圖：2026-08-26（數值經剛架有限元獨立驗證，與閉合式相符至 $10^{-8}$；向量圖腳本 <code>gen_SA-2024-4.py</code>，可重跑）</em></p></main>
+<p><em>解析日期：2026-07-02　｜　補圖：2026-08-26（數值經剛架有限元獨立驗證，與閉合式相符至 $10^{-8}$；向量圖腳本 <code>gen_SA-2024-4.py</code>，可重跑）</em></p>
+<p><em>修正日期：2026-11-05（§1 改為指向題目正本並放重繪附圖（figs/SA-2024-4-fig-1-problem.svg）、加常見誤讀；原 §1 解析自繪圖移至「判讀圖解（解析自繪）」；§1 加註本解未回答考卷所求、待重解；圖由 gen_SA-2024-4_problem.py 產生，可重跑）</em></p>
+<p><em>修正日期：2026-11-05（勘誤：整題重解。原答只有彈性階段 Δ_B = 5PL³/21EI、M_CD = 3PL/7、M_DC = 4PL/7（未回答所求）→ 新答 P−Δ 側推曲線：梁端 B、C 於 P = 100 kN、Δ = 19.22 mm 形成塑鉸；柱底 A、D 於 P = 125.71 kN、Δ = 33.05 mm 形成塑鉸；之後為側移機構，極限承載力 P_u = 880/7 = 125.71 kN。§2–§5 全部改寫，原彈性解保留為階段 1。驗證：事件到事件勁度法程式（塑鉸處另給桿端轉角自由度）與手算閉合式一致、塑性機構法虛功 P_u = 1760/14 ✓；腳本重算 17 個數值 MISMATCHES: 0（wiki/queries/勘誤驗算-SA-U2-4-批1/errata_check.py））</em></p>
+<p><em>圖解補繪：2026-11-05（向量圖，腳本 <code>gen_SA-2024-4_pushover.py</code>，以 3×3 結構勁度矩陣逐階段解出後 assert 解析數值，可重跑；圖 2 由 <code>gen_SA-2024-4.py</code> 產生）</em></p></main>
 <footer>來源：raw/solutions/SA-2024-4/SA-2024-4.md（知識庫解題內容唯一正本；本頁僅為渲染顯示）</footer>
 
 <script>

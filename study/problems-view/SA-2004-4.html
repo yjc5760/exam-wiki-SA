@@ -43,23 +43,188 @@ header .nomat{margin-top:12px;font-size:.8em;opacity:.85}
 <p class="meta2">主分類 <b>SA-U2-4</b> 靜不定結構之矩陣分析法 ｜ 2004 年（民國 93） ｜ 矩陣位移法 (直接勁度法)</p>
 <div class="hbtns"><a class="b-study" href="../unit-SA-U2-4.html">🧭 U2-4 單元總覽</a><a class="b-lect" href="../lecture-SA-U2-4.html">📚 U2-4 靜不定結構之矩陣分析法 講義</a></div>
 </header>
-<main><h1>考題編號：SA-2004-4</h1>
+<main><details class="problem-src" open><summary><b>📄 題目正本</b>（考卷原文、附圖與判讀清單；不含解法）</summary>
+<h1>SA-2004-4 題目正本</h1>
+<blockquote>
+<p>本檔只記錄考卷上寫了什麼、圖上畫了什麼，不含任何解法。解析見同資料夾 <code>SA-2004-4.md</code>。<br />
+判讀清單經使用者確認前，狀態為「待確認」；確認後本檔原則上不再修改（改動須回考卷原圖並記 log）。</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>項目</th>
+<th>內容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>考卷</td>
+<td><code>raw/exams/SA-2004_結構學.pdf</code>，第 1 頁（全一頁）下方，第四題</td>
+</tr>
+<tr>
+<td>考年</td>
+<td>2004（民國 93 年）專技高考結構工程技師「結構學」</td>
+</tr>
+<tr>
+<td>配分</td>
+<td>25 分</td>
+</tr>
+<tr>
+<td>附圖</td>
+<td><code>SA-2004-4-fig-1.png</code>、<code>SA-2004-4-fig-2.png</code></td>
+</tr>
+<tr>
+<td>判讀狀態</td>
+<td><strong>已確認</strong>（2026-11-05 使用者確認。原轉錄：2026-11-05 轉錄；PyMuPDF 110 dpi 整頁＋250–800 dpi 局部放大、PDF 向量座標；盲讀於開啟解析前完成）</td>
+</tr>
+</tbody>
+</table>
+<h2>1. 考卷原文（逐字）</h2>
+<p>四、 如圖所示之梁結構，在均佈載重 w 作用下，其中 C 點有一軸力彈簧，其勁度 k = 12 EI/L³，試以直接勁度法或矩陣位移法，求各構件端之彎矩及彈簧力大小。（25 分）</p>
+<h2>2. 考卷給的公式、附表與參數</h2>
+<ul>
+<li>考卷沒有給任何參考公式或附表。</li>
+<li>考卷只給符號：w、EI、L、k = 12 EI/L³（題文）；圖上 AC 段標 EI、CB 段標 3EI。</li>
+<li>考卷沒有給數值，答案為 w、L 的式子。</li>
+<li>考卷沒有說是否忽略軸向變形（梁只受垂直載重，軸力為零）。</li>
+<li>卷首注意事項：㈠不必抄題，作答時請將試題題號及答案依照順序寫在試卷上，於本試題上作答者，不予計分。㈡可以使用電子計算器。</li>
+<li>考試時間：二小時。</li>
+</ul>
+<h2>3. 附圖</h2>
+<p><img alt="SA-2004-4 考卷附圖原截圖（解析度低（約 714×364），滑鼠游標（手形）壓在 2L 尺寸線上；內容同下圖）" src="../../raw/solutions/SA-2004-4/SA-2004-4-fig-1.png" /><br />
+<em>證據圖 SA-2004-4-fig-1.png</em></p>
+<p><img alt="SA-2004-4 考卷附圖：A 左端固定（牆）；C 在 A 右方 L 處，下接垂直彈簧 k 到地面；B 在 C 右方 2L 處，滾支承；AC 段 EI、CB 段 3EI（畫得較粗）；均佈載重 w 由 A 到 B 全長" src="../../raw/solutions/SA-2004-4/SA-2004-4-fig-2.png" /><br />
+<em>證據圖 SA-2004-4-fig-2.png（2026-11-05 自考卷重新擷取 500 dpi，無游標）</em></p>
+<p>圖面文字照錄：A、B、C、w、EI、3EI、k、L、2L</p>
+<h2>4. 判讀清單</h2>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>項目</th>
+<th>判讀</th>
+<th>圖上／題文依據</th>
+<th>把握</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>構件與節點</td>
+<td>A–C–B 一直線水平梁，C 為連續節點（不是內鉸）</td>
+<td>500 dpi：C 處梁連續，只是斷面由細變粗</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>2</td>
+<td>支承 A</td>
+<td>固定端（左側牆＋剖線）</td>
+<td>附圖</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>3</td>
+<td>支承 B</td>
+<td>滾支承（圓＋剖線）</td>
+<td>附圖</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>4</td>
+<td>支承 C</td>
+<td>垂直軸力彈簧 k = 12 EI/L³，下端接地</td>
+<td>題文；附圖彈簧畫在 C 正下方</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>5</td>
+<td>尺寸</td>
+<td>AC = L、CB = 2L</td>
+<td>下方尺寸線，C 的刻度對齊彈簧</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>6</td>
+<td>撓曲剛度</td>
+<td>AC：EI；CB：3EI</td>
+<td>圖上標註；CB 段畫得較厚</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>7</td>
+<td>載重</td>
+<td>均佈 w，向下，A 到 B 全長</td>
+<td>附圖箭頭由 A 排到 B</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>8</td>
+<td>所求</td>
+<td>各構件端彎矩、彈簧力</td>
+<td>題文</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>9</td>
+<td>考卷沒有給</td>
+<td>w、L、EI 的數值；軸向變形條件</td>
+<td>—</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>10</td>
+<td>證據圖</td>
+<td>舊截圖 fig-1：解析度低（約 714×364），滑鼠游標（手形）壓在 2L 尺寸線上；新增 fig-2（2026-11-05 自考卷重新擷取 500 dpi）</td>
+<td>—</td>
+<td>確定</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p><em>轉錄：2026-11-05（SA-U2-4 題目正本推廣・批 1）</em><br />
+<em>確認：2026-11-05 使用者確認</em></p>
+</details>
+<hr>
+<h1>考題編號：SA-2004-4</h1>
 <p><strong>主分類：</strong> <code>SA-U2-4</code> 結構分析（靜不定）<br />
 <strong>副分類：</strong> 無<br />
 <strong>分析法：</strong> 矩陣位移法 (直接勁度法)<br />
 <strong>標籤：</strong> <code>矩陣位移法</code>, <code>彈簧支承</code>, <code>修正式勁度矩陣</code>, <code>非節點載重</code></p>
 <hr />
-<h2>1. 原始題目重述 (Problem Restatement)</h2>
-<p>本題為一連續梁結構，A 點為固定端，B 點為滾支承，C 點為內部節點。</p>
-<ul>
-<li>構件 AC：長度 $L$，抗彎剛度 $EI$。</li>
-<li>構件 CB：長度 $2L$，抗彎剛度 $3EI$。</li>
-<li>C 點下方設有一軸向彈簧，勁度 $k = 12EI/L^3$。</li>
-<li>均布載重 $w$ 作用於全跨 (A 到 B)。<br />
-要求以<strong>直接勁度法</strong>或<strong>矩陣位移法</strong>，求各構件端之彎矩及彈簧力大小。</li>
-</ul>
-<p><img alt="SA-2004-4 題目附圖：包含固定端、滾支承與內部彈簧之連續梁受均布載重" src="../../raw/solutions/SA-2004-4/SA-2004-4-fig-1.png" /><br />
-<em>圖說：結構總長 $3L$，A 點固定，B 點滾支承，C 點有彈簧支承且為剛度變化點，全跨受向下均布載重 $w$。</em></p>
+<h2>1. 題目（考卷原文見題目正本）</h2>
+<blockquote>
+<p>考卷原文、公式／附表、附圖與判讀清單（已確認）見 <a href="SA-2004-4-problem.md"><code>SA-2004-4-problem.md</code></a>。本節只列解題時最容易讀錯的地方與本解使用的記號；題意以題目正本為準。</p>
+</blockquote>
+<p><img alt="SA-2004-4 重繪題目附圖：水平梁 A 固定、B 滾支承；C 距 A 為 L，下接軸力彈簧 k；AC 段 EI、CB 段 3EI（長 2L）；w 作用於 A–B 全長" src="../../raw/solutions/SA-2004-4/figs/SA-2004-4-fig-1-problem.svg" /><br />
+<em>重繪自考卷附圖，依判讀清單 #1–#8 重繪。攔：C 讀成內鉸、CB 段 3EI 漏讀、w 只算到 C。</em></p>
+<h3>常見誤讀</h3>
+<table>
+<thead>
+<tr>
+<th>項目</th>
+<th>正確判讀</th>
+<th>常見誤讀</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>C 點</td>
+<td>連續節點（梁不斷），下接軸力彈簧 k = 12EI/L³</td>
+<td>內鉸</td>
+</tr>
+<tr>
+<td>CB 剛度</td>
+<td>3EI（長 2L）</td>
+<td>與 AC 同為 EI</td>
+</tr>
+<tr>
+<td>w 範圍</td>
+<td>A 到 B 全長 3L</td>
+<td>只作用於 AC 或 CB</td>
+</tr>
+</tbody>
+</table>
+<p><strong>本解記號：</strong> 記號與正負號約定沿用 §4。</p>
 <h2>2. 考題核心精神與出題者意圖 (Core Concepts &amp; Examiner's Intent)</h2>
 <p>本題測驗考生對<strong>矩陣位移法（直接勁度法）</strong>的熟練度。核心難點有三：</p>
 <ol>
@@ -256,7 +421,8 @@ $$ D_2 = \frac{1}{\Delta} \left[ \left(\frac{201}{8}\right)\left(-\frac{5}{12}\r
 <p><strong>驗算機制：</strong><br />
    計算完畢後，強烈建議進行節點 C 的彎矩平衡檢驗 ($M_{CA} + M_{CB} = 0$)。若不為零，必為勁度矩陣或等效載重計算有誤，這是一個能在考場上立刻自我糾正的重要工具。</p>
 </li>
-</ol></main>
+</ol>
+<p><em>修正日期：2026-11-05（§1 改為指向題目正本並放重繪附圖（figs/SA-2004-4-fig-1-problem.svg）、加常見誤讀；圖由 gen_SA-2004-4.py 產生，可重跑）</em></p></main>
 <footer>來源：raw/solutions/SA-2004-4/SA-2004-4.md（知識庫解題內容唯一正本；本頁僅為渲染顯示）</footer>
 
 <script>

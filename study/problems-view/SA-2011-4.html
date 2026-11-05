@@ -43,16 +43,176 @@ header .nomat{margin-top:12px;font-size:.8em;opacity:.85}
 <p class="meta2">主分類 <b>SA-U2-4</b> 靜不定結構之矩陣分析法 ｜ 2011 年（民國 100） ｜ 矩陣直接勁度法 (Direct Stiffness Method)</p>
 <div class="hbtns"><a class="b-study" href="../unit-SA-U2-4.html">🧭 U2-4 單元總覽</a><a class="b-lect" href="../lecture-SA-U2-4.html">📚 U2-4 靜不定結構之矩陣分析法 講義</a></div>
 </header>
-<main><h1>考題編號：SA-2011-4</h1>
+<main><details class="problem-src" open><summary><b>📄 題目正本</b>（考卷原文、附圖與判讀清單；不含解法）</summary>
+<h1>SA-2011-4 題目正本</h1>
+<blockquote>
+<p>本檔只記錄考卷上寫了什麼、圖上畫了什麼，不含任何解法。解析見同資料夾 <code>SA-2011-4.md</code>。<br />
+判讀清單經使用者確認前，狀態為「待確認」；確認後本檔原則上不再修改（改動須回考卷原圖並記 log）。</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>項目</th>
+<th>內容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>考卷</td>
+<td><code>raw/exams/SA-2011_結構學.pdf</code>，第 2 頁（背面）下半，第四題</td>
+</tr>
+<tr>
+<td>考年</td>
+<td>2011（民國 100 年）專技高考結構工程技師「結構學」</td>
+</tr>
+<tr>
+<td>配分</td>
+<td>25 分</td>
+</tr>
+<tr>
+<td>附圖</td>
+<td><code>SA-2011-4-fig-1.png</code>、<code>SA-2011-4-fig-2.png</code></td>
+</tr>
+<tr>
+<td>判讀狀態</td>
+<td><strong>已確認</strong>（2026-11-05 使用者確認。原轉錄：2026-11-05 轉錄；PyMuPDF 110 dpi 整頁＋250–800 dpi 局部放大、PDF 向量座標；盲讀於開啟解析前完成）</td>
+</tr>
+</tbody>
+</table>
+<h2>1. 考卷原文（逐字）</h2>
+<p>四、如圖所示之桁架結構，若 AC 桿件在組裝前因製造瑕疵短了 0.02 m，試以矩陣直接勁度法（direct stiffness method）計算 A 點之水平變位與垂直變位，並計算各桿件之內力。假設各桿件之彈性模數 E 與斷面積 A 皆為常數，且 EA＝10⁴ kN。x-y 為全域座標系統（global coordinates），圖中帶有箭頭之數字代表節點全域自由度之編號。（若以其他方法計算不予計分）（25 分）</p>
+<h2>2. 考卷給的公式、附表與參數</h2>
+<ul>
+<li>考卷沒有給任何參考公式或附表。</li>
+<li>EA = 10⁴ kN。</li>
+<li>PDF 文字層第三、四題交錯排列，以頁面影像核對後照錄。</li>
+<li>考卷沒有任何外加載重，唯一作用是 AC 桿短 0.02 m。</li>
+<li>卷首注意事項：可以使用電子計算器。不必抄題，作答時請將試題題號及答案依照順序寫在試卷上，於本試題上作答者，不予計分。本試題之相關公式，請自行合理推知。</li>
+<li>考試時間：2 小時。</li>
+</ul>
+<h2>3. 附圖</h2>
+<p><img alt="SA-2011-4 考卷附圖原截圖（滑鼠游標（手形）壓在 D 支承上，使鉸支承看似滾支承；內容同下圖）" src="../../raw/solutions/SA-2011-4/SA-2011-4-fig-1.png" /><br />
+<em>證據圖 SA-2011-4-fig-1.png</em></p>
+<p><img alt="SA-2011-4 考卷附圖：C(0,0)、D(6,0) 為底部鉸支承；A 在 C 右方 3 m、上方 4 m；B 在 C 正上方 4 m，鉸支承接左側牆；桿件 BA（水平）、CA、DA；自由度 A:1(→)2(↑)、B:3、4、C:5、6、D:7、8" src="../../raw/solutions/SA-2011-4/SA-2011-4-fig-2.png" /><br />
+<em>證據圖 SA-2011-4-fig-2.png（2026-11-05 自考卷重新擷取 500 dpi，無游標）</em></p>
+<p>圖面文字照錄：4、3、2、A、1、B、4 m、6、8、C、5、D、7、y、x、3 m、3 m</p>
+<h2>4. 判讀清單</h2>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>項目</th>
+<th>判讀</th>
+<th>圖上／題文依據</th>
+<th>把握</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>座標（C 為原點）</td>
+<td>C(0,0)、D(6,0)、A(3,4)、B(0,4)</td>
+<td>尺寸線 3 m｜3 m、4 m（由 B 到 C 高程）</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>2</td>
+<td>構件</td>
+<td>BA（水平 3 m）、CA（5 m）、DA（5 m）</td>
+<td>附圖</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>3</td>
+<td>支承 B</td>
+<td>鉸支承，接左側垂直牆</td>
+<td>附圖三角形＋牆</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>4</td>
+<td>支承 C、D</td>
+<td>鉸支承</td>
+<td>附圖三角形；舊 fig-1 的 D 處有手形游標，看起來像滾輪，500 dpi 重擷為三角形</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>5</td>
+<td>自由度編號</td>
+<td>A：1（+x）、2（+y）；B：3、4；C：5、6；D：7、8</td>
+<td>附圖箭頭</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>6</td>
+<td>製造誤差</td>
+<td>AC 桿短 0.02 m（組裝前）</td>
+<td>題文</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>7</td>
+<td>外力</td>
+<td>無</td>
+<td>題文、附圖</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>8</td>
+<td>所求</td>
+<td>A 點水平、垂直變位；各桿內力；限矩陣直接勁度法</td>
+<td>題文</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>9</td>
+<td>證據圖</td>
+<td>舊截圖 fig-1：滑鼠游標（手形）<strong>壓在 D 支承上</strong>，使鉸支承看似滾支承；新增 fig-2（2026-11-05 自考卷重新擷取 500 dpi）</td>
+<td>—</td>
+<td>確定</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p><em>轉錄：2026-11-05（SA-U2-4 題目正本推廣・批 1）</em><br />
+<em>確認：2026-11-05 使用者確認</em></p>
+</details>
+<hr>
+<h1>考題編號：SA-2011-4</h1>
 <p><strong>主分類：</strong> <code>SA-U2-4</code> 靜不定結構之矩陣分析法<br />
 <strong>副分類：</strong> 無<br />
 <strong>分析法：</strong> 矩陣直接勁度法 (Direct Stiffness Method)<br />
 <strong>標籤：</strong> <code>矩陣勁度法</code> <code>桁架</code> <code>製造誤差</code> <code>等效節點載重</code></p>
 <hr />
-<h2>1. 原始題目重述 (Problem Restatement)</h2>
-<p>如圖所示之桁架結構，若 AC 桿件在組裝前因製造瑕疵短了 $0.02\text{ m}$，試以矩陣直接勁度法 (direct stiffness method) 計算 A 點之水平變位與垂直變位，並計算各桿件之內力。假設各桿件之彈性模數 $E$ 與斷面積 $A$ 皆為常數，且 $EA = 10^4\text{ kN}$。$x-y$ 為全域座標系統 (global coordinates)，圖中帶有箭頭之數字代表節點全域自由度之編號。(若以其他方法計算不予計分) (25 分)</p>
-<p><img alt="SA-2011-4 題目附圖：桁架結構示意圖，包含三根桿件交會於 A 點，AC 桿存在短少製造誤差" src="../../raw/solutions/SA-2011-4/SA-2011-4-fig-1.png" /></p>
-<p><em>圖說：三桿桁架結構，節點 B、C、D 均為鉸支承。A 點為自由節點，連接 AB、AC、AD 三桿。B 點座標為 (0, 4)，C 點為 (0, 0)，A 點為 (3, 4)，D 點為 (6, 0)，單位皆為 m。</em></p>
+<h2>1. 題目（考卷原文見題目正本）</h2>
+<blockquote>
+<p>考卷原文、公式／附表、附圖與判讀清單（已確認）見 <a href="SA-2011-4-problem.md"><code>SA-2011-4-problem.md</code></a>。本節只列解題時最容易讀錯的地方與本解使用的記號；題意以題目正本為準。</p>
+</blockquote>
+<p><img alt="SA-2011-4 重繪題目附圖：三桿桁架 A(3,4) 為自由節點；B(0,4) 接左側牆、C(0,0)、D(6,0) 皆鉸支承；AC 桿短 0.02 m；自由度 1–8" src="../../raw/solutions/SA-2011-4/figs/SA-2011-4-fig-1-problem.svg" /><br />
+<em>重繪自考卷附圖，依判讀清單 #1–#9 重繪。攔：D 讀成滾支承（舊截圖游標壓在 D）、自由度編號對錯節點。</em></p>
+<h3>常見誤讀</h3>
+<table>
+<thead>
+<tr>
+<th>項目</th>
+<th>正確判讀</th>
+<th>常見誤讀</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>D 支承</td>
+<td>鉸支承</td>
+<td>滾支承（舊截圖游標壓在 D）</td>
+</tr>
+<tr>
+<td>作用</td>
+<td>只有 AC 桿短 0.02 m，沒有外力</td>
+<td>另加外力</td>
+</tr>
+</tbody>
+</table>
+<p><strong>本解記號：</strong> 記號與正負號約定沿用 §4。</p>
 <h2>2. 考題核心精神與出題者意圖 (Core Concepts &amp; Examiner's Intent)</h2>
 <p>本題的核心精神在於測驗考生對於<strong>矩陣直接勁度法</strong>標準作業流程 (SOP) 的熟練程度，尤其是如何將非外力載重（此處為<strong>製造誤差</strong>）轉換為數值分析可以處理的模型。<br />
 出題者意圖包含以下三個層次：</p>
@@ -217,7 +377,8 @@ $\sum F_y = 13.97(0.8) - 13.97(0.8) = 11.176 - 11.176 = 0$<br />
 <p><strong>正負號法則的防錯建議</strong>：<br />
    在處理等效載重時，建議考生多畫一張「鎖定狀態自由體圖」。用物理直覺去想像：AC 桿過短，被強拉到 A 點後，它會像一條被拉緊的橡皮筋，對 A 點施加「朝向 C 點」的拉力。只要這個物理圖像清晰，等效載重向量的方向 $(-0.6, -0.8)$ 就不會出錯，遠比死背公式 $P = -F_{fixed}$ 穩定可靠。</p>
 </li>
-</ol></main>
+</ol>
+<p><em>修正日期：2026-11-05（§1 改為指向題目正本並放重繪附圖（figs/SA-2011-4-fig-1-problem.svg）、加常見誤讀；圖由 gen_SA-2011-4.py 產生，可重跑）</em></p></main>
 <footer>來源：raw/solutions/SA-2011-4/SA-2011-4.md（知識庫解題內容唯一正本；本頁僅為渲染顯示）</footer>
 
 <script>

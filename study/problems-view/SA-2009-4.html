@@ -43,31 +43,175 @@ header .nomat{margin-top:12px;font-size:.8em;opacity:.85}
 <p class="meta2">主分類 <b>SA-U2-4</b> 靜不定結構之矩陣分析法 ｜ 2009 年（民國 98） ｜ 矩陣直接勁度法</p>
 <div class="hbtns"><a class="b-study" href="../unit-SA-U2-4.html">🧭 U2-4 單元總覽</a><a class="b-lect" href="../lecture-SA-U2-4.html">📚 U2-4 靜不定結構之矩陣分析法 講義</a></div>
 </header>
-<main><h1>考題編號：SA-2009-4</h1>
+<main><details class="problem-src" open><summary><b>📄 題目正本</b>（考卷原文、附圖與判讀清單；不含解法）</summary>
+<h1>SA-2009-4 題目正本</h1>
+<blockquote>
+<p>本檔只記錄考卷上寫了什麼、圖上畫了什麼，不含任何解法。解析見同資料夾 <code>SA-2009-4.md</code>。<br />
+判讀清單經使用者確認前，狀態為「待確認」；確認後本檔原則上不再修改（改動須回考卷原圖並記 log）。</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>項目</th>
+<th>內容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>考卷</td>
+<td><code>raw/exams/SA-2009_結構學.pdf</code>，第 2 頁（背面），第四題</td>
+</tr>
+<tr>
+<td>考年</td>
+<td>2009（民國 98 年）專技高考結構工程技師「結構學」</td>
+</tr>
+<tr>
+<td>配分</td>
+<td>25 分</td>
+</tr>
+<tr>
+<td>附圖</td>
+<td><code>SA-2009-4-fig-1.png</code>、<code>SA-2009-4-fig-2.png</code></td>
+</tr>
+<tr>
+<td>判讀狀態</td>
+<td><strong>已確認</strong>（2026-11-05 使用者確認；影響答案項目定案：#3 ac = 3 m（c 與 b 同高，考卷未標；使用者確認）。原轉錄：2026-11-05 轉錄；PyMuPDF 110 dpi 整頁＋250–800 dpi 局部放大、PDF 向量座標；盲讀於開啟解析前完成）</td>
+</tr>
+</tbody>
+</table>
+<h2>1. 考卷原文（逐字）</h2>
+<p>四、如圖示三支構件之桁架（truss）系統，受向下 100 kN 之作用力。試以矩陣直接勁度法（direct stiffness method）分析 a 點之水平變位 d₁ 與垂直變位 d₂，並計算各構件之內力。假設各構件之 E 值（彈性模數）與 A 值（斷面積）皆為常數，且 AE = 1000 kN。圖中帶有箭頭之數字為結點位移編號，x-y 為總體座標系統（global coordinates）。（25 分）</p>
+<h2>2. 考卷給的公式、附表與參數</h2>
+<ul>
+<li>考卷沒有給任何參考公式或附表。</li>
+<li>AE = 1000 kN（題文，PDF 文字層為公式物件，依頁面影像補回）。</li>
+<li>考卷沒有標 ac 桿的長度（見判讀清單 #3）。</li>
+<li>卷首注意事項：可以使用電子計算器，但需詳列解答過程。不必抄題，作答時請將試題題號及答案依照順序寫在試卷上，於本試題上作答者，不予計分。</li>
+<li>考試時間：2 小時。</li>
+</ul>
+<h2>3. 附圖</h2>
+<p><img alt="SA-2009-4 考卷附圖原截圖（無游標，但解析度偏低（1018×617）；內容同下圖）" src="../../raw/solutions/SA-2009-4/SA-2009-4-fig-1.png" /><br />
+<em>證據圖 SA-2009-4-fig-1.png</em></p>
+<p><img alt="SA-2009-4 考卷附圖：a 為中央節點，100 kN 向下；d 在 a 左方 4 m，鉸支承接左側牆；b 在 a 右方 4 m、上方 3 m，鉸支承接右側牆；c 在 a 正上方，鉸支承接天花板；位移編號 a:1(→)2(↑)、b:3(→)4(↑)、c:5(→)6(↑)、d:7(→)8(↑)；左上角 x-y 座標" src="../../raw/solutions/SA-2009-4/SA-2009-4-fig-2.png" /><br />
+<em>證據圖 SA-2009-4-fig-2.png（2026-11-05 自考卷重新擷取 500 dpi，無游標）</em></p>
+<p>圖面文字照錄：y、x、6、5、c、4、3、b、3 m、8、7、2、1、d、a、4 m、4 m、100 kN</p>
+<h2>4. 判讀清單</h2>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>項目</th>
+<th>判讀</th>
+<th>圖上／題文依據</th>
+<th>把握</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>座標（a 為原點）</td>
+<td>a(0,0)、d(−4,0)、b(4,3)</td>
+<td>尺寸線 4 m｜4 m、3 m（3 m 尺寸線上端對齊 b，下端對齊 a 高程的虛線）</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>2</td>
+<td>構件</td>
+<td>ad、ab、ac 三桿</td>
+<td>題文「三支構件」；附圖</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>3</td>
+<td>ac 桿長度</td>
+<td><strong>附圖沒有標註</strong>；c 畫在 a 正上方、與 b 同高程（PDF 向量座標 c 支承 y = 374.5 pt、b y = 373.5 pt、a y = 430 pt）→ ac = 3 m</td>
+<td>PDF 向量座標；圖面垂直向未依比例（水平 4 m 約 96–107 pt，垂直 3 m 只畫 56 pt），只能以「與 b 同高」推定</td>
+<td>確定（解讀）；使用者確認</td>
+</tr>
+<tr>
+<td>4</td>
+<td>支承 b、c、d</td>
+<td>皆為鉸支承（三角形接牆／天花板，b、d 接垂直牆，c 接水平天花板）</td>
+<td>500 dpi 附圖</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>5</td>
+<td>位移編號</td>
+<td>a：1（+x）、2（+y）；b：3、4；c：5、6；d：7、8</td>
+<td>附圖箭頭</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>6</td>
+<td>載重</td>
+<td>a 點 100 kN 向下</td>
+<td>附圖；題文</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>7</td>
+<td>AE</td>
+<td>1000 kN，各桿相同</td>
+<td>題文</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>8</td>
+<td>所求</td>
+<td>d₁、d₂ 與各構件內力；限矩陣直接勁度法</td>
+<td>題文</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>9</td>
+<td>證據圖</td>
+<td>舊截圖 fig-1：無游標，但解析度偏低（1018×617）；新增 fig-2（2026-11-05 自考卷重新擷取 500 dpi）</td>
+<td>—</td>
+<td>確定</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p><em>轉錄：2026-11-05（SA-U2-4 題目正本推廣・批 1）</em><br />
+<em>確認：2026-11-05 使用者確認</em></p>
+</details>
+<hr>
+<h1>考題編號：SA-2009-4</h1>
 <p><strong>主分類：</strong> <code>SA-U2-4</code> 靜不定結構之矩陣分析法<br />
 <strong>副分類：</strong> 無<br />
 <strong>分析法：</strong> 矩陣直接勁度法<br />
 <strong>標籤：</strong> <code>直接勁度法</code> <code>桁架</code> <code>位移求解</code> <code>內力計算</code></p>
 <hr />
-<h2>1. 原始題目重述 (Problem Restatement)</h2>
-<p>本題為一個由三根桿件組成之共點桁架系統。所有桿件共用節點 $a$，節點 $a$ 承受一垂直向下的集中載重。<br />
-各支承節點均為鉸支承 (Hinge Support)。</p>
-<p><strong>幾何與材料條件：</strong></p>
-<ul>
-<li>各構件彈性模數與斷面積之乘積為常數：$AE = 1000\text{ kN}$</li>
-<li>節點座標（以 $a$ 點為原點 $(0,0)$，單位：m）：<ul>
-<li>$a = (0, 0)$，自由節點，承受外力 $F_x = 0$，$F_y = -100\text{ kN}$。</li>
-<li>$d = (-4, 0)$，鉸支承。</li>
-<li>$c = (0, 3)$，鉸支承。</li>
-<li>$b = (4, 3)$，鉸支承。</li>
-</ul>
-</li>
-</ul>
-<p><strong>求解目標：</strong></p>
-<ol>
-<li>節點 $a$ 的水平變位 $d_1$ 及垂直變位 $d_2$。</li>
-<li>各桿件 ($ad$, $ac$, $ab$) 之內力。</li>
-</ol>
+<h2>1. 題目（考卷原文見題目正本）</h2>
+<blockquote>
+<p>考卷原文、公式／附表、附圖與判讀清單（已確認）見 <a href="SA-2009-4-problem.md"><code>SA-2009-4-problem.md</code></a>。本節只列解題時最容易讀錯的地方與本解使用的記號；題意以題目正本為準。</p>
+</blockquote>
+<p><img alt="SA-2009-4 重繪題目附圖：三桿桁架 a 為自由節點受 100 kN 向下；d（左牆）、b（右牆，高 3 m）、c（天花板，a 正上方）皆鉸支承；位移編號 1–8" src="../../raw/solutions/SA-2009-4/figs/SA-2009-4-fig-1-problem.svg" /><br />
+<em>重繪自考卷附圖，依判讀清單 #1–#8 重繪。攔：支承方向讀錯、位移編號對錯節點；ac = 3 m 是由 c 與 b 同高推定（考卷未標）。</em></p>
+<h3>常見誤讀</h3>
+<table>
+<thead>
+<tr>
+<th>項目</th>
+<th>正確判讀</th>
+<th>常見誤讀</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ac 長度</td>
+<td>3 m（c 與 b 同高；考卷未標，使用者確認）</td>
+<td>任取或量圖比例</td>
+</tr>
+<tr>
+<td>位移編號</td>
+<td>a：1、2；b：3、4；c：5、6；d：7、8</td>
+<td>對錯節點</td>
+</tr>
+</tbody>
+</table>
+<p><strong>本解記號：</strong> 記號與正負號約定沿用 §4。</p>
 <h2>2. 考題核心精神與出題者意圖 (Core Concepts &amp; Examiner's Intent)</h2>
 <p>本題的核心在於測驗考生對<strong>矩陣直接勁度法 (Direct Stiffness Method)</strong> 於平面桁架應用之熟練度。</p>
 <ul>
@@ -242,7 +386,8 @@ $\sum F_y = T_{ac} + T_{ab} \times 0.6 - 100 = 87.5 + 20.833 \times 0.6 - 100 = 
     本題使用「位移法 (Displacement Method) / 直接勁度法」，自由度僅有 2 個（節點 a 的水平與垂直位移），只要建立 $2 \times 2$ 矩陣即可輕鬆求解，是考場上最推薦且最不易出錯的穩健作法。</li>
 <li><strong>計算精度控制：</strong><br />
     在手算矩陣直接勁度法時，最常犯的錯誤在於早期帶入小數運算導致的誤差累積。如本題桿件 $ab$ 產生的剛度矩陣內含 $0.128, 0.096$ 等數字，若考場上使用非精確的小數直接相加，很容易在求解聯立方程時失真。全程保持分數運算 (如 $\frac{16}{125}$ 等) 是確保最終答案精準、甚至能完美通過靜力平衡檢驗的關鍵。</li>
-</ul></main>
+</ul>
+<p><em>修正日期：2026-11-05（§1 改為指向題目正本並放重繪附圖（figs/SA-2009-4-fig-1-problem.svg）、加常見誤讀；圖由 gen_SA-2009-4.py 產生，可重跑）</em></p></main>
 <footer>來源：raw/solutions/SA-2009-4/SA-2009-4.md（知識庫解題內容唯一正本；本頁僅為渲染顯示）</footer>
 
 <script>

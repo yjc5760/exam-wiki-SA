@@ -43,146 +43,308 @@ header .nomat{margin-top:12px;font-size:.8em;opacity:.85}
 <p class="meta2">主分類 <b>SA-U2-4</b> 靜不定結構之矩陣分析法 ｜ 2019 年（民國 108）</p>
 <div class="hbtns"><a class="b-study" href="../unit-SA-U2-4.html">🧭 U2-4 單元總覽</a><a class="b-lect" href="../lecture-SA-U2-4.html">📚 U2-4 靜不定結構之矩陣分析法 講義</a></div>
 </header>
-<main><h1>考題編號：SA-2019-4</h1>
+<main><details class="problem-src" open><summary><b>📄 題目正本</b>（考卷原文、附圖與判讀清單；不含解法）</summary>
+<h1>SA-2019-4 題目正本</h1>
+<blockquote>
+<p>本檔只記錄考卷上寫了什麼、圖上畫了什麼，不含任何解法。解析見同資料夾 <code>SA-2019-4.md</code>。<br />
+判讀清單經使用者確認前，狀態為「待確認」；確認後本檔原則上不再修改（改動須回考卷原圖並記 log）。</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>項目</th>
+<th>內容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>考卷</td>
+<td><code>raw/exams/SA-2019_結構學.pdf</code>，第 3 頁，第四題（圖四）</td>
+</tr>
+<tr>
+<td>考年</td>
+<td>2019（民國 108 年）專技高考結構工程技師「結構學」</td>
+</tr>
+<tr>
+<td>配分</td>
+<td>25 分</td>
+</tr>
+<tr>
+<td>附圖</td>
+<td><code>SA-2019-4-fig-1.png</code>、<code>SA-2019-4-fig-2.png</code></td>
+</tr>
+<tr>
+<td>判讀狀態</td>
+<td><strong>已確認</strong>（2026-11-05 使用者確認。原轉錄：2026-11-05 轉錄；PyMuPDF 110 dpi 整頁＋250–800 dpi 局部放大、PDF 向量座標；盲讀於開啟解析前完成）</td>
+</tr>
+</tbody>
+</table>
+<h2>1. 考卷原文（逐字）</h2>
+<p>四、考慮圖四之構架，假設各構件之軸向變形很小可以忽略，各桿件之楊氏模數都為 E、斷面二次矩都為 I 且長度都為 L；外力 P 及 Q 作用於柱之中點。如圖四所示，梁 BD 接到柱 AB 採半剛性接頭，以旋轉彈簧模擬之（可當作零長度），旋轉彈簧勁度假設為 10 EI/L（EI，L 為梁、柱構件性質）。若以勁度法表示該構架平衡方程式，可寫為 [K]{D} = {P}，其中 {D} 為位移向量，依序包括水平位移 d₁、B 點左側旋轉角 d₂、B 點右側旋轉角 d₃ 及 D 點旋轉角 d₄ 共四個自由度；[K] 為結構勁度矩陣；{P} 為外力向量。試求 [K] 及 {P}；求 [K] 前，先寫出每個元素之勁度矩陣再組合得 [K]，旋轉彈簧視為一個元素。（25 分）</p>
+<h2>2. 考卷給的公式、附表與參數</h2>
+<ul>
+<li>考卷沒有給任何參考公式或附表。</li>
+<li>旋轉彈簧勁度 10 EI/L；各桿 E、I、L 相同；忽略軸向變形（題文）。</li>
+<li>考卷沒有給數值。</li>
+<li>卷首注意事項：可以使用電子計算器。不必抄題，作答時請將試題題號及答案依照順序寫在試卷上，於本試題上作答者，不予計分。本科目除專門名詞或數理公式外，應使用本國文字作答。</li>
+<li>考試時間：2 小時。</li>
+</ul>
+<h2>3. 附圖</h2>
+<p><img alt="SA-2019-4 考卷附圖原截圖（左上角有滑鼠游標（箭頭），圖面縮得很小（左右兩圖擠在 2494 px 寬內、線很細）；內容同下圖）" src="../../raw/solutions/SA-2019-4/SA-2019-4-fig-1.png" /><br />
+<em>證據圖 SA-2019-4-fig-1.png</em></p>
+<p><img alt="SA-2019-4 考卷附圖（圖四，左右兩張）：左圖為載重圖——A 底部固定、AB 柱高、P 向右作用於 AB 中點；B 處為旋轉彈簧接梁 BD；C 底部鉸支承、CD 柱、Q 向右作用於 CD 中點；D 為剛接節點；DE 梁全長受均佈 w；E 為滾支承，受水平力 R 向右。右圖為自由度與元素編號——d₁ 為梁層水平位移（向右），d₂（B 左側）、d₃（B 右側）、d₄（D）轉角皆逆時針；元素 ① AB、② CD、③ 旋轉彈簧、④ BD、⑤ DE" src="../../raw/solutions/SA-2019-4/SA-2019-4-fig-2.png" /><br />
+<em>證據圖 SA-2019-4-fig-2.png（2026-11-05 自考卷重新擷取 500 dpi，無游標）</em></p>
+<p>圖面文字照錄：w、B、D、E、R、P、Q、A、C、d₂、③、d₃、④、d₄、⑤、d₁、①、②、圖四</p>
+<h2>4. 判讀清單</h2>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>項目</th>
+<th>判讀</th>
+<th>圖上／題文依據</th>
+<th>把握</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>幾何</td>
+<td>A、C 為柱底；AB、CD 柱長 L；BD、DE 梁長 L；B、D、E 同高程</td>
+<td>題文「長度都為 L」；附圖無尺寸線</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>2</td>
+<td>支承 A</td>
+<td>固定端（剖線）</td>
+<td>附圖</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>3</td>
+<td>支承 C</td>
+<td>鉸支承（三角形）</td>
+<td>附圖</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>4</td>
+<td>支承 E</td>
+<td>滾支承（圓），可水平移動</td>
+<td>附圖</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>5</td>
+<td>B 接頭</td>
+<td>柱頂與梁 BD 之間為零長度旋轉彈簧，k = 10 EI/L</td>
+<td>題文；附圖彈簧符號</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>6</td>
+<td>節點 D</td>
+<td>梁 BD、DE 與柱 CD 剛接</td>
+<td>附圖</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>7</td>
+<td>載重</td>
+<td>P 向右作用 AB 中點；Q 向右作用 CD 中點；w 向下 DE 全長；R 向右作用 E</td>
+<td>題文；附圖</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>8</td>
+<td>自由度</td>
+<td>d₁：水平位移（向右，畫在 E）；d₂：B 左側（柱頂）轉角；d₃：B 右側（梁端）轉角；d₄：D 轉角；三個轉角箭頭皆<strong>逆時針</strong></td>
+<td>題文；800 dpi 箭頭方向</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>9</td>
+<td>元素編號</td>
+<td>① AB、② CD、③ 旋轉彈簧、④ BD、⑤ DE</td>
+<td>右圖圈號</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>10</td>
+<td>所求</td>
+<td>各元素勁度矩陣、組合 [K]、外力向量 {P}</td>
+<td>題文</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>11</td>
+<td>證據圖</td>
+<td>舊截圖 fig-1：左上角有滑鼠游標（箭頭），圖面縮得很小（左右兩圖擠在 2494 px 寬內、線很細）；新增 fig-2（2026-11-05 自考卷重新擷取 500 dpi）</td>
+<td>—</td>
+<td>確定</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p><em>轉錄：2026-11-05（SA-U2-4 題目正本推廣・批 1）</em><br />
+<em>確認：2026-11-05 使用者確認</em></p>
+</details>
+<hr>
+<h1>考題編號：SA-2019-4</h1>
 <p><strong>主分類：</strong> <code>SA-U2-4</code> 靜不定結構之矩陣分析法<br />
 <strong>副分類：</strong> 無<br />
 <strong>標籤：</strong> <code>勁度矩陣</code> <code>半剛性接頭</code> <code>旋轉彈簧</code> <code>節點載重向量</code></p>
 <hr />
-<h2>1. 原始題目重述 (Problem Restatement)</h2>
-<p>四、考慮圖四之構架，假設各構件之軸向變形很小可以忽略，各桿件之楊氏模數都為 E、斷面二次矩都為 I 且長度都為 L；外力 P 及 Q 作用於柱之中點。如圖四所示，梁 BD 接到柱 AB 採半剛性接頭，以旋轉彈簧模擬之（可當作零長度），旋轉彈簧勁度假設為 10 EI/L（EI，L 為梁、柱構件性質）。若以勁度法表示該構架平衡方程式，可寫為 [K]{D} = {P}，其中{D}為位移向量，依序包括水平位移 $d_1$、B 點左側旋轉角 $d_2$、B 點右側旋轉角 $d_3$ 及 D 點旋轉角 $d_4$ 共四個自由度；[K]為結構勁度矩陣；{P}為外力向量。試求[K]及{P}；求[K]前，先寫出每個元素之勁度矩陣再組合得[K]，旋轉彈簧視為一個元素。（25 分）</p>
-<p><img alt="SA-2019-4 題目附圖" src="../../raw/solutions/SA-2019-4/SA-2019-4-fig-1.png" /></p>
-<p><em>圖說：(待補充說明)</em></p>
+<h2>1. 題目（考卷原文見題目正本）</h2>
+<blockquote>
+<p>考卷原文、公式／附表、附圖與判讀清單（已確認）見 <a href="SA-2019-4-problem.md"><code>SA-2019-4-problem.md</code></a>。本節只列解題時最容易讀錯的地方與本解使用的記號；題意以題目正本為準。</p>
+</blockquote>
+<p><img alt="SA-2019-4 重繪題目附圖：構架 A 固定、C 鉸、E 滾；B 處柱頂與梁 BD 以零長度旋轉彈簧相接；P、Q 作用於柱中點、w 作用於 DE、R 作用於 E；右格為自由度 d₁–d₄ 與元素 ①–⑤" src="../../raw/solutions/SA-2019-4/figs/SA-2019-4-fig-1-problem.svg" /><br />
+<em>重繪自考卷附圖，依判讀清單 #1–#11 重繪。攔：C 讀成固定端、B 讀成剛接、轉角正向讀反。</em></p>
+<h3>常見誤讀</h3>
+<table>
+<thead>
+<tr>
+<th>項目</th>
+<th>正確判讀</th>
+<th>常見誤讀</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>C 支承</td>
+<td>鉸支承</td>
+<td>固定端</td>
+</tr>
+<tr>
+<td>B 接頭</td>
+<td>柱頂與梁之間的旋轉彈簧 10EI/L（零長度）</td>
+<td>剛接</td>
+</tr>
+<tr>
+<td>d₂、d₃、d₄</td>
+<td>皆逆時針為正</td>
+<td>順時針</td>
+</tr>
+<tr>
+<td>均佈 w 範圍</td>
+<td>DE 梁全長（D 到 E）</td>
+<td>BD 梁</td>
+</tr>
+</tbody>
+</table>
+<p><strong>本解記號：</strong> d₁ 向右、d₂–d₄ 逆時針為正（與考卷右圖一致）；桿端彎矩與固端彎矩皆以逆時針為正。</p>
+<blockquote>
+<p><strong>勘誤（2026-11-05）</strong>：舊版 §3–§4 把 C 當固定端、把 w 放在 BD 梁、轉角取順時針為正，[K] 與 {P} 隨之錯誤；已依題目正本重算（詳見頁尾修正日期）。</p>
+</blockquote>
 <h2>2. 考題核心精神與出題者意圖 (Core Concepts &amp; Examiner's Intent)</h2>
-<p>本題為標準的<strong>直接勁度法 (Direct Stiffness Method)</strong> 操作題。<br />
-考驗學生是否能將結構拆解為離散元素，寫出各元素的局部勁度矩陣，並透過自由度 (DOFs) 的對應關係組裝成全域勁度矩陣 $[K]$。<br />
-特別加入了「旋轉彈簧」與「靜定外伸端 (梁 DE)」的處理：</p>
+<p>本題為標準的<strong>直接勁度法 (Direct Stiffness Method)</strong> 組裝題，題目已把自由度與元素編號都指定好，考的是三件事：</p>
 <ol>
-<li><strong>旋轉彈簧</strong>：作為連接兩個旋轉自由度 ($d_2, d_3$) 的元素，其勁度直接反映在矩陣的對角線與非對角線元素上。</li>
-<li><strong>節點等效載重向量 $\{P\}$</strong>：測驗學生將桿件上的載重 (點載重 P、Q，均佈載重 w) 轉換為固端彎矩與固端剪力，再反號成為節點等效載重的能力。</li>
-<li><strong>靜定端靜態凝聚 (Static Condensation)</strong>：右側 E 點為滾支承且未配給旋轉自由度，因此 DE 梁必須使用「修正勁度矩陣 ($3EI/L$)」來組裝。</li>
+<li><strong>半剛性接頭</strong>：B 點柱頂與梁端以零長度旋轉彈簧相接，兩側轉角不同，必須各給一個自由度（$d_2$、$d_3$），彈簧本身當成一個連接兩轉角的元素。</li>
+<li><strong>端點條件的修正勁度</strong>：題目只給 4 個自由度，<strong>C 柱底為鉸支承、E 為滾支承</strong>，兩處轉角都沒有編號，所以柱 CD（下端鉸）與梁 DE（右端鉸）都要用一端鉸接的修正勁度（或寫全矩陣再靜態凝縮）。</li>
+<li><strong>等效節點載重</strong>：柱中點水平力 P、Q 與 DE 上的均佈 w 要換成固端力再反號；柱 CD 與梁 DE 的固端力要用「一端固定、一端鉸接」的值（$3QL/16$、$11Q/16$、$wL^2/8$），不是兩端固定的 $QL/8$、$wL^2/12$。</li>
 </ol>
 <h2>3. 解題戰略地圖與陷阱分析 (Strategic Roadmap &amp; Trap Analysis)</h2>
 <ol>
-<li><strong>確立自由度 (DOFs)</strong>：</li>
-<li>題目已指定 $\{D\} = [d_1, d_2, d_3, d_4]^T$。</li>
-<li>$d_1$：全構架水平側移 (向右為正)。</li>
-<li>$d_2$：B 點柱端 (彈簧左側) 旋轉 (順時針為正)。</li>
-<li>$d_3$：B 點梁端 (彈簧右側) 旋轉 (順時針為正)。</li>
-<li>$d_4$：D 點旋轉 (順時針為正)。</li>
-<li><strong>元素拆解與局部勁度矩陣 $[k^{(e)}]$</strong>：</li>
-<li><strong>(1) 柱 AB</strong>：對應 DOF $[d_1, d_2]^T$。</li>
-<li><strong>(2) 柱 CD</strong>：對應 DOF $[d_1, d_4]^T$。</li>
-<li><strong>(3) 彈簧 B</strong>：對應 DOF $[d_2, d_3]^T$。</li>
-<li><strong>(4) 梁 BD</strong>：對應 DOF $[d_3, d_4]^T$。</li>
-<li><strong>(5) 梁 DE</strong>：對應 DOF $[d_4]^T$ (E 端鉸接，使用 $3EI/L$)。</li>
-<li>
-<p><strong>組裝全域勁度矩陣 $[K]$</strong>：<br />
-   依據各元素的 DOF 標籤，將係數累加至 $4 \times 4$ 的 $[K]$ 矩陣對應位置。</p>
-</li>
-<li>
-<p><strong>計算節點載重向量 $\{P\}$</strong>：<br />
-   $\{P\} = \{P_{direct}\} - \{FEM_{equivalent}\}$</p>
-</li>
-<li>
-<p>$P_1$：側移自由度。由水平直接外力 $R$ 加上柱 AB、CD 的固端水平剪力轉換而來。</p>
-</li>
-<li>$P_2 \sim P_4$：由桿件上的載重產生的固端彎矩 (FEM) 反號求得。</li>
+<li><strong>確立自由度（題目指定）</strong>：$d_1$ 梁層水平位移（向右）；$d_2$ B 點柱頂轉角；$d_3$ B 點梁端轉角；$d_4$ D 點轉角——三個轉角在考卷右圖皆為<strong>逆時針</strong>。忽略軸向變形，B、D、E 同步側移 $d_1$，各節點無垂直位移。</li>
+<li><strong>元素與對應自由度</strong>：</li>
+<li>① 柱 AB（A 固定）：$[d_1, d_2]$</li>
+<li>② 柱 CD（<strong>C 鉸</strong>）：$[d_1, d_4]$，修正勁度</li>
+<li>③ 旋轉彈簧：$[d_2, d_3]$</li>
+<li>④ 梁 BD：$[d_3, d_4]$（兩端無相對側移）</li>
+<li>⑤ 梁 DE（<strong>E 滾支</strong>）：$[d_4]$，修正勁度</li>
+<li><strong>組裝</strong>：依自由度標籤把元素係數疊加成 $4\times4$。</li>
+<li><strong>外力向量</strong>：$\{P\} = \{P_{節點}\} - \{F_{固端}\}$。</li>
 </ol>
+<p><strong>陷阱分析：</strong></p>
+<ul>
+<li><strong>陷阱 1：C 讀成固定端。</strong> C 柱底畫的是三角形鉸支承（A 才是剖線固定端）。讀成固定端會把 ② 寫成 $12EI/L^3$、$6EI/L^2$、$4EI/L$，$K_{11}$ 由 15 變 24、$K_{44}$ 由 10 變 11，且 Q 的固端力也跟著錯。</li>
+<li><strong>陷阱 2：w 放錯梁。</strong> 均佈 w 的箭頭排在 D 到 E 之間，BD 梁沒有載重；放到 BD 會在 $P_3$ 多出 $wL^2/12$。</li>
+<li><strong>陷阱 3：轉角正向。</strong> 考卷右圖三個轉角箭頭皆逆時針。若改用順時針，矩陣中「側移–轉角」耦合項全部變號；作答前先依圖定正向。</li>
+<li><strong>陷阱 4：用兩端固定的固端力。</strong> ② 與 ⑤ 都是一端鉸接，固端彎矩是 $3QL/16$、$wL^2/8$，剪力是 $11Q/16$（固定端側）。</li>
+</ul>
 <h2>4. 步驟化詳細計算過程 (Step-by-Step Detailed Calculation)</h2>
 <h3>Step 1：寫出各元素之勁度矩陣</h3>
-<p>依題意，所有桿件長度皆為 $L$，勁度為 $EI$。忽略軸向變形，並令所有順時針旋轉與向右位移為正。</p>
-<p><strong>1. 元素 (1) - 柱 AB</strong><br />
-包含自由度：$[d_1, d_2]^T$ (A 端固定)<br />
+<p>各桿長 $L$、$EI$ 相同；$d_1$ 向右、轉角逆時針為正。柱的側移–轉角耦合：柱頂向右平移 $\Delta$ 時弦轉角為順時針 $\Delta/L$，由傾角變位式 $M = \frac{2EI}{L}(2\theta_i+\theta_j-3\psi)$、$\psi=-\Delta/L$ 得柱頂所需逆時針彎矩 $+\frac{6EI}{L^2}\Delta$（兩端固定）或 $+\frac{3EI}{L^2}\Delta$（另一端鉸）。</p>
+<p><strong>1. 元素 ① — 柱 AB（A 固定）</strong>，自由度 $[d_1, d_2]$：<br />
 $$[k^{(1)}] = \begin{bmatrix}
-\frac{12EI}{L^3} &amp; -\frac{6EI}{L^2} \\
--\frac{6EI}{L^2} &amp; \frac{4EI}{L}
+\dfrac{12EI}{L^3} &amp; \dfrac{6EI}{L^2} \\[6pt]
+\dfrac{6EI}{L^2} &amp; \dfrac{4EI}{L}
 \end{bmatrix}$$</p>
-<p><strong>2. 元素 (2) - 柱 CD</strong><br />
-包含自由度：$[d_1, d_4]^T$ (C 端固定)<br />
+<p><strong>2. 元素 ② — 柱 CD（C 鉸，修正勁度）</strong>，自由度 $[d_1, d_4]$：<br />
 $$[k^{(2)}] = \begin{bmatrix}
-\frac{12EI}{L^3} &amp; -\frac{6EI}{L^2} \\
--\frac{6EI}{L^2} &amp; \frac{4EI}{L}
-\end{bmatrix}$$</p>
-<p><strong>3. 元素 (3) - 旋轉彈簧</strong><br />
-包含自由度：$[d_2, d_3]^T$，彈簧常數 $k_s = \frac{10EI}{L}$<br />
-$$[k^{(3)}] = \begin{bmatrix}
-k_s &amp; -k_s \\
--k_s &amp; k_s
-\end{bmatrix} = \begin{bmatrix}
-\frac{10EI}{L} &amp; -\frac{10EI}{L} \\
--\frac{10EI}{L} &amp; \frac{10EI}{L}
-\end{bmatrix}$$</p>
-<p><strong>4. 元素 (4) - 梁 BD</strong><br />
-包含自由度：$[d_3, d_4]^T$<br />
-$$[k^{(4)}] = \begin{bmatrix}
-\frac{4EI}{L} &amp; \frac{2EI}{L} \\
-\frac{2EI}{L} &amp; \frac{4EI}{L}
-\end{bmatrix}$$</p>
-<p><strong>5. 元素 (5) - 梁 DE</strong><br />
-包含自由度：$[d_4]^T$ (右端 E 為滾支承，且未賦予旋轉自由度，需使用修正勁度)<br />
-$$[k^{(5)}] = \begin{bmatrix} \frac{3EI}{L} \end{bmatrix}$$</p>
+\dfrac{3EI}{L^3} &amp; \dfrac{3EI}{L^2} \\[6pt]
+\dfrac{3EI}{L^2} &amp; \dfrac{3EI}{L}
+\end{bmatrix}$$<br />
+（由兩端固定的 $6\times6$ 柱元素對 C 端轉角靜態凝縮而得。）</p>
+<p><strong>3. 元素 ③ — 旋轉彈簧</strong>，自由度 $[d_2, d_3]$，$k_r = 10EI/L$：<br />
+$$[k^{(3)}] = \frac{10EI}{L}\begin{bmatrix} 1 &amp; -1 \\ -1 &amp; 1 \end{bmatrix}$$</p>
+<p><strong>4. 元素 ④ — 梁 BD</strong>，自由度 $[d_3, d_4]$：<br />
+$$[k^{(4)}] = \frac{EI}{L}\begin{bmatrix} 4 &amp; 2 \\ 2 &amp; 4 \end{bmatrix}$$</p>
+<p><strong>5. 元素 ⑤ — 梁 DE（E 滾支，修正勁度）</strong>，自由度 $[d_4]$：<br />
+$$[k^{(5)}] = \begin{bmatrix} \dfrac{3EI}{L} \end{bmatrix}$$</p>
 <h3>Step 2：組合結構勁度矩陣 $[K]$</h3>
-<p>將各局部矩陣疊加至 $4 \times 4$ 之全域矩陣：<br />
-$$[K] = \frac{EI}{L} \begin{bmatrix}
-\frac{12}{L^2} + \frac{12}{L^2} &amp; -\frac{6}{L} &amp; 0 &amp; -\frac{6}{L} \\
--\frac{6}{L} &amp; 4 + 10 &amp; -10 &amp; 0 \\
-0 &amp; -10 &amp; 10 + 4 &amp; 2 \\
--\frac{6}{L} &amp; 0 &amp; 2 &amp; 4 + 4 + 3
-\end{bmatrix}$$</p>
-<p>整理可得：<br />
-$$[K] = \frac{EI}{L} \begin{bmatrix}
-\frac{24}{L^2} &amp; -\frac{6}{L} &amp; 0 &amp; -\frac{6}{L} \\
--\frac{6}{L} &amp; 14 &amp; -10 &amp; 0 \\
-0 &amp; -10 &amp; 14 &amp; 2 \\
--\frac{6}{L} &amp; 0 &amp; 2 &amp; 11
+<p>$$[K] = \frac{EI}{L^3} \begin{bmatrix}
+12+3 &amp; 6L &amp; 0 &amp; 3L \\
+6L &amp; (4+10)L^2 &amp; -10L^2 &amp; 0 \\
+0 &amp; -10L^2 &amp; (10+4)L^2 &amp; 2L^2 \\
+3L &amp; 0 &amp; 2L^2 &amp; (3+4+3)L^2
+\end{bmatrix}
+= \frac{EI}{L^3} \begin{bmatrix}
+15 &amp; 6L &amp; 0 &amp; 3L \\
+6L &amp; 14L^2 &amp; -10L^2 &amp; 0 \\
+0 &amp; -10L^2 &amp; 14L^2 &amp; 2L^2 \\
+3L &amp; 0 &amp; 2L^2 &amp; 10L^2
 \end{bmatrix}$$</p>
 <h3>Step 3：計算外力向量 $\{P\}$</h3>
-<p>$\{P\}$ 為等效節點載重向量，等於直接作用於節點之載重，減去桿件固端反力 (Fixed End Actions)。</p>
+<p>$\{P\}$ = 直接作用於自由度的外力 − 固端力（固端力指桿件兩端鎖住時，支承作用在桿端的力；逆時針、向右為正）。</p>
 <ol>
-<li><strong>水平自由度 $d_1$ 對應之載重 $P_1$</strong>：</li>
-<li>節點直接外力：$R$ (向右)。</li>
-<li>柱 AB 受點載重 P，A、B 兩端之固端水平剪力皆為 $P/2$ (向左，以抵抗外力)。等效節點載重為反向，即 $+P/2$。</li>
 <li>
-<p>柱 CD 受點載重 Q，等效節點載重為 $+Q/2$。<br />
-   $$P_1 = R + \frac{P}{2} + \frac{Q}{2}$$</p>
+<p><strong>柱 ① AB，中點水平力 P（兩端固定）</strong>：固端水平剪力兩端各 $P/2$（向左）；B 端固端彎矩 $-PL/8$（順時針）。<br />
+   → 等效：$d_1$：$+P/2$；$d_2$：$+PL/8$。</p>
 </li>
 <li>
-<p><strong>旋轉自由度 $d_2$ 對應之載重 $P_2$</strong>：</p>
-</li>
-<li>柱 AB 中央受向右力 P，B 端固端彎矩為順時針 $FEM_{BA} = +PL/8$。</li>
-<li>
-<p>等效節點載重為反號：<br />
-   $$P_2 = -\frac{PL}{8}$$</p>
+<p><strong>柱 ② CD，中點水平力 Q（C 鉸、D 固定）</strong>：D 端（固定端）固端剪力 $11Q/16$（向左）、C 端 $5Q/16$；D 端固端彎矩 $-3QL/16$（順時針）。<br />
+   → 等效：$d_1$：$+11Q/16$；$d_4$：$+3QL/16$。</p>
 </li>
 <li>
-<p><strong>旋轉自由度 $d_3$ 對應之載重 $P_3$</strong>：</p>
-</li>
-<li>梁 BD 受向下均佈載重 w，左端 B 之固端彎矩為逆時針 $FEM_{BD} = -wL^2/12$。</li>
-<li>
-<p>等效節點載重為反號：<br />
-   $$P_3 = \frac{wL^2}{12}$$</p>
+<p><strong>梁 ⑤ DE，均佈 w（D 固定、E 鉸）</strong>：D 端固端彎矩 $+wL^2/8$（逆時針）。<br />
+   → 等效：$d_4$：$-wL^2/8$。</p>
 </li>
 <li>
-<p><strong>旋轉自由度 $d_4$ 對應之載重 $P_4$</strong>：</p>
+<p><strong>梁 ④ BD</strong>：無載重，對 $d_3$ 無貢獻。</p>
 </li>
-<li>柱 CD 頂端之固端彎矩：$FEM_{DC} = +QL/8$ (順時針)。</li>
-<li>梁 BD 右端之固端彎矩：$FEM_{DB} = +wL^2/12$ (順時針)。</li>
-<li>梁 DE 無載重。</li>
-<li>等效節點載重為反號：<br />
-   $$P_4 = -\left(\frac{QL}{8} + \frac{wL^2}{12}\right)$$</li>
+<li><strong>節點直接外力</strong>：E 點水平力 R，作用方向與 $d_1$ 相同 → $+R$。</li>
 </ol>
-<p><strong>答：</strong><br />
-$$[K] = \frac{EI}{L} \begin{bmatrix}
-\frac{24}{L^2} &amp; -\frac{6}{L} &amp; 0 &amp; -\frac{6}{L} \\
--\frac{6}{L} &amp; 14 &amp; -10 &amp; 0 \\
-0 &amp; -10 &amp; 14 &amp; 2 \\
--\frac{6}{L} &amp; 0 &amp; 2 &amp; 11
-\end{bmatrix}, \quad \{P\} = \begin{Bmatrix}
-R + \frac{P+Q}{2} \\
--\frac{PL}{8} \\
-\frac{wL^2}{12} \\
--\frac{QL}{8} - \frac{wL^2}{12}
-\end{Bmatrix}$$</p></main>
+<p>$$P_1 = R + \frac{P}{2} + \frac{11Q}{16},\qquad P_2 = \frac{PL}{8},\qquad P_3 = 0,\qquad P_4 = \frac{3QL}{16} - \frac{wL^2}{8}$$</p>
+<p><img alt="SA-2019-4 元素端點條件與等效節點載重：左為五個元素與修正勁度係數（C 鉸、E 滾），右為 P、Q、w、R 換成 d1–d4 上的等效節點載重" src="../../raw/solutions/SA-2019-4/figs/SA-2019-4-fig-2-elements-loads.svg" /></p>
+<p><em>圖 2　左：五個元素的端點條件與貢獻給 $[K]$ 的係數——C、E 的轉角題目沒有編號，柱 ② 與梁 ⑤ 用一端鉸的修正勁度；右：桿件載重反號後落在 $d_1$–$d_4$ 的等效節點載重。這張圖攔三種錯：把 C 讀成固定端（$K_{11}$、$K_{44}$ 變 24、11）、把 w 放到 BD 梁、對一端鉸的桿件套用兩端固定的固端力。</em></p>
+<h3>Step 4：檢核</h3>
+<ul>
+<li><strong>對角項物理意義</strong>：$K_{11}$ 為兩柱側向勁度和 $12+3 = 15\,EI/L^3$（固定–固定柱與鉸–固定柱，梁層轉角鎖住時）；$K_{44} = 3+4+3 = 10\,EI/L$（CD 修正、BD、DE 修正）。</li>
+<li><strong>對稱性</strong>：$[K]$ 對稱。</li>
+<li><strong>程式驗算</strong>：以平面剛架總位能法、保留 C、E 轉角為自由度組 $6\times6$ 勁度矩陣後靜態凝縮，得到相同的 $[K]$ 與 $\{P\}$。</li>
+</ul>
+<h2>5. 最終答案</h2>
+<p>$$[K] = \frac{EI}{L^3} \begin{bmatrix}
+15 &amp; 6L &amp; 0 &amp; 3L \\
+6L &amp; 14L^2 &amp; -10L^2 &amp; 0 \\
+0 &amp; -10L^2 &amp; 14L^2 &amp; 2L^2 \\
+3L &amp; 0 &amp; 2L^2 &amp; 10L^2
+\end{bmatrix}, \qquad \{P\} = \begin{Bmatrix}
+R + \dfrac{P}{2} + \dfrac{11Q}{16} \\[6pt]
+\dfrac{PL}{8} \\[6pt]
+0 \\[6pt]
+\dfrac{3QL}{16} - \dfrac{wL^2}{8}
+\end{Bmatrix}$$</p>
+<p>（$d_1$ 向右、$d_2$–$d_4$ 逆時針為正。若改以順時針為正，第 1 列／行與轉角的耦合項及 $P_2$–$P_4$ 變號，對角項不變。）</p>
+<ul>
+<li><strong>作答方式補充</strong>：題文要求「先寫出每個元素之勁度矩陣再組合」。② 與 ⑤ 也可寫成含 C、E 轉角的完整元素矩陣，組成 $6\times6$ 後再對 C、E 轉角靜態凝縮，結果相同。</li>
+</ul>
+<p><em>修正日期：2026-11-05（§1 改為指向題目正本並放重繪附圖（figs/SA-2019-4-fig-1-problem.svg）、加常見誤讀；圖由 gen_SA-2019-4.py 產生，可重跑）</em></p>
+<p><em>修正日期：2026-11-05（勘誤：依題目正本判讀 #3 C 為鉸支承、#7 w 作用於 DE、#8 轉角逆時針，重寫 §2–§5。[K]：K₁₁ 24 → 15 EI/L³、K₁₂ −6 → +6 EI/L²、K₁₄ −6 → +3 EI/L²、K₄₄ 11 → 10 EI/L；{P}：P₁ R+(P+Q)/2 → R+P/2+11Q/16、P₂ −PL/8 → +PL/8、P₃ wL²/12 → 0、P₄ −QL/8−wL²/12 → 3QL/16−wL²/8。驗證：平面剛架總位能法（保留 C、E 轉角後凝縮）重算 16 項（[K] 上三角 10＋{P} 4＋修正勁度 2）MISMATCHES: 0（腳本 wiki/queries/勘誤驗算-SA-U2-4-批1/errata_check.py）；來源 wiki/queries/盲解比對-SA-U2-4-批1-2026-11-05.md）</em></p>
+<p><em>圖解補繪：2026-11-05（向量圖，腳本 <code>gen_SA-2019-4_fem.py</code>，由元素係數組裝後 assert 解析 [K]、{P}，可重跑）</em></p></main>
 <footer>來源：raw/solutions/SA-2019-4/SA-2019-4.md（知識庫解題內容唯一正本；本頁僅為渲染顯示）</footer>
 
 <script>
