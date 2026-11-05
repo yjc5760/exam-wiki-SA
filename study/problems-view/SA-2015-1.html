@@ -43,16 +43,180 @@ header .nomat{margin-top:12px;font-size:.8em;opacity:.85}
 <p class="meta2">主分類 <b>SA-U1-2</b> 靜定結構之分析 ｜ 2015 年（民國 104） ｜ 單位力法（虛功原理）</p>
 <div class="hbtns"><a class="b-study" href="../unit-SA-U1-2.html">🧭 U1-2 單元總覽</a><a class="b-lect" href="../lecture-SA-U1-2.html">📚 U1-2 靜定結構之分析 講義</a></div>
 </header>
-<main><h1>考題編號：SA-2015-1</h1>
+<main><details class="problem-src" open><summary><b>📄 題目正本</b>（考卷原文、附圖與判讀清單；不含解法）</summary>
+<h1>SA-2015-1 題目正本</h1>
+<blockquote>
+<p>本檔只記錄考卷上寫了什麼、圖上畫了什麼，不含任何解法。解析見同資料夾 <code>SA-2015-1.md</code>。<br />
+判讀清單經使用者確認前，狀態為「待確認」；確認後本檔原則上不再修改（改動須回考卷原圖並記 log）。</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>項目</th>
+<th>內容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>考卷</td>
+<td><code>raw/exams/SA-2015_結構學.pdf</code>，第 1 頁（正面）上半，第一題（圖一）</td>
+</tr>
+<tr>
+<td>考年</td>
+<td>2015（民國 104 年）專技高考結構工程技師「結構學」</td>
+</tr>
+<tr>
+<td>配分</td>
+<td>25 分</td>
+</tr>
+<tr>
+<td>附圖</td>
+<td><code>SA-2015-1-fig-1.png</code>、<code>SA-2015-1-fig-2.png</code></td>
+</tr>
+<tr>
+<td>判讀狀態</td>
+<td><strong>已確認</strong>（2026-11-05 使用者確認。原轉錄：2026-11-05 轉錄；PyMuPDF 110 dpi 整頁＋350–1000 dpi 局部放大；盲讀於開啟解析前完成）</td>
+</tr>
+</tbody>
+</table>
+<h2>1. 考卷原文（逐字）</h2>
+<p>一、一平面桁架如圖一所示，點 A 為鉸支承，點 C 為滾支承，點 D 承受一往下垂直載重 50 kN。若桿件 BD 較原設計縮短 0.5 cm，點 C 支承下陷 0.4 cm，假設所有桿件彈性模數與斷面積乘積 EA=2 × 10⁵ kN，為使點 D 垂直位移為零，試求點 B 所需施加之水平力量 T。（25 分）</p>
+<h2>2. 考卷給的公式、附表與參數</h2>
+<ul>
+<li>考卷沒有給任何參考公式或附表。</li>
+<li>EA = 2×10⁵ kN（題文）；BD 縮短 0.5 cm；C 下陷 0.4 cm。</li>
+<li>卷首注意事項：㈠可以使用電子計算器。㈡不必抄題，作答時請將試題題號及答案依照順序寫在試卷上，於本試題上作答者，不予計分。</li>
+<li>考試時間：2 小時。</li>
+</ul>
+<h2>3. 附圖</h2>
+<p><img alt="SA-2015-1 考卷附圖原截圖（含滑鼠游標；內容同下圖）" src="../../raw/solutions/SA-2015-1/SA-2015-1-fig-1.png" /><br />
+<em>證據圖 SA-2015-1-fig-1.png</em></p>
+<p><img alt="SA-2015-1 考卷附圖：A(0,0) 鉸支承、C(4,0) 滾支承、D(8,0)、B(4,3)；桿件 AB、BC、BD、AC、CD；B 受水平力 T 向左；D 受 50 kN 向下" src="../../raw/solutions/SA-2015-1/SA-2015-1-fig-2.png" /><br />
+<em>證據圖 SA-2015-1-fig-2.png（2026-11-05 自考卷重新擷取 500 dpi，無游標）</em></p>
+<p>圖面文字照錄：B、T、C、A、D、3m、4m、4m、50kN、圖一</p>
+<h2>4. 判讀清單</h2>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>項目</th>
+<th>判讀</th>
+<th>圖上／題文依據</th>
+<th>把握</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>座標（以 A 為原點）</td>
+<td>A(0,0)、C(4,0)、D(8,0)、B(4,3)</td>
+<td>下方 4m｜4m、右側 3m 尺寸線</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>2</td>
+<td>桿件</td>
+<td>AB、BC、BD、AC、CD（5 桿）</td>
+<td>圖面</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>3</td>
+<td>支承</td>
+<td>A 鉸支承；C 滾支承（三輪）</td>
+<td>題文；圖上符號</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>4</td>
+<td>T</td>
+<td>作用於 B 的水平力，圖上箭頭向左</td>
+<td>箭頭</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>5</td>
+<td>載重</td>
+<td>D 點 50 kN 向下</td>
+<td>題文；箭頭</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>6</td>
+<td>BD 製造誤差</td>
+<td>BD 較原設計縮短 0.5 cm</td>
+<td>題文</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>7</td>
+<td>支承沉陷</td>
+<td>C 點下陷 0.4 cm</td>
+<td>題文</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>8</td>
+<td>剛度</td>
+<td>所有桿件 EA = 2×10⁵ kN</td>
+<td>題文</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>9</td>
+<td>條件與所求</td>
+<td>使 D 點垂直位移為零，求 T</td>
+<td>題文</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>10</td>
+<td>證據圖</td>
+<td>舊 fig-1 滑鼠游標在 T 箭頭上方；新增 fig-2（500 dpi）</td>
+<td>—</td>
+<td>確定</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p><em>轉錄：2026-11-05（SA-U1-2 題目正本推廣・批 1）</em><br />
+<em>確認：2026-11-05 使用者確認</em></p>
+</details>
+<hr>
+<h1>考題編號：SA-2015-1</h1>
 <p><strong>主分類：</strong> <code>SA-U1-2</code> 靜定結構之分析<br />
 <strong>分析法：</strong> 單位力法（虛功原理）<br />
 <strong>標籤：</strong> <code>靜定桁架</code> <code>單位力法</code> <code>製造誤差</code> <code>支承沉陷</code> <code>垂直位移</code></p>
 <hr />
-<h2>1. 原始題目</h2>
-<p>一平面桁架如圖一所示，點 A 為鉸支承，點 C 為滾支承，點 D 承受一往下垂直載重 $50 \text{ kN}$。若桿件 BD 較原設計縮短 $0.5 \text{ cm}$，點 C 支承下陷 $0.4 \text{ cm}$，假設所有桿件彈性模數與斷面積乘積 $EA = 2 \times 10^5 \text{ kN}$，為使點 D 垂直位移為零，試求點 B 所需施加之水平力量 T。（25 分）</p>
-<p><img alt="平面桁架幾何示意圖，A點為左側鉸支承，C點為中間滾支承，B點受向左拉力T，D點受向下50kN載重" src="../../raw/solutions/SA-2015-1/./SA-2015-1-fig-1.png" /></p>
-<p><em>圖說：A為鉸支承，C為滾支承。跨度AC=4m，CD=4m，高度BC=3m。BD桿有-0.5cm製造誤差，C點有-0.4cm支承沉陷。</em></p>
-<hr />
+<h2>1. 題目（考卷原文見題目正本）</h2>
+<blockquote>
+<p>考卷原文、公式／附表、附圖與判讀清單（已確認）見 <a href="SA-2015-1-problem.md"><code>SA-2015-1-problem.md</code></a>。本節只列解題時最容易讀錯的地方與本解使用的記號；題意以題目正本為準。</p>
+</blockquote>
+<p><img alt="SA-2015-1 重繪題目附圖：桁架 A 鉸、C 滾支承，B 高 3 m，D 點 50 kN 向下，B 點水平力 T 向左" src="../../raw/solutions/SA-2015-1/figs/SA-2015-1-fig-1-problem.svg" /><br />
+<em>重繪自考卷附圖，依判讀清單 #1–#10 重繪。攔：T 方向讀反、C 支承讀成鉸。</em></p>
+<h3>常見誤讀</h3>
+<table>
+<thead>
+<tr>
+<th>項目</th>
+<th>正確判讀</th>
+<th>常見誤讀</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>T 方向</td>
+<td>圖上箭頭向左</td>
+<td>向右</td>
+</tr>
+<tr>
+<td>C 支承</td>
+<td>滾支承（下陷 0.4 cm）</td>
+<td>鉸支承</td>
+</tr>
+</tbody>
+</table>
+<p><strong>本解記號：</strong> 記號與正負號約定沿用 §4。</p>
 <h2>2. 核心考點</h2>
 <p>本題為靜定桁架的綜合位移求解問題。要求 D 點垂直位移為零，必須綜合考慮<strong>外力載重</strong>、<strong>製造誤差</strong>以及<strong>支承沉陷</strong>三者對 D 點位移的疊加影響。</p>
 <hr />
@@ -266,7 +430,8 @@ $$ T = \frac{7900}{3} \times \frac{12}{179} = \frac{31600}{179} \approx 176.54 \
 <p>為使 D 點之垂直位移為零，B 點所需施加之向左水平力量為：<br />
 <strong>$T = \frac{31600}{179} \text{ kN} \approx 176.54 \text{ kN}$</strong></p>
 <hr />
-<p><em>圖解補繪：2026-08-27（向量圖，腳本 <code>gen_SA-2015-1.py</code>，可重跑）</em></p></main>
+<p><em>圖解補繪：2026-08-27（向量圖，腳本 <code>gen_SA-2015-1.py</code>，可重跑）</em></p>
+<p><em>修正日期：2026-11-05（§1 改為指向題目正本並放重繪附圖（figs/SA-2015-1-fig-1-problem.svg）、加常見誤讀；圖由 gen_SA-2015-1_problem.py 產生，可重跑）</em></p></main>
 <footer>來源：raw/solutions/SA-2015-1/SA-2015-1.md（知識庫解題內容唯一正本；本頁僅為渲染顯示）</footer>
 
 <script>

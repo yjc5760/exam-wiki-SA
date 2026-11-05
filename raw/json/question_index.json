@@ -710,12 +710,13 @@
       "year": 2016,
       "rocYear": 105,
       "questionNumber": 1,
-      "primaryTopicId": "SA-U1-2",
-      "primaryTopicName": "靜定結構之分析",
+      "primaryTopicId": "SA-U2-2",
+      "primaryTopicName": "靜不定結構諧合變位",
       "secondaryTopicIds": [
         "SA-U1-1"
       ],
       "verificationStatus": "unverified",
+      "problemStatus": "confirmed",
       "hasSolution": true,
       "hasHandwritten": false,
       "tags": [
@@ -723,7 +724,10 @@
         "內鉸",
         "靜力平衡",
         "BMD",
-        "水平載重"
+        "水平載重",
+        "靜不定剛架",
+        "二力構件",
+        "諧合變位法"
       ]
     },
     {
@@ -794,6 +798,7 @@
       "primaryTopicName": "靜定結構之分析",
       "secondaryTopicIds": [],
       "verificationStatus": "unverified",
+      "problemStatus": "confirmed",
       "hasSolution": true,
       "hasHandwritten": false,
       "tags": [
@@ -874,6 +879,7 @@
         "SA-U1-3"
       ],
       "verificationStatus": "unverified",
+      "problemStatus": "confirmed",
       "hasSolution": true,
       "hasHandwritten": false,
       "tags": [
@@ -947,10 +953,9 @@
       "questionNumber": 1,
       "primaryTopicId": "SA-U1-2",
       "primaryTopicName": "靜定結構之分析",
-      "secondaryTopicIds": [
-        "SA-U2-1"
-      ],
+      "secondaryTopicIds": [],
       "verificationStatus": "unverified",
+      "problemStatus": "confirmed",
       "hasSolution": true,
       "hasHandwritten": false,
       "tags": [
@@ -1028,6 +1033,7 @@
       "analysisMethod": "待分類",
       "hasSolution": true,
       "verificationStatus": "unverified",
+      "problemStatus": "confirmed",
       "tags": [
         "零力桿件",
         "節點法",
@@ -1482,6 +1488,7 @@
       "primaryTopicName": "靜定結構之分析",
       "secondaryTopicIds": [],
       "verificationStatus": "unverified",
+      "problemStatus": "confirmed",
       "hasSolution": true,
       "hasHandwritten": false,
       "tags": [
@@ -1518,6 +1525,7 @@
       "primaryTopicName": "靜定結構之分析",
       "secondaryTopicIds": [],
       "verificationStatus": "unverified",
+      "problemStatus": "confirmed",
       "hasSolution": true,
       "hasHandwritten": false,
       "tags": [
@@ -1572,6 +1580,7 @@
       "primaryTopicName": "靜定結構之分析",
       "secondaryTopicIds": [],
       "verificationStatus": "unverified",
+      "problemStatus": "confirmed",
       "hasSolution": true,
       "hasHandwritten": false,
       "tags": [
@@ -1591,6 +1600,7 @@
       "primaryTopicName": "靜定結構之分析",
       "secondaryTopicIds": [],
       "verificationStatus": "unverified",
+      "problemStatus": "confirmed",
       "hasSolution": true,
       "hasHandwritten": false,
       "tags": [
@@ -1630,6 +1640,7 @@
       "primaryTopicName": "靜定結構之分析",
       "secondaryTopicIds": [],
       "verificationStatus": "unverified",
+      "problemStatus": "confirmed",
       "hasSolution": true,
       "hasHandwritten": false,
       "tags": [
@@ -1648,13 +1659,15 @@
       "primaryTopicName": "靜定結構之分析",
       "secondaryTopicIds": [],
       "verificationStatus": "unverified",
+      "problemStatus": "confirmed",
       "hasSolution": true,
       "hasHandwritten": false,
       "tags": [
         "桁架分析",
         "截面法",
         "節點法",
-        "繫索桁架"
+        "繫索桁架",
+        "三鉸桁架"
       ]
     },
     {
@@ -1707,6 +1720,7 @@
       ],
       "hasSolution": true,
       "verificationStatus": "unverified",
+      "problemStatus": "confirmed",
       "difficulty": 3,
       "rocYear": 102,
       "primaryTopicId": "SA-U1-2",

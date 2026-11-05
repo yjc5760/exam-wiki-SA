@@ -43,21 +43,174 @@ header .nomat{margin-top:12px;font-size:.8em;opacity:.85}
 <p class="meta2">主分類 <b>SA-U1-2</b> 靜定結構之分析 ｜ 2003 年（民國 92） ｜ 靜定分析 / 幾何變形法 / 單位力法 (虛功原理)</p>
 <div class="hbtns"><a class="b-study" href="../unit-SA-U1-2.html">🧭 U1-2 單元總覽</a><a class="b-lect" href="../lecture-SA-U1-2.html">📚 U1-2 靜定結構之分析 講義</a></div>
 </header>
-<main><h1>考題編號：[SA-2003-2]</h1>
+<main><details class="problem-src" open><summary><b>📄 題目正本</b>（考卷原文、附圖與判讀清單；不含解法）</summary>
+<h1>SA-2003-2 題目正本</h1>
+<blockquote>
+<p>本檔只記錄考卷上寫了什麼、圖上畫了什麼，不含任何解法。解析見同資料夾 <code>SA-2003-2.md</code>。<br />
+判讀清單經使用者確認前，狀態為「待確認」；確認後本檔原則上不再修改（改動須回考卷原圖並記 log）。</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>項目</th>
+<th>內容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>考卷</td>
+<td><code>raw/exams/SA-2003_結構學.pdf</code>，第 1 頁（全一頁），第二題</td>
+</tr>
+<tr>
+<td>考年</td>
+<td>2003（民國九十二年）專技高考結構工程技師「結構學」</td>
+</tr>
+<tr>
+<td>配分</td>
+<td>25 分</td>
+</tr>
+<tr>
+<td>附圖</td>
+<td><code>SA-2003-2-fig-1.png</code></td>
+</tr>
+<tr>
+<td>判讀狀態</td>
+<td><strong>已確認</strong>（2026-11-05 使用者確認。原轉錄：2026-11-05 轉錄；PyMuPDF 110 dpi 整頁＋350–1000 dpi 局部放大；盲讀於開啟解析前完成）</td>
+</tr>
+</tbody>
+</table>
+<h2>1. 考卷原文（逐字）</h2>
+<p>二、圖示結構係由三根斷面性質相同(EA)之均質連桿(AD、AE 及 BE)以及一根剛梁(EI→∞)所組成之複合結構。若忽略剛梁自重之影響，試求：（25 分）</p>
+<p>㈠各連桿之內力</p>
+<p>㈡C 點之位移</p>
+<h2>2. 考卷給的公式、附表與參數</h2>
+<ul>
+<li>考卷沒有給任何參考公式或附表。</li>
+<li>F、EA、λ 皆為符號，考卷沒有給數值。</li>
+<li>卷首注意事項：㈠不必抄題，作答時請將試題題號及答案依照順序寫在試卷上，於本試題上作答者，不予計分。㈡可以使用電子計算器，但需詳列解答過程。</li>
+<li>考試時間：二小時。</li>
+</ul>
+<h2>3. 附圖</h2>
+<p><img alt="SA-2003-2 考卷附圖：剛梁 A–B–C 水平，A 至 B 4λ、B 至 C 4λ；連桿 AD 垂直 3λ、AE 斜桿、BE 垂直 3λ；D、E 為鉸支承；C 端受向下力 F" src="../../raw/solutions/SA-2003-2/SA-2003-2-fig-1.png" /><br />
+<em>證據圖 SA-2003-2-fig-1.png</em></p>
+<p>圖面文字照錄：A、F、B、C、3λ、D、E、4λ、4λ</p>
+<h2>4. 判讀清單</h2>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>項目</th>
+<th>判讀</th>
+<th>圖上／題文依據</th>
+<th>把握</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>剛梁</td>
+<td>A–B–C，EI→∞，水平</td>
+<td>題文；圖上雙線梁</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>2</td>
+<td>幾何</td>
+<td>A 至 B 4λ、B 至 C 4λ；D 在 A 正下方 3λ、E 在 B 正下方 3λ</td>
+<td>下方尺寸線 4λ｜4λ（刻度對齊 A/D 與 B/E 豎線）；左側 3λ</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>3</td>
+<td>連桿</td>
+<td>AD（3λ 垂直）、AE（斜，長 5λ）、BE（3λ 垂直），EA 相同</td>
+<td>題文；圖上三根雙線桿</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>4</td>
+<td>A 點</td>
+<td>剛梁與 AD、AE 於 A 鉸接</td>
+<td>圖上 A 空心圓</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>5</td>
+<td>B 點</td>
+<td>剛梁與 BE 於 B 鉸接</td>
+<td>圖上 B 下方小圓</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>6</td>
+<td>支承 D、E</td>
+<td>鉸支承（三角形＋剖線）</td>
+<td>圖上符號</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>7</td>
+<td>載重</td>
+<td>C 端集中力 F，向下</td>
+<td>箭頭與「F」字；F 是力的大小，不是節點</td>
+<td>確定（解讀）；使用者確認</td>
+</tr>
+<tr>
+<td>8</td>
+<td>自重</td>
+<td>忽略剛梁自重</td>
+<td>題文</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>9</td>
+<td>所求</td>
+<td>㈠三根連桿內力；㈡C 點位移</td>
+<td>題文</td>
+<td>確定</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p><em>轉錄：2026-11-05（SA-U1-2 題目正本推廣・批 1）</em><br />
+<em>確認：2026-11-05 使用者確認</em></p>
+</details>
+<hr>
+<h1>考題編號：[SA-2003-2]</h1>
 <p><strong>主分類：</strong> <code>SA-U1-2</code> 靜定結構分析<br />
-<strong>副分類：</strong> <code>複合結構</code><br />
+<strong>副分類：</strong> 無<br />
 <strong>分析法：</strong> 靜定分析 / 幾何變形法 / 單位力法 (虛功原理)<br />
 <strong>標籤：</strong> <code>靜定結構</code> <code>複合結構</code> <code>剛性梁</code> <code>位移計算</code> <code>單位力法</code></p>
 <hr />
-<h2>1. 原始題目重述 (Problem Restatement)</h2>
-<p><strong>題目描述：</strong><br />
-圖示結構係由三根斷面性質相同 ($EA$) 之均質連桿 (AD、AE 及 BE) 以及一根剛梁 ($EI \to \infty$) 所組成之複合結構。若忽略剛梁自重之影響，試求：（25 分）</p>
-<ol>
-<li>各連桿之內力</li>
-<li>C 點之位移</li>
-</ol>
-<p><img alt="SA-2003-2 題目附圖：剛性梁與三根連桿複合結構" src="../../raw/solutions/SA-2003-2/SA-2003-2-fig-1.png" /></p>
-<p><em>圖說：ABC 為水平剛性梁。支承 D、E 為鉸支承，位於剛梁下方 $3\lambda$ 處，水平相距 $4\lambda$。AD、BE 為垂直連桿(長度 $3\lambda$)，AE 為斜桿(水平 $4\lambda$、垂直 $3\lambda$)。剛梁最右側 C 點受垂直向下集中載重 $F$。</em></p>
+<h2>1. 題目（考卷原文見題目正本）</h2>
+<blockquote>
+<p>考卷原文、公式／附表、附圖與判讀清單（已確認）見 <a href="SA-2003-2-problem.md"><code>SA-2003-2-problem.md</code></a>。本節只列解題時最容易讀錯的地方與本解使用的記號；題意以題目正本為準。</p>
+</blockquote>
+<p><img alt="SA-2003-2 重繪題目附圖：剛梁 A–B–C 以連桿 AD、AE、BE 支撐，D、E 鉸支承，C 端受 F 向下" src="../../raw/solutions/SA-2003-2/figs/SA-2003-2-fig-1-problem.svg" /><br />
+<em>重繪自考卷附圖，依判讀清單 #1–#9 重繪。攔：AE 斜桿接錯節點、F 讀成節點名稱。</em></p>
+<h3>常見誤讀</h3>
+<table>
+<thead>
+<tr>
+<th>項目</th>
+<th>正確判讀</th>
+<th>常見誤讀</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>F</td>
+<td>C 端向下的力（大小 F）</td>
+<td>節點名稱</td>
+</tr>
+<tr>
+<td>AE</td>
+<td>A 至 E 的斜桿，長 5λ</td>
+<td>接到 B 或 D</td>
+</tr>
+</tbody>
+</table>
+<p><strong>本解記號：</strong> 記號與正負號約定沿用 §4。</p>
 <h2>2. 考題核心精神與出題者意圖 (Core Concepts &amp; Examiner's Intent)</h2>
 <ul>
 <li><strong>剛體與可變形連桿的複合結構分析</strong>：本題看似複雜，但剛性梁僅由三根連桿支撐，剛性梁於平面內有三個自由度（水平、垂直、旋轉），三根連桿恰好提供三個未知內力，因此為<strong>靜定結構</strong>。</li>
@@ -224,7 +377,9 @@ $$ \boxed{ \text{C 點垂直位移} = \frac{15F\lambda}{EA} \, (\downarrow) } $$
      虛功方程式：$1 \cdot u_{C(\rightarrow)} = \sum \delta N_i \cdot \Delta L_i$<br />
      $$ u_{C(\rightarrow)} = \left(\frac{3}{4}\right)\left(\frac{3F\lambda}{EA}\right) + \left(-\frac{5}{4}\right)(0) + (0)\left(-\frac{6F\lambda}{EA}\right) = \frac{9F\lambda}{4EA} $$<br />
      再次與幾何法推導結果完美吻合。這證明了本題答案的絕對正確性。</li>
-</ul></main>
+</ul>
+<p><em>修正日期：2026-11-05（§1 改為指向題目正本並放重繪附圖（figs/SA-2003-2-fig-1-problem.svg）、加常見誤讀；圖由 gen_SA-2003-2.py 產生，可重跑）</em><br />
+<em>修正日期：2026-11-05（分類更正（非勘誤）：標頭副分類「複合結構」不是大綱代碼，改為無（索引原即無副分類））</em></p></main>
 <footer>來源：raw/solutions/SA-2003-2/SA-2003-2.md（知識庫解題內容唯一正本；本頁僅為渲染顯示）</footer>
 
 <script>

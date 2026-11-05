@@ -43,16 +43,157 @@ header .nomat{margin-top:12px;font-size:.8em;opacity:.85}
 <p class="meta2">主分類 <b>SA-U1-2</b> 靜定結構之分析 ｜ 2013 年（民國 102） ｜ 三鉸拱原理 / 節點法 / 截面法</p>
 <div class="hbtns"><a class="b-study" href="../unit-SA-U1-2.html">🧭 U1-2 單元總覽</a><a class="b-lect" href="../lecture-SA-U1-2.html">📚 U1-2 靜定結構之分析 講義</a></div>
 </header>
-<main><h1>考題編號：SA-2013-1</h1>
+<main><details class="problem-src" open><summary><b>📄 題目正本</b>（考卷原文、附圖與判讀清單；不含解法）</summary>
+<h1>SA-2013-1 題目正本</h1>
+<blockquote>
+<p>本檔只記錄考卷上寫了什麼、圖上畫了什麼，不含任何解法。解析見同資料夾 <code>SA-2013-1.md</code>。<br />
+判讀清單經使用者確認前，狀態為「待確認」；確認後本檔原則上不再修改（改動須回考卷原圖並記 log）。</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>項目</th>
+<th>內容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>考卷</td>
+<td><code>raw/exams/SA-2013_結構學.pdf</code>，第 1 頁（正面）上半，第一題（圖一）</td>
+</tr>
+<tr>
+<td>考年</td>
+<td>2013（民國 102 年）專技高考結構工程技師「結構學」</td>
+</tr>
+<tr>
+<td>配分</td>
+<td>25 分</td>
+</tr>
+<tr>
+<td>附圖</td>
+<td><code>SA-2013-1-fig-1.png</code></td>
+</tr>
+<tr>
+<td>判讀狀態</td>
+<td><strong>已確認</strong>（2026-11-05 使用者確認。原轉錄：2026-11-05 轉錄；PyMuPDF 110 dpi 整頁＋350–1000 dpi 局部放大；盲讀於開啟解析前完成）</td>
+</tr>
+</tbody>
+</table>
+<h2>1. 考卷原文（逐字）</h2>
+<p>一、分析圖一桁架結構桿件 ke, kd, kc, kb, kl 之內力。請註明拉力或壓力。（25 分）</p>
+<h2>2. 考卷給的公式、附表與參數</h2>
+<ul>
+<li>考卷沒有給任何參考公式或附表。</li>
+<li>卷首注意事項：㈠可以使用電子計算器。㈡不必抄題，作答時請將試題題號及答案依照順序寫在試卷上，於本試題上作答者，不予計分。</li>
+<li>考試時間：2 小時。</li>
+</ul>
+<h2>3. 附圖</h2>
+<p><img alt="SA-2013-1 考卷附圖：門型桁架：左柱 a–b–c（a 鉸支承），l 在 a、k 之間；上弦 c–d–e–f–g 高 30 m；右側 g–h–i，i 鉸支承高 10 m；上弦五節點分受 5、10、10、10、5 kN 向下" src="../../raw/solutions/SA-2013-1/SA-2013-1-fig-1.png" /><br />
+<em>證據圖 SA-2013-1-fig-1.png</em></p>
+<p>圖面文字照錄：5 kN、10 kN、10 kN、10 kN、5 kN、c、d、e、f、g、b、k、j、h、l、i、a、10 m、10 m、10 m、5 m、5 m、10 m、10 m、10 m、圖一</p>
+<h2>4. 判讀清單</h2>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>項目</th>
+<th>判讀</th>
+<th>圖上／題文依據</th>
+<th>把握</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>座標（以 a 為原點）</td>
+<td>a(0,0)、l(5,10)、b(0,20)、k(10,20)、c(0,30)、d(10,30)、e(20,30)、f(30,30)、j(30,20)、g(40,30)、h(40,20)、i(40,10)</td>
+<td>PDF 向量座標：10 m＝34.8 pt；下方 5｜5｜10｜10｜10 m、左側 10｜10｜10 m</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>2</td>
+<td>桿件</td>
+<td>上弦 cd、de、ef、fg；左豎桿 c–b、b–a；ck、dk、bk、ke、bl、lk、al；ej、fj、jg、jh、gh、hi、ji；共 20 桿</td>
+<td>PDF 向量線段</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>3</td>
+<td>a–b</td>
+<td>一根連續豎桿，中段（l 的高度）沒有節點</td>
+<td>向量檔分成兩段共線線段，交接處無節點圓點</td>
+<td>確定（解讀）；使用者確認</td>
+</tr>
+<tr>
+<td>4</td>
+<td>支承</td>
+<td>a、i 皆為鉸支承（三角形）；i 比 a 高 10 m</td>
+<td>圖上符號；左側尺寸</td>
+<td>確定（解讀）；使用者確認</td>
+</tr>
+<tr>
+<td>5</td>
+<td>靜定性</td>
+<td>j = 12、m = 20、r = 4</td>
+<td>計數</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>6</td>
+<td>載重</td>
+<td>c 5 kN、d 10 kN、e 10 kN、f 10 kN、g 5 kN，皆向下</td>
+<td>箭頭</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>7</td>
+<td>所求</td>
+<td>ke、kd、kc、kb、kl 內力並註明拉壓</td>
+<td>題文</td>
+<td>確定</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p><em>轉錄：2026-11-05（SA-U1-2 題目正本推廣・批 1）</em><br />
+<em>確認：2026-11-05 使用者確認</em></p>
+</details>
+<hr>
+<h1>考題編號：SA-2013-1</h1>
 <p><strong>主分類：</strong> <code>SA-U1-2</code> 靜定結構之分析<br />
 <strong>副分類：</strong> 無<br />
 <strong>分析法：</strong> 三鉸拱原理 / 節點法 / 截面法<br />
 <strong>標籤：</strong> <code>桁架</code> <code>三鉸拱</code> <code>靜定</code> <code>零力桿</code> <code>隱藏條件</code></p>
 <hr />
-<h2>1. 原始題目重述 (Problem Restatement)</h2>
-<p>分析圖一桁架結構桿件 ke, kd, kc, kb, kl 之內力。請註明拉力或壓力。（25 分）</p>
-<p><img alt="SA-2013-1 題目附圖：複雜桁架與三鉸拱" src="../../raw/solutions/SA-2013-1/SA-2013-1-fig-1.png" /></p>
-<p><em>圖說：本結構由多根桿件組成，左右兩側不完全對稱（左側支承 a 在底端，右側支承 i 較高），頂部承受 5 個垂直向下之集中載重。待求內力之桿件皆連接於節點 k。</em></p>
+<h2>1. 題目（考卷原文見題目正本）</h2>
+<blockquote>
+<p>考卷原文、公式／附表、附圖與判讀清單（已確認）見 <a href="SA-2013-1-problem.md"><code>SA-2013-1-problem.md</code></a>。本節只列解題時最容易讀錯的地方與本解使用的記號；題意以題目正本為準。</p>
+</blockquote>
+<p><img alt="SA-2013-1 重繪題目附圖：門型桁架，a、i 鉸支承（i 高 10 m），上弦 c–g 受 5、10、10、10、5 kN" src="../../raw/solutions/SA-2013-1/figs/SA-2013-1-fig-1-problem.svg" /><br />
+<em>重繪自考卷附圖，依判讀清單 #1–#7 重繪。攔：i 讀成滾支承、a–b 中段多一個節點。</em></p>
+<h3>常見誤讀</h3>
+<table>
+<thead>
+<tr>
+<th>項目</th>
+<th>正確判讀</th>
+<th>常見誤讀</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>i 支承</td>
+<td>鉸支承，比 a 高 10 m</td>
+<td>滾支承</td>
+</tr>
+<tr>
+<td>a–b</td>
+<td>一根連續豎桿，l 的高度處沒有節點</td>
+<td>中段有節點</td>
+</tr>
+</tbody>
+</table>
+<p><strong>本解記號：</strong> 記號與正負號約定沿用 §4。</p>
 <h2>2. 考題核心精神與出題者意圖 (Core Concepts &amp; Examiner's Intent)</h2>
 <p>本題是一道極具巧思的<strong>陷阱題與觀念題</strong>，主要測驗考生：</p>
 <ol>
@@ -238,7 +379,8 @@ $= (-8\sqrt{5})(\frac{-2}{\sqrt{5}}) + (\sqrt{2})(\frac{1}{\sqrt{2}}) - 10 + (-7
 <ul>
 <li><strong>若忽略了三鉸拱特性會發生什麼事？</strong> 若考生沒有察覺底弦桿的缺失，習慣性假設右支承為滾支承 ($Ix=0$) 並認定 $Ax=0$，在推導到節點 k 時，會發現 $\sum F_x = 0$ 算出 $F_{ke} = 15\sqrt{2}$，但 $\sum F_y = 0$ 卻算出 $F_{ke} = -5\sqrt{2}$，產生無法化解的力學矛盾。這是本題防範無腦套用公式的最佳防護網。</li>
 <li><strong>解題路徑優化</strong>：本題指定求解的 5 根桿件全部圍繞著節點 k。先利用截面法求出外圍的 $F_{ke}$，再用邊界條件找出零力桿 $F_{kb}$，最後層層向內推進是最高效的解法。不需將右半部的每一根桿件都解出來，即可獲得滿分。</li>
-</ul></main>
+</ul>
+<p><em>修正日期：2026-11-05（§1 改為指向題目正本並放重繪附圖（figs/SA-2013-1-fig-1-problem.svg）、加常見誤讀；圖由 gen_SA-2013-1.py 產生，可重跑）</em></p></main>
 <footer>來源：raw/solutions/SA-2013-1/SA-2013-1.md（知識庫解題內容唯一正本；本頁僅為渲染顯示）</footer>
 
 <script>

@@ -229,7 +229,7 @@ def fig_1_1():
         (690, '#f3e5f5', '#ce93d8', MOM, '特例　瞬間不穩定', 'r = 3，d = 0 但反力平行'),
     ]
     texts = [
-        ['約束不足', '→ 先懷疑漏看構件', '（繫索？支承方向？）'],
+        ['約束不足', '→ 先懷疑漏看構件', '（支承符號？支承方向？）'],
         ['內力唯一，與 EI 無關', '沉陷、溫差不生內力', '← 本單元的主場'],
         ['內力受 EI 分配', '沉陷、溫差會生內力', '→ 轉往 SA-U2'],
         ['三個反力全是垂直的', '水平力 H 無從平衡', '→ 公式管不到，要用眼睛'],
@@ -274,20 +274,18 @@ def fig_1_2():
     P = dict(A=(0, 0), B=(32, 0), D=(0, 12), F=(8, 12), C=(16, 12), H=(24, 12), I=(32, 12),
              E=(8, 6), G=(24, 6))
     mem = ['DF', 'FC', 'CH', 'HI', 'AD', 'BI', 'FE', 'HG', 'DE', 'AE', 'EC', 'CG', 'GB', 'GI']
-    S.text(140, 24, '① 虛線 = 繫索（SA-2002-2）', 14, REAC, bold=True)
+    S.text(140, 24, '① 兩支承同符號＝皆鉸（SA-2002-2）', 14, REAC, bold=True)
     for m in mem:
         S.line(*W(*P[m[0]]), *W(*P[m[1]]), INK, 2.2)
-    S.line(*W(*P['A']), *W(*P['B']), REAC, 3, dash='8 5')
+    S.line(*W(*P['A']), *W(*P['B']), GHOST, 1.6, dash='8 5')
     for k, v in P.items():
         S.node(*W(*v), 2.8)
-    S.pin(*W(0, 0), s=0.8); S.roller(*W(32, 0), s=0.8)
-    S.halo(W.X(16), W.Y(0) + 15, 'AB 繫索（只能受拉）', 11.5, REAC)
-    for k in 'ABCD':
-        pass
+    S.pin(*W(0, 0), s=0.8); S.pin(*W(32, 0), s=0.8)
+    S.halo(W.X(16), W.Y(0) + 15, '虛線只是輔助線，不是桿件', 11.5, MUT)
     S.text(W.X(0) - 9, W.Y(0) + 4, 'A', 11, INK, 'end'); S.text(W.X(32) + 9, W.Y(0) + 4, 'B', 11, INK, 'start')
-    S.text(140, 214, '少了它：m + r = 14 + 3 = 17 < 2j = 18', 12, INK)
-    S.text(140, 233, '節點 A 有 Ax、Ay、AD、AE、AB 五個未知', 12, INK)
-    S.text(140, 252, '→ 必須先用截面法取出 AB 拉力', 12, INK)
+    S.text(140, 214, 'A、B 皆鉸：m + r = 14 + 4 = 18 = 2j', 12, INK)
+    S.text(140, 233, '兩半只在 C 相連 → 三鉸型，先對 C 取矩求 A_x', 12, INK)
+    S.text(140, 252, '誤讀 B 滾＋繫索：桿力碰巧相同，反力全錯', 12, LOAD)
 
     # ② three-hinged arch made of two truss halves
     S.text(445, 24, '② 缺底弦 = 三鉸拱（SA-2013-1 型）', 14, REAC, bold=True)
@@ -673,8 +671,8 @@ def fig_3_2():
 # ---------------------------------------------------------------- 3-3 SA-2002-2 cut for the tie force
 def fig_3_3():
     import math
-    S = SVG(900, 380, 'SA-2002-2 截面法求繫索拉力')
-    S.text(450, 22, 'SA-2002-2（依比例）：切 FC、EC、AB，取左半對 C 取矩', 14.5, '#0d47a1', bold=True)
+    S = SVG(900, 380, 'SA-2002-2 截面法求水平反力')
+    S.text(450, 22, 'SA-2002-2（依比例）：切 FC、EC，取左半對 C 取矩', 14.5, '#0d47a1', bold=True)
     W = World(115, 270, 12.5)
     P = dict(A=(0, 0), B=(32, 0), D=(0, 12), F=(8, 12), C=(16, 12), H=(24, 12), I=(32, 12),
              E=(8, 6), G=(24, 6))
@@ -701,7 +699,6 @@ def fig_3_3():
         S.halo(q[0] + (4 if dy > 0 else -2), q[1] + dy, lab_, 12, col, 'start' if dy > 0 else 'end', bold=True)
     stub('F', 'C', GOOD, 'F_FC', -10)
     stub('E', 'C', GOOD, 'F_EC', 14)
-    stub('A', 'B', REAC, 'F_AB（繫索）', 16)
     S.line(W.X(xc), W.Y(12) - 26, W.X(xc), W.Y(0) + 26, LOAD, 2, dash='9 5')
     for k, v in P.items():
         S.node(*W(*v), 3.4, INK if v[0] <= 8 else GHOST)
@@ -721,11 +718,11 @@ def fig_3_3():
     # reactions
     x, y = W(0, 0)
     S.pin(x, y, s=0.85)
-    S.arrow(x - 4, y + 4, x - 48, y + 4, REAC, 2.4); S.text(x - 50, y + 1, 'A_x = 16', 11.5, REAC, 'end', bold=True)
+    S.arrow(x - 48, y + 4, x - 6, y + 4, REAC, 2.4); S.text(x - 50, y + 1, 'A_x = 56/3', 11.5, REAC, 'end', bold=True)
     S.arrow(x + 20, y + 44, x + 20, y + 10, REAC, 2.4); S.text(x + 26, y + 40, 'A_y = 44', 11.5, REAC, 'start', bold=True)
     xb, yb = W(32, 0)
-    S.roller(xb, yb, s=0.85, c=GHOST)
-    S.text(xb - 14, yb + 32, 'B_y = 56', 11, MUT, 'end')
+    S.pin(xb, yb, s=0.85, c=GHOST)
+    S.text(xb - 14, yb + 32, 'B_x = 104/3 ←，B_y = 56', 11, MUT, 'end')
     # moment centre and arm
     c = W(16, 12)
     S.circ(*c, 8, MOM, '#fff', 2)
@@ -734,8 +731,8 @@ def fig_3_3():
     S.dim(W.X(16) + 14, W.Y(12), W.X(16) + 14, W.Y(0), '12 m', off=0)
     # result panel
     S.rect(560, 300, 330, 72, '#f3e5f5', '#ce93d8', 1, rx=8)
-    S.text(575, 322, 'ΣM_C = −44(16) −16(12) +20(16) +20(8) +12F_AB = 0', 11.5, MOM, 'start')
-    S.text(575, 342, '⟹ F_AB = 104/3 ≈ 34.7 T（拉）✓ 繫索必為拉', 12, MOM, 'start', bold=True)
+    S.text(575, 322, 'ΣM_C = −44(16) +12A_x +20(16) +20(8) = 0', 11.5, MOM, 'start')
+    S.text(575, 342, '⟹ A_x = 56/3 ≈ 18.7 T（→），B_x = 104/3 T（←）', 12, MOM, 'start', bold=True)
     S.text(575, 362, 'a = 88/3 壓　b = 50/3 拉　c = 70/3 壓　d = 40/3 壓　e = 80/3 壓', 11, INK, 'start')
     return S.render()
 

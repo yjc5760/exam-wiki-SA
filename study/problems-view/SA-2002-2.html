@@ -43,32 +43,221 @@ header .nomat{margin-top:12px;font-size:.8em;opacity:.85}
 <p class="meta2">主分類 <b>SA-U1-2</b> 靜定結構之分析 ｜ 2002 年（民國 91） ｜ 靜定分析 (截面法與節點法)</p>
 <div class="hbtns"><a class="b-study" href="../unit-SA-U1-2.html">🧭 U1-2 單元總覽</a><a class="b-lect" href="../lecture-SA-U1-2.html">📚 U1-2 靜定結構之分析 講義</a></div>
 </header>
-<main><h1>考題編號：SA-2002-2</h1>
+<main><details class="problem-src" open><summary><b>📄 題目正本</b>（考卷原文、附圖與判讀清單；不含解法）</summary>
+<h1>SA-2002-2 題目正本</h1>
+<blockquote>
+<p>本檔只記錄考卷上寫了什麼、圖上畫了什麼，不含任何解法。解析見同資料夾 <code>SA-2002-2.md</code>。<br />
+判讀清單經使用者確認前，狀態為「待確認」；確認後本檔原則上不再修改（改動須回考卷原圖並記 log）。</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>項目</th>
+<th>內容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>考卷</td>
+<td><code>raw/exams/SA-2002_結構學.pdf</code>，第 1 頁（全一頁），第二題</td>
+</tr>
+<tr>
+<td>考年</td>
+<td>2002（民國九十一年）專技高考結構工程技師「結構學」</td>
+</tr>
+<tr>
+<td>配分</td>
+<td>25 分（每小題 5 分）</td>
+</tr>
+<tr>
+<td>附圖</td>
+<td><code>SA-2002-2-fig-1.png</code></td>
+</tr>
+<tr>
+<td>判讀狀態</td>
+<td><strong>已確認</strong>（2026-11-05 使用者確認；影響答案項目定案：#3 B 為鉸支承、#5 A–B 虛線不是桿件（使用者確認）。原轉錄：2026-11-05 轉錄；PyMuPDF 110 dpi 整頁＋350–1000 dpi 局部放大；盲讀於開啟解析前完成）</td>
+</tr>
+</tbody>
+</table>
+<h2>1. 考卷原文（逐字）</h2>
+<p>二、如圖所示之桁架，在圖示之荷重作用時，試求桿件 a、b、c、d、e 之軸力（標明拉力或壓力）。（每小題 5 分，共 25 分）</p>
+<h2>2. 考卷給的公式、附表與參數</h2>
+<ul>
+<li>考卷沒有給任何參考公式或附表。</li>
+<li>力的單位為 T（噸）；考卷沒有給 EA（靜定桁架不需要）。</li>
+<li>卷首注意事項：㈠可以使用電子計算器，使用電子計算器計算之試題，需詳列解答過程。㈡不必抄題，作答時請將試題題號及答案依照順序寫在試卷上，於本試題上作答者，不予計分。</li>
+<li>考試時間：二小時。</li>
+</ul>
+<h2>3. 附圖</h2>
+<p><img alt="SA-2002-2 考卷附圖：上弦 D–F–C–H–I 五節點，高 12 m；E、G 在高 6 m；A、B 為底部鉸支承；載重：D、F、C、H、I 各 20T 向下，D 另受 16T 水平向右；A–B 間畫虛線" src="../../raw/solutions/SA-2002-2/SA-2002-2-fig-1.png" /><br />
+<em>證據圖 SA-2002-2-fig-1.png</em></p>
+<p>圖面文字照錄：20T（×5）、16T、a、F、d、H、I、D、b、5、3、4、C、e、6m、6m、c、E、G、A、B、8m、8m、8m、8m</p>
+<h2>4. 判讀清單</h2>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>項目</th>
+<th>判讀</th>
+<th>圖上／題文依據</th>
+<th>把握</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>座標（以 A 為原點）</td>
+<td>A(0,0)、B(32,0)；D(0,12)、F(8,12)、C(16,12)、H(24,12)、I(32,12)；E(8,6)、G(24,6)</td>
+<td>下方 4×8 m、右側 6m｜6m 尺寸線</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>2</td>
+<td>桿件</td>
+<td>DA、IB 豎桿；上弦 DF、FC、CH、HI；DE、FE、EC、AE；CG、HG、GI、GB；共 14 桿</td>
+<td>400 dpi 圖面</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>3</td>
+<td>A–B 虛線</td>
+<td>不是桿件（虛線，僅示意 A、B 同高）</td>
+<td>圖上為虛線</td>
+<td>確定（解讀）；使用者確認</td>
+</tr>
+<tr>
+<td>4</td>
+<td>斜率 5-3-4</td>
+<td>標在 E–C 桿，A–E–C 為同一直線方向（3:4）</td>
+<td>E(8,6)→C(16,12)；A(0,0)→E(8,6)</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>5</td>
+<td>支承 A、B</td>
+<td>皆為鉸支承（三角形＋剖線）</td>
+<td>圖上符號</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>6</td>
+<td>靜定性</td>
+<td>j = 9、m = 14、r = 4，2j = m + r</td>
+<td>計數</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>7</td>
+<td>桿 a</td>
+<td>D–F（上弦第一格）</td>
+<td>a 標在 D–F 上方，旁有指向箭頭</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>8</td>
+<td>桿 b</td>
+<td>D–E</td>
+<td>b 標在 D–E 中段</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>9</td>
+<td>桿 c</td>
+<td>A–E</td>
+<td>c 標在 A–E 中段</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>10</td>
+<td>桿 d</td>
+<td>C–H</td>
+<td>d 標在 C–H 上方</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>11</td>
+<td>桿 e</td>
+<td>C–G</td>
+<td>e 標在 C–G 中段</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>12</td>
+<td>載重</td>
+<td>D、F、C、H、I 各 20T 向下；D 點 16T 水平向右</td>
+<td>箭頭</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>13</td>
+<td>所求</td>
+<td>a、b、c、d、e 軸力並標拉壓</td>
+<td>題文</td>
+<td>確定</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p><em>轉錄：2026-11-05（SA-U1-2 題目正本推廣・批 1）</em><br />
+<em>確認：2026-11-05 使用者確認</em></p>
+</details>
+<hr>
+<h1>考題編號：SA-2002-2</h1>
 <p><strong>主分類：</strong> <code>SA-U1-2</code> 靜定結構分析<br />
 <strong>分析法：</strong> 靜定分析 (截面法與節點法)<br />
-<strong>標籤：</strong> <code>桁架分析</code> <code>截面法</code> <code>節點法</code> <code>繫索桁架</code></p>
+<strong>標籤：</strong> <code>桁架分析</code> <code>截面法</code> <code>節點法</code> <code>繫索桁架</code> <code>三鉸桁架</code></p>
 <hr />
-<h2>1. 原始題目重述 (Problem Restatement)</h2>
-<p>如圖所示之桁架，在圖示之荷重作用時，試求桿件 a、b、c、d、e 之軸力（標明拉力或壓力）。</p>
-<p><img alt="SA-2002-2 題目附圖：包含繫索之桁架結構，頂部受多個垂直與水平集中載重" src="../../raw/solutions/SA-2002-2/SA-2002-2-fig-1.png" /></p>
-<p><em>圖說：桁架跨度共 4 段 8m（總跨度 32m），高度 2 段 6m（總高度 12m）。A 端為鉸支承，B 端為滾支承。A、B 之間有虛線相連，代表底部為繫索 (tie rod)。頂部節點受力為：D 點受水平向右 16T 及垂直向下 20T；F、C、H、I 點各受垂直向下 20T。求 a(DF)、b(DE)、c(AE)、d(CH)、e(CG) 桿件內力。</em></p>
+<h2>1. 題目（考卷原文見題目正本）</h2>
+<blockquote>
+<p>考卷原文、公式／附表、附圖與判讀清單（已確認）見 <a href="SA-2002-2-problem.md"><code>SA-2002-2-problem.md</code></a>。本節只列解題時最容易讀錯的地方與本解使用的記號；題意以題目正本為準。</p>
+</blockquote>
+<p><img alt="SA-2002-2 重繪題目附圖：跨度 4×8 m、高 6＋6 m 的桁架，A、B 皆鉸支承，A–B 虛線不是桿件，上弦 D、F、C、H、I 各 20T 向下，D 另受 16T 向右" src="../../raw/solutions/SA-2002-2/figs/SA-2002-2-fig-1-problem.svg" /><br />
+<em>重繪自考卷附圖，依判讀清單 #1–#13 重繪。攔：B 讀成滾支承、A–B 虛線讀成繫索。</em></p>
+<h3>常見誤讀</h3>
+<table>
+<thead>
+<tr>
+<th>項目</th>
+<th>正確判讀</th>
+<th>常見誤讀</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>B 支承</td>
+<td>鉸支承（與 A 的符號完全相同）</td>
+<td>滾支承（本題舊版解析）</td>
+</tr>
+<tr>
+<td>A–B 虛線</td>
+<td>不是桿件；A、B 皆鉸時 14 桿＋4 反力＝2×9 節點，本身已靜定</td>
+<td>繫索 AB，否則「不穩定」（本題舊版解析）</td>
+</tr>
+<tr>
+<td>桿件代號</td>
+<td>a＝DF、b＝DE、c＝AE、d＝CH、e＝CG</td>
+<td>—</td>
+</tr>
+</tbody>
+</table>
+<p><strong>本解記號：</strong> 座標原點 A，x 向右、y 向上；反力以座標軸正向為正；桿力以拉為正；力的單位 T（噸）。</p>
 <h2>2. 考題核心精神與出題者意圖 (Core Concepts &amp; Examiner's Intent)</h2>
 <ul>
-<li><strong>虛線的物理意義</strong>：本題最大的陷阱在於 A、B 之間的虛線。若視為無構件，則該桁架機構不穩定（$m+r &lt; 2j$）；出題者以虛線暗示此為<strong>帶繫索桁架 (Tied Arch/Truss)</strong>，底部的虛線 AB 是一根承受拉力的繫索，使結構滿足靜定條件，這考驗考生對結構穩定性的判斷。</li>
-<li><strong>截面法與節點法的靈活切換</strong>：本題無法單純從支承節點 A 開始節點法（因為有 $A_x, A_y, F_{AD}, F_{AE}, F_{AB}$ 共 5 個未知數，超出平衡方程式數量）。出題者意在測驗考生能否先利用<strong>截面法</strong>切開整體結構，求出底部繫索 AB 的內力後，再回到各節點使用<strong>節點法</strong>逐步解出各桿內力。</li>
+<li><strong>三鉸型桁架</strong>：本桁架左右兩半（A–D–F–E 與 B–I–H–G）只在上弦節點 C 相連，A、B 都是鉸支承——整體就是一座「三鉸拱」形式的桁架。4 個反力（$A_x, A_y, B_x, B_y$）用整體 3 個平衡式加上「左半部對 C 取矩」1 個條件即可全部求出，屬靜定。</li>
+<li><strong>截面法與節點法的靈活切換</strong>：節點 A 有 $A_x, A_y, F_{AD}, F_{AE}$ 4 個未知數，必須先求出水平反力 $A_x$ 才能用節點法。出題者意在測驗考生能否先利用<strong>截面法</strong>切開整體結構、對 C 取矩求出水平反力，再回到節點法逐步解出各桿內力。</li>
 </ul>
 <h2>3. 解題戰略地圖與陷阱分析 (Strategic Roadmap &amp; Trap Analysis)</h2>
 <ol>
-<li><strong>整體平衡求反力</strong>：將整個桁架視為剛體，求出支承 A、B 之反力。</li>
-<li><strong>截面法求繫索 AB 內力</strong>：於 F、E 節點與 C 節點之間作一垂直截面，取左半部（或右半部）為自由體，取 C 點為彎矩中心，可直接求出繫索 AB 之張力。</li>
+<li><strong>整體平衡求垂直反力</strong>：$\sum M_A = 0$ 求 $B_y$（$A_x$、$B_x$ 都在 $y = 0$，對 A 無力矩），$\sum F_y = 0$ 求 $A_y$。</li>
+<li><strong>截面法求水平反力</strong>：切開 FC、EC，取<strong>左半部</strong>為自由體，對 C 點取矩（FC、EC 通過 C），只剩 $A_x$ 未知；再由整體 $\sum F_x = 0$ 求 $B_x$。</li>
 <li><strong>節點法依序推導</strong>：</li>
-<li>具有 $F_{AB}$ 後，取節點 A 建立平衡，求出 c 桿 (AE)。</li>
+<li>取節點 A 建立平衡，求出 c 桿 (AE)。</li>
 <li>取節點 D 建立平衡，求出 a 桿 (DF) 與 b 桿 (DE)。</li>
-<li>利用截面法（切 C、H 之間），取 G 點求 d 桿 (CH) 及 e 桿 (CG) 內力，或直接由右側進行節點法推導。</li>
+<li>切開 CH、CG 取右半部，對 G 取矩求 d 桿 (CH)，$\sum F_y = 0$ 求 e 桿 (CG)。</li>
 </ol>
 <p><strong>陷阱警告 (Traps)</strong>：</p>
 <ul>
-<li>陷阱一：忽略 AB 桿的存在，導致節點力不平衡而產生矛盾。</li>
+<li>陷阱一：把 B 看成滾支承、虛線看成繫索。兩種讀法下 a–e 的軸力恰好相同（繫索拉力就等於 B 的水平反力），但支承反力不同，判定穩定性的理由也完全不同。</li>
 <li>陷阱二：計算力臂時幾何尺寸判讀錯誤（如 C 點座標為 $x=16, y=12$，G 點為 $x=24, y=6$）。</li>
 </ul>
 <h2>3.5 變數層次分析 (Variable Hierarchy Analysis)</h2>
@@ -76,7 +265,7 @@ header .nomat{margin-top:12px;font-size:.8em;opacity:.85}
 <p>求出指定桁架桿件 a、b、c、d、e 的內力大小並標明拉力或壓力。</p>
 <h3>本題關鍵公式（依計算順序）</h3>
 <p>$$ \sum M_A = 0 \implies \text{求出支承反力 } B_y $$<br />
-$$ \sum M_C (\text{左半部}) = 0 \implies \text{求出繫索 } \boxed{F_{AB}} $$<br />
+$$ \sum M_C (\text{左半部}) = 0 \implies \text{求出水平反力 } \boxed{A_x},\ \sum F_x = 0 \implies \boxed{B_x} $$<br />
 $$ \text{節點 A 平衡} \implies \text{求出 } \boxed{F_{AE}} \text{ (c桿)} $$<br />
 $$ \text{節點 D 平衡} \implies \text{求出 } \boxed{F_{DF}} \text{ (a桿), } \boxed{F_{DE}} \text{ (b桿)} $$<br />
 $$ \sum M_G (\text{右半部}) = 0 \implies \text{求出 } \boxed{F_{CH}} \text{ (d桿)} $$<br />
@@ -88,39 +277,36 @@ $$ \sum F_y (\text{右半部}) = 0 \implies \text{求出 } \boxed{F_{CG}} \text{
 <li>$P_F, P_C, P_H, P_I$ ∣ 20T(↓) ∣ 各頂部節點載重</li>
 <li>$\text{Span}$ ∣ 8m × 4 ∣ 桁架水平分段</li>
 <li>$\text{Height}$ ∣ 6m × 2 ∣ 桁架垂直分段</li>
+<li>支承 ∣ A、B 皆鉸 ∣ 各有水平與垂直反力</li>
 </ul>
 <h3>L2：需知識點推導</h3>
-<p><strong>一、整體反力計算</strong></p>
+<p><strong>一、支承反力計算</strong></p>
 <ul>
 <li>符號 ∣ 公式／來源 ∣ 卡關?</li>
 <li>$B_y$ ∣ $\sum M_A = 0$ ∣</li>
 <li>$A_y$ ∣ $\sum F_y = 0$ ∣</li>
-<li>$A_x$ ∣ $\sum F_x = 0$ ∣</li>
+<li>$A_x$ ∣ 截面法（切 FC、EC），左半部 $\sum M_C = 0$ ∣</li>
+<li>$B_x$ ∣ 整體 $\sum F_x = 0$ ∣</li>
 </ul>
-<p><strong>二、截面法與節點法求內力</strong></p>
+<p><strong>二、節點法與截面法求內力</strong></p>
 <ul>
 <li>符號 ∣ 公式／來源 ∣ 卡關?</li>
-<li>$F_{AB}$ ∣ 截面法（切 FC、EC、AB），$\sum M_C = 0$ ∣</li>
 <li>$F_{AE}$ ∣ 節點 A，$\sum F_x = 0$ ∣</li>
 <li>$F_{DF}, F_{DE}$ ∣ 節點 D，$\sum F_x = 0, \sum F_y = 0$ ∣</li>
-<li>$F_{CH}$ ∣ 截面法（切 CH、CG、AB），$\sum M_G = 0$ ∣</li>
+<li>$F_{CH}$ ∣ 截面法（切 CH、CG），右半部 $\sum M_G = 0$ ∣</li>
 <li>$F_{CG}$ ∣ 右半部自由體，$\sum F_y = 0$ ∣</li>
 </ul>
 <h3>L3：深層知識（不懂就卡住）</h3>
 <ul>
 <li>知識點 ∣ 說明 ∣ 卡關?</li>
-<li><strong>機構穩定性與虛線意義</strong> ∣ 若無 AB 桿，桁架度數不足形成不穩定機構；虛線代表張力繫索，必須視為一構件參與受力。 ∣</li>
+<li><strong>三鉸型結構的靜定性</strong> ∣ 兩個剛體以一鉸相連、各自再以鉸支承接地：4 個反力＝整體 3 式＋中間鉸 1 式，靜定（三鉸不共線即穩定）。 ∣</li>
+<li><strong>支承符號判讀</strong> ∣ 同一張圖兩個支承畫法相同就是同一種支承；虛線通常只是輔助線，不是構件。 ∣</li>
 </ul>
 <h2>4. 步驟化詳細計算過程 (Step-by-Step Detailed Calculation)</h2>
-<h3>步驟一：求整體支承反力</h3>
-<p>將桁架視為一整體，建立平衡方程式：</p>
+<h3>步驟一：求垂直支承反力</h3>
 <ol>
 <li>
-<p><strong>水平方向力平衡</strong>：<br />
-   $$ \sum F_x = 0 \implies A_x + 16 = 0 \implies A_x = -16\text{ T} \text{ (向左)} $$</p>
-</li>
-<li>
-<p><strong>對 A 點取彎矩</strong>：<br />
+<p><strong>對 A 點取彎矩</strong>（$A_x$、$B_x$ 皆作用在 $y = 0$，對 A 無力矩）：<br />
    $$ \sum M_A = 0 \implies B_y (32) - 16(12) - 20(8) - 20(16) - 20(24) - 20(32) = 0 $$<br />
    $$ 32 B_y - 192 - 160 - 320 - 480 - 640 = 0 $$<br />
    $$ 32 B_y = 1792 \implies B_y = 56\text{ T} \text{ (向上)} $$</p>
@@ -130,29 +316,27 @@ $$ \sum F_y (\text{右半部}) = 0 \implies \text{求出 } \boxed{F_{CG}} \text{
    $$ \sum F_y = 0 \implies A_y + 56 - (20 \times 5) = 0 \implies A_y = 44\text{ T} \text{ (向上)} $$</p>
 </li>
 </ol>
-<h3>步驟二：求底部繫索 AB 之內力</h3>
-<p>以截面法切開構件 FC、EC、AB，取<strong>左半部</strong>為自由體。<br />
-為了求 $F_{AB}$，對 C 點 $(x=16, y=12)$ 取彎矩（此時 FC 與 EC 之內力通過 C 點，力矩為零）：<br />
-左半部受力包含 $A_x, A_y$ 及 D、F 點之外力。</p>
+<h3>步驟二：求水平支承反力</h3>
+<p>以截面法切開構件 FC、EC，取<strong>左半部</strong>（A、D、F、E）為自由體，對 C 點 $(x=16, y=12)$ 取彎矩（FC、EC 之內力通過 C 點，力矩為零）。</p>
 <ul>
-<li>順時針彎矩為負，逆時針為正：</li>
+<li>逆時針為正：</li>
 <li>$A_y$ 對 C 點：$-44 \times 16 = -704$</li>
-<li>$A_x$ 對 C 點（作用線在 $y=0$）：$-16 \times 12 = -192$</li>
+<li>$A_x$ 對 C 點（作用線在 $y=0$，設向右為正）：$+12 A_x$</li>
 <li>$D_y$ 對 C 點：$+20 \times 16 = +320$</li>
 <li>$D_x$ 對 C 點（作用線在 $y=12$）：力臂為 $0 \implies 0$</li>
-<li>$F_y$ 對 C 點：$+20 \times 8 = +160$</li>
-<li>$F_{AB}$ 對 C 點（假設拉力向右，作用線在 $y=0$）：$+F_{AB} \times 12$<br />
-$$ \sum M_C = -704 - 192 + 320 + 160 + 12 F_{AB} = 0 $$<br />
-$$ 12 F_{AB} = 416 \implies F_{AB} = \frac{104}{3}\text{ T (拉力)} $$</li>
+<li>$F_y$ 對 C 點：$+20 \times 8 = +160$<br />
+$$ \sum M_C = -704 + 12 A_x + 320 + 160 = 0 $$<br />
+$$ 12 A_x = 224 \implies A_x = \frac{56}{3}\text{ T} \text{ (向右)} $$</li>
 </ul>
+<p>整體水平平衡：<br />
+$$ \sum F_x = 0 \implies A_x + B_x + 16 = 0 \implies B_x = -16 - \frac{56}{3} = -\frac{104}{3}\text{ T} \text{ (向左)} $$</p>
 <h3>步驟三：求 c 桿 (AE) 內力</h3>
 <p>取<strong>節點 A</strong> 作為自由體，未知力為 $F_{AD}$ 及 $F_{AE}$ (c 桿)。<br />
-已知 $A_x = 16\text{ T}$ (向左), $A_y = 44\text{ T}$ (向上), $F_{AB} = \frac{104}{3}\text{ T}$ (向右拉力)。<br />
+已知 $A_x = \frac{56}{3}\text{ T}$ (向右), $A_y = 44\text{ T}$ (向上)。<br />
 由幾何關係，AE 桿水平投影為 8m，垂直投影為 6m，斜長為 10m（斜率 3:4:5）。<br />
-$$ \sum F_x = 0 \implies -16 + F_{AB} + F_{AE} \left(\frac{4}{5}\right) = 0 $$<br />
-$$ -16 + \frac{104}{3} + \frac{4}{5} F_{AE} = 0 \implies \frac{56}{3} + \frac{4}{5} F_{AE} = 0 $$<br />
+$$ \sum F_x = 0 \implies \frac{56}{3} + F_{AE} \left(\frac{4}{5}\right) = 0 $$<br />
 $$ \frac{4}{5} F_{AE} = -\frac{56}{3} \implies \boxed{F_{AE} = -\frac{70}{3}\text{ T} \text{ (壓力)}} \quad \text{... (c 桿)} $$<br />
-<em>(註：同時由 $\sum F_y=0$ 可求得 $F_{AD} = -30\text{ T}$)</em></p>
+<em>(註：同時由 $\sum F_y=0$：$44 + F_{AD} + \frac{3}{5}F_{AE} = 0$，可求得 $F_{AD} = -30\text{ T}$)</em></p>
 <h3>步驟四：求 a 桿 (DF) 與 b 桿 (DE) 內力</h3>
 <p>取<strong>節點 D</strong> 作為自由體。<br />
 已知外力 16T(→), 20T(↓)，以及剛求出的 $F_{AD} = 30\text{ T}$ (壓力，對 D 點為向上推頂)。<br />
@@ -163,14 +347,14 @@ $$ \sum F_x = 0 \implies 16 + F_{DF} + F_{DE} \left(\frac{4}{5}\right) = 0 $$<br
 $$ 16 + F_{DF} + \frac{50}{3} \times \frac{4}{5} = 0 \implies 16 + F_{DF} + \frac{40}{3} = 0 $$<br />
 $$ F_{DF} = -16 - \frac{40}{3} = -\frac{88}{3}\text{ T} \implies \boxed{F_{DF} = -\frac{88}{3}\text{ T} \text{ (壓力)}} \quad \text{... (a 桿)} $$</p>
 <h3>步驟五：求 d 桿 (CH) 與 e 桿 (CG) 內力</h3>
-<p>以截面法切開構件 CH、CG、AB，取<strong>右半部</strong>為自由體。<br />
-外力包含 H 點 20T(↓)、I 點 20T(↓)、支承 B 反力 56T(↑)。<br />
+<p>以截面法切開構件 CH、CG，取<strong>右半部</strong>（H、I、G、B）為自由體。<br />
+外力包含 H 點 20T(↓)、I 點 20T(↓)、支承 B 反力 $B_x = \frac{104}{3}$T(←)、$B_y = 56$T(↑)。<br />
 為了求 $F_{CH}$，對 G 點 $(x=24, y=6)$ 取彎矩（此時 $F_{CG}$ 力矩為零）：</p>
 <ul>
-<li>$F_{AB}$ 對 G 點（拉力作用向左）：順時針 $(-)$，力臂 6m $\implies -\frac{104}{3} \times 6 = -208$</li>
+<li>$B_x$ 對 G 點（向左，作用線在 $y=0$，G 下方 6m）：順時針 $(-)$ $\implies -\frac{104}{3} \times 6 = -208$</li>
 <li>H 點載重對 G 點：力臂為 0</li>
 <li>I 點載重對 G 點：順時針 $(-)$，力臂 8m $\implies -20 \times 8 = -160$</li>
-<li>B 點反力對 G 點：逆時針 $(+)$，力臂 8m $\implies +56 \times 8 = +448$</li>
+<li>$B_y$ 對 G 點：逆時針 $(+)$，力臂 8m $\implies +56 \times 8 = +448$</li>
 <li>$F_{CH}$ 對 G 點（假設拉力向左）：逆時針 $(+)$，力臂 6m $\implies +6 F_{CH}$<br />
 $$ \sum M_G = -208 - 160 + 448 + 6 F_{CH} = 0 $$<br />
 $$ 80 + 6 F_{CH} = 0 \implies \boxed{F_{CH} = -\frac{40}{3}\text{ T} \text{ (壓力)}} \quad \text{... (d 桿)} $$</li>
@@ -186,12 +370,16 @@ $$ 16 + \frac{3}{5} F_{CG} = 0 \implies \boxed{F_{CG} = -\frac{80}{3}\text{ T} \
 <li><strong>c 桿 (AE)</strong>：$70/3\text{ T} \text{ (壓力)}$</li>
 <li><strong>d 桿 (CH)</strong>：$40/3\text{ T} \text{ (壓力)}$</li>
 <li><strong>e 桿 (CG)</strong>：$80/3\text{ T} \text{ (壓力)}$</li>
+<li>支承反力：$A_x = 56/3$ T(→)、$A_y = 44$ T(↑)、$B_x = 104/3$ T(←)、$B_y = 56$ T(↑)</li>
 </ul>
 <h2>5. 關鍵爭議點與進階探討 (Critical Issues &amp; Advanced Discussion)</h2>
 <ul>
-<li><strong>虛線的詮釋</strong>：實務與考題中，支承之間的虛線經常代表埋在地下或不明顯的「繫索」(Tie Rod)。許多考生若誤判虛線不是構件，會直接由節點 A 開始計算，隨即發現水平力無法平衡，進而陷入死胡同。判定其為繫索是本題能順利解開的先決關鍵。</li>
-<li><strong>整體與局部平衡的穿插</strong>：遇到有繫索的桁架結構，<strong>必須</strong>先透過截面法與彎矩平衡方程式找出繫索內力，才能進一步使用節點法。這種截面法與節點法交替使用的技巧，是國家考試評估考生對力學平衡透徹理解的常見手法。</li>
-</ul></main>
+<li><strong>虛線與 B 支承的判讀</strong>：考卷上 A、B 兩個支承的符號完全相同（三角形＋剖線），都是鉸支承；A–B 之間的虛線只是輔助線。兩端皆鉸時，14 桿＋4 反力＝2×9 節點，三鉸（A、C、B）不共線，結構靜定且穩定，不需要虛構一根繫索。舊版解析把 B 讀成滾支承，才會覺得「不加繫索就不穩定」。</li>
+<li><strong>為什麼兩種讀法桿力相同</strong>：若 B 為滾支承＋AB 繫索，繫索拉力會等於本解 B 的水平反力（104/3 T），A 的水平反力則變成 $-16$ T；作用在桁架節點 A、B 上的水平力合計不變，所以 a–e 的軸力完全相同，只有支承反力不同。</li>
+<li><strong>整體與局部平衡的穿插</strong>：三鉸型結構<strong>必須</strong>先透過「半邊自由體對中間鉸取矩」找出水平反力，才能進一步使用節點法。這種截面法與節點法交替使用的技巧，是國家考試評估考生對力學平衡透徹理解的常見手法。</li>
+</ul>
+<p><em>修正日期：2026-11-05（解析勘誤：B 由滾支承改為鉸支承、A–B 虛線不是桿件（題目正本判讀 #3、#5，使用者確認）；求解路徑由「截面法求繫索拉力 F_AB」改為「左半部對 C 取矩求水平反力 A_x」，§2、§3、§3.5、§4 步驟二與三、§5 改寫；a–e 答案不變（a −88/3、b +50/3、c −70/3、d −40/3、e −80/3 T），反力改為 A_x 56/3 T 向右、B_x 104/3 T 向左；驗證：三鉸分段取矩分數解與全桁架節點法聯立兩路徑，10 值 MISMATCHES: 0）</em><br />
+<em>修正日期：2026-11-05（§1 改為指向題目正本並放重繪附圖（figs/SA-2002-2-fig-1-problem.svg）、加常見誤讀；圖由 gen_SA-2002-2.py 產生，可重跑）</em></p></main>
 <footer>來源：raw/solutions/SA-2002-2/SA-2002-2.md（知識庫解題內容唯一正本；本頁僅為渲染顯示）</footer>
 
 <script>

@@ -43,18 +43,176 @@ header .nomat{margin-top:12px;font-size:.8em;opacity:.85}
 <p class="meta2">主分類 <b>SA-U1-2</b> 靜定結構之分析 ｜ 副分類 <b>SA-U1-3</b> 靜定及靜不定結構影響線 ｜ 2014 年（民國 103） ｜ 靜定分析</p>
 <div class="hbtns"><a class="b-study" href="../unit-SA-U1-2.html">🧭 U1-2 單元總覽</a><a class="b-lect" href="../lecture-SA-U1-2.html">📚 U1-2 靜定結構之分析 講義</a></div>
 </header>
-<main><h1>考題編號：SA-2014-1</h1>
+<main><details class="problem-src" open><summary><b>📄 題目正本</b>（考卷原文、附圖與判讀清單；不含解法）</summary>
+<h1>SA-2014-1 題目正本</h1>
+<blockquote>
+<p>本檔只記錄考卷上寫了什麼、圖上畫了什麼，不含任何解法。解析見同資料夾 <code>SA-2014-1.md</code>。<br />
+判讀清單經使用者確認前，狀態為「待確認」；確認後本檔原則上不再修改（改動須回考卷原圖並記 log）。</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>項目</th>
+<th>內容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>考卷</td>
+<td><code>raw/exams/SA-2014_結構學.pdf</code>，第 1 頁（正面）上半，第一題（圖一）</td>
+</tr>
+<tr>
+<td>考年</td>
+<td>2014（民國 103 年）專技高考結構工程技師「結構學」</td>
+</tr>
+<tr>
+<td>配分</td>
+<td>25 分（㈠15 分、㈡10 分）</td>
+</tr>
+<tr>
+<td>附圖</td>
+<td><code>SA-2014-1-fig-1.png</code>、<code>SA-2014-1-fig-2.png</code></td>
+</tr>
+<tr>
+<td>判讀狀態</td>
+<td><strong>已確認</strong>（2026-11-05 使用者確認。原轉錄：2026-11-05 轉錄；PyMuPDF 110 dpi 整頁＋350–1000 dpi 局部放大；盲讀於開啟解析前完成）</td>
+</tr>
+</tbody>
+</table>
+<h2>1. 考卷原文（逐字）</h2>
+<p>一、如圖一所示之桁架結構，其 A 點為鉸支承，而 G 點為滾支承：</p>
+<p>㈠當 C 點承受垂直向下載重 P 時，請計算 CD、ID 與 IJ 等三根桿件之軸力（註明拉力或壓力，答案可用分數或根號表示）。（15 分）</p>
+<p>㈡若此垂直向下載重 P 可能分別作用於 B、C、D、E 或 F 中任何一點，請計算 CD 桿件所可能產生的最大軸力，並指出其對應之作用點。（10 分）</p>
+<h2>2. 考卷給的公式、附表與參數</h2>
+<ul>
+<li>考卷沒有給任何參考公式或附表。</li>
+<li>P 為符號。</li>
+<li>卷首注意事項：㈠可以使用電子計算器。㈡不必抄題，作答時請將試題題號及答案依照順序寫在試卷上，於本試題上作答者，不予計分。</li>
+<li>考試時間：2 小時。</li>
+</ul>
+<h2>3. 附圖</h2>
+<p><img alt="SA-2014-1 考卷附圖原截圖（含滑鼠游標；內容同下圖）" src="../../raw/solutions/SA-2014-1/SA-2014-1-fig-1.png" /><br />
+<em>證據圖 SA-2014-1-fig-1.png</em></p>
+<p><img alt="SA-2014-1 考卷附圖：下弦 A–B–C–D–E–F–G 六格各 12 m；上弦 A–H–I–J–K–L–G，H、L 高 12 m、I、K 高 17 m、J 高 22 m；豎桿 BH、CI、DJ、EK、FL；斜桿 HC、ID、KD、LE；A 鉸支承、G 滾支承" src="../../raw/solutions/SA-2014-1/SA-2014-1-fig-2.png" /><br />
+<em>證據圖 SA-2014-1-fig-2.png（2026-11-05 自考卷重新擷取 500 dpi，無游標）</em></p>
+<p>圖面文字照錄：22 m、17 m、12 m、J、I、K、H、L、A、B、C、E、F、G、D、6@12 m、圖一</p>
+<h2>4. 判讀清單</h2>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>項目</th>
+<th>判讀</th>
+<th>圖上／題文依據</th>
+<th>把握</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>下弦</td>
+<td>A(0,0)、B(12,0)、C(24,0)、D(36,0)、E(48,0)、F(60,0)、G(72,0)</td>
+<td>6@12 m；PDF 向量座標 12 m＝34 pt</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>2</td>
+<td>上弦高度</td>
+<td>H(12,12)、I(24,17)、J(36,22)、K(48,17)、L(60,12)</td>
+<td>左側 22／17／12 m 尺寸線；向量座標量得 12.1、17.0、22.0 m</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>3</td>
+<td>節點字母</td>
+<td>B、C、E、F 字母標在豎桿旁、下弦上方，指下弦節點</td>
+<td>字母位置對齊豎桿；D 標在下弦下方</td>
+<td>確定（解讀）；使用者確認</td>
+</tr>
+<tr>
+<td>4</td>
+<td>桿件</td>
+<td>上弦 AH、HI、IJ、JK、KL、LG；下弦六格；豎桿 BH、CI、DJ、EK、FL；斜桿 HC、ID、KD、LE；共 21 桿（A–B–H、F–G–L 格無斜桿）</td>
+<td>PDF 向量線段</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>5</td>
+<td>支承</td>
+<td>A 鉸支承、G 滾支承</td>
+<td>題文；圖上符號</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>6</td>
+<td>靜定性</td>
+<td>j = 12、m = 21、r = 3</td>
+<td>計數</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>7</td>
+<td>載重</td>
+<td>㈠C 點 P 向下；㈡P 分別作用於 B、C、D、E、F</td>
+<td>題文（圖上未畫載重）</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>8</td>
+<td>所求</td>
+<td>㈠CD、ID、IJ 軸力；㈡CD 最大軸力及作用點</td>
+<td>題文</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>9</td>
+<td>證據圖</td>
+<td>舊 fig-1 滑鼠游標在「圖一」下方；新增 fig-2（500 dpi）</td>
+<td>—</td>
+<td>確定</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p><em>轉錄：2026-11-05（SA-U1-2 題目正本推廣・批 1）</em><br />
+<em>確認：2026-11-05 使用者確認</em></p>
+</details>
+<hr>
+<h1>考題編號：SA-2014-1</h1>
 <p><strong>主分類：</strong> <code>SA-U1-2</code> 靜定結構之分析<br />
 <strong>副分類：</strong> <code>SA-U1-3</code> 靜定及靜不定結構影響線<br />
 <strong>分析法：</strong> 靜定分析<br />
 <strong>標籤：</strong> <code>靜定桁架</code> <code>截面法</code> <code>影響線</code> <code>最大軸力</code></p>
 <hr />
-<h2>1. 原始題目重述 (Problem Restatement)</h2>
-<p>如圖一所示之桁架結構，其 A 點為鉸支承，而 G 點為滾支承：<br />
-(一) 當 C 點承受垂直向下載重 $P$ 時，請計算 CD、ID 與 IJ 等三根桿件之軸力（註明拉力或壓力，答案可用分數或根號表示）。（15 分）<br />
-(二) 若此垂直向下載重 $P$ 可能分別作用於 B、C、D、E 或 F 中任何一點，請計算 CD 桿件所可能產生的最大軸力，並指出其對應之作用點。（10 分）</p>
-<p><img alt="SA-2014-1 題目附圖：桁架結構，A點鉸支承，G點滾支承，求解特定桿件軸力" src="../../raw/solutions/SA-2014-1/SA-2014-1-fig-1.png" /></p>
-<p><em>圖說：桁架跨度 6@12m=72m。下弦節點 A 到 G 在同一水平線上。上弦節點 H, I, J, K, L 對應於 B, C, D, E, F 上方。高度分別為 H(12m), I(17m), J(22m), K(17m), L(12m)。</em></p>
+<h2>1. 題目（考卷原文見題目正本）</h2>
+<blockquote>
+<p>考卷原文、公式／附表、附圖與判讀清單（已確認）見 <a href="SA-2014-1-problem.md"><code>SA-2014-1-problem.md</code></a>。本節只列解題時最容易讀錯的地方與本解使用的記號；題意以題目正本為準。</p>
+</blockquote>
+<p><img alt="SA-2014-1 重繪題目附圖：屋架桁架 6@12 m，上弦 H、L 高 12 m，I、K 高 17 m，J 高 22 m；A 鉸、G 滾" src="../../raw/solutions/SA-2014-1/figs/SA-2014-1-fig-1-problem.svg" /><br />
+<em>重繪自考卷附圖，依判讀清單 #1–#8 重繪（考卷附圖未畫載重）。攔：上弦高度讀錯、斜桿方向讀反。</em></p>
+<h3>常見誤讀</h3>
+<table>
+<thead>
+<tr>
+<th>項目</th>
+<th>正確判讀</th>
+<th>常見誤讀</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>上弦高度</td>
+<td>H、L 12 m；I、K 17 m；J 22 m</td>
+<td>等高或線性變化</td>
+</tr>
+<tr>
+<td>斜桿</td>
+<td>HC、ID、KD、LE（皆向中央 D 傾斜）</td>
+<td>方向畫反</td>
+</tr>
+</tbody>
+</table>
+<p><strong>本解記號：</strong> 記號與正負號約定沿用 §4。</p>
 <h2>2. 考題核心精神與出題者意圖 (Core Concepts &amp; Examiner's Intent)</h2>
 <p>本題旨在測驗考生對於<strong>靜定桁架分析（截面法）</strong>以及<strong>影響線觀念</strong>的掌握程度。</p>
 <ol>
@@ -291,7 +449,8 @@ $$ F_{CD} = \frac{48}{17} R_{Gy} = \frac{48}{17} \times \frac{x_P}{72} P = \frac
 <ol>
 <li><strong>分量力矩的符號判定</strong>：在求解 $F_{IJ}$ 時，若採用分量法，垂直分量 $F_{IJ,y}$ 作用在 I 點，相對力矩中心 D 點，由於 I 點在 D 點左側且 $F_{IJ,y}$ 向上，這會產生<strong>逆時針</strong>力矩（負號）。許多考生在分解後，直覺以為向上的力就會產生順時針力矩，這是一個極容易失分的視覺陷阱。為防出錯，強烈建議如本文註解所演示，直接使用解析幾何的「點到直線距離公式」求出力臂，這不僅優雅且絕對不會錯判符號。</li>
 <li><strong>影響線的分段特性</strong>：第二小題要求找最大軸力，實質上就是繪製影響線。影響線的基本特性是，當移動載重越過我們感興趣的分析截面時，方程式會發生改變。最有效率的作法永遠是「載重在左，算右半邊；載重在右，算左半邊」，這可以確保力矩方程式中永遠只有支承反力一個外力，大大減少代數錯誤。</li>
-</ol></main>
+</ol>
+<p><em>修正日期：2026-11-05（§1 改為指向題目正本並放重繪附圖（figs/SA-2014-1-fig-1-problem.svg）、加常見誤讀；圖由 gen_SA-2014-1.py 產生，可重跑）</em></p></main>
 <footer>來源：raw/solutions/SA-2014-1/SA-2014-1.md（知識庫解題內容唯一正本；本頁僅為渲染顯示）</footer>
 
 <script>

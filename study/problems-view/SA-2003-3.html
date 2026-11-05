@@ -43,21 +43,179 @@ header .nomat{margin-top:12px;font-size:.8em;opacity:.85}
 <p class="meta2">主分類 <b>SA-U1-2</b> 靜定結構之分析 ｜ 2003 年（民國 92） ｜ 靜定分析</p>
 <div class="hbtns"><a class="b-study" href="../unit-SA-U1-2.html">🧭 U1-2 單元總覽</a><a class="b-lect" href="../lecture-SA-U1-2.html">📚 U1-2 靜定結構之分析 講義</a></div>
 </header>
-<main><h1>考題編號：SA-2003-3</h1>
+<main><details class="problem-src" open><summary><b>📄 題目正本</b>（考卷原文、附圖與判讀清單；不含解法）</summary>
+<h1>SA-2003-3 題目正本</h1>
+<blockquote>
+<p>本檔只記錄考卷上寫了什麼、圖上畫了什麼，不含任何解法。解析見同資料夾 <code>SA-2003-3.md</code>。<br />
+判讀清單經使用者確認前，狀態為「待確認」；確認後本檔原則上不再修改（改動須回考卷原圖並記 log）。</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>項目</th>
+<th>內容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>考卷</td>
+<td><code>raw/exams/SA-2003_結構學.pdf</code>，第 1 頁（全一頁），第三題</td>
+</tr>
+<tr>
+<td>考年</td>
+<td>2003（民國九十二年）專技高考結構工程技師「結構學」</td>
+</tr>
+<tr>
+<td>配分</td>
+<td>25 分</td>
+</tr>
+<tr>
+<td>附圖</td>
+<td><code>SA-2003-3-fig-1.png</code>、<code>SA-2003-3-fig-2.png</code></td>
+</tr>
+<tr>
+<td>判讀狀態</td>
+<td><strong>已確認</strong>（2026-11-05 使用者確認。原轉錄：2026-11-05 轉錄；PyMuPDF 110 dpi 整頁＋350–1000 dpi 局部放大；盲讀於開啟解析前完成）</td>
+</tr>
+</tbody>
+</table>
+<h2>1. 考卷原文（逐字）</h2>
+<p>三、試求圖示桁架中 a, b 桿之內力。（25 分）</p>
+<h2>2. 考卷給的公式、附表與參數</h2>
+<ul>
+<li>考卷沒有給任何參考公式或附表。</li>
+<li>力的單位為 t（噸）。</li>
+<li>卷首注意事項：㈠不必抄題，作答時請將試題題號及答案依照順序寫在試卷上，於本試題上作答者，不予計分。㈡可以使用電子計算器，但需詳列解答過程。</li>
+<li>考試時間：二小時。</li>
+</ul>
+<h2>3. 附圖</h2>
+<p><img alt="SA-2003-3 考卷附圖原截圖（含滑鼠游標；內容同下圖）" src="../../raw/solutions/SA-2003-3/SA-2003-3-fig-1.png" /><br />
+<em>證據圖 SA-2003-3-fig-1.png</em></p>
+<p><img alt="SA-2003-3 考卷附圖：跨度 32 m（4×8 m），高 8 m（4m＋4m）；左右各一組菱形腹桿單元，中央一根豎桿；下弦 (8,0)、(16,0) 各受 2t 向下；左端鉸支承、右端滾支承" src="../../raw/solutions/SA-2003-3/SA-2003-3-fig-2.png" /><br />
+<em>證據圖 SA-2003-3-fig-2.png（2026-11-05 自考卷重新擷取 500 dpi，無游標）</em></p>
+<p>圖面文字照錄：a、b、4m、4m、2t、2t、4×8m=32m</p>
+<h2>4. 判讀清單</h2>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>項目</th>
+<th>判讀</th>
+<th>圖上／題文依據</th>
+<th>把握</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>座標（以左支承為原點）</td>
+<td>下弦 (0,0)(8,0)(16,0)(24,0)(32,0)；中層 (4,4)(12,4)(20,4)(28,4)；上弦 (8,8)(16,8)(24,8)</td>
+<td>下方 4×8m＝32m、右側 4m｜4m 尺寸線；節點位置 500 dpi 量測</td>
+<td>確定（解讀）；使用者確認</td>
+</tr>
+<tr>
+<td>2</td>
+<td>桿件</td>
+<td>左半：(0,0)–(4,4)–(8,8)、(8,8)–(12,4)–(16,0)、(4,4)–(12,4)、(4,4)–(8,0)、(8,0)–(12,4)；右半對稱；上弦 (8,8)–(16,8)–(24,8)；中央豎桿 (16,8)–(16,0)；下弦四格；共 21 桿</td>
+<td>500 dpi 圖面</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>3</td>
+<td>靜定性</td>
+<td>j = 12、m = 21、r = 3</td>
+<td>計數</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>4</td>
+<td>桿 a</td>
+<td>左側水平腹桿 (4,4)–(12,4)</td>
+<td>a 字位於該桿正上方三角形內</td>
+<td>確定（解讀）；使用者確認</td>
+</tr>
+<tr>
+<td>5</td>
+<td>桿 b</td>
+<td>(8,8)–(12,4) 斜桿</td>
+<td>b 字標在該桿上段</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>6</td>
+<td>支承</td>
+<td>左端鉸支承（三角形直接在剖線上）；右端滾支承（三角形下有一橫線再接剖線）</td>
+<td>900 dpi 支承放大</td>
+<td>確定（解讀）；使用者確認</td>
+</tr>
+<tr>
+<td>7</td>
+<td>載重</td>
+<td>下弦 (8,0)、(16,0) 各 2t 向下</td>
+<td>箭頭位置</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>8</td>
+<td>所求</td>
+<td>a、b 桿內力</td>
+<td>題文</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>9</td>
+<td>證據圖</td>
+<td>舊 fig-1 滑鼠游標在下弦 (24,0) 節點旁；新增 fig-2（500 dpi）</td>
+<td>—</td>
+<td>確定</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p><em>轉錄：2026-11-05（SA-U1-2 題目正本推廣・批 1）</em><br />
+<em>確認：2026-11-05 使用者確認</em></p>
+</details>
+<hr>
+<h1>考題編號：SA-2003-3</h1>
 <p><strong>主分類：</strong> <code>SA-U1-2</code> 靜定結構之分析<br />
 <strong>分析法：</strong> 靜定分析<br />
 <strong>標籤：</strong> <code>桁架分析</code> <code>K型桁架</code> <code>截面法</code> <code>節點法</code></p>
 <hr />
-<h2>1. 原始題目重述 (Problem Restatement)</h2>
-<ul>
-<li><strong>題目描述</strong>：試求圖示桁架中 a, b 桿之內力。（25 分）</li>
-<li><strong>結構與幾何</strong>：本題為一左右對稱幾何之靜定桁架（類似 K 型細分桁架）。總跨度為 $4 \times 8\text{m} = 32\text{m}$，總高度為 $4\text{m} + 4\text{m} = 8\text{m}$。</li>
-<li><strong>支撐條件</strong>：左端為鉸支承（鉸接），右端為滾支承。</li>
-<li><strong>載重條件</strong>：於距左支承 $8\text{m}$ 及 $16\text{m}$ 處之下弦節點，各承受 $2\text{t}$ 之向下垂直集中載重。</li>
-<li><strong>欲求目標</strong>：求解標示為 a（左半側水平中弦桿）與 b（左半側右上斜腹桿）之內力。</li>
-</ul>
-<p><img alt="SA-2003-3 題目附圖：包含幾何尺寸、支承與載重條件之靜定桁架" src="../../raw/solutions/SA-2003-3/SA-2003-3-fig-1.png" /><br />
-<em>圖說：桁架跨度 32m 分為 4 個 8m 節間，高度 8m 分為上下各 4m，載重 2t 作用於左側兩個下弦節點，標示 a、b 桿件位置。</em></p>
+<h2>1. 題目（考卷原文見題目正本）</h2>
+<blockquote>
+<p>考卷原文、公式／附表、附圖與判讀清單（已確認）見 <a href="SA-2003-3-problem.md"><code>SA-2003-3-problem.md</code></a>。本節只列解題時最容易讀錯的地方與本解使用的記號；題意以題目正本為準。</p>
+</blockquote>
+<p><img alt="SA-2003-3 重繪題目附圖：跨度 32 m、高 8 m 的菱形腹桿桁架，左鉸右滾，下弦 8 m、16 m 處各 2t" src="../../raw/solutions/SA-2003-3/figs/SA-2003-3-fig-1-problem.svg" /><br />
+<em>重繪自考卷附圖，依判讀清單 #1–#8 重繪。攔：a、b 桿位置認錯、右端支承讀成鉸。</em></p>
+<h3>常見誤讀</h3>
+<table>
+<thead>
+<tr>
+<th>項目</th>
+<th>正確判讀</th>
+<th>常見誤讀</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>桿 a</td>
+<td>左側水平腹桿 (4,4)–(12,4)</td>
+<td>上弦桿</td>
+</tr>
+<tr>
+<td>桿 b</td>
+<td>(8,8)–(12,4) 斜桿</td>
+<td>(4,4)–(8,8) 斜桿</td>
+</tr>
+<tr>
+<td>右端支承</td>
+<td>滾支承</td>
+<td>鉸支承</td>
+</tr>
+</tbody>
+</table>
+<p><strong>本解記號：</strong> 記號與正負號約定沿用 §4。</p>
+<h3>判讀圖解（解析自繪）</h3>
 <p><img alt="SA-2003-3 題目重繪：標明桿件 a (M1-M2) 與 b (U1-M2) 之確切位置" src="../../raw/solutions/SA-2003-3/figs/SA-2003-3-fig-1-frame.svg" /></p>
 <p><em>圖 2　題目重繪（向量版）。K 型細分桁架節點眾多，本圖以顏色明確標出桿件 a、b 的確切位置，避免與其他斜桿混淆；全桁架 21 桿＋3 反力＝2×12 節點，為靜定穩定構架。</em></p>
 <h2>2. 考題核心精神與出題者意圖 (Core Concepts &amp; Examiner's Intent)</h2>
@@ -219,7 +377,8 @@ $$ \boxed{\text{桿件 a 內力 } S_a = -2\text{t} \text{ (壓力)}} $$</p>
 <li><strong>符號假設原則</strong>：強烈建議解桁架時，<strong>一律假設未知內力為拉力（向外）</strong>。計算結果若為正值即為拉力 (Tension)，若為負值即為壓力 (Compression)。本題計算中嚴格遵守此原則，有效避免了 $M_1$ 節點多達 4 根斜桿時極易發生的正負號混淆錯誤。</li>
 </ul>
 <hr />
-<p><em>圖解補繪：2026-08-27（向量圖，腳本 <code>gen_SA-2003-3.py</code>，可重跑）　｜　圖 2 修正：2026-10-23（依原題附圖更正右半桿件配置、補 U2–L2 直桿與 M2–L1 斜桿）</em></p></main>
+<p><em>圖解補繪：2026-08-27（向量圖，腳本 <code>gen_SA-2003-3.py</code>，可重跑）　｜　圖 2 修正：2026-10-23（依原題附圖更正右半桿件配置、補 U2–L2 直桿與 M2–L1 斜桿）</em></p>
+<p><em>修正日期：2026-11-05（§1 改為指向題目正本並放重繪附圖（figs/SA-2003-3-fig-1-problem.svg）、加常見誤讀；原 §1 解析自繪圖移至「判讀圖解（解析自繪）」；圖由 gen_SA-2003-3_problem.py 產生，可重跑）</em></p></main>
 <footer>來源：raw/solutions/SA-2003-3/SA-2003-3.md（知識庫解題內容唯一正本；本頁僅為渲染顯示）</footer>
 
 <script>

@@ -43,15 +43,228 @@ header .nomat{margin-top:12px;font-size:.8em;opacity:.85}
 <p class="meta2">主分類 <b>SA-U1-2</b> 靜定結構之分析 ｜ 2002 年（民國 91） ｜ 靜定分析</p>
 <div class="hbtns"><a class="b-study" href="../unit-SA-U1-2.html">🧭 U1-2 單元總覽</a><a class="b-lect" href="../lecture-SA-U1-2.html">📚 U1-2 靜定結構之分析 講義</a></div>
 </header>
-<main><h1>考題編號：SA-2002-1</h1>
+<main><details class="problem-src" open><summary><b>📄 題目正本</b>（考卷原文、附圖與判讀清單；不含解法）</summary>
+<h1>SA-2002-1 題目正本</h1>
+<blockquote>
+<p>本檔只記錄考卷上寫了什麼、圖上畫了什麼，不含任何解法。解析見同資料夾 <code>SA-2002-1.md</code>。<br />
+判讀清單經使用者確認前，狀態為「待確認」；確認後本檔原則上不再修改（改動須回考卷原圖並記 log）。</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>項目</th>
+<th>內容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>考卷</td>
+<td><code>raw/exams/SA-2002_結構學.pdf</code>，第 1 頁（全一頁），第一題</td>
+</tr>
+<tr>
+<td>考年</td>
+<td>2002（民國九十一年）專技高考結構工程技師「結構學」</td>
+</tr>
+<tr>
+<td>配分</td>
+<td>25 分</td>
+</tr>
+<tr>
+<td>附圖</td>
+<td><code>SA-2002-1-fig-1.png</code>、<code>SA-2002-1-fig-2.png</code></td>
+</tr>
+<tr>
+<td>判讀狀態</td>
+<td><strong>已確認</strong>（2026-11-05 使用者確認。原轉錄：2026-11-05 轉錄；PyMuPDF 110 dpi 整頁＋350–1000 dpi 局部放大；盲讀於開啟解析前完成）</td>
+</tr>
+</tbody>
+</table>
+<h2>1. 考卷原文（逐字）</h2>
+<p>一、如下圖所示之剛架結構，點 F 為內鉸，在各種外力作用下，試繪其軸力圖、剪力圖及彎矩圖。（25 分）</p>
+<h2>2. 考卷給的公式、附表與參數</h2>
+<ul>
+<li>考卷沒有給任何參考公式或附表。</li>
+<li>考卷沒有給 EI、EA（靜定結構，作圖不需要）。</li>
+<li>卷首注意事項：㈠可以使用電子計算器，使用電子計算器計算之試題，需詳列解答過程。㈡不必抄題，作答時請將試題題號及答案依照順序寫在試卷上，於本試題上作答者，不予計分。</li>
+<li>考試時間：二小時。</li>
+</ul>
+<h2>3. 附圖</h2>
+<p><img alt="SA-2002-1 考卷附圖原截圖（含滑鼠游標；內容同下圖）" src="../../raw/solutions/SA-2002-1/SA-2002-1-fig-1.png" /><br />
+<em>證據圖 SA-2002-1-fig-1.png</em></p>
+<p><img alt="SA-2002-1 考卷附圖：左柱 A–B–C 高 4 m（AB、BC 各 2 m），A 為鉸支承；梁 C–D–E–F 長 6 m，F 為內鉸；右柱 F–G–H 高 4 m，H 為鉸支承；10 kN 水平向右作用於 C；B 點 6 kN-m 逆時針力偶；C–D 段 2 m 分布力矩 2 kN-m/m（順時針）；E 點 8 kN 向下；F 左側梁端 4 kN-m 逆時針、F 下方柱頂 4 kN-m 順時針；G–H 段 2 m 水平分布載重 2 kN/m 向左" src="../../raw/solutions/SA-2002-1/SA-2002-1-fig-2.png" /><br />
+<em>證據圖 SA-2002-1-fig-2.png（2026-11-05 自考卷重新擷取 500 dpi，無游標）</em></p>
+<p>圖面文字照錄：8kN、2kN-m/m、4kN-m、10 kN、F、C、D、E、4kN-m、2m、2m、B、6kN-m、G、2m、2 kN/m、2m、A、H、3m、3m</p>
+<h2>4. 判讀清單</h2>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>項目</th>
+<th>判讀</th>
+<th>圖上／題文依據</th>
+<th>把握</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>支承 A、H</td>
+<td>鉸支承（三角形＋剖線），兩者同高</td>
+<td>圖上符號</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>2</td>
+<td>F</td>
+<td>內鉸（梁與右柱於 F 以鉸連接）</td>
+<td>題文「點 F 為內鉸」；圖上 F 空心圓</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>3</td>
+<td>左柱幾何</td>
+<td>A–B 2 m、B–C 2 m，柱高 4 m</td>
+<td>左側尺寸線 2m｜2m</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>4</td>
+<td>梁幾何</td>
+<td>C–F 水平 6 m，C 至中點 3 m、中點至 F 3 m</td>
+<td>下方尺寸線 3m｜3m（端點對齊左柱與右柱）</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>5</td>
+<td>D 位置</td>
+<td>距 C 2 m</td>
+<td>梁下 2m 尺寸線</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>6</td>
+<td>E 位置</td>
+<td>距 C 3 m（8 kN 箭頭對齊下方 3m｜3m 中間刻度）</td>
+<td>400 dpi：箭頭 x 與中間刻度相差不到 0.1 m</td>
+<td>確定（解讀）；使用者確認</td>
+</tr>
+<tr>
+<td>7</td>
+<td>右柱幾何</td>
+<td>F–H 高 4 m（F 與 C 同高）；G 在 H 上方 2 m</td>
+<td>右柱 2m 尺寸線只標 G–H；F–G 由總高推得</td>
+<td>確定（解讀）；使用者確認</td>
+</tr>
+<tr>
+<td>8</td>
+<td>10 kN</td>
+<td>水平向右，作用於 C（梁柱交點）</td>
+<td>箭頭指向 C，與 C 同高</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>9</td>
+<td>6 kN-m</td>
+<td>作用於 B 點的集中力偶，逆時針</td>
+<td>900 dpi：弧線由左經下方繞到右側、箭頭朝上</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>10</td>
+<td>2 kN-m/m</td>
+<td>C–D 段 2 m 均布分布力矩，順時針</td>
+<td>900 dpi：每個小弧由上方向右下彎、箭頭朝左下</td>
+<td>確定（解讀）；使用者確認</td>
+</tr>
+<tr>
+<td>11</td>
+<td>8 kN</td>
+<td>E 點向下集中力</td>
+<td>圖上箭頭</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>12</td>
+<td>F 左側 4 kN-m</td>
+<td>作用於梁端（鉸左側）的力偶，逆時針</td>
+<td>900 dpi：弧線自梁下方往右再向上、箭頭朝左上</td>
+<td>確定（解讀）；使用者確認</td>
+</tr>
+<tr>
+<td>13</td>
+<td>F 下方 4 kN-m</td>
+<td>作用於右柱頂（鉸下方）的力偶，順時針</td>
+<td>900 dpi：弧線自左下往上越過柱、箭頭朝右下</td>
+<td>確定（解讀）；使用者確認</td>
+</tr>
+<tr>
+<td>14</td>
+<td>2 kN/m</td>
+<td>G–H 段（右柱下段 2 m）水平均布載重，向左</td>
+<td>箭頭自柱右側指向柱、朝左</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>15</td>
+<td>所求</td>
+<td>軸力圖、剪力圖、彎矩圖</td>
+<td>題文</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>16</td>
+<td>證據圖</td>
+<td>舊 fig-1 左側空白處有滑鼠游標（未壓到結構）；新增 fig-2（500 dpi）</td>
+<td>—</td>
+<td>確定</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p><em>轉錄：2026-11-05（SA-U1-2 題目正本推廣・批 1）</em><br />
+<em>確認：2026-11-05 使用者確認</em></p>
+</details>
+<hr>
+<h1>考題編號：SA-2002-1</h1>
 <p><strong>主分類：</strong> <code>SA-U1-2</code> 靜定結構之分析<br />
 <strong>分析法：</strong> 靜定分析<br />
 <strong>標籤：</strong> <code>靜定剛架</code> <code>內鉸</code> <code>集中力矩</code> <code>均布彎矩</code> <code>剪力彎矩圖</code></p>
 <hr />
-<h2>1. 原始題目重述 (Problem Restatement)</h2>
-<p>如下圖所示之剛架結構，點F 為內鉸，在各種外力作用下，試繪其軸力圖、剪力圖及彎矩圖。（25 分）</p>
-<p><img alt="SA-2002-1 題目附圖：包含內部鉸接之靜定剛架" src="../../raw/solutions/SA-2002-1/SA-2002-1-fig-1.png" /></p>
-<p><em>圖說：本結構為一非對稱剛架，A點與H點為鉸支承。左側柱高4m，於y=2m處(B點)受6 kN-m逆時針集中彎矩；頂部C點受10 kN向右集中力。橫梁長6m，C到D(2m)受 2 kN-m/m 之</em><em>均布彎矩</em><em>（原圖為一排小弧形箭頭，順時針；不是均布力），E點(x=3m)受8 kN向下集中力。右側柱高4m，下半段H到G(2m)受2 kN/m向左均布載重。F點為內鉸，梁端與柱端各受4 kN-m之集中彎矩（</em><em>梁端逆時針，柱端順時針</em><em>）。</em></p>
+<h2>1. 題目（考卷原文見題目正本）</h2>
+<blockquote>
+<p>考卷原文、公式／附表、附圖與判讀清單（已確認）見 <a href="SA-2002-1-problem.md"><code>SA-2002-1-problem.md</code></a>。本節只列解題時最容易讀錯的地方與本解使用的記號；題意以題目正本為準。</p>
+</blockquote>
+<p><img alt="SA-2002-1 重繪題目附圖：內鉸剛架，A、H 鉸支承、F 內鉸；C 點 10 kN 向右、E 點 8 kN 向下、C–D 分布力矩、B 與 F 兩側力偶、G–H 水平均布 2 kN/m" src="../../raw/solutions/SA-2002-1/figs/SA-2002-1-fig-1-problem.svg" /><br />
+<em>重繪自考卷附圖，依判讀清單 #1–#14 重繪。攔：C–D 分布力矩讀成均布力、F 兩側力偶轉向讀反。</em></p>
+<h3>常見誤讀</h3>
+<table>
+<thead>
+<tr>
+<th>項目</th>
+<th>正確判讀</th>
+<th>常見誤讀</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>C–D 載重</td>
+<td>均布彎矩 2 kN-m/m（順時針），不進力平衡</td>
+<td>均布力 2 kN/m</td>
+</tr>
+<tr>
+<td>F 兩側力偶</td>
+<td>梁端 4 kN-m 逆時針、柱頂 4 kN-m 順時針，各作用在所屬桿端</td>
+<td>同向，或視為互相抵銷</td>
+</tr>
+<tr>
+<td>E 位置</td>
+<td>距 C 3 m（梁中點）</td>
+<td>D 點</td>
+</tr>
+</tbody>
+</table>
+<p><strong>本解記號：</strong> 記號與正負號約定沿用 §4。</p>
+<h3>判讀圖解（解析自繪）</h3>
 <p><img alt="SA-2002-1 校正後題目重繪：標明 C-D 均布彎矩，以及 B、F 兩處力矩的轉向" src="../../raw/solutions/SA-2002-1/figs/SA-2002-1-fig-2-frame-corrected.svg" /></p>
 <p><em>圖 2　校正後之向量重繪。C-D 段為均布彎矩 $m_{CD}=2$ kN-m/m（順時針）；F 點梁端 4 kN-m 逆時針、柱端 4 kN-m 順時針，各自畫在所屬桿端旁；內鉸 F 以空心圓標示，與剛接節點 C（實心圓）區別。</em></p>
 <h2>2. 考題核心精神與出題者意圖 (Core Concepts &amp; Examiner's Intent)</h2>
@@ -205,7 +418,7 @@ header .nomat{margin-top:12px;font-size:.8em;opacity:.85}
 <p><strong>自我檢查的限度：</strong> F 點兩側歸零是<strong>必要</strong>條件，但不是方向判讀的獨立驗證——求 $P$、$Q$ 時用的正是「F 兩側彎矩為零」這兩條方程式，只要計算沒有錯，載重方向判讀錯了照樣會歸零。真正的檢查是 Step 1 的整體 $\Sigma M_A=0$（含右分離體所有載重），以及回頭逐一比對原圖每個箭頭。</p>
 </blockquote>
 <h3>Step 3: 繪製 AFD、SFD 與 BMD</h3>
-<p><em>(詳細圖形請參照手繪補充)</em></p>
+<p><em>(三圖畫在構材上見圖 4；彎矩沿路徑展開見圖 3)</em></p>
 <ul>
 <li><strong>AFD</strong>：左柱恆為 $+5/3$（拉），橫梁為 $0$，右柱恆為 $-29/3$（壓）。</li>
 <li><strong>SFD</strong>：左柱恆為 $-10$；橫梁 C→E 恆為 $-5/3$（均布彎矩段剪力不變），E 點階梯降至 $-29/3$；右柱 H→G 由 $4$ 線性降至 $0$，G→F 為 $0$。</li>
@@ -216,6 +429,8 @@ header .nomat{margin-top:12px;font-size:.8em;opacity:.85}
 </ul>
 <p><img alt="SA-2002-1 彎矩圖沿 A→B→C→D→E→F→G→H 路徑展開，F 點兩側各自由 4 跳回 0" src="../../raw/solutions/SA-2002-1/figs/SA-2002-1-fig-3-bmd-path.svg" /></p>
 <p><em>圖 3　BMD 路徑展開圖（內側受拉為正：左柱右側、梁底、右柱左側）。C-D 段因均布彎矩而斜率為 $V+m=1/3$；內鉸 F 的梁側（4−4=0）與柱側（4−4=0）各自歸零。</em></p>
+<p><img alt="SA-2002-1 軸力圖、剪力圖、彎矩圖畫在剛架構材上：左柱拉 5/3、右柱壓 29/3、梁軸力 0；剪力左柱 10、梁 5/3 與 29/3、右柱 4 至 0；彎矩左柱內側 0→20→14→34、梁底 34→104/3→33→4、右柱內側 0→4 定值至 F" src="../../raw/solutions/SA-2002-1/figs/SA-2002-1-fig-4-nvm.svg" /></p>
+<p><em>圖 4　軸力圖、剪力圖、彎矩圖（彎矩畫在受拉側；剪力在梁上正值畫上方）。三圖的分段數值由 §4 的反力沿桿積分重算後才畫。這張圖能攔下三種錯：右柱受拉側畫成外側、梁誤畫出軸力，以及 F 鉸兩側彎矩沒有歸零。</em></p>
 <h2>5. 關鍵爭議點與進階探討 (Critical Issues &amp; Advanced Discussion)</h2>
 <p>本題最大的考驗在於 F 點「雙集中力矩」的解讀。部分考生可能會誤將 4 kN-m 力矩直接加總或互相抵銷，而忽略了它們分別作用在內鉸兩側的實體桿件上。<br />
 標準作法是將它們<strong>視為作用於分離體桿端的外力</strong>，這樣一來內鉸本身的彎矩 $M=0$ 條件依然成立，且桿端的內部彎矩能與這些外部力矩平衡。解題時強烈建議如 Step 1 般拆解為左右兩自由體，即可避免符號混淆與漏算。</p>
@@ -226,7 +441,9 @@ header .nomat{margin-top:12px;font-size:.8em;opacity:.85}
 <hr />
 <p><em>圖解補繪：2026-08-27（向量圖，腳本 <code>gen_SA-2002-1.py</code>，可重跑）</em><br />
 <em>內力校正：2026-10-12（橫梁軸力、左柱與右柱 H-G 段受拉側）</em><br />
-<em>載重校正：2026-10-23（C-D 段改為均布彎矩；F 點梁端改逆時針、柱端改順時針；反力與三圖全部重算）</em></p></main>
+<em>載重校正：2026-10-23（C-D 段改為均布彎矩；F 點梁端改逆時針、柱端改順時針；反力與三圖全部重算）</em></p>
+<p><em>修正日期：2026-11-05（§1 改為指向題目正本並放重繪附圖（figs/SA-2002-1-fig-1-problem.svg）、加常見誤讀；原 §1 解析自繪圖移至「判讀圖解（解析自繪）」；圖由 gen_SA-2002-1_problem.py 產生，可重跑）</em><br />
+<em>圖解補繪：2026-11-05（圖 4 軸力／剪力／彎矩圖，向量圖，腳本 <code>gen_SA-2002-1_nvm.py</code>，可重跑）</em></p></main>
 <footer>來源：raw/solutions/SA-2002-1/SA-2002-1.md（知識庫解題內容唯一正本；本頁僅為渲染顯示）</footer>
 
 <script>

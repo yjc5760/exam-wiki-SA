@@ -43,25 +43,174 @@ header .nomat{margin-top:12px;font-size:.8em;opacity:.85}
 <p class="meta2">主分類 <b>SA-U1-2</b> 靜定結構之分析 ｜ 2004 年（民國 93） ｜ 單位力法 / 虛功法</p>
 <div class="hbtns"><a class="b-study" href="../unit-SA-U1-2.html">🧭 U1-2 單元總覽</a><a class="b-lect" href="../lecture-SA-U1-2.html">📚 U1-2 靜定結構之分析 講義</a></div>
 </header>
-<main><h1>考題編號：SA-2004-3</h1>
+<main><details class="problem-src" open><summary><b>📄 題目正本</b>（考卷原文、附圖與判讀清單；不含解法）</summary>
+<h1>SA-2004-3 題目正本</h1>
+<blockquote>
+<p>本檔只記錄考卷上寫了什麼、圖上畫了什麼，不含任何解法。解析見同資料夾 <code>SA-2004-3.md</code>。<br />
+判讀清單經使用者確認前，狀態為「待確認」；確認後本檔原則上不再修改（改動須回考卷原圖並記 log）。</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>項目</th>
+<th>內容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>考卷</td>
+<td><code>raw/exams/SA-2004_結構學.pdf</code>，第 1 頁（全一頁），第三題</td>
+</tr>
+<tr>
+<td>考年</td>
+<td>2004（民國九十三年）專技高考結構工程技師「結構學」</td>
+</tr>
+<tr>
+<td>配分</td>
+<td>25 分</td>
+</tr>
+<tr>
+<td>附圖</td>
+<td><code>SA-2004-3-fig-1.png</code>、<code>SA-2004-3-fig-2.png</code></td>
+</tr>
+<tr>
+<td>判讀狀態</td>
+<td><strong>已確認</strong>（2026-11-05 使用者確認。原轉錄：2026-11-05 轉錄；PyMuPDF 110 dpi 整頁＋350–1000 dpi 局部放大；盲讀於開啟解析前完成）</td>
+</tr>
+</tbody>
+</table>
+<h2>1. 考卷原文（逐字）</h2>
+<p>三、如圖所示 C 點為彈簧支承之複合梁，試求在圖示之荷重作用時，點 C、D 之傾角及點 B、C、D 之垂直變位。彎曲剛度 EI = 1×10⁶ t-m²。彈簧支承之彈簧常數 k = 10⁴ t/m。（25 分）</p>
+<h2>2. 考卷給的公式、附表與參數</h2>
+<ul>
+<li>考卷沒有給任何參考公式或附表。</li>
+<li>EI = 1×10⁶ t-m²；k = 10⁴ t/m（題文；PDF 文字層為「1×106」「104」，上標依頁面影像補回）。</li>
+<li>卷首注意事項：㈠不必抄題，作答時請將試題題號及答案依照順序寫在試卷上，於本試題上作答者，不予計分。㈡可以使用電子計算器。</li>
+<li>考試時間：二小時。</li>
+</ul>
+<h2>3. 附圖</h2>
+<p><img alt="SA-2004-3 考卷附圖原截圖（含滑鼠游標；內容同下圖）" src="../../raw/solutions/SA-2004-3/SA-2004-3-fig-1.png" /><br />
+<em>證據圖 SA-2004-3-fig-1.png</em></p>
+<p><img alt="SA-2004-3 考卷附圖：A 固定；AB 30 m（2EI）；B 內鉸並受 36t 向下；BC 18 m（EI）；C 彈簧支承 k；CD 12 m（EI），D 自由端受 36t 向下" src="../../raw/solutions/SA-2004-3/SA-2004-3-fig-2.png" /><br />
+<em>證據圖 SA-2004-3-fig-2.png（2026-11-05 自考卷重新擷取 500 dpi，無游標）</em></p>
+<p>圖面文字照錄：36t、36t、A、2EI、B、EI、C、EI、D、k、30m、18m、12m</p>
+<h2>4. 判讀清單</h2>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>項目</th>
+<th>判讀</th>
+<th>圖上／題文依據</th>
+<th>把握</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>A</td>
+<td>固定端（牆）</td>
+<td>圖上剖線牆</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>2</td>
+<td>B</td>
+<td>內鉸（AB 與 BC 鉸接）</td>
+<td>圖上 B 空心圓；題文「複合梁」</td>
+<td>確定（解讀）；使用者確認</td>
+</tr>
+<tr>
+<td>3</td>
+<td>C</td>
+<td>線彈簧支承（垂直），k = 10⁴ t/m</td>
+<td>圖上彈簧＋題文</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>4</td>
+<td>D</td>
+<td>自由端</td>
+<td>圖上無支承</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>5</td>
+<td>尺寸</td>
+<td>AB 30 m、BC 18 m、CD 12 m</td>
+<td>下方尺寸線</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>6</td>
+<td>剛度</td>
+<td>AB 為 2EI；BC、CD 為 EI；EI = 1×10⁶ t-m²</td>
+<td>圖上標字；題文</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>7</td>
+<td>載重</td>
+<td>B 點 36t 向下、D 點 36t 向下</td>
+<td>箭頭位置（B 箭頭落在鉸上）</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>8</td>
+<td>所求</td>
+<td>C、D 傾角；B、C、D 垂直變位</td>
+<td>題文</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>9</td>
+<td>證據圖</td>
+<td>舊 fig-1 滑鼠游標壓在「30m」尺寸字上；新增 fig-2（500 dpi）</td>
+<td>—</td>
+<td>確定</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p><em>轉錄：2026-11-05（SA-U1-2 題目正本推廣・批 1）</em><br />
+<em>確認：2026-11-05 使用者確認</em></p>
+</details>
+<hr>
+<h1>考題編號：SA-2004-3</h1>
 <p><strong>主分類：</strong> <code>SA-U1-2</code> 靜定結構之分析<br />
 <strong>副分類：</strong> 無<br />
 <strong>分析法：</strong> 單位力法 / 虛功法<br />
 <strong>標籤：</strong> <code>內部鉸</code> <code>彈簧支承</code> <code>剛體位移</code> <code>懸臂梁</code> <code>複合梁</code></p>
 <hr />
-<h2>1. 原始題目重述 (Problem Restatement)</h2>
-<p>如圖所示 $C$ 點為彈簧支承之複合梁，試求在圖示之荷重作用時，點 $C$、$D$ 之傾角及點 $B$、$C$、$D$ 之垂直變位。<br />
-已知條件：</p>
-<ul>
-<li>彎曲剛度 $EI = 1 \times 10^6 \text{ t-m}^2$</li>
-<li>彈簧常數 $k = 10^4 \text{ t/m}$</li>
-<li>幾何尺寸：$AB = 30\text{m}$，$BC = 18\text{m}$，$CD = 12\text{m}$</li>
-<li>桿件剛度：$AB$ 段為 $2EI$，$BCD$ 段為 $EI$</li>
-<li>支承條件：$A$ 點固定端，$B$ 點為內部鉸 (Hinge)，$C$ 點為彈簧支承</li>
-<li>載重：$B$ 點受垂直向下集中載重 $36\text{t}$，$D$ 點受垂直向下集中載重 $36\text{t}$</li>
-</ul>
-<p><img alt="SA-2004-3 題目附圖：包含懸臂梁與彈簧支承之複合梁，B點為鉸接，C點有彈簧" src="../../raw/solutions/SA-2004-3/SA-2004-3-fig-1.png" /></p>
-<p><em>圖說：A端固定，B為內部鉸接。AB段長30m(2EI)，BC段長18m(EI)，CD段長12m(EI)。C點有彈簧(k=10^4 t/m)。B、D兩點各有36t向下集中載重。</em></p>
+<h2>1. 題目（考卷原文見題目正本）</h2>
+<blockquote>
+<p>考卷原文、公式／附表、附圖與判讀清單（已確認）見 <a href="SA-2004-3-problem.md"><code>SA-2004-3-problem.md</code></a>。本節只列解題時最容易讀錯的地方與本解使用的記號；題意以題目正本為準。</p>
+</blockquote>
+<p><img alt="SA-2004-3 重繪題目附圖：複合梁 A 固定、B 內鉸、C 彈簧支承、D 自由端；AB 30 m（2EI）、BC 18 m、CD 12 m；B、D 各 36t" src="../../raw/solutions/SA-2004-3/figs/SA-2004-3-fig-1-problem.svg" /><br />
+<em>重繪自考卷附圖，依判讀清單 #1–#8 重繪。攔：B 讀成剛接、AB 段 2EI 漏讀。</em></p>
+<h3>常見誤讀</h3>
+<table>
+<thead>
+<tr>
+<th>項目</th>
+<th>正確判讀</th>
+<th>常見誤讀</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>B</td>
+<td>內鉸（AB、BC 鉸接）</td>
+<td>剛接</td>
+</tr>
+<tr>
+<td>AB 剛度</td>
+<td>2EI</td>
+<td>EI</td>
+</tr>
+</tbody>
+</table>
+<p><strong>本解記號：</strong> 記號與正負號約定沿用 §4。</p>
 <h2>2. 考題核心精神與出題者意圖 (Core Concepts &amp; Examiner's Intent)</h2>
 <p>本題看似具有彈簧支承，容易讓考生誤以為是靜不定結構而嘗試使用諧合變位法。但實際上，因為 $B$ 點為內部鉸，提供了額外的彎矩為零 ($M_B=0$) 之條件，使整個結構為<strong>靜定結構</strong>。<br />
 出題者的意圖在測驗：</p>
@@ -243,7 +392,8 @@ $$ \boxed{\Delta_D = 25.84\text{ mm} (\downarrow)} $$</li>
 <p><strong>剛體位移疊加法</strong>：<br />
    本題也可完全不使用虛功法，改以幾何疊加法求解。先由 $B, C$ 點沉陷量畫出剛體位移直線，求出 $C, D$ 點的剛體旋轉角及 $D$ 點的剛體位移；再將 $B, C$ 視為不動鉸支承，利用共軛梁法或面積矩法求出各點的彈性變形量，兩者相加即為最終絕對變位。此方法物理意義清晰，可作為考場上的最佳驗算工具。</p>
 </li>
-</ol></main>
+</ol>
+<p><em>修正日期：2026-11-05（§1 改為指向題目正本並放重繪附圖（figs/SA-2004-3-fig-1-problem.svg）、加常見誤讀；圖由 gen_SA-2004-3.py 產生，可重跑）</em></p></main>
 <footer>來源：raw/solutions/SA-2004-3/SA-2004-3.md（知識庫解題內容唯一正本；本頁僅為渲染顯示）</footer>
 
 <script>
