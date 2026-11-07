@@ -399,6 +399,8 @@ $$ M_D = M_{D,simple} + \frac{M_B}{2} $$<br />
 </tbody>
 </table>
 <p><em>(依據上述數值繪製出兩跨之平滑曲線，在 D 點會有尖峰轉折)</em></p>
+<p><img alt="SA-2005-3 D 點彎矩影響線，每 2.5 m 一點：AB 跨為負（−75/256、−15/32、−105/256），BC 跨為正、D 處尖點 65/32" src="../../raw/solutions/SA-2005-3/figs/SA-2005-3-fig-2-influence-line.svg" /></p>
+<p><em>圖 2　$M_D$ 影響線（九個縱距與 Step 4 總表逐一相符）。攔的是把 AB 跨畫成 0，以及把 D 點峰值寫成簡支梁的 $L/4 = 2.5$ —— 連續梁要扣掉 $M_B/2 = \frac{15}{32}$，得 $\frac{65}{32}$。</em></p>
 <h2>5. 關鍵爭議點與進階探討 (Critical Issues &amp; Advanced Discussion)</h2>
 <ol>
 <li>
@@ -410,7 +412,8 @@ $$ M_D = M_{D,simple} + \frac{M_B}{2} $$<br />
    在 AB 跨，影響線皆為負值，代表載重在 AB 跨時會使 BC 跨產生上凸變形，導致 D 點產生負彎矩；在 BC 跨，D 點附近影響線為正值，且在 D 點有明顯的尖點（非平滑），這是因為內力影響線在所求截面處必定有相對位移（此題為相對轉角）的不連續。</p>
 </li>
 </ol>
-<p><em>修正日期：2026-11-07（§1 改為指向題目正本並放重繪附圖（figs/SA-2005-3-fig-1-problem.svg）、加常見誤讀；圖由 gen_SA-2005-3.py 產生，可重跑）</em></p></main>
+<p><em>修正日期：2026-11-07（§1 改為指向題目正本並放重繪附圖（figs/SA-2005-3-fig-1-problem.svg）、加常見誤讀；圖由 gen_SA-2005-3.py 產生，可重跑）</em><br />
+<em>圖解補繪：2026-11-07（圖 2 影響線，向量圖，腳本 <code>gen_SA-2005-3_il.py</code>，可重跑）</em></p></main>
 <footer>來源：raw/solutions/SA-2005-3/SA-2005-3.md（知識庫解題內容唯一正本；本頁僅為渲染顯示）</footer>
 
 <script>

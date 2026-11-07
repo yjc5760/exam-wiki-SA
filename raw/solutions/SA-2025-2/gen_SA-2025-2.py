@@ -13,7 +13,7 @@ SA-2025-2 Gerber 梁影響線 — 解題圖解產生腳本
 三條鐵則的落實：
   1. 圖上每個縱距與每一條分段式都由下方 IL 函數算出，沒有一個數字是手打的
   2. 改 XA…XF 任何一個座標重跑，五條影響線與機構圖會一起變
-  3. fig-4 的縱距用「幾何機構」獨立算一遍，與 fig-2 的平衡法結果互相 assert
+  3. fig-4 的縱距用「幾何機構」獨立算一遍，與 fig-3（影響線）的平衡法結果互相 assert
 """
 import sys, os
 from fractions import Fraction as Fr
@@ -306,7 +306,7 @@ def beam_panel():
     return cv
 
 
-def fig2_influence_lines():
+def fig3_influence_lines():
     """五條影響線：縱距與分段式全部由 IL 函數算出"""
     panels = [beam_panel()]
     for name, fn, segs, is_m, _ in IL:
@@ -334,10 +334,10 @@ def fig2_influence_lines():
     compose(panels, cols=1,
             title="五條影響線（縱距＝單位載重位於 x 時該量的值）",
             sub="折點只出現在支承、內鉸與所求剪力斷面；各段皆為直線，故只需算折點縱距再連線",
-            note="M_A 面板的縱距尺度與其餘四張不同（單位 m）。"
-                 "IL of R_C 峰值 2 大於 1 是槓桿效應：D 為內鉸，DE 段對 C 形同懸臂。",
-            path=f"{OUT}/{TAG}-fig-2-influence-lines.svg")
-    return f"{OUT}/{TAG}-fig-2-influence-lines.svg"
+            note="A 端彎矩面板的縱距尺度與其餘四張不同（單位 m）。"
+                 "C 點反力影響線峰值 2 大於 1 是槓桿效應：D 為內鉸，DE 段對 C 形同懸臂。",
+            path=f"{OUT}/{TAG}-fig-3-influence-lines.svg")
+    return f"{OUT}/{TAG}-fig-3-influence-lines.svg"
 
 
 # ══════════════════════════════════════════════════════════
@@ -403,7 +403,7 @@ def fbd_panel(xL, label):
     return cv
 
 
-def fig3_hinge_fbd():
+def fig2_hinge_fbd():
     """三段載重位置的鉸右側自由體：載重在鉸左側時它不進右側自由體"""
     panels = [
         fbd_panel(2.0,  "① 載重在 A–B 段（x ＜ 4）：兩個自由體都不含載重"),
@@ -416,8 +416,8 @@ def fig3_hinge_fbd():
                 "切斷面同時標出 N、V、M（M = 0 才是鉸提供的那一條方程）",
             note="三段的差別只在「載重有沒有落進該自由體」。這正是影響線必須分段的原因，"
                  "也是最容易錯的一步：載重在鉸左側時，右側自由體的載重項為 0。",
-            path=f"{OUT}/{TAG}-fig-3-hinge-fbd.svg")
-    return f"{OUT}/{TAG}-fig-3-hinge-fbd.svg"
+            path=f"{OUT}/{TAG}-fig-2-hinge-fbd.svg")
+    return f"{OUT}/{TAG}-fig-2-hinge-fbd.svg"
 
 
 # ══════════════════════════════════════════════════════════
@@ -460,7 +460,7 @@ def mb_panel(title, branches, pxu, released, unit):
 
 
 def fig4_muller_breslau():
-    """Müller–Breslau：用幾何機構把 fig-2 的縱距獨立算一遍"""
+    """Müller–Breslau：用幾何機構把 fig-3（影響線）的縱距獨立算一遍"""
     panels = []
     for title, f, pxu, rel, unit in (
         ("釋放 R_A：移除 A 的垂直約束並令 A 升 1（旋轉約束仍在 ⇒ A–B 段保持水平）",
@@ -483,7 +483,7 @@ def fig4_muller_breslau():
     compose(panels, cols=1,
             title="Müller–Breslau 獨立檢核：移除該量對應的約束，令它產生單位位移，變形形狀即為影響線",
             sub="全程只用幾何（剛體節段以內鉸轉折、支承處位移為零），一條平衡方程都沒用到",
-            note="本圖每個縱距都在腳本裡與 fig-2 的平衡法結果逐點 assert 過；"
+            note="本圖每個縱距都在腳本裡與圖 3 的平衡法結果逐點 assert 過；"
                  "兩條互相獨立的路徑得到同一組數字，才算真的算對。",
             path=f"{OUT}/{TAG}-fig-4-muller-breslau.svg")
     return f"{OUT}/{TAG}-fig-4-muller-breslau.svg"
@@ -492,9 +492,9 @@ def fig4_muller_breslau():
 # ══════════════════════════════════════════════════════════
 FIGURES = [
     (fig1_beam,             "§1",   "把 F 誤讀成自由端、或跨距記成 AB=2 → 整組縱距全錯"),
-    (fig2_influence_lines,  "§4",   "影響線當彎矩圖畫；折點不在支承／鉸；漏掉 R_C 峰值 2"),
-    (fig3_hinge_fbd,        "§4.1", "載重在鉸左側時仍把它算進右側自由體"),
-    (fig4_muller_breslau,   "§5.1", "影響線形狀畫錯（與 fig-2 互為獨立檢核）"),
+    (fig2_hinge_fbd,        "§4.1", "載重在鉸左側時仍把它算進右側自由體"),
+    (fig3_influence_lines,  "§4",   "影響線當彎矩圖畫；折點不在支承／鉸；漏掉 R_C 峰值 2"),
+    (fig4_muller_breslau,   "§5.1", "影響線形狀畫錯（與圖 3 互為獨立檢核）"),
 ]
 
 if __name__ == "__main__":

@@ -298,8 +298,8 @@ def fig2_releases():
                 "ΣM_d（取右側自由體）= 0　⇒　9 · R_e = 斷面右側載重對 d 的力矩",
                 13.5, C["accent"], weight="700")
     return compose([cv1, cv2], cols=1,
-                   note="這兩條釋放式，加上整體 ΣF_{y} 與 ΣM，恰好 4 式解出 4 個垂直反力；"
-                        "水平反力由 ΣF_{x} = 0 得 H_{e} = 0",
+                   note="這兩條釋放式，加上整體垂直力平衡與力矩平衡，恰好 4 式解出 4 個垂直反力；"
+                        "水平力平衡得 e 點水平反力為 0",
                    path=f"{OUT}/{TAG}-fig-2-releases.svg")
 
 
@@ -372,8 +372,8 @@ def fig4_influence_lines():
         rng = max(abs(fn(x)) for x in brk) or 1.0
         panels.append(il_panel(name, fn, brk, unit, 44.0 / rng))
     return compose(panels, cols=1,
-                   note="x > 12 後 R_a、R_b 仍不為零，R_b 在 x = 15 為 −1/4（b 被拔起）；"
-                        "N_nk 無恆零段",
+                   note="x > 12 後 a、b 反力仍不為零，b 點反力在 x = 15 為 −1/4（b 被拔起）；"
+                        "nk 桿軸力沒有恆為零的平台",
                    path=f"{OUT}/{TAG}-fig-4-influence-lines.svg")
 
 

@@ -1640,3 +1640,47 @@ PDF 文字層檢查無殘留 LaTeX、無 emoji 豆腐方框。
 - 重繪 12 張題目附圖 figs/<id>-fig-1-problem.svg＋2× PNG（struct-diagram；render.py 溢出 0，逐張與證據圖並排目視核對）；腳本 gen_<id>.py（2003-4、2004-2、2005-3、2007-3、2018-4、2020-3、2021-3）或 gen_<id>_problem.py（2011-3、2015-2、2016-2、2022-3、2025-2，不動既有圖腳本的其他圖）；各題 figs/_lib 補 probfig.py、frameviz.py、structdraw.py（與 SA-2002-2 相同版本）；在使用者電腦重跑全部腳本，SVG 去掉檔案同步附加的 C2PA metadata 後逐位元相同
 - 瀏覽頁 12 頁重產；KaTeX 1880 式錯誤 0、殘留錢號 0；圖片引用缺 0；分類稽核 0 問題；pipeline_status：12 題皆到階段 B
 - 延到階段 F 的下游：study/lecture-SA-U1-3.html §5（SA-2022-3 細長拉桿敘述、圖 5-2 的 N_km 格與橘虛線，產生器 scripts/gen_lecture_SA-U1-3_figs.py）、圖 3-x 圖說「例外：細長拉桿換手」、§9 對照表；study/data/unit-SA-U1-3.json SA-2022-3 摘要「含細長拉桿」→ 單元總覽、頻率熱圖重建
+
+## 2026-11-07 AUDIT-SA-U1-3-B1｜盲解比對批 1（12 題）
+
+- exam-wiki-pipeline 階段 B（exam-wiki-audit，與階段 A 分開對話）：12 題全部一致（✅ 12／❌ 0），B' 不需停；C、D 略過
+- 報告：wiki/queries/盲解比對-SA-U1-3-批1-2026-11-07.md；盲解紀錄與腳本：wiki/queries/盲解紀錄-SA-U1-3-批1-2026-11-07.md、wiki/queries/盲解腳本-SA-U1-3-批1/
+- 附帶發現 3 筆（不影響答案）於階段 F 處理，見下方 PIPELINE-SA-U1-3-B1；ledger 12 題已記錄
+- （本筆於 2026-11-07 階段 F 補記；比對報告當日已存檔）
+
+## 2026-11-07 FIGURE-SA-U1-3-B1｜階段 E 補影響線圖解（7 題）
+
+- `[figure]` struct-diagram；各題新增圖 2 影響線 figs/<id>-fig-2-influence-line(s).svg＋2× PNG，腳本 gen_<id>_il.py（可重跑；在使用者電腦重跑 SVG 逐位元相同，SVG 不含 C2PA metadata）。縱距與極值由解析正本的式子算出，並以獨立路徑 assert 後才畫：
+  - SA-2003-4 M_B、V_B（馬克士威互惠核 C_y、左側自由體重算；25/16、−5/16／+11/16）
+  - SA-2004-2 R_a、F_bc＋卡車位置（13 桿節點法聯立；卡車逐 1 cm 掃描確認 128.3、96.9 kN，bc 不受壓）
+  - SA-2005-3 M_D 每 2.5 m 九點（簡支梁柔度法求 R_B 獨立重算 401 點）
+  - SA-2007-3 A_y、A_x、F_FG＋拉壓兩個卡車位置（14 桿 18 未知節點法；逐 1 cm 掃描確認 130.25、−115.22、+59.68 kN 與合力最大同車位）
+  - SA-2018-4 v_C（節點 B 平衡、B 兩側斜率 = θ_B = 1/1024；55/6144、−5√3/9216 @ 2.887、17.113 m）
+  - SA-2020-3 R_b（單位載重法數值積分 141 點；19/17 @ x = 3、c 點 18/17）
+  - SA-2021-3 H_a、S_ab、S_bg（13 桿節點法＋柔度法以分數重解，各節點值與 §4 相同）
+- 解析 .md 於 §5 前插入圖 2 與圖說（SA-2018-4 在頁尾前），頁尾加「圖解補繪」行
+- 既有影響線圖 5 題（SA-2011-3、2015-2、2016-2、2022-3、2025-2）目視核對與解析正本數值一致，人工判定階段 E 完成
+- 發現（不影響答案，於階段 F 處理）：SA-2018-4 §3.1 中間式符號；SA-2007-3 合力精確值 130.975 kN；既有圖外觀瑕疵 4 處
+- 備註：pipeline_status.py 的階段 E 判定只認檔名不含 `-fig-` 的 svg，但解題圖依命名規範一律含 `-fig-`，故本批 12 題狀態表仍顯示「卡在 E」；判定規則未改，待使用者決定
+
+## 2026-11-07 PIPELINE-SA-U1-3-B1｜非勘誤小修、分類更正、既有圖外觀、教材同步、收尾重建
+
+- `[fix]` 表述更正（非勘誤，使用者同意）：
+  - SA-2004-2 標頭主分類名稱「靜定結構分析」→「靜定及靜不定結構影響線」（代號 SA-U1-3 不變）
+  - SA-2007-3 §4 Step 1 A_x 框式改分段式（原框只寫 x/34）；合力改精確值 130.975 kN（原 130.97 為 A_x 先取 13.76 所得；主答案 A_y = 130.25 kN 不變）；§5 同步
+  - SA-2018-4 §3.1 中間式改為 M_B·x(L² − x²)/(6EIL)（原寫法代入 M_B = −15/32 與最終式差一個負號）；最終式 x(x² − 25)/51200 與極值不變
+- `[fix]` 分類（使用者決定）：SA-2015-2 副分類 SA-U2-1 → SA-U2-2（共軛梁法求贅力諧合，不是最小功法）；question_index.json、解析標頭（頁尾記「分類更正（非勘誤）」）、dashboard-data.js 同步；study/data/unit-SA-U2-1.json 移除該題、judge「副考點 2 → 1 題」、footer 記更正；study/lecture-SA-U2-1.html 頁首「副分類 2 題（2014–2015）」→「1 題（2014）」、副分類表刪該列；U2-2 無單元總覽頁，無需新增
+- `[figure]` 既有圖外觀修正（非勘誤，數值不變；改產圖腳本重跑，其餘圖重產後與舊檔內容相同或只差 C2PA metadata）：
+  - SA-2016-2 圖 4：縱距標註移到曲線右下、對照文字移到左上（原 0.4531 與對照文字重疊）
+  - SA-2011-3 圖 2、SA-2022-3 圖 2／圖 4、SA-2025-2 圖 3：註腳改用中文（原 V_{C}、ΣF_{y}、R_a、N_nk、M_A 等下標字元外露）
+  - SA-2025-2 圖號依插入順序對調：鉸右側自由體 fig-3-hinge-fbd → fig-2-hinge-fbd、五條影響線 fig-2-influence-lines → fig-3-influence-lines（git mv；腳本函式名與 FIGURES 順序同步；圖 4 註腳「與 fig-2」→「與圖 3」）
+- `[update]` 教材同步（階段 A 延後項）：
+  - study/lecture-SA-U1-3.html §5：SA-2022-3 改為「m + r − 2j = 4 的贅餘全在 X 形嵌板內部、反力外部靜定」，刪除「細長拉桿／每格只有一根受拉／不給 EA 是暗示」敘述與 N_km 節間折點說明；§5 導言、§7 列表、§8 歷屆題表（SA-2007-3 註明 A_y 為主答案）、§9 陷阱表（刪 N_km 列、改兩列）、FAQ、精選題 ⑤ 同步
+  - scripts/gen_lecture_SA-U1-3_figs.py：圖 5-2 第三列 N_km 改為 R_b（12–15 嵌板剪力釋放 R_a + R_b = 左側載重；tab 依 §4.7 總表 assert）、X 形註記改「每格一個內部贅餘」；圖 5-1 例外句改「靜不定桁架也一樣」；重產後只有圖 5-1、5-2 變動，其餘 12 張與文字逐字相同
+  - lecture-SA-U1-3 §4 簡支梁剪力 IL 式「(x<a)」原為裸「<」被瀏覽器當成 <a> 標籤、公式未渲染（舊版即有），改為 &lt;
+  - study/data/unit-SA-U1-3.json：SA-2022-3、SA-2007-3 摘要更新，footer 記本次
+- `[rebuild]` problems-view 12 頁重產（md2view.py）；build_unit_page.py SA-U1-3（主 12＋副 1）、SA-U2-1（主 12＋副 1）；build_frequency.py 對帳通過並重產；dashboard-data.js 與索引對帳：本次 SA-2015-2 之外，另補 SA-2024-4、SA-2019-4 兩題 tags（U2-4 批 1 延到階段 F 的項目）
+- `[pdf]` Chromium（Playwright，A4、背景、details 全展開、單元總覽 mxBox 展開，與舊版相同）：lecture-SA-U1-3 28 頁（舊 31）、unit-SA-U1-3 10 頁、unit-SA-U2-1 10 頁、lecture-SA-U2-1 29 頁（舊 28）
+- `[check]` KaTeX：講義 2 頁＋單元總覽 2 頁＋瀏覽頁 12 頁共 2754 式，錯誤 0、pageerror 0；殘留未渲染定界符只剩 unit-SA-U2-1 footer 1 處（footer 不經 KaTeX，舊版即有）；瀏覽頁圖片引用 50 張缺 0、解析 .md 圖片引用缺 0；分類稽核 0 問題
+- 批次狀態：12 題題目正本已確認、盲解比對一致、圖解齊（7 題新補、5 題既有）；verificationStatus 全部仍為 unverified，待使用者關卡二人工複核
+- 未處理（不在本批範圍）：lecture-SA-U2-3、lecture-SA-U2-4、unit-SA-U2-4 的 PDF 仍比 HTML 舊（U2-3／U2-4 批次延後項）

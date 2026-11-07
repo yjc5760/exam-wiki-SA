@@ -777,7 +777,7 @@ def fig_5_1():
     S.halo(Wp.X(10.5), Wp.Y(1.0), '虛線＝若載重直接作用在梁上（剪力 ×1.25）：節間中跳躍', 11.5, MUT, 'start')
     S.halo(Wp.X(10.5), Wp.Y(1.0) + 17, '實線＝桁架：節點值之間一律直線，沒有跳躍', 11.5, IL1, 'start', True)
     S.text(450, 412, 'T = V_節間 / sin θ = 1.25 V（sin θ = 4/5）。節點值照抄梁的剪力 IL × 1.25，節間用直線連', 12, INK)
-    S.text(450, 434, '例外：細長拉桿換手會在節間另外造出折點（見下方 SA-2022-3 的 N_km）', 12, LOAD, bold=True)
+    S.text(450, 434, '靜不定桁架也一樣：載重只從節點進入，節間永遠是直線（見下方 SA-2022-3）', 12, LOAD, bold=True)
     return S.render()
 
 
@@ -796,21 +796,24 @@ def _pleft(x, a, b):          # 節間 a–b 左側（含節點 a 以左）的�
     return 1.0 if x <= a else (0.0 if x >= b else (b - x) / (b - a))
 
 
+def _rb22(x):                 # 12–15 嵌板剪力恆零：R_a + R_b = 該嵌板左側載重
+    return _pleft(x, 12, 15) - _ra22(x)
+
+
 def il_2022_3(x):
     ra = _ra22(x)
-    V1 = ra - _pleft(x, 3, 6)
     V2 = ra - _pleft(x, 6, 9)
     kn = 1.25 * V2
-    km = min(V1, 0.0) - V2
     mn = (6 * ra - (6 - x if x <= 6 else 0.0)) / 4
-    return ra, km, kn, mn
+    return ra, _rb22(x), kn, mn
 
 
 def fig_5_2():
-    tab = {0: (1, 0, 0, 0), 3: (3 / 4, 0, -5 / 16, 3 / 8), 4: (2 / 3, 1 / 3, -5 / 12, 1 / 2),
-           6: (1 / 2, 1 / 2, -5 / 8, 3 / 4), 8: (1 / 3, 0, 0, 1 / 2), 9: (1 / 4, -1 / 4, 5 / 16, 3 / 8),
-           12: (0, 0, 0, 0), 15: (1 / 4, -1 / 4, 5 / 16, 3 / 8), 18: (0, 0, 0, 0),
-           21: (-1 / 4, 0, -5 / 16, -3 / 8), 24: (-1 / 6, 0, -5 / 24, -1 / 4), 27: (-1 / 12, 0, -5 / 48, -1 / 8),
+    # (R_a, R_b, N_kn, N_mn)：SA-2022-3 §4.7 縱距總表（2026-11-07 刪除細長拉桿假設後的版本）
+    tab = {0: (1, 0, 0, 0), 3: (3 / 4, 1 / 4, -5 / 16, 3 / 8), 4: (2 / 3, 1 / 3, -5 / 12, 1 / 2),
+           6: (1 / 2, 1 / 2, -5 / 8, 3 / 4), 8: (1 / 3, 2 / 3, 0, 1 / 2), 9: (1 / 4, 3 / 4, 5 / 16, 3 / 8),
+           12: (0, 1, 0, 0), 15: (1 / 4, -1 / 4, 5 / 16, 3 / 8), 18: (0, 0, 0, 0),
+           21: (-1 / 4, 1 / 4, -5 / 16, -3 / 8), 24: (-1 / 6, 1 / 6, -5 / 24, -1 / 4), 27: (-1 / 12, 1 / 12, -5 / 48, -1 / 8),
            30: (0, 0, 0, 0)}
     for x, v in tab.items():
         got = il_2022_3(x)
@@ -866,14 +869,14 @@ def fig_5_2():
     S.text(W.X(13.5), W.Y(4) - 12, '只切到兩根平行弦 → 剪力釋放', 10.5, IL4)
     S.text(W.X(22.5), W.Y(4) - 26, '② 21–24 只切兩根', 11.5, IL3, bold=True)
     S.text(W.X(22.5), W.Y(4) - 12, '共點於 d → 等效內鉸', 10.5, IL3)
-    S.text(W.X(4.5), W.Y(4) - 26, '③ X 型 = 細長拉桿', 11.5, ORG, bold=True)
-    S.text(W.X(4.5), W.Y(4) - 12, '（橘虛線，只受拉）', 10.5, ORG)
+    S.text(W.X(4.5), W.Y(4) - 26, '③ X 形嵌板（橘虛線）', 11.5, ORG, bold=True)
+    S.text(W.X(4.5), W.Y(4) - 12, '每格一個內部贅餘', 10.5, ORG)
     S.text(870, 166, 'kn：單斜桿', 11.5, LOAD, 'end', bold=True)
     S.text(870, 182, '可拉可壓', 11, LOAD, 'end')
     # IL rows
     rows = [('R_a', 0, 62, IL1, '向上為正'), ('N_kn', 2, 72, LOAD, '拉為正'),
-            ('N_km', 1, 80, IL3, '拉為正'), ('N_mn', 3, 80, IL2, '拉為正')]
-    xs_all = sorted(set(list(range(0, 31, 3)) + [4, 8]))
+            ('R_b', 1, 62, IL3, '向上為正'), ('N_mn', 3, 80, IL2, '拉為正')]
+    xs_all = list(range(0, 31, 3))          # 節點傳力：節間直線，只需節點值
     for r, (nm, idx, sc, c, sub) in enumerate(rows):
         oy = (318, 436, 584, 712)[r]
         Wp = World(80, oy, 25.5, sc)
@@ -891,12 +894,8 @@ def fig_5_2():
                 key = min(lab, key=lambda q: abs(q - v))
                 t = lab[key] if abs(key - v) < 1e-9 else None
                 show = (nm == 'R_a' and x in (0, 15, 21)) or (nm == 'N_kn' and x in (6, 9, 21)) or \
-                       (nm == 'N_km' and x in (4, 6, 9, 15)) or (nm == 'N_mn' and x in (6, 15, 21))
+                       (nm == 'R_b' and x in (12, 15, 21)) or (nm == 'N_mn' and x in (6, 15, 21))
                 dot(S, Wp, x, v, c, t if show else None, r=2.8, size=11.5)
-    Wkm = World(80, 584, 25.5, 80)
-    S.line(Wkm.X(4), Wkm.Y(0) + 6, Wkm.X(4), Wkm.Y(1 / 3) - 2, MOM, 1, dash='2 2')
-    S.halo(Wkm.X(4) - 8, Wkm.Y(1 / 3) - 30, 'x = 4：折點不在節點上', 11, MOM, 'end', True)
-    S.halo(Wkm.X(4) - 8, Wkm.Y(1 / 3) - 16, '（3–6 細長拉桿換手）', 11, MOM, 'end', True)
     S.halo(Wp.X(16.5), 436 - 34, 'N_kn 沒有恆零平台：最大是壓力 −5/8', 11, LOAD, 'start', True)
     S.halo(Wp.X(19), 318 - 40, 'x > 12 後 R_a 不為零，還會變號', 11, IL1, 'start', True)
     return S.render()

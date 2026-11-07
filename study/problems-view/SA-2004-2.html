@@ -190,7 +190,7 @@ header .nomat{margin-top:12px;font-size:.8em;opacity:.85}
 </details>
 <hr>
 <h1>考題編號：SA-2004-2</h1>
-<p><strong>主分類：</strong> <code>SA-U1-3</code> 靜定結構分析<br />
+<p><strong>主分類：</strong> <code>SA-U1-3</code> 靜定及靜不定結構影響線<br />
 <strong>副分類：</strong> 無<br />
 <strong>分析法：</strong> 影響線<br />
 <strong>標籤：</strong> <code>桁架</code> <code>影響線</code> <code>移動載重</code> <code>最大內力</code></p>
@@ -436,11 +436,15 @@ $$ \frac{dF}{dx} = \sum P_{\text{left}} \cdot m_1 + \sum P_{\text{right}} \cdot 
 $$ F_{bc} = 20(0.57) + 40(0.75) + 40(0.7125) + 40(0.675) $$<br />
 $$ F_{bc} = 11.4 + 30 + 28.5 + 27 = 96.9 \text{ kN} $$<br />
 $$ \boxed{F_{bc,\max} = 96.9 \text{ kN} \text{ (拉力)}} $$</p>
+<p><img alt="SA-2004-2 R_a 影響線（1 → 0）與 F_bc 影響線（峰值 0.75 在 b），並畫出卡車最不利位置：① 在 a 得 128.3 kN、② 在 b 得 96.9 kN" src="../../raw/solutions/SA-2004-2/figs/SA-2004-2-fig-2-influence-lines.svg" /></p>
+<p><em>圖 2　$R_a$ 與 $F_{bc}$ 影響線及卡車最不利位置。攔的是把 $F_{bc}$ 峰值放在跨中 c（斷面在 b–c 節間、對 B 取矩，峰值在 b），以及峰值上放錯軸 —— ② 在 b 才是最大；產圖腳本以卡車位置逐 1 cm 掃描確認兩個最大值。</em></p>
 <h2>5. 關鍵爭議點與進階探討 (Critical Issues &amp; Advanced Discussion)</h2>
 <ul>
 <li><strong>載重行駛方向的判斷</strong>：題目明確畫出了向左的箭頭，因此本解析嚴格遵守載重由右向左移動的情境（$20\text{kN}$ 在最左側）。若實務設計中橋梁允許雙向行駛，則需額外檢核反向行駛的情況。例如若卡車掉頭（$40\text{kN}$ 在最左側），重新放置於影響線上將會得到 $F_{bc} = 97.8\text{kN}$ 的結果，略大於單向行駛。但在國家考試中，遵循圖示箭頭的明確指示是最安全的答題策略，因此最終答案仍以圖示方向為準。</li>
 </ul>
-<p><em>修正日期：2026-11-07（§1 改為指向題目正本並放重繪附圖（figs/SA-2004-2-fig-1-problem.svg）、加常見誤讀；圖由 gen_SA-2004-2.py 產生，可重跑）</em></p></main>
+<p><em>修正日期：2026-11-07（§1 改為指向題目正本並放重繪附圖（figs/SA-2004-2-fig-1-problem.svg）、加常見誤讀；圖由 gen_SA-2004-2.py 產生，可重跑）</em><br />
+<em>圖解補繪：2026-11-07（圖 2 影響線，向量圖，腳本 <code>gen_SA-2004-2_il.py</code>，可重跑）</em><br />
+<em>修正日期：2026-11-07（標頭主分類名稱更正（非勘誤）：「靜定結構分析」→「靜定及靜不定結構影響線」，代號 SA-U1-3 不變）</em></p></main>
 <footer>來源：raw/solutions/SA-2004-2/SA-2004-2.md（知識庫解題內容唯一正本；本頁僅為渲染顯示）</footer>
 
 <script>

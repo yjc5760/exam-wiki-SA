@@ -327,12 +327,15 @@ def fig4_influence_line():
     cv.polygon([(0, 0)] + [(t, IL_closed(t) * ky) for t in xs] + [(L, 0)],
                C["fill_m"], C["bmd"], 2.8)
     cv.poly([(t, t / L * ky) for t in xs], C["muted"], 2.0, dash="6 5")
-    cv.text_px(cv.X(0.40 * L), cv.Y(0.40 * ky) - 22,
-               "對照：B 若是鉸支承則為直線 x/L", 12.5, C["muted"], "middle")
+    cv.text_px(cv.X(0.20 * L), cv.Y(0.46 * ky),
+               "對照（虛線）：B 若是鉸支承則為直線 x/L", 12.5, C["muted"], "middle")   # 放在虛線上方空白處，不壓標註
     cv.line((0, 0), (L, 0), C["muted"], 1.6)
     for t, v in KEY:
         cv.dot((t, v * ky), 4.4, fill=C["bmd"])
-        cv.text_px(cv.X(t), cv.Y(v * ky) - 15, f"{v:.4g}", 13.5, C["bmd"], weight="700")
+        if 0 < t < L:      # 內部點：標在曲線右下方（填色內），避開上方的對照虛線
+            cv.text_px(cv.X(t) + 10, cv.Y(v * ky) + 20, f"{v:.4g}", 13.5, C["bmd"], "start", weight="700")
+        else:
+            cv.text_px(cv.X(t), cv.Y(v * ky) - 15, f"{v:.4g}", 13.5, C["bmd"], weight="700")
     for t, lab in ((0.0, "B"), (0.25, "L/4"), (0.5, "L/2"), (0.75, "3L/4"), (1.0, "C")):
         cv.text_px(cv.X(t * L), H - BOT + 26, lab, 13, "#9AA4B2", weight="700")
     cv.text_px(Wp / 2, H - 22,

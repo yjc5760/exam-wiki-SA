@@ -264,7 +264,7 @@ def fig2_influence_lines():
 
     return compose(panels, cols=1,
                    note="五條都是曲線 —— 靜不定結構的影響線沒有直線段。"
-                        "V_{C} 在 AB 跨為正是本題最容易畫錯的地方：BC 段被壓下去，"
+                        "C 點剪力影響線在 AB 跨為正是本題最容易畫錯的地方：BC 段被壓下去，"
                         "會把 B 左側的 AB 跨像蹺蹺板一樣翹起來",
                    path=f"{OUT}/{TAG}-fig-2-influence-lines.svg")
 

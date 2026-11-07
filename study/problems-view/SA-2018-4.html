@@ -251,7 +251,7 @@ $$ 480 \theta_B + 640 \theta_B + 160 \theta_B - 1.25 = 0 \implies 1280 \theta_B 
 <h3>3.1 跨度 AB (與跨度 DE 對稱)</h3>
 <p>AB 段僅受端彎矩 $M_B = -15/32 \text{ kN-m}$，無跨中載重。<br />
 其撓度曲線 (向下為正)：<br />
-$$ v(x) = \frac{x (x^2 - L^2) M_B}{6 EI \cdot L} = \frac{x (x^2 - 25) (-15/32)}{6(800)(5)} = \frac{x (x^2 - 25)}{51200} $$<br />
+$$ v(x) = \frac{M_B\, x (L^2 - x^2)}{6 EI \cdot L} = \frac{(-15/32)\, x (25 - x^2)}{6(800)(5)} = \frac{x (x^2 - 25)}{51200} $$<br />
 欲求局部極值，令 $v'(x) = 0 \implies 3x^2 - 25 = 0 \implies x = \frac{5}{\sqrt{3}} \approx 2.887 \text{ m}$ (自 A 點起算)。<br />
 代入得局部最小值 (最大向上位移)：<br />
 $$ v_{min} = -\frac{5\sqrt{3}}{9216} \approx -0.000940 \text{ m} $$</p>
@@ -276,7 +276,11 @@ $$ v_C = \frac{1000}{38400} - \frac{3500}{204800} = \frac{5}{192} - \frac{35}{20
 <li><strong>局部最小值</strong>發生在距離 E 點 $\frac{5}{\sqrt{3}}\text{m}$ (即 $x \approx 17.113\text{m}$) 處，值為 <strong>$-\frac{5\sqrt{3}}{9216} \approx -0.000940 \text{ m/kN}$</strong>。</li>
 <li><strong>E 點 ($x=20\text{m}$)</strong>：0</li>
 </ol>
-<p><em>修正日期：2026-11-07（§1 改為指向題目正本並放重繪附圖（figs/SA-2018-4-fig-1-problem.svg）、加常見誤讀；原解析無題目重述，新增 §1，原 §1「核心觀念與物理簡化」改為 §1.5；圖由 gen_SA-2018-4.py 產生，可重跑）</em></p></main>
+<p><img alt="SA-2018-4 C 點向下位移影響線：BD 跨為正、C 點最大 55/6144 m/kN；AB、DE 跨為負，局部最小 −5√3/9216 在 x = 2.887、17.113 m；B、D 為 0" src="../../raw/solutions/SA-2018-4/figs/SA-2018-4-fig-2-influence-line.svg" /></p>
+<p><em>圖 2　C 點向下位移影響線（互惠定理：即 C 點受向下單位力時梁 A–E 的撓度曲線）。攔的是把外跨 AB、DE 畫成 0 —— B、D 不沉陷但會轉動，外跨被翹起而為負；以及漏掉斜撐的轉動勁度、把 BD 當簡支梁（C 值會變成 $\frac{5}{192}$）。</em></p>
+<p><em>修正日期：2026-11-07（§1 改為指向題目正本並放重繪附圖（figs/SA-2018-4-fig-1-problem.svg）、加常見誤讀；原解析無題目重述，新增 §1，原 §1「核心觀念與物理簡化」改為 §1.5；圖由 gen_SA-2018-4.py 產生，可重跑）</em><br />
+<em>圖解補繪：2026-11-07（圖 2 影響線，向量圖，腳本 <code>gen_SA-2018-4_il.py</code>，可重跑）</em><br />
+<em>修正日期：2026-11-07（表述更正（非勘誤）：§3.1 中間式改為 $M_B\,x(L^2-x^2)/(6EIL)$（正彎矩向下撓為正），原寫法代入 $M_B = -15/32$ 與最終式差一個負號；最終式與極值不變）</em></p></main>
 <footer>來源：raw/solutions/SA-2018-4/SA-2018-4.md（知識庫解題內容唯一正本；本頁僅為渲染顯示）</footer>
 
 <script>
