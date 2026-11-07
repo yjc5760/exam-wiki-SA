@@ -1684,3 +1684,11 @@ PDF 文字層檢查無殘留 LaTeX、無 emoji 豆腐方框。
 - `[check]` KaTeX：講義 2 頁＋單元總覽 2 頁＋瀏覽頁 12 頁共 2754 式，錯誤 0、pageerror 0；殘留未渲染定界符只剩 unit-SA-U2-1 footer 1 處（footer 不經 KaTeX，舊版即有）；瀏覽頁圖片引用 50 張缺 0、解析 .md 圖片引用缺 0；分類稽核 0 問題
 - 批次狀態：12 題題目正本已確認、盲解比對一致、圖解齊（7 題新補、5 題既有）；verificationStatus 全部仍為 unverified，待使用者關卡二人工複核
 - 未處理（不在本批範圍）：lecture-SA-U2-3、lecture-SA-U2-4、unit-SA-U2-4 的 PDF 仍比 HTML 舊（U2-3／U2-4 批次延後項）
+
+## 2026-11-07 HOUSEKEEPING-SA｜pipeline_status 階段 E 判定更正、U2-3／U2-4 延後的 PDF 重建
+
+- `[fix]` audit-tools/pipeline_status.py：階段 E 原判定「解析引用檔名不含 -fig- 的 svg」與命名規範 <id>-fig-N-<語意>.svg 矛盾，全科 0 題被判為有解題圖；改為「解析引用 figs/ 下的 svg，且不是 -problem.svg、也不是早期題目重繪 <id>-fig-1-{beam,frame,truss,grid}.svg」（全科 40 題判為有解題圖，SA-2012-1 fig-1-beam-vm、SA-2015-1 fig-1-virtual-truss 等解題圖照計）。階段 A「附圖重繪」改為要求 <id>-fig-*-problem.svg。重跑：SA-U1-3 12 題皆到階段 F；SA-U2-4 為 D 3 題（2019-4、2008-4、2024-4 落實檢查未做）、E 6、完成 5，與 log 一致
+- `[rebuild]` U2-4 批 1 延到階段 F 的下游：build_unit_page.py SA-U2-4（只有 footer 與資料兩行，即 2026-11-05 勘誤內容）；PDF 重產（Chromium A4、details 全展開，同舊版設定）：lecture-SA-U2-3 31 頁（舊 30）、lecture-SA-U2-4 30 頁（舊 33；SA-2024-4 重解與表格改寫後版面變動，逐頁縮圖檢查無空白頁）、unit-SA-U2-4 13 頁（舊 12）；KaTeX 三頁 1166 式錯誤 0、殘留定界符 0、pageerror 0
+- 全庫 study/*.pdf 與單元總覽：已無比 HTML 舊的 PDF；五個單元總覽重建後與現檔相同
+- `檔案架構索引表.md`：工作檔被存成 CRLF（內容與 HEAD 相同），還原為 HEAD 的 LF 版本
+
