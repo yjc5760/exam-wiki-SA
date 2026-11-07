@@ -43,16 +43,182 @@ header .nomat{margin-top:12px;font-size:.8em;opacity:.85}
 <p class="meta2">主分類 <b>SA-U2-1</b> 靜不定結構最小功法 ｜ 2013 年（民國 102） ｜ 卡氏第二定理 (Castigliano's 2nd Theorem)</p>
 <div class="hbtns"><a class="b-study" href="../unit-SA-U2-1.html">🧭 U2-1 單元總覽</a><a class="b-lect" href="../lecture-SA-U2-1.html">📚 U2-1 靜不定結構最小功法 講義</a></div>
 </header>
-<main><h1>考題編號：SA-2013-2</h1>
+<main><details class="problem-src" open><summary><b>📄 題目正本</b>（考卷原文、附圖與判讀清單；不含解法）</summary>
+<h1>SA-2013-2 題目正本</h1>
+<blockquote>
+<p>本檔只記錄考卷上寫了什麼、圖上畫了什麼，不含任何解法。解析見同資料夾 <code>SA-2013-2.md</code>。<br />
+判讀清單經使用者確認前，狀態為「待確認」；確認後本檔原則上不再修改（改動須回考卷原圖並記 log）。</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>項目</th>
+<th>內容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>考卷</td>
+<td><code>raw/exams/SA-2013_結構學.pdf</code>，第 1 頁（正面）下半，第二題（圖二）</td>
+</tr>
+<tr>
+<td>考年</td>
+<td>2013（民國 102 年）專技高考結構工程技師「結構學」</td>
+</tr>
+<tr>
+<td>配分</td>
+<td>25 分</td>
+</tr>
+<tr>
+<td>附圖</td>
+<td><code>SA-2013-2-fig-1.png</code>、<code>SA-2013-2-fig-2.png</code></td>
+</tr>
+<tr>
+<td>判讀狀態</td>
+<td><strong>已確認</strong>（2026-11-07 使用者確認。原轉錄：2026-11-07 轉錄；PyMuPDF 110 dpi 整頁＋300–500 dpi 局部放大、PDF 向量座標核對；盲讀於開啟解析前完成）</td>
+</tr>
+</tbody>
+</table>
+<h2>1. 考卷原文（逐字）</h2>
+<p>二、所示剛架結構A 為固接支承，C 點為鉸支承。桿件BC 在中點承受一20 kN 集中載重，如圖二所示。請應用卡氏定理分析求得C 點支承之反力與C 點之轉角。各桿件之E、I 均相同。使用其他方法不予給分。（25 分）</p>
+<h2>2. 考卷給的公式、附表與參數</h2>
+<ul>
+<li>考卷沒有給任何參考公式或附表。</li>
+<li>E、I 各桿相同，沒有數值（答案以 EI 表示）。</li>
+<li>考卷沒有說是否忽略軸向變形。</li>
+<li>指定方法：卡氏定理；他法不給分。</li>
+<li>卷首注意事項：㈠可以使用電子計算器。㈡不必抄題，作答時請將試題題號及答案依照順序寫在試卷上，於本試題上作答者，不予計分。</li>
+<li>考試時間：2 小時。</li>
+</ul>
+<h2>3. 附圖</h2>
+<p><img alt="SA-2013-2 考卷附圖原截圖（含滑鼠游標或解析度較低；內容同下圖）" src="../../raw/solutions/SA-2013-2/SA-2013-2-fig-1.png" /><br />
+<em>證據圖 SA-2013-2-fig-1.png</em></p>
+<p><img alt="SA-2013-2 考卷附圖：L 形剛架：柱 A–B 高 10 m，A 固定端；梁 B–C 長 10 m，C 鉸支承（三角形＋剖線）；BC 中點 20 kN 向下；下方 5 m｜5 m" src="../../raw/solutions/SA-2013-2/SA-2013-2-fig-2.png" /><br />
+<em>證據圖 SA-2013-2-fig-2.png（2026-11-07 自考卷重新擷取 500 dpi，無游標）</em></p>
+<p>圖面文字照錄：20 kN、B、C、10 m、A、5 m、5 m、圖二</p>
+<h2>4. 判讀清單</h2>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>項目</th>
+<th>判讀</th>
+<th>圖上／題文依據</th>
+<th>把握</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>構件</td>
+<td>柱 A–B、梁 B–C，B 剛接</td>
+<td>圖面</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>2</td>
+<td>A</td>
+<td>固定端（3 反力）</td>
+<td>題文；剖線</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>3</td>
+<td>C</td>
+<td>鉸支承（2 反力：水平＋垂直）</td>
+<td>題文；三角形＋剖線</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>4</td>
+<td>幾何</td>
+<td>AB＝10 m、BC＝10 m</td>
+<td>左側 10 m；下方 5 m｜5 m</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>5</td>
+<td>載重</td>
+<td>BC 中點（距 B 5 m）20 kN 向下</td>
+<td>題文「在中點」；箭頭對齊尺寸分界</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>6</td>
+<td>考卷沒有給</td>
+<td>EI 數值；軸向變形是否忽略</td>
+<td>題文</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>7</td>
+<td>靜不定度</td>
+<td>固定 3＋鉸 2＝5：二度靜不定</td>
+<td>計數</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>8</td>
+<td>所求</td>
+<td>C 點支承反力（兩個分量）與 C 點轉角；卡氏定理</td>
+<td>題文</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>9</td>
+<td>證據圖</td>
+<td>舊 fig-1 的滑鼠游標在 B 上方附近；新增 fig-2（500 dpi）</td>
+<td>—</td>
+<td>確定</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p><em>轉錄：2026-11-07（SA-U2-1 題目正本推廣・批 1）</em><br />
+<em>確認：2026-11-07 使用者確認</em></p>
+</details>
+<hr>
+<h1>考題編號：SA-2013-2</h1>
 <p><strong>主分類：</strong> <code>SA-U2-1</code> 靜不定結構之能量法<br />
 <strong>副分類：</strong> 無<br />
 <strong>分析法：</strong> 卡氏第二定理 (Castigliano's 2nd Theorem)<br />
 <strong>標籤：</strong> <code>卡氏定理</code> <code>靜不定剛架</code> <code>反力</code> <code>轉角</code></p>
 <hr />
-<h2>1. 原始題目重述 (Problem Restatement)</h2>
-<p>所示剛架結構 A 為固接支承，C 點為鉸支承。桿件 BC 在中點承受一 20 kN 集中載重，如圖二所示。請應用卡氏定理分析求得 C 點支承之反力與 C 點之轉角。各桿件之 E、I 均相同。使用其他方法不予給分。（25 分）</p>
-<p><img alt="SA-2013-2 題目附圖：剛架承受集中載重" src="../../raw/solutions/SA-2013-2/SA-2013-2-fig-1.png" /></p>
-<p><em>圖說：A 點為左下角固接支承，連接著長度 10m 的垂直桿 AB。B 點連接長度 10m 的水平桿 BC，C 點為鉸支承 (Pin)。BC 桿中點（距 B、C 各 5m）承受垂直向下的 20 kN 載重。</em></p>
+<h2>1. 題目（考卷原文見題目正本）</h2>
+<blockquote>
+<p>考卷原文、公式／附表、附圖與判讀清單（已確認）見 <a href="SA-2013-2-problem.md"><code>SA-2013-2-problem.md</code></a>。本節只列解題時最容易讀錯的地方與本解使用的記號；題意以題目正本為準。</p>
+</blockquote>
+<p><img alt="SA-2013-2 重繪題目附圖：L 形剛架：柱 A–B 10 m、A 固定；梁 B–C 10 m、C 鉸支承；BC 中點 20 kN 向下" src="../../raw/solutions/SA-2013-2/figs/SA-2013-2-fig-1-problem.svg" /><br />
+<em>重繪自考卷附圖，依判讀清單 #1–#8 重繪。攔：C 讀成滾支承。</em></p>
+<h3>常見誤讀</h3>
+<table>
+<thead>
+<tr>
+<th>項目</th>
+<th>正確判讀</th>
+<th>常見誤讀</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>C 支承</td>
+<td>鉸支承，水平與垂直兩個反力（二度靜不定）</td>
+<td>滾支承</td>
+</tr>
+<tr>
+<td>所求</td>
+<td>C 點兩個反力分量與 C 點轉角</td>
+<td>只求垂直反力</td>
+</tr>
+<tr>
+<td>軸向變形</td>
+<td>考卷沒有說；剛架慣例忽略</td>
+<td>當成題目條件</td>
+</tr>
+</tbody>
+</table>
+<p><strong>本解記號：</strong> 記號與正負號約定沿用 §4。</p>
+<hr />
 <h2>2. 考題核心精神與出題者意圖 (Core Concepts &amp; Examiner's Intent)</h2>
 <p>本題旨在測驗考生對<strong>卡氏第二定理（最小功法）求解多次靜不定結構</strong>的完整掌握度，包含：</p>
 <ol>
@@ -219,11 +385,15 @@ $$\theta_C = \frac{1}{EI} \left[ 50 C_x + 150 C_y - 1250 \right]$$<br />
 $$\theta_C = \frac{1}{EI} \left[ 50\left(\frac{45}{14}\right) + 150\left(\frac{110}{14}\right) - 1250 \right] = \frac{1}{EI} \left[ \frac{2250 + 16500 - 17500}{14} \right] = \frac{1}{EI} \left[ \frac{1250}{14} \right] = \frac{625}{7 EI}$$<br />
 因為計算結果為正值，表示轉角與設定的 $M_C$ 方向（逆時針）相同。<br />
 $$\boxed{\theta_C = \frac{625}{7 EI} \text{ (逆時針方向)}}$$</p>
+<p><img alt="SA-2013-2 變形形狀與彎矩圖：C 端逆時針轉 625/(7EI)；柱與梁各有一個反曲點；A 端 10.71、B 角 21.43、載重點 39.29 kN·m" src="../../raw/solutions/SA-2013-2/figs/SA-2013-2-fig-2-deflected-bmd.svg" /></p>
+<p><em>圖 2　變形形狀與彎矩圖（勁度法依 §4 的 $C_x = 45/14$（向左）、$C_y = 55/7$、$\theta_C = 625/(7EI)$ 核對後才畫）。梁在 C 端往上翹、逆時針轉；BC 不伸縮，B 沒有水平位移。攔：$\theta_C$ 轉向寫反、C 水平反力方向寫反。</em></p>
 <h2>5. 關鍵爭議點與進階探討 (Critical Issues &amp; Advanced Discussion)</h2>
 <ul>
 <li><strong>傾角變位法驗證</strong>：若使用傾角變位法，由於忽略軸向變形，B 點與 C 點之間長度不變，且 C 點水平位移為零，因此 B 點的水平側移 $\Delta = 0$。此時未知數僅有節點 B 的轉角 $\theta_B$。利用平衡方程式 $\sum M_B = 0$ 可求得 $\theta_B = -\frac{375}{7EI}$。再利用半剛接公式求 $\theta_C$，可直接得到 $\frac{625}{7EI}$，此結果與卡氏定理完全吻合，驗證了計算的正確性。</li>
 <li><strong>多餘力偏導之捷徑</strong>：在 Step 4 中，嚴格來說 $C_x, C_y$ 是 $M_C$ 的函數，全微分應包含連鎖律。但根據定理，$\frac{\partial U}{\partial C} = 0$，故連鎖律的後項皆為零。這允許我們在取 $\frac{\partial M}{\partial M_C}$ 時將 $C_x, C_y$ 視為常數，是大幅節省時間的進階技巧。</li>
-</ul></main>
+</ul>
+<p><em>修正日期：2026-11-07（§1 改為指向題目正本並放重繪附圖（figs/SA-2013-2-fig-1-problem.svg）、加常見誤讀；圖由 gen_SA-2013-2.py 產生，可重跑）</em><br />
+<em>圖解補繪：2026-11-07（圖 2 變形與彎矩圖，向量圖，腳本 <code>gen_SA-2013-2.py</code>，可重跑）</em></p></main>
 <footer>來源：raw/solutions/SA-2013-2/SA-2013-2.md（知識庫解題內容唯一正本；本頁僅為渲染顯示）</footer>
 
 <script>

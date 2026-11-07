@@ -43,16 +43,191 @@ header .nomat{margin-top:12px;font-size:.8em;opacity:.85}
 <p class="meta2">主分類 <b>SA-U2-1</b> 靜不定結構最小功法 ｜ 2022 年（民國 111） ｜ 靜力平衡與共軛梁法</p>
 <div class="hbtns"><a class="b-study" href="../unit-SA-U2-1.html">🧭 U2-1 單元總覽</a><a class="b-lect" href="../lecture-SA-U2-1.html">📚 U2-1 靜不定結構最小功法 講義</a></div>
 </header>
-<main><h1>考題編號：SA-2022-1</h1>
+<main><details class="problem-src" open><summary><b>📄 題目正本</b>（考卷原文、附圖與判讀清單；不含解法）</summary>
+<h1>SA-2022-1 題目正本</h1>
+<blockquote>
+<p>本檔只記錄考卷上寫了什麼、圖上畫了什麼，不含任何解法。解析見同資料夾 <code>SA-2022-1.md</code>。<br />
+判讀清單經使用者確認前，狀態為「待確認」；確認後本檔原則上不再修改（改動須回考卷原圖並記 log）。</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>項目</th>
+<th>內容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>考卷</td>
+<td><code>raw/exams/SA-2022_結構學.pdf</code>，頁次 3－1，第一題（圖 1）</td>
+</tr>
+<tr>
+<td>考年</td>
+<td>2022（民國 111 年）專技高考結構工程技師「結構學」</td>
+</tr>
+<tr>
+<td>配分</td>
+<td>25 分</td>
+</tr>
+<tr>
+<td>附圖</td>
+<td><code>SA-2022-1-fig-1.png</code>、<code>SA-2022-1-fig-2.png</code></td>
+</tr>
+<tr>
+<td>判讀狀態</td>
+<td><strong>已確認</strong>（2026-11-07 使用者確認。原轉錄：2026-11-07 轉錄；PyMuPDF 110 dpi 整頁＋300–500 dpi 局部放大、PDF 向量座標核對；盲讀於開啟解析前完成）</td>
+</tr>
+</tbody>
+</table>
+<h2>1. 考卷原文（逐字）</h2>
+<p>一、如圖 1 所示梁結構，d 點為滾支承，b 點為鉸接，各桿件都有相同之彈性模數 E 值與慣性矩 I 值，且 EI = 250000 kN-m²，彈簧係數 k = 6000 kN/m，e 點有一向下的沉陷位移 Δe，當 b 點及 c 點各承受垂直集中載重 72 kN 時，梁結構的彎矩圖如圖 1 所示。求彈簧內力、c 點及 e 點的垂直位移。（25 分）</p>
+<h2>2. 考卷給的公式、附表與參數</h2>
+<ul>
+<li>考卷沒有給任何參考公式或附表。</li>
+<li>EI＝250000 kN-m²；k＝6000 kN/m。</li>
+<li>e 點有向下沉陷 Δe（<strong>數值沒有給</strong>，須由彎矩圖反推）。</li>
+<li>題目附彎矩圖：c 點 120 kN-m（畫在基線上方）、a 點 480 kN-m（畫在基線下方）；<strong>彎矩圖沒有標正負號，也沒有說明畫在受拉側或受壓側</strong>。</li>
+<li>卷首注意事項：㈠可以使用電子計算器。㈡不必抄題，作答時請將試題題號及答案依照順序寫在試卷上，於本試題上作答者，不予計分。㈢本科目除專門名詞或數理公式外，應使用本國文字作答。</li>
+<li>考試時間：2 小時。</li>
+</ul>
+<h2>3. 附圖</h2>
+<p><img alt="SA-2022-1 考卷附圖原截圖（含滑鼠游標或解析度較低；內容同下圖）" src="../../raw/solutions/SA-2022-1/SA-2022-1-fig-1.png" /><br />
+<em>證據圖 SA-2022-1-fig-1.png</em></p>
+<p><img alt="SA-2022-1 考卷附圖：上圖：梁 d–c–b–a，各段 5 m；d 滾支承（圓圈＋剖線）、c 點下方彈簧 k 接 e 點地面（e 有向下沉陷 Δe）、b 為內鉸（空心圓）、a 固定端（右側牆）；c、b 各 72 kN 向下。下圖：題給彎矩圖，d→c 線性升到 120 kN-m（基線上方），c→b 線性降到 0，b→a 線性降到 a 點 480 kN-m（基線下方）" src="../../raw/solutions/SA-2022-1/SA-2022-1-fig-2.png" /><br />
+<em>證據圖 SA-2022-1-fig-2.png（2026-11-07 自考卷重新擷取 500 dpi，無游標）</em></p>
+<p>圖面文字照錄：72 kN、72 kN、d、c、b、a、k、e、Δe、5 m、5 m、5 m、120 kN-m、d、c、b、a、480 kN-m、圖 1</p>
+<h2>4. 判讀清單</h2>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>項目</th>
+<th>判讀</th>
+<th>圖上／題文依據</th>
+<th>把握</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>d</td>
+<td>滾支承（垂直反力）</td>
+<td>題文；圓圈＋剖線</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>2</td>
+<td>c</td>
+<td>彈簧 k 支承於 c 點，彈簧下端 e 接地；e 有向下沉陷 Δe</td>
+<td>鋸齒線在 c 正下方</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>3</td>
+<td>b</td>
+<td>內鉸（M_b＝0）</td>
+<td>題文；空心圓</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>4</td>
+<td>a</td>
+<td>固定端</td>
+<td>牆面剖線</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>5</td>
+<td>幾何</td>
+<td>d–c、c–b、b–a 各 5 m</td>
+<td>尺寸線分界對齊 d、c、b、a</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>6</td>
+<td>載重</td>
+<td>c、b 各 72 kN 向下（b 的載重作用在內鉸上）</td>
+<td>箭頭尖端 x=281.9（c）、340.1（b）</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>7</td>
+<td>彎矩圖符號</td>
+<td>c 點 120 畫在上方、a 點 480 畫在下方；以靜力檢核，<strong>只有「上方＝正彎矩（下緣受拉）、下方＝負彎矩」能同時滿足 M_c＝120、M_a＝480</strong>（反過來讀 M_a 會是 240）</td>
+<td>靜力：d–b 段 M_c＝5R_d</td>
+<td>確定（解讀）；使用者確認</td>
+</tr>
+<tr>
+<td>8</td>
+<td>考卷沒有給</td>
+<td>Δe 數值；彎矩圖符號規約</td>
+<td>題文</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>9</td>
+<td>所求</td>
+<td>彈簧內力；c 點、e 點垂直位移</td>
+<td>題文</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>10</td>
+<td>證據圖</td>
+<td>舊 fig-1 的游標在 120 kN-m 標註旁；新增 fig-2（500 dpi）</td>
+<td>—</td>
+<td>確定</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p><em>轉錄：2026-11-07（SA-U2-1 題目正本推廣・批 1）</em><br />
+<em>確認：2026-11-07 使用者確認</em></p>
+</details>
+<hr>
+<h1>考題編號：SA-2022-1</h1>
 <p><strong>主分類：</strong> <code>SA-U2-1</code> 靜不定結構與位移<br />
 <strong>副分類：</strong> 無<br />
 <strong>分析法：</strong> 靜力平衡與共軛梁法<br />
 <strong>標籤：</strong> <code>彎矩圖反求</code> <code>彈簧</code> <code>共軛梁法</code> <code>支承沉陷</code> <code>鉸接點</code></p>
 <hr />
-<h2>1. 原始題目重述 (Problem Restatement)</h2>
-<p>如圖 1 所示梁結構，$d$ 點為滾支承，$b$ 點為鉸接，各桿件都有相同之彈性模數 $E$ 值與慣性矩 $I$ 值，且 $EI = 250000 \text{ kN-m}^2$，彈簧係數 $k = 6000 \text{ kN/m}$，$e$ 點有一向下的沉陷位移 $\Delta_e$，當 $b$ 點及 $c$ 點各承受垂直集中載重 72 kN 時，梁結構的彎矩圖如圖 1 所示。求彈簧內力、$c$ 點及 $e$ 點的垂直位移。（25 分）</p>
-<p><img alt="SA-2022-1 題目附圖" src="../../raw/solutions/SA-2022-1/SA-2022-1-fig-1.png" /></p>
-<p><em>圖說：(待補充說明)</em></p>
+<h2>1. 題目（考卷原文見題目正本）</h2>
+<blockquote>
+<p>考卷原文、公式／附表、附圖與判讀清單（已確認）見 <a href="SA-2022-1-problem.md"><code>SA-2022-1-problem.md</code></a>。本節只列解題時最容易讀錯的地方與本解使用的記號；題意以題目正本為準。</p>
+</blockquote>
+<p><img alt="SA-2022-1 重繪題目附圖：梁 d–c–b–a 各 5 m：d 滾支承、c 彈簧 k 接 e（e 向下沉陷 Δe）、b 內鉸、a 固定；c、b 各 72 kN 向下" src="../../raw/solutions/SA-2022-1/figs/SA-2022-1-fig-1-problem.svg" /><br />
+<em>重繪自考卷附圖，依判讀清單 #1–#10 重繪。攔：b 讀成支承、彈簧位置讀錯。</em></p>
+<p><img alt="SA-2022-1 題給彎矩圖重繪：d–c 升到 120 kN-m（上方）、c–b 降為 0、b–a 降到 480 kN-m（下方）" src="../../raw/solutions/SA-2022-1/figs/SA-2022-1-fig-2-problem.svg" /><br />
+<em>題給彎矩圖重繪（照考卷），依判讀清單 #7 標明正負：考卷未標，依靜力判讀上方為正彎矩。</em></p>
+<h3>常見誤讀</h3>
+<table>
+<thead>
+<tr>
+<th>項目</th>
+<th>正確判讀</th>
+<th>常見誤讀</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>題給彎矩圖</td>
+<td>上方為正彎矩、下方為負彎矩：$M_c = +120$、$M_a = -480$ kN-m（反讀時 $M_a$ 只會是 240，與圖不符）</td>
+<td>正負讀反</td>
+</tr>
+<tr>
+<td>$\Delta_e$</td>
+<td>考卷沒有給數值，由彎矩圖與彈簧力反推</td>
+<td>當成已知</td>
+</tr>
+<tr>
+<td>b 點</td>
+<td>內鉸，72 kN 作用在鉸上</td>
+<td>支承</td>
+</tr>
+</tbody>
+</table>
+<p><strong>本解記號：</strong> 記號與正負號約定沿用 §4。</p>
+<hr />
 <h2>2. 考題核心精神與出題者意圖 (Core Concepts &amp; Examiner's Intent)</h2>
 <p><strong>核心精神：</strong></p>
 <ol>
@@ -185,8 +360,12 @@ $c$ 點的位移包含剛體位移與彈性位移：$\Delta_c = \Delta_{c,rigid}
   $$\Delta_e = \mathbf{8 \text{ mm (向下)}}$$</p>
 </li>
 </ul>
+<p><img alt="SA-2022-1 變形形狀與彎矩圖：b 下沉 16 mm、c 下沉 12 mm、彈簧壓縮 4 mm、e 沉陷 8 mm；內鉸 b 處斜率不連續；M_c = +120、M_a = −480 kN·m" src="../../raw/solutions/SA-2022-1/figs/SA-2022-1-fig-3-deflected-bmd.svg" /></p>
+<p><em>圖 3　變形形狀與彎矩圖（彈簧以 §4 的 $F_s = 24$ kN 代入；腳本核對 $\Delta_b = 16$ mm、$\Delta_c = 12$ mm 與題給彎矩圖後才畫）。c 點下沉 12 mm，彈簧再縮 4 mm，所以 e 點只沉 8 mm。攔：把 c 點位移當成 e 點沉陷、內鉸處畫成斜率連續。</em></p>
 <h2>5. 關鍵爭議點與進階探討 (Critical Issues &amp; Advanced Discussion)</h2>
-<p>本題設計非常精妙，彎矩圖的給定將一階靜不定結構轉化為完全靜定。在位移計算上，容易忽略 $b$ 點作為鉸接點也會產生極大的剛體位移。若僅計算簡支梁的彈性變形（4 mm），將導致後續 $\Delta_e$ 解出錯誤的數值。</p></main>
+<p>本題設計非常精妙，彎矩圖的給定將一階靜不定結構轉化為完全靜定。在位移計算上，容易忽略 $b$ 點作為鉸接點也會產生極大的剛體位移。若僅計算簡支梁的彈性變形（4 mm），將導致後續 $\Delta_e$ 解出錯誤的數值。</p>
+<p><em>修正日期：2026-11-07（§1 改為指向題目正本並放重繪附圖（figs/SA-2022-1-fig-1-problem.svg、figs/SA-2022-1-fig-2-problem.svg）、加常見誤讀；圖由 gen_SA-2022-1.py 產生，可重跑）</em><br />
+<em>圖解補繪：2026-11-07（圖 3 變形與彎矩圖，向量圖，腳本 <code>gen_SA-2022-1.py</code>，可重跑）</em></p></main>
 <footer>來源：raw/solutions/SA-2022-1/SA-2022-1.md（知識庫解題內容唯一正本；本頁僅為渲染顯示）</footer>
 
 <script>

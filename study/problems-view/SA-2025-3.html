@@ -75,7 +75,7 @@ header .nomat{margin-top:12px;font-size:.8em;opacity:.85}
 </tr>
 <tr>
 <td>判讀狀態</td>
-<td><strong>待確認</strong>（2026-11-05 轉錄；PyMuPDF 110 dpi 整頁＋500 dpi 局部放大；盲讀於開啟解析前完成）</td>
+<td><strong>已確認</strong>（2026-11-07 使用者確認。原轉錄：2026-11-05 轉錄；PyMuPDF 110 dpi 整頁＋500 dpi 局部放大；盲讀於開啟解析前完成）</td>
 </tr>
 </tbody>
 </table>
@@ -152,12 +152,13 @@ header .nomat{margin-top:12px;font-size:.8em;opacity:.85}
 <td>考卷沒有給</td>
 <td>公式是否含弦轉角 ψ（兩端相對側移）；θ、ψ 的正向</td>
 <td>題文、圖面</td>
-<td>確定（解讀）：採一般式（含 θA、θB、ψ 與固端彎矩），正向與附圖彎矩箭頭一致取順時針</td>
+<td>確定（解讀）：採一般式（含 θA、θB、ψ 與固端彎矩），正向與附圖彎矩箭頭一致取順時針；使用者確認</td>
 </tr>
 </tbody>
 </table>
 <hr />
-<p><em>轉錄：2026-11-05（SA-U2-3 題目正本推廣・批 2）</em></p>
+<p><em>轉錄：2026-11-05（SA-U2-3 題目正本推廣・批 2）</em><br />
+<em>確認：2026-11-07 使用者確認</em></p>
 </details>
 <hr>
 <h1>考題編號：SA-2025-3</h1>
@@ -166,10 +167,36 @@ header .nomat{margin-top:12px;font-size:.8em;opacity:.85}
 <strong>分析法：</strong> 傾角變位法（Slope-Deflection Method）+ 共軛樑法（Conjugate Beam）<br />
 <strong>標籤：</strong> <code>傾角變位法</code> <code>非均勻斷面</code> <code>勁度係數</code> <code>傳遞係數</code> <code>固端彎矩</code> <code>共軛樑</code>  </p>
 <hr />
-<h2>§1 題目重述</h2>
-<p>如圖1所示，桿件 AB 為<strong>非均勻斷面</strong>（Non-prismatic member），跨度中央（x = L/2）承受集中載重 P。端點 A 有旋轉角 $\theta_A$，端點 B 有旋轉角 $\theta_B$，兩端點之相對側移量為 $\Delta$（弦轉角 $\psi = \Delta/L$）。請推導使用<strong>傾角變位法</strong>時，桿件 AB 兩端彎矩 $M_{AB}$ 與 $M_{BA}$ 之傾角變位公式。（25 分）</p>
-<p><img alt="SA-2025-3 題目附圖：非均勻斷面桿件AB，中點受集中載重P" src="../../raw/solutions/SA-2025-3/SA-2025-3-fig-1.png" /></p>
-<p><em>圖說：桿件 AB，長度 L，斷面 EI 沿桿長變化（如圖所示之非均勻分布）。端點旋轉角 θA（A端）、θB（B端）逆時針為正；弦轉角 ψ = Δ/L（順時針為正）。跨中 x = L/2 處施加向下集中載重 P。</em></p>
+<h2>§1 題目（考卷原文見題目正本）</h2>
+<blockquote>
+<p>考卷原文、公式／附表、附圖與判讀清單（已確認）見 <a href="SA-2025-3-problem.md"><code>SA-2025-3-problem.md</code></a>。本節只列解題時最容易讀錯的地方與本解使用的記號；題意以題目正本為準。</p>
+</blockquote>
+<p><img alt="SA-2025-3 重繪題目附圖：單桿 AB 三段各 L/3，剛度 EI、2EI、EI；P 在跨中；M_AB、M_BA 皆順時針；無支承" src="../../raw/solutions/SA-2025-3/figs/SA-2025-3-fig-1-problem.svg" /><br />
+<em>重繪自考卷附圖，依判讀清單 #1–#7 重繪。攔：端彎矩正向讀反、中段剛度與兩側對調。</em></p>
+<h3>常見誤讀</h3>
+<table>
+<thead>
+<tr>
+<th>項目</th>
+<th>正確判讀</th>
+<th>常見誤讀</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>正向</td>
+<td>附圖 $M_{AB}$、$M_{BA}$ 皆順時針；$\theta$、$\psi$ 一併取順時針為正（見 §1.5（一））</td>
+<td>$\theta$ 逆時針為正（本解舊版 §1 圖說）</td>
+</tr>
+<tr>
+<td>剛度分布</td>
+<td>三段各 $L/3$：$EI$、$2EI$、$EI$</td>
+<td>中段 $EI$、兩側 $2EI$</td>
+</tr>
+</tbody>
+</table>
+<p><strong>本解記號：</strong> 桿端彎矩、桿端轉角、弦轉角一律順時針為正（見 §1.5）；其餘沿用 §4。</p>
+<h3>判讀圖解（解析自繪）</h3>
 <p><img alt="SA-2025-3 題目重繪與符號約定：左為 L/3 三段 EI–2EI–EI 的桿件與兩個順時針桿端彎矩，右為 θA、θB、ψ 的正向定義" src="../../raw/solutions/SA-2025-3/figs/SA-2025-3-fig-1-member-sign.svg" /></p>
 <p><em>圖 1　題目重繪與符號約定。附圖把 $EI(x)$ 講死了：三段各 $L/3$，剛度依序 $EI$、$2EI$、$EI$。這張圖攔的是本題最大的失分點——正向沒先釘死就開始寫公式；$\theta$、$\psi$、$M$ 五個量必須同一個正向，否則 $-(k_{AA}+k_{AB})\psi$ 這一項的正負會反。</em></p>
 <hr />
@@ -180,7 +207,7 @@ header .nomat{margin-top:12px;font-size:.8em;opacity:.85}
 <h3>（一）符號約定：一律「順時針為正」</h3>
 <p>考卷附圖的 $M_{AB}$、$M_{BA}$ 兩個彎矩箭頭<strong>都是順時針</strong>；§4.6 的通式與 §5.1 的均勻梁驗核<br />
 $M_{AB} = \frac{2EI}{L}(2\theta_A + \theta_B - 3\psi) + M_F$ 也只有在「桿端彎矩、桿端轉角、弦轉角全部順時針為正」下才成立。</p>
-<p>§1 圖說寫的「$\theta_A$、$\theta_B$ 逆時針為正」與上述牴觸。若照字面採逆時針正，$\theta$ 項須整組改號。<strong>作答時先寫清楚自己的約定</strong>，比背哪一種慣例重要。</p>
+<p>舊版 §1 圖說（2026-11-07 已改為指向題目正本）寫的「$\theta_A$、$\theta_B$ 逆時針為正」與上述牴觸。若照字面採逆時針正，$\theta$ 項須整組改號。<strong>作答時先寫清楚自己的約定</strong>，比背哪一種慣例重要。</p>
 <h3>（二）$\Delta_B^{(P)}$ 應與 $\Delta_A^{(P)}$ 反號</h3>
 <p>單位順時針彎矩造成的彎矩圖（下垂為正）為</p>
 <p>$$\bar m_A(x) = +\left(1 - \frac{x}{L}\right), \qquad \bar m_B(x) = -\frac{x}{L}$$</p>
@@ -591,7 +618,8 @@ $$= -\frac{P}{2EI}\left[\frac{x^2}{2}-\frac{x^3}{3L}\right]_0^{L/2} - \frac{P}{2
 </tbody>
 </table>
 <hr />
-<p><em>解析日期：2026-07-02　｜　圖解補繪＋勘誤：2026-08-16（向量圖，腳本 <code>gen_SA-2025-3.py</code>，可重跑；改 <code>EI_PROFILE</code> 重跑，四張圖的數值與變形曲線會一起變）</em></p></main>
+<p><em>解析日期：2026-07-02　｜　圖解補繪＋勘誤：2026-08-16（向量圖，腳本 <code>gen_SA-2025-3.py</code>，可重跑；改 <code>EI_PROFILE</code> 重跑，四張圖的數值與變形曲線會一起變）</em></p>
+<p><em>修正日期：2026-11-07（§1 改為指向題目正本並放重繪附圖（figs/SA-2025-3-fig-1-problem.svg）、加常見誤讀；原 §1 解析自繪圖移至「判讀圖解（解析自繪）」；圖由 gen_SA-2025-3_problem.py 產生，可重跑）</em></p></main>
 <footer>來源：raw/solutions/SA-2025-3/SA-2025-3.md（知識庫解題內容唯一正本；本頁僅為渲染顯示）</footer>
 
 <script>

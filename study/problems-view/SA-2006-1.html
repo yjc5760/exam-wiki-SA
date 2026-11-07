@@ -43,17 +43,215 @@ header .nomat{margin-top:12px;font-size:.8em;opacity:.85}
 <p class="meta2">主分類 <b>SA-U2-1</b> 靜不定結構最小功法 ｜ 2006 年（民國 95） ｜ 最小功法 / 虛功法 (單位力法)</p>
 <div class="hbtns"><a class="b-study" href="../unit-SA-U2-1.html">🧭 U2-1 單元總覽</a><a class="b-lect" href="../lecture-SA-U2-1.html">📚 U2-1 靜不定結構最小功法 講義</a></div>
 </header>
-<main><h1>考題編號：[SA-2006-1]</h1>
+<main><details class="problem-src" open><summary><b>📄 題目正本</b>（考卷原文、附圖與判讀清單；不含解法）</summary>
+<h1>SA-2006-1 題目正本</h1>
+<blockquote>
+<p>本檔只記錄考卷上寫了什麼、圖上畫了什麼，不含任何解法。解析見同資料夾 <code>SA-2006-1.md</code>。<br />
+判讀清單經使用者確認前，狀態為「待確認」；確認後本檔原則上不再修改（改動須回考卷原圖並記 log）。</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>項目</th>
+<th>內容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>考卷</td>
+<td><code>raw/exams/SA-2006_結構學.pdf</code>，第 1 頁（正面）上部，第一題（無圖號）</td>
+</tr>
+<tr>
+<td>考年</td>
+<td>2006（民國 95 年）專技高考結構工程技師「結構學」</td>
+</tr>
+<tr>
+<td>配分</td>
+<td>25 分</td>
+</tr>
+<tr>
+<td>附圖</td>
+<td><code>SA-2006-1-fig-1.png</code>、<code>SA-2006-1-fig-2.png</code></td>
+</tr>
+<tr>
+<td>判讀狀態</td>
+<td><strong>已確認</strong>（2026-11-07 使用者確認。原轉錄：2026-11-07 轉錄；PyMuPDF 110 dpi 整頁＋300–500 dpi 局部放大、PDF 向量座標核對；盲讀於開啟解析前完成）</td>
+</tr>
+</tbody>
+</table>
+<h2>1. 考卷原文（逐字）</h2>
+<p>一、如圖所示之橋梁，試計算J 點之垂直變位。圖中AE 為梁（beam）構件，其餘為桁架（truss）構件，支點A、B、D 為滾支承（roller），而支點F 與G 為鉸支承（hinge）。假設各構件之E 值（彈性模數）、I 值（慣性矩）與A 值（斷面積）皆為常數。不計構件之自重與梁之深度。（25 分）</p>
+<h2>2. 考卷給的公式、附表與參數</h2>
+<ul>
+<li>考卷沒有給任何參考公式或附表。</li>
+<li>E、I、A 只說是常數，沒有數值（答案以 EI、EA 表示）。</li>
+<li>不計自重與梁之深度。</li>
+<li>沒有指定解法；考卷沒有說梁是否忽略軸向或剪切變形。</li>
+<li>卷首注意事項：㈠可以使用電子計算器。㈡不必抄題，作答時請將試題題號及答案依照順序寫在試卷上，於本試題上作答者，不予計分。</li>
+<li>考試時間：2 小時。</li>
+</ul>
+<h2>3. 附圖</h2>
+<p><img alt="SA-2006-1 考卷附圖原截圖（含滑鼠游標或解析度較低；內容同下圖）" src="../../raw/solutions/SA-2006-1/SA-2006-1-fig-1.png" /><br />
+<em>證據圖 SA-2006-1-fig-1.png</em></p>
+<p><img alt="SA-2006-1 考卷附圖：橋梁：上方梁 A–E（淺藍矩形）長 40 m；A 端滾支承在左橋台上；梁下 B、D 兩個圓圈（滾支承）把梁擱在桁架上弦；E 端緊鄰右橋台但沒有支承符號。下方桁架：上弦 F–G 40 m，F、G 為三角形鉸支承；下弦 H–J–K；豎桿在 10、20、30 m；斜桿 F–H、H–上弦 20 m 點、上弦 20 m 點–K、K–G；桁架深 10 m。兩個 10 kN 向下，距 A 15 m 與 25 m" src="../../raw/solutions/SA-2006-1/SA-2006-1-fig-2.png" /><br />
+<em>證據圖 SA-2006-1-fig-2.png（2026-11-07 自考卷重新擷取 500 dpi，無游標）</em></p>
+<p>圖面文字照錄：10 kN、10 kN、15m、10m、15m、A、B、C、D、E、F、G、10 m、H、J、K、4@10 m = 40 m</p>
+<h2>4. 判讀清單</h2>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>項目</th>
+<th>判讀</th>
+<th>圖上／題文依據</th>
+<th>把握</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>梁</td>
+<td>A–E 為梁，長 40 m，擱在 A（橋台）、B、D 三個滾支承上</td>
+<td>題文；淺藍矩形</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>2</td>
+<td>E 端</td>
+<td><strong>沒有支承</strong>（自由端，D–E 為 10 m 懸臂）；E 只是梁端與橋台間的間隙</td>
+<td>題文只列 A、B、D、F、G 五個支點；圖上 E 端無圓圈／三角形</td>
+<td>確定（解讀）；使用者確認</td>
+</tr>
+<tr>
+<td>3</td>
+<td>B、D</td>
+<td>梁與桁架上弦之間的滾支承（只傳垂直力），位於 x＝10 m、30 m，即 H、K 豎桿正上方</td>
+<td>圓圈中心 PDF x≈299.5、394.8；F x=253.6、G x=442.6，比例 4.73 pt/m</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>4</td>
+<td>C</td>
+<td>梁中點 x＝20 m 的標示，<strong>不是支承、也不是載重點</strong></td>
+<td>C 字下方無圓圈；載重箭頭在 x=325.6、372.4</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>5</td>
+<td>載重</td>
+<td>兩個 10 kN 向下，分別在 x＝15 m、25 m（B–C、C–D 中點），不在節點上</td>
+<td>上方尺寸 15m｜10m｜15m（箭頭至 x=324.2、371.6，換算 14.7／24.7 m）</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>6</td>
+<td>桁架節點</td>
+<td>上弦 F(0)、x=10、x=20、x=30、G(40)（上弦內部三點<strong>沒有字母</strong>）；下弦 H(10)、J(20)、K(30)，深 10 m</td>
+<td>4@10 m＝40 m；左側 10 m 尺寸</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>7</td>
+<td>桁架桿件</td>
+<td>上弦 4 段；下弦 H–J、J–K；豎桿 3 根（10、20、30 m）；斜桿 F–H、H–(20 上弦)、(20 上弦)–K、K–G；共 13 根</td>
+<td>圖面</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>8</td>
+<td>支承 F、G</td>
+<td>鉸支承（三角形），各 2 反力；位於桁架上弦兩端</td>
+<td>題文；三角形</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>9</td>
+<td>剛度</td>
+<td>所有構件 E、I、A 皆常數（梁與桁架桿相同）</td>
+<td>題文</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>10</td>
+<td>考卷沒有給</td>
+<td>E、I、A 數值；梁是否計軸向變形</td>
+<td>題文</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>11</td>
+<td>靜不定度</td>
+<td>梁：3 垂直反力、2 方程式，一度；桁架：m 13＋r 4＝17＞2j 16，一度；合計二度靜不定</td>
+<td>計數</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>12</td>
+<td>所求</td>
+<td>J 點垂直變位</td>
+<td>題文</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>13</td>
+<td>證據圖</td>
+<td>舊 fig-1 解析度偏低（947 px）；新增 fig-2（500 dpi）</td>
+<td>—</td>
+<td>確定</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p><em>轉錄：2026-11-07（SA-U2-1 題目正本推廣・批 1）</em><br />
+<em>確認：2026-11-07 使用者確認</em></p>
+</details>
+<hr>
+<h1>考題編號：[SA-2006-1]</h1>
 <p><strong>主分類：</strong> <code>SA-U2-1</code> 靜不定結構分析<br />
 <strong>副分類：</strong> 無<br />
 <strong>分析法：</strong> 最小功法 / 虛功法 (單位力法)<br />
 <strong>標籤：</strong> <code>桁架與樑混合結構</code> <code>靜不定</code> <code>虛功原理</code> <code>最小功法</code> <code>參數解</code></p>
 <hr />
-<h2>1. 原始題目重述 (Problem Restatement)</h2>
-<p><strong>題目：</strong><br />
-如圖所示之橋樑，試計算 J 點之垂直變位。圖中 AE 為樑（beam）構件，其餘為桁架（truss）構件，支點 A、B、D 為滾支承（roller），而支點 F 與 G 為鉸支承（hinge）。假設各構件之 E 值（彈性模數）、I 值（慣性矩）與 A 值（斷面積）皆為常數。不計構件之自重與樑之深度。（25 分）</p>
-<p><img alt="SA-2006-1 題目附圖：混合結構，上方為連續樑AE，下方為桁架，由滾支承與鉸支承支撐" src="../../raw/solutions/SA-2006-1/SA-2006-1-fig-1.png" /><br />
-<em>圖說：連續樑 AE 受兩個 10 kN 集中載重，透過滾支承 B, D 將力量傳遞至下方桁架。桁架左右端 F, G 為鉸支承。</em></p>
+<h2>1. 題目（考卷原文見題目正本）</h2>
+<blockquote>
+<p>考卷原文、公式／附表、附圖與判讀清單（已確認）見 <a href="SA-2006-1-problem.md"><code>SA-2006-1-problem.md</code></a>。本節只列解題時最容易讀錯的地方與本解使用的記號；題意以題目正本為準。</p>
+</blockquote>
+<p><img alt="SA-2006-1 重繪題目附圖：梁 A–E 40 m 擱在 A、B(10 m)、D(30 m) 滾支承上，E 端無支承；下方桁架 F、G 鉸支承、深 10 m；10 kN 在 x = 15、25 m" src="../../raw/solutions/SA-2006-1/figs/SA-2006-1-fig-1-problem.svg" /><br />
+<em>重繪自考卷附圖，依判讀清單 #1–#13 重繪。攔：E 端多加支承、載重放到節點、把梁當成桁架上弦。</em></p>
+<h3>常見誤讀</h3>
+<table>
+<thead>
+<tr>
+<th>項目</th>
+<th>正確判讀</th>
+<th>常見誤讀</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>E 端</td>
+<td>自由端（題文只列 A、B、D、F、G 五個支點）</td>
+<td>滾支承</td>
+</tr>
+<tr>
+<td>B、D</td>
+<td>梁與桁架上弦之間的滾支承，只傳垂直力</td>
+<td>梁即桁架上弦</td>
+</tr>
+<tr>
+<td>載重位置</td>
+<td>x = 15、25 m（B–C、C–D 中點），不在節點</td>
+<td>作用在 B、D 或 C</td>
+</tr>
+<tr>
+<td>C 點</td>
+<td>梁中點標示，不是支承</td>
+<td>支承</td>
+</tr>
+</tbody>
+</table>
+<p><strong>本解記號：</strong> 記號與正負號約定沿用 §4。</p>
+<h3>判讀圖解（解析自繪）</h3>
 <p><img alt="SA-2006-1 題目重繪：樑 AE 疊在桁架上方，A 為地面滾支承，B、D 為連接樑與桁架的滾支承，桁架 F、G 為鉸支承，跨度 4@10 m、桁架高 10 m" src="../../raw/solutions/SA-2006-1/figs/SA-2006-1-fig-1-frame.svg" /></p>
 <p><em>圖 2　題目重繪（向量版）。橘色圓圈標出 B、D 兩個滾支承——樑與桁架只在這兩點接觸，且只傳垂直力。它攔下的是把樑 AE 當成桁架上弦桿：滾支承不傳水平力，桁架必須另有自己的上弦桿 F–B′–C′–D′–G。</em></p>
 <hr />
@@ -309,6 +507,9 @@ $$ \implies \Delta_J = \frac{20(1+\sqrt{2})(20 - R_D)}{EA} $$<br />
 將 $\boxed{R_D}$ 代入，得最終答案：<br />
 $$ \boxed{ \Delta_J = \frac{20(1+\sqrt{2})}{EA} \left[ \frac{1187.5 + \alpha(30 + 20\sqrt{2})}{100 + \alpha(4 + 3\sqrt{2})} \right] \quad \text{(向下)} } $$<br />
 <em>(其中 $\alpha = \frac{EI}{EA}$)</em></p>
+<blockquote>
+<p><strong>A 點反力的正負（判讀提醒）：</strong> $R_A = 2R_D - 20$。實際斷面的 $\alpha = EI/EA = r^2$（迴轉半徑平方）只有 $10^{-2}\ \text{m}^2$ 量級，此時 $R_D \to 8.125$ kN、$R_A \to -3.75$ kN，即<strong>梁端 A 被往下拉住</strong>；凡 $\alpha &lt; 7.77\ \text{m}^2$，$R_A$ 都是負的。本解把 A 的滾支承當成可受拉的雙向支承（一般解讀）。若 A 只能受壓，A 端會上浮脫離，梁改由 B、D 兩點簡支（$R_B = R_D = 10$ kN），此時 $\Delta_J = \dfrac{200(1+\sqrt{2})}{EA} \approx \dfrac{482.8}{EA}$（向下），恰等於上式在 $\alpha = 7.77$ 的值。</p>
+</blockquote>
 <p><img alt="SA-2006-1 虛力系統 u0：J 點受 1 kN 向下，基本結構為切斷 R_D、G 改滾支承的靜定桁架，上弦全為 −0.5、下弦 +1、C'J 為 +1、斜桿 ±0.7071" src="../../raw/solutions/SA-2006-1/figs/SA-2006-1-fig-3-virtual.svg" /></p>
 <p><em>圖 4　虛力系統 $u_0$。樑在基本結構中已被切離且無虛載重，故 $m_0 \equiv 0$，整條樑的積分項直接消失。圖上的數值是產圖腳本自己用節點法重解出來的，並與 §4 Step 4 的清單逐桿比對。它攔下的是誤以為虛力系統必須沿用原本的二度靜不定結構。</em></p>
 <p><img alt="SA-2006-1 的 Δ_J·EA 隨 α=EI/EA 變化的曲線：從 α→0 的 573.4 單調降到 α→∞ 的 341.4，α=1 時為 555.7" src="../../raw/solutions/SA-2006-1/figs/SA-2006-1-fig-4-alpha.svg" /></p>
@@ -320,7 +521,9 @@ $$ \boxed{ \Delta_J = \frac{20(1+\sqrt{2})}{EA} \left[ \frac{1187.5 + \alpha(30 
 <li><strong>虛功法虛力系統之選取</strong>：許多考生會使用原靜不定結構來求解虛功，這會導致虛力系統也產生 $r_d, h$ 等虛贅力，使得計算量翻倍。本題完美展示了「虛功法允許使用任意滿足平衡之基本結構」的強大威力，直接將樑的積分項歸零。</li>
 </ul>
 <hr />
-<p><em>圖解補繪：2026-08-28（向量圖，腳本 <code>gen_SA-2006-1.py</code>，可重跑）</em></p></main>
+<p><em>圖解補繪：2026-08-28（向量圖，腳本 <code>gen_SA-2006-1.py</code>，可重跑）</em></p>
+<p><em>修正日期：2026-11-07（§1 改為指向題目正本並放重繪附圖（figs/SA-2006-1-fig-1-problem.svg）、加常見誤讀；原 §1 解析自繪圖移至「判讀圖解（解析自繪）」；圖由 gen_SA-2006-1_problem.py 產生，可重跑）</em><br />
+<em>修正日期：2026-11-07（§4 補註 A 點反力為負（梁端被下拉）與 A 只能受壓時的替代值 200(1+√2)/EA；主答案不變（非勘誤））</em></p></main>
 <footer>來源：raw/solutions/SA-2006-1/SA-2006-1.md（知識庫解題內容唯一正本；本頁僅為渲染顯示）</footer>
 
 <script>

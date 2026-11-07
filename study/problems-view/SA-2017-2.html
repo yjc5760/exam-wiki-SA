@@ -43,18 +43,177 @@ header .nomat{margin-top:12px;font-size:.8em;opacity:.85}
 <p class="meta2">主分類 <b>SA-U2-1</b> 靜不定結構最小功法 ｜ 2017 年（民國 106） ｜ 最小功法（Castigliano's 2nd Theorem）</p>
 <div class="hbtns"><a class="b-study" href="../unit-SA-U2-1.html">🧭 U2-1 單元總覽</a><a class="b-lect" href="../lecture-SA-U2-1.html">📚 U2-1 靜不定結構最小功法 講義</a></div>
 </header>
-<main><h1>考題編號：SA-2017-2</h1>
+<main><details class="problem-src" open><summary><b>📄 題目正本</b>（考卷原文、附圖與判讀清單；不含解法）</summary>
+<h1>SA-2017-2 題目正本</h1>
+<blockquote>
+<p>本檔只記錄考卷上寫了什麼、圖上畫了什麼，不含任何解法。解析見同資料夾 <code>SA-2017-2.md</code>。<br />
+判讀清單經使用者確認前，狀態為「待確認」；確認後本檔原則上不再修改（改動須回考卷原圖並記 log）。</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>項目</th>
+<th>內容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>考卷</td>
+<td><code>raw/exams/SA-2017_結構學.pdf</code>，第 1 頁（正面）下半，第二題（圖二）</td>
+</tr>
+<tr>
+<td>考年</td>
+<td>2017（民國 106 年）專技高考結構工程技師「結構學」</td>
+</tr>
+<tr>
+<td>配分</td>
+<td>20 分</td>
+</tr>
+<tr>
+<td>附圖</td>
+<td><code>SA-2017-2-fig-1.png</code>、<code>SA-2017-2-fig-2.png</code></td>
+</tr>
+<tr>
+<td>判讀狀態</td>
+<td><strong>已確認</strong>（2026-11-07 使用者確認。原轉錄：2026-11-07 轉錄；PyMuPDF 110 dpi 整頁＋300–500 dpi 局部放大、PDF 向量座標核對；盲讀於開啟解析前完成）</td>
+</tr>
+</tbody>
+</table>
+<h2>1. 考卷原文（逐字）</h2>
+<p>二、圖二為梁結構，尺寸和均佈載重如圖所示，點c 為鉸接，所有桿件的彈性模數E 與斷面慣性矩I 皆為定值。試以最小功法求固定端彎矩（需註明方向，採用其它方法計算不予計分）。（20 分）</p>
+<h2>2. 考卷給的公式、附表與參數</h2>
+<ul>
+<li>考卷沒有給任何參考公式或附表。</li>
+<li>E、I 為定值；尺寸只有符號 m、n、L（沒有數值）。</li>
+<li>指定方法：最小功法；他法不計分。</li>
+<li>需註明彎矩方向。</li>
+<li>卷首注意事項：㈠可以使用電子計算器。㈡不必抄題，作答時請將試題題號及答案依照順序寫在試卷上，於本試題上作答者，不予計分。㈢本科目除專門名詞或數理公式外，應使用本國文字作答。</li>
+<li>考試時間：2 小時。</li>
+</ul>
+<h2>3. 附圖</h2>
+<p><img alt="SA-2017-2 考卷附圖原截圖（含滑鼠游標或解析度較低；內容同下圖）" src="../../raw/solutions/SA-2017-2/SA-2017-2-fig-1.png" /><br />
+<em>證據圖 SA-2017-2-fig-1.png</em></p>
+<p><img alt="SA-2017-2 考卷附圖：兩端固定梁 a–b（左右皆為牆面剖線），全長 L；梁上方以一排方塊表示均布載重 w（滿跨）；c 為梁上的內鉸（空心圓），a–c＝m、c–b＝n" src="../../raw/solutions/SA-2017-2/SA-2017-2-fig-2.png" /><br />
+<em>證據圖 SA-2017-2-fig-2.png（2026-11-07 自考卷重新擷取 500 dpi，無游標）</em></p>
+<p>圖面文字照錄：w、a、c、b、m、n、L、圖二</p>
+<h2>4. 判讀清單</h2>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>項目</th>
+<th>判讀</th>
+<th>圖上／題文依據</th>
+<th>把握</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>a、b</td>
+<td>兩端皆固定端</td>
+<td>牆面剖線</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>2</td>
+<td>c</td>
+<td>梁內鉸（空心圓），距 a 為 m、距 b 為 n，m＋n＝L</td>
+<td>尺寸線分界對齊 c</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>3</td>
+<td>載重</td>
+<td>均布載重 w 滿跨 a–b（方塊列為均布載重符號，不是構件）</td>
+<td>方塊列兩端接牆</td>
+<td>確定（解讀）；使用者確認</td>
+</tr>
+<tr>
+<td>4</td>
+<td>m、n</td>
+<td>一般值（圖上 c 不在中點，約 0.43 L）</td>
+<td>圖面比例</td>
+<td>確定（解讀）；使用者確認</td>
+</tr>
+<tr>
+<td>5</td>
+<td>考卷沒有給</td>
+<td>數值尺寸；軸向變形（梁、無軸力）</td>
+<td>題文</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>6</td>
+<td>靜不定度</td>
+<td>固定 6 反力－3 方程式－內鉸 1＝二度（水平反力為零後一度）</td>
+<td>計數</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>7</td>
+<td>所求</td>
+<td>固定端彎矩（a、b 兩端，需註明方向）；最小功法</td>
+<td>題文</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>8</td>
+<td>證據圖</td>
+<td>舊 fig-1 的滑鼠游標在 L 字旁；新增 fig-2（500 dpi，原圖為點陣圖）</td>
+<td>—</td>
+<td>確定</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p><em>轉錄：2026-11-07（SA-U2-1 題目正本推廣・批 1）</em><br />
+<em>確認：2026-11-07 使用者確認</em></p>
+</details>
+<hr>
+<h1>考題編號：SA-2017-2</h1>
 <p><strong>主分類：</strong> 靜不定結構分析—力法 (SA-U2-1)<br />
 <strong>副分類：</strong> <br />
 <strong>分析法：</strong> 最小功法（Castigliano's 2nd Theorem）<br />
 <strong>標籤：</strong> <code>最小功法</code> <code>卡氏定理</code> <code>內鉸條件</code> <code>固定端彎矩</code> <code>靜不定梁</code></p>
 <hr />
-<h2>1. 原始題目重述 (Problem Restatement)</h2>
-<p><img alt="SA-2017-2 題目附圖：兩端固定梁，中間設置內鉸 c，全梁受均布載重 w，a 到 c 距離為 m，c 到 b 距離為 n，全跨 L = m + n" src="../../raw/solutions/SA-2017-2/SA-2017-2-fig-1.png" /></p>
-<p><em>圖說：梁 a–c–b 兩端均為固定支承，c 點設有內鉸（梁在此點彎矩必為零）。均布載重 w（向下）作用於全梁。各段長度：ac = m，cb = n，全跨 L = m + n。所有桿件彈性模數 E 與斷面慣性矩 I 皆為定值。</em></p>
+<h2>1. 題目（考卷原文見題目正本）</h2>
+<blockquote>
+<p>考卷原文、公式／附表、附圖與判讀清單（已確認）見 <a href="SA-2017-2-problem.md"><code>SA-2017-2-problem.md</code></a>。本節只列解題時最容易讀錯的地方與本解使用的記號；題意以題目正本為準。</p>
+</blockquote>
+<p><img alt="SA-2017-2 重繪題目附圖：兩端固定梁 a–b 長 L，c 為內鉸（a–c = m、c–b = n），w 滿跨" src="../../raw/solutions/SA-2017-2/figs/SA-2017-2-fig-1-problem.svg" /><br />
+<em>重繪自考卷附圖，依判讀清單 #1–#7 重繪。攔：把載重方塊讀成構件、c 讀成支承。</em></p>
+<h3>常見誤讀</h3>
+<table>
+<thead>
+<tr>
+<th>項目</th>
+<th>正確判讀</th>
+<th>常見誤讀</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>方塊列</td>
+<td>均布載重 $w$ 的符號，滿跨</td>
+<td>構件或只作用一側</td>
+</tr>
+<tr>
+<td>c 點</td>
+<td>內鉸（$M_c = 0$）</td>
+<td>支承</td>
+</tr>
+<tr>
+<td>m、n</td>
+<td>一般值，$m + n = L$</td>
+<td>取 $m = n$</td>
+</tr>
+</tbody>
+</table>
+<p><strong>本解記號：</strong> 記號與正負號約定沿用 §4。</p>
+<h3>判讀圖解（解析自繪）</h3>
 <p><img alt="SA-2017-2 題目重繪：兩端固定梁，c 點設內鉸，全跨受向下均佈載重 w，並列出靜不定度的計算（4 未知 − 3 方程 = 1）" src="../../raw/solutions/SA-2017-2/figs/SA-2017-2-fig-1-beam.svg" /></p>
 <p><em>圖 2　題目重繪（向量版），右上角把靜不定度攤開。它攔下的是「有鉸就變靜定」——內鉸只多提供一條方程式，兩端固定梁仍剩一度靜不定。</em></p>
-<p><strong>題目要求：</strong> 以<strong>最小功法</strong>求 a、b 兩端固定端彎矩（需標明方向，採用其他方法計算不予計分）。</p>
 <hr />
 <h2>2. 考題核心精神與出題者意圖 (Core Concepts &amp; Examiner's Intent)</h2>
 <p><strong>核心觀念：</strong> 內鉸條件（$M_c = 0$）是本題的「免費方程式」，它使靜不定度從 2 降為 1，大幅簡化最小功法的計算。出題者指定「只能用最小功法」，目的在於測驗考生能否正確建立 $\partial U/\partial X = 0$ 的積分方程，而非繞道使用傾角變位法或彎矩分配法。</p>
@@ -419,6 +578,7 @@ $$I_R = \frac{n^3 X}{3m^2} + \frac{wn^3(3n+4m)}{24m}$$</p>
 <h3>4.7 最終結果彙整</h3>
 <p>$$\boxed{M_a = -\frac{wm(m^3 - m^2n + mn^2 + 3n^3)}{8(m^2 - mn + n^2)}} \quad (\text{hogging，a 端上側受拉})$$</p>
 <p>$$\boxed{M_b = -\frac{wn(3m^3 + m^2n - mn^2 + n^3)}{8(m^2 - mn + n^2)}} \quad (\text{hogging，b 端上側受拉})$$</p>
+<p><strong>方向（支承反力矩）：</strong> 兩式分子中的 $m^2 - 2mn + 3n^2$、$3m^2 - 2mn + n^2$ 恆為正，故不論內鉸 c 在何處，兩端都是負彎矩。換成支承對梁的反力矩：<strong>a 端（左）逆時針、b 端（右）順時針</strong>，大小即上兩式的絕對值。</p>
 <p><img alt="SA-2017-2 代表案例 m/L=0.4 的三聯圖：載重與支承（含內鉸）、剪力圖（+53.93 到 −46.07，零點 x=5.393 m）、彎矩圖（兩端皆 hogging，內鉸處 M=0）" src="../../raw/solutions/SA-2017-2/figs/SA-2017-2-fig-3-vm.svg" /></p>
 <p><em>圖 3　代表案例 $m/L = 0.4$ 的載重／剪力／彎矩三聯圖，座標全部由 §4.5、§4.6 的封閉解代入算出。它攔下三件事：內鉸處的彎矩沒有歸零、剪力零點與彎矩極值位置對不上、固端彎矩符號寫成正的。</em></p>
 <h3>4.8 固端彎矩隨鉸點位置的變化</h3>
@@ -475,7 +635,9 @@ $(m-n)^2 = m^2 - 2mn + n^2 \ge 0 \implies m^2 - mn + n^2 \ge mn &gt; 0$（m, n &
 考場上若想用「小於 $wL^2/12$」來自我驗算，會把正確答案判成錯的。<br />
 真正可用的驗算是 §4.6 的對稱性檢查與 $m \leftrightarrow n$ 對調檢查。</p>
 <hr />
-<p><em>圖解補繪：2026-08-28（向量圖，腳本 <code>gen_SA-2017-2.py</code>，可重跑）</em></p></main>
+<p><em>圖解補繪：2026-08-28（向量圖，腳本 <code>gen_SA-2017-2.py</code>，可重跑）</em></p>
+<p><em>修正日期：2026-11-07（§1 改為指向題目正本並放重繪附圖（figs/SA-2017-2-fig-1-problem.svg）、加常見誤讀；原 §1 解析自繪圖移至「判讀圖解（解析自繪）」；圖由 gen_SA-2017-2_problem.py 產生，可重跑）</em><br />
+<em>修正日期：2026-11-07（§4.7 補註固定端反力矩轉向：a 端逆時針、b 端順時針，回應題文「需註明方向」；數值不變（非勘誤））</em></p></main>
 <footer>來源：raw/solutions/SA-2017-2/SA-2017-2.md（知識庫解題內容唯一正本；本頁僅為渲染顯示）</footer>
 
 <script>

@@ -43,31 +43,185 @@ header .nomat{margin-top:12px;font-size:.8em;opacity:.85}
 <p class="meta2">主分類 <b>SA-U2-1</b> 靜不定結構最小功法 ｜ 副分類 <b>SA-U2-2</b> 靜不定結構諧合變位 ｜ 2016 年（民國 105） ｜ 單位力法（虛功原理） / 圖形積分法</p>
 <div class="hbtns"><a class="b-study" href="../unit-SA-U2-1.html">🧭 U2-1 單元總覽</a><a class="b-lect" href="../lecture-SA-U2-1.html">📚 U2-1 靜不定結構最小功法 講義</a></div>
 </header>
-<main><h1>考題編號：SA-2016-3</h1>
+<main><details class="problem-src" open><summary><b>📄 題目正本</b>（考卷原文、附圖與判讀清單；不含解法）</summary>
+<h1>SA-2016-3 題目正本</h1>
+<blockquote>
+<p>本檔只記錄考卷上寫了什麼、圖上畫了什麼，不含任何解法。解析見同資料夾 <code>SA-2016-3.md</code>。<br />
+判讀清單經使用者確認前，狀態為「待確認」；確認後本檔原則上不再修改（改動須回考卷原圖並記 log）。</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>項目</th>
+<th>內容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>考卷</td>
+<td><code>raw/exams/SA-2016_結構學.pdf</code>，第 1 頁（正面）下部，第三題（圖三）</td>
+</tr>
+<tr>
+<td>考年</td>
+<td>2016（民國 105 年）專技高考結構工程技師「結構學」</td>
+</tr>
+<tr>
+<td>配分</td>
+<td>25 分</td>
+</tr>
+<tr>
+<td>附圖</td>
+<td><code>SA-2016-3-fig-1.png</code>、<code>SA-2016-3-fig-2.png</code></td>
+</tr>
+<tr>
+<td>判讀狀態</td>
+<td><strong>已確認</strong>（2026-11-07 使用者確認。原轉錄：2026-11-07 轉錄；PyMuPDF 110 dpi 整頁＋300–500 dpi 局部放大、PDF 向量座標核對；盲讀於開啟解析前完成）</td>
+</tr>
+</tbody>
+</table>
+<h2>1. 考卷原文（逐字）</h2>
+<p>三、圖三剛架使用材料之彈性模數為E，斷面慣性矩為I，EI =常數。已知於BC 間受2 kN/m 的均佈載重時，MAB = -23.2 kN-m、MBC = 5.63 kN-m、MCD = -25.3 kN-m、MDC = -17.0 kN-m，試求此時C 點的變位。（25 分）</p>
+<h2>2. 考卷給的公式、附表與參數</h2>
+<ul>
+<li>考卷沒有給任何參考公式或附表。</li>
+<li>EI 常數，沒有數值（答案以 EI 表示）。</li>
+<li>題目已給四個桿端彎矩：M_AB＝−23.2、M_BC＝5.63、M_CD＝−25.3、M_DC＝−17.0 kN-m（照錄）；<strong>考卷沒有說明彎矩正負號規約</strong>，也沒有給 M_BA、M_CB。</li>
+<li>考卷沒有說是否忽略軸向變形。</li>
+<li><strong>考卷沒有給 AB 斜桿的水平、垂直投影</strong>，只標斜長 10 m；也沒有給 A 與 D 的高差。</li>
+<li>「C 點的變位」沒有指定方向（水平／垂直／轉角）。</li>
+<li>沒有指定解法。</li>
+<li>卷首注意事項：㈠可以用電子計算器。㈡不必抄題，作答時請將試題題號及答案依照順序寫在試卷上，於本試題上作答者，不予計分。</li>
+<li>考試時間：2 小時。</li>
+</ul>
+<h2>3. 附圖</h2>
+<p><img alt="SA-2016-3 考卷附圖原截圖（含滑鼠游標或解析度較低；內容同下圖）" src="../../raw/solutions/SA-2016-3/SA-2016-3-fig-1.png" /><br />
+<em>證據圖 SA-2016-3-fig-1.png</em></p>
+<p><img alt="SA-2016-3 考卷附圖：剛架（考卷內嵌點陣圖）：A 固定端在左下，A–B 斜桿向右上，斜長標 10 m；B–C 水平梁 12 m 受 2 kN/m 向下均布載重；C–D 垂直柱 20 m，D 固定端；B、C 角點畫成圓角（剛接）" src="../../raw/solutions/SA-2016-3/SA-2016-3-fig-2.png" /><br />
+<em>證據圖 SA-2016-3-fig-2.png（2026-11-07 自考卷重新擷取 500 dpi，無游標）</em></p>
+<p>圖面文字照錄：2 kN/m、10 m、B、C、A、20 m、D、12 m、圖三</p>
+<h2>4. 判讀清單</h2>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>項目</th>
+<th>判讀</th>
+<th>圖上／題文依據</th>
+<th>把握</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>構件</td>
+<td>A–B 斜桿、B–C 水平梁、C–D 垂直柱；B、C 剛接</td>
+<td>圖面（角點圓角、無圓圈）</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>2</td>
+<td>A、D</td>
+<td>皆為固定端（短底線＋剖線，與 2016-1 的鉸支承三角形不同）</td>
+<td>圖面；題給 M_AB ≠ 0 亦相符</td>
+<td>確定（解讀）；使用者確認</td>
+</tr>
+<tr>
+<td>3</td>
+<td>幾何</td>
+<td>AB 斜長 10 m；BC＝12 m；CD＝20 m</td>
+<td>10 m 斜向尺寸平行 AB；12 m 尺寸自 B 正下方至 D；20 m 對齊 C 與 D</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>4</td>
+<td>AB 傾角</td>
+<td>考卷沒有給；圖面量測約 水平 4.8 m、垂直 8.7 m（僅示意）</td>
+<td>圖面像素比例 32 px/m 量得</td>
+<td>不確定（解讀）；使用者確認</td>
+</tr>
+<tr>
+<td>5</td>
+<td>載重</td>
+<td>2 kN/m 向下，只在 B–C 全長</td>
+<td>題文；載重框對齊 B、C</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>6</td>
+<td>題給彎矩</td>
+<td>M_AB＝−23.2、M_BC＝5.63、M_CD＝−25.3、M_DC＝−17.0 kN-m</td>
+<td>題文</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>7</td>
+<td>考卷沒有給</td>
+<td>彎矩正負號規約；M_BA、M_CB；AB 投影；軸向變形是否忽略；所求變位的方向</td>
+<td>題文</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>8</td>
+<td>所求</td>
+<td>C 點的變位</td>
+<td>題文</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>9</td>
+<td>證據圖</td>
+<td>舊 fig-1 構架內有滑鼠游標（未壓在構件上）；新增 fig-2（500 dpi，原圖為點陣圖，放大不增加細節）</td>
+<td>—</td>
+<td>確定</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p><em>轉錄：2026-11-07（SA-U2-1 題目正本推廣・批 1）</em><br />
+<em>確認：2026-11-07 使用者確認</em></p>
+</details>
+<hr>
+<h1>考題編號：SA-2016-3</h1>
 <p><strong>主分類：</strong> <code>SA-U2-1</code> 靜不定結構最小功法<br />
-<strong>副分類：</strong> <code>SA-U2-2</code> 靜不定結構諧合變位<br />
+<strong>副分類：</strong> <code>SA-U2-3</code> 靜不定結構之傾角變位法<br />
 <strong>分析法：</strong> 單位力法（虛功原理） / 圖形積分法<br />
 <strong>標籤：</strong> <code>虛功法</code> <code>單位力法</code> <code>側移變位</code> <code>基本結構選取</code> <code>圖形積分法</code></p>
 <hr />
-<h2>1. 原始題目重述 (Problem Restatement)</h2>
-<p>圖三剛架使用材料之彈性模數為 E，斷面慣性矩為 I，EI = 常數。已知於 BC 間受 2 kN/m 的均佈載重時，各桿端彎矩為：</p>
-<ul>
-<li>$M_{AB} = -23.2$ kN-m</li>
-<li>$M_{BC} = 5.63$ kN-m</li>
-<li>$M_{CD} = -25.3$ kN-m</li>
-<li>$M_{DC} = -17.0$ kN-m</li>
-</ul>
-<p>試求此時 C 點的變位。（25 分）</p>
-<p><strong>結構幾何：</strong></p>
-<ul>
-<li>A：固定支承（或鉸支承，依圖示有斜線，但AB桿僅標示長度 10m，未標示確切座標與傾角）。</li>
-<li>B：剛接節點。</li>
-<li>C：剛接節點。</li>
-<li>D：固定支承。</li>
-<li>桿件 AB 長 10m；BC 為水平梁，長 12m；CD 為垂直柱，長 20m。</li>
-</ul>
-<p><img alt="SA-2016-3 題目附圖：剛架，AB 斜桿 10m，BC 水平梁 12m 受 2kN/m 均佈載重，CD 垂直柱 20m" src="../../raw/solutions/SA-2016-3/SA-2016-3-fig-1.png" /></p>
-<p><em>圖說：剛架結構，AB 桿長 10 m，BC 梁長 12 m 且受 2 kN/m 向下均佈載重，CD 柱長 20 m。D 為固定支承。已知各節點的端彎矩。</em></p>
+<h2>1. 題目（考卷原文見題目正本）</h2>
+<blockquote>
+<p>考卷原文、公式／附表、附圖與判讀清單（已確認）見 <a href="SA-2016-3-problem.md"><code>SA-2016-3-problem.md</code></a>。本節只列解題時最容易讀錯的地方與本解使用的記號；題意以題目正本為準。</p>
+</blockquote>
+<p><img alt="SA-2016-3 重繪題目附圖：剛架：A 固定端、A–B 斜長 10 m（傾角未標註）、B–C 水平 12 m 受 2 kN/m、C–D 垂直 20 m、D 固定端" src="../../raw/solutions/SA-2016-3/figs/SA-2016-3-fig-1-problem.svg" /><br />
+<em>重繪自考卷附圖，依判讀清單 #1–#9 重繪；AB 傾角考卷未標註，圖中比例為示意。攔：A 讀成鉸支承、以為缺 AB 傾角就無法作答。</em></p>
+<h3>常見誤讀</h3>
+<table>
+<thead>
+<tr>
+<th>項目</th>
+<th>正確判讀</th>
+<th>常見誤讀</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>A 支承</td>
+<td>固定端（與同卷第一題的鉸支承三角形不同；題給 $M_{AB} \neq 0$）</td>
+<td>鉸支承</td>
+</tr>
+<tr>
+<td>AB 傾角</td>
+<td>考卷沒有給；本題只用 CD 柱即可求 C 點變位</td>
+<td>自行假設角度後才能解</td>
+</tr>
+<tr>
+<td>彎矩正負號</td>
+<td>考卷沒有給；本解採傾角變位法慣例，順時針作用於桿端為正</td>
+<td>反向規約（C 點變位方向會相反）</td>
+</tr>
+</tbody>
+</table>
+<p><strong>本解記號：</strong> 記號與正負號約定沿用 §4。</p>
+<h3>判讀圖解（解析自繪）</h3>
 <p><img alt="SA-2016-3 題目重繪：A、D 固接，AB 斜桿 10 m、BC 梁 12 m 受 2 kN/m、CD 柱 20 m，並列出四個給定桿端彎矩，標明只有 M_CD 與 M_DC 會用到" src="../../raw/solutions/SA-2016-3/figs/SA-2016-3-fig-1-frame.svg" /></p>
 <p><em>圖 2　題目重繪（向量版）。四個桿端彎矩中只有橘色的 $M_{CD}$、$M_{DC}$ 會進入計算。它攔下的是「題目給了就一定要用」的直覺，以及把 AB 的傾角當成必要資訊而卡住。</em></p>
 <hr />
@@ -261,6 +415,10 @@ $$\Delta_{Cx} = \frac{10}{3EI} \left[ 174 \right] = \frac{1740}{3EI} = \boxed{ \
 <h2>5. 關鍵爭議點與進階探討 (Critical Issues &amp; Advanced Discussion)</h2>
 <p><strong>干擾資訊的識別：</strong><br />
 本題給定了 $M_{AB} = -23.2$ 與 $M_{BC} = 5.63$，以及 BC 上的載重 2 kN/m。這些資訊對於計算 C 點變位是<strong>完全不需要</strong>的。這凸顯了結構學考試中，不只要會「算」，更要會「選」——選擇最簡單、最不易出錯的虛功基本結構路徑。</p>
+<p><strong>另解：CD 柱傾角變位式（本題副分類 SA-U2-3 的理由）：</strong><br />
+題給彎矩採傾角變位法規約（順時針為正），D 固定 $\theta_D = 0$、不計軸向變形，CD 柱的兩條傾角變位式剛好解兩個未知數：<br />
+$$M_{CD} = \frac{2EI}{20}\left(2\theta_C - 3\psi\right) = -25.3,\qquad M_{DC} = \frac{2EI}{20}\left(\theta_C - 3\psi\right) = -17.0$$<br />
+相減得 $\theta_C = -83/EI$（逆時針 $83/EI$），代回得 $\psi = 29/EI$（順時針），$\Delta_{Cx} = 20\psi = 580/EI$（向右）。與單位力法結果完全相同，且不必畫 $M$、$m$ 圖。</p>
 <p><strong>答案的獨立驗算（全剛架模型）：</strong><br />
 題目雖未標 AB 的傾角，仍可反推：取 A 位於 B 左方 $5\ \text{m}$、下方 $5\sqrt{3} \approx 8.66\ \text{m}$<br />
 （即 $AB = 10\ \text{m}$、與水平夾 $60^\circ$），以 A、D 皆固接、忽略軸向變形建立<strong>全剛架</strong>模型，<br />
@@ -305,7 +463,9 @@ $$\Delta_{Cx} = \frac{10}{3EI} \left[ 174 \right] = \frac{1740}{3EI} = \boxed{ \
 <p><strong>幾何條件的暗示：</strong><br />
 當題目刻意不給定 AB 桿的傾角與 A 點的精確座標時，就是在暗示考生「不要試圖計算全結構」。這種「資訊不足但仍可解」的題型，是國考常見的巧思，旨在獎勵觀念透徹的考生。</p>
 <hr />
-<p><em>圖解補繪：2026-08-28（向量圖，腳本 <code>gen_SA-2016-3.py</code>，可重跑）</em></p></main>
+<p><em>圖解補繪：2026-08-28（向量圖，腳本 <code>gen_SA-2016-3.py</code>，可重跑）</em></p>
+<p><em>修正日期：2026-11-07（§1 改為指向題目正本並放重繪附圖（figs/SA-2016-3-fig-1-problem.svg）、加常見誤讀；原 §1 解析自繪圖移至「判讀圖解（解析自繪）」；圖由 gen_SA-2016-3_problem.py 產生，可重跑）</em><br />
+<em>修正日期：2026-11-07（分類更正（非勘誤）：副分類 SA-U2-2「諧合變位」→ SA-U2-3「傾角變位法」——題給桿端彎矩採傾角變位法規約，CD 柱兩條傾角變位式即可直接解出 C 點轉角與側移（§5 補另解），與諧合變位無關；使用者決定）</em></p></main>
 <footer>來源：raw/solutions/SA-2016-3/SA-2016-3.md（知識庫解題內容唯一正本；本頁僅為渲染顯示）</footer>
 
 <script>

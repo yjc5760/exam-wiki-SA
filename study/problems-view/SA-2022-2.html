@@ -75,7 +75,7 @@ header .nomat{margin-top:12px;font-size:.8em;opacity:.85}
 </tr>
 <tr>
 <td>判讀狀態</td>
-<td><strong>待確認</strong>（2026-11-05 轉錄；PyMuPDF 110 dpi 整頁＋400–500 dpi 局部放大；盲讀於開啟解析前完成）</td>
+<td><strong>已確認</strong>（2026-11-07 使用者確認。原轉錄：2026-11-05 轉錄；PyMuPDF 110 dpi 整頁＋400–500 dpi 局部放大；盲讀於開啟解析前完成）</td>
 </tr>
 </tbody>
 </table>
@@ -186,7 +186,8 @@ header .nomat{margin-top:12px;font-size:.8em;opacity:.85}
 </tbody>
 </table>
 <hr />
-<p><em>轉錄：2026-11-05（SA-U2-3 題目正本推廣・批 2）</em></p>
+<p><em>轉錄：2026-11-05（SA-U2-3 題目正本推廣・批 2）</em><br />
+<em>確認：2026-11-07 使用者確認</em></p>
 </details>
 <hr>
 <h1>考題編號：SA-2022-2</h1>
@@ -195,12 +196,44 @@ header .nomat{margin-top:12px;font-size:.8em;opacity:.85}
 <strong>分析法：</strong> 傾角變位法 (Slope-Deflection Method)<br />
 <strong>標籤：</strong> <code>傾角變位法</code> <code>有側移剛架</code> <code>側移方程式</code> <code>修正固端彎矩</code> <code>疊加法</code></p>
 <hr />
-<h2>1. 原始題目重述 (Problem Restatement)</h2>
-<p>如圖 2 所示剛架結構，不考慮桿件的軸向變形，$a$ 點及 $e$ 點為鉸支承，桿件有相同彈性模數 $E$ 與慣性矩 $I$，且 $EI = 40000 \text{ kN-m}^2$。求 $cd$ 梁桿件的彎矩圖、$b$ 點及 $c$ 點的水平位移。（25 分）</p>
-<p><img alt="SA-2022-2 題目附圖" src="../../raw/solutions/SA-2022-2/SA-2022-2-fig-1.png" /></p>
+<h2>1. 題目（考卷原文見題目正本）</h2>
+<blockquote>
+<p>考卷原文、公式／附表、附圖與判讀清單（已確認）見 <a href="SA-2022-2-problem.md"><code>SA-2022-2-problem.md</code></a>。本節只列解題時最容易讀錯的地方與本解使用的記號；題意以題目正本為準。</p>
+</blockquote>
+<p><img alt="SA-2022-2 重繪題目附圖：階梯形剛架：左柱 a–c 4 m（a 鉸支承、b 在中點），梁 c–d 4 m，右柱 d–e 4 m（e 鉸支承倒掛於柱頂）；b 與右柱中點各 30 kN 向右" src="../../raw/solutions/SA-2022-2/figs/SA-2022-2-fig-1-problem.svg" /><br />
+<em>重繪自考卷附圖，依判讀清單 #1–#11 重繪。攔：e 讀成柱底支承、b 讀成節點或鉸。</em></p>
+<h3>常見誤讀</h3>
+<table>
+<thead>
+<tr>
+<th>項目</th>
+<th>正確判讀</th>
+<th>常見誤讀</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>e 支承</td>
+<td>鉸支承，在右柱<strong>頂</strong>（倒掛）</td>
+<td>柱底</td>
+</tr>
+<tr>
+<td>b 點</td>
+<td>左柱中點的載重作用點，不是節點或鉸</td>
+<td>鉸</td>
+</tr>
+<tr>
+<td>兩柱弦轉角</td>
+<td>a 在下、e 在上，兩柱弦轉角符號相反</td>
+<td>同號</td>
+</tr>
+</tbody>
+</table>
+<p><strong>本解記號：</strong> 記號與正負號約定沿用 §4。</p>
+<h3>判讀圖解（解析自繪）</h3>
 <p><img alt="SA-2022-2 題目重繪：階梯型剛架，a 在柱底、e 在柱頂皆為鉸支承，兩個 30kN 分別作用於下柱與上柱的中點" src="../../raw/solutions/SA-2022-2/figs/SA-2022-2-fig-1-frame.svg" /></p>
 <p><em>圖 1　題目重繪（向量版）。這張圖攔的是把 $e$ 當成柱底：$a$ 在</em><em>下</em><em>、$e$ 在</em><em>上</em><em>，兩根柱的弦轉角因此符號相反（$\psi_{ac} = +\Delta/4$、$\psi_{de} = -\Delta/4$）——符號弄反全盤皆輸。</em></p>
-<p><em>圖說：本題為一階梯型剛架。節點 $a, e$ 為鉸支承。柱 $a-c$ 高度 4m，在 $b$ 點（距底 2m 處）受水平向右 30 kN 集中力；梁 $c-d$ 長 4m；柱 $d-e$ 高度 4m，在距 $d$ 點 2m 處受水平向右 30 kN 集中力。$c, d$ 皆為剛節點。</em></p>
+<hr />
 <h2>2. 考題核心精神與出題者意圖 (Core Concepts &amp; Examiner's Intent)</h2>
 <p><strong>核心精神：</strong></p>
 <ol>
@@ -408,7 +441,8 @@ $b$ 點位移 $\Delta_b$ 由「弦之剛體側移」與「柱的彈性彎曲」�
 </tbody>
 </table>
 <hr />
-<p><em>解析日期：2026-07-02　｜　勘誤＋圖解：2026-08-26（傾角變位法手算與剛架有限元兩條獨立路徑相符至小數第四位；向量圖腳本 <code>gen_SA-2022-2.py</code>，可重跑）</em></p></main>
+<p><em>解析日期：2026-07-02　｜　勘誤＋圖解：2026-08-26（傾角變位法手算與剛架有限元兩條獨立路徑相符至小數第四位；向量圖腳本 <code>gen_SA-2022-2.py</code>，可重跑）</em></p>
+<p><em>修正日期：2026-11-07（§1 改為指向題目正本並放重繪附圖（figs/SA-2022-2-fig-1-problem.svg）、加常見誤讀；原 §1 解析自繪圖移至「判讀圖解（解析自繪）」；圖由 gen_SA-2022-2_problem.py 產生，可重跑）</em></p></main>
 <footer>來源：raw/solutions/SA-2022-2/SA-2022-2.md（知識庫解題內容唯一正本；本頁僅為渲染顯示）</footer>
 
 <script>

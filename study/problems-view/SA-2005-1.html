@@ -43,16 +43,189 @@ header .nomat{margin-top:12px;font-size:.8em;opacity:.85}
 <p class="meta2">主分類 <b>SA-U2-1</b> 靜不定結構最小功法 ｜ 2005 年（民國 94） ｜ 最小功法</p>
 <div class="hbtns"><a class="b-study" href="../unit-SA-U2-1.html">🧭 U2-1 單元總覽</a><a class="b-lect" href="../lecture-SA-U2-1.html">📚 U2-1 靜不定結構最小功法 講義</a></div>
 </header>
-<main><h1>考題編號：[SA-2005-1]</h1>
+<main><details class="problem-src" open><summary><b>📄 題目正本</b>（考卷原文、附圖與判讀清單；不含解法）</summary>
+<h1>SA-2005-1 題目正本</h1>
+<blockquote>
+<p>本檔只記錄考卷上寫了什麼、圖上畫了什麼，不含任何解法。解析見同資料夾 <code>SA-2005-1.md</code>。<br />
+判讀清單經使用者確認前，狀態為「待確認」；確認後本檔原則上不再修改（改動須回考卷原圖並記 log）。</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>項目</th>
+<th>內容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>考卷</td>
+<td><code>raw/exams/SA-2005_結構學.pdf</code>，第 1 頁（正面）上部，第一題（圖一）</td>
+</tr>
+<tr>
+<td>考年</td>
+<td>2005（民國 94 年）專技高考結構工程技師「結構學」</td>
+</tr>
+<tr>
+<td>配分</td>
+<td>25 分</td>
+</tr>
+<tr>
+<td>附圖</td>
+<td><code>SA-2005-1-fig-1.png</code>、<code>SA-2005-1-fig-2.png</code></td>
+</tr>
+<tr>
+<td>判讀狀態</td>
+<td><strong>已確認</strong>（2026-11-07 使用者確認。原轉錄：2026-11-07 轉錄；PyMuPDF 110 dpi 整頁＋300–500 dpi 局部放大、PDF 向量座標核對；盲讀於開啟解析前完成）</td>
+</tr>
+</tbody>
+</table>
+<h2>1. 考卷原文（逐字）</h2>
+<p>一、剛架（frame）如圖一，其構架高為4m，跨距為8 m，A 點為固接（fixed），C 點為滾接（roller）。若每根桿件為邊長20 cm 之方形截面，且楊氏係數E = 10⁶ N/cm²，則當B 點有一垂直載重10 N 時，且不計軸力及剪力下，請以最小功法（least work）計算每根桿件之彎矩。（若以他法計算，則不予以計分）（25 分）</p>
+<h2>2. 考卷給的公式、附表與參數</h2>
+<ul>
+<li>考卷沒有給任何參考公式或附表。</li>
+<li>斷面：邊長 20 cm 方形（考卷沒有直接給 I 值）；E = 10⁶ N/cm²。</li>
+<li>「不計軸力及剪力」（題文原句，照錄）。</li>
+<li>指定方法：最小功法；他法不計分。</li>
+<li>卷首注意事項：㈠不必抄題，作答時請將試題題號及答案依照順序寫在試卷上，於本試題紙上作答者，不予計分。㈡可以使用電子計算器，但需詳列解答過程。</li>
+<li>考試時間：2 小時。</li>
+</ul>
+<h2>3. 附圖</h2>
+<p><img alt="SA-2005-1 考卷附圖原截圖（含滑鼠游標或解析度較低；內容同下圖）" src="../../raw/solutions/SA-2005-1/SA-2005-1-fig-1.png" /><br />
+<em>證據圖 SA-2005-1-fig-1.png</em></p>
+<p><img alt="SA-2005-1 考卷附圖：剛架：B 在左上，B–A 水平桿向右 8 m 至 A 固定端（牆在右側）；B–C 斜桿向右下至 C，C 為滾支承（圓圈＋剖線）；B 點 10 N 向下；左側尺寸 4m（B 至 C 高差），下方尺寸 4m｜4m" src="../../raw/solutions/SA-2005-1/SA-2005-1-fig-2.png" /><br />
+<em>證據圖 SA-2005-1-fig-2.png（2026-11-07 自考卷重新擷取 500 dpi，無游標）</em></p>
+<p>圖面文字照錄：10 N、B、A、C、4m、4m、4m、圖一</p>
+<h2>4. 判讀清單</h2>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>項目</th>
+<th>判讀</th>
+<th>圖上／題文依據</th>
+<th>把握</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>構件</td>
+<td>B–A 水平桿；B–C 斜桿；B 為剛接角點（無圓圈）</td>
+<td>圖面</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>2</td>
+<td>A</td>
+<td>固定端（桿端接直立牆＋斜剖線）；在 B 的右方</td>
+<td>題文「A 點為固接」；圖示</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>3</td>
+<td>C</td>
+<td>滾支承：圓圈坐在水平剖線上，提供垂直反力</td>
+<td>題文「C 點為滾接」；圓圈中心 PDF x=380.3、底線 y=456.3</td>
+<td>確定（解讀）；使用者確認</td>
+</tr>
+<tr>
+<td>4</td>
+<td>幾何</td>
+<td>B (0, 0)、C 在 B 右方 4 m、下方 4 m；A 在 B 右方 8 m、同高。BC 長 4√2 m</td>
+<td>下方尺寸線端點 x=313.3｜382.3｜443.0 分別對齊 B、C 圓心、A 牆；左側 4m 上緣 y=380.7 對齊 B、下緣 y=445.9 對齊 C 圓頂（圓心 451.9）</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>5</td>
+<td>載重</td>
+<td>B 點 10 N 垂直向下</td>
+<td>箭頭尖端 (311.0, 380.0) 落在 B</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>6</td>
+<td>斷面</td>
+<td>兩桿相同：邊長 20 cm 方形，E = 10⁶ N/cm²</td>
+<td>題文「每根桿件」</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>7</td>
+<td>考卷沒有給</td>
+<td>I 值（需由 20 cm 方形自算）；單位混用 N、cm、m</td>
+<td>題文</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>8</td>
+<td>靜不定度</td>
+<td>固定 3＋滾 1＝4 反力，3 方程式：一度靜不定</td>
+<td>計數</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>9</td>
+<td>所求</td>
+<td>每根桿件之彎矩；最小功法</td>
+<td>題文</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>10</td>
+<td>證據圖</td>
+<td>舊 fig-1 左側邊界外有滑鼠游標（未壓在構件上）；新增 fig-2（500 dpi）</td>
+<td>—</td>
+<td>確定</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p><em>轉錄：2026-11-07（SA-U2-1 題目正本推廣・批 1）</em><br />
+<em>確認：2026-11-07 使用者確認</em></p>
+</details>
+<hr>
+<h1>考題編號：[SA-2005-1]</h1>
 <p><strong>主分類：</strong> <code>SA-U2-1</code> 能量法與虛功原理<br />
 <strong>副分類：</strong> 無<br />
 <strong>分析法：</strong> 最小功法<br />
 <strong>標籤：</strong> <code>最小功法</code> <code>靜不定剛架</code> <code>彎矩函數</code></p>
 <hr />
-<h2>1. 原始題目重述 (Problem Restatement)</h2>
-<p>一、剛架（frame）如圖一，其構架高為 4m，跨距為 8m，A 點為固接（fixed），C 點為滾接（roller）。若每根桿件為邊長 20 cm 之方形截面，且楊氏係數 $E = 10^6 \text{ N/cm}^2$，則當 B 點有一垂直載重 10 N 時，且不計軸力及剪力下，請以最小功法（least work）計算每根桿件之彎矩。（若以他法計算，則不予以計分）（25 分）</p>
-<p><img alt="SA-2005-1 題目附圖：剛架結構幾何與載重" src="../../raw/solutions/SA-2005-1/SA-2005-1-fig-1.png" /></p>
-<p><em>圖說：結構為 BA 桿（水平，長度 8m）與 BC 桿（斜向，水平及垂直投影皆為 4m）於 B 點剛接。A 點為固定端，C 點為水平滾支承。B 點承受垂直向下 10 N 之集中載重。</em></p>
+<h2>1. 題目（考卷原文見題目正本）</h2>
+<blockquote>
+<p>考卷原文、公式／附表、附圖與判讀清單（已確認）見 <a href="SA-2005-1-problem.md"><code>SA-2005-1-problem.md</code></a>。本節只列解題時最容易讀錯的地方與本解使用的記號；題意以題目正本為準。</p>
+</blockquote>
+<p><img alt="SA-2005-1 重繪題目附圖：B–A 水平 8 m、A 固定端；B–C 斜桿至 C 滾支承（水平、垂直投影各 4 m）；B 點 10 N 向下" src="../../raw/solutions/SA-2005-1/figs/SA-2005-1-fig-1-problem.svg" /><br />
+<em>重繪自考卷附圖，依判讀清單 #1–#7 重繪。攔：C 讀成鉸支承、BC 投影讀錯。</em></p>
+<h3>常見誤讀</h3>
+<table>
+<thead>
+<tr>
+<th>項目</th>
+<th>正確判讀</th>
+<th>常見誤讀</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>C 支承</td>
+<td>滾支承，只有垂直反力</td>
+<td>鉸支承</td>
+</tr>
+<tr>
+<td>BC 幾何</td>
+<td>水平、垂直投影各 4 m，長 $4\sqrt{2}$ m</td>
+<td>長 4 m</td>
+</tr>
+<tr>
+<td>斷面</td>
+<td>20 cm 方形，$I$ 須自算；最小功法中 $EI$ 相同可消去</td>
+<td>當成題目已給 $I$</td>
+</tr>
+</tbody>
+</table>
+<p><strong>本解記號：</strong> 記號與正負號約定沿用 §4。</p>
+<hr />
 <h2>2. 考題核心精神與出題者意圖 (Core Concepts &amp; Examiner's Intent)</h2>
 <ul>
 <li><strong>最小功法之操作：</strong> 測驗考生能否正確選擇贅力（Redundant force），並寫出各桿件彎矩對該贅力之偏微分函數。</li>
@@ -165,11 +338,15 @@ $$ M_{BC}(s) = \frac{10(2 - \sqrt{2})}{\sqrt{2}} s = 10(\sqrt{2} - 1) s \quad \t
 $$ M_{BA}(x) = (10(2 - \sqrt{2}) - 10)x - 4(10(2 - \sqrt{2})) $$<br />
 $$ \boxed{ M_{BA}(x) = 10(1 - \sqrt{2})x - 40(2 - \sqrt{2}) \quad \text{(N-m)} \quad (\text{其中 } 0 \le x \le 8 \text{ m}) } $$<br />
 <em>(B 點處彎矩為 $-40(2 - \sqrt{2}) \approx -23.43 \text{ N-m}$，與 BC 桿在節點平衡；A 點處彎矩為 $-40\sqrt{2} \approx -56.57 \text{ N-m}$)</em></p>
+<p><img alt="SA-2005-1 變形形狀與彎矩圖：B 下沉、C 滾支水平滑動；BA 全長上緣受拉（B 端 23.43、A 端 56.57 N·m），BC 外側受拉（C 端 0、B 端 23.43 N·m）" src="../../raw/solutions/SA-2005-1/figs/SA-2005-1-fig-2-deflected-bmd.svg" /></p>
+<p><em>圖 2　變形形狀與彎矩圖（勁度法依 §4 的 $R_C = 10(2-\sqrt{2})$ 核對後才畫）。BA 彎矩是一條直線、全長上緣受拉，BC 的彎矩畫在外側。攔：以為 $R_C$ 作用在 BA 中點而把 BA 在 $x = 4$ 處分段、BC 受拉側畫反。</em></p>
 <h2>5. 關鍵爭議點與進階探討 (Critical Issues &amp; Advanced Discussion)</h2>
 <ul>
 <li><strong>BA 桿彎矩公式的連續性：</strong> 在許多同學初學時，看到 C 點對應到 BA 桿中點 ($x=4$)，會直覺認為 BA 桿的彎矩方程式必須在 $x=4$ 處斷開並分段寫出。然而本題結構特性為「剛架」，C 點的反力只能藉由 BC 桿傳遞至唯一的相接點 B，因此對 BA 桿而言，唯一的受力點就是 B 端。這使得 BA 桿的彎矩函數 $M(x)$ 是一條從 0 到 8 的單一線性函數，無須分段。</li>
 <li><strong>剛度 $EI$ 提供數值的陷阱：</strong> 題目刻意給出斷面邊長 20cm 與 $E=10^6 \text{ N/cm}^2$，企圖引導考生進行繁瑣的數值代入。但熟練能量法的考生會知道，在計算「位移為零」的偏微分方程時，常數 $EI$ 可直接在等式兩邊消去，完全不需代入數值，這大幅降低了計算錯誤的風險。</li>
-</ul></main>
+</ul>
+<p><em>修正日期：2026-11-07（§1 改為指向題目正本並放重繪附圖（figs/SA-2005-1-fig-1-problem.svg）、加常見誤讀；圖由 gen_SA-2005-1.py 產生，可重跑）</em><br />
+<em>圖解補繪：2026-11-07（圖 2 變形與彎矩圖，向量圖，腳本 <code>gen_SA-2005-1.py</code>，可重跑）</em></p></main>
 <footer>來源：raw/solutions/SA-2005-1/SA-2005-1.md（知識庫解題內容唯一正本；本頁僅為渲染顯示）</footer>
 
 <script>

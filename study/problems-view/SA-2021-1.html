@@ -75,7 +75,7 @@ header .nomat{margin-top:12px;font-size:.8em;opacity:.85}
 </tr>
 <tr>
 <td>判讀狀態</td>
-<td><strong>待確認</strong>（2026-11-05 轉錄；PyMuPDF 110 dpi 整頁＋400–500 dpi 局部放大；盲讀於開啟解析前完成）</td>
+<td><strong>已確認</strong>（2026-11-07 使用者確認。原轉錄：2026-11-05 轉錄；PyMuPDF 110 dpi 整頁＋400–500 dpi 局部放大；盲讀於開啟解析前完成）</td>
 </tr>
 </tbody>
 </table>
@@ -179,7 +179,8 @@ header .nomat{margin-top:12px;font-size:.8em;opacity:.85}
 </tbody>
 </table>
 <hr />
-<p><em>轉錄：2026-11-05（SA-U2-3 題目正本推廣・批 2）</em></p>
+<p><em>轉錄：2026-11-05（SA-U2-3 題目正本推廣・批 2）</em><br />
+<em>確認：2026-11-07 使用者確認</em></p>
 </details>
 <hr>
 <h3>考題編號：SA-2021-1</h3>
@@ -188,19 +189,41 @@ header .nomat{margin-top:12px;font-size:.8em;opacity:.85}
 <strong>分析法：</strong> 傾角變位法<br />
 <strong>標籤：</strong> <code>傾角變位法</code> <code>彈簧支承</code> <code>內部鉸</code> <code>連續梁</code> <code>沈陷</code></p>
 <hr />
-<h2>1. 原始題目重述 (Problem Restatement)</h2>
-<p>如圖所示之一維梁結構，總長度 10 m。</p>
-<ul>
-<li>$a$ 點為滾支承（$x = 0$）</li>
-<li>$b$ 點下方有彈簧支承，彈簧係數 $k = 15000 \text{ kN/m}$（$x = 4\text{ m}$）</li>
-<li>$c$ 點為內部鉸接（$x = 8\text{ m}$）</li>
-<li>$d$ 點為固定端（$x = 10\text{ m}$）</li>
-<li>載重：在 $a, b$ 中點（$x = 2\text{ m}$）有向下集中載重 $36\text{ kN}$；在 $b$ 點（$x = 4\text{ m}$）有向下集中載重 $36\text{ kN}$。</li>
-<li>斷面性質：$EI = 10000 \text{ kN-m}^2$。</li>
-</ul>
-<p>求梁桿件的彎矩圖 (BMD)、$b$ 點轉角 $\theta_b$ 及 $b$ 點垂直位移 $\Delta_b$。</p>
-<p><img alt="SA-2021-1 題目附圖：連續梁帶彈簧支承與內部鉸" src="../../raw/solutions/SA-2021-1/SA-2021-1-fig-1.png" /></p>
-<p><em>圖說：連續梁 $a-b-c-d$，跨距分別為 4m、4m、2m。$a$ 滾支承，$b$ 彈簧 $k$ 與 36kN 載重，$c$ 內部鉸，$d$ 固定端。$ab$ 中點有一 36kN 載重。</em></p>
+<h2>1. 題目（考卷原文見題目正本）</h2>
+<blockquote>
+<p>考卷原文、公式／附表、附圖與判讀清單（已確認）見 <a href="SA-2021-1-problem.md"><code>SA-2021-1-problem.md</code></a>。本節只列解題時最容易讀錯的地方與本解使用的記號；題意以題目正本為準。</p>
+</blockquote>
+<p><img alt="SA-2021-1 重繪題目附圖：梁 a–b–c–d（4｜4｜2 m）：a 滾支承、b 點彈簧 k 接地、c 內鉸、d 固定；ab 中點與 b 各 36 kN 向下" src="../../raw/solutions/SA-2021-1/figs/SA-2021-1-fig-1-problem.svg" /><br />
+<em>重繪自考卷附圖，依判讀清單 #1–#10 重繪。攔：c 讀成支承、彈簧位置讀錯。</em></p>
+<h3>常見誤讀</h3>
+<table>
+<thead>
+<tr>
+<th>項目</th>
+<th>正確判讀</th>
+<th>常見誤讀</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>c 點</td>
+<td>內鉸</td>
+<td>支承</td>
+</tr>
+<tr>
+<td>彈簧</td>
+<td>在 b 點，$k = 15000$ kN/m</td>
+<td>在 ab 中點</td>
+</tr>
+<tr>
+<td>載重</td>
+<td>ab 中點（距 a 2 m）與 b 點各 36 kN</td>
+<td>只在 b</td>
+</tr>
+</tbody>
+</table>
+<p><strong>本解記號：</strong> 記號與正負號約定沿用 §4。</p>
+<hr />
 <h2>2. 考題核心精神與出題者意圖 (Core Concepts &amp; Examiner's Intent)</h2>
 <p>本題測驗考生處理「混合複雜邊界條件」的能力，結合了彈簧支承（柔性支承）與內部鉸接。出題者的核心意圖在於：</p>
 <ol>
@@ -375,7 +398,8 @@ $$M_d = \frac{27}{17} \times 2 = \frac{54}{17} \text{ kN-m} \approx 3.18 \text{ 
 <ol>
 <li><strong>獨立解耦的位移</strong>：本題 $b$ 點的位移之所以能獨立求解，前提是相鄰兩跨長度相等（$L_{ab} = L_{bc} = 4\text{m}$），且兩外側端點彎矩為零（鉸接）。若長度不等，則 $M_{ba}/L_{ab}$ 與 $M_{bc}/L_{bc}$ 無法完全抵銷，$\Delta_b$ 將會與 $\theta_b$ 產生耦合，必須解三元一次聯立方程式。這考驗考生對力學平衡深層本質的直覺。</li>
 <li><strong>正負號與物理意義的驗證</strong>：計算得出 $\Delta_c$ 為負值（向上），這在直覺上是合理的。因為 $ab$ 段受載向下變形，帶動 $b$ 點下沉；但 $bc$ 段無載重，為了維持 $b$ 點的轉角與變形諧合，這根「蹺蹺板」的右端 $c$ 點勢必會被向上翹起，導致 $cd$ 懸臂梁承受向上拉力。</li>
-</ol></main>
+</ol>
+<p><em>修正日期：2026-11-07（§1 改為指向題目正本並放重繪附圖（figs/SA-2021-1-fig-1-problem.svg）、加常見誤讀；圖由 gen_SA-2021-1.py 產生，可重跑）</em></p></main>
 <footer>來源：raw/solutions/SA-2021-1/SA-2021-1.md（知識庫解題內容唯一正本；本頁僅為渲染顯示）</footer>
 
 <script>

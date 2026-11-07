@@ -75,7 +75,7 @@ header .nomat{margin-top:12px;font-size:.8em;opacity:.85}
 </tr>
 <tr>
 <td>判讀狀態</td>
-<td><strong>待確認</strong>（2026-11-05 轉錄；PyMuPDF 110 dpi 整頁＋250 dpi 局部放大；盲讀於開啟解析前完成）</td>
+<td><strong>已確認</strong>（2026-11-07 使用者確認。原轉錄：2026-11-05 轉錄；PyMuPDF 110 dpi 整頁＋250 dpi 局部放大；盲讀於開啟解析前完成）</td>
 </tr>
 </tbody>
 </table>
@@ -116,7 +116,7 @@ header .nomat{margin-top:12px;font-size:.8em;opacity:.85}
 <td>B、C</td>
 <td>剛接節點</td>
 <td>題文「點 B 和點 C 為固接」（指梁柱剛接，非支承）</td>
-<td>確定（解讀）</td>
+<td>確定（解讀）；使用者確認</td>
 </tr>
 <tr>
 <td>3</td>
@@ -172,12 +172,13 @@ header .nomat{margin-top:12px;font-size:.8em;opacity:.85}
 <td>考卷沒有給</td>
 <td>軸向變形是否忽略（未提）</td>
 <td>題文</td>
-<td>確定（解讀）：照慣例忽略</td>
+<td>確定（解讀）：照慣例忽略；使用者確認</td>
 </tr>
 </tbody>
 </table>
 <hr />
-<p><em>轉錄：2026-11-05（SA-U2-3 題目正本推廣・批 2）</em></p>
+<p><em>轉錄：2026-11-05（SA-U2-3 題目正本推廣・批 2）</em><br />
+<em>確認：2026-11-07 使用者確認</em></p>
 </details>
 <hr>
 <h1>考題編號：SA-2017-3</h1>
@@ -186,14 +187,40 @@ header .nomat{margin-top:12px;font-size:.8em;opacity:.85}
 <strong>分析法：</strong> 傾角變位法（Slope-Deflection Method）<br />
 <strong>標籤：</strong> <code>傾角變位法</code> <code>門型剛架</code> <code>側移</code> <code>層剪力方程</code> <code>固定端彎矩符號</code> <code>節點轉角</code></p>
 <hr />
-<h2>1. 原始題目重述 (Problem Restatement)</h2>
-<p><img alt="SA-2017-3 題目附圖：門型剛架，A、D 為鉸支承，B、C 為剛節點，梁 BC 受 45kN/m 均布向下載重，右柱 CD 於 C 點與距 D 2m 處各受 60kN 向左集中力" src="../../raw/solutions/SA-2017-3/SA-2017-3-fig-1.png" /></p>
-<p><em>圖說：門型剛架。$A$ 左下、$D$ 右下皆為</em><em>鉸支承</em><em>；$B$ 左上、$C$ 右上為剛節點。左柱 $AB$ 高 4 m，梁 $BC$ 跨 6 m，右柱 $CD$ 高 4 m，$EI$ 為定值。梁 $BC$ 受 45 kN/m 向下均布載重。右柱：</em><em>$C$ 點</em><em>受 60 kN 向左的</em><em>節點</em><em>集中力；</em><em>距 $D$ 上方 2 m 處</em><em>受 60 kN 向左的</em><em>桿件</em><em>集中力。</em></p>
-<p><strong>題目要求（指定僅能用傾角變位法）：</strong></p>
-<ol>
-<li>求各桿件端點彎矩（需標明方向）</li>
-<li>求 $A$ 點與 $D$ 點之轉角（需標明方向）</li>
-</ol>
+<h2>1. 題目（考卷原文見題目正本）</h2>
+<blockquote>
+<p>考卷原文、公式／附表、附圖與判讀清單（已確認）見 <a href="SA-2017-3-problem.md"><code>SA-2017-3-problem.md</code></a>。本節只列解題時最容易讀錯的地方與本解使用的記號；題意以題目正本為準。</p>
+</blockquote>
+<p><img alt="SA-2017-3 重繪題目附圖：門型剛架：柱高 4 m、梁跨 6 m，A、D 鉸支承；梁受 45 kN/m；C 點與右柱中點各 60 kN 向左" src="../../raw/solutions/SA-2017-3/figs/SA-2017-3-fig-1-problem.svg" /><br />
+<em>重繪自考卷附圖，依判讀清單 #1–#10 重繪（考卷為照片式插圖，畫成線圖）。攔：下方 60 kN 位置讀錯、水平力方向讀反。</em></p>
+<h3>常見誤讀</h3>
+<table>
+<thead>
+<tr>
+<th>項目</th>
+<th>正確判讀</th>
+<th>常見誤讀</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>「B、C 為固接」</td>
+<td>梁柱剛接，不是支承</td>
+<td>固定支承</td>
+</tr>
+<tr>
+<td>下方 60 kN</td>
+<td>右柱中點（距 C、D 各 2 m）</td>
+<td>柱底或 C 點</td>
+</tr>
+<tr>
+<td>水平力方向</td>
+<td>兩個 60 kN 皆向左</td>
+<td>向右</td>
+</tr>
+</tbody>
+</table>
+<p><strong>本解記號：</strong> 記號與正負號約定沿用 §4。</p>
 <hr />
 <h2>1.5 ⚠ 勘誤（2026-08-26）：右柱固端彎矩符號寫反，九個答案全錯</h2>
 <blockquote>
@@ -705,7 +732,8 @@ $$M_{DC} = 0$$</p>
 </tbody>
 </table>
 <hr />
-<p><em>解析日期：2026-07-02　｜　勘誤＋圖解：2026-08-26（分數精確解與剛架有限元兩條獨立路徑逐項相符；向量圖腳本 <code>gen_SA-2017-3.py</code>，可重跑）</em></p></main>
+<p><em>解析日期：2026-07-02　｜　勘誤＋圖解：2026-08-26（分數精確解與剛架有限元兩條獨立路徑逐項相符；向量圖腳本 <code>gen_SA-2017-3.py</code>，可重跑）</em></p>
+<p><em>修正日期：2026-11-07（§1 改為指向題目正本並放重繪附圖（figs/SA-2017-3-fig-1-problem.svg）、加常見誤讀；圖由 gen_SA-2017-3_problem.py 產生，可重跑）</em></p></main>
 <footer>來源：raw/solutions/SA-2017-3/SA-2017-3.md（知識庫解題內容唯一正本；本頁僅為渲染顯示）</footer>
 
 <script>

@@ -75,7 +75,7 @@ header .nomat{margin-top:12px;font-size:.8em;opacity:.85}
 </tr>
 <tr>
 <td>判讀狀態</td>
-<td><strong>待確認</strong>（2026-11-05 轉錄；PyMuPDF 110 dpi 整頁＋500 dpi 局部放大（附圖在 PDF 內為點陣圖，原始 462×419 像素）；盲讀於開啟解析前完成）</td>
+<td><strong>已確認</strong>（2026-11-07 使用者確認；影響答案項目定案：#9 50 kN 向上（使用者確認，與解析相同）。原轉錄：2026-11-05 轉錄；PyMuPDF 110 dpi 整頁＋500 dpi 局部放大（附圖在 PDF 內為點陣圖，原始 462×419 像素）；盲讀於開啟解析前完成）</td>
 </tr>
 </tbody>
 </table>
@@ -168,7 +168,7 @@ header .nomat{margin-top:12px;font-size:.8em;opacity:.85}
 <td>集中載重方向</td>
 <td>50 kN 向上（空心箭頭在梁下方、箭頭頭部朝上頂住梁）</td>
 <td>500 dpi：箭頭尖端在上、貼梁底；題文只說「垂直」</td>
-<td>不確定（影響答案，請確認）</td>
+<td>不確定（影響答案，請確認）；使用者確認</td>
 </tr>
 <tr>
 <td>10</td>
@@ -201,7 +201,8 @@ header .nomat{margin-top:12px;font-size:.8em;opacity:.85}
 </tbody>
 </table>
 <hr />
-<p><em>轉錄：2026-11-05（SA-U2-3 題目正本推廣・批 2）</em></p>
+<p><em>轉錄：2026-11-05（SA-U2-3 題目正本推廣・批 2）</em><br />
+<em>確認：2026-11-07 使用者確認</em></p>
 </details>
 <hr>
 <h1>考題編號：SA-2023-3</h1>
@@ -210,10 +211,41 @@ header .nomat{margin-top:12px;font-size:.8em;opacity:.85}
 <strong>分析法：</strong> 傾角變位法<br />
 <strong>標籤：</strong> <code>平面剛架</code> <code>無側移</code> <code>傾角變位法</code> <code>鉸端修正</code> <code>整體平衡</code></p>
 <hr />
-<h2>1. 原始題目重述 (Problem Restatement)</h2>
-<p>圖三為一平面構架，點 D 為固定支承，點 A 為鉸支承，點 C 為滾支承，此構架點 A 至 B 間梁桿件承受一水平向均佈載重 20 kN/m，且點 B 至 C 間梁桿件中央承受一垂直集中載重 50 kN。設所有桿件 EI 為定值，且忽略桿件軸向變形，試用傾角變位法，求各桿件端點彎矩及各支承之反力。（25 分）</p>
-<p><img alt="SA-2023-3 題目附圖：包含A,B,C,D四點的平面構架" src="../../raw/solutions/SA-2023-3/SA-2023-3-fig-1.png" /></p>
-<p><em>圖說：垂直桿 AB 長 6m，水平桿 BC 長 4m，水平桿 CD 長 4m。A 點在左下角（鉸支承），B 在左上角（剛節點），C 在中段（滾支承），D 在右端（固定支承）。AB 桿受向左 20 kN/m 均佈力，BC 桿中央受</em><em>向上</em><em> 50 kN 集中力。</em></p>
+<h2>1. 題目（考卷原文見題目正本）</h2>
+<blockquote>
+<p>考卷原文、公式／附表、附圖與判讀清單（已確認）見 <a href="SA-2023-3-problem.md"><code>SA-2023-3-problem.md</code></a>。本節只列解題時最容易讀錯的地方與本解使用的記號；題意以題目正本為準。</p>
+</blockquote>
+<p><img alt="SA-2023-3 重繪題目附圖：柱 A–B 6 m（A 鉸支承接左側牆），梁 B–C–D（4｜4 m）、C 滾支承、D 固定；AB 受 20 kN/m 向左，BC 中點 50 kN 向上" src="../../raw/solutions/SA-2023-3/figs/SA-2023-3-fig-1-problem.svg" /><br />
+<em>重繪自考卷附圖，依判讀清單 #1–#13 重繪；50 kN 方向使用者 2026-11-07 確認。攔：50 kN 方向讀反。</em></p>
+<h3>常見誤讀</h3>
+<table>
+<thead>
+<tr>
+<th>項目</th>
+<th>正確判讀</th>
+<th>常見誤讀</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>50 kN 方向</td>
+<td>向上（空心箭頭在梁下、尖端朝上貼梁底；使用者確認）</td>
+<td>向下</td>
+</tr>
+<tr>
+<td>20 kN/m</td>
+<td>水平向左，A 至 B 全高</td>
+<td>向右</td>
+</tr>
+<tr>
+<td>A 支承</td>
+<td>鉸支承（三角形接左側牆）</td>
+<td>固定端</td>
+</tr>
+</tbody>
+</table>
+<p><strong>本解記號：</strong> 記號與正負號約定沿用 §4。</p>
+<hr />
 <h2>2. 考題核心精神與出題者意圖 (Core Concepts &amp; Examiner's Intent)</h2>
 <p><strong>核心精神：</strong></p>
 <ol>
@@ -466,7 +498,8 @@ header .nomat{margin-top:12px;font-size:.8em;opacity:.85}
 </ol>
 <blockquote>
 <p>整體驗算：$\Sigma F_x = 3205/66 + 4715/66 - 120 = 0$；$\Sigma F_y = -1835/44 - 395/44 + 30/44 + 50 = 0$；$\Sigma M_A = -120(3) - 50(2) + C_y(4) + D_y(8) + D_x(6) + M_D = -360 - 100 + 395/11 + 4715/11 - 60/11 + 10/11 = 0$。力系完全平衡。</p>
-</blockquote></main>
+</blockquote>
+<p><em>修正日期：2026-11-07（§1 改為指向題目正本並放重繪附圖（figs/SA-2023-3-fig-1-problem.svg）、加常見誤讀；圖由 gen_SA-2023-3.py 產生，可重跑）</em></p></main>
 <footer>來源：raw/solutions/SA-2023-3/SA-2023-3.md（知識庫解題內容唯一正本；本頁僅為渲染顯示）</footer>
 
 <script>

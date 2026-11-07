@@ -75,7 +75,7 @@ header .nomat{margin-top:12px;font-size:.8em;opacity:.85}
 </tr>
 <tr>
 <td>判讀狀態</td>
-<td><strong>待確認</strong>（2026-11-05 轉錄；PyMuPDF 110 dpi 整頁＋450 dpi 局部放大；盲讀於開啟解析前完成）</td>
+<td><strong>已確認</strong>（2026-11-07 使用者確認。原轉錄：2026-11-05 轉錄；PyMuPDF 110 dpi 整頁＋450 dpi 局部放大；盲讀於開啟解析前完成）</td>
 </tr>
 </tbody>
 </table>
@@ -192,12 +192,13 @@ header .nomat{margin-top:12px;font-size:.8em;opacity:.85}
 <td>考卷沒有給</td>
 <td>軸向變形是否忽略（未提）</td>
 <td>題文</td>
-<td>確定（解讀）：照剛架傾角變位法慣例忽略軸向變形</td>
+<td>確定（解讀）：照剛架傾角變位法慣例忽略軸向變形；使用者確認</td>
 </tr>
 </tbody>
 </table>
 <hr />
-<p><em>轉錄：2026-11-05（SA-U2-3 題目正本推廣・批 2）</em></p>
+<p><em>轉錄：2026-11-05（SA-U2-3 題目正本推廣・批 2）</em><br />
+<em>確認：2026-11-07 使用者確認</em></p>
 </details>
 <hr>
 <h1>考題編號：SA-2014-3</h1>
@@ -206,16 +207,37 @@ header .nomat{margin-top:12px;font-size:.8em;opacity:.85}
 <strong>分析法：</strong> 傾角變位法<br />
 <strong>標籤：</strong> <code>傾角變位法</code> <code>有側移剛架</code> <code>虛功法</code> <code>斜桿側移</code></p>
 <hr />
-<h2>1. 原始題目重述 (Problem Restatement)</h2>
-<p>如圖三所示之剛架結構，其 A、C 與 E 點均為固接支承，同時每根構件之彈性模數均為常數值 E；<br />
-AB、BC、BD 及 DE 四根構件之長度分別為 $L$、$L$、$\sqrt{3}L/2$ 與 $L$（$L = 8 \text{ m}$），而慣性矩分別為 $2I$、$2I$、$\sqrt{3}I$ 與 $I$。<br />
-當 B 點承受水平向右集中載重 $P = 66 \text{ kN}$ 時，請以<strong>傾角變位法</strong>計算 A、B、C、D、E 各點彎矩。（若以其他方法計算不予計分）（25 分）</p>
-<p><img alt="SA-2014-3 題目附圖：複雜剛架受水平力" src="../../raw/solutions/SA-2014-3/SA-2014-3-fig-1.png" /></p>
-<p><em>圖說：A 點為上方固接支承，C 點為下方固接支承，AB 與 BC 均為垂直桿長 L。B 點受向右水平力 P。D 點在 B 點右方，BD 長 $\sqrt{3}L/2$ 為水平桿。E 點在 D 點右下方，為固接支承。DE 桿斜向，長度 L，其水平跨距為 $\sqrt{3}L/2$，垂直高差為 L/2。</em></p>
+<h2>1. 題目（考卷原文見題目正本）</h2>
 <blockquote>
-<p><strong>常見誤讀（本題舊版解析曾犯）</strong>：側移虛功式寫成「外力虛功＝內力虛功」$P\,\delta\Delta = \sum(M_{ij}+M_{ji})\,\delta\psi_{ij}$，少一個負號，八個桿端彎矩大小正確、正負號全部相反。正確的是把每根桿件當剛體，桿端彎矩與外力的虛功總和為零：$P\,\delta\Delta + \sum(M_{ij}+M_{ji})\,\delta\psi_{ij} = 0$。<br />
-<strong>本解記號</strong>：桿端彎矩、節點轉角、弦位角一律順時針為正；$R=\Delta/L$，$\Delta$ 為 B 點向右位移。</p>
+<p>考卷原文、公式／附表、附圖與判讀清單（已確認）見 <a href="SA-2014-3-problem.md"><code>SA-2014-3-problem.md</code></a>。本節只列解題時最容易讀錯的地方與本解使用的記號；題意以題目正本為準。</p>
 </blockquote>
+<p><img alt="SA-2014-3 重繪題目附圖：A、C 固接於 B 正上、正下方各 L；B–D 水平 √3L/2；D–E 斜向下至 E（E 比 D 低 L/2，實長 L）固接；B 點 P = 66 kN 向右" src="../../raw/solutions/SA-2014-3/figs/SA-2014-3-fig-1-problem.svg" /><br />
+<em>重繪自考卷附圖，依判讀清單 #1–#13 重繪。攔：DE 讀成水平、E 支承方向讀錯。</em></p>
+<h3>常見誤讀</h3>
+<table>
+<thead>
+<tr>
+<th>項目</th>
+<th>正確判讀</th>
+<th>常見誤讀</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>DE 幾何</td>
+<td>水平投影 $\sqrt{3}L/2$、E 比 D 低 $L/2$，實長 $L$</td>
+<td>水平桿</td>
+</tr>
+<tr>
+<td>慣性矩</td>
+<td>AB、BC 為 $2I$，BD 為 $\sqrt{3}I$，DE 為 $I$</td>
+<td>全部 $I$</td>
+</tr>
+</tbody>
+</table>
+<p><strong>本解舊版曾犯：</strong> 側移虛功式寫成「外力虛功＝內力虛功」$P\,\delta\Delta = \sum(M_{ij}+M_{ji})\,\delta\psi_{ij}$，少一個負號，八個桿端彎矩大小正確、正負號全部相反。正確的是把每根桿件當剛體，桿端彎矩與外力的虛功總和為零：$P\,\delta\Delta + \sum(M_{ij}+M_{ji})\,\delta\psi_{ij} = 0$。</p>
+<p><strong>本解記號：</strong> 桿端彎矩、節點轉角、弦位角一律順時針為正；$R=\Delta/L$，$\Delta$ 為 B 點向右位移。</p>
+<hr />
 <h2>2. 考題核心精神與出題者意圖 (Core Concepts &amp; Examiner's Intent)</h2>
 <p>本題是傾角變位法中<strong>最高難度</strong>的題型之一（斜桿有側移剛架）。</p>
 <ol>
@@ -437,7 +459,8 @@ $$\boxed{\text{E 點彎矩 } M_{ED} = -5016/115 \approx -43.62 \text{ kN-m}}$$</
 <li><strong>正負號的最後一道防線</strong>：大小對、正負全反是虛功式少一個負號的典型症狀。解完後用「柱頂往右推、柱底固定端彎矩應為逆時針」或直接檢查 $\sum F_x = 0$（各桿剪力與斜桿水平分量）確認方向。</li>
 </ul>
 <hr />
-<p><em>修正日期：2026-11-04（側移虛功式由 $P\delta\Delta = \sum M\delta\psi$ 更正為 $P\delta\Delta + \sum M\delta\psi = 0$，式 3 右端 $-PL/12K \to +PL/12K$，$KR = -374/115 \to +374/115$；八個桿端彎矩大小不變、正負號全部更正（如 $M_{AB}$ −27.55 → +27.55、$M_{CB}$ +50.50 → −50.50 kN-m）；§3、§3.5 同步，Step 4 補展開過程，新增檢核。驗證：平面剛架勁度法（EA→∞）獨立重算八個桿端彎矩與三支承水平反力，MISMATCHES: 0；幾何與弦旋轉角經考卷第 2 頁圖三 450 dpi 判讀確認無誤；來源：study/lecture-SA-U2-3.html §4.2 附註、wiki/queries/盲解比對-SA-U2-3a-2026-11-04.md 同類問題）</em></p></main>
+<p><em>修正日期：2026-11-04（側移虛功式由 $P\delta\Delta = \sum M\delta\psi$ 更正為 $P\delta\Delta + \sum M\delta\psi = 0$，式 3 右端 $-PL/12K \to +PL/12K$，$KR = -374/115 \to +374/115$；八個桿端彎矩大小不變、正負號全部更正（如 $M_{AB}$ −27.55 → +27.55、$M_{CB}$ +50.50 → −50.50 kN-m）；§3、§3.5 同步，Step 4 補展開過程，新增檢核。驗證：平面剛架勁度法（EA→∞）獨立重算八個桿端彎矩與三支承水平反力，MISMATCHES: 0；幾何與弦旋轉角經考卷第 2 頁圖三 450 dpi 判讀確認無誤；來源：study/lecture-SA-U2-3.html §4.2 附註、wiki/queries/盲解比對-SA-U2-3a-2026-11-04.md 同類問題）</em></p>
+<p><em>修正日期：2026-11-07（§1 改為指向題目正本並放重繪附圖（figs/SA-2014-3-fig-1-problem.svg）、加常見誤讀；原 §1 的勘誤引言併入「本解舊版曾犯」；圖由 gen_SA-2014-3.py 產生，可重跑）</em></p></main>
 <footer>來源：raw/solutions/SA-2014-3/SA-2014-3.md（知識庫解題內容唯一正本；本頁僅為渲染顯示）</footer>
 
 <script>

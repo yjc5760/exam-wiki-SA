@@ -58,7 +58,7 @@
       "primaryTopicName": "靜不定結構之傾角變位法",
       "secondaryTopicIds": [],
       "verificationStatus": "unverified",
-      "problemStatus": "draft",
+      "problemStatus": "confirmed",
       "hasSolution": true,
       "hasHandwritten": false,
       "tags": [
@@ -138,7 +138,7 @@
       "primaryTopicName": "靜不定結構之傾角變位法",
       "secondaryTopicIds": [],
       "verificationStatus": "unverified",
-      "problemStatus": "draft",
+      "problemStatus": "confirmed",
       "hasSolution": true,
       "hasHandwritten": false,
       "tags": [
@@ -223,7 +223,7 @@
       "primaryTopicName": "靜不定結構之傾角變位法",
       "secondaryTopicIds": [],
       "verificationStatus": "unverified",
-      "problemStatus": "draft",
+      "problemStatus": "confirmed",
       "hasSolution": true,
       "hasHandwritten": false,
       "tags": [
@@ -263,6 +263,7 @@
       "primaryTopicName": "靜不定結構最小功法",
       "secondaryTopicIds": [],
       "verificationStatus": "unverified",
+      "problemStatus": "confirmed",
       "hasSolution": true,
       "hasHandwritten": false,
       "tags": [
@@ -282,7 +283,7 @@
       "primaryTopicName": "靜不定結構之傾角變位法",
       "secondaryTopicIds": [],
       "verificationStatus": "unverified",
-      "problemStatus": "draft",
+      "problemStatus": "confirmed",
       "hasSolution": true,
       "hasHandwritten": false,
       "tags": [
@@ -342,7 +343,7 @@
       "rocYear": 110,
       "hasHandwritten": false,
       "verificationStatus": "unverified",
-      "problemStatus": "draft",
+      "problemStatus": "confirmed",
       "hasSolution": true,
       "tags": [
         "傾角變位法",
@@ -362,7 +363,7 @@
       "rocYear": 110,
       "hasHandwritten": false,
       "verificationStatus": "unverified",
-      "problemStatus": "draft",
+      "problemStatus": "confirmed",
       "hasSolution": true,
       "tags": [
         "傾角變位法",
@@ -421,7 +422,7 @@
       "rocYear": 109,
       "hasHandwritten": false,
       "verificationStatus": "unverified",
-      "problemStatus": "draft",
+      "problemStatus": "confirmed",
       "hasSolution": true,
       "tags": [
         "傾角變位法",
@@ -441,7 +442,7 @@
       "rocYear": 109,
       "hasHandwritten": false,
       "verificationStatus": "unverified",
-      "problemStatus": "draft",
+      "problemStatus": "confirmed",
       "hasSolution": true,
       "tags": [
         "傾角變位法",
@@ -499,6 +500,7 @@
         "SA-U1-1"
       ],
       "verificationStatus": "unverified",
+      "problemStatus": "confirmed",
       "hasSolution": true,
       "hasHandwritten": false,
       "tags": [
@@ -537,7 +539,7 @@
       "primaryTopicName": "靜不定結構之傾角變位法",
       "secondaryTopicIds": [],
       "verificationStatus": "unverified",
-      "problemStatus": "draft",
+      "problemStatus": "confirmed",
       "hasSolution": true,
       "hasHandwritten": false,
       "tags": [
@@ -613,6 +615,7 @@
       "primaryTopicName": "靜不定結構最小功法",
       "secondaryTopicIds": [],
       "verificationStatus": "unverified",
+      "problemStatus": "confirmed",
       "hasSolution": true,
       "hasHandwritten": false,
       "tags": [
@@ -669,6 +672,7 @@
       "primaryTopicName": "靜不定結構最小功法",
       "secondaryTopicIds": [],
       "verificationStatus": "unverified",
+      "problemStatus": "confirmed",
       "hasSolution": true,
       "hasHandwritten": false,
       "tags": [
@@ -688,7 +692,7 @@
       "primaryTopicName": "靜不定結構之傾角變位法",
       "secondaryTopicIds": [],
       "verificationStatus": "unverified",
-      "problemStatus": "draft",
+      "problemStatus": "confirmed",
       "hasSolution": true,
       "hasHandwritten": false,
       "tags": [
@@ -775,9 +779,10 @@
       "primaryTopicId": "SA-U2-1",
       "primaryTopicName": "靜不定結構最小功法",
       "secondaryTopicIds": [
-        "SA-U2-2"
+        "SA-U2-3"
       ],
       "verificationStatus": "unverified",
+      "problemStatus": "confirmed",
       "hasSolution": true,
       "hasHandwritten": false,
       "tags": [
@@ -856,7 +861,7 @@
       "primaryTopicName": "靜不定結構之傾角變位法",
       "secondaryTopicIds": [],
       "verificationStatus": "unverified",
-      "problemStatus": "draft",
+      "problemStatus": "confirmed",
       "hasSolution": true,
       "hasHandwritten": false,
       "tags": [
@@ -935,7 +940,7 @@
       "primaryTopicId": "SA-U2-3",
       "primaryTopicName": "靜不定結構之傾角變位法",
       "secondaryTopicIds": [],
-      "verificationStatus": "unverified", "problemStatus": "draft",
+      "verificationStatus": "unverified", "problemStatus": "confirmed",
       "hasSolution": true,
       "hasHandwritten": false,
       "tags": [
@@ -954,6 +959,7 @@
       "primaryTopicName": "靜不定結構最小功法",
       "secondaryTopicIds": [],
       "verificationStatus": "unverified",
+      "problemStatus": "confirmed",
       "hasSolution": true,
       "hasHandwritten": false,
       "tags": [
@@ -994,6 +1000,7 @@
       "primaryTopicName": "靜不定結構最小功法",
       "secondaryTopicIds": [],
       "verificationStatus": "unverified",
+      "problemStatus": "confirmed",
       "hasSolution": true,
       "hasHandwritten": false,
       "tags": [
@@ -1258,6 +1265,7 @@
       "primaryTopicName": "靜不定結構最小功法",
       "secondaryTopicIds": [],
       "verificationStatus": "unverified",
+      "problemStatus": "confirmed",
       "hasSolution": true,
       "hasHandwritten": false,
       "tags": [
@@ -1366,6 +1374,7 @@
       "primaryTopicName": "靜不定結構最小功法",
       "secondaryTopicIds": [],
       "verificationStatus": "unverified",
+      "problemStatus": "confirmed",
       "hasSolution": true,
       "hasHandwritten": false,
       "tags": [
@@ -1440,6 +1449,7 @@
       "primaryTopicName": "靜不定結構最小功法",
       "secondaryTopicIds": [],
       "verificationStatus": "unverified",
+      "problemStatus": "confirmed",
       "hasSolution": true,
       "hasHandwritten": false,
       "tags": [
@@ -1494,6 +1504,7 @@
       "primaryTopicName": "靜不定結構最小功法",
       "secondaryTopicIds": [],
       "verificationStatus": "unverified",
+      "problemStatus": "confirmed",
       "hasSolution": true,
       "hasHandwritten": false,
       "tags": [
@@ -1768,6 +1779,7 @@
       ],
       "hasSolution": true,
       "verificationStatus": "unverified",
+      "problemStatus": "confirmed",
       "difficulty": 4,
       "rocYear": 102,
       "primaryTopicId": "SA-U2-1",

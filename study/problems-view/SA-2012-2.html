@@ -43,16 +43,181 @@ header .nomat{margin-top:12px;font-size:.8em;opacity:.85}
 <p class="meta2">主分類 <b>SA-U2-1</b> 靜不定結構最小功法 ｜ 2012 年（民國 101） ｜ 最小功法</p>
 <div class="hbtns"><a class="b-study" href="../unit-SA-U2-1.html">🧭 U2-1 單元總覽</a><a class="b-lect" href="../lecture-SA-U2-1.html">📚 U2-1 靜不定結構最小功法 講義</a></div>
 </header>
-<main><h1>考題編號：SA-2012-2</h1>
+<main><details class="problem-src" open><summary><b>📄 題目正本</b>（考卷原文、附圖與判讀清單；不含解法）</summary>
+<h1>SA-2012-2 題目正本</h1>
+<blockquote>
+<p>本檔只記錄考卷上寫了什麼、圖上畫了什麼，不含任何解法。解析見同資料夾 <code>SA-2012-2.md</code>。<br />
+判讀清單經使用者確認前，狀態為「待確認」；確認後本檔原則上不再修改（改動須回考卷原圖並記 log）。</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>項目</th>
+<th>內容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>考卷</td>
+<td><code>raw/exams/SA-2012_結構學.pdf</code>，第 1 頁（正面）下半，第二題（圖二）</td>
+</tr>
+<tr>
+<td>考年</td>
+<td>2012（民國 101 年）專技高考結構工程技師「結構學」</td>
+</tr>
+<tr>
+<td>配分</td>
+<td>25 分</td>
+</tr>
+<tr>
+<td>附圖</td>
+<td><code>SA-2012-2-fig-1.png</code>、<code>SA-2012-2-fig-2.png</code></td>
+</tr>
+<tr>
+<td>判讀狀態</td>
+<td><strong>已確認</strong>（2026-11-07 使用者確認。原轉錄：2026-11-07 轉錄；PyMuPDF 110 dpi 整頁＋300–500 dpi 局部放大、PDF 向量座標核對；盲讀於開啟解析前完成）</td>
+</tr>
+</tbody>
+</table>
+<h2>1. 考卷原文（逐字）</h2>
+<p>二、如圖二所示桁架，a點為鉸接，c點為滾支承，b點有軸向線彈性彈簧。若每根桿件的EA值皆為10,000 kN，線彈性彈簧之勁度Ks為2,500 kN/m。試以最小功法計算各桿件內力（若以其他方法計算，不予以計分）。（25 分）</p>
+<h2>2. 考卷給的公式、附表與參數</h2>
+<ul>
+<li>考卷沒有給任何參考公式或附表。</li>
+<li>EA＝10,000 kN（每根桿件）；Ks＝2,500 kN/m。</li>
+<li>指定方法：最小功法；他法不計分。</li>
+<li>卷首注意事項：㈠可以使用電子計算器。㈡不必抄題，作答時請將試題題號及答案依照順序寫在試卷上，於本試題上作答者，不予計分。㈢本試題之相關公式、物理常數、符號意義及設計參數未提及時，請自行合理推斷與假設。</li>
+<li>考試時間：2 小時。</li>
+</ul>
+<h2>3. 附圖</h2>
+<p><img alt="SA-2012-2 考卷附圖原截圖（含滑鼠游標或解析度較低；內容同下圖）" src="../../raw/solutions/SA-2012-2/SA-2012-2-fig-1.png" /><br />
+<em>證據圖 SA-2012-2-fig-1.png</em></p>
+<p><img alt="SA-2012-2 考卷附圖：三角形桁架：下弦 a–b–c 各 4 m，頂點 d 在 b 正上方 4 m；桿件 ad、dc、db、ab、bc；a 鉸支承、c 滾支承（三角形＋兩圓輪）；b 點下方垂直彈簧 Ks 接地；d 點 40 kN 向下、20 kN 水平向右" src="../../raw/solutions/SA-2012-2/SA-2012-2-fig-2.png" /><br />
+<em>證據圖 SA-2012-2-fig-2.png（2026-11-07 自考卷重新擷取 500 dpi，無游標）</em></p>
+<p>圖面文字照錄：40 kN、20 kN、d、4 m、a、b、c、Ks、4 m、4 m、圖二</p>
+<h2>4. 判讀清單</h2>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>項目</th>
+<th>判讀</th>
+<th>圖上／題文依據</th>
+<th>把握</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>桿件</td>
+<td>ad、dc、db（豎桿）、ab、bc 共 5 根</td>
+<td>圖面</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>2</td>
+<td>a</td>
+<td>鉸支承（2 反力）</td>
+<td>題文；三角形＋剖線</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>3</td>
+<td>c</td>
+<td>滾支承：提供垂直反力</td>
+<td>題文；三角形＋兩圓輪</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>4</td>
+<td>彈簧</td>
+<td>b 點垂直彈簧接地，Ks＝2,500 kN/m（只提供垂直力）</td>
+<td>鋸齒線在 b 正下方</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>5</td>
+<td>幾何</td>
+<td>a(0,0)、b(4,0)、c(8,0)、d(4,4)；斜桿長 4√2 m</td>
+<td>下方 4 m｜4 m；右側 4 m</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>6</td>
+<td>載重</td>
+<td>d 點 40 kN 向下、20 kN 向右</td>
+<td>兩箭頭指向 d</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>7</td>
+<td>靜不定度</td>
+<td>m 5＋r 4（a 2、c 1、彈簧 1）＝9＞2j 8：一度靜不定</td>
+<td>計數</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>8</td>
+<td>所求</td>
+<td>各桿件內力；最小功法（彈簧能量須計入）</td>
+<td>題文</td>
+<td>確定（解讀）；使用者確認</td>
+</tr>
+<tr>
+<td>9</td>
+<td>證據圖</td>
+<td>舊 fig-1 的滑鼠游標壓在 ad 桿中段；新增 fig-2（500 dpi）</td>
+<td>—</td>
+<td>確定</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p><em>轉錄：2026-11-07（SA-U2-1 題目正本推廣・批 1）</em><br />
+<em>確認：2026-11-07 使用者確認</em></p>
+</details>
+<hr>
+<h1>考題編號：SA-2012-2</h1>
 <p><strong>主分類：</strong> <code>SA-U2-1</code> 靜不定結構最小功法<br />
 <strong>副分類：</strong> 無<br />
 <strong>分析法：</strong> 最小功法<br />
 <strong>標籤：</strong> <code>靜不定桁架</code> <code>最小功法</code> <code>彈性支承</code> <code>彈簧</code></p>
 <hr />
-<h2>1. 原始題目重述 (Problem Restatement)</h2>
-<p>如圖二所示桁架，a 點為鉸接，c 點為滾支承，b 點有軸向線彈性彈簧。若每根桿件的 $EA$ 值皆為 $10,000\text{ kN}$，線彈性彈簧之勁度 $K_s$ 為 $2,500\text{ kN/m}$。試以<strong>最小功法</strong>計算各桿件內力（若以其他方法計算，不予以計分）。（25 分）</p>
-<p><img alt="SA-2012-2 題目附圖：桁架包含五根桿件及彈性支承彈簧，承受節點載重" src="../../raw/solutions/SA-2012-2/SA-2012-2-fig-1.png" /></p>
-<p><em>圖說：底邊長 8m 的三角形桁架，a(0,0)、b(4,0)、c(8,0)、d(4,4)。a 為鉸接支承，c 為滾支承，b 點下方連接一垂直彈簧。d 點承受水平向右 20 kN 及垂直向下 40 kN 之載重。</em></p>
+<h2>1. 題目（考卷原文見題目正本）</h2>
+<blockquote>
+<p>考卷原文、公式／附表、附圖與判讀清單（已確認）見 <a href="SA-2012-2-problem.md"><code>SA-2012-2-problem.md</code></a>。本節只列解題時最容易讀錯的地方與本解使用的記號；題意以題目正本為準。</p>
+</blockquote>
+<p><img alt="SA-2012-2 重繪題目附圖：三角桁架 a(0,0)、b(4,0)、c(8,0)、d(4,4)；a 鉸支承、c 滾支承、b 點垂直彈簧 K_s；d 點 40 kN 向下、20 kN 向右" src="../../raw/solutions/SA-2012-2/figs/SA-2012-2-fig-1-problem.svg" /><br />
+<em>重繪自考卷附圖，依判讀清單 #1–#8 重繪。攔：漏掉 b 點彈簧、20 kN 方向讀反。</em></p>
+<h3>常見誤讀</h3>
+<table>
+<thead>
+<tr>
+<th>項目</th>
+<th>正確判讀</th>
+<th>常見誤讀</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>b 點彈簧</td>
+<td>垂直彈簧接地，$K_s = 2500$ kN/m；最小功法須計入彈簧應變能</td>
+<td>忽略彈簧（當成靜定）</td>
+</tr>
+<tr>
+<td>c 支承</td>
+<td>滾支承</td>
+<td>鉸支承</td>
+</tr>
+<tr>
+<td>20 kN</td>
+<td>作用於 d、水平向右</td>
+<td>向左</td>
+</tr>
+</tbody>
+</table>
+<p><strong>本解記號：</strong> 記號與正負號約定沿用 §4。</p>
+<hr />
 <h2>2. 考題核心精神與出題者意圖 (Core Concepts &amp; Examiner's Intent)</h2>
 <p>本題旨在測驗考生對於<strong>最小功法（卡氏第二定理）</strong>在處理「包含柔性支承（彈簧）」之靜不定桁架時的應用能力與幾何相容概念。</p>
 <ol>
@@ -295,12 +460,16 @@ $$ \boxed{X \approx 22.116\text{ kN}} \text{ (彈簧對節點向上推力)} $$</
 <li>$F_{cd} = -30\sqrt{2} + 0.5\sqrt{2} (\boxed{X}) = \frac{280 - 520\sqrt{2}}{17} \approx \boxed{-26.79\text{ kN (壓力)}}$</li>
 <li>$F_{bd} = -(\boxed{X}) = \frac{20 - 280\sqrt{2}}{17} \approx \boxed{-22.12\text{ kN (壓力)}}$</li>
 </ul>
+<p><img alt="SA-2012-2 桿力分布：ad +1.50、ab = bc +18.94 kN 受拉；dc −26.79、db −22.12 kN 受壓；b 點向上箭頭為彈簧力 S = 22.12 kN" src="../../raw/solutions/SA-2012-2/figs/SA-2012-2-fig-2-truss.svg" /></p>
+<p><em>圖 2　桿力分布與彈簧力。腳本先檢查 b、d 節點平衡殘差為 0 才畫。豎桿 db 的壓力正好等於彈簧把 b 往上頂的力 $S$。攔：漏計彈簧（把 b 當固定或自由）、把 db 當零桿。</em></p>
 <h2>5. 關鍵爭議點與進階探討 (Critical Issues &amp; Advanced Discussion)</h2>
 <ul>
 <li><strong>題目限定「最小功法」</strong>：本題明訂若不用最小功法將不予計分。很多考生可能會想使用單位力法（柔度法）來解，雖然兩者本質相同（單位力法中 $\delta_{10} + \delta_{11} X + X/K_s = 0$ 的式子與最小功法完全等價），但作答時<strong>強烈建議寫出 $U$ 的偏微分表達式 $\frac{\partial U}{\partial X}=0$</strong>，並以應變能的方式呈現解題過程，以符合閱卷委員對「最小功法」的視覺期望與評分標準。</li>
 <li><strong>剛性支承與彈性支承的差異</strong>：如果 b 點是剛性的滾支承，則總應變能中就不會有 $\frac{X^2}{2K_s}$ 這一項，方程式會變成 $\sum \left( F_i \cdot \frac{\partial F_i}{\partial X} \cdot L_i \right) = 0$。加入彈簧後，其實就等同於在最小功法的方程式中多加了一項 $\frac{EA}{K_s} X$（同乘 EA 之後）。這是一個非常漂亮的數學對稱性，也凸顯了彈簧等效為具有特定柔度之桁架桿件的特性。</li>
 <li><strong>計算化簡技巧</strong>：在 Step 3 中，聰明的作法是直接將 $\frac{1}{EA}$ 提出，並觀察到 $\frac{EA}{K_s} = \frac{10000}{2500} = 4$ 是一個漂亮的整數。這大幅減少了攜帶一堆零進行計算的風險。若帶著 $10000$ 進入每一項的計算，極易在加減過程中發生小數點錯位的悲劇。手算時應盡量保持代數符號，直到最後一步再代入數值，有助於驗算及減少計算錯誤。</li>
-</ul></main>
+</ul>
+<p><em>修正日期：2026-11-07（§1 改為指向題目正本並放重繪附圖（figs/SA-2012-2-fig-1-problem.svg）、加常見誤讀；圖由 gen_SA-2012-2.py 產生，可重跑）</em><br />
+<em>圖解補繪：2026-11-07（圖 2 桁架力流圖，向量圖，腳本 <code>gen_SA-2012-2.py</code>，可重跑）</em></p></main>
 <footer>來源：raw/solutions/SA-2012-2/SA-2012-2.md（知識庫解題內容唯一正本；本頁僅為渲染顯示）</footer>
 
 <script>

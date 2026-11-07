@@ -43,13 +43,180 @@ header .nomat{margin-top:12px;font-size:.8em;opacity:.85}
 <p class="meta2">主分類 <b>SA-U2-1</b> 靜不定結構最小功法 ｜ 2018 年（民國 107） ｜ 最小功法 (Castigliano's 2nd Theorem)</p>
 <div class="hbtns"><a class="b-study" href="../unit-SA-U2-1.html">🧭 U2-1 單元總覽</a><a class="b-lect" href="../lecture-SA-U2-1.html">📚 U2-1 靜不定結構最小功法 講義</a></div>
 </header>
-<main><h1>考題編號：SA-2018-3</h1>
+<main><details class="problem-src" open><summary><b>📄 題目正本</b>（考卷原文、附圖與判讀清單；不含解法）</summary>
+<h1>SA-2018-3 題目正本</h1>
+<blockquote>
+<p>本檔只記錄考卷上寫了什麼、圖上畫了什麼，不含任何解法。解析見同資料夾 <code>SA-2018-3.md</code>。<br />
+判讀清單經使用者確認前，狀態為「待確認」；確認後本檔原則上不再修改（改動須回考卷原圖並記 log）。</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>項目</th>
+<th>內容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>考卷</td>
+<td><code>raw/exams/SA-2018_結構學.pdf</code>，頁次 2－2 上半，第三題（無圖號）</td>
+</tr>
+<tr>
+<td>考年</td>
+<td>2018（民國 107 年）專技高考結構工程技師「結構學」</td>
+</tr>
+<tr>
+<td>配分</td>
+<td>25 分</td>
+</tr>
+<tr>
+<td>附圖</td>
+<td><code>SA-2018-3-fig-1.png</code></td>
+</tr>
+<tr>
+<td>判讀狀態</td>
+<td><strong>已確認</strong>（2026-11-07 使用者確認。原轉錄：2026-11-07 轉錄；PyMuPDF 110 dpi 整頁＋300–500 dpi 局部放大、PDF 向量座標核對；盲讀於開啟解析前完成）</td>
+</tr>
+</tbody>
+</table>
+<h2>1. 考卷原文（逐字）</h2>
+<p>三、如下圖結構在D 點受100 kN 向下集中力作用，試以最小功法求纜索AE 及BF 的內力，並繪梁A~D 之彎矩圖。圖中粗黑實線表示梁柱桿件，斷面EI 值皆為1000 kN-m²，忽略軸向及剪切變形；細虛線表示只承受拉力的纜索，斷面EA 值為500 kN。（25 分）</p>
+<h2>2. 考卷給的公式、附表與參數</h2>
+<ul>
+<li>考卷沒有給任何參考公式或附表。</li>
+<li>梁柱 EI＝1000 kN-m²，忽略軸向及剪切變形；纜索 EA＝500 kN，只承受拉力。</li>
+<li>指定方法：最小功法（未寫他法不計分）。</li>
+<li>卷首注意事項：㈠可以使用電子計算器。㈡不必抄題，作答時請將試題題號及答案依照順序寫在試卷上，於本試題上作答者，不予計分。㈢本科目除專門名詞或數理公式外，應使用本國文字作答。</li>
+<li>考試時間：2 小時。</li>
+</ul>
+<h2>3. 附圖</h2>
+<p><img alt="SA-2018-3 考卷附圖：梁 A–B–C–D（粗實線）每段 5 m，D 端受 100 kN 向下；C 點下方粗實線柱 C–G 高 5 m，G 固定（剖線）；A、B 下方細虛線纜索 A–E、B–F 垂直接地（E、F 剖線），長 5 m" src="../../raw/solutions/SA-2018-3/SA-2018-3-fig-1.png" /><br />
+<em>證據圖 SA-2018-3-fig-1.png</em></p>
+<p>圖面文字照錄：100kN、5m、5m、5m、A、B、C、D、5m、E、F、G</p>
+<h2>4. 判讀清單</h2>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>項目</th>
+<th>判讀</th>
+<th>圖上／題文依據</th>
+<th>把握</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>梁</td>
+<td>A–B–C–D 連續梁，AB＝BC＝CD＝5 m；D 為自由端</td>
+<td>上方尺寸 x 分界對齊 A、B、C、D</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>2</td>
+<td>柱</td>
+<td>C–G 垂直 5 m，C 剛接（T 形接頭），G 固定</td>
+<td>粗實線；G 底剖線</td>
+<td>確定（解讀）；使用者確認</td>
+</tr>
+<tr>
+<td>3</td>
+<td>纜索</td>
+<td>A–E、B–F 垂直細虛線，長 5 m，只受拉；兩端視為鉸接</td>
+<td>題文；虛線</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>4</td>
+<td>E、F</td>
+<td>地面錨碇（剖線），與 G 同高</td>
+<td>底線 y=283.3 同高</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>5</td>
+<td>載重</td>
+<td>D 點 100 kN 向下</td>
+<td>箭頭尖端在 D</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>6</td>
+<td>剛度</td>
+<td>梁柱 EI＝1000 kN-m²，忽略軸向、剪切；纜索 EA＝500 kN</td>
+<td>題文</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>7</td>
+<td>靜不定度</td>
+<td>G 3＋纜索 2＝5 未知、3 方程式：二度靜不定（須確認纜索受拉）</td>
+<td>計數</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>8</td>
+<td>所求</td>
+<td>纜索 AE、BF 內力；梁 A~D 彎矩圖（題目只要梁，不含柱 CG）</td>
+<td>題文</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>9</td>
+<td>證據圖</td>
+<td>既有 fig-1 乾淨，沿用</td>
+<td>—</td>
+<td>確定</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p><em>轉錄：2026-11-07（SA-U2-1 題目正本推廣・批 1）</em><br />
+<em>確認：2026-11-07 使用者確認</em></p>
+</details>
+<hr>
+<h1>考題編號：SA-2018-3</h1>
 <p><strong>主分類：</strong> <code>SA-U2-1</code> 靜不定結構最小功法<br />
 <strong>副分類：</strong> 無<br />
 <strong>分析法：</strong> 最小功法 (Castigliano's 2nd Theorem)<br />
 <strong>標籤：</strong> <code>最小功法</code>, <code>靜不定結構</code>, <code>纜索無壓力</code>, <code>彎矩圖</code></p>
 <hr />
-<h2>1. 基本設定與物理判斷</h2>
+<h2>1. 題目（考卷原文見題目正本）</h2>
+<blockquote>
+<p>考卷原文、公式／附表、附圖與判讀清單（已確認）見 <a href="SA-2018-3-problem.md"><code>SA-2018-3-problem.md</code></a>。本節只列解題時最容易讀錯的地方與本解使用的記號；題意以題目正本為準。</p>
+</blockquote>
+<p><img alt="SA-2018-3 重繪題目附圖：梁 A–B–C–D 每段 5 m，D 端 100 kN 向下；C 下方柱 C–G 5 m、G 固定；A、B 下方只受拉纜索 A–E、B–F 長 5 m" src="../../raw/solutions/SA-2018-3/figs/SA-2018-3-fig-1-problem.svg" /><br />
+<em>重繪自考卷附圖，依判讀清單 #1–#9 重繪。攔：把纜索當成可受壓的桿件。</em></p>
+<h3>常見誤讀</h3>
+<table>
+<thead>
+<tr>
+<th>項目</th>
+<th>正確判讀</th>
+<th>常見誤讀</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>纜索</td>
+<td>只受拉；計算出受壓就鬆弛（內力取 0）</td>
+<td>可拉可壓的二力桿</td>
+</tr>
+<tr>
+<td>柱 CG</td>
+<td>C 為剛接 T 形接頭，G 固定</td>
+<td>C 鉸接</td>
+</tr>
+<tr>
+<td>所求</td>
+<td>纜索 AE、BF 內力與梁 A~D 彎矩圖</td>
+<td>含柱 CG 彎矩圖</td>
+</tr>
+</tbody>
+</table>
+<p><strong>本解記號：</strong> 記號與正負號約定沿用 §4。</p>
+<hr />
+<h2>1.5 基本設定與物理判斷</h2>
 <p>觀察題目所給結構，梁 ABCD 由柱 CG 及纜索 AE、BF 支撐。特別注意題目提示：「<strong>細虛線表示只承受拉力的纜索</strong>」。這是一個極重要的陷阱，意味著在受力變形過程中，若計算出纜索受壓，則該纜索實際上會發生<strong>鬆弛 (Slack)</strong>，其內力為 0。</p>
 <ul>
 <li>結構幾何與剛度：</li>
@@ -121,11 +288,15 @@ $$ v_A = \frac{70.755}{1000} \left( \frac{125}{3} + \frac{125}{2} \right) - \fra
 <li>CD 段為一次線性分佈，從 D 點的 0 漸增至 C 點右側的 $-500 \text{ kN-m}$ (上方受拉)。</li>
 <li>注意在 C 點有一突跳不連續 (被柱吸收)。</li>
 </ol>
+<p><img alt="SA-2018-3 變形形狀與彎矩圖：A 下移、AE 纜索縮短而鬆弛；B 上移、BF 受拉 70.75 kN；梁 AB 段 0、C 左 353.8、C 右 500 kN·m（上緣受拉），柱 CG 常數 146.2 kN·m" src="../../raw/solutions/SA-2018-3/figs/SA-2018-3-fig-2-deflected-bmd.svg" /></p>
+<p><em>圖 2　變形形狀與彎矩圖（虛線為纜索；以 §2 的 $X_2 = 3750/53$ kN 代入，並驗證 B 上移量等於 BF 伸長量 $X_2 L/EA$）。A 點往下掉，AE 長度變短，只能鬆弛。攔：把 AE 當成可受壓的桿件、兩索一起當贅力。</em></p>
 <h2>4. 結論</h2>
 <ul>
 <li><strong>纜索 AE 內力：</strong> $0 \text{ kN}$ (鬆弛)</li>
 <li><strong>纜索 BF 內力：</strong> $70.75 \text{ kN}$ (拉力)</li>
-</ul></main>
+</ul>
+<p><em>修正日期：2026-11-07（§1 改為指向題目正本並放重繪附圖（figs/SA-2018-3-fig-1-problem.svg）、加常見誤讀；原解析無題目重述，新增 §1（首次引用證據圖見題目正本），原 §1「基本設定與物理判斷」改為 §1.5；圖由 gen_SA-2018-3.py 產生，可重跑）</em><br />
+<em>圖解補繪：2026-11-07（圖 2 變形與彎矩圖，向量圖，腳本 <code>gen_SA-2018-3.py</code>，可重跑）</em></p></main>
 <footer>來源：raw/solutions/SA-2018-3/SA-2018-3.md（知識庫解題內容唯一正本；本頁僅為渲染顯示）</footer>
 
 <script>

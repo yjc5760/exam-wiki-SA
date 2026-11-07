@@ -75,7 +75,7 @@ header .nomat{margin-top:12px;font-size:.8em;opacity:.85}
 </tr>
 <tr>
 <td>判讀狀態</td>
-<td><strong>待確認</strong>（2026-11-05 轉錄；PyMuPDF 110 dpi 整頁＋400–500 dpi 局部放大；盲讀於開啟解析前完成）</td>
+<td><strong>已確認</strong>（2026-11-07 使用者確認。原轉錄：2026-11-05 轉錄；PyMuPDF 110 dpi 整頁＋400–500 dpi 局部放大；盲讀於開啟解析前完成）</td>
 </tr>
 </tbody>
 </table>
@@ -165,7 +165,8 @@ header .nomat{margin-top:12px;font-size:.8em;opacity:.85}
 </tbody>
 </table>
 <hr />
-<p><em>轉錄：2026-11-05（SA-U2-3 題目正本推廣・批 2）</em></p>
+<p><em>轉錄：2026-11-05（SA-U2-3 題目正本推廣・批 2）</em><br />
+<em>確認：2026-11-07 使用者確認</em></p>
 </details>
 <hr>
 <h1>考題編號：SA-2019-3</h1>
@@ -173,10 +174,36 @@ header .nomat{margin-top:12px;font-size:.8em;opacity:.85}
 <strong>副分類：</strong> 無<br />
 <strong>標籤：</strong> <code>傾角變位法</code> <code>連續梁</code> <code>支承沉陷</code> <code>對稱性</code></p>
 <hr />
-<h2>1. 原始題目重述 (Problem Restatement)</h2>
-<p>三、如圖三所示受均布載重 w 之三跨連續梁，考慮支承 B 及支承 C 都向下沉陷，且沉陷量相同。當沉陷量增加時，支承 A 及 D 垂直反力會增加，而支承 B 及 C 垂直反力會減少。試問當沉陷量為多少時，支承 A 垂直反力會增加 0.1 wL？試以傾角變位法求解。以其他方法作答者一律不予以計分。（25 分）</p>
-<p><img alt="SA-2019-3 題目附圖" src="../../raw/solutions/SA-2019-3/SA-2019-3-fig-1.png" /></p>
-<p><em>圖說：(待補充說明)</em></p>
+<h2>1. 題目（考卷原文見題目正本）</h2>
+<blockquote>
+<p>考卷原文、公式／附表、附圖與判讀清單（已確認）見 <a href="SA-2019-3-problem.md"><code>SA-2019-3-problem.md</code></a>。本節只列解題時最容易讀錯的地方與本解使用的記號；題意以題目正本為準。</p>
+</blockquote>
+<p><img alt="SA-2019-3 重繪題目附圖：三跨連續梁 A–B–C–D，各跨 EI、L，均布 w 滿跨；A 鉸支承、B、C、D 滾支承；B、C 同量向下沉陷" src="../../raw/solutions/SA-2019-3/figs/SA-2019-3-fig-1-problem.svg" /><br />
+<em>重繪自考卷附圖，依判讀清單 #1–#8 重繪。攔：只讓一個支承沉陷。</em></p>
+<h3>常見誤讀</h3>
+<table>
+<thead>
+<tr>
+<th>項目</th>
+<th>正確判讀</th>
+<th>常見誤讀</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>沉陷</td>
+<td>B、C 同量向下沉陷 $\Delta$（未知，為所求）</td>
+<td>只有 B 或只有 C</td>
+</tr>
+<tr>
+<td>所求</td>
+<td>使 A 垂直反力增加 $0.1wL$ 的 $\Delta$</td>
+<td>使 A 反力等於 $0.1wL$</td>
+</tr>
+</tbody>
+</table>
+<p><strong>本解記號：</strong> 記號與正負號約定沿用 §4。</p>
+<hr />
 <h2>2. 考題核心精神與出題者意圖 (Core Concepts &amp; Examiner's Intent)</h2>
 <p>本題旨在測驗考生對於<strong>傾角變位法 (Slope Deflection Method)</strong> 處理支承沉陷問題的熟練度。<br />
 透過對稱結構與對稱沉陷的特性，可以將未知數大幅度減少。考題並未要求算出絕對的反力，而是探討「沉陷引起的反力增量」，因此考生只需專注於沉陷量 $\Delta$ 與載重 $w$ 對於 A 點反力的影響，並建立等式求解 $\Delta$。強制規定只能用傾角變位法，測驗基本功。</p>
@@ -243,7 +270,8 @@ $$\Delta R_A = \frac{6EI\Delta}{5L^3}$$<br />
 $$\frac{6EI\Delta}{5L^3} = 0.1wL \implies \Delta = \frac{0.1wL \times 5L^3}{6EI} = \frac{wL^4}{12EI}$$</p>
 <p><strong>答：當沉陷量為 $\frac{wL^4}{12EI}$ 時，支承 A 垂直反力會增加 0.1 wL。</strong></p>
 <h2>5. 關鍵爭議點與進階探討 (Critical Issues &amp; Advanced Discussion)</h2>
-<p>本題若不利用對稱性，而將 $\theta_A, \theta_D$ 皆設為未知數並用標準式聯立，將會面對 $3 \times 3$ 的矩陣方程，極易在代數運算中出錯。修正勁度法與對稱性是此類考題的標準破題法。</p></main>
+<p>本題若不利用對稱性，而將 $\theta_A, \theta_D$ 皆設為未知數並用標準式聯立，將會面對 $3 \times 3$ 的矩陣方程，極易在代數運算中出錯。修正勁度法與對稱性是此類考題的標準破題法。</p>
+<p><em>修正日期：2026-11-07（§1 改為指向題目正本並放重繪附圖（figs/SA-2019-3-fig-1-problem.svg）、加常見誤讀；圖由 gen_SA-2019-3.py 產生，可重跑）</em></p></main>
 <footer>來源：raw/solutions/SA-2019-3/SA-2019-3.md（知識庫解題內容唯一正本；本頁僅為渲染顯示）</footer>
 
 <script>
