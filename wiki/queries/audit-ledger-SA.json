@@ -1052,5 +1052,175 @@
       "note": ""
     },
     "history": []
+  },
+  "SA-2002-3": {
+    "date": "2026-11-07",
+    "model": "claude-opus-5-5",
+    "result": "一致",
+    "source": "",
+    "report": "wiki/queries/盲解比對-SA-U2-2-批1-2026-11-07.md",
+    "scope": "SA-U2-2 批 1（題目正本已確認）",
+    "human": "",
+    "fixed": "",
+    "recheck": {
+      "date": "",
+      "result": "",
+      "report": "",
+      "note": ""
+    },
+    "history": []
+  },
+  "SA-2006-2": {
+    "date": "2026-11-07",
+    "model": "claude-opus-5-5",
+    "result": "一致",
+    "source": "",
+    "report": "wiki/queries/盲解比對-SA-U2-2-批1-2026-11-07.md",
+    "scope": "SA-U2-2 批 1（題目正本已確認）",
+    "human": "",
+    "fixed": "",
+    "recheck": {
+      "date": "",
+      "result": "",
+      "report": "",
+      "note": ""
+    },
+    "history": []
+  },
+  "SA-2007-1": {
+    "date": "2026-11-07",
+    "model": "claude-opus-5-5",
+    "result": "一致",
+    "source": "",
+    "report": "wiki/queries/盲解比對-SA-U2-2-批1-2026-11-07.md",
+    "scope": "SA-U2-2 批 1（題目正本已確認）",
+    "human": "",
+    "fixed": "",
+    "recheck": {
+      "date": "",
+      "result": "",
+      "report": "",
+      "note": ""
+    },
+    "history": []
+  },
+  "SA-2008-1": {
+    "date": "2026-11-07",
+    "model": "claude-opus-5-5",
+    "result": "一致",
+    "source": "",
+    "report": "wiki/queries/盲解比對-SA-U2-2-批1-2026-11-07.md",
+    "scope": "SA-U2-2 批 1（題目正本已確認）",
+    "human": "",
+    "fixed": "",
+    "recheck": {
+      "date": "",
+      "result": "",
+      "report": "",
+      "note": ""
+    },
+    "history": []
+  },
+  "SA-2009-1": {
+    "date": "2026-11-07",
+    "model": "claude-opus-5-5",
+    "result": "分歧-觀念作圖",
+    "source": "L1 看圖",
+    "report": "wiki/queries/盲解比對-SA-U2-2-批1-2026-11-07.md",
+    "scope": "SA-U2-2 批 1（題目正本已確認）；2026-11-07 階段 E 抄桿力時補登：§4 斜桿用 bd（正本 ec），反力不受影響",
+    "human": "盲解對（使用者 2026-11-07 指示勘誤：右側面板斜桿為 ec）",
+    "fixed": "2026-11-07",
+    "recheck": {
+      "date": "2026-11-07",
+      "result": "落實",
+      "report": "wiki/queries/落實檢查-SA-U2-2-批1-2026-11-07.md",
+      "note": "非獨立複核（勘誤與落實檢查同一對話）；只在 §1 常見誤讀、§5、頁尾保留 bd 字樣"
+    },
+    "history": []
+  },
+  "SA-2009-2": {
+    "date": "2026-11-07",
+    "model": "claude-opus-5-5",
+    "result": "一致",
+    "source": "",
+    "report": "wiki/queries/盲解比對-SA-U2-2-批1-2026-11-07.md",
+    "scope": "SA-U2-2 批 1（題目正本已確認）",
+    "human": "",
+    "fixed": "",
+    "recheck": {
+      "date": "",
+      "result": "",
+      "report": "",
+      "note": ""
+    },
+    "history": []
+  },
+  "SA-2011-1": {
+    "date": "2026-11-07",
+    "model": "claude-opus-5-5",
+    "result": "一致",
+    "source": "",
+    "report": "wiki/queries/盲解比對-SA-U2-2-批1-2026-11-07.md",
+    "scope": "SA-U2-2 批 1（題目正本已確認）",
+    "human": "",
+    "fixed": "",
+    "recheck": {
+      "date": "",
+      "result": "",
+      "report": "",
+      "note": ""
+    },
+    "history": []
+  },
+  "SA-2014-2": {
+    "date": "2026-11-07",
+    "model": "claude-opus-5-5",
+    "result": "一致",
+    "source": "",
+    "report": "wiki/queries/盲解比對-SA-U2-2-批1-2026-11-07.md",
+    "scope": "SA-U2-2 批 1（題目正本已確認）；勘誤版首次盲解，數值經 CHANGELOG 洩漏，一致但非獨立",
+    "human": "",
+    "fixed": "",
+    "recheck": {
+      "date": "",
+      "result": "",
+      "report": "",
+      "note": ""
+    },
+    "history": []
+  },
+  "SA-2016-1": {
+    "date": "2026-11-07",
+    "model": "claude-opus-5-5",
+    "result": "一致",
+    "source": "",
+    "report": "wiki/queries/盲解比對-SA-U2-2-批1-2026-11-07.md",
+    "scope": "SA-U2-2 批 1（題目正本已確認）；勘誤版首次盲解，數值經 CHANGELOG 洩漏，一致但非獨立",
+    "human": "",
+    "fixed": "",
+    "recheck": {
+      "date": "",
+      "result": "",
+      "report": "",
+      "note": ""
+    },
+    "history": []
+  },
+  "SA-2023-2": {
+    "date": "2026-11-07",
+    "model": "claude-opus-5-5",
+    "result": "一致",
+    "source": "",
+    "report": "wiki/queries/盲解比對-SA-U2-2-批1-2026-11-07.md",
+    "scope": "SA-U2-2 批 1（題目正本已確認）",
+    "human": "",
+    "fixed": "",
+    "recheck": {
+      "date": "",
+      "result": "",
+      "report": "",
+      "note": ""
+    },
+    "history": []
   }
 }

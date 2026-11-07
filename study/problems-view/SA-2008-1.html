@@ -43,17 +43,193 @@ header .nomat{margin-top:12px;font-size:.8em;opacity:.85}
 <p class="meta2">主分類 <b>SA-U2-2</b> 靜不定結構諧合變位 ｜ 2008 年（民國 97） ｜ </p>
 <div class="hbtns"></div><p class="nomat">本題主分類 SA-U2-2 目前尚無教材，故不提供教材按鈕。</p>
 </header>
-<main><hr />
+<main><details class="problem-src" open><summary><b>📄 題目正本</b>（考卷原文、附圖與判讀清單；不含解法）</summary>
+<h1>SA-2008-1 題目正本</h1>
+<blockquote>
+<p>本檔只記錄考卷上寫了什麼、圖上畫了什麼，不含任何解法。解析見同資料夾 <code>SA-2008-1.md</code>。<br />
+判讀清單經使用者確認前，狀態為「待確認」；確認後本檔原則上不再修改（改動須回考卷原圖並記 log）。</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>項目</th>
+<th>內容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>考卷</td>
+<td><code>raw/exams/SA-2008_結構學.pdf</code>，第 1 頁（正面），第一題（無圖號）</td>
+</tr>
+<tr>
+<td>考年</td>
+<td>2008（民國 97 年）專技高考結構工程技師「結構學」</td>
+</tr>
+<tr>
+<td>配分</td>
+<td>25 分</td>
+</tr>
+<tr>
+<td>附圖</td>
+<td><code>SA-2008-1-fig-1.png</code>、<code>SA-2008-1-fig-2.png</code></td>
+</tr>
+<tr>
+<td>判讀狀態</td>
+<td><strong>已確認</strong>（2026-11-07 使用者確認；原轉錄：2026-11-07 轉錄；PyMuPDF 110 dpi 整頁＋400–1200 dpi 局部放大；PDF 向量繪圖；盲讀於開啟解析前完成）</td>
+</tr>
+</tbody>
+</table>
+<h2>1. 考卷原文（逐字）</h2>
+<p>一、如圖所示桁架（truss），A、D 兩點為滾支承（roller），E 點為鉸接（hinge）。若每根桿件的彈性模數E 與斷面積A 為常數，當B 點有一垂直載重10 kN 時，計算支承之反力及各桿件內力。（25 分）</p>
+<h2>2. 考卷給的公式、附表與參數</h2>
+<ul>
+<li>考卷沒有給任何參考公式或附表。</li>
+<li>E、A 只說是常數，沒有數值（各桿相同）。</li>
+<li>卷首注意事項：㈠不必抄題，作答時請將試題題號及答案依照順序寫在試卷上，於本試題上作答者，不予計分。㈡可以使用電子計算器，但需詳列解答過程。</li>
+<li>考試時間：2 小時。</li>
+</ul>
+<h2>3. 附圖</h2>
+<p><img alt="SA-2008-1 考卷附圖原截圖（含滑鼠游標，壓在 B 節點上）" src="../../raw/solutions/SA-2008-1/SA-2008-1-fig-1.png" /><br />
+<em>證據圖 SA-2008-1-fig-1.png</em></p>
+<p><img alt="SA-2008-1 考卷附圖：三角形桁架：下弦 A–C–E 水平 20 m，上弦 A–B–D 同一斜線；C–B 垂直桿、B–E 斜桿、E–D 垂直桿；A 滾支承在地面、E 鉸支承、D 滾支承靠右側直立牆；B 點 10 kN 向下" src="../../raw/solutions/SA-2008-1/SA-2008-1-fig-2.png" /><br />
+<em>證據圖 SA-2008-1-fig-2.png（2026-11-07 自考卷重新擷取 500 dpi，無游標）</em></p>
+<p>圖面文字照錄：D、10 kN、B、5 m、5 m、A、C、E、10 m、10 m</p>
+<h2>4. 判讀清單</h2>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>項目</th>
+<th>判讀</th>
+<th>圖上／題文依據</th>
+<th>把握</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>A</td>
+<td>滾支承於水平地面（三角形下兩個滾輪＋剖線）→ 垂直反力</td>
+<td>400 dpi 放大；題文</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>2</td>
+<td>D</td>
+<td>滾支承於右側直立牆（三角形尖端朝 D、兩滾輪靠牆）→ 水平反力</td>
+<td>400 dpi 放大：剖線在右側直立</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>3</td>
+<td>E</td>
+<td>鉸支承（三角形＋剖線，無滾輪）</td>
+<td>400 dpi 放大；題文「E 點為鉸接」</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>4</td>
+<td>節點座標</td>
+<td>A(0,0)、C(10,0)、E(20,0)、B(10,5)、D(20,10)</td>
+<td>下方 10 m｜10 m 尺寸線對齊 A、C、E；右側 5 m｜5 m 自 E 量至 B 高、再至 D 高</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>5</td>
+<td>上弦</td>
+<td>A、B、D 共線（斜率 1/2）</td>
+<td>座標</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>6</td>
+<td>桿件</td>
+<td>A–B、B–D、A–C、C–E、B–C、B–E、D–E 共 7 根</td>
+<td>圖面</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>7</td>
+<td>材料</td>
+<td>各桿 E、A 為常數（相同）</td>
+<td>題文</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>8</td>
+<td>載重</td>
+<td>B 點垂直向下 10 kN</td>
+<td>箭頭指向 B</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>9</td>
+<td>所求</td>
+<td>支承反力及各桿內力</td>
+<td>題文</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>10</td>
+<td>靜不定度</td>
+<td>m＝7、r＝4、j＝5：11＞10，一度靜不定</td>
+<td>計數</td>
+<td>確定（解讀）；使用者確認</td>
+</tr>
+<tr>
+<td>11</td>
+<td>證據圖</td>
+<td>舊 fig-1 游標壓在 B 節點（看不清 B 是否為節點）；新增 fig-2（500 dpi）</td>
+<td>—</td>
+<td>確定</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p><em>轉錄：2026-11-07（SA-U2-2 題目正本推廣・批 1）</em><br />
+<em>確認：2026-11-07 使用者確認</em></p>
+</details>
+<hr>
+<hr />
 <p>主分類: "SA-U2-2"<br />
 副分類: []<br />
 難易度: 3</p>
 <hr />
 <h1>97年結構工程技師高考 結構學 第一題</h1>
-<h2>1. 原始題目重述 (Problem Restatement)</h2>
-<p>如圖所示桁架 (truss)，A、D 兩點為滾支承 (roller)，E 點為鉸接 (hinge)。若每根桿件的彈性模數 $E$ 與斷面積 $A$ 為常數，當 B 點有一垂直載重 $10\text{ kN}$ 時，計算支承之反力及各桿件內力。(25 分)</p>
-<p><img alt="SA-2008-1 題目附圖：包含A、D滾支承與E鉸接的一度靜不定桁架" src="../../raw/solutions/SA-2008-1/SA-2008-1-fig-1.png" /></p>
-<p><em>圖說：(待補充說明)</em></p>
-<p><em>(註：節點 A 為原點 (0,0)，C(10,0)，E(20,0)。B(10,5)，D(20,10)。A 為水平滾支承，E 為鉸支承，D 為靠於垂直牆面之水平滾支承)</em></p>
+<h2>1. 題目（考卷原文見題目正本）</h2>
+<blockquote>
+<p>考卷原文、公式／附表、附圖與判讀清單（已確認）見 <a href="SA-2008-1-problem.md"><code>SA-2008-1-problem.md</code></a>。本節只列解題時最容易讀錯的地方與本解使用的記號；題意以題目正本為準。</p>
+</blockquote>
+<p><img alt="SA-2008-1 重繪題目附圖：三角形桁架：A(0,0)、C(10,0)、E(20,0)、B(10,5)、D(20,10)；A 滾支承、E 鉸支承、D 滾支承靠右側牆；B 點 10 kN 向下" src="../../raw/solutions/SA-2008-1/figs/SA-2008-1-fig-1-problem.svg" /><br />
+<em>重繪自考卷附圖，依判讀清單重繪。攔：D 讀成垂直反力、E 讀成滾支承。</em></p>
+<h3>常見誤讀</h3>
+<table>
+<thead>
+<tr>
+<th>項目</th>
+<th>正確判讀</th>
+<th>常見誤讀</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>D 支承</td>
+<td>滾支承靠右側直立牆 → 水平反力</td>
+<td>垂直反力</td>
+</tr>
+<tr>
+<td>A 支承</td>
+<td>地面滾支承 → 垂直反力</td>
+<td>鉸支承</td>
+</tr>
+<tr>
+<td>上弦</td>
+<td>A、B、D 共線（斜率 1/2）</td>
+<td>B 不在 AD 線上</td>
+</tr>
+</tbody>
+</table>
+<p><strong>本解記號：</strong> 座標以 A 為原點（m）；D_x 為贅力（向右為正）；E、A 為常數；桿力拉為正。</p>
 <h2>2. 考題核心精神與出題者意圖 (Core Concepts &amp; Examiner's Intent)</h2>
 <p>本題為經典的<strong>一度靜不定桁架 (Statically Indeterminate Truss)</strong> 分析。出題者的核心意圖在於：</p>
 <ol>
@@ -165,40 +341,32 @@ header .nomat{margin-top:12px;font-size:.8em;opacity:.85}
 <p>於 D 點施加向右 $X=1$，無其他外載。</p>
 <ul>
 <li>
-<p><strong>整體平衡</strong>：<br />
-  $\Sigma M_E = 0 \implies -A_y \times 20 + 1 \times 10 = 0 \implies A_y = 0.5 (\uparrow)$<br />
-  $\Sigma F_y = 0 \implies A_y + E_y = 0 \implies E_y = -0.5 (\downarrow)$<br />
-  $\Sigma F_x = 0 \implies 1 + E_x = 0 \implies E_x = -1 (\leftarrow)$</p>
+<p><strong>整體平衡</strong>（先對 E 取矩，再用整體力矩對 A 複核）：<br />
+  $\Sigma M_E = 0 \implies A_y(0-20) - 1\times(10-0) = 0 \implies A_y = -0.5\ (\downarrow)$<br />
+  $\Sigma F_y = 0 \implies A_y + E_y = 0 \implies E_y = 0.5\ (\uparrow)$<br />
+  $\Sigma F_x = 0 \implies 1 + E_x = 0 \implies E_x = -1\ (\leftarrow)$<br />
+  複核 $\Sigma M_A = E_y\times 20 - 1\times 10 = 10 - 10 = 0$ ✓</p>
 </li>
 <li>
 <p><strong>節點 A</strong>：<br />
-  $\Sigma F_y = 0 \implies F_{AB} \times \frac{1}{\sqrt{5}} + 0.5 = 0 \implies F_{AB} = -0.5\sqrt{5}$<br />
-  $\Sigma F_x = 0 \implies F_{AC} + F_{AB} \times \frac{2}{\sqrt{5}} = 0 \implies F_{AC} = 1$</p>
+  $\Sigma F_y = 0 \implies u_{AB}\times\frac{1}{\sqrt{5}} + A_y = 0 \implies u_{AB} = 0.5\sqrt{5}$<br />
+  $\Sigma F_x = 0 \implies u_{AC} + u_{AB}\times\frac{2}{\sqrt{5}} = 0 \implies u_{AC} = -1$</p>
 </li>
 <li>
-<p><strong>節點 C</strong>：<br />
-  $F_{CE} = F_{AC} = 1$，$F_{BC} = 0$。</p>
+<p><strong>節點 C</strong>：$u_{CE} = u_{AC} = -1$，$u_{BC} = 0$（C 點無垂直力）。</p>
 </li>
 <li>
 <p><strong>節點 D</strong>：<br />
-  $\Sigma F_x = 0 \implies 1 - F_{BD} \times \frac{2}{\sqrt{5}} = 0 \implies F_{BD} = \frac{\sqrt{5}}{2}$<br />
-  $\Sigma F_y = 0 \implies -F_{DE} - F_{BD} \times \frac{1}{\sqrt{5}} = 0 \implies F_{DE} = -0.5$</p>
+  $\Sigma F_x = 0 \implies 1 - u_{BD}\times\frac{2}{\sqrt{5}} = 0 \implies u_{BD} = \frac{\sqrt{5}}{2}$<br />
+  $\Sigma F_y = 0 \implies -u_{DE} - u_{BD}\times\frac{1}{\sqrt{5}} = 0 \implies u_{DE} = -0.5$</p>
 </li>
 <li>
-<p><strong>節點 E</strong>：<br />
-  $\Sigma F_x = 0 \implies -F_{CE} - F_{BE} \times \frac{2}{\sqrt{5}} + E_x = 0 \implies -1 - F_{BE} \times \frac{2}{\sqrt{5}} - 1 = 0 \implies F_{BE} = -\sqrt{5}$ (此為一開始的符號推導錯誤，正解為0，見下方修正)</p>
+<p><strong>節點 E</strong>（檢核）：<br />
+  $\Sigma F_x = 0 \implies -u_{CE} - u_{BE}\times\frac{2}{\sqrt{5}} + E_x = 1 - u_{BE}\times\frac{2}{\sqrt{5}} - 1 = 0 \implies u_{BE} = 0$<br />
+  $\Sigma F_y = u_{BE}\times\frac{1}{\sqrt{5}} + u_{DE} + E_y = 0 - 0.5 + 0.5 = 0$ ✓</p>
 </li>
 </ul>
-<p><em>(正確的 $u$ 內力)</em>：<br />
-$A_y = -0.5, E_y = 0.5, E_x = -1$</p>
-<ul>
-<li>$u_{AB} = \frac{\sqrt{5}}{2}$</li>
-<li>$u_{AC} = -1$</li>
-<li>$u_{CE} = -1$</li>
-<li>$u_{BE} = 0$</li>
-<li>$u_{BD} = \frac{\sqrt{5}}{2}$</li>
-<li>$u_{DE} = -0.5$</li>
-</ul>
+<p>彙整：$A_y = -0.5$、$E_y = 0.5$、$E_x = -1$；$u_{AB} = u_{BD} = \frac{\sqrt{5}}{2}$、$u_{AC} = u_{CE} = -1$、$u_{BC} = u_{BE} = 0$、$u_{DE} = -0.5$。</p>
 <h3>步驟 4：變形相容條件與求贅力 $X$</h3>
 <p>列表計算 $\Delta_{10} = \sum F_0 u L$ 與 $f_{11} = \sum u^2 L$（提出 $EA$）：</p>
 <table>
@@ -303,12 +471,18 @@ $$ X = \frac{(25\sqrt{5} + 80)(5\sqrt{5} - 9)}{125 - 81} = \frac{625 - 225\sqrt{
 <li>$F_{BD} = 0 + 0.5\sqrt{5} X \approx \mathbf{7.529\text{ kN}}$ (拉力)</li>
 <li>$F_{DE} = 0 - 0.5 X \approx \mathbf{-3.367\text{ kN}}$ (壓力)</li>
 </ul>
+<p><img alt="SA-2008-1 桿力圖：BD +7.53、AC 與 CE +3.27 受拉，AB −3.65、BE −11.18、DE −3.37 受壓，CB 零桿；D 支承受拉 6.73 kN" src="../../raw/solutions/SA-2008-1/figs/SA-2008-1-fig-2-truss.svg" /></p>
+<p><em>圖 2　桿力（紅拉藍壓、灰虛線零桿；全節點平衡含反力殘差為 0 才繪製）。CB 是零桿，D 支承承受拉力；這張圖攔的是「CB 當受力桿」與「$D_x$ 當成受壓」。</em></p>
 <h2>5. 關鍵爭議點與進階探討 (Critical Issues &amp; Advanced Discussion)</h2>
 <ul>
 <li><strong>冗餘度選擇的影響</strong>：本題選定 $D_x$ 為贅力，由於 D 點位於結構邊界上，可使得單位力 $u$ 的計算最為直觀。若選取桁架內部構件（如斜桿）為贅力，基本結構將變為內部包含四邊形面板的結構，計算會複雜許多。</li>
 <li><strong>單位力狀態的防呆檢查</strong>：在步驟 3 計算 $u$ 時，極易發生正負號失誤（如支承反力方向假設顛倒），導致整個 $f_{11}$ 偏離。建議在求得 $u$ 內力後，務必使用整體力矩平衡（例如對 A 點取力矩）進行二次確認。</li>
-<li><strong>無載桿（零桿）的物理意義</strong>：$BC$ 桿在此載重下為絕對的零桿（不受外載且未做為贅力受力點），這在實務上稱為<strong>穩定桿</strong>。它的存在雖然對承擔 $10\text{ kN}$ 的重力沒有直接貢獻，但能防止長柱屈曲並維持桁架整體幾何形狀穩定。</li>
-</ul></main>
+<li><strong>零桿 BC</strong>：C 點只有 AC、CE 兩根水平桿與垂直桿 BC，且 C 點無外力，垂直平衡直接得 $F_{BC} = 0$（基本結構與單位力狀態皆然，故最終也為 0）。BC 在本載重下不受力，但仍是幾何上必要的桿件：拿掉它，C 點在垂直方向失去約束，桁架變成機構。</li>
+<li><strong>D 支承受拉</strong>：最終 $D_x = 6.734\text{ kN}$ 向右，表示右側牆對 D 是拉力。本解照題目把滾支承視為雙向約束；若支承只能受壓，D 會脫離牆面，需改以 $D_x = 0$ 重算。</li>
+</ul>
+<p><em>修正日期：2026-11-07（§1 改為指向題目正本並放重繪附圖（figs/SA-2008-1-fig-1-problem.svg）、加常見誤讀、刪除圖說佔位字；圖由 gen_SA-2008-1.py 產生，可重跑）</em><br />
+<em>修正日期：2026-11-07（非勘誤）表述修正：§4 步驟 3 刪除錯誤的單位力推導與自我更正註記、只留正確推導並加整體力矩複核；§5 零桿 BC 敘述改寫、補 D 支承受拉說明；答案不變</em><br />
+<em>修正日期：2026-11-07（非勘誤）圖解補繪：圖 2（gen_SA-2008-1.py，可重跑）</em></p></main>
 <footer>來源：raw/solutions/SA-2008-1/SA-2008-1.md（知識庫解題內容唯一正本；本頁僅為渲染顯示）</footer>
 
 <script>

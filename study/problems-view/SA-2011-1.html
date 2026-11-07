@@ -43,16 +43,201 @@ header .nomat{margin-top:12px;font-size:.8em;opacity:.85}
 <p class="meta2">主分類 <b>SA-U2-2</b> 靜不定結構諧合變位 ｜ 2011 年（民國 100） ｜ 柔度法 / 虛功法 (Method of Consistent Deformations / Virtual Work Method)</p>
 <div class="hbtns"></div><p class="nomat">本題主分類 SA-U2-2 目前尚無教材，故不提供教材按鈕。</p>
 </header>
-<main><h1>考題編號：SA-2011-1</h1>
+<main><details class="problem-src" open><summary><b>📄 題目正本</b>（考卷原文、附圖與判讀清單；不含解法）</summary>
+<h1>SA-2011-1 題目正本</h1>
+<blockquote>
+<p>本檔只記錄考卷上寫了什麼、圖上畫了什麼，不含任何解法。解析見同資料夾 <code>SA-2011-1.md</code>。<br />
+判讀清單經使用者確認前，狀態為「待確認」；確認後本檔原則上不再修改（改動須回考卷原圖並記 log）。</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>項目</th>
+<th>內容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>考卷</td>
+<td><code>raw/exams/SA-2011_結構學.pdf</code>，第 1 頁（正面），第一題（無圖號）</td>
+</tr>
+<tr>
+<td>考年</td>
+<td>2011（民國 100 年）專技高考結構工程技師「結構學」</td>
+</tr>
+<tr>
+<td>配分</td>
+<td>25 分</td>
+</tr>
+<tr>
+<td>附圖</td>
+<td><code>SA-2011-1-fig-1.png</code>、<code>SA-2011-1-fig-2.png</code></td>
+</tr>
+<tr>
+<td>判讀狀態</td>
+<td><strong>已確認</strong>（2026-11-07 使用者確認；原轉錄：2026-11-07 轉錄；PyMuPDF 110 dpi 整頁＋400–1200 dpi 局部放大；PDF 向量繪圖；盲讀於開啟解析前完成）</td>
+</tr>
+</tbody>
+</table>
+<h2>1. 考卷原文（逐字）</h2>
+<p>一、如圖所示之桁架結構，假設AB 及BE 桿件溫度增加60℃，DE 及EF 桿件施作時分別短了1.5 cm 及1.0 cm，支承A 被建造於原定位置的左方2.4 cm，且支承F 低於原既定位置1.2 cm。已知溫度膨脹係數α＝1.08×10⁻⁵/℃，假設各桿件之彈性模數E 值與斷面積A 值皆為常數，且EA＝8×10⁴ kN。試計算各支承之反力。（25 分）</p>
+<h2>2. 考卷給的公式、附表與參數</h2>
+<ul>
+<li>考卷沒有給任何參考公式或附表。</li>
+<li>給定：α＝1.08×10⁻⁵/℃；EA＝8×10⁴ kN（各桿相同）。</li>
+<li>沒有外加載重；作用為溫度（AB、BE ＋60℃）、製造誤差（DE 短 1.5 cm、EF 短 1.0 cm）、支承位置誤差（A 偏左 2.4 cm、F 偏低 1.2 cm）。</li>
+<li>卷首注意事項：㈠可以使用電子計算器。㈡不必抄題，作答時請將試題題號及答案依照順序寫在試卷上，於本試題上作答者，不予計分。㈢本試題之相關公式，請自行合理推知。</li>
+<li>考試時間：2 小時。</li>
+</ul>
+<h2>3. 附圖</h2>
+<p><img alt="SA-2011-1 考卷附圖原截圖（含滑鼠游標，壓在 A 支承上）" src="../../raw/solutions/SA-2011-1/SA-2011-1-fig-1.png" /><br />
+<em>證據圖 SA-2011-1-fig-1.png</em></p>
+<p><img alt="SA-2011-1 考卷附圖：矩形桁架：上弦 A–B–C、下弦 D–E–F，各段 4 m，高 3 m；垂直桿 A–D、B–E、C–F；斜桿 A–E、C–E；A 為滾支承靠左側直立牆，D 為鉸支承，F 為滾支承在地面" src="../../raw/solutions/SA-2011-1/SA-2011-1-fig-2.png" /><br />
+<em>證據圖 SA-2011-1-fig-2.png（2026-11-07 自考卷重新擷取 500 dpi，無游標）</em></p>
+<p>圖面文字照錄：A、B、C、3 m、D、F、E、4 m、4 m</p>
+<h2>4. 判讀清單</h2>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>項目</th>
+<th>判讀</th>
+<th>圖上／題文依據</th>
+<th>把握</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>A</td>
+<td>滾支承靠左側直立牆（圓圈貼直立剖線）→ 水平反力</td>
+<td>450 dpi 放大：圓圈在 A 節點左側、緊貼直立牆</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>2</td>
+<td>D</td>
+<td>鉸支承（三角形＋剖線）</td>
+<td>450 dpi 放大</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>3</td>
+<td>F</td>
+<td>滾支承於水平地面（圓圈＋剖線）→ 垂直反力</td>
+<td>450 dpi 放大</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>4</td>
+<td>節點座標</td>
+<td>D(0,0)、E(4,0)、F(8,0)、A(0,3)、B(4,3)、C(8,3)</td>
+<td>4 m｜4 m 界線對齊 D、E、F；3 m 界線對齊 C、F</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>5</td>
+<td>桿件</td>
+<td>A–B、B–C、D–E、E–F、A–D、B–E、C–F、A–E、C–E 共 9 根</td>
+<td>圖面</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>6</td>
+<td>溫度</td>
+<td>AB、BE 兩桿升溫 60℃</td>
+<td>題文</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>7</td>
+<td>製造誤差</td>
+<td>DE 短 1.5 cm、EF 短 1.0 cm</td>
+<td>題文</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>8</td>
+<td>支承誤差</td>
+<td>A 建造位置在原定位置左方 2.4 cm（A 支承只約束水平向）；F 低於原定位置 1.2 cm（F 只約束垂直向）</td>
+<td>題文；支承方向</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>9</td>
+<td>材料</td>
+<td>EA＝8×10⁴ kN；α＝1.08×10⁻⁵/℃</td>
+<td>題文</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>10</td>
+<td>所求</td>
+<td>各支承反力</td>
+<td>題文</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>11</td>
+<td>靜不定度</td>
+<td>m＝9、r＝4、j＝6：13＞12，一度靜不定</td>
+<td>計數</td>
+<td>確定（解讀）；使用者確認</td>
+</tr>
+<tr>
+<td>12</td>
+<td>證據圖</td>
+<td>舊 fig-1 游標壓在 A 支承上（看不清是滾還是鉸）；新增 fig-2（500 dpi）</td>
+<td>—</td>
+<td>確定</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p><em>轉錄：2026-11-07（SA-U2-2 題目正本推廣・批 1）</em><br />
+<em>確認：2026-11-07 使用者確認</em></p>
+</details>
+<hr>
+<h1>考題編號：SA-2011-1</h1>
 <p><strong>主分類：</strong> <code>SA-U2-2</code> 靜不定結構分析<br />
 <strong>副分類：</strong> 無<br />
 <strong>分析法：</strong> 柔度法 / 虛功法 (Method of Consistent Deformations / Virtual Work Method)<br />
 <strong>標籤：</strong> <code>靜不定桁架</code> <code>溫度變化</code> <code>製造誤差</code> <code>支承位移</code></p>
 <hr />
-<h2>1. 原始題目重述 (Problem Restatement)</h2>
-<p>如圖所示之桁架結構，假設 AB 及 BE 桿件溫度增加 $60^\circ\text{C}$，DE 及 EF 桿件施作時分別短了 $1.5\text{ cm}$ 及 $1.0\text{ cm}$，支承 A 被建造於原定位置的左方 $2.4\text{ cm}$，且支承 F 低於原既定位置 $1.2\text{ cm}$。已知溫度膨脹係數 $\alpha = 1.08 \times 10^{-5} / ^\circ\text{C}$，假設各桿件之彈性模數 $E$ 值與斷面積 $A$ 值皆為常數，且 $EA = 8 \times 10^4\text{ kN}$。試計算各支承之反力。(25 分)</p>
-<p><img alt="SA-2011-1 題目附圖：包含A、B、C、D、E、F節點之桁架，其中D為鉸支承，F為滾支承，各桿長度配置如圖所示" src="../../raw/solutions/SA-2011-1/SA-2011-1-fig-1.png" /></p>
-<p><em>圖說：靜不定桁架，D點為鉸支承，F點為滾支承，A點原本有水平束制，各桿件長度可由座標推算</em></p>
+<h2>1. 題目（考卷原文見題目正本）</h2>
+<blockquote>
+<p>考卷原文、公式／附表、附圖與判讀清單（已確認）見 <a href="SA-2011-1-problem.md"><code>SA-2011-1-problem.md</code></a>。本節只列解題時最容易讀錯的地方與本解使用的記號；題意以題目正本為準。</p>
+</blockquote>
+<p><img alt="SA-2011-1 重繪題目附圖：矩形桁架：上弦 A–B–C、下弦 D–E–F 各 4 m，高 3 m，斜桿 AE、CE；A 滾支承靠左側牆、D 鉸支承、F 地面滾支承" src="../../raw/solutions/SA-2011-1/figs/SA-2011-1-fig-1-problem.svg" /><br />
+<em>重繪自考卷附圖，依判讀清單重繪。攔：A 讀成鉸支承、支承位置誤差方向讀錯。</em></p>
+<h3>常見誤讀</h3>
+<table>
+<thead>
+<tr>
+<th>項目</th>
+<th>正確判讀</th>
+<th>常見誤讀</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>A 支承</td>
+<td>滾支承靠左側直立牆 → 只約束水平</td>
+<td>鉸支承</td>
+</tr>
+<tr>
+<td>F 支承</td>
+<td>地面滾支承 → 只約束垂直</td>
+<td>鉸支承</td>
+</tr>
+<tr>
+<td>支承誤差</td>
+<td>A 偏左 2.4 cm（水平）、F 偏低 1.2 cm（垂直），各沿該支承約束方向</td>
+<td>方向對調</td>
+</tr>
+</tbody>
+</table>
+<p><strong>本解記號：</strong> 座標以 D 為原點（m）；EA＝8×10⁴ kN；α＝1.08×10⁻⁵／℃；贅力 X＝A 點水平反力（向右為正）；支承位移 ΔAx＝−2.4 cm、ΔFy＝−1.2 cm。</p>
 <h2>2. 考題核心精神與出題者意圖 (Core Concepts &amp; Examiner's Intent)</h2>
 <p>本題為經典的<strong>一次靜不定桁架綜合題</strong>，測驗考生處理「多重非載重變形」（溫度應變、製造誤差、支承位移）的整合能力。出題者的核心意圖包含：</p>
 <ol>
@@ -193,12 +378,16 @@ $X = \frac{-0.012204}{0.000134375} = -90.82\text{ kN}$<br />
 <li><strong>D 點水平反力</strong>：$D_x = -X = -(-90.82) = \boxed{90.82\text{ kN}} \text{ (向右)}$</li>
 <li><strong>D 點垂直反力</strong>：$D_y = -\frac{3}{8} X = \boxed{34.06\text{ kN}} \text{ (向上)}$</li>
 </ul>
+<p><img alt="SA-2011-1 桿力圖：無外載，桿力由溫度、製造誤差與支承偏位引起；AB、BC +45.41、AE +56.76、CF +34.06 受拉，DE −90.82、CE −56.76、AD −34.06 受壓，BE、EF 零桿" src="../../raw/solutions/SA-2011-1/figs/SA-2011-1-fig-2-truss.svg" /></p>
+<p><em>圖 2　桿力（$N = u\,X$，$X = -90.82$ kN；全節點平衡含反力殘差為 0 才繪製）。BE 升溫、EF 短了 1 cm，但兩桿仍是零桿；這張圖攔的是「有初始變形的桿就一定受力」與「A 偏左的符號弄反」。</em></p>
 <p><em>(靜力平衡驗算：$\sum F_x = -90.82 + 90.82 = 0$；$\sum F_y = 34.06 - 34.06 = 0$；$\sum M_D = A_x(3) + F_y(8) = (-90.82)(3) + (-34.0575)(8) = -272.46 + 272.46 = 0$，完全吻合！)</em></p>
 <h2>5. 關鍵爭議點與進階探討 (Critical Issues &amp; Advanced Discussion)</h2>
 <ul>
 <li><strong>無載重變形的零桿影響</strong>：在虛力系統分析時，有些桿件的虛內力為 0。當考題中這類桿件發生溫度變化或製造誤差時，它們的變形在結構整體的相容變位方程式中不作功，對贅力沒有貢獻。考生常在此處懷疑自己是否算錯。遇到這類干擾資訊，必須相信力學原理：<strong>不承載虛力的桿件，其自發變形對該多餘束制沒有影響</strong>。</li>
 <li><strong>支承位移與虛反力方向</strong>：在計算外部虛功 $W_{\text{ext}}$ 時，必須嚴格遵守 $P_{\text{virt}} \cdot \Delta_{\text{real}}$ 的內積關係。許多考生習慣只看數值，導致正負號錯亂。建議在圖上明確標出 $P_{\text{virt}}$ 向量與 $\Delta_{\text{real}}$ 向量，若同向則為正功，反向為負功，以此作為最終防線。</li>
-</ul></main>
+</ul>
+<p><em>修正日期：2026-11-07（§1 改為指向題目正本並放重繪附圖（figs/SA-2011-1-fig-1-problem.svg）、加常見誤讀；圖由 gen_SA-2011-1.py 產生，可重跑）</em><br />
+<em>修正日期：2026-11-07（非勘誤）圖解補繪：圖 2（gen_SA-2011-1.py，可重跑）</em></p></main>
 <footer>來源：raw/solutions/SA-2011-1/SA-2011-1.md（知識庫解題內容唯一正本；本頁僅為渲染顯示）</footer>
 
 <script>

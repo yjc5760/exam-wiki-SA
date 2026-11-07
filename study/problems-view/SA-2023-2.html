@@ -43,16 +43,184 @@ header .nomat{margin-top:12px;font-size:.8em;opacity:.85}
 <p class="meta2">主分類 <b>SA-U2-2</b> 靜不定結構諧合變位 ｜ 副分類 <b>SA-U1-1</b> 靜不定度與穩定性之判斷 ｜ 2023 年（民國 112） ｜ 諧合變位法 / 最小功法</p>
 <div class="hbtns"></div><p class="nomat">本題主分類 SA-U2-2 目前尚無教材，故不提供教材按鈕。</p>
 </header>
-<main><h1>考題編號：SA-2023-2</h1>
+<main><details class="problem-src" open><summary><b>📄 題目正本</b>（考卷原文、附圖與判讀清單；不含解法）</summary>
+<h1>SA-2023-2 題目正本</h1>
+<blockquote>
+<p>本檔只記錄考卷上寫了什麼、圖上畫了什麼，不含任何解法。解析見同資料夾 <code>SA-2023-2.md</code>。<br />
+判讀清單經使用者確認前，狀態為「待確認」；確認後本檔原則上不再修改（改動須回考卷原圖並記 log）。</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>項目</th>
+<th>內容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>考卷</td>
+<td><code>raw/exams/SA-2023_結構學.pdf</code>，第 1 頁（正面），第二題（圖二）</td>
+</tr>
+<tr>
+<td>考年</td>
+<td>2023（民國 112 年）專技高考結構工程技師「結構學」</td>
+</tr>
+<tr>
+<td>配分</td>
+<td>25 分</td>
+</tr>
+<tr>
+<td>附圖</td>
+<td><code>SA-2023-2-fig-1.png</code></td>
+</tr>
+<tr>
+<td>判讀狀態</td>
+<td><strong>已確認</strong>（2026-11-07 使用者確認；原轉錄：2026-11-07 轉錄；PyMuPDF 110 dpi 整頁＋400–1200 dpi 局部放大（附圖為內嵌點陣圖）；盲讀於開啟解析前完成）</td>
+</tr>
+</tbody>
+</table>
+<h2>1. 考卷原文（逐字）</h2>
+<p>二、試分析一平面桁架如圖二所示，點A 為鉸支承，點D 為滾支承，假設所有桿件之彈性模數與斷面積乘積為EA=200,000 kN。若桁架中點B 承受一垂直載重30 kN ，試求桿件BD 中之內力並標註受壓或受拉。（25 分）</p>
+<h2>2. 考卷給的公式、附表與參數</h2>
+<ul>
+<li>考卷沒有給任何參考公式或附表。</li>
+<li>給定：所有桿件 EA＝200,000 kN。</li>
+<li>卷首注意事項：㈠可以使用電子計算器。㈡不必抄題，作答時請將試題題號及答案依照順序寫在試卷上，於本試題上作答者，不予計分。㈢本科目除專門名詞或數理公式外，應使用本國文字作答。</li>
+<li>考試時間：2 小時。代號 00340，頁次 2－1。</li>
+</ul>
+<h2>3. 附圖</h2>
+<p><img alt="SA-2023-2 考卷附圖（圖二）：桁架 A、B 在上方相距 8 m，D、C 在下方 4 m 處（距 A 水平 3 m、5 m）；桿 A–B、A–D、A–C、B–D、B–C、D–C，A–C 與 B–D 交叉不相連；A 鉸支承於左牆，D 滾支承；B 受 30 kN 向下" src="../../raw/solutions/SA-2023-2/SA-2023-2-fig-1.png" /><br />
+<em>證據圖 SA-2023-2-fig-1.png</em></p>
+<p>圖面文字照錄：3 m、2 m、3 m、A、B、30 kN、4 m、D、C、圖二</p>
+<h2>4. 判讀清單</h2>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>項目</th>
+<th>判讀</th>
+<th>圖上／題文依據</th>
+<th>把握</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>A</td>
+<td>鉸支承於左側直立牆（三角形＋圓圈）</td>
+<td>500 dpi 放大；題文</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>2</td>
+<td>D</td>
+<td>滾支承於水平地面（圓圈＋三角形＋兩滾輪）→ 垂直反力</td>
+<td>500 dpi 放大；題文</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>3</td>
+<td>節點座標</td>
+<td>A(0,0)、B(8,0)、D(3,−4)、C(5,−4)</td>
+<td>上方 3 m｜2 m｜3 m 界線對齊 A、D、C、B；4 m 界線對齊 A 與 D、C</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>4</td>
+<td>桿件</td>
+<td>A–B、A–D、A–C、B–D、B–C、D–C 共 6 根</td>
+<td>圖面</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>5</td>
+<td>交叉處</td>
+<td>A–C 與 B–D 在圖上交叉，但交叉點<strong>沒有節點</strong>（無圓圈），兩桿互不相連</td>
+<td>500 dpi 放大：交叉處無空心圓</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>6</td>
+<td>材料</td>
+<td>所有桿件 EA＝200,000 kN</td>
+<td>題文</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>7</td>
+<td>載重</td>
+<td>B 點垂直向下 30 kN</td>
+<td>空心箭頭自 B 向下</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>8</td>
+<td>所求</td>
+<td>桿 BD 內力（標註拉或壓）</td>
+<td>題文</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>9</td>
+<td>靜不定度</td>
+<td>m＝6、r＝3、j＝4：9＞8，一度靜不定</td>
+<td>計數</td>
+<td>確定（解讀）；使用者確認</td>
+</tr>
+<tr>
+<td>10</td>
+<td>證據圖</td>
+<td>fig-1 清晰無游標，沿用</td>
+<td>—</td>
+<td>確定</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p><em>轉錄：2026-11-07（SA-U2-2 題目正本推廣・批 1）</em><br />
+<em>確認：2026-11-07 使用者確認</em></p>
+</details>
+<hr>
+<h1>考題編號：SA-2023-2</h1>
 <p><strong>主分類：</strong> <code>SA-U2-2</code> 靜不定結構諧合變位<br />
 <strong>副分類：</strong> <code>SA-U1-1</code> 靜不定度與穩定性之判斷<br />
 <strong>分析法：</strong> 諧合變位法 / 最小功法<br />
 <strong>標籤：</strong> <code>靜不定桁架</code> <code>諧合變位法</code> <code>多餘力</code> <code>節點法</code> <code>單位力法</code></p>
 <hr />
-<h2>1. 原始題目重述 (Problem Restatement)</h2>
-<p>試分析一平面桁架如圖二所示，點 A 為鉸支承，點 D 為滾支承，假設所有桿件之彈性模數與斷面積乘積為 $EA=200,000 \text{ kN}$。若桁架中點 B 承受一垂直載重 $30 \text{ kN}$，試求桿件 BD 中之內力並標註受壓或受拉。（25 分）</p>
-<p><img alt="SA-2023-2 題目附圖：包含 4 個節點、6 根桿件的四邊形交叉斜撐平面桁架" src="../../raw/solutions/SA-2023-2/SA-2023-2-fig-1.png" /></p>
-<p><em>圖說：節點配置為 A 在左上，B 在右上，D 在左下，C 在右下。各段水平距離：A 至 D 為 3m，D 至 C 為 2m，C 至 B 為 3m。A 點為鉸支承，D 點為滾支承。垂直高度為 4m。B 點受一向下 30 kN 之垂直載重。</em></p>
+<h2>1. 題目（考卷原文見題目正本）</h2>
+<blockquote>
+<p>考卷原文、公式／附表、附圖與判讀清單（已確認）見 <a href="SA-2023-2-problem.md"><code>SA-2023-2-problem.md</code></a>。本節只列解題時最容易讀錯的地方與本解使用的記號；題意以題目正本為準。</p>
+</blockquote>
+<p><img alt="SA-2023-2 重繪題目附圖：桁架 A(0,0)、B(8,0)、D(3,−4)、C(5,−4)，桿 AB、AD、AC、BD、BC、DC，AC 與 BD 交叉不相連；A 鉸支承於左牆、D 滾支承；B 點 30 kN 向下" src="../../raw/solutions/SA-2023-2/figs/SA-2023-2-fig-1-problem.svg" /><br />
+<em>重繪自考卷附圖，依判讀清單重繪。攔：交叉點當成節點、D 讀成鉸支承。</em></p>
+<h3>常見誤讀</h3>
+<table>
+<thead>
+<tr>
+<th>項目</th>
+<th>正確判讀</th>
+<th>常見誤讀</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>交叉處</td>
+<td>AC 與 BD 交叉不相連（無節點）</td>
+<td>當成節點</td>
+</tr>
+<tr>
+<td>支承</td>
+<td>A 鉸支承（2）、D 滾支承（1）</td>
+<td>D 讀成鉸支承</td>
+</tr>
+<tr>
+<td>幾何</td>
+<td>AD、BC 長 5 m；AC、BD 長 √41 m；DC 2 m</td>
+<td>AC、BD 長度算錯</td>
+</tr>
+</tbody>
+</table>
+<p><strong>本解記號：</strong> 座標以 A 為原點（m，向上為正）；EA＝200,000 kN；以 BD 桿力為多餘力 X；桿力拉為正。</p>
 <h2>2. 考題核心精神與出題者意圖 (Core Concepts &amp; Examiner's Intent)</h2>
 <p><strong>核心精神：</strong></p>
 <ol>
@@ -322,10 +490,14 @@ $$X = F_{BD} = - \frac{\Delta_{10}}{\delta_{11}} = - \frac{\frac{4037.5}{\sqrt{4
 $$F_{BD} = - \frac{25625 - 1895\sqrt{41}}{328} \approx -41.131 \text{ kN}$$<br />
 因計算結果為負號，表示實際受力方向與假設（拉力）相反，故為壓力。</p>
 <p>$$\boxed{F_{BD} = 41.13 \text{ kN} \text{ (壓力)}}$$</p>
+<p><img alt="SA-2023-2 桿力圖：AB +35.35、AC +6.89 受拉，BD −41.13、AD −67.88、BC −5.38、DC −8.61 受壓；AC 與 BD 交叉處不是節點" src="../../raw/solutions/SA-2023-2/figs/SA-2023-2-fig-2-truss.svg" /></p>
+<p><em>圖 2　桿力（$S + u\,X$，全節點平衡含反力殘差為 0 才繪製）。AC 與 BD 在圖上交叉但不相連，各自傳力；這張圖攔的是「把交叉點當節點」與「BD 標成受拉」。</em></p>
 <h2>5. 關鍵爭議點與進階探討 (Critical Issues &amp; Advanced Discussion)</h2>
 <ul>
 <li><strong>多餘桿的選擇策略</strong>：本題直接選擇題目要求的 BD 桿作為多餘力是最直觀的做法。若為了簡化計算，也可選擇 AC 桿作為多餘力。若切斷 AC 桿，則 BC 與 CD 在 $S$ 系統中將成為零力桿，可大幅減少計算量；解出 $F_{AC}$ 後，再透過疊加原理（$F_{BD} = S'_{BD} + u'_{BD} \cdot F_{AC}$）求得 BD 桿內力，兩者答案完全一致。</li>
-</ul></main>
+</ul>
+<p><em>修正日期：2026-11-07（§1 改為指向題目正本並放重繪附圖（figs/SA-2023-2-fig-1-problem.svg）、加常見誤讀；圖由 gen_SA-2023-2.py 產生，可重跑）</em><br />
+<em>修正日期：2026-11-07（非勘誤）圖解補繪：圖 2（gen_SA-2023-2.py，可重跑）</em></p></main>
 <footer>來源：raw/solutions/SA-2023-2/SA-2023-2.md（知識庫解題內容唯一正本；本頁僅為渲染顯示）</footer>
 
 <script>

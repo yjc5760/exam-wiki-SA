@@ -43,16 +43,194 @@ header .nomat{margin-top:12px;font-size:.8em;opacity:.85}
 <p class="meta2">主分類 <b>SA-U2-2</b> 靜不定結構諧合變位 ｜ 2006 年（民國 95） ｜ 諧合變位法 / 單位力法</p>
 <div class="hbtns"></div><p class="nomat">本題主分類 SA-U2-2 目前尚無教材，故不提供教材按鈕。</p>
 </header>
-<main><h1>考題編號：SA-2006-2</h1>
+<main><details class="problem-src" open><summary><b>📄 題目正本</b>（考卷原文、附圖與判讀清單；不含解法）</summary>
+<h1>SA-2006-2 題目正本</h1>
+<blockquote>
+<p>本檔只記錄考卷上寫了什麼、圖上畫了什麼，不含任何解法。解析見同資料夾 <code>SA-2006-2.md</code>。<br />
+判讀清單經使用者確認前，狀態為「待確認」；確認後本檔原則上不再修改（改動須回考卷原圖並記 log）。</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>項目</th>
+<th>內容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>考卷</td>
+<td><code>raw/exams/SA-2006_結構學.pdf</code>，第 1 頁（正面），第二題（無圖號）</td>
+</tr>
+<tr>
+<td>考年</td>
+<td>2006（民國 95 年）專技高考結構工程技師「結構學」</td>
+</tr>
+<tr>
+<td>配分</td>
+<td>25 分</td>
+</tr>
+<tr>
+<td>附圖</td>
+<td><code>SA-2006-2-fig-1.png</code>、<code>SA-2006-2-fig-2.png</code></td>
+</tr>
+<tr>
+<td>判讀狀態</td>
+<td><strong>已確認</strong>（2026-11-07 使用者確認；原轉錄：2026-11-07 轉錄；PyMuPDF 110 dpi 整頁＋400–1200 dpi 局部放大；PDF 向量座標；盲讀於開啟解析前完成）</td>
+</tr>
+</tbody>
+</table>
+<h2>1. 考卷原文（逐字）</h2>
+<p>二、如圖所示之結構受垂直均佈載重1 kN/m 之作用，試計算連桿（linkage）DB 與DC 之張力。圖中AC 為梁構件，A、B、C、D 點均為鉸接（hinge）。假設橫梁之EI = 1 kN-m²，連桿之AE = 1 kN，其中E 為構件之彈性模數，I 為斷面慣性矩，A 為斷面積。不計構件之自重與AC 構件之軸向變形，亦不計梁之深度。（25 分）</p>
+<h2>2. 考卷給的公式、附表與參數</h2>
+<ul>
+<li>考卷沒有給任何參考公式或附表。</li>
+<li>給定：橫梁 EI＝1 kN-m²；連桿 AE＝1 kN（兩根連桿相同）；不計自重、不計 AC 軸向變形、不計梁深。</li>
+<li>考卷沒有說連桿 DB、DC 的 AE 是否不同（只寫「連桿之 AE＝1 kN」，視為兩桿相同）。</li>
+<li>卷首注意事項：㈠可以使用電子計算器。㈡不必抄題，作答時請將試題題號及答案依照順序寫在試卷上，於本試題上作答者，不予計分。</li>
+<li>考試時間：2 小時。</li>
+</ul>
+<h2>3. 附圖</h2>
+<p><img alt="SA-2006-2 考卷附圖原截圖（含滑鼠游標，壓在梁 A–B 段中間）" src="../../raw/solutions/SA-2006-2/SA-2006-2-fig-1.png" /><br />
+<em>證據圖 SA-2006-2-fig-1.png</em></p>
+<p><img alt="SA-2006-2 考卷附圖：左側直立牆；梁 A–C 水平，A 端以鉸（三角形＋圓點）接牆；梁上 B 距 A 9 m、C 距 B 7 m，B、C 為小空心圓；D 在牆上 A 正上方 12 m，以鉸接牆；連桿 D–B、D–C 為雙線；梁全長受 1 kN/m 向下均佈" src="../../raw/solutions/SA-2006-2/SA-2006-2-fig-2.png" /><br />
+<em>證據圖 SA-2006-2-fig-2.png（2026-11-07 自考卷重新擷取 500 dpi，無游標）</em></p>
+<p>圖面文字照錄：D、12 m、A、B、C、1 kN/m、9 m、7 m</p>
+<h2>4. 判讀清單</h2>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>項目</th>
+<th>判讀</th>
+<th>圖上／題文依據</th>
+<th>把握</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>A</td>
+<td>鉸支承於左側直立牆（三角形尖端朝梁，內有圓點）</td>
+<td>400 dpi 放大；題文「A…為鉸接」</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>2</td>
+<td>D</td>
+<td>鉸支承於同一面牆，位於 A 正上方</td>
+<td>PDF 座標：D 鉸中心 x＝294.8、A 鉸中心 x＝296.9（pt）</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>3</td>
+<td>B、C</td>
+<td>連桿與梁的鉸接點（小空心圓）；梁 AC 在 B 處連續（非梁內鉸）</td>
+<td>B 圓圈畫在梁上，題文「AC 為梁構件」；若 B 為梁內鉸則結構靜定，與題給 EI、AE 求張力不合</td>
+<td>確定（解讀）；使用者確認</td>
+</tr>
+<tr>
+<td>4</td>
+<td>尺寸 9 m、7 m</td>
+<td>A→B 9 m、B→C 7 m，梁全長 16 m；尺寸線端點對齊 A 鉸、B 圓圈、C 圓圈</td>
+<td>PDF 座標：尺寸界線 x＝296.5、383.1、449.1；圓心 296.9、381.3、449.2</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>5</td>
+<td>尺寸 12 m</td>
+<td>D 在梁軸（A）上方 12 m</td>
+<td>PDF 座標：上界線 y＝688.0、D 鉸心 y＝681.5；下界線 y＝772.5、A 鉸心 y＝772.8。上界線略低於 D，圖面非按比例</td>
+<td>確定（解讀）；使用者確認</td>
+</tr>
+<tr>
+<td>6</td>
+<td>梁 AC</td>
+<td>水平，EI＝1 kN-m²，不計軸向變形；梁右端延伸到 C（略超出 C 圓圈為繪圖外框）</td>
+<td>題文；圖面</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>7</td>
+<td>連桿</td>
+<td>DB、DC 為二力桿，AE＝1 kN</td>
+<td>題文</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>8</td>
+<td>載重</td>
+<td>垂直向下均佈 1 kN/m，作用 A 至 C 全長</td>
+<td>箭頭自 A（x＝296）排到 C（x＝452）</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>9</td>
+<td>所求</td>
+<td>連桿 DB、DC 的張力</td>
+<td>題文</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>10</td>
+<td>靜不定度</td>
+<td>A 鉸 2＋兩連桿各 1＝4 個未知力，方程式 3，一度靜不定</td>
+<td>計數</td>
+<td>確定（解讀）；使用者確認</td>
+</tr>
+<tr>
+<td>11</td>
+<td>證據圖</td>
+<td>舊 fig-1 滑鼠游標壓在梁 A–B 段（易誤看成梁上另一個點或鉸）；新增 fig-2（500 dpi，無游標）</td>
+<td>—</td>
+<td>確定</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p><em>轉錄：2026-11-07（SA-U2-2 題目正本推廣・批 1）</em><br />
+<em>確認：2026-11-07 使用者確認</em></p>
+</details>
+<hr>
+<h1>考題編號：SA-2006-2</h1>
 <p><strong>主分類：</strong> <code>SA-U2-2</code> 結構分析法（力法與位移法）<br />
 <strong>副分類：</strong> 無<br />
 <strong>分析法：</strong> 諧合變位法 / 單位力法<br />
 <strong>標籤：</strong> <code>靜不定結構</code>, <code>複合結構</code>, <code>連桿</code>, <code>虛功原理</code>, <code>彈性支承</code></p>
 <hr />
-<h2>1. 原始題目重述 (Problem Restatement)</h2>
-<p>如圖所示之結構受垂直均佈載重 $1 \text{ kN/m}$ 之作用，試計算連桿（linkage）DB 與 DC 之張力。圖中 AC 為梁構件，A、B、C、D 點均為鉸接（hinge）。假設橫樑之 $EI = 1 \text{ kN-m}^2$，連桿之 $AE = 1 \text{ kN}$，其中 $E$ 為構件之彈性模數，$I$ 為斷面慣性矩，$A$ 為斷面積。不計構件之自重與 AC 構件之軸向變形，亦不計梁之深度。（25 分）</p>
-<p><img alt="SA-2006-2 題目附圖：梁 AC 受均佈載重，由兩連桿 DB、DC 懸吊" src="../../raw/solutions/SA-2006-2/SA-2006-2-fig-1.png" /></p>
-<p><em>圖說：水平梁 AC 總長 16m，其中 AB = 9m，BC = 7m。A 點為鉸接支承，D 點位於 A 點正上方 12m 處亦為鉸接。連桿 DB 與 DC 將梁懸掛。全梁承受向下均佈載重 1 kN/m。</em></p>
+<h2>1. 題目（考卷原文見題目正本）</h2>
+<blockquote>
+<p>考卷原文、公式／附表、附圖與判讀清單（已確認）見 <a href="SA-2006-2-problem.md"><code>SA-2006-2-problem.md</code></a>。本節只列解題時最容易讀錯的地方與本解使用的記號；題意以題目正本為準。</p>
+</blockquote>
+<p><img alt="SA-2006-2 重繪題目附圖：梁 AC 長 16 m（AB 9 m、BC 7 m），A 鉸接於牆；D 在 A 正上方 12 m 鉸接於同一面牆，連桿 DB、DC；梁全長 1 kN/m" src="../../raw/solutions/SA-2006-2/figs/SA-2006-2-fig-1-problem.svg" /><br />
+<em>重繪自考卷附圖，依判讀清單重繪。攔：B 讀成梁內鉸（變靜定）、D 不在 A 正上方、均佈只算到 B。</em></p>
+<h3>常見誤讀</h3>
+<table>
+<thead>
+<tr>
+<th>項目</th>
+<th>正確判讀</th>
+<th>常見誤讀</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>D 位置</td>
+<td>A 正上方 12 m，與 A 同一面牆</td>
+<td>D 在 B 或 C 上方</td>
+</tr>
+<tr>
+<td>B 點</td>
+<td>連桿鉸，梁 AC 在 B 連續（一度靜不定）</td>
+<td>梁內鉸（結構變靜定）</td>
+</tr>
+<tr>
+<td>載重</td>
+<td>1 kN/m 作用 A 至 C 全長</td>
+<td>只作用 AB 段</td>
+</tr>
+</tbody>
+</table>
+<p><strong>本解記號：</strong> DB 長 15 m（sin = 0.8）、DC 長 20 m（sin = 0.6）；EI = 1 kN-m²、AE = 1 kN；贅力 X＝V_C（DC 對梁 C 點的垂直分力，向上）；連桿張力以拉為正；位移向下為正。</p>
 <h2>2. 考題核心精神與出題者意圖 (Core Concepts &amp; Examiner's Intent)</h2>
 <ol>
 <li><strong>複合結構分析</strong>：測驗考生處理結合「受彎梁」與「受軸向力桿件（桁架）」的混合結構能力。</li>
@@ -255,11 +433,15 @@ $$ \boxed{T_C = \frac{V_C}{\sin \theta_C} = \frac{16127 / 5278}{0.6} = \frac{161
 $$ V_B = V_{B0} + v_B \cdot X = \frac{128}{9} - \frac{16}{9} \left( \frac{16127}{5278} \right) = \frac{128(5278) - 16(16127)}{9(5278)} = \frac{675584 - 258032}{47502} $$<br />
 $$ V_B = \frac{417552}{47502} = \frac{208776}{23751} = \frac{69592}{7917} \text{ kN} $$<br />
 $$ \boxed{T_B = \frac{V_B}{\sin \theta_B} = \frac{69592 / 7917}{0.8} = \frac{69592 \times 5}{7917 \times 4} = \frac{17398 \times 5}{7917} = \frac{86990}{7917} \approx 10.988 \text{ kN (張力)}} $$</p>
+<p><img alt="SA-2006-2 變形形狀與彎矩圖：兩連桿受拉伸長；梁在 B 連續，B 處小負彎矩、兩跨各有正彎矩；DB 拉力 10.99 kN、DC 拉力 5.093 kN" src="../../raw/solutions/SA-2006-2/figs/SA-2006-2-fig-2-deflected-bmd.svg" /></p>
+<p><em>圖 2　變形形狀與彎矩圖（勁度法重算，兩根連桿拉力核對本解）。B 是連桿與梁的鉸接點，梁本身在 B 連續、可承受彎矩；這張圖攔的是「把 B 當梁內鉸」與「兩根連桿拉力對調」。</em></p>
 <h2>5. 關鍵爭議點與進階探討 (Critical Issues &amp; Advanced Discussion)</h2>
 <ul>
 <li><strong>卡式定理與虛功法的對等性</strong>：本題亦可全程使用最小功法（卡式第二定理）求解，即列出總應變能 $U = U_{beam} + U_{DB} + U_{DC}$，並令 $\frac{\partial U}{\partial V_C} = 0$。經由卡式定理推導出的偏微分方程式，其各項係數與上述單位力法算出的位移項（$\Delta_{C0}, f_{CC}$）將會完全一致。考場上選擇單位力法能更直觀地分段檢查變形量。</li>
 <li><strong>剛度比例的極端值</strong>：題目給定的 $EI = 1$ 與 $AE = 1$ 是極為罕見的比例（實務上鋼梁的 $AE$ 數值會遠大於 $EI$）。出題者如此設計是為了讓「彎曲變形」與「軸向變形」對總位移的貢獻在同一數量級上，以測驗考生是否會遺漏任何一項變形能。若在實務設計中，軸向變形通常微乎其微而被忽略。</li>
-</ul></main>
+</ul>
+<p><em>修正日期：2026-11-07（§1 改為指向題目正本並放重繪附圖（figs/SA-2006-2-fig-1-problem.svg）、加常見誤讀；圖由 gen_SA-2006-2.py 產生，可重跑）</em><br />
+<em>修正日期：2026-11-07（非勘誤）圖解補繪：圖 2（gen_SA-2006-2.py，可重跑）</em></p></main>
 <footer>來源：raw/solutions/SA-2006-2/SA-2006-2.md（知識庫解題內容唯一正本；本頁僅為渲染顯示）</footer>
 
 <script>

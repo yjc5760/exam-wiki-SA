@@ -445,7 +445,7 @@ document.addEventListener('DOMContentLoaded',()=>{
   drawCats();drawBar();drawRisk();drawFlt();drawKpi();draw();drawMx();drawQF();renderQ();
   fillQs(document.getElementById('strat'));fillQs(document.getElementById('s1'));
   bindChips(document.getElementById('s1'));
-  mathIn(document.getElementById('strat'));mathIn(document.getElementById('s1'));mathIn(document.getElementById('mxsum'));
+  mathIn(document.getElementById('strat'));mathIn(document.getElementById('s1'));mathIn(document.getElementById('mxsum'));mathIn(document.querySelector('footer'));
   const tg=document.getElementById('rcToggle'),rs=document.getElementById('rcReset');
   tg.onclick=()=>{recall=!recall;document.body.classList.toggle('recall',recall);tg.classList.toggle('on',recall);tg.textContent=recall?'🙈 回想模式：開':'🙈 回想模式：關';rs.hidden=!recall;rcInfo();};
   rs.onclick=()=>{rev.clear();document.querySelectorAll('.fc.rev').forEach(c=>c.classList.remove('rev'));rcInfo();};

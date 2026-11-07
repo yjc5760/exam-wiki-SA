@@ -43,31 +43,195 @@ header .nomat{margin-top:12px;font-size:.8em;opacity:.85}
 <p class="meta2">主分類 <b>SA-U2-2</b> 靜不定結構諧合變位 ｜ 2002 年（民國 91） ｜ 諧合變位法</p>
 <div class="hbtns"></div><p class="nomat">本題主分類 SA-U2-2 目前尚無教材，故不提供教材按鈕。</p>
 </header>
-<main><h1>考題編號：[SA-2002-3]</h1>
+<main><details class="problem-src" open><summary><b>📄 題目正本</b>（考卷原文、附圖與判讀清單；不含解法）</summary>
+<h1>SA-2002-3 題目正本</h1>
+<blockquote>
+<p>本檔只記錄考卷上寫了什麼、圖上畫了什麼，不含任何解法。解析見同資料夾 <code>SA-2002-3.md</code>。<br />
+判讀清單經使用者確認前，狀態為「待確認」；確認後本檔原則上不再修改（改動須回考卷原圖並記 log）。</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>項目</th>
+<th>內容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>考卷</td>
+<td><code>raw/exams/SA-2002_結構學.pdf</code>，第 1 頁（正面），第三題（無圖號）</td>
+</tr>
+<tr>
+<td>考年</td>
+<td>2002（民國 91 年）專技高考結構工程技師「結構學」</td>
+</tr>
+<tr>
+<td>配分</td>
+<td>25 分</td>
+</tr>
+<tr>
+<td>附圖</td>
+<td><code>SA-2002-3-fig-1.png</code>、<code>SA-2002-3-fig-2.png</code></td>
+</tr>
+<tr>
+<td>判讀狀態</td>
+<td><strong>已確認</strong>（2026-11-07 使用者確認；原轉錄：2026-11-07 轉錄；PyMuPDF 110 dpi 整頁＋400–1200 dpi 局部放大（向量繪圖）；盲讀於開啟解析前完成）</td>
+</tr>
+</tbody>
+</table>
+<h2>1. 考卷原文（逐字）</h2>
+<p>三、如圖所示之梁，B 點用相同材料之桿吊掛。試求B 點垂直位移。（25 分）</p>
+<h2>2. 考卷給的公式、附表與參數</h2>
+<ul>
+<li>考卷沒有給任何參考公式或附表。</li>
+<li>圖旁文字：AE＝常數、EI＝常數；沒有數值。</li>
+<li>載重 P、長度 λ 皆為符號，沒有數值；答案應以 P、λ、EI、AE 表示。</li>
+<li>考卷沒有說是否忽略梁 AB 的軸向變形、桿 BC 的彎曲（桿只標 AE）。</li>
+<li>卷首注意事項：㈠可以使用電子計算器，使用電子計算器計算之試題，需詳列解答過程。㈡不必抄題，作答時請將試題題號及答案依照順序寫在試卷上，於本試題上作答者，不予計分。</li>
+<li>考試時間：二小時（全一頁）。</li>
+</ul>
+<h2>3. 附圖</h2>
+<p><img alt="SA-2002-3 考卷附圖原截圖（含滑鼠游標，位於圖左上空白處，未壓到構件）" src="../../raw/solutions/SA-2002-3/SA-2002-3-fig-1.png" /><br />
+<em>證據圖 SA-2002-3-fig-1.png</em></p>
+<p><img alt="SA-2002-3 考卷附圖：水平梁 A–B 長 λ（EI），A 端固定於左側牆；B 端以小圓圈與垂直桿 B–C 連接，桿長 λ（AE），C 端以三角形鉸支承吊於上方；B 點受垂直向下載重 P" src="../../raw/solutions/SA-2002-3/SA-2002-3-fig-2.png" /><br />
+<em>證據圖 SA-2002-3-fig-2.png（2026-11-07 自考卷重新擷取 500 dpi，無游標）</em></p>
+<p>圖面文字照錄：C、AE, λ、A、EI, λ、B、P、AE＝常數、EI＝常數</p>
+<h2>4. 判讀清單</h2>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>項目</th>
+<th>判讀</th>
+<th>圖上／題文依據</th>
+<th>把握</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>A</td>
+<td>固定端（左側直立剖線牆，梁端直接接牆，無三角形）</td>
+<td>450 dpi 放大：A 端為一條直立線加斜剖線</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>2</td>
+<td>C</td>
+<td>鉸支承（三角形倒掛於上方剖線）</td>
+<td>450 dpi 放大：C 下方三角形頂點接桿</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>3</td>
+<td>B</td>
+<td>桿與梁以鉸連接（小空心圓）；梁 AB 在 B 為自由端</td>
+<td>B 點小圓圈；梁不延伸過 B</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>4</td>
+<td>梁 AB</td>
+<td>水平，長 λ，EI＝常數（雙線畫法）</td>
+<td>梁下標「EI, λ」</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>5</td>
+<td>桿 BC</td>
+<td>垂直，長 λ，AE＝常數，位於 B 正上方</td>
+<td>桿旁標「AE, λ」；桿與 B 在同一鉛直線</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>6</td>
+<td>材料</td>
+<td>梁與桿為相同材料（同一 E），I 與 A 各自為常數</td>
+<td>題文「用相同材料之桿吊掛」</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>7</td>
+<td>載重</td>
+<td>B 點垂直向下 P</td>
+<td>B 下方箭頭向下標 P</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>8</td>
+<td>所求</td>
+<td>B 點垂直位移</td>
+<td>題文</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>9</td>
+<td>考卷沒有給</td>
+<td>P、λ、EI、AE 的數值；梁軸向變形是否忽略</td>
+<td>題文與圖</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>10</td>
+<td>靜不定度</td>
+<td>固定 3＋鉸 2＝5 個反力、方程式 3＋B 鉸 1（桿為二力構件），一度靜不定</td>
+<td>計數</td>
+<td>確定（解讀）；使用者確認</td>
+</tr>
+<tr>
+<td>11</td>
+<td>證據圖</td>
+<td>舊 fig-1 有滑鼠游標（圖左上空白處，未壓構件）；新增 fig-2（500 dpi，無游標）</td>
+<td>—</td>
+<td>確定</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p><em>轉錄：2026-11-07（SA-U2-2 題目正本推廣・批 1）</em><br />
+<em>確認：2026-11-07 使用者確認</em></p>
+</details>
+<hr>
+<h1>考題編號：[SA-2002-3]</h1>
 <p><strong>主分類：</strong> <code>SA-U2-2</code> 靜不定結構分析<br />
 <strong>副分類：</strong> 無<br />
 <strong>分析法：</strong> 諧合變位法<br />
 <strong>標籤：</strong> <code>靜不定結構</code> <code>諧合變位法</code> <code>勁度法</code> <code>複合結構</code></p>
 <hr />
-<h2>1. 原始題目重述 (Problem Restatement)</h2>
-<ul>
-<li>題幹：如圖所示之梁，B 點用相同材料之桿吊掛。試求 B 點垂直位移。（25 分）</li>
-<li>結構型式：複合結構（由懸臂梁與吊桿組成）。</li>
-<li>幾何尺寸與材料性質：<ul>
-<li>梁 AB：長度 $\lambda$，撓曲剛度 $EI$ 為常數。</li>
-<li>吊桿 CB：長度 $\lambda$，軸向剛度 $AE$ 為常數。</li>
-</ul>
-</li>
-<li>支撐條件：<ul>
-<li>A 點：固定端。</li>
-<li>C 點：鉸接或固定端（因吊桿僅承受軸力，支承型式對結果無影響）。</li>
-</ul>
-</li>
-<li>載重：B 點受一向下垂直集中載重 $P$。</li>
-<li>圖片引用：<br />
-<img alt="SA-2002-3 題目附圖：懸臂梁AB端點B由吊桿CB支撐，並承受向下集中力P" src="../../raw/solutions/SA-2002-3/SA-2002-3-fig-1.png" /><br />
-<em>圖說：梁 AB 與桿 CB 長度皆標示為 $\lambda$。梁之撓曲剛度為 $EI$，桿之軸向剛度為 $AE$。節點 B 點受向下集中載重 $P$。</em></li>
-</ul>
+<h2>1. 題目（考卷原文見題目正本）</h2>
+<blockquote>
+<p>考卷原文、公式／附表、附圖與判讀清單（已確認）見 <a href="SA-2002-3-problem.md"><code>SA-2002-3-problem.md</code></a>。本節只列解題時最容易讀錯的地方與本解使用的記號；題意以題目正本為準。</p>
+</blockquote>
+<p><img alt="SA-2002-3 重繪題目附圖：水平梁 AB 長 λ，A 固定端；B 以鉸接連垂直桿 BC（長 λ），C 鉸支承吊於上方；B 點受 P 向下" src="../../raw/solutions/SA-2002-3/figs/SA-2002-3-fig-1-problem.svg" /><br />
+<em>重繪自考卷附圖，依判讀清單重繪。攔：C 讀成固定端、B 讀成剛接、漏掉桿的軸向變形。</em></p>
+<h3>常見誤讀</h3>
+<table>
+<thead>
+<tr>
+<th>項目</th>
+<th>正確判讀</th>
+<th>常見誤讀</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>C 支承</td>
+<td>鉸支承（三角形倒掛）</td>
+<td>固定端，或寫成「鉸接或固定端皆可」</td>
+</tr>
+<tr>
+<td>B 點</td>
+<td>梁端與桿以鉸連接，桿為二力構件</td>
+<td>梁、桿剛接</td>
+</tr>
+<tr>
+<td>材料</td>
+<td>梁與桿同材料（同一 E）；EI、AE 各為常數，無數值</td>
+<td>假設 EI、AE 數值</td>
+</tr>
+</tbody>
+</table>
+<p><strong>本解記號：</strong> 梁 AB 長 λ、撓曲剛度 EI；桿 BC 長 λ、軸向剛度 AE；T＝桿拉力；B 點位移向下為正。</p>
 <h2>2. 考題核心精神與出題者意圖 (Core Concepts &amp; Examiner's Intent)</h2>
 <ul>
 <li>核心觀念：複合結構（梁與軸力桿結合）的變位諧合（位移一致性）。梁承受彎矩變形，桿承受軸力變形，兩者在節點 B 處的垂直位移必須相同。</li>
@@ -171,7 +335,8 @@ $$ \boxed{ \Delta_B = \frac{P\lambda^3}{3EI + AE\lambda^2} } \quad (\text{向下
 <li>本題完美展現了力法（諧合變位法）與位移法（勁度法）的殊途同歸。對於單一節點自由度的複合結構，使用<strong>位移法（直接相加勁度）</strong>通常較為直觀且不易計算錯誤。</li>
 <li>在考場上，若題目未指定分析方法，強烈建議使用直接勁度法（方法二）秒殺此題，但也可將諧合變位法（方法一）列出作為驗算工具，確保滿分萬無一失。</li>
 <li>需再次提醒，題目給的長度符號為 $\lambda$。遇到非慣用符號時，應仔細對應量綱與單位，例如 $EI/\lambda^3$ 與 $AE/\lambda$ 兩者量綱皆為「力量/長度」，確認單位一致無誤後即可放心作答。</li>
-</ul></main>
+</ul>
+<p><em>修正日期：2026-11-07（§1 改為指向題目正本並放重繪附圖（figs/SA-2002-3-fig-1-problem.svg）、加常見誤讀、刪除「C 點鉸接或固定端皆可」的保留語（考卷為鉸支承）；圖由 gen_SA-2002-3.py 產生，可重跑）</em></p></main>
 <footer>來源：raw/solutions/SA-2002-3/SA-2002-3.md（知識庫解題內容唯一正本；本頁僅為渲染顯示）</footer>
 
 <script>

@@ -1752,3 +1752,92 @@ PDF 文字層檢查無殘留 LaTeX、無 emoji 豆腐方框。
 - `[pdf]` Chromium（Playwright，A4、背景、details 全展開，與舊版相同設定；在雲端工作區產生，使用者電腦 shell 無法下載 Chromium）：lecture-SA-U2-3 31 頁（同舊版）、unit-SA-U2-3 13 頁（舊 12，副考點 +1）、unit-SA-U2-1 10 頁（同）；lecture-SA-U2-1 內容未變不重出
 - `[check]` KaTeX：3 份講義／總覽 804 式＋12 頁瀏覽頁 1505 式，錯誤 0、未渲染定界符 0、pageerror 0；瀏覽頁圖片引用缺 0；分類稽核 0 問題；study/*.pdf 只剩 unit-SA-U1-2、U1-3 的 HTML 時間戳較新（內容與 git 相同，未重出）
 - 關卡二：12 題 verificationStatus 仍為 unverified，待使用者人工複核後指示
+
+## 2026-11-07 PROBLEM-SPLIT-SA-U2-2-B1｜SA-U2-2 題目正本批 1（9 題，待確認）
+
+- 範圍：SA-U2-2 主分類尚無題目正本的 9 題（2002-3、2006-2、2007-1、2008-1、2009-1、2009-2、2011-1、2014-2、2023-2；2016-1 已確認不動）；exam-wiki-pipeline 階段 A，停在關卡一
+- `[add]` raw/solutions/<id>/<id>-problem.md 9 份（判讀狀態：待確認；盲讀於開啟解析前完成）
+- `[add]` 證據圖 <id>-fig-2.png 8 張（500 dpi 自考卷重新擷取；舊 fig-1 帶滑鼠游標，2006-2、2008-1、2011-1、2014-2 游標壓在構件上；舊圖保留不改）；2023-2 沿用 fig-1
+- `[index]` question_index.json 9 題加 problemStatus: draft
+- `[rebuild]` problems-view 9 頁（md2view.py）；KaTeX 1000 式錯誤 0、殘留錢號 0；圖片引用 25 缺 0；分類稽核 0 問題
+- §1 比對：❌ 1（SA-2014-2：解析把 CD 當垂直桿 4.5 m，考卷 C 在 A 正上方、CD 為斜桿 7.5 m；重算 |M|max 28.8 → 51.25 kN-m，仍在 A）、⚠️ 3（2002-3 C 支承語帶保留、2008-1 圖說佔位字、2009-1 未引用證據圖）、✅ 5。詳見 wiki/queries/題目正本-SA-U2-2-批1-2026-11-07.md
+- 本輪未改解析 .md；改動前備份：9 題資料夾與 question_index.json → 工作階段 ~/bk_u22_b1/
+
+## 2026-11-07 FIX-SA-2014-2｜CD 斜桿讀成垂直桿（解析勘誤）
+
+- 2026-11-07｜FIX-SA-2014-2｜SA-2014-2：
+  - 改了什麼：解析勘誤。CD 由「D 正上方 4.5 m 垂直桿」改為「C 在 A 正上方、斜桿 7.5 m（sinθ＝0.6）」；|M|max 28.8 → **51.24 kN-m**（位置仍在 A 固接端，上側受拉）；CD 桿力 51.2 → 68.71 kN（拉；垂直分力 41.22 kN）、R_B 20 → 23.12 kN、R_A 24.8 → 31.66 kN、M_D −24 → −5.30 kN-m、正彎矩極值 +25 @ 9.5 m → +33.40 @ 9.110 m；新增梁 AD 段軸壓 54.97 kN 說明。§1（改指題目正本）、§2、§3、§3.5、§4、§5 改寫
+  - 為什麼錯：判讀錯誤（幾何）。考卷 2014 第 1 頁第二題圖二（500 dpi）：C 鉸接於左側牆、位於 A 正上方，4.5 m 尺寸線自 C 量至梁軸；D 為梁中點；舊解析 §1 圖說寫「CD 為垂直軸力桿件，長度 4.5 m」。題目正本判讀 #3、#5、#6 經使用者於關卡一確認
+  - 怎麼驗證：工作區腳本 recalc_SA-2014-2.py 兩路徑——分數精確諧合變位解（T＝34560/503、R_B＝11628/503、M_A＝−25776/503）與直接勁度法（梁元素＋斜桿元素）；11 值 MISMATCHES: 0；D 點撓度 21.5 mm 與桿伸長 / 0.6 互驗
+  - 同步的下游：study/problems-view/SA-2014-2.html 重產；question_index.json 仍為 unverified（tags 未動）；study/data/unit-SA-U2-1.json、unit-SA-U2-1.html 只列題目摘要（無數值，不需改）；lecture、frequency 只列題號；audit ledger 無此題；全庫 grep「垂直軸力桿」「51.2」無其他題引用
+
+## 2026-11-07 PROBLEM-SPLIT-CONFIRM-SA-U2-2-B1｜SA-U2-2 題目正本批 1 確認凍結（9 題）
+
+- 使用者決定：SA-2014-2 CD 為斜桿 7.5 m（影響答案，同日勘誤 FIX-SA-2014-2）；其餘 8 題照判讀清單凍結
+- `[confirm]` 9 份 <id>-problem.md 判讀狀態 → 已確認（確定（解讀）項加「；使用者確認」）；question_index.json problemStatus draft → confirmed
+- `[redraw]` 9 題 figs/<id>-fig-1-problem.svg＋2× PNG（gen_<id>.py 新建，figs/_lib 自 SA-2005-4 複製；render.py 溢出 0；原圖｜重繪並排逐題目視）；SA-2014-2 依題文補畫 8 kN/m 並註明考卷附圖未畫；SA-2009-2 連桿 100 m 未按比例並註明
+- `[sec1]` 8 題解析 §1 改為指向題目正本＋重繪圖＋常見誤讀＋本解記號（scripts/fixes/2026-11-07_confirm_sec1_SA-U2-2_B1.py，可重複執行）；SA-2002-3 刪「C 點鉸接或固定端」保留語、SA-2008-1 刪圖說佔位字；SA-2014-2 §1 隨勘誤整份改寫
+- `[check]` problems-view 9 頁重產；KaTeX 966 式錯誤 0、殘留錢號 0；圖片引用 26 缺 0；分類稽核 0 問題；pipeline_status：SA-U2-2 10 題皆到階段 B
+- 備註：檔案經雲端傳回時 SVG／PNG 被附加 c2pa 中繼資料，SVG 已改用本機重跑的輸出、PNG 以 Pillow 重存去除
+
+## 2026-11-07 AUDIT-SA-U2-2-B1｜SA-U2-2 批 1 盲解比對（10 題，階段 B）
+
+- 範圍：2002-3、2006-2、2007-1、2008-1、2009-1、2009-2、2011-1、2014-2、2016-1、2023-2；題意取已確認題目正本，500 dpi 證據圖逐張核對無疑義；與階段 A 不同對話
+- 結果：**10 題全部一致**（0 分歧、0 不確定）；8 題為獨立佐證，SA-2014-2、SA-2016-1 為「一致但非獨立」（勘誤後數值已見於 CHANGELOG／log）；盲分類主分類 10 題同意索引
+- 附帶觀察（未改）：SA-2008-1 §4 步驟 3 留有錯誤的單位力推導（A_y＝0.5、u_BE＝−√5）與自我更正註記，建議只留正確段，§5「零桿防屈曲」說法可改寫；SA-2014-2 副分類 SA-U2-1（最小功法）可議（考卷限諧合變位法）；SA-2009-2 位移正負號敘述繞口；SA-2008-1 D 支承需可受拉
+- `[add]` wiki/queries/盲解紀錄-SA-U2-2-批1-2026-11-07.md、盲解比對-SA-U2-2-批1-2026-11-07.md、盲解腳本-SA-U2-2-批1/（3 支）
+- `[ledger]` audit-ledger-SA.json 新增 10 筆（result 一致；2014-2、2016-1 scope 註明非獨立）
+- 下一步：階段 C、D 略過（0 分歧），階段 E 補圖解（2016-1、2014-2 彎矩圖優先），再到階段 F／關卡二
+
+## 2026-11-07 NOTE-SA-U2-2-B1｜批 1 盲解附帶觀察處理（非勘誤）
+
+- `[fix]` 表述更正（非勘誤）：SA-2008-1 §4 步驟 3 刪除錯誤的單位力推導（A_y＝0.5、E_y＝−0.5、u_BE＝−√5）與「此為一開始的符號推導錯誤」註記，只留正確推導並加 ΣM_A 複核；§5「零桿＝穩定桿、防止長柱屈曲」改寫為「C 點無垂直力故 F_BC＝0，但拿掉 BC 會成機構」，另補 D 支承受拉（D_x＝6.734 kN 向右）說明；答案不變（scripts/fixes/2026-11-07_note_SA-2008-1_step3.py，可重複執行）
+- `[fix]` 分類（使用者決定）：SA-2014-2 刪除副分類 SA-U2-1（考卷「請以諧合變位法計算……若以其他方法計算不予計分」，與最小功法無交集）；question_index.json、解析標頭與頁尾（分類更正（非勘誤））、dashboard-data.js 同步；study/data/unit-SA-U2-1.json 移除該題、judge「12 題主考點＋1 題副考點」→「無副考點」、材料數值卡刪「2014 二」、footer 記更正；study/lecture-SA-U2-1.html 頁首「副分類 1 題（2014）」→「無副分類」、副分類表改為刪除說明；problems-view/SA-2014-2.html 表頭刪副分類、教材按鈕改「尚無教材」（比照 SA-2009-1）（scripts/fixes/2026-11-07_reclass_SA-2014-2_sec.py，可重複執行）
+- `[rebuild]` build_unit_page.py SA-U2-1（主 12＋副 0）；build_frequency.py 對帳通過；md2view.py 重產 SA-2008-1、SA-2014-2；分類稽核 0 問題
+- `[note]` SA-2014-2.md 於 HEAD 為 CRLF，本次（含階段 A 勘誤改寫）存成 LF，與全庫其他解析一致
+- 未處理：SA-2009-2 位移正負號敘述（觀察 3）留待階段 F；lecture-SA-U2-1、unit-SA-U2-1 的 PDF 重產與 KaTeX 檢查延到階段 F
+
+## 2026-11-07 NOTE-SA-U2-2-B1b｜批 1 剩餘項：SA-2009-2 敘述、U2-1 PDF 重產與 KaTeX 修正
+
+- `[fix]` 表述更正（非勘誤）：SA-2009-2 §3 陷阱 1、§3.5 L3、§4.1、§4.2、§5 的相容條件正負號敘述統一為「連桿右端 d 固定，連桿伸長多少 a 點就向左移多少」（Δ_a＝−Δ_ad）；刪除「a 向右移使連桿縮短…」「梁端向右的位移等於連桿向左的伸長量」「連桿向右伸長使左節點向右移動」等繞口或錯誤的說法；§5 補數值檢核（Δ_a＝−0.2885 m＝連桿伸長 0.2885 m）；答案不變（scripts/fixes/2026-11-07_note_SA-2009-2_sign.py，可重複執行）；problems-view 重產
+- `[fix]` KaTeX 未渲染兩處（舊版即有，本次產 PDF 時以「未渲染定界符」檢查抓到）：study/lecture-SA-U2-1.html Macaulay 括號式 `x<a` 裸「<」被當成標籤 → `x&lt;a`（同 11-07 lecture-SA-U1-3 的修法）；scripts/unit_page_template.html 頁尾未呼叫 mathIn → 補 `mathIn(document.querySelector('footer'))`（U2-1 footer 的 \(\partial U/\partial P\) 原本顯示原始碼；其他四個單元總覽 footer 無公式，不需重建）（scripts/fixes/2026-11-07_katex_U2-1_lecture_and_unit_footer.py）
+- `[rebuild]` build_unit_page.py SA-U2-1；PDF 重產（Chromium A4、margin 0、details 全展開，同舊版設定；scripts/fixes/2026-11-07_make_pdf_chromium.py）：lecture-SA-U2-1 29 頁（舊 29）、unit-SA-U2-1 10 頁（舊 10）；KaTeX 463／29 式、katex-error 0、未渲染定界符 0、pageerror 0；逐頁縮圖比對無空白頁
+- 批 1 盲解附帶觀察 4 項至此全部處理完
+
+## 2026-11-07 AUDIT-SA-U2-2-B1 補登｜SA-2009-1 斜桿畫錯（⚠️ 分歧-觀念作圖）
+
+- 階段 E 抄桿力時發現：SA-2009-1 §4 Step 3 的桁架模型斜桿為 bd，題目正本判讀 #7 與考卷附圖為 ec。右側面板兩條對角線等長，f₁₁、贅力 24000/661 與四個反力皆不變，故第一輪只比反力時未抓到；桿力不同（例：bc 18.15 vs 36.31、be −13.62 vs 0、cd 0 vs 13.62）
+- `[update]` 盲解比對-SA-U2-2-批1-2026-11-07.md 總覽改為 9 一致＋1 分歧-觀念作圖，新增分歧明細；audit-ledger-SA.json SA-2009-1 result「一致」→「分歧-觀念作圖」、source「L1 看圖」
+- 待辦：SA-2009-1 進階段 C 勘誤（反力不變）→ D 落實檢查 → E 補圖；本次階段 E 暫不畫 2009-1
+
+## 2026-11-07 FIGURE-SA-U2-2-B1｜SA-U2-2 批 1 階段 E 補解題圖解（8 題）
+
+- 範圍：盲解一致的 9 題中扣除 SA-2002-3（符號解、只有一個位移點，不畫）；SA-2009-1 因補登分歧（斜桿 bd／ec）暫不畫，待勘誤落實後補
+- `[figure]` 變形＋彎矩：SA-2016-1（考卷要求；B 柱右梁下、D 梁上柱右、E 柱左受拉，DE 反曲點距 D 0.67 m）、SA-2014-2（斜桿 CD 7.5 m、|M|max 51.24 在 A、正彎矩 11.39／33.40、三個反曲點）、SA-2009-2（連桿未按比例、EA 等比縮小使 AE/L = 10 kN/m 不變；Δ_b 0.1786 m 向左）、SA-2006-2（梁在 B 連續、兩連桿受拉 10.99／5.093）。桁架力流：SA-2007-1、2008-1（CB 零桿、D 受拉）、2011-1（BE、EF 零桿）、2023-2（交叉不相連）
+- 驗證：剛架以 frame2d 勁度法重算並 assert 本解數值（反力、桿端彎矩、連桿拉力、位移、正彎矩極值）；桁架 assert 全節點平衡（含反力）殘差 0；render.py 溢出 0；8 張 PNG 逐張目視（受拉側、變形方向、標籤）
+- `[script]` scripts/fixes/2026-11-07_stageE_figs_SA-U2-2_B1.py 插入各題 gen_<id>.py（本地補丁：牆上支承帶角度、二力桿直線變形、垂直桿標籤外移、零桿標 0；不改 figs/_lib）；scripts/fixes/2026-11-07_stageE_insert_md_SA-U2-2_B1.py 插圖與圖說、頁尾記「圖解補繪」（非勘誤）；md2view 重產 8 頁，圖片引用缺 0
+- 下一步：SA-2009-1 走階段 C→D→E；其餘 9 題（含 2002-3）可進階段 F／關卡二
+
+## 2026-11-07 FIX-SA-2009-1｜右側面板斜桿 bd 讀成 ec 之誤（解析勘誤，答案不變）
+
+- 2026-11-07｜FIX-SA-2009-1｜SA-2009-1：
+  - 改了什麼：解析勘誤（題目正本不動）。§4 Step 3 單位力系統斜桿 bd → ec，u 值改為 ab 5/8、ae −1/2、ed −1（原 −1/2）、cd 0（原 3/8）、ec 5/8、be −3/8（原 0）、bc 1/2（原 1）；Step 4 f₁₁ 逐桿表重列，Σu²L＝661/64 不變；X₁＝24000/661、四個反力（a_y 13.62↓、c_x 36.31→、c_y 13.62↑、d_x 36.31←）與 boxed 皆不變；Step 5 補最終桿力（ab、ec +22.69，bc +18.15，ae −18.15，be −13.62，ed −36.31，cd 0 kN）；§1 常見誤讀加一列、§5 補「斜桿取錯為何反力不變」
+  - 為什麼錯：判讀（看圖）。考卷第 1 頁第一題附圖（PyMuPDF 450 dpi）斜線兩端為 e（下弦中點）與 c（右上鉸支承）；題目正本判讀 #7 已確認為 e–c。右側面板為 4×3 矩形，兩對角線等長，換對角線後 u 的絕對值在 be／cd、bc／ed 間互換，Σu²L 不變，故反力碰巧相同、盲解比對第一輪只比反力時未發現（AUDIT-SA-U2-2-B1 補登）
+  - 怎麼驗證：scripts/fixes/2026-11-07_recalc_SA-2009-1.py 兩路徑——sympy 分數精確柔度法（節點平衡解 u 與 1-系統反力）與直接勁度法（a 指定下沉 0.1 m）；24 個數值與 .md 比對 MISMATCHES: 0，並確認 16 個關鍵字串確實寫在 .md 中
+  - 同步的下游：study/problems-view/SA-2009-1.html 重產；question_index.json 仍為 unverified、tags 不變；U2-2 無單元總覽頁；study/lecture-SA-U1-2.html 只把本題當「靜不定桁架受沉陷生內力」的對照組，未引用桿力，不需改；dashboard-data.js、frequency-SA.html 只列題號；全庫 grep「u_{bd}」「L_{bd}」0 筆
+  - 修改腳本：scripts/fixes/2026-11-07_FIX_SA-2009-1_diagonal.py（可重複執行）
+  - audit-ledger-SA.json：fixed＝2026-11-07；human＝「盲解對（使用者 2026-11-07 指示勘誤：右側面板斜桿為 ec）」
+
+## 2026-11-07 RECHECK＋FIGURE-SA-2009-1｜落實檢查與補圖
+
+- `[recheck]` 落實檢查-SA-U2-2-批1-2026-11-07.md：SA-2009-1 落實（非獨立複核，與勘誤同一對話）；全檔 bd 字樣只留在 §1 常見誤讀、§5 說明、頁尾修正紀錄；ledger recheck 已填
+- `[figure]` SA-2009-1 圖 2 桁架力流（斜桿 e–c、cd 零桿；全節點平衡含反力殘差 0 才繪製；溢出 0、目視檢查）；scripts/fixes/2026-11-07_stageE_fig_SA-2009-1.py（共用碼原樣取自批 1 階段 E 腳本）；.md 插圖與圖說、頁尾記「圖解補繪」；problems-view 重產
+- pipeline_status：SA-U2-2 批 1 九題到階段 F，SA-2002-3 在階段 E（符號解，決定不畫圖，可直接收尾）
+
+## 2026-11-07 CLOSE-SA-U2-2-B1｜SA-U2-2 批 1 階段 F 收尾（關卡二前）
+
+- 範圍：2002-3、2006-2、2007-1、2008-1、2009-1、2009-2、2011-1、2014-2、2016-1、2023-2
+- 結果總覽：盲解 9 一致（2014-2、2016-1 非獨立）＋1 分歧-觀念作圖（2009-1，已勘誤、落實）；9 題補解題圖（2002-3 符號解不畫）
+- `[rebuild]` problems-view 10 頁 md2view 重產；圖片引用缺 0；Chromium 實際渲染 KaTeX 1087 式、katex-error 0、殘留錢號 0、pageerror 0；分類稽核 0 問題；build_frequency.py 對帳通過；U2-2 無單元總覽頁；引用本批題號的講義（U1-2、U1-3、U2-1、U2-3）與 unit-SA-U1-2 只引用題號或已處理內容，不需重產；lecture／unit-SA-U2-1 PDF 已於 NOTE-SA-U2-2-B1b 重產
+- `[changelog]` CLAUDE.md 加一列「SA-U2-2 批 1 收尾」
+- 關卡二：10 題 verificationStatus 仍為 unverified，待使用者人工複核

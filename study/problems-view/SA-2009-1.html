@@ -43,21 +43,212 @@ header .nomat{margin-top:12px;font-size:.8em;opacity:.85}
 <p class="meta2">主分類 <b>SA-U2-2</b> 靜不定結構諧合變位 ｜ 2009 年（民國 98） ｜ 單位力法 (Force Method) / 最小功法</p>
 <div class="hbtns"></div><p class="nomat">本題主分類 SA-U2-2 目前尚無教材，故不提供教材按鈕。</p>
 </header>
-<main><h1>考題編號：SA-2009-1</h1>
+<main><details class="problem-src" open><summary><b>📄 題目正本</b>（考卷原文、附圖與判讀清單；不含解法）</summary>
+<h1>SA-2009-1 題目正本</h1>
+<blockquote>
+<p>本檔只記錄考卷上寫了什麼、圖上畫了什麼，不含任何解法。解析見同資料夾 <code>SA-2009-1.md</code>。<br />
+判讀清單經使用者確認前，狀態為「待確認」；確認後本檔原則上不再修改（改動須回考卷原圖並記 log）。</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>項目</th>
+<th>內容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>考卷</td>
+<td><code>raw/exams/SA-2009_結構學.pdf</code>，第 1 頁（正面），第一題（無圖號）</td>
+</tr>
+<tr>
+<td>考年</td>
+<td>2009（民國 98 年）專技高考結構工程技師「結構學」</td>
+</tr>
+<tr>
+<td>配分</td>
+<td>25 分</td>
+</tr>
+<tr>
+<td>附圖</td>
+<td><code>SA-2009-1-fig-1.png</code>、<code>SA-2009-1-fig-2.png</code></td>
+</tr>
+<tr>
+<td>判讀狀態</td>
+<td><strong>已確認</strong>（2026-11-07 使用者確認；原轉錄：2026-11-07 轉錄；PyMuPDF 110 dpi 整頁＋400–1200 dpi 局部放大；PDF 向量繪圖；盲讀於開啟解析前完成）</td>
+</tr>
+</tbody>
+</table>
+<h2>1. 考卷原文（逐字）</h2>
+<p>一、如圖所示之桁架（truss）結構，其支承點a 與d 為滾支承（roller），支承點c 則為鉸支承（hinge）。若已知支承點a 向下沈陷0.1 m，試計算各支承點之反力。假設各構件之E 值（彈性模數）與A 值（斷面積）皆為常數，且AE = 10⁴ kN。（25 分）</p>
+<h2>2. 考卷給的公式、附表與參數</h2>
+<ul>
+<li>考卷沒有給任何參考公式或附表。</li>
+<li>給定：AE＝10⁴ kN（各桿相同）；支承 a 向下沉陷 0.1 m。</li>
+<li>沒有外加載重（只有支承沉陷）。</li>
+<li>「沈陷」照考卷原文。</li>
+<li>卷首注意事項：㈠可以使用電子計算器，但需詳列解答過程。㈡不必抄題，作答時請將試題題號及答案依照順序寫在試卷上，於本試題上作答者，不予計分。</li>
+<li>考試時間：2 小時。</li>
+</ul>
+<h2>3. 附圖</h2>
+<p><img alt="SA-2009-1 考卷附圖原截圖（含滑鼠游標，位於圖左空白處，未壓構件）" src="../../raw/solutions/SA-2009-1/SA-2009-1-fig-1.png" /><br />
+<em>證據圖 SA-2009-1-fig-1.png</em></p>
+<p><img alt="SA-2009-1 考卷附圖：桁架：下弦 a–e–d 水平各 4 m，上弦 b–c 水平；b 在 e 正上方、c 在 d 正上方，高 3 m；桿 a–b、b–c、b–e、e–c、c–d、a–e、e–d；a 滾支承在地面，c 鉸支承靠右側牆，d 滾支承靠右側牆" src="../../raw/solutions/SA-2009-1/SA-2009-1-fig-2.png" /><br />
+<em>證據圖 SA-2009-1-fig-2.png（2026-11-07 自考卷重新擷取 500 dpi，無游標）</em></p>
+<p>圖面文字照錄：b、c、3m、a、e、d、4 m、4 m</p>
+<h2>4. 判讀清單</h2>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>項目</th>
+<th>判讀</th>
+<th>圖上／題文依據</th>
+<th>把握</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>a</td>
+<td>滾支承於水平地面（圓圈＋剖線）→ 垂直反力</td>
+<td>500 dpi 放大；題文</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>2</td>
+<td>c</td>
+<td>鉸支承於右側直立牆（三角形尖端朝 c）→ 水平與垂直反力</td>
+<td>500 dpi 放大；題文</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>3</td>
+<td>d</td>
+<td>滾支承於右側直立牆（圓圈靠牆）→ 水平反力</td>
+<td>500 dpi 放大：圓圈貼直立剖線</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>4</td>
+<td>節點座標</td>
+<td>a(0,0)、e(4,0)、d(8,0)、b(4,3)、c(8,3)</td>
+<td>4 m｜4 m 虛線界線對齊 a、e、d；3 m 虛線界線對齊 c、d</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>5</td>
+<td>b 的高度</td>
+<td>與 c 同高（b–c 水平）</td>
+<td>b–c 為水平線</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>6</td>
+<td>桿 a–b</td>
+<td>連到 b 節點（圖上斜線末端與 b 有約 0.1 m 的繪圖缺口）</td>
+<td>1200 dpi 放大：斜線在 b 垂直桿左側中斷</td>
+<td>確定（解讀）；使用者確認</td>
+</tr>
+<tr>
+<td>7</td>
+<td>桿件</td>
+<td>a–b、b–c、b–e、e–c、c–d、a–e、e–d 共 7 根</td>
+<td>圖面</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>8</td>
+<td>支承沉陷</td>
+<td>a 向下 0.1 m；其他支承無位移</td>
+<td>題文</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>9</td>
+<td>材料</td>
+<td>各桿 AE＝10⁴ kN</td>
+<td>題文</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>10</td>
+<td>所求</td>
+<td>各支承點反力</td>
+<td>題文</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>11</td>
+<td>靜不定度</td>
+<td>m＝7、r＝4、j＝5：11＞10，一度靜不定</td>
+<td>計數</td>
+<td>確定（解讀）；使用者確認</td>
+</tr>
+<tr>
+<td>12</td>
+<td>證據圖</td>
+<td>舊 fig-1 有游標（圖左空白處）；新增 fig-2（500 dpi）</td>
+<td>—</td>
+<td>確定</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p><em>轉錄：2026-11-07（SA-U2-2 題目正本推廣・批 1）</em><br />
+<em>確認：2026-11-07 使用者確認</em></p>
+</details>
+<hr>
+<h1>考題編號：SA-2009-1</h1>
 <p><strong>主分類：</strong> <code>SA-U2-2</code> 靜不定結構諧合變位<br />
 <strong>副分類：</strong> 無<br />
 <strong>分析法：</strong> 單位力法 (Force Method) / 最小功法<br />
 <strong>標籤：</strong> <code>靜不定桁架</code>, <code>支承沉陷</code>, <code>柔度法</code></p>
 <hr />
-<h2>1. 原始題目重述 (Problem Restatement)</h2>
-<p>本題為一平面桁架結構分析，由 7 根桿件組成，共有 5 個節點（a, b, c, d, e）。已知各節點的支承條件如下：</p>
-<ul>
-<li><strong>節點 a</strong>：垂直方向受拘束（滾支承），具有已知之支承沉陷 $\Delta_a = -0.1\text{ m}$（向下）。</li>
-<li><strong>節點 c</strong>：水平與垂直方向受拘束（鉸支承）。</li>
-<li><strong>節點 d</strong>：水平方向受拘束（牆面滾支承）。</li>
-</ul>
-<p>已知所有桿件的軸向剛度為 $AE = 10^4\text{ kN}$。<br />
-題目要求計算在此支承沉陷作用下，結構各支承點的最終反力。</p>
+<h2>1. 題目（考卷原文見題目正本）</h2>
+<blockquote>
+<p>考卷原文、公式／附表、附圖與判讀清單（已確認）見 <a href="SA-2009-1-problem.md"><code>SA-2009-1-problem.md</code></a>。本節只列解題時最容易讀錯的地方與本解使用的記號；題意以題目正本為準。</p>
+</blockquote>
+<p><img alt="SA-2009-1 重繪題目附圖：桁架 a(0,0)、e(4,0)、d(8,0)、b(4,3)、c(8,3)，桿 ab、bc、be、ec、cd、ae、ed；a 地面滾支承，c 鉸支承、d 滾支承皆靠右側牆" src="../../raw/solutions/SA-2009-1/figs/SA-2009-1-fig-1-problem.svg" /><br />
+<em>重繪自考卷附圖，依判讀清單重繪。攔：d 讀成垂直反力、c 讀成滾支承、漏掉 a–b 桿。</em></p>
+<h3>常見誤讀</h3>
+<table>
+<thead>
+<tr>
+<th>項目</th>
+<th>正確判讀</th>
+<th>常見誤讀</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>d 支承</td>
+<td>滾支承靠右側牆 → 水平反力</td>
+<td>垂直反力</td>
+</tr>
+<tr>
+<td>c 支承</td>
+<td>鉸支承靠右側牆 → 水平＋垂直反力</td>
+<td>滾支承</td>
+</tr>
+<tr>
+<td>桿 a–b</td>
+<td>連到 b（考卷圖上有繪圖缺口）</td>
+<td>漏掉此桿</td>
+</tr>
+<tr>
+<td>作用</td>
+<td>只有 a 向下沉陷 0.1 m，無外加載重</td>
+<td>另加載重</td>
+</tr>
+<tr>
+<td>右側面板斜桿</td>
+<td>e–c（e 在下弦中點、c 在右上鉸支承）</td>
+<td>b–d（本題舊版解析；兩對角線等長，反力碰巧相同，但桿力全錯）</td>
+</tr>
+</tbody>
+</table>
+<p><strong>本解記號：</strong> 座標以 a 為原點（m）；AE＝10⁴ kN；贅力 X₁＝d 點水平反力；支承沉陷 Δa＝−0.1 m（向下）。</p>
 <h2>2. 考題核心精神與出題者意圖 (Core Concepts &amp; Examiner's Intent)</h2>
 <p>本題的核心精神在於評量考生對<strong>一次靜不定桁架</strong>在「<strong>無外力、僅有支承沉陷</strong>」作用下的內力與反力分析能力。<br />
 出題者的意圖包含：</p>
@@ -201,47 +392,44 @@ $$ \Delta_{10} + \left(-\frac{3}{8}\right) \times (-0.1) = 0 \implies \Delta_{10
 <li>垂直力平衡 ($\sum F_y = 0$)：<br />
     $R_{cy}^{(u)} + R_{ay}^{(u)} = 0 \implies R_{cy}^{(u)} = \frac{3}{8}$ （向上）</li>
 </ul>
-<p>接下來，使用節點法求出各桿件內力 $u_i$：</p>
+<p>接下來，使用節點法求出各桿件內力 $u_i$（右側面板斜桿為 <strong>e–c</strong>，見題目正本判讀 #7）：</p>
 <ul>
 <li><strong>節點 a</strong>：<ul>
 <li>$\sum F_y = 0 \implies u_{ab} \times \frac{3}{5} - \frac{3}{8} = 0 \implies u_{ab} = \frac{5}{8}$ (張力)</li>
 <li>$\sum F_x = 0 \implies u_{ae} + u_{ab} \times \frac{4}{5} = 0 \implies u_{ae} = -\frac{1}{2}$ (壓力)</li>
 </ul>
 </li>
-<li><strong>節點 d</strong>：<ul>
-<li>$\sum F_x = 0 \implies -u_{ed} - u_{bd} \times \frac{4}{5} - 1 = 0$</li>
-<li>$\sum F_y = 0 \implies u_{cd} + u_{bd} \times \frac{3}{5} = 0$</li>
+<li><strong>節點 d</strong>（只接 ed、cd 兩桿，受向左單位力）：<ul>
+<li>$\sum F_x = 0 \implies -u_{ed} - 1 = 0 \implies u_{ed} = -1$ (壓力)</li>
+<li>$\sum F_y = 0 \implies u_{cd} = 0$</li>
 </ul>
 </li>
 <li><strong>節點 e</strong>：<ul>
-<li>$\sum F_x = 0 \implies u_{ed} - u_{ae} = 0 \implies u_{ed} = -\frac{1}{2}$ (壓力)</li>
-</ul>
-</li>
-<li><strong>將 $u_{ed}$ 代回節點 d 的方程式</strong>：<ul>
-<li>$-\left(-\frac{1}{2}\right) - 0.8 u_{bd} - 1 = 0 \implies 0.8 u_{bd} = -0.5 \implies u_{bd} = -\frac{5}{8}$ (壓力)</li>
-<li>$u_{cd} + \left(-\frac{5}{8}\right) \times \frac{3}{5} = 0 \implies u_{cd} = \frac{3}{8}$ (張力)</li>
+<li>$\sum F_x = 0 \implies -u_{ae} + u_{ed} + u_{ec} \times \frac{4}{5} = 0 \implies \frac{1}{2} - 1 + 0.8\,u_{ec} = 0 \implies u_{ec} = \frac{5}{8}$ (張力)</li>
+<li>$\sum F_y = 0 \implies u_{be} + u_{ec} \times \frac{3}{5} = 0 \implies u_{be} = -\frac{3}{8}$ (壓力)</li>
 </ul>
 </li>
 <li><strong>節點 b</strong>：<ul>
-<li>$\sum F_y = 0 \implies -u_{be} - u_{ab} \times \frac{3}{5} - u_{bd} \times \frac{3}{5} = 0 \implies u_{be} = 0$</li>
-<li>$\sum F_x = 0 \implies u_{bc} - u_{ab} \times \frac{4}{5} + u_{bd} \times \frac{4}{5} = 0 \implies u_{bc} = 1$ (張力)</li>
+<li>$\sum F_x = 0 \implies u_{bc} - u_{ab} \times \frac{4}{5} = 0 \implies u_{bc} = \frac{1}{2}$ (張力)</li>
+<li>$\sum F_y = 0 \implies -u_{be} - u_{ab} \times \frac{3}{5} = \frac{3}{8} - \frac{3}{8} = 0$ ✓（檢核）</li>
 </ul>
 </li>
+<li><strong>節點 c</strong>（檢核）：$\sum F_x = -u_{bc} - u_{ec} \times \frac{4}{5} + R_{cx}^{(u)} = -\frac{1}{2} - \frac{1}{2} + 1 = 0$ ✓；$\sum F_y = -u_{ec} \times \frac{3}{5} - u_{cd} + R_{cy}^{(u)} = -\frac{3}{8} - 0 + \frac{3}{8} = 0$ ✓</li>
 </ul>
 <p>各桿件長度 $L_i$ 與內力 $u_i$ 整理：<br />
-$L_{ab} = 5\text{ m}, L_{ae} = 4\text{ m}, L_{be} = 3\text{ m}, L_{bc} = 4\text{ m}, L_{bd} = 5\text{ m}, L_{cd} = 3\text{ m}, L_{ed} = 4\text{ m}$</p>
+$L_{ab} = 5\text{ m}, L_{ae} = 4\text{ m}, L_{be} = 3\text{ m}, L_{bc} = 4\text{ m}, L_{ec} = 5\text{ m}, L_{cd} = 3\text{ m}, L_{ed} = 4\text{ m}$</p>
 <p><strong>Step 4: 柔度係數 $f_{11}$ 與相容方程式求解</strong><br />
 $$ f_{11} = \sum \frac{u_i^2 L_i}{AE} $$</p>
 <ul>
 <li>ab: $(5/8)^2 \times 5 = 125/64$</li>
 <li>ae: $(-1/2)^2 \times 4 = 64/64$</li>
-<li>be: $0$</li>
-<li>bc: $1^2 \times 4 = 256/64$</li>
-<li>bd: $(-5/8)^2 \times 5 = 125/64$</li>
-<li>cd: $(3/8)^2 \times 3 = 27/64$</li>
-<li>ed: $(-1/2)^2 \times 4 = 64/64$</li>
+<li>be: $(-3/8)^2 \times 3 = 27/64$</li>
+<li>bc: $(1/2)^2 \times 4 = 64/64$</li>
+<li>ec: $(5/8)^2 \times 5 = 125/64$</li>
+<li>cd: $0$</li>
+<li>ed: $(-1)^2 \times 4 = 256/64$</li>
 </ul>
-<p>$$ \sum u_i^2 L_i = \frac{125 + 64 + 0 + 256 + 125 + 27 + 64}{64} = \frac{661}{64}\text{ m} $$<br />
+<p>$$ \sum u_i^2 L_i = \frac{125 + 64 + 27 + 64 + 125 + 0 + 256}{64} = \frac{661}{64}\text{ m} $$<br />
 $$ f_{11} = \frac{661}{64 AE}\text{ m/kN} $$<br />
 代入已知條件 $AE = 10^4\text{ kN}$，得 $f_{11} = \frac{661}{640000}\text{ m/kN}$。</p>
 <p><strong>相容方程式 (Compatibility Equation)：</strong><br />
@@ -257,16 +445,28 @@ $$ X_1 = \frac{0.0375 \times 640000}{661} = \frac{24000}{661} \approx 36.3086\te
     $$ R_{dx} = \boxed{36.31\text{ kN} (\leftarrow)} $$</li>
 <li><strong>a 點反力：</strong><br />
     $$ R_{ay} = 0 + \left(-\frac{3}{8}\right) \times \left(\frac{24000}{661}\right) = -\frac{9000}{661}\text{ kN} \implies \boxed{13.62\text{ kN} (\downarrow)} $$</li>
-<li><strong>c 點反力：</strong><br />
+<li>
+<p><strong>c 點反力：</strong><br />
     $$ R_{cx} = 0 + 1 \times \frac{24000}{661} = \frac{24000}{661}\text{ kN} \implies \boxed{36.31\text{ kN} (\rightarrow)} $$<br />
-    $$ R_{cy} = 0 + \frac{3}{8} \times \left(\frac{24000}{661}\right) = \frac{9000}{661}\text{ kN} \implies \boxed{13.62\text{ kN} (\uparrow)} $$</li>
+    $$ R_{cy} = 0 + \frac{3}{8} \times \left(\frac{24000}{661}\right) = \frac{9000}{661}\text{ kN} \implies \boxed{13.62\text{ kN} (\uparrow)} $$</p>
+</li>
+<li>
+<p><strong>各桿最終內力</strong>（題目未問，供核對；0-系統桿力為 0，故 $N_i = u_i X_1$，$X_1 = \frac{24000}{661}$ kN）：<br />
+    $N_{ab} = N_{ec} = \frac{15000}{661} = +22.69$ kN（拉）、$N_{bc} = \frac{12000}{661} = +18.15$ kN（拉）、$N_{ae} = -18.15$ kN（壓）、$N_{be} = -\frac{9000}{661} = -13.62$ kN（壓）、$N_{ed} = -36.31$ kN（壓）、$N_{cd} = 0$。</p>
+</li>
 </ol>
+<p><img alt="SA-2009-1 桿力圖：斜桿為 e–c；ab、ec +22.69、bc +18.15 受拉，ae −18.15、be −13.62、ed −36.31 受壓，cd 零桿；反力 a_y 13.62 向下、c_x 36.31 向右、c_y 13.62 向上、d_x 36.31 向左" src="../../raw/solutions/SA-2009-1/figs/SA-2009-1-fig-2-truss.svg" /></p>
+<p><em>圖 2　桿力（$N = u\,X_1$；全節點平衡含反力殘差為 0 才繪製）。靜不定桁架受支承沉陷會產生桿力；斜桿是 e–c 而不是 b–d——換成 b–d 反力不變但桿力全變，這張圖攔的就是這個看圖錯。</em></p>
 <h2>5. 關鍵爭議點與進階探討 (Critical Issues &amp; Advanced Discussion)</h2>
 <ul>
 <li><strong>虛功原理的符號處理</strong>：許多考生在列虛功方程式時，會將 $R_{ay}^{(u)} \times \Delta_a$ 移至等式右邊，此時應注意其為外力作功的一部分，建議維持標準式 <code>外力虛功 = 內力虛功</code> 以避免混淆。即 $1 \cdot \Delta + \sum R \cdot \Delta_{support} = \sum u \cdot \Delta L$。</li>
 <li><strong>贅力選擇的優劣</strong>：本題選擇 $d$ 點水平反力為贅力，得到的 1-系統反力及內力計算相對直觀。若選擇其它內力（如某一桿件的軸力）作為贅力，亦可求解，但在基本結構的計算上較容易發生錯誤。考場上以「盡量維持靜定但易於計算的外反力」為贅力首選。</li>
+<li><strong>斜桿取錯為何反力不變</strong>：右側面板 b–c–d–e 為 4 m × 3 m 矩形，兩條對角線都是 5 m。單位力系統中，斜桿只負責把節點 e 與 b、c、d 間的剪力傳過面板；改用 b–d 斜桿時各桿 $u_i$ 的絕對值會在 be／cd、bc／ed 之間互換，$\sum u_i^2 L_i$ 仍為 661/64，贅力與反力因此完全相同——但桿力不同（例：$N_{cd}$ 由 0 變 13.62 kN）。只問反力的題目，答案對不代表模型對。</li>
 <li><strong>剛架 vs 桁架的支承沉陷</strong>：桁架在靜定狀態下發生支承沉陷不產生內力，此與剛架特性相同。對於此類題目，利用力法計算遠比矩陣位移法來得有效率。</li>
-</ul></main>
+</ul>
+<p><em>修正日期：2026-11-07（§1 改為指向題目正本並放重繪附圖（figs/SA-2009-1-fig-1-problem.svg）、加常見誤讀（舊版未引用證據圖）；圖由 gen_SA-2009-1.py 產生，可重跑）</em><br />
+<em>修正日期：2026-11-07（FIX-SA-2009-1 解析勘誤：§4 Step 3–4 右側面板斜桿由 bd 改為 ec（題目正本判讀 #7；考卷第 1 頁第一題附圖 450 dpi），u 值與 f₁₁ 逐桿表重列，Σu²L 仍為 661/64，X₁、四個反力與 boxed 不變；補最終桿力；§1 常見誤讀、§5 補說明。驗證：recalc_SA-2009-1.py 柔度法＋直接勁度法兩路徑，MISMATCHES: 0）</em><br />
+<em>修正日期：2026-11-07（非勘誤）圖解補繪：圖 2（gen_SA-2009-1.py，可重跑）</em></p></main>
 <footer>來源：raw/solutions/SA-2009-1/SA-2009-1.md（知識庫解題內容唯一正本；本頁僅為渲染顯示）</footer>
 
 <script>

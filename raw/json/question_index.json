@@ -204,6 +204,7 @@
         "SA-U1-1"
       ],
       "verificationStatus": "unverified",
+      "problemStatus": "confirmed",
       "hasSolution": true,
       "hasHandwritten": false,
       "tags": [
@@ -919,10 +920,9 @@
       "questionNumber": 2,
       "primaryTopicId": "SA-U2-2",
       "primaryTopicName": "靜不定結構諧合變位",
-      "secondaryTopicIds": [
-        "SA-U2-1"
-      ],
+      "secondaryTopicIds": [],
       "verificationStatus": "unverified",
+      "problemStatus": "confirmed",
       "hasSolution": true,
       "hasHandwritten": false,
       "tags": [
@@ -1144,6 +1144,7 @@
       "method": "傾角撓度法或直接勁度法或力法",
       "hasSolution": true,
       "verificationStatus": "unverified",
+      "problemStatus": "confirmed",
       "tags": [
         "靜不定桁架",
         "支承沉陷",
@@ -1165,6 +1166,7 @@
       "method": "單位力法 (Unit Load Method)",
       "hasSolution": true,
       "verificationStatus": "unverified",
+      "problemStatus": "confirmed",
       "tags": [
         "靜不定",
         "梁柱系統",
@@ -1229,6 +1231,7 @@
       "primaryTopicName": "靜不定結構諧合變位",
       "secondaryTopicIds": [],
       "verificationStatus": "unverified",
+      "problemStatus": "confirmed",
       "hasSolution": true,
       "hasHandwritten": false,
       "tags": [
@@ -1303,6 +1306,7 @@
       "primaryTopicName": "靜不定結構諧合變位",
       "secondaryTopicIds": [],
       "verificationStatus": "unverified",
+      "problemStatus": "confirmed",
       "hasSolution": true,
       "hasHandwritten": false,
       "tags": [
@@ -1394,6 +1398,7 @@
       "primaryTopicName": "靜不定結構諧合變位",
       "secondaryTopicIds": [],
       "verificationStatus": "unverified",
+      "problemStatus": "confirmed",
       "hasSolution": true,
       "hasHandwritten": false,
       "tags": [
@@ -1717,6 +1722,7 @@
       "primaryTopicName": "靜不定結構諧合變位",
       "secondaryTopicIds": [],
       "verificationStatus": "unverified",
+      "problemStatus": "confirmed",
       "hasSolution": true,
       "hasHandwritten": false,
       "tags": [
@@ -1848,6 +1854,7 @@
       "hasSolution": true,
       "difficulty": 4,
       "verificationStatus": "unverified",
+      "problemStatus": "confirmed",
       "year": 2011,
       "rocYear": 100,
       "primaryTopicId": "SA-U2-2",

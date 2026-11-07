@@ -43,25 +43,194 @@ header .nomat{margin-top:12px;font-size:.8em;opacity:.85}
 <p class="meta2">主分類 <b>SA-U2-2</b> 靜不定結構諧合變位 ｜ 2009 年（民國 98） ｜ 柔度法 (Force Method) / 單位虛力法</p>
 <div class="hbtns"></div><p class="nomat">本題主分類 SA-U2-2 目前尚無教材，故不提供教材按鈕。</p>
 </header>
-<main><h1>考題編號：SA-2009-2</h1>
+<main><details class="problem-src" open><summary><b>📄 題目正本</b>（考卷原文、附圖與判讀清單；不含解法）</summary>
+<h1>SA-2009-2 題目正本</h1>
+<blockquote>
+<p>本檔只記錄考卷上寫了什麼、圖上畫了什麼，不含任何解法。解析見同資料夾 <code>SA-2009-2.md</code>。<br />
+判讀清單經使用者確認前，狀態為「待確認」；確認後本檔原則上不再修改（改動須回考卷原圖並記 log）。</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>項目</th>
+<th>內容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>考卷</td>
+<td><code>raw/exams/SA-2009_結構學.pdf</code>，第 1 頁（正面），第二題（無圖號）</td>
+</tr>
+<tr>
+<td>考年</td>
+<td>2009（民國 98 年）專技高考結構工程技師「結構學」</td>
+</tr>
+<tr>
+<td>配分</td>
+<td>25 分</td>
+</tr>
+<tr>
+<td>附圖</td>
+<td><code>SA-2009-2-fig-1.png</code>、<code>SA-2009-2-fig-2.png</code></td>
+</tr>
+<tr>
+<td>判讀狀態</td>
+<td><strong>已確認</strong>（2026-11-07 使用者確認；原轉錄：2026-11-07 轉錄；PyMuPDF 110 dpi 整頁＋400–1200 dpi 局部放大；PDF 向量繪圖；盲讀於開啟解析前完成）</td>
+</tr>
+</tbody>
+</table>
+<h2>1. 考卷原文（逐字）</h2>
+<p>二、如圖所示之結構受一 1 kN/m 之均佈力作用，其中ac為梁（beam）構件，ad為連桿（linkage），c點為固定端（fixed end），請計算b點之水平位移Δb。假設ac梁之EI = 1000 kN-m²，ad連桿之AE = 1000 kN，其中E為構件之彈性模數，I為斷面慣性矩，A為斷面積。（25 分）</p>
+<h2>2. 考卷給的公式、附表與參數</h2>
+<ul>
+<li>考卷沒有給任何參考公式或附表。</li>
+<li>給定：梁 ac 的 EI＝1000 kN-m²；連桿 ad 的 AE＝1000 kN。</li>
+<li>考卷沒有說是否忽略梁 ac 的軸向變形（梁只給 EI）。</li>
+<li>卷首注意事項：㈠可以使用電子計算器，但需詳列解答過程。㈡不必抄題，作答時請將試題題號及答案依照順序寫在試卷上，於本試題上作答者，不予計分。</li>
+<li>考試時間：2 小時。</li>
+</ul>
+<h2>3. 附圖</h2>
+<p><img alt="SA-2009-2 考卷附圖原截圖（含滑鼠游標，位於連桿下方空白處，未壓構件）" src="../../raw/solutions/SA-2009-2/SA-2009-2-fig-1.png" /><br />
+<em>證據圖 SA-2009-2-fig-1.png</em></p>
+<p><img alt="SA-2009-2 考卷附圖：垂直梁 a–c 高 10 m，c 在下方固定於地面；b 在 c 上方 6 m；a 頂端小圓圈接水平連桿 a–d，長 100 m，d 以鉸接右側牆；梁全高受 1 kN/m 水平向左均佈力" src="../../raw/solutions/SA-2009-2/SA-2009-2-fig-2.png" /><br />
+<em>證據圖 SA-2009-2-fig-2.png（2026-11-07 自考卷重新擷取 500 dpi，無游標）</em></p>
+<p>圖面文字照錄：100 m、a、d、b、10 m、1 kN/m、6 m、c</p>
+<h2>4. 判讀清單</h2>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>項目</th>
+<th>判讀</th>
+<th>圖上／題文依據</th>
+<th>把握</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>c</td>
+<td>固定端（梁底接剖線，無三角形）</td>
+<td>450 dpi 放大；題文「c 點為固定端」</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>2</td>
+<td>d</td>
+<td>鉸支承於右側直立牆（三角形尖端朝連桿）</td>
+<td>450 dpi 放大</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>3</td>
+<td>a</td>
+<td>連桿與梁頂的鉸接（小空心圓）</td>
+<td>450 dpi 放大</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>4</td>
+<td>b</td>
+<td>梁上一點（小實心點），不是鉸</td>
+<td>圖上為實心點，非空心圓</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>5</td>
+<td>尺寸</td>
+<td>梁高 10 m（c 至 a）；b 在 c 上方 6 m；連桿長 100 m（a 至 d）</td>
+<td>10 m、6 m 尺寸界線對齊 a、b、c；100 m 界線對齊梁右緣與牆</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>6</td>
+<td>連桿方向</td>
+<td>水平，與梁垂直</td>
+<td>圖面</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>7</td>
+<td>載重</td>
+<td>水平向左 1 kN/m，作用 c 至 a 全高（背離 d 的方向）</td>
+<td>箭頭朝左，自 c 排到 a</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>8</td>
+<td>剛度</td>
+<td>梁 EI＝1000 kN-m²；連桿 AE＝1000 kN</td>
+<td>題文</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>9</td>
+<td>所求</td>
+<td>b 點水平位移 Δb</td>
+<td>題文</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>10</td>
+<td>靜不定度</td>
+<td>固定 3＋連桿 1＝4 個未知力，方程式 3，一度靜不定</td>
+<td>計數</td>
+<td>確定（解讀）；使用者確認</td>
+</tr>
+<tr>
+<td>11</td>
+<td>證據圖</td>
+<td>舊 fig-1 有游標（連桿下方空白處）；新增 fig-2（500 dpi）</td>
+<td>—</td>
+<td>確定</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p><em>轉錄：2026-11-07（SA-U2-2 題目正本推廣・批 1）</em><br />
+<em>確認：2026-11-07 使用者確認</em></p>
+</details>
+<hr>
+<h1>考題編號：SA-2009-2</h1>
 <p><strong>主分類：</strong> <code>SA-U2-2</code> 靜不定結構諧合變位<br />
 <strong>副分類：</strong> 無<br />
 <strong>分析法：</strong> 柔度法 (Force Method) / 單位虛力法<br />
 <strong>標籤：</strong> <code>靜不定</code>, <code>梁柱系統</code>, <code>均布載重</code></p>
 <hr />
-<h2>1. 原始題目重述 (Problem Restatement)</h2>
-<p>本題為一複合結構（梁與連桿組成），梁 <code>ac</code> 底部 <code>c</code> 為固定端（Fixed End），頂端 <code>a</code> 與水平連桿 <code>ad</code> 相接。連桿右端 <code>d</code> 為固定鉸支承。梁受向左的均佈載重 $w = 1\text{ kN/m}$ 作用。</p>
-<ul>
-<li><strong>已知條件：</strong><ul>
-<li>梁 ac：長度 $L = 10\text{ m}$，彎曲剛度 $EI = 1000\text{ kN-m}^2$</li>
-<li>連桿 ad：長度 $L_{ad} = 100\text{ m}$，軸向剛度 $AE = 1000\text{ kN}$</li>
-<li>載重：均佈載重 $w = 1\text{ kN/m} (\leftarrow)$，作用於梁 <code>ac</code> 整個跨度。</li>
-</ul>
-</li>
-<li><strong>求解目標：</strong> $b$ 點（距底部 $c$ 點 6m 處）的水平位移 $\Delta_b$。</li>
-</ul>
-<p><img alt="SA-2009-2 題目附圖：包含一端固定之懸臂梁及水平連桿之複合結構" src="../../raw/solutions/SA-2009-2/SA-2009-2-fig-1.png" /></p>
-<p><em>圖說：本圖為題意示意圖，包含一端固定、受水平向左均布載重的梁結構，其自由端透過水平連桿固定於右側鉸支承上，並標示梁與連桿的各項剛度條件與幾何尺寸。</em></p>
+<h2>1. 題目（考卷原文見題目正本）</h2>
+<blockquote>
+<p>考卷原文、公式／附表、附圖與判讀清單（已確認）見 <a href="SA-2009-2-problem.md"><code>SA-2009-2-problem.md</code></a>。本節只列解題時最容易讀錯的地方與本解使用的記號；題意以題目正本為準。</p>
+</blockquote>
+<p><img alt="SA-2009-2 重繪題目附圖：垂直梁 ac 高 10 m，c 固定端；b 在 c 上方 6 m；a 頂以鉸接水平連桿 ad（100 m，圖未按比例），d 鉸接於右側牆；梁全高 1 kN/m 向左" src="../../raw/solutions/SA-2009-2/figs/SA-2009-2-fig-1-problem.svg" /><br />
+<em>重繪自考卷附圖，依判讀清單重繪。攔：載重方向讀反、b 讀成鉸、b 高度量錯。</em></p>
+<h3>常見誤讀</h3>
+<table>
+<thead>
+<tr>
+<th>項目</th>
+<th>正確判讀</th>
+<th>常見誤讀</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>載重方向</td>
+<td>水平向左（背離 d），作用 c 至 a 全高</td>
+<td>向右</td>
+</tr>
+<tr>
+<td>b 點</td>
+<td>梁上一點（實心點），距 c 6 m</td>
+<td>梁內鉸，或距 a 6 m</td>
+</tr>
+<tr>
+<td>連桿</td>
+<td>水平，長 100 m，AE＝1000 kN</td>
+<td>忽略連桿變形</td>
+</tr>
+</tbody>
+</table>
+<p><strong>本解記號：</strong> 梁 ac：L＝10 m、EI＝1000 kN-m²；連桿 ad：100 m、AE＝1000 kN；w＝1 kN/m（←）；y 自 c 向上量；贅力 X₁＝連桿拉力（對梁 a 點向右）；水平位移向右為正。</p>
 <h2>2. 考題核心精神與出題者意圖 (Core Concepts &amp; Examiner's Intent)</h2>
 <p>本題的核心在於測驗考生處理「結合梁（抗彎）與二力桿件（抗軸壓/拉）」之混合結構的能力。主要考察以下知識點：</p>
 <ol>
@@ -79,7 +248,7 @@ header .nomat{margin-top:12px;font-size:.8em;opacity:.85}
 </ol>
 <p><strong>關鍵陷阱</strong>：</p>
 <ol>
-<li><strong>符號與變形方向的混淆</strong>：連桿若是向右拉梁（梁受向右集中力），則連桿本身亦處於受張力狀態（伸長）。梁端點位移方向與連桿伸長量的關係式中，正負號極易出錯。建議統一設定向右為正（或向左為正），並畫出分離體圖確認變位方向。</li>
+<li><strong>符號與變形方向的混淆</strong>：連桿拉力 $X_1$ 對梁是向右的力、連桿本身伸長。連桿右端 d 固定，所以連桿伸長多少，a 點就向左移多少：$\Delta_a$（向右為正）$= -\Delta_{ad}$。均佈載重把 a 推向左（遠離 d），連桿被拉長，所以 $X_1$ 是拉力。</li>
 <li><strong>彈性曲線公式套用錯誤</strong>：計算梁任一點 $b$（距固定端 6m）的撓度時，不能只依賴自由端點的撓度公式，必須使用「任意位置 $y$ 的懸臂梁撓度公式」。若誤將 $b$ 點視為端點或直接用比例法折減，將會造成嚴重的計算錯誤。</li>
 </ol>
 <h2>3.5 變數層次分析 (Variable Hierarchy Analysis)</h2>
@@ -162,7 +331,7 @@ $$ \Delta_b = \Delta_{b,X1} + \Delta_{b,w} = \frac{\boxed{X_1} y^2}{6 EI} (3L - 
 <tbody>
 <tr>
 <td>梁與桿件的變位諧合符號約定</td>
-<td>當梁端 a 向右位移 $\Delta_a$ (受拉力 $X_1$) 時，連桿端點向右移動，使得連桿縮短，但連桿受拉力 $X_1$ 時為伸長 $\Delta_{ad}$，故 $\Delta_a = -\Delta_{ad}$。</td>
+<td>連桿右端 d 固定，所以連桿伸長多少，a 點就向左移多少：$\Delta_a$（向右為正）$= -\Delta_{ad}$（$\Delta_{ad}$＝連桿伸長量）。</td>
 <td></td>
 </tr>
 <tr>
@@ -183,7 +352,7 @@ $$ \Delta_b = \Delta_{b,X1} + \Delta_{b,w} = \frac{\boxed{X_1} y^2}{6 EI} (3L - 
 梁在 a 點的水平變位量 $\Delta_a$（設向右為正）必須等於連桿 ad 左端的位移（也就是連桿伸長量所造成的位移）。</p>
 <ul>
 <li>梁 a 點變位：$\Delta_a = \Delta_{a,w} + \Delta_{a,X1}$</li>
-<li>連桿 a 點變位：連桿受張力 $X_1$ 作用，向右位移即代表連桿縮短，因此 $\Delta_a = -\Delta_{ad}$（其中 $\Delta_{ad}$ 為連桿受拉伸長量）。</li>
+<li>連桿 a 點變位：連桿右端 d 固定，所以連桿伸長多少，a 點就向左移多少，因此 $\Delta_a = -\Delta_{ad}$（其中 $\Delta_{ad}$ 為連桿受拉伸長量）。</li>
 </ul>
 <h3>4.2 計算基本結構變位</h3>
 <p><strong>1. 均佈載重 $w$ 造成的變位 (向左為負)：</strong><br />
@@ -197,7 +366,7 @@ $$ \Delta_a = -1.25 + \frac{X_1}{3} $$</p>
 <p><strong>3. 連桿的變形量：</strong><br />
 連桿承受張力 $X_1$，其伸長量為：<br />
 $$ \Delta_{ad} = \frac{X_1 L_{ad}}{AE} = \frac{X_1 \times 100}{1000} = 0.1 X_1 $$<br />
-依據相容條件，梁端向右的位移等於連桿向左的伸長量：<br />
+依據相容條件，a 點向左移的量等於連桿伸長量（$-\Delta_a = \Delta_{ad}$）：<br />
 $$ \Delta_a = - \Delta_{ad} \implies -1.25 + \frac{X_1}{3} = -0.1 X_1 $$</p>
 <h3>4.3 解出贅力 $X_1$</h3>
 <p>將方程式移項求解：<br />
@@ -218,17 +387,22 @@ $$ \Delta_{b,w} = -\frac{36}{24000} (36 - 240 + 600) = -\frac{3}{2000} \times 39
 $$ \Delta_b = \Delta_{b,X1} + \Delta_{b,w} = \frac{27}{65} - 0.594 = \frac{5400}{13000} - \frac{7722}{13000} = -\frac{2322}{13000}\text{ m} = -\frac{1161}{6500}\text{ m} \approx -0.1786\text{ m} $$<br />
 負號表示位移方向向左。</p>
 <p>$$ \boxed{\Delta_b = \frac{1161}{6500}\text{ m} \approx 0.1786\text{ m} \quad (\text{方向向左})} $$</p>
+<p><img alt="SA-2009-2 變形形狀與彎矩圖：柱受向左均佈載重整體向左彎，b 點向左 0.1786 m；連桿受拉 2.885 kN；c 端彎矩 21.15 kN·m 右側受拉，柱上段左側受拉" src="../../raw/solutions/SA-2009-2/figs/SA-2009-2-fig-2-deflected-bmd.svg" /></p>
+<p><em>圖 2　變形形狀與彎矩圖（連桿未按比例，以等效長度繪製，$AE/L = 10$ kN/m 不變；$X_1$、$\Delta_b$ 與 a 點位移逐項核對本解）。這張圖攔的是「$\Delta_b$ 方向畫反」和「把連桿當成受壓」。</em></p>
 <h2>5. 關鍵爭議點與進階探討 (Critical Issues &amp; Advanced Discussion)</h2>
 <ol>
 <li>
 <p><strong>梁桿複合結構的相容條件符號約定</strong>：<br />
-   在考試中，學生常因為梁位移方向與連桿伸長方向的配合失誤導致符號帶錯。為避免此類錯誤，強烈建議一律先畫出<strong>分離體圖 (Free Body Diagram)</strong>。若假設梁端 $a$ 受力向右，則連桿拉梁，代表連桿處於受張力狀態；若以連桿向右伸長為正，此時會使連桿的左節點向右移動，與梁左節點的向右位移正好符號相反，故建立出 $\Delta_a = - \Delta_{ad}$ 的關係。</p>
+   在考試中，學生常因為梁位移方向與連桿伸長方向的配合失誤導致符號帶錯。為避免此類錯誤，強烈建議一律先畫出<strong>分離體圖 (Free Body Diagram)</strong>。若假設梁端 $a$ 受力向右，則連桿拉梁，代表連桿處於受張力狀態；連桿右端 d 固定，所以連桿伸長多少，a 點就向左移多少（伸長使左端 a 向左），故 $\Delta_a = - \Delta_{ad}$。檢核：解得 $\Delta_a = -1.25 + X_1/3 = -0.2885$ m（向左），連桿伸長 $0.1X_1 = 0.2885$ m，兩者相等。</p>
 </li>
 <li>
 <p><strong>撓度曲線方程式的記憶與替代方案</strong>：<br />
    本題高度依賴對於懸臂梁在任意位置 $y$ 處撓度公式的熟悉度。如果考場上遺忘了 $v_w(y)$ 或是 $v_P(y)$ 的標準公式，可以透過<strong>單位虛力法 (Unit Load Method)</strong> 求解：對 $b$ 點施加單位虛力，再利用虛功原理方程式 $\int \frac{Mm}{EI} dy$ 進行積分。雖然這種方式運算較為繁瑣，但屬於最安穩且不易出錯的基本功，也能用來驗算既有的彈性曲線公式。</p>
 </li>
-</ol></main>
+</ol>
+<p><em>修正日期：2026-11-07（§1 改為指向題目正本並放重繪附圖（figs/SA-2009-2-fig-1-problem.svg）、加常見誤讀；圖由 gen_SA-2009-2.py 產生，可重跑）</em><br />
+<em>修正日期：2026-11-07（非勘誤）表述修正：§3 陷阱 1、§3.5 L3、§4.1、§4.2、§5 的相容條件正負號敘述改為「連桿右端 d 固定，連桿伸長多少 a 點就向左移多少」，§5 補數值檢核；答案不變</em><br />
+<em>修正日期：2026-11-07（非勘誤）圖解補繪：圖 2（gen_SA-2009-2.py，可重跑）</em></p></main>
 <footer>來源：raw/solutions/SA-2009-2/SA-2009-2.md（知識庫解題內容唯一正本；本頁僅為渲染顯示）</footer>
 
 <script>

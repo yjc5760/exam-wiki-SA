@@ -43,16 +43,179 @@ header .nomat{margin-top:12px;font-size:.8em;opacity:.85}
 <p class="meta2">主分類 <b>SA-U2-2</b> 靜不定結構諧合變位 ｜ 2007 年（民國 96） ｜ 最小功法</p>
 <div class="hbtns"></div><p class="nomat">本題主分類 SA-U2-2 目前尚無教材，故不提供教材按鈕。</p>
 </header>
-<main><h1>考題編號：[SA-2007-1]</h1>
+<main><details class="problem-src" open><summary><b>📄 題目正本</b>（考卷原文、附圖與判讀清單；不含解法）</summary>
+<h1>SA-2007-1 題目正本</h1>
+<blockquote>
+<p>本檔只記錄考卷上寫了什麼、圖上畫了什麼，不含任何解法。解析見同資料夾 <code>SA-2007-1.md</code>。<br />
+判讀清單經使用者確認前，狀態為「待確認」；確認後本檔原則上不再修改（改動須回考卷原圖並記 log）。</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>項目</th>
+<th>內容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>考卷</td>
+<td><code>raw/exams/SA-2007_結構學.pdf</code>，第 1 頁（正面），第一題（無圖號）</td>
+</tr>
+<tr>
+<td>考年</td>
+<td>2007（民國 96 年）專技高考結構工程技師「結構學」</td>
+</tr>
+<tr>
+<td>配分</td>
+<td>25 分</td>
+</tr>
+<tr>
+<td>附圖</td>
+<td><code>SA-2007-1-fig-1.png</code>、<code>SA-2007-1-fig-2.png</code></td>
+</tr>
+<tr>
+<td>判讀狀態</td>
+<td><strong>已確認</strong>（2026-11-07 使用者確認；原轉錄：2026-11-07 轉錄；PyMuPDF 110 dpi 整頁＋400–1200 dpi 局部放大（附圖為掃描點陣圖）；盲讀於開啟解析前完成）</td>
+</tr>
+</tbody>
+</table>
+<h2>1. 考卷原文（逐字）</h2>
+<p>一、如圖所示之桁架（truss），點A、B 及C 為鉸接（hinge）。若每根桿件之斷面積A = 1000 mm²，楊氏係數E = 200 GPa，當E 點有一水平載重60 kN 時，試計算支承反力及各桿內力。（25 分）</p>
+<h2>2. 考卷給的公式、附表與參數</h2>
+<ul>
+<li>考卷沒有給任何參考公式或附表。</li>
+<li>給定：各桿 A＝1000 mm²、E＝200 GPa（各桿相同）。</li>
+<li>卷首注意事項：㈠可以使用電子計算器。㈡不必抄題，作答時請將試題題號及答案依照順序寫在試卷上，於本試題上作答者，不予計分。</li>
+<li>考試時間：2 小時。</li>
+</ul>
+<h2>3. 附圖</h2>
+<p><img alt="SA-2007-1 考卷附圖原截圖（含滑鼠游標，位於 6 m 尺寸線旁空白處，未壓構件）" src="../../raw/solutions/SA-2007-1/SA-2007-1-fig-1.png" /><br />
+<em>證據圖 SA-2007-1-fig-1.png</em></p>
+<p><img alt="SA-2007-1 考卷附圖：桁架：D、E 在上方，A、B、C 在地面；桿 A–D、D–E、D–B、B–E、E–C；A、B、C 為鉸支承；E 點受 60 kN 水平向右；高 6 m，A–B、B–C 各 4.5 m" src="../../raw/solutions/SA-2007-1/SA-2007-1-fig-2.png" /><br />
+<em>證據圖 SA-2007-1-fig-2.png（2026-11-07 自考卷重新擷取 500 dpi，無游標）</em></p>
+<p>圖面文字照錄：D、E、60 kN、6 m、A、B、C、4.5 m、4.5 m</p>
+<h2>4. 判讀清單</h2>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>項目</th>
+<th>判讀</th>
+<th>圖上／題文依據</th>
+<th>把握</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>A、B、C</td>
+<td>三個鉸支承（圓圈＋三角形＋剖線）</td>
+<td>350 dpi 放大；題文「點 A、B 及 C 為鉸接」</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>2</td>
+<td>節點 D、E</td>
+<td>桁架節點（小空心圓）；D 在 A 正上方、E 在 C 正上方</td>
+<td>圖面：A–D、C–E 為垂直桿</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>3</td>
+<td>桿件</td>
+<td>A–D、D–E、D–B、B–E、E–C 共 5 根；B 為兩斜桿交會點</td>
+<td>圖面</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>4</td>
+<td>尺寸</td>
+<td>高 6 m（D、E 至地面支承）；A–B 4.5 m、B–C 4.5 m，D–E 長 9 m</td>
+<td>尺寸線端點對齊 A、B、C 圓圈中心；6 m 上下界線對齊 D、A</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>5</td>
+<td>材料</td>
+<td>各桿 A＝1000 mm²、E＝200 GPa</td>
+<td>題文</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>6</td>
+<td>載重</td>
+<td>E 點水平向右 60 kN</td>
+<td>箭頭自 E 向右</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>7</td>
+<td>所求</td>
+<td>支承反力及各桿內力</td>
+<td>題文</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>8</td>
+<td>靜不定度</td>
+<td>m＝5、r＝6、j＝5：m＋r＝11＞2j＝10，一度靜不定</td>
+<td>計數</td>
+<td>確定（解讀）；使用者確認</td>
+</tr>
+<tr>
+<td>9</td>
+<td>證據圖</td>
+<td>舊 fig-1 有游標（6 m 尺寸線旁，未壓構件）；新增 fig-2（500 dpi）</td>
+<td>—</td>
+<td>確定</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p><em>轉錄：2026-11-07（SA-U2-2 題目正本推廣・批 1）</em><br />
+<em>確認：2026-11-07 使用者確認</em></p>
+</details>
+<hr>
+<h1>考題編號：[SA-2007-1]</h1>
 <p><strong>主分類：</strong> <code>SA-U2-2</code> 靜不定結構諧合變位<br />
 <strong>副分類：</strong> 無<br />
 <strong>分析法：</strong> 最小功法<br />
 <strong>標籤：</strong> <code>靜不定桁架</code> <code>單位力法</code> <code>柔度矩陣法</code> <code>相容方程式</code></p>
 <hr />
-<h2>1. 原始題目重述 (Problem Restatement)</h2>
-<p>如圖所示之桁架（truss），點 A、B 及 C 為鉸接（hinge）。若每根桿件之斷面積 $A = 1000 \text{ mm}^2$，楊氏係數 $E = 200 \text{ GPa}$，當 E 點有一水平載重 $60 \text{ kN}$ 時，試計算支承反力及各桿內力。（25 分）</p>
-<p><img alt="SA-2007-1 題目附圖：三個鉸支承的靜不定桁架，受 E 點水平載重" src="../../raw/solutions/SA-2007-1/SA-2007-1-fig-1.png" /></p>
-<p><em>圖說：A、B、C 三個節點位於底部水平線上，A 位於左側，B 位於中間，C 位於右側。A 到 B 距離為 $4.5\text{ m}$，B 到 C 距離為 $4.5\text{ m}$。D 點在 A 點正上方 $6\text{ m}$ 處，E 點在 C 點正上方 $6\text{ m}$ 處。桿件包含 AD、DB、CE、EB，以及連接 D、E 兩點的水平桿件 DE (長度 $9\text{ m}$)。E 點承受向右的水平力 $60\text{ kN}$。A、B、C 皆為固定鉸支承。</em></p>
+<h2>1. 題目（考卷原文見題目正本）</h2>
+<blockquote>
+<p>考卷原文、公式／附表、附圖與判讀清單（已確認）見 <a href="SA-2007-1-problem.md"><code>SA-2007-1-problem.md</code></a>。本節只列解題時最容易讀錯的地方與本解使用的記號；題意以題目正本為準。</p>
+</blockquote>
+<p><img alt="SA-2007-1 重繪題目附圖：桁架 A、B、C 在地面鉸支承（A–B、B–C 各 4.5 m），D、E 在 A、C 正上方 6 m；桿 AD、DE、DB、BE、EC；E 點 60 kN 向右" src="../../raw/solutions/SA-2007-1/figs/SA-2007-1-fig-1-problem.svg" /><br />
+<em>重繪自考卷附圖，依判讀清單重繪。攔：支承讀成滾支承（變靜定）、漏掉 B 點兩斜桿交會。</em></p>
+<h3>常見誤讀</h3>
+<table>
+<thead>
+<tr>
+<th>項目</th>
+<th>正確判讀</th>
+<th>常見誤讀</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>支承</td>
+<td>A、B、C 三個鉸支承（6 個反力）</td>
+<td>其中一個讀成滾支承</td>
+</tr>
+<tr>
+<td>桿件</td>
+<td>5 根：AD、DE、DB、BE、EC</td>
+<td>多補 A–B、B–C 下弦</td>
+</tr>
+<tr>
+<td>靜不定度</td>
+<td>m＋r＝11 ＞ 2j＝10，一度</td>
+<td>判為靜定</td>
+</tr>
+</tbody>
+</table>
+<p><strong>本解記號：</strong> DB、BE 長 7.5 m（4.5／7.5 = 0.6、6／7.5 = 0.8）；A＝1000 mm²、E＝200 GPa；桿力拉為正。</p>
 <h2>2. 考題核心精神與出題者意圖 (Core Concepts &amp; Examiner's Intent)</h2>
 <ul>
 <li><strong>考驗靜不定度判斷：</strong> 本結構並非標準靜定桁架，具備三個固定鉸支承 (提供 6 個反力)，考生必須正確判斷其靜不定度為 1 度。</li>
@@ -239,12 +402,16 @@ $$ -\frac{1890}{EA} + \frac{72}{EA} X = 0 \implies \boxed{X = \frac{1890}{72} = 
     $\sum F_y = B_y - 35 + 45 = 0 \implies B_y = -10 \text{ kN}$ (向下)。<br />
     故 $\boxed{B_x = 60 \text{ kN} \quad (\text{向左})}$，$\boxed{B_y = 10 \text{ kN} \quad (\text{向下})}$。</li>
 </ul>
+<p><img alt="SA-2007-1 桿力圖：AD +35、DE +26.25、BE +56.25 受拉，DB −43.75、EC −45 受壓；反力 A 35 向下、B 60 向左與 10 向下、C 45 向上" src="../../raw/solutions/SA-2007-1/figs/SA-2007-1-fig-2-truss.svg" /></p>
+<p><em>圖 2　桿力（紅拉藍壓，線寬隨力量大小；全節點平衡含反力殘差為 0 才繪製）。A、C 只接垂直桿，60 kN 水平力全由 B 承擔；這張圖攔的是「A、C 也分攤水平反力」與「$B_x$ 方向畫反」。</em></p>
 <p><em>(整體平衡驗證：$\sum F_x = 60 + (-60) = 0$ OK。$\sum F_y = -35 + (-10) + 45 = 0$ OK。)</em></p>
 <h2>5. 關鍵爭議點與進階探討 (Critical Issues &amp; Advanced Discussion)</h2>
 <ul>
 <li><strong>反力驗證的重要性：</strong> 桁架解題過程中容易在各節點的正負號分解發生失誤，最後必須使用整體結構的力矩與力平衡方程式，例如 $\sum M_B = (-35)(-4.5) + (45)(4.5) - 60(6) = 157.5 + 202.5 - 360 = 0$，確認無誤後方能交卷。</li>
 <li><strong>不同的贅力選擇：</strong> 若選取水平反力如 $C_x$ 作為贅力，由於原結構 $A, B, C$ 皆為固定鉸支承，去除 $C_x$ 結構仍保持靜定但不再解耦，需要解整個 5 桿結構的內力，計算量約為選 DE 桿的兩倍。在考場上，觀察幾何對稱性與載重特徵以選出「能切出獨立子結構」的贅力，是奪取高分的關鍵。</li>
-</ul></main>
+</ul>
+<p><em>修正日期：2026-11-07（§1 改為指向題目正本並放重繪附圖（figs/SA-2007-1-fig-1-problem.svg）、加常見誤讀；圖由 gen_SA-2007-1.py 產生，可重跑）</em><br />
+<em>修正日期：2026-11-07（非勘誤）圖解補繪：圖 2（gen_SA-2007-1.py，可重跑）</em></p></main>
 <footer>來源：raw/solutions/SA-2007-1/SA-2007-1.md（知識庫解題內容唯一正本；本頁僅為渲染顯示）</footer>
 
 <script>
