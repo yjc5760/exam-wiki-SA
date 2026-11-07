@@ -43,18 +43,184 @@ header .nomat{margin-top:12px;font-size:.8em;opacity:.85}
 <p class="meta2">主分類 <b>SA-U1-3</b> 靜定及靜不定結構影響線 ｜ 2011 年（民國 100） ｜ 穆勒法（Müller-Breslau Principle）／力法＋影響線面積積分</p>
 <div class="hbtns"><a class="b-study" href="../unit-SA-U1-3.html">🧭 U1-3 單元總覽</a><a class="b-lect" href="../lecture-SA-U1-3.html">📚 U1-3 靜定及靜不定結構影響線 講義</a></div>
 </header>
-<main><h1>考題編號：SA-2011-3</h1>
+<main><details class="problem-src" open><summary><b>📄 題目正本</b>（考卷原文、附圖與判讀清單；不含解法）</summary>
+<h1>SA-2011-3 題目正本</h1>
+<blockquote>
+<p>本檔只記錄考卷上寫了什麼、圖上畫了什麼，不含任何解法。解析見同資料夾 <code>SA-2011-3.md</code>。<br />
+判讀清單經使用者確認前，狀態為「待確認」；確認後本檔原則上不再修改（改動須回考卷原圖並記 log）。</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>項目</th>
+<th>內容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>考卷</td>
+<td><code>raw/exams/SA-2011_結構學.pdf</code>，第 2 頁（背面），全一張，第三題</td>
+</tr>
+<tr>
+<td>考年</td>
+<td>2011（民國一百年）專技高考結構工程技師「結構學」</td>
+</tr>
+<tr>
+<td>配分</td>
+<td>25 分</td>
+</tr>
+<tr>
+<td>附圖</td>
+<td><code>SA-2011-3-fig-2.png</code>（2026-11-07 重新擷取）；既有 <code>SA-2011-3-fig-1.png</code></td>
+</tr>
+<tr>
+<td>判讀狀態</td>
+<td><strong>已確認</strong>（2026-11-07 使用者確認。原轉錄：2026-11-07 轉錄；PyMuPDF 110 dpi 整頁＋450–1200 dpi 局部放大；考卷可抽文字，逐字原文以 PDF 文字層核對；盲讀於開啟解析前完成）</td>
+</tr>
+</tbody>
+</table>
+<h2>1. 考卷原文（逐字）</h2>
+<p>三、如圖所示梁結構：㈠請使用穆勒法（Müller-Breslau method）繪出支承 A 點反力 (R_A)、支承 B 點反力 (R_B)、支承 B 點負彎矩 (M_B-)、C 點彎矩 (M_C) 及其剪力 (V_C) 之影響線圖；㈡假設該梁承受 2 kN/m 之均布載重可作用於全長或部分跨長，請計算 C 點之最大彎矩 (M_max,C)。（25 分）</p>
+<h2>2. 考卷給的公式、附表與參數</h2>
+<ul>
+<li>考卷沒有給任何參考公式或附表；卷首註明「本試題之相關公式，請自行合理推知。」</li>
+<li>均布載重 2 kN/m，可作用於全長或部分跨長。</li>
+<li>考卷沒有給 E、I，也沒有說 EI 為常數。</li>
+<li>卷首注意事項：可以使用電子計算器。不必抄題，作答時請將試題題號及答案依照順序寫在試卷上，於本試題上作答者，不予計分。本試題之相關公式，請自行合理推知。</li>
+<li>考試時間：2 小時。</li>
+</ul>
+<h2>3. 附圖</h2>
+<p><img alt="SA-2011-3 考卷附圖：梁 A–B–C–D，A 滾支承、B 滾支承、D 鉸支承，尺寸 30 m｜15 m｜15 m，C 在 BD 中點" src="../../raw/solutions/SA-2011-3/SA-2011-3-fig-2.png" /><br />
+<em>證據圖 SA-2011-3-fig-2.png（2026-11-07 自考卷 500 dpi 重新擷取）；既有 SA-2011-3-fig-1.png 帶有滑鼠游標（手形游標壓在 B 支承右側），保留不改。</em></p>
+<p>圖面文字照錄：A、B、C、D、30 m、15 m、15 m</p>
+<h2>4. 判讀清單</h2>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>項目</th>
+<th>判讀</th>
+<th>圖上／題文依據</th>
+<th>把握</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>座標</td>
+<td>A(0)、B(30)、C(45)、D(60)，單位 m</td>
+<td>尺寸線 30 m｜15 m｜15 m，端點對齊 A、B 滾輪中心、C、D 三角形頂點（500 dpi）</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>2</td>
+<td>支承 A</td>
+<td>滾支承（圓圈）</td>
+<td>500 dpi</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>3</td>
+<td>支承 B</td>
+<td>滾支承（圓圈）</td>
+<td>500 dpi；既有 fig-1 的游標壓在此處，以新擷取 fig-2 為準</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>4</td>
+<td>支承 D</td>
+<td>鉸支承（三角形）</td>
+<td>500 dpi</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>5</td>
+<td>C 點</td>
+<td>BD 中點，不是支承也不是內鉸</td>
+<td>圖上 C 只有字母，梁線連續</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>6</td>
+<td>梁</td>
+<td>A–D 連續，無內鉸；一度靜不定</td>
+<td>圖面</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>7</td>
+<td>EI</td>
+<td>考卷沒有給，也沒有說常數；圖上全梁同一線寬</td>
+<td>題文、圖面</td>
+<td>確定（解讀）：視為 EI 常數；使用者確認</td>
+</tr>
+<tr>
+<td>8</td>
+<td>所求 ㈠</td>
+<td>以穆勒法繪 R_A、R_B、M_B-（B 點負彎矩）、M_C、V_C 影響線</td>
+<td>題文</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>9</td>
+<td>所求 ㈡</td>
+<td>2 kN/m 均布載重可佈於全長或任意部分跨長，求 C 點最大彎矩</td>
+<td>題文（未指定正或負最大）</td>
+<td>確定（解讀）；使用者確認</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p><em>轉錄：2026-11-07（SA-U1-3 題目正本推廣・批 1）</em><br />
+<em>確認：2026-11-07 使用者確認</em></p>
+</details>
+<hr>
+<h1>考題編號：SA-2011-3</h1>
 <p><strong>主分類：</strong> <code>SA-U1-3</code> 靜定及靜不定結構影響線<br />
 <strong>副分類：</strong> 無<br />
 <strong>分析法：</strong> 穆勒法（Müller-Breslau Principle）／力法＋影響線面積積分<br />
 <strong>標籤：</strong> <code>穆勒法</code> <code>連續梁</code> <code>影響線</code> <code>最大彎矩</code> <code>載重佈置</code></p>
 <hr />
-<h2>1. 原始題目重述 (Problem Restatement)</h2>
-<p>如圖所示為一兩跨連續梁結構，AB 跨距 $30\text{ m}$，BD 跨距 $30\text{ m}$，C 點位於 BD 跨之中央：</p>
-<p>(1) 請使用穆勒法（Müller-Breslau method）繪出支承 A 點反力（$R_A$）、支承 B 點反力（$R_B$）、支承 B 點負彎矩（$M_B^-$）、C 點彎矩（$M_C$）及其剪力（$V_C$）之影響線圖。<br />
-(2) 假設該梁承受 $2\text{ kN/m}$ 之均布載重可作用於全長或部分跨長，請計算 C 點之最大彎矩（$M_{max,C}$）。（25 分）</p>
-<p><img alt="SA-2011-3 題目附圖：兩跨連續梁，AB=30m，BD=30m，C為BD中點" src="../../raw/solutions/SA-2011-3/SA-2011-3-fig-1.png" /></p>
-<p><em>圖說：A、B 為滾支承，D 為鉸支承，總跨長 60 m。</em><em>梁在 B 上方是連續的</em><em>（不是內鉸）。以 A 為原點：$A(0)$、$B(30)$、$C(45)$、$D(60)$。</em></p>
+<h2>1. 題目（考卷原文見題目正本）</h2>
+<blockquote>
+<p>考卷原文、公式／附表、附圖與判讀清單（已確認）見 <a href="SA-2011-3-problem.md"><code>SA-2011-3-problem.md</code></a>。本節只列解題時最容易讀錯的地方與本解使用的記號；題意以題目正本為準。</p>
+</blockquote>
+<p><img alt="SA-2011-3 重繪題目附圖：連續梁 A–B–C–D，30 m｜15 m｜15 m；A、B 滾支承、D 鉸支承；C 為 BD 中點" src="../../raw/solutions/SA-2011-3/figs/SA-2011-3-fig-1-problem.svg" /><br />
+<em>重繪自考卷附圖，依判讀清單 #1–#9 重繪。攔：B 讀成內鉸、C 當成支承。</em></p>
+<h3>常見誤讀</h3>
+<table>
+<thead>
+<tr>
+<th>項目</th>
+<th>正確判讀</th>
+<th>常見誤讀</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>B 支承</td>
+<td>滾支承；梁在 B 上方連續</td>
+<td>內鉸</td>
+</tr>
+<tr>
+<td>C 點</td>
+<td>BD 中點斷面，不是支承</td>
+<td>支承</td>
+</tr>
+<tr>
+<td>EI</td>
+<td>考卷沒有給，也沒說常數；本解取常數</td>
+<td>當成題目條件</td>
+</tr>
+<tr>
+<td>㈡ 最大彎矩</td>
+<td>取 C 點正彎矩最大值</td>
+<td>—</td>
+</tr>
+</tbody>
+</table>
+<p><strong>本解記號：</strong> 記號與正負號約定沿用 §4。</p>
+<h3>判讀圖解（解析自繪）</h3>
 <p><img alt="SA-2011-3 題目重繪：兩跨對稱連續梁，A與B滾支承、D鉸支承，C為BD跨中點斷面，w=2kN/m可只佈部分跨長" src="../../raw/solutions/SA-2011-3/figs/SA-2011-3-fig-1-beam.svg" /></p>
 <p><em>圖 1　題目重繪（向量版）。這張圖攔兩件事：把 C 當成支承（它只是 BD 跨的中點斷面），以及把結構當成兩根獨立的簡支梁 —— B 上方是連續的，這正是 1 度靜不定的來源，也是第 (1) 小題五條影響線都是曲線的原因。</em></p>
 <hr />
@@ -404,7 +570,8 @@ $M_C = 2 \times (84.375 - 28.125) = 112.5\text{ kN}\cdot\text{m}$ —— 比真�
 </tbody>
 </table>
 <hr />
-<p><em>解析日期：2026-07-02　｜　分類修正＋圖解補繪：2026-08-26（$M_{max,C} = 168.75\text{ kN}\cdot\text{m}$ 經梁有限元在 241 個載重位置獨立驗證；向量圖腳本 <code>gen_SA-2011-3.py</code>，可重跑）</em></p></main>
+<p><em>解析日期：2026-07-02　｜　分類修正＋圖解補繪：2026-08-26（$M_{max,C} = 168.75\text{ kN}\cdot\text{m}$ 經梁有限元在 241 個載重位置獨立驗證；向量圖腳本 <code>gen_SA-2011-3.py</code>，可重跑）</em></p>
+<p><em>修正日期：2026-11-07（§1 改為指向題目正本並放重繪附圖（figs/SA-2011-3-fig-1-problem.svg）、加常見誤讀；原 §1 解析自繪圖移至「判讀圖解（解析自繪）」；圖由 gen_SA-2011-3_problem.py 產生，可重跑）</em></p></main>
 <footer>來源：raw/solutions/SA-2011-3/SA-2011-3.md（知識庫解題內容唯一正本；本頁僅為渲染顯示）</footer>
 
 <script>

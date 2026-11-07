@@ -10,12 +10,13 @@ SA-2022-3 桁架影響線 — 解題圖解產生腳本
      上弦連續段  x = 3 → 21、x = 24 → 27（21~24 之間**無上弦**）
      半高交會點  1.5 / 4.5 / 7.5 / 10.5 / 16.5 / 19.5 / 22.5 / 25.5 / 28.5
                  → 12~15 之間**沒有任何斜桿**
-     4.5、10.5、16.5、25.5 為兩根斜桿交會（X 型細長拉桿）
+     4.5、10.5、16.5、25.5 為兩根斜桿交會（X 形交叉斜桿）
      7.5、19.5、22.5、1.5、28.5 為單斜桿
 
 三條鐵則的落實：
-  1. 圖上每個縱距都由下方 IL 函數算出；IL 函數再與「桁架有限元＋細長拉桿
-     互補條件」在 121 個載重位置逐點對照過（見檔尾 _selftest）
+  1. 圖上每個縱距都由下方 IL 函數算出（見 _selftest 的靜力檢核）；2026-11-07 另以
+     39 桿等 EA 彈性桁架勁度法逐節點重算，R_a、R_b、R_c、N_mn、N_nk 與本檔相同
+     （考卷寫各桿 E、A 相同，沒有「細長拉桿」條件；舊版的 N_km 補充已刪除）
   2. 改 PANELS / SUP / 幾何常數重跑，所有影響線會一起變
   3. 每張圖攔一種特定誤讀，見各 fig 的 docstring
 """
@@ -45,7 +46,7 @@ NAMED = {0.0: "a", 12.0: "b", 18.0: "c", 21.0: "d", 30.0: "e", 6.0: "m", 9.0: "n
 K = (6.0, HGT)                           # 節點 k
 M_, N_ = (6.0, 0.0), (9.0, 0.0)
 
-# 斜桿：('X', x0) = 交叉細長拉桿；('/', x0)=左下→右上；('\\', x0)=左上→右下
+# 斜桿：('X', x0) = X 形交叉斜桿；('/', x0)=左下→右上；('\\', x0)=左上→右下
 DIAG = [("/", 0), ("X", 3), ("\\", 6), ("X", 9), (None, 12),
         ("X", 15), ("\\", 18), ("/", 21), ("X", 24), ("\\", 27)]
 
@@ -54,9 +55,9 @@ NJ = len(XB) + len(XT)
 NM = (len(XB) - 1) + len(TOPCHORD) + len(XT) + sum(
     2 if d == "X" else (0 if d is None else 1) for d, _ in DIAG)
 NR = sum(2 if k == "pin" else 1 for k in SUP.values())
-NCOUNTER = sum(1 for d, _ in DIAG if d == "X")
+NXPANEL = sum(1 for d, _ in DIAG if d == "X")
 assert (NM, NR, NJ) == (39, 5, 20), (NM, NR, NJ)
-assert NM + NR - 2 * NJ == NCOUNTER == 4       # 4 根鬆弛拉桿 ⇒ 恰為靜定
+assert NM + NR - 2 * NJ == NXPANEL == 4        # 4 個贅餘＝四格 X 形嵌板各一個內部贅餘；反力外部靜定
 
 XCUT_SHEARFREE = 13.5                    # 12–15 無斜桿嵌板內的斷面
 XHINGE = 21.0                            # 21–24 只切到兩根桿、交於 d ⇒ 等效內鉸
@@ -117,16 +118,6 @@ def Fkn(x):
     return 1.25 * V(x, 7.5)
 
 
-def Fkm(x):
-    """垂直桿 km：節點 k 的 ΣFy。
-    連到 k 的斜桿只有兩根：(3,0)→k（3–6 嵌板的上升拉桿）與 kn。
-      N_km = −(4/5)(N_up36 + N_kn)
-    3–6 為細長拉桿嵌板：剪力 V1 > 0 時作用的是下降桿（不接 k）⇒ N_up36 = 0；
-                        V1 < 0 時作用的是上升桿 ⇒ −(4/5)N_up36 = V1。
-    故 N_km = min(V1, 0) − V2。"""
-    return min(V(x, 4.5), 0.0) - V(x, 7.5)
-
-
 def Fmn(x):
     """下弦 mn：切 6–9 嵌板，力矩中心取上弦節點 k(6,4)（頂弦與斜桿皆通過 k）。
     左側自由體 ΣM_k = 0 ⇒ 4·N_mn = 6·R_a − Σ(載重對 k 之力矩)"""
@@ -154,22 +145,17 @@ def _selftest():
     assert abs(V(8.0, 7.5)) < 1e-12 and abs(Fkn(8.0)) < 1e-12
     for x in (6.5, 7.0, 8.5):
         assert abs(V(x, 7.5) - (x - 8) / 4) < 1e-12, x
-    # 3–6 嵌板變號點 x = 4：N_km 在此有折點（細長拉桿換手），故 IL 在節點間也會轉折
-    assert abs(V(4.0, 4.5)) < 1e-12
-    assert abs(Fkm(4.0) - 1 / 3) < 1e-12 and abs(Fkm(6.0) - 0.5) < 1e-12
-    assert abs(Fkm(4.5) - (0.5 * Fkm(3.0) + 0.5 * Fkm(6.0))) > 1e-6   # 確實非線性內插
 
 
 _selftest()
 
-# 題目所求五條（考卷原文：a、b、c 點反力、mn 桿件軸力、nk 桿件軸力），N_km 為補充
+# 題目所求五條（考卷原文：a、b、c 點反力、mn 桿件軸力、nk 桿件軸力）
 IL = [
     ("R_{a}", Ra,  [0, 12, 15, 18, 21, 30], "反力（向上為正）"),
     ("R_{b}", Rb,  [0, 12, 15, 18, 21, 30], "反力（向上為正）"),
     ("R_{c}", Rc,  [0, 12, 15, 21, 30], "反力（向上為正）"),
     ("N_{mn}", Fmn, [0, 6, 9, 12, 15, 18, 21, 30], "桿力（拉為正）"),
     ("N_{nk}", Fkn, [0, 6, 8, 9, 12, 15, 18, 21, 30], "桿力（拉為正）"),
-    ("N_{km}", Fkm, [0, 3, 4, 6, 8, 9, 12, 15, 18, 30], "補充（非題目所求）　桿力（拉為正）"),
 ]
 
 
@@ -216,9 +202,6 @@ def draw_truss(cv, hi=None, fade=False):
         if (p0, p1) in hi:
             col, wid = hi[(p0, p1)]
             cv.line(p0, p1, col, wid, cap="butt")
-        elif kind == "counter":
-            cv.line(p0, p1, C["ghost"] if fade else C["member2"], 2.0,
-                    cap="butt", dash="7 4")
         else:
             cv.line(p0, p1, C["ghost"] if fade else C["member"], 3.0, cap="butt")
     for x in XB:
@@ -252,14 +235,13 @@ def fig1_truss():
     cv.panel("題目重繪（依考卷附圖逐像素判讀）",
              "10 @ 3 m = 30 m，高 4 m　│　a(0)、b(12)、c(18) 滾支承，e(30) 鉸支承"
              "　│　單位載重沿下弦行駛，經節點傳遞")
-    hi = {(M_, N_): (C["bmd"], 5.6), (K, N_): (C["bmd"], 5.6), (M_, K): (C["bmd"], 5.6)}
+    hi = {(M_, N_): (C["bmd"], 5.6), (K, N_): (C["bmd"], 5.6)}
     draw_truss(cv, hi)
     cv.text(K, "k", 17, C["bmd"], weight="700", italic=True, dy=-18)
     cv.text_px(cv.X(6), cv.Y(0) + 40, "m", 17, C["bmd"], weight="700", italic=True)
     cv.text_px(cv.X(9), cv.Y(0) + 40, "n", 17, C["bmd"], weight="700", italic=True)
     node_labels(cv, 40, skip=("m", "n"))
 
-    cv.text_px(cv.X(4.5), Y_TOP - 48, "X：細長拉桿（只受拉）", 12.5, C["member2"], weight="700")
     cv.text_px(cv.X(7.5), Y_TOP - 22, "6–9：單斜桿", 13, C["bmd"], weight="700")
     cv.text_px(cv.X(13.5), Y_TOP - 22, "12–15：整格無斜桿", 13, C["load"], weight="700")
     cv.text_px(cv.X(13.5), (Y_TOP + Y_BOT) / 2, "無斜桿", 14, C["load"], weight="700")
@@ -269,7 +251,7 @@ def fig1_truss():
     cv.dim((SPAN, 0), (SPAN, HGT), "4 m", off=42, label_off=12)
     cv.text_px(W / 2, H - 50,
                f"桿件 m = {NM}，反力 r = {NR}，節點 j = {NJ}　⇒　m + r − 2j = "
-               f"{NM + NR - 2 * NJ}　＝　X 型細長拉桿鬆弛的根數 {NCOUNTER}　⇒　靜定",
+               f"{NM + NR - 2 * NJ}　＝　X 形嵌板數 {NXPANEL}（每格一個內部贅餘）　⇒　反力外部靜定",
                13.5, C["muted"])
     cv.text_px(W / 2, H - 24,
                "b 點沒有內部鉸。讓結構可解的是「12–15 嵌板無斜桿」與「d 處只切到兩根交於 d 的桿」",
@@ -322,7 +304,7 @@ def fig2_releases():
 
 
 def fig3_section():
-    """6–9 嵌板的斷面法。攔：把 kn 當成只能受拉的細長拉桿（它是單斜桿，可壓）。"""
+    """6–9 嵌板的斷面法。攔：把 kn 當成 X 形交叉斜桿的一根（它是單斜桿，可拉可壓）。"""
     H = 404
     cv = Canvas(W, H, sx=SX, ox=PADL, oy=H - Y_BOT)
     cv.panel("6–9 嵌板的斷面法：兩個未知桿力，兩條互相獨立的方程",
@@ -384,15 +366,14 @@ def il_panel(name, fn, brk, unit, pxu):
 
 
 def fig4_influence_lines():
-    """題目所求五條影響線＋補充的 N_km。攔：以為 x > 12 之後全部為零、以為 N_nk 有一段恆為零、
-    以為 IL 的折點一定落在節點上（N_km 在 x = 4 就不是）。"""
+    """題目所求五條影響線。攔：以為 x > 12 之後全部為零、以為 N_nk 有一段恆為零。"""
     panels = []
     for name, fn, brk, unit in IL:
         rng = max(abs(fn(x)) for x in brk) or 1.0
         panels.append(il_panel(name, fn, brk, unit, 44.0 / rng))
     return compose(panels, cols=1,
                    note="x > 12 後 R_a、R_b 仍不為零，R_b 在 x = 15 為 −1/4（b 被拔起）；"
-                        "N_nk 無恆零段；N_km 折點 x = 4 在節點之間",
+                        "N_nk 無恆零段",
                    path=f"{OUT}/{TAG}-fig-4-influence-lines.svg")
 
 
@@ -401,7 +382,7 @@ if __name__ == "__main__":
     for f in (fig1_truss, fig2_releases, fig3_section, fig4_influence_lines):
         f(); print("寫出", f.__name__)
     print("\n節點縱距")
-    print("  x  |   R_a  |   R_b  |   R_c  |  N_mn  |  N_nk  |  N_km")
-    for x in [0, 3, 4, 6, 8, 9, 12, 15, 18, 21, 24, 27, 30]:
+    print("  x  |   R_a  |   R_b  |   R_c  |  N_mn  |  N_nk")
+    for x in [0, 3, 6, 8, 9, 12, 15, 18, 21, 24, 27, 30]:
         print(f"{x:4g} | " + " | ".join(f"{_fs(v):>6s}"
-              for v in (Ra(x), Rb(x), Rc(x), Fmn(x), Fkn(x), Fkm(x))))
+              for v in (Ra(x), Rb(x), Rc(x), Fmn(x), Fkn(x))))

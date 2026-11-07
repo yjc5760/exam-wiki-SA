@@ -43,16 +43,165 @@ header .nomat{margin-top:12px;font-size:.8em;opacity:.85}
 <p class="meta2">主分類 <b>SA-U1-3</b> 靜定及靜不定結構影響線 ｜ 2005 年（民國 94） ｜ 影響線 / 三彎矩方程式</p>
 <div class="hbtns"><a class="b-study" href="../unit-SA-U1-3.html">🧭 U1-3 單元總覽</a><a class="b-lect" href="../lecture-SA-U1-3.html">📚 U1-3 靜定及靜不定結構影響線 講義</a></div>
 </header>
-<main><h1>考題編號：[SA-2005-3]</h1>
+<main><details class="problem-src" open><summary><b>📄 題目正本</b>（考卷原文、附圖與判讀清單；不含解法）</summary>
+<h1>SA-2005-3 題目正本</h1>
+<blockquote>
+<p>本檔只記錄考卷上寫了什麼、圖上畫了什麼，不含任何解法。解析見同資料夾 <code>SA-2005-3.md</code>。<br />
+判讀清單經使用者確認前，狀態為「待確認」；確認後本檔原則上不再修改（改動須回考卷原圖並記 log）。</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>項目</th>
+<th>內容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>考卷</td>
+<td><code>raw/exams/SA-2005_結構學.pdf</code>，第 1 頁（正面），全一張，第三題（圖三）</td>
+</tr>
+<tr>
+<td>考年</td>
+<td>2005（民國九十四年）專技高考結構工程技師「結構學」</td>
+</tr>
+<tr>
+<td>配分</td>
+<td>25 分</td>
+</tr>
+<tr>
+<td>附圖</td>
+<td><code>SA-2005-3-fig-2.png</code>（2026-11-07 重新擷取）；既有 <code>SA-2005-3-fig-1.png</code></td>
+</tr>
+<tr>
+<td>判讀狀態</td>
+<td><strong>已確認</strong>（2026-11-07 使用者確認。原轉錄：2026-11-07 轉錄；PyMuPDF 110 dpi 整頁＋450–1200 dpi 局部放大；考卷可抽文字，逐字原文以 PDF 文字層核對；盲讀於開啟解析前完成）</td>
+</tr>
+</tbody>
+</table>
+<h2>1. 考卷原文（逐字）</h2>
+<p>三、二跨之靜不定梁如圖三，各梁之楊氏係數 E 及慣性矩 I 為常數，試每隔 2.5m 畫出 BC 跨度中點 D 之彎矩感應線（influence line）。（25 分）</p>
+<p>（「感應線」照考卷原文，即影響線。）</p>
+<h2>2. 考卷給的公式、附表與參數</h2>
+<ul>
+<li>考卷沒有給任何參考公式或附表。</li>
+<li>考卷沒有給 E、I 數值（只說為常數）。</li>
+<li>卷首注意事項：㈠不必抄題，作答時請將試題題號及答案依照順序寫在試卷上，於本試題紙上作答者，不予計分。㈡可以使用電子計算器，但需詳列解答過程。</li>
+<li>考試時間：2 小時。</li>
+</ul>
+<h2>3. 附圖</h2>
+<p><img alt="SA-2005-3 考卷附圖：二跨連續梁 A–B–C，A 滾支承、B 鉸支承、C 滾支承，跨長 10m｜10m，D 標在 BC 跨中" src="../../raw/solutions/SA-2005-3/SA-2005-3-fig-2.png" /><br />
+<em>證據圖 SA-2005-3-fig-2.png（2026-11-07 自考卷 500 dpi 重新擷取）；既有 SA-2005-3-fig-1.png 帶有滑鼠游標（手形游標在「圖三」字樣上，未壓到構件），保留不改。</em></p>
+<p>圖面文字照錄：A、B、D、C、10m、10m、圖三</p>
+<h2>4. 判讀清單</h2>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>項目</th>
+<th>判讀</th>
+<th>圖上／題文依據</th>
+<th>把握</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>座標</td>
+<td>A(0)、B(10)、C(20)，D(15)，單位 m</td>
+<td>尺寸線 10m｜10m；D 為題文「BC 跨度中點」，圖上 D 字母位置量得約 15.0 m</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>2</td>
+<td>支承 A</td>
+<td>滾支承（圓圈＋剖線）</td>
+<td>450 dpi</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>3</td>
+<td>支承 B</td>
+<td>鉸支承（三角形＋剖線）</td>
+<td>450 dpi</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>4</td>
+<td>支承 C</td>
+<td>滾支承（圓圈＋剖線）</td>
+<td>450 dpi</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>5</td>
+<td>梁</td>
+<td>A–C 連續，無內鉸；EI 常數</td>
+<td>梁線連續（雙線繪製）；題文</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>6</td>
+<td>所求</td>
+<td>D 點彎矩影響線，每隔 2.5 m 計算一個縱座標（x = 0、2.5、…、20 m 共 9 點）</td>
+<td>題文「每隔 2.5m 畫出」</td>
+<td>確定（解讀）；使用者確認</td>
+</tr>
+<tr>
+<td>7</td>
+<td>靜不定度</td>
+<td>一度靜不定</td>
+<td>三個垂直支承</td>
+<td>確定</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p><em>轉錄：2026-11-07（SA-U1-3 題目正本推廣・批 1）</em><br />
+<em>確認：2026-11-07 使用者確認</em></p>
+</details>
+<hr>
+<h1>考題編號：[SA-2005-3]</h1>
 <p><strong>主分類：</strong> <code>SA-U1-3</code> 靜定及靜不定結構影響線<br />
 <strong>副分類：</strong> 無<br />
 <strong>分析法：</strong> 影響線 / 三彎矩方程式<br />
 <strong>標籤：</strong> <code>影響線</code>, <code>連續梁</code>, <code>三彎矩方程式</code>, <code>Müller-Breslau原理</code></p>
 <hr />
-<h2>1. 原始題目重述 (Problem Restatement)</h2>
-<p>三、二跨之靜不定梁如圖三，各梁之楊氏係數 $E$ 及慣性矩 $I$ 為常數，試每隔 2.5m 畫出 BC 跨度中點 D 之彎矩影響線（influence line）。（25 分）</p>
-<p><img alt="SA-2005-3 題目附圖：兩跨連續梁，A與C為滾支承，B為鉸支承，跨距皆為10m" src="../../raw/solutions/SA-2005-3/SA-2005-3-fig-1.png" /></p>
-<p><em>圖說：兩跨連續梁 AC，A 點為滾支承，B 點為鉸支承，C 點為滾支承。AB 跨距為 10m，BC 跨距為 10m。D 點為 BC 跨之中點。各梁之 EI 為常數。</em></p>
+<h2>1. 題目（考卷原文見題目正本）</h2>
+<blockquote>
+<p>考卷原文、公式／附表、附圖與判讀清單（已確認）見 <a href="SA-2005-3-problem.md"><code>SA-2005-3-problem.md</code></a>。本節只列解題時最容易讀錯的地方與本解使用的記號；題意以題目正本為準。</p>
+</blockquote>
+<p><img alt="SA-2005-3 重繪題目附圖：二跨連續梁 A–B–C，跨長各 10 m；A、C 滾支承、B 鉸支承；D 為 BC 跨中點" src="../../raw/solutions/SA-2005-3/figs/SA-2005-3-fig-1-problem.svg" /><br />
+<em>重繪自考卷附圖，依判讀清單 #1–#7 重繪。攔：B、C 支承讀錯、D 位置讀錯。</em></p>
+<h3>常見誤讀</h3>
+<table>
+<thead>
+<tr>
+<th>項目</th>
+<th>正確判讀</th>
+<th>常見誤讀</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>B 支承</td>
+<td>鉸支承（中間支承）</td>
+<td>滾支承</td>
+</tr>
+<tr>
+<td>D 位置</td>
+<td>BC 跨中點，x = 15 m</td>
+<td>AB 跨中點</td>
+</tr>
+<tr>
+<td>「感應線」</td>
+<td>考卷用語，即影響線</td>
+<td>—</td>
+</tr>
+</tbody>
+</table>
+<p><strong>本解記號：</strong> 縱座標每隔 2.5 m 一點（x = 0、2.5、…、20 m 共 9 點）；記號與正負號約定沿用 §4。</p>
+<hr />
 <h2>2. 考題核心精神與出題者意圖 (Core Concepts &amp; Examiner's Intent)</h2>
 <p>本題主要測驗考生對於<strong>靜不定結構影響線</strong>的計算與繪製能力。<br />
 出題者意圖包含：</p>
@@ -260,7 +409,8 @@ $$ M_D = M_{D,simple} + \frac{M_B}{2} $$<br />
 <p><strong>影響線形狀特徵</strong>：<br />
    在 AB 跨，影響線皆為負值，代表載重在 AB 跨時會使 BC 跨產生上凸變形，導致 D 點產生負彎矩；在 BC 跨，D 點附近影響線為正值，且在 D 點有明顯的尖點（非平滑），這是因為內力影響線在所求截面處必定有相對位移（此題為相對轉角）的不連續。</p>
 </li>
-</ol></main>
+</ol>
+<p><em>修正日期：2026-11-07（§1 改為指向題目正本並放重繪附圖（figs/SA-2005-3-fig-1-problem.svg）、加常見誤讀；圖由 gen_SA-2005-3.py 產生，可重跑）</em></p></main>
 <footer>來源：raw/solutions/SA-2005-3/SA-2005-3.md（知識庫解題內容唯一正本；本頁僅為渲染顯示）</footer>
 
 <script>

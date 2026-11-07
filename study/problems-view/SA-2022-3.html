@@ -40,22 +40,211 @@ header .nomat{margin-top:12px;font-size:.8em;opacity:.85}
 </style></head><body>
 <header>
 <h1>SA-2022-3　靜定及靜不定結構影響線</h1>
-<p class="meta2">主分類 <b>SA-U1-3</b> 靜定及靜不定結構影響線 ｜ 2022 年（民國 111） ｜ 影響線（Influence Lines）、斷面法、細長拉桿（Counters）</p>
+<p class="meta2">主分類 <b>SA-U1-3</b> 靜定及靜不定結構影響線 ｜ 2022 年（民國 111） ｜ 影響線（Influence Lines）、斷面法、桁架釋放條件（剪力釋放、等效內鉸）</p>
 <div class="hbtns"><a class="b-study" href="../unit-SA-U1-3.html">🧭 U1-3 單元總覽</a><a class="b-lect" href="../lecture-SA-U1-3.html">📚 U1-3 靜定及靜不定結構影響線 講義</a></div>
 </header>
-<main><h1>考題編號：SA-2022-3</h1>
+<main><details class="problem-src" open><summary><b>📄 題目正本</b>（考卷原文、附圖與判讀清單；不含解法）</summary>
+<h1>SA-2022-3 題目正本</h1>
+<blockquote>
+<p>本檔只記錄考卷上寫了什麼、圖上畫了什麼，不含任何解法。解析見同資料夾 <code>SA-2022-3.md</code>。<br />
+判讀清單經使用者確認前，狀態為「待確認」；確認後本檔原則上不再修改（改動須回考卷原圖並記 log）。</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>項目</th>
+<th>內容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>考卷</td>
+<td><code>raw/exams/SA-2022_結構學.pdf</code>，第 2 頁（頁次 3－2），第三題（圖 3）</td>
+</tr>
+<tr>
+<td>考年</td>
+<td>2022（民國一百一十一年）專技高考結構工程技師「結構學」</td>
+</tr>
+<tr>
+<td>配分</td>
+<td>25 分</td>
+</tr>
+<tr>
+<td>附圖</td>
+<td><code>SA-2022-3-fig-2.png</code>（2026-11-07 重新擷取）；既有 <code>SA-2022-3-fig-1.png</code></td>
+</tr>
+<tr>
+<td>判讀狀態</td>
+<td><strong>已確認</strong>（2026-11-07 使用者確認。原轉錄：2026-11-07 轉錄；PyMuPDF 110 dpi 整頁＋450–1200 dpi 局部放大；考卷可抽文字，逐字原文以 PDF 文字層核對；盲讀於開啟解析前完成）</td>
+</tr>
+</tbody>
+</table>
+<h2>1. 考卷原文（逐字）</h2>
+<p>三、如圖 3 所示桁架結構，a、b、c 點為滾支承，e 點為鉸支承，各桿件有相同彈性模數 E 與斷面積 A。當單位載重在桁架底弦移動，分別求 a 點反力、b 點反力、c 點反力、mn 桿件軸力及 nk 桿件軸力的影響線。（25 分）</p>
+<h2>2. 考卷給的公式、附表與參數</h2>
+<ul>
+<li>考卷沒有給任何參考公式或附表。</li>
+<li>各桿 EA 相同，沒有給數值。</li>
+<li>卷首注意事項：㈠可以使用電子計算器。㈡不必抄題，作答時請將試題題號及答案依照順序寫在試卷上，於本試題上作答者，不予計分。㈢本科目除專門名詞或數理公式外，應使用本國文字作答。</li>
+<li>考試時間：2 小時。</li>
+</ul>
+<h2>3. 附圖</h2>
+<p><img alt="SA-2022-3 考卷附圖：下弦 10 格各 3 m（總長 30 m）、高 4 m；a、b、c 滾支承、e 鉸支承；上弦分兩段（x = 3–21 m、24–27 m）；多個 X 形交叉斜撐格；k 在上弦 x = 6 m、m、n 在下弦 x = 6、9 m" src="../../raw/solutions/SA-2022-3/SA-2022-3-fig-2.png" /><br />
+<em>證據圖 SA-2022-3-fig-2.png（2026-11-07 自考卷 500 dpi 重新擷取）；既有 SA-2022-3-fig-1.png 帶有滑鼠游標（箭頭游標在左上角空白處，未壓到桿件），保留不改。</em></p>
+<p>圖面文字照錄：k、a、m、n、b、c、d、e、4 m、10@3 m = 30 m、圖 3</p>
+<h2>4. 判讀清單</h2>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>項目</th>
+<th>判讀</th>
+<th>圖上／題文依據</th>
+<th>把握</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>下弦節點（以 a 為原點，m）</td>
+<td>a(0)、x3、m(6)、n(9)、b(12)、x15、c(18)、d(21)、x24、x27、e(30)；下弦 a–e 連續</td>
+<td>下方「10@3 m = 30 m」；各豎桿與字母位置量得（500 dpi，換算 55 px/m）</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>2</td>
+<td>上弦節點（高 4 m）</td>
+<td>T3、k(6)、T9、T12、T15、T18、T21 一段連續；T24、T27 另一段；x = 21–24 m 之間沒有上弦</td>
+<td>500 dpi：上弦線止於 d 上方豎桿</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>3</td>
+<td>豎桿</td>
+<td>x = 3、6、9、12、15、18、21、24、27 m 各一根</td>
+<td>500 dpi</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>4</td>
+<td>斜桿</td>
+<td>a–T3；格 3–6 X 形（T3–m、B3–k）；k–n（由 k 往右下到 n）；格 9–12 X 形；格 12–15 無斜桿；格 15–18 X 形；T18–d；d–T24；格 24–27 X 形；T27–e</td>
+<td>500 dpi</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>5</td>
+<td>格 12–15</td>
+<td>只有上下弦與兩側豎桿，沒有斜桿</td>
+<td>500 dpi</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>6</td>
+<td>支承</td>
+<td>a、b、c 滾支承（圓圈）；e 鉸支承（三角形）</td>
+<td>題文＋圖面</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>7</td>
+<td>計數</td>
+<td>j = 20、m = 39、r = 5：m + r − 2j = 4</td>
+<td>計數</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>8</td>
+<td>mn 桿</td>
+<td>下弦 x = 6–9 m 一格</td>
+<td>m、n 字母位置</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>9</td>
+<td>nk 桿</td>
+<td>斜桿 k(6,4)–n(9,0)</td>
+<td>k、n 字母位置與該格只有一根斜桿</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>10</td>
+<td>EA</td>
+<td>各桿相同</td>
+<td>題文</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>11</td>
+<td>移動載重</td>
+<td>單位載重在底弦移動（題文未寫方向，慣例向下）</td>
+<td>題文</td>
+<td>確定（解讀）；使用者確認</td>
+</tr>
+<tr>
+<td>12</td>
+<td>所求</td>
+<td>a、b、c 點反力，mn、nk 桿軸力的影響線</td>
+<td>題文</td>
+<td>確定</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p><em>轉錄：2026-11-07（SA-U1-3 題目正本推廣・批 1）</em><br />
+<em>確認：2026-11-07 使用者確認</em></p>
+</details>
+<hr>
+<h1>考題編號：SA-2022-3</h1>
 <p><strong>主分類：</strong> <code>SA-U1-3</code> 靜定及靜不定結構影響線<br />
 <strong>副分類：</strong> 無<br />
-<strong>分析法：</strong> 影響線（Influence Lines）、斷面法、細長拉桿（Counters）<br />
-<strong>標籤：</strong> <code>影響線</code> <code>桁架</code> <code>細長拉桿</code> <code>等效內鉸</code> <code>間接載重</code> <code>無斜桿嵌板</code></p>
+<strong>分析法：</strong> 影響線（Influence Lines）、斷面法、桁架釋放條件（剪力釋放、等效內鉸）<br />
+<strong>標籤：</strong> <code>影響線</code> <code>桁架</code> <code>等效內鉸</code> <code>間接載重</code> <code>無斜桿嵌板</code></p>
 <hr />
-<h2>1. 原始題目重述 (Problem Restatement)</h2>
-<p>如圖 3 所示桁架結構，$a$、$b$、$c$ 點為滾支承，$e$ 點為鉸支承，各桿件有相同彈性模數 $E$ 與斷面積 $A$。當單位載重在桁架底弦移動，分別求 $a$ 點反力、$b$ 點反力、$c$ 點反力、$mn$ 桿件軸力及 $nk$ 桿件軸力的影響線。（25 分）</p>
+<h2>1. 題目（考卷原文見題目正本）</h2>
 <blockquote>
-<p><strong>勘誤（2026-10-28）</strong>：舊版重述誤寫為「$a$ 點反力以及 $km$、$kn$、$mn$ 桿」，已依考卷原文更正。題目要求的是 <strong>$R_a$、$R_b$、$R_c$、$N_{mn}$、$N_{nk}$ 五條</strong>；$nk$ 即 6–9 嵌板的單斜桿（本文沿用推導時的寫法 $N_{kn}$，兩者是同一根桿）。原本多算的 $N_{km}$ 保留為補充，不屬題目所求。</p>
+<p>考卷原文、公式／附表、附圖與判讀清單（已確認）見 <a href="SA-2022-3-problem.md"><code>SA-2022-3-problem.md</code></a>。本節只列解題時最容易讀錯的地方與本解使用的記號；題意以題目正本為準。</p>
 </blockquote>
-<p><img alt="SA-2022-3 題目附圖" src="../../raw/solutions/SA-2022-3/SA-2022-3-fig-1.png" /></p>
-<p><em>圖說：跨長 30 m，10 @ 3 m 嵌板，桁架高 4 m。下弦節點位於 $x = 0,3,\dots,30$；上弦節點位於 $x = 3\sim21$ 與 $x = 24,27$。支承：$a(0)$、$b(12)$、$c(18)$ 為滾支承，$e(30)$ 為鉸支承。所求桿件 $mn$（下弦 6–9）與 $nk$（6–9 嵌板斜桿），節點 $k(6,4)$、$m(6,0)$、$n(9,0)$。</em></p>
+<p><img alt="SA-2022-3 重繪題目附圖：10@3 m = 30 m、高 4 m 桁架；a、b、c 滾支承、e 鉸支承；6–9 格單斜桿 nk、12–15 格無斜桿、21–24 無上弦、3–6、9–12、15–18、24–27 為 X 形" src="../../raw/solutions/SA-2022-3/figs/SA-2022-3-fig-1-problem.svg" /><br />
+<em>重繪自考卷附圖，依判讀清單 #1–#13 重繪。攔：6–9 格讀成 X 形、12–15 格補上斜桿、b 讀成內鉸。</em></p>
+<h3>常見誤讀</h3>
+<table>
+<thead>
+<tr>
+<th>項目</th>
+<th>正確判讀</th>
+<th>常見誤讀</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>6–9 格</td>
+<td>只有一根斜桿 nk（k(6,4)–n(9,0)）</td>
+<td>X 形交叉</td>
+</tr>
+<tr>
+<td>12–15 格</td>
+<td>無斜桿</td>
+<td>補上斜桿</td>
+</tr>
+<tr>
+<td>上弦</td>
+<td>x = 3–21 與 24–27 兩段，21–24 無上弦</td>
+<td>全長連續</td>
+</tr>
+<tr>
+<td>X 形斜撐</td>
+<td>考卷只寫各桿 E、A 相同，沒有「細長拉桿」條件</td>
+<td>當成只受拉的細長拉桿（本解 2026-11-07 前的版本）</td>
+</tr>
+<tr>
+<td>所求</td>
+<td>$R_a$、$R_b$、$R_c$、$N_{mn}$、$N_{nk}$ 五條</td>
+<td>km、kn、mn（本解 2026-10-28 前的版本）</td>
+</tr>
+</tbody>
+</table>
+<p><strong>本解記號：</strong> 本文的 $N_{kn}$ 即考卷的 nk 桿；記號與正負號約定沿用 §4。</p>
 <hr />
 <h2>1.5 ⚠ 附圖的三個判讀重點（本題成敗全在這裡）</h2>
 <p>考卷附圖線條密集，最容易看走眼。以下配置係對附圖<strong>逐像素掃描</strong>（取上弦所在列與半高列的暗像素分佈）確認，非目視推測：</p>
@@ -87,36 +276,35 @@ header .nomat{margin-top:12px;font-size:.8em;opacity:.85}
 </table>
 <p>由此得到三個關鍵事實：</p>
 <ol>
-<li><strong>$kn$ 是 6–9 嵌板唯一的斜桿</strong>，不是交叉細長拉桿。它沒有換手的對象，剪力變號時只能自己從受拉轉成受壓 —— $IL_{N_{kn}}$ <strong>沒有任何一段恆為零</strong>。</li>
+<li><strong>$kn$ 是 6–9 嵌板唯一的斜桿</strong>，不是 X 形交叉斜桿的一根。6–9 嵌板的剪力全由它承擔（$N_{kn}=\frac54 V$），剪力變號時它跟著由拉轉壓 —— $IL_{N_{kn}}$ <strong>沒有任何一段恆為零</strong>。</li>
 <li><strong>12–15 嵌板整格沒有斜桿</strong>，該嵌板剪力恆為零。這才是讓結構可解的釋放條件。</li>
 <li><strong>$b$ 點沒有內部鉸</strong>，$0\sim12$ m 也<strong>不是</strong>一段獨立的簡支桁架。載重跑到 $x&gt;12$ 時 $R_a$ 仍然有值（而且會變號）。</li>
 </ol>
-<p><img alt="SA-2022-3 題目重繪：10@3m=30m、高4m，標出 6–9 單斜桿、12–15 無斜桿、21–24 無上弦與四格 X 型細長拉桿" src="../../raw/solutions/SA-2022-3/figs/SA-2022-3-fig-1-truss.svg" /></p>
+<p><img alt="SA-2022-3 題目重繪：10@3m=30m、高4m，標出 6–9 單斜桿、12–15 無斜桿、21–24 無上弦與四格 X 形交叉斜桿" src="../../raw/solutions/SA-2022-3/figs/SA-2022-3-fig-1-truss.svg" /></p>
 <p><em>圖 1　題目重繪（向量版，幾何由附圖像素掃描而來）。這張圖攔的是本題三個致命誤讀：把 6–9 當成交叉斜桿、把 12–15 當成有斜桿、在 $b$ 點捏造內部鉸 —— 任一項錯了，五條影響線全部作廢。</em></p>
 <hr />
 <h2>2. 考題核心精神與出題者意圖 (Core Concepts &amp; Examiner's Intent)</h2>
 <p><strong>核心精神：</strong></p>
 <ol>
-<li><strong>靜定性的來源不是「看起來像」，而是數得出來。</strong> 桿件 $m=39$、反力 $r=5$、節點 $j=20$，$m+r-2j=4$。恰好有 4 格 X 型交叉斜桿；把細長拉桿（只受拉、受壓即鬆弛）視為每格只有一根作用，剛好消掉 4 個贅餘 $\Rightarrow$ 靜定。題目未給 $EA$，正是這個暗示。</li>
+<li><strong>贅餘在哪裡要數得出來。</strong> 桿件 $m=39$、反力 $r=5$、節點 $j=20$，$m+r-2j=4$，恰好等於 X 形嵌板數：每格 X 形嵌板有一個內部贅餘（兩根斜桿如何分擔嵌板剪力，要由變形諧合決定）。但這 4 個贅餘不影響反力，也不影響 6–9 嵌板的桿力 —— 題目所求五條影響線只需平衡加兩個釋放條件。（考卷寫明各桿 $E$、$A$ 相同，並沒有「細長拉桿」條件。）</li>
 <li><strong>兩個「結構自己給的」靜力條件。</strong> 4 個垂直反力只有 2 條整體平衡式可用，還差 2 條：<ul>
 <li>12–15 嵌板無斜桿 $\Rightarrow$ 該嵌板剪力恆為零；</li>
 <li>21–24 只切到兩根交於 $d$ 的桿 $\Rightarrow$ $d$ 為等效內部鉸。</li>
 </ul>
 </li>
-<li><strong>單斜桿與細長拉桿的分辨。</strong> 前者可拉可壓、影響線連續；後者只受拉、影響線會出現「恆為零的平台」，且平台邊界（換手點）可能落在<strong>節點之間</strong>。本題兩種都有：$kn$ 是前者，$km$ 的形狀則被 3–6 嵌板的後者牽動。</li>
-<li><strong>間接載重傳遞。</strong> 載重行駛於下弦，經節點傳入桁架，故影響線在節點之間為直線 —— 唯一例外是細長拉桿換手的位置（本題 $N_{km}$ 在 $x=4$）。</li>
+<li><strong>單斜桿與 X 形嵌板的分辨。</strong> 單斜桿的嵌板剪力只能由它一根承擔（$N=\frac54 V$），剪力變號它就變號；X 形嵌板的兩根斜桿共同承擔剪力，比例由變形諧合決定。本題所求的 $kn$ 是單斜桿。</li>
+<li><strong>間接載重傳遞。</strong> 載重行駛於下弦，經節點傳入桁架，故影響線在節點之間為直線。</li>
 </ol>
 <hr />
 <h2>3. 解題戰略地圖與陷阱分析 (Strategic Roadmap &amp; Trap Analysis)</h2>
 <p><strong>戰略步驟：</strong></p>
 <ol>
-<li><strong>判定靜定性</strong>：數 $m$、$r$、$j$，確認 $m+r-2j$ 等於 X 型嵌板數。</li>
+<li><strong>判定贅餘位置</strong>：數 $m$、$r$、$j$，確認 $m+r-2j$ 的贅餘全在 X 形嵌板內部（不影響所求）。</li>
 <li><strong>找出兩個釋放條件</strong>：掃描每一格，找「無斜桿的嵌板」與「只切到兩根共點桿的斷面」。</li>
 <li><strong>解 $R_a$、$R_b$、$R_c$ 影響線</strong>：以兩個釋放條件加整體 $\Sigma F_y$、$\Sigma M$ 求四個垂直反力。</li>
-<li><strong>斷面法求桿力</strong>（$N_{kn}$、$N_{mn}$ 為題目所求，$N_{km}$ 為補充）：<ul>
+<li><strong>斷面法求桿力</strong>（$N_{kn}$、$N_{mn}$）：<ul>
 <li>$N_{kn}$（斜桿）$\to$ 6–9 嵌板 $\Sigma F_y$；</li>
 <li>$N_{mn}$（下弦）$\to$ 對 $k(6,4)$ 取矩（上弦與斜桿都通過 $k$）；</li>
-<li>$N_{km}$（垂直桿）$\to$ 節點 $k$ 的 $\Sigma F_y$，須同時考慮 3–6 嵌板細長拉桿的作用狀態。</li>
 </ul>
 </li>
 </ol>
@@ -141,37 +329,31 @@ header .nomat{margin-top:12px;font-size:.8em;opacity:.85}
 <td>$R_a$ 在 $x=15$ 回升到 $+1/4$、在 $x=21$ 變號到 $-1/4$（a 支承被拔起）；$R_b$ 在 $x=15$ 為 $-1/4$（b 支承被拔起）</td>
 </tr>
 <tr>
-<td><strong>把 $kn$ 當細長拉桿</strong></td>
+<td><strong>把 $kn$ 當成 X 形斜桿的一根</strong></td>
 <td>看到旁邊幾格是 X 型就類推</td>
 <td>6–9 只有一根斜桿，$N_{kn}$ 在 $x=6$ 達到最大<strong>壓力</strong> $-5/8$</td>
 </tr>
 <tr>
-<td><strong>假設 IL 折點必落在節點</strong></td>
-<td>間接載重的常規直覺</td>
-<td>$N_{km}$ 在 $x=4$ 有折點 —— 那是 3–6 嵌板剪力變號、細長拉桿換手的位置</td>
-</tr>
-<tr>
 <td><strong>忽略 21～30 的貢獻</strong></td>
-<td>覺得離 $km,kn,mn$ 太遠</td>
-<td>經由 $d$ 的等效鉸傳遞，三根桿在 $21\sim30$ 都有非零（且為反號）的縱距</td>
+<td>覺得離 $kn,mn$ 太遠</td>
+<td>經由 $d$ 的等效鉸傳遞，兩根桿在 $21\sim30$ 都有非零（且為反號）的縱距</td>
 </tr>
 </tbody>
 </table>
 <hr />
 <h2>3.5 變數層次分析 (Variable Hierarchy Analysis)</h2>
 <h3>最終目標</h3>
-<p><code>繪製 R_a、R_b、R_c、N_mn、N_nk 五條影響線（載重沿下弦由 a 走到 e）；N_km 為補充</code></p>
+<p><code>繪製 R_a、R_b、R_c、N_mn、N_nk 五條影響線（載重沿下弦由 a 走到 e）</code></p>
 <h3>本題關鍵公式（依計算順序）</h3>
 <blockquote>
 <p>$\boxed{\cdot}$ ＝ 需由前步驟推導，非題目直接給定</p>
 </blockquote>
-<p>$$\text{Step 0: } m + r - 2j = \boxed{4} = \text{X 型嵌板數} \;\Rightarrow\; \text{靜定}$$</p>
+<p>$$\text{Step 0: } m + r - 2j = \boxed{4} = \text{X 形嵌板內部贅餘數} \;\Rightarrow\; \text{反力外部靜定}$$</p>
 <p>$$\text{Step 1: } R_a + R_b = P_{\text{左}}\big|_{\text{12–15 斷面}} \quad\text{（無斜桿嵌板）}$$</p>
 <p>$$\text{Step 2: } 9\,R_e = \textstyle\sum P_{\text{右}}\,(x-21) \quad\text{（}d\text{ 等效內鉸）}$$</p>
 <p>$$\text{Step 3: } \boxed{R_a},\ \boxed{R_b},\ \boxed{R_c}\;\text{由 Step 1、2 加整體 } \Sigma F_y,\ \Sigma M_a \text{ 解出}$$</p>
 <p>$$\text{Step 4: } V(x) = \boxed{R_a} - P_{\text{左}}, \qquad N_{kn} = \tfrac{5}{4}\boxed{V}$$</p>
 <p>$$\text{Step 5: } 4\,N_{mn} = 6\boxed{R_a} - \textstyle\sum(\text{載重對 }k\text{ 的力矩})$$</p>
-<p>$$\text{Step 6: } N_{km} = \min(\boxed{V_{3\text{–}6}},\,0) - \boxed{V_{6\text{–}9}}$$</p>
 <h3>L1：題目直接給定</h3>
 <table>
 <thead>
@@ -234,11 +416,6 @@ header .nomat{margin-top:12px;font-size:.8em;opacity:.85}
 <td>$V=(x-8)/4=0 \Rightarrow x=8$</td>
 <td style="text-align: center;"></td>
 </tr>
-<tr>
-<td>$x_{\text{zero}}$（3–6）</td>
-<td>$V=(x-4)/4=0 \Rightarrow x=4$</td>
-<td style="text-align: center;"></td>
-</tr>
 </tbody>
 </table>
 <h3>L3：深層知識（不懂就卡住）</h3>
@@ -252,8 +429,8 @@ header .nomat{margin-top:12px;font-size:.8em;opacity:.85}
 </thead>
 <tbody>
 <tr>
-<td>細長拉桿（Counter）</td>
-<td>只受拉；一格 X 中恆有一根鬆弛。<strong>鬆弛的那根等於不存在</strong>，故靜不定度剛好被消掉</td>
+<td>X 形嵌板的內部贅餘</td>
+<td>兩根斜桿分擔嵌板剪力的比例需由變形諧合決定；所求的反力與 6–9 嵌板桿力只需平衡即可求得</td>
 <td style="text-align: center;"></td>
 </tr>
 <tr>
@@ -268,7 +445,7 @@ header .nomat{margin-top:12px;font-size:.8em;opacity:.85}
 </tr>
 <tr>
 <td>間接載重的線性</td>
-<td>載重在節點間依槓桿分配 $\Rightarrow$ IL 在節點間為直線；但<strong>結構拓樸改變（拉桿換手）會另外造出折點</strong></td>
+<td>載重在節點間依槓桿分配 $\Rightarrow$ IL 在節點間為直線</td>
 <td style="text-align: center;"></td>
 </tr>
 </tbody>
@@ -314,8 +491,8 @@ header .nomat{margin-top:12px;font-size:.8em;opacity:.85}
 </tr>
 </tbody>
 </table>
-<p>$$m + r - 2j = 39 + 5 - 40 = 4 = \text{X 型嵌板數}$$</p>
-<p>四根鬆弛的細長拉桿恰好抵掉 4 個贅餘 $\Rightarrow$ <strong>靜定</strong>。無需假設 $b$ 有鉸。</p>
+<p>$$m + r - 2j = 39 + 5 - 40 = 4 = \text{X 形嵌板數}$$</p>
+<p>四個贅餘都在 X 形嵌板內部（每格一個）；外部反力 5 個，由整體平衡 3 式加兩個釋放條件（Step 1、2）恰可求出 $\Rightarrow$ <strong>反力外部靜定</strong>。無需假設 $b$ 有鉸。</p>
 <hr />
 <h3>Step 1、2：兩個釋放條件</h3>
 <p><img alt="SA-2022-3 兩個釋放條件：12–15 嵌板無斜桿導致剪力恆零；21–24 只切兩根交於 d 的桿使 d 成為等效內鉸" src="../../raw/solutions/SA-2022-3/figs/SA-2022-3-fig-2-releases.svg" /></p>
@@ -383,7 +560,7 @@ $\Sigma M_a: 12(\frac16)+18(\frac23)+30(\frac13) = 2+12+10 = 24$ ✓<br />
 <hr />
 <h3>Step 4、5：斷面法求 $N_{kn}$ 與 $N_{mn}$</h3>
 <p><img alt="SA-2022-3 6–9 嵌板斷面法：N_kn 由嵌板剪力決定，N_mn 由對 k 取矩決定" src="../../raw/solutions/SA-2022-3/figs/SA-2022-3-fig-3-section.svg" /></p>
-<p><em>圖 3　6–9 嵌板只有一根斜桿。這張圖攔的是把 $kn$ 當成細長拉桿：一根斜桿沒有換手對象，嵌板剪力為負時它必須受壓，影響線因此連續、沒有零平台。</em></p>
+<p><em>圖 3　6–9 嵌板只有一根斜桿。這張圖攔的是把 $kn$ 當成 X 形斜桿的一根：6–9 嵌板只有它一根斜桿，嵌板剪力為負時它必須受壓，影響線因此連續、沒有零平台。</em></p>
 <p>於 $x=7.5$ 切斷，切到上弦 $(6,4)\!-\!(9,4)$、斜桿 $kn$、下弦 $mn$。</p>
 <p><strong>$N_{kn}$（$\Sigma F_y$）：</strong> $kn$ 方向 $(3,-4)/5$，對左半部的垂直分量為 $-\frac45 N_{kn}$：</p>
 <p>$$V(x) = R_a(x) - P_{\text{左}}, \qquad V - \tfrac45 N_{kn} = 0 \;\Rightarrow\; \boxed{N_{kn} = \tfrac54 V}$$</p>
@@ -397,63 +574,9 @@ $\Sigma M_a: 12(\frac16)+18(\frac23)+30(\frac13) = 2+12+10 = 24$ ✓<br />
 <li>$6\le x\le9$：兩端值 $\frac34$ 與 $\frac38$，直線連接</li>
 </ul>
 <hr />
-<h3>Step 6：$N_{km}$ 影響線（垂直桿）</h3>
-<p>取節點 $k(6,4)$。連到 $k$ 的斜桿只有兩根：3–6 嵌板的上升拉桿 $(3,0)\!\to\!k$，以及 $kn$。上弦兩段皆水平，不進 $\Sigma F_y$：</p>
-<p>$$N_{km} = -\tfrac45\left(N_{(3,0)\to k} + N_{kn}\right)$$</p>
-<p>3–6 是<strong>細長拉桿嵌板</strong>，設其剪力為 $V_1$：</p>
-<ul>
-<li>$V_1 &gt; 0$（即 $x&gt;4$，且 $R_a&gt;0$）：作用的是下降桿 $(3,4)\!\to\!(6,0)$，<strong>不接 $k$</strong> $\Rightarrow N_{(3,0)\to k} = 0$</li>
-<li>$V_1 &lt; 0$：作用的是上升桿 $(3,0)\!\to\! k$ $\Rightarrow -\tfrac45 N_{(3,0)\to k} = V_1$</li>
-</ul>
-<p>故</p>
-<p>$$\boxed{N_{km} = \min(V_1,\,0) - V_2}, \qquad V_1 = \text{3–6 嵌板剪力},\; V_2 = \text{6–9 嵌板剪力}$$</p>
-<p>分段結果：</p>
-<table>
-<thead>
-<tr>
-<th>區間</th>
-<th>$N_{km}$</th>
-<th>端值</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>$0\le x\le3$</td>
-<td>$0$（$V_1=V_2$，相消）</td>
-<td>$0$</td>
-</tr>
-<tr>
-<td>$3\le x\le4$</td>
-<td>$\dfrac{x-3}{3}$</td>
-<td>$0 \to \frac13$</td>
-</tr>
-<tr>
-<td>$4\le x\le6$</td>
-<td>$\dfrac{x}{12}$</td>
-<td>$\frac13 \to \frac12$</td>
-</tr>
-<tr>
-<td>$6\le x\le9$</td>
-<td>$\dfrac{8-x}{4}$</td>
-<td>$\frac12 \to -\frac14$（$x=8$ 過零）</td>
-</tr>
-<tr>
-<td>$9\le x\le18$</td>
-<td>$-R_a$</td>
-<td>$-\frac14 \to 0 \to -\frac14 \to 0$</td>
-</tr>
-<tr>
-<td>$18\le x\le30$</td>
-<td>$0$（$R_a\le0$ $\Rightarrow$ $V_1=V_2&lt;0$，相消）</td>
-<td>$0$</td>
-</tr>
-</tbody>
-</table>
-<p><strong>$x=4$ 是折點，而它不在節點上</strong> —— 那是 3–6 嵌板剪力變號、細長拉桿換手的位置。</p>
-<hr />
-<h3>4.7 影響線與縱距總表（題目所求五條＋補充 $N_{km}$）</h3>
-<p><img alt="SA-2022-3 影響線：題目所求 R_a、R_b、R_c、N_mn、N_nk，與補充的 N_km，含所有折點縱距" src="../../raw/solutions/SA-2022-3/figs/SA-2022-3-fig-4-influence-lines.svg" /></p>
-<p><em>圖 4　題目所求五條影響線（上五格）與補充的 $N_{km}$（最下格）。這張圖攔三件事：以為 $x&gt;12$ 之後 $R_a$、$R_b$ 全部歸零（其實 $x=15$ 時 $R_b=-\frac14$）、以為 $N_{nk}$ 有恆為零的平台、以為折點一定落在節點上（$N_{km}$ 的 $x=4$ 就不是）。</em></p>
+<h3>4.7 影響線與縱距總表（題目所求五條）</h3>
+<p><img alt="SA-2022-3 影響線：題目所求 R_a、R_b、R_c、N_mn、N_nk，含所有折點縱距" src="../../raw/solutions/SA-2022-3/figs/SA-2022-3-fig-4-influence-lines.svg" /></p>
+<p><em>圖 4　題目所求五條影響線。這張圖攔兩件事：以為 $x&gt;12$ 之後 $R_a$、$R_b$ 全部歸零（其實 $x=15$ 時 $R_b=-\frac14$）、以為 $N_{nk}$ 有恆為零的平台。</em></p>
 <table>
 <thead>
 <tr>
@@ -554,22 +677,6 @@ $\Sigma M_a: 12(\frac16)+18(\frac23)+30(\frac13) = 2+12+10 = 24$ ✓<br />
 <td style="text-align: center;">$-\frac5{48}$</td>
 <td style="text-align: center;">$0$</td>
 </tr>
-<tr>
-<td style="text-align: left;">$N_{km}$（補充）</td>
-<td style="text-align: center;">$0$</td>
-<td style="text-align: center;">$0$</td>
-<td style="text-align: center;">$\frac13$</td>
-<td style="text-align: center;">$\frac12$</td>
-<td style="text-align: center;">$0$</td>
-<td style="text-align: center;">$-\frac14$</td>
-<td style="text-align: center;">$0$</td>
-<td style="text-align: center;">$-\frac14$</td>
-<td style="text-align: center;">$0$</td>
-<td style="text-align: center;">$0$</td>
-<td style="text-align: center;">$0$</td>
-<td style="text-align: center;">$0$</td>
-<td style="text-align: center;">$0$</td>
-</tr>
 </tbody>
 </table>
 <p>（拉為正，壓為負；$R_a$ 向上為正。）</p>
@@ -608,16 +715,11 @@ $\Sigma M_a: 12(\frac16)+18(\frac23)+30(\frac13) = 2+12+10 = 24$ ✓<br />
 <td>$+\frac5{16}$ 拉（$x=9$ 或 $x=15$）</td>
 <td>$-\frac58$ 壓（$x=6$）</td>
 </tr>
-<tr>
-<td>$N_{km}$（補充）</td>
-<td>$+\frac12$ 拉（$x=6$）</td>
-<td>$-\frac14$ 壓（$x=9$ 或 $x=15$）</td>
-</tr>
 </tbody>
 </table>
 <hr />
 <h2>5. 關鍵爭議點與進階探討 (Critical Issues &amp; Advanced Discussion)</h2>
-<p><strong>（一）「靜定」的判定不能靠感覺。</strong> 本題的桁架看起來像是多跨連續 + 高次靜不定，但 $m+r-2j$ 只有 4，而 X 型嵌板恰好 4 格。這個「剛剛好」不是巧合，是出題者刻意佈的：只要把細長拉桿的性質用對，全結構就是靜定的。<strong>不需要</strong>、也<strong>不可以</strong>再額外假設任何內部鉸。</p>
+<p><strong>（一）贅餘在哪裡，比贅餘有幾個更重要。</strong> 本題的桁架看起來像是多跨連續＋高次靜不定，$m+r-2j=4$，而四個贅餘恰好都在 X 形嵌板內部；外部反力則由兩個釋放條件補足方程數。所以題目所求五條影響線都只靠平衡就能求得（2026-11-07 以 39 桿等 EA 彈性桁架勁度法逐節點驗證相同）。<strong>不需要</strong>、也<strong>不可以</strong>再額外假設任何內部鉸。</p>
 <p><strong>（二）三種「釋放」的辨識法。</strong> 桁架裡讓結構軟化的機制有三種，都靠「數斷面切到幾根桿」判斷：</p>
 <table>
 <thead>
@@ -641,10 +743,10 @@ $\Sigma M_a: 12(\frac16)+18(\frac23)+30(\frac13) = 2+12+10 = 24$ ✓<br />
 </tr>
 </tbody>
 </table>
-<p><strong>（三）單斜桿 vs. 細長拉桿，影響線長得完全不同。</strong></p>
+<p><strong>（三）單斜桿 vs. X 形嵌板。</strong></p>
 <ul>
 <li>單斜桿（$kn$）：$N = \frac54 V$ 恆成立，$V$ 變號它就變號。IL 連續、無平台，最大壓力可能比最大拉力還大（本題 $\frac58$ vs $\frac5{16}$，差兩倍）。設計上這根桿的挫屈檢核才是控制項。</li>
-<li>細長拉桿：受壓即退出，IL 出現恆零平台。<strong>平台的邊界是剪力變號點，未必落在節點上</strong> —— $N_{km}$ 在 $x=4$ 的折點就是被 3–6 嵌板的換手拖出來的。</li>
+<li>X 形嵌板：兩根斜桿共同承擔嵌板剪力，各自的內力要由變形諧合決定（每格一個內部贅餘）；本題所求不涉及它們。</li>
 </ul>
 <p><strong>（四）$R_a$ 會變號的物理意義。</strong> 載重走到 $x&gt;18$ 之後 $R_a&lt;0$：$a$ 支承被<strong>拔起</strong>。滾支承通常只能承壓，實務上此處需設計繫件（hold-down）或以自重壓住。這是影響線在工程判斷上最直接的用途之一 —— 它告訴你哪個支承會在什麼載重位置被掀開。</p>
 <hr />
@@ -666,17 +768,15 @@ $\Sigma M_a: 12(\frac16)+18(\frac23)+30(\frac13) = 2+12+10 = 24$ ✓<br />
 <td>[[TRUSS-SECTION-METHOD]]</td>
 </tr>
 <tr>
-<td>細長拉桿</td>
-<td>[[COUNTER-DIAGONAL]]</td>
-</tr>
-<tr>
 <td>靜不定度判斷</td>
 <td>[[DEGREE-OF-INDETERMINACY]]</td>
 </tr>
 </tbody>
 </table>
 <hr />
-<p><em>解析日期：2026-07-02　｜　2026-10-28 依考卷原文更正題目要求，補 $R_b$、$R_c$ 影響線（以獨立的桁架有限元＋細長拉桿疊代在 121 個載重位置逐點比對五條 IL，誤差 $&lt;10^{-14}$）　｜　重算＋圖解補繪：2026-08-26（附圖幾何經逐像素掃描確認；四條影響線與獨立的「桁架有限元＋細長拉桿互補條件」在 121 個載重位置逐點比對相符；向量圖腳本 <code>gen_SA-2022-3.py</code>，可重跑）</em></p></main>
+<p><em>解析日期：2026-07-02　｜　2026-10-28 依考卷原文更正題目要求，補 $R_b$、$R_c$ 影響線（以獨立的桁架有限元＋細長拉桿疊代在 121 個載重位置逐點比對五條 IL，誤差 $&lt;10^{-14}$）　｜　重算＋圖解補繪：2026-08-26（附圖幾何經逐像素掃描確認；四條影響線與獨立的「桁架有限元＋細長拉桿互補條件」在 121 個載重位置逐點比對相符；向量圖腳本 <code>gen_SA-2022-3.py</code>，可重跑）</em></p>
+<p><em>修正日期：2026-11-07（§1 改為指向題目正本並放重繪附圖（figs/SA-2022-3-fig-1-problem.svg）、加常見誤讀；圖由 gen_SA-2022-3_problem.py 產生，可重跑）</em><br />
+<em>修正日期：2026-11-07（非勘誤）刪除考卷沒有的「細長拉桿（只受拉）」假設與據此算出的補充 $N_{km}$（使用者決定）；題目所求 R_a、R_b、R_c、N_mn、N_nk 五條影響線不變，已以 39 桿等 EA 彈性桁架勁度法逐節點驗證；gen_SA-2022-3.py 圖 1–4 同步（X 形斜撐改實線、刪除 N_km 格）</em></p></main>
 <footer>來源：raw/solutions/SA-2022-3/SA-2022-3.md（知識庫解題內容唯一正本；本頁僅為渲染顯示）</footer>
 
 <script>

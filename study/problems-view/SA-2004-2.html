@@ -43,24 +43,198 @@ header .nomat{margin-top:12px;font-size:.8em;opacity:.85}
 <p class="meta2">主分類 <b>SA-U1-3</b> 靜定及靜不定結構影響線 ｜ 2004 年（民國 93） ｜ 影響線</p>
 <div class="hbtns"><a class="b-study" href="../unit-SA-U1-3.html">🧭 U1-3 單元總覽</a><a class="b-lect" href="../lecture-SA-U1-3.html">📚 U1-3 靜定及靜不定結構影響線 講義</a></div>
 </header>
-<main><h1>考題編號：SA-2004-2</h1>
+<main><details class="problem-src" open><summary><b>📄 題目正本</b>（考卷原文、附圖與判讀清單；不含解法）</summary>
+<h1>SA-2004-2 題目正本</h1>
+<blockquote>
+<p>本檔只記錄考卷上寫了什麼、圖上畫了什麼，不含任何解法。解析見同資料夾 <code>SA-2004-2.md</code>。<br />
+判讀清單經使用者確認前，狀態為「待確認」；確認後本檔原則上不再修改（改動須回考卷原圖並記 log）。</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>項目</th>
+<th>內容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>考卷</td>
+<td><code>raw/exams/SA-2004_結構學.pdf</code>，第 1 頁（全一頁），第二題</td>
+</tr>
+<tr>
+<td>考年</td>
+<td>2004（民國九十三年）專技高考結構工程技師「結構學」</td>
+</tr>
+<tr>
+<td>配分</td>
+<td>25 分</td>
+</tr>
+<tr>
+<td>附圖</td>
+<td><code>SA-2004-2-fig-2.png</code>（2026-11-07 重新擷取）；既有 <code>SA-2004-2-fig-1.png</code></td>
+</tr>
+<tr>
+<td>判讀狀態</td>
+<td><strong>已確認</strong>（2026-11-07 使用者確認。原轉錄：2026-11-07 轉錄；PyMuPDF 110 dpi 整頁＋450–1200 dpi 局部放大；考卷可抽文字，逐字原文以 PDF 文字層核對；盲讀於開啟解析前完成）</td>
+</tr>
+</tbody>
+</table>
+<h2>1. 考卷原文（逐字）</h2>
+<p>二、求圖示桁架在卡車序列載重作用下，最大可能之 a 點反力及 bc 桿件內力。（25 分）</p>
+<h2>2. 考卷給的公式、附表與參數</h2>
+<ul>
+<li>考卷沒有給任何參考公式或附表。</li>
+<li>卡車序列載重（圖上）：軸 ①②③④ 依序 20、40、40、40 kN，軸距 2.4、1.5、1.5 m。</li>
+<li>考卷沒有給 EA（靜定桁架不需要）；沒有說明載重作用於上弦或下弦。</li>
+<li>卷首注意事項：㈠不必抄題，作答時請將試題題號及答案依照順序寫在試卷上，於本試題上作答者，不予計分。㈡可以使用電子計算器。</li>
+<li>考試時間：二小時。</li>
+</ul>
+<h2>3. 附圖</h2>
+<p><img alt="SA-2004-2 考卷附圖：下弦 a–b–c–d–e 四格各 10 m、高 10 m；上弦 B–C–D 在 b、c、d 正上方；a 鉸支承、e 滾支承；右側卡車 20、40、40、40 kN，軸距 2.4、1.5、1.5 m，箭頭向左" src="../../raw/solutions/SA-2004-2/SA-2004-2-fig-2.png" /><br />
+<em>證據圖 SA-2004-2-fig-2.png（2026-11-07 自考卷 500 dpi 重新擷取）；既有 SA-2004-2-fig-1.png 帶有滑鼠游標（手形游標在跨長尺寸線下方，未壓到構件），保留不改。</em></p>
+<p>圖面文字照錄：B、C、D、10m、a、b、c、d、e、4 @ 10m = 40m、20 40 40 40 (kN)、①②③④、2.4 1.5 1.5 (m)</p>
+<h2>4. 判讀清單</h2>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>項目</th>
+<th>判讀</th>
+<th>圖上／題文依據</th>
+<th>把握</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>座標（以 a 為原點）</td>
+<td>a(0,0)、b(10,0)、c(20,0)、d(30,0)、e(40,0)；B(10,10)、C(20,10)、D(30,10)</td>
+<td>下方「4 @ 10m = 40m」、左側 10m 尺寸線；B、C、D 與 b、c、d 豎桿垂直對齊（400 dpi）</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>2</td>
+<td>桿件</td>
+<td>下弦 ab、bc、cd、de；上弦 BC、CD；端斜桿 aB、De；豎桿 Bb、Cc、Dd；斜桿 Bc、cD；共 13 桿</td>
+<td>400 dpi 圖面</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>3</td>
+<td>斜桿方向</td>
+<td>Bc 由 B 往右下到 c；cD 由 c 往右上到 D（兩斜桿交於 c）</td>
+<td>圖面</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>4</td>
+<td>支承 a</td>
+<td>鉸支承（三角形＋剖線）</td>
+<td>圖上符號</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>5</td>
+<td>支承 e</td>
+<td>滾支承（三角形下兩個圓圈）</td>
+<td>900 dpi 局部</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>6</td>
+<td>靜定性</td>
+<td>j = 8、m = 13、r = 3，2j = m + r</td>
+<td>計數</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>7</td>
+<td>卡車軸重</td>
+<td>① 20 kN、② 40 kN、③ 40 kN、④ 40 kN</td>
+<td>軸上方數字與圈號（900 dpi）</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>8</td>
+<td>軸距</td>
+<td>①–② 2.4 m、②–③ 1.5 m、③–④ 1.5 m，總長 5.4 m</td>
+<td>軸下方尺寸線（900 dpi）</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>9</td>
+<td>行駛方向</td>
+<td>卡車在 e 右側、箭頭向左，① 為車頭</td>
+<td>圖上「←」在 ① 左方</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>10</td>
+<td>載重作用弦</td>
+<td>考卷沒有給（圖上卡車畫在下弦高度右側）；a 反力與 bc 桿力的影響線在上弦或下弦受載皆相同</td>
+<td>圖面＋桁架幾何（b、c 上方皆有節點）</td>
+<td>確定（解讀）；使用者確認</td>
+</tr>
+<tr>
+<td>11</td>
+<td>所求</td>
+<td>最大可能之 a 點反力、bc 桿件內力（題文未指定拉或壓，皆可能）</td>
+<td>題文</td>
+<td>確定</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p><em>轉錄：2026-11-07（SA-U1-3 題目正本推廣・批 1）</em><br />
+<em>確認：2026-11-07 使用者確認</em></p>
+</details>
+<hr>
+<h1>考題編號：SA-2004-2</h1>
 <p><strong>主分類：</strong> <code>SA-U1-3</code> 靜定結構分析<br />
 <strong>副分類：</strong> 無<br />
 <strong>分析法：</strong> 影響線<br />
 <strong>標籤：</strong> <code>桁架</code> <code>影響線</code> <code>移動載重</code> <code>最大內力</code></p>
 <hr />
-<h2>1. 原始題目重述 (Problem Restatement)</h2>
-<p><strong>題目要求：</strong><br />
-求圖示桁架在卡車序列載重作用下，最大可能之 $a$ 點反力及 $bc$ 桿件內力。（25 分）</p>
-<p><strong>結構與載重條件描述：</strong></p>
-<ul>
-<li><strong>結構型式</strong>：靜定平面桁架，共 4 個節間（Panel），每個節間長度為 $10\text{m}$，總跨距 $L = 40\text{m}$。桁架高度為 $10\text{m}$。</li>
-<li><strong>支撐條件</strong>：左端 $a$ 點為鉸支承（Pin），右端 $e$ 點為滾支承（Roller）。</li>
-<li><strong>載重條件</strong>：卡車序列載重由右向左行駛，包含四個集中載重。依序（由前至後）為 $20\text{kN}$、 $40\text{kN}$、 $40\text{kN}$、 $40\text{kN}$。</li>
-<li><strong>載重間距</strong>：前輪至第二軸為 $2.4\text{m}$，第二軸至第三軸為 $1.5\text{m}$，第三軸至後軸為 $1.5\text{m}$。</li>
-</ul>
-<p><img alt="SA-2004-2 題目附圖：40m跨徑桁架與卡車載重" src="../../raw/solutions/SA-2004-2/SA-2004-2-fig-1.png" /><br />
-<em>圖說：桁架尺寸為 4@10m = 40m，高 10m。a點為鉸支承，e點為滾支承。卡車序列載重由右側進入，依序為20, 40, 40, 40 kN，間距分別為 2.4m, 1.5m, 1.5m。</em></p>
+<h2>1. 題目（考卷原文見題目正本）</h2>
+<blockquote>
+<p>考卷原文、公式／附表、附圖與判讀清單（已確認）見 <a href="SA-2004-2-problem.md"><code>SA-2004-2-problem.md</code></a>。本節只列解題時最容易讀錯的地方與本解使用的記號；題意以題目正本為準。</p>
+</blockquote>
+<p><img alt="SA-2004-2 重繪題目附圖：下弦 a–e 四格各 10 m、高 10 m；B、C、D 在 b、c、d 正上方；a 鉸支承、e 滾支承；右側卡車 20、40、40、40 kN，軸距 2.4、1.5、1.5 m，由右往左" src="../../raw/solutions/SA-2004-2/figs/SA-2004-2-fig-1-problem.svg" /><br />
+<em>重繪自考卷附圖，依判讀清單 #1–#11 重繪。攔：e 讀成鉸支承、斜桿 Bc／cD 方向讀反、軸距或軸重順序抄錯。</em></p>
+<h3>常見誤讀</h3>
+<table>
+<thead>
+<tr>
+<th>項目</th>
+<th>正確判讀</th>
+<th>常見誤讀</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>e 支承</td>
+<td>滾支承</td>
+<td>鉸支承</td>
+</tr>
+<tr>
+<td>斜桿方向</td>
+<td>Bc 由 B 往右下到 c；cD 由 c 往右上到 D</td>
+<td>方向對調</td>
+</tr>
+<tr>
+<td>卡車</td>
+<td>軸 1–4 為 20、40、40、40 kN，軸距 2.4、1.5、1.5 m，由右往左、軸 1 在前</td>
+<td>軸重順序或軸距對調</td>
+</tr>
+<tr>
+<td>載重作用弦</td>
+<td>考卷沒有明說；a 反力與 bc 桿力的影響線在上、下弦受載皆相同</td>
+<td>當成題目條件</td>
+</tr>
+</tbody>
+</table>
+<p><strong>本解記號：</strong> 記號與正負號約定沿用 §4。</p>
+<hr />
 <h2>2. 考題核心精神與出題者意圖 (Core Concepts &amp; Examiner's Intent)</h2>
 <p>本題的核心在於測驗考生對於<strong>影響線（Influence Lines）</strong>的繪製與<strong>移動載重（Moving Loads）</strong>極值分析的掌握度。<br />
 出題者意圖包含：</p>
@@ -265,7 +439,8 @@ $$ \boxed{F_{bc,\max} = 96.9 \text{ kN} \text{ (拉力)}} $$</p>
 <h2>5. 關鍵爭議點與進階探討 (Critical Issues &amp; Advanced Discussion)</h2>
 <ul>
 <li><strong>載重行駛方向的判斷</strong>：題目明確畫出了向左的箭頭，因此本解析嚴格遵守載重由右向左移動的情境（$20\text{kN}$ 在最左側）。若實務設計中橋梁允許雙向行駛，則需額外檢核反向行駛的情況。例如若卡車掉頭（$40\text{kN}$ 在最左側），重新放置於影響線上將會得到 $F_{bc} = 97.8\text{kN}$ 的結果，略大於單向行駛。但在國家考試中，遵循圖示箭頭的明確指示是最安全的答題策略，因此最終答案仍以圖示方向為準。</li>
-</ul></main>
+</ul>
+<p><em>修正日期：2026-11-07（§1 改為指向題目正本並放重繪附圖（figs/SA-2004-2-fig-1-problem.svg）、加常見誤讀；圖由 gen_SA-2004-2.py 產生，可重跑）</em></p></main>
 <footer>來源：raw/solutions/SA-2004-2/SA-2004-2.md（知識庫解題內容唯一正本；本頁僅為渲染顯示）</footer>
 
 <script>

@@ -644,5 +644,209 @@
       "note": ""
     },
     "history": []
+  },
+  "SA-2003-4": {
+    "date": "2026-11-07",
+    "model": "claude-opus-5-5",
+    "result": "一致",
+    "source": "",
+    "report": "wiki/queries/盲解比對-SA-U1-3-批1-2026-11-07.md",
+    "scope": "SA-U1-3 批 1（題目正本已確認）",
+    "human": "",
+    "fixed": "",
+    "recheck": {
+      "date": "",
+      "result": "",
+      "report": "",
+      "note": ""
+    },
+    "history": []
+  },
+  "SA-2004-2": {
+    "date": "2026-11-07",
+    "model": "claude-opus-5-5",
+    "result": "一致",
+    "source": "分類（標頭名稱誤寫，答案一致）",
+    "report": "wiki/queries/盲解比對-SA-U1-3-批1-2026-11-07.md",
+    "scope": "SA-U1-3 批 1（題目正本已確認）",
+    "human": "",
+    "fixed": "",
+    "recheck": {
+      "date": "",
+      "result": "",
+      "report": "",
+      "note": ""
+    },
+    "history": []
+  },
+  "SA-2005-3": {
+    "date": "2026-11-07",
+    "model": "claude-opus-5-5",
+    "result": "一致",
+    "source": "",
+    "report": "wiki/queries/盲解比對-SA-U1-3-批1-2026-11-07.md",
+    "scope": "SA-U1-3 批 1（題目正本已確認）",
+    "human": "",
+    "fixed": "",
+    "recheck": {
+      "date": "",
+      "result": "",
+      "report": "",
+      "note": ""
+    },
+    "history": []
+  },
+  "SA-2007-3": {
+    "date": "2026-11-07",
+    "model": "claude-opus-5-5",
+    "result": "一致（A_y、合力非獨立）",
+    "source": "",
+    "report": "wiki/queries/盲解比對-SA-U1-3-批1-2026-11-07.md",
+    "scope": "SA-U1-3 批 1（題目正本已確認）",
+    "human": "",
+    "fixed": "",
+    "recheck": {
+      "date": "",
+      "result": "",
+      "report": "",
+      "note": ""
+    },
+    "history": []
+  },
+  "SA-2011-3": {
+    "date": "2026-11-07",
+    "model": "claude-opus-5-5",
+    "result": "一致",
+    "source": "",
+    "report": "wiki/queries/盲解比對-SA-U1-3-批1-2026-11-07.md",
+    "scope": "SA-U1-3 批 1（題目正本已確認）",
+    "human": "",
+    "fixed": "",
+    "recheck": {
+      "date": "",
+      "result": "",
+      "report": "",
+      "note": ""
+    },
+    "history": []
+  },
+  "SA-2015-2": {
+    "date": "2026-11-07",
+    "model": "claude-opus-5-5",
+    "result": "一致",
+    "source": "分類（副分類 SA-U2-1 待複核，答案一致）",
+    "report": "wiki/queries/盲解比對-SA-U1-3-批1-2026-11-07.md",
+    "scope": "SA-U1-3 批 1（題目正本已確認）",
+    "human": "",
+    "fixed": "",
+    "recheck": {
+      "date": "",
+      "result": "",
+      "report": "",
+      "note": ""
+    },
+    "history": []
+  },
+  "SA-2016-2": {
+    "date": "2026-11-07",
+    "model": "claude-opus-5-5",
+    "result": "一致",
+    "source": "",
+    "report": "wiki/queries/盲解比對-SA-U1-3-批1-2026-11-07.md",
+    "scope": "SA-U1-3 批 1（題目正本已確認）",
+    "human": "",
+    "fixed": "",
+    "recheck": {
+      "date": "",
+      "result": "",
+      "report": "",
+      "note": ""
+    },
+    "history": []
+  },
+  "SA-2018-4": {
+    "date": "2026-11-07",
+    "model": "claude-opus-5-5",
+    "result": "一致",
+    "source": "",
+    "report": "wiki/queries/盲解比對-SA-U1-3-批1-2026-11-07.md",
+    "scope": "SA-U1-3 批 1（題目正本已確認）",
+    "human": "",
+    "fixed": "",
+    "recheck": {
+      "date": "",
+      "result": "",
+      "report": "",
+      "note": ""
+    },
+    "history": []
+  },
+  "SA-2020-3": {
+    "date": "2026-11-07",
+    "model": "claude-opus-5-5",
+    "result": "一致",
+    "source": "",
+    "report": "wiki/queries/盲解比對-SA-U1-3-批1-2026-11-07.md",
+    "scope": "SA-U1-3 批 1（題目正本已確認）",
+    "human": "",
+    "fixed": "",
+    "recheck": {
+      "date": "",
+      "result": "",
+      "report": "",
+      "note": ""
+    },
+    "history": []
+  },
+  "SA-2021-3": {
+    "date": "2026-11-07",
+    "model": "claude-opus-5-5",
+    "result": "一致",
+    "source": "",
+    "report": "wiki/queries/盲解比對-SA-U1-3-批1-2026-11-07.md",
+    "scope": "SA-U1-3 批 1（題目正本已確認）",
+    "human": "",
+    "fixed": "",
+    "recheck": {
+      "date": "",
+      "result": "",
+      "report": "",
+      "note": ""
+    },
+    "history": []
+  },
+  "SA-2022-3": {
+    "date": "2026-11-07",
+    "model": "claude-opus-5-5",
+    "result": "一致",
+    "source": "",
+    "report": "wiki/queries/盲解比對-SA-U1-3-批1-2026-11-07.md",
+    "scope": "SA-U1-3 批 1（題目正本已確認）",
+    "human": "",
+    "fixed": "",
+    "recheck": {
+      "date": "",
+      "result": "",
+      "report": "",
+      "note": ""
+    },
+    "history": []
+  },
+  "SA-2025-2": {
+    "date": "2026-11-07",
+    "model": "claude-opus-5-5",
+    "result": "一致",
+    "source": "",
+    "report": "wiki/queries/盲解比對-SA-U1-3-批1-2026-11-07.md",
+    "scope": "SA-U1-3 批 1（題目正本已確認）",
+    "human": "",
+    "fixed": "",
+    "recheck": {
+      "date": "",
+      "result": "",
+      "report": "",
+      "note": ""
+    },
+    "history": []
   }
 }

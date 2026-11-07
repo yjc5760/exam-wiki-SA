@@ -37,6 +37,7 @@
       "primaryTopicName": "靜定及靜不定結構影響線",
       "secondaryTopicIds": [],
       "verificationStatus": "unverified",
+      "problemStatus": "confirmed",
       "hasSolution": true,
       "hasHandwritten": false,
       "tags": [
@@ -301,6 +302,7 @@
       "primaryTopicName": "靜定及靜不定結構影響線",
       "secondaryTopicIds": [],
       "verificationStatus": "unverified",
+      "problemStatus": "confirmed",
       "hasSolution": true,
       "hasHandwritten": false,
       "tags": [
@@ -380,6 +382,7 @@
       "rocYear": 110,
       "hasHandwritten": false,
       "verificationStatus": "unverified",
+      "problemStatus": "confirmed",
       "hasSolution": true,
       "tags": [
         "影響線",
@@ -457,6 +460,7 @@
       "rocYear": 109,
       "hasHandwritten": false,
       "verificationStatus": "unverified",
+      "problemStatus": "confirmed",
       "hasSolution": true,
       "tags": [
         "影響線",
@@ -627,6 +631,7 @@
       "primaryTopicName": "靜定及靜不定結構影響線",
       "secondaryTopicIds": [],
       "verificationStatus": "unverified",
+      "problemStatus": "confirmed",
       "hasSolution": true,
       "hasHandwritten": false,
       "tags": [
@@ -751,6 +756,7 @@
         "SA-U2-3"
       ],
       "verificationStatus": "unverified",
+      "problemStatus": "confirmed",
       "hasSolution": true,
       "hasHandwritten": false,
       "tags": [
@@ -830,6 +836,7 @@
         "SA-U2-1"
       ],
       "verificationStatus": "unverified",
+      "problemStatus": "confirmed",
       "hasSolution": true,
       "hasHandwritten": false,
       "tags": [
@@ -1323,6 +1330,7 @@
       "primaryTopicName": "靜定及靜不定結構影響線",
       "secondaryTopicIds": [],
       "verificationStatus": "unverified",
+      "problemStatus": "confirmed",
       "hasSolution": true,
       "hasHandwritten": false,
       "tags": [
@@ -1467,6 +1475,7 @@
       "primaryTopicName": "靜定及靜不定結構影響線",
       "secondaryTopicIds": [],
       "verificationStatus": "unverified",
+      "problemStatus": "confirmed",
       "hasSolution": true,
       "hasHandwritten": false,
       "tags": [
@@ -1522,6 +1531,7 @@
       "primaryTopicName": "靜定及靜不定結構影響線",
       "secondaryTopicIds": [],
       "verificationStatus": "unverified",
+      "problemStatus": "confirmed",
       "hasSolution": true,
       "hasHandwritten": false,
       "tags": [
@@ -1637,6 +1647,7 @@
         "SA-U2-2"
       ],
       "verificationStatus": "unverified",
+      "problemStatus": "confirmed",
       "hasSolution": true,
       "hasHandwritten": false,
       "tags": [
@@ -1877,6 +1888,7 @@
       "hasSolution": true,
       "difficulty": 4,
       "verificationStatus": "unverified",
+      "problemStatus": "confirmed",
       "year": 2011,
       "rocYear": 100,
       "primaryTopicId": "SA-U1-3",
