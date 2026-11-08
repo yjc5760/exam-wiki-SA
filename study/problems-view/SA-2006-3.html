@@ -43,25 +43,185 @@ header .nomat{margin-top:12px;font-size:.8em;opacity:.85}
 <p class="meta2">主分類 <b>SA-U2-5</b> 彎矩分配法 ｜ 2006 年（民國 95） ｜ 彎矩分配法</p>
 <div class="hbtns"></div><p class="nomat">本題主分類 SA-U2-5 目前尚無教材，故不提供教材按鈕。</p>
 </header>
-<main><h1>考題編號：[SA-2006-3]</h1>
+<main><details class="problem-src" open><summary><b>📄 題目正本</b>（考卷原文、附圖與判讀清單；不含解法）</summary>
+<h1>SA-2006-3 題目正本</h1>
+<blockquote>
+<p>本檔只記錄考卷上寫了什麼、圖上畫了什麼，不含任何解法。解析見同資料夾 <code>SA-2006-3.md</code>。<br />
+判讀清單經使用者確認前，狀態為「待確認」；確認後本檔原則上不再修改（改動須回考卷原圖並記 log）。</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>項目</th>
+<th>內容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>考卷</td>
+<td><code>raw/exams/SA-2006_結構學.pdf</code>，背面，第三題</td>
+</tr>
+<tr>
+<td>考年</td>
+<td>2006（民國 95 年）專技高考結構工程技師「結構學」</td>
+</tr>
+<tr>
+<td>配分</td>
+<td>25 分</td>
+</tr>
+<tr>
+<td>附圖</td>
+<td><code>SA-2006-3-fig-2.png</code>（本次從考卷擷取 500 dpi；既有 <code>SA-2006-3-fig-1.png</code> 保留）</td>
+</tr>
+<tr>
+<td>判讀狀態</td>
+<td><strong>已確認</strong>（2026-11-07 使用者確認；原轉錄：2026-11-07 轉錄；PyMuPDF 110 dpi 整頁＋400 dpi 局部放大（附圖為向量／點陣混合）；盲讀於開啟解析前完成）</td>
+</tr>
+</tbody>
+</table>
+<h2>1. 考卷原文（逐字）</h2>
+<p>三、試以彎矩分配法（moment distribution method）計算圖中連續梁各結點處之彎矩，並繪製彎矩圖。圖中除A 點為鉸支承（hinge）外，其餘均為滾支承（roller）。已知梁之E 值（彈性模數）與I 值（慣性矩）為常數。彎矩之計算精度取至0.1 kN-m 以下。（25 分）</p>
+<h2>2. 考卷給的公式、附表與參數</h2>
+<ul>
+<li>考卷沒有給任何參考公式或附表。</li>
+<li>給定：E、I 為常數；精度取至 0.1 kN-m 以下。</li>
+<li>卷首注意事項：可以使用電子計算器。不必抄題，作答時請將試題題號及答案依照順序寫在試卷上，於本試題上作答者，不予計分。</li>
+<li>考試時間：2 小時。代號 00360，全一張（正、背面）。</li>
+</ul>
+<h2>3. 附圖</h2>
+<p><img alt="SA-2006-3 考卷附圖：五跨連續梁 A–B–C–D–E–F，跨長 6 m、8 m、4 m、8 m、6 m；A 為鉸支承，B、C、D、E、F 為滾支承；A 端外加 5 kN-m 順時針、F 端外加 5 kN-m 逆時針；BC、DE 跨滿佈 1.2 kN/m 向下" src="../../raw/solutions/SA-2006-3/SA-2006-3-fig-2.png" /><br />
+<em>證據圖 SA-2006-3-fig-2.png（500 dpi，自考卷擷取；舊證據圖 SA-2006-3-fig-1.png 有游標雜訊，保留不改）</em></p>
+<p>圖面文字照錄：5 kN-m、1.2 kN/m、1.2 kN/m、5 kN-m、A、B、C、D、E、F、6 m、8 m、4 m、8 m、6 m</p>
+<h2>4. 判讀清單</h2>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>項目</th>
+<th>判讀</th>
+<th>圖上／題文依據</th>
+<th>把握</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>支承</td>
+<td>A 鉸支承（三角形）；B、C、D、E、F 滾支承（圓圈）</td>
+<td>400 dpi 放大＋題文</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>2</td>
+<td>跨長</td>
+<td>AB＝6、BC＝8、CD＝4、DE＝8、EF＝6 m</td>
+<td>尺寸線刻度對齊各支承</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>3</td>
+<td>A 端彎矩</td>
+<td>5 kN-m，順時針（弧形箭頭自左下繞上方指向右）</td>
+<td>400 dpi 放大</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>4</td>
+<td>F 端彎矩</td>
+<td>5 kN-m，逆時針（弧形箭頭自右下繞上方指向左）；與 A 端成鏡射對稱</td>
+<td>400 dpi 放大</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>5</td>
+<td>均佈載重</td>
+<td>BC、DE 跨各 1.2 kN/m 向下，滿跨</td>
+<td>均佈框左右端對齊 B–C、D–E</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>6</td>
+<td>CD 跨</td>
+<td>無載重</td>
+<td>圖面</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>7</td>
+<td>對稱性</td>
+<td>幾何、支承剛度（不計軸向）與載重對 CD 跨中點對稱</td>
+<td>圖面</td>
+<td>確定（解讀）；使用者確認</td>
+</tr>
+<tr>
+<td>8</td>
+<td>考卷沒有給</td>
+<td>E、I 數值（只說常數）、支承沉陷</td>
+<td>題文</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>9</td>
+<td>所求</td>
+<td>彎矩分配法求各結點彎矩並繪彎矩圖</td>
+<td>題文</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>10</td>
+<td>證據圖</td>
+<td>既有 fig-1 在 D 字樣附近有游標；另擷取 500 dpi 乾淨版 fig-2</td>
+<td>縮圖總表</td>
+<td>確定</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p><em>轉錄：2026-11-07（SA 剩餘單元（U1-2 尾段、U2-5、U3-1、U3-2）題目正本推廣・批 1）</em><br />
+<em>確認：2026-11-07 使用者確認</em></p>
+</details>
+<hr>
+<h1>考題編號：[SA-2006-3]</h1>
 <p><strong>主分類：</strong> <code>SA-U2-5</code> 靜不定結構分析<br />
 <strong>副分類：</strong> 無<br />
 <strong>分析法：</strong> 彎矩分配法<br />
 <strong>標籤：</strong> <code>對稱結構</code>, <code>彎矩分配法</code>, <code>有效勁度</code>, <code>鉸支承外加彎矩</code></p>
 <hr />
-<h2>1. 原始題目重述 (Problem Restatement)</h2>
-<p>本題為一五跨連續梁，跨度由左至右分別為 $L_1 = 6\text{m}$、$L_2 = 8\text{m}$、$L_3 = 4\text{m}$、$L_4 = 8\text{m}$、$L_5 = 6\text{m}$。</p>
-<ul>
-<li><strong>支承條件</strong>：A 點為鉸支承（Hinge），B、C、D、E、F 點均為滾支承（Roller）。</li>
-<li><strong>載重條件</strong>：</li>
-<li>A 點承受 $5\text{ kN-m}$ 之順時針外加彎矩。</li>
-<li>F 點承受 $5\text{ kN-m}$ 之逆時針外加彎矩。</li>
-<li>BC 跨與 DE 跨承受 $1.2\text{ kN/m}$ 之向下均布載重。</li>
-<li><strong>材料性質</strong>：梁之彈性模數 $E$ 與慣性矩 $I$ 為常數。</li>
-<li><strong>求解目標</strong>：使用彎矩分配法計算各節點之彎矩（精度取至 $0.1\text{ kN-m}$ 以下），並繪製彎矩圖（BMD）。</li>
-</ul>
-<p><img alt="SA-2006-3 題目附圖：連續梁結構，含鉸支承、滾支承與外加彎矩" src="../../raw/solutions/SA-2006-3/SA-2006-3-fig-1.png" /></p>
-<p><em>圖說：5跨連續梁，跨度分別為 6m, 8m, 4m, 8m, 6m。A點為鉸支承並承受 5 kN-m 順時針外加彎矩，F點為滾支承並承受 5 kN-m 逆時針外加彎矩。B, C, D, E 皆為滾支承。BC 與 DE 跨承受 1.2 kN/m 向下均布載重。EI 為常數。</em></p>
+<h2>1. 題目（考卷原文見題目正本）</h2>
+<blockquote>
+<p>考卷原文、公式／附表、附圖與判讀清單（已確認）見 <a href="SA-2006-3-problem.md"><code>SA-2006-3-problem.md</code></a>。本節只列解題時最容易讀錯的地方與本解使用的記號；題意以題目正本為準。</p>
+</blockquote>
+<p><img alt="SA-2006-3 重繪題目附圖：五跨連續梁 A–F（6、8、4、8、6 m），A 鉸、B～F 滾支承；A 端 5 kN-m 順時針、F 端 5 kN-m 逆時針；BC、DE 跨 1.2 kN/m" src="../../raw/solutions/SA-2006-3/figs/SA-2006-3-fig-1-problem.svg" /><br />
+<em>重繪自考卷附圖，依判讀清單重繪。攔：兩端外加彎矩方向讀反、均佈放錯跨。</em></p>
+<h3>常見誤讀</h3>
+<table>
+<thead>
+<tr>
+<th>項目</th>
+<th>正確判讀</th>
+<th>常見誤讀</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>A、F 端外加彎矩</td>
+<td>A 順時針、F 逆時針，兩者鏡射對稱</td>
+<td>同向（變反對稱）</td>
+</tr>
+<tr>
+<td>均佈範圍</td>
+<td>BC、DE 兩跨滿佈；CD、AB、EF 無均佈</td>
+<td>全梁均佈</td>
+</tr>
+<tr>
+<td>對稱性</td>
+<td>幾何、支承與載重對 CD 跨中點對稱，可取半結構</td>
+<td>—</td>
+</tr>
+</tbody>
+</table>
+<p><strong>本解記號：</strong> 跨長 $L_1$～$L_5$ = 6、8、4、8、6 m；EI 常數；彎矩以順時針作用於桿端為正（彎矩分配法慣例）；精度取至 0.1 kN-m。</p>
+<hr />
 <h2>2. 考題核心精神與出題者意圖 (Core Concepts &amp; Examiner's Intent)</h2>
 <ol>
 <li><strong>對稱性的敏銳度</strong>：本題結構幾何、支承及載重（包含外加彎矩之方向）皆對於連續梁中點（CD跨中央）完全對稱。出題者意在測驗考生是否能利用「半結構」及「有效勁度」來大幅簡化原本高達五跨的彎矩分配運算。</li>
@@ -307,11 +467,15 @@ $$ M_{bending} = M_{MDM\_left} = - M_{MDM\_right} $$</p>
 <li><strong>BC 跨 &amp; DE 跨</strong>：受向下均布載重，彎矩呈下凸拋物線。由兩端點彎矩可算得，BC 跨之最大正彎矩發生在距 B 點 $4.16\text{m}$ 處，其值為 $\mathbf{+4.93\text{ kN-m}}$。</li>
 <li><strong>CD 跨</strong>：無橫向載重，且兩端彎矩皆為 $-3.93\text{ kN-m}$，故 CD 跨整段受均勻之負彎矩，彎矩圖為一水平直線，值維持 $\mathbf{-3.93 \text{ kN-m}}$（剪力為零）。</li>
 </ol>
+<p><img alt="SA-2006-3 變形形狀與彎矩圖：A、F 端 +5 kN-m 下緣受拉，B、E −5.43、C、D −3.93 kN-m，CD 跨全長 −3.93，BC、DE 跨最大 +4.93 kN-m 距 B（E）4.16 m；對 CD 跨中點對稱" src="../../raw/solutions/SA-2006-3/figs/SA-2006-3-fig-2-bmd.svg" /></p>
+<p><em>圖 2　變形形狀與彎矩圖（以勁度法重解，數值與彎矩分配結果一致）。A、F 雖是鉸／滾支承，但有外加彎矩，梁端彎矩等於 5 kN-m（下緣受拉）；CD 跨沒有載重、兩端彎矩相同，整跨是 −3.93 的水平線。這張圖攔的是把 A、F 端彎矩當成 0、外加彎矩方向讀反使端部受拉側畫反，以及把 CD 跨畫成拋物線或正彎矩。</em></p>
 <h2>5. 關鍵爭議點與進階探討 (Critical Issues &amp; Advanced Discussion)</h2>
 <ul>
 <li><strong>A、F 端彎矩的正負判定</strong>：許多考生容易死背「外加彎矩為負」或搞混方向。最穩健的方法是「物理變形法」：右手拿筆模擬梁端，依題目箭頭方向扭轉端點，觀察梁中央是向上拱起（Frown, 上緣受拉 = 負彎矩）還是向下凹陷（Smile, 下緣受拉 = 正彎矩）。本題兩端外加彎矩皆使梁產生「微笑」變形，故均為正彎矩。</li>
 <li><strong>純彎矩區間的出現</strong>：由於結構完全對稱，中段 CD 跨的兩端彎矩完全相等且無剪力（中央點剪力必須為零，又無橫向負載，故整段剪力皆為零）。這在連續梁中是相對少見且極具美感的特例，若計算出 CD 跨有不同彎矩值，即代表未滿足對稱性，可作為考場上的自我驗算機制。</li>
-</ul></main>
+</ul>
+<p><em>修正日期：2026-11-07（§1 改為指向題目正本，補重繪附圖 figs/SA-2006-3-fig-1-problem.svg）</em></p>
+<p><em>圖解補繪：2026-11-08（向量圖，腳本 <code>gen_SA-2006-3.py</code> 的 fig2_bmd，以勁度法重解後 assert 解析數值，可重跑）</em></p></main>
 <footer>來源：raw/solutions/SA-2006-3/SA-2006-3.md（知識庫解題內容唯一正本；本頁僅為渲染顯示）</footer>
 
 <script>

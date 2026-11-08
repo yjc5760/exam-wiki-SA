@@ -183,7 +183,7 @@ header .nomat{margin-top:12px;font-size:.8em;opacity:.85}
 </details>
 <hr>
 <h1>考題編號：SA-2024-3</h1>
-<p><strong>主分類：</strong> <code>SA-U2-3</code> 靜不定結構分析<br />
+<p><strong>主分類：</strong> <code>SA-U2-3</code> 靜不定結構之傾角變位法分析<br />
 <strong>副分類：</strong> 無<br />
 <strong>分析法：</strong> 傾角變位法（含遠端鉸接修正式）<br />
 <strong>標籤：</strong> <code>傾角變位法</code>, <code>門型剛構架</code>, <code>對稱性</code>, <code>極值比例</code>, <code>內鉸</code>, <code>修正勁度</code></p>
@@ -414,6 +414,8 @@ $$ P = -\frac{M_{AB}+M_{BA}}{L} - \frac{M_{DC}+M_{CD}}{L} \implies PL = \frac{3(
 <li>層剪力：$-(M_{AB}+M_{BA}+M_{DC})/L = (\tfrac49+\tfrac29+\tfrac13)P = P$ ✓</li>
 <li>$k = 1.5 &gt; 1$ ✓ 符合題目前提</li>
 </ul>
+<p><img alt="SA-2024-3 變形形狀與彎矩圖（Lb/L = 3/2）：左柱雙曲率、右柱單曲率，C 內鉸 M = 0" src="../../raw/solutions/SA-2024-3/figs/SA-2024-3-fig-2-deflected-bmd.svg" /></p>
+<p><em>圖 2　$L_b/L = 3/2$ 時的變形形狀與彎矩圖（$L = P = EI = 1$ 勁度法重解，數值與上表相同）。C 內鉸使兩柱不再對稱：左柱雙曲率、A 端 $4PL/9$ 為全柱最大；右柱單曲率、D 端 $PL/3$；梁最大在 B 端 $2PL/9$，比值 2：1。這張圖攔的是把 C 當剛接角點（兩柱同形、得 $L_b/L = 3$），以及拿右柱 $PL/3$ 當柱最大值。</em></p>
 <h2>5. 關鍵爭議點與進階探討 (Critical Issues &amp; Advanced Discussion)</h2>
 <ul>
 <li><strong>C 角是內鉸還是剛接</strong>：題文沒提，只有附圖 C 角的空心圓（B 角沒有）。若誤當成剛接的對稱門型剛架，反對稱條件 $\theta_B = \theta_C$ 成立，比值為 $(k+3)/3$，得 $L_b/L = 3$；本解依附圖取內鉸，比值為 $(2k+3)/3$，得 $L_b/L = 3/2$。兩種讀法答案差一倍，作答時應先寫明判讀。</li>
@@ -421,7 +423,8 @@ $$ P = -\frac{M_{AB}+M_{BA}}{L} - \frac{M_{DC}+M_{CD}}{L} \implies PL = \frac{3(
 <li><strong>柱底若為鉸支承</strong>：A、D 改為鉸支承時，結構成為三鉸構架（A、C、D 三鉸），右柱 CD 為二力桿、彎矩為零；左柱最大彎矩只能是 $|M_{BA}| = |M_{BC}|$，比值恆為 1:1，不可能滿足 2:1。題目的固定端條件與答案自洽。</li>
 </ul>
 <p><em>修正日期：2026-11-05（解析勘誤：考卷附圖 C 角為內鉸（題目正本判讀 #3，使用者確認），舊版漏讀、當成對稱門型剛架以 θ_B = θ_C 反對稱求解；§1 圖說與常見誤讀、§2–§5 依內鉸重寫，答案 L_b/L 由 3 改為 3/2；驗證：符號推導與 2D 勁度法數值掃描 k = 1、1.5、2、3、10 逐點一致，比值 (2k+3)/3，k = 3/2 時各端點彎矩以層剪力方程回代，MISMATCHES: 0）</em></p>
-<p><em>修正日期：2026-11-07（§1 改為指向題目正本並放重繪附圖（figs/SA-2024-3-fig-1-problem.svg）、加常見誤讀；原 §1 的勘誤引言併入「本解舊版曾犯」；圖由 gen_SA-2024-3.py 產生，可重跑）</em></p></main>
+<p><em>修正日期：2026-11-07（§1 改為指向題目正本並放重繪附圖（figs/SA-2024-3-fig-1-problem.svg）、加常見誤讀；原 §1 的勘誤引言併入「本解舊版曾犯」；圖由 gen_SA-2024-3.py 產生，可重跑）</em></p>
+<p><em>修正日期：2026-11-08（圖解補繪：§4 Step 6 補圖 2（變形形狀＋彎矩圖）；數值由勁度法重解並以 assert 對照本解正本，腳本 <code>gen_SA-2024-3.py</code>，可重跑；標頭主分類名稱對齊命題大綱（非勘誤））</em></p></main>
 <footer>來源：raw/solutions/SA-2024-3/SA-2024-3.md（知識庫解題內容唯一正本；本頁僅為渲染顯示）</footer>
 
 <script>

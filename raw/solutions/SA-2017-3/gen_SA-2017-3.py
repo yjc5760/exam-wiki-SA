@@ -334,7 +334,7 @@ def fig4_bmd():
                C["accent"], weight="700")
     cv.text_px(W / 2, H - 78,
                f"θ_{{A}} = {float(TH_A):.2f}/EI　θ_{{D}} = {float(TH_D):.2f}/EI"
-               f"　（皆為順時針）　ψ = {float(PSI):.0f}/EI（負 ⇒ 向左側移）",
+               f"　（皆為負 ⇒ 逆時針）　ψ = {float(PSI):.0f}/EI（負 ⇒ 向左側移）",
                14, C["deform"], weight="700")
     cv.text_px(W / 2, H - 50,
                f"梁端彎矩 {abs(BM_B):.1f}（B）與 {abs(BM_C):.1f}（C）差了 "

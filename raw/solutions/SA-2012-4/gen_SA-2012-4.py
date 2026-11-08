@@ -43,6 +43,56 @@ def fig1_problem():
 
 FIGURES = [(fig1_problem, "d 讀成滾支承、cd 剛桿長度或自由度轉向讀錯")]
 
+# ── 解題圖（階段 E，2026-11-08）：單位狀態（EI = L = 1；cd 以 EI = 1e9 模擬 ∞），assert 對照 SA-2012-4.md §4 Step 4：[K] = 4EI/L [[3, 4], [4, 14]]（順時針為正）──
+def _model(mb=0.0, md=0.0):
+    from frame2d import Frame
+    f = Frame()
+    for n, p in SPEC["nodes"].items(): f.node(n, *p)
+    f.support("a", 1, 1, 1); f.support("d", 1, 1, 0)
+    f.member("ab", "a", "b", 1.0); f.member("bc", "b", "c", 1.0); f.member("cd", "c", "d", 1e9)
+    f.load("b", mz=mb); f.load("d", mz=md)                     # frame2d 力矩逆時針為正
+    return f.solve()
+
+def _K():
+    import numpy as np
+    Fm = np.zeros((2, 2))
+    for k, (mb, md) in enumerate([(-1.0, 0.0), (0.0, -1.0)]):   # 順時針單位力矩
+        f = _model(mb, md); Fm[:, k] = [-f.d["b"][2], -f.d["d"][2]]
+    K = np.linalg.inv(Fm)
+    assert np.allclose(K, 4 * np.array([[3, 4], [4, 14]]), atol=1e-4), K
+    return K
+
+def _unit(col, path, title, sub_def, sub_bmd, labels, dl):
+    import beamfig
+    from beamfig import frame_figure
+    _inf = beamfig.inflections
+    def _inf_nz(f_, m, n=400):                                  # 彎矩全為 0 的桿件（數值雜訊）不標反曲點
+        return [] if max(abs(beamfig.member_moment(f_, m, k / 40)) for k in range(41)) < 1e-3 else _inf(f_, m, n)
+    beamfig.inflections = _inf_nz
+    K = _K(); f = _model(-K[0, col], -K[1, col])                 # 施加 [K] 第 col 行 ⇒ r = 單位向量
+    r = (-f.d["b"][2], -f.d["d"][2]); assert abs(r[col] - 1) < 1e-6 and abs(r[1 - col]) < 1e-6
+    sp = dict(nodes=SPEC["nodes"], supports=[("a", "fixed"), ("d", "pin")])
+    try:
+        return frame_figure(f, sp, path, title, sub_def, sub_bmd, labels, W=560, H=470, dfrac=0.16, dlabels=dl,
+                            fmt="{:.0f}", notes=("", "數值單位 EI/L；cd 為剛桿（EI = ∞）"))
+    finally:
+        beamfig.inflections = _inf
+
+def fig2_unit_r1():
+    return _unit(0, f"{OUT}/{TAG}-fig-2-unit-r1.svg", f"圖 2　{TAG} 單位狀態 r1 = 1（r2 = 0）：[K] 第一行",
+                 "b 順時針轉 1，cd 剛桿不動", "K11 = 4 + 8 = 12，K21 = 4 + 12 = 16（EI/L）",
+                 [("ab", 1.0, -22, 4), ("ab", 0.0, 18, -6), ("bc", 0.0, 16, 24), ("bc", 1.0, 0, 22), ("cd", 1.0, -8, -14)],
+                 [("b", "r1 = 1（順）", -64, -18)])
+
+def fig3_unit_r2():
+    return _unit(1, f"{OUT}/{TAG}-fig-3-unit-r2.svg", f"圖 3　{TAG} 單位狀態 r2 = 1（r1 = 0）：[K] 第二行",
+                 "d 順時針轉 1：剛桿 cd 帶 c 上移 L/2、轉 1", "K12 = 16，K22 = 20 + 36 = 56（EI/L）",
+                 [("bc", 0.0, -20, 24), ("bc", 1.0, 0, 22), ("cd", 1.0, -8, -14)],
+                 [("c", "c 上移 L/2", 0, -22), ("d", "r2 = 1（順）", 30, -26)])
+
+FIGURES += [(fig2_unit_r1, "以為 r1 狀態下 d 端不需力矩（漏掉 bc 剪力經剛桿力臂 L/2 的貢獻 12）"),
+            (fig3_unit_r2, "剛桿轉動時漏掉 c 點平移 L/2 造成的弦轉角（K22 會少 36）")]
+
 if __name__ == "__main__":
     os.makedirs(OUT, exist_ok=True)
     for fn, catches in FIGURES:

@@ -393,6 +393,8 @@ header .nomat{margin-top:12px;font-size:.8em;opacity:.85}
   因 $r_2$ 定義為順時針，欲維持平衡的外力 $R_2$ 需與內部抵抗力反向，故外部施力：<br />
   $$ \mathbf{K_{21}} = \boxed{+\frac{16EI}{L}} $$</li>
 </ul>
+<p><img alt="SA-2012-4 單位狀態 r1 = 1：b 順時針轉 1、剛桿 cd 不動；彎矩 M_ba 4、M_ab 2、M_bc 8、M_cb 4，剛桿 cd 由 c 端 4 線性增到 d 端 16（EI/L）" src="../../raw/solutions/SA-2012-4/figs/SA-2012-4-fig-2-unit-r1.svg" /></p>
+<p><em>圖 2　單位狀態 $r_1 = 1$（以勁度法、cd 取 $EI = 10^9$ 重算，[K] 與 Step 4 一致）。d 端需要的力矩 16 不只是 $M_{cb} = 4$，還有 bc 剪力 $24EI/L^2$ 經剛桿力臂 $L/2$ 傳來的 12。這張圖攔的是只算彎矩、漏掉剪力乘力臂，而把 $K_{21}$ 寫成 4。</em></p>
 <h3>Step 3：求勁度矩陣第二行 (令 $r_1 = 0, r_2 = 1$)</h3>
 <blockquote>
 <p>💡 <strong>策略註解</strong>：此狀態下，b 點固定 ($\theta_b=0$)，d 點順時針旋轉 $1\text{ rad}$。剛性桿帶動 c 點產生 $\theta_c = 1$ (順時針) 與 $v_c = L/2$ (向上)。</p>
@@ -438,6 +440,8 @@ header .nomat{margin-top:12px;font-size:.8em;opacity:.85}
   外部平衡力 $R_2$ 需抵抗之，故：<br />
   $$ \mathbf{K_{22}} = \boxed{+\frac{56EI}{L}} $$</li>
 </ul>
+<p><img alt="SA-2012-4 單位狀態 r2 = 1：d 順時針轉 1，剛桿 cd 帶 c 上移 L/2 並轉 1；柱 ab 不受力，彎矩 M_bc 16、M_cb 20，剛桿 cd 由 20 線性增到 d 端 56（EI/L）" src="../../raw/solutions/SA-2012-4/figs/SA-2012-4-fig-3-unit-r2.svg" /></p>
+<p><em>圖 3　單位狀態 $r_2 = 1$。剛桿繞 d 轉動時，c 不只轉 1，還上移 $L/2$，使 bc 產生弦轉角 $\psi = 1$；柱 ab 兩端都不動，彎矩為 0。這張圖攔的是漏掉 c 點平移（$K_{22}$ 會少掉弦轉角項而偏小），以及誤以為柱 ab 在 $r_2$ 狀態也受力（$K_{12}$ 只來自 $M_{bc}$）。</em></p>
 <h3>Step 4：統整結構勁度矩陣 $[K]$</h3>
 <p>將四個元素組合，得到最終結構勁度矩陣：<br />
 $$ [K] = \begin{bmatrix} K_{11} &amp; K_{12} \\ K_{21} &amp; K_{22} \end{bmatrix} = \begin{bmatrix} \frac{12EI}{L} &amp; \frac{16EI}{L} \\ \frac{16EI}{L} &amp; \frac{56EI}{L} \end{bmatrix} $$</p>
@@ -459,7 +463,8 @@ $$ \mathbf{[K] = \frac{4EI}{L} \begin{bmatrix} 3 &amp; 4 \\ 4 &amp; 14 \end{bmat
   題文指定「剛架有二個自由度」，等同不計軸向變形（考卷並未明寫）。若考量軸向變形，b 點與 c 點的水平與垂直位移將不再受到嚴格的幾何約束，矩陣規模將會擴展（例如需要加入 b 點水平、垂直位移及 c 點水平位移等自由度），題目難度與計算量將呈現指數級上升。因此，「不考慮軸向變形」是將系統維度壓縮至 $2 \times 2$ 的絕對核心前提，解題時切勿畫蛇添足將 $u_b, v_b$ 設為未知數。</p>
 </li>
 </ul>
-<p><em>修正日期：2026-11-05（§1 改為指向題目正本並放重繪附圖（figs/SA-2012-4-fig-1-problem.svg）、加常見誤讀；刪除「題幹明示不考慮軸向變形」的加字（§3 陷阱三、§5），改依題文「二個自由度」；圖由 gen_SA-2012-4.py 產生，可重跑）</em></p></main>
+<p><em>修正日期：2026-11-05（§1 改為指向題目正本並放重繪附圖（figs/SA-2012-4-fig-1-problem.svg）、加常見誤讀；刪除「題幹明示不考慮軸向變形」的加字（§3 陷阱三、§5），改依題文「二個自由度」；圖由 gen_SA-2012-4.py 產生，可重跑）</em></p>
+<p><em>圖解補繪：2026-11-08（向量圖，腳本 <code>gen_SA-2012-4.py</code> 的 fig2_unit_r1／fig3_unit_r2，以勁度法重算 [K] 後 assert 解析值，可重跑）</em></p></main>
 <footer>來源：raw/solutions/SA-2012-4/SA-2012-4.md（知識庫解題內容唯一正本；本頁僅為渲染顯示）</footer>
 
 <script>

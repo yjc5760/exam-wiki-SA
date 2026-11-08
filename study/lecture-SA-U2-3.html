@@ -456,7 +456,7 @@ $$M_{AB} = \frac{2EI}{L}\big[2(\alpha-\alpha) + (\alpha-\alpha)\big] = 0 \quad\c
 <tr><td>剛性梁 \(EI = \infty\)</td><td>其上各節點 \(\theta = 0\)（梁不彎，節點不能轉）</td><td><b>一次消掉好幾個 \(\theta\)</b></td><td><a class="qlink" href="problems-view/SA-2006-4.html" target="_blank">SA-2006-4</a></td></tr>
 <tr><td>剛性矮牆／基座</td><td>牆上各節點視同固定端（\(\theta = 0,\ \Delta = 0\)）</td><td>柱的有效長度被縮短</td><td><a class="qlink" href="problems-view/SA-2006-4.html" target="_blank">SA-2006-4</a></td></tr>
 <tr><td>貼垂直牆的滾支承</td><td>\(u = 0\)，但 \(v \ne 0\)、\(\theta \ne 0\)（該端 \(M = 0\)）</td><td>只提供<b>水平</b>反力；可上下滑、可自由轉動</td><td><a class="qlink" href="problems-view/SA-2020-1.html" target="_blank">SA-2020-1</a></td></tr>
-<tr><td>兩支承間的實線／連桿</td><td>軸向剛性連桿，兩點<b>水平位移相同</b></td><td>把滾支承「升級」成等效鉸支承</td><td><a class="qlink" href="problems-view/SA-2021-2.html" target="_blank">SA-2021-2</a></td></tr>
+<tr><td>框角下方的鉸／滾支承（兩框角間有下梁）</td><td>對地 \(M = 0\) 只針對框角整體；柱與下梁仍剛接，\(\sum M_{節點} = 0\)</td><td>下梁約束柱底轉動，柱底彎矩<b>不為 0</b>；不計軸向變形時兩框角水平位移相同</td><td><a class="qlink" href="problems-view/SA-2021-2.html" target="_blank">SA-2021-2</a></td></tr>
 <tr><td>「不考慮軸向變形」</td><td>桿長不變 ⟹ 節點位移互相綁定</td><td><b>大幅減少</b>獨立側移數</td><td>幾乎所有題</td></tr>
 </tbody>
 </table>
@@ -564,14 +564,16 @@ $$M_{AB} = \frac{2EI}{L}\big[2(\alpha-\alpha) + (\alpha-\alpha)\big] = 0 \quad\c
 <p><b>未知量 = 3</b>（\(\theta_b\)、\(\theta_c\)、\(\Delta\)）；若對 \(bc\) 用 \(c\) 端鉸接修正式消去 \(\theta_c\)，可降為 2 個。
 題目最狠的一刀是方向與直覺相反：<b>看起來會轉的斜桿沒轉，看起來不會轉的水平桿轉了。</b></p>
 
-<h4>(c) 一條實線把滾支承變成鉸支承（<a class="qlink" href="problems-view/SA-2021-2.html" target="_blank">SA-2021-2</a>）</h4>
-<p>柱底 \(c\) 為鉸支承、\(d\) 為滾支承，圖上 \(c\)–\(d\) 之間有一條實線。</p>
+<h4>(c) 框角下方的支承符號：對地束制，不是柱底鉸（<a class="qlink" href="problems-view/SA-2021-2.html" target="_blank">SA-2021-2</a>）</h4>
+<p>框身 \(b\)–\(e\)–\(d\)–\(c\) 四角剛接，下梁 \(cd\) 兩端各接一根柱；\(c\) 下畫三角形（鉸支承）、\(d\) 下畫圓（滾支承）。</p>
 <ul>
-<li>若<b>忽略</b>實線：\(d\) 可自由水平移動 ⟹ 柱 \(ed\) 成為鐘擺柱，無剪力無彎矩 ⟹ 全側力由單柱承擔，結構<b>失去對稱性</b>，答案破碎（\(\Delta = 17.55\) mm）</li>
-<li>若<b>視為軸向剛性連桿</b>：\(\Delta_d = \Delta_c = 0\) ⟹ \(d\) 等效鉸支承 ⟹ 結構完美對稱，兩柱均分剪力各 12 kN，答案漂亮（\(\Delta = 8.1\) mm、\(EI\theta_b = 18\)）</li>
+<li><b>支承符號只管框角對地</b>：\(c\)、\(d\) 對地不抗轉，但柱與下梁之間仍剛接 ⟹ 節點條件是 \(M_{cb} + M_{cd} = 0\)，<b>不是</b> \(M_{cb} = 0\)。下梁 \(cd\) 以自身抗彎勁度約束柱底，柱底彎矩 \(-16\) kN-m。</li>
+<li><b>不計軸向變形</b>：\(cd\) 兩端水平位移相同、\(c\) 不動 ⟹ \(d\) 也不能水平移動，兩柱等高等勁度 ⟹ 反對稱、各分 12 kN。</li>
+<li>正解：\(EI\theta_b = 10\)、\(EI\phi = 16\)、\(EI\Delta = 66\) ⟹ \(\theta_b = 5\times10^{-4}\) rad、\(\Delta = 3.30\) mm。</li>
+<li>若誤把 \(c\)、\(d\) 當<b>柱底鉸</b>、\(cd\) 只當連桿 ⟹ \(\Delta = 8.1\) mm、\(EI\theta_b = 18\)，側移多估 2.5 倍（本庫舊解曾犯，2026-11-08 勘誤）。</li>
 </ul>
-<p><b>判斷準則：答案漂亮的那個解讀才是出題本意。</b>
-國考不會設計出 17.55 mm 這種數字當標準答案。</p>
+<p><b>判斷準則：看支承符號畫在「框角下方」還是「桿件之間」。</b>框角下方的鉸／滾只解除對地的轉動束制，桿與桿之間仍是剛接；
+只有桿件之間畫了空心圓（如 <a class="qlink" href="problems-view/SA-2024-3.html" target="_blank">SA-2024-3</a> 的 C 角）才是內鉸。</p>
 </div>
 
 <div class="trap">
@@ -797,7 +799,7 @@ $$\sum_{\text{匯於節點 }i} M_{ij} = M_{\text{節點外加力矩}}$$
 <b>陷阱｜剛架的 BMD 在節點會跳躍。</b><br>
 連續梁的 BMD 在內部支承是連續的（同一根梁的左右段），
 但在<b>剛架</b>的節點，柱子會分掉一部分彎矩，所以梁的 BMD 通過節點時會<b>劇烈跳躍</b>。
-<a class="qlink" href="problems-view/SA-2021-2.html" target="_blank">SA-2021-2</a> 就從 \(+18\) 瞬間跳到 \(-18\)。
+<a class="qlink" href="problems-view/SA-2021-2.html" target="_blank">SA-2021-2</a> 的 \(b\) 點就從左側 \(-10\)（上緣受拉）跳到右側 \(+10\)（下緣受拉），跳躍量 20 ＝ 柱頂彎矩。
 繪圖時務必左右分開標示，<b>切勿平滑連線</b>。
 </div>
 
@@ -1678,7 +1680,7 @@ $$\frac{V_{\text{短}}}{V_{\text{長}}} = \frac{1/2^3}{1/3^3} = \frac{27}{8}
 <text x="450" y="104" font-size="13.5" fill="#0d47a1" text-anchor="middle" font-weight="bold">① 翻譯邊界條件、數自由度（§2）</text>
 <text x="256" y="126" font-size="12" fill="#263238" text-anchor="start">固定端 → θ = 0；剛性構件 → 其上 θ 全為 0</text>
 <text x="256" y="145" font-size="12" fill="#263238" text-anchor="start">鉸／滾支承 → M = 0（用 3EI/L 修正式消 θ，不是令 θ = 0）</text>
-<text x="256" y="164" font-size="12" fill="#c62828" text-anchor="start">支承間實線 → 軸向剛性連桿，位移綁定</text>
+<text x="256" y="164" font-size="12" fill="#c62828" text-anchor="start">框角下方的鉸／滾 → 只解除對地束制，桿間仍剛接</text>
 <line x1="450" y1="180" x2="450" y2="200.6" stroke="#263238" stroke-width="2" stroke-linecap="butt"/>
 <polygon points="450,206 446.2,197.8 453.8,197.8" fill="#263238"/>
 <rect x="240" y="208" width="420" height="98" rx="9" fill="#e3f2fd" stroke="#1565c0" stroke-width="1.4"/>
@@ -1783,10 +1785,10 @@ $$\frac{V_{\text{短}}}{V_{\text{長}}} = \frac{1/2^3}{1/3^3} = \frac{27}{8}
 <td>兩柱 \(\psi\) <b>反號</b>；修正 FEM \(3PL/16\)；\(b\) 點位移 = 弦位移 ＋ 彈性撓度</td></tr>
 <tr><td><a class="qlink" href="problems-view/SA-2021-1.html" target="_blank">SA-2021-1</a></td><td>110</td>
 <td>連續梁含彈簧支承與內部鉸，求 BMD、\(\theta_b\)、\(\Delta_b\)</td><td>§2.1 §5.1</td>
-<td>懸臂段等效成彈簧；等跨＋兩端無彎矩 ⟹ \(\Delta_b\) 解耦可獨立求</td></tr>
+<td>懸臂段等效成彈簧；\(b\) 點垂直平衡的剪力修正兩桿<b>同號相加</b>（不會抵銷），\(\Delta_b\) 與 \(\theta_b\) 耦合</td></tr>
 <tr><td><a class="qlink" href="problems-view/SA-2021-2.html" target="_blank">SA-2021-2</a></td><td>110</td>
-<td>帶懸臂的單層剛架，柱底一鉸一滾＋連桿，求 BMD、\(\theta_b\)、\(\Delta\)</td><td>§2.1 §6</td>
-<td>實線＝軸向剛性連桿 ⟹ 滾支承升級為鉸；BMD 在節點跳躍 \(+18 \to -18\)</td></tr>
+<td>帶外伸梁的單層剛架，框角下方一鉸一滾、框角剛接，求 BMD、\(\theta_b\)、\(\Delta\)</td><td>§2.1 §6</td>
+<td>框角下方支承≠柱底鉸，柱底彎矩由下梁提供；反對稱；BMD 在節點跳躍 \(-10 \to +10\)</td></tr>
 <tr><td><a class="qlink" href="problems-view/SA-2020-1.html" target="_blank">SA-2020-1</a></td><td>109</td>
 <td>水平桿 \(ab\)＋斜桿 \(bc\)，\(c\) 貼垂直牆滾支承，求 \(ab\) 端彎矩與 \(c\) 點反力</td><td>§2.1 §5.1</td>
 <td>貼牆滾支承的翻譯；\(u_b = 0\) 推出 \(b\) 只能垂直下移；斜桿 <b>\(\psi_{bc}=0\)</b>、水平桿 \(\psi_{ab}=\Delta/4\)</td></tr>
@@ -1898,12 +1900,12 @@ $$\frac{V_{\text{短}}}{V_{\text{長}}} = \frac{1/2^3}{1/3^3} = \frac{27}{8}
 <tr><td>9</td><td>對稱結構受側向力</td><td>老實設兩個 \(\theta\) 解聯立</td><td>直接令 \(\theta_B = \theta_C\)，未知量少一個，時間省一半</td><td><a class="qlink" href="problems-view/SA-2002-4.html" target="_blank">SA-2002-4</a> <a class="qlink" href="problems-view/SA-2024-4.html" target="_blank">SA-2024-4</a></td></tr>
 <tr><td>10</td><td>多層對稱剛架</td><td>只看左右對稱</td><td>再檢查層與層之間是否也對稱；\(v_b = v_f\) 可推出連接柱<b>軸力為零</b></td><td><a class="qlink" href="problems-view/SA-2020-2.html" target="_blank">SA-2020-2</a></td></tr>
 <tr><td>11</td><td>各桿 \(EI\)、\(L\) 都不一樣</td><td>「這是不對稱結構」</td><td>先算相對勁度 \(2EI/L\)。<a class="qlink" href="problems-view/SA-2024-4.html" target="_blank">SA-2024-4</a> 三桿的相對勁度<b>完全相同</b></td><td><a class="qlink" href="problems-view/SA-2024-4.html" target="_blank">SA-2024-4</a></td></tr>
-<tr><td>12</td><td>兩支承之間畫了一條實線</td><td>「基準線，忽略」</td><td>軸向剛性連桿，強制兩點水平位移相同 ⟹ 滾支承升級成等效鉸支承</td><td><a class="qlink" href="problems-view/SA-2021-2.html" target="_blank">SA-2021-2</a></td></tr>
+<tr><td>12</td><td>框角下方畫了鉸／滾支承</td><td>「柱底是鉸，\(M_{柱底} = 0\)」</td><td>支承只解除框角對地的束制；柱與下梁仍剛接，用節點平衡 \(M_{cb} + M_{cd} = 0\)</td><td><a class="qlink" href="problems-view/SA-2021-2.html" target="_blank">SA-2021-2</a></td></tr>
 <tr><td>13</td><td>圖上有彈簧與 \(k\)</td><td>照連續梁處理</td><td>多一個位移未知量 ＋ 多一條垂直力平衡（\(R = k\Delta\)）</td><td><a class="qlink" href="problems-view/SA-2021-1.html" target="_blank">SA-2021-1</a></td></tr>
 <tr><td>14</td><td>某構件標 \(EI = \infty\)</td><td>不知道怎麼處理</td><td>剛性梁 ⟹ 其上節點 \(\theta = 0\)；剛性矮牆 ⟹ 牆上節點視同固定端</td><td><a class="qlink" href="problems-view/SA-2006-4.html" target="_blank">SA-2006-4</a> <a class="qlink" href="problems-view/SA-2012-4.html" target="_blank">SA-2012-4</a></td></tr>
 <tr><td>15</td><td>剛架的梁 BMD 通過柱節點</td><td>平滑連線（沿用連續梁習慣）</td><td>柱會分掉彎矩 ⟹ BMD 在節點<b>跳躍</b>，左右分開標示</td><td><a class="qlink" href="problems-view/SA-2021-2.html" target="_blank">SA-2021-2</a></td></tr>
 <tr><td>16</td><td>要求桿件<b>中點</b>的位移</td><td>「頂端位移的一半」</td><td>那只是弦（剛體）位移。必須疊加「桿相對於弦的彈性撓度」</td><td><a class="qlink" href="problems-view/SA-2022-2.html" target="_blank">SA-2022-2</a></td></tr>
-<tr><td>17</td><td>柱底皆為鉸支承</td><td>「跟固定端一樣列式」</td><td>用 \(3EI/L\) 修正式；且柱最大彎矩必在柱頂，不在柱底</td><td><a class="qlink" href="problems-view/SA-2017-3.html" target="_blank">SA-2017-3</a></td></tr>
+<tr><td>17</td><td>柱底皆為鉸支承</td><td>「跟固定端一樣列式」</td><td>用 \(3EI/L\) 修正式；柱底彎矩為 0，柱無跨內載重時最大彎矩在柱頂（右柱有跨內載重時可能在載重點，2017-3 右柱 99.8 &gt; 柱頂 79.6）</td><td><a class="qlink" href="problems-view/SA-2017-3.html" target="_blank">SA-2017-3</a></td></tr>
 <tr><td>18</td><td>遠端鉸接，要改 FEM</td><td>另外背一張表</td><td>一條規則吃下全部：\(\bar M^F_{AB} = M^F_{AB} - \tfrac12 M^F_{BA}\)（修正後<b>變大</b>）</td><td><a class="qlink" href="problems-view/SA-2022-2.html" target="_blank">SA-2022-2</a></td></tr>
 <tr><td>19</td><td>斜桿題要列側移方程</td><td>硬用層剪力自由體法</td><td>斜桿剪力不水平也不垂直，投影會爆。<b>改用虛功法</b></td><td><a class="qlink" href="problems-view/SA-2014-3.html" target="_blank">SA-2014-3</a> <a class="qlink" href="problems-view/SA-2020-1.html" target="_blank">SA-2020-1</a></td></tr>
 <tr><td>20</td><td>非均勻斷面桿件</td><td>直接套 \(2EI/L(2\theta_A+\theta_B-3\psi)\)</td><td>\(EI\) 隨 \(x\) 變，必須重新推 \(S\)、\(C\) 係數（疊加四個子問題）</td><td><a class="qlink" href="problems-view/SA-2025-3.html" target="_blank">SA-2025-3</a></td></tr>
@@ -2099,8 +2101,8 @@ SA-2020-1 只讓你碰到斜桿的邊，這題才是真正要你推導多節點�
 <li><b>非均勻斷面的 \(S\)、\(C\) 係數推導</b>（§7.2）→ 補 <a class="qlink" href="problems-view/SA-2025-3.html" target="_blank">SA-2025-3</a>。
 它是「推導題」而非「計算題」，練法完全不同，而且 2025 剛考過。</li>
 <li><b>彈簧支承 ＋ 內部鉸的連續梁</b>（§2.1）→ 補 <a class="qlink" href="problems-view/SA-2021-1.html" target="_blank">SA-2021-1</a>。
-順便學「懸臂段等效成彈簧」與「等跨 ⟹ \(\Delta_b\) 解耦」兩個技巧。</li>
-<li><b>連桿（實線）的識別</b>（§2.1）→ 補 <a class="qlink" href="problems-view/SA-2021-2.html" target="_blank">SA-2021-2</a>，5 分鐘就能看完圖與判斷。</li>
+順便學「懸臂段等效成彈簧」，以及節點兩側端剪力修正的正負號（左桿右端與右桿左端<b>相加</b>，不會抵銷）。</li>
+<li><b>框角下方支承 vs 柱底鉸的識別</b>（§2.1）→ 補 <a class="qlink" href="problems-view/SA-2021-2.html" target="_blank">SA-2021-2</a>，先看圖判斷，再解反對稱三元聯立。</li>
 <li><b>整體水平勁度 \(K_H\)</b> → 補 <a class="qlink" href="problems-view/SA-2009-3.html" target="_blank">SA-2009-3</a>。</li>
 </ul>
 </div>

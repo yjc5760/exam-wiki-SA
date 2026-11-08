@@ -202,7 +202,7 @@ header .nomat{margin-top:12px;font-size:.8em;opacity:.85}
 <hr />
 <h2>§1.5 ⚠ 勘誤與補算（2026-08-16）</h2>
 <blockquote>
-<p>本節為後補，原文一字未刪。以下兩點與 §1／§4.5 的原文不一致，以本節為準。</p>
+<p>本節為 2026-08-16 後補的勘誤摘要。2026-11-08 起，（一）（二）的更正已併回 §3.5、§4.5、§4.6、§5.1 正文，正文與本節一致。</p>
 </blockquote>
 <h3>（一）符號約定：一律「順時針為正」</h3>
 <p>考卷附圖的 $M_{AB}$、$M_{BA}$ 兩個彎矩箭頭<strong>都是順時針</strong>；§4.6 的通式與 §5.1 的均勻梁驗核<br />
@@ -211,11 +211,11 @@ $M_{AB} = \frac{2EI}{L}(2\theta_A + \theta_B - 3\psi) + M_F$ 也只有在「桿�
 <h3>（二）$\Delta_B^{(P)}$ 應與 $\Delta_A^{(P)}$ 反號</h3>
 <p>單位順時針彎矩造成的彎矩圖（下垂為正）為</p>
 <p>$$\bar m_A(x) = +\left(1 - \frac{x}{L}\right), \qquad \bar m_B(x) = -\frac{x}{L}$$</p>
-<p>兩者<strong>一正一負</strong>。§4.5 Step D-3 把 $\bar m_A$ 也寫成負的，導致 $\Delta_A^{(P)}$ 與 $\Delta_B^{(P)}$ 同號。以均勻梁代入：</p>
+<p>兩者<strong>一正一負</strong>。2026-11-08 前的 §4.5 Step D-3 把 $\bar m_A$ 也寫成負的，導致 $\Delta_A^{(P)}$ 與 $\Delta_B^{(P)}$ 同號（已改正）。以均勻梁代入：</p>
 <p>$$\Delta_A^{(P)} = +\frac{PL^2}{16EI}, \qquad \Delta_B^{(P)} = -\frac{PL^2}{16EI}$$</p>
 <p>由反對稱性 $M_{F,BA} = -M_{F,AB}$，相容條件給</p>
 <p>$$\left(f_{AA} - f_{AB}\right)M_{F,AB} = -\Delta_A^{(P)} \;\Longrightarrow\; \left(\frac{L}{3EI} + \frac{L}{6EI}\right)M_{F,AB} = -\frac{PL^2}{16EI} \;\Longrightarrow\; M_{F,AB} = -\frac{PL}{8} \;\checkmark$$</p>
-<p>原文的同號版本會得到 $M_F = 3PL/8$（§4.5 Step D-5 的算式字面上就是這個結果，只是結論直接寫成 $PL/8$）。</p>
+<p>舊版的同號版本會得到 $M_F = 3PL/8$（2026-11-08 前 §4.5 Step D-5 的算式字面上就是這個結果，只是結論直接寫成 $PL/8$；現行 §4.5 已改正）。</p>
 <h3>（三）套入本題 $EI$ 分布後的實際數值</h3>
 <p>把 §4.6 的通式套進附圖的 $EI$–$2EI$–$EI$（各 $L/3$）分布，逐段精確積分得：</p>
 <table>
@@ -337,7 +337,7 @@ Step 1：定義廣義傾角變位公式的形式<br />
 </tr>
 <tr>
 <td>$\theta_A,\,\theta_B$</td>
-<td>兩端旋轉角（逆時針正）</td>
+<td>兩端旋轉角（順時針正，與附圖彎矩箭頭一致）</td>
 </tr>
 <tr>
 <td>$\psi = \Delta/L$</td>
@@ -472,7 +472,7 @@ $$k_{AA} = \frac{L/(3EI)}{(L/3EI)^2 - (L/6EI)^2} = \frac{4EI}{L},\quad k_{BA} = 
 <p>等效方式：施加 $-\psi$ 的虛擬固端旋轉，使用「反彎矩法」。</p>
 <p><strong>用簡單物理論述（對稱情況）：</strong></p>
 <p>若桿件為對稱（$f_{AA} = f_{BB}$，則由「正比關係」：</p>
-<p>$$k_{A\psi} = -(k_{AA} + k_{AB}) = -(k_{AA} + C_{BA}\cdot k_{AA})\cdot\psi$$</p>
+<p>$$k_{A\psi} = -(k_{AA} + k_{AB}) = -(1 + C_{AB})\,k_{AA}$$</p>
 <p>更嚴格地，利用「弦轉角等效為兩端施加相反旋轉（相對轉動 $\psi$）」：</p>
 <p>$$k_{A\psi} = -(k_{AA} + k_{AB}), \qquad k_{B\psi} = -(k_{BB} + k_{BA})$$</p>
 <p>對均勻梁：<br />
@@ -481,31 +481,29 @@ $$k_{A\psi} = -(4EI/L + 2EI/L) = -6EI/L$$</p>
 <hr />
 <h3>4.5 子問題（d）：$\theta_A = 0,\;\theta_B = 0,\;\psi = 0,\;P = P$（固端彎矩）</h3>
 <p><strong>兩端完全固定，跨中施加 $P$。</strong></p>
-<p><strong>Step D-1：設固端彎矩 $M_{F,AB}$（A端，逆時針正）和 $M_{F,BA}$（B端，逆時針正）。</strong></p>
-<p><strong>Step D-2：使用共軛樑（以虛功法驗核）。</strong></p>
-<p>在簡支「主結構」上施加 $P$（跨中），主結構彎矩圖：</p>
+<p><strong>Step D-1：設固端彎矩 $M_{F,AB}$（A 端）、$M_{F,BA}$（B 端），與全文一致取順時針為正。</strong></p>
+<p><strong>Step D-2：主結構取簡支梁（虛功法／共軛樑法）。</strong></p>
+<p>在簡支主結構上施加 $P$（跨中），主結構彎矩圖（下垂為正）：</p>
 <p>$$M_0(x) = \frac{Px}{2} \quad (0 \le x \le L/2), \qquad M_0(x) = \frac{P(L-x)}{2} \quad (L/2 \le x \le L)$$</p>
-<p><strong>Step D-3：相容條件（原樑兩端旋轉 = 0）</strong></p>
+<p><strong>Step D-3：相容條件（原樑兩端轉角 = 0）</strong></p>
 <p>$$\theta_A = 0 : \quad f_{AA}\cdot M_{F,AB} + f_{AB}\cdot M_{F,BA} + \Delta_A^{(P)} = 0$$</p>
 <p>$$\theta_B = 0 : \quad f_{AB}\cdot M_{F,AB} + f_{BB}\cdot M_{F,BA} + \Delta_B^{(P)} = 0$$</p>
-<p>其中 $\Delta_A^{(P)}$ 和 $\Delta_B^{(P)}$ 為<strong>主結構（簡支樑）在 $P$ 作用下，端部 A、B 的旋轉角</strong>：</p>
-<p>$$\Delta_A^{(P)} = \int_0^{L} \frac{M_0(x)}{EI(x)}\bar{m}_A(x)\,dx, \qquad \Delta_B^{(P)} = \int_0^{L} \frac{M_0(x)}{EI(x)}\bar{m}_B(x)\,dx$$</p>
-<p>注意：$\bar{m}_A(x) = -(1-x/L)$，$\bar{m}_B(x) = -(x/L)$（單位彎矩效應）</p>
-<p><strong>Step D-4：分段積分（P 在 x = L/2）</strong></p>
-<p>$$\Delta_A^{(P)} = -\!\int_0^{L/2} \frac{(Px/2)(1-x/L)}{EI(x)}\,dx - \!\int_{L/2}^{L} \frac{P(L-x)/2\cdot(1-x/L)}{EI(x)}\,dx$$</p>
-<p>$$\Delta_B^{(P)} = -\!\int_0^{L/2} \frac{(Px/2)(x/L)}{EI(x)}\,dx - \!\int_{L/2}^{L} \frac{P(L-x)/2\cdot(x/L)}{EI(x)}\,dx$$</p>
-<p>對均勻梁（$EI = const$）驗核：</p>
-<p>$$\Delta_A^{(P)} = -\frac{P}{2EI}\!\int_0^{L/2}\! x(1-x/L)\,dx - \frac{P}{2EI}\!\int_{L/2}^{L}\!(L-x)(1-x/L)/L\,dx$$</p>
-<p>計算：<br />
-$$= -\frac{P}{2EI}\left[\frac{x^2}{2}-\frac{x^3}{3L}\right]_0^{L/2} - \frac{P}{2EIL}\!\int_{L/2}^{L}\!(L-x)^2\,dx$$</p>
-<p>$$= -\frac{P}{2EI}\left(\frac{L^2}{8}-\frac{L^2}{24}\right) - \frac{P}{2EIL}\cdot\frac{L^3}{24} = -\frac{PL^2}{2EI}\cdot\frac{2}{24} - \frac{PL^2}{48EI} = -\frac{PL^2}{24EI} - \frac{PL^2}{48EI} = -\frac{PL^2}{16EI}$$</p>
-<p>（因為梁與荷載均對稱，$\Delta_A^{(P)} = \Delta_B^{(P)} = -PL^2/(16EI)$）</p>
-<p><strong>Step D-5：解固端彎矩（均勻梁驗核）</strong></p>
-<p>$$\begin{pmatrix}f_{AA} &amp; f_{AB}\\ f_{AB} &amp; f_{BB}\end{pmatrix}\begin{pmatrix}M_{F,AB}\\M_{F,BA}\end{pmatrix} = \begin{pmatrix}PL^2/(16EI)\\PL^2/(16EI)\end{pmatrix}$$</p>
-<p>對均勻梁：</p>
-<p>$$\begin{pmatrix}L/3EI &amp; -L/6EI\\ -L/6EI &amp; L/3EI\end{pmatrix}\begin{pmatrix}M_{F,AB}\\M_{F,BA}\end{pmatrix} = \begin{pmatrix}PL^2/16EI\\PL^2/16EI\end{pmatrix}$$</p>
-<p>因為右側相等，由對稱性 $M_{F,AB} = M_{F,BA} = M_F$：</p>
-<p>$$\left(\frac{L}{3EI} - \frac{L}{6EI}\right)M_F = \frac{PL^2}{16EI} \implies \frac{L}{6EI}\cdot M_F = \frac{PL^2}{16EI} \implies M_F = \frac{PL}{8}\;\checkmark$$</p>
+<p>其中 $\Delta_A^{(P)}$、$\Delta_B^{(P)}$ 為主結構（簡支梁）在 $P$ 作用下 A、B 端的轉角（順時針為正），以單位<strong>順時針</strong>端彎矩的彎矩圖為虛擬系統：</p>
+<p>$$\bar{m}_A(x) = +\left(1 - \frac{x}{L}\right), \qquad \bar{m}_B(x) = -\frac{x}{L}$$</p>
+<p>（A 端順時針 ⇒ 下垂；B 端順時針 ⇒ 上拱，所以兩者<strong>一正一負</strong>，與 §4.2 的 $f_{AB} &lt; 0$ 同一個道理。）</p>
+<p>$$\Delta_A^{(P)} = \int_0^{L} \frac{M_0(x)\,\bar{m}_A(x)}{EI(x)}\,dx, \qquad \Delta_B^{(P)} = \int_0^{L} \frac{M_0(x)\,\bar{m}_B(x)}{EI(x)}\,dx$$</p>
+<p><strong>Step D-4：均勻梁驗核（$EI$ = const）</strong></p>
+<p>$$\Delta_A^{(P)} = \frac{P}{2EI}\!\int_0^{L/2}\! x\left(1-\frac{x}{L}\right)dx + \frac{P}{2EIL}\!\int_{L/2}^{L}\!(L-x)^2\,dx = \frac{PL^2}{24EI} + \frac{PL^2}{48EI} = +\frac{PL^2}{16EI}$$</p>
+<p>由對稱，$\Delta_B^{(P)} = -\dfrac{PL^2}{16EI}$（A 端順時針、B 端逆時針，簡支梁跨中受載的兩端轉向本來就相反）。</p>
+<p><strong>Step D-5：解固端彎矩</strong></p>
+<p>載重與斷面皆對稱 ⇒ $M_{F,BA} = -M_{F,AB}$。代入 $\theta_A = 0$ 式：</p>
+<p>$$\left(f_{AA} - f_{AB}\right)M_{F,AB} = -\Delta_A^{(P)}$$</p>
+<p>均勻梁：$\left(\dfrac{L}{3EI} + \dfrac{L}{6EI}\right)M_{F,AB} = -\dfrac{PL^2}{16EI} \Rightarrow M_{F,AB} = -\dfrac{PL}{8},\; M_{F,BA} = +\dfrac{PL}{8}\;\checkmark$（與標準式相同）</p>
+<p>本題 $EI$–$2EI$–$EI$：$f_{AA} - f_{AB} = \dfrac{47}{162} + \dfrac{41}{324} = \dfrac{5}{12}\dfrac{L}{EI}$、$\Delta_A^{(P)} = \dfrac{13}{288}\dfrac{PL^2}{EI}$</p>
+<p>$$M_{F,AB} = -\frac{13}{288}\cdot\frac{12}{5}PL = -\frac{13}{120}PL,\qquad M_{F,BA} = +\frac{13}{120}PL$$</p>
+<blockquote>
+<p>⚠ 2026-11-08 前的版本在 D-1 寫「逆時針正」、D-3 把 $\bar m_A$ 也寫成負的，使 $\Delta_A^{(P)}$ 與 $\Delta_B^{(P)}$ 同號，再以同號右端項湊出 $M_F = PL/8$（符號與量值都靠巧合）。照同號版本代回，會得 $3PL/8$。</p>
+</blockquote>
 <hr />
 <h3>4.6 最終傾角變位公式</h3>
 <p>整合四個子問題，廣義傾角變位公式：</p>
@@ -518,7 +516,7 @@ $$= -\frac{P}{2EI}\left[\frac{x^2}{2}-\frac{x^3}{3L}\right]_0^{L/2} - \frac{P}{2
 <p>$$f_{AA} = L\!\int_0^1 \frac{(1-u)^2}{EI(u)}\,du,\quad f_{BB} = L\!\int_0^1 \frac{u^2}{EI(u)}\,du,\quad f_{AB} = -L\!\int_0^1 \frac{u(1-u)}{EI(u)}\,du$$</p>
 <p>固端彎矩（兩端固定，P 在跨中）：</p>
 <p>$$\begin{pmatrix}M_{F,AB}\\M_{F,BA}\end{pmatrix} = \frac{1}{D}\begin{pmatrix}f_{BB} &amp; -f_{AB}\\-f_{AB} &amp; f_{AA}\end{pmatrix}\begin{pmatrix}-\Delta_A^{(P)}\\-\Delta_B^{(P)}\end{pmatrix}$$</p>
-<p>$$\Delta_A^{(P)} = -L\!\int_0^1 \frac{M_0(u)(1-u)}{EI(u)}\,du,\quad \Delta_B^{(P)} = -L\!\int_0^1 \frac{M_0(u)\cdot u}{EI(u)}\,du$$</p>
+<p>$$\Delta_A^{(P)} = +L\!\int_0^1 \frac{M_0(u)(1-u)}{EI(u)}\,du,\quad \Delta_B^{(P)} = -L\!\int_0^1 \frac{M_0(u)\cdot u}{EI(u)}\,du \quad (\text{順時針為正，兩者反號})$$</p>
 <p>$$M_0(u) = \frac{PL}{2}\min(u,\,1-u) \quad \text{（簡支樑 P 在中點的彎矩圖）}$$</p>
 <hr />
 <h2>§5 進階探討</h2>
@@ -564,15 +562,15 @@ $$= -\frac{P}{2EI}\left[\frac{x^2}{2}-\frac{x^3}{3L}\right]_0^{L/2} - \frac{P}{2
 <td>$1/2$</td>
 </tr>
 <tr>
-<td>$M_{F,AB} = M_{F,BA}$</td>
-<td>由固端條件</td>
-<td>$PL/8$</td>
+<td>$M_{F,AB} = -M_{F,BA}$</td>
+<td>由固端條件（§4.5）</td>
+<td>$-PL/8$</td>
 </tr>
 </tbody>
 </table>
 <p>代入廣義公式：</p>
-<p>$$M_{AB} = \frac{4EI}{L}\theta_A + \frac{2EI}{L}\theta_B - \frac{6EI}{L}\psi + \frac{PL}{8}$$</p>
-<p>$$= \frac{2EI}{L}(2\theta_A + \theta_B - 3\psi) + \frac{PL}{8}\;\checkmark$$</p>
+<p>$$M_{AB} = \frac{4EI}{L}\theta_A + \frac{2EI}{L}\theta_B - \frac{6EI}{L}\psi - \frac{PL}{8}$$</p>
+<p>$$= \frac{2EI}{L}(2\theta_A + \theta_B - 3\psi) - \frac{PL}{8}\;\checkmark$$</p>
 <p><img alt="SA-2025-3 通式退化檢核：本題與均勻梁的 |kAψ|、kAA、kAB 六根長條對照" src="../../raw/solutions/SA-2025-3/figs/SA-2025-3-fig-4-prismatic-check.svg" /></p>
 <p><em>圖 4　把通式的 $EI(x)$ 換成常數重算一遍，三個係數必須回到課本的 $4$、$2$、$6\,(EI/L)$，傳遞係數回到 $1/2$，固端彎矩回到 $-PL/8$。這張圖攔的是推導中途的積分或符號錯誤——特別是 §1.5（二）那個 $\Delta_B^{(P)}$ 的號：寫反的話這裡會得到 $-3PL/8$。</em></p>
 <hr />
@@ -619,7 +617,9 @@ $$= -\frac{P}{2EI}\left[\frac{x^2}{2}-\frac{x^3}{3L}\right]_0^{L/2} - \frac{P}{2
 </table>
 <hr />
 <p><em>解析日期：2026-07-02　｜　圖解補繪＋勘誤：2026-08-16（向量圖，腳本 <code>gen_SA-2025-3.py</code>，可重跑；改 <code>EI_PROFILE</code> 重跑，四張圖的數值與變形曲線會一起變）</em></p>
-<p><em>修正日期：2026-11-07（§1 改為指向題目正本並放重繪附圖（figs/SA-2025-3-fig-1-problem.svg）、加常見誤讀；原 §1 解析自繪圖移至「判讀圖解（解析自繪）」；圖由 gen_SA-2025-3_problem.py 產生，可重跑）</em></p></main>
+<p><em>修正日期：2026-11-07（§1 改為指向題目正本並放重繪附圖（figs/SA-2025-3-fig-1-problem.svg）、加常見誤讀；原 §1 解析自繪圖移至「判讀圖解（解析自繪）」；圖由 gen_SA-2025-3_problem.py 產生，可重跑）</em></p>
+<p><em>修正日期：2026-11-08（勘誤殘留清除：§1.5 的符號更正併回正文——§3.5 L1 θ 正向改順時針、§4.4 k_Aψ 式刪多餘的 ψ、§4.5 改寫（D-1 順時針正、m̄_A = +(1−x/L)、Δ_A^(P) 與 Δ_B^(P) 反號、M_F,AB = −PL/8 並補本題 −13PL/120 的推導）、§4.6 Δ_A^(P) 式改正號、§5.1 表與均勻梁驗核式 +PL/8 → −PL/8；最終公式（§1.5（三））不變。圖 1 警示文字同步。驗證：scripts/fixes/2026-11-08_recalc_SA-U2-3_B2.py，柔度法分段積分＋三段梁元素凝聚兩路徑，MISMATCHES: 0）</em></p>
+<p><em>修正日期：2026-11-08（落實檢查後補清勘誤殘留：§1.5（二）兩處仍以現在式指稱「§4.5 Step D-3／D-5 的同號錯誤」，改為「2026-11-08 前的版本，現行 §4.5 已改正」；gen_SA-2025-3.py 檔頭註解同步。數值與最終公式不變）</em></p></main>
 <footer>來源：raw/solutions/SA-2025-3/SA-2025-3.md（知識庫解題內容唯一正本；本頁僅為渲染顯示）</footer>
 
 <script>

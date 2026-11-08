@@ -30,6 +30,41 @@ def fig1_problem():
 
 FIGURES = [(fig1_problem, "把中間刻度當成柱位而讀成 bc = 2 m")]
 
+# ── 解題圖（階段 E，2026-11-08）：數值由勁度法重解，與 SA-2020-2.md §4 Step 5–6 對照（assert）──
+#    EIθ_b = 8（順時針）、EIΔ = 48（向下）、M_ab = −14、M_ba = −10、M_bc = −2、M_bf = +12 kN-m（EI = 20000）
+SOL = dict(nodes={k: v for k, v in N_.items()}, supports=[("a", "fixed"), ("d", "fixed"), ("e", "fixed"), ("h", "fixed")])
+
+def _solve():
+    from frame2d import Frame
+    f = Frame(); EI = 20000.0
+    for n, p in N_.items(): f.node(n, *p)
+    for n in "adeh": f.support(n, 1, 1, 1)
+    for nm, i, j in (("ab", "a", "b"), ("bP", "b", "P1"), ("Pc", "P1", "c"), ("cd", "c", "d"),
+                     ("ef", "e", "f"), ("fP", "f", "P2"), ("Pg", "P2", "g"), ("gh", "g", "h"),
+                     ("bf", "b", "f"), ("cg", "c", "g")):
+        f.member(nm, i, j, EI)                                       # 不計軸向變形
+    f.load("P1", fy=-12); f.load("P2", fy=-12)
+    f.solve()
+    cw = lambda nm: (-f.end[nm][2], -f.end[nm][5])
+    assert abs(-f.d["b"][1] - 48/EI) < 1e-9 and abs(-f.d["b"][2] - 8/EI) < 1e-9
+    assert all(abs(x - y) < 1e-6 for x, y in zip(cw("ab") + (cw("bP")[0], cw("bf")[0]), (-14, -10, -2, 12)))
+    assert abs(f.d["f"][1] - f.d["b"][1]) < 1e-12                    # 上下對稱：bf 柱兩端同沉、軸力 0
+    return f
+
+def fig2_solution():
+    from beamfig import frame_figure
+    f = _solve()
+    L = [("ab", 0.0, 4, -14), ("ab", 1.0, -26, 6), ("bP", 0.0, 24, 16), ("bP", 1.0, 0, 20),
+         ("bf", 0.0, -22, 18), ("bf", 1.0, -22, -12), ("ef", 0.0, 4, 18), ("ef", 1.0, -10, 22), ("fP", 1.0, 0, 20)]
+    return frame_figure(f, SOL, f"{OUT}/{TAG}-fig-2-deflected-bmd.svg",
+        "圖 2　SA-2020-2 變形形狀與彎矩圖（單位 kN-m）",
+        "b、c、f、g 一起下沉 2.40 mm；柱 bf、cg 平移不轉弦",
+        "左右對稱、上下兩層相同", L, fmt="{:.0f}", W=560, H=470,
+        dlabels=[("b", "vb = 2.40 mm ↓", 0, -62)],
+        notes=("θb = 0.0004 rad（順時針）", "ab 兩端 14、10；柱 bf 兩端 12；bc 中點 10"))
+
+FIGURES.append((fig2_solution, "以為無側移就沒有垂直位移（漏了 b 點下沉）；ab 兩端彎矩同號被畫成反曲"))
+
 if __name__ == "__main__":
     os.makedirs(OUT, exist_ok=True)
     for fn, catches in FIGURES:

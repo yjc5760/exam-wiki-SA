@@ -43,17 +43,195 @@ header .nomat{margin-top:12px;font-size:.8em;opacity:.85}
 <p class="meta2">主分類 <b>SA-U1-2</b> 靜定結構之分析 ｜ 2024 年（民國 113） ｜ 單位力法 (虛功法)</p>
 <div class="hbtns"><a class="b-study" href="../unit-SA-U1-2.html">🧭 U1-2 單元總覽</a><a class="b-lect" href="../lecture-SA-U1-2.html">📚 U1-2 靜定結構之分析 講義</a></div>
 </header>
-<main><h1>考題編號：SA-2024-2</h1>
+<main><details class="problem-src" open><summary><b>📄 題目正本</b>（考卷原文、附圖與判讀清單；不含解法）</summary>
+<h1>SA-2024-2 題目正本</h1>
+<blockquote>
+<p>本檔只記錄考卷上寫了什麼、圖上畫了什麼，不含任何解法。解析見同資料夾 <code>SA-2024-2.md</code>。<br />
+判讀清單經使用者確認前，狀態為「待確認」；確認後本檔原則上不再修改（改動須回考卷原圖並記 log）。</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>項目</th>
+<th>內容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>考卷</td>
+<td><code>raw/exams/SA-2024_結構學.pdf</code>，第 1 頁（頁次 2－1），第二題（圖二）</td>
+</tr>
+<tr>
+<td>考年</td>
+<td>2024（民國 113 年）專技高考結構工程技師「結構學」</td>
+</tr>
+<tr>
+<td>配分</td>
+<td>25 分</td>
+</tr>
+<tr>
+<td>附圖</td>
+<td><code>SA-2024-2-fig-2.png</code>（本次從考卷擷取 500 dpi；既有 <code>SA-2024-2-fig-1.png</code> 保留）</td>
+</tr>
+<tr>
+<td>判讀狀態</td>
+<td><strong>已確認</strong>（2026-11-07 使用者確認；原轉錄：2026-11-07 轉錄；PyMuPDF 110 dpi 整頁＋500 dpi 局部放大（附圖為向量圖）；盲讀於開啟解析前完成）</td>
+</tr>
+</tbody>
+</table>
+<h2>1. 考卷原文（逐字）</h2>
+<p>二、如圖二所示之桁架，已知支承F 發生垂直向下沉陷v_F = 12 mm，桿件CD 有製造誤差δ，桿件DE 有溫差ΔT。因以上三個原因，造成C 點向下位移4.8 mm，E 點向下位移6.4 mm。試求上述製造誤差δ = ？mm（註明過長或過短）及ΔT = ？℃（註明升溫或降溫）；假設所有桁架桿件性質相同如下：熱膨脹係數α = 1.5×10⁻⁵ /℃，楊氏模數100 GPa，斷面積A=150 mm²。（25 分）</p>
+<h2>2. 考卷給的公式、附表與參數</h2>
+<ul>
+<li>給定：α＝1.5×10⁻⁵ /℃、E＝100 GPa、A＝150 mm²（所有桿件相同）。</li>
+<li>給定：v_F＝12 mm 向下；C 點向下 4.8 mm、E 點向下 6.4 mm。</li>
+<li>考卷沒有給任何外力載重。</li>
+<li>卷首注意事項：㈠可以使用電子計算器。㈡不必抄題，作答時請將試題題號及答案依照順序寫在試卷上，於本試題上作答者，不予計分。㈢本科目除專門名詞或數理公式外，應使用本國文字作答。</li>
+<li>考試時間：2 小時。代號 00340，頁次 2－1、2－2。</li>
+</ul>
+<h2>3. 附圖</h2>
+<p><img alt="SA-2024-2 考卷附圖：平行弦桁架：下弦 A–B–C–D–E–F–G、上弦 H–I–J–K–L–M–N，節間各 4 m、高 3 m；垂直桿 HA、IB、JC、KD、LE、MF、NG；斜桿 H–B、B–J、J–D、D–L、L–F、F–N；B 為滾支承、F 為鉸支承" src="../../raw/solutions/SA-2024-2/SA-2024-2-fig-2.png" /><br />
+<em>證據圖 SA-2024-2-fig-2.png（500 dpi，自考卷擷取；舊證據圖 SA-2024-2-fig-1.png 有游標雜訊，保留不改）</em></p>
+<p>圖面文字照錄：H、I、J、K、L、M、N、4 m（六處）、3 m、A、B、C、D、E、F、G、圖二</p>
+<h2>4. 判讀清單</h2>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>項目</th>
+<th>判讀</th>
+<th>圖上／題文依據</th>
+<th>把握</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>座標</td>
+<td>下弦 A、B、C、D、E、F、G 在 x＝0、4、…、24 m，y＝0；上弦 H～N 同 x、y＝3 m</td>
+<td>上弦 4 m×6、高 3 m 尺寸</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>2</td>
+<td>支承</td>
+<td>B 滾支承（三角形下兩滾輪）；F 鉸支承（三角形＋剖線）</td>
+<td>500 dpi 放大</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>3</td>
+<td>上下弦</td>
+<td>上弦 HI…MN 6 根、下弦 AB…FG 6 根</td>
+<td>圖面</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>4</td>
+<td>垂直桿</td>
+<td>HA、IB、JC、KD、LE、MF、NG 共 7 根</td>
+<td>500 dpi 放大</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>5</td>
+<td>斜桿</td>
+<td>H–B、B–J、J–D、D–L、L–F、F–N 共 6 根（自 B、D、F 向兩側上弦呈 V 形）</td>
+<td>500 dpi 放大</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>6</td>
+<td>靜定性</td>
+<td>m＝25、r＝3、j＝14：28＝28，靜定</td>
+<td>計數</td>
+<td>確定（解讀）；使用者確認</td>
+</tr>
+<tr>
+<td>7</td>
+<td>三個原因</td>
+<td>F 沉陷 12 mm 向下、CD 製造誤差 δ、DE 溫差 ΔT；無外力</td>
+<td>題文</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>8</td>
+<td>量測值</td>
+<td>C 向下 4.8 mm、E 向下 6.4 mm</td>
+<td>題文</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>9</td>
+<td>材料</td>
+<td>α＝1.5×10⁻⁵/℃、E＝100 GPa、A＝150 mm²</td>
+<td>題文</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>10</td>
+<td>所求</td>
+<td>δ（mm，註明過長或過短）、ΔT（℃，註明升溫或降溫）</td>
+<td>題文</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>11</td>
+<td>證據圖</td>
+<td>既有 fig-1 在 H 處有游標；另擷取 500 dpi 乾淨版 fig-2</td>
+<td>縮圖總表</td>
+<td>確定</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p><em>轉錄：2026-11-07（SA 剩餘單元（U1-2 尾段、U2-5、U3-1、U3-2）題目正本推廣・批 1）</em><br />
+<em>確認：2026-11-07 使用者確認</em></p>
+</details>
+<hr>
+<h1>考題編號：SA-2024-2</h1>
 <p><strong>主分類：</strong> <code>SA-U1-2</code> 靜定結構之分析<br />
 <strong>分析法：</strong> 單位力法 (虛功法)<br />
 <strong>標籤：</strong> <code>靜定桁架</code>, <code>製造誤差</code>, <code>溫度變化</code>, <code>支承沉陷</code>, <code>多餘資訊陷阱</code></p>
 <hr />
-<h2>1. 原始題目重述 (Problem Restatement)</h2>
-<p>如圖二所示之桁架，已知支承 F 發生垂直向下沉陷 $v_F = 12\text{ mm}$，桿件 CD 有製造誤差 $\delta$，桿件 DE 有溫差 $\Delta T$。因以上三個原因，造成 C 點向下位移 4.8 mm，E 點向下位移 6.4 mm。試求上述製造誤差 $\delta = ?\text{ mm}$（註明過長或過短）及 $\Delta T = ?^\circ\text{C}$（註明升溫或降溫）；假設所有桁架桿件性質相同如下：熱膨脹係數 $\alpha = 1.5 \times 10^{-5} /^\circ\text{C}$，楊氏模數 $100\text{ GPa}$，斷面積 $A=150\text{ mm}^2$。（25 分）</p>
-<p><img alt="SA-2024-2 題目附圖：帶有懸臂段的 Pratt 桁架" src="../../raw/solutions/SA-2024-2/SA-2024-2-fig-1.png" /></p>
-<p><em>圖說：總跨度共 7 個節點 (A~G)，每節點間距 4m。支承位於 B (滾支承) 與 F (鉸支承)。上方節點 H~N 高度為 3m，且每個上弦節點正下方均有一垂直桿與下弦對應節點相連 (H-A、I-B、J-C、K-D、L-E、M-F、N-G，共 7 根)。斜桿另呈現 Pratt 桁架配置 (V字型)：H-B、B-J、J-D、D-L、L-F、F-N，共 6 根。</em></p>
+<h2>1. 題目（考卷原文見題目正本）</h2>
+<blockquote>
+<p>考卷原文、公式／附表、附圖與判讀清單（已確認）見 <a href="SA-2024-2-problem.md"><code>SA-2024-2-problem.md</code></a>。本節只列解題時最容易讀錯的地方與本解使用的記號；題意以題目正本為準。</p>
+</blockquote>
+<p><img alt="SA-2024-2 重繪題目附圖：平行弦桁架 A～G／H～N，節間 4 m、高 3 m，7 根垂直桿＋6 根斜桿；B 滾支承、F 鉸支承；CD 製造誤差 δ、DE 溫差 ΔT" src="../../raw/solutions/SA-2024-2/figs/SA-2024-2-fig-1-problem.svg" /><br />
+<em>重繪自考卷附圖，依判讀清單重繪。攔：漏畫垂直桿、B／F 支承型式對調。</em></p>
+<h3>判讀圖解（解析自繪）</h3>
 <p><img alt="SA-2024-2 完整桁架幾何重繪：下弦6＋上弦6＋垂直7＋斜桿6＝25根桿件" src="../../raw/solutions/SA-2024-2/figs/SA-2024-2-fig-1-frame.svg" /></p>
 <p><em>圖 2　題目重繪（向量版）。原圖說僅描述斜桿而漏提垂直桿，本圖將全部 25 根桿件明確畫出，並標示待求誤差桿 CD、DE 與量測點 C、E。</em></p>
+<h3>常見誤讀</h3>
+<table>
+<thead>
+<tr>
+<th>項目</th>
+<th>正確判讀</th>
+<th>常見誤讀</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>垂直桿</td>
+<td>每個節點都有：HA、IB、JC、KD、LE、MF、NG 共 7 根</td>
+<td>只看斜桿而漏垂直桿</td>
+</tr>
+<tr>
+<td>斜桿</td>
+<td>H–B、B–J、J–D、D–L、L–F、F–N</td>
+<td>—</td>
+</tr>
+<tr>
+<td>支承</td>
+<td>B 滾支承、F 鉸支承（靜定，m＋r＝28＝2j）</td>
+<td>對調</td>
+</tr>
+</tbody>
+</table>
+<p><strong>本解記號：</strong> $v_F = 12$ mm 向下；C、E 位移向下為正；$\delta$ 以桿件過長為正；$\Delta T$ 以升溫為正；$\alpha = 1.5\times10^{-5}$/℃、E＝100 GPa、A＝150 mm²。</p>
+<hr />
 <h2>2. 考題核心精神與出題者意圖 (Core Concepts &amp; Examiner's Intent)</h2>
 <p>本題是一道極具鑑別度的「靜定結構運動學」考題。出題者主要測驗考生兩個核心觀念：</p>
 <ol>
@@ -270,7 +448,8 @@ $$</p>
 <li><strong>支承沉陷的剛體位移直觀驗證</strong>：在虛功法外，其實可以直觀檢驗沉陷影響。B點不動，F點下沉12mm。C點距離B為總跨距的 1/4，剛體下沉 $12 \times \frac{1}{4} = 3$ mm。E點距離B為 3/4，剛體下沉 $12 \times \frac{3}{4} = 9$ mm。扣除剛體位移後，純因桿件變形造成的位移為 $\Delta_{C}' = 4.8 - 3 = 1.8$ mm，$\Delta_{E}' = 6.4 - 9 = -2.6$ mm，與我們方程式左側的數值完全一致。這種交叉驗證能在考場上提供極大的信心。</li>
 </ul>
 <hr />
-<p><em>圖解補繪：2026-08-27（向量圖，腳本 <code>gen_SA-2024-2.py</code>，可重跑）</em></p></main>
+<p><em>圖解補繪：2026-08-27（向量圖，腳本 <code>gen_SA-2024-2.py</code>，可重跑）</em></p>
+<p><em>修正日期：2026-11-07（§1 改為指向題目正本，補重繪附圖 figs/SA-2024-2-fig-1-problem.svg）</em></p></main>
 <footer>來源：raw/solutions/SA-2024-2/SA-2024-2.md（知識庫解題內容唯一正本；本頁僅為渲染顯示）</footer>
 
 <script>

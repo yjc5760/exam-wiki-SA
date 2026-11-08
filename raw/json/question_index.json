@@ -100,6 +100,7 @@
       "primaryTopicName": "靜定結構之分析",
       "secondaryTopicIds": [],
       "verificationStatus": "unverified",
+      "problemStatus": "confirmed",
       "hasSolution": true,
       "hasHandwritten": false,
       "tags": [
@@ -119,6 +120,7 @@
       "primaryTopicName": "靜定結構之分析",
       "secondaryTopicIds": [],
       "verificationStatus": "unverified",
+      "problemStatus": "confirmed",
       "hasSolution": true,
       "hasHandwritten": false,
       "tags": [
@@ -183,6 +185,7 @@
       "primaryTopicName": "靜定結構之分析",
       "secondaryTopicIds": [],
       "verificationStatus": "unverified",
+      "problemStatus": "confirmed",
       "hasSolution": true,
       "hasHandwritten": false,
       "tags": [
@@ -244,6 +247,7 @@
       "primaryTopicName": "建築結構系統分析",
       "secondaryTopicIds": [],
       "verificationStatus": "unverified",
+      "problemStatus": "confirmed",
       "hasSolution": true,
       "hasHandwritten": false,
       "tags": [
@@ -351,7 +355,8 @@
         "彈簧支承",
         "內部鉸",
         "連續梁",
-        "沈陷"
+        "沈陷",
+        "節點剪力合成"
       ],
       "primaryTopicId": "SA-U2-3",
       "secondaryTopicIds": []
@@ -371,7 +376,7 @@
         "有側移剛架",
         "對稱結構",
         "反對稱載重",
-        "連桿效應"
+        "框角剛接"
       ],
       "primaryTopicId": "SA-U2-3",
       "secondaryTopicIds": []
@@ -404,6 +409,7 @@
       "rocYear": 110,
       "hasHandwritten": false,
       "verificationStatus": "unverified",
+      "problemStatus": "confirmed",
       "hasSolution": true,
       "tags": [
         "剛性樓板",
@@ -481,6 +487,7 @@
       "rocYear": 109,
       "hasHandwritten": false,
       "verificationStatus": "unverified",
+      "problemStatus": "confirmed",
       "hasSolution": true,
       "tags": [
         "剛架與剪力牆互制",
@@ -521,6 +528,7 @@
       "primaryTopicName": "建築結構系統分析",
       "secondaryTopicIds": [],
       "verificationStatus": "unverified",
+      "problemStatus": "confirmed",
       "hasSolution": true,
       "hasHandwritten": false,
       "tags": [
@@ -579,6 +587,7 @@
       "primaryTopicName": "建築結構系統分析",
       "secondaryTopicIds": [],
       "verificationStatus": "unverified",
+      "problemStatus": "confirmed",
       "hasSolution": true,
       "hasHandwritten": false,
       "tags": [
@@ -654,6 +663,7 @@
       "primaryTopicName": "靜定結構之分析",
       "secondaryTopicIds": [],
       "verificationStatus": "unverified",
+      "problemStatus": "confirmed",
       "hasSolution": true,
       "hasHandwritten": false,
       "tags": [
@@ -702,7 +712,8 @@
         "側移",
         "層剪力方程",
         "固定端彎矩符號",
-        "節點轉角"
+        "節點轉角",
+        "轉角方向"
       ]
     },
     {
@@ -714,6 +725,7 @@
       "primaryTopicName": "建築結構系統之使用",
       "secondaryTopicIds": [],
       "verificationStatus": "unverified",
+      "problemStatus": "confirmed",
       "hasSolution": true,
       "hasHandwritten": false,
       "tags": [
@@ -722,7 +734,9 @@
         "偏心",
         "扭矩",
         "水平載重傳遞",
-        "建築結構系統"
+        "建築結構系統",
+        "抗扭勁度",
+        "樓板乾縮"
       ]
     },
     {
@@ -803,12 +817,15 @@
       "primaryTopicName": "靜定結構之分析",
       "secondaryTopicIds": [],
       "verificationStatus": "unverified",
+      "problemStatus": "confirmed",
       "hasSolution": true,
       "hasHandwritten": false,
       "tags": [
         "零力桿件",
         "桁架",
-        "節點平衡"
+        "節點平衡",
+        "支承節點",
+        "相容性"
       ]
     },
     {
@@ -1418,6 +1435,7 @@
       "primaryTopicName": "彎矩分配法",
       "secondaryTopicIds": [],
       "verificationStatus": "unverified",
+      "problemStatus": "confirmed",
       "hasSolution": true,
       "hasHandwritten": false,
       "tags": [
@@ -1605,6 +1623,7 @@
       "primaryTopicName": "彎矩分配法",
       "secondaryTopicIds": [],
       "verificationStatus": "unverified",
+      "problemStatus": "confirmed",
       "hasSolution": true,
       "hasHandwritten": false,
       "tags": [

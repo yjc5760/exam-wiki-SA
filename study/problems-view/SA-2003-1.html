@@ -43,16 +43,193 @@ header .nomat{margin-top:12px;font-size:.8em;opacity:.85}
 <p class="meta2">主分類 <b>SA-U2-5</b> 彎矩分配法 ｜ 2003 年（民國 92） ｜ 彎矩分配法</p>
 <div class="hbtns"></div><p class="nomat">本題主分類 SA-U2-5 目前尚無教材，故不提供教材按鈕。</p>
 </header>
-<main><h1>考題編號：SA-2003-1</h1>
+<main><details class="problem-src" open><summary><b>📄 題目正本</b>（考卷原文、附圖與判讀清單；不含解法）</summary>
+<h1>SA-2003-1 題目正本</h1>
+<blockquote>
+<p>本檔只記錄考卷上寫了什麼、圖上畫了什麼，不含任何解法。解析見同資料夾 <code>SA-2003-1.md</code>。<br />
+判讀清單經使用者確認前，狀態為「待確認」；確認後本檔原則上不再修改（改動須回考卷原圖並記 log）。</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>項目</th>
+<th>內容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>考卷</td>
+<td><code>raw/exams/SA-2003_結構學.pdf</code>，第 1 頁（全一頁），第一題</td>
+</tr>
+<tr>
+<td>考年</td>
+<td>2003（民國 92 年）專技高考結構工程技師「結構學」</td>
+</tr>
+<tr>
+<td>配分</td>
+<td>25 分</td>
+</tr>
+<tr>
+<td>附圖</td>
+<td><code>SA-2003-1-fig-2.png</code>（本次從考卷擷取 500 dpi；既有 <code>SA-2003-1-fig-1.png</code> 保留）</td>
+</tr>
+<tr>
+<td>判讀狀態</td>
+<td><strong>已確認</strong>（2026-11-07 使用者確認；原轉錄：2026-11-07 轉錄；PyMuPDF 110 dpi 整頁＋300–900 dpi 局部放大（附圖為內嵌點陣圖，掃描品質）；盲讀於開啟解析前完成）</td>
+</tr>
+</tbody>
+</table>
+<h2>1. 考卷原文（逐字）</h2>
+<p>一、試以彎矩分配法，求解各節點彎矩。（25 分）</p>
+<h2>2. 考卷給的公式、附表與參數</h2>
+<ul>
+<li>考卷沒有給任何參考公式或附表。</li>
+<li>給定：EI＝常數（圖下標註「EI＝常數」）。</li>
+<li>考卷沒有給 E、I 數值，也沒有給支承沉陷。</li>
+<li>卷首注意事項：㈠不必抄題，作答時請將試題題號及答案依照順序寫在試卷上，於本試題上作答者，不予計分。㈡可以使用電子計算器，但需詳列解答過程。</li>
+<li>考試時間：二小時。代號 00460，全一頁。</li>
+</ul>
+<h2>3. 附圖</h2>
+<p><img alt="SA-2003-1 考卷附圖：三跨連續梁 a–b–c–d：a、d 為固定端（直立牆剖線），b、c 為梁下支承；ab 跨距 a 15 ft 處 8k 向下，bc 跨滿佈 w=1 k/ft 並於距 b 10 ft、20 ft 處各 3k 向下，cd 跨距 c 15 ft 處 8k 向下；下方尺寸 15ft、15ft、10ft、10ft、10ft、15ft、15ft；EI＝常數" src="../../raw/solutions/SA-2003-1/SA-2003-1-fig-2.png" /><br />
+<em>證據圖 SA-2003-1-fig-2.png（500 dpi，自考卷擷取；舊證據圖 SA-2003-1-fig-1.png 有游標雜訊，保留不改）</em></p>
+<p>圖面文字照錄：3k、3k、8k、w=1 k/ft、8k、a、b、c、d、15ft、15ft、10ft、10ft、10ft、15ft、15ft、EI＝常數</p>
+<h2>4. 判讀清單</h2>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>項目</th>
+<th>判讀</th>
+<th>圖上／題文依據</th>
+<th>把握</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>a、d 端</td>
+<td>固定端（直立粗線加斜剖線）</td>
+<td>300 dpi 放大：a 在左牆、d 在右牆，皆為牆面剖線</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>2</td>
+<td>b、c 支承</td>
+<td>梁下支承，符號為半圓頂加地面剖線；鉸或滾無法明確區分。本題只有垂直載重、不計軸向變形，兩者對答案無影響</td>
+<td>900 dpi 放大：圓頂下無滾輪、也無明確三角形</td>
+<td>確定（解讀）；使用者確認</td>
+</tr>
+<tr>
+<td>3</td>
+<td>跨長</td>
+<td>ab＝30 ft、bc＝30 ft、cd＝30 ft</td>
+<td>尺寸線 15｜15｜10｜10｜10｜15｜15 ft，刻度對齊 a、b、c、d</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>4</td>
+<td>ab 跨載重</td>
+<td>8k 向下，作用於距 a 15 ft（跨中）</td>
+<td>箭頭對齊第一個 15 ft 刻度</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>5</td>
+<td>bc 跨均佈</td>
+<td>w＝1 k/ft 向下，自 b 至 c 滿跨</td>
+<td>均佈載重框左右端對齊 b、c</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>6</td>
+<td>bc 跨集中載重</td>
+<td>兩個 3k 向下，分別在距 b 10 ft、20 ft 處（三分點）</td>
+<td>兩箭頭對齊兩個 10 ft 刻度</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>7</td>
+<td>cd 跨載重</td>
+<td>8k 向下，作用於距 c 15 ft（跨中）</td>
+<td>箭頭對齊 15 ft 刻度</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>8</td>
+<td>材料</td>
+<td>EI＝常數（三跨相同）</td>
+<td>圖下文字</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>9</td>
+<td>考卷沒有給</td>
+<td>支承沉陷、EI 數值、單位以外的換算（k＝kip）</td>
+<td>題文</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>10</td>
+<td>所求</td>
+<td>以彎矩分配法求各節點彎矩</td>
+<td>題文（限定方法）</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>11</td>
+<td>證據圖</td>
+<td>既有 fig-1 在左側「15ft」字樣上有游標雜訊；另從考卷擷取 500 dpi 乾淨版 fig-2</td>
+<td>縮圖總表</td>
+<td>確定</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p><em>轉錄：2026-11-07（SA 剩餘單元（U1-2 尾段、U2-5、U3-1、U3-2）題目正本推廣・批 1）</em><br />
+<em>確認：2026-11-07 使用者確認</em></p>
+</details>
+<hr>
+<h1>考題編號：SA-2003-1</h1>
 <p><strong>主分類：</strong> <code>SA-U2-5</code> 靜不定結構分析<br />
 <strong>副分類：</strong> 無<br />
 <strong>分析法：</strong> 彎矩分配法<br />
 <strong>標籤：</strong> <code>對稱結構</code> <code>對稱修正勁度</code> <code>固端彎矩疊加</code></p>
 <hr />
-<h2>1. 原始題目重述 (Problem Restatement)</h2>
-<p>一、試以彎矩分配法，求解各節點彎矩。（25 分）</p>
-<p><img alt="SA-2003-1 題目附圖：三跨連續梁，承受均布與集中載重" src="../../raw/solutions/SA-2003-1/SA-2003-1-fig-1.png" /></p>
-<p><em>圖說：本題為三跨連續梁，跨距均為 30 ft。A、D 端為固定支承，B、C 端為滾支承。AB 跨距中央承受 8k 集中力；BC 跨承受 1 k/ft 均布載重及兩個 3k 對稱集中力（各距 B、C 端 10 ft）；CD 跨距中央承受 8k 集中力。各桿件 EI = 常數。</em></p>
+<h2>1. 題目（考卷原文見題目正本）</h2>
+<blockquote>
+<p>考卷原文、公式／附表、附圖與判讀清單（已確認）見 <a href="SA-2003-1-problem.md"><code>SA-2003-1-problem.md</code></a>。本節只列解題時最容易讀錯的地方與本解使用的記號；題意以題目正本為準。</p>
+</blockquote>
+<p><img alt="SA-2003-1 重繪題目附圖：三跨連續梁 a–b–c–d 各 30 ft，a、d 固定端，b、c 中間支承；ab、cd 跨中各 8 k，bc 跨滿佈 1 k/ft 並於三分點各 3 k" src="../../raw/solutions/SA-2003-1/figs/SA-2003-1-fig-1-problem.svg" /><br />
+<em>重繪自考卷附圖，依判讀清單重繪。攔：3 k 放到跨中、均佈只畫半跨、a、d 讀成鉸支承。</em></p>
+<h3>常見誤讀</h3>
+<table>
+<thead>
+<tr>
+<th>項目</th>
+<th>正確判讀</th>
+<th>常見誤讀</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>b、c 支承</td>
+<td>梁下支承，符號為半圓頂，鉸或滾無法區分；只有垂直載重、不計軸向，對答案無影響</td>
+<td>一定要分出鉸或滾</td>
+</tr>
+<tr>
+<td>bc 跨 3 k</td>
+<td>兩個 3 k 分別在距 b 10 ft、20 ft（三分點）</td>
+<td>放在跨中</td>
+</tr>
+<tr>
+<td>a、d 端</td>
+<td>固定端</td>
+<td>鉸支承（漏算固定端彎矩）</td>
+</tr>
+</tbody>
+</table>
+<p><strong>本解記號：</strong> 跨長 L＝30 ft；EI 常數；FEM 以順時針作用於桿端為正；k＝kip。</p>
+<hr />
 <h2>2. 考題核心精神與出題者意圖 (Core Concepts &amp; Examiner's Intent)</h2>
 <p>本題旨在測驗考生對於<strong>彎矩分配法 (Moment Distribution Method)</strong> 的操作熟練度，特別是<strong>對稱結構與對稱載重</strong>的簡化技巧。出題者刻意設計了完全對稱的幾何與載重配置，若考生具備結構直覺，能運用對稱修正勁度，將能大幅縮短計算時間並避免迭代過程中的計算錯誤。同時，BC 跨的複合載重（均布 + 兩點集中）也考驗考生對固端彎矩 (FEM) 疊加法的掌握。</p>
 <h2>3. 解題戰略地圖與陷阱分析 (Strategic Roadmap &amp; Trap Analysis)</h2>
@@ -309,6 +486,8 @@ $\boxed{M_{cb} = +73.33 \text{ k-ft}}$<br />
 $\boxed{M_{cd} = -73.33 \text{ k-ft}}$<br />
 $\boxed{M_{dc} = +8.33 \text{ k-ft}}$</p>
 </blockquote>
+<p><img alt="SA-2003-1 變形形狀與彎矩圖：a、d 端 −8.33、b、c −73.33 k-ft（上緣受拉），邊跨載重點 +19.17、中跨中點 +69.17 k-ft（下緣受拉），對稱" src="../../raw/solutions/SA-2003-1/figs/SA-2003-1-fig-2-bmd.svg" /></p>
+<p><em>圖 2　變形形狀與彎矩圖（以勁度法重解，桿端彎矩與彎矩分配結果一致）。中跨載重較重，b、c 節點向中跨轉動，把 a、d 端彎矩從固端彎矩 −30 減到 −8.33。這張圖攔的是 a、d 端直接寫成固端彎矩 −30，以及中跨正彎矩極值位置判錯（均佈加三分點載重、對稱，極值在跨中）。</em></p>
 <h2>5. 關鍵爭議點與進階探討 (Critical Issues &amp; Advanced Discussion)</h2>
 <ul>
 <li>
@@ -319,7 +498,9 @@ $\boxed{M_{dc} = +8.33 \text{ k-ft}}$</p>
 <p><strong>多重載重 FEM 的疊加法：</strong><br />
   本題 BC 跨同時承受均布載重與兩個集中載重。計算固端彎矩時，將其視為基本載重情況的線性疊加。特別留意兩個對稱集中載重的公式 $-\frac{Pa(L-a)}{L}$，可由標準公式 $-\frac{Pab^2}{L^2}$ 與 $-\frac{Pa^2b}{L^2}$ 合併而得，此為加速計算的實用技巧。若不熟悉該推導，分別計算兩力再相加也是完全可行且安全的作法。</p>
 </li>
-</ul></main>
+</ul>
+<p><em>修正日期：2026-11-07（§1 改為指向題目正本，補重繪附圖 figs/SA-2003-1-fig-1-problem.svg）</em></p>
+<p><em>圖解補繪：2026-11-08（向量圖，腳本 <code>gen_SA-2003-1.py</code> 的 fig2_bmd，以勁度法重解後 assert 解析數值，可重跑）</em></p></main>
 <footer>來源：raw/solutions/SA-2003-1/SA-2003-1.md（知識庫解題內容唯一正本；本頁僅為渲染顯示）</footer>
 
 <script>

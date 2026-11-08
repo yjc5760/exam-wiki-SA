@@ -417,10 +417,10 @@
     "human": "",
     "fixed": "2026-11-05",
     "recheck": {
-      "date": "",
-      "result": "",
-      "report": "",
-      "note": ""
+      "date": "2026-11-08",
+      "result": "落實",
+      "report": "wiki/queries/落實檢查-SA-U2-4-批1-2026-11-08.md",
+      "note": "[K]、{P} 與盲解完全一致；C 鉸、w 在 DE、逆時針正向貫穿 §1–§5 與圖 2（不同工作階段複核）"
     },
     "history": []
   },
@@ -434,10 +434,10 @@
     "human": "",
     "fixed": "2026-11-05",
     "recheck": {
-      "date": "",
-      "result": "",
-      "report": "",
-      "note": ""
+      "date": "2026-11-08",
+      "result": "落實",
+      "report": "wiki/queries/落實檢查-SA-U2-4-批1-2026-11-08.md",
+      "note": "θ、桿端彎矩、V_B 3.5、BC 極值 3.125 @ 3.5 m、柱反曲點皆到位；生成殘留已清（不同工作階段複核）"
     },
     "history": []
   },
@@ -451,10 +451,10 @@
     "human": "",
     "fixed": "2026-11-05",
     "recheck": {
-      "date": "",
-      "result": "",
-      "report": "",
-      "note": ""
+      "date": "2026-11-08",
+      "result": "落實",
+      "report": "wiki/queries/落實檢查-SA-U2-4-批1-2026-11-08.md",
+      "note": "側推三段（100/19.22、125.71/33.05、機構）與機構法檢核到位；舊標籤「傾角變位法」依 append-only 保留（不同工作階段複核）"
     },
     "history": []
   },
@@ -1220,6 +1220,414 @@
       "result": "",
       "report": "",
       "note": ""
+    },
+    "history": []
+  },
+  "SA-2015-3": {
+    "date": "2026-11-07",
+    "model": "claude-opus-5-5",
+    "result": "一致",
+    "source": "",
+    "report": "wiki/queries/盲解比對-SA-U2-3-批2-2026-11-07.md",
+    "scope": "SA-U2-3 批 2（2014–2025，題目正本已確認）",
+    "human": "",
+    "fixed": "",
+    "recheck": {
+      "date": "",
+      "result": "",
+      "report": "",
+      "note": ""
+    },
+    "history": []
+  },
+  "SA-2017-3": {
+    "date": "2026-11-07",
+    "model": "claude-opus-5-5",
+    "result": "分歧-答案改變",
+    "source": "觀念模型",
+    "report": "wiki/queries/盲解比對-SA-U2-3-批2-2026-11-07.md",
+    "scope": "SA-U2-3 批 2（2014–2025，題目正本已確認）；勘誤版首次盲解；數值一致，θ_A／θ_D（及 θ_B／θ_C）方向標反：負值在順時針為正下應為逆時針；可直接進 C",
+    "human": "",
+    "fixed": "2026-11-08",
+    "recheck": {
+      "date": "2026-11-08",
+      "result": "落實",
+      "report": "wiki/queries/落實檢查-SA-U2-3-批2-2026-11-08.md",
+      "note": ""
+    },
+    "history": []
+  },
+  "SA-2019-3": {
+    "date": "2026-11-07",
+    "model": "claude-opus-5-5",
+    "result": "一致",
+    "source": "",
+    "report": "wiki/queries/盲解比對-SA-U2-3-批2-2026-11-07.md",
+    "scope": "SA-U2-3 批 2（2014–2025，題目正本已確認）",
+    "human": "",
+    "fixed": "",
+    "recheck": {
+      "date": "",
+      "result": "",
+      "report": "",
+      "note": ""
+    },
+    "history": []
+  },
+  "SA-2020-1": {
+    "date": "2026-11-07",
+    "model": "claude-opus-5-5",
+    "result": "一致",
+    "source": "",
+    "report": "wiki/queries/盲解比對-SA-U2-3-批2-2026-11-07.md",
+    "scope": "SA-U2-3 批 2（2014–2025，題目正本已確認）；勘誤版首次盲解；c 支承題意經 CHANGELOG 洩漏，數值獨立",
+    "human": "",
+    "fixed": "",
+    "recheck": {
+      "date": "",
+      "result": "",
+      "report": "",
+      "note": ""
+    },
+    "history": []
+  },
+  "SA-2020-2": {
+    "date": "2026-11-07",
+    "model": "claude-opus-5-5",
+    "result": "一致",
+    "source": "",
+    "report": "wiki/queries/盲解比對-SA-U2-3-批2-2026-11-07.md",
+    "scope": "SA-U2-3 批 2（2014–2025，題目正本已確認）；勘誤版首次盲解，數值經 CHANGELOG 洩漏，一致但非獨立",
+    "human": "",
+    "fixed": "",
+    "recheck": {
+      "date": "",
+      "result": "",
+      "report": "",
+      "note": ""
+    },
+    "history": []
+  },
+  "SA-2021-1": {
+    "date": "2026-11-07",
+    "model": "claude-opus-5-5",
+    "result": "分歧-答案改變",
+    "source": "觀念模型",
+    "report": "wiki/queries/盲解比對-SA-U2-3-批2-2026-11-07.md",
+    "scope": "SA-U2-3 批 2（2014–2025，題目正本已確認）；b 點垂直平衡剪力符號錯：Δ_b 3.6→3.80 mm、M_b −6.35→−6 kN·m；可直接進 C",
+    "human": "",
+    "fixed": "2026-11-08",
+    "recheck": {
+      "date": "2026-11-08",
+      "result": "落實",
+      "report": "wiki/queries/落實檢查-SA-U2-3-批2-2026-11-08.md",
+      "note": ""
+    },
+    "history": []
+  },
+  "SA-2021-2": {
+    "date": "2026-11-07",
+    "model": "claude-opus-5-5",
+    "result": "分歧-答案改變",
+    "source": "L1 看圖",
+    "report": "wiki/queries/盲解比對-SA-U2-3-批2-2026-11-07.md",
+    "scope": "SA-U2-3 批 2（2014–2025，題目正本已確認）；框角 c、d 剛接（判讀 #4）vs 舊解柱底鉸＋連桿：Δ_b 8.1→3.30 mm、θ_b 9→5×10⁻⁴ rad；另梁端受拉側標反（觀念作圖）；待 B′",
+    "human": "框角剛接（盲解對）",
+    "fixed": "2026-11-08",
+    "recheck": {
+      "date": "2026-11-08",
+      "result": "落實",
+      "report": "wiki/queries/落實檢查-SA-U2-3-批2-2026-11-08.md",
+      "note": "第一輪殘留：標籤「連桿效應」（舊模型）→ 同工作階段補清後第二輪落實（非獨立複核）"
+    },
+    "history": []
+  },
+  "SA-2022-2": {
+    "date": "2026-11-07",
+    "model": "claude-opus-5-5",
+    "result": "一致",
+    "source": "",
+    "report": "wiki/queries/盲解比對-SA-U2-3-批2-2026-11-07.md",
+    "scope": "SA-U2-3 批 2（2014–2025，題目正本已確認）；勘誤版首次盲解",
+    "human": "",
+    "fixed": "",
+    "recheck": {
+      "date": "",
+      "result": "",
+      "report": "",
+      "note": ""
+    },
+    "history": []
+  },
+  "SA-2023-3": {
+    "date": "2026-11-07",
+    "model": "claude-opus-5-5",
+    "result": "一致",
+    "source": "",
+    "report": "wiki/queries/盲解比對-SA-U2-3-批2-2026-11-07.md",
+    "scope": "SA-U2-3 批 2（2014–2025，題目正本已確認）；50 kN 向上題意經 CHANGELOG 洩漏，數值獨立",
+    "human": "",
+    "fixed": "",
+    "recheck": {
+      "date": "",
+      "result": "",
+      "report": "",
+      "note": ""
+    },
+    "history": []
+  },
+  "SA-2024-3": {
+    "date": "2026-11-07",
+    "model": "claude-opus-5-5",
+    "result": "一致",
+    "source": "",
+    "report": "wiki/queries/盲解比對-SA-U2-3-批2-2026-11-07.md",
+    "scope": "SA-U2-3 批 2（2014–2025，題目正本已確認）；勘誤版首次盲解，數值經 CHANGELOG 洩漏，一致但非獨立",
+    "human": "",
+    "fixed": "",
+    "recheck": {
+      "date": "",
+      "result": "",
+      "report": "",
+      "note": ""
+    },
+    "history": []
+  },
+  "SA-2025-3": {
+    "date": "2026-11-07",
+    "model": "claude-opus-5-5",
+    "result": "分歧-觀念作圖",
+    "source": "勘誤殘留",
+    "report": "wiki/queries/盲解比對-SA-U2-3-批2-2026-11-07.md",
+    "scope": "SA-U2-3 批 2（2014–2025，題目正本已確認）；勘誤版首次盲解；§1.5 最終公式一致，§4.5／§4.6／§5.1 保留固端彎矩同號錯誤推導；可直接進 C",
+    "human": "",
+    "fixed": "2026-11-08",
+    "recheck": {
+      "date": "2026-11-08",
+      "result": "落實",
+      "report": "wiki/queries/落實檢查-SA-U2-3-批2-2026-11-08.md",
+      "note": "第一輪殘留：§1.5（二）以現在式指稱已改正的 §4.5 錯誤、gen 檔頭註解 → 同工作階段補清後第二輪落實（非獨立複核）"
+    },
+    "history": []
+  },
+  "SA-2003-1": {
+    "date": "2026-11-08",
+    "model": "claude-opus-5-5",
+    "result": "一致",
+    "source": "",
+    "report": "wiki/queries/盲解比對-SA-剩餘單元-批1-2026-11-08.md",
+    "scope": "SA 剩餘單元批 1（U1-2 尾段、U2-5、U3-1、U3-2，題目正本已確認；子代理盲解，未讀 CLAUDE.md）",
+    "human": "",
+    "fixed": "",
+    "recheck": {
+      "date": "",
+      "result": "",
+      "report": "",
+      "note": ""
+    },
+    "history": []
+  },
+  "SA-2006-3": {
+    "date": "2026-11-08",
+    "model": "claude-opus-5-5",
+    "result": "一致",
+    "source": "",
+    "report": "wiki/queries/盲解比對-SA-剩餘單元-批1-2026-11-08.md",
+    "scope": "SA 剩餘單元批 1（U1-2 尾段、U2-5、U3-1、U3-2，題目正本已確認；子代理盲解，未讀 CLAUDE.md）",
+    "human": "",
+    "fixed": "",
+    "recheck": {
+      "date": "",
+      "result": "",
+      "report": "",
+      "note": ""
+    },
+    "history": []
+  },
+  "SA-2017-1": {
+    "date": "2026-11-08",
+    "model": "claude-opus-5-5",
+    "result": "一致",
+    "source": "",
+    "report": "wiki/queries/盲解比對-SA-剩餘單元-批1-2026-11-08.md",
+    "scope": "SA 剩餘單元批 1（U1-2 尾段、U2-5、U3-1、U3-2，題目正本已確認；子代理盲解，未讀 CLAUDE.md）；獨立確認 11-07 勘誤（FIX-SA-2017-1）",
+    "human": "",
+    "fixed": "",
+    "recheck": {
+      "date": "",
+      "result": "",
+      "report": "",
+      "note": ""
+    },
+    "history": []
+  },
+  "SA-2019-2": {
+    "date": "2026-11-08",
+    "model": "claude-opus-5-5",
+    "result": "一致",
+    "source": "",
+    "report": "wiki/queries/盲解比對-SA-剩餘單元-批1-2026-11-08.md",
+    "scope": "SA 剩餘單元批 1（U1-2 尾段、U2-5、U3-1、U3-2，題目正本已確認；子代理盲解，未讀 CLAUDE.md）；盲分類主 U1-2（索引 U3-2，維持）",
+    "human": "",
+    "fixed": "",
+    "recheck": {
+      "date": "",
+      "result": "",
+      "report": "",
+      "note": ""
+    },
+    "history": []
+  },
+  "SA-2020-4": {
+    "date": "2026-11-08",
+    "model": "claude-opus-5-5",
+    "result": "一致",
+    "source": "",
+    "report": "wiki/queries/盲解比對-SA-剩餘單元-批1-2026-11-08.md",
+    "scope": "SA 剩餘單元批 1（U1-2 尾段、U2-5、U3-1、U3-2，題目正本已確認；子代理盲解，未讀 CLAUDE.md）",
+    "human": "",
+    "fixed": "",
+    "recheck": {
+      "date": "",
+      "result": "",
+      "report": "",
+      "note": ""
+    },
+    "history": []
+  },
+  "SA-2021-4": {
+    "date": "2026-11-08",
+    "model": "claude-opus-5-5",
+    "result": "一致",
+    "source": "",
+    "report": "wiki/queries/盲解比對-SA-剩餘單元-批1-2026-11-08.md",
+    "scope": "SA 剩餘單元批 1（U1-2 尾段、U2-5、U3-1、U3-2，題目正本已確認；子代理盲解，未讀 CLAUDE.md）；獨立確認 11-07 勘誤（FIX-SA-2021-4）",
+    "human": "",
+    "fixed": "",
+    "recheck": {
+      "date": "",
+      "result": "",
+      "report": "",
+      "note": ""
+    },
+    "history": []
+  },
+  "SA-2023-1": {
+    "date": "2026-11-08",
+    "model": "claude-opus-5-5",
+    "result": "一致",
+    "source": "",
+    "report": "wiki/queries/盲解比對-SA-剩餘單元-批1-2026-11-08.md",
+    "scope": "SA 剩餘單元批 1（U1-2 尾段、U2-5、U3-1、U3-2，題目正本已確認；子代理盲解，未讀 CLAUDE.md）",
+    "human": "",
+    "fixed": "",
+    "recheck": {
+      "date": "",
+      "result": "",
+      "report": "",
+      "note": ""
+    },
+    "history": []
+  },
+  "SA-2023-4": {
+    "date": "2026-11-08",
+    "model": "claude-opus-5-5",
+    "result": "一致",
+    "source": "",
+    "report": "wiki/queries/盲解比對-SA-剩餘單元-批1-2026-11-08.md",
+    "scope": "SA 剩餘單元批 1（U1-2 尾段、U2-5、U3-1、U3-2，題目正本已確認；子代理盲解，未讀 CLAUDE.md）",
+    "human": "",
+    "fixed": "",
+    "recheck": {
+      "date": "",
+      "result": "",
+      "report": "",
+      "note": ""
+    },
+    "history": []
+  },
+  "SA-2024-1": {
+    "date": "2026-11-08",
+    "model": "claude-opus-5-5",
+    "result": "一致",
+    "source": "",
+    "report": "wiki/queries/盲解比對-SA-剩餘單元-批1-2026-11-08.md",
+    "scope": "SA 剩餘單元批 1（U1-2 尾段、U2-5、U3-1、U3-2，題目正本已確認；子代理盲解，未讀 CLAUDE.md）",
+    "human": "",
+    "fixed": "",
+    "recheck": {
+      "date": "",
+      "result": "",
+      "report": "",
+      "note": ""
+    },
+    "history": []
+  },
+  "SA-2024-2": {
+    "date": "2026-11-08",
+    "model": "claude-opus-5-5",
+    "result": "一致",
+    "source": "",
+    "report": "wiki/queries/盲解比對-SA-剩餘單元-批1-2026-11-08.md",
+    "scope": "SA 剩餘單元批 1（U1-2 尾段、U2-5、U3-1、U3-2，題目正本已確認；子代理盲解，未讀 CLAUDE.md）",
+    "human": "",
+    "fixed": "",
+    "recheck": {
+      "date": "",
+      "result": "",
+      "report": "",
+      "note": ""
+    },
+    "history": []
+  },
+  "SA-2016-4": {
+    "date": "2026-11-08",
+    "model": "claude-opus-5-5",
+    "result": "分歧-答案改變",
+    "source": "觀念模型",
+    "report": "wiki/queries/盲解比對-SA-剩餘單元-批1-2026-11-08.md",
+    "scope": "SA 剩餘單元批 1（U1-2 尾段、U2-5、U3-1、U3-2，題目正本已確認；子代理盲解，未讀 CLAUDE.md）；零桿 3 根（BF、LP、NP）→ 24 根（只有 AE 受 100 kN 拉、彈簧力 0）；舊解另誤讀 I 點有載重（與題目正本 #13 牴觸）；勁度法五組隨機 EA 佐證；可直接進 C",
+    "human": "",
+    "fixed": "2026-11-08",
+    "recheck": {
+      "date": "2026-11-08",
+      "result": "落實",
+      "report": "wiki/queries/落實檢查-SA-剩餘單元-批1-2026-11-08.md",
+      "note": "24 根零桿、I 點無載重、相容性說明皆到位；lecture-SA-U1-2 兩處同步（非獨立複核）"
+    },
+    "history": []
+  },
+  "SA-2017-4": {
+    "date": "2026-11-08",
+    "model": "claude-opus-5-5",
+    "result": "分歧-觀念作圖",
+    "source": "觀念模型",
+    "report": "wiki/queries/盲解比對-SA-剩餘單元-批1-2026-11-08.md",
+    "scope": "SA 剩餘單元批 1（U1-2 尾段、U2-5、U3-1、U3-2，題目正本已確認；子代理盲解，未讀 CLAUDE.md）；(b) 十字形牆兩片都通過剛心，抗扭近乎為零，舊解當閉合核心筒、抗扭「中等」；排序 (c)≥(b)>(a) 不變；可直接進 C",
+    "human": "",
+    "fixed": "2026-11-08",
+    "recheck": {
+      "date": "2026-11-08",
+      "result": "落實",
+      "report": "wiki/queries/落實檢查-SA-剩餘單元-批1-2026-11-08.md",
+      "note": "(b) 開口截面、抗扭近零、比較表與爭議二皆到位；補樓板乾縮要點（非獨立複核）"
+    },
+    "history": []
+  },
+  "SA-2018-1": {
+    "date": "2026-11-08",
+    "model": "claude-opus-5-5",
+    "result": "盲解不確定",
+    "source": "題意多解",
+    "report": "wiki/queries/盲解比對-SA-剩餘單元-批1-2026-11-08.md",
+    "scope": "SA 剩餘單元批 1（U1-2 尾段、U2-5、U3-1、U3-2，題目正本已確認；子代理盲解，未讀 CLAUDE.md）；題意多解：字面樓層勁度比 1:5 均勻分配（盲解主解）vs 牆–構架互制形狀（舊解）；待 B′ 使用者判定",
+    "human": "採 B（牆–構架互制），舊解對；勘誤時 §5 補「照字面 1:5 樓層勁度比」讀法與其限制、標頭格式對齊（2026-11-08 使用者判定）",
+    "fixed": "2026-11-08",
+    "recheck": {
+      "date": "2026-11-08",
+      "result": "落實",
+      "report": "wiki/queries/落實檢查-SA-剩餘單元-批1-2026-11-08.md",
+      "note": "第一輪殘留：§3 戰略二下部互制方向寫反（剛架拉住剪力牆）→ 同工作階段補清後第二輪落實（非獨立複核）"
     },
     "history": []
   }

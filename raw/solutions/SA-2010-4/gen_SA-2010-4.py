@@ -44,6 +44,21 @@ def fig1_problem():
 
 FIGURES = [(fig1_problem, "C 高程讀錯（AC 長度）、載重方向讀反")]
 
+# ── 解題圖（階段 E，2026-11-08）：直接勁度法重解，assert 對照 SA-2010-4.md §4（u_A = +0.05 m、v_A = −0.05 m；F_AB = −20 kN）──
+def fig2_truss():
+    from trussfig import solve, figure
+    nd = SPEC["nodes"]
+    disp, N = solve(nd, [("A", "B"), ("A", "C"), ("A", "D")], 10000.0, ["A"], loads={"A": (100, -225)})
+    assert abs(disp["A"][0] - 0.05) < 1e-12 and abs(disp["A"][1] + 0.05) < 1e-12 and abs(N[("A", "B")] + 20) < 1e-9
+    assert abs(N[("A", "C")] + 125) < 1e-9 and abs(N[("A", "D")] + 140) < 1e-9          # 圖註用值（解析只求 BA）
+    return figure(nd, N, [("B", "pin"), ("C", "pin"), ("D", "pin")], [("A", (0, -1.3), "225 kN"), ("A", (1.3, 0), "100 kN")],
+                  disp, f"{OUT}/{TAG}-fig-2-truss.svg", f"圖 2　{TAG} 桿力（kN，拉＋）與 A 點位移",
+                  note=f"A 點 u = +0.05 m、v = −0.05 m（K 對角、兩向解耦）；BA = −20 kN（壓）、CA = −125、DA = −140 kN",
+                  dlabel="(+0.05, −0.05) m", dlabel_off=(120, -70), dpx=55,
+                  lab_pos={("A", "C"): (0.62, 1), ("A", "D"): (0.62, -1), ("A", "B"): (0.55, -1)})
+
+FIGURES.append((fig2_truss, "BA 桿拉壓判反（A 斜向右下移動、BA 被縮短）；以為水平力只由 DA 承擔"))
+
 if __name__ == "__main__":
     os.makedirs(OUT, exist_ok=True)
     for fn, catches in FIGURES:

@@ -43,54 +43,272 @@ header .nomat{margin-top:12px;font-size:.8em;opacity:.85}
 <p class="meta2">主分類 <b>SA-U1-2</b> 靜定結構之分析 ｜ 2016 年（民國 105） ｜ 節點平衡法 (Method of Joints)</p>
 <div class="hbtns"><a class="b-study" href="../unit-SA-U1-2.html">🧭 U1-2 單元總覽</a><a class="b-lect" href="../lecture-SA-U1-2.html">📚 U1-2 靜定結構之分析 講義</a></div>
 </header>
-<main><h1>考題編號：SA-2016-4</h1>
+<main><details class="problem-src" open><summary><b>📄 題目正本</b>（考卷原文、附圖與判讀清單；不含解法）</summary>
+<h1>SA-2016-4 題目正本</h1>
+<blockquote>
+<p>本檔只記錄考卷上寫了什麼、圖上畫了什麼，不含任何解法。解析見同資料夾 <code>SA-2016-4.md</code>。<br />
+判讀清單經使用者確認前，狀態為「待確認」；確認後本檔原則上不再修改（改動須回考卷原圖並記 log）。</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>項目</th>
+<th>內容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>考卷</td>
+<td><code>raw/exams/SA-2016_結構學.pdf</code>，背面，第四題（圖四）</td>
+</tr>
+<tr>
+<td>考年</td>
+<td>2016（民國 105 年）專技高考結構工程技師「結構學」</td>
+</tr>
+<tr>
+<td>配分</td>
+<td>25 分</td>
+</tr>
+<tr>
+<td>附圖</td>
+<td><code>SA-2016-4-fig-2.png</code>（本次從考卷擷取 500 dpi；既有 <code>SA-2016-4-fig-1.png</code> 保留）</td>
+</tr>
+<tr>
+<td>判讀狀態</td>
+<td><strong>已確認</strong>（2026-11-07 使用者確認；原轉錄：2026-11-07 轉錄；PyMuPDF 110 dpi 整頁＋500 dpi 局部放大（附圖為內嵌 JPEG）；盲讀於開啟解析前完成）</td>
+</tr>
+</tbody>
+</table>
+<h2>1. 考卷原文（逐字）</h2>
+<p>四、圖四右側MNO 梁在M 點以彈簧與左側桁架的H 點連接，彈簧之彈簧常數為k。在圖示的載重下，試判斷此構造中，那些桿件為零桿（zero-force member）。（25 分）</p>
+<h2>2. 考卷給的公式、附表與參數</h2>
+<ul>
+<li>考卷沒有給任何參考公式、尺寸或數值（除載重 100 kN 與彈簧常數符號 k）。</li>
+<li>考卷沒有給任何尺寸；幾何只能從圖面判讀。</li>
+<li>卷首注意事項：可以用電子計算器。不必抄題，作答時請將試題題號及答案依照順序寫在試卷上，於本試題上作答者，不予計分。</li>
+<li>考試時間：2 小時。代號 00360，全一張（正、背面）。</li>
+</ul>
+<h2>3. 附圖</h2>
+<p><img alt="SA-2016-4 考卷附圖：左側桁架：上排 A–B–C（A、C 各有向上的鉸支承），中排 D–E–F–G–H（D 為鉸支承），F–G 下方 I–J、K–L 兩層方格各有交叉斜桿；L–P 水平桿、N–P 垂直桿；右側 MNO 梁，M 鉸支承、O 滾支承，H 與 M 以彈簧相連；A、D 各受 100 kN 向右，E、N 各受 100 kN 向下" src="../../raw/solutions/SA-2016-4/SA-2016-4-fig-2.png" /><br />
+<em>證據圖 SA-2016-4-fig-2.png（500 dpi，自考卷擷取；舊證據圖 SA-2016-4-fig-1.png 有游標雜訊，保留不改）</em></p>
+<p>圖面文字照錄：100 kN（A 左）、100 kN（D 左）、100 kN（E 下）、100 kN（N 上）、A、B、C、D、E、F、G、H、I、J、K、L、M、N、O、P、圖四</p>
+<h2>4. 判讀清單</h2>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>項目</th>
+<th>判讀</th>
+<th>圖上／題文依據</th>
+<th>把握</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>支承 A、C</td>
+<td>鉸支承於上方（倒三角形加剖線）</td>
+<td>500 dpi 放大</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>2</td>
+<td>支承 D</td>
+<td>鉸支承於下方（三角形加剖線）</td>
+<td>500 dpi 放大</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>3</td>
+<td>支承 M、O</td>
+<td>M 鉸支承；O 滾支承（三角形下有雙線）</td>
+<td>500 dpi 放大</td>
+<td>確定（解讀）；使用者確認</td>
+</tr>
+<tr>
+<td>4</td>
+<td>節點列</td>
+<td>上排 A、B、C；中排 D、E、F、G、H；下列 I、J；底列 K、L；P 在 L 右方同高，N 在 P 正上方（梁上）</td>
+<td>圖面節點小圓</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>5</td>
+<td>桿件（上部）</td>
+<td>AB、BC；AD、AE、AF；BF；CF、CG、CH</td>
+<td>圖面</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>6</td>
+<td>桿件（中排）</td>
+<td>DE、EF、FG、GH（共線水平）</td>
+<td>圖面</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>7</td>
+<td>桿件（F–G–I–J 格）</td>
+<td>FI、GJ 垂直；IJ 水平；斜桿 F–J 與 G–I 交叉，交叉點<strong>沒有節點</strong></td>
+<td>500 dpi 放大：交叉處無小圓</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>8</td>
+<td>桿件（I–J–K–L 格）</td>
+<td>IK、JL 垂直；KL 水平；斜桿 I–L 與 J–K 交叉，交叉點沒有節點</td>
+<td>500 dpi 放大</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>9</td>
+<td>桿件（右下）</td>
+<td>LP 水平、NP 垂直（N 為梁上節點）</td>
+<td>圖面</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>10</td>
+<td>彈簧</td>
+<td>H 與 M 之間以彈簧相連（常數 k）</td>
+<td>題文＋圖面鋸齒線</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>11</td>
+<td>MNO 梁</td>
+<td>M 至 O 的斜線填充梁，N 為梁上一點</td>
+<td>題文＋圖面</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>12</td>
+<td>載重</td>
+<td>A 點 100 kN 向右；D 點 100 kN 向右；E 點 100 kN 向下；N 點 100 kN 向下。共四個 100 kN</td>
+<td>箭頭起訖：下向箭頭自 E 點向下伸出、「100 kN」字樣在箭頭下端（I 的左方），箭頭不經過 I</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>13</td>
+<td>I 點</td>
+<td><strong>沒有外力</strong>（「100 kN」只是 E 點載重的標字，位置靠近 I）</td>
+<td>500 dpi 放大：箭頭在 E 的鉛垂線上，與 I 水平相距一格</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>14</td>
+<td>考卷沒有給</td>
+<td>任何尺寸、k 數值；不需數值計算</td>
+<td>題文</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>15</td>
+<td>所求</td>
+<td>判斷哪些桿件為零桿</td>
+<td>題文</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>16</td>
+<td>證據圖</td>
+<td>既有 fig-1 左上角有手形游標（未壓到構件）；另擷取 500 dpi 乾淨版 fig-2</td>
+<td>縮圖總表</td>
+<td>確定</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p><em>轉錄：2026-11-07（SA 剩餘單元（U1-2 尾段、U2-5、U3-1、U3-2）題目正本推廣・批 1）</em><br />
+<em>確認：2026-11-07 使用者確認</em></p>
+</details>
+<hr>
+<h1>考題編號：SA-2016-4</h1>
 <p><strong>主分類：</strong> <code>SA-U1-2</code> 靜定結構之分析<br />
 <strong>副分類：</strong> 無<br />
 <strong>分析法：</strong> 節點平衡法 (Method of Joints)<br />
-<strong>標籤：</strong> <code>零力桿件</code> <code>桁架</code> <code>節點平衡</code></p>
+<strong>標籤：</strong> <code>零力桿件</code> <code>桁架</code> <code>節點平衡</code> <code>支承節點</code> <code>相容性</code></p>
 <hr />
-<h2>1. 原始題目重述 (Problem Restatement)</h2>
-<p>圖四右側 MNO 梁在 M 點以彈簧與左側桁架的 H 點連接，彈簧之彈簧常數為 k。在圖示的載重下，試判斷此構造中，那些桿件為零桿（zero-force member）。（25 分）</p>
-<p><strong>結構幾何與載重特徵：</strong></p>
-<ul>
-<li>左側為一複雜桁架系統，右側為一 MNO 梁。</li>
-<li>A、C、D、M、O 皆設有支承。</li>
-<li>A、D 點承受 100 kN 向右水平力。</li>
-<li>E、I、N 點承受 100 kN 向下垂直力。</li>
-<li>節點 B 僅連接 AB、BC、BF 三桿。</li>
-<li>節點 P 懸空，僅連接 LP、NP 兩桿。</li>
-</ul>
-<p><img alt="SA-2016-4 題目附圖：複雜桁架與右側梁結構，需判斷零力桿件" src="../../raw/solutions/SA-2016-4/SA-2016-4-fig-1.png" /></p>
-<p><em>圖說：左側為含 X 型交叉斜撐之桁架，右側為 MNO 梁。H 點與 M 點間有彈簧。P 點為懸空節點。</em></p>
+<h2>1. 題目（考卷原文見題目正本）</h2>
+<blockquote>
+<p>考卷原文、公式／附表、附圖與判讀清單（已確認）見 <a href="SA-2016-4-problem.md"><code>SA-2016-4-problem.md</code></a>。本節只列解題時最容易讀錯的地方與本解使用的記號；題意以題目正本為準。</p>
+</blockquote>
+<p><img alt="SA-2016-4 重繪題目附圖：左側桁架（A、C 頂部鉸支、D 鉸支，F–G–I–J 與 I–J–K–L 兩格交叉斜桿），L–P、N–P 連到右側 MNO 梁（M 鉸、O 滾），H、M 以彈簧 k 相連；A、D 各 100 kN 向右，E、N 各 100 kN 向下" src="../../raw/solutions/SA-2016-4/figs/SA-2016-4-fig-1-problem.svg" /><br />
+<em>重繪自考卷附圖，依判讀清單重繪。攔：把 E 點載重讀到 I 點、把交叉斜桿的交點當成節點。</em></p>
+<h3>常見誤讀</h3>
+<table>
+<thead>
+<tr>
+<th>項目</th>
+<th>正確判讀</th>
+<th>常見誤讀</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>向下載重</td>
+<td>只有 E、N 兩處；「100 kN」字樣在 E 點箭頭下端、靠近 I，但 I 點沒有載重</td>
+<td>E、I、N 三處都有載重</td>
+</tr>
+<tr>
+<td>交叉斜桿</td>
+<td>F–J 與 G–I、I–L 與 J–K 交叉處沒有節點，互不相連</td>
+<td>交點當成節點</td>
+</tr>
+<tr>
+<td>NP 桿</td>
+<td>N 為梁上節點，NP、LP 在 P 點只接兩根桿</td>
+<td>—</td>
+</tr>
+<tr>
+<td>支承節點上的載重</td>
+<td>A、D 是鉸支承節點，作用在節點上的 100 kN 水平力直接由支承反力承受</td>
+<td>以為 A、D 的水平力會流進 AD、AF、DE 等桿</td>
+</tr>
+<tr>
+<td>零桿的範圍</td>
+<td>題目問「哪些桿件為零桿」＝圖示載重下所有內力為零的桿；只用兩桿／三桿口訣只判得出 3 根，不是全部</td>
+<td>口訣判完 BF、LP、NP 就停</td>
+</tr>
+</tbody>
+</table>
+<p><strong>本解記號：</strong> 零桿＝在圖示載重下內力為零的桿件；本題不需數值計算（考卷沒有尺寸）。</p>
 <hr />
 <h2>2. 考題核心精神與出題者意圖 (Core Concepts &amp; Examiner's Intent)</h2>
-<p><strong>核心觀念：</strong> 零力桿件（Zero-Force Member）的視覺判斷法則。<br />
-<strong>出題者意圖：</strong> 這是一道經典的「找碴題」。出題者畫了一個看起來極度複雜的桁架，加上彈簧、梁以及多個載重，試圖讓考生眼花撩亂。但只要熟記並冷靜應用零力桿件的兩大法則，即可在幾秒鐘內找出答案，完全不需要動筆計算反力或解聯立方程式。</p>
-<p><strong>兩大基本法則：</strong></p>
+<p><strong>核心觀念：</strong> 零力桿件的判斷不只靠「兩桿／三桿口訣」，還要看<strong>載重實際怎麼傳到支承</strong>。本題的四個 100 kN 有三個作用在「可以直接被支承或局部構件吃掉」的位置：</p>
+<ul>
+<li>A、D 是鉸支承節點，節點上的水平力直接由支承反力承受，不進入桿件；</li>
+<li>N 點的力由簡支梁 MNO 自己傳給 M、O；P 只接 LP、NP 兩桿，所以 NP、LP 為零；</li>
+<li>E 點的 100 kN 只要 AE 一根桿就能直接送到支承 A。</li>
+</ul>
+<p><strong>出題者意圖：</strong> 圖畫得很複雜（交叉斜桿、彈簧、梁、四個載重），看起來需要解聯立方程式；其實只要找出「每個載重最短的傳力路徑」，再確認這樣的試解同時滿足平衡與相容，就知道整個構造只有 AE 受力，其餘全部是零桿。</p>
+<p><strong>兩個工具：</strong></p>
 <ol>
-<li><strong>二桿節點法則</strong>：無外力且無支承的節點，若僅連接兩根非共線桿件，則此兩桿皆為零力桿。</li>
-<li><strong>三桿節點法則</strong>：無外力且無支承的節點，若連接三根桿件且其中兩根共線，則第三根不共線桿件為零力桿。</li>
+<li><strong>零桿口訣</strong>（無外力、無支承的節點）：二桿不共線 ⇒ 兩桿皆零；三桿其中兩桿共線 ⇒ 第三桿為零。</li>
+<li><strong>試解＋唯一性</strong>（靜不定結構）：猜一組內力，若①每個節點平衡、②各桿變形與節點位移相容，則它就是線彈性的唯一解。</li>
 </ol>
 <p><strong>關鍵陷阱：</strong></p>
 <ul>
-<li><strong>N 點與 P 點的連接：</strong> MNO 梁在 N 點承受 100 kN 載重，許多考生會直覺認為 NP 桿會將此力傳導至桁架。但實際上，<strong>P 點完全沒有其他垂直約束或桿件</strong>來抵抗這個力。如果 NP 桿有受力，P 點就無法平衡。因此，NP 桿必定是零力桿，這是一個「無效懸吊」的陷阱。</li>
+<li><strong>I 點沒有載重</strong>：E 點向下箭頭的「100 kN」字樣寫在箭頭下端、靠近 I，但箭頭在 E 的鉛垂線上（題目正本 #12、#13）。</li>
+<li><strong>口訣判完不等於判完</strong>：本桁架為 6 次靜不定，口訣只能判出 BF、LP、NP，其餘桿件必須用支承節點不動與相容性才能判定。</li>
 </ul>
 <hr />
 <h2>3. 解題戰略地圖與陷阱分析 (Strategic Roadmap &amp; Trap Analysis)</h2>
 <p><strong>作戰計畫：</strong></p>
 <ol>
-<li><strong>掃描外圍與懸空節點</strong>：尋找「無外力、無支承」的邊緣節點。</li>
-<li><strong>分析 P 點（二桿節點）</strong>：確認 LP 與 NP 的受力狀態。</li>
-<li><strong>分析 B 點（三桿節點）</strong>：確認 BF 的受力狀態。</li>
-<li><strong>移除零力桿後的二次掃描</strong>：檢查移除上述桿件後，是否會產生新的零力桿。</li>
+<li><strong>口訣先掃</strong>：P 點（二桿）⇒ LP、NP；B 點（三桿、AB/BC 共線）⇒ BF。</li>
+<li><strong>逐一追蹤四個載重的傳力路徑</strong>：A、D 的水平力 → 支承；N 的力 → 梁 MNO → M、O；E 的力 → AE → 支承 A。</li>
+<li><strong>寫出試解</strong>：只有 AE ＝ 100 kN（拉），其餘桿件與彈簧力為 0。</li>
+<li><strong>驗證試解</strong>：所有節點平衡；節點位移與桿件伸長量相容 ⇒ 唯一解。</li>
 </ol>
+<p><strong>陷阱：</strong> 把 I 點當成有載重（I 有載重時 FI、IK、IL 等都會受力，答案完全不同）；口訣判出 3 根就停止。</p>
 <hr />
 <h2>3.5 變數層次分析 (Variable Hierarchy Analysis)</h2>
 <blockquote>
 <p>複習提示：第一次解題後，在每個卡住的知識點旁標記 <code>⚠</code>；第二次複習時只看有 <code>⚠</code> 的項目。</p>
 </blockquote>
 <h3>最終目標</h3>
-<p><code>找出所有零力桿件 (Zero-Force Members)</code></p>
+<p><code>找出圖示載重下所有零力桿件 (Zero-Force Members)</code></p>
 <h3>L1：題目直接給定</h3>
 <table>
 <thead>
@@ -102,23 +320,80 @@ header .nomat{margin-top:12px;font-size:.8em;opacity:.85}
 </thead>
 <tbody>
 <tr>
-<td>節點 P</td>
-<td>無外力、無支承</td>
-<td>僅連接 LP、NP 兩桿</td>
+<td>A、C、D</td>
+<td>鉸支承節點</td>
+<td>A、D 各受 100 kN 向右</td>
 </tr>
 <tr>
-<td>節點 B</td>
-<td>無外力、無支承</td>
-<td>連接 AB、BC (共線) 與 BF 三桿</td>
+<td>E</td>
+<td>自由節點、受 100 kN 向下</td>
+<td>接 DE、EF（共線水平）與 AE（垂直）</td>
+</tr>
+<tr>
+<td>I</td>
+<td>自由節點、<strong>無載重</strong></td>
+<td>「100 kN」字樣屬於 E 點的箭頭</td>
+</tr>
+<tr>
+<td>P</td>
+<td>自由節點、無載重</td>
+<td>只接 LP、NP 兩桿</td>
+</tr>
+<tr>
+<td>B</td>
+<td>自由節點、無載重</td>
+<td>接 AB、BC（共線）與 BF</td>
+</tr>
+<tr>
+<td>MNO</td>
+<td>簡支梁（M 鉸、O 滾）</td>
+<td>N 受 100 kN 向下；H–M 以彈簧 k 相連</td>
 </tr>
 </tbody>
 </table>
 <h3>L2：需知識點推導</h3>
-<p><strong>零力桿法則應用</strong><br />
-| 節點 | 平衡方程式 | 結論 | 卡關? |<br />
-|------|-----------|------|:-----:|<br />
-| P 點 | $\Sigma F_x = 0$, $\Sigma F_y = 0$ | $F_{LP} = 0$, $F_{NP} = 0$ | |<br />
-| B 點 | $\Sigma F_y = 0$ (垂直於共線桿) | $F_{BF} = 0$ | |</p>
+<table>
+<thead>
+<tr>
+<th>節點／構件</th>
+<th>推導</th>
+<th>結論</th>
+<th style="text-align: center;">卡關?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>P 點</td>
+<td>二桿不共線、無外力</td>
+<td>$F_{LP}=F_{NP}=0$</td>
+<td style="text-align: center;"></td>
+</tr>
+<tr>
+<td>B 點</td>
+<td>垂直 AB、BC 方向 $\Sigma F_y=0$</td>
+<td>$F_{BF}=0$</td>
+<td style="text-align: center;"></td>
+</tr>
+<tr>
+<td>梁 MNO</td>
+<td>NP ＝ 0 ⇒ N 點載重由簡支梁自行傳給 M、O</td>
+<td>梁與桁架之間無力傳遞</td>
+<td style="text-align: center;"></td>
+</tr>
+<tr>
+<td>E 點</td>
+<td>$\Sigma F_y=0$：$F_{AE}-100=0$</td>
+<td>$F_{AE}=+100$ kN（拉）</td>
+<td style="text-align: center;"></td>
+</tr>
+<tr>
+<td>A、D 點</td>
+<td>節點上的水平力由支承反力承受</td>
+<td>不需任何桿件傳力</td>
+<td style="text-align: center;"></td>
+</tr>
+</tbody>
+</table>
 <h3>L3：深層知識（不懂就卡住）</h3>
 <table>
 <thead>
@@ -130,50 +405,102 @@ header .nomat{margin-top:12px;font-size:.8em;opacity:.85}
 </thead>
 <tbody>
 <tr>
-<td><strong>「無效傳力」陷阱</strong></td>
-<td>N 點雖有載重，但因 P 點自由，NP 桿無法產生反作用力，故 NP 不受力，載重 100 kN 完全由梁 MNO 承受。</td>
+<td><strong>靜不定桁架的零桿判斷</strong></td>
+<td>口訣只能處理「無外力、無支承」的節點。其餘要用試解：若一組內力同時滿足所有節點平衡與變形相容，依線彈性解的唯一性即為真解</td>
+<td style="text-align: center;"></td>
+</tr>
+<tr>
+<td><strong>相容性</strong></td>
+<td>試解中只有 E 點會動（向下 $100L_{AE}/EA$）；E 的鉛垂位移垂直於 DE、EF，一階不改變其長度；其他桿兩端皆不動 ⇒ 伸長量 0，與零內力相容</td>
+<td style="text-align: center;"></td>
+</tr>
+<tr>
+<td><strong>彈簧 H–M</strong></td>
+<td>H 不動、M 為鉸支承 ⇒ 彈簧不伸縮，力為 0（與 k 值無關）</td>
 <td style="text-align: center;"></td>
 </tr>
 </tbody>
 </table>
 <hr />
 <h2>4. 步驟化詳細計算過程 (Step-by-Step Detailed Calculation)</h2>
-<p>本題只需透過節點平衡的觀念進行判斷，無需數值計算。</p>
-<h3>Step 1：判斷節點 P (應用二桿節點法則)</h3>
+<p>考卷沒有給尺寸，本題不需數值計算；以下是判斷過程。</p>
+<h3>Step 1：口訣判斷（P、B 兩節點）</h3>
 <ul>
-<li><strong>觀察：</strong> 結構右下角的節點 P。</li>
-<li><strong>條件：</strong> 節點 P 僅連接兩根桿件（水平桿 LP 與垂直桿 NP）。節點 P 上<strong>沒有</strong>作用任何外部載重，也<strong>沒有</strong>任何支承。</li>
-<li><strong>推導：</strong> </li>
-<li>水平方向力平衡：$\Sigma F_x = 0 \Rightarrow F_{LP} = 0$</li>
-<li>垂直方向力平衡：$\Sigma F_y = 0 \Rightarrow F_{NP} = 0$</li>
-<li><strong>結論：</strong> <strong>LP 桿</strong>與 <strong>NP 桿</strong>為零力桿。</li>
+<li><strong>節點 P</strong>：只接 LP（水平）與 NP（垂直）兩根不共線桿件，無外力、無支承。$\Sigma F_x=0 \Rightarrow F_{LP}=0$；$\Sigma F_y=0 \Rightarrow F_{NP}=0$。</li>
+<li><strong>節點 B</strong>：接 AB、BC（共線水平）與 BF（垂直），無外力、無支承。$\Sigma F_y=0 \Rightarrow F_{BF}=0$。</li>
+<li>口訣到此只能判出 <strong>LP、NP、BF</strong> 三根；其餘節點都有載重、支承或多於三桿，需要下一步。</li>
 </ul>
-<h3>Step 2：判斷節點 B (應用三桿節點法則)</h3>
+<h3>Step 2：追蹤四個載重的傳力路徑</h3>
+<table>
+<thead>
+<tr>
+<th>載重</th>
+<th>位置</th>
+<th>傳力路徑</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>100 kN →</td>
+<td>A（鉸支承節點）</td>
+<td>直接由 A 支承的水平反力承受</td>
+</tr>
+<tr>
+<td>100 kN →</td>
+<td>D（鉸支承節點）</td>
+<td>直接由 D 支承的水平反力承受</td>
+</tr>
+<tr>
+<td>100 kN ↓</td>
+<td>N（梁上）</td>
+<td>NP ＝ 0 ⇒ 由簡支梁 MNO 傳給 M、O 支承</td>
+</tr>
+<tr>
+<td>100 kN ↓</td>
+<td>E</td>
+<td>經垂直桿 AE 傳到支承 A</td>
+</tr>
+</tbody>
+</table>
+<h3>Step 3：寫出試解並檢查平衡</h3>
+<p>試解：$F_{AE}=+100$ kN（拉），其餘 24 根桿件與彈簧力皆為 0。</p>
 <ul>
-<li><strong>觀察：</strong> 結構頂部的節點 B。</li>
-<li><strong>條件：</strong> 節點 B 連接三根桿件（AB、BC、BF）。其中 AB 桿與 BC 桿共線（皆為水平）。節點 B 上<strong>沒有</strong>作用任何外部載重，也<strong>沒有</strong>任何支承。</li>
-<li><strong>推導：</strong> </li>
-<li>取垂直於共線桿（即垂直向）的力平衡：$\Sigma F_y = 0 \Rightarrow F_{BF} = 0$</li>
-<li><strong>結論：</strong> <strong>BF 桿</strong>為零力桿。</li>
+<li><strong>E 點</strong>：DE、EF 為 0；$\Sigma F_y$：$F_{AE}$ 向上拉 100 kN 與載重 100 kN 向下抵銷 ✓</li>
+<li><strong>A 點</strong>（支承）：載重 100 kN → 與 AE 拉力 100 kN ↓ 由支承反力 100 kN ←、100 kN ↑ 承受 ✓</li>
+<li><strong>D 點</strong>（支承）：載重 100 kN → 由支承反力 100 kN ← 承受 ✓</li>
+<li><strong>N 點</strong>：由梁 MNO 承受；NP ＝ 0 ✓</li>
+<li><strong>其餘自由節點</strong>（B、F、G、H、I、J、K、L、P）：無外力、所接桿件皆為 0 ✓</li>
 </ul>
-<h3>Step 3：進行二次掃描 (檢查是否有連鎖效應)</h3>
+<h3>Step 4：檢查相容性（唯一性）</h3>
 <ul>
-<li>將已確認的零力桿 (LP, NP, BF) 從結構中假想移除，檢查其他節點。</li>
-<li><strong>節點 L：</strong> 移除 LP 後，剩下 KL (水平)、JL (垂直) 與 IL (斜向)。由於包含斜桿且大於兩桿，無法判定為零力桿。</li>
-<li><strong>節點 F：</strong> 移除 BF 後，仍有 AF, EF, FG, FI, FJ, CF 多桿交會，無法判定。</li>
-<li><strong>節點 E、I：</strong> 皆有外部垂直載重 100 kN 作用，因此連接的垂直桿 AE、FI 等必然會承受內力，非零力桿。</li>
-<li><strong>節點 H：</strong> 連接 GH、CH 及彈簧 HM。雖然結構複雜，但無法直接判斷為零。</li>
-<li><strong>支承節點 A, C, D：</strong> 具有支承反力，無法直接應用零力桿法則判斷相鄰桿件。</li>
-<li>經過二次掃描，未發現新的零力桿。</li>
+<li>支承 A、C、D、M 不動；試解中只有 AE 伸長，故只有 E 點向下移動 $\delta_E = 100\,L_{AE}/EA_{AE}$。</li>
+<li>DE、EF 是水平桿，E 的鉛垂位移垂直於桿軸，一階不改變其長度 ⇒ 伸長量 0，與零內力相容。</li>
+<li>其他桿件兩端節點皆不動 ⇒ 伸長量 0；彈簧 H–M 兩端皆不動 ⇒ 力 0。</li>
+<li>平衡與相容同時成立，依線彈性解唯一性，此試解即為真解，且<strong>與各桿 EA、彈簧常數 k 無關</strong>。</li>
 </ul>
+<blockquote>
+<p><strong>交叉驗算</strong>：以直接勁度法建立全結構（25 桿＋彈簧，梁 MNO 以 N 點彈性支承模擬），五組隨機 EA 與 k 重算，每組都只有 $F_{AE}=+100$ kN，其餘桿件與彈簧力 $&lt;10^{-8}$。</p>
+</blockquote>
 <hr />
+<p><img alt="SA-2016-4 載重傳力路徑與零桿：只有 AE 受 100 kN 拉（紅），其餘 24 根桿為零桿（灰虛線）；A、D 的水平力直接進支承，N 點載重由梁 MNO 傳給 M、O，彈簧 H–M 力為 0" src="../../raw/solutions/SA-2016-4/figs/SA-2016-4-fig-2-loadpath.svg" /></p>
+<p><em>圖 2　載重傳力路徑與零桿（以直接勁度法、五組隨機 EA 與 k 重算，結果都相同）。四個 100 kN 各自走最短路徑：A、D 進支承，N 進梁 MNO，E 只經 AE 到支承 A；其他桿件與彈簧都不受力。這張圖攔的是口訣判出 BF、LP、NP 三根就停，以及把 E 點載重讀到 I 點。</em></p>
 <h2>5. 結論與最終答案 (Conclusion)</h2>
-<p>本構造中，零力桿件共有 3 根，分別為：</p>
+<p><strong>零桿共 24 根：</strong></p>
 <ul>
-<li><strong>BF 桿</strong></li>
-<li><strong>LP 桿</strong></li>
-<li><strong>NP 桿</strong></li>
-</ul></main>
+<li>上部：AB、BC、AD、AF、BF、CF、CG、CH</li>
+<li>中排：DE、EF、FG、GH</li>
+<li>交叉格：FI、GJ、IJ、FJ、GI、IK、JL、KL、IL、JK</li>
+<li>右下：LP、NP</li>
+</ul>
+<p>彈簧 H–M 的力也為 0。<strong>唯一受力桿為 AE ＝ 100 kN（拉力）</strong>；N 點的 100 kN 由簡支梁 MNO 自行傳給 M、O。</p>
+<p><strong>補充說明：</strong></p>
+<ul>
+<li>只用兩桿／三桿口訣只能判出 BF、LP、NP 三根（舊版解答即停在這裡）；題目問的是圖示載重下哪些桿件為零桿，應答全部 24 根，並寫出 Step 3、Step 4 的平衡與相容理由。</li>
+<li>若把 E 點下方的「100 kN」誤讀為作用在 I 點，FI、IK、IL 等桿都會受力，答案完全不同；考卷箭頭在 E 的鉛垂線上，I 點沒有載重。</li>
+</ul>
+<p><em>修正日期：2026-11-07（§1 改為指向題目正本，補重繪附圖 figs/SA-2016-4-fig-1-problem.svg）</em><br />
+<em>修正日期：2026-11-08（盲解比對勘誤：零桿 3 根（BF、LP、NP）→ 24 根，只有 AE 受 100 kN 拉、彈簧力 0；刪除「I 點有載重」的誤讀；§2–§5 改寫為口訣＋傳力路徑＋試解平衡與相容；驗證：節點平衡逐點檢查＋直接勁度法五組隨機 EA／k，MISMATCHES: 0）</em></p>
+<p><em>圖解補繪：2026-11-08（向量圖，腳本 <code>gen_SA-2016-4.py</code> 的 fig2_loadpath，以直接勁度法五組隨機 EA／k 重算後 assert，可重跑）</em></p></main>
 <footer>來源：raw/solutions/SA-2016-4/SA-2016-4.md（知識庫解題內容唯一正本；本頁僅為渲染顯示）</footer>
 
 <script>

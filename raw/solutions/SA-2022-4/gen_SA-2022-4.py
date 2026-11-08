@@ -55,6 +55,54 @@ def fig1_problem():
 
 FIGURES = [(fig1_problem, "m、n 柱誤以為在第一層有梁（柱長 3.6 m）")]
 
+# ── 解題圖（階段 E，2026-11-08）：平面剛架勁度法（柱 EI = 97200、梁 EI 取 1e7 倍模擬 ∞、EA = 1e11 不計軸向），assert 對照 SA-2022-4.md §4–§5 ──
+#    Δ1 = Δb = 0.0098 m、Δ2 = Δc = 0.0176 m、Δ3 = 0.0206 m；a 柱底 245 kN ←、441 kN-m；m 柱底 55 kN ←、198 kN-m
+def _solve():
+    from frame2d import Frame
+    f = Frame(); EI = 97200.0
+    for n, p in N_.items(): f.node(n, *p)
+    for k in ("a", "e", "m", "n"): f.support(k, 1, 1, 1)
+    for i, j in cols: f.member(i + j, i, j, EI, EA=1e11)               # 不計軸向（EA 取大值；預設 1e8·EI 對剛梁會病態）
+    for i, j in beams: f.member(i + j, i, j, EI * 1e7, EA=1e11)       # 梁 EI = ∞
+    f.load("b", fx=100); f.load("c", fx=200); f.load("d", fx=300)
+    f.solve()
+    assert abs(f.d["b"][0] - 0.0098) < 1e-7 and abs(f.d["c"][0] - 0.0176) < 1e-7 and abs(f.d["d"][0] - 0.0206) < 1e-7
+    assert abs(f.R["a"][0] + 245) < 1e-3 and abs(f.R["m"][0] + 55) < 1e-3
+    assert abs(f.R["a"][2] - 441) < 1e-2 and abs(f.R["m"][2] - 198) < 1e-2        # 逆時針為正（容許量為 EI = ∞ 的數值近似）
+    return f
+
+def fig2_solution():
+    from beamfig import frame_figure
+    f = _solve()
+    sp = dict(nodes=N_, supports=[(k, "fixed") for k in ("a", "e", "m", "n")])
+    skip = tuple(i + j for i, j in beams)
+    def extra(a, b):
+        for i, j in beams:                                                     # 梁 EI = ∞：兩圖都畫粗線（不畫彎矩）
+            b.line(N_[i], N_[j], "#4A5568", 7.0, cap="butt")
+        b.text_px(b.X(0), b.Y(0) + 34, "a：245 kN ←、441 kN-m 逆時針", 12.5, C["load"], weight="700")
+        b.text_px(b.X(9), b.Y(0) + 34, "m：55 kN ←、198 kN-m 逆時針", 12.5, C["load"], weight="700")
+        from frameviz import deformed                                        # 變形圖補畫梁（剛梁只平移）：比例與 frame_figure 相同
+        dmax = 0.0
+        for m in f.M:
+            if m["name"] in skip: continue
+            p0, p1 = f.N[m["i"]], f.N[m["j"]]
+            for k, q in enumerate(deformed(f, m, 1.0, 40)):
+                b0 = (p0[0] + (p1[0] - p0[0]) * k / 40, p0[1] + (p1[1] - p0[1]) * k / 40)
+                dmax = max(dmax, abs(q[0] - b0[0]), abs(q[1] - b0[1]))
+        span = max(max(abs(p[0] - q[0]), abs(p[1] - q[1])) for p in f.N.values() for q in f.N.values())
+        ds = 0.10 * span / dmax
+        for i, j in beams:
+            a.line((N_[i][0] + f.d[i][0] * ds, N_[i][1]), (N_[j][0] + f.d[j][0] * ds, N_[j][1]), C["deform"], 7.0, cap="butt")
+    return frame_figure(f, sp, f"{OUT}/{TAG}-fig-2-deflected-bmd.svg", f"圖 2　{TAG} 側移形狀與柱彎矩圖",
+                        "梁只平移不轉：各柱雙曲率、反曲點在柱中央", "柱彎矩（kN-m；梁 EI = ∞ 不標）",
+                        [("ab", 0.0, -30, 0), ("mc3", 0.0, 44, 0)],
+                        W=560, H=560, dfrac=0.10, mfrac=0.10, margins=(70, 70, 95, 110),
+                        skip=skip, fmt="{:.0f}",
+                        dlabels=[("b", "Δb = 9.8 mm", -64, 0), ("c", "Δc = 17.6 mm", -66, 0), ("d", "Δ3 = 20.6 mm", -66, 0)],
+                        notes=("基底剪力 2×245 + 2×55 = 600 kN", ""), extra=extra)
+
+FIGURES.append((fig2_solution, "m、n 挑高柱勁度沒用 k/8（以為 12EI/h^3）；柱底彎矩用 Vh 而非 Vh/2（a 柱）／Vh（m 柱，長 2h）弄混"))
+
 if __name__ == "__main__":
     os.makedirs(OUT, exist_ok=True)
     for fn, catches in FIGURES:

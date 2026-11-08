@@ -185,7 +185,7 @@ header .nomat{margin-top:12px;font-size:.8em;opacity:.85}
 <p><strong>主分類：</strong> <code>SA-U2-3</code> 靜不定結構之傾角變位法<br />
 <strong>副分類：</strong> 無<br />
 <strong>分析法：</strong> 傾角變位法（Slope-Deflection Method）<br />
-<strong>標籤：</strong> <code>傾角變位法</code> <code>門型剛架</code> <code>側移</code> <code>層剪力方程</code> <code>固定端彎矩符號</code> <code>節點轉角</code></p>
+<strong>標籤：</strong> <code>傾角變位法</code> <code>門型剛架</code> <code>側移</code> <code>層剪力方程</code> <code>固定端彎矩符號</code> <code>節點轉角</code> <code>轉角方向</code></p>
 <hr />
 <h2>1. 題目（考卷原文見題目正本）</h2>
 <blockquote>
@@ -217,6 +217,11 @@ header .nomat{margin-top:12px;font-size:.8em;opacity:.85}
 <td>水平力方向</td>
 <td>兩個 60 kN 皆向左</td>
 <td>向右</td>
+</tr>
+<tr>
+<td>A、D 轉角方向</td>
+<td>順時針為正下 $EI\theta_A=-8280/13$、$EI\theta_D=-7320/13$ 為<strong>逆時針</strong></td>
+<td>把負值寫成順時針（本解 2026-11-08 前的錯誤）</td>
 </tr>
 </tbody>
 </table>
@@ -582,7 +587,7 @@ $$M_{DC} = 0$$</p>
 <p><strong>$D$ 點</strong>（完整式 ＋ $M_{DC} = 0$，<strong>含 $M_F^{DC} = +30$</strong>）：</p>
 <p>$$\frac{2EI}{4}(2\theta_D + \theta_C - 3\psi) + 30 = 0 \;\Longrightarrow\; 2\,EI\theta_D + EI\theta_C - 3EI\psi = -60$$</p>
 <p>$$EI\theta_D = \frac{-60 + \frac{3690}{13} - 1350}{2} = -\frac{7320}{13} \approx \mathbf{-563.08}$$</p>
-<p>兩者皆為負 $\Rightarrow$ <strong>順時針</strong>。</p>
+<p>兩者皆為負；本解以<strong>順時針為正</strong> $\Rightarrow$ $\theta_A$、$\theta_D$ 皆為<strong>逆時針</strong>。物理上框架向左側移（$\psi&lt;0$，§5.3），兩根柱的弦逆時針轉，鉸支柱腳跟著逆時針轉，方向一致。</p>
 <h3>4.8 結果彙整與彎矩圖</h3>
 <p><img alt="SA-2017-3 彎矩圖：畫在受拉側，含梁的反曲點、跨中彎矩，以及右柱在載重點的折點" src="../../raw/solutions/SA-2017-3/figs/SA-2017-3-fig-4-bmd.svg" /></p>
 <p><em>圖 4　彎矩圖（畫在受拉側）。這張圖攔兩件事：把左右柱的端彎矩畫成一樣大（右柱被反向的桿件載重卸掉一部分，只有左柱的 28%），以及把右柱畫成直線（載重點 $y = 2$ m 有折點，該處彎矩 99.8 反而比柱頂大）。</em></p>
@@ -639,22 +644,22 @@ $$M_{DC} = 0$$</p>
 <tr>
 <td>$\theta_A$</td>
 <td>$-\dfrac{8280}{13EI} \approx -\dfrac{636.92}{EI}$ rad</td>
-<td><strong>順時針</strong></td>
+<td><strong>逆時針</strong></td>
 </tr>
 <tr>
 <td>$\theta_D$</td>
 <td>$-\dfrac{7320}{13EI} \approx -\dfrac{563.08}{EI}$ rad</td>
-<td><strong>順時針</strong></td>
+<td><strong>逆時針</strong></td>
 </tr>
 <tr>
 <td>（$\theta_B$）</td>
 <td>$-\dfrac{990}{13EI} \approx -\dfrac{76.15}{EI}$ rad</td>
-<td>順時針（參考）</td>
+<td>逆時針（參考）</td>
 </tr>
 <tr>
 <td>（$\theta_C$）</td>
 <td>$-\dfrac{3690}{13EI} \approx -\dfrac{283.85}{EI}$ rad</td>
-<td>順時針（參考）</td>
+<td>逆時針（參考）</td>
 </tr>
 </tbody>
 </table>
@@ -733,7 +738,8 @@ $$M_{DC} = 0$$</p>
 </table>
 <hr />
 <p><em>解析日期：2026-07-02　｜　勘誤＋圖解：2026-08-26（分數精確解與剛架有限元兩條獨立路徑逐項相符；向量圖腳本 <code>gen_SA-2017-3.py</code>，可重跑）</em></p>
-<p><em>修正日期：2026-11-07（§1 改為指向題目正本並放重繪附圖（figs/SA-2017-3-fig-1-problem.svg）、加常見誤讀；圖由 gen_SA-2017-3_problem.py 產生，可重跑）</em></p></main>
+<p><em>修正日期：2026-11-07（§1 改為指向題目正本並放重繪附圖（figs/SA-2017-3-fig-1-problem.svg）、加常見誤讀；圖由 gen_SA-2017-3_problem.py 產生，可重跑）</em></p>
+<p><em>修正日期：2026-11-08（解析勘誤：θ_A、θ_D 方向「順時針」→「逆時針」（順時針為正，數值為負），θ_B、θ_C 參考列同改；§1 常見誤讀補一列；圖 4 文字同步。數值不變。驗證：盲解比對 SA-U2-3 批 2 勘誤腳本 scripts/fixes/2026-11-08_recalc_SA-U2-3_B2.py，剛架勁度法＋傾角變位分數解兩路徑，MISMATCHES: 0）</em></p></main>
 <footer>來源：raw/solutions/SA-2017-3/SA-2017-3.md（知識庫解題內容唯一正本；本頁僅為渲染顯示）</footer>
 
 <script>

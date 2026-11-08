@@ -43,18 +43,194 @@ header .nomat{margin-top:12px;font-size:.8em;opacity:.85}
 <p class="meta2">主分類 <b>SA-U3-2</b> 建築結構系統分析 ｜ 2020 年（民國 109） ｜ 矩陣位移法 / 剛架與剪力牆互制</p>
 <div class="hbtns"></div><p class="nomat">本題主分類 SA-U3-2 目前尚無教材，故不提供教材按鈕。</p>
 </header>
-<main><h1>考題編號：SA-2020-4</h1>
+<main><details class="problem-src" open><summary><b>📄 題目正本</b>（考卷原文、附圖與判讀清單；不含解法）</summary>
+<h1>SA-2020-4 題目正本</h1>
+<blockquote>
+<p>本檔只記錄考卷上寫了什麼、圖上畫了什麼，不含任何解法。解析見同資料夾 <code>SA-2020-4.md</code>。<br />
+判讀清單經使用者確認前，狀態為「待確認」；確認後本檔原則上不再修改（改動須回考卷原圖並記 log）。</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>項目</th>
+<th>內容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>考卷</td>
+<td><code>raw/exams/SA-2020_結構學.pdf</code>，第 2 頁（頁次 2－2），第四題（圖 4）</td>
+</tr>
+<tr>
+<td>考年</td>
+<td>2020（民國 109 年）專技高考結構工程技師「結構學」</td>
+</tr>
+<tr>
+<td>配分</td>
+<td>25 分</td>
+</tr>
+<tr>
+<td>附圖</td>
+<td><code>SA-2020-4-fig-2.png</code>（本次從考卷擷取 500 dpi；既有 <code>SA-2020-4-fig-1.png</code> 保留）</td>
+</tr>
+<tr>
+<td>判讀狀態</td>
+<td><strong>已確認</strong>（2026-11-07 使用者確認；原轉錄：2026-11-07 轉錄；PyMuPDF 110 dpi 整頁＋300–400 dpi 局部放大（附圖為向量圖）；盲讀於開啟解析前完成）</td>
+</tr>
+</tbody>
+</table>
+<h2>1. 考卷原文（逐字）</h2>
+<p>四、如圖4(a)所示之二層樓平面結構，各樓層承受相同的水平力60 kN，梁柱構架與剪力牆在各樓層之間設置bc及ef 連桿傳遞水平軸力。構架梁柱桿件的彈性模數都為E，另構架之柱桿件斷面慣性矩都為I，且EI = 81920 kN-m²，而構架之梁桿件斷面慣性矩為無限大。如圖4(b)所示剪力牆有二個自由度，已知剪力牆之力{F₁, F₂}與位移{Δ₁, Δ₂}關係式，採用勁度矩陣表示如下：</p>
+<p>$$\begin{Bmatrix}F_1\\F_2\end{Bmatrix}=(30000\ \text{kN/m})\begin{bmatrix}1&amp;-2\\-2&amp;6\end{bmatrix}\begin{Bmatrix}\Delta_1\\\Delta_2\end{Bmatrix}$$</p>
+<p>。不考慮連桿及構架梁柱桿件的軸向變形，求圖4(a)二層樓結構之各連桿的軸力、一樓剪力牆的基底剪力、eh柱桿件的端點彎矩及剪力。（25分）</p>
+<h2>2. 考卷給的公式、附表與參數</h2>
+<ul>
+<li>給定：柱 EI＝81920 kN-m²（kN-m 的平方，非係數 2）；梁 I＝∞。</li>
+<li>給定：剪力牆勁度矩陣 30000 kN/m × [[1, −2], [−2, 6]]，Δ₁、F₁ 在頂層，Δ₂、F₂ 在一樓。</li>
+<li>考卷沒有給剪力牆的 EI 或尺寸（由勁度矩陣代表）。</li>
+<li>卷首注意事項：㈠可以使用電子計算器。㈡不必抄題，作答時請將試題題號及答案依照順序寫在試卷上，於本試題上作答者，不予計分。㈢本科目除專門名詞或數理公式外，應使用本國文字作答。</li>
+<li>考試時間：2 小時。代號 00340，頁次 2－1、2－2。</li>
+</ul>
+<h2>3. 附圖</h2>
+<p><img alt="SA-2020-4 考卷附圖：(a) 左側二層單跨構架：頂層梁 a–b、一樓梁 d–e（粗線，剛性梁），柱 a–d–g、b–e–h，柱底 g、h 落在地面；右側剪力牆；b–c、e–f 為兩端鉸接連桿；各層左端受 60 kN 向右；尺寸：層高 3.2 m、3.2 m，跨度 3.2 m。(b) 剪力牆兩個自由度 Δ₁,F₁（頂層）、Δ₂,F₂（一樓），皆向右" src="../../raw/solutions/SA-2020-4/SA-2020-4-fig-2.png" /><br />
+<em>證據圖 SA-2020-4-fig-2.png（500 dpi，自考卷擷取；舊證據圖 SA-2020-4-fig-1.png 有游標雜訊，保留不改）</em></p>
+<p>圖面文字照錄：60 kN、60 kN、a、b、c、d、e、f、g、h、連桿、剪力牆、3.2 m、3.2 m、3.2 m、(a)、剪力牆、Δ1,F1、Δ2,F2、(b)、圖 4</p>
+<h2>4. 判讀清單</h2>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>項目</th>
+<th>判讀</th>
+<th>圖上／題文依據</th>
+<th>把握</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>構架節點</td>
+<td>頂層 a（左）、b（右）；一樓 d（左）、e（右）；柱底 g（左）、h（右）</td>
+<td>400 dpi 放大：b、e 標字在右柱內側</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>2</td>
+<td>梁</td>
+<td>ab、de，I＝∞（剛性）</td>
+<td>題文＋粗線</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>3</td>
+<td>柱</td>
+<td>ad、dg、be、eh，EI＝81920 kN-m²</td>
+<td>題文；300 dpi 放大確認 m 的上標 2 為單位指數</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>4</td>
+<td>柱底 g、h</td>
+<td>落在地面剖線，圖面無支承符號；視為固定端</td>
+<td>圖面</td>
+<td>確定（解讀）；使用者確認</td>
+</tr>
+<tr>
+<td>5</td>
+<td>連桿</td>
+<td>bc（頂層）、ef（一樓），兩端圓圈＝鉸接，只傳軸力，不計軸向變形</td>
+<td>題文＋圖面</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>6</td>
+<td>尺寸</td>
+<td>層高 3.2 m、3.2 m；構架跨度 3.2 m；連桿長度沒有標</td>
+<td>尺寸線</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>7</td>
+<td>載重</td>
+<td>頂層 a、一樓 d 各 60 kN 水平向右</td>
+<td>箭頭</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>8</td>
+<td>剪力牆勁度</td>
+<td>{F₁,F₂}＝30000 kN/m·[[1,−2],[−2,6]]{Δ₁,Δ₂}；1 號自由度在頂層、2 號在一樓，正向向右</td>
+<td>題文式＋圖 4(b)</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>9</td>
+<td>考卷沒有給</td>
+<td>連桿長度、剪力牆尺寸／EI、柱底支承符號</td>
+<td>題文</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>10</td>
+<td>所求</td>
+<td>各連桿軸力、一樓剪力牆基底剪力、eh 柱端點彎矩與剪力</td>
+<td>題文</td>
+<td>確定</td>
+</tr>
+<tr>
+<td>11</td>
+<td>證據圖</td>
+<td>既有 fig-1 頂端夾帶題文殘字、左側有游標；另擷取 500 dpi 乾淨版 fig-2</td>
+<td>縮圖總表</td>
+<td>確定</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p><em>轉錄：2026-11-07（SA 剩餘單元（U1-2 尾段、U2-5、U3-1、U3-2）題目正本推廣・批 1）</em><br />
+<em>確認：2026-11-07 使用者確認</em></p>
+</details>
+<hr>
+<h1>考題編號：SA-2020-4</h1>
 <p><strong>主分類：</strong> <code>SA-U3-2</code> 建築結構系統分析<br />
 <strong>副分類：</strong> 無<br />
 <strong>分析法：</strong> 矩陣位移法 / 剛架與剪力牆互制<br />
 <strong>標籤：</strong> <code>剛架與剪力牆互制</code> <code>矩陣分析</code> <code>剪力建築</code></p>
 <hr />
-<h2>1. 原始題目重述 (Problem Restatement)</h2>
-<p>如圖 4(a) 所示之二層樓平面結構，各樓層承受相同的水平力 60 kN，梁柱構架與剪力牆在各樓層之間設置 $bc$ 及 $ef$ 連桿傳遞水平軸力。構架梁柱桿件的彈性模數都為 $E$，另構架之柱桿件斷面慣性矩都為 $I$，且 $EI = 81920 \text{ kN-m}^2$，而構架之梁桿件斷面慣性矩為無限大。如圖 4(b) 所示剪力牆有二個自由度，已知剪力牆之力 $\{F_1, F_2\}$ 與位移 $\{\Delta_1, \Delta_2\}$ 關係式，採用勁度矩陣表示如下：<br />
-$$ \begin{Bmatrix} F_1 \\ F_2 \end{Bmatrix} = (30000 \text{ kN/m}) \begin{bmatrix} 1 &amp; -2 \\ -2 &amp; 6 \end{bmatrix} \begin{Bmatrix} \Delta_1 \\ \Delta_2 \end{Bmatrix} $$<br />
-不考慮連桿及構架梁柱桿件的軸向變形，求圖 4(a) 二層樓結構之各連桿的軸力、一樓剪力牆的基底剪力、$eh$ 柱桿件的端點彎矩及剪力。（25分）</p>
-<p><img alt="SA-2020-4 題目附圖：二層樓平面結構，剛架與剪力牆並聯，受樓層水平載重" src="../../raw/solutions/SA-2020-4/SA-2020-4-fig-1.png" /></p>
-<p><em>圖說：左側為雙層單跨剛架，節點 $a, b, d, e, g, h$，$a-b$ 與 $d-e$ 為無限剛性梁，$a-d-g$ 與 $b-e-h$ 為柱，柱高與梁寬皆為 $3.2\text{m}$。右側為剪力牆，由水平連桿 $b-c$ 及 $e-f$ 連接。各樓層均受 $60\text{ kN}$ 向右之水平載重。</em></p>
+<h2>1. 題目（考卷原文見題目正本）</h2>
+<blockquote>
+<p>考卷原文、公式／附表、附圖與判讀清單（已確認）見 <a href="SA-2020-4-problem.md"><code>SA-2020-4-problem.md</code></a>。本節只列解題時最容易讀錯的地方與本解使用的記號；題意以題目正本為準。</p>
+</blockquote>
+<p><img alt="SA-2020-4 重繪題目附圖：(a) 二層單跨構架（a、b、d、e、g、h；層高與跨度 3.2 m，梁 I＝∞）以兩端鉸接連桿 bc、ef 連到剪力牆，各層 60 kN 向右；(b) 剪力牆兩個自由度 Δ₁,F₁（頂層）、Δ₂,F₂（一樓）" src="../../raw/solutions/SA-2020-4/figs/SA-2020-4-fig-1-problem.svg" /><br />
+<em>重繪自考卷附圖，依判讀清單重繪。攔：Δ₁、Δ₂ 的樓層對調、把連桿當成可傳彎矩。</em></p>
+<h3>常見誤讀</h3>
+<table>
+<thead>
+<tr>
+<th>項目</th>
+<th>正確判讀</th>
+<th>常見誤讀</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>剪力牆自由度</td>
+<td>1 號在頂層、2 號在一樓</td>
+<td>1 號在一樓</td>
+</tr>
+<tr>
+<td>柱 EI</td>
+<td>81920 kN-m²（「m²」的 2 是單位指數）</td>
+<td>讀成 2EI</td>
+</tr>
+<tr>
+<td>柱底</td>
+<td>g、h 視為固定（圖面無支承符號；使用者確認）</td>
+<td>鉸支</td>
+</tr>
+</tbody>
+</table>
+<p><strong>本解記號：</strong> 構架節點 a、b、d、e、g、h，ab、de 為剛性梁；柱高 3.2 m；連桿軸力 $N_{bc}$、$N_{ef}$ 以拉為正；位移、力向右為正。</p>
 <hr />
 <h2>2. 考題核心精神與出題者意圖 (Core Concepts &amp; Examiner's Intent)</h2>
 <p>這是一道設計極度巧妙的<strong>「剛架與剪力牆互制 (Frame-Shear Wall Interaction)」</strong>考題。<br />
@@ -264,7 +440,8 @@ $eh$ 柱位於 1 樓，其兩端點的相對側移為 $\Delta_2 = 0.001 \text{ m
 <h2>5. 關鍵爭議點與進階探討 (Critical Issues &amp; Advanced Discussion)</h2>
 <ul>
 <li><strong>連桿軸力為零的神奇現象</strong>：為什麼 $bc$ 連桿軸力為 0？這是因為，當你「單獨」對剪力牆的 1樓 施加 60 kN 水平力時，其變形量剛好就是頂樓 2mm、底樓 1mm。而這個變形量，又「剛好」等於你「單獨」對剛架的 2樓 施加 60 kN 水平力時的變形量！既然兩者在各自分擔極端載重的情況下，自然呈現出完全相同的變形曲線，把他們接在一起時，當然就不會有互相拉扯的內力（在頂層）。這顯示了出題者在調配剛度矩陣參數時的極度用心。</li>
-</ul></main>
+</ul>
+<p><em>修正日期：2026-11-07（§1 改為指向題目正本，補重繪附圖 figs/SA-2020-4-fig-1-problem.svg）</em></p></main>
 <footer>來源：raw/solutions/SA-2020-4/SA-2020-4.md（知識庫解題內容唯一正本；本頁僅為渲染顯示）</footer>
 
 <script>

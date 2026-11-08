@@ -50,6 +50,20 @@ def fig1_problem():
 
 FIGURES = [(fig1_problem, "支承方向讀錯、位移編號對錯節點、ac 長度亂取")]
 
+# ── 解題圖（階段 E，2026-11-08）：直接勁度法重解，assert 對照 SA-2009-4.md §4（d₁ = 1/15 m →、d₂ = −21/80 m ↓；T_ad 16.67、T_ac 87.5、T_ab 20.83 kN 皆拉）──
+def fig2_truss():
+    from trussfig import solve, figure
+    disp, N = solve(N_, [("a", "d"), ("a", "c"), ("a", "b")], 1000.0, ["a"], loads={"a": (0, -100)})
+    assert abs(disp["a"][0] - 1/15) < 1e-12 and abs(disp["a"][1] + 21/80) < 1e-12
+    assert abs(N[("a", "d")] - 50/3) < 1e-9 and abs(N[("a", "c")] - 87.5) < 1e-9 and abs(N[("a", "b")] - 125/6) < 1e-9
+    return figure(N_, N, [("d", "pin", -90), ("b", "pin", 90), ("c", "pin", 180)], [],
+                  disp, f"{OUT}/{TAG}-fig-2-truss.svg", f"圖 2　{TAG} 桿力（kN，拉＋）與 a 點位移",
+                  note="a 點 d1 = 1/15 m（向右）、d2 = 21/80 m（向下）；三桿皆受拉", dlabel="(+0.0667, −0.2625) m",
+                  dlabel_off=(92, 0), dpx=60, H=600, loads_out=[("a", (-0.0, -1.1), "100 kN", (-40, 0))],
+                  lab_pos={("a", "d"): (0.5, -1)})
+
+FIGURES.append((fig2_truss, "ad 桿以為受壓（a 向右移、ad 被拉長）；a 點水平位移漏算或方向畫反"))
+
 if __name__ == "__main__":
     os.makedirs(OUT, exist_ok=True)
     for fn, catches in FIGURES:

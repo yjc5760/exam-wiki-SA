@@ -49,6 +49,20 @@ def fig1_problem():
 
 FIGURES = [(fig1_problem, "D 讀成滾支承、自由度編號對錯節點")]
 
+# ── 解題圖（階段 E，2026-11-08）：直接勁度法重解（AC 短 0.02 m），assert 對照 SA-2011-4.md §4（D₁ = −9/1790 m、D₂ = −0.0125 m；F_AB −16.76、F_AD −13.97、F_AC +13.97 kN）──
+def fig2_truss():
+    from trussfig import solve, figure
+    disp, N = solve(N_, [("B", "A"), ("C", "A"), ("D", "A")], 1e4, ["A"], misfit={("C", "A"): -0.02})
+    assert abs(disp["A"][0] + 9/1790) < 1e-12 and abs(disp["A"][1] + 0.0125) < 1e-12
+    assert abs(N[("B", "A")] + 16.76) < 0.005 and abs(N[("D", "A")] + 13.97) < 0.005 and abs(N[("C", "A")] - 13.97) < 0.005
+    return figure(N_, N, [("C", "pin"), ("D", "pin"), ("B", "pin", -90)], [],
+                  disp, f"{OUT}/{TAG}-fig-2-truss.svg", f"圖 2　{TAG} 桿力（kN，拉＋）與 A 點位移（AC 短 0.02 m）",
+                  note="無外力：AC 被強迫接上而受拉，BA、DA 受壓；A 點 D1 = −0.00503 m（向左）、D2 = −0.0125 m（向下）",
+                  dlabel="(−0.00503, −0.0125) m", dlabel_off=(-150, 4), dpx=45,
+                  lab_pos={("C", "A"): (0.5, 1), ("D", "A"): (0.5, -1)})
+
+FIGURES.append((fig2_truss, "AC 桿只算 EA·e 漏加初始張力 T0 = 40 kN（會判成受壓）；A 點位移方向判反"))
+
 if __name__ == "__main__":
     os.makedirs(OUT, exist_ok=True)
     for fn, catches in FIGURES:

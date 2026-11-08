@@ -177,7 +177,7 @@ header .nomat{margin-top:12px;font-size:.8em;opacity:.85}
 </details>
 <hr>
 <h1>考題編號：SA-2020-2</h1>
-<p><strong>主分類：</strong> <code>SA-U2-3</code> 靜不定結構分析<br />
+<p><strong>主分類：</strong> <code>SA-U2-3</code> 靜不定結構之傾角變位法分析<br />
 <strong>副分類：</strong> 無<br />
 <strong>分析法：</strong> 傾角變位法 / 對稱性利用<br />
 <strong>標籤：</strong> <code>傾角變位法</code> <code>對稱性</code> <code>剛架分析</code> <code>降維分析</code></p>
@@ -421,6 +421,8 @@ $$ 0.75(8) - 0.375EI\Delta = -12 \Rightarrow 0.375EI\Delta = 18 \Rightarrow EI\D
 $$ \boxed{M_{ab}} = 0.5(8) - 0.375(48) = 4 - 18 = \mathbf{-14 \text{ kN-m}} $$<br />
 $$ \boxed{M_{ba}} = 1.0(8) - 0.375(48) = 8 - 18 = \mathbf{-10 \text{ kN-m}} $$</p>
 <p><strong>驗算</strong>：$M_{bc} = 0.5(8) - 6 = -2$、$M_{bf} = 1.5(8) = 12$ kN-m，節點 $b$：$-10 - 2 + 12 = 0$ ✓；$V_{ba} = (M_{ab}+M_{ba})/4 = -6$ kN，與 $V_{bc} = 6$ kN 相加為零 ✓。</p>
+<p><img alt="SA-2020-2 變形形狀與彎矩圖：b、c、f、g 同沉 2.40 mm，柱不轉弦" src="../../raw/solutions/SA-2020-2/figs/SA-2020-2-fig-2-deflected-bmd.svg" /></p>
+<p><em>圖 2　變形形狀與彎矩圖（勁度法重解，數值與本節相同；兩層對稱，下層與上層同形）。b 點順時針轉 $4.0\times10^{-4}$ rad、下沉 2.40 mm，柱 $bf$ 兩端同沉、弦不轉、軸力為零；$ab$ 在 a 端上緣受拉 14、b 端下緣受拉 10，中間有反曲點。這張圖攔的是「左右對稱就沒有垂直位移」——漏掉 b 點下沉，$ab$ 的兩端彎矩就會算錯。</em></p>
 <hr />
 <h2>5. 關鍵爭議點與進階探討 (Critical Issues &amp; Advanced Discussion)</h2>
 <ul>
@@ -428,7 +430,8 @@ $$ \boxed{M_{ba}} = 1.0(8) - 0.375(48) = 8 - 18 = \mathbf{-10 \text{ kN-m}} $$</
 <li><strong>對稱軸的切法</strong>：對於偶數跨的結構，對稱軸會切過中間跨的中央。這使得我們在處理 $bc$ 桿時，可以利用 $\theta_c = -\theta_b$ 來簡化其彎矩式，這是分析對稱結構時極為標準且強大的技巧。</li>
 </ul>
 <p><em>修正日期：2026-11-05（解析勘誤：考卷附圖下方尺寸為 4、2、2、4 m，b、c 兩柱對齊第 1、3 個刻度，bc 長 4 m（題目正本判讀 #3，使用者確認），舊版讀成 2 m；§1 圖說與常見誤讀、§3.5 L1／L2、§4 Step 2–6 重算：M_Fbc −3 → −6 kN-m，θ_b 2.727×10⁻⁴ → 4.0×10⁻⁴ rad 並更正轉向為順時針（舊版誤標逆時針），v_b 2.145 → 2.40 mm，M_ab −13.36 → −14.00 kN-m，M_ba −10.64 → −10.00 kN-m；驗證：傾角變位閉合解與 2D 勁度法兩路徑一致，MISMATCHES: 0）</em></p>
-<p><em>修正日期：2026-11-07（§1 改為指向題目正本並放重繪附圖（figs/SA-2020-2-fig-1-problem.svg）、加常見誤讀；原 §1 的勘誤引言併入「本解舊版曾犯」；圖由 gen_SA-2020-2.py 產生，可重跑）</em></p></main>
+<p><em>修正日期：2026-11-07（§1 改為指向題目正本並放重繪附圖（figs/SA-2020-2-fig-1-problem.svg）、加常見誤讀；原 §1 的勘誤引言併入「本解舊版曾犯」；圖由 gen_SA-2020-2.py 產生，可重跑）</em></p>
+<p><em>修正日期：2026-11-08（圖解補繪：§4 Step 6 補圖 2（變形形狀＋彎矩圖）；數值由勁度法重解並以 assert 對照本解正本，腳本 <code>gen_SA-2020-2.py</code>，可重跑；標頭主分類名稱對齊命題大綱（非勘誤））</em></p></main>
 <footer>來源：raw/solutions/SA-2020-2/SA-2020-2.md（知識庫解題內容唯一正本；本頁僅為渲染顯示）</footer>
 
 <script>

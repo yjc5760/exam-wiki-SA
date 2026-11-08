@@ -7,6 +7,7 @@
 """
 import sys, os
 sys.path.insert(0, "/root/.claude/skills/synced/struct-diagram/scripts")
+sys.path.insert(1, os.path.join(os.path.dirname(os.path.abspath(__file__)), "figs", "_lib"))   # 2026-11-07：本機無 skill 路徑時改用題目資料夾的 _lib
 from structdraw import Canvas, C
 
 OUT = sys.argv[1] if len(sys.argv) > 1 else "figs"
@@ -76,8 +77,31 @@ def fig1_frame():
     return cv.save(f"{OUT}/{TAG}-fig-1-frame.svg")
 
 
+# ── 題目附圖重繪（題目正本 SA-2024-2-problem.md §4 判讀清單 #1–#9；2026-11-07）──
+def fig1_problem():
+    """只畫考卷給的東西：25 根桿、B 滾支承、F 鉸支承、CD 製造誤差、DE 溫差；F 沉陷與量測值寫在圖說。"""
+    from probfig_ext import problem_figure_ext
+    sp = dict(
+        nodes=nodes, members=[],
+        truss=bottom_chord + top_chord + verticals + diagonals,                 # #3 #4 #5
+        joints=list(nodes),
+        supports=[(SUP_B, "roller", 0), (SUP_F, "pin", 0)],                     # #2
+        labels={**{n: (-12, 22) for n in BOT}, "B": (-30, 22), "F": (30, 22), **{n: (0, -16) for n in TOP}},
+        dims=[((x, 3), (x + 4, 3), "4 m", -34) for x in XS[:-1]] + [((0, 0), (0, 3), "3 m", -40)],   # #1
+        extra_pts=[(-1.4, 4.4), (25.4, -1.6)])
+    def post(cv, N):
+        for (a, b), s in ((CD, "δ"), (DE, "ΔT")):                     # #7
+            cv.line(N[a], N[b], C["accent"], 5.0, cap="butt")
+            cv.math(((N[a][0] + N[b][0]) / 2, 0), s, 15, C["accent"], "middle", dy=18, weight="700")
+    return problem_figure_ext(sp, f"{OUT}/{TAG}-fig-1-problem.svg", 900, 330, post=post,
+                              note=["B 滾支承、F 鉸支承（F 向下沉陷 v_F＝12 mm）；無外力；量測：C 向下 4.8 mm、E 向下 6.4 mm",
+                                    "所有桿件 α = 0.000015 /℃、E = 100 GPa、A = 150 mm²"],
+                              margins=(60, 60, 50, 110))
+
+
 FIGURES = [
     (fig1_frame, "§1", "只畫斜桿、漏畫垂直桿 → 誤判桁架幾何（m=2j−r 靜定度算錯）"),
+    (fig1_problem, "§1", "漏畫垂直桿、B／F 支承型式對調"),
 ]
 
 if __name__ == "__main__":
